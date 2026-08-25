@@ -13,10 +13,10 @@ import 'service_template_spec_container_volume_mount.dart';
 class ServiceTemplateSpecContainer {
   /// Arguments to the entrypoint.
   /// The docker image's CMD is used if this is not provided.
-  final pulumi.Input<List<String>>? args;
+  final pulumi.Input<List<String>?>? args;
   /// Entrypoint array. Not executed within a shell.
   /// The docker image's ENTRYPOINT is used if this is not provided.
-  final pulumi.Input<List<String>>? commands;
+  final pulumi.Input<List<String>?>? commands;
   /// (Optional, Deprecated)
   /// List of sources to populate environment variables in the container.
   /// All invalid keys will be reported as an event when the container is starting.
@@ -26,46 +26,46 @@ class ServiceTemplateSpecContainer {
   /// Structure is documented below.
   ///
   /// &gt; **Warning:** `envFrom` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
-  final pulumi.Input<List<ServiceTemplateSpecContainerEnvFrom>>? envFroms;
+  final pulumi.Input<List<ServiceTemplateSpecContainerEnvFrom>?>? envFroms;
   /// List of environment variables to set in the container.
   /// Structure is documented below.
-  final pulumi.Input<List<ServiceTemplateSpecContainerEnv>>? envs;
+  final pulumi.Input<List<ServiceTemplateSpecContainerEnv>?>? envs;
   /// Docker image name. This is most often a reference to a container located
   /// in the container registry, such as gcr.io/cloudrun/hello
   final pulumi.Input<String> image;
   /// Periodic probe of container liveness. Container will be restarted if the probe fails. More info:
   /// https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
   /// Structure is documented below.
-  final pulumi.Input<ServiceTemplateSpecContainerLivenessProbe>? livenessProbe;
+  final pulumi.Input<ServiceTemplateSpecContainerLivenessProbe?>? livenessProbe;
   /// Name of the container
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// List of open ports in the container.
   /// Structure is documented below.
-  final pulumi.Input<List<ServiceTemplateSpecContainerPort>>? ports;
+  final pulumi.Input<List<ServiceTemplateSpecContainerPort>?>? ports;
   /// Periodic probe of container readiness.
   /// Structure is documented below.
-  final pulumi.Input<ServiceTemplateSpecContainerReadinessProbe>? readinessProbe;
+  final pulumi.Input<ServiceTemplateSpecContainerReadinessProbe?>? readinessProbe;
   /// Compute Resources required by this container. Used to set values such as max memory
   /// Structure is documented below.
-  final pulumi.Input<ServiceTemplateSpecContainerResources>? resources;
+  final pulumi.Input<ServiceTemplateSpecContainerResources?>? resources;
   /// Indicates that this container can act as a sandbox supervisor and launch sandboxes.
-  final pulumi.Input<bool>? sandboxLauncher;
+  final pulumi.Input<bool?>? sandboxLauncher;
   /// Startup probe of application within the container.
   /// All other probes are disabled if a startup probe is provided, until it
   /// succeeds. Container will not be added to service endpoints if the probe fails.
   /// Structure is documented below.
-  final pulumi.Input<ServiceTemplateSpecContainerStartupProbe>? startupProbe;
+  final pulumi.Input<ServiceTemplateSpecContainerStartupProbe?>? startupProbe;
   /// Volume to mount into the container's filesystem.
   /// Only supports SecretVolumeSources.
   /// Structure is documented below.
-  final pulumi.Input<List<ServiceTemplateSpecContainerVolumeMount>>? volumeMounts;
+  final pulumi.Input<List<ServiceTemplateSpecContainerVolumeMount>?>? volumeMounts;
   /// (Optional, Deprecated)
   /// Container's working directory.
   /// If not specified, the container runtime's default will be used, which
   /// might be configured in the container image.
   ///
   /// &gt; **Warning:** `workingDir` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
-  final pulumi.Input<String>? workingDir;
+  final pulumi.Input<String?>? workingDir;
 
   /// Creates a new [ServiceTemplateSpecContainer].
   /// [args] Arguments to the entrypoint.

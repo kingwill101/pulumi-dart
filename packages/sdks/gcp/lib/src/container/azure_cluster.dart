@@ -7,6 +7,7 @@ import 'azure_cluster_fleet.dart';
 import 'azure_cluster_logging_config.dart';
 import 'azure_cluster_networking.dart';
 import 'azure_cluster_state.dart';
+import 'azure_cluster_workload_identity_config.dart';
 
 /// An Anthos cluster running on Azure.
 ///
@@ -965,7 +966,7 @@ class AzureCluster extends pulumi.CustomResource {
   /// Output only. The time at which this cluster was last updated.
   late final pulumi.Output<String> updateTime;
   /// Output only. Workload Identity settings.
-  late final pulumi.Output<List<Map<String, dynamic>>> workloadIdentityConfigs;
+  late final pulumi.Output<List<AzureClusterWorkloadIdentityConfig>> workloadIdentityConfigs;
 
   /// Creates a new [AzureCluster].
   /// [name] The Pulumi resource name.
@@ -979,9 +980,9 @@ class AzureCluster extends pulumi.CustomResource {
           'gcp:container/azureCluster:AzureCluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
-    annotations = registerOutput<Map<String, String>?>('annotations');
+    annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     authorization = registerOutput<AzureClusterAuthorization>('authorization', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureClusterAuthorization.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     azureRegion = registerOutput<String>('azureRegion');
     azureServicesAuthentication = registerOutput<AzureClusterAzureServicesAuthentication?>('azureServicesAuthentication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureClusterAzureServicesAuthentication.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -990,7 +991,7 @@ class AzureCluster extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
+    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     endpoint = registerOutput<String>('endpoint');
     etag = registerOutput<String>('etag');
     fleet = registerOutput<AzureClusterFleet>('fleet', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureClusterFleet.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -1004,7 +1005,7 @@ class AzureCluster extends pulumi.CustomResource {
     state = registerOutput<String>('state');
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
-    workloadIdentityConfigs = registerOutput<List<Map<String, dynamic>>>('workloadIdentityConfigs');
+    workloadIdentityConfigs = registerOutput<List<AzureClusterWorkloadIdentityConfig>>('workloadIdentityConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AzureClusterWorkloadIdentityConfig>(guardedValue, (value) => AzureClusterWorkloadIdentityConfig.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [AzureCluster] resource's state with the given [name] and [id].
@@ -1012,11 +1013,12 @@ class AzureCluster extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AzureClusterState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AzureCluster._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1030,7 +1032,7 @@ class AzureCluster extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    annotations = registerOutput<Map<String, String>?>('annotations');
+    annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     authorization = registerOutput<AzureClusterAuthorization>('authorization', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureClusterAuthorization.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     azureRegion = registerOutput<String>('azureRegion');
     azureServicesAuthentication = registerOutput<AzureClusterAzureServicesAuthentication?>('azureServicesAuthentication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureClusterAzureServicesAuthentication.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -1039,7 +1041,7 @@ class AzureCluster extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
+    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     endpoint = registerOutput<String>('endpoint');
     etag = registerOutput<String>('etag');
     fleet = registerOutput<AzureClusterFleet>('fleet', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureClusterFleet.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -1053,6 +1055,41 @@ class AzureCluster extends pulumi.CustomResource {
     this.state = registerOutput<String>('state');
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
-    workloadIdentityConfigs = registerOutput<List<Map<String, dynamic>>>('workloadIdentityConfigs');
+    workloadIdentityConfigs = registerOutput<List<AzureClusterWorkloadIdentityConfig>>('workloadIdentityConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AzureClusterWorkloadIdentityConfig>(guardedValue, (value) => AzureClusterWorkloadIdentityConfig.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [AzureCluster] resource.
+  AzureCluster.reference(String urn)
+    : super(
+        'gcp:container/azureCluster:AzureCluster',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    authorization = registerOutput<AzureClusterAuthorization>('authorization', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureClusterAuthorization.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    azureRegion = registerOutput<String>('azureRegion');
+    azureServicesAuthentication = registerOutput<AzureClusterAzureServicesAuthentication?>('azureServicesAuthentication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureClusterAzureServicesAuthentication.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    client = registerOutput<String?>('client');
+    controlPlane = registerOutput<AzureClusterControlPlane>('controlPlane', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureClusterControlPlane.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    endpoint = registerOutput<String>('endpoint');
+    etag = registerOutput<String>('etag');
+    fleet = registerOutput<AzureClusterFleet>('fleet', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureClusterFleet.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    loggingConfig = registerOutput<AzureClusterLoggingConfig>('loggingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureClusterLoggingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    networking = registerOutput<AzureClusterNetworking>('networking', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureClusterNetworking.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    project = registerOutput<String>('project');
+    reconciling = registerOutput<bool>('reconciling');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    state = registerOutput<String>('state');
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
+    workloadIdentityConfigs = registerOutput<List<AzureClusterWorkloadIdentityConfig>>('workloadIdentityConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AzureClusterWorkloadIdentityConfig>(guardedValue, (value) => AzureClusterWorkloadIdentityConfig.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

@@ -3,11 +3,11 @@
 import 'package:pulumi_multi_argument_invoke/index.dart' as module_index;
 import 'package:pulumi_multi_argument_invoke/providers.dart' as module_providers;
 
-final index = const _IndexModuleNamespace();
-final providers = const _ProvidersModuleNamespace();
+final index = _IndexModuleNamespace();
+final providers = _ProvidersModuleNamespace();
 
 class _IndexModuleNamespace {
-  const _IndexModuleNamespace();
+  _IndexModuleNamespace();
   final MultiArgumentInvokeArgs = module_index.MultiArgumentInvokeArgs.new;
   final MultiArgumentInvokeResult = module_index.MultiArgumentInvokeResult.new;
   final MultiArgumentInvokeResultArgs = module_index.MultiArgumentInvokeResult.new;
@@ -17,6 +17,6 @@ class _IndexModuleNamespace {
 }
 
 class _ProvidersModuleNamespace {
-  const _ProvidersModuleNamespace();
+  _ProvidersModuleNamespace();
   final MultiArgumentInvoke = module_providers.ProviderProvider.new;
 }

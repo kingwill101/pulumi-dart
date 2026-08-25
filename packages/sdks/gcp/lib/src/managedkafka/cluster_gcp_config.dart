@@ -8,7 +8,7 @@ class ClusterGcpConfig {
   /// Structure is documented below.
   final pulumi.Input<ClusterGcpConfigAccessConfig> accessConfig;
   /// The Cloud KMS Key name to use for encryption. The key must be located in the same region as the cluster and cannot be changed. Must be in the format `projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY`.
-  final pulumi.Input<String>? kmsKey;
+  final pulumi.Input<String?>? kmsKey;
 
   /// Creates a new [ClusterGcpConfig].
   /// [accessConfig] The configuration of access to the Kafka cluster.

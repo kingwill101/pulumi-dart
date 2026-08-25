@@ -4,52 +4,52 @@
 /// Result data returned by getKeyHandle.
 class GetKeyHandleResult {
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// The identifier of the KMS Key created for the KeyHandle. Its format is `projects/{projectId}/locations/{location}/keyRings/{keyRingName}/cryptoKeys/{cryptoKeyName}`.
-  final String kmsKey;
+  final String? kmsKey;
   /// The location of the KMS Key and KeyHandle.
-  final String location;
-  final String name;
+  final String? location;
+  final String? name;
   /// The identifier of the project where KMS KeyHandle is created.
   final String? project;
   /// Indicates the resource type that the resulting CryptoKey is meant to protect, e.g. {SERVICE}.googleapis.com/{TYPE}. See documentation for supported resource types.
-  final String resourceTypeSelector;
+  final String? resourceTypeSelector;
 
   /// Creates a new [GetKeyHandleResult].
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [kmsKey] The identifier of the KMS Key created for the KeyHandle. Its format is `projects/{projectId}/locations/{location}/keyRings/{keyRingName}/cryptoKeys/{cryptoKeyName}`.
   /// [location] The location of the KMS Key and KeyHandle.
-  /// [name] Required.
+  /// [name] Optional.
   /// [project] The identifier of the project where KMS KeyHandle is created.
   /// [resourceTypeSelector] Indicates the resource type that the resulting CryptoKey is meant to protect, e.g. {SERVICE}.googleapis.com/{TYPE}. See documentation for supported resource types.
   const GetKeyHandleResult({
-    required this.id,
-    required this.kmsKey,
-    required this.location,
-    required this.name,
+    this.id,
+    this.kmsKey,
+    this.location,
+    this.name,
     this.project,
-    required this.resourceTypeSelector,
+    this.resourceTypeSelector,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'id': id,
-      'kmsKey': kmsKey,
-      'location': location,
-      'name': name,
+      'id': ?id,
+      'kmsKey': ?kmsKey,
+      'location': ?location,
+      'name': ?name,
       'project': ?project,
-      'resourceTypeSelector': resourceTypeSelector,
+      'resourceTypeSelector': ?resourceTypeSelector,
     };
   }
 
   factory GetKeyHandleResult.fromMap(Map<String, dynamic> map) {
     return GetKeyHandleResult(
-      id: map['id'] as String,
-      kmsKey: map['kmsKey'] as String,
-      location: map['location'] as String,
-      name: map['name'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      kmsKey: (() { final guardedValue = map['kmsKey']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      resourceTypeSelector: map['resourceTypeSelector'] as String,
+      resourceTypeSelector: (() { final guardedValue = map['resourceTypeSelector']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

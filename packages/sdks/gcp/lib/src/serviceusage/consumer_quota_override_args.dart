@@ -13,12 +13,12 @@ class ConsumerQuotaOverrideArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// If this map is nonempty, then this override applies only to specific values for dimensions defined in the limit unit.
-  final pulumi.Input<Map<String, String>>? dimensions;
+  final pulumi.Input<Map<String, String>?>? dimensions;
   /// If the new quota would decrease the existing quota by more than 10%, the request is rejected.
   /// If `force` is `true`, that safety check is ignored.
-  final pulumi.Input<bool>? force;
+  final pulumi.Input<bool?>? force;
   /// The limit on the metric, e.g. `/project/region`.
   /// &gt; Make sure that `limit` is in a format that doesn't start with `1/` or contain curly braces.
   /// E.g. use `/project/user` instead of `1/{project}/{user}`.
@@ -29,7 +29,7 @@ class ConsumerQuotaOverrideArgs {
   final pulumi.Input<String> overrideValue;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The service that the metrics belong to, e.g. `compute.googleapis.com`.
   final pulumi.Input<String> service;
 

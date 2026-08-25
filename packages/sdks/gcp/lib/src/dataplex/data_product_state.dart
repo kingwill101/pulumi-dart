@@ -8,57 +8,57 @@ import 'data_product_access_group.dart';
 class DataProductState {
   /// Configuration for access approval for the data product.
   /// Structure is documented below.
-  final pulumi.Input<DataProductAccessApprovalConfig>? accessApprovalConfig;
+  final pulumi.Input<DataProductAccessApprovalConfig?>? accessApprovalConfig;
   /// Custom user defined access groups at the data product level.
   /// Structure is documented below.
-  final pulumi.Input<List<DataProductAccessGroup>>? accessGroups;
+  final pulumi.Input<List<DataProductAccessGroup>?>? accessGroups;
   /// Number of associated data assets.
-  final pulumi.Input<int>? assetCount;
+  final pulumi.Input<int?>? assetCount;
   /// Creation timestamp.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// The ID of the data product.
-  final pulumi.Input<String>? dataProductId;
+  final pulumi.Input<String?>? dataProductId;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Description of the data product.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// User-friendly display name.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveLabels;
+  final pulumi.Input<Map<String, String>?>? effectiveLabels;
   /// Checksum for concurrency control.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// Base64 encoded image representing the data product. Max Size: 3.0MiB
   /// Expected image dimensions are 512x512 pixels, however the API only
   /// performs validation on size of the encoded data.
   /// Note: For byte fields, the content of the fields are base64-encoded (which
   /// increases the size of the data by 33-36%) when using JSON on the wire.
-  final pulumi.Input<String>? icon;
+  final pulumi.Input<String?>? icon;
   /// User-defined labels.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The location for the data product.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The relative resource name of the data product.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Emails of the owners.
-  final pulumi.Input<List<String>>? ownerEmails;
+  final pulumi.Input<List<String>?>? ownerEmails;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  final pulumi.Input<Map<String, String>>? pulumiLabels;
+  final pulumi.Input<Map<String, String>?>? pulumiLabels;
   /// System generated unique ID.
-  final pulumi.Input<String>? uid;
+  final pulumi.Input<String?>? uid;
   /// Last update timestamp.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [DataProductState].
   /// [accessApprovalConfig] Configuration for access approval for the data product.
@@ -130,7 +130,7 @@ class DataProductState {
     return DataProductState(
       accessApprovalConfig: (() { final guardedValue = map['accessApprovalConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DataProductAccessApprovalConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       accessGroups: (() { final guardedValue = map['accessGroups']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DataProductAccessGroup>(guardedValue, (value) => DataProductAccessGroup.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      assetCount: (() { final guardedValue = map['assetCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      assetCount: (() { final guardedValue = map['assetCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dataProductId: (() { final guardedValue = map['dataProductId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

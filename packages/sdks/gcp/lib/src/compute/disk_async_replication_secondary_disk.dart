@@ -8,7 +8,7 @@ class DiskAsyncReplicationSecondaryDisk {
   /// Output-only. Status of replication on the secondary disk.
   ///
   /// - - -
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
 
   /// Creates a new [DiskAsyncReplicationSecondaryDisk].
   /// [disk] The secondary disk.

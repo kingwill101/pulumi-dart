@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AwsNodePoolManagement {
   /// Optional. Whether or not the nodes will be automatically repaired.
-  final pulumi.Input<bool>? autoRepair;
+  final pulumi.Input<bool?>? autoRepair;
 
   /// Creates a new [AwsNodePoolManagement].
   /// [autoRepair] Optional. Whether or not the nodes will be automatically repaired.

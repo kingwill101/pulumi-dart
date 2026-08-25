@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'iamaudit_config_args.dart';
+import 'iamaudit_config_audit_log_config.dart';
 import 'iamaudit_config_state.dart';
 
 /// Four different resources help you manage your IAM policy for a project. Each of these resources serves a different use case:
@@ -2267,7 +2268,7 @@ import 'iamaudit_config_state.dart';
 /// to include the title of condition, e.g. `terraform import google_project_iam_binding.my_project "{{your-project-id}} roles/{{role_id}} condition-title"`
 class IAMAuditConfig extends pulumi.CustomResource {
   /// The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> auditLogConfigs;
+  late final pulumi.Output<List<IAMAuditConfigAuditLogConfig>> auditLogConfigs;
   /// (Computed) The etag of the project's IAM policy.
   late final pulumi.Output<String> etag;
   /// The project id of the target project. This is not
@@ -2288,9 +2289,9 @@ class IAMAuditConfig extends pulumi.CustomResource {
           'gcp:projects/iAMAuditConfig:IAMAuditConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
-    auditLogConfigs = registerOutput<List<Map<String, dynamic>>>('auditLogConfigs');
+    auditLogConfigs = registerOutput<List<IAMAuditConfigAuditLogConfig>>('auditLogConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<IAMAuditConfigAuditLogConfig>(guardedValue, (value) => IAMAuditConfigAuditLogConfig.fromMap((value as Map).cast<String, dynamic>())); });
     etag = registerOutput<String>('etag');
     project = registerOutput<String>('project');
     service = registerOutput<String>('service');
@@ -2301,11 +2302,12 @@ class IAMAuditConfig extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     IAMAuditConfigState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return IAMAuditConfig._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -2319,7 +2321,22 @@ class IAMAuditConfig extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    auditLogConfigs = registerOutput<List<Map<String, dynamic>>>('auditLogConfigs');
+    auditLogConfigs = registerOutput<List<IAMAuditConfigAuditLogConfig>>('auditLogConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<IAMAuditConfigAuditLogConfig>(guardedValue, (value) => IAMAuditConfigAuditLogConfig.fromMap((value as Map).cast<String, dynamic>())); });
+    etag = registerOutput<String>('etag');
+    project = registerOutput<String>('project');
+    service = registerOutput<String>('service');
+  }
+
+  /// Creates a typed reference to an existing [IAMAuditConfig] resource.
+  IAMAuditConfig.reference(String urn)
+    : super(
+        'gcp:projects/iAMAuditConfig:IAMAuditConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    auditLogConfigs = registerOutput<List<IAMAuditConfigAuditLogConfig>>('auditLogConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<IAMAuditConfigAuditLogConfig>(guardedValue, (value) => IAMAuditConfigAuditLogConfig.fromMap((value as Map).cast<String, dynamic>())); });
     etag = registerOutput<String>('etag');
     project = registerOutput<String>('project');
     service = registerOutput<String>('service');

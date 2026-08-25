@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifference {
   /// A human readable description of the diff, showing the actual output vs expected output.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The type of diff.
   /// * INTENT: The intent.
   /// * PAGE: The page.
@@ -12,7 +12,7 @@ class CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifference {
   /// * UTTERANCE: The message utterance.
   /// * FLOW: The flow.
   /// Possible values are: `INTENT`, `PAGE`, `PARAMETERS`, `UTTERANCE`, `FLOW`.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifference].
   /// [description] A human readable description of the diff, showing the actual output vs expected output.

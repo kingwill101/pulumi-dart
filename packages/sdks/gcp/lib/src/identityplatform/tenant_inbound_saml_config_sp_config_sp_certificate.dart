@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TenantInboundSamlConfigSpConfigSpCertificate {
   /// The x509 certificate
-  final pulumi.Input<String>? x509Certificate;
+  final pulumi.Input<String?>? x509Certificate;
 
   /// Creates a new [TenantInboundSamlConfigSpConfigSpCertificate].
   /// [x509Certificate] The x509 certificate

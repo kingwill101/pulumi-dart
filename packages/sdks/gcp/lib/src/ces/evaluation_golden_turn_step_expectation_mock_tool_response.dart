@@ -6,16 +6,16 @@ import 'evaluation_golden_turn_step_expectation_mock_tool_response_toolset_tool.
 class EvaluationGoldenTurnStepExpectationMockToolResponse {
   /// (Output)
   /// Output only. Display name of the tool.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Optional. Matching ID of the tool call.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The tool execution result in JSON object format.
-  final pulumi.Input<Map<String, String>>? response;
+  final pulumi.Input<Map<String, String>?>? response;
   /// Name of the tool to execute.
-  final pulumi.Input<String>? tool;
+  final pulumi.Input<String?>? tool;
   /// The toolset tool that got executed.
   /// Structure is documented below.
-  final pulumi.Input<EvaluationGoldenTurnStepExpectationMockToolResponseToolsetTool>? toolsetTool;
+  final pulumi.Input<EvaluationGoldenTurnStepExpectationMockToolResponseToolsetTool?>? toolsetTool;
 
   /// Creates a new [EvaluationGoldenTurnStepExpectationMockToolResponse].
   /// [displayName] (Output)

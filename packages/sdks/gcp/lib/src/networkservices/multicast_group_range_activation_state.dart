@@ -13,7 +13,7 @@ class MulticastGroupRangeActivationState {
   /// UPDATING
   /// UPDATE_FAILED
   /// INACTIVE
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
 
   /// Creates a new [MulticastGroupRangeActivationState].
   /// [state] (Output)

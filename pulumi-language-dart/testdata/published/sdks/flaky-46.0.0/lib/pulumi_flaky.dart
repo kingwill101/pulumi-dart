@@ -3,15 +3,15 @@
 import 'package:pulumi_flaky/index.dart' as module_index;
 import 'package:pulumi_flaky/providers.dart' as module_providers;
 
-final index = const _IndexModuleNamespace();
-final providers = const _ProvidersModuleNamespace();
+final index = _IndexModuleNamespace();
+final providers = _ProvidersModuleNamespace();
 
 class _IndexModuleNamespace {
-  const _IndexModuleNamespace();
+  _IndexModuleNamespace();
   final FlakyCreate = module_index.FlakyCreate.new;
 }
 
 class _ProvidersModuleNamespace {
-  const _ProvidersModuleNamespace();
+  _ProvidersModuleNamespace();
   final Flaky = module_providers.ProviderProvider.new;
 }

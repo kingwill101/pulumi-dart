@@ -13,18 +13,18 @@ class SubnetArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// A free-text description of the resource. Max length 1024 characters.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The ranges of ipv4 addresses that are owned by this subnetwork, in CIDR format.
-  final pulumi.Input<List<String>>? ipv4Cidrs;
+  final pulumi.Input<List<String>?>? ipv4Cidrs;
   /// The ranges of ipv6 addresses that are owned by this subnetwork, in CIDR format.
-  final pulumi.Input<List<String>>? ipv6Cidrs;
+  final pulumi.Input<List<String>?>? ipv6Cidrs;
   /// Labels associated with this resource.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The Google Cloud region to which the target Distributed Cloud Edge zone belongs.
   final pulumi.Input<String> location;
   /// The ID of the network to which this router belongs.
@@ -32,11 +32,11 @@ class SubnetArgs {
   final pulumi.Input<String> network;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// A unique ID that identifies this subnet.
   final pulumi.Input<String> subnetId;
   /// VLAN ID for this subnetwork. If not specified, one is assigned automatically.
-  final pulumi.Input<int>? vlanId;
+  final pulumi.Input<int?>? vlanId;
   /// The name of the target Distributed Cloud Edge zone.
   final pulumi.Input<String> zone;
 
@@ -93,7 +93,7 @@ class SubnetArgs {
       network: pulumi.Input.fromValue(map['network'] as String),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       subnetId: pulumi.Input.fromValue(map['subnetId'] as String),
-      vlanId: (() { final guardedValue = map['vlanId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      vlanId: (() { final guardedValue = map['vlanId']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       zone: pulumi.Input.fromValue(map['zone'] as String),
     );
   }

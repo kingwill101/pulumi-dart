@@ -10,7 +10,7 @@ class CustomTargetTypeTasks {
   final pulumi.Input<CustomTargetTypeTasksDeploy> deploy;
   /// The task responsible for render operations. If not provided then Cloud Deploy will perform its default rendering operation.
   /// Structure is documented below.
-  final pulumi.Input<CustomTargetTypeTasksRender>? render;
+  final pulumi.Input<CustomTargetTypeTasksRender?>? render;
 
   /// Creates a new [CustomTargetTypeTasks].
   /// [deploy] The task responsible for deploy operations.

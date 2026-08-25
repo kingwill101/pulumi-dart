@@ -32,7 +32,7 @@ class GetRegionBackendServiceSubsetting {
   factory GetRegionBackendServiceSubsetting.fromMap(Map<String, dynamic> map) {
     return GetRegionBackendServiceSubsetting(
       policy: pulumi.Input.fromValue(map['policy'] as String),
-      subsetSize: pulumi.Input.fromValue(map['subsetSize'] as int),
+      subsetSize: pulumi.Input.fromValue((map['subsetSize'] as num).toInt()),
     );
   }
 }

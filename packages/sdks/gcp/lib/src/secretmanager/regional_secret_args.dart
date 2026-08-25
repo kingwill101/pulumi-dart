@@ -23,26 +23,26 @@ class RegionalSecretArgs {
   ///
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
-  final pulumi.Input<Map<String, String>>? annotations;
+  final pulumi.Input<Map<String, String>?>? annotations;
   /// The customer-managed encryption configuration of the regional secret.
   /// Structure is documented below.
-  final pulumi.Input<RegionalSecretCustomerManagedEncryption>? customerManagedEncryption;
+  final pulumi.Input<RegionalSecretCustomerManagedEncryption?>? customerManagedEncryption;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Whether Terraform will be prevented from destroying the regional secret. Defaults to false.
   /// When the field is set to true in Terraform state, a `pulumi up`
   /// or `terraform destroy` that would delete the federation will fail.
-  final pulumi.Input<bool>? deletionProtection;
+  final pulumi.Input<bool?>? deletionProtection;
   /// Timestamp in UTC when the regional secret is scheduled to expire. This is always provided on
   /// output, regardless of what was sent on input. A timestamp in RFC3339 UTC "Zulu" format, with
   /// nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and
   /// "2014-10-02T15:01:23.045123456Z". Only one of `expireTime` or `ttl` can be provided.
-  final pulumi.Input<String>? expireTime;
+  final pulumi.Input<String?>? expireTime;
   /// The labels assigned to this regional secret.
   /// Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes,
   /// and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
@@ -54,30 +54,30 @@ class RegionalSecretArgs {
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The location of the regional secret. eg us-central1
   final pulumi.Input<String> location;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The rotation time and period for a regional secret. At `nextRotationTime`, Secret Manager
   /// will send a Pub/Sub notification to the topics configured on the Secret. `topics` must be
   /// set to configure rotation.
   /// Structure is documented below.
-  final pulumi.Input<RegionalSecretRotation>? rotation;
+  final pulumi.Input<RegionalSecretRotation?>? rotation;
   /// This must be unique within the project.
   final pulumi.Input<String> secretId;
   /// A map of resource manager tags.
   /// Resource manager tag keys and values have the same definition as resource manager tags.
   /// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A list of up to 10 Pub/Sub topics to which messages are published when control plane
   /// operations are called on the regional secret or its versions.
   /// Structure is documented below.
-  final pulumi.Input<List<RegionalSecretTopic>>? topics;
+  final pulumi.Input<List<RegionalSecretTopic>?>? topics;
   /// The TTL for the regional secret. A duration in seconds with up to nine fractional digits,
   /// terminated by 's'. Example: "3.5s". Only one of `ttl` or `expireTime` can be provided.
-  final pulumi.Input<String>? ttl;
+  final pulumi.Input<String?>? ttl;
   /// Mapping from version alias to version name.
   /// A version alias is a string with a maximum length of 63 characters and can contain
   /// uppercase and lowercase letters, numerals, and the hyphen (-) and underscore ('_')
@@ -85,13 +85,13 @@ class RegionalSecretArgs {
   /// 'latest' or 'NEW'. No more than 50 aliases can be assigned to a given secret.
   /// An object containing a list of "key": value pairs. Example:
   /// { "name": "wrench", "mass": "1.3kg", "count": "3" }.
-  final pulumi.Input<Map<String, String>>? versionAliases;
+  final pulumi.Input<Map<String, String>?>? versionAliases;
   /// Secret Version TTL after destruction request.
   /// This is a part of the delayed delete feature on Secret Version.
   /// For secret with versionDestroyTtl&gt;0, version destruction doesn't happen immediately
   /// on calling destroy instead the version goes to a disabled state and
   /// the actual destruction happens after this TTL expires. It must be atleast 24h.
-  final pulumi.Input<String>? versionDestroyTtl;
+  final pulumi.Input<String?>? versionDestroyTtl;
 
   /// Creates a new [RegionalSecretArgs].
   /// [annotations] Custom metadata about the regional secret.

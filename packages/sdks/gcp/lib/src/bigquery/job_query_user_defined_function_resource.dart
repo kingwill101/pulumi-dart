@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class JobQueryUserDefinedFunctionResource {
   /// An inline resource that contains code for a user-defined function (UDF).
   /// Providing a inline code resource is equivalent to providing a URI for a file containing the same code.
-  final pulumi.Input<String>? inlineCode;
+  final pulumi.Input<String?>? inlineCode;
   /// A code resource to load from a Google Cloud Storage URI (gs://bucket/path).
-  final pulumi.Input<String>? resourceUri;
+  final pulumi.Input<String?>? resourceUri;
 
   /// Creates a new [JobQueryUserDefinedFunctionResource].
   /// [inlineCode] An inline resource that contains code for a user-defined function (UDF).

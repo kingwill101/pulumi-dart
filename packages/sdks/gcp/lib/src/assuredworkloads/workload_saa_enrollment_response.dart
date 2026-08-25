@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WorkloadSaaEnrollmentResponse {
   /// Indicates SAA enrollment setup error if any.
-  final pulumi.Input<List<String>>? setupErrors;
+  final pulumi.Input<List<String>?>? setupErrors;
   /// Indicates SAA enrollment status of a given workload. Possible values: SETUP_STATE_UNSPECIFIED, STATUS_PENDING, STATUS_COMPLETE
-  final pulumi.Input<String>? setupStatus;
+  final pulumi.Input<String?>? setupStatus;
 
   /// Creates a new [WorkloadSaaEnrollmentResponse].
   /// [setupErrors] Indicates SAA enrollment setup error if any.

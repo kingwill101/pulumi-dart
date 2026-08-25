@@ -26,7 +26,7 @@ class HiveTableStorageDescriptorSortCol {
   factory HiveTableStorageDescriptorSortCol.fromMap(Map<String, dynamic> map) {
     return HiveTableStorageDescriptorSortCol(
       col: pulumi.Input.fromValue(map['col'] as String),
-      order: pulumi.Input.fromValue(map['order'] as int),
+      order: pulumi.Input.fromValue((map['order'] as num).toInt()),
     );
   }
 }

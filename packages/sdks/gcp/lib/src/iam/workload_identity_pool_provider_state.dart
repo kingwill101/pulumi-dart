@@ -13,7 +13,7 @@ class WorkloadIdentityPoolProviderState {
   /// provider should not be accepted.
   /// The expression must output a boolean representing whether to allow the federation.
   /// The following keywords may be referenced in the expressions:
-  final pulumi.Input<String>? attributeCondition;
+  final pulumi.Input<String?>? attributeCondition;
   /// Maps attributes from authentication credentials issued by an external identity provider
   /// to Google Cloud attributes, such as `subject` and `segment`.
   /// Each key must be a string specifying the Google Cloud IAM attribute to map to.
@@ -65,36 +65,36 @@ class WorkloadIdentityPoolProviderState {
   /// ```
   /// {"google.subject": "assertion.sub"}
   /// ```
-  final pulumi.Input<Map<String, String>>? attributeMapping;
+  final pulumi.Input<Map<String, String>?>? attributeMapping;
   /// An Amazon Web Services identity provider. Not compatible with the property oidc or saml.
   /// Structure is documented below.
-  final pulumi.Input<WorkloadIdentityPoolProviderAws>? aws;
+  final pulumi.Input<WorkloadIdentityPoolProviderAws?>? aws;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// A description for the provider. Cannot exceed 256 characters.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Whether the provider is disabled. You cannot use a disabled provider to exchange tokens.
   /// However, existing tokens still grant access.
-  final pulumi.Input<bool>? disabled;
+  final pulumi.Input<bool?>? disabled;
   /// A display name for the provider. Cannot exceed 32 characters.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The resource name of the provider as
   /// `projects/{project_number}/locations/global/workloadIdentityPools/{workload_identity_pool_id}/providers/{workload_identity_pool_provider_id}`.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// An OpenId Connect 1.0 identity provider. Not compatible with the property aws or saml.
   /// Structure is documented below.
-  final pulumi.Input<WorkloadIdentityPoolProviderOidc>? oidc;
+  final pulumi.Input<WorkloadIdentityPoolProviderOidc?>? oidc;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// An SAML 2.0 identity provider. Not compatible with the property oidc or aws.
   /// Structure is documented below.
-  final pulumi.Input<WorkloadIdentityPoolProviderSaml>? saml;
+  final pulumi.Input<WorkloadIdentityPoolProviderSaml?>? saml;
   /// The state of the provider.
   /// * STATE_UNSPECIFIED: State unspecified.
   /// * ACTIVE: The provider is active, and may be used to validate authentication credentials.
@@ -102,19 +102,19 @@ class WorkloadIdentityPoolProviderState {
   /// after approximately 30 days. You can restore a soft-deleted provider using
   /// UndeleteWorkloadIdentityPoolProvider. You cannot reuse the ID of a soft-deleted provider
   /// until it is permanently deleted.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// The ID used for the pool, which is the final component of the pool resource name. This
   /// value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
   /// `gcp-` is reserved for use by Google, and may not be specified.
-  final pulumi.Input<String>? workloadIdentityPoolId;
+  final pulumi.Input<String?>? workloadIdentityPoolId;
   /// The ID for the provider, which becomes the final component of the resource name. This
   /// value must be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
   /// `gcp-` is reserved for use by Google, and may not be specified.
-  final pulumi.Input<String>? workloadIdentityPoolProviderId;
+  final pulumi.Input<String?>? workloadIdentityPoolProviderId;
   /// An X.509-type identity provider represents a CA. It is trusted to assert a
   /// client identity if the client has a certificate that chains up to this CA.
   /// Structure is documented below.
-  final pulumi.Input<WorkloadIdentityPoolProviderX509>? x509;
+  final pulumi.Input<WorkloadIdentityPoolProviderX509?>? x509;
 
   /// Creates a new [WorkloadIdentityPoolProviderState].
   /// [attributeCondition] [A Common Expression Language](https://github.com/google/cel-spec) expression, in

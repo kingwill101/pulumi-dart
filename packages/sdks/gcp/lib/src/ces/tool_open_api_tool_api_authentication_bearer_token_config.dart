@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ToolOpenApiToolApiAuthenticationBearerTokenConfig {
   /// (Output)
   /// The bearer token. Must be in the format $context.variables.&lt;name_of_variable&gt;.
-  final pulumi.Input<String>? token;
+  final pulumi.Input<String?>? token;
 
   /// Creates a new [ToolOpenApiToolApiAuthenticationBearerTokenConfig].
   /// [token] (Output)

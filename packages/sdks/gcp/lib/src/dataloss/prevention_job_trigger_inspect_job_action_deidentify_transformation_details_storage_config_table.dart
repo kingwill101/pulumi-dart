@@ -10,7 +10,7 @@ class PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorage
   /// The ID of the table. The ID must contain only letters (a-z,
   /// A-Z), numbers (0-9), or underscores (_). The maximum length
   /// is 1,024 characters.
-  final pulumi.Input<String>? tableId;
+  final pulumi.Input<String?>? tableId;
 
   /// Creates a new [PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTable].
   /// [datasetId] The ID of the dataset containing this table.

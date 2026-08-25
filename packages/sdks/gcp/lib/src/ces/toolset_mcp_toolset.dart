@@ -10,13 +10,13 @@ class ToolsetMcpToolset {
   /// against the MCP server. For API key auth, the API key can only be sent in
   /// the request header; sending it via query parameters is not supported.
   /// Structure is documented below.
-  final pulumi.Input<ToolsetMcpToolsetApiAuthentication>? apiAuthentication;
+  final pulumi.Input<ToolsetMcpToolsetApiAuthentication?>? apiAuthentication;
   /// The custom headers to send in the request to the MCP server. The values
   /// must be in the format `$context.variables.&lt;name_of_variable&gt;` and can be
   /// set in the session variables. See
   /// https://docs.cloud.google.com/customer-engagement-ai/conversational-agents/ps/tool/open-api#openapi-injection
   /// for more details.
-  final pulumi.Input<Map<String, String>>? customHeaders;
+  final pulumi.Input<Map<String, String>?>? customHeaders;
   /// The address of the MCP server, for example, "https://example.com/mcp/". If
   /// the server is built with the MCP SDK, the url should be suffixed with
   /// "/mcp/". Only Streamable HTTP transport based servers are supported. See
@@ -26,11 +26,11 @@ class ToolsetMcpToolset {
   /// Service Directory configuration for VPC-SC, used to resolve service names
   /// within a perimeter.
   /// Structure is documented below.
-  final pulumi.Input<ToolsetMcpToolsetServiceDirectoryConfig>? serviceDirectoryConfig;
+  final pulumi.Input<ToolsetMcpToolsetServiceDirectoryConfig?>? serviceDirectoryConfig;
   /// The TLS configuration. Includes the custom server certificates that the
   /// client should trust.
   /// Structure is documented below.
-  final pulumi.Input<ToolsetMcpToolsetTlsConfig>? tlsConfig;
+  final pulumi.Input<ToolsetMcpToolsetTlsConfig?>? tlsConfig;
 
   /// Creates a new [ToolsetMcpToolset].
   /// [apiAuthentication] Authentication information required to access tools and execute a tool

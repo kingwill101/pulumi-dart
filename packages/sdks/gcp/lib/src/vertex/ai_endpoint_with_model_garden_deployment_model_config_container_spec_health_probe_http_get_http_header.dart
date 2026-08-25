@@ -6,9 +6,9 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttp
   /// The header field name.
   /// This will be canonicalized upon output, so case-variant names will be
   /// understood as the same header.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The header field value
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeader].
   /// [name] The header field name.

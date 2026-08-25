@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VmwareAdminClusterLoadBalancerMetalLbConfig {
   /// Metal LB is enabled.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
 
   /// Creates a new [VmwareAdminClusterLoadBalancerMetalLbConfig].
   /// [enabled] Metal LB is enabled.

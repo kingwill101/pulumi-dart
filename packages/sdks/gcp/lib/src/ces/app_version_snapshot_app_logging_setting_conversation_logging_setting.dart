@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AppVersionSnapshotAppLoggingSettingConversationLoggingSetting {
   /// (Output)
   /// Whether to disable conversation logging for the sessions.
-  final pulumi.Input<bool>? disableConversationLogging;
+  final pulumi.Input<bool?>? disableConversationLogging;
 
   /// Creates a new [AppVersionSnapshotAppLoggingSettingConversationLoggingSetting].
   /// [disableConversationLogging] (Output)

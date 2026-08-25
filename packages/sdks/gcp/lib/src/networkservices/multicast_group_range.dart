@@ -2,6 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'multicast_group_range_args.dart';
 import 'multicast_group_range_log_config.dart';
 import 'multicast_group_range_networkservices_state.dart';
+import 'multicast_group_range_state.dart';
 
 /// Create a multicast group range in the current project.
 ///
@@ -423,7 +424,7 @@ class MulticastGroupRange extends pulumi.CustomResource {
   /// UPDATING
   /// UPDATE_FAILED
   /// INACTIVE
-  late final pulumi.Output<List<Map<String, dynamic>>> states;
+  late final pulumi.Output<List<MulticastGroupRangeState>> states;
   /// [Output only] The Google-generated UUID for the resource. This value is
   /// unique across all multicast group range resources. If a group
   /// range is deleted and another with the same name is created, the new
@@ -445,26 +446,27 @@ class MulticastGroupRange extends pulumi.CustomResource {
           'gcp:networkservices/multicastGroupRange:MulticastGroupRange',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
-    consumerAcceptLists = registerOutput<List<String>?>('consumerAcceptLists');
+    consumerAcceptLists = registerOutput<List<String>?>('consumerAcceptLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     distributionScope = registerOutput<String?>('distributionScope');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     ipCidrRange = registerOutput<String>('ipCidrRange');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     logConfig = registerOutput<MulticastGroupRangeLogConfig?>('logConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MulticastGroupRangeLogConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     multicastDomain = registerOutput<String>('multicastDomain');
     multicastGroupRangeId = registerOutput<String>('multicastGroupRangeId');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     requireExplicitAccept = registerOutput<bool?>('requireExplicitAccept');
     reservedInternalRange = registerOutput<String>('reservedInternalRange');
-    states = registerOutput<List<Map<String, dynamic>>>('states');
+    states = registerOutput<List<MulticastGroupRangeState>>('states', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MulticastGroupRangeState>(guardedValue, (value) => MulticastGroupRangeState.fromMap((value as Map).cast<String, dynamic>())); });
     uniqueId = registerOutput<String>('uniqueId');
     updateTime = registerOutput<String>('updateTime');
   }
@@ -474,11 +476,12 @@ class MulticastGroupRange extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     MulticastGroupRangeNetworkservicesState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return MulticastGroupRange._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -492,24 +495,56 @@ class MulticastGroupRange extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    consumerAcceptLists = registerOutput<List<String>?>('consumerAcceptLists');
+    consumerAcceptLists = registerOutput<List<String>?>('consumerAcceptLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     distributionScope = registerOutput<String?>('distributionScope');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     ipCidrRange = registerOutput<String>('ipCidrRange');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     logConfig = registerOutput<MulticastGroupRangeLogConfig?>('logConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MulticastGroupRangeLogConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     multicastDomain = registerOutput<String>('multicastDomain');
     multicastGroupRangeId = registerOutput<String>('multicastGroupRangeId');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     requireExplicitAccept = registerOutput<bool?>('requireExplicitAccept');
     reservedInternalRange = registerOutput<String>('reservedInternalRange');
-    states = registerOutput<List<Map<String, dynamic>>>('states');
+    states = registerOutput<List<MulticastGroupRangeState>>('states', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MulticastGroupRangeState>(guardedValue, (value) => MulticastGroupRangeState.fromMap((value as Map).cast<String, dynamic>())); });
+    uniqueId = registerOutput<String>('uniqueId');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [MulticastGroupRange] resource.
+  MulticastGroupRange.reference(String urn)
+    : super(
+        'gcp:networkservices/multicastGroupRange:MulticastGroupRange',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    consumerAcceptLists = registerOutput<List<String>?>('consumerAcceptLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    distributionScope = registerOutput<String?>('distributionScope');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    ipCidrRange = registerOutput<String>('ipCidrRange');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    logConfig = registerOutput<MulticastGroupRangeLogConfig?>('logConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MulticastGroupRangeLogConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    multicastDomain = registerOutput<String>('multicastDomain');
+    multicastGroupRangeId = registerOutput<String>('multicastGroupRangeId');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    requireExplicitAccept = registerOutput<bool?>('requireExplicitAccept');
+    reservedInternalRange = registerOutput<String>('reservedInternalRange');
+    states = registerOutput<List<MulticastGroupRangeState>>('states', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MulticastGroupRangeState>(guardedValue, (value) => MulticastGroupRangeState.fromMap((value as Map).cast<String, dynamic>())); });
     uniqueId = registerOutput<String>('uniqueId');
     updateTime = registerOutput<String>('updateTime');
   }

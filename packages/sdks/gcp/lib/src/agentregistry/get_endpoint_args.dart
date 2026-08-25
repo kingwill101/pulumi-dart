@@ -8,16 +8,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_agentregistry_get_endpoint_get_endpoint_args_doc}
 class GetEndpointArgs {
   /// The unique identifier for the Endpoint. This or `filter` must be set.
-  final pulumi.Input<String>? endpointId;
+  final pulumi.Input<String?>? endpointId;
   /// A filter string that identifies a unique Endpoint. This or `endpointId` must be set.
-  final pulumi.Input<String>? filter;
+  final pulumi.Input<String?>? filter;
   /// The location of the resource.
   ///
   /// - - -
   final pulumi.Input<String> location;
   /// The project in which the resource belongs. If it
   /// is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetEndpointArgs].
   /// [endpointId] The unique identifier for the Endpoint. This or `filter` must be set.

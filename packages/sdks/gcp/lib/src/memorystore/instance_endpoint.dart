@@ -6,7 +6,7 @@ import 'instance_endpoint_connection.dart';
 class InstanceEndpoint {
   /// A group of PSC connections. They are created in the same VPC network, one for each service attachment in the cluster.
   /// Structure is documented below.
-  final pulumi.Input<List<InstanceEndpointConnection>>? connections;
+  final pulumi.Input<List<InstanceEndpointConnection>?>? connections;
 
   /// Creates a new [InstanceEndpoint].
   /// [connections] A group of PSC connections. They are created in the same VPC network, one for each service attachment in the cluster.

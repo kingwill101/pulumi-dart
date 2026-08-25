@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'access_approval_settings_args.dart';
+import 'access_approval_settings_enrolled_service.dart';
 import 'access_approval_settings_state.dart';
 
 /// Access Approval enables you to require your explicit approval whenever Google support and engineering need to access your customer content.
@@ -712,7 +713,7 @@ class AccessApprovalSettings extends pulumi.CustomResource {
   /// to have explicit approval. Enrollment can only be done on an all or nothing basis.
   /// A maximum of 10 enrolled services will be enforced, to be expanded as the set of supported services is expanded.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> enrolledServices;
+  late final pulumi.Output<List<AccessApprovalSettingsEnrolledService>> enrolledServices;
   /// ID of the folder of the access approval settings.
   late final pulumi.Output<String> folderId;
   /// If the field is true, that indicates that there is some configuration issue with the activeKeyVersion
@@ -739,17 +740,17 @@ class AccessApprovalSettings extends pulumi.CustomResource {
           'gcp:folder/accessApprovalSettings:AccessApprovalSettings',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     activeKeyVersion = registerOutput<String?>('activeKeyVersion');
     ancestorHasActiveKeyVersion = registerOutput<bool>('ancestorHasActiveKeyVersion');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     enrolledAncestor = registerOutput<bool>('enrolledAncestor');
-    enrolledServices = registerOutput<List<Map<String, dynamic>>>('enrolledServices');
+    enrolledServices = registerOutput<List<AccessApprovalSettingsEnrolledService>>('enrolledServices', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AccessApprovalSettingsEnrolledService>(guardedValue, (value) => AccessApprovalSettingsEnrolledService.fromMap((value as Map).cast<String, dynamic>())); });
     folderId = registerOutput<String>('folderId');
     invalidKeyVersion = registerOutput<bool>('invalidKeyVersion');
     this.name = registerOutput<String>('name');
-    notificationEmails = registerOutput<List<String>>('notificationEmails');
+    notificationEmails = registerOutput<List<String>>('notificationEmails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [AccessApprovalSettings] resource's state with the given [name] and [id].
@@ -757,11 +758,12 @@ class AccessApprovalSettings extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AccessApprovalSettingsState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AccessApprovalSettings._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -779,10 +781,30 @@ class AccessApprovalSettings extends pulumi.CustomResource {
     ancestorHasActiveKeyVersion = registerOutput<bool>('ancestorHasActiveKeyVersion');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     enrolledAncestor = registerOutput<bool>('enrolledAncestor');
-    enrolledServices = registerOutput<List<Map<String, dynamic>>>('enrolledServices');
+    enrolledServices = registerOutput<List<AccessApprovalSettingsEnrolledService>>('enrolledServices', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AccessApprovalSettingsEnrolledService>(guardedValue, (value) => AccessApprovalSettingsEnrolledService.fromMap((value as Map).cast<String, dynamic>())); });
     folderId = registerOutput<String>('folderId');
     invalidKeyVersion = registerOutput<bool>('invalidKeyVersion');
     this.name = registerOutput<String>('name');
-    notificationEmails = registerOutput<List<String>>('notificationEmails');
+    notificationEmails = registerOutput<List<String>>('notificationEmails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [AccessApprovalSettings] resource.
+  AccessApprovalSettings.reference(String urn)
+    : super(
+        'gcp:folder/accessApprovalSettings:AccessApprovalSettings',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    activeKeyVersion = registerOutput<String?>('activeKeyVersion');
+    ancestorHasActiveKeyVersion = registerOutput<bool>('ancestorHasActiveKeyVersion');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    enrolledAncestor = registerOutput<bool>('enrolledAncestor');
+    enrolledServices = registerOutput<List<AccessApprovalSettingsEnrolledService>>('enrolledServices', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AccessApprovalSettingsEnrolledService>(guardedValue, (value) => AccessApprovalSettingsEnrolledService.fromMap((value as Map).cast<String, dynamic>())); });
+    folderId = registerOutput<String>('folderId');
+    invalidKeyVersion = registerOutput<bool>('invalidKeyVersion');
+    this.name = registerOutput<String>('name');
+    notificationEmails = registerOutput<List<String>>('notificationEmails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

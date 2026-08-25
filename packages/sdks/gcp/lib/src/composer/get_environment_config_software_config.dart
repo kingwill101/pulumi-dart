@@ -62,7 +62,7 @@ class GetEnvironmentConfigSoftwareConfig {
       imageVersion: pulumi.Input.fromValue(map['imageVersion'] as String),
       pypiPackages: pulumi.Input.fromValue((map['pypiPackages'] as Map).cast<String, String>()),
       pythonVersion: pulumi.Input.fromValue(map['pythonVersion'] as String),
-      schedulerCount: pulumi.Input.fromValue(map['schedulerCount'] as int),
+      schedulerCount: pulumi.Input.fromValue((map['schedulerCount'] as num).toInt()),
       webServerPluginsMode: pulumi.Input.fromValue(map['webServerPluginsMode'] as String),
     );
   }

@@ -1027,7 +1027,7 @@ class RuntimeTemplateIamMember extends pulumi.CustomResource {
           'gcp:colab/runtimeTemplateIamMember:RuntimeTemplateIamMember',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     condition = registerOutput<RuntimeTemplateIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RuntimeTemplateIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
@@ -1043,11 +1043,12 @@ class RuntimeTemplateIamMember extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RuntimeTemplateIamMemberState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RuntimeTemplateIamMember._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1061,6 +1062,24 @@ class RuntimeTemplateIamMember extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    condition = registerOutput<RuntimeTemplateIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RuntimeTemplateIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    etag = registerOutput<String>('etag');
+    location = registerOutput<String>('location');
+    member = registerOutput<String>('member');
+    project = registerOutput<String>('project');
+    role = registerOutput<String>('role');
+    runtimeTemplate = registerOutput<String>('runtimeTemplate');
+  }
+
+  /// Creates a typed reference to an existing [RuntimeTemplateIamMember] resource.
+  RuntimeTemplateIamMember.reference(String urn)
+    : super(
+        'gcp:colab/runtimeTemplateIamMember:RuntimeTemplateIamMember',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     condition = registerOutput<RuntimeTemplateIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RuntimeTemplateIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');

@@ -6,7 +6,7 @@ import 'ai_index_endpoint_deployed_index_deployed_index_auth_config_auth_provide
 class AiIndexEndpointDeployedIndexDeployedIndexAuthConfig {
   /// Defines the authentication provider that the DeployedIndex uses.
   /// Structure is documented below.
-  final pulumi.Input<AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProvider>? authProvider;
+  final pulumi.Input<AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProvider?>? authProvider;
 
   /// Creates a new [AiIndexEndpointDeployedIndexDeployedIndexAuthConfig].
   /// [authProvider] Defines the authentication provider that the DeployedIndex uses.

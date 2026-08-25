@@ -9,7 +9,7 @@ class FunctionEventTrigger {
   /// full reference of accepted triggers.
   final pulumi.Input<String> eventType;
   /// Specifies policy for failed executions. Structure is documented below.
-  final pulumi.Input<FunctionEventTriggerFailurePolicy>? failurePolicy;
+  final pulumi.Input<FunctionEventTriggerFailurePolicy?>? failurePolicy;
   /// Required. The name or partial URI of the resource from
   /// which to observe events. For example, `"myBucket"` or `"projects/my-project/topics/my-topic"`
   final pulumi.Input<String> resource;

@@ -6,17 +6,17 @@ import 'framework_cloud_control_detail_parameter_parameter_value_string_list_val
 
 class FrameworkCloudControlDetailParameterParameterValue {
   /// Represents a boolean value.
-  final pulumi.Input<bool>? boolValue;
+  final pulumi.Input<bool?>? boolValue;
   /// Represents a double value.
-  final pulumi.Input<double>? numberValue;
+  final pulumi.Input<double?>? numberValue;
   /// Sub-parameter values.
   /// Structure is documented below.
-  final pulumi.Input<FrameworkCloudControlDetailParameterParameterValueOneofValue>? oneofValue;
+  final pulumi.Input<FrameworkCloudControlDetailParameterParameterValueOneofValue?>? oneofValue;
   /// A list of strings.
   /// Structure is documented below.
-  final pulumi.Input<FrameworkCloudControlDetailParameterParameterValueStringListValue>? stringListValue;
+  final pulumi.Input<FrameworkCloudControlDetailParameterParameterValueStringListValue?>? stringListValue;
   /// Represents a string value.
-  final pulumi.Input<String>? stringValue;
+  final pulumi.Input<String?>? stringValue;
 
   /// Creates a new [FrameworkCloudControlDetailParameterParameterValue].
   /// [boolValue] Represents a boolean value.
@@ -45,7 +45,7 @@ class FrameworkCloudControlDetailParameterParameterValue {
   factory FrameworkCloudControlDetailParameterParameterValue.fromMap(Map<String, dynamic> map) {
     return FrameworkCloudControlDetailParameterParameterValue(
       boolValue: (() { final guardedValue = map['boolValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      numberValue: (() { final guardedValue = map['numberValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      numberValue: (() { final guardedValue = map['numberValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       oneofValue: (() { final guardedValue = map['oneofValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FrameworkCloudControlDetailParameterParameterValueOneofValue.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       stringListValue: (() { final guardedValue = map['stringListValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FrameworkCloudControlDetailParameterParameterValueStringListValue.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       stringValue: (() { final guardedValue = map['stringValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

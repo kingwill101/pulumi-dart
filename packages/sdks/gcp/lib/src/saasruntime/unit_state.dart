@@ -16,78 +16,78 @@ class UnitState {
   /// More info: https://kubernetes.io/docs/user-guide/annotations
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
-  final pulumi.Input<Map<String, String>>? annotations;
+  final pulumi.Input<Map<String, String>?>? annotations;
   /// A set of conditions which indicate the various conditions this resource can
   /// have.
   /// Structure is documented below.
-  final pulumi.Input<List<UnitCondition>>? conditions;
+  final pulumi.Input<List<UnitCondition>?>? conditions;
   /// The timestamp when the resource was created.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Set of dependencies for this unit. Maximum 10.
   /// Structure is documented below.
-  final pulumi.Input<List<UnitDependency>>? dependencies;
+  final pulumi.Input<List<UnitDependency>?>? dependencies;
   /// List of Units that depend on this unit. Unit can only be deprovisioned if
   /// this list is empty. Maximum 1000.
   /// Structure is documented below.
-  final pulumi.Input<List<UnitDependent>>? dependents;
+  final pulumi.Input<List<UnitDependent>?>? dependents;
   /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveAnnotations;
+  final pulumi.Input<Map<String, String>?>? effectiveAnnotations;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveLabels;
+  final pulumi.Input<Map<String, String>?>? effectiveLabels;
   /// Indicates the current input variables deployed by the unit
   /// Structure is documented below.
-  final pulumi.Input<List<UnitInputVariable>>? inputVariables;
+  final pulumi.Input<List<UnitInputVariable>?>? inputVariables;
   /// The labels on the resource, which can be used for categorization.
   /// similar to Kubernetes resource labels.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Captures requested directives for performing future maintenance on the
   /// unit. This includes a request for the unit to skip maintenance for a period
   /// of time and remain pinned to its current release as well as controls for
   /// postponing maintenance scheduled in future.
   /// Structure is documented below.
-  final pulumi.Input<UnitMaintenance>? maintenance;
+  final pulumi.Input<UnitMaintenance?>? maintenance;
   /// Indicates whether the Unit life cycle is controlled
   /// by the user or by the system.
   /// Immutable once created.
   /// Possible values:
   /// MANAGEMENT_MODE_USER
   /// MANAGEMENT_MODE_SYSTEM
-  final pulumi.Input<String>? managementMode;
+  final pulumi.Input<String?>? managementMode;
   /// Identifier. The resource name (full URI of the resource) following the standard naming
   /// scheme:
   /// "projects/{project}/locations/{location}/units/{unit}"
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// List of concurrent UnitOperations that are operating on this Unit.
-  final pulumi.Input<List<String>>? ongoingOperations;
+  final pulumi.Input<List<String>?>? ongoingOperations;
   /// Set of key/value pairs corresponding to output variables from execution of
   /// actuation templates. The variables are declared in actuation configs (e.g
   /// in helm chart or terraform) and the values are fetched and returned by the
   /// actuation engine upon completion of execution.
   /// Structure is documented below.
-  final pulumi.Input<List<UnitOutputVariable>>? outputVariables;
+  final pulumi.Input<List<UnitOutputVariable>?>? outputVariables;
   /// List of pending (wait to be executed) UnitOperations for this unit.
-  final pulumi.Input<List<String>>? pendingOperations;
+  final pulumi.Input<List<String>?>? pendingOperations;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  final pulumi.Input<Map<String, String>>? pulumiLabels;
+  final pulumi.Input<Map<String, String>?>? pulumiLabels;
   /// The current Release object for this Unit.
-  final pulumi.Input<String>? release;
+  final pulumi.Input<String?>? release;
   /// List of scheduled UnitOperations for this unit.
-  final pulumi.Input<List<String>>? scheduledOperations;
+  final pulumi.Input<List<String>?>? scheduledOperations;
   /// Current lifecycle state of the resource (e.g. if it's being
   /// created or ready to use).
   /// Possible values:
@@ -97,33 +97,33 @@ class UnitState {
   /// UNIT_STATE_DEPROVISIONING
   /// UNIT_STATE_READY
   /// UNIT_STATE_ERROR
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// If set, indicates the time when the system will start removing the unit.
-  final pulumi.Input<String>? systemCleanupAt;
+  final pulumi.Input<String?>? systemCleanupAt;
   /// Indicates the system managed state of the unit.
   /// Possible values:
   /// SYSTEM_MANAGED_STATE_ACTIVE
   /// SYSTEM_MANAGED_STATE_INACTIVE
   /// SYSTEM_MANAGED_STATE_DECOMMISSIONED
-  final pulumi.Input<String>? systemManagedState;
+  final pulumi.Input<String?>? systemManagedState;
   /// Reference to the Saas Tenant resource this unit belongs to. This for
   /// example informs the maintenance policies to use for scheduling future
   /// updates on a unit. (optional and immutable once created)
-  final pulumi.Input<String>? tenant;
+  final pulumi.Input<String?>? tenant;
   /// The unique identifier of the resource. UID is unique in the time
   /// and space for this resource within the scope of the service. It is
   /// typically generated by the server on successful creation of a resource
   /// and must not be changed. UID is used to uniquely identify resources
   /// with resource name reuses. This should be a UUID4.
-  final pulumi.Input<String>? uid;
+  final pulumi.Input<String?>? uid;
   /// The ID value for the new unit.
-  final pulumi.Input<String>? unitId;
+  final pulumi.Input<String?>? unitId;
   /// Reference to the UnitKind this Unit belongs to. Immutable once set.
-  final pulumi.Input<String>? unitKind;
+  final pulumi.Input<String?>? unitKind;
   /// The timestamp when the resource was last updated. Any
   /// change to the resource made by users must refresh this value.
   /// Changes to a resource made by the service should refresh this value.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [UnitState].
   /// [annotations] Annotations is an unstructured key-value map stored with a resource that

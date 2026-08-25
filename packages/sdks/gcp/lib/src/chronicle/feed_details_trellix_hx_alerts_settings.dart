@@ -7,14 +7,14 @@ class FeedDetailsTrellixHxAlertsSettings {
   /// TrellixStarXAuthentication contains a oneof with all of the authentication
   /// types supported by Trellix *X devices.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsTrellixHxAlertsSettingsAuthentication>? authentication;
+  final pulumi.Input<FeedDetailsTrellixHxAlertsSettingsAuthentication?>? authentication;
   /// Trellix HX Device URL.
   /// This must be a valid URL with an http or https scheme. It has no default.
   /// Usually a device URL is in the form of either:
   /// https://xxx.trellix.com/hx/id//
   /// - or -
   /// https://htapdeviceproxy.md.mandiant.net/dphb/hx//
-  final pulumi.Input<String>? endpoint;
+  final pulumi.Input<String?>? endpoint;
 
   /// Creates a new [FeedDetailsTrellixHxAlertsSettings].
   /// [authentication] TrellixStarXAuthentication contains a oneof with all of the authentication

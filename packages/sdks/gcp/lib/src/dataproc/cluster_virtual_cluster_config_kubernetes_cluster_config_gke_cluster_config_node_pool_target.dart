@@ -10,7 +10,7 @@ class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePool
   /// If specified, Dataproc attempts to create a node pool with the specified shape.
   /// If one with the same name already exists, it is verified against all specified fields.
   /// If a field differs, the virtual cluster creation will fail.
-  final pulumi.Input<ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfig>? nodePoolConfig;
+  final pulumi.Input<ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfig?>? nodePoolConfig;
   /// The roles associated with the GKE node pool.
   /// One of `"DEFAULT"`, `"CONTROLLER"`, `"SPARK_DRIVER"` or `"SPARK_EXECUTOR"`.
   final pulumi.Input<List<String>> roles;

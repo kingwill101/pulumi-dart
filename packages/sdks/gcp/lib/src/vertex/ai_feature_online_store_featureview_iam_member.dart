@@ -1032,7 +1032,7 @@ class AiFeatureOnlineStoreFeatureviewIamMember extends pulumi.CustomResource {
           'gcp:vertex/aiFeatureOnlineStoreFeatureviewIamMember:AiFeatureOnlineStoreFeatureviewIamMember',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     condition = registerOutput<AiFeatureOnlineStoreFeatureviewIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiFeatureOnlineStoreFeatureviewIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
@@ -1049,11 +1049,12 @@ class AiFeatureOnlineStoreFeatureviewIamMember extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AiFeatureOnlineStoreFeatureviewIamMemberState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AiFeatureOnlineStoreFeatureviewIamMember._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1067,6 +1068,25 @@ class AiFeatureOnlineStoreFeatureviewIamMember extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    condition = registerOutput<AiFeatureOnlineStoreFeatureviewIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiFeatureOnlineStoreFeatureviewIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    etag = registerOutput<String>('etag');
+    featureOnlineStore = registerOutput<String>('featureOnlineStore');
+    featureView = registerOutput<String>('featureView');
+    member = registerOutput<String>('member');
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+    role = registerOutput<String>('role');
+  }
+
+  /// Creates a typed reference to an existing [AiFeatureOnlineStoreFeatureviewIamMember] resource.
+  AiFeatureOnlineStoreFeatureviewIamMember.reference(String urn)
+    : super(
+        'gcp:vertex/aiFeatureOnlineStoreFeatureviewIamMember:AiFeatureOnlineStoreFeatureviewIamMember',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     condition = registerOutput<AiFeatureOnlineStoreFeatureviewIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiFeatureOnlineStoreFeatureviewIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
     featureOnlineStore = registerOutput<String>('featureOnlineStore');

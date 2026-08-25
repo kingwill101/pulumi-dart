@@ -13,12 +13,12 @@ class VersionArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The developer-provided description of this version.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The Flow to create an Version for.
   /// Format: projects/&lt;Project ID&gt;/agent.
-  final pulumi.Input<String>? parent;
+  final pulumi.Input<String?>? parent;
 
   /// Creates a new [VersionArgs].
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

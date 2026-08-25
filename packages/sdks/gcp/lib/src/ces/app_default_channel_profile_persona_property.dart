@@ -8,7 +8,7 @@ class AppDefaultChannelProfilePersonaProperty {
   /// UNKNOWN
   /// CONCISE
   /// CHATTY
-  final pulumi.Input<String>? persona;
+  final pulumi.Input<String?>? persona;
 
   /// Creates a new [AppDefaultChannelProfilePersonaProperty].
   /// [persona] The persona of the channel.

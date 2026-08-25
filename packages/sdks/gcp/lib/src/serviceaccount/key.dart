@@ -662,13 +662,14 @@ class Key extends pulumi.CustomResource {
           'gcp:serviceaccount/key:Key',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['privateKey'],
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    keepers = registerOutput<Map<String, String>?>('keepers');
+    keepers = registerOutput<Map<String, String>?>('keepers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     keyAlgorithm = registerOutput<String?>('keyAlgorithm');
     this.name = registerOutput<String>('name');
-    privateKey = registerOutput<String>('privateKey');
+    privateKey = registerOutput<String>('privateKey', isSecret: true);
     privateKeyType = registerOutput<String?>('privateKeyType');
     publicKey = registerOutput<String>('publicKey');
     publicKeyData = registerOutput<String?>('publicKeyData');
@@ -683,11 +684,12 @@ class Key extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     KeyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Key._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -702,10 +704,34 @@ class Key extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    keepers = registerOutput<Map<String, String>?>('keepers');
+    keepers = registerOutput<Map<String, String>?>('keepers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     keyAlgorithm = registerOutput<String?>('keyAlgorithm');
     this.name = registerOutput<String>('name');
-    privateKey = registerOutput<String>('privateKey');
+    privateKey = registerOutput<String>('privateKey', isSecret: true);
+    privateKeyType = registerOutput<String?>('privateKeyType');
+    publicKey = registerOutput<String>('publicKey');
+    publicKeyData = registerOutput<String?>('publicKeyData');
+    publicKeyType = registerOutput<String?>('publicKeyType');
+    serviceAccountId = registerOutput<String>('serviceAccountId');
+    validAfter = registerOutput<String>('validAfter');
+    validBefore = registerOutput<String>('validBefore');
+  }
+
+  /// Creates a typed reference to an existing [Key] resource.
+  Key.reference(String urn)
+    : super(
+        'gcp:serviceaccount/key:Key',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['privateKey'],
+        isResourceReference: true,
+      ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    keepers = registerOutput<Map<String, String>?>('keepers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    keyAlgorithm = registerOutput<String?>('keyAlgorithm');
+    this.name = registerOutput<String>('name');
+    privateKey = registerOutput<String>('privateKey', isSecret: true);
     privateKeyType = registerOutput<String?>('privateKeyType');
     publicKey = registerOutput<String>('publicKey');
     publicKeyData = registerOutput<String?>('publicKeyData');

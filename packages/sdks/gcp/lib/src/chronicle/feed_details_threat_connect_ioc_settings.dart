@@ -6,11 +6,11 @@ import 'feed_details_threat_connect_ioc_settings_authentication.dart';
 class FeedDetailsThreatConnectIocSettings {
   /// Info for username and secret based authentication.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsThreatConnectIocSettingsAuthentication>? authentication;
+  final pulumi.Input<FeedDetailsThreatConnectIocSettingsAuthentication?>? authentication;
   /// API Hostname.
-  final pulumi.Input<String>? hostname;
+  final pulumi.Input<String?>? hostname;
   /// Owners.
-  final pulumi.Input<List<String>>? owners;
+  final pulumi.Input<List<String>?>? owners;
 
   /// Creates a new [FeedDetailsThreatConnectIocSettings].
   /// [authentication] Info for username and secret based authentication.

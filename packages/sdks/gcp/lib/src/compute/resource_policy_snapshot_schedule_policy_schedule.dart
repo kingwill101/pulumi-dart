@@ -8,13 +8,13 @@ import 'resource_policy_snapshot_schedule_policy_schedule_weekly_schedule.dart';
 class ResourcePolicySnapshotSchedulePolicySchedule {
   /// The policy will execute every nth day at the specified time.
   /// Structure is documented below.
-  final pulumi.Input<ResourcePolicySnapshotSchedulePolicyScheduleDailySchedule>? dailySchedule;
+  final pulumi.Input<ResourcePolicySnapshotSchedulePolicyScheduleDailySchedule?>? dailySchedule;
   /// The policy will execute every nth hour starting at the specified time.
   /// Structure is documented below.
-  final pulumi.Input<ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule>? hourlySchedule;
+  final pulumi.Input<ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule?>? hourlySchedule;
   /// Allows specifying a snapshot time for each day of the week.
   /// Structure is documented below.
-  final pulumi.Input<ResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule>? weeklySchedule;
+  final pulumi.Input<ResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule?>? weeklySchedule;
 
   /// Creates a new [ResourcePolicySnapshotSchedulePolicySchedule].
   /// [dailySchedule] The policy will execute every nth day at the specified time.

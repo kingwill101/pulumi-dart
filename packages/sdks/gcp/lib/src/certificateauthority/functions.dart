@@ -152,6 +152,17 @@ Future<GetAuthorityResult> getAuthority(
   return GetAuthorityResult.fromMap(result);
 }
 
+pulumi.Output<GetAuthorityResult> getAuthorityOutput(
+  GetAuthorityArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:certificateauthority/getAuthority:getAuthority',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAuthorityResult.fromMap);
+}
+
 /// Retrieves the current IAM policy data for capool
 ///
 ///
@@ -271,6 +282,17 @@ Future<GetCaPoolIamPolicyResult> getCaPoolIamPolicy(
   return GetCaPoolIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetCaPoolIamPolicyResult> getCaPoolIamPolicyOutput(
+  GetCaPoolIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:certificateauthority/getCaPoolIamPolicy:getCaPoolIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCaPoolIamPolicyResult.fromMap);
+}
+
 /// Retrieves the current IAM policy data for certificatetemplate
 ///
 ///
@@ -388,4 +410,15 @@ Future<GetCertificateTemplateIamPolicyResult> getCertificateTemplateIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetCertificateTemplateIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetCertificateTemplateIamPolicyResult> getCertificateTemplateIamPolicyOutput(
+  GetCertificateTemplateIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:certificateauthority/getCertificateTemplateIamPolicy:getCertificateTemplateIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCertificateTemplateIamPolicyResult.fromMap);
 }

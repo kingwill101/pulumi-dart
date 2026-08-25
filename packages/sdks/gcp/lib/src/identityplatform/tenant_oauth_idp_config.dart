@@ -239,7 +239,7 @@ class TenantOauthIdpConfig extends pulumi.CustomResource {
           'gcp:identityplatform/tenantOauthIdpConfig:TenantOauthIdpConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     clientId = registerOutput<String>('clientId');
     clientSecret = registerOutput<String?>('clientSecret');
@@ -257,11 +257,12 @@ class TenantOauthIdpConfig extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TenantOauthIdpConfigState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return TenantOauthIdpConfig._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -275,6 +276,26 @@ class TenantOauthIdpConfig extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    clientId = registerOutput<String>('clientId');
+    clientSecret = registerOutput<String?>('clientSecret');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    displayName = registerOutput<String>('displayName');
+    enabled = registerOutput<bool?>('enabled');
+    issuer = registerOutput<String>('issuer');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    tenant = registerOutput<String>('tenant');
+  }
+
+  /// Creates a typed reference to an existing [TenantOauthIdpConfig] resource.
+  TenantOauthIdpConfig.reference(String urn)
+    : super(
+        'gcp:identityplatform/tenantOauthIdpConfig:TenantOauthIdpConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     clientId = registerOutput<String>('clientId');
     clientSecret = registerOutput<String?>('clientSecret');
     deletionPolicy = registerOutput<String>('deletionPolicy');

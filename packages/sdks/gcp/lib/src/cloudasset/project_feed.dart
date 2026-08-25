@@ -413,10 +413,10 @@ class ProjectFeed extends pulumi.CustomResource {
           'gcp:cloudasset/projectFeed:ProjectFeed',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
-    assetNames = registerOutput<List<String>?>('assetNames');
-    assetTypes = registerOutput<List<String>?>('assetTypes');
+    assetNames = registerOutput<List<String>?>('assetNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    assetTypes = registerOutput<List<String>?>('assetTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     billingProject = registerOutput<String?>('billingProject');
     condition = registerOutput<ProjectFeedCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProjectFeedCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     contentType = registerOutput<String?>('contentType');
@@ -432,11 +432,12 @@ class ProjectFeed extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ProjectFeedState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ProjectFeed._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -450,8 +451,29 @@ class ProjectFeed extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    assetNames = registerOutput<List<String>?>('assetNames');
-    assetTypes = registerOutput<List<String>?>('assetTypes');
+    assetNames = registerOutput<List<String>?>('assetNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    assetTypes = registerOutput<List<String>?>('assetTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    billingProject = registerOutput<String?>('billingProject');
+    condition = registerOutput<ProjectFeedCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProjectFeedCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    contentType = registerOutput<String?>('contentType');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    feedId = registerOutput<String>('feedId');
+    feedOutputConfig = registerOutput<ProjectFeedFeedOutputConfig>('feedOutputConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProjectFeedFeedOutputConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+  }
+
+  /// Creates a typed reference to an existing [ProjectFeed] resource.
+  ProjectFeed.reference(String urn)
+    : super(
+        'gcp:cloudasset/projectFeed:ProjectFeed',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    assetNames = registerOutput<List<String>?>('assetNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    assetTypes = registerOutput<List<String>?>('assetTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     billingProject = registerOutput<String?>('billingProject');
     condition = registerOutput<ProjectFeedCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProjectFeedCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     contentType = registerOutput<String?>('contentType');

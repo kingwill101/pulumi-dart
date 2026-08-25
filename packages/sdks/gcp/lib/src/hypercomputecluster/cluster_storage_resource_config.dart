@@ -13,30 +13,30 @@ class ClusterStorageResourceConfig {
   /// [Google Cloud Storage](https://cloud.google.com/storage) bucket should be
   /// imported.
   /// Structure is documented below.
-  final pulumi.Input<ClusterStorageResourceConfigExistingBucket>? existingBucket;
+  final pulumi.Input<ClusterStorageResourceConfigExistingBucket?>? existingBucket;
   /// When set in a StorageResourceConfig, indicates that an existing
   /// [Filestore](https://cloud.google.com/filestore) instance should be imported.
   /// Structure is documented below.
-  final pulumi.Input<ClusterStorageResourceConfigExistingFilestore>? existingFilestore;
+  final pulumi.Input<ClusterStorageResourceConfigExistingFilestore?>? existingFilestore;
   /// When set in a StorageResourceConfig, indicates that an existing
   /// [Managed Lustre](https://cloud.google.com/products/managed-lustre) instance
   /// should be imported.
   /// Structure is documented below.
-  final pulumi.Input<ClusterStorageResourceConfigExistingLustre>? existingLustre;
+  final pulumi.Input<ClusterStorageResourceConfigExistingLustre?>? existingLustre;
   /// When set in a StorageResourceConfig, indicates that a new
   /// [Google Cloud Storage](https://cloud.google.com/storage) bucket should be
   /// created.
   /// Structure is documented below.
-  final pulumi.Input<ClusterStorageResourceConfigNewBucket>? newBucket;
+  final pulumi.Input<ClusterStorageResourceConfigNewBucket?>? newBucket;
   /// When set in a StorageResourceConfig, indicates that a new
   /// [Filestore](https://cloud.google.com/filestore) instance should be created.
   /// Structure is documented below.
-  final pulumi.Input<ClusterStorageResourceConfigNewFilestore>? newFilestore;
+  final pulumi.Input<ClusterStorageResourceConfigNewFilestore?>? newFilestore;
   /// When set in a StorageResourceConfig, indicates that a new
   /// [Managed Lustre](https://cloud.google.com/products/managed-lustre) instance
   /// should be created.
   /// Structure is documented below.
-  final pulumi.Input<ClusterStorageResourceConfigNewLustre>? newLustre;
+  final pulumi.Input<ClusterStorageResourceConfigNewLustre?>? newLustre;
 
   /// Creates a new [ClusterStorageResourceConfig].
   /// [existingBucket] When set in a StorageResourceConfig, indicates that an existing

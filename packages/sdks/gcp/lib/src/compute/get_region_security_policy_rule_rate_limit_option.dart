@@ -77,7 +77,7 @@ class GetRegionSecurityPolicyRuleRateLimitOption {
 
   factory GetRegionSecurityPolicyRuleRateLimitOption.fromMap(Map<String, dynamic> map) {
     return GetRegionSecurityPolicyRuleRateLimitOption(
-      banDurationSec: pulumi.Input.fromValue(map['banDurationSec'] as int),
+      banDurationSec: pulumi.Input.fromValue((map['banDurationSec'] as num).toInt()),
       banThresholds: pulumi.Input.fromValue(pulumi.Input.decodeList<GetRegionSecurityPolicyRuleRateLimitOptionBanThreshold>(map['banThresholds']!, (value) => GetRegionSecurityPolicyRuleRateLimitOptionBanThreshold.fromMap((value as Map).cast<String, dynamic>()))),
       conformAction: pulumi.Input.fromValue(map['conformAction'] as String),
       enforceOnKey: pulumi.Input.fromValue(map['enforceOnKey'] as String),

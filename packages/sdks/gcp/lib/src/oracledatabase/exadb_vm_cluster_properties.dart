@@ -8,17 +8,17 @@ import 'exadb_vm_cluster_properties_vm_file_system_storage.dart';
 class ExadbVmClusterProperties {
   /// The number of additional ECPUs per node for an Exadata VM cluster on
   /// exascale infrastructure.
-  final pulumi.Input<int>? additionalEcpuCountPerNode;
+  final pulumi.Input<int?>? additionalEcpuCountPerNode;
   /// The cluster name for Exascale vm cluster. The cluster name must begin with
   /// an alphabetic character and may contain hyphens(-) but can not contain
   /// underscores(_). It should be not more than 11 characters and is not case
   /// sensitive.
   /// OCI Cluster name.
-  final pulumi.Input<String>? clusterName;
+  final pulumi.Input<String?>? clusterName;
   /// Data collection options for diagnostics.
   /// https://docs.oracle.com/en-us/iaas/api/#/en/database/20160918/datatypes/DataCollectionOptions
   /// Structure is documented below.
-  final pulumi.Input<ExadbVmClusterPropertiesDataCollectionOptions>? dataCollectionOptions;
+  final pulumi.Input<ExadbVmClusterPropertiesDataCollectionOptions?>? dataCollectionOptions;
   /// The number of ECPUs enabled per node for an exadata vm cluster on
   /// exascale infrastructure.
   final pulumi.Input<int> enabledEcpuCountPerNode;
@@ -31,19 +31,19 @@ class ExadbVmClusterProperties {
   final pulumi.Input<String> exascaleDbStorageVault;
   /// (Output)
   /// The Oracle Grid Infrastructure (GI) software version.
-  final pulumi.Input<String>? giVersion;
+  final pulumi.Input<String?>? giVersion;
   /// Grid Infrastructure Version.
   final pulumi.Input<String> gridImageId;
   /// (Output)
   /// The hostname of the ExadbVmCluster.
-  final pulumi.Input<String>? hostname;
+  final pulumi.Input<String?>? hostname;
   /// Prefix for VM cluster host names.
   final pulumi.Input<String> hostnamePrefix;
   /// The license type of the ExadbVmCluster.
   /// Possible values:
   /// LICENSE_INCLUDED
   /// BRING_YOUR_OWN_LICENSE
-  final pulumi.Input<String>? licenseModel;
+  final pulumi.Input<String?>? licenseModel;
   /// (Output)
   /// State of the cluster.
   /// Possible values:
@@ -54,18 +54,18 @@ class ExadbVmClusterProperties {
   /// TERMINATED
   /// FAILED
   /// MAINTENANCE_IN_PROGRESS
-  final pulumi.Input<String>? lifecycleState;
+  final pulumi.Input<String?>? lifecycleState;
   /// (Output)
   /// Memory per VM (GB) (Read-only): Shows the amount of memory allocated to
   /// each VM. Memory is calculated based on 2.75 GB per Total ECPUs.
-  final pulumi.Input<int>? memorySizeGb;
+  final pulumi.Input<int?>? memorySizeGb;
   /// The number of nodes/VMs in the ExadbVmCluster.
   final pulumi.Input<int> nodeCount;
   /// (Output)
   /// Deep link to the OCI console to view this resource.
-  final pulumi.Input<String>? ociUri;
+  final pulumi.Input<String?>? ociUri;
   /// SCAN listener port - TCP
-  final pulumi.Input<int>? scanListenerPortTcp;
+  final pulumi.Input<int?>? scanListenerPortTcp;
   /// The shape attribute of the VM cluster. The type of Exascale storage used
   /// for Exadata VM cluster. The default is SMART_STORAGE which supports Oracle
   /// Database 23ai and later
@@ -78,7 +78,7 @@ class ExadbVmClusterProperties {
   /// Represents a time zone from the
   /// [IANA Time Zone Database](https://www.iana.org/time-zones).
   /// Structure is documented below.
-  final pulumi.Input<ExadbVmClusterPropertiesTimeZone>? timeZone;
+  final pulumi.Input<ExadbVmClusterPropertiesTimeZone?>? timeZone;
   /// The storage allocation for the exadbvmcluster, in gigabytes (GB).
   /// Structure is documented below.
   final pulumi.Input<ExadbVmClusterPropertiesVmFileSystemStorage> vmFileSystemStorage;
@@ -151,10 +151,10 @@ class ExadbVmClusterProperties {
 
   factory ExadbVmClusterProperties.fromMap(Map<String, dynamic> map) {
     return ExadbVmClusterProperties(
-      additionalEcpuCountPerNode: (() { final guardedValue = map['additionalEcpuCountPerNode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      additionalEcpuCountPerNode: (() { final guardedValue = map['additionalEcpuCountPerNode']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       clusterName: (() { final guardedValue = map['clusterName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dataCollectionOptions: (() { final guardedValue = map['dataCollectionOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ExadbVmClusterPropertiesDataCollectionOptions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      enabledEcpuCountPerNode: pulumi.Input.fromValue(map['enabledEcpuCountPerNode'] as int),
+      enabledEcpuCountPerNode: pulumi.Input.fromValue((map['enabledEcpuCountPerNode'] as num).toInt()),
       exascaleDbStorageVault: pulumi.Input.fromValue(map['exascaleDbStorageVault'] as String),
       giVersion: (() { final guardedValue = map['giVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       gridImageId: pulumi.Input.fromValue(map['gridImageId'] as String),
@@ -162,10 +162,10 @@ class ExadbVmClusterProperties {
       hostnamePrefix: pulumi.Input.fromValue(map['hostnamePrefix'] as String),
       licenseModel: (() { final guardedValue = map['licenseModel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       lifecycleState: (() { final guardedValue = map['lifecycleState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      memorySizeGb: (() { final guardedValue = map['memorySizeGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      nodeCount: pulumi.Input.fromValue(map['nodeCount'] as int),
+      memorySizeGb: (() { final guardedValue = map['memorySizeGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      nodeCount: pulumi.Input.fromValue((map['nodeCount'] as num).toInt()),
       ociUri: (() { final guardedValue = map['ociUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      scanListenerPortTcp: (() { final guardedValue = map['scanListenerPortTcp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      scanListenerPortTcp: (() { final guardedValue = map['scanListenerPortTcp']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       shapeAttribute: pulumi.Input.fromValue(map['shapeAttribute'] as String),
       sshPublicKeys: pulumi.Input.fromValue((map['sshPublicKeys'] as List).cast<String>()),
       timeZone: (() { final guardedValue = map['timeZone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ExadbVmClusterPropertiesTimeZone.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

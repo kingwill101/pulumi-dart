@@ -141,3 +141,14 @@ Future<GetRepositoryGroupIamPolicyResult> getRepositoryGroupIamPolicy(
   );
   return GetRepositoryGroupIamPolicyResult.fromMap(result);
 }
+
+pulumi.Output<GetRepositoryGroupIamPolicyResult> getRepositoryGroupIamPolicyOutput(
+  GetRepositoryGroupIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:gemini/getRepositoryGroupIamPolicy:getRepositoryGroupIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRepositoryGroupIamPolicyResult.fromMap);
+}

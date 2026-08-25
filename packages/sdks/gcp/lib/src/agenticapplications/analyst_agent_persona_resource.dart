@@ -9,24 +9,24 @@ import 'analyst_agent_persona_resource_raw_file_resource.dart';
 
 class AnalystAgentPersonaResource {
   /// Represents a BigQuery resource.
-  final pulumi.Input<AnalystAgentPersonaResourceBigqueryResource>? bigqueryResource;
+  final pulumi.Input<AnalystAgentPersonaResourceBigqueryResource?>? bigqueryResource;
   /// A user-friendly name for this resource. This can be shown to the user
   /// and used by the model.
-  final pulumi.Input<String>? displayLabel;
+  final pulumi.Input<String?>? displayLabel;
   /// - Represents an F1 resource.
-  final pulumi.Input<AnalystAgentPersonaResourceF1Resource>? f1Resource;
+  final pulumi.Input<AnalystAgentPersonaResourceF1Resource?>? f1Resource;
   /// Represents a Google Cloud Storage resource.
-  final pulumi.Input<AnalystAgentPersonaResourceGoogleCloudStorageResource>? googleCloudStorageResource;
+  final pulumi.Input<AnalystAgentPersonaResourceGoogleCloudStorageResource?>? googleCloudStorageResource;
   /// Represents a Google Drive resource.
-  final pulumi.Input<AnalystAgentPersonaResourceGoogleDriveResource>? googleDriveResource;
+  final pulumi.Input<AnalystAgentPersonaResourceGoogleDriveResource?>? googleDriveResource;
   /// The description of the persona review, used by the model.
-  final pulumi.Input<String>? modelDescription;
+  final pulumi.Input<String?>? modelDescription;
   /// Represents a raw file resource.
-  final pulumi.Input<AnalystAgentPersonaResourceRawFileResource>? rawFileResource;
+  final pulumi.Input<AnalystAgentPersonaResourceRawFileResource?>? rawFileResource;
   /// If true, use RAG to retrieve relevant information from the resources.
   ///
   /// Must only be set for file-based resources.
-  final pulumi.Input<bool>? useRag;
+  final pulumi.Input<bool?>? useRag;
 
   /// Creates a new [AnalystAgentPersonaResource].
   /// [bigqueryResource] Represents a BigQuery resource.

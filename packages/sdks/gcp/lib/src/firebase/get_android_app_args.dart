@@ -14,7 +14,7 @@ class GetAndroidAppArgs {
   final pulumi.Input<String> appId;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetAndroidAppArgs].
   /// [appId] The appId of name of the Firebase androidApp.

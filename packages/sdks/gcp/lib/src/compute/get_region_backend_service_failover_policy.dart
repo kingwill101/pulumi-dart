@@ -49,7 +49,7 @@ class GetRegionBackendServiceFailoverPolicy {
     return GetRegionBackendServiceFailoverPolicy(
       disableConnectionDrainOnFailover: pulumi.Input.fromValue(map['disableConnectionDrainOnFailover'] as bool),
       dropTrafficIfUnhealthy: pulumi.Input.fromValue(map['dropTrafficIfUnhealthy'] as bool),
-      failoverRatio: pulumi.Input.fromValue(map['failoverRatio'] as double),
+      failoverRatio: pulumi.Input.fromValue((map['failoverRatio'] as num).toDouble()),
     );
   }
 }

@@ -4,23 +4,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AutonomousDatabasePropertiesConnectionUrl {
   /// Oracle Application Express (APEX) URL.
-  final pulumi.Input<String>? apexUri;
+  final pulumi.Input<String?>? apexUri;
   /// The URL of the Database Transforms for the Autonomous Database.
-  final pulumi.Input<String>? databaseTransformsUri;
+  final pulumi.Input<String?>? databaseTransformsUri;
   /// The URL of the Graph Studio for the Autonomous Database.
-  final pulumi.Input<String>? graphStudioUri;
+  final pulumi.Input<String?>? graphStudioUri;
   /// The URL of the Oracle Machine Learning (OML) Notebook for the Autonomous
   /// Database.
-  final pulumi.Input<String>? machineLearningNotebookUri;
+  final pulumi.Input<String?>? machineLearningNotebookUri;
   /// The URL of Machine Learning user management the Autonomous Database.
-  final pulumi.Input<String>? machineLearningUserManagementUri;
+  final pulumi.Input<String?>? machineLearningUserManagementUri;
   /// The URL of the MongoDB API for the Autonomous Database.
-  final pulumi.Input<String>? mongoDbUri;
+  final pulumi.Input<String?>? mongoDbUri;
   /// The Oracle REST Data Services (ORDS) URL of the Web Access for the
   /// Autonomous Database.
-  final pulumi.Input<String>? ordsUri;
+  final pulumi.Input<String?>? ordsUri;
   /// The URL of the Oracle SQL Developer Web for the Autonomous Database.
-  final pulumi.Input<String>? sqlDevWebUri;
+  final pulumi.Input<String?>? sqlDevWebUri;
 
   /// Creates a new [AutonomousDatabasePropertiesConnectionUrl].
   /// [apexUri] Oracle Application Express (APEX) URL.

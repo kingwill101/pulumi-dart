@@ -16,7 +16,7 @@ class SubAccountArgs {
   /// When set to "DELETE", the command will behave as if set to "".
   ///
   /// Possible values: RENAME_ON_DESTROY, PREVENT, ABANDON, DELETE.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The display name of the billing account.
   final pulumi.Input<String> displayName;
   /// The name of the master billing account that the subaccount

@@ -7,10 +7,10 @@ import 'ca_pool_issuance_policy_allowed_key_type_rsa.dart';
 class CaPoolIssuancePolicyAllowedKeyType {
   /// Represents an allowed Elliptic Curve key type.
   /// Structure is documented below.
-  final pulumi.Input<CaPoolIssuancePolicyAllowedKeyTypeEllipticCurve>? ellipticCurve;
+  final pulumi.Input<CaPoolIssuancePolicyAllowedKeyTypeEllipticCurve?>? ellipticCurve;
   /// Describes an RSA key that may be used in a Certificate issued from a CaPool.
   /// Structure is documented below.
-  final pulumi.Input<CaPoolIssuancePolicyAllowedKeyTypeRsa>? rsa;
+  final pulumi.Input<CaPoolIssuancePolicyAllowedKeyTypeRsa?>? rsa;
 
   /// Creates a new [CaPoolIssuancePolicyAllowedKeyType].
   /// [ellipticCurve] Represents an allowed Elliptic Curve key type.

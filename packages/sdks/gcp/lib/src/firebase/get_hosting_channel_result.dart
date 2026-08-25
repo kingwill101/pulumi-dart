@@ -3,75 +3,75 @@
 
 /// Result data returned by getHostingChannel.
 class GetHostingChannelResult {
-  final String channelId;
-  final String deletionPolicy;
-  final Map<String, String> effectiveLabels;
-  final String expireTime;
+  final String? channelId;
+  final String? deletionPolicy;
+  final Map<String, String>? effectiveLabels;
+  final String? expireTime;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final Map<String, String> labels;
+  final String? id;
+  final Map<String, String>? labels;
   /// The fully-qualified resource name for the channel, in the format: `sites/{{site_id}}/channels/{{channel_id}}`.
-  final String name;
-  final Map<String, String> pulumiLabels;
-  final int retainedReleaseCount;
-  final String siteId;
-  final String ttl;
+  final String? name;
+  final Map<String, String>? pulumiLabels;
+  final int? retainedReleaseCount;
+  final String? siteId;
+  final String? ttl;
 
   /// Creates a new [GetHostingChannelResult].
-  /// [channelId] Required.
-  /// [deletionPolicy] Required.
-  /// [effectiveLabels] Required.
-  /// [expireTime] Required.
+  /// [channelId] Optional.
+  /// [deletionPolicy] Optional.
+  /// [effectiveLabels] Optional.
+  /// [expireTime] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [labels] Required.
+  /// [labels] Optional.
   /// [name] The fully-qualified resource name for the channel, in the format: `sites/{{site_id}}/channels/{{channel_id}}`.
-  /// [pulumiLabels] Required.
-  /// [retainedReleaseCount] Required.
-  /// [siteId] Required.
-  /// [ttl] Required.
+  /// [pulumiLabels] Optional.
+  /// [retainedReleaseCount] Optional.
+  /// [siteId] Optional.
+  /// [ttl] Optional.
   const GetHostingChannelResult({
-    required this.channelId,
-    required this.deletionPolicy,
-    required this.effectiveLabels,
-    required this.expireTime,
-    required this.id,
-    required this.labels,
-    required this.name,
-    required this.pulumiLabels,
-    required this.retainedReleaseCount,
-    required this.siteId,
-    required this.ttl,
+    this.channelId,
+    this.deletionPolicy,
+    this.effectiveLabels,
+    this.expireTime,
+    this.id,
+    this.labels,
+    this.name,
+    this.pulumiLabels,
+    this.retainedReleaseCount,
+    this.siteId,
+    this.ttl,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'channelId': channelId,
-      'deletionPolicy': deletionPolicy,
-      'effectiveLabels': effectiveLabels,
-      'expireTime': expireTime,
-      'id': id,
-      'labels': labels,
-      'name': name,
-      'pulumiLabels': pulumiLabels,
-      'retainedReleaseCount': retainedReleaseCount,
-      'siteId': siteId,
-      'ttl': ttl,
+      'channelId': ?channelId,
+      'deletionPolicy': ?deletionPolicy,
+      'effectiveLabels': ?effectiveLabels,
+      'expireTime': ?expireTime,
+      'id': ?id,
+      'labels': ?labels,
+      'name': ?name,
+      'pulumiLabels': ?pulumiLabels,
+      'retainedReleaseCount': ?retainedReleaseCount,
+      'siteId': ?siteId,
+      'ttl': ?ttl,
     };
   }
 
   factory GetHostingChannelResult.fromMap(Map<String, dynamic> map) {
     return GetHostingChannelResult(
-      channelId: map['channelId'] as String,
-      deletionPolicy: map['deletionPolicy'] as String,
-      effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
-      expireTime: map['expireTime'] as String,
-      id: map['id'] as String,
-      labels: (map['labels'] as Map).cast<String, String>(),
-      name: map['name'] as String,
-      pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
-      retainedReleaseCount: map['retainedReleaseCount'] as int,
-      siteId: map['siteId'] as String,
-      ttl: map['ttl'] as String,
+      channelId: (() { final guardedValue = map['channelId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      expireTime: (() { final guardedValue = map['expireTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      pulumiLabels: (() { final guardedValue = map['pulumiLabels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      retainedReleaseCount: (() { final guardedValue = map['retainedReleaseCount']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      siteId: (() { final guardedValue = map['siteId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      ttl: (() { final guardedValue = map['ttl']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

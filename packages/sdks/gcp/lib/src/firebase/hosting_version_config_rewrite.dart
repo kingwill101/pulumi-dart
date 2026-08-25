@@ -5,16 +5,16 @@ import 'hosting_version_config_rewrite_run.dart';
 
 class HostingVersionConfigRewrite {
   /// The function to proxy requests to. Must match the exported function name exactly.
-  final pulumi.Input<String>? function;
+  final pulumi.Input<String?>? function;
   /// The user-supplied glob to match against the request URL path.
-  final pulumi.Input<String>? glob;
+  final pulumi.Input<String?>? glob;
   /// The URL path to rewrite the request to.
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? path;
   /// The user-supplied RE2 regular expression to match against the request URL path.
-  final pulumi.Input<String>? regex;
+  final pulumi.Input<String?>? regex;
   /// The request will be forwarded to Cloud Run.
   /// Structure is documented below.
-  final pulumi.Input<HostingVersionConfigRewriteRun>? run;
+  final pulumi.Input<HostingVersionConfigRewriteRun?>? run;
 
   /// Creates a new [HostingVersionConfigRewrite].
   /// [function] The function to proxy requests to. Must match the exported function name exactly.

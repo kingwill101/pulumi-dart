@@ -11,14 +11,14 @@ class RegionUrlMapPathMatcherRouteRuleMatchRule {
   /// and anchor that may be part of the original URL. FullPathMatch must be between 1
   /// and 1024 characters. Only one of prefixMatch, fullPathMatch or regexMatch must
   /// be specified.
-  final pulumi.Input<String>? fullPathMatch;
+  final pulumi.Input<String?>? fullPathMatch;
   /// Specifies a list of header match criteria, all of which must match corresponding
   /// headers in the request.
   /// Structure is documented below.
-  final pulumi.Input<List<RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatch>>? headerMatches;
+  final pulumi.Input<List<RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatch>?>? headerMatches;
   /// Specifies that prefixMatch and fullPathMatch matches are case sensitive.
   /// Defaults to false.
-  final pulumi.Input<bool>? ignoreCase;
+  final pulumi.Input<bool?>? ignoreCase;
   /// Opaque filter criteria used by Loadbalancer to restrict routing configuration to
   /// a limited set xDS compliant clients. In their xDS requests to Loadbalancer, xDS
   /// clients present node metadata. If a match takes place, the relevant routing
@@ -31,7 +31,7 @@ class RegionUrlMapPathMatcherRouteRuleMatchRule {
   /// UrlMap. metadataFilters only applies to Loadbalancers that have their
   /// loadBalancingScheme set to INTERNAL_SELF_MANAGED.
   /// Structure is documented below.
-  final pulumi.Input<List<RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilter>>? metadataFilters;
+  final pulumi.Input<List<RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilter>?>? metadataFilters;
   /// For satisfying the matchRule condition, the path of the request
   /// must match the wildcard pattern specified in pathTemplateMatch
   /// after removing any query parameters and anchor that may be part
@@ -40,22 +40,22 @@ class RegionUrlMapPathMatcherRouteRuleMatchRule {
   /// (inclusive).  The pattern specified by pathTemplateMatch may
   /// have at most 5 wildcard operators and at most 5 variable
   /// captures in total.
-  final pulumi.Input<String>? pathTemplateMatch;
+  final pulumi.Input<String?>? pathTemplateMatch;
   /// For satisfying the matchRule condition, the request's path must begin with the
   /// specified prefixMatch. prefixMatch must begin with a /. The value must be
   /// between 1 and 1024 characters. Only one of prefixMatch, fullPathMatch or
   /// regexMatch must be specified.
-  final pulumi.Input<String>? prefixMatch;
+  final pulumi.Input<String?>? prefixMatch;
   /// Specifies a list of query parameter match criteria, all of which must match
   /// corresponding query parameters in the request.
   /// Structure is documented below.
-  final pulumi.Input<List<RegionUrlMapPathMatcherRouteRuleMatchRuleQueryParameterMatch>>? queryParameterMatches;
+  final pulumi.Input<List<RegionUrlMapPathMatcherRouteRuleMatchRuleQueryParameterMatch>?>? queryParameterMatches;
   /// For satisfying the matchRule condition, the path of the request must satisfy the
   /// regular expression specified in regexMatch after removing any query parameters
   /// and anchor supplied with the original URL. For regular expression grammar please
   /// see en.cppreference.com/w/cpp/regex/ecmascript  Only one of prefixMatch,
   /// fullPathMatch or regexMatch must be specified.
-  final pulumi.Input<String>? regexMatch;
+  final pulumi.Input<String?>? regexMatch;
 
   /// Creates a new [RegionUrlMapPathMatcherRouteRuleMatchRule].
   /// [fullPathMatch] For satisfying the matchRule condition, the path of the request must exactly

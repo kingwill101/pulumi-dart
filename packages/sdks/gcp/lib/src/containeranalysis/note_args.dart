@@ -26,23 +26,23 @@ class NoteArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Time of expiration for this note. Leave empty if note does not expire.
-  final pulumi.Input<String>? expirationTime;
+  final pulumi.Input<String?>? expirationTime;
   /// A detailed description of the note
-  final pulumi.Input<String>? longDescription;
+  final pulumi.Input<String?>? longDescription;
   /// The name of the note.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Names of other notes related to this note.
-  final pulumi.Input<List<String>>? relatedNoteNames;
+  final pulumi.Input<List<String>?>? relatedNoteNames;
   /// URLs associated with this note and related metadata.
   /// Structure is documented below.
-  final pulumi.Input<List<NoteRelatedUrl>>? relatedUrls;
+  final pulumi.Input<List<NoteRelatedUrl>?>? relatedUrls;
   /// A one sentence description of the note.
-  final pulumi.Input<String>? shortDescription;
+  final pulumi.Input<String?>? shortDescription;
 
   /// Creates a new [NoteArgs].
   /// [attestationAuthority] Note kind that represents a logical attestation "role" or "authority".

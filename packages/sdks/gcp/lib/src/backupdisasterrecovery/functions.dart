@@ -159,6 +159,17 @@ Future<GetBackupResult> getBackup(
   return GetBackupResult.fromMap(result);
 }
 
+pulumi.Output<GetBackupResult> getBackupOutput(
+  GetBackupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:backupdisasterrecovery/getBackup:getBackup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBackupResult.fromMap);
+}
+
 /// [args] Arguments passed to this invoke. {@macro pulumi_backupdisasterrecovery_get_backup_plan_get_backup_plan_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetBackupPlanResult> getBackupPlan(
@@ -172,6 +183,17 @@ Future<GetBackupPlanResult> getBackupPlan(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetBackupPlanResult.fromMap(result);
+}
+
+pulumi.Output<GetBackupPlanResult> getBackupPlanOutput(
+  GetBackupPlanArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:backupdisasterrecovery/getBackupPlan:getBackupPlan',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBackupPlanResult.fromMap);
 }
 
 /// A Backup and DR BackupPlanAssociation.
@@ -299,6 +321,17 @@ Future<GetBackupPlanAssociationResult> getBackupPlanAssociation(
   return GetBackupPlanAssociationResult.fromMap(result);
 }
 
+pulumi.Output<GetBackupPlanAssociationResult> getBackupPlanAssociationOutput(
+  GetBackupPlanAssociationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:backupdisasterrecovery/getBackupPlanAssociation:getBackupPlanAssociation',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBackupPlanAssociationResult.fromMap);
+}
+
 /// Provides a list of Backup and DR BackupPlanAssociations.
 ///
 /// ## Example Usage
@@ -415,6 +448,17 @@ Future<GetBackupPlanAssociationsResult> getBackupPlanAssociations(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetBackupPlanAssociationsResult.fromMap(result);
+}
+
+pulumi.Output<GetBackupPlanAssociationsResult> getBackupPlanAssociationsOutput(
+  GetBackupPlanAssociationsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:backupdisasterrecovery/getBackupPlanAssociations:getBackupPlanAssociations',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBackupPlanAssociationsResult.fromMap);
 }
 
 /// A Backup and DRBackupVault.
@@ -540,6 +584,17 @@ Future<GetBackupVaultResult> getBackupVault(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetBackupVaultResult.fromMap(result);
+}
+
+pulumi.Output<GetBackupVaultResult> getBackupVaultOutput(
+  GetBackupVaultArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:backupdisasterrecovery/getBackupVault:getBackupVault',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBackupVaultResult.fromMap);
 }
 
 /// A Backup and DR Data Source.
@@ -681,6 +736,17 @@ Future<GetDataSourceResult> getDataSource(
   return GetDataSourceResult.fromMap(result);
 }
 
+pulumi.Output<GetDataSourceResult> getDataSourceOutput(
+  GetDataSourceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:backupdisasterrecovery/getDataSource:getDataSource',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDataSourceResult.fromMap);
+}
+
 /// Get information about a specific Backup and DR data source reference.
 /// [args] Arguments passed to this invoke. {@macro pulumi_backupdisasterrecovery_get_data_source_reference_get_data_source_reference_args_doc}
 /// [options] Invoke options controlling this call.
@@ -697,6 +763,17 @@ Future<GetDataSourceReferenceResult> getDataSourceReference(
   return GetDataSourceReferenceResult.fromMap(result);
 }
 
+pulumi.Output<GetDataSourceReferenceResult> getDataSourceReferenceOutput(
+  GetDataSourceReferenceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:backupdisasterrecovery/getDataSourceReference:getDataSourceReference',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDataSourceReferenceResult.fromMap);
+}
+
 /// A list of Backup and DR data source references.
 /// [args] Arguments passed to this invoke. {@macro pulumi_backupdisasterrecovery_get_data_source_references_get_data_source_references_args_doc}
 /// [options] Invoke options controlling this call.
@@ -711,6 +788,17 @@ Future<GetDataSourceReferencesResult> getDataSourceReferences(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDataSourceReferencesResult.fromMap(result);
+}
+
+pulumi.Output<GetDataSourceReferencesResult> getDataSourceReferencesOutput(
+  GetDataSourceReferencesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:backupdisasterrecovery/getDataSourceReferences:getDataSourceReferences',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDataSourceReferencesResult.fromMap);
 }
 
 /// A Backup and DR Data Sources.
@@ -845,6 +933,17 @@ Future<GetDataSourcesResult> getDataSources(
   return GetDataSourcesResult.fromMap(result);
 }
 
+pulumi.Output<GetDataSourcesResult> getDataSourcesOutput(
+  GetDataSourcesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:backupdisasterrecovery/getDataSources:getDataSources',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDataSourcesResult.fromMap);
+}
+
 /// Get information about a Google Backup DR Management server.
 ///
 /// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
@@ -964,4 +1063,15 @@ Future<GetManagementServerResult> getManagementServer(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetManagementServerResult.fromMap(result);
+}
+
+pulumi.Output<GetManagementServerResult> getManagementServerOutput(
+  GetManagementServerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:backupdisasterrecovery/getManagementServer:getManagementServer',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetManagementServerResult.fromMap);
 }

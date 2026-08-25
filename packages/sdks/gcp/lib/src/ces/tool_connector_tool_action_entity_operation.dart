@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ToolConnectorToolActionEntityOperation {
   /// (Output)
   /// ID of the entity.
-  final pulumi.Input<String>? entityId;
+  final pulumi.Input<String?>? entityId;
   /// (Output)
   /// Operation to perform on the entity.
   /// Possible values:
@@ -15,7 +15,7 @@ class ToolConnectorToolActionEntityOperation {
   /// CREATE
   /// UPDATE
   /// DELETE
-  final pulumi.Input<String>? operation;
+  final pulumi.Input<String?>? operation;
 
   /// Creates a new [ToolConnectorToolActionEntityOperation].
   /// [entityId] (Output)

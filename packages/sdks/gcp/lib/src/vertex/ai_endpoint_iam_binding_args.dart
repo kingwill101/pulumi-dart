@@ -8,11 +8,11 @@ import 'ai_endpoint_iam_binding_condition.dart';
 /// {@endtemplate}
 /// {@macro pulumi_vertex_ai_endpoint_iam_binding_ai_endpoint_iam_binding_args_doc}
 class AiEndpointIamBindingArgs {
-  final pulumi.Input<AiEndpointIamBindingCondition>? condition;
+  final pulumi.Input<AiEndpointIamBindingCondition?>? condition;
   final pulumi.Input<String> endpoint;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   final pulumi.Input<List<String>> members;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> role;
 
   /// Creates a new [AiEndpointIamBindingArgs].

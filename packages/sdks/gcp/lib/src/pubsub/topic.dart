@@ -2,6 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'topic_args.dart';
 import 'topic_ingestion_data_source_settings.dart';
 import 'topic_message_storage_policy.dart';
+import 'topic_message_transform.dart';
 import 'topic_schema_settings.dart';
 import 'topic_state.dart';
 
@@ -2758,7 +2759,7 @@ class Topic extends pulumi.CustomResource {
   /// Transforms to be applied to messages published to the topic. Transforms are applied in the
   /// order specified.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> messageTransforms;
+  late final pulumi.Output<List<TopicMessageTransform>?> messageTransforms;
   /// Name of the topic.
   late final pulumi.Output<String> name;
   /// The ID of the project in which the resource belongs.
@@ -2792,21 +2793,22 @@ class Topic extends pulumi.CustomResource {
           'gcp:pubsub/topic:Topic',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     ingestionDataSourceSettings = registerOutput<TopicIngestionDataSourceSettings?>('ingestionDataSourceSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TopicIngestionDataSourceSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     kmsKeyName = registerOutput<String?>('kmsKeyName');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     messageRetentionDuration = registerOutput<String?>('messageRetentionDuration');
     messageStoragePolicy = registerOutput<TopicMessageStoragePolicy>('messageStoragePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TopicMessageStoragePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    messageTransforms = registerOutput<List<Map<String, dynamic>>?>('messageTransforms');
+    messageTransforms = registerOutput<List<TopicMessageTransform>?>('messageTransforms', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TopicMessageTransform>(guardedValue, (value) => TopicMessageTransform.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     schemaSettings = registerOutput<TopicSchemaSettings?>('schemaSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TopicSchemaSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Topic] resource's state with the given [name] and [id].
@@ -2814,11 +2816,12 @@ class Topic extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TopicState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Topic._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -2833,17 +2836,42 @@ class Topic extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     ingestionDataSourceSettings = registerOutput<TopicIngestionDataSourceSettings?>('ingestionDataSourceSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TopicIngestionDataSourceSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     kmsKeyName = registerOutput<String?>('kmsKeyName');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     messageRetentionDuration = registerOutput<String?>('messageRetentionDuration');
     messageStoragePolicy = registerOutput<TopicMessageStoragePolicy>('messageStoragePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TopicMessageStoragePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    messageTransforms = registerOutput<List<Map<String, dynamic>>?>('messageTransforms');
+    messageTransforms = registerOutput<List<TopicMessageTransform>?>('messageTransforms', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TopicMessageTransform>(guardedValue, (value) => TopicMessageTransform.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     schemaSettings = registerOutput<TopicSchemaSettings?>('schemaSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TopicSchemaSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Topic] resource.
+  Topic.reference(String urn)
+    : super(
+        'gcp:pubsub/topic:Topic',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    ingestionDataSourceSettings = registerOutput<TopicIngestionDataSourceSettings?>('ingestionDataSourceSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TopicIngestionDataSourceSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    kmsKeyName = registerOutput<String?>('kmsKeyName');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    messageRetentionDuration = registerOutput<String?>('messageRetentionDuration');
+    messageStoragePolicy = registerOutput<TopicMessageStoragePolicy>('messageStoragePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TopicMessageStoragePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    messageTransforms = registerOutput<List<TopicMessageTransform>?>('messageTransforms', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TopicMessageTransform>(guardedValue, (value) => TopicMessageTransform.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    schemaSettings = registerOutput<TopicSchemaSettings?>('schemaSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TopicSchemaSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

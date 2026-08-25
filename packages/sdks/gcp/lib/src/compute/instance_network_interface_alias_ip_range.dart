@@ -11,7 +11,7 @@ class InstanceNetworkInterfaceAliasIpRange {
   /// The subnetwork secondary range name specifying
   /// the secondary range from which to allocate the IP CIDR range for this alias IP
   /// range. If left unspecified, the primary range of the subnetwork will be used.
-  final pulumi.Input<String>? subnetworkRangeName;
+  final pulumi.Input<String?>? subnetworkRangeName;
 
   /// Creates a new [InstanceNetworkInterfaceAliasIpRange].
   /// [ipCidrRange] The IP CIDR range represented by this alias IP range. This IP CIDR range

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotifications {
   /// Notification mode for pending approval.
   /// Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
-  final pulumi.Input<String>? pendingApproval;
+  final pulumi.Input<String?>? pendingApproval;
 
   /// Creates a new [SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotifications].
   /// [pendingApproval] Notification mode for pending approval.

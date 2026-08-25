@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterWorkloadIdentityConfig {
   /// The workload pool to attach all Kubernetes service accounts to.
-  final pulumi.Input<String>? workloadPool;
+  final pulumi.Input<String?>? workloadPool;
 
   /// Creates a new [ClusterWorkloadIdentityConfig].
   /// [workloadPool] The workload pool to attach all Kubernetes service accounts to.

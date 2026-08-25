@@ -10,25 +10,25 @@ class IcebergCatalogFederatedCatalogOptions {
   /// Configuration for an AWS Glue remote catalog. Exactly one of
   /// unityCatalogInfo or glueCatalogInfo must be specified.
   /// Structure is documented below.
-  final pulumi.Input<IcebergCatalogFederatedCatalogOptionsGlueCatalogInfo>? glueCatalogInfo;
+  final pulumi.Input<IcebergCatalogFederatedCatalogOptionsGlueCatalogInfo?>? glueCatalogInfo;
   /// Configuration for metadata synchronization from the remote catalog.
   /// Structure is documented below.
-  final pulumi.Input<IcebergCatalogFederatedCatalogOptionsRefreshOptions>? refreshOptions;
+  final pulumi.Input<IcebergCatalogFederatedCatalogOptionsRefreshOptions?>? refreshOptions;
   /// (Output)
   /// Output only. The status of the most recent metadata refresh.
   /// Structure is documented below.
-  final pulumi.Input<List<IcebergCatalogFederatedCatalogOptionsRefreshStatus>>? refreshStatuses;
+  final pulumi.Input<List<IcebergCatalogFederatedCatalogOptionsRefreshStatus>?>? refreshStatuses;
   /// The secret resource name in Secret Manager, in the format
   /// `projects/{projectId}/locations/{location}/secrets/{secret_id}`.
   /// Used to store credentials for authenticating with the remote catalog.
-  final pulumi.Input<String>? secretName;
+  final pulumi.Input<String?>? secretName;
   /// The Service Directory service name for private network connectivity
   /// through Cross-Cloud Interconnect.
-  final pulumi.Input<String>? serviceDirectoryName;
+  final pulumi.Input<String?>? serviceDirectoryName;
   /// Configuration for a Databricks Unity Catalog remote catalog. Exactly
   /// one of unityCatalogInfo or glueCatalogInfo must be specified.
   /// Structure is documented below.
-  final pulumi.Input<IcebergCatalogFederatedCatalogOptionsUnityCatalogInfo>? unityCatalogInfo;
+  final pulumi.Input<IcebergCatalogFederatedCatalogOptionsUnityCatalogInfo?>? unityCatalogInfo;
 
   /// Creates a new [IcebergCatalogFederatedCatalogOptions].
   /// [glueCatalogInfo] Configuration for an AWS Glue remote catalog. Exactly one of

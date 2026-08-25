@@ -18,27 +18,27 @@ class IcebergTableArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The location of the table.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the table.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The parent namespace of the table.
   final pulumi.Input<String> namespace;
   /// The partition spec of the table.
   /// Structure is documented below.
-  final pulumi.Input<IcebergTablePartitionSpec>? partitionSpec;
+  final pulumi.Input<IcebergTablePartitionSpec?>? partitionSpec;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// User-defined properties for the table.
-  final pulumi.Input<Map<String, String>>? properties;
+  final pulumi.Input<Map<String, String>?>? properties;
   /// The schema of the table.
   /// Structure is documented below.
   final pulumi.Input<IcebergTableSchema> schema;
   /// The sort order of the table.
   /// Structure is documented below.
-  final pulumi.Input<IcebergTableSortOrder>? sortOrder;
+  final pulumi.Input<IcebergTableSortOrder?>? sortOrder;
 
   /// Creates a new [IcebergTableArgs].
   /// [catalog] The name of the IcebergCatalog.

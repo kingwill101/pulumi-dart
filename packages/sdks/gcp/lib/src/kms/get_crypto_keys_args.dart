@@ -15,7 +15,7 @@ class GetCryptoKeysArgs {
   /// * `"name=projects/my-project/locations/global/keyRings/my-key-ring/cryptoKeys/my-key-1"` will only retrieve a key with that exact name.
   ///
   /// [See the documentation about using filters](https://cloud.google.com/kms/docs/sorting-and-filtering)
-  final pulumi.Input<String>? filter;
+  final pulumi.Input<String?>? filter;
   /// The key ring that the keys belongs to. Format: 'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'.,
   final pulumi.Input<String> keyRing;
 

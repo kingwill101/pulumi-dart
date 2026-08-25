@@ -312,7 +312,7 @@ class GlobalNetworkEndpointGroup extends pulumi.CustomResource {
           'gcp:compute/globalNetworkEndpointGroup:GlobalNetworkEndpointGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     defaultPort = registerOutput<int?>('defaultPort');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -328,11 +328,12 @@ class GlobalNetworkEndpointGroup extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     GlobalNetworkEndpointGroupState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return GlobalNetworkEndpointGroup._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -346,6 +347,24 @@ class GlobalNetworkEndpointGroup extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    defaultPort = registerOutput<int?>('defaultPort');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    networkEndpointType = registerOutput<String>('networkEndpointType');
+    project = registerOutput<String>('project');
+    selfLink = registerOutput<String>('selfLink');
+  }
+
+  /// Creates a typed reference to an existing [GlobalNetworkEndpointGroup] resource.
+  GlobalNetworkEndpointGroup.reference(String urn)
+    : super(
+        'gcp:compute/globalNetworkEndpointGroup:GlobalNetworkEndpointGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     defaultPort = registerOutput<int?>('defaultPort');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');

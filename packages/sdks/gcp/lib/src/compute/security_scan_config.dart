@@ -659,10 +659,10 @@ class SecurityScanConfig extends pulumi.CustomResource {
           'gcp:compute/securityScanConfig:SecurityScanConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     authentication = registerOutput<SecurityScanConfigAuthentication?>('authentication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityScanConfigAuthentication.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    blacklistPatterns = registerOutput<List<String>?>('blacklistPatterns');
+    blacklistPatterns = registerOutput<List<String>?>('blacklistPatterns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
     exportToSecurityCommandCenter = registerOutput<String?>('exportToSecurityCommandCenter');
@@ -671,9 +671,9 @@ class SecurityScanConfig extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     schedule = registerOutput<SecurityScanConfigSchedule?>('schedule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityScanConfigSchedule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    startingUrls = registerOutput<List<String>>('startingUrls');
+    startingUrls = registerOutput<List<String>>('startingUrls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     staticIpScan = registerOutput<bool?>('staticIpScan');
-    targetPlatforms = registerOutput<List<String>?>('targetPlatforms');
+    targetPlatforms = registerOutput<List<String>?>('targetPlatforms', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     userAgent = registerOutput<String?>('userAgent');
   }
 
@@ -682,11 +682,12 @@ class SecurityScanConfig extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SecurityScanConfigState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SecurityScanConfig._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -701,7 +702,7 @@ class SecurityScanConfig extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     authentication = registerOutput<SecurityScanConfigAuthentication?>('authentication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityScanConfigAuthentication.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    blacklistPatterns = registerOutput<List<String>?>('blacklistPatterns');
+    blacklistPatterns = registerOutput<List<String>?>('blacklistPatterns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
     exportToSecurityCommandCenter = registerOutput<String?>('exportToSecurityCommandCenter');
@@ -710,9 +711,34 @@ class SecurityScanConfig extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     schedule = registerOutput<SecurityScanConfigSchedule?>('schedule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityScanConfigSchedule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    startingUrls = registerOutput<List<String>>('startingUrls');
+    startingUrls = registerOutput<List<String>>('startingUrls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     staticIpScan = registerOutput<bool?>('staticIpScan');
-    targetPlatforms = registerOutput<List<String>?>('targetPlatforms');
+    targetPlatforms = registerOutput<List<String>?>('targetPlatforms', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    userAgent = registerOutput<String?>('userAgent');
+  }
+
+  /// Creates a typed reference to an existing [SecurityScanConfig] resource.
+  SecurityScanConfig.reference(String urn)
+    : super(
+        'gcp:compute/securityScanConfig:SecurityScanConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    authentication = registerOutput<SecurityScanConfigAuthentication?>('authentication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityScanConfigAuthentication.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    blacklistPatterns = registerOutput<List<String>?>('blacklistPatterns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    displayName = registerOutput<String>('displayName');
+    exportToSecurityCommandCenter = registerOutput<String?>('exportToSecurityCommandCenter');
+    ignoreHttpStatusErrors = registerOutput<bool?>('ignoreHttpStatusErrors');
+    maxQps = registerOutput<int?>('maxQps');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    schedule = registerOutput<SecurityScanConfigSchedule?>('schedule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityScanConfigSchedule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    startingUrls = registerOutput<List<String>>('startingUrls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    staticIpScan = registerOutput<bool?>('staticIpScan');
+    targetPlatforms = registerOutput<List<String>?>('targetPlatforms', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     userAgent = registerOutput<String?>('userAgent');
   }
 }

@@ -61,7 +61,7 @@ class ServicePerimeterIngressPolicy extends pulumi.CustomResource {
           'gcp:accesscontextmanager/servicePerimeterIngressPolicy:ServicePerimeterIngressPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     accessPolicyId = registerOutput<String>('accessPolicyId');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -77,11 +77,12 @@ class ServicePerimeterIngressPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ServicePerimeterIngressPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ServicePerimeterIngressPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -95,6 +96,24 @@ class ServicePerimeterIngressPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    accessPolicyId = registerOutput<String>('accessPolicyId');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    etag = registerOutput<String>('etag');
+    ingressFrom = registerOutput<ServicePerimeterIngressPolicyIngressFrom?>('ingressFrom', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServicePerimeterIngressPolicyIngressFrom.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    ingressTo = registerOutput<ServicePerimeterIngressPolicyIngressTo?>('ingressTo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServicePerimeterIngressPolicyIngressTo.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    perimeter = registerOutput<String>('perimeter');
+    title = registerOutput<String?>('title');
+  }
+
+  /// Creates a typed reference to an existing [ServicePerimeterIngressPolicy] resource.
+  ServicePerimeterIngressPolicy.reference(String urn)
+    : super(
+        'gcp:accesscontextmanager/servicePerimeterIngressPolicy:ServicePerimeterIngressPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     accessPolicyId = registerOutput<String>('accessPolicyId');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     etag = registerOutput<String>('etag');

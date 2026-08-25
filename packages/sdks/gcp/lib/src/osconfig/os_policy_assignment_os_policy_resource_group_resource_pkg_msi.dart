@@ -7,7 +7,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi {
   /// Additional properties to use during installation.
   /// This should be in the format of Property=Setting. Appended to the defaults
   /// of `ACTION=INSTALL REBOOT=ReallySuppress`.
-  final pulumi.Input<List<String>>? properties;
+  final pulumi.Input<List<String>?>? properties;
   /// The MSI package. Structure is
   /// documented below.
   final pulumi.Input<OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource> source;

@@ -429,11 +429,11 @@ class ControlPlaneAccess extends pulumi.CustomResource {
           'gcp:apigee/controlPlaneAccess:ControlPlaneAccess',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
-    analyticsPublisherIdentities = registerOutput<List<String>?>('analyticsPublisherIdentities');
+    analyticsPublisherIdentities = registerOutput<List<String>?>('analyticsPublisherIdentities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
-    synchronizerIdentities = registerOutput<List<String>?>('synchronizerIdentities');
+    synchronizerIdentities = registerOutput<List<String>?>('synchronizerIdentities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [ControlPlaneAccess] resource's state with the given [name] and [id].
@@ -441,11 +441,12 @@ class ControlPlaneAccess extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ControlPlaneAccessState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ControlPlaneAccess._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -459,8 +460,22 @@ class ControlPlaneAccess extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    analyticsPublisherIdentities = registerOutput<List<String>?>('analyticsPublisherIdentities');
+    analyticsPublisherIdentities = registerOutput<List<String>?>('analyticsPublisherIdentities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
-    synchronizerIdentities = registerOutput<List<String>?>('synchronizerIdentities');
+    synchronizerIdentities = registerOutput<List<String>?>('synchronizerIdentities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [ControlPlaneAccess] resource.
+  ControlPlaneAccess.reference(String urn)
+    : super(
+        'gcp:apigee/controlPlaneAccess:ControlPlaneAccess',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    analyticsPublisherIdentities = registerOutput<List<String>?>('analyticsPublisherIdentities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    this.name = registerOutput<String>('name');
+    synchronizerIdentities = registerOutput<List<String>?>('synchronizerIdentities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

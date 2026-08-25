@@ -8,9 +8,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_parametermanager_get_parameters_get_parameters_args_doc}
 class GetParametersArgs {
   /// Filter string, adhering to the rules in List-operation filtering. List only parameters matching the filter. If filter is empty, all parameters are listed.
-  final pulumi.Input<String>? filter;
+  final pulumi.Input<String?>? filter;
   /// The ID of the project.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetParametersArgs].
   /// [filter] Filter string, adhering to the rules in List-operation filtering. List only parameters matching the filter. If filter is empty, all parameters are listed.

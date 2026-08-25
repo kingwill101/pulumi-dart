@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GuestPoliciesRecipeInstallStepMsiInstallation {
   /// Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
-  final pulumi.Input<List<int>>? allowedExitCodes;
+  final pulumi.Input<List<int>?>? allowedExitCodes;
   /// The id of the relevant artifact in the recipe.
   final pulumi.Input<String> artifactId;
   /// The flags to use when installing the MSI. Defaults to the install flag.
-  final pulumi.Input<List<String>>? flags;
+  final pulumi.Input<List<String>?>? flags;
 
   /// Creates a new [GuestPoliciesRecipeInstallStepMsiInstallation].
   /// [allowedExitCodes] Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]

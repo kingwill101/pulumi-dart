@@ -6,7 +6,7 @@ import 'workforce_pool_provider_extra_attributes_oauth2_client_client_secret_val
 class WorkforcePoolProviderExtraAttributesOauth2ClientClientSecret {
   /// The value of the client secret.
   /// Structure is documented below.
-  final pulumi.Input<WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValue>? value;
+  final pulumi.Input<WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValue?>? value;
 
   /// Creates a new [WorkforcePoolProviderExtraAttributesOauth2ClientClientSecret].
   /// [value] The value of the client secret.

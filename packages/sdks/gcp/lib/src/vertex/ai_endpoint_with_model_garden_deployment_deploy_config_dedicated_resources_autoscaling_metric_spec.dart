@@ -13,7 +13,7 @@ class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscali
   /// metric; once the real usage deviates from the target by a certain
   /// percentage, the machine replicas change. The default value is 60
   /// (representing 60%) if not provided.
-  final pulumi.Input<int>? target;
+  final pulumi.Input<int?>? target;
 
   /// Creates a new [AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpec].
   /// [metricName] The resource metric name.
@@ -33,7 +33,7 @@ class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscali
   factory AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpec.fromMap(Map<String, dynamic> map) {
     return AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpec(
       metricName: pulumi.Input.fromValue(map['metricName'] as String),
-      target: (() { final guardedValue = map['target']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      target: (() { final guardedValue = map['target']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

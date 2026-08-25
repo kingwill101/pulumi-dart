@@ -13,16 +13,16 @@ class LogicalViewArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Set to true to make the logical view protected against deletion.
-  final pulumi.Input<bool>? deletionProtection;
+  final pulumi.Input<bool?>? deletionProtection;
   /// The name of the instance to create the logical view within.
-  final pulumi.Input<String>? instance;
+  final pulumi.Input<String?>? instance;
   /// The unique name of the logical view in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
   final pulumi.Input<String> logicalViewId;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The logical view's select query.
   final pulumi.Input<String> query;
 

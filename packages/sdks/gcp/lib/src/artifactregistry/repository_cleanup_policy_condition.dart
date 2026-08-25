@@ -4,19 +4,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RepositoryCleanupPolicyCondition {
   /// Match versions newer than a duration.
-  final pulumi.Input<String>? newerThan;
+  final pulumi.Input<String?>? newerThan;
   /// Match versions older than a duration.
-  final pulumi.Input<String>? olderThan;
+  final pulumi.Input<String?>? olderThan;
   /// Match versions by package prefix. Applied on any prefix match.
-  final pulumi.Input<List<String>>? packageNamePrefixes;
+  final pulumi.Input<List<String>?>? packageNamePrefixes;
   /// Match versions by tag prefix. Applied on any prefix match.
-  final pulumi.Input<List<String>>? tagPrefixes;
+  final pulumi.Input<List<String>?>? tagPrefixes;
   /// Match versions by tag status.
   /// Default value is `ANY`.
   /// Possible values are: `TAGGED`, `UNTAGGED`, `ANY`.
-  final pulumi.Input<String>? tagState;
+  final pulumi.Input<String?>? tagState;
   /// Match versions by version name prefix. Applied on any prefix match.
-  final pulumi.Input<List<String>>? versionNamePrefixes;
+  final pulumi.Input<List<String>?>? versionNamePrefixes;
 
   /// Creates a new [RepositoryCleanupPolicyCondition].
   /// [newerThan] Match versions newer than a duration.

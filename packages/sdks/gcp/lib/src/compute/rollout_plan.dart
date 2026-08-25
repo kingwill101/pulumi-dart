@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'rollout_plan_args.dart';
 import 'rollout_plan_state.dart';
+import 'rollout_plan_wave.dart';
 
 /// A RolloutPlan is the customer-defined strategy to divide a large-scale change
 /// into smaller increments, referred to as "waves". Each wave targets a specific
@@ -268,7 +269,7 @@ class RolloutPlan extends pulumi.CustomResource {
   late final pulumi.Output<String> selfLink;
   /// The waves included in this rollout plan.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> waves;
+  late final pulumi.Output<List<RolloutPlanWave>> waves;
 
   /// Creates a new [RolloutPlan].
   /// [name] The Pulumi resource name.
@@ -282,7 +283,7 @@ class RolloutPlan extends pulumi.CustomResource {
           'gcp:compute/rolloutPlan:RolloutPlan',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
@@ -290,7 +291,7 @@ class RolloutPlan extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     selfLink = registerOutput<String>('selfLink');
-    waves = registerOutput<List<Map<String, dynamic>>>('waves');
+    waves = registerOutput<List<RolloutPlanWave>>('waves', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RolloutPlanWave>(guardedValue, (value) => RolloutPlanWave.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [RolloutPlan] resource's state with the given [name] and [id].
@@ -298,11 +299,12 @@ class RolloutPlan extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RolloutPlanState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RolloutPlan._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -322,6 +324,24 @@ class RolloutPlan extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     selfLink = registerOutput<String>('selfLink');
-    waves = registerOutput<List<Map<String, dynamic>>>('waves');
+    waves = registerOutput<List<RolloutPlanWave>>('waves', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RolloutPlanWave>(guardedValue, (value) => RolloutPlanWave.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [RolloutPlan] resource.
+  RolloutPlan.reference(String urn)
+    : super(
+        'gcp:compute/rolloutPlan:RolloutPlan',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    locationScope = registerOutput<String?>('locationScope');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    selfLink = registerOutput<String>('selfLink');
+    waves = registerOutput<List<RolloutPlanWave>>('waves', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RolloutPlanWave>(guardedValue, (value) => RolloutPlanWave.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

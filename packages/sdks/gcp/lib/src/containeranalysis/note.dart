@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'note_args.dart';
 import 'note_attestation_authority.dart';
+import 'note_related_url.dart';
 import 'note_state.dart';
 
 /// A Container Analysis note is a high-level piece of metadata that
@@ -429,7 +430,7 @@ class Note extends pulumi.CustomResource {
   late final pulumi.Output<List<String>?> relatedNoteNames;
   /// URLs associated with this note and related metadata.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> relatedUrls;
+  late final pulumi.Output<List<NoteRelatedUrl>?> relatedUrls;
   /// A one sentence description of the note.
   late final pulumi.Output<String?> shortDescription;
   /// The time this note was last updated.
@@ -447,7 +448,7 @@ class Note extends pulumi.CustomResource {
           'gcp:containeranalysis/note:Note',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     attestationAuthority = registerOutput<NoteAttestationAuthority>('attestationAuthority', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NoteAttestationAuthority.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
@@ -457,8 +458,8 @@ class Note extends pulumi.CustomResource {
     longDescription = registerOutput<String?>('longDescription');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    relatedNoteNames = registerOutput<List<String>?>('relatedNoteNames');
-    relatedUrls = registerOutput<List<Map<String, dynamic>>?>('relatedUrls');
+    relatedNoteNames = registerOutput<List<String>?>('relatedNoteNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    relatedUrls = registerOutput<List<NoteRelatedUrl>?>('relatedUrls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NoteRelatedUrl>(guardedValue, (value) => NoteRelatedUrl.fromMap((value as Map).cast<String, dynamic>())); });
     shortDescription = registerOutput<String?>('shortDescription');
     updateTime = registerOutput<String>('updateTime');
   }
@@ -468,11 +469,12 @@ class Note extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     NoteState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Note._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -494,8 +496,31 @@ class Note extends pulumi.CustomResource {
     longDescription = registerOutput<String?>('longDescription');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    relatedNoteNames = registerOutput<List<String>?>('relatedNoteNames');
-    relatedUrls = registerOutput<List<Map<String, dynamic>>?>('relatedUrls');
+    relatedNoteNames = registerOutput<List<String>?>('relatedNoteNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    relatedUrls = registerOutput<List<NoteRelatedUrl>?>('relatedUrls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NoteRelatedUrl>(guardedValue, (value) => NoteRelatedUrl.fromMap((value as Map).cast<String, dynamic>())); });
+    shortDescription = registerOutput<String?>('shortDescription');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [Note] resource.
+  Note.reference(String urn)
+    : super(
+        'gcp:containeranalysis/note:Note',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    attestationAuthority = registerOutput<NoteAttestationAuthority>('attestationAuthority', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NoteAttestationAuthority.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    expirationTime = registerOutput<String?>('expirationTime');
+    kind = registerOutput<String>('kind');
+    longDescription = registerOutput<String?>('longDescription');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    relatedNoteNames = registerOutput<List<String>?>('relatedNoteNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    relatedUrls = registerOutput<List<NoteRelatedUrl>?>('relatedUrls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NoteRelatedUrl>(guardedValue, (value) => NoteRelatedUrl.fromMap((value as Map).cast<String, dynamic>())); });
     shortDescription = registerOutput<String?>('shortDescription');
     updateTime = registerOutput<String>('updateTime');
   }

@@ -1,8 +1,15 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'agent_after_agent_callback.dart';
+import 'agent_after_model_callback.dart';
+import 'agent_after_tool_callback.dart';
 import 'agent_args.dart';
+import 'agent_before_agent_callback.dart';
+import 'agent_before_model_callback.dart';
+import 'agent_before_tool_callback.dart';
 import 'agent_model_settings.dart';
 import 'agent_remote_dialogflow_agent.dart';
 import 'agent_state.dart';
+import 'agent_toolset.dart';
 
 /// Description
 ///
@@ -1994,21 +2001,21 @@ class Agent extends pulumi.CustomResource {
   /// are given in the list. If a callback returns an overridden response,
   /// execution stops and any remaining callbacks are skipped.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> afterAgentCallbacks;
+  late final pulumi.Output<List<AgentAfterAgentCallback>?> afterAgentCallbacks;
   /// The callbacks to execute after the model is called. If there are multiple
   /// calls to the model, the callback will be executed multiple times.
   /// The provided callbacks are executed sequentially in the exact order they
   /// are given in the list. If a callback returns an overridden response,
   /// execution stops and any remaining callbacks are skipped.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> afterModelCallbacks;
+  late final pulumi.Output<List<AgentAfterModelCallback>?> afterModelCallbacks;
   /// The callbacks to execute after the tool is invoked. If there are multiple
   /// tool invocations, the callback will be executed multiple times.
   /// The provided callbacks are executed sequentially in the exact order they
   /// are given in the list. If a callback returns an overridden response,
   /// execution stops and any remaining callbacks are skipped.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> afterToolCallbacks;
+  late final pulumi.Output<List<AgentAfterToolCallback>?> afterToolCallbacks;
   /// The ID to use for the agent, which will become the final component of
   /// the agent's resource name. If not provided, a unique ID will be
   /// automatically assigned for the agent.
@@ -2020,21 +2027,21 @@ class Agent extends pulumi.CustomResource {
   /// are given in the list. If a callback returns an overridden response,
   /// execution stops and any remaining callbacks are skipped.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> beforeAgentCallbacks;
+  late final pulumi.Output<List<AgentBeforeAgentCallback>?> beforeAgentCallbacks;
   /// The callbacks to execute before the model is called. If there are multiple
   /// calls to the model, the callback will be executed multiple times.
   /// The provided callbacks are executed sequentially in the exact order they
   /// are given in the list. If a callback returns an overridden response,
   /// execution stops and any remaining callbacks are skipped.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> beforeModelCallbacks;
+  late final pulumi.Output<List<AgentBeforeModelCallback>?> beforeModelCallbacks;
   /// The callbacks to execute before the tool is invoked. If there are multiple
   /// tool invocations, the callback will be executed multiple times.
   /// The provided callbacks are executed sequentially in the exact order they
   /// are given in the list. If a callback returns an overridden response,
   /// execution stops and any remaining callbacks are skipped.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> beforeToolCallbacks;
+  late final pulumi.Output<List<AgentBeforeToolCallback>?> beforeToolCallbacks;
   /// List of child agents in the agent tree.
   /// Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
   late final pulumi.Output<List<String>?> childAgents;
@@ -2090,7 +2097,7 @@ class Agent extends pulumi.CustomResource {
   late final pulumi.Output<List<String>?> tools;
   /// List of toolsets for the agent.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> toolsets;
+  late final pulumi.Output<List<AgentToolset>?> toolsets;
   /// Timestamp when the agent was last updated.
   late final pulumi.Output<String> updateTime;
 
@@ -2106,24 +2113,24 @@ class Agent extends pulumi.CustomResource {
           'gcp:ces/agent:Agent',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
-    afterAgentCallbacks = registerOutput<List<Map<String, dynamic>>?>('afterAgentCallbacks');
-    afterModelCallbacks = registerOutput<List<Map<String, dynamic>>?>('afterModelCallbacks');
-    afterToolCallbacks = registerOutput<List<Map<String, dynamic>>?>('afterToolCallbacks');
+    afterAgentCallbacks = registerOutput<List<AgentAfterAgentCallback>?>('afterAgentCallbacks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentAfterAgentCallback>(guardedValue, (value) => AgentAfterAgentCallback.fromMap((value as Map).cast<String, dynamic>())); });
+    afterModelCallbacks = registerOutput<List<AgentAfterModelCallback>?>('afterModelCallbacks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentAfterModelCallback>(guardedValue, (value) => AgentAfterModelCallback.fromMap((value as Map).cast<String, dynamic>())); });
+    afterToolCallbacks = registerOutput<List<AgentAfterToolCallback>?>('afterToolCallbacks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentAfterToolCallback>(guardedValue, (value) => AgentAfterToolCallback.fromMap((value as Map).cast<String, dynamic>())); });
     agentId = registerOutput<String?>('agentId');
     app = registerOutput<String>('app');
-    beforeAgentCallbacks = registerOutput<List<Map<String, dynamic>>?>('beforeAgentCallbacks');
-    beforeModelCallbacks = registerOutput<List<Map<String, dynamic>>?>('beforeModelCallbacks');
-    beforeToolCallbacks = registerOutput<List<Map<String, dynamic>>?>('beforeToolCallbacks');
-    childAgents = registerOutput<List<String>?>('childAgents');
+    beforeAgentCallbacks = registerOutput<List<AgentBeforeAgentCallback>?>('beforeAgentCallbacks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentBeforeAgentCallback>(guardedValue, (value) => AgentBeforeAgentCallback.fromMap((value as Map).cast<String, dynamic>())); });
+    beforeModelCallbacks = registerOutput<List<AgentBeforeModelCallback>?>('beforeModelCallbacks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentBeforeModelCallback>(guardedValue, (value) => AgentBeforeModelCallback.fromMap((value as Map).cast<String, dynamic>())); });
+    beforeToolCallbacks = registerOutput<List<AgentBeforeToolCallback>?>('beforeToolCallbacks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentBeforeToolCallback>(guardedValue, (value) => AgentBeforeToolCallback.fromMap((value as Map).cast<String, dynamic>())); });
+    childAgents = registerOutput<List<String>?>('childAgents', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     etag = registerOutput<String>('etag');
     generatedSummary = registerOutput<String>('generatedSummary');
-    guardrails = registerOutput<List<String>?>('guardrails');
+    guardrails = registerOutput<List<String>?>('guardrails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     instruction = registerOutput<String?>('instruction');
     llmAgent = registerOutput<Map<String, dynamic>?>('llmAgent');
     location = registerOutput<String>('location');
@@ -2131,8 +2138,8 @@ class Agent extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     remoteDialogflowAgent = registerOutput<AgentRemoteDialogflowAgent?>('remoteDialogflowAgent', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentRemoteDialogflowAgent.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tools = registerOutput<List<String>?>('tools');
-    toolsets = registerOutput<List<Map<String, dynamic>>?>('toolsets');
+    tools = registerOutput<List<String>?>('tools', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    toolsets = registerOutput<List<AgentToolset>?>('toolsets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentToolset>(guardedValue, (value) => AgentToolset.fromMap((value as Map).cast<String, dynamic>())); });
     updateTime = registerOutput<String>('updateTime');
   }
 
@@ -2141,11 +2148,12 @@ class Agent extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AgentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Agent._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -2159,22 +2167,22 @@ class Agent extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    afterAgentCallbacks = registerOutput<List<Map<String, dynamic>>?>('afterAgentCallbacks');
-    afterModelCallbacks = registerOutput<List<Map<String, dynamic>>?>('afterModelCallbacks');
-    afterToolCallbacks = registerOutput<List<Map<String, dynamic>>?>('afterToolCallbacks');
+    afterAgentCallbacks = registerOutput<List<AgentAfterAgentCallback>?>('afterAgentCallbacks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentAfterAgentCallback>(guardedValue, (value) => AgentAfterAgentCallback.fromMap((value as Map).cast<String, dynamic>())); });
+    afterModelCallbacks = registerOutput<List<AgentAfterModelCallback>?>('afterModelCallbacks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentAfterModelCallback>(guardedValue, (value) => AgentAfterModelCallback.fromMap((value as Map).cast<String, dynamic>())); });
+    afterToolCallbacks = registerOutput<List<AgentAfterToolCallback>?>('afterToolCallbacks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentAfterToolCallback>(guardedValue, (value) => AgentAfterToolCallback.fromMap((value as Map).cast<String, dynamic>())); });
     agentId = registerOutput<String?>('agentId');
     app = registerOutput<String>('app');
-    beforeAgentCallbacks = registerOutput<List<Map<String, dynamic>>?>('beforeAgentCallbacks');
-    beforeModelCallbacks = registerOutput<List<Map<String, dynamic>>?>('beforeModelCallbacks');
-    beforeToolCallbacks = registerOutput<List<Map<String, dynamic>>?>('beforeToolCallbacks');
-    childAgents = registerOutput<List<String>?>('childAgents');
+    beforeAgentCallbacks = registerOutput<List<AgentBeforeAgentCallback>?>('beforeAgentCallbacks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentBeforeAgentCallback>(guardedValue, (value) => AgentBeforeAgentCallback.fromMap((value as Map).cast<String, dynamic>())); });
+    beforeModelCallbacks = registerOutput<List<AgentBeforeModelCallback>?>('beforeModelCallbacks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentBeforeModelCallback>(guardedValue, (value) => AgentBeforeModelCallback.fromMap((value as Map).cast<String, dynamic>())); });
+    beforeToolCallbacks = registerOutput<List<AgentBeforeToolCallback>?>('beforeToolCallbacks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentBeforeToolCallback>(guardedValue, (value) => AgentBeforeToolCallback.fromMap((value as Map).cast<String, dynamic>())); });
+    childAgents = registerOutput<List<String>?>('childAgents', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     etag = registerOutput<String>('etag');
     generatedSummary = registerOutput<String>('generatedSummary');
-    guardrails = registerOutput<List<String>?>('guardrails');
+    guardrails = registerOutput<List<String>?>('guardrails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     instruction = registerOutput<String?>('instruction');
     llmAgent = registerOutput<Map<String, dynamic>?>('llmAgent');
     location = registerOutput<String>('location');
@@ -2182,8 +2190,45 @@ class Agent extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     remoteDialogflowAgent = registerOutput<AgentRemoteDialogflowAgent?>('remoteDialogflowAgent', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentRemoteDialogflowAgent.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tools = registerOutput<List<String>?>('tools');
-    toolsets = registerOutput<List<Map<String, dynamic>>?>('toolsets');
+    tools = registerOutput<List<String>?>('tools', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    toolsets = registerOutput<List<AgentToolset>?>('toolsets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentToolset>(guardedValue, (value) => AgentToolset.fromMap((value as Map).cast<String, dynamic>())); });
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [Agent] resource.
+  Agent.reference(String urn)
+    : super(
+        'gcp:ces/agent:Agent',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    afterAgentCallbacks = registerOutput<List<AgentAfterAgentCallback>?>('afterAgentCallbacks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentAfterAgentCallback>(guardedValue, (value) => AgentAfterAgentCallback.fromMap((value as Map).cast<String, dynamic>())); });
+    afterModelCallbacks = registerOutput<List<AgentAfterModelCallback>?>('afterModelCallbacks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentAfterModelCallback>(guardedValue, (value) => AgentAfterModelCallback.fromMap((value as Map).cast<String, dynamic>())); });
+    afterToolCallbacks = registerOutput<List<AgentAfterToolCallback>?>('afterToolCallbacks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentAfterToolCallback>(guardedValue, (value) => AgentAfterToolCallback.fromMap((value as Map).cast<String, dynamic>())); });
+    agentId = registerOutput<String?>('agentId');
+    app = registerOutput<String>('app');
+    beforeAgentCallbacks = registerOutput<List<AgentBeforeAgentCallback>?>('beforeAgentCallbacks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentBeforeAgentCallback>(guardedValue, (value) => AgentBeforeAgentCallback.fromMap((value as Map).cast<String, dynamic>())); });
+    beforeModelCallbacks = registerOutput<List<AgentBeforeModelCallback>?>('beforeModelCallbacks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentBeforeModelCallback>(guardedValue, (value) => AgentBeforeModelCallback.fromMap((value as Map).cast<String, dynamic>())); });
+    beforeToolCallbacks = registerOutput<List<AgentBeforeToolCallback>?>('beforeToolCallbacks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentBeforeToolCallback>(guardedValue, (value) => AgentBeforeToolCallback.fromMap((value as Map).cast<String, dynamic>())); });
+    childAgents = registerOutput<List<String>?>('childAgents', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    etag = registerOutput<String>('etag');
+    generatedSummary = registerOutput<String>('generatedSummary');
+    guardrails = registerOutput<List<String>?>('guardrails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    instruction = registerOutput<String?>('instruction');
+    llmAgent = registerOutput<Map<String, dynamic>?>('llmAgent');
+    location = registerOutput<String>('location');
+    modelSettings = registerOutput<AgentModelSettings?>('modelSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentModelSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    remoteDialogflowAgent = registerOutput<AgentRemoteDialogflowAgent?>('remoteDialogflowAgent', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentRemoteDialogflowAgent.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tools = registerOutput<List<String>?>('tools', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    toolsets = registerOutput<List<AgentToolset>?>('toolsets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentToolset>(guardedValue, (value) => AgentToolset.fromMap((value as Map).cast<String, dynamic>())); });
     updateTime = registerOutput<String>('updateTime');
   }
 }

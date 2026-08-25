@@ -7,14 +7,14 @@ class ClusterOrchestratorSlurmNodeSetComputeInstance {
   /// A [Persistent disk](https://cloud.google.com/compute/docs/disks) used as the
   /// boot disk for a Compute Engine VM instance.
   /// Structure is documented below.
-  final pulumi.Input<ClusterOrchestratorSlurmNodeSetComputeInstanceBootDisk>? bootDisk;
+  final pulumi.Input<ClusterOrchestratorSlurmNodeSetComputeInstanceBootDisk?>? bootDisk;
   /// [Labels](https://cloud.google.com/compute/docs/labeling-resources) that
   /// should be applied to each VM instance in the nodeset.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// [Startup
   /// script](https://cloud.google.com/compute/docs/instances/startup-scripts/linux)
   /// to be run on each VM instance in the nodeset. Max 256KB.
-  final pulumi.Input<String>? startupScript;
+  final pulumi.Input<String?>? startupScript;
 
   /// Creates a new [ClusterOrchestratorSlurmNodeSetComputeInstance].
   /// [bootDisk] A [Persistent disk](https://cloud.google.com/compute/docs/disks) used as the

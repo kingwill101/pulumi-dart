@@ -7,10 +7,10 @@ import 'ai_reasoning_engine_context_spec_memory_bank_config_customization_config
 class AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopic {
   /// Optional. Custom memory topic.
   /// Structure is documented below.
-  final pulumi.Input<AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopic>? customMemoryTopic;
+  final pulumi.Input<AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopic?>? customMemoryTopic;
   /// Optional. Managed memory topic.
   /// Structure is documented below.
-  final pulumi.Input<AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopic>? managedMemoryTopic;
+  final pulumi.Input<AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopic?>? managedMemoryTopic;
 
   /// Creates a new [AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopic].
   /// [customMemoryTopic] Optional. Custom memory topic.

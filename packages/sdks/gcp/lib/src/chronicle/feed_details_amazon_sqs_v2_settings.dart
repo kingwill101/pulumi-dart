@@ -8,9 +8,9 @@ class FeedDetailsAmazonSqsV2Settings {
   final pulumi.Input<FeedDetailsAmazonSqsV2SettingsAuthentication> authentication;
   /// SA that will read data, this is Storage Transfer Service SA of Customer's
   /// Tenancy Project.
-  final pulumi.Input<String>? chronicleServiceAccount;
+  final pulumi.Input<String?>? chronicleServiceAccount;
   /// Maximum File Age to ingest in days.
-  final pulumi.Input<int>? maxLookbackDays;
+  final pulumi.Input<int?>? maxLookbackDays;
   /// Amazon Resource Name(ARN) of the queue.
   final pulumi.Input<String> queue;
   /// S3 URI.
@@ -18,7 +18,7 @@ class FeedDetailsAmazonSqsV2Settings {
   /// Possible values:
   /// NEVER
   /// ON_SUCCESS
-  final pulumi.Input<String>? sourceDeletionOption;
+  final pulumi.Input<String?>? sourceDeletionOption;
 
   /// Creates a new [FeedDetailsAmazonSqsV2Settings].
   /// [authentication] A message containing fields used to authenticate with Amazon SQS.
@@ -51,7 +51,7 @@ class FeedDetailsAmazonSqsV2Settings {
     return FeedDetailsAmazonSqsV2Settings(
       authentication: pulumi.Input.fromValue(FeedDetailsAmazonSqsV2SettingsAuthentication.fromMap((map['authentication']! as Map).cast<String, dynamic>())),
       chronicleServiceAccount: (() { final guardedValue = map['chronicleServiceAccount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      maxLookbackDays: (() { final guardedValue = map['maxLookbackDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxLookbackDays: (() { final guardedValue = map['maxLookbackDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       queue: pulumi.Input.fromValue(map['queue'] as String),
       s3Uri: pulumi.Input.fromValue(map['s3Uri'] as String),
       sourceDeletionOption: (() { final guardedValue = map['sourceDeletionOption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

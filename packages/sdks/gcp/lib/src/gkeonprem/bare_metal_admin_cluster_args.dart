@@ -28,48 +28,48 @@ class BareMetalAdminClusterArgs {
   ///
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
-  final pulumi.Input<Map<String, String>>? annotations;
+  final pulumi.Input<Map<String, String>?>? annotations;
   /// A human readable description of this Bare Metal Admin Cluster.
-  final pulumi.Input<String>? bareMetalVersion;
+  final pulumi.Input<String?>? bareMetalVersion;
   /// Specifies the Admin Cluster's observability infrastructure.
   /// Structure is documented below.
-  final pulumi.Input<BareMetalAdminClusterClusterOperations>? clusterOperations;
+  final pulumi.Input<BareMetalAdminClusterClusterOperations?>? clusterOperations;
   /// Specifies the control plane configuration.
   /// Structure is documented below.
-  final pulumi.Input<BareMetalAdminClusterControlPlane>? controlPlane;
+  final pulumi.Input<BareMetalAdminClusterControlPlane?>? controlPlane;
   /// A human readable description of this Bare Metal Admin Cluster.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Specifies the load balancer configuration.
   /// Structure is documented below.
-  final pulumi.Input<BareMetalAdminClusterLoadBalancer>? loadBalancer;
+  final pulumi.Input<BareMetalAdminClusterLoadBalancer?>? loadBalancer;
   /// The location of the resource.
   final pulumi.Input<String> location;
   /// Specifies the workload node configurations.
   /// Structure is documented below.
-  final pulumi.Input<BareMetalAdminClusterMaintenanceConfig>? maintenanceConfig;
+  final pulumi.Input<BareMetalAdminClusterMaintenanceConfig?>? maintenanceConfig;
   /// The bare metal admin cluster name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Network configuration.
   /// Structure is documented below.
-  final pulumi.Input<BareMetalAdminClusterNetworkConfig>? networkConfig;
+  final pulumi.Input<BareMetalAdminClusterNetworkConfig?>? networkConfig;
   /// Specifies the node access related settings for the bare metal user cluster.
   /// Structure is documented below.
-  final pulumi.Input<BareMetalAdminClusterNodeAccessConfig>? nodeAccessConfig;
+  final pulumi.Input<BareMetalAdminClusterNodeAccessConfig?>? nodeAccessConfig;
   /// Specifies the workload node configurations.
   /// Structure is documented below.
-  final pulumi.Input<BareMetalAdminClusterNodeConfig>? nodeConfig;
+  final pulumi.Input<BareMetalAdminClusterNodeConfig?>? nodeConfig;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Specifies the cluster proxy configuration.
   /// Structure is documented below.
-  final pulumi.Input<BareMetalAdminClusterProxy>? proxy;
+  final pulumi.Input<BareMetalAdminClusterProxy?>? proxy;
   /// Specifies the security related settings for the Bare Metal User Cluster.
   /// Structure is documented below.
-  final pulumi.Input<BareMetalAdminClusterSecurityConfig>? securityConfig;
+  final pulumi.Input<BareMetalAdminClusterSecurityConfig?>? securityConfig;
   /// Specifies the cluster storage configuration.
   /// Structure is documented below.
-  final pulumi.Input<BareMetalAdminClusterStorage>? storage;
+  final pulumi.Input<BareMetalAdminClusterStorage?>? storage;
 
   /// Creates a new [BareMetalAdminClusterArgs].
   /// [annotations] Annotations on the Bare Metal Admin Cluster.

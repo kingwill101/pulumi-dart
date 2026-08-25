@@ -6,7 +6,7 @@ import 'organization_properties_property.dart';
 class OrganizationProperties {
   /// List of all properties in the object.
   /// Structure is documented below.
-  final pulumi.Input<List<OrganizationPropertiesProperty>>? properties;
+  final pulumi.Input<List<OrganizationPropertiesProperty>?>? properties;
 
   /// Creates a new [OrganizationProperties].
   /// [properties] List of all properties in the object.

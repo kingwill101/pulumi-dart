@@ -236,7 +236,7 @@ Future<Map<String, dynamic>> _reportForProvider(
       : _pubspecVersion(packagePubspecAbs);
   final localComparableVersion = localVersion.isNotEmpty
       ? localVersion
-      : packageVersion;
+      : comparableProviderVersion(packageVersion);
   final localVersionSource = localVersion.isNotEmpty
       ? 'schema'
       : packageVersion.isNotEmpty
@@ -257,7 +257,7 @@ Future<Map<String, dynamic>> _reportForProvider(
   String packageVersionMatchesLocalSchema;
   if (packageVersion.isEmpty || localVersion.isEmpty) {
     packageVersionMatchesLocalSchema = 'unknown';
-  } else if (packageVersion == localVersion) {
+  } else if (comparableProviderVersion(packageVersion) == localVersion) {
     packageVersionMatchesLocalSchema = 'true';
   } else {
     packageVersionMatchesLocalSchema = 'false';
@@ -293,6 +293,8 @@ Future<Map<String, dynamic>> _reportForProvider(
     'drift': drift,
   };
 }
+
+String comparableProviderVersion(String version) => version.split('+').first;
 
 String _resolvePackagePubspecPath({
   required String repoRoot,

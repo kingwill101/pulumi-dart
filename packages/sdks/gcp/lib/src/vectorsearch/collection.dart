@@ -2,6 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'collection_args.dart';
 import 'collection_encryption_spec.dart';
 import 'collection_state.dart';
+import 'collection_vector_schema.dart';
 
 /// Description
 ///
@@ -880,7 +881,7 @@ class Collection extends pulumi.CustomResource {
   /// Field names must contain only alphanumeric characters,
   /// underscores, and hyphens.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> vectorSchemas;
+  late final pulumi.Output<List<CollectionVectorSchema>?> vectorSchemas;
 
   /// Creates a new [Collection].
   /// [name] The Pulumi resource name.
@@ -894,7 +895,8 @@ class Collection extends pulumi.CustomResource {
           'gcp:vectorsearch/collection:Collection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     collectionId = registerOutput<String>('collectionId');
     createTime = registerOutput<String>('createTime');
@@ -902,15 +904,15 @@ class Collection extends pulumi.CustomResource {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     encryptionSpec = registerOutput<CollectionEncryptionSpec?>('encryptionSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CollectionEncryptionSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     updateTime = registerOutput<String>('updateTime');
-    vectorSchemas = registerOutput<List<Map<String, dynamic>>?>('vectorSchemas');
+    vectorSchemas = registerOutput<List<CollectionVectorSchema>?>('vectorSchemas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CollectionVectorSchema>(guardedValue, (value) => CollectionVectorSchema.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [Collection] resource's state with the given [name] and [id].
@@ -918,11 +920,12 @@ class Collection extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CollectionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Collection._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -942,14 +945,41 @@ class Collection extends pulumi.CustomResource {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     encryptionSpec = registerOutput<CollectionEncryptionSpec?>('encryptionSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CollectionEncryptionSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     updateTime = registerOutput<String>('updateTime');
-    vectorSchemas = registerOutput<List<Map<String, dynamic>>?>('vectorSchemas');
+    vectorSchemas = registerOutput<List<CollectionVectorSchema>?>('vectorSchemas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CollectionVectorSchema>(guardedValue, (value) => CollectionVectorSchema.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [Collection] resource.
+  Collection.reference(String urn)
+    : super(
+        'gcp:vectorsearch/collection:Collection',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    collectionId = registerOutput<String>('collectionId');
+    createTime = registerOutput<String>('createTime');
+    dataSchema = registerOutput<String?>('dataSchema');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String?>('displayName');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    encryptionSpec = registerOutput<CollectionEncryptionSpec?>('encryptionSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CollectionEncryptionSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    updateTime = registerOutput<String>('updateTime');
+    vectorSchemas = registerOutput<List<CollectionVectorSchema>?>('vectorSchemas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CollectionVectorSchema>(guardedValue, (value) => CollectionVectorSchema.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

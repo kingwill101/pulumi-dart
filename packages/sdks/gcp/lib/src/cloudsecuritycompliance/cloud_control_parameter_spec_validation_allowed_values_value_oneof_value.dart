@@ -5,10 +5,10 @@ import 'cloud_control_parameter_spec_validation_allowed_values_value_oneof_value
 
 class CloudControlParameterSpecValidationAllowedValuesValueOneofValue {
   /// The name of the parameter.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The value of the parameter.
   /// Structure is documented below.
-  final pulumi.Input<CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValue>? parameterValue;
+  final pulumi.Input<CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValue?>? parameterValue;
 
   /// Creates a new [CloudControlParameterSpecValidationAllowedValuesValueOneofValue].
   /// [name] The name of the parameter.

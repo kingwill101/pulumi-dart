@@ -8,11 +8,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_compute_get_machine_types_get_machine_types_args_doc}
 class GetMachineTypesArgs {
   /// A filter expression that filters machine types listed in the response.
-  final pulumi.Input<String>? filter;
+  final pulumi.Input<String?>? filter;
   /// Project from which to list available zones. Defaults to project declared in the provider.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Zone from which to list machine types.
-  final pulumi.Input<String>? zone;
+  final pulumi.Input<String?>? zone;
 
   /// Creates a new [GetMachineTypesArgs].
   /// [filter] A filter expression that filters machine types listed in the response.

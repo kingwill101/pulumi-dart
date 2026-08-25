@@ -5,7 +5,7 @@ import 'job_template_config_overlay_animation_animation_fade_xy.dart';
 
 class JobTemplateConfigOverlayAnimationAnimationFade {
   /// The time to end the fade animation, in seconds.
-  final pulumi.Input<String>? endTimeOffset;
+  final pulumi.Input<String?>? endTimeOffset;
   /// Required. Type of fade animation: `FADE_IN` or `FADE_OUT`.
   /// The possible values are:
   /// * `FADE_TYPE_UNSPECIFIED`: The fade type is not specified.
@@ -14,10 +14,10 @@ class JobTemplateConfigOverlayAnimationAnimationFade {
   /// Possible values are: `FADE_TYPE_UNSPECIFIED`, `FADE_IN`, `FADE_OUT`.
   final pulumi.Input<String> fadeType;
   /// The time to start the fade animation, in seconds.
-  final pulumi.Input<String>? startTimeOffset;
+  final pulumi.Input<String?>? startTimeOffset;
   /// Normalized coordinates based on output video resolution.
   /// Structure is documented below.
-  final pulumi.Input<JobTemplateConfigOverlayAnimationAnimationFadeXy>? xy;
+  final pulumi.Input<JobTemplateConfigOverlayAnimationAnimationFadeXy?>? xy;
 
   /// Creates a new [JobTemplateConfigOverlayAnimationAnimationFade].
   /// [endTimeOffset] The time to end the fade animation, in seconds.

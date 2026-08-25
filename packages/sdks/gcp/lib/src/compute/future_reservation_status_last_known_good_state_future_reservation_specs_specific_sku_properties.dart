@@ -6,11 +6,11 @@ import 'future_reservation_status_last_known_good_state_future_reservation_specs
 class FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuProperties {
   /// Properties of the SKU instances being reserved.
   /// Structure is documented below.
-  final pulumi.Input<FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuPropertiesInstanceProperties>? instanceProperties;
+  final pulumi.Input<FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuPropertiesInstanceProperties?>? instanceProperties;
   /// The instance template that will be used to populate the ReservedInstanceProperties of the future reservation
-  final pulumi.Input<String>? sourceInstanceTemplate;
+  final pulumi.Input<String?>? sourceInstanceTemplate;
   /// Total number of instances for which capacity assurance is requested at a future time period.
-  final pulumi.Input<String>? totalCount;
+  final pulumi.Input<String?>? totalCount;
 
   /// Creates a new [FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuProperties].
   /// [instanceProperties] Properties of the SKU instances being reserved.

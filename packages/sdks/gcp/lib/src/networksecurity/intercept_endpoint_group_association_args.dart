@@ -13,7 +13,7 @@ class InterceptEndpointGroupAssociationArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The endpoint group that this association is connected to, for example:
   /// `projects/123456789/locations/global/interceptEndpointGroups/my-eg`.
   /// See https://google.aip.dev/124.
@@ -21,11 +21,11 @@ class InterceptEndpointGroupAssociationArgs {
   /// The ID to use for the new association, which will become the final
   /// component of the endpoint group's resource name. If not provided, the
   /// server will generate a unique ID.
-  final pulumi.Input<String>? interceptEndpointGroupAssociationId;
+  final pulumi.Input<String?>? interceptEndpointGroupAssociationId;
   /// Labels are key/value pairs that help to organize and filter resources.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The cloud location of the association, currently restricted to `global`.
   final pulumi.Input<String> location;
   /// The VPC network that is associated. for example:
@@ -34,7 +34,7 @@ class InterceptEndpointGroupAssociationArgs {
   final pulumi.Input<String> network;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [InterceptEndpointGroupAssociationArgs].
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

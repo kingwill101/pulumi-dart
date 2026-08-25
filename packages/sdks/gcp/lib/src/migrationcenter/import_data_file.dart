@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'import_data_file_args.dart';
 import 'import_data_file_state.dart';
+import 'import_data_file_upload_file_info.dart';
 
 /// ImportDataFile represents a user-uploaded data payload file containing infrastructure discovery data.
 ///
@@ -282,7 +283,7 @@ class ImportDataFile extends pulumi.CustomResource {
   late final pulumi.Output<String> state;
   /// A resource that contains a URI to which a data file can be uploaded.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> uploadFileInfos;
+  late final pulumi.Output<List<ImportDataFileUploadFileInfo>> uploadFileInfos;
 
   /// Creates a new [ImportDataFile].
   /// [name] The Pulumi resource name.
@@ -296,7 +297,7 @@ class ImportDataFile extends pulumi.CustomResource {
           'gcp:migrationcenter/importDataFile:ImportDataFile',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -308,7 +309,7 @@ class ImportDataFile extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     state = registerOutput<String>('state');
-    uploadFileInfos = registerOutput<List<Map<String, dynamic>>>('uploadFileInfos');
+    uploadFileInfos = registerOutput<List<ImportDataFileUploadFileInfo>>('uploadFileInfos', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ImportDataFileUploadFileInfo>(guardedValue, (value) => ImportDataFileUploadFileInfo.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [ImportDataFile] resource's state with the given [name] and [id].
@@ -316,11 +317,12 @@ class ImportDataFile extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ImportDataFileState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ImportDataFile._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -344,6 +346,28 @@ class ImportDataFile extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     this.state = registerOutput<String>('state');
-    uploadFileInfos = registerOutput<List<Map<String, dynamic>>>('uploadFileInfos');
+    uploadFileInfos = registerOutput<List<ImportDataFileUploadFileInfo>>('uploadFileInfos', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ImportDataFileUploadFileInfo>(guardedValue, (value) => ImportDataFileUploadFileInfo.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [ImportDataFile] resource.
+  ImportDataFile.reference(String urn)
+    : super(
+        'gcp:migrationcenter/importDataFile:ImportDataFile',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    displayName = registerOutput<String?>('displayName');
+    format = registerOutput<String>('format');
+    importDataFileId = registerOutput<String>('importDataFileId');
+    importJob = registerOutput<String>('importJob');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    state = registerOutput<String>('state');
+    uploadFileInfos = registerOutput<List<ImportDataFileUploadFileInfo>>('uploadFileInfos', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ImportDataFileUploadFileInfo>(guardedValue, (value) => ImportDataFileUploadFileInfo.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

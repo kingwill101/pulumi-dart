@@ -3,11 +3,11 @@
 import 'package:pulumi_discriminated_union_many/index.dart' as module_index;
 import 'package:pulumi_discriminated_union_many/providers.dart' as module_providers;
 
-final index = const _IndexModuleNamespace();
-final providers = const _ProvidersModuleNamespace();
+final index = _IndexModuleNamespace();
+final providers = _ProvidersModuleNamespace();
 
 class _IndexModuleNamespace {
-  const _IndexModuleNamespace();
+  _IndexModuleNamespace();
   final Example = module_index.Example.new;
   final ExampleArgs = module_index.ExampleArgs.new;
   final SubsetExample = module_index.SubsetExample.new;
@@ -35,6 +35,6 @@ class _IndexModuleNamespace {
 }
 
 class _ProvidersModuleNamespace {
-  const _ProvidersModuleNamespace();
+  _ProvidersModuleNamespace();
   final DiscriminatedUnionMany = module_providers.ProviderProvider.new;
 }

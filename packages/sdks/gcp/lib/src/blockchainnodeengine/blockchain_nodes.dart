@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'blockchain_nodes_args.dart';
+import 'blockchain_nodes_connection_info.dart';
 import 'blockchain_nodes_ethereum_details.dart';
 import 'blockchain_nodes_state.dart';
 
@@ -743,7 +744,7 @@ class BlockchainNodes extends pulumi.CustomResource {
   late final pulumi.Output<String?> blockchainType;
   /// The connection information through which to interact with a blockchain node.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> connectionInfos;
+  late final pulumi.Output<List<BlockchainNodesConnectionInfo>> connectionInfos;
   /// The timestamp at which the blockchain node was first created.
   late final pulumi.Output<String> createTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -788,20 +789,21 @@ class BlockchainNodes extends pulumi.CustomResource {
           'gcp:blockchainnodeengine/blockchainNodes:BlockchainNodes',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     blockchainNodeId = registerOutput<String>('blockchainNodeId');
     blockchainType = registerOutput<String?>('blockchainType');
-    connectionInfos = registerOutput<List<Map<String, dynamic>>>('connectionInfos');
+    connectionInfos = registerOutput<List<BlockchainNodesConnectionInfo>>('connectionInfos', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BlockchainNodesConnectionInfo>(guardedValue, (value) => BlockchainNodesConnectionInfo.fromMap((value as Map).cast<String, dynamic>())); });
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     ethereumDetails = registerOutput<BlockchainNodesEthereumDetails?>('ethereumDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BlockchainNodesEthereumDetails.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     updateTime = registerOutput<String>('updateTime');
   }
 
@@ -810,11 +812,12 @@ class BlockchainNodes extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     BlockchainNodesState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return BlockchainNodes._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -830,16 +833,41 @@ class BlockchainNodes extends pulumi.CustomResource {
         ) {
     blockchainNodeId = registerOutput<String>('blockchainNodeId');
     blockchainType = registerOutput<String?>('blockchainType');
-    connectionInfos = registerOutput<List<Map<String, dynamic>>>('connectionInfos');
+    connectionInfos = registerOutput<List<BlockchainNodesConnectionInfo>>('connectionInfos', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BlockchainNodesConnectionInfo>(guardedValue, (value) => BlockchainNodesConnectionInfo.fromMap((value as Map).cast<String, dynamic>())); });
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     ethereumDetails = registerOutput<BlockchainNodesEthereumDetails?>('ethereumDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BlockchainNodesEthereumDetails.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [BlockchainNodes] resource.
+  BlockchainNodes.reference(String urn)
+    : super(
+        'gcp:blockchainnodeengine/blockchainNodes:BlockchainNodes',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    blockchainNodeId = registerOutput<String>('blockchainNodeId');
+    blockchainType = registerOutput<String?>('blockchainType');
+    connectionInfos = registerOutput<List<BlockchainNodesConnectionInfo>>('connectionInfos', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BlockchainNodesConnectionInfo>(guardedValue, (value) => BlockchainNodesConnectionInfo.fromMap((value as Map).cast<String, dynamic>())); });
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    ethereumDetails = registerOutput<BlockchainNodesEthereumDetails?>('ethereumDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BlockchainNodesEthereumDetails.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     updateTime = registerOutput<String>('updateTime');
   }
 }

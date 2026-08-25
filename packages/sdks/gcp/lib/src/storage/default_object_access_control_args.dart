@@ -15,7 +15,7 @@ class DefaultObjectAccessControlArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The entity holding the permission, in one of the following forms:
   /// * user-{{userId}}
   /// * user-{{email}} (such as "user-liz@example.com")
@@ -27,7 +27,7 @@ class DefaultObjectAccessControlArgs {
   /// * allAuthenticatedUsers
   final pulumi.Input<String> entity;
   /// The name of the object, if applied to an object.
-  final pulumi.Input<String>? object_;
+  final pulumi.Input<String?>? object_;
   /// The access permission for the entity.
   /// Possible values are: `OWNER`, `READER`.
   final pulumi.Input<String> role;

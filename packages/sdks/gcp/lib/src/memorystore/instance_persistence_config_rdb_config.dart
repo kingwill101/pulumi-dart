@@ -9,11 +9,11 @@ class InstancePersistenceConfigRdbConfig {
   /// SIX_HOURS
   /// TWELVE_HOURS
   /// TWENTY_FOUR_HOURS
-  final pulumi.Input<String>? rdbSnapshotPeriod;
+  final pulumi.Input<String?>? rdbSnapshotPeriod;
   /// Optional. Time that the first snapshot was/will be attempted, and to which future
   /// snapshots will be aligned. If not provided, the current time will be
   /// used.
-  final pulumi.Input<String>? rdbSnapshotStartTime;
+  final pulumi.Input<String?>? rdbSnapshotStartTime;
 
   /// Creates a new [InstancePersistenceConfigRdbConfig].
   /// [rdbSnapshotPeriod] Optional. Period between RDB snapshots.

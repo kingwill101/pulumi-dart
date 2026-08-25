@@ -53,9 +53,9 @@ class EnvKeystore extends pulumi.CustomResource {
           'gcp:apigee/envKeystore:EnvKeystore',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
-    aliases = registerOutput<List<String>>('aliases');
+    aliases = registerOutput<List<String>>('aliases', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     envId = registerOutput<String>('envId');
     this.name = registerOutput<String>('name');
@@ -66,11 +66,12 @@ class EnvKeystore extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EnvKeystoreState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return EnvKeystore._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -84,7 +85,22 @@ class EnvKeystore extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    aliases = registerOutput<List<String>>('aliases');
+    aliases = registerOutput<List<String>>('aliases', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    envId = registerOutput<String>('envId');
+    this.name = registerOutput<String>('name');
+  }
+
+  /// Creates a typed reference to an existing [EnvKeystore] resource.
+  EnvKeystore.reference(String urn)
+    : super(
+        'gcp:apigee/envKeystore:EnvKeystore',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    aliases = registerOutput<List<String>>('aliases', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     envId = registerOutput<String>('envId');
     this.name = registerOutput<String>('name');

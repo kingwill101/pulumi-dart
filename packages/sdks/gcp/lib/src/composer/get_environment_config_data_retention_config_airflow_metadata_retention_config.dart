@@ -25,7 +25,7 @@ class GetEnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfig {
 
   factory GetEnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfig.fromMap(Map<String, dynamic> map) {
     return GetEnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfig(
-      retentionDays: pulumi.Input.fromValue(map['retentionDays'] as int),
+      retentionDays: pulumi.Input.fromValue((map['retentionDays'] as num).toInt()),
       retentionMode: pulumi.Input.fromValue(map['retentionMode'] as String),
     );
   }

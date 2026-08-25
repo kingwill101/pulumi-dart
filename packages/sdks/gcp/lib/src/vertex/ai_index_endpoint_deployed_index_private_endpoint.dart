@@ -6,14 +6,14 @@ import 'ai_index_endpoint_deployed_index_private_endpoint_psc_automated_endpoint
 class AiIndexEndpointDeployedIndexPrivateEndpoint {
   /// (Output)
   /// The ip address used to send match gRPC requests.
-  final pulumi.Input<String>? matchGrpcAddress;
+  final pulumi.Input<String?>? matchGrpcAddress;
   /// (Output)
   /// PscAutomatedEndpoints is populated if private service connect is enabled if PscAutomatedConfig is set.
   /// Structure is documented below.
-  final pulumi.Input<List<AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpoint>>? pscAutomatedEndpoints;
+  final pulumi.Input<List<AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpoint>?>? pscAutomatedEndpoints;
   /// (Output)
   /// The name of the service attachment resource. Populated if private service connect is enabled.
-  final pulumi.Input<String>? serviceAttachment;
+  final pulumi.Input<String?>? serviceAttachment;
 
   /// Creates a new [AiIndexEndpointDeployedIndexPrivateEndpoint].
   /// [matchGrpcAddress] (Output)

@@ -9,12 +9,12 @@ class FeedDetailsQualysScanSettings {
   /// SCAN_SUMMARY_OUTPUT
   /// SCAN_COMPLIANCE_OUTPUT
   /// SCAN_COMPLIANCE_CONTROL_OUTPUT
-  final pulumi.Input<String>? apiType;
+  final pulumi.Input<String?>? apiType;
   /// Info for username and secret based authentication.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsQualysScanSettingsAuthentication>? authentication;
+  final pulumi.Input<FeedDetailsQualysScanSettingsAuthentication?>? authentication;
   /// Hostname.
-  final pulumi.Input<String>? hostname;
+  final pulumi.Input<String?>? hostname;
 
   /// Creates a new [FeedDetailsQualysScanSettings].
   /// [apiType] Supported Qualys Scan api type.

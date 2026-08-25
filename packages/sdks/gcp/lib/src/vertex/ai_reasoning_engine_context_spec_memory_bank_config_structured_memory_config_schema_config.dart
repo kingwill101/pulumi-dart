@@ -6,7 +6,7 @@ class AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaCo
   /// Required. Unique ID identifying the memory schema.
   final pulumi.Input<String> id;
   /// Optional. The memory schema defined as an OpenAPI Schema Object JSON string.
-  final pulumi.Input<String>? memorySchema;
+  final pulumi.Input<String?>? memorySchema;
 
   /// Creates a new [AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfigSchemaConfig].
   /// [id] Required. Unique ID identifying the memory schema.

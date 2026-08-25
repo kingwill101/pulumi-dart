@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'security_feedback_args.dart';
+import 'security_feedback_feedback_context.dart';
 import 'security_feedback_state.dart';
 
 /// Represents a feedback report from an Advanced API Security customer.
@@ -576,7 +577,7 @@ class SecurityFeedback extends pulumi.CustomResource {
   late final pulumi.Output<String?> displayName;
   /// One or more attribute/value pairs for constraining the feedback.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> feedbackContexts;
+  late final pulumi.Output<List<SecurityFeedbackFeedbackContext>> feedbackContexts;
   /// Resource ID of the security feedback.
   late final pulumi.Output<String> feedbackId;
   /// The type of feedback being submitted.
@@ -606,13 +607,13 @@ class SecurityFeedback extends pulumi.CustomResource {
           'gcp:apigee/securityFeedback:SecurityFeedback',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     comment = registerOutput<String?>('comment');
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
-    feedbackContexts = registerOutput<List<Map<String, dynamic>>>('feedbackContexts');
+    feedbackContexts = registerOutput<List<SecurityFeedbackFeedbackContext>>('feedbackContexts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SecurityFeedbackFeedbackContext>(guardedValue, (value) => SecurityFeedbackFeedbackContext.fromMap((value as Map).cast<String, dynamic>())); });
     feedbackId = registerOutput<String>('feedbackId');
     feedbackType = registerOutput<String>('feedbackType');
     this.name = registerOutput<String>('name');
@@ -626,11 +627,12 @@ class SecurityFeedback extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SecurityFeedbackState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SecurityFeedback._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -648,7 +650,29 @@ class SecurityFeedback extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
-    feedbackContexts = registerOutput<List<Map<String, dynamic>>>('feedbackContexts');
+    feedbackContexts = registerOutput<List<SecurityFeedbackFeedbackContext>>('feedbackContexts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SecurityFeedbackFeedbackContext>(guardedValue, (value) => SecurityFeedbackFeedbackContext.fromMap((value as Map).cast<String, dynamic>())); });
+    feedbackId = registerOutput<String>('feedbackId');
+    feedbackType = registerOutput<String>('feedbackType');
+    this.name = registerOutput<String>('name');
+    orgId = registerOutput<String>('orgId');
+    reason = registerOutput<String?>('reason');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [SecurityFeedback] resource.
+  SecurityFeedback.reference(String urn)
+    : super(
+        'gcp:apigee/securityFeedback:SecurityFeedback',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    comment = registerOutput<String?>('comment');
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    displayName = registerOutput<String?>('displayName');
+    feedbackContexts = registerOutput<List<SecurityFeedbackFeedbackContext>>('feedbackContexts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SecurityFeedbackFeedbackContext>(guardedValue, (value) => SecurityFeedbackFeedbackContext.fromMap((value as Map).cast<String, dynamic>())); });
     feedbackId = registerOutput<String>('feedbackId');
     feedbackType = registerOutput<String>('feedbackType');
     this.name = registerOutput<String>('name');

@@ -40,7 +40,7 @@ class GetControlProjectIntelligenceFindingCrossRegionEgressSpikeTopBucketContrib
 
   factory GetControlProjectIntelligenceFindingCrossRegionEgressSpikeTopBucketContributionTopPrefix.fromMap(Map<String, dynamic> map) {
     return GetControlProjectIntelligenceFindingCrossRegionEgressSpikeTopBucketContributionTopPrefix(
-      percentageIncrease: pulumi.Input.fromValue(map['percentageIncrease'] as double),
+      percentageIncrease: pulumi.Input.fromValue((map['percentageIncrease'] as num).toDouble()),
       prefix: pulumi.Input.fromValue(map['prefix'] as String),
       throttledRequests: pulumi.Input.fromValue(map['throttledRequests'] as String),
       totalEgressBytes: pulumi.Input.fromValue(map['totalEgressBytes'] as String),

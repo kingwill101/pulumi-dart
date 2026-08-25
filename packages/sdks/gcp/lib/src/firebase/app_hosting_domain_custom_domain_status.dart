@@ -13,7 +13,7 @@ class AppHostingDomainCustomDomainStatus {
   /// CERT_ACTIVE
   /// CERT_EXPIRING_SOON
   /// CERT_EXPIRED
-  final pulumi.Input<String>? certState;
+  final pulumi.Input<String?>? certState;
   /// (Output)
   /// Possible values:
   /// HOST_UNHOSTED
@@ -22,12 +22,12 @@ class AppHostingDomainCustomDomainStatus {
   /// HOST_CONFLICT
   /// HOST_WRONG_SHARD
   /// HOST_ACTIVE
-  final pulumi.Input<String>? hostState;
+  final pulumi.Input<String?>? hostState;
   /// (Output)
   /// A list of issues with domain configuration. Allows users to self-correct
   /// problems with DNS records.
   /// Structure is documented below.
-  final pulumi.Input<List<AppHostingDomainCustomDomainStatusIssue>>? issues;
+  final pulumi.Input<List<AppHostingDomainCustomDomainStatusIssue>?>? issues;
   /// (Output)
   /// Possible values:
   /// OWNERSHIP_MISSING
@@ -36,7 +36,7 @@ class AppHostingDomainCustomDomainStatus {
   /// OWNERSHIP_CONFLICT
   /// OWNERSHIP_PENDING
   /// OWNERSHIP_ACTIVE
-  final pulumi.Input<String>? ownershipState;
+  final pulumi.Input<String?>? ownershipState;
   /// (Output)
   /// Lists the records that must added or removed to a custom domain's DNS
   /// in order to finish setup and start serving content.
@@ -44,7 +44,7 @@ class AppHostingDomainCustomDomainStatus {
   /// or more of the above states is not *_ACTIVE, indicating the domain's DNS
   /// records are in a bad state.
   /// Structure is documented below.
-  final pulumi.Input<List<AppHostingDomainCustomDomainStatusRequiredDnsUpdate>>? requiredDnsUpdates;
+  final pulumi.Input<List<AppHostingDomainCustomDomainStatusRequiredDnsUpdate>?>? requiredDnsUpdates;
 
   /// Creates a new [AppHostingDomainCustomDomainStatus].
   /// [certState] (Output)

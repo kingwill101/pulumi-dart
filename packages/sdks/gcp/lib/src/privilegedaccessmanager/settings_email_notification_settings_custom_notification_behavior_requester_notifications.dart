@@ -5,28 +5,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotifications {
   /// Notification mode for entitlement assigned.
   /// Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
-  final pulumi.Input<String>? entitlementAssigned;
+  final pulumi.Input<String?>? entitlementAssigned;
   /// Notification mode for grant activated.
   /// Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
-  final pulumi.Input<String>? grantActivated;
+  final pulumi.Input<String?>? grantActivated;
   /// Notification mode for grant activation failed.
   /// Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
-  final pulumi.Input<String>? grantActivationFailed;
+  final pulumi.Input<String?>? grantActivationFailed;
   /// Notification mode for grant denied.
   /// Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
-  final pulumi.Input<String>? grantDenied;
+  final pulumi.Input<String?>? grantDenied;
   /// Notification mode for grant ended.
   /// Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
-  final pulumi.Input<String>? grantEnded;
+  final pulumi.Input<String?>? grantEnded;
   /// Notification mode for grant expired.
   /// Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
-  final pulumi.Input<String>? grantExpired;
+  final pulumi.Input<String?>? grantExpired;
   /// Notification mode for grant externally modified.
   /// Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
-  final pulumi.Input<String>? grantExternallyModified;
+  final pulumi.Input<String?>? grantExternallyModified;
   /// Notification mode for grant revoked.
   /// Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
-  final pulumi.Input<String>? grantRevoked;
+  final pulumi.Input<String?>? grantRevoked;
 
   /// Creates a new [SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotifications].
   /// [entitlementAssigned] Notification mode for entitlement assigned.

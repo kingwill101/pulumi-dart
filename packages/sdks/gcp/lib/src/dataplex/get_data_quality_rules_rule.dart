@@ -121,7 +121,7 @@ class GetDataQualityRulesRule {
       statisticRangeExpectations: pulumi.Input.fromValue(pulumi.Input.decodeList<GetDataQualityRulesRuleStatisticRangeExpectation>(map['statisticRangeExpectations']!, (value) => GetDataQualityRulesRuleStatisticRangeExpectation.fromMap((value as Map).cast<String, dynamic>()))),
       suspended: pulumi.Input.fromValue(map['suspended'] as bool),
       tableConditionExpectations: pulumi.Input.fromValue(pulumi.Input.decodeList<GetDataQualityRulesRuleTableConditionExpectation>(map['tableConditionExpectations']!, (value) => GetDataQualityRulesRuleTableConditionExpectation.fromMap((value as Map).cast<String, dynamic>()))),
-      threshold: pulumi.Input.fromValue(map['threshold'] as double),
+      threshold: pulumi.Input.fromValue((map['threshold'] as num).toDouble()),
       uniquenessExpectations: pulumi.Input.fromValue((map['uniquenessExpectations'] as List).cast<Map<String, dynamic>>()),
     );
   }

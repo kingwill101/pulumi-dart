@@ -6,7 +6,7 @@ import 'secret_replication_user_managed_replica_customer_managed_encryption.dart
 class SecretReplicationUserManagedReplica {
   /// Customer Managed Encryption for the secret.
   /// Structure is documented below.
-  final pulumi.Input<SecretReplicationUserManagedReplicaCustomerManagedEncryption>? customerManagedEncryption;
+  final pulumi.Input<SecretReplicationUserManagedReplicaCustomerManagedEncryption?>? customerManagedEncryption;
   /// The canonical IDs of the location to replicate data. For example: "us-east1".
   final pulumi.Input<String> location;
 

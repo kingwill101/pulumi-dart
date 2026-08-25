@@ -10,20 +10,20 @@ class PluginInstanceAction {
   final pulumi.Input<String> actionId;
   /// The curation information for this plugin instance.
   /// Structure is documented below.
-  final pulumi.Input<PluginInstanceActionCurationConfig>? curationConfig;
+  final pulumi.Input<PluginInstanceActionCurationConfig?>? curationConfig;
   /// (Output)
   /// The execution status for the plugin instance.
   /// Structure is documented below.
-  final pulumi.Input<List<PluginInstanceActionHubInstanceAction>>? hubInstanceActions;
+  final pulumi.Input<List<PluginInstanceActionHubInstanceAction>?>? hubInstanceActions;
   /// The schedule for this plugin instance action. This can only be set if the
   /// plugin supports API_HUB_SCHEDULE_TRIGGER mode for this action.
-  final pulumi.Input<String>? scheduleCronExpression;
+  final pulumi.Input<String?>? scheduleCronExpression;
   /// The time zone for the schedule cron expression. If not provided, UTC will
   /// be used.
   ///
   ///
   /// &lt;a name="nestedActionsHubInstanceAction"&gt;&lt;/a&gt;The `hubInstanceAction` block contains:
-  final pulumi.Input<String>? scheduleTimeZone;
+  final pulumi.Input<String?>? scheduleTimeZone;
   /// (Output)
   /// The current state of the plugin action in the plugin instance.
   /// Possible values:
@@ -33,7 +33,7 @@ class PluginInstanceAction {
   /// ENABLING
   /// DISABLING
   /// ERROR
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
 
   /// Creates a new [PluginInstanceAction].
   /// [actionId] This should map to one of the action id specified

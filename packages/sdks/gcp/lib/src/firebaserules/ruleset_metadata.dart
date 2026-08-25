@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RulesetMetadata {
   /// Services that this ruleset has declarations for (e.g., "cloud.firestore"). There may be 0+ of these.
-  final pulumi.Input<List<String>>? services;
+  final pulumi.Input<List<String>?>? services;
 
   /// Creates a new [RulesetMetadata].
   /// [services] Services that this ruleset has declarations for (e.g., "cloud.firestore"). There may be 0+ of these.

@@ -7,10 +7,10 @@ import 'batch_environment_config_peripherals_config.dart';
 class BatchEnvironmentConfig {
   /// Execution configuration for a workload.
   /// Structure is documented below.
-  final pulumi.Input<BatchEnvironmentConfigExecutionConfig>? executionConfig;
+  final pulumi.Input<BatchEnvironmentConfigExecutionConfig?>? executionConfig;
   /// Peripherals configuration that workload has access to.
   /// Structure is documented below.
-  final pulumi.Input<BatchEnvironmentConfigPeripheralsConfig>? peripheralsConfig;
+  final pulumi.Input<BatchEnvironmentConfigPeripheralsConfig?>? peripheralsConfig;
 
   /// Creates a new [BatchEnvironmentConfig].
   /// [executionConfig] Execution configuration for a workload.

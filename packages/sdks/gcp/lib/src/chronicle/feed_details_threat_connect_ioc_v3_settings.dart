@@ -5,17 +5,17 @@ import 'feed_details_threat_connect_ioc_v3_settings_authentication.dart';
 
 class FeedDetailsThreatConnectIocV3Settings {
   /// Info for username and secret based authentication.
-  final pulumi.Input<FeedDetailsThreatConnectIocV3SettingsAuthentication>? authentication;
+  final pulumi.Input<FeedDetailsThreatConnectIocV3SettingsAuthentication?>? authentication;
   /// Fields
-  final pulumi.Input<List<String>>? fields;
+  final pulumi.Input<List<String>?>? fields;
   /// hostname.
-  final pulumi.Input<String>? hostname;
+  final pulumi.Input<String?>? hostname;
   /// Owners.
-  final pulumi.Input<List<String>>? owners;
+  final pulumi.Input<List<String>?>? owners;
   /// Schedule
-  final pulumi.Input<int>? schedule;
+  final pulumi.Input<int?>? schedule;
   /// ThreatConnect Query Language filter.
-  final pulumi.Input<String>? tqlQuery;
+  final pulumi.Input<String?>? tqlQuery;
 
   /// Creates a new [FeedDetailsThreatConnectIocV3Settings].
   /// [authentication] Info for username and secret based authentication.
@@ -50,7 +50,7 @@ class FeedDetailsThreatConnectIocV3Settings {
       fields: (() { final guardedValue = map['fields']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       hostname: (() { final guardedValue = map['hostname']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       owners: (() { final guardedValue = map['owners']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      schedule: (() { final guardedValue = map['schedule']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      schedule: (() { final guardedValue = map['schedule']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       tqlQuery: (() { final guardedValue = map['tqlQuery']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

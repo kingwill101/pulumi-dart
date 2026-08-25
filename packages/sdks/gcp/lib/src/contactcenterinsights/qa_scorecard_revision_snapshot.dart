@@ -5,27 +5,27 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class QaScorecardRevisionSnapshot {
   /// (Output)
   /// The time at which this scorecard was created.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// A text description explaining the intent of the scorecard.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The user-specified display name of the scorecard.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Whether the scorecard is the default one for the project.
   /// A default scorecard cannot be deleted and will always appear first in
   /// scorecard selector.
-  final pulumi.Input<bool>? isDefault;
+  final pulumi.Input<bool?>? isDefault;
   /// (Output)
   /// Identifier. The scorecard name.
   /// Format:
   /// projects/{project}/locations/{location}/qaScorecards/{qa_scorecard}
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Possible values:
   /// QA_SCORECARD_SOURCE_CUSTOMER_DEFINED
   /// QA_SCORECARD_SOURCE_DISCOVERY_ENGINE
-  final pulumi.Input<String>? source;
+  final pulumi.Input<String?>? source;
   /// (Output)
   /// The most recent time at which the scorecard was updated.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [QaScorecardRevisionSnapshot].
   /// [createTime] (Output)

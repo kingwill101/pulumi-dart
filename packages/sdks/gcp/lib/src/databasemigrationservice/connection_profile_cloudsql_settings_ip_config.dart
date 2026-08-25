@@ -6,14 +6,14 @@ import 'connection_profile_cloudsql_settings_ip_config_authorized_network.dart';
 class ConnectionProfileCloudsqlSettingsIpConfig {
   /// The list of external networks that are allowed to connect to the instance using the IP.
   /// Structure is documented below.
-  final pulumi.Input<List<ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetwork>>? authorizedNetworks;
+  final pulumi.Input<List<ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetwork>?>? authorizedNetworks;
   /// Whether the instance should be assigned an IPv4 address or not.
-  final pulumi.Input<bool>? enableIpv4;
+  final pulumi.Input<bool?>? enableIpv4;
   /// The resource link for the VPC network from which the Cloud SQL instance is accessible for private IP. For example, projects/myProject/global/networks/default.
   /// This setting can be updated, but it cannot be removed after it is set.
-  final pulumi.Input<String>? privateNetwork;
+  final pulumi.Input<String?>? privateNetwork;
   /// Whether SSL connections over IP should be enforced or not.
-  final pulumi.Input<bool>? requireSsl;
+  final pulumi.Input<bool?>? requireSsl;
 
   /// Creates a new [ConnectionProfileCloudsqlSettingsIpConfig].
   /// [authorizedNetworks] The list of external networks that are allowed to connect to the instance using the IP.

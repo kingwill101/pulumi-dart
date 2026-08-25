@@ -6,7 +6,7 @@ class ClusterDatabaseEncryption {
   /// the key to use to encrypt/decrypt secrets.  See the [DatabaseEncryption definition](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#Cluster.DatabaseEncryption) for more information.
   ///
   /// &lt;a name="nestedEnableK8sBetaApis"&gt;&lt;/a&gt;The `enableK8sBetaApis` block supports:
-  final pulumi.Input<String>? keyName;
+  final pulumi.Input<String?>? keyName;
   /// `ENCRYPTED` or `DECRYPTED`
   final pulumi.Input<String> state;
 

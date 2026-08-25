@@ -11,10 +11,10 @@ class RemoteConfigRemoteConfigState {
   /// A list of conditions in descending order by priority.
   /// The values of the condition names must be unique.
   /// Structure is documented below.
-  final pulumi.Input<List<RemoteConfigRemoteConfigCondition>>? conditions;
+  final pulumi.Input<List<RemoteConfigRemoteConfigCondition>?>? conditions;
   /// (Output)
   /// Display name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Map of parameter group names to their descriptions and grouped parameters.
   /// A group's name is mutable but must be unique among groups in the config.
   /// The name is limited to 256 characters and intended to be human-readable.
@@ -26,20 +26,20 @@ class RemoteConfigRemoteConfigState {
   /// `description` "New mobile search view" and contain parameters for the new
   /// search's layout and font.
   /// Structure is documented below.
-  final pulumi.Input<List<RemoteConfigRemoteConfigParameterGroup>>? parameterGroups;
+  final pulumi.Input<List<RemoteConfigRemoteConfigParameterGroup>?>? parameterGroups;
   /// Map of parameter keys to their optional default values and optional
   /// conditional values.
   /// Structure is documented below.
-  final pulumi.Input<List<RemoteConfigRemoteConfigParameter>>? parameters;
+  final pulumi.Input<List<RemoteConfigRemoteConfigParameter>?>? parameters;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Contains all metadata about a particular version of the Remote Config
   /// template.
   /// All fields are set at the time the specified Remote Config template was
   /// written.
   /// Structure is documented below.
-  final pulumi.Input<List<RemoteConfigRemoteConfigVersion>>? versions;
+  final pulumi.Input<List<RemoteConfigRemoteConfigVersion>?>? versions;
 
   /// Creates a new [RemoteConfigRemoteConfigState].
   /// [conditions] A list of conditions in descending order by priority.

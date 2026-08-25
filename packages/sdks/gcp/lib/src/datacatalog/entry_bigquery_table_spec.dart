@@ -7,15 +7,15 @@ import 'entry_bigquery_table_spec_view_spec.dart';
 class EntryBigqueryTableSpec {
   /// (Output)
   /// The table source type.
-  final pulumi.Input<String>? tableSourceType;
+  final pulumi.Input<String?>? tableSourceType;
   /// (Output)
   /// Spec of a BigQuery table. This field should only be populated if tableSourceType is BIGQUERY_TABLE.
   /// Structure is documented below.
-  final pulumi.Input<List<EntryBigqueryTableSpecTableSpec>>? tableSpecs;
+  final pulumi.Input<List<EntryBigqueryTableSpecTableSpec>?>? tableSpecs;
   /// (Output)
   /// Table view specification. This field should only be populated if tableSourceType is BIGQUERY_VIEW.
   /// Structure is documented below.
-  final pulumi.Input<List<EntryBigqueryTableSpecViewSpec>>? viewSpecs;
+  final pulumi.Input<List<EntryBigqueryTableSpecViewSpec>?>? viewSpecs;
 
   /// Creates a new [EntryBigqueryTableSpec].
   /// [tableSourceType] (Output)

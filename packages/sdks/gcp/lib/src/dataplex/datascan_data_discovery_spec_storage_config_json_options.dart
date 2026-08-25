@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DatascanDataDiscoverySpecStorageConfigJsonOptions {
   /// The character encoding of the data. The default is UTF-8.
-  final pulumi.Input<String>? encoding;
+  final pulumi.Input<String?>? encoding;
   /// Whether to disable the inference of data types for JSON data. If true, all columns are registered as their primitive types (strings, number, or boolean).
-  final pulumi.Input<bool>? typeInferenceDisabled;
+  final pulumi.Input<bool?>? typeInferenceDisabled;
 
   /// Creates a new [DatascanDataDiscoverySpecStorageConfigJsonOptions].
   /// [encoding] The character encoding of the data. The default is UTF-8.

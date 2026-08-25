@@ -8,7 +8,7 @@ class ReservationSpecificReservationInstancePropertiesLocalSsd {
   /// The disk interface to use for attaching this disk.
   /// Default value is `SCSI`.
   /// Possible values are: `SCSI`, `NVME`.
-  final pulumi.Input<String>? interface;
+  final pulumi.Input<String?>? interface;
 
   /// Creates a new [ReservationSpecificReservationInstancePropertiesLocalSsd].
   /// [diskSizeGb] The size of the disk in base-2 GB.
@@ -27,7 +27,7 @@ class ReservationSpecificReservationInstancePropertiesLocalSsd {
 
   factory ReservationSpecificReservationInstancePropertiesLocalSsd.fromMap(Map<String, dynamic> map) {
     return ReservationSpecificReservationInstancePropertiesLocalSsd(
-      diskSizeGb: pulumi.Input.fromValue(map['diskSizeGb'] as int),
+      diskSizeGb: pulumi.Input.fromValue((map['diskSizeGb'] as num).toInt()),
       interface: (() { final guardedValue = map['interface']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

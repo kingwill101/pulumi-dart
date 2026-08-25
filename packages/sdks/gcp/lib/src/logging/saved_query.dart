@@ -827,7 +827,7 @@ class SavedQuery extends pulumi.CustomResource {
           'gcp:logging/savedQuery:SavedQuery',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -847,11 +847,12 @@ class SavedQuery extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SavedQueryState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SavedQuery._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -865,6 +866,28 @@ class SavedQuery extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    location = registerOutput<String>('location');
+    loggingQuery = registerOutput<SavedQueryLoggingQuery?>('loggingQuery', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SavedQueryLoggingQuery.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    opsAnalyticsQuery = registerOutput<SavedQueryOpsAnalyticsQuery?>('opsAnalyticsQuery', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SavedQueryOpsAnalyticsQuery.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    parent = registerOutput<String>('parent');
+    updateTime = registerOutput<String>('updateTime');
+    visibility = registerOutput<String>('visibility');
+  }
+
+  /// Creates a typed reference to an existing [SavedQuery] resource.
+  SavedQuery.reference(String urn)
+    : super(
+        'gcp:logging/savedQuery:SavedQuery',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');

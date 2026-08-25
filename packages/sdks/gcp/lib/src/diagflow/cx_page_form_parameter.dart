@@ -8,25 +8,25 @@ class CxPageFormParameter {
   /// Hierarchical advanced settings for this parameter. The settings exposed at the lower level overrides the settings exposed at the higher level.
   /// Hierarchy: Agent-&gt;Flow-&gt;Page-&gt;Fulfillment/Parameter.
   /// Structure is documented below.
-  final pulumi.Input<CxPageFormParameterAdvancedSettings>? advancedSettings;
+  final pulumi.Input<CxPageFormParameterAdvancedSettings?>? advancedSettings;
   /// The default value of an optional parameter. If the parameter is required, the default value will be ignored.
-  final pulumi.Input<String>? defaultValue;
+  final pulumi.Input<String?>? defaultValue;
   /// The human-readable name of the parameter, unique within the form.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The entity type of the parameter.
   /// Format: projects/-/locations/-/agents/-/entityTypes/&lt;System Entity Type ID&gt; for system entity types (for example, projects/-/locations/-/agents/-/entityTypes/sys.date), or projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/entityTypes/&lt;Entity Type ID&gt; for developer entity types.
-  final pulumi.Input<String>? entityType;
+  final pulumi.Input<String?>? entityType;
   /// Defines fill behavior for the parameter.
   /// Structure is documented below.
-  final pulumi.Input<CxPageFormParameterFillBehavior>? fillBehavior;
+  final pulumi.Input<CxPageFormParameterFillBehavior?>? fillBehavior;
   /// Indicates whether the parameter represents a list of values.
-  final pulumi.Input<bool>? isList;
+  final pulumi.Input<bool?>? isList;
   /// Indicates whether the parameter content should be redacted in log.
   /// If redaction is enabled, the parameter content will be replaced by parameter name during logging. Note: the parameter content is subject to redaction if either parameter level redaction or entity type level redaction is enabled.
-  final pulumi.Input<bool>? redact;
+  final pulumi.Input<bool?>? redact;
   /// Indicates whether the parameter is required. Optional parameters will not trigger prompts; however, they are filled if the user specifies them.
   /// Required parameters must be filled before form filling concludes.
-  final pulumi.Input<bool>? required;
+  final pulumi.Input<bool?>? required;
 
   /// Creates a new [CxPageFormParameter].
   /// [advancedSettings] Hierarchical advanced settings for this parameter. The settings exposed at the lower level overrides the settings exposed at the higher level.

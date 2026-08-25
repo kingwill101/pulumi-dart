@@ -30,141 +30,141 @@ import 'cluster_node_pool_node_config_workload_metadata_config.dart';
 class ClusterNodePoolNodeConfig {
   /// Specifies options for controlling
   /// advanced machine features. Structure is documented below.
-  final pulumi.Input<ClusterNodePoolNodeConfigAdvancedMachineFeatures>? advancedMachineFeatures;
+  final pulumi.Input<ClusterNodePoolNodeConfigAdvancedMachineFeatures?>? advancedMachineFeatures;
   /// Configuration of the node pool boot disk. Structure is documented below
-  final pulumi.Input<ClusterNodePoolNodeConfigBootDisk>? bootDisk;
+  final pulumi.Input<ClusterNodePoolNodeConfigBootDisk?>? bootDisk;
   /// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
-  final pulumi.Input<String>? bootDiskKmsKey;
+  final pulumi.Input<String?>? bootDiskKmsKey;
   /// Configuration for Confidential Nodes feature. Structure is documented below.
-  final pulumi.Input<ClusterNodePoolNodeConfigConfidentialNodes>? confidentialNodes;
+  final pulumi.Input<ClusterNodePoolNodeConfigConfidentialNodes?>? confidentialNodes;
   /// Parameters to customize containerd runtime. Structure is documented below.
-  final pulumi.Input<ClusterNodePoolNodeConfigContainerdConfig>? containerdConfig;
+  final pulumi.Input<ClusterNodePoolNodeConfigContainerdConfig?>? containerdConfig;
   /// Size of the disk attached to each node, specified
   /// in GB. The smallest allowed disk size is 10GB. Defaults to 100GB. This is being migrated to `boot_disk.size_gb`, and must match if specified in both places.
   /// Prefer configuring `bootDisk`.
-  final pulumi.Input<int>? diskSizeGb;
+  final pulumi.Input<int?>? diskSizeGb;
   /// Type of the disk attached to each node
   /// (e.g. 'pd-standard', 'pd-balanced', 'pd-ssd', or 'hyperdisk-balanced'). Defaults to `hyperdisk-balanced` if `hyperdisk-balanced` is supported and `pd-balanced` is not supported for the machine type; otherwise defaults to `pd-balanced`. This is being migrated to `boot_disk.disk_type`, and must match if specified in both places. Prefer configuring `bootDisk`.
-  final pulumi.Input<String>? diskType;
+  final pulumi.Input<String?>? diskType;
   /// List of kubernetes taints applied to each node. Structure is documented above.
-  final pulumi.Input<List<ClusterNodePoolNodeConfigEffectiveTaint>>? effectiveTaints;
+  final pulumi.Input<List<ClusterNodePoolNodeConfigEffectiveTaint>?>? effectiveTaints;
   /// Enabling Confidential Storage will create boot disk with confidential mode. It is disabled by default.
-  final pulumi.Input<bool>? enableConfidentialStorage;
+  final pulumi.Input<bool?>? enableConfidentialStorage;
   /// ) Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
-  final pulumi.Input<ClusterNodePoolNodeConfigEphemeralStorageConfig>? ephemeralStorageConfig;
+  final pulumi.Input<ClusterNodePoolNodeConfigEphemeralStorageConfig?>? ephemeralStorageConfig;
   /// Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
-  final pulumi.Input<ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig>? ephemeralStorageLocalSsdConfig;
+  final pulumi.Input<ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig?>? ephemeralStorageLocalSsdConfig;
   /// Parameters for the NCCL Fast Socket feature. If unspecified, NCCL Fast Socket will not be enabled on the node pool.
   /// Node Pool must enable gvnic.
   /// GKE version 1.25.2-gke.1700 or later.
   /// Structure is documented below.
-  final pulumi.Input<ClusterNodePoolNodeConfigFastSocket>? fastSocket;
+  final pulumi.Input<ClusterNodePoolNodeConfigFastSocket?>? fastSocket;
   /// Enables Flex Start provisioning model for the node pool.
-  final pulumi.Input<bool>? flexStart;
+  final pulumi.Input<bool?>? flexStart;
   /// Parameters for the Google Container Filesystem (GCFS).
   /// If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion` from GKE versions 1.19 or later to use it.
   /// For GKE versions 1.19, 1.20, and 1.21, the recommended minimum `nodeVersion` would be 1.19.15-gke.1300, 1.20.11-gke.1300, and 1.21.5-gke.1300 respectively.
   /// A `machineType` that has more than 16 GiB of memory is also recommended.
   /// GCFS must be enabled in order to use [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming).
   /// Structure is documented below.
-  final pulumi.Input<ClusterNodePoolNodeConfigGcfsConfig>? gcfsConfig;
+  final pulumi.Input<ClusterNodePoolNodeConfigGcfsConfig?>? gcfsConfig;
   /// The type of GPUDirect strategy to enable on the node. See the [GKE network docs](https://docs.cloud.google.com/kubernetes-engine/docs/how-to/gpu-bandwidth-gpudirect-tcpx) for information on available modes.
-  final pulumi.Input<String>? gpudirectStrategy;
+  final pulumi.Input<String?>? gpudirectStrategy;
   /// List of the type and count of accelerator cards attached to the instance.
   /// Structure documented below.
-  final pulumi.Input<List<ClusterNodePoolNodeConfigGuestAccelerator>>? guestAccelerators;
+  final pulumi.Input<List<ClusterNodePoolNodeConfigGuestAccelerator>?>? guestAccelerators;
   /// Google Virtual NIC (gVNIC) is a virtual network interface.
   /// Installing the gVNIC driver allows for more efficient traffic transmission across the Google network infrastructure.
   /// gVNIC is an alternative to the virtIO-based ethernet driver. GKE nodes must use a Container-Optimized OS node image.
   /// GKE node version 1.15.11-gke.15 or later
   /// Structure is documented below.
-  final pulumi.Input<ClusterNodePoolNodeConfigGvnic>? gvnic;
+  final pulumi.Input<ClusterNodePoolNodeConfigGvnic?>? gvnic;
   /// The maintenance policy for the hosts on which the GKE VMs run on.
-  final pulumi.Input<ClusterNodePoolNodeConfigHostMaintenancePolicy>? hostMaintenancePolicy;
+  final pulumi.Input<ClusterNodePoolNodeConfigHostMaintenancePolicy?>? hostMaintenancePolicy;
   /// The image type to use for this node. Note that changing the image type
   /// will delete and recreate all nodes in the node pool.
-  final pulumi.Input<String>? imageType;
+  final pulumi.Input<String?>? imageType;
   /// Node kubelet configs. Structure is documented below.
-  final pulumi.Input<ClusterNodePoolNodeConfigKubeletConfig>? kubeletConfig;
+  final pulumi.Input<ClusterNodePoolNodeConfigKubeletConfig?>? kubeletConfig;
   /// The Kubernetes labels (key/value pairs) to be applied to each node. The kubernetes.io/ and k8s.io/ prefixes are
   /// reserved by Kubernetes Core components and cannot be specified.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Parameters that can be configured on Linux nodes. Structure is documented below.
-  final pulumi.Input<ClusterNodePoolNodeConfigLinuxNodeConfig>? linuxNodeConfig;
+  final pulumi.Input<ClusterNodePoolNodeConfigLinuxNodeConfig?>? linuxNodeConfig;
   /// Parameters for the local NVMe SSDs. Structure is documented below.
-  final pulumi.Input<ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfig>? localNvmeSsdBlockConfig;
+  final pulumi.Input<ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfig?>? localNvmeSsdBlockConfig;
   /// The amount of local SSD disks that will be
   /// attached to each cluster node. Defaults to 0.
-  final pulumi.Input<int>? localSsdCount;
+  final pulumi.Input<int?>? localSsdCount;
   /// Possible Local SSD encryption modes:
   /// Accepted values are:
   /// * `STANDARD_ENCRYPTION`: The given node will be encrypted using keys managed by Google infrastructure and the keys wll be deleted when the node is deleted.
   /// * `EPHEMERAL_KEY_ENCRYPTION`: The given node will opt-in for using ephemeral key for encrypting Local SSDs. The Local SSDs will not be able to recover data in case of node crash.
-  final pulumi.Input<String>? localSsdEncryptionMode;
+  final pulumi.Input<String?>? localSsdEncryptionMode;
   /// Parameter for specifying the type of logging agent used in a node pool. This will override any cluster-wide default value. Valid values include DEFAULT and MAX_THROUGHPUT. See [Increasing logging agent throughput](https://cloud.google.com/stackdriver/docs/solutions/gke/managing-logs#throughput) for more information.
-  final pulumi.Input<String>? loggingVariant;
+  final pulumi.Input<String?>? loggingVariant;
   /// The name of a Google Compute Engine machine type.
   /// Defaults to `e2-medium`. To create a custom machine type, value should be set as specified
   /// [here](https://cloud.google.com/compute/docs/reference/latest/instances#machineType).
-  final pulumi.Input<String>? machineType;
+  final pulumi.Input<String?>? machineType;
   /// The runtime of each node in the node pool in seconds, terminated by 's'. Example: "3600s".
-  final pulumi.Input<String>? maxRunDuration;
+  final pulumi.Input<String?>? maxRunDuration;
   /// The metadata key/value pairs assigned to instances in
   /// the cluster. From GKE `1.12` onwards, `disable-legacy-endpoints` is set to
   /// `true` by the API; if `metadata` is set but that default value is not
   /// included, the provider will attempt to unset the value. To avoid this, set the
   /// value in your config.
-  final pulumi.Input<Map<String, String>>? metadata;
+  final pulumi.Input<Map<String, String>?>? metadata;
   /// Minimum CPU platform to be used by this instance.
   /// The instance may be scheduled on the specified or newer CPU platform. Applicable
   /// values are the friendly names of CPU platforms, such as `Intel Haswell`. See the
   /// [official documentation](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
   /// for more information.
-  final pulumi.Input<String>? minCpuPlatform;
+  final pulumi.Input<String?>? minCpuPlatform;
   /// Setting this field will assign instances of this pool to run on the specified node group. This is useful for running workloads on [sole tenant nodes](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes).
-  final pulumi.Input<String>? nodeGroup;
+  final pulumi.Input<String?>? nodeGroup;
   /// The node image configuration to use for this node pool. Structure is documented below.
-  final pulumi.Input<List<ClusterNodePoolNodeConfigNodeImageConfig>>? nodeImageConfigs;
+  final pulumi.Input<List<ClusterNodePoolNodeConfigNodeImageConfig>?>? nodeImageConfigs;
   /// The set of Google API scopes to be made available
   /// on all of the node VMs under the "default" service account.
   /// Use the "https://www.googleapis.com/auth/cloud-platform" scope to grant access to all APIs. It is recommended that you set `serviceAccount` to a non-default service account and grant IAM roles to that service account for only the resources that it needs.
   ///
   /// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/access-scopes) for information on migrating off of legacy access scopes.
-  final pulumi.Input<List<String>>? oauthScopes;
+  final pulumi.Input<List<String>?>? oauthScopes;
   /// A boolean that represents whether or not the underlying node VMs
   /// are preemptible. See the [official documentation](https://cloud.google.com/container-engine/docs/preemptible-vm)
   /// for more information. Defaults to false.
-  final pulumi.Input<bool>? preemptible;
+  final pulumi.Input<bool?>? preemptible;
   /// The configuration of the desired reservation which instances could take capacity from. Structure is documented below.
-  final pulumi.Input<ClusterNodePoolNodeConfigReservationAffinity>? reservationAffinity;
+  final pulumi.Input<ClusterNodePoolNodeConfigReservationAffinity?>? reservationAffinity;
   /// The GCP labels (key/value pairs) to be applied to each node. Refer [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-managing-labels)
   /// for how these labels are applied to clusters, node pools and nodes.
-  final pulumi.Input<Map<String, String>>? resourceLabels;
+  final pulumi.Input<Map<String, String>?>? resourceLabels;
   /// A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
-  final pulumi.Input<Map<String, String>>? resourceManagerTags;
+  final pulumi.Input<Map<String, String>?>? resourceManagerTags;
   /// [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion = "1.12.7-gke.17"` or later to use it.
   /// Structure is documented below.
-  final pulumi.Input<ClusterNodePoolNodeConfigSandboxConfig>? sandboxConfig;
+  final pulumi.Input<ClusterNodePoolNodeConfigSandboxConfig?>? sandboxConfig;
   /// Parameters for secondary boot disks to preload container images and data on new nodes. Structure is documented below. `gcfsConfig` must be `enabled=true` for this feature to work. `minMasterVersion` must also be set to use GKE 1.28.3-gke.106700 or later versions.
-  final pulumi.Input<List<ClusterNodePoolNodeConfigSecondaryBootDisk>>? secondaryBootDisks;
+  final pulumi.Input<List<ClusterNodePoolNodeConfigSecondaryBootDisk>?>? secondaryBootDisks;
   /// The service account to be used by the Node VMs.
   /// If not specified, the "default" service account is used.
-  final pulumi.Input<String>? serviceAccount;
+  final pulumi.Input<String?>? serviceAccount;
   /// Shielded Instance options. Structure is documented below.
-  final pulumi.Input<ClusterNodePoolNodeConfigShieldedInstanceConfig>? shieldedInstanceConfig;
+  final pulumi.Input<ClusterNodePoolNodeConfigShieldedInstanceConfig?>? shieldedInstanceConfig;
   /// Allows specifying multiple [node affinities](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes#node_affinity_and_anti-affinity) useful for running workloads on [sole tenant nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/sole-tenancy). Structure is documented below.
-  final pulumi.Input<ClusterNodePoolNodeConfigSoleTenantConfig>? soleTenantConfig;
+  final pulumi.Input<ClusterNodePoolNodeConfigSoleTenantConfig?>? soleTenantConfig;
   /// A boolean that represents whether the underlying node VMs are spot.
   /// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
   /// for more information. Defaults to false.
-  final pulumi.Input<bool>? spot;
+  final pulumi.Input<bool?>? spot;
   /// The list of Storage Pools where boot disks are provisioned.
-  final pulumi.Input<List<String>>? storagePools;
+  final pulumi.Input<List<String>?>? storagePools;
   /// The list of instance tags applied to all nodes. Tags are used to identify
   /// valid sources or targets for network firewalls.
-  final pulumi.Input<List<String>>? tags;
+  final pulumi.Input<List<String>?>? tags;
   /// Taint configuration for the node pool. Structure is documented below.
-  final pulumi.Input<ClusterNodePoolNodeConfigTaintConfig>? taintConfig;
+  final pulumi.Input<ClusterNodePoolNodeConfigTaintConfig?>? taintConfig;
   /// A list of
   /// [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
   /// to apply to nodes. This field will only report drift on taint keys that are
@@ -172,12 +172,12 @@ class ClusterNodePoolNodeConfig {
   /// GKE-managed taints on the node pool from all sources. Importing this resource
   /// will not record any taints as being Pulumi-managed, and will cause drift with
   /// any configured taints. Structure is documented below.
-  final pulumi.Input<List<ClusterNodePoolNodeConfigTaint>>? taints;
+  final pulumi.Input<List<ClusterNodePoolNodeConfigTaint>?>? taints;
   /// Windows node configuration, currently supporting OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of [OS_VERSION_UNSPECIFIED, OS_VERSION_LTSC2019, OS_VERSION_LTSC2022]. For example:
-  final pulumi.Input<ClusterNodePoolNodeConfigWindowsNodeConfig>? windowsNodeConfig;
+  final pulumi.Input<ClusterNodePoolNodeConfigWindowsNodeConfig?>? windowsNodeConfig;
   /// Metadata configuration to expose to workloads on the node pool.
   /// Structure is documented below.
-  final pulumi.Input<ClusterNodePoolNodeConfigWorkloadMetadataConfig>? workloadMetadataConfig;
+  final pulumi.Input<ClusterNodePoolNodeConfigWorkloadMetadataConfig?>? workloadMetadataConfig;
 
   /// Creates a new [ClusterNodePoolNodeConfig].
   /// [advancedMachineFeatures] Specifies options for controlling
@@ -342,7 +342,7 @@ class ClusterNodePoolNodeConfig {
       bootDiskKmsKey: (() { final guardedValue = map['bootDiskKmsKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       confidentialNodes: (() { final guardedValue = map['confidentialNodes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterNodePoolNodeConfigConfidentialNodes.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       containerdConfig: (() { final guardedValue = map['containerdConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterNodePoolNodeConfigContainerdConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      diskSizeGb: (() { final guardedValue = map['diskSizeGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      diskSizeGb: (() { final guardedValue = map['diskSizeGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       diskType: (() { final guardedValue = map['diskType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       effectiveTaints: (() { final guardedValue = map['effectiveTaints']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ClusterNodePoolNodeConfigEffectiveTaint>(guardedValue, (value) => ClusterNodePoolNodeConfigEffectiveTaint.fromMap((value as Map).cast<String, dynamic>()))); })(),
       enableConfidentialStorage: (() { final guardedValue = map['enableConfidentialStorage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
@@ -360,7 +360,7 @@ class ClusterNodePoolNodeConfig {
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       linuxNodeConfig: (() { final guardedValue = map['linuxNodeConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterNodePoolNodeConfigLinuxNodeConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       localNvmeSsdBlockConfig: (() { final guardedValue = map['localNvmeSsdBlockConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      localSsdCount: (() { final guardedValue = map['localSsdCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      localSsdCount: (() { final guardedValue = map['localSsdCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       localSsdEncryptionMode: (() { final guardedValue = map['localSsdEncryptionMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       loggingVariant: (() { final guardedValue = map['loggingVariant']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       machineType: (() { final guardedValue = map['machineType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

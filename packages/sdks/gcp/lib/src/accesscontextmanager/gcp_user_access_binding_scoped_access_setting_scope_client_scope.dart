@@ -6,7 +6,7 @@ import 'gcp_user_access_binding_scoped_access_setting_scope_client_scope_restric
 class GcpUserAccessBindingScopedAccessSettingScopeClientScope {
   /// Optional. The application that is subject to this binding's scope. Only one of clientId or name should be specified.
   /// Structure is documented below.
-  final pulumi.Input<GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplication>? restrictedClientApplication;
+  final pulumi.Input<GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplication?>? restrictedClientApplication;
 
   /// Creates a new [GcpUserAccessBindingScopedAccessSettingScopeClientScope].
   /// [restrictedClientApplication] Optional. The application that is subject to this binding's scope. Only one of clientId or name should be specified.

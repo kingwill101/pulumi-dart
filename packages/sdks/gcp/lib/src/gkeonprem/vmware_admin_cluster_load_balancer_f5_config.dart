@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VmwareAdminClusterLoadBalancerF5Config {
   /// The load balancer's IP address.
-  final pulumi.Input<String>? address;
+  final pulumi.Input<String?>? address;
   /// he preexisting partition to be used by the load balancer. T
   /// his partition is usually created for the admin cluster for example:
   /// 'my-f5-admin-partition'.
-  final pulumi.Input<String>? partition;
+  final pulumi.Input<String?>? partition;
   /// The pool name. Only necessary, if using SNAT.
-  final pulumi.Input<String>? snatPool;
+  final pulumi.Input<String?>? snatPool;
 
   /// Creates a new [VmwareAdminClusterLoadBalancerF5Config].
   /// [address] The load balancer's IP address.

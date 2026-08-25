@@ -6,15 +6,15 @@ class EnvironmentNodeConfig {
   /// (Output)
   /// The current total number of gateway nodes that each environment currently has across
   /// all instances.
-  final pulumi.Input<String>? currentAggregateNodeCount;
+  final pulumi.Input<String?>? currentAggregateNodeCount;
   /// The maximum total number of gateway nodes that the is reserved for all instances that
   /// has the specified environment. If not specified, the default is determined by the
   /// recommended maximum number of nodes for that gateway.
-  final pulumi.Input<String>? maxNodeCount;
+  final pulumi.Input<String?>? maxNodeCount;
   /// The minimum total number of gateway nodes that the is reserved for all instances that
   /// has the specified environment. If not specified, the default is determined by the
   /// recommended minimum number of nodes for that gateway.
-  final pulumi.Input<String>? minNodeCount;
+  final pulumi.Input<String?>? minNodeCount;
 
   /// Creates a new [EnvironmentNodeConfig].
   /// [currentAggregateNodeCount] (Output)

@@ -8,11 +8,11 @@ class ClusterNetworkResourceConfig {
   /// When set in a NetworkResourceConfig, indicates that an existing network
   /// should be imported.
   /// Structure is documented below.
-  final pulumi.Input<ClusterNetworkResourceConfigExistingNetwork>? existingNetwork;
+  final pulumi.Input<ClusterNetworkResourceConfigExistingNetwork?>? existingNetwork;
   /// When set in a NetworkResourceConfig, indicates that a new network should
   /// be created.
   /// Structure is documented below.
-  final pulumi.Input<ClusterNetworkResourceConfigNewNetwork>? newNetwork;
+  final pulumi.Input<ClusterNetworkResourceConfigNewNetwork?>? newNetwork;
 
   /// Creates a new [ClusterNetworkResourceConfig].
   /// [existingNetwork] When set in a NetworkResourceConfig, indicates that an existing network

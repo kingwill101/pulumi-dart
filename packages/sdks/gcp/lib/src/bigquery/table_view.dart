@@ -12,7 +12,7 @@ class TableView {
   /// according to the [API documentation](https://cloud.google.com/bigquery/docs/reference/rest/v2/tables#ViewDefinition).
   /// &gt; **Note**: Starting in provider version `7.0.0`, no default value is
   /// provided for this field unless explicitly set in the configuration.
-  final pulumi.Input<bool>? useLegacySql;
+  final pulumi.Input<bool?>? useLegacySql;
 
   /// Creates a new [TableView].
   /// [query] A query that BigQuery executes when the view is referenced.

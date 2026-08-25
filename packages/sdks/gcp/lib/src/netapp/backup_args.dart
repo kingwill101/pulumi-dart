@@ -14,30 +14,30 @@ class BackupArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// A description of the backup with 2048 characters or less. Requests with longer descriptions will be rejected.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Location of the backup.
   final pulumi.Input<String> location;
   /// The resource name of the backup. Needs to be unique per location.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Details of the ONTAP source volume and snapshot.
   /// Structure is documented below.
-  final pulumi.Input<BackupOntapSource>? ontapSource;
+  final pulumi.Input<BackupOntapSource?>? ontapSource;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// If specified, backup will be created from the given snapshot. If not specified,
   /// there will be a new snapshot taken to initiate the backup creation.
   /// Format: `projects/{{projectId}}/locations/{{location}}/volumes/{{volumename}}/snapshots/{{snapshotname}}``
-  final pulumi.Input<String>? sourceSnapshot;
+  final pulumi.Input<String?>? sourceSnapshot;
   /// ID of volumes this backup belongs to. Format: `projects/{{projects_id}}/locations/{{location}}/volumes/{{name}}``
-  final pulumi.Input<String>? sourceVolume;
+  final pulumi.Input<String?>? sourceVolume;
   /// Name of the backup vault to store the backup in.
   final pulumi.Input<String> vaultName;
 

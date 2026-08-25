@@ -9,7 +9,7 @@ class InterconnectAttachmentGroupLogicalStructure {
   /// detail. These are region names formatted like "us-central1". This
   /// will be set for some blockers (like INCOMPATIBLE_REGIONS) but does
   /// not apply to others.
-  final pulumi.Input<List<InterconnectAttachmentGroupLogicalStructureRegion>>? regions;
+  final pulumi.Input<List<InterconnectAttachmentGroupLogicalStructureRegion>?>? regions;
 
   /// Creates a new [InterconnectAttachmentGroupLogicalStructure].
   /// [regions] (Output)

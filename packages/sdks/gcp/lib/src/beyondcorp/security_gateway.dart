@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'security_gateway_args.dart';
+import 'security_gateway_hub.dart';
 import 'security_gateway_proxy_protocol_config.dart';
 import 'security_gateway_service_discovery.dart';
 import 'security_gateway_state.dart';
@@ -662,7 +663,7 @@ class SecurityGateway extends pulumi.CustomResource {
   /// Optional. Map of Hubs that represents regional data path deployment with GCP region
   /// as a key.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> hubs;
+  late final pulumi.Output<List<SecurityGatewayHub>?> hubs;
   /// (Optional, Deprecated)
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. Must be omitted or set to `global`.
   ///
@@ -711,14 +712,14 @@ class SecurityGateway extends pulumi.CustomResource {
           'gcp:beyondcorp/securityGateway:SecurityGateway',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     delegatingServiceAccount = registerOutput<String>('delegatingServiceAccount');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
-    externalIps = registerOutput<List<String>>('externalIps');
-    hubs = registerOutput<List<Map<String, dynamic>>?>('hubs');
+    externalIps = registerOutput<List<String>>('externalIps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    hubs = registerOutput<List<SecurityGatewayHub>?>('hubs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SecurityGatewayHub>(guardedValue, (value) => SecurityGatewayHub.fromMap((value as Map).cast<String, dynamic>())); });
     location = registerOutput<String?>('location');
     logging = registerOutput<Map<String, dynamic>?>('logging');
     this.name = registerOutput<String>('name');
@@ -735,11 +736,12 @@ class SecurityGateway extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SecurityGatewayState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SecurityGateway._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -757,8 +759,8 @@ class SecurityGateway extends pulumi.CustomResource {
     delegatingServiceAccount = registerOutput<String>('delegatingServiceAccount');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
-    externalIps = registerOutput<List<String>>('externalIps');
-    hubs = registerOutput<List<Map<String, dynamic>>?>('hubs');
+    externalIps = registerOutput<List<String>>('externalIps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    hubs = registerOutput<List<SecurityGatewayHub>?>('hubs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SecurityGatewayHub>(guardedValue, (value) => SecurityGatewayHub.fromMap((value as Map).cast<String, dynamic>())); });
     location = registerOutput<String?>('location');
     logging = registerOutput<Map<String, dynamic>?>('logging');
     this.name = registerOutput<String>('name');
@@ -767,6 +769,32 @@ class SecurityGateway extends pulumi.CustomResource {
     securityGatewayId = registerOutput<String>('securityGatewayId');
     serviceDiscovery = registerOutput<SecurityGatewayServiceDiscovery?>('serviceDiscovery', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityGatewayServiceDiscovery.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.state = registerOutput<String>('state');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [SecurityGateway] resource.
+  SecurityGateway.reference(String urn)
+    : super(
+        'gcp:beyondcorp/securityGateway:SecurityGateway',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    delegatingServiceAccount = registerOutput<String>('delegatingServiceAccount');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    displayName = registerOutput<String?>('displayName');
+    externalIps = registerOutput<List<String>>('externalIps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    hubs = registerOutput<List<SecurityGatewayHub>?>('hubs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SecurityGatewayHub>(guardedValue, (value) => SecurityGatewayHub.fromMap((value as Map).cast<String, dynamic>())); });
+    location = registerOutput<String?>('location');
+    logging = registerOutput<Map<String, dynamic>?>('logging');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    proxyProtocolConfig = registerOutput<SecurityGatewayProxyProtocolConfig?>('proxyProtocolConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityGatewayProxyProtocolConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    securityGatewayId = registerOutput<String>('securityGatewayId');
+    serviceDiscovery = registerOutput<SecurityGatewayServiceDiscovery?>('serviceDiscovery', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityGatewayServiceDiscovery.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    state = registerOutput<String>('state');
     updateTime = registerOutput<String>('updateTime');
   }
 }

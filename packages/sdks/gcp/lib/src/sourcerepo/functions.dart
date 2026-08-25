@@ -126,6 +126,17 @@ Future<GetRepositoryResult> getRepository(
   return GetRepositoryResult.fromMap(result);
 }
 
+pulumi.Output<GetRepositoryResult> getRepositoryOutput(
+  GetRepositoryArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:sourcerepo/getRepository:getRepository',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRepositoryResult.fromMap);
+}
+
 /// Retrieves the current IAM policy data for repository
 ///
 ///
@@ -250,4 +261,15 @@ Future<GetRepositoryIamPolicyResult> getRepositoryIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRepositoryIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetRepositoryIamPolicyResult> getRepositoryIamPolicyOutput(
+  GetRepositoryIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:sourcerepo/getRepositoryIamPolicy:getRepositoryIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRepositoryIamPolicyResult.fromMap);
 }

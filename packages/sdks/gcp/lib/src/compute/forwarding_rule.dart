@@ -6644,7 +6644,8 @@ class ForwardingRule extends pulumi.CustomResource {
           'gcp:compute/forwardingRule:ForwardingRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     allPorts = registerOutput<bool?>('allPorts');
     allowGlobalAccess = registerOutput<bool?>('allowGlobalAccess');
@@ -6654,7 +6655,7 @@ class ForwardingRule extends pulumi.CustomResource {
     creationTimestamp = registerOutput<String>('creationTimestamp');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     forwardingRuleId = registerOutput<int>('forwardingRuleId');
     ipAddress = registerOutput<String>('ipAddress');
     ipCollection = registerOutput<String?>('ipCollection');
@@ -6662,25 +6663,25 @@ class ForwardingRule extends pulumi.CustomResource {
     ipVersion = registerOutput<String>('ipVersion');
     isMirroringCollector = registerOutput<bool?>('isMirroringCollector');
     labelFingerprint = registerOutput<String>('labelFingerprint');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     loadBalancingScheme = registerOutput<String?>('loadBalancingScheme');
     this.name = registerOutput<String>('name');
     network = registerOutput<String>('network');
     networkTier = registerOutput<String>('networkTier');
     noAutomateDnsZone = registerOutput<bool?>('noAutomateDnsZone');
     portRange = registerOutput<String>('portRange');
-    ports = registerOutput<List<String>?>('ports');
+    ports = registerOutput<List<String>?>('ports', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     project = registerOutput<String>('project');
     pscConnectionId = registerOutput<String>('pscConnectionId');
     pscConnectionStatus = registerOutput<String>('pscConnectionStatus');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     recreateClosedPsc = registerOutput<bool?>('recreateClosedPsc');
     region = registerOutput<String>('region');
     selfLink = registerOutput<String>('selfLink');
     serviceDirectoryRegistrations = registerOutput<ForwardingRuleServiceDirectoryRegistrations>('serviceDirectoryRegistrations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ForwardingRuleServiceDirectoryRegistrations.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     serviceLabel = registerOutput<String?>('serviceLabel');
     serviceName = registerOutput<String>('serviceName');
-    sourceIpRanges = registerOutput<List<String>?>('sourceIpRanges');
+    sourceIpRanges = registerOutput<List<String>?>('sourceIpRanges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     subnetwork = registerOutput<String>('subnetwork');
     target = registerOutput<String?>('target');
   }
@@ -6690,11 +6691,12 @@ class ForwardingRule extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ForwardingRuleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ForwardingRule._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -6716,7 +6718,7 @@ class ForwardingRule extends pulumi.CustomResource {
     creationTimestamp = registerOutput<String>('creationTimestamp');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     forwardingRuleId = registerOutput<int>('forwardingRuleId');
     ipAddress = registerOutput<String>('ipAddress');
     ipCollection = registerOutput<String?>('ipCollection');
@@ -6724,25 +6726,74 @@ class ForwardingRule extends pulumi.CustomResource {
     ipVersion = registerOutput<String>('ipVersion');
     isMirroringCollector = registerOutput<bool?>('isMirroringCollector');
     labelFingerprint = registerOutput<String>('labelFingerprint');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     loadBalancingScheme = registerOutput<String?>('loadBalancingScheme');
     this.name = registerOutput<String>('name');
     network = registerOutput<String>('network');
     networkTier = registerOutput<String>('networkTier');
     noAutomateDnsZone = registerOutput<bool?>('noAutomateDnsZone');
     portRange = registerOutput<String>('portRange');
-    ports = registerOutput<List<String>?>('ports');
+    ports = registerOutput<List<String>?>('ports', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     project = registerOutput<String>('project');
     pscConnectionId = registerOutput<String>('pscConnectionId');
     pscConnectionStatus = registerOutput<String>('pscConnectionStatus');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     recreateClosedPsc = registerOutput<bool?>('recreateClosedPsc');
     region = registerOutput<String>('region');
     selfLink = registerOutput<String>('selfLink');
     serviceDirectoryRegistrations = registerOutput<ForwardingRuleServiceDirectoryRegistrations>('serviceDirectoryRegistrations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ForwardingRuleServiceDirectoryRegistrations.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     serviceLabel = registerOutput<String?>('serviceLabel');
     serviceName = registerOutput<String>('serviceName');
-    sourceIpRanges = registerOutput<List<String>?>('sourceIpRanges');
+    sourceIpRanges = registerOutput<List<String>?>('sourceIpRanges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    subnetwork = registerOutput<String>('subnetwork');
+    target = registerOutput<String?>('target');
+  }
+
+  /// Creates a typed reference to an existing [ForwardingRule] resource.
+  ForwardingRule.reference(String urn)
+    : super(
+        'gcp:compute/forwardingRule:ForwardingRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    allPorts = registerOutput<bool?>('allPorts');
+    allowGlobalAccess = registerOutput<bool?>('allowGlobalAccess');
+    allowPscGlobalAccess = registerOutput<bool?>('allowPscGlobalAccess');
+    backendService = registerOutput<String?>('backendService');
+    baseForwardingRule = registerOutput<String>('baseForwardingRule');
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    forwardingRuleId = registerOutput<int>('forwardingRuleId');
+    ipAddress = registerOutput<String>('ipAddress');
+    ipCollection = registerOutput<String?>('ipCollection');
+    ipProtocol = registerOutput<String>('ipProtocol');
+    ipVersion = registerOutput<String>('ipVersion');
+    isMirroringCollector = registerOutput<bool?>('isMirroringCollector');
+    labelFingerprint = registerOutput<String>('labelFingerprint');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    loadBalancingScheme = registerOutput<String?>('loadBalancingScheme');
+    this.name = registerOutput<String>('name');
+    network = registerOutput<String>('network');
+    networkTier = registerOutput<String>('networkTier');
+    noAutomateDnsZone = registerOutput<bool?>('noAutomateDnsZone');
+    portRange = registerOutput<String>('portRange');
+    ports = registerOutput<List<String>?>('ports', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    project = registerOutput<String>('project');
+    pscConnectionId = registerOutput<String>('pscConnectionId');
+    pscConnectionStatus = registerOutput<String>('pscConnectionStatus');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    recreateClosedPsc = registerOutput<bool?>('recreateClosedPsc');
+    region = registerOutput<String>('region');
+    selfLink = registerOutput<String>('selfLink');
+    serviceDirectoryRegistrations = registerOutput<ForwardingRuleServiceDirectoryRegistrations>('serviceDirectoryRegistrations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ForwardingRuleServiceDirectoryRegistrations.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    serviceLabel = registerOutput<String?>('serviceLabel');
+    serviceName = registerOutput<String>('serviceName');
+    sourceIpRanges = registerOutput<List<String>?>('sourceIpRanges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     subnetwork = registerOutput<String>('subnetwork');
     target = registerOutput<String?>('target');
   }

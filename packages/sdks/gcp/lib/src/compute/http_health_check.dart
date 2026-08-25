@@ -223,7 +223,7 @@ class HttpHealthCheck extends pulumi.CustomResource {
           'gcp:compute/httpHealthCheck:HttpHealthCheck',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     checkIntervalSec = registerOutput<int?>('checkIntervalSec');
     creationTimestamp = registerOutput<String>('creationTimestamp');
@@ -245,11 +245,12 @@ class HttpHealthCheck extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     HttpHealthCheckState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return HttpHealthCheck._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -263,6 +264,30 @@ class HttpHealthCheck extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    checkIntervalSec = registerOutput<int?>('checkIntervalSec');
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    healthyThreshold = registerOutput<int?>('healthyThreshold');
+    host = registerOutput<String?>('host');
+    this.name = registerOutput<String>('name');
+    port = registerOutput<int?>('port');
+    project = registerOutput<String>('project');
+    requestPath = registerOutput<String?>('requestPath');
+    selfLink = registerOutput<String>('selfLink');
+    timeoutSec = registerOutput<int?>('timeoutSec');
+    unhealthyThreshold = registerOutput<int?>('unhealthyThreshold');
+  }
+
+  /// Creates a typed reference to an existing [HttpHealthCheck] resource.
+  HttpHealthCheck.reference(String urn)
+    : super(
+        'gcp:compute/httpHealthCheck:HttpHealthCheck',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     checkIntervalSec = registerOutput<int?>('checkIntervalSec');
     creationTimestamp = registerOutput<String>('creationTimestamp');
     deletionPolicy = registerOutput<String>('deletionPolicy');

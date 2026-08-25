@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'app_hosting_backend_args.dart';
 import 'app_hosting_backend_codebase.dart';
+import 'app_hosting_backend_managed_resource.dart';
 import 'app_hosting_backend_state.dart';
 
 /// A Backend is the primary resource of App Hosting.
@@ -1276,7 +1277,7 @@ class AppHostingBackend extends pulumi.CustomResource {
   late final pulumi.Output<String> location;
   /// A list of the resources managed by this backend.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> managedResources;
+  late final pulumi.Output<List<AppHostingBackendManagedResource>> managedResources;
   /// Identifier. The resource name of the backend.
   /// Format:
   /// `projects/{project}/locations/{locationId}/backends/{backendId}`.
@@ -1315,9 +1316,10 @@ class AppHostingBackend extends pulumi.CustomResource {
           'gcp:firebase/appHostingBackend:AppHostingBackend',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
-    annotations = registerOutput<Map<String, String>?>('annotations');
+    annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     appId = registerOutput<String>('appId');
     backendId = registerOutput<String>('backendId');
     codebase = registerOutput<AppHostingBackendCodebase?>('codebase', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppHostingBackendCodebase.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -1325,16 +1327,16 @@ class AppHostingBackend extends pulumi.CustomResource {
     deleteTime = registerOutput<String>('deleteTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
-    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     environment = registerOutput<String?>('environment');
     etag = registerOutput<String>('etag');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
-    managedResources = registerOutput<List<Map<String, dynamic>>>('managedResources');
+    managedResources = registerOutput<List<AppHostingBackendManagedResource>>('managedResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AppHostingBackendManagedResource>(guardedValue, (value) => AppHostingBackendManagedResource.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     serviceAccount = registerOutput<String>('serviceAccount');
     servingLocality = registerOutput<String>('servingLocality');
     uid = registerOutput<String>('uid');
@@ -1347,11 +1349,12 @@ class AppHostingBackend extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AppHostingBackendState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AppHostingBackend._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1365,7 +1368,7 @@ class AppHostingBackend extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    annotations = registerOutput<Map<String, String>?>('annotations');
+    annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     appId = registerOutput<String>('appId');
     backendId = registerOutput<String>('backendId');
     codebase = registerOutput<AppHostingBackendCodebase?>('codebase', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppHostingBackendCodebase.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -1373,16 +1376,51 @@ class AppHostingBackend extends pulumi.CustomResource {
     deleteTime = registerOutput<String>('deleteTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
-    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     environment = registerOutput<String?>('environment');
     etag = registerOutput<String>('etag');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
-    managedResources = registerOutput<List<Map<String, dynamic>>>('managedResources');
+    managedResources = registerOutput<List<AppHostingBackendManagedResource>>('managedResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AppHostingBackendManagedResource>(guardedValue, (value) => AppHostingBackendManagedResource.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    serviceAccount = registerOutput<String>('serviceAccount');
+    servingLocality = registerOutput<String>('servingLocality');
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
+    uri = registerOutput<String>('uri');
+  }
+
+  /// Creates a typed reference to an existing [AppHostingBackend] resource.
+  AppHostingBackend.reference(String urn)
+    : super(
+        'gcp:firebase/appHostingBackend:AppHostingBackend',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    appId = registerOutput<String>('appId');
+    backendId = registerOutput<String>('backendId');
+    codebase = registerOutput<AppHostingBackendCodebase?>('codebase', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppHostingBackendCodebase.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createTime = registerOutput<String>('createTime');
+    deleteTime = registerOutput<String>('deleteTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    displayName = registerOutput<String?>('displayName');
+    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    environment = registerOutput<String?>('environment');
+    etag = registerOutput<String>('etag');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    managedResources = registerOutput<List<AppHostingBackendManagedResource>>('managedResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AppHostingBackendManagedResource>(guardedValue, (value) => AppHostingBackendManagedResource.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     serviceAccount = registerOutput<String>('serviceAccount');
     servingLocality = registerOutput<String>('servingLocality');
     uid = registerOutput<String>('uid');

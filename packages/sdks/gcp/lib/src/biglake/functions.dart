@@ -140,6 +140,17 @@ Future<GetHiveCatalogIamPolicyResult> getHiveCatalogIamPolicy(
   return GetHiveCatalogIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetHiveCatalogIamPolicyResult> getHiveCatalogIamPolicyOutput(
+  GetHiveCatalogIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:biglake/getHiveCatalogIamPolicy:getHiveCatalogIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetHiveCatalogIamPolicyResult.fromMap);
+}
+
 /// Retrieves the current IAM policy data for hivedatabase
 /// &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
 /// See Provider Versions for more details on beta resources.
@@ -273,6 +284,17 @@ Future<GetHiveDatabaseIamPolicyResult> getHiveDatabaseIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetHiveDatabaseIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetHiveDatabaseIamPolicyResult> getHiveDatabaseIamPolicyOutput(
+  GetHiveDatabaseIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:biglake/getHiveDatabaseIamPolicy:getHiveDatabaseIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetHiveDatabaseIamPolicyResult.fromMap);
 }
 
 /// Retrieves the current IAM policy data for hivetable
@@ -417,6 +439,17 @@ Future<GetHiveTableIamPolicyResult> getHiveTableIamPolicy(
   return GetHiveTableIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetHiveTableIamPolicyResult> getHiveTableIamPolicyOutput(
+  GetHiveTableIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:biglake/getHiveTableIamPolicy:getHiveTableIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetHiveTableIamPolicyResult.fromMap);
+}
+
 /// Retrieves the current IAM policy data for icebergcatalog
 ///
 ///
@@ -541,6 +574,17 @@ Future<GetIcebergCatalogIamPolicyResult> getIcebergCatalogIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetIcebergCatalogIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetIcebergCatalogIamPolicyResult> getIcebergCatalogIamPolicyOutput(
+  GetIcebergCatalogIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:biglake/getIcebergCatalogIamPolicy:getIcebergCatalogIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetIcebergCatalogIamPolicyResult.fromMap);
 }
 
 /// Retrieves the current IAM policy data for icebergnamespace
@@ -674,6 +718,17 @@ Future<GetIcebergNamespaceIamPolicyResult> getIcebergNamespaceIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetIcebergNamespaceIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetIcebergNamespaceIamPolicyResult> getIcebergNamespaceIamPolicyOutput(
+  GetIcebergNamespaceIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:biglake/getIcebergNamespaceIamPolicy:getIcebergNamespaceIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetIcebergNamespaceIamPolicyResult.fromMap);
 }
 
 /// Retrieves the current IAM policy data for icebergtable
@@ -814,4 +869,15 @@ Future<GetIcebergTableIamPolicyResult> getIcebergTableIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetIcebergTableIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetIcebergTableIamPolicyResult> getIcebergTableIamPolicyOutput(
+  GetIcebergTableIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:biglake/getIcebergTableIamPolicy:getIcebergTableIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetIcebergTableIamPolicyResult.fromMap);
 }

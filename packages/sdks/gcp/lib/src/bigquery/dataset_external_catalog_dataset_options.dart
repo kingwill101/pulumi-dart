@@ -5,10 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DatasetExternalCatalogDatasetOptions {
   /// The storage location URI for all tables in the dataset. Equivalent to hive metastore's
   /// database locationUri. Maximum length of 1024 characters.
-  final pulumi.Input<String>? defaultStorageLocationUri;
+  final pulumi.Input<String?>? defaultStorageLocationUri;
   /// A map of key value pairs defining the parameters and properties of the open source schema.
   /// Maximum size of 2Mib.
-  final pulumi.Input<Map<String, String>>? parameters;
+  final pulumi.Input<Map<String, String>?>? parameters;
 
   /// Creates a new [DatasetExternalCatalogDatasetOptions].
   /// [defaultStorageLocationUri] The storage location URI for all tables in the dataset. Equivalent to hive metastore's

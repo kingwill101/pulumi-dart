@@ -4,34 +4,34 @@
 /// Result data returned by getLocations.
 class GetLocationsResult {
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// The list of Cloud Run locations available for the given project.
-  final List<String> locations;
-  final String project;
+  final List<String>? locations;
+  final String? project;
 
   /// Creates a new [GetLocationsResult].
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [locations] The list of Cloud Run locations available for the given project.
-  /// [project] Required.
+  /// [project] Optional.
   const GetLocationsResult({
-    required this.id,
-    required this.locations,
-    required this.project,
+    this.id,
+    this.locations,
+    this.project,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'id': id,
-      'locations': locations,
-      'project': project,
+      'id': ?id,
+      'locations': ?locations,
+      'project': ?project,
     };
   }
 
   factory GetLocationsResult.fromMap(Map<String, dynamic> map) {
     return GetLocationsResult(
-      id: map['id'] as String,
-      locations: (map['locations'] as List).cast<String>(),
-      project: map['project'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      locations: (() { final guardedValue = map['locations']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

@@ -9,21 +9,21 @@ import 'ekm_connection_service_resolver.dart';
 /// {@macro pulumi_kms_ekm_connection_ekm_connection_args_doc}
 class EkmConnectionArgs {
   /// Optional. Identifies the EKM Crypto Space that this EkmConnection maps to. Note: This field is required if KeyManagementMode is CLOUD_KMS.
-  final pulumi.Input<String>? cryptoSpacePath;
+  final pulumi.Input<String?>? cryptoSpacePath;
   /// Optional. Etag of the currently stored EkmConnection.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// Optional. Describes who can perform control plane operations on the EKM. If unset, this defaults to MANUAL
   /// Default value is `MANUAL`.
   /// Possible values are: `MANUAL`, `CLOUD_KMS`.
-  final pulumi.Input<String>? keyManagementMode;
+  final pulumi.Input<String?>? keyManagementMode;
   /// The location for the EkmConnection.
   /// A full list of valid locations can be found by running `gcloud kms locations list`.
   final pulumi.Input<String> location;
   /// The resource name for the EkmConnection.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// A list of ServiceResolvers where the EKM can be reached. There should be one ServiceResolver per EKM replica. Currently, only a single ServiceResolver is supported
   /// Structure is documented below.
   final pulumi.Input<List<EkmConnectionServiceResolver>> serviceResolvers;

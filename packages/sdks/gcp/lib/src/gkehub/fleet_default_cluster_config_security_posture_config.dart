@@ -5,10 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FleetDefaultClusterConfigSecurityPostureConfig {
   /// Sets which mode to use for Security Posture features.
   /// Possible values are: `DISABLED`, `BASIC`, `ENTERPRISE`.
-  final pulumi.Input<String>? mode;
+  final pulumi.Input<String?>? mode;
   /// Sets which mode to use for vulnerability scanning.
   /// Possible values are: `VULNERABILITY_DISABLED`, `VULNERABILITY_BASIC`, `VULNERABILITY_ENTERPRISE`.
-  final pulumi.Input<String>? vulnerabilityMode;
+  final pulumi.Input<String?>? vulnerabilityMode;
 
   /// Creates a new [FleetDefaultClusterConfigSecurityPostureConfig].
   /// [mode] Sets which mode to use for Security Posture features.

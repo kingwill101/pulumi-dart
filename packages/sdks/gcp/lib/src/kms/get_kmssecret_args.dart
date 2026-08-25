@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_kms_get_kmssecret_get_kmssecret_args_doc}
 class GetKMSSecretArgs {
   /// The [additional authenticated data](https://cloud.google.com/kms/docs/additional-authenticated-data) used for integrity checks during encryption and decryption.
-  final pulumi.Input<String>? additionalAuthenticatedData;
+  final pulumi.Input<String?>? additionalAuthenticatedData;
   /// The ciphertext to be decrypted, encoded in base64
   final pulumi.Input<String> ciphertext;
   /// The id of the CryptoKey that will be used to

@@ -817,10 +817,10 @@ class ConsumerQuotaOverride extends pulumi.CustomResource {
           'gcp:serviceusage/consumerQuotaOverride:ConsumerQuotaOverride',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    dimensions = registerOutput<Map<String, String>?>('dimensions');
+    dimensions = registerOutput<Map<String, String>?>('dimensions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     force = registerOutput<bool?>('force');
     limit = registerOutput<String>('limit');
     metric = registerOutput<String>('metric');
@@ -835,11 +835,12 @@ class ConsumerQuotaOverride extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ConsumerQuotaOverrideState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ConsumerQuotaOverride._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -854,7 +855,27 @@ class ConsumerQuotaOverride extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    dimensions = registerOutput<Map<String, String>?>('dimensions');
+    dimensions = registerOutput<Map<String, String>?>('dimensions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    force = registerOutput<bool?>('force');
+    limit = registerOutput<String>('limit');
+    metric = registerOutput<String>('metric');
+    this.name = registerOutput<String>('name');
+    overrideValue = registerOutput<String>('overrideValue');
+    project = registerOutput<String>('project');
+    service = registerOutput<String>('service');
+  }
+
+  /// Creates a typed reference to an existing [ConsumerQuotaOverride] resource.
+  ConsumerQuotaOverride.reference(String urn)
+    : super(
+        'gcp:serviceusage/consumerQuotaOverride:ConsumerQuotaOverride',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    dimensions = registerOutput<Map<String, String>?>('dimensions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     force = registerOutput<bool?>('force');
     limit = registerOutput<String>('limit');
     metric = registerOutput<String>('metric');

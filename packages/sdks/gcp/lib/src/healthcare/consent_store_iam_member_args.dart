@@ -8,7 +8,7 @@ import 'consent_store_iam_member_condition.dart';
 /// {@endtemplate}
 /// {@macro pulumi_healthcare_consent_store_iam_member_consent_store_iam_member_args_doc}
 class ConsentStoreIamMemberArgs {
-  final pulumi.Input<ConsentStoreIamMemberCondition>? condition;
+  final pulumi.Input<ConsentStoreIamMemberCondition?>? condition;
   /// Used to find the parent resource to bind the IAM policy to
   final pulumi.Input<String> consentStoreId;
   /// Identifies the dataset addressed by this request. Must be in the format

@@ -8,14 +8,14 @@ import 'data_product_iam_member_condition.dart';
 /// {@endtemplate}
 /// {@macro pulumi_dataplex_data_product_iam_member_data_product_iam_member_args_doc}
 class DataProductIamMemberArgs {
-  final pulumi.Input<DataProductIamMemberCondition>? condition;
+  final pulumi.Input<DataProductIamMemberCondition?>? condition;
   /// Used to find the parent resource to bind the IAM policy to
   final pulumi.Input<String> dataProductId;
   /// The location for the data product.
   /// Used to find the parent resource to bind the IAM policy to. If not specified,
   /// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
   /// location is specified, it is taken from the provider configuration.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
   /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -31,7 +31,7 @@ class DataProductIamMemberArgs {
   final pulumi.Input<String> member;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The role that should be applied. Only one
   /// `gcp.dataplex.DataProductIamBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.

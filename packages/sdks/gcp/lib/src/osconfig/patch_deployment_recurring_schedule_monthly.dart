@@ -7,10 +7,10 @@ class PatchDeploymentRecurringScheduleMonthly {
   /// One day of the month. 1-31 indicates the 1st to the 31st day. -1 indicates the last day of the month.
   /// Months without the target day will be skipped. For example, a schedule to run "every month on the 31st"
   /// will not run in February, April, June, etc.
-  final pulumi.Input<int>? monthDay;
+  final pulumi.Input<int?>? monthDay;
   /// Week day in a month.
   /// Structure is documented below.
-  final pulumi.Input<PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth>? weekDayOfMonth;
+  final pulumi.Input<PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth?>? weekDayOfMonth;
 
   /// Creates a new [PatchDeploymentRecurringScheduleMonthly].
   /// [monthDay] One day of the month. 1-31 indicates the 1st to the 31st day. -1 indicates the last day of the month.
@@ -29,7 +29,7 @@ class PatchDeploymentRecurringScheduleMonthly {
 
   factory PatchDeploymentRecurringScheduleMonthly.fromMap(Map<String, dynamic> map) {
     return PatchDeploymentRecurringScheduleMonthly(
-      monthDay: (() { final guardedValue = map['monthDay']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      monthDay: (() { final guardedValue = map['monthDay']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       weekDayOfMonth: (() { final guardedValue = map['weekDayOfMonth']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

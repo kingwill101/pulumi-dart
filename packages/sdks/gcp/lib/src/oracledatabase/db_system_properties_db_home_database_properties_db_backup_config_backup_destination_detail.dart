@@ -10,7 +10,7 @@ class DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationD
   /// OBJECT_STORE
   /// LOCAL
   /// DBRS
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetail].
   /// [type] The type of the database backup destination.

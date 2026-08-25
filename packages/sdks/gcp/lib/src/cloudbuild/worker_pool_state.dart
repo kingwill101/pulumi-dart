@@ -11,43 +11,43 @@ class WorkerPoolState {
   ///
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
-  final pulumi.Input<Map<String, String>>? annotations;
+  final pulumi.Input<Map<String, String>?>? annotations;
   /// Output only. Time at which the request to create the `WorkerPool` was received.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Output only. Time at which the request to delete the `WorkerPool` was received.
-  final pulumi.Input<String>? deleteTime;
+  final pulumi.Input<String?>? deleteTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveAnnotations;
+  final pulumi.Input<Map<String, String>?>? effectiveAnnotations;
   /// The location for the resource
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// User-defined name of the `WorkerPool`.
   ///
   ///
   /// - - -
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Network configuration for the `WorkerPool`. Structure is documented below.
-  final pulumi.Input<WorkerPoolNetworkConfig>? networkConfig;
+  final pulumi.Input<WorkerPoolNetworkConfig?>? networkConfig;
   /// Private Service Connect configuration for the pool.
-  final pulumi.Input<WorkerPoolPrivateServiceConnect>? privateServiceConnect;
+  final pulumi.Input<WorkerPoolPrivateServiceConnect?>? privateServiceConnect;
   /// The project for the resource
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Output only. WorkerPool state. Possible values: STATE_UNSPECIFIED, PENDING, APPROVED, REJECTED, CANCELLED
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// Output only. A unique identifier for the `WorkerPool`.
-  final pulumi.Input<String>? uid;
+  final pulumi.Input<String?>? uid;
   /// Output only. Time at which the request to update the `WorkerPool` was received.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
   /// Configuration to be used for a creating workers in the `WorkerPool`. Structure is documented below.
-  final pulumi.Input<WorkerPoolWorkerConfig>? workerConfig;
+  final pulumi.Input<WorkerPoolWorkerConfig?>? workerConfig;
 
   /// Creates a new [WorkerPoolState].
   /// [annotations] User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size limitations.

@@ -13,13 +13,13 @@ class AccessPolicyArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The parent of this AccessPolicy in the Cloud Resource Hierarchy.
   /// Format: 'organizations/{{organization_id}}'
   final pulumi.Input<String> parent;
   /// Folder or project on which this policy is applicable.
   /// Format: 'folders/{{folder_id}}' or 'projects/{{project_number}}'
-  final pulumi.Input<String>? scopes;
+  final pulumi.Input<String?>? scopes;
   /// Human readable title. Does not affect behavior.
   final pulumi.Input<String> title;
 

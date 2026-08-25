@@ -13,10 +13,10 @@ class GetAppConnectorArgs {
   final pulumi.Input<String> name;
   /// The project in which the resource belongs. If it
   /// is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The region in which the resource belongs. If it
   /// is not provided, the provider region is used.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [GetAppConnectorArgs].
   /// [name] The name of the App Connector.

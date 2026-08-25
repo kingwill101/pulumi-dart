@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'hl7_store_args.dart';
 import 'hl7_store_notification_config.dart';
+import 'hl7_store_notification_configs.dart';
 import 'hl7_store_parser_config.dart';
 import 'hl7_store_state.dart';
 
@@ -1128,7 +1129,7 @@ class Hl7Store extends pulumi.CustomResource {
   /// message (both Ingest & Create) on the corresponding notification destination. Only the message name
   /// is sent as part of the notification. Supplied by the client.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> notificationConfigs;
+  late final pulumi.Output<List<Hl7StoreNotificationConfigs>?> notificationConfigs;
   /// A nested object resource.
   /// Structure is documented below.
   late final pulumi.Output<Hl7StoreParserConfig> parserConfig;
@@ -1152,17 +1153,18 @@ class Hl7Store extends pulumi.CustomResource {
           'gcp:healthcare/hl7Store:Hl7Store',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     dataset = registerOutput<String>('dataset');
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    labels = registerOutput<Map<String, String>?>('labels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     notificationConfig = registerOutput<Hl7StoreNotificationConfig?>('notificationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return Hl7StoreNotificationConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    notificationConfigs = registerOutput<List<Map<String, dynamic>>?>('notificationConfigs');
+    notificationConfigs = registerOutput<List<Hl7StoreNotificationConfigs>?>('notificationConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<Hl7StoreNotificationConfigs>(guardedValue, (value) => Hl7StoreNotificationConfigs.fromMap((value as Map).cast<String, dynamic>())); });
     parserConfig = registerOutput<Hl7StoreParserConfig>('parserConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return Hl7StoreParserConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     rejectDuplicateMessage = registerOutput<bool?>('rejectDuplicateMessage');
     selfLink = registerOutput<String>('selfLink');
   }
@@ -1172,11 +1174,12 @@ class Hl7Store extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     Hl7StoreState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Hl7Store._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1192,13 +1195,36 @@ class Hl7Store extends pulumi.CustomResource {
         ) {
     dataset = registerOutput<String>('dataset');
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    labels = registerOutput<Map<String, String>?>('labels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     notificationConfig = registerOutput<Hl7StoreNotificationConfig?>('notificationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return Hl7StoreNotificationConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    notificationConfigs = registerOutput<List<Map<String, dynamic>>?>('notificationConfigs');
+    notificationConfigs = registerOutput<List<Hl7StoreNotificationConfigs>?>('notificationConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<Hl7StoreNotificationConfigs>(guardedValue, (value) => Hl7StoreNotificationConfigs.fromMap((value as Map).cast<String, dynamic>())); });
     parserConfig = registerOutput<Hl7StoreParserConfig>('parserConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return Hl7StoreParserConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    rejectDuplicateMessage = registerOutput<bool?>('rejectDuplicateMessage');
+    selfLink = registerOutput<String>('selfLink');
+  }
+
+  /// Creates a typed reference to an existing [Hl7Store] resource.
+  Hl7Store.reference(String urn)
+    : super(
+        'gcp:healthcare/hl7Store:Hl7Store',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    dataset = registerOutput<String>('dataset');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    this.name = registerOutput<String>('name');
+    notificationConfig = registerOutput<Hl7StoreNotificationConfig?>('notificationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return Hl7StoreNotificationConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    notificationConfigs = registerOutput<List<Hl7StoreNotificationConfigs>?>('notificationConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<Hl7StoreNotificationConfigs>(guardedValue, (value) => Hl7StoreNotificationConfigs.fromMap((value as Map).cast<String, dynamic>())); });
+    parserConfig = registerOutput<Hl7StoreParserConfig>('parserConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return Hl7StoreParserConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     rejectDuplicateMessage = registerOutput<bool?>('rejectDuplicateMessage');
     selfLink = registerOutput<String>('selfLink');
   }

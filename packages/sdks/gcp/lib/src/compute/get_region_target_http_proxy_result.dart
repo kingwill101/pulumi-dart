@@ -3,74 +3,74 @@
 
 /// Result data returned by getRegionTargetHttpProxy.
 class GetRegionTargetHttpProxyResult {
-  final String creationTimestamp;
-  final String deletionPolicy;
-  final String description;
-  final int httpKeepAliveTimeoutSec;
+  final String? creationTimestamp;
+  final String? deletionPolicy;
+  final String? description;
+  final int? httpKeepAliveTimeoutSec;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final String name;
+  final String? id;
+  final String? name;
   final String? project;
-  final int proxyId;
+  final int? proxyId;
   final String? region;
-  final String selfLink;
-  final String urlMap;
+  final String? selfLink;
+  final String? urlMap;
 
   /// Creates a new [GetRegionTargetHttpProxyResult].
-  /// [creationTimestamp] Required.
-  /// [deletionPolicy] Required.
-  /// [description] Required.
-  /// [httpKeepAliveTimeoutSec] Required.
+  /// [creationTimestamp] Optional.
+  /// [deletionPolicy] Optional.
+  /// [description] Optional.
+  /// [httpKeepAliveTimeoutSec] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [name] Required.
+  /// [name] Optional.
   /// [project] Optional.
-  /// [proxyId] Required.
+  /// [proxyId] Optional.
   /// [region] Optional.
-  /// [selfLink] Required.
-  /// [urlMap] Required.
+  /// [selfLink] Optional.
+  /// [urlMap] Optional.
   const GetRegionTargetHttpProxyResult({
-    required this.creationTimestamp,
-    required this.deletionPolicy,
-    required this.description,
-    required this.httpKeepAliveTimeoutSec,
-    required this.id,
-    required this.name,
+    this.creationTimestamp,
+    this.deletionPolicy,
+    this.description,
+    this.httpKeepAliveTimeoutSec,
+    this.id,
+    this.name,
     this.project,
-    required this.proxyId,
+    this.proxyId,
     this.region,
-    required this.selfLink,
-    required this.urlMap,
+    this.selfLink,
+    this.urlMap,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'creationTimestamp': creationTimestamp,
-      'deletionPolicy': deletionPolicy,
-      'description': description,
-      'httpKeepAliveTimeoutSec': httpKeepAliveTimeoutSec,
-      'id': id,
-      'name': name,
+      'creationTimestamp': ?creationTimestamp,
+      'deletionPolicy': ?deletionPolicy,
+      'description': ?description,
+      'httpKeepAliveTimeoutSec': ?httpKeepAliveTimeoutSec,
+      'id': ?id,
+      'name': ?name,
       'project': ?project,
-      'proxyId': proxyId,
+      'proxyId': ?proxyId,
       'region': ?region,
-      'selfLink': selfLink,
-      'urlMap': urlMap,
+      'selfLink': ?selfLink,
+      'urlMap': ?urlMap,
     };
   }
 
   factory GetRegionTargetHttpProxyResult.fromMap(Map<String, dynamic> map) {
     return GetRegionTargetHttpProxyResult(
-      creationTimestamp: map['creationTimestamp'] as String,
-      deletionPolicy: map['deletionPolicy'] as String,
-      description: map['description'] as String,
-      httpKeepAliveTimeoutSec: map['httpKeepAliveTimeoutSec'] as int,
-      id: map['id'] as String,
-      name: map['name'] as String,
+      creationTimestamp: (() { final guardedValue = map['creationTimestamp']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      httpKeepAliveTimeoutSec: (() { final guardedValue = map['httpKeepAliveTimeoutSec']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      proxyId: map['proxyId'] as int,
+      proxyId: (() { final guardedValue = map['proxyId']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      selfLink: map['selfLink'] as String,
-      urlMap: map['urlMap'] as String,
+      selfLink: (() { final guardedValue = map['selfLink']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      urlMap: (() { final guardedValue = map['urlMap']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

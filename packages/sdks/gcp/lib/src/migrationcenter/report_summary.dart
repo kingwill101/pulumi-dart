@@ -8,11 +8,11 @@ class ReportSummary {
   /// (Output)
   /// Aggregate statistics for a collection of assets.
   /// Structure is documented below.
-  final pulumi.Input<List<ReportSummaryAllAssetsStat>>? allAssetsStats;
+  final pulumi.Input<List<ReportSummaryAllAssetsStat>?>? allAssetsStats;
   /// (Output)
   /// Findings for each Group included in this report.
   /// Structure is documented below.
-  final pulumi.Input<List<ReportSummaryGroupFinding>>? groupFindings;
+  final pulumi.Input<List<ReportSummaryGroupFinding>?>? groupFindings;
 
   /// Creates a new [ReportSummary].
   /// [allAssetsStats] (Output)

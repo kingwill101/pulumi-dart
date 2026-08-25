@@ -6,34 +6,34 @@ import 'get_interconnect_locations_location.dart';
 /// Result data returned by getInterconnectLocations.
 class GetInterconnectLocationsResult {
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// A list of interconnect locations. Each location will have the following attributes:
-  final List<GetInterconnectLocationsLocation> locations;
-  final String project;
+  final List<GetInterconnectLocationsLocation>? locations;
+  final String? project;
 
   /// Creates a new [GetInterconnectLocationsResult].
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [locations] A list of interconnect locations. Each location will have the following attributes:
-  /// [project] Required.
+  /// [project] Optional.
   const GetInterconnectLocationsResult({
-    required this.id,
-    required this.locations,
-    required this.project,
+    this.id,
+    this.locations,
+    this.project,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'id': id,
-      'locations': pulumi.Input.encodeList<GetInterconnectLocationsLocation, Map<String, dynamic>>(locations, (value) => value.toMap()),
-      'project': project,
+      'id': ?id,
+      'locations': ?(() { final guardedValue = locations; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetInterconnectLocationsLocation, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'project': ?project,
     };
   }
 
   factory GetInterconnectLocationsResult.fromMap(Map<String, dynamic> map) {
     return GetInterconnectLocationsResult(
-      id: map['id'] as String,
-      locations: pulumi.Input.decodeList<GetInterconnectLocationsLocation>(map['locations']!, (value) => GetInterconnectLocationsLocation.fromMap((value as Map).cast<String, dynamic>())),
-      project: map['project'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      locations: (() { final guardedValue = map['locations']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetInterconnectLocationsLocation>(guardedValue, (value) => GetInterconnectLocationsLocation.fromMap((value as Map).cast<String, dynamic>())); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

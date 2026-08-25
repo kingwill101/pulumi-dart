@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UptimeCheckConfigHttpCheckServiceAgentAuthentication {
   /// The type of authentication to use.
   /// Possible values are: `SERVICE_AGENT_AUTHENTICATION_TYPE_UNSPECIFIED`, `OIDC_TOKEN`.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [UptimeCheckConfigHttpCheckServiceAgentAuthentication].
   /// [type] The type of authentication to use.

@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AiFeatureOnlineStoreEmbeddingManagement {
   /// Enable embedding management.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
 
   /// Creates a new [AiFeatureOnlineStoreEmbeddingManagement].
   /// [enabled] Enable embedding management.

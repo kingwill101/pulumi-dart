@@ -6,29 +6,29 @@ import 'get_uptime_check_ips_uptime_check_ip.dart';
 /// Result data returned by getUptimeCheckIPs.
 class GetUptimeCheckIPsResult {
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// A list of uptime check IPs used by Stackdriver Monitoring. Each `uptimeCheckIp` contains:
-  final List<GetUptimeCheckIPsUptimeCheckIp> uptimeCheckIps;
+  final List<GetUptimeCheckIPsUptimeCheckIp>? uptimeCheckIps;
 
   /// Creates a new [GetUptimeCheckIPsResult].
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [uptimeCheckIps] A list of uptime check IPs used by Stackdriver Monitoring. Each `uptimeCheckIp` contains:
   const GetUptimeCheckIPsResult({
-    required this.id,
-    required this.uptimeCheckIps,
+    this.id,
+    this.uptimeCheckIps,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'id': id,
-      'uptimeCheckIps': pulumi.Input.encodeList<GetUptimeCheckIPsUptimeCheckIp, Map<String, dynamic>>(uptimeCheckIps, (value) => value.toMap()),
+      'id': ?id,
+      'uptimeCheckIps': ?(() { final guardedValue = uptimeCheckIps; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetUptimeCheckIPsUptimeCheckIp, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
     };
   }
 
   factory GetUptimeCheckIPsResult.fromMap(Map<String, dynamic> map) {
     return GetUptimeCheckIPsResult(
-      id: map['id'] as String,
-      uptimeCheckIps: pulumi.Input.decodeList<GetUptimeCheckIPsUptimeCheckIp>(map['uptimeCheckIps']!, (value) => GetUptimeCheckIPsUptimeCheckIp.fromMap((value as Map).cast<String, dynamic>())),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      uptimeCheckIps: (() { final guardedValue = map['uptimeCheckIps']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetUptimeCheckIPsUptimeCheckIp>(guardedValue, (value) => GetUptimeCheckIPsUptimeCheckIp.fromMap((value as Map).cast<String, dynamic>())); })(),
     );
   }
 }

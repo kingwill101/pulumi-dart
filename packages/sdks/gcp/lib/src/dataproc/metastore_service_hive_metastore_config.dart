@@ -11,17 +11,17 @@ class MetastoreServiceHiveMetastoreConfig {
   /// The key is the auxiliary service name and it must match the regular expression a-z?.
   /// This means that the first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
   /// Structure is documented below.
-  final pulumi.Input<List<MetastoreServiceHiveMetastoreConfigAuxiliaryVersion>>? auxiliaryVersions;
+  final pulumi.Input<List<MetastoreServiceHiveMetastoreConfigAuxiliaryVersion>?>? auxiliaryVersions;
   /// A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml).
   /// The mappings override system defaults (some keys cannot be overridden)
-  final pulumi.Input<Map<String, String>>? configOverrides;
+  final pulumi.Input<Map<String, String>?>? configOverrides;
   /// The protocol to use for the metastore service endpoint. If unspecified, defaults to `THRIFT`.
   /// Default value is `THRIFT`.
   /// Possible values are: `THRIFT`, `GRPC`.
-  final pulumi.Input<String>? endpointProtocol;
+  final pulumi.Input<String?>? endpointProtocol;
   /// Information used to configure the Hive metastore service as a service principal in a Kerberos realm.
   /// Structure is documented below.
-  final pulumi.Input<MetastoreServiceHiveMetastoreConfigKerberosConfig>? kerberosConfig;
+  final pulumi.Input<MetastoreServiceHiveMetastoreConfigKerberosConfig?>? kerberosConfig;
   /// The Hive metastore schema version.
   final pulumi.Input<String> version;
 

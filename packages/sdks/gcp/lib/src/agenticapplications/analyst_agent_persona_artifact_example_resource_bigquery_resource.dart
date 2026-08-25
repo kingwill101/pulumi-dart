@@ -6,15 +6,15 @@ class AnalystAgentPersonaArtifactExampleResourceBigqueryResource {
   /// Points to a bigquery dataset to use.
   /// Expected Format:
   /// projects/{project_id_or_number}/datasets/{dataset_id}
-  final pulumi.Input<String>? bigqueryDataset;
+  final pulumi.Input<String?>? bigqueryDataset;
   /// Points to a bigquery table to use.
   /// Expected Format:
   /// projects/{project_id_or_number}/datasets/{dataset_id}/tables/{table_id}
-  final pulumi.Input<String>? bigqueryTable;
+  final pulumi.Input<String?>? bigqueryTable;
   /// A map of column names to column descriptions for the bigquery_table.
   ///
   /// &lt;a name="nestedArtifactExamplesResourceF1Resource"&gt;&lt;/a&gt;The `f1Resource` block supports:
-  final pulumi.Input<Map<String, String>>? columnDescriptions;
+  final pulumi.Input<Map<String, String>?>? columnDescriptions;
 
   /// Creates a new [AnalystAgentPersonaArtifactExampleResourceBigqueryResource].
   /// [bigqueryDataset] Points to a bigquery dataset to use.

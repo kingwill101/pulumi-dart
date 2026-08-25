@@ -6,13 +6,13 @@ import 'ai_feature_online_store_dedicated_serving_endpoint_private_service_conne
 class AiFeatureOnlineStoreDedicatedServingEndpoint {
   /// Private service connect config.
   /// Structure is documented below.
-  final pulumi.Input<AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfig>? privateServiceConnectConfig;
+  final pulumi.Input<AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfig?>? privateServiceConnectConfig;
   /// (Output)
   /// Domain name to use for this FeatureOnlineStore
-  final pulumi.Input<String>? publicEndpointDomainName;
+  final pulumi.Input<String?>? publicEndpointDomainName;
   /// (Output)
   /// Name of the service attachment resource. Applicable only if private service connect is enabled and after FeatureViewSync is created.
-  final pulumi.Input<String>? serviceAttachment;
+  final pulumi.Input<String?>? serviceAttachment;
 
   /// Creates a new [AiFeatureOnlineStoreDedicatedServingEndpoint].
   /// [privateServiceConnectConfig] Private service connect config.

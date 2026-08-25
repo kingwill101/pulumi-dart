@@ -11,34 +11,34 @@ import 'certificate_certificate_description_x509_description.dart';
 class CertificateCertificateDescription {
   /// (Output)
   /// Describes lists of issuer CA certificate URLs that appear in the "Authority Information Access" extension in the certificate.
-  final pulumi.Input<List<String>>? aiaIssuingCertificateUrls;
+  final pulumi.Input<List<String>?>? aiaIssuingCertificateUrls;
   /// (Output)
   /// Identifies the subjectKeyId of the parent certificate, per https://tools.ietf.org/html/rfc5280#section-4.2.1.1
   /// Structure is documented below.
-  final pulumi.Input<List<CertificateCertificateDescriptionAuthorityKeyId>>? authorityKeyIds;
+  final pulumi.Input<List<CertificateCertificateDescriptionAuthorityKeyId>?>? authorityKeyIds;
   /// (Output)
   /// The hash of the x.509 certificate.
   /// Structure is documented below.
-  final pulumi.Input<List<CertificateCertificateDescriptionCertFingerprint>>? certFingerprints;
+  final pulumi.Input<List<CertificateCertificateDescriptionCertFingerprint>?>? certFingerprints;
   /// (Output)
   /// Describes a list of locations to obtain CRL information, i.e. the DistributionPoint.fullName described by https://tools.ietf.org/html/rfc5280#section-4.2.1.13
-  final pulumi.Input<List<String>>? crlDistributionPoints;
+  final pulumi.Input<List<String>?>? crlDistributionPoints;
   /// (Output)
   /// A PublicKey describes a public key.
   /// Structure is documented below.
-  final pulumi.Input<List<CertificateCertificateDescriptionPublicKey>>? publicKeys;
+  final pulumi.Input<List<CertificateCertificateDescriptionPublicKey>?>? publicKeys;
   /// (Output)
   /// Describes some of the values in a certificate that are related to the subject and lifetime.
   /// Structure is documented below.
-  final pulumi.Input<List<CertificateCertificateDescriptionSubjectDescription>>? subjectDescriptions;
+  final pulumi.Input<List<CertificateCertificateDescriptionSubjectDescription>?>? subjectDescriptions;
   /// (Output)
   /// Provides a means of identifiying certificates that contain a particular public key, per https://tools.ietf.org/html/rfc5280#section-4.2.1.2.
   /// Structure is documented below.
-  final pulumi.Input<List<CertificateCertificateDescriptionSubjectKeyId>>? subjectKeyIds;
+  final pulumi.Input<List<CertificateCertificateDescriptionSubjectKeyId>?>? subjectKeyIds;
   /// (Output)
   /// A structured description of the issued X.509 certificate.
   /// Structure is documented below.
-  final pulumi.Input<List<CertificateCertificateDescriptionX509Description>>? x509Descriptions;
+  final pulumi.Input<List<CertificateCertificateDescriptionX509Description>?>? x509Descriptions;
 
   /// Creates a new [CertificateCertificateDescription].
   /// [aiaIssuingCertificateUrls] (Output)

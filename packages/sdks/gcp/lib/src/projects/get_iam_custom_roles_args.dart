@@ -8,11 +8,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_projects_get_iam_custom_roles_get_iam_custom_roles_args_doc}
 class GetIamCustomRolesArgs {
   /// The project were the custom role has been created in. Defaults to the provider project configuration.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Include Roles that have been deleted. Defaults to `false`.
-  final pulumi.Input<bool>? showDeleted;
+  final pulumi.Input<bool?>? showDeleted;
   /// When `"FULL"` is specified, the `permissions` field is returned, which includes a list of all permissions in the role. The default value is `"BASIC"`, which does not return the `permissions`.
-  final pulumi.Input<String>? view;
+  final pulumi.Input<String?>? view;
 
   /// Creates a new [GetIamCustomRolesArgs].
   /// [project] The project were the custom role has been created in. Defaults to the provider project configuration.

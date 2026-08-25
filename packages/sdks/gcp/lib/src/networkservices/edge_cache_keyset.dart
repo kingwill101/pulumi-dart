@@ -1,6 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'edge_cache_keyset_args.dart';
+import 'edge_cache_keyset_public_key.dart';
 import 'edge_cache_keyset_state.dart';
+import 'edge_cache_keyset_validation_shared_key.dart';
 
 /// EdgeCacheKeyset represents a collection of public keys used for validating signed requests.
 ///
@@ -499,7 +501,7 @@ class EdgeCacheKeyset extends pulumi.CustomResource {
   /// Ed25519 public keys are not secret, and only allow Google to validate a request was signed by your corresponding private key.
   /// Ensure that the private key is kept secret, and that only authorized users can add public keys to a keyset.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> publicKeys;
+  late final pulumi.Output<List<EdgeCacheKeysetPublicKey>?> publicKeys;
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
@@ -508,7 +510,7 @@ class EdgeCacheKeyset extends pulumi.CustomResource {
   /// You can rotate keys by appending (pushing) a new key to the list of `validationSharedKeys` and removing any superseded keys.
   /// You must specify `publicKeys` or `validationSharedKeys` (or both). The keys in `publicKeys` are checked first.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> validationSharedKeys;
+  late final pulumi.Output<List<EdgeCacheKeysetValidationSharedKey>?> validationSharedKeys;
 
   /// Creates a new [EdgeCacheKeyset].
   /// [name] The Pulumi resource name.
@@ -522,17 +524,18 @@ class EdgeCacheKeyset extends pulumi.CustomResource {
           'gcp:networkservices/edgeCacheKeyset:EdgeCacheKeyset',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    labels = registerOutput<Map<String, String>?>('labels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    publicKeys = registerOutput<List<Map<String, dynamic>>?>('publicKeys');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    validationSharedKeys = registerOutput<List<Map<String, dynamic>>?>('validationSharedKeys');
+    publicKeys = registerOutput<List<EdgeCacheKeysetPublicKey>?>('publicKeys', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EdgeCacheKeysetPublicKey>(guardedValue, (value) => EdgeCacheKeysetPublicKey.fromMap((value as Map).cast<String, dynamic>())); });
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    validationSharedKeys = registerOutput<List<EdgeCacheKeysetValidationSharedKey>?>('validationSharedKeys', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EdgeCacheKeysetValidationSharedKey>(guardedValue, (value) => EdgeCacheKeysetValidationSharedKey.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [EdgeCacheKeyset] resource's state with the given [name] and [id].
@@ -540,11 +543,12 @@ class EdgeCacheKeyset extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EdgeCacheKeysetState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return EdgeCacheKeyset._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -560,12 +564,33 @@ class EdgeCacheKeyset extends pulumi.CustomResource {
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    labels = registerOutput<Map<String, String>?>('labels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    publicKeys = registerOutput<List<Map<String, dynamic>>?>('publicKeys');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    validationSharedKeys = registerOutput<List<Map<String, dynamic>>?>('validationSharedKeys');
+    publicKeys = registerOutput<List<EdgeCacheKeysetPublicKey>?>('publicKeys', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EdgeCacheKeysetPublicKey>(guardedValue, (value) => EdgeCacheKeysetPublicKey.fromMap((value as Map).cast<String, dynamic>())); });
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    validationSharedKeys = registerOutput<List<EdgeCacheKeysetValidationSharedKey>?>('validationSharedKeys', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EdgeCacheKeysetValidationSharedKey>(guardedValue, (value) => EdgeCacheKeysetValidationSharedKey.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [EdgeCacheKeyset] resource.
+  EdgeCacheKeyset.reference(String urn)
+    : super(
+        'gcp:networkservices/edgeCacheKeyset:EdgeCacheKeyset',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    publicKeys = registerOutput<List<EdgeCacheKeysetPublicKey>?>('publicKeys', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EdgeCacheKeysetPublicKey>(guardedValue, (value) => EdgeCacheKeysetPublicKey.fromMap((value as Map).cast<String, dynamic>())); });
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    validationSharedKeys = registerOutput<List<EdgeCacheKeysetValidationSharedKey>?>('validationSharedKeys', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EdgeCacheKeysetValidationSharedKey>(guardedValue, (value) => EdgeCacheKeysetValidationSharedKey.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

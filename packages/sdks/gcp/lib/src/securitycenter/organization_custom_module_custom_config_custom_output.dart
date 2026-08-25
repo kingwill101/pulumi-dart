@@ -6,7 +6,7 @@ import 'organization_custom_module_custom_config_custom_output_property.dart';
 class OrganizationCustomModuleCustomConfigCustomOutput {
   /// A list of custom output properties to add to the finding.
   /// Structure is documented below.
-  final pulumi.Input<List<OrganizationCustomModuleCustomConfigCustomOutputProperty>>? properties;
+  final pulumi.Input<List<OrganizationCustomModuleCustomConfigCustomOutputProperty>?>? properties;
 
   /// Creates a new [OrganizationCustomModuleCustomConfigCustomOutput].
   /// [properties] A list of custom output properties to add to the finding.

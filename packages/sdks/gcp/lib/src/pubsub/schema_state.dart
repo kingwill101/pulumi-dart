@@ -11,25 +11,25 @@ class SchemaState {
   /// A schema can only have up to 20 revisions, so updates that fail with an
   /// error indicating that the limit has been reached require manually
   /// [deleting old revisions](https://cloud.google.com/pubsub/docs/delete-schema-revision).
-  final pulumi.Input<String>? definition;
+  final pulumi.Input<String?>? definition;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The ID to use for the schema, which will become the final component of the schema's resource name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Output only. The revision ID of the schema.
-  final pulumi.Input<String>? revisionId;
+  final pulumi.Input<String?>? revisionId;
   /// The type of the schema definition
   /// Default value is `TYPE_UNSPECIFIED`.
   /// Possible values are: `TYPE_UNSPECIFIED`, `PROTOCOL_BUFFER`, `AVRO`.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [SchemaState].
   /// [definition] The definition of the schema.

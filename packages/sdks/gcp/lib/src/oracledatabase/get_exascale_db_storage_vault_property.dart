@@ -78,7 +78,7 @@ class GetExascaleDbStorageVaultProperty {
 
   factory GetExascaleDbStorageVaultProperty.fromMap(Map<String, dynamic> map) {
     return GetExascaleDbStorageVaultProperty(
-      additionalFlashCachePercent: pulumi.Input.fromValue(map['additionalFlashCachePercent'] as int),
+      additionalFlashCachePercent: pulumi.Input.fromValue((map['additionalFlashCachePercent'] as num).toInt()),
       attachedShapeAttributes: pulumi.Input.fromValue((map['attachedShapeAttributes'] as List).cast<String>()),
       availableShapeAttributes: pulumi.Input.fromValue((map['availableShapeAttributes'] as List).cast<String>()),
       exascaleDbStorageDetails: pulumi.Input.fromValue(pulumi.Input.decodeList<GetExascaleDbStorageVaultPropertyExascaleDbStorageDetail>(map['exascaleDbStorageDetails']!, (value) => GetExascaleDbStorageVaultPropertyExascaleDbStorageDetail.fromMap((value as Map).cast<String, dynamic>()))),
@@ -86,7 +86,7 @@ class GetExascaleDbStorageVaultProperty {
       ocid: pulumi.Input.fromValue(map['ocid'] as String),
       state: pulumi.Input.fromValue(map['state'] as String),
       timeZones: pulumi.Input.fromValue(pulumi.Input.decodeList<GetExascaleDbStorageVaultPropertyTimeZone>(map['timeZones']!, (value) => GetExascaleDbStorageVaultPropertyTimeZone.fromMap((value as Map).cast<String, dynamic>()))),
-      vmClusterCount: pulumi.Input.fromValue(map['vmClusterCount'] as int),
+      vmClusterCount: pulumi.Input.fromValue((map['vmClusterCount'] as num).toInt()),
       vmClusterIds: pulumi.Input.fromValue((map['vmClusterIds'] as List).cast<String>()),
     );
   }

@@ -11,46 +11,46 @@ import 'trigger_build_step.dart';
 class TriggerBuild {
   /// Artifacts produced by the build that should be uploaded upon successful completion of all build steps.
   /// Structure is documented below.
-  final pulumi.Input<TriggerBuildArtifacts>? artifacts;
+  final pulumi.Input<TriggerBuildArtifacts?>? artifacts;
   /// Secrets and secret environment variables.
   /// Structure is documented below.
-  final pulumi.Input<TriggerBuildAvailableSecrets>? availableSecrets;
+  final pulumi.Input<TriggerBuildAvailableSecrets?>? availableSecrets;
   /// A list of images to be pushed upon the successful completion of all build steps.
   /// The images are pushed using the builder service account's credentials.
   /// The digests of the pushed images will be stored in the Build resource's results field.
   /// If any of the images fail to be pushed, the build status is marked FAILURE.
-  final pulumi.Input<List<String>>? images;
+  final pulumi.Input<List<String>?>? images;
   /// Google Cloud Storage bucket where logs should be written.
   /// Logs file names will be of the format ${logsBucket}/log-${build_id}.txt.
-  final pulumi.Input<String>? logsBucket;
+  final pulumi.Input<String?>? logsBucket;
   /// Special options for this build.
   /// Structure is documented below.
-  final pulumi.Input<TriggerBuildOptions>? options;
+  final pulumi.Input<TriggerBuildOptions?>? options;
   /// TTL in queue for this build. If provided and the build is enqueued longer than this value,
   /// the build will expire and the build status will be EXPIRED.
   /// The TTL starts ticking from createTime.
   /// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
-  final pulumi.Input<String>? queueTtl;
+  final pulumi.Input<String?>? queueTtl;
   /// Secrets to decrypt using Cloud Key Management Service.
   /// Structure is documented below.
-  final pulumi.Input<List<TriggerBuildSecret>>? secrets;
+  final pulumi.Input<List<TriggerBuildSecret>?>? secrets;
   /// The location of the source files to build.
   /// One of `storageSource` or `repoSource` must be provided.
   /// Structure is documented below.
-  final pulumi.Input<TriggerBuildSource>? source;
+  final pulumi.Input<TriggerBuildSource?>? source;
   /// The operations to be performed on the workspace.
   /// Structure is documented below.
   final pulumi.Input<List<TriggerBuildStep>> steps;
   /// Substitutions data for Build resource.
-  final pulumi.Input<Map<String, String>>? substitutions;
+  final pulumi.Input<Map<String, String>?>? substitutions;
   /// Tags for annotation of a Build. These are not docker tags.
-  final pulumi.Input<List<String>>? tags;
+  final pulumi.Input<List<String>?>? tags;
   /// Amount of time that this build should be allowed to run, to second granularity.
   /// If this amount of time elapses, work on the build will cease and the build status will be TIMEOUT.
   /// This timeout must be equal to or greater than the sum of the timeouts for build steps within the build.
   /// The expected format is the number of seconds followed by s.
   /// Default time is ten minutes (600s).
-  final pulumi.Input<String>? timeout;
+  final pulumi.Input<String?>? timeout;
 
   /// Creates a new [TriggerBuild].
   /// [artifacts] Artifacts produced by the build that should be uploaded upon successful completion of all build steps.

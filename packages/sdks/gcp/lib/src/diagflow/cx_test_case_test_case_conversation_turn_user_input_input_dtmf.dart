@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CxTestCaseTestCaseConversationTurnUserInputInputDtmf {
   /// The dtmf digits.
-  final pulumi.Input<String>? digits;
+  final pulumi.Input<String?>? digits;
   /// The finish digit (if any).
-  final pulumi.Input<String>? finishDigit;
+  final pulumi.Input<String?>? finishDigit;
 
   /// Creates a new [CxTestCaseTestCaseConversationTurnUserInputInputDtmf].
   /// [digits] The dtmf digits.

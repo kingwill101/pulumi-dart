@@ -13,43 +13,43 @@ import 'cluster_node_pool_upgrade_settings.dart';
 
 class ClusterNodePool {
   /// Configuration required by cluster autoscaler to adjust the size of the node pool to the current cluster usage.
-  final pulumi.Input<ClusterNodePoolAutoscaling>? autoscaling;
+  final pulumi.Input<ClusterNodePoolAutoscaling?>? autoscaling;
   /// Whether to ignore external changes (drift) to the node count (e.g. from GKE autoscaling). Setting this to `true` skips querying Compute Engine Instance Group Managers (IGMs) to determine the current node count on read, which can save API quota and speed up plans on large clusters. Unlike Terraform core's `lifecycle { ignoreChanges = [nodeCount] }`, this allows configuration-driven scaling updates in your HCL while still ignoring runtime autoscaling drift.
-  final pulumi.Input<bool>? ignoreNodeCountChanges;
+  final pulumi.Input<bool?>? ignoreNodeCountChanges;
   /// The number of nodes to create in this
   /// cluster's default node pool. In regional or multi-zonal clusters, this is the
   /// number of nodes per zone. Must be set if `nodePool` is not set. If you're using
   /// `gcp.container.NodePool` objects with no default node pool, you'll need to
   /// set this to a value of at least `1`, alongside setting
   /// `removeDefaultNodePool` to `true`.
-  final pulumi.Input<int>? initialNodeCount;
+  final pulumi.Input<int?>? initialNodeCount;
   /// The resource URLs of the managed instance groups associated with this node pool.
-  final pulumi.Input<List<String>>? instanceGroupUrls;
+  final pulumi.Input<List<String>?>? instanceGroupUrls;
   /// The maintenance policy to use for the cluster. Structure is
   /// documented below.
-  final pulumi.Input<List<ClusterNodePoolMaintenancePolicy>>? maintenancePolicies;
+  final pulumi.Input<List<ClusterNodePoolMaintenancePolicy>?>? maintenancePolicies;
   /// List of instance group URLs which have been assigned to this node pool.
-  final pulumi.Input<List<String>>? managedInstanceGroupUrls;
+  final pulumi.Input<List<String>?>? managedInstanceGroupUrls;
   /// Node management configuration, wherein auto-repair and auto-upgrade is configured.
-  final pulumi.Input<ClusterNodePoolManagement>? management;
+  final pulumi.Input<ClusterNodePoolManagement?>? management;
   /// The maximum number of pods per node in this node pool. Note that this does not work on node pools which are "route-based" - that is, node pools belonging to clusters that do not have IP Aliasing enabled.
-  final pulumi.Input<int>? maxPodsPerNode;
+  final pulumi.Input<int?>? maxPodsPerNode;
   /// The name of the cluster, unique within the project and
   /// location.
   ///
   /// - - -
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name.
-  final pulumi.Input<String>? namePrefix;
+  final pulumi.Input<String?>? namePrefix;
   /// Configuration for
   /// [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Structure is documented below
-  final pulumi.Input<ClusterNodePoolNetworkConfig>? networkConfig;
+  final pulumi.Input<ClusterNodePoolNetworkConfig?>? networkConfig;
   /// The node configuration of the pool. Structure is documented below.
-  final pulumi.Input<ClusterNodePoolNodeConfig>? nodeConfig;
+  final pulumi.Input<ClusterNodePoolNodeConfig?>? nodeConfig;
   /// The number of nodes per instance group. This field can be used to update the number of nodes per instance group but should not be used alongside autoscaling.
-  final pulumi.Input<int>? nodeCount;
+  final pulumi.Input<int?>? nodeCount;
   /// Node drain configuration for this NodePool.
-  final pulumi.Input<List<ClusterNodePoolNodeDrainConfig>>? nodeDrainConfigs;
+  final pulumi.Input<List<ClusterNodePoolNodeDrainConfig>?>? nodeDrainConfigs;
   /// The list of zones in which the cluster's nodes
   /// are located. Nodes must be in the region of their regional cluster or in the
   /// same region as their cluster's zone for zonal clusters. If this is specified for
@@ -61,15 +61,15 @@ class ClusterNodePool {
   /// locations. In contrast, in a regional cluster, cluster master nodes are present
   /// in multiple zones in the region. For that reason, regional clusters should be
   /// preferred.
-  final pulumi.Input<List<String>>? nodeLocations;
+  final pulumi.Input<List<String>?>? nodeLocations;
   /// Specifies the node placement policy
-  final pulumi.Input<ClusterNodePoolPlacementPolicy>? placementPolicy;
+  final pulumi.Input<ClusterNodePoolPlacementPolicy?>? placementPolicy;
   /// Specifies the configuration of queued provisioning
-  final pulumi.Input<ClusterNodePoolQueuedProvisioning>? queuedProvisioning;
+  final pulumi.Input<ClusterNodePoolQueuedProvisioning?>? queuedProvisioning;
   /// Specify node upgrade settings to change how many nodes GKE attempts to upgrade at once. The number of nodes upgraded simultaneously is the sum of maxSurge and max_unavailable. The maximum number of nodes upgraded simultaneously is limited to 20.
-  final pulumi.Input<ClusterNodePoolUpgradeSettings>? upgradeSettings;
+  final pulumi.Input<ClusterNodePoolUpgradeSettings?>? upgradeSettings;
   /// The Kubernetes version for the nodes in this pool. Note that if this field and autoUpgrade are both specified, they will fight each other for what the node version should be, so setting both is highly discouraged. While a fuzzy version can be specified, it's recommended that you specify explicit versions as Terraform will see spurious diffs when fuzzy versions are used. See the gcp.container.getEngineVersions data source's versionPrefix field to approximate fuzzy versions in a Terraform-compatible way.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [ClusterNodePool].
   /// [autoscaling] Configuration required by cluster autoscaler to adjust the size of the node pool to the current cluster usage.
@@ -141,17 +141,17 @@ class ClusterNodePool {
     return ClusterNodePool(
       autoscaling: (() { final guardedValue = map['autoscaling']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterNodePoolAutoscaling.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       ignoreNodeCountChanges: (() { final guardedValue = map['ignoreNodeCountChanges']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      initialNodeCount: (() { final guardedValue = map['initialNodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      initialNodeCount: (() { final guardedValue = map['initialNodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       instanceGroupUrls: (() { final guardedValue = map['instanceGroupUrls']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       maintenancePolicies: (() { final guardedValue = map['maintenancePolicies']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ClusterNodePoolMaintenancePolicy>(guardedValue, (value) => ClusterNodePoolMaintenancePolicy.fromMap((value as Map).cast<String, dynamic>()))); })(),
       managedInstanceGroupUrls: (() { final guardedValue = map['managedInstanceGroupUrls']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       management: (() { final guardedValue = map['management']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterNodePoolManagement.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      maxPodsPerNode: (() { final guardedValue = map['maxPodsPerNode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxPodsPerNode: (() { final guardedValue = map['maxPodsPerNode']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       namePrefix: (() { final guardedValue = map['namePrefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       networkConfig: (() { final guardedValue = map['networkConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterNodePoolNetworkConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       nodeConfig: (() { final guardedValue = map['nodeConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterNodePoolNodeConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      nodeCount: (() { final guardedValue = map['nodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      nodeCount: (() { final guardedValue = map['nodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       nodeDrainConfigs: (() { final guardedValue = map['nodeDrainConfigs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ClusterNodePoolNodeDrainConfig>(guardedValue, (value) => ClusterNodePoolNodeDrainConfig.fromMap((value as Map).cast<String, dynamic>()))); })(),
       nodeLocations: (() { final guardedValue = map['nodeLocations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       placementPolicy: (() { final guardedValue = map['placementPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterNodePoolPlacementPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

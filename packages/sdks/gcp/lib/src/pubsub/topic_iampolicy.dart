@@ -964,7 +964,7 @@ class TopicIAMPolicy extends pulumi.CustomResource {
           'gcp:pubsub/topicIAMPolicy:TopicIAMPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     etag = registerOutput<String>('etag');
     policyData = registerOutput<String>('policyData');
@@ -977,11 +977,12 @@ class TopicIAMPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TopicIAMPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return TopicIAMPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -995,6 +996,21 @@ class TopicIAMPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    etag = registerOutput<String>('etag');
+    policyData = registerOutput<String>('policyData');
+    project = registerOutput<String>('project');
+    topic = registerOutput<String>('topic');
+  }
+
+  /// Creates a typed reference to an existing [TopicIAMPolicy] resource.
+  TopicIAMPolicy.reference(String urn)
+    : super(
+        'gcp:pubsub/topicIAMPolicy:TopicIAMPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     etag = registerOutput<String>('etag');
     policyData = registerOutput<String>('policyData');
     project = registerOutput<String>('project');

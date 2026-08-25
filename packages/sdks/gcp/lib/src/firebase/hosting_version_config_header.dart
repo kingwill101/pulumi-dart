@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class HostingVersionConfigHeader {
   /// The user-supplied glob to match against the request URL path.
-  final pulumi.Input<String>? glob;
+  final pulumi.Input<String?>? glob;
   /// The additional headers to add to the response. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
   final pulumi.Input<Map<String, String>> headers;
   /// The user-supplied RE2 regular expression to match against the request URL path.
-  final pulumi.Input<String>? regex;
+  final pulumi.Input<String?>? regex;
 
   /// Creates a new [HostingVersionConfigHeader].
   /// [glob] The user-supplied glob to match against the request URL path.

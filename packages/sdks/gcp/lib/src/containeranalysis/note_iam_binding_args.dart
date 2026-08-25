@@ -8,7 +8,7 @@ import 'note_iam_binding_condition.dart';
 /// {@endtemplate}
 /// {@macro pulumi_containeranalysis_note_iam_binding_note_iam_binding_args_doc}
 class NoteIamBindingArgs {
-  final pulumi.Input<NoteIamBindingCondition>? condition;
+  final pulumi.Input<NoteIamBindingCondition?>? condition;
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
   /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -26,7 +26,7 @@ class NoteIamBindingArgs {
   final pulumi.Input<String> note;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The role that should be applied. Only one
   /// `gcp.containeranalysis.NoteIamBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.

@@ -147,6 +147,17 @@ Future<GetGroupLookupResult> getGroupLookup(
   return GetGroupLookupResult.fromMap(result);
 }
 
+pulumi.Output<GetGroupLookupResult> getGroupLookupOutput(
+  GetGroupLookupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:cloudidentity/getGroupLookup:getGroupLookup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGroupLookupResult.fromMap);
+}
+
 /// Use this data source to get list of the Cloud Identity Group Memberships within a given Group.
 ///
 /// https://cloud.google.com/identity/docs/concepts/overview#memberships
@@ -274,6 +285,17 @@ Future<GetGroupMembershipsResult> getGroupMemberships(
   return GetGroupMembershipsResult.fromMap(result);
 }
 
+pulumi.Output<GetGroupMembershipsResult> getGroupMembershipsOutput(
+  GetGroupMembershipsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:cloudidentity/getGroupMemberships:getGroupMemberships',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGroupMembershipsResult.fromMap);
+}
+
 /// Use this data source to get list of the Cloud Identity Group Memberships within a given Group. Whereas `gcp.cloudidentity.getGroupMemberships` returns details of only direct members of the group, `gcp.cloudidentity.getGroupTransitiveMemberships` will return details about both direct and indirect members. For example, a user is an indirect member of Group A if the user is a direct member of Group B and Group B is a direct member of Group A.
 ///
 /// To get more information about TransitiveGroupMembership, see:
@@ -398,6 +420,17 @@ Future<GetGroupTransitiveMembershipsResult> getGroupTransitiveMemberships(
   return GetGroupTransitiveMembershipsResult.fromMap(result);
 }
 
+pulumi.Output<GetGroupTransitiveMembershipsResult> getGroupTransitiveMembershipsOutput(
+  GetGroupTransitiveMembershipsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:cloudidentity/getGroupTransitiveMemberships:getGroupTransitiveMemberships',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGroupTransitiveMembershipsResult.fromMap);
+}
+
 /// Use this data source to get list of the Cloud Identity Groups under a customer or namespace.
 ///
 /// https://cloud.google.com/identity/docs/concepts/overview#groups
@@ -516,6 +549,17 @@ Future<GetGroupsResult> getGroups(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetGroupsResult.fromMap(result);
+}
+
+pulumi.Output<GetGroupsResult> getGroupsOutput(
+  GetGroupsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:cloudidentity/getGroups:getGroups',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGroupsResult.fromMap);
 }
 
 /// Use this data source to list Cloud Identity policies.
@@ -721,6 +765,17 @@ Future<GetPoliciesResult> getPolicies(
   return GetPoliciesResult.fromMap(result);
 }
 
+pulumi.Output<GetPoliciesResult> getPoliciesOutput(
+  GetPoliciesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:cloudidentity/getPolicies:getPolicies',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPoliciesResult.fromMap);
+}
+
 /// Use this data source to retrieve a Cloud Identity policy.
 ///
 /// ## Example Usage
@@ -908,4 +963,15 @@ Future<GetPolicyResult> getPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetPolicyResult> getPolicyOutput(
+  GetPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:cloudidentity/getPolicy:getPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPolicyResult.fromMap);
 }

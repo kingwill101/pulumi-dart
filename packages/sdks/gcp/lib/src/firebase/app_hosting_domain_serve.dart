@@ -6,7 +6,7 @@ import 'app_hosting_domain_serve_redirect.dart';
 class AppHostingDomainServe {
   /// Specifies redirect behavior for a domain.
   /// Structure is documented below.
-  final pulumi.Input<AppHostingDomainServeRedirect>? redirect;
+  final pulumi.Input<AppHostingDomainServeRedirect?>? redirect;
 
   /// Creates a new [AppHostingDomainServe].
   /// [redirect] Specifies redirect behavior for a domain.

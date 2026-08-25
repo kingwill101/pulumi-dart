@@ -9,15 +9,15 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGa
   /// Required. Name of the Gateway API HTTPRoute.
   final pulumi.Input<String> httpRoute;
   /// Optional. The label to use when selecting Pods for the Deployment and Service resources. This label must already be present in both resources.
-  final pulumi.Input<String>? podSelectorLabel;
+  final pulumi.Input<String?>? podSelectorLabel;
   /// Optional. Route destinations allow configuring the Gateway API HTTPRoute to be deployed to additional clusters. This option is available for multi-cluster service mesh set ups that require the route to exist in the clusters that call the service. If unspecified, the HTTPRoute will only be deployed to the Target cluster.
-  final pulumi.Input<DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinations>? routeDestinations;
+  final pulumi.Input<DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinations?>? routeDestinations;
   /// Optional. The time to wait for route updates to propagate. The maximum configurable time is 3 hours, in seconds format. If unspecified, there is no wait time.
-  final pulumi.Input<String>? routeUpdateWaitTime;
+  final pulumi.Input<String?>? routeUpdateWaitTime;
   /// Required. Name of the Kubernetes Service.
   final pulumi.Input<String> service;
   /// Optional. The amount of time to migrate traffic back from the canary Service to the original Service during the stable phase deployment. If specified, must be between 15s and 3600s. If unspecified, there is no cutback time.
-  final pulumi.Input<String>? stableCutbackDuration;
+  final pulumi.Input<String?>? stableCutbackDuration;
 
   /// Creates a new [DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMesh].
   /// [deployment] Required. Name of the Kubernetes Deployment whose traffic is managed by the specified HTTPRoute and Service.

@@ -510,10 +510,10 @@ class WorkforcePoolProviderScimTenant extends pulumi.CustomResource {
           'gcp:iam/workforcePoolProviderScimTenant:WorkforcePoolProviderScimTenant',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     baseUri = registerOutput<String>('baseUri');
-    claimMapping = registerOutput<Map<String, String>?>('claimMapping');
+    claimMapping = registerOutput<Map<String, String>?>('claimMapping', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
@@ -533,11 +533,12 @@ class WorkforcePoolProviderScimTenant extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     WorkforcePoolProviderScimTenantState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return WorkforcePoolProviderScimTenant._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -552,7 +553,7 @@ class WorkforcePoolProviderScimTenant extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     baseUri = registerOutput<String>('baseUri');
-    claimMapping = registerOutput<Map<String, String>?>('claimMapping');
+    claimMapping = registerOutput<Map<String, String>?>('claimMapping', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
@@ -564,6 +565,31 @@ class WorkforcePoolProviderScimTenant extends pulumi.CustomResource {
     scimTenantId = registerOutput<String>('scimTenantId');
     serviceAgent = registerOutput<String>('serviceAgent');
     this.state = registerOutput<String>('state');
+    workforcePoolId = registerOutput<String>('workforcePoolId');
+  }
+
+  /// Creates a typed reference to an existing [WorkforcePoolProviderScimTenant] resource.
+  WorkforcePoolProviderScimTenant.reference(String urn)
+    : super(
+        'gcp:iam/workforcePoolProviderScimTenant:WorkforcePoolProviderScimTenant',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    baseUri = registerOutput<String>('baseUri');
+    claimMapping = registerOutput<Map<String, String>?>('claimMapping', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String?>('displayName');
+    hardDelete = registerOutput<bool?>('hardDelete');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    providerId = registerOutput<String>('providerId');
+    purgeTime = registerOutput<String>('purgeTime');
+    scimTenantId = registerOutput<String>('scimTenantId');
+    serviceAgent = registerOutput<String>('serviceAgent');
+    state = registerOutput<String>('state');
     workforcePoolId = registerOutput<String>('workforcePoolId');
   }
 }

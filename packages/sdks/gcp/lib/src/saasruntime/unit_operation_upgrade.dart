@@ -6,9 +6,9 @@ import 'unit_operation_upgrade_input_variable.dart';
 class UnitOperationUpgrade {
   /// Set of input variables. Maximum 100. (optional)
   /// Structure is documented below.
-  final pulumi.Input<List<UnitOperationUpgradeInputVariable>>? inputVariables;
+  final pulumi.Input<List<UnitOperationUpgradeInputVariable>?>? inputVariables;
   /// Reference to the Release object to use for the Unit. (optional).
-  final pulumi.Input<String>? release;
+  final pulumi.Input<String?>? release;
 
   /// Creates a new [UnitOperationUpgrade].
   /// [inputVariables] Set of input variables. Maximum 100. (optional)

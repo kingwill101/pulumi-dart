@@ -7,7 +7,7 @@ class ConnectionAuthConfigOauth2ClientCredentials {
   /// Secret version of Password for Authentication.
   final pulumi.Input<String> clientId;
   /// Secret version reference containing the client secret.
-  final pulumi.Input<ConnectionAuthConfigOauth2ClientCredentialsClientSecret>? clientSecret;
+  final pulumi.Input<ConnectionAuthConfigOauth2ClientCredentialsClientSecret?>? clientSecret;
 
   /// Creates a new [ConnectionAuthConfigOauth2ClientCredentials].
   /// [clientId] Secret version of Password for Authentication.

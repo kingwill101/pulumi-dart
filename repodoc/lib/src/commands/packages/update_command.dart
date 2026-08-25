@@ -47,12 +47,13 @@ final class PackagesUpdateCommand extends Command<int> {
     );
 
     io.table(
-      headers: ['Provider', 'Current', 'Target', 'Schema source'],
+      headers: ['Provider', 'Current', 'Upstream', 'Package', 'Schema source'],
       rows: [
         [
           plan.provider,
-          plan.localVersion,
+          plan.localPackageVersion,
           plan.upstreamVersion,
+          plan.targetPackageVersion,
           plan.schemaSource,
         ],
       ],
@@ -75,7 +76,8 @@ final class PackagesUpdateCommand extends Command<int> {
     );
 
     io.success(
-      'Updated ${plan.provider} ${plan.localVersion} -> ${plan.upstreamVersion}.',
+      'Updated ${plan.provider} ${plan.localPackageVersion} -> '
+      '${plan.targetPackageVersion}.',
     );
     final stat = await updater.diffStat(plan);
     if (stat.isNotEmpty) {

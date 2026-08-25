@@ -6,7 +6,7 @@ class CryptoKeyKeyAccessJustificationsPolicy {
   /// The list of allowed reasons for access to this CryptoKey. Zero allowed
   /// access reasons means all encrypt, decrypt, and sign operations for
   /// this CryptoKey will fail.
-  final pulumi.Input<List<String>>? allowedAccessReasons;
+  final pulumi.Input<List<String>?>? allowedAccessReasons;
 
   /// Creates a new [CryptoKeyKeyAccessJustificationsPolicy].
   /// [allowedAccessReasons] The list of allowed reasons for access to this CryptoKey. Zero allowed

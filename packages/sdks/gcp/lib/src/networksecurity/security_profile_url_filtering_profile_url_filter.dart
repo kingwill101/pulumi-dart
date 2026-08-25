@@ -12,7 +12,7 @@ class SecurityProfileUrlFilteringProfileUrlFilter {
   final pulumi.Input<int> priority;
   /// A list of domain matcher strings that a domain name gets compared with to determine if the filter is applicable.
   /// A domain name must match with at least one of the strings in the list for a filter to be applicable.
-  final pulumi.Input<List<String>>? urls;
+  final pulumi.Input<List<String>?>? urls;
 
   /// Creates a new [SecurityProfileUrlFilteringProfileUrlFilter].
   /// [filteringAction] The action to take when the filter is applied.
@@ -35,7 +35,7 @@ class SecurityProfileUrlFilteringProfileUrlFilter {
   factory SecurityProfileUrlFilteringProfileUrlFilter.fromMap(Map<String, dynamic> map) {
     return SecurityProfileUrlFilteringProfileUrlFilter(
       filteringAction: pulumi.Input.fromValue(map['filteringAction'] as String),
-      priority: pulumi.Input.fromValue(map['priority'] as int),
+      priority: pulumi.Input.fromValue((map['priority'] as num).toInt()),
       urls: (() { final guardedValue = map['urls']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }

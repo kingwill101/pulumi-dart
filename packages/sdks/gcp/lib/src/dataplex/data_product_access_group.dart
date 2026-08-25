@@ -5,7 +5,7 @@ import 'data_product_access_group_principal.dart';
 
 class DataProductAccessGroup {
   /// Description of the access group.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// User friendly display name.
   final pulumi.Input<String> displayName;
   /// Unique identifier of the access group.

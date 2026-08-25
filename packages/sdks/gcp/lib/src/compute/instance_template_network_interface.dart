@@ -13,56 +13,56 @@ class InstanceTemplateNetworkInterface {
   /// not work unless you can send traffic to the instance's
   /// network (e.g. via tunnel or because it is running on another cloud instance
   /// on that network). This block can be specified once per `networkInterface`. Structure documented below.
-  final pulumi.Input<List<InstanceTemplateNetworkInterfaceAccessConfig>>? accessConfigs;
+  final pulumi.Input<List<InstanceTemplateNetworkInterfaceAccessConfig>?>? accessConfigs;
   /// An
   /// array of alias IP ranges for this network interface. Can only be specified for network
   /// interfaces on subnet-mode networks. Structure documented below.
-  final pulumi.Input<List<InstanceTemplateNetworkInterfaceAliasIpRange>>? aliasIpRanges;
+  final pulumi.Input<List<InstanceTemplateNetworkInterfaceAliasIpRange>?>? aliasIpRanges;
   /// [Beta] An
   /// array of alias IPv6 ranges for this network interface. Can only be specified for network
   /// interfaces on subnet-mode networks. Structure documented below.
-  final pulumi.Input<List<InstanceTemplateNetworkInterfaceAliasIpv6Range>>? aliasIpv6Ranges;
+  final pulumi.Input<List<InstanceTemplateNetworkInterfaceAliasIpv6Range>?>? aliasIpv6Ranges;
   /// Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
-  final pulumi.Input<String>? igmpQuery;
+  final pulumi.Input<String?>? igmpQuery;
   /// The prefix length of the primary internal IPv6 range.
-  final pulumi.Input<int>? internalIpv6PrefixLength;
+  final pulumi.Input<int?>? internalIpv6PrefixLength;
   /// An array of IPv6 access configurations for this interface.
   /// Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig
   /// specified, then this instance will have no external IPv6 Internet access. Structure documented below.
-  final pulumi.Input<List<InstanceTemplateNetworkInterfaceIpv6AccessConfig>>? ipv6AccessConfigs;
+  final pulumi.Input<List<InstanceTemplateNetworkInterfaceIpv6AccessConfig>?>? ipv6AccessConfigs;
   /// One of EXTERNAL, INTERNAL to indicate whether the IP can be accessed from the Internet. This field is always inherited from its subnetwork.
-  final pulumi.Input<String>? ipv6AccessType;
+  final pulumi.Input<String?>? ipv6AccessType;
   /// An IPv6 internal network address for this network interface. If not specified, Google Cloud will automatically assign an internal IPv6 address from the instance's subnetwork.
-  final pulumi.Input<String>? ipv6Address;
+  final pulumi.Input<String?>? ipv6Address;
   /// The name of the instance template. If you leave
   /// this blank, the provider will auto-generate a unique name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name or selfLink of the network to attach this interface to.
   /// Use `network` attribute for Legacy or Auto subnetted networks and
   /// `subnetwork` for custom subnetted networks.
-  final pulumi.Input<String>? network;
+  final pulumi.Input<String?>? network;
   /// The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
-  final pulumi.Input<String>? networkAttachment;
+  final pulumi.Input<String?>? networkAttachment;
   /// The private IP address to assign to the instance. If
   /// empty, the address will be automatically assigned.
-  final pulumi.Input<String>? networkIp;
+  final pulumi.Input<String?>? networkIp;
   /// The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET, MRDMA, IRDMA, IDPF.
-  final pulumi.Input<String>? nicType;
+  final pulumi.Input<String?>? nicType;
   /// Name of the parent network interface of a dynamic network interface.
-  final pulumi.Input<String>? parentNicName;
+  final pulumi.Input<String?>? parentNicName;
   /// The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
-  final pulumi.Input<int>? queueCount;
+  final pulumi.Input<int?>? queueCount;
   /// The stack type for this network interface to identify whether the IPv6 feature is enabled or not. Values are IPV4_IPV6, IPV6_ONLY or IPV4_ONLY. If not specified, IPV4_ONLY will be used.
-  final pulumi.Input<String>? stackType;
+  final pulumi.Input<String?>? stackType;
   /// the name of the subnetwork to attach this interface
   /// to. The subnetwork must exist in the same `region` this instance will be
   /// created in. Either `network` or `subnetwork` must be provided.
-  final pulumi.Input<String>? subnetwork;
+  final pulumi.Input<String?>? subnetwork;
   /// The ID of the project in which the subnetwork belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? subnetworkProject;
+  final pulumi.Input<String?>? subnetworkProject;
   /// VLAN tag of a dynamic network interface, must be an integer in the range from 2 to 255 inclusively.
-  final pulumi.Input<int>? vlan;
+  final pulumi.Input<int?>? vlan;
 
   /// Creates a new [InstanceTemplateNetworkInterface].
   /// [accessConfigs] Access configurations, i.e. IPs via which this
@@ -136,7 +136,7 @@ class InstanceTemplateNetworkInterface {
       aliasIpRanges: (() { final guardedValue = map['aliasIpRanges']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<InstanceTemplateNetworkInterfaceAliasIpRange>(guardedValue, (value) => InstanceTemplateNetworkInterfaceAliasIpRange.fromMap((value as Map).cast<String, dynamic>()))); })(),
       aliasIpv6Ranges: (() { final guardedValue = map['aliasIpv6Ranges']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<InstanceTemplateNetworkInterfaceAliasIpv6Range>(guardedValue, (value) => InstanceTemplateNetworkInterfaceAliasIpv6Range.fromMap((value as Map).cast<String, dynamic>()))); })(),
       igmpQuery: (() { final guardedValue = map['igmpQuery']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      internalIpv6PrefixLength: (() { final guardedValue = map['internalIpv6PrefixLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      internalIpv6PrefixLength: (() { final guardedValue = map['internalIpv6PrefixLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       ipv6AccessConfigs: (() { final guardedValue = map['ipv6AccessConfigs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<InstanceTemplateNetworkInterfaceIpv6AccessConfig>(guardedValue, (value) => InstanceTemplateNetworkInterfaceIpv6AccessConfig.fromMap((value as Map).cast<String, dynamic>()))); })(),
       ipv6AccessType: (() { final guardedValue = map['ipv6AccessType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ipv6Address: (() { final guardedValue = map['ipv6Address']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -146,11 +146,11 @@ class InstanceTemplateNetworkInterface {
       networkIp: (() { final guardedValue = map['networkIp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       nicType: (() { final guardedValue = map['nicType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       parentNicName: (() { final guardedValue = map['parentNicName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      queueCount: (() { final guardedValue = map['queueCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      queueCount: (() { final guardedValue = map['queueCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       stackType: (() { final guardedValue = map['stackType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       subnetwork: (() { final guardedValue = map['subnetwork']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       subnetworkProject: (() { final guardedValue = map['subnetworkProject']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      vlan: (() { final guardedValue = map['vlan']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      vlan: (() { final guardedValue = map['vlan']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

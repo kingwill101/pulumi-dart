@@ -2140,7 +2140,7 @@ class WebRegionForwardingRuleServiceIamPolicy extends pulumi.CustomResource {
           'gcp:iap/webRegionForwardingRuleServiceIamPolicy:WebRegionForwardingRuleServiceIamPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     etag = registerOutput<String>('etag');
     forwardingRuleRegionServiceName = registerOutput<String>('forwardingRuleRegionServiceName');
@@ -2154,11 +2154,12 @@ class WebRegionForwardingRuleServiceIamPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     WebRegionForwardingRuleServiceIamPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return WebRegionForwardingRuleServiceIamPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -2172,6 +2173,22 @@ class WebRegionForwardingRuleServiceIamPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    etag = registerOutput<String>('etag');
+    forwardingRuleRegionServiceName = registerOutput<String>('forwardingRuleRegionServiceName');
+    policyData = registerOutput<String>('policyData');
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [WebRegionForwardingRuleServiceIamPolicy] resource.
+  WebRegionForwardingRuleServiceIamPolicy.reference(String urn)
+    : super(
+        'gcp:iap/webRegionForwardingRuleServiceIamPolicy:WebRegionForwardingRuleServiceIamPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     etag = registerOutput<String>('etag');
     forwardingRuleRegionServiceName = registerOutput<String>('forwardingRuleRegionServiceName');
     policyData = registerOutput<String>('policyData');

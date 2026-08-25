@@ -594,7 +594,7 @@ class MangedSslCertificate extends pulumi.CustomResource {
           'gcp:compute/mangedSslCertificate:MangedSslCertificate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     certificateId = registerOutput<int>('certificateId');
     creationTimestamp = registerOutput<String>('creationTimestamp');
@@ -605,7 +605,7 @@ class MangedSslCertificate extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     selfLink = registerOutput<String>('selfLink');
-    subjectAlternativeNames = registerOutput<List<String>>('subjectAlternativeNames');
+    subjectAlternativeNames = registerOutput<List<String>>('subjectAlternativeNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     type = registerOutput<String?>('type');
   }
 
@@ -614,11 +614,12 @@ class MangedSslCertificate extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     MangedSslCertificateState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return MangedSslCertificate._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -641,7 +642,29 @@ class MangedSslCertificate extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     selfLink = registerOutput<String>('selfLink');
-    subjectAlternativeNames = registerOutput<List<String>>('subjectAlternativeNames');
+    subjectAlternativeNames = registerOutput<List<String>>('subjectAlternativeNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    type = registerOutput<String?>('type');
+  }
+
+  /// Creates a typed reference to an existing [MangedSslCertificate] resource.
+  MangedSslCertificate.reference(String urn)
+    : super(
+        'gcp:compute/mangedSslCertificate:MangedSslCertificate',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    certificateId = registerOutput<int>('certificateId');
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    expireTime = registerOutput<String>('expireTime');
+    managed = registerOutput<MangedSslCertificateManaged?>('managed', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MangedSslCertificateManaged.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    selfLink = registerOutput<String>('selfLink');
+    subjectAlternativeNames = registerOutput<List<String>>('subjectAlternativeNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     type = registerOutput<String?>('type');
   }
 }

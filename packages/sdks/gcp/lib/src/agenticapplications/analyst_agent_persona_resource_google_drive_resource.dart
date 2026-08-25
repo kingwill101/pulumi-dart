@@ -5,14 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AnalystAgentPersonaResourceGoogleDriveResource {
   /// If non-empty, only files with these extensions are included when
   /// expanding the resource.  If empty, all files are included.
-  final pulumi.Input<List<String>>? fileExtensionRestrictions;
+  final pulumi.Input<List<String>?>? fileExtensionRestrictions;
   /// Points to a drive file to use. May refer to workspace files or folders
   /// as well.  If folder is specifically, all files in the folder
   /// (recursively) are used.
   ///
   /// Expected Format:
   /// files/{file_id}
-  final pulumi.Input<String>? fileReference;
+  final pulumi.Input<String?>? fileReference;
 
   /// Creates a new [AnalystAgentPersonaResourceGoogleDriveResource].
   /// [fileExtensionRestrictions] If non-empty, only files with these extensions are included when

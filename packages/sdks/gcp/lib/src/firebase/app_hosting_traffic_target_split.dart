@@ -26,7 +26,7 @@ class AppHostingTrafficTargetSplit {
   factory AppHostingTrafficTargetSplit.fromMap(Map<String, dynamic> map) {
     return AppHostingTrafficTargetSplit(
       build: pulumi.Input.fromValue(map['build'] as String),
-      percent: pulumi.Input.fromValue(map['percent'] as int),
+      percent: pulumi.Input.fromValue((map['percent'] as num).toInt()),
     );
   }
 }

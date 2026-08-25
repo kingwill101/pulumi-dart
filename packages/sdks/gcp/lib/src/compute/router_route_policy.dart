@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'router_route_policy_args.dart';
 import 'router_route_policy_state.dart';
+import 'router_route_policy_term.dart';
 
 /// A route policy created in a router
 ///
@@ -712,7 +713,7 @@ class RouterRoutePolicy extends pulumi.CustomResource {
   late final pulumi.Output<String> router;
   /// List of terms (the order in the list is not important, they are evaluated in order of priority).
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> terms;
+  late final pulumi.Output<List<RouterRoutePolicyTerm>> terms;
   /// This is policy's type, which is one of IMPORT or EXPORT
   /// Possible values are: `ROUTE_POLICY_TYPE_IMPORT`, `ROUTE_POLICY_TYPE_EXPORT`.
   late final pulumi.Output<String?> type;
@@ -729,7 +730,7 @@ class RouterRoutePolicy extends pulumi.CustomResource {
           'gcp:compute/routerRoutePolicy:RouterRoutePolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     fingerprint = registerOutput<String>('fingerprint');
@@ -737,7 +738,7 @@ class RouterRoutePolicy extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     region = registerOutput<String>('region');
     router = registerOutput<String>('router');
-    terms = registerOutput<List<Map<String, dynamic>>>('terms');
+    terms = registerOutput<List<RouterRoutePolicyTerm>>('terms', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RouterRoutePolicyTerm>(guardedValue, (value) => RouterRoutePolicyTerm.fromMap((value as Map).cast<String, dynamic>())); });
     type = registerOutput<String?>('type');
   }
 
@@ -746,11 +747,12 @@ class RouterRoutePolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RouterRoutePolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RouterRoutePolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -770,7 +772,26 @@ class RouterRoutePolicy extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     region = registerOutput<String>('region');
     router = registerOutput<String>('router');
-    terms = registerOutput<List<Map<String, dynamic>>>('terms');
+    terms = registerOutput<List<RouterRoutePolicyTerm>>('terms', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RouterRoutePolicyTerm>(guardedValue, (value) => RouterRoutePolicyTerm.fromMap((value as Map).cast<String, dynamic>())); });
+    type = registerOutput<String?>('type');
+  }
+
+  /// Creates a typed reference to an existing [RouterRoutePolicy] resource.
+  RouterRoutePolicy.reference(String urn)
+    : super(
+        'gcp:compute/routerRoutePolicy:RouterRoutePolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    fingerprint = registerOutput<String>('fingerprint');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+    router = registerOutput<String>('router');
+    terms = registerOutput<List<RouterRoutePolicyTerm>>('terms', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RouterRoutePolicyTerm>(guardedValue, (value) => RouterRoutePolicyTerm.fromMap((value as Map).cast<String, dynamic>())); });
     type = registerOutput<String?>('type');
   }
 }

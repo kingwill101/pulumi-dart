@@ -5,10 +5,10 @@ import 'session_template_environment_config_peripherals_config_spark_history_ser
 
 class SessionTemplateEnvironmentConfigPeripheralsConfig {
   /// Resource name of an existing Dataproc Metastore service.
-  final pulumi.Input<String>? metastoreService;
+  final pulumi.Input<String?>? metastoreService;
   /// The Spark History Server configuration for the workload.
   /// Structure is documented below.
-  final pulumi.Input<SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfig>? sparkHistoryServerConfig;
+  final pulumi.Input<SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfig?>? sparkHistoryServerConfig;
 
   /// Creates a new [SessionTemplateEnvironmentConfigPeripheralsConfig].
   /// [metastoreService] Resource name of an existing Dataproc Metastore service.

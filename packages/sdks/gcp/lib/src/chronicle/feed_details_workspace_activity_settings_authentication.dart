@@ -7,12 +7,12 @@ import 'feed_details_workspace_activity_settings_authentication_rs_credentials.d
 class FeedDetailsWorkspaceActivitySettingsAuthentication {
   /// Claims identifying a specific customer.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsWorkspaceActivitySettingsAuthenticationClaims>? claims;
+  final pulumi.Input<FeedDetailsWorkspaceActivitySettingsAuthenticationClaims?>? claims;
   /// RS credentials.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsWorkspaceActivitySettingsAuthenticationRsCredentials>? rsCredentials;
+  final pulumi.Input<FeedDetailsWorkspaceActivitySettingsAuthenticationRsCredentials?>? rsCredentials;
   /// Token endpoint to get the OAuth token from.
-  final pulumi.Input<String>? tokenEndpoint;
+  final pulumi.Input<String?>? tokenEndpoint;
 
   /// Creates a new [FeedDetailsWorkspaceActivitySettingsAuthentication].
   /// [claims] Claims identifying a specific customer.

@@ -4,10 +4,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceCustomDomain {
   /// Domain name
-  final pulumi.Input<String>? domain;
+  final pulumi.Input<String?>? domain;
   /// (Output)
   /// Status of the custom domain.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
 
   /// Creates a new [InstanceCustomDomain].
   /// [domain] Domain name

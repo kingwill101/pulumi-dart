@@ -1627,21 +1627,22 @@ class CertificateTemplate extends pulumi.CustomResource {
           'gcp:certificateauthority/certificateTemplate:CertificateTemplate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     identityConstraints = registerOutput<CertificateTemplateIdentityConstraints?>('identityConstraints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CertificateTemplateIdentityConstraints.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     maximumLifetime = registerOutput<String?>('maximumLifetime');
     this.name = registerOutput<String>('name');
     passthroughExtensions = registerOutput<CertificateTemplatePassthroughExtensions?>('passthroughExtensions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CertificateTemplatePassthroughExtensions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     predefinedValues = registerOutput<CertificateTemplatePredefinedValues?>('predefinedValues', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CertificateTemplatePredefinedValues.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     updateTime = registerOutput<String>('updateTime');
   }
 
@@ -1650,11 +1651,12 @@ class CertificateTemplate extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CertificateTemplateState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return CertificateTemplate._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1671,16 +1673,42 @@ class CertificateTemplate extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     identityConstraints = registerOutput<CertificateTemplateIdentityConstraints?>('identityConstraints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CertificateTemplateIdentityConstraints.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     maximumLifetime = registerOutput<String?>('maximumLifetime');
     this.name = registerOutput<String>('name');
     passthroughExtensions = registerOutput<CertificateTemplatePassthroughExtensions?>('passthroughExtensions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CertificateTemplatePassthroughExtensions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     predefinedValues = registerOutput<CertificateTemplatePredefinedValues?>('predefinedValues', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CertificateTemplatePredefinedValues.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [CertificateTemplate] resource.
+  CertificateTemplate.reference(String urn)
+    : super(
+        'gcp:certificateauthority/certificateTemplate:CertificateTemplate',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    identityConstraints = registerOutput<CertificateTemplateIdentityConstraints?>('identityConstraints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CertificateTemplateIdentityConstraints.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    maximumLifetime = registerOutput<String?>('maximumLifetime');
+    this.name = registerOutput<String>('name');
+    passthroughExtensions = registerOutput<CertificateTemplatePassthroughExtensions?>('passthroughExtensions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CertificateTemplatePassthroughExtensions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    predefinedValues = registerOutput<CertificateTemplatePredefinedValues?>('predefinedValues', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CertificateTemplatePredefinedValues.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     updateTime = registerOutput<String>('updateTime');
   }
 }

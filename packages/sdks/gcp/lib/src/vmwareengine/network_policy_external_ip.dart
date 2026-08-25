@@ -4,10 +4,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NetworkPolicyExternalIp {
   /// True if the service is enabled; false otherwise.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// (Output)
   /// State of the service. New values may be added to this enum when appropriate.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
 
   /// Creates a new [NetworkPolicyExternalIp].
   /// [enabled] True if the service is enabled; false otherwise.

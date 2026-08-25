@@ -20,7 +20,7 @@ class AutoscalingPolicyBasicAlgorithmYarnConfig {
   /// recommend at least a 2 worker scale-down for the cluster to scale. A threshold of 0
   /// means the autoscaler will scale down on any recommended change.
   /// Bounds: [0.0, 1.0]. Default: 0.0.
-  final pulumi.Input<double>? scaleDownMinWorkerFraction;
+  final pulumi.Input<double?>? scaleDownMinWorkerFraction;
   /// Fraction of average pending memory in the last cooldown period for which to
   /// add workers. A scale-up factor of 1.0 will result in scaling up so that there
   /// is no pending memory remaining after the update (more aggressive scaling).
@@ -33,7 +33,7 @@ class AutoscalingPolicyBasicAlgorithmYarnConfig {
   /// must recommend at least a 2-worker scale-up for the cluster to scale. A threshold of
   /// 0 means the autoscaler will scale up on any recommended change.
   /// Bounds: [0.0, 1.0]. Default: 0.0.
-  final pulumi.Input<double>? scaleUpMinWorkerFraction;
+  final pulumi.Input<double?>? scaleUpMinWorkerFraction;
 
   /// Creates a new [AutoscalingPolicyBasicAlgorithmYarnConfig].
   /// [gracefulDecommissionTimeout] Timeout for YARN graceful decommissioning of Node Managers. Specifies the
@@ -62,10 +62,10 @@ class AutoscalingPolicyBasicAlgorithmYarnConfig {
   factory AutoscalingPolicyBasicAlgorithmYarnConfig.fromMap(Map<String, dynamic> map) {
     return AutoscalingPolicyBasicAlgorithmYarnConfig(
       gracefulDecommissionTimeout: pulumi.Input.fromValue(map['gracefulDecommissionTimeout'] as String),
-      scaleDownFactor: pulumi.Input.fromValue(map['scaleDownFactor'] as double),
-      scaleDownMinWorkerFraction: (() { final guardedValue = map['scaleDownMinWorkerFraction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      scaleUpFactor: pulumi.Input.fromValue(map['scaleUpFactor'] as double),
-      scaleUpMinWorkerFraction: (() { final guardedValue = map['scaleUpMinWorkerFraction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      scaleDownFactor: pulumi.Input.fromValue((map['scaleDownFactor'] as num).toDouble()),
+      scaleDownMinWorkerFraction: (() { final guardedValue = map['scaleDownMinWorkerFraction']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      scaleUpFactor: pulumi.Input.fromValue((map['scaleUpFactor'] as num).toDouble()),
+      scaleUpMinWorkerFraction: (() { final guardedValue = map['scaleUpMinWorkerFraction']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

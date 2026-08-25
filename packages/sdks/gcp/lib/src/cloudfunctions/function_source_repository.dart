@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FunctionSourceRepository {
   /// The URL pointing to the hosted repository where the function was defined at the time of deployment.
-  final pulumi.Input<String>? deployedUrl;
+  final pulumi.Input<String?>? deployedUrl;
   /// The URL pointing to the hosted repository where the function is defined. There are supported Cloud Source Repository URLs in the following formats:
   ///
   /// * To refer to a specific commit: `https://source.developers.google.com/projects/*/repos/*/revisions/*/paths/*`

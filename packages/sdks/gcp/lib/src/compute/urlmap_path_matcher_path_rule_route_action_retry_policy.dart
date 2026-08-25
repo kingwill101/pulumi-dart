@@ -5,12 +5,12 @@ import 'urlmap_path_matcher_path_rule_route_action_retry_policy_per_try_timeout.
 
 class URLMapPathMatcherPathRuleRouteActionRetryPolicy {
   /// Specifies the allowed number retries. This number must be &gt; 0. If not specified, defaults to 1.
-  final pulumi.Input<int>? numRetries;
+  final pulumi.Input<int?>? numRetries;
   /// Specifies a non-zero timeout per retry attempt.
   /// If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
   /// will use the largest timeout among all backend services associated with the route.
   /// Structure is documented below.
-  final pulumi.Input<URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeout>? perTryTimeout;
+  final pulumi.Input<URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeout?>? perTryTimeout;
   /// Specfies one or more conditions when this retry rule applies. Valid values are:
   /// * 5xx: Loadbalancer will attempt a retry if the backend service responds with any 5xx response code,
   /// or if the backend service does not respond at all, example: disconnects, reset, read timeout,
@@ -26,7 +26,7 @@ class URLMapPathMatcherPathRuleRouteActionRetryPolicy {
   /// * deadline-exceeded: Loadbalancer will retry if the gRPC status code in the response header is set to deadline-exceeded
   /// * resource-exhausted: Loadbalancer will retry if the gRPC status code in the response header is set to resource-exhausted
   /// * unavailable: Loadbalancer will retry if the gRPC status code in the response header is set to unavailable
-  final pulumi.Input<List<String>>? retryConditions;
+  final pulumi.Input<List<String>?>? retryConditions;
 
   /// Creates a new [URLMapPathMatcherPathRuleRouteActionRetryPolicy].
   /// [numRetries] Specifies the allowed number retries. This number must be &gt; 0. If not specified, defaults to 1.
@@ -48,7 +48,7 @@ class URLMapPathMatcherPathRuleRouteActionRetryPolicy {
 
   factory URLMapPathMatcherPathRuleRouteActionRetryPolicy.fromMap(Map<String, dynamic> map) {
     return URLMapPathMatcherPathRuleRouteActionRetryPolicy(
-      numRetries: (() { final guardedValue = map['numRetries']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      numRetries: (() { final guardedValue = map['numRetries']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       perTryTimeout: (() { final guardedValue = map['perTryTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeout.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       retryConditions: (() { final guardedValue = map['retryConditions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );

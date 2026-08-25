@@ -8,43 +8,43 @@ import 'application_url_dispatch_rule.dart';
 /// Input properties used for looking up and filtering Application resources.
 class ApplicationState {
   /// Identifier of the app, usually `{PROJECT_ID}`
-  final pulumi.Input<String>? appId;
+  final pulumi.Input<String?>? appId;
   /// The domain to authenticate users with when using App Engine's User API.
-  final pulumi.Input<String>? authDomain;
+  final pulumi.Input<String?>? authDomain;
   /// The GCS bucket code is being stored in for this app.
-  final pulumi.Input<String>? codeBucket;
+  final pulumi.Input<String?>? codeBucket;
   /// The type of the Cloud Firestore or Cloud Datastore database associated with this application.
   /// Can be `CLOUD_FIRESTORE` or `CLOUD_DATASTORE_COMPATIBILITY` for new
   /// instances.  To support old instances, the value `CLOUD_DATASTORE` is accepted by the provider, but will be rejected by the API.
   /// To create a Cloud Firestore database without creating an App Engine application, use the
   /// `gcp.firestore.Database`
   /// resource instead.
-  final pulumi.Input<String>? databaseType;
+  final pulumi.Input<String?>? databaseType;
   /// The GCS bucket content is being stored in for this app.
-  final pulumi.Input<String>? defaultBucket;
+  final pulumi.Input<String?>? defaultBucket;
   /// The default hostname for this app.
-  final pulumi.Input<String>? defaultHostname;
+  final pulumi.Input<String?>? defaultHostname;
   /// A block of optional settings to configure specific App Engine features:
-  final pulumi.Input<ApplicationFeatureSettings>? featureSettings;
+  final pulumi.Input<ApplicationFeatureSettings?>? featureSettings;
   /// The GCR domain used for storing managed Docker images for this app.
-  final pulumi.Input<String>? gcrDomain;
+  final pulumi.Input<String?>? gcrDomain;
   /// Settings for enabling Cloud Identity Aware Proxy
-  final pulumi.Input<ApplicationIap>? iap;
+  final pulumi.Input<ApplicationIap?>? iap;
   /// The [location](https://cloud.google.com/appengine/docs/locations)
   /// to serve the app from.
-  final pulumi.Input<String>? locationId;
+  final pulumi.Input<String?>? locationId;
   /// Unique name of the app, usually `apps/{PROJECT_ID}`
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The project ID to create the application under.
   /// ~&gt;**NOTE:** GCP only accepts project ID, not project number. If you are using number,
   /// you may get a "Permission denied" error.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The serving status of the app.
-  final pulumi.Input<String>? servingStatus;
+  final pulumi.Input<String?>? servingStatus;
   /// A list of the SSL policy that will be applied. Each block has a `SSL_POLICY_UNSPECIFIED`, `DEFAULT`, and `MODERN` field.
-  final pulumi.Input<String>? sslPolicy;
+  final pulumi.Input<String?>? sslPolicy;
   /// A list of dispatch rule blocks. Each block has a `domain`, `path`, and `service` field.
-  final pulumi.Input<List<ApplicationUrlDispatchRule>>? urlDispatchRules;
+  final pulumi.Input<List<ApplicationUrlDispatchRule>?>? urlDispatchRules;
 
   /// Creates a new [ApplicationState].
   /// [appId] Identifier of the app, usually `{PROJECT_ID}`

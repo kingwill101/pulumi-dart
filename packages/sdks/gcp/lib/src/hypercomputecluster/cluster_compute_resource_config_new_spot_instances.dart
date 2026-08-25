@@ -11,7 +11,7 @@ class ClusterComputeResourceConfigNewSpotInstances {
   /// Possible values:
   /// STOP
   /// DELETE
-  final pulumi.Input<String>? terminationAction;
+  final pulumi.Input<String?>? terminationAction;
   /// Name of the zone in which VM instances should run, e.g., `us-central1-a`.
   /// Must be in the same region as the cluster, and must match the zone of any
   /// other resources specified in the cluster.

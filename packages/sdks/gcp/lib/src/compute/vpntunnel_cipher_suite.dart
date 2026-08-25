@@ -7,13 +7,13 @@ import 'vpntunnel_cipher_suite_phase2.dart';
 class VPNTunnelCipherSuite {
   /// Cipher configuration for phase 1 of the IKE protocol.
   /// Structure is documented below.
-  final pulumi.Input<VPNTunnelCipherSuitePhase1>? phase1;
+  final pulumi.Input<VPNTunnelCipherSuitePhase1?>? phase1;
   /// Cipher configuration for phase 2 of the IKE protocol.
   /// Structure is documented below.
   ///
   ///
   /// &lt;a name="nestedCipherSuitePhase1"&gt;&lt;/a&gt;The `phase1` block supports:
-  final pulumi.Input<VPNTunnelCipherSuitePhase2>? phase2;
+  final pulumi.Input<VPNTunnelCipherSuitePhase2?>? phase2;
 
   /// Creates a new [VPNTunnelCipherSuite].
   /// [phase1] Cipher configuration for phase 1 of the IKE protocol.

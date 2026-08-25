@@ -9,11 +9,11 @@ import 'ai_reasoning_engine_spec_source_code_spec.dart';
 
 class AiReasoningEngineSpec {
   /// Optional. The A2A Agent Card for the agent (if available).
-  final pulumi.Input<String>? agentCard;
+  final pulumi.Input<String?>? agentCard;
   /// Optional. The OSS agent framework used to develop the agent.
-  final pulumi.Input<String>? agentFramework;
+  final pulumi.Input<String?>? agentFramework;
   /// Optional. Configuration for building container image.
-  final pulumi.Input<AiReasoningEngineSpecBuildSpec>? buildSpec;
+  final pulumi.Input<AiReasoningEngineSpecBuildSpec?>? buildSpec;
   /// Optional. Declarations for object class methods in OpenAPI
   /// specification format.
   /// **Note**: When deploying via Terraform, this field must be populated manually.
@@ -22,35 +22,35 @@ class AiReasoningEngineSpec {
   /// **Warning**: The configuration snippets below are illustrative, may not be exhaustive, and could stop working over time. For the most up-to-date method lists and schemas, please consult the respective SDK source code:
   /// * For Google ADK: See [ADK Python SDK cli_deploy.py](https://github.com/google/adk-python/blob/68a780306e3bdd648a882ef34c0abf8e5148353e/src/google/adk/cli/cli_deploy.py#L109).
   /// * For Langchain: See [Vertex AI Python SDK langchain.py](https://github.com/googleapis/python-aiplatform/blob/c8a38a085931b01f4d6071f0ab7a64cb42851829/agentplatform/agent_engines/templates/langchain.py#L642-L717).
-  final pulumi.Input<String>? classMethods;
+  final pulumi.Input<String?>? classMethods;
   /// Deploy from a container image with a defined entrypoint and commands.
-  final pulumi.Input<AiReasoningEngineSpecContainerSpec>? containerSpec;
+  final pulumi.Input<AiReasoningEngineSpecContainerSpec?>? containerSpec;
   /// Optional. The specification of a Reasoning Engine deployment.
-  final pulumi.Input<AiReasoningEngineSpecDeploymentSpec>? deploymentSpec;
+  final pulumi.Input<AiReasoningEngineSpecDeploymentSpec?>? deploymentSpec;
   /// The identity to use for the Reasoning Engine.
-  final pulumi.Input<String>? effectiveIdentity;
+  final pulumi.Input<String?>? effectiveIdentity;
   /// Optional. The resource name of the linked ExampleStore.
-  final pulumi.Input<String>? exampleStore;
+  final pulumi.Input<String?>? exampleStore;
   /// Optional. The identity type to use for the Reasoning Engine.
   /// If not specified, the 'service_account' field will be used if set,
   /// otherwise the default Vertex AI Reasoning Engine Service Agent in the project will be used.
   /// Possible values:
   /// * 'SERVICE_ACCOUNT': Use a custom service account if the 'service_account' field is set, otherwise use the default Vertex AI Reasoning Engine Service Agent in the project.
   /// * 'AGENT_IDENTITY': Use Agent Identity. The 'service_account' field must not be set. Possible values: ["SERVICE_ACCOUNT", "AGENT_IDENTITY"]
-  final pulumi.Input<String>? identityType;
+  final pulumi.Input<String?>? identityType;
   /// Optional. User provided package spec of the ReasoningEngine.
   /// Ignored when users directly specify a deployment image through
   /// deploymentSpec.first_party_image_override, but keeping the
   /// fieldBehavior to avoid introducing breaking changes.
-  final pulumi.Input<AiReasoningEngineSpecPackageSpec>? packageSpec;
+  final pulumi.Input<AiReasoningEngineSpecPackageSpec?>? packageSpec;
   /// Optional. The service account that the Reasoning Engine artifact runs
   /// as. It should have "roles/storage.objectViewer" for reading the user
   /// project's Cloud Storage and "roles/aiplatform.user" for using Vertex
   /// extensions. If not specified, the Vertex AI Reasoning Engine service
   /// Agent in the project will be used.
-  final pulumi.Input<String>? serviceAccount;
+  final pulumi.Input<String?>? serviceAccount;
   /// Specification for deploying from source code.
-  final pulumi.Input<AiReasoningEngineSpecSourceCodeSpec>? sourceCodeSpec;
+  final pulumi.Input<AiReasoningEngineSpecSourceCodeSpec?>? sourceCodeSpec;
 
   /// Creates a new [AiReasoningEngineSpec].
   /// [agentCard] Optional. The A2A Agent Card for the agent (if available).

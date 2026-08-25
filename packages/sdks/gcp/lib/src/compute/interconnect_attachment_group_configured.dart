@@ -8,7 +8,7 @@ class InterconnectAttachmentGroupConfigured {
   /// Which SLA this group is configured to support, and why this
   /// group does or does not meet that SLA's requirements.
   /// Structure is documented below.
-  final pulumi.Input<List<InterconnectAttachmentGroupConfiguredAvailabilitySla>>? availabilitySlas;
+  final pulumi.Input<List<InterconnectAttachmentGroupConfiguredAvailabilitySla>?>? availabilitySlas;
 
   /// Creates a new [InterconnectAttachmentGroupConfigured].
   /// [availabilitySlas] (Output)

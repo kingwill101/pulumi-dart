@@ -16,49 +16,49 @@ class ReportSummaryGroupFindingPreferenceSetFinding {
   /// (Output)
   /// A set of findings that applies to assets destined for Compute Engine.
   /// Structure is documented below.
-  final pulumi.Input<List<ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFinding>>? computeEngineFindings;
+  final pulumi.Input<List<ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFinding>?>? computeEngineFindings;
   /// Free-text description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// User-friendly display name. Maximum length is 63 characters.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// (Output)
   /// The type of machines to consider when calculating virtual machine migration
   /// insights and recommendations.
   /// Not all machine types are available in all zones and regions.
   /// Structure is documented below.
-  final pulumi.Input<List<ReportSummaryGroupFindingPreferenceSetFindingMachinePreference>>? machinePreferences;
+  final pulumi.Input<List<ReportSummaryGroupFindingPreferenceSetFindingMachinePreference>?>? machinePreferences;
   /// (Output)
   /// Represents an amount of money with its currency type.
   /// Structure is documented below.
-  final pulumi.Input<List<ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostCompute>>? monthlyCostComputes;
+  final pulumi.Input<List<ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostCompute>?>? monthlyCostComputes;
   /// (Output)
   /// Represents an amount of money with its currency type.
   /// Structure is documented below.
-  final pulumi.Input<List<ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostNetworkEgress>>? monthlyCostNetworkEgresses;
+  final pulumi.Input<List<ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostNetworkEgress>?>? monthlyCostNetworkEgresses;
   /// (Output)
   /// Represents an amount of money with its currency type.
   /// Structure is documented below.
-  final pulumi.Input<List<ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOsLicense>>? monthlyCostOsLicenses;
+  final pulumi.Input<List<ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOsLicense>?>? monthlyCostOsLicenses;
   /// (Output)
   /// Represents an amount of money with its currency type.
   /// Structure is documented below.
-  final pulumi.Input<List<ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOther>>? monthlyCostOthers;
+  final pulumi.Input<List<ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostOther>?>? monthlyCostOthers;
   /// (Output)
   /// Represents an amount of money with its currency type.
   /// Structure is documented below.
-  final pulumi.Input<List<ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostStorage>>? monthlyCostStorages;
+  final pulumi.Input<List<ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostStorage>?>? monthlyCostStorages;
   /// (Output)
   /// Represents an amount of money with its currency type.
   /// Structure is documented below.
-  final pulumi.Input<List<ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostTotal>>? monthlyCostTotals;
+  final pulumi.Input<List<ReportSummaryGroupFindingPreferenceSetFindingMonthlyCostTotal>?>? monthlyCostTotals;
   /// (Output)
   /// A set of findings that applies to assets destined for Sole-Tenant nodes.
   /// Structure is documented below.
-  final pulumi.Input<List<ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFinding>>? soleTenantFindings;
+  final pulumi.Input<List<ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFinding>?>? soleTenantFindings;
   /// (Output)
   /// A set of findings that applies to assets destined for VMWare Engine.
   /// Structure is documented below.
-  final pulumi.Input<List<ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFinding>>? vmwareEngineFindings;
+  final pulumi.Input<List<ReportSummaryGroupFindingPreferenceSetFindingVmwareEngineFinding>?>? vmwareEngineFindings;
 
   /// Creates a new [ReportSummaryGroupFindingPreferenceSetFinding].
   /// [computeEngineFindings] (Output)

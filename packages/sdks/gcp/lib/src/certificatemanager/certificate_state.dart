@@ -12,34 +12,34 @@ class CertificateState {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// A human-readable description of the resource.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveLabels;
+  final pulumi.Input<Map<String, String>?>? effectiveLabels;
   /// Set of label tags associated with the Certificate resource.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The Certificate Manager location. If not specified, "global" is used.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Configuration and state of a Managed Certificate.
   /// Certificate Manager provisions and renews Managed Certificates
   /// automatically, for as long as it's authorized to do so.
   /// Structure is documented below.
-  final pulumi.Input<CertificateManaged>? managed;
+  final pulumi.Input<CertificateManaged?>? managed;
   /// A user-defined name of the certificate. Certificate names must be unique
   /// The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
   /// and all following characters must be a dash, underscore, letter or digit.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  final pulumi.Input<Map<String, String>>? pulumiLabels;
+  final pulumi.Input<Map<String, String>?>? pulumiLabels;
   /// The list of Subject Alternative Names of dnsName type defined in the certificate (see RFC 5280 4.2.1.6)
-  final pulumi.Input<List<String>>? sanDnsnames;
+  final pulumi.Input<List<String>?>? sanDnsnames;
   /// The scope of the certificate.
   /// DEFAULT: Certificates with default scope are served from core Google data centers.
   /// If unsure, choose this option.
@@ -49,7 +49,7 @@ class CertificateState {
   /// See https://cloud.google.com/compute/docs/regions-zones.
   /// CLIENT_AUTH: Certificates with CLIENT_AUTH scope are used by a load balancer (TLS client) to be presented to the backend (TLS server) when backend mTLS is configured.
   /// See https://cloud.google.com/load-balancing/docs/backend-authenticated-tls-backend-mtls#client-certificate.
-  final pulumi.Input<String>? scope;
+  final pulumi.Input<String?>? scope;
   /// Certificate data for a SelfManaged Certificate.
   /// SelfManaged Certificates are uploaded by the user. Updating such
   /// certificates before they expire remains the user's responsibility.
@@ -57,7 +57,7 @@ class CertificateState {
   /// and `pemPrivateKey` are applied via the API's PATCH method instead of
   /// forcing recreation of the certificate.
   /// Structure is documented below.
-  final pulumi.Input<CertificateSelfManaged>? selfManaged;
+  final pulumi.Input<CertificateSelfManaged?>? selfManaged;
 
   /// Creates a new [CertificateState].
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

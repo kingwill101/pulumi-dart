@@ -169,6 +169,17 @@ Future<GetAttachedInstallManifestResult> getAttachedInstallManifest(
   return GetAttachedInstallManifestResult.fromMap(result);
 }
 
+pulumi.Output<GetAttachedInstallManifestResult> getAttachedInstallManifestOutput(
+  GetAttachedInstallManifestArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:container/getAttachedInstallManifest:getAttachedInstallManifest',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAttachedInstallManifestResult.fromMap);
+}
+
 /// Provides access to available platform versions in a location for a given project.
 ///
 /// ## Example Usage
@@ -306,6 +317,17 @@ Future<GetAttachedVersionsResult> getAttachedVersions(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetAttachedVersionsResult.fromMap(result);
+}
+
+pulumi.Output<GetAttachedVersionsResult> getAttachedVersionsOutput(
+  GetAttachedVersionsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:container/getAttachedVersions:getAttachedVersions',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAttachedVersionsResult.fromMap);
 }
 
 /// Provides access to available Kubernetes versions in a location for a given project.
@@ -447,6 +469,17 @@ Future<GetAwsVersionsResult> getAwsVersions(
   return GetAwsVersionsResult.fromMap(result);
 }
 
+pulumi.Output<GetAwsVersionsResult> getAwsVersionsOutput(
+  GetAwsVersionsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:container/getAwsVersions:getAwsVersions',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAwsVersionsResult.fromMap);
+}
+
 /// Provides access to available Kubernetes versions in a location for a given project.
 ///
 /// ## Example Usage
@@ -584,6 +617,17 @@ Future<GetAzureVersionsResult> getAzureVersions(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetAzureVersionsResult.fromMap(result);
+}
+
+pulumi.Output<GetAzureVersionsResult> getAzureVersionsOutput(
+  GetAzureVersionsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:container/getAzureVersions:getAzureVersions',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAzureVersionsResult.fromMap);
 }
 
 /// Get info about a GKE cluster from its name and location.
@@ -906,6 +950,17 @@ Future<GetClusterResult> getCluster(
   return GetClusterResult.fromMap(result);
 }
 
+pulumi.Output<GetClusterResult> getClusterOutput(
+  GetClusterArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:container/getCluster:getCluster',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetClusterResult.fromMap);
+}
+
 /// Provides access to available Google Kubernetes Engine versions in a zone or region for a given project.
 ///
 /// To get more information about GKE versions, see:
@@ -1114,6 +1169,17 @@ Future<GetEngineVersionsResult> getEngineVersions(
   return GetEngineVersionsResult.fromMap(result);
 }
 
+pulumi.Output<GetEngineVersionsResult> getEngineVersionsOutput(
+  GetEngineVersionsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:container/getEngineVersions:getEngineVersions',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEngineVersionsResult.fromMap);
+}
+
 /// &gt; **Warning**: Container Registry is deprecated. Effective March 18, 2025, Container Registry is shut down and writing images to Container Registry is unavailable. Resource will be removed in future major release.
 ///
 /// This data source fetches the project name, and provides the appropriate URLs to use for container registry for this project.
@@ -1250,6 +1316,17 @@ Future<GetRegistryImageResult> getRegistryImage(
   return GetRegistryImageResult.fromMap(result);
 }
 
+pulumi.Output<GetRegistryImageResult> getRegistryImageOutput(
+  GetRegistryImageArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:container/getRegistryImage:getRegistryImage',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegistryImageResult.fromMap);
+}
+
 /// &gt; **Warning**: Container Registry is deprecated. Effective March 18, 2025, Container Registry is shut down and writing images to Container Registry is unavailable. Resource will be removed in future major release.
 ///
 /// This data source fetches the project name, and provides the appropriate URLs to use for container registry for this project.
@@ -1374,4 +1451,15 @@ Future<GetRegistryRepositoryResult> getRegistryRepository(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRegistryRepositoryResult.fromMap(result);
+}
+
+pulumi.Output<GetRegistryRepositoryResult> getRegistryRepositoryOutput(
+  GetRegistryRepositoryArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:container/getRegistryRepository:getRegistryRepository',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegistryRepositoryResult.fromMap);
 }

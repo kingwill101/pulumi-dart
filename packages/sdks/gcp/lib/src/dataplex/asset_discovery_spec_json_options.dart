@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AssetDiscoverySpecJsonOptions {
   /// Optional. Whether to disable the inference of data type for Json data. If true, all columns will be registered as their primitive types (strings, number or boolean).
-  final pulumi.Input<bool>? disableTypeInference;
+  final pulumi.Input<bool?>? disableTypeInference;
   /// Optional. The character encoding of the data. The default is UTF-8.
-  final pulumi.Input<String>? encoding;
+  final pulumi.Input<String?>? encoding;
 
   /// Creates a new [AssetDiscoverySpecJsonOptions].
   /// [disableTypeInference] Optional. Whether to disable the inference of data type for Json data. If true, all columns will be registered as their primitive types (strings, number or boolean).

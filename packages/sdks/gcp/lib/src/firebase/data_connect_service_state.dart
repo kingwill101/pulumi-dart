@@ -7,9 +7,9 @@ class DataConnectServiceState {
   /// Optional. Stores small amounts of arbitrary data.
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
-  final pulumi.Input<Map<String, String>>? annotations;
+  final pulumi.Input<Map<String, String>?>? annotations;
   /// Output only. [Output only] Create time stamp.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// The deletion policy for the database. Setting the field to FORCE allows the
   /// Service to be deleted even if a Schema or Connector is present. By default,
   /// the Service deletion will only succeed when no Schema or Connectors are
@@ -22,24 +22,24 @@ class DataConnectServiceState {
   /// When set to "DELETE", the command will behave as if set to "DEFAULT".
   ///
   /// Possible values: DEFAULT, FORCE, PREVENT, ABANDON, DELETE
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Optional. Mutable human-readable name. 63 character limit.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveAnnotations;
+  final pulumi.Input<Map<String, String>?>? effectiveAnnotations;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveLabels;
+  final pulumi.Input<Map<String, String>?>? effectiveLabels;
   /// Output only. This checksum is computed by the server based on the value of other
   /// fields, and may be sent on update and delete requests to ensure the
   /// client has an up-to-date value before proceeding.
   /// [AIP-154](https://google.aip.dev/154)
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// Optional. Labels as key value pairs.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The region in which the service resides, e.g. "us-central1" or "asia-east1".
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Identifier. The relative resource name of the Firebase Data Connect service, in the
   /// format:
   /// ```
@@ -48,23 +48,23 @@ class DataConnectServiceState {
   /// Note that the service ID is specific to Firebase Data Connect and does not
   /// correspond to any of the instance IDs of the underlying data source
   /// connections.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  final pulumi.Input<Map<String, String>>? pulumiLabels;
+  final pulumi.Input<Map<String, String>?>? pulumiLabels;
   /// Output only. A field that if true, indicates that the system is working update the
   /// service.
-  final pulumi.Input<bool>? reconciling;
+  final pulumi.Input<bool?>? reconciling;
   /// Required. The ID to use for the service, which will become the final component of the
   /// service's resource name.
-  final pulumi.Input<String>? serviceId;
+  final pulumi.Input<String?>? serviceId;
   /// Output only. System-assigned, unique identifier.
-  final pulumi.Input<String>? uid;
+  final pulumi.Input<String?>? uid;
   /// Output only. [Output only] Update time stamp.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [DataConnectServiceState].
   /// [annotations] Optional. Stores small amounts of arbitrary data.

@@ -6,10 +6,10 @@ import 'tool_data_store_tool_data_store_source_data_store.dart';
 class ToolDataStoreToolDataStoreSource {
   /// Optional. The data store.
   /// Structure is documented below.
-  final pulumi.Input<ToolDataStoreToolDataStoreSourceDataStore>? dataStore;
+  final pulumi.Input<ToolDataStoreToolDataStoreSourceDataStore?>? dataStore;
   /// Optional. Filter specification for the DataStore.
   /// See: https://cloud.google.com/generative-ai-app-builder/docs/filter-search-metadata
-  final pulumi.Input<String>? filter;
+  final pulumi.Input<String?>? filter;
 
   /// Creates a new [ToolDataStoreToolDataStoreSource].
   /// [dataStore] Optional. The data store.

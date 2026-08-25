@@ -6,10 +6,10 @@ import 'fleet_default_cluster_config_binary_authorization_config_policy_binding.
 class FleetDefaultClusterConfigBinaryAuthorizationConfig {
   /// Mode of operation for binauthz policy evaluation.
   /// Possible values are: `DISABLED`, `POLICY_BINDINGS`.
-  final pulumi.Input<String>? evaluationMode;
+  final pulumi.Input<String?>? evaluationMode;
   /// Binauthz policies that apply to this cluster.
   /// Structure is documented below.
-  final pulumi.Input<List<FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBinding>>? policyBindings;
+  final pulumi.Input<List<FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBinding>?>? policyBindings;
 
   /// Creates a new [FleetDefaultClusterConfigBinaryAuthorizationConfig].
   /// [evaluationMode] Mode of operation for binauthz policy evaluation.

@@ -7,13 +7,13 @@ class V2VmNetworkEndpoint {
   /// (Output)
   /// The access config for the TPU worker.
   /// Structure is documented below.
-  final pulumi.Input<List<V2VmNetworkEndpointAccessConfig>>? accessConfigs;
+  final pulumi.Input<List<V2VmNetworkEndpointAccessConfig>?>? accessConfigs;
   /// (Output)
   /// The internal IP address of this network endpoint.
-  final pulumi.Input<String>? ipAddress;
+  final pulumi.Input<String?>? ipAddress;
   /// (Output)
   /// The port of this network endpoint.
-  final pulumi.Input<int>? port;
+  final pulumi.Input<int?>? port;
 
   /// Creates a new [V2VmNetworkEndpoint].
   /// [accessConfigs] (Output)
@@ -37,7 +37,7 @@ class V2VmNetworkEndpoint {
     return V2VmNetworkEndpoint(
       accessConfigs: (() { final guardedValue = map['accessConfigs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<V2VmNetworkEndpointAccessConfig>(guardedValue, (value) => V2VmNetworkEndpointAccessConfig.fromMap((value as Map).cast<String, dynamic>()))); })(),
       ipAddress: (() { final guardedValue = map['ipAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

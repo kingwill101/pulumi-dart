@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'bitbucket_server_config_args.dart';
+import 'bitbucket_server_config_connected_repository.dart';
 import 'bitbucket_server_config_secrets.dart';
 import 'bitbucket_server_config_state.dart';
 
@@ -913,7 +914,7 @@ class BitbucketServerConfig extends pulumi.CustomResource {
   late final pulumi.Output<String> configId;
   /// Connected Bitbucket Server repositories for this config.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> connectedRepositories;
+  late final pulumi.Output<List<BitbucketServerConfigConnectedRepository>?> connectedRepositories;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -958,11 +959,11 @@ class BitbucketServerConfig extends pulumi.CustomResource {
           'gcp:cloudbuild/bitbucketServerConfig:BitbucketServerConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     apiKey = registerOutput<String>('apiKey');
     configId = registerOutput<String>('configId');
-    connectedRepositories = registerOutput<List<Map<String, dynamic>>?>('connectedRepositories');
+    connectedRepositories = registerOutput<List<BitbucketServerConfigConnectedRepository>?>('connectedRepositories', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BitbucketServerConfigConnectedRepository>(guardedValue, (value) => BitbucketServerConfigConnectedRepository.fromMap((value as Map).cast<String, dynamic>())); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     hostUri = registerOutput<String>('hostUri');
     location = registerOutput<String>('location');
@@ -980,11 +981,12 @@ class BitbucketServerConfig extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     BitbucketServerConfigState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return BitbucketServerConfig._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1000,7 +1002,31 @@ class BitbucketServerConfig extends pulumi.CustomResource {
         ) {
     apiKey = registerOutput<String>('apiKey');
     configId = registerOutput<String>('configId');
-    connectedRepositories = registerOutput<List<Map<String, dynamic>>?>('connectedRepositories');
+    connectedRepositories = registerOutput<List<BitbucketServerConfigConnectedRepository>?>('connectedRepositories', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BitbucketServerConfigConnectedRepository>(guardedValue, (value) => BitbucketServerConfigConnectedRepository.fromMap((value as Map).cast<String, dynamic>())); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    hostUri = registerOutput<String>('hostUri');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    peeredNetwork = registerOutput<String?>('peeredNetwork');
+    project = registerOutput<String>('project');
+    secrets = registerOutput<BitbucketServerConfigSecrets>('secrets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BitbucketServerConfigSecrets.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sslCa = registerOutput<String?>('sslCa');
+    username = registerOutput<String>('username');
+    webhookKey = registerOutput<String>('webhookKey');
+  }
+
+  /// Creates a typed reference to an existing [BitbucketServerConfig] resource.
+  BitbucketServerConfig.reference(String urn)
+    : super(
+        'gcp:cloudbuild/bitbucketServerConfig:BitbucketServerConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    apiKey = registerOutput<String>('apiKey');
+    configId = registerOutput<String>('configId');
+    connectedRepositories = registerOutput<List<BitbucketServerConfigConnectedRepository>?>('connectedRepositories', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BitbucketServerConfigConnectedRepository>(guardedValue, (value) => BitbucketServerConfigConnectedRepository.fromMap((value as Map).cast<String, dynamic>())); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     hostUri = registerOutput<String>('hostUri');
     location = registerOutput<String>('location');

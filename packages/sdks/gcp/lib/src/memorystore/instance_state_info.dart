@@ -7,7 +7,7 @@ class InstanceStateInfo {
   /// (Output)
   /// Represents information about instance with state UPDATING.
   /// Structure is documented below.
-  final pulumi.Input<List<InstanceStateInfoUpdateInfo>>? updateInfos;
+  final pulumi.Input<List<InstanceStateInfoUpdateInfo>?>? updateInfos;
 
   /// Creates a new [InstanceStateInfo].
   /// [updateInfos] (Output)

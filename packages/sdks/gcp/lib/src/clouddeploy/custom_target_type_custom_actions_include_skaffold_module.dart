@@ -7,16 +7,16 @@ import 'custom_target_type_custom_actions_include_skaffold_module_google_cloud_s
 
 class CustomTargetTypeCustomActionsIncludeSkaffoldModule {
   /// The Skaffold Config modules to use from the specified source.
-  final pulumi.Input<List<String>>? configs;
+  final pulumi.Input<List<String>?>? configs;
   /// Remote git repository containing the Skaffold Config modules.
   /// Structure is documented below.
-  final pulumi.Input<CustomTargetTypeCustomActionsIncludeSkaffoldModuleGit>? git;
+  final pulumi.Input<CustomTargetTypeCustomActionsIncludeSkaffoldModuleGit?>? git;
   /// Cloud Build 2nd gen repository containing the Skaffold Config modules.
   /// Structure is documented below.
-  final pulumi.Input<CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudBuildRepo>? googleCloudBuildRepo;
+  final pulumi.Input<CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudBuildRepo?>? googleCloudBuildRepo;
   /// Cloud Storage bucket containing Skaffold Config modules.
   /// Structure is documented below.
-  final pulumi.Input<CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorage>? googleCloudStorage;
+  final pulumi.Input<CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorage?>? googleCloudStorage;
 
   /// Creates a new [CustomTargetTypeCustomActionsIncludeSkaffoldModule].
   /// [configs] The Skaffold Config modules to use from the specified source.

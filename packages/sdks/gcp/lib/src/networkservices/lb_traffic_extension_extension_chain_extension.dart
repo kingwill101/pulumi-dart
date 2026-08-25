@@ -4,28 +4,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LbTrafficExtensionExtensionChainExtension {
   /// The :authority header in the gRPC request sent from Envoy to the extension service.
-  final pulumi.Input<String>? authority;
+  final pulumi.Input<String?>? authority;
   /// Determines how the proxy behaves if the call to the extension fails or times out.
   /// When set to TRUE, request or response processing continues without error.
   /// Any subsequent extensions in the extension chain are also executed.
   /// When set to FALSE: * If response headers have not been delivered to the downstream client,
   /// a generic 500 error is returned to the client. The error response can be tailored by
   /// configuring a custom error response in the load balancer.
-  final pulumi.Input<bool>? failOpen;
+  final pulumi.Input<bool?>? failOpen;
   /// List of the Envoy attributes to forward to the extension server. The attributes
   /// provided here are included as part of the `ProcessingRequest.attributes` field
   /// (of type `map`), where the keys are the attribute names. Refer to the
   /// [documentation](https://docs.cloud.google.com/service-extensions/docs/attributes)
   /// for the names of attributes that can be forwarded. If omitted, no attributes
   /// are sent. Each element is a string indicating the attribute name.
-  final pulumi.Input<List<String>>? forwardAttributes;
+  final pulumi.Input<List<String>?>? forwardAttributes;
   /// List of the HTTP headers to forward to the extension (from the client or backend).
   /// If omitted, all headers are sent. Each element is a string indicating the header name.
-  final pulumi.Input<List<String>>? forwardHeaders;
+  final pulumi.Input<List<String>?>? forwardHeaders;
   /// Metadata associated with the extension. This field is used to pass metadata to the extension service.
   /// You can set up key value pairs for metadata as you like and need.
   /// f.e. {"key": "value", "key2": "value2"}.
-  final pulumi.Input<Map<String, String>>? metadata;
+  final pulumi.Input<Map<String, String>?>? metadata;
   /// The name for this extension. The name is logged as part of the HTTP request logs.
   /// The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens,
   /// and can have a maximum length of 63 characters. Additionally, the first character must be a letter
@@ -39,10 +39,10 @@ class LbTrafficExtensionExtensionChainExtension {
   /// This field is required for the LbTrafficExtension resource. It's not relevant for the LbRouteExtension
   /// resource. Possible values:`EVENT_TYPE_UNSPECIFIED`, `REQUEST_HEADERS`, `REQUEST_BODY`, `RESPONSE_HEADERS`,
   /// `RESPONSE_BODY`, `RESPONSE_BODY` and `RESPONSE_BODY`.
-  final pulumi.Input<List<String>>? supportedEvents;
+  final pulumi.Input<List<String>?>? supportedEvents;
   /// Specifies the timeout for each individual message on the stream. The timeout must be between 10-1000 milliseconds.
   /// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
-  final pulumi.Input<String>? timeout;
+  final pulumi.Input<String?>? timeout;
 
   /// Creates a new [LbTrafficExtensionExtensionChainExtension].
   /// [authority] The :authority header in the gRPC request sent from Envoy to the extension service.

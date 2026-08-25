@@ -558,7 +558,7 @@ class SecurityMonitoringCondition extends pulumi.CustomResource {
           'gcp:apigee/securityMonitoringCondition:SecurityMonitoringCondition',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     conditionId = registerOutput<String>('conditionId');
     createTime = registerOutput<String>('createTime');
@@ -578,11 +578,12 @@ class SecurityMonitoringCondition extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SecurityMonitoringConditionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SecurityMonitoringCondition._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -596,6 +597,28 @@ class SecurityMonitoringCondition extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    conditionId = registerOutput<String>('conditionId');
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    includeAllResources = registerOutput<Map<String, dynamic>?>('includeAllResources');
+    this.name = registerOutput<String>('name');
+    orgId = registerOutput<String>('orgId');
+    profile = registerOutput<String>('profile');
+    scope = registerOutput<String>('scope');
+    totalDeployedResources = registerOutput<int>('totalDeployedResources');
+    totalMonitoredResources = registerOutput<int>('totalMonitoredResources');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [SecurityMonitoringCondition] resource.
+  SecurityMonitoringCondition.reference(String urn)
+    : super(
+        'gcp:apigee/securityMonitoringCondition:SecurityMonitoringCondition',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     conditionId = registerOutput<String>('conditionId');
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');

@@ -4,18 +4,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GoldengateDeploymentPropertiesLock {
   /// The compartment id.
-  final pulumi.Input<String>? compartmentId;
+  final pulumi.Input<String?>? compartmentId;
   /// The date and time that the GoldengateDeployment was created.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// The message.
-  final pulumi.Input<String>? message;
+  final pulumi.Input<String?>? message;
   /// The related resource id.
-  final pulumi.Input<String>? relatedResourceId;
+  final pulumi.Input<String?>? relatedResourceId;
   /// The type of lock.
   /// Possible values:
   /// FULL
   /// DELETE
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [GoldengateDeploymentPropertiesLock].
   /// [compartmentId] The compartment id.

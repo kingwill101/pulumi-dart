@@ -134,3 +134,14 @@ Future<GetConnectionIamPolicyResult> getConnectionIamPolicy(
   );
   return GetConnectionIamPolicyResult.fromMap(result);
 }
+
+pulumi.Output<GetConnectionIamPolicyResult> getConnectionIamPolicyOutput(
+  GetConnectionIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:cloudbuildv2/getConnectionIamPolicy:getConnectionIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetConnectionIamPolicyResult.fromMap);
+}

@@ -7,10 +7,10 @@ import 'feature_spec_fleetobservability_logging_config_fleet_scope_logs_config.d
 class FeatureSpecFleetobservabilityLoggingConfig {
   /// Specified if applying the default routing config to logs not specified in other configs.
   /// Structure is documented below.
-  final pulumi.Input<FeatureSpecFleetobservabilityLoggingConfigDefaultConfig>? defaultConfig;
+  final pulumi.Input<FeatureSpecFleetobservabilityLoggingConfigDefaultConfig?>? defaultConfig;
   /// Specified if applying the routing config to all logs for all fleet scopes.
   /// Structure is documented below.
-  final pulumi.Input<FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfig>? fleetScopeLogsConfig;
+  final pulumi.Input<FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfig?>? fleetScopeLogsConfig;
 
   /// Creates a new [FeatureSpecFleetobservabilityLoggingConfig].
   /// [defaultConfig] Specified if applying the default routing config to logs not specified in other configs.

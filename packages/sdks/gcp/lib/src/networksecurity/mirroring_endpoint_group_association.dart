@@ -7,19 +7,19 @@ class MirroringEndpointGroupAssociation {
   /// The connected deployment group's resource name, for example:
   /// `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
   /// See https://google.aip.dev/124.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// (Output)
   /// The associated network, for example:
   /// projects/123456789/global/networks/my-network.
   /// See https://google.aip.dev/124.
-  final pulumi.Input<String>? network;
+  final pulumi.Input<String?>? network;
   /// (Output)
   /// The current state of the association in this location.
   /// Possible values:
   /// STATE_UNSPECIFIED
   /// ACTIVE
   /// OUT_OF_SYNC
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
 
   /// Creates a new [MirroringEndpointGroupAssociation].
   /// [name] (Output)

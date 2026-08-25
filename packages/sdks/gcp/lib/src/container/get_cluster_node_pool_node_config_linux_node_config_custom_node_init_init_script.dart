@@ -31,7 +31,7 @@ class GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScript {
   factory GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScript.fromMap(Map<String, dynamic> map) {
     return GetClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScript(
       gcpSecretManagerSecretUri: pulumi.Input.fromValue(map['gcpSecretManagerSecretUri'] as String),
-      gcsGeneration: pulumi.Input.fromValue(map['gcsGeneration'] as int),
+      gcsGeneration: pulumi.Input.fromValue((map['gcsGeneration'] as num).toInt()),
       gcsUri: pulumi.Input.fromValue(map['gcsUri'] as String),
     );
   }

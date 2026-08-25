@@ -8,13 +8,13 @@ import 'runtime_template_software_config_post_startup_script_config.dart';
 class RuntimeTemplateSoftwareConfig {
   /// Colab Image Configuration.
   /// Structure is documented below.
-  final pulumi.Input<RuntimeTemplateSoftwareConfigColabImage>? colabImage;
+  final pulumi.Input<RuntimeTemplateSoftwareConfigColabImage?>? colabImage;
   /// Environment variables to be passed to the container.
   /// Structure is documented below.
-  final pulumi.Input<List<RuntimeTemplateSoftwareConfigEnv>>? envs;
+  final pulumi.Input<List<RuntimeTemplateSoftwareConfigEnv>?>? envs;
   /// Post startup script config.
   /// Structure is documented below.
-  final pulumi.Input<RuntimeTemplateSoftwareConfigPostStartupScriptConfig>? postStartupScriptConfig;
+  final pulumi.Input<RuntimeTemplateSoftwareConfigPostStartupScriptConfig?>? postStartupScriptConfig;
 
   /// Creates a new [RuntimeTemplateSoftwareConfig].
   /// [colabImage] Colab Image Configuration.

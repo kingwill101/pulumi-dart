@@ -25,7 +25,7 @@ class InstanceFromTemplateGuestAccelerator {
 
   factory InstanceFromTemplateGuestAccelerator.fromMap(Map<String, dynamic> map) {
     return InstanceFromTemplateGuestAccelerator(
-      count: pulumi.Input.fromValue(map['count'] as int),
+      count: pulumi.Input.fromValue((map['count'] as num).toInt()),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }

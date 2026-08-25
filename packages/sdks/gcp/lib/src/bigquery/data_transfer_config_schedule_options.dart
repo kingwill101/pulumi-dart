@@ -8,18 +8,18 @@ class DataTransferConfigScheduleOptions {
   /// basis using transferConfigs.startManualRuns API. When automatic
   /// scheduling is disabled, the TransferConfig.schedule field will
   /// be ignored.
-  final pulumi.Input<bool>? disableAutoScheduling;
+  final pulumi.Input<bool?>? disableAutoScheduling;
   /// Defines time to stop scheduling transfer runs. A transfer run cannot be
   /// scheduled at or after the end time. The end time can be changed at any
   /// moment. The time when a data transfer can be triggered manually is not
   /// limited by this option.
-  final pulumi.Input<String>? endTime;
+  final pulumi.Input<String?>? endTime;
   /// Specifies time to start scheduling transfer runs. The first run will be
   /// scheduled at or after the start time according to a recurrence pattern
   /// defined in the schedule string. The start time can be changed at any
   /// moment. The time when a data transfer can be triggered manually is not
   /// limited by this option.
-  final pulumi.Input<String>? startTime;
+  final pulumi.Input<String?>? startTime;
 
   /// Creates a new [DataTransferConfigScheduleOptions].
   /// [disableAutoScheduling] If true, automatic scheduling of data transfer runs for this

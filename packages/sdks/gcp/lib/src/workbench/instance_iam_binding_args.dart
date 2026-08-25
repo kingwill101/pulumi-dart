@@ -8,11 +8,11 @@ import 'instance_iam_binding_condition.dart';
 /// {@endtemplate}
 /// {@macro pulumi_workbench_instance_iam_binding_instance_iam_binding_args_doc}
 class InstanceIamBindingArgs {
-  final pulumi.Input<InstanceIamBindingCondition>? condition;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<InstanceIamBindingCondition?>? condition;
+  final pulumi.Input<String?>? location;
   final pulumi.Input<List<String>> members;
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> role;
 
   /// Creates a new [InstanceIamBindingArgs].

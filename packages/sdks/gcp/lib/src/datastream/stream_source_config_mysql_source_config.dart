@@ -6,21 +6,21 @@ import 'stream_source_config_mysql_source_config_include_objects.dart';
 
 class StreamSourceConfigMysqlSourceConfig {
   /// CDC reader reads from binary logs replication cdc method.
-  final pulumi.Input<Map<String, dynamic>>? binaryLogPosition;
+  final pulumi.Input<Map<String, dynamic>?>? binaryLogPosition;
   /// MySQL objects to exclude from the stream.
   /// Structure is documented below.
-  final pulumi.Input<StreamSourceConfigMysqlSourceConfigExcludeObjects>? excludeObjects;
+  final pulumi.Input<StreamSourceConfigMysqlSourceConfigExcludeObjects?>? excludeObjects;
   /// CDC reader reads from gtid based replication.
-  final pulumi.Input<Map<String, dynamic>>? gtid;
+  final pulumi.Input<Map<String, dynamic>?>? gtid;
   /// MySQL objects to retrieve from the source.
   /// Structure is documented below.
-  final pulumi.Input<StreamSourceConfigMysqlSourceConfigIncludeObjects>? includeObjects;
+  final pulumi.Input<StreamSourceConfigMysqlSourceConfigIncludeObjects?>? includeObjects;
   /// Maximum number of concurrent backfill tasks. The number should be non negative.
   /// If not set (or set to 0), the system's default value will be used.
-  final pulumi.Input<int>? maxConcurrentBackfillTasks;
+  final pulumi.Input<int?>? maxConcurrentBackfillTasks;
   /// Maximum number of concurrent CDC tasks. The number should be non negative.
   /// If not set (or set to 0), the system's default value will be used.
-  final pulumi.Input<int>? maxConcurrentCdcTasks;
+  final pulumi.Input<int?>? maxConcurrentCdcTasks;
 
   /// Creates a new [StreamSourceConfigMysqlSourceConfig].
   /// [binaryLogPosition] CDC reader reads from binary logs replication cdc method.
@@ -55,8 +55,8 @@ class StreamSourceConfigMysqlSourceConfig {
       excludeObjects: (() { final guardedValue = map['excludeObjects']; if (guardedValue == null) return null; return pulumi.Input.fromValue(StreamSourceConfigMysqlSourceConfigExcludeObjects.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       gtid: (() { final guardedValue = map['gtid']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
       includeObjects: (() { final guardedValue = map['includeObjects']; if (guardedValue == null) return null; return pulumi.Input.fromValue(StreamSourceConfigMysqlSourceConfigIncludeObjects.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      maxConcurrentBackfillTasks: (() { final guardedValue = map['maxConcurrentBackfillTasks']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      maxConcurrentCdcTasks: (() { final guardedValue = map['maxConcurrentCdcTasks']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxConcurrentBackfillTasks: (() { final guardedValue = map['maxConcurrentBackfillTasks']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxConcurrentCdcTasks: (() { final guardedValue = map['maxConcurrentCdcTasks']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

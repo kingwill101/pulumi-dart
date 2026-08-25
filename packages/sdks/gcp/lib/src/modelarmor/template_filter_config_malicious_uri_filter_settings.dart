@@ -7,7 +7,7 @@ class TemplateFilterConfigMaliciousUriFilterSettings {
   /// Possible values:
   /// ENABLED
   /// DISABLED
-  final pulumi.Input<String>? filterEnforcement;
+  final pulumi.Input<String?>? filterEnforcement;
 
   /// Creates a new [TemplateFilterConfigMaliciousUriFilterSettings].
   /// [filterEnforcement] Tells whether the Malicious URI filter is enabled or disabled.

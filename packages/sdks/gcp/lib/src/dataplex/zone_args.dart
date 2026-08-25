@@ -15,26 +15,26 @@ class ZoneArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Optional. Description of the zone.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Required. Specification of the discovery feature applied to data in this zone.
   final pulumi.Input<ZoneDiscoverySpec> discoverySpec;
   /// Optional. User friendly display name.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Optional. User defined labels for the zone.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The lake for the resource
   final pulumi.Input<String> lake;
   /// The location for the resource
   final pulumi.Input<String> location;
   /// The name of the zone.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The project for the resource
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Required. Immutable. Specification of the resources that are referenced by the assets within this zone.
   final pulumi.Input<ZoneResourceSpec> resourceSpec;
   /// Required. Immutable. The type of the zone. Possible values: TYPE_UNSPECIFIED, RAW, CURATED

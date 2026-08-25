@@ -5,10 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ReservationResourceStatusSpecificSkuAllocation {
   /// (Output)
   /// ID of the instance template used to populate reservation properties.
-  final pulumi.Input<String>? sourceInstanceTemplateId;
+  final pulumi.Input<String?>? sourceInstanceTemplateId;
   /// (Output)
   /// Per service utilization breakdown. The Key is the Google Cloud managed service name.
-  final pulumi.Input<Map<String, String>>? utilizations;
+  final pulumi.Input<Map<String, String>?>? utilizations;
 
   /// Creates a new [ReservationResourceStatusSpecificSkuAllocation].
   /// [sourceInstanceTemplateId] (Output)

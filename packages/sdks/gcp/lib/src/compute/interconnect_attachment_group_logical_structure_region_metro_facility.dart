@@ -6,12 +6,12 @@ import 'interconnect_attachment_group_logical_structure_region_metro_facility_zo
 class InterconnectAttachmentGroupLogicalStructureRegionMetroFacility {
   /// (Output)
   /// The name of a facility, like "iad-1234".
-  final pulumi.Input<String>? facility;
+  final pulumi.Input<String?>? facility;
   /// (Output)
   /// Zones used to explain this blocker in more detail.
   /// Format is "zone1" and/or "zone2". This will be set for some blockers
   /// (like  MISSING_ZONE) but does not apply to others.
-  final pulumi.Input<List<InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZone>>? zones;
+  final pulumi.Input<List<InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZone>?>? zones;
 
   /// Creates a new [InterconnectAttachmentGroupLogicalStructureRegionMetroFacility].
   /// [facility] (Output)

@@ -6,9 +6,9 @@ import 'feed_details_mandiant_ioc_settings_authentication.dart';
 class FeedDetailsMandiantIocSettings {
   /// HTTP header based authentication.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsMandiantIocSettingsAuthentication>? authentication;
+  final pulumi.Input<FeedDetailsMandiantIocSettingsAuthentication?>? authentication;
   /// time since when to start fetching the IOCs
-  final pulumi.Input<String>? startTime;
+  final pulumi.Input<String?>? startTime;
 
   /// Creates a new [FeedDetailsMandiantIocSettings].
   /// [authentication] HTTP header based authentication.

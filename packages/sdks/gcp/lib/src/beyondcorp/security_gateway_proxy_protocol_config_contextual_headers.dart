@@ -8,16 +8,16 @@ import 'security_gateway_proxy_protocol_config_contextual_headers_user_info.dart
 class SecurityGatewayProxyProtocolConfigContextualHeaders {
   /// Device info configuration.
   /// Structure is documented below.
-  final pulumi.Input<SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfo>? deviceInfo;
+  final pulumi.Input<SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfo?>? deviceInfo;
   /// Group info configuration.
   /// Structure is documented below.
-  final pulumi.Input<SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfo>? groupInfo;
+  final pulumi.Input<SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfo?>? groupInfo;
   /// Default output type for all enabled headers.
   /// Possible values are: `PROTOBUF`, `JSON`, `NONE`.
-  final pulumi.Input<String>? outputType;
+  final pulumi.Input<String?>? outputType;
   /// User info configuration.
   /// Structure is documented below.
-  final pulumi.Input<SecurityGatewayProxyProtocolConfigContextualHeadersUserInfo>? userInfo;
+  final pulumi.Input<SecurityGatewayProxyProtocolConfigContextualHeadersUserInfo?>? userInfo;
 
   /// Creates a new [SecurityGatewayProxyProtocolConfigContextualHeaders].
   /// [deviceInfo] Device info configuration.

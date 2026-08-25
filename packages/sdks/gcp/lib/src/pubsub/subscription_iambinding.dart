@@ -882,11 +882,11 @@ class SubscriptionIAMBinding extends pulumi.CustomResource {
           'gcp:pubsub/subscriptionIAMBinding:SubscriptionIAMBinding',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     condition = registerOutput<SubscriptionIAMBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubscriptionIAMBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
-    members = registerOutput<List<String>>('members');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     project = registerOutput<String>('project');
     role = registerOutput<String>('role');
     subscription = registerOutput<String>('subscription');
@@ -897,11 +897,12 @@ class SubscriptionIAMBinding extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SubscriptionIAMBindingState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SubscriptionIAMBinding._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -917,7 +918,24 @@ class SubscriptionIAMBinding extends pulumi.CustomResource {
         ) {
     condition = registerOutput<SubscriptionIAMBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubscriptionIAMBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
-    members = registerOutput<List<String>>('members');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    project = registerOutput<String>('project');
+    role = registerOutput<String>('role');
+    subscription = registerOutput<String>('subscription');
+  }
+
+  /// Creates a typed reference to an existing [SubscriptionIAMBinding] resource.
+  SubscriptionIAMBinding.reference(String urn)
+    : super(
+        'gcp:pubsub/subscriptionIAMBinding:SubscriptionIAMBinding',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    condition = registerOutput<SubscriptionIAMBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubscriptionIAMBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    etag = registerOutput<String>('etag');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     project = registerOutput<String>('project');
     role = registerOutput<String>('role');
     subscription = registerOutput<String>('subscription');

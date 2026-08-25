@@ -7,12 +7,12 @@ import 'feed_details_salesforce_settings_oauth_jwt_credentials_rs_credentials.da
 class FeedDetailsSalesforceSettingsOauthJwtCredentials {
   /// Claims identifying a specific customer.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsSalesforceSettingsOauthJwtCredentialsClaims>? claims;
+  final pulumi.Input<FeedDetailsSalesforceSettingsOauthJwtCredentialsClaims?>? claims;
   /// RS credentials.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsSalesforceSettingsOauthJwtCredentialsRsCredentials>? rsCredentials;
+  final pulumi.Input<FeedDetailsSalesforceSettingsOauthJwtCredentialsRsCredentials?>? rsCredentials;
   /// Token endpoint to get the OAuth token from.
-  final pulumi.Input<String>? tokenEndpoint;
+  final pulumi.Input<String?>? tokenEndpoint;
 
   /// Creates a new [FeedDetailsSalesforceSettingsOauthJwtCredentials].
   /// [claims] Claims identifying a specific customer.

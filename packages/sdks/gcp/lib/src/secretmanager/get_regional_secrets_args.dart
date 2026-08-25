@@ -8,11 +8,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_secretmanager_get_regional_secrets_get_regional_secrets_args_doc}
 class GetRegionalSecretsArgs {
   /// Filter string, adhering to the rules in [List-operation filtering](https://cloud.google.com/secret-manager/docs/filtering). List only secrets matching the filter. If filter is empty, all regional secrets are listed from the specified location.
-  final pulumi.Input<String>? filter;
+  final pulumi.Input<String?>? filter;
   /// The location of the regional secret.
   final pulumi.Input<String> location;
   /// The ID of the project.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetRegionalSecretsArgs].
   /// [filter] Filter string, adhering to the rules in [List-operation filtering](https://cloud.google.com/secret-manager/docs/filtering). List only secrets matching the filter. If filter is empty, all regional secrets are listed from the specified location.

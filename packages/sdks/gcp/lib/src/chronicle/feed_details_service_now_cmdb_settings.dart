@@ -6,11 +6,11 @@ import 'feed_details_service_now_cmdb_settings_authentication.dart';
 class FeedDetailsServiceNowCmdbSettings {
   /// Info for username and secret based authentication.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsServiceNowCmdbSettingsAuthentication>? authentication;
+  final pulumi.Input<FeedDetailsServiceNowCmdbSettingsAuthentication?>? authentication;
   /// Feedname.
-  final pulumi.Input<String>? feedname;
+  final pulumi.Input<String?>? feedname;
   /// API Hostname.
-  final pulumi.Input<String>? hostname;
+  final pulumi.Input<String?>? hostname;
 
   /// Creates a new [FeedDetailsServiceNowCmdbSettings].
   /// [authentication] Info for username and secret based authentication.

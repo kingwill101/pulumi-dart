@@ -7,24 +7,24 @@ import 'datascan_data_profile_spec_post_scan_actions.dart';
 
 class DatascanDataProfileSpec {
   /// If set, the latest DataScan job result will be published to Dataplex Catalog.
-  final pulumi.Input<bool>? catalogPublishingEnabled;
+  final pulumi.Input<bool?>? catalogPublishingEnabled;
   /// The fields to exclude from data profile.
   /// If specified, the fields will be excluded from data profile, regardless of `includeFields` value.
   /// Structure is documented below.
-  final pulumi.Input<DatascanDataProfileSpecExcludeFields>? excludeFields;
+  final pulumi.Input<DatascanDataProfileSpecExcludeFields?>? excludeFields;
   /// The fields to include in data profile.
   /// If not specified, all fields at the time of profile scan job execution are included, except for ones listed in `excludeFields`.
   /// Structure is documented below.
-  final pulumi.Input<DatascanDataProfileSpecIncludeFields>? includeFields;
+  final pulumi.Input<DatascanDataProfileSpecIncludeFields?>? includeFields;
   /// Actions to take upon job completion.
   /// Structure is documented below.
-  final pulumi.Input<DatascanDataProfileSpecPostScanActions>? postScanActions;
+  final pulumi.Input<DatascanDataProfileSpecPostScanActions?>? postScanActions;
   /// A filter applied to all rows in a single DataScan job. The filter needs to be a valid SQL expression for a WHERE clause in BigQuery standard SQL syntax. Example: col1 &gt;= 0 AND col2 &lt; 10
-  final pulumi.Input<String>? rowFilter;
+  final pulumi.Input<String?>? rowFilter;
   /// The percentage of the records to be selected from the dataset for DataScan.
   /// Value can range between 0.0 and 100.0 with up to 3 significant decimal digits.
   /// Sampling is not applied if `samplingPercent` is not specified, 0 or 100.
-  final pulumi.Input<double>? samplingPercent;
+  final pulumi.Input<double?>? samplingPercent;
 
   /// Creates a new [DatascanDataProfileSpec].
   /// [catalogPublishingEnabled] If set, the latest DataScan job result will be published to Dataplex Catalog.
@@ -60,7 +60,7 @@ class DatascanDataProfileSpec {
       includeFields: (() { final guardedValue = map['includeFields']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DatascanDataProfileSpecIncludeFields.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       postScanActions: (() { final guardedValue = map['postScanActions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DatascanDataProfileSpecPostScanActions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       rowFilter: (() { final guardedValue = map['rowFilter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      samplingPercent: (() { final guardedValue = map['samplingPercent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      samplingPercent: (() { final guardedValue = map['samplingPercent']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

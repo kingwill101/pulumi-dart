@@ -5,10 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GenericServiceBasicService {
   /// Labels that specify the resource that emits the monitoring data
   /// which is used for SLO reporting of this `Service`.
-  final pulumi.Input<Map<String, String>>? serviceLabels;
+  final pulumi.Input<Map<String, String>?>? serviceLabels;
   /// The type of service that this basic service defines, e.g.
   /// APP_ENGINE service type
-  final pulumi.Input<String>? serviceType;
+  final pulumi.Input<String?>? serviceType;
 
   /// Creates a new [GenericServiceBasicService].
   /// [serviceLabels] Labels that specify the resource that emits the monitoring data

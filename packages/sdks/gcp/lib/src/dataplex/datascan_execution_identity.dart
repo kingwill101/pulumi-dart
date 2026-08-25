@@ -5,12 +5,12 @@ import 'datascan_execution_identity_service_account.dart';
 
 class DatascanExecutionIdentity {
   /// The Dataplex service agent associated with the user's project.
-  final pulumi.Input<Map<String, dynamic>>? dataplexServiceAgent;
+  final pulumi.Input<Map<String, dynamic>?>? dataplexServiceAgent;
   /// Service account to use to execute a datascan.
   /// Structure is documented below.
-  final pulumi.Input<DatascanExecutionIdentityServiceAccount>? serviceAccount;
+  final pulumi.Input<DatascanExecutionIdentityServiceAccount?>? serviceAccount;
   /// The credential of the calling user. Supports only ONE_TIME trigger type.
-  final pulumi.Input<Map<String, dynamic>>? userCredential;
+  final pulumi.Input<Map<String, dynamic>?>? userCredential;
 
   /// Creates a new [DatascanExecutionIdentity].
   /// [dataplexServiceAgent] The Dataplex service agent associated with the user's project.

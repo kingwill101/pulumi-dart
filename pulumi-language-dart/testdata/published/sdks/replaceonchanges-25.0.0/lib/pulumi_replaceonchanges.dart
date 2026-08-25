@@ -3,11 +3,11 @@
 import 'package:pulumi_replaceonchanges/index.dart' as module_index;
 import 'package:pulumi_replaceonchanges/providers.dart' as module_providers;
 
-final index = const _IndexModuleNamespace();
-final providers = const _ProvidersModuleNamespace();
+final index = _IndexModuleNamespace();
+final providers = _ProvidersModuleNamespace();
 
 class _IndexModuleNamespace {
-  const _IndexModuleNamespace();
+  _IndexModuleNamespace();
   final ResourceA = module_index.ResourceA.new;
   final ResourceAArgs = module_index.ResourceAArgs.new;
   final ResourceB = module_index.ResourceB.new;
@@ -15,6 +15,6 @@ class _IndexModuleNamespace {
 }
 
 class _ProvidersModuleNamespace {
-  const _ProvidersModuleNamespace();
+  _ProvidersModuleNamespace();
   final Replaceonchanges = module_providers.ProviderProvider.new;
 }

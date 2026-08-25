@@ -1071,7 +1071,7 @@ class RepositoryGroupIamMember extends pulumi.CustomResource {
           'gcp:gemini/repositoryGroupIamMember:RepositoryGroupIamMember',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     codeRepositoryIndex = registerOutput<String>('codeRepositoryIndex');
     condition = registerOutput<RepositoryGroupIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RepositoryGroupIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -1088,11 +1088,12 @@ class RepositoryGroupIamMember extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RepositoryGroupIamMemberState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RepositoryGroupIamMember._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1106,6 +1107,25 @@ class RepositoryGroupIamMember extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    codeRepositoryIndex = registerOutput<String>('codeRepositoryIndex');
+    condition = registerOutput<RepositoryGroupIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RepositoryGroupIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    etag = registerOutput<String>('etag');
+    location = registerOutput<String>('location');
+    member = registerOutput<String>('member');
+    project = registerOutput<String>('project');
+    repositoryGroupId = registerOutput<String>('repositoryGroupId');
+    role = registerOutput<String>('role');
+  }
+
+  /// Creates a typed reference to an existing [RepositoryGroupIamMember] resource.
+  RepositoryGroupIamMember.reference(String urn)
+    : super(
+        'gcp:gemini/repositoryGroupIamMember:RepositoryGroupIamMember',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     codeRepositoryIndex = registerOutput<String>('codeRepositoryIndex');
     condition = registerOutput<RepositoryGroupIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RepositoryGroupIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');

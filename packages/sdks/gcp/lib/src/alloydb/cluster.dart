@@ -1,11 +1,16 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cluster_args.dart';
 import 'cluster_automated_backup_policy.dart';
+import 'cluster_backup_source.dart';
+import 'cluster_backupdr_backup_source.dart';
 import 'cluster_continuous_backup_config.dart';
+import 'cluster_continuous_backup_info.dart';
 import 'cluster_dataplex_config.dart';
 import 'cluster_encryption_config.dart';
+import 'cluster_encryption_info.dart';
 import 'cluster_initial_user.dart';
 import 'cluster_maintenance_update_policy.dart';
+import 'cluster_migration_source.dart';
 import 'cluster_network_config.dart';
 import 'cluster_psc_config.dart';
 import 'cluster_restore_backup_source.dart';
@@ -14,6 +19,7 @@ import 'cluster_restore_backupdr_pitr_source.dart';
 import 'cluster_restore_continuous_backup_source.dart';
 import 'cluster_secondary_config.dart';
 import 'cluster_state.dart';
+import 'cluster_trial_metadata.dart';
 
 /// A managed alloydb cluster.
 ///
@@ -2362,10 +2368,10 @@ class Cluster extends pulumi.CustomResource {
   late final pulumi.Output<ClusterAutomatedBackupPolicy> automatedBackupPolicy;
   /// Cluster created from backup.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> backupSources;
+  late final pulumi.Output<List<ClusterBackupSource>> backupSources;
   /// Cluster created from a BackupDR backup.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> backupdrBackupSources;
+  late final pulumi.Output<List<ClusterBackupdrBackupSource>> backupdrBackupSources;
   /// The ID of the alloydb cluster.
   late final pulumi.Output<String> clusterId;
   /// The type of cluster. If not set, defaults to PRIMARY.
@@ -2378,7 +2384,7 @@ class Cluster extends pulumi.CustomResource {
   late final pulumi.Output<ClusterContinuousBackupConfig> continuousBackupConfig;
   /// ContinuousBackupInfo describes the continuous backup properties of a cluster.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> continuousBackupInfos;
+  late final pulumi.Output<List<ClusterContinuousBackupInfo>> continuousBackupInfos;
   /// The database engine major version. This is an optional field and it's populated at the Cluster creation time.
   /// Note: Changing this field to a higer version results in upgrading the AlloyDB cluster which is an irreversible change.
   late final pulumi.Output<String> databaseVersion;
@@ -2414,7 +2420,7 @@ class Cluster extends pulumi.CustomResource {
   /// (Output)
   /// Output only. The encryption information for the WALs and backups required for ContinuousBackup.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> encryptionInfos;
+  late final pulumi.Output<List<ClusterEncryptionInfo>> encryptionInfos;
   /// For Resource freshness validation (https://google.aip.dev/154)
   late final pulumi.Output<String?> etag;
   /// Initial user to setup during cluster creation. If unset for new Clusters, a postgres role with null password is created. You will need to create additional users or set the password in order to log in.
@@ -2431,7 +2437,7 @@ class Cluster extends pulumi.CustomResource {
   late final pulumi.Output<ClusterMaintenanceUpdatePolicy?> maintenanceUpdatePolicy;
   /// Cluster created via DMS migration.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> migrationSources;
+  late final pulumi.Output<List<ClusterMigrationSource>> migrationSources;
   /// The name of the cluster resource.
   late final pulumi.Output<String> name;
   /// Metadata related to network configuration.
@@ -2476,7 +2482,7 @@ class Cluster extends pulumi.CustomResource {
   late final pulumi.Output<String> subscriptionType;
   /// Contains information and all metadata related to TRIAL clusters.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> trialMetadatas;
+  late final pulumi.Output<List<ClusterTrialMetadata>> trialMetadatas;
   /// The system-generated UID of the resource.
   late final pulumi.Output<String> uid;
 
@@ -2492,36 +2498,37 @@ class Cluster extends pulumi.CustomResource {
           'gcp:alloydb/cluster:Cluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
-    annotations = registerOutput<Map<String, String>?>('annotations');
+    annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     automatedBackupPolicy = registerOutput<ClusterAutomatedBackupPolicy>('automatedBackupPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterAutomatedBackupPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    backupSources = registerOutput<List<Map<String, dynamic>>>('backupSources');
-    backupdrBackupSources = registerOutput<List<Map<String, dynamic>>>('backupdrBackupSources');
+    backupSources = registerOutput<List<ClusterBackupSource>>('backupSources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterBackupSource>(guardedValue, (value) => ClusterBackupSource.fromMap((value as Map).cast<String, dynamic>())); });
+    backupdrBackupSources = registerOutput<List<ClusterBackupdrBackupSource>>('backupdrBackupSources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterBackupdrBackupSource>(guardedValue, (value) => ClusterBackupdrBackupSource.fromMap((value as Map).cast<String, dynamic>())); });
     clusterId = registerOutput<String>('clusterId');
     clusterType = registerOutput<String?>('clusterType');
     continuousBackupConfig = registerOutput<ClusterContinuousBackupConfig>('continuousBackupConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterContinuousBackupConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    continuousBackupInfos = registerOutput<List<Map<String, dynamic>>>('continuousBackupInfos');
+    continuousBackupInfos = registerOutput<List<ClusterContinuousBackupInfo>>('continuousBackupInfos', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterContinuousBackupInfo>(guardedValue, (value) => ClusterContinuousBackupInfo.fromMap((value as Map).cast<String, dynamic>())); });
     databaseVersion = registerOutput<String>('databaseVersion');
     dataplexConfig = registerOutput<ClusterDataplexConfig>('dataplexConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterDataplexConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     deletionProtection = registerOutput<bool?>('deletionProtection');
     displayName = registerOutput<String?>('displayName');
-    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     encryptionConfig = registerOutput<ClusterEncryptionConfig?>('encryptionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterEncryptionConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    encryptionInfos = registerOutput<List<Map<String, dynamic>>>('encryptionInfos');
+    encryptionInfos = registerOutput<List<ClusterEncryptionInfo>>('encryptionInfos', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterEncryptionInfo>(guardedValue, (value) => ClusterEncryptionInfo.fromMap((value as Map).cast<String, dynamic>())); });
     etag = registerOutput<String?>('etag');
     initialUser = registerOutput<ClusterInitialUser?>('initialUser', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterInitialUser.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     maintenanceUpdatePolicy = registerOutput<ClusterMaintenanceUpdatePolicy?>('maintenanceUpdatePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterMaintenanceUpdatePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    migrationSources = registerOutput<List<Map<String, dynamic>>>('migrationSources');
+    migrationSources = registerOutput<List<ClusterMigrationSource>>('migrationSources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterMigrationSource>(guardedValue, (value) => ClusterMigrationSource.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     networkConfig = registerOutput<ClusterNetworkConfig>('networkConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterNetworkConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
     pscConfig = registerOutput<ClusterPscConfig?>('pscConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterPscConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     reconciling = registerOutput<bool>('reconciling');
     restoreBackupSource = registerOutput<ClusterRestoreBackupSource?>('restoreBackupSource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterRestoreBackupSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     restoreBackupdrBackupSource = registerOutput<ClusterRestoreBackupdrBackupSource?>('restoreBackupdrBackupSource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterRestoreBackupdrBackupSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -2531,7 +2538,7 @@ class Cluster extends pulumi.CustomResource {
     skipAwaitMajorVersionUpgrade = registerOutput<bool?>('skipAwaitMajorVersionUpgrade');
     state = registerOutput<String>('state');
     subscriptionType = registerOutput<String>('subscriptionType');
-    trialMetadatas = registerOutput<List<Map<String, dynamic>>>('trialMetadatas');
+    trialMetadatas = registerOutput<List<ClusterTrialMetadata>>('trialMetadatas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterTrialMetadata>(guardedValue, (value) => ClusterTrialMetadata.fromMap((value as Map).cast<String, dynamic>())); });
     uid = registerOutput<String>('uid');
   }
 
@@ -2540,11 +2547,12 @@ class Cluster extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ClusterState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Cluster._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -2558,34 +2566,34 @@ class Cluster extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    annotations = registerOutput<Map<String, String>?>('annotations');
+    annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     automatedBackupPolicy = registerOutput<ClusterAutomatedBackupPolicy>('automatedBackupPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterAutomatedBackupPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    backupSources = registerOutput<List<Map<String, dynamic>>>('backupSources');
-    backupdrBackupSources = registerOutput<List<Map<String, dynamic>>>('backupdrBackupSources');
+    backupSources = registerOutput<List<ClusterBackupSource>>('backupSources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterBackupSource>(guardedValue, (value) => ClusterBackupSource.fromMap((value as Map).cast<String, dynamic>())); });
+    backupdrBackupSources = registerOutput<List<ClusterBackupdrBackupSource>>('backupdrBackupSources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterBackupdrBackupSource>(guardedValue, (value) => ClusterBackupdrBackupSource.fromMap((value as Map).cast<String, dynamic>())); });
     clusterId = registerOutput<String>('clusterId');
     clusterType = registerOutput<String?>('clusterType');
     continuousBackupConfig = registerOutput<ClusterContinuousBackupConfig>('continuousBackupConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterContinuousBackupConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    continuousBackupInfos = registerOutput<List<Map<String, dynamic>>>('continuousBackupInfos');
+    continuousBackupInfos = registerOutput<List<ClusterContinuousBackupInfo>>('continuousBackupInfos', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterContinuousBackupInfo>(guardedValue, (value) => ClusterContinuousBackupInfo.fromMap((value as Map).cast<String, dynamic>())); });
     databaseVersion = registerOutput<String>('databaseVersion');
     dataplexConfig = registerOutput<ClusterDataplexConfig>('dataplexConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterDataplexConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     deletionProtection = registerOutput<bool?>('deletionProtection');
     displayName = registerOutput<String?>('displayName');
-    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     encryptionConfig = registerOutput<ClusterEncryptionConfig?>('encryptionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterEncryptionConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    encryptionInfos = registerOutput<List<Map<String, dynamic>>>('encryptionInfos');
+    encryptionInfos = registerOutput<List<ClusterEncryptionInfo>>('encryptionInfos', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterEncryptionInfo>(guardedValue, (value) => ClusterEncryptionInfo.fromMap((value as Map).cast<String, dynamic>())); });
     etag = registerOutput<String?>('etag');
     initialUser = registerOutput<ClusterInitialUser?>('initialUser', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterInitialUser.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     maintenanceUpdatePolicy = registerOutput<ClusterMaintenanceUpdatePolicy?>('maintenanceUpdatePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterMaintenanceUpdatePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    migrationSources = registerOutput<List<Map<String, dynamic>>>('migrationSources');
+    migrationSources = registerOutput<List<ClusterMigrationSource>>('migrationSources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterMigrationSource>(guardedValue, (value) => ClusterMigrationSource.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     networkConfig = registerOutput<ClusterNetworkConfig>('networkConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterNetworkConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
     pscConfig = registerOutput<ClusterPscConfig?>('pscConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterPscConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     reconciling = registerOutput<bool>('reconciling');
     restoreBackupSource = registerOutput<ClusterRestoreBackupSource?>('restoreBackupSource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterRestoreBackupSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     restoreBackupdrBackupSource = registerOutput<ClusterRestoreBackupdrBackupSource?>('restoreBackupdrBackupSource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterRestoreBackupdrBackupSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -2595,7 +2603,58 @@ class Cluster extends pulumi.CustomResource {
     skipAwaitMajorVersionUpgrade = registerOutput<bool?>('skipAwaitMajorVersionUpgrade');
     this.state = registerOutput<String>('state');
     subscriptionType = registerOutput<String>('subscriptionType');
-    trialMetadatas = registerOutput<List<Map<String, dynamic>>>('trialMetadatas');
+    trialMetadatas = registerOutput<List<ClusterTrialMetadata>>('trialMetadatas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterTrialMetadata>(guardedValue, (value) => ClusterTrialMetadata.fromMap((value as Map).cast<String, dynamic>())); });
+    uid = registerOutput<String>('uid');
+  }
+
+  /// Creates a typed reference to an existing [Cluster] resource.
+  Cluster.reference(String urn)
+    : super(
+        'gcp:alloydb/cluster:Cluster',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    automatedBackupPolicy = registerOutput<ClusterAutomatedBackupPolicy>('automatedBackupPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterAutomatedBackupPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    backupSources = registerOutput<List<ClusterBackupSource>>('backupSources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterBackupSource>(guardedValue, (value) => ClusterBackupSource.fromMap((value as Map).cast<String, dynamic>())); });
+    backupdrBackupSources = registerOutput<List<ClusterBackupdrBackupSource>>('backupdrBackupSources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterBackupdrBackupSource>(guardedValue, (value) => ClusterBackupdrBackupSource.fromMap((value as Map).cast<String, dynamic>())); });
+    clusterId = registerOutput<String>('clusterId');
+    clusterType = registerOutput<String?>('clusterType');
+    continuousBackupConfig = registerOutput<ClusterContinuousBackupConfig>('continuousBackupConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterContinuousBackupConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    continuousBackupInfos = registerOutput<List<ClusterContinuousBackupInfo>>('continuousBackupInfos', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterContinuousBackupInfo>(guardedValue, (value) => ClusterContinuousBackupInfo.fromMap((value as Map).cast<String, dynamic>())); });
+    databaseVersion = registerOutput<String>('databaseVersion');
+    dataplexConfig = registerOutput<ClusterDataplexConfig>('dataplexConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterDataplexConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    deletionProtection = registerOutput<bool?>('deletionProtection');
+    displayName = registerOutput<String?>('displayName');
+    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    encryptionConfig = registerOutput<ClusterEncryptionConfig?>('encryptionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterEncryptionConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    encryptionInfos = registerOutput<List<ClusterEncryptionInfo>>('encryptionInfos', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterEncryptionInfo>(guardedValue, (value) => ClusterEncryptionInfo.fromMap((value as Map).cast<String, dynamic>())); });
+    etag = registerOutput<String?>('etag');
+    initialUser = registerOutput<ClusterInitialUser?>('initialUser', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterInitialUser.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    maintenanceUpdatePolicy = registerOutput<ClusterMaintenanceUpdatePolicy?>('maintenanceUpdatePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterMaintenanceUpdatePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    migrationSources = registerOutput<List<ClusterMigrationSource>>('migrationSources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterMigrationSource>(guardedValue, (value) => ClusterMigrationSource.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    networkConfig = registerOutput<ClusterNetworkConfig>('networkConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterNetworkConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    project = registerOutput<String>('project');
+    pscConfig = registerOutput<ClusterPscConfig?>('pscConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterPscConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    reconciling = registerOutput<bool>('reconciling');
+    restoreBackupSource = registerOutput<ClusterRestoreBackupSource?>('restoreBackupSource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterRestoreBackupSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    restoreBackupdrBackupSource = registerOutput<ClusterRestoreBackupdrBackupSource?>('restoreBackupdrBackupSource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterRestoreBackupdrBackupSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    restoreBackupdrPitrSource = registerOutput<ClusterRestoreBackupdrPitrSource?>('restoreBackupdrPitrSource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterRestoreBackupdrPitrSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    restoreContinuousBackupSource = registerOutput<ClusterRestoreContinuousBackupSource?>('restoreContinuousBackupSource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterRestoreContinuousBackupSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    secondaryConfig = registerOutput<ClusterSecondaryConfig?>('secondaryConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterSecondaryConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    skipAwaitMajorVersionUpgrade = registerOutput<bool?>('skipAwaitMajorVersionUpgrade');
+    state = registerOutput<String>('state');
+    subscriptionType = registerOutput<String>('subscriptionType');
+    trialMetadatas = registerOutput<List<ClusterTrialMetadata>>('trialMetadatas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterTrialMetadata>(guardedValue, (value) => ClusterTrialMetadata.fromMap((value as Map).cast<String, dynamic>())); });
     uid = registerOutput<String>('uid');
   }
 }

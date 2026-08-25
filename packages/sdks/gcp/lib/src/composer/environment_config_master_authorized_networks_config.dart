@@ -5,7 +5,7 @@ import 'environment_config_master_authorized_networks_config_cidr_block.dart';
 
 class EnvironmentConfigMasterAuthorizedNetworksConfig {
   /// cidr_blocks define up to 50 external networks that could access Kubernetes master through HTTPS.
-  final pulumi.Input<List<EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock>>? cidrBlocks;
+  final pulumi.Input<List<EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock>?>? cidrBlocks;
   /// Whether or not master authorized networks is enabled.
   final pulumi.Input<bool> enabled;
 

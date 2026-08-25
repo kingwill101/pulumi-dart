@@ -30,9 +30,9 @@ class TransferJobScheduleScheduleEndDate {
 
   factory TransferJobScheduleScheduleEndDate.fromMap(Map<String, dynamic> map) {
     return TransferJobScheduleScheduleEndDate(
-      day: pulumi.Input.fromValue(map['day'] as int),
-      month: pulumi.Input.fromValue(map['month'] as int),
-      year: pulumi.Input.fromValue(map['year'] as int),
+      day: pulumi.Input.fromValue((map['day'] as num).toInt()),
+      month: pulumi.Input.fromValue((map['month'] as num).toInt()),
+      year: pulumi.Input.fromValue((map['year'] as num).toInt()),
     );
   }
 }

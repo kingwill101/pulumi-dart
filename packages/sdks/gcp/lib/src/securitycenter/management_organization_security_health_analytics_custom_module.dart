@@ -609,7 +609,7 @@ class ManagementOrganizationSecurityHealthAnalyticsCustomModule extends pulumi.C
           'gcp:securitycenter/managementOrganizationSecurityHealthAnalyticsCustomModule:ManagementOrganizationSecurityHealthAnalyticsCustomModule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     ancestorModule = registerOutput<String>('ancestorModule');
     customConfig = registerOutput<ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfig?>('customConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -628,11 +628,12 @@ class ManagementOrganizationSecurityHealthAnalyticsCustomModule extends pulumi.C
     String name,
     pulumi.Input<String> id, {
     ManagementOrganizationSecurityHealthAnalyticsCustomModuleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ManagementOrganizationSecurityHealthAnalyticsCustomModule._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -646,6 +647,27 @@ class ManagementOrganizationSecurityHealthAnalyticsCustomModule extends pulumi.C
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    ancestorModule = registerOutput<String>('ancestorModule');
+    customConfig = registerOutput<ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfig?>('customConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    displayName = registerOutput<String?>('displayName');
+    enablementState = registerOutput<String?>('enablementState');
+    lastEditor = registerOutput<String>('lastEditor');
+    location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    organization = registerOutput<String>('organization');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [ManagementOrganizationSecurityHealthAnalyticsCustomModule] resource.
+  ManagementOrganizationSecurityHealthAnalyticsCustomModule.reference(String urn)
+    : super(
+        'gcp:securitycenter/managementOrganizationSecurityHealthAnalyticsCustomModule:ManagementOrganizationSecurityHealthAnalyticsCustomModule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     ancestorModule = registerOutput<String>('ancestorModule');
     customConfig = registerOutput<ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfig?>('customConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deletionPolicy = registerOutput<String>('deletionPolicy');

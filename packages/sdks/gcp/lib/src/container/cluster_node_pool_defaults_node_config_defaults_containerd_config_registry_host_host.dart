@@ -7,19 +7,19 @@ import 'cluster_node_pool_defaults_node_config_defaults_containerd_config_regist
 
 class ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHost {
   /// Represent the capabilities of the registry host, specifying what operations a host is capable of performing.
-  final pulumi.Input<List<String>>? capabilities;
+  final pulumi.Input<List<String>?>? capabilities;
   /// Configures the registry host certificate.
-  final pulumi.Input<List<ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostCa>>? cas;
+  final pulumi.Input<List<ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostCa>?>? cas;
   /// Configures the registry host client certificate and key.
-  final pulumi.Input<List<ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostClient>>? clients;
+  final pulumi.Input<List<ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostClient>?>? clients;
   /// Specifies the maximum duration allowed for a connection attempt to complete.
-  final pulumi.Input<String>? dialTimeout;
+  final pulumi.Input<String?>? dialTimeout;
   /// Configures the registry host headers.
-  final pulumi.Input<List<ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostHeader>>? headers;
+  final pulumi.Input<List<ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostHeader>?>? headers;
   /// Configures the registry host/mirror.
   final pulumi.Input<String> host;
   /// Indicate the host's API root endpoint is defined in the URL path rather than by the API specification.
-  final pulumi.Input<bool>? overridePath;
+  final pulumi.Input<bool?>? overridePath;
 
   /// Creates a new [ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHost].
   /// [capabilities] Represent the capabilities of the registry host, specifying what operations a host is capable of performing.

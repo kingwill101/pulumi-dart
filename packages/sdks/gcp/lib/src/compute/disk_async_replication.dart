@@ -277,7 +277,7 @@ class DiskAsyncReplication extends pulumi.CustomResource {
           'gcp:compute/diskAsyncReplication:DiskAsyncReplication',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     primaryDisk = registerOutput<String>('primaryDisk');
@@ -289,11 +289,12 @@ class DiskAsyncReplication extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DiskAsyncReplicationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DiskAsyncReplication._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -307,6 +308,20 @@ class DiskAsyncReplication extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    primaryDisk = registerOutput<String>('primaryDisk');
+    secondaryDisk = registerOutput<DiskAsyncReplicationSecondaryDisk>('secondaryDisk', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DiskAsyncReplicationSecondaryDisk.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [DiskAsyncReplication] resource.
+  DiskAsyncReplication.reference(String urn)
+    : super(
+        'gcp:compute/diskAsyncReplication:DiskAsyncReplication',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     primaryDisk = registerOutput<String>('primaryDisk');
     secondaryDisk = registerOutput<DiskAsyncReplicationSecondaryDisk>('secondaryDisk', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DiskAsyncReplicationSecondaryDisk.fromMap((guardedValue as Map).cast<String, dynamic>()); });

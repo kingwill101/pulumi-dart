@@ -357,7 +357,7 @@ class AppRootAgentAssociation extends pulumi.CustomResource {
           'gcp:ces/appRootAgentAssociation:AppRootAgentAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     agentId = registerOutput<String>('agentId');
     appId = registerOutput<String>('appId');
@@ -371,11 +371,12 @@ class AppRootAgentAssociation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AppRootAgentAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AppRootAgentAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -389,6 +390,22 @@ class AppRootAgentAssociation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    agentId = registerOutput<String>('agentId');
+    appId = registerOutput<String>('appId');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    location = registerOutput<String>('location');
+    project = registerOutput<String>('project');
+  }
+
+  /// Creates a typed reference to an existing [AppRootAgentAssociation] resource.
+  AppRootAgentAssociation.reference(String urn)
+    : super(
+        'gcp:ces/appRootAgentAssociation:AppRootAgentAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     agentId = registerOutput<String>('agentId');
     appId = registerOutput<String>('appId');
     deletionPolicy = registerOutput<String>('deletionPolicy');

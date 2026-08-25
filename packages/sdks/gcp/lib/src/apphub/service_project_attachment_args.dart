@@ -13,14 +13,14 @@ class ServiceProjectAttachmentArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// "Immutable. Service project name in the format: \"projects/abc\"
   /// or \"projects/123\". As input, project name with either project id or number
   /// are accepted. As output, this field will contain project number."
-  final pulumi.Input<String>? serviceProject;
+  final pulumi.Input<String?>? serviceProject;
   /// Required. The service project attachment identifier must contain the projectId of the service project specified in the service_project_attachment.service_project field. Hint: "projects/{project_id}"
   final pulumi.Input<String> serviceProjectAttachmentId;
 

@@ -12,7 +12,7 @@ class GetInsightsDatasetConfigArgs {
   /// The location of the Dataset Config.
   final pulumi.Input<String> location;
   /// The name of the GCP project in which dataset config exists. Can be configured through config as well.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetInsightsDatasetConfigArgs].
   /// [datasetConfigId] The user-defined ID of the DatasetConfig

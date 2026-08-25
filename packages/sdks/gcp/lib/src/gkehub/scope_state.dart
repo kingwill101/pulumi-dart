@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ScopeState {
   /// (Output)
   /// Code describes the state of a Scope resource.
-  final pulumi.Input<String>? code;
+  final pulumi.Input<String?>? code;
 
   /// Creates a new [ScopeState].
   /// [code] (Output)

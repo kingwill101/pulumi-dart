@@ -478,7 +478,7 @@ class Environment extends pulumi.CustomResource {
           'gcp:apigee/environment:Environment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     apiProxyType = registerOutput<String>('apiProxyType');
     clientIpResolutionConfig = registerOutput<EnvironmentClientIpResolutionConfig?>('clientIpResolutionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnvironmentClientIpResolutionConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -499,11 +499,12 @@ class Environment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EnvironmentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Environment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -517,6 +518,29 @@ class Environment extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    apiProxyType = registerOutput<String>('apiProxyType');
+    clientIpResolutionConfig = registerOutput<EnvironmentClientIpResolutionConfig?>('clientIpResolutionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnvironmentClientIpResolutionConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    deploymentType = registerOutput<String>('deploymentType');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String?>('displayName');
+    forwardProxyUri = registerOutput<String?>('forwardProxyUri');
+    this.name = registerOutput<String>('name');
+    nodeConfig = registerOutput<EnvironmentNodeConfig>('nodeConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnvironmentNodeConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    orgId = registerOutput<String>('orgId');
+    properties = registerOutput<EnvironmentProperties?>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnvironmentProperties.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [Environment] resource.
+  Environment.reference(String urn)
+    : super(
+        'gcp:apigee/environment:Environment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     apiProxyType = registerOutput<String>('apiProxyType');
     clientIpResolutionConfig = registerOutput<EnvironmentClientIpResolutionConfig?>('clientIpResolutionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnvironmentClientIpResolutionConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deletionPolicy = registerOutput<String>('deletionPolicy');

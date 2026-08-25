@@ -4,15 +4,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Input properties used for looking up and filtering InstanceIamPolicy resources.
 class InstanceIamPolicyState {
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// The ID of the instance or a fully qualified identifier for the instance.
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? policyData;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? policyData;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The region of the Data Fusion instance.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [InstanceIamPolicyState].
   /// [etag] Optional.

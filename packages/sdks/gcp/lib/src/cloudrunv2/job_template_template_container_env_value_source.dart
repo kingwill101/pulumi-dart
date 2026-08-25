@@ -6,7 +6,7 @@ import 'job_template_template_container_env_value_source_secret_key_ref.dart';
 class JobTemplateTemplateContainerEnvValueSource {
   /// Selects a secret and a specific version from Cloud Secret Manager.
   /// Structure is documented below.
-  final pulumi.Input<JobTemplateTemplateContainerEnvValueSourceSecretKeyRef>? secretKeyRef;
+  final pulumi.Input<JobTemplateTemplateContainerEnvValueSourceSecretKeyRef?>? secretKeyRef;
 
   /// Creates a new [JobTemplateTemplateContainerEnvValueSource].
   /// [secretKeyRef] Selects a secret and a specific version from Cloud Secret Manager.

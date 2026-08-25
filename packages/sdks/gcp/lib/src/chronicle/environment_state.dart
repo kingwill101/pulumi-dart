@@ -5,48 +5,48 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering Environment resources.
 class EnvironmentState {
   /// Environment nicknames.
-  final pulumi.Input<String>? aliasesJson;
+  final pulumi.Input<String?>? aliasesJson;
   /// MAX_NAME_LENGTH = 256
   /// Name of the contact for the environment.
-  final pulumi.Input<String>? contact;
+  final pulumi.Input<String?>? contact;
   /// MAX_NAME_LENGTH = 256
   /// Email of the contact for the environment. Multiple emails can be sepereated with the `;` character.
-  final pulumi.Input<String>? contactEmails;
+  final pulumi.Input<String?>? contactEmails;
   /// MAX_NAME_LENGTH = 256
   /// Phone number of the contact for the environment.
-  final pulumi.Input<String>? contactPhone;
+  final pulumi.Input<String?>? contactPhone;
   /// data access scopes.
-  final pulumi.Input<String>? dataAccessScopesJson;
+  final pulumi.Input<String?>? dataAccessScopesJson;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Whether Terraform will be prevented from destroying the environment. Deleting an environment will remove all its data and all playbooks, environments, integrations instances, reports and agents related to the environment. Once you delete an environment, it cannot be reversed. Deleting environments via terraform destroy or pulumi up will only succeed if this field is false in the Terraform state.
-  final pulumi.Input<bool>? deletionProtection;
+  final pulumi.Input<bool?>? deletionProtection;
   /// MAX_NAME_LENGTH = 256
   /// Description of the environment.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Name of the environment
   /// MAX_NAME_LENGTH = 256
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Id of the environment record.
-  final pulumi.Input<String>? environmentId;
+  final pulumi.Input<String?>? environmentId;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-  final pulumi.Input<String>? instance;
+  final pulumi.Input<String?>? instance;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Identifier. The unique name(ID) of the Environment.
   /// Format:
   /// projects/{project}/locations/{location}/instances/{instance}/environments/{environment}
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Environment data retention in months.
-  final pulumi.Input<int>? retentionDuration;
+  final pulumi.Input<int?>? retentionDuration;
 
   /// Creates a new [EnvironmentState].
   /// [aliasesJson] Environment nicknames.
@@ -118,7 +118,7 @@ class EnvironmentState {
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      retentionDuration: (() { final guardedValue = map['retentionDuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      retentionDuration: (() { final guardedValue = map['retentionDuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

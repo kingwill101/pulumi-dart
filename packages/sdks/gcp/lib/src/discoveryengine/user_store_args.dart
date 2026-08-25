@@ -14,24 +14,24 @@ class UserStoreArgs {
   /// register under the default subscription.
   /// If the default license config doesn't have remaining license seats left,
   /// new users will not be assigned with license.
-  final pulumi.Input<String>? defaultLicenseConfig;
+  final pulumi.Input<String?>? defaultLicenseConfig;
   /// Whether to enable automatic license update for users with expired licenses
   /// in this user store. If enabled, users with expired licenses will
   /// automatically be updated to the default subscription if there are
   /// remaining license seats.
-  final pulumi.Input<bool>? enableExpiredLicenseAutoUpdate;
+  final pulumi.Input<bool?>? enableExpiredLicenseAutoUpdate;
   /// Whether to enable automatic license registration for new users created in
   /// this user store. If enabled, new users will automatically register under
   /// the default subscription.
-  final pulumi.Input<bool>? enableLicenseAutoRegister;
+  final pulumi.Input<bool?>? enableLicenseAutoRegister;
   /// The geographic location where the data store should reside. The value can
   /// only be one of "global", "us" and "eu".
   final pulumi.Input<String> location;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The ID of the user store. Currently only accepts "defaultUserStore".
-  final pulumi.Input<String>? userStoreId;
+  final pulumi.Input<String?>? userStoreId;
 
   /// Creates a new [UserStoreArgs].
   /// [defaultLicenseConfig] The resource name of the default license config assigned to users created in

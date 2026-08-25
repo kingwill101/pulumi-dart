@@ -11,21 +11,21 @@ class ClusterComputeResourceConfig {
   /// be created using [Flex
   /// Start](https://cloud.google.com/compute/docs/instances/provisioning-models).
   /// Structure is documented below.
-  final pulumi.Input<ClusterComputeResourceConfigNewFlexStartInstances>? newFlexStartInstances;
+  final pulumi.Input<ClusterComputeResourceConfigNewFlexStartInstances?>? newFlexStartInstances;
   /// When set in a ComputeResourceConfig, indicates that on-demand (i.e.,
   /// using the standard provisioning model) VM instances should be created.
   /// Structure is documented below.
-  final pulumi.Input<ClusterComputeResourceConfigNewOnDemandInstances>? newOnDemandInstances;
+  final pulumi.Input<ClusterComputeResourceConfigNewOnDemandInstances?>? newOnDemandInstances;
   /// When set in a ComputeResourceConfig, indicates that VM instances should
   /// be created from a
   /// [reservation](https://cloud.google.com/compute/docs/instances/reservations-overview).
   /// Structure is documented below.
-  final pulumi.Input<ClusterComputeResourceConfigNewReservedInstances>? newReservedInstances;
+  final pulumi.Input<ClusterComputeResourceConfigNewReservedInstances?>? newReservedInstances;
   /// When set in a ComputeResourceConfig, indicates that [spot
   /// VM](https://cloud.google.com/compute/docs/instances/spot) instances should be
   /// created.
   /// Structure is documented below.
-  final pulumi.Input<ClusterComputeResourceConfigNewSpotInstances>? newSpotInstances;
+  final pulumi.Input<ClusterComputeResourceConfigNewSpotInstances?>? newSpotInstances;
 
   /// Creates a new [ClusterComputeResourceConfig].
   /// [newFlexStartInstances] When set in a ComputeResourceConfig, indicates that VM instances should

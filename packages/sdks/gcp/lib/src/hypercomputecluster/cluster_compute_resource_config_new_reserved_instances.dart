@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClusterComputeResourceConfigNewReservedInstances {
   /// Name of the reservation from which VM instances should be created, in the
   /// format `projects/{project}/zones/{zone}/reservations/{reservation}`.
-  final pulumi.Input<String>? reservation;
+  final pulumi.Input<String?>? reservation;
 
   /// Creates a new [ClusterComputeResourceConfigNewReservedInstances].
   /// [reservation] Name of the reservation from which VM instances should be created, in the

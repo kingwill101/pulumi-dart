@@ -17,10 +17,10 @@ class GetRegionTargetHttpsProxyArgs {
   final pulumi.Input<String> name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The Region in which the created target https proxy should reside.
   /// If it is not provided, the provider region is used.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [GetRegionTargetHttpsProxyArgs].
   /// [name] Name of the resource. Provided by the client when the resource is

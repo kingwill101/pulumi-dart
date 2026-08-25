@@ -301,7 +301,7 @@ class RegionNetworkFirewallPolicy extends pulumi.CustomResource {
           'gcp:compute/regionNetworkFirewallPolicy:RegionNetworkFirewallPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     creationTimestamp = registerOutput<String>('creationTimestamp');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -322,11 +322,12 @@ class RegionNetworkFirewallPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RegionNetworkFirewallPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RegionNetworkFirewallPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -340,6 +341,29 @@ class RegionNetworkFirewallPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    fingerprint = registerOutput<String>('fingerprint');
+    this.name = registerOutput<String>('name');
+    policyType = registerOutput<String>('policyType');
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+    regionNetworkFirewallPolicyId = registerOutput<String>('regionNetworkFirewallPolicyId');
+    ruleTupleCount = registerOutput<int>('ruleTupleCount');
+    selfLink = registerOutput<String>('selfLink');
+    selfLinkWithId = registerOutput<String>('selfLinkWithId');
+  }
+
+  /// Creates a typed reference to an existing [RegionNetworkFirewallPolicy] resource.
+  RegionNetworkFirewallPolicy.reference(String urn)
+    : super(
+        'gcp:compute/regionNetworkFirewallPolicy:RegionNetworkFirewallPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     creationTimestamp = registerOutput<String>('creationTimestamp');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');

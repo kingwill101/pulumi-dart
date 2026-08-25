@@ -2069,7 +2069,7 @@ class DnsManagedZoneIamMember extends pulumi.CustomResource {
           'gcp:dns/dnsManagedZoneIamMember:DnsManagedZoneIamMember',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     condition = registerOutput<DnsManagedZoneIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DnsManagedZoneIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
@@ -2084,11 +2084,12 @@ class DnsManagedZoneIamMember extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DnsManagedZoneIamMemberState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DnsManagedZoneIamMember._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -2102,6 +2103,23 @@ class DnsManagedZoneIamMember extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    condition = registerOutput<DnsManagedZoneIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DnsManagedZoneIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    etag = registerOutput<String>('etag');
+    managedZone = registerOutput<String>('managedZone');
+    member = registerOutput<String>('member');
+    project = registerOutput<String>('project');
+    role = registerOutput<String>('role');
+  }
+
+  /// Creates a typed reference to an existing [DnsManagedZoneIamMember] resource.
+  DnsManagedZoneIamMember.reference(String urn)
+    : super(
+        'gcp:dns/dnsManagedZoneIamMember:DnsManagedZoneIamMember',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     condition = registerOutput<DnsManagedZoneIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DnsManagedZoneIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
     managedZone = registerOutput<String>('managedZone');

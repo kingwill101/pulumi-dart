@@ -30,7 +30,7 @@ class GetWorkerPoolInstanceSplit {
 
   factory GetWorkerPoolInstanceSplit.fromMap(Map<String, dynamic> map) {
     return GetWorkerPoolInstanceSplit(
-      percent: pulumi.Input.fromValue(map['percent'] as int),
+      percent: pulumi.Input.fromValue((map['percent'] as num).toInt()),
       revision: pulumi.Input.fromValue(map['revision'] as String),
       type: pulumi.Input.fromValue(map['type'] as String),
     );

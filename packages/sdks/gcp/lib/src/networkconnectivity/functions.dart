@@ -127,3 +127,14 @@ Future<GetHubIamPolicyResult> getHubIamPolicy(
   );
   return GetHubIamPolicyResult.fromMap(result);
 }
+
+pulumi.Output<GetHubIamPolicyResult> getHubIamPolicyOutput(
+  GetHubIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:networkconnectivity/getHubIamPolicy:getHubIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetHubIamPolicyResult.fromMap);
+}

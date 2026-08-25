@@ -8,7 +8,7 @@ class ConnectionConfigurationAuthenticationUsernamePasswordPassword {
   final pulumi.Input<String> plaintext;
   /// (Output)
   /// Output only. The type of the secret.
-  final pulumi.Input<String>? secretType;
+  final pulumi.Input<String?>? secretType;
 
   /// Creates a new [ConnectionConfigurationAuthenticationUsernamePasswordPassword].
   /// [plaintext] The plaintext password.

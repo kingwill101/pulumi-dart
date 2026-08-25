@@ -30,9 +30,9 @@ class TableRangePartitioningRange {
 
   factory TableRangePartitioningRange.fromMap(Map<String, dynamic> map) {
     return TableRangePartitioningRange(
-      end: pulumi.Input.fromValue(map['end'] as int),
-      interval: pulumi.Input.fromValue(map['interval'] as int),
-      start: pulumi.Input.fromValue(map['start'] as int),
+      end: pulumi.Input.fromValue((map['end'] as num).toInt()),
+      interval: pulumi.Input.fromValue((map['interval'] as num).toInt()),
+      start: pulumi.Input.fromValue((map['start'] as num).toInt()),
     );
   }
 }

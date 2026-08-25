@@ -7,9 +7,9 @@ class BareMetalClusterLoadBalancerBgpLbConfigAddressPool {
   final pulumi.Input<List<String>> addresses;
   /// If true, avoid using IPs ending in .0 or .255.
   /// This avoids buggy consumer devices mistakenly dropping IPv4 traffic for those special IP addresses.
-  final pulumi.Input<bool>? avoidBuggyIps;
+  final pulumi.Input<bool?>? avoidBuggyIps;
   /// If true, prevent IP addresses from being automatically assigned.
-  final pulumi.Input<bool>? manualAssign;
+  final pulumi.Input<bool?>? manualAssign;
   /// The name of the address pool.
   final pulumi.Input<String> pool;
 

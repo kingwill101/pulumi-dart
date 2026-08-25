@@ -10,7 +10,7 @@ class TableEncryptionConfiguration {
   /// `gcp.kms.CryptoKeyIAMBinding` resource.
   final pulumi.Input<String> kmsKeyName;
   /// The self link or full name of the kms key version used to encrypt this table.
-  final pulumi.Input<String>? kmsKeyVersion;
+  final pulumi.Input<String?>? kmsKeyVersion;
 
   /// Creates a new [TableEncryptionConfiguration].
   /// [kmsKeyName] The self link or full name of a key which should be used to

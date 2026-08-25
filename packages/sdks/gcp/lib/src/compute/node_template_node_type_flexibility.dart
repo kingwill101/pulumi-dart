@@ -4,12 +4,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NodeTemplateNodeTypeFlexibility {
   /// Number of virtual CPUs to use.
-  final pulumi.Input<String>? cpus;
+  final pulumi.Input<String?>? cpus;
   /// (Output)
   /// Use local SSD
-  final pulumi.Input<String>? localSsd;
+  final pulumi.Input<String?>? localSsd;
   /// Physical memory available to the node, defined in MB.
-  final pulumi.Input<String>? memory;
+  final pulumi.Input<String?>? memory;
 
   /// Creates a new [NodeTemplateNodeTypeFlexibility].
   /// [cpus] Number of virtual CPUs to use.

@@ -10,13 +10,13 @@ class PipelineDestinationAuthenticationConfig {
   /// Cloud Run and Cloud Functions destinations or HTTP endpoints that
   /// support Google OIDC.
   /// Structure is documented below.
-  final pulumi.Input<PipelineDestinationAuthenticationConfigGoogleOidc>? googleOidc;
+  final pulumi.Input<PipelineDestinationAuthenticationConfigGoogleOidc?>? googleOidc;
   /// Contains information needed for generating an
   /// [OAuth token](https://developers.google.com/identity/protocols/OAuth2).
   /// This type of authorization should generally only be used when calling
   /// Google APIs hosted on *.googleapis.com.
   /// Structure is documented below.
-  final pulumi.Input<PipelineDestinationAuthenticationConfigOauthToken>? oauthToken;
+  final pulumi.Input<PipelineDestinationAuthenticationConfigOauthToken?>? oauthToken;
 
   /// Creates a new [PipelineDestinationAuthenticationConfig].
   /// [googleOidc] Represents a config used to authenticate with a Google OIDC token using

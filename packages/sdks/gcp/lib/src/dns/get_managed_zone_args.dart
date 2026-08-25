@@ -10,7 +10,7 @@ class GetManagedZoneArgs {
   /// A unique name for the resource.
   final pulumi.Input<String> name;
   /// The ID of the project for the Google Cloud DNS zone.  If this is not provided the default project will be used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetManagedZoneArgs].
   /// [name] A unique name for the resource.

@@ -8,17 +8,17 @@ class ClusterControlPlaneEncryption {
   /// projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey}
   /// to use for protecting control plane disks. If not specified, a
   /// Google-managed key will be used instead.
-  final pulumi.Input<String>? kmsKey;
+  final pulumi.Input<String?>? kmsKey;
   /// (Output)
   /// The Cloud KMS CryptoKeyVersion currently in use for protecting control
   /// plane disks. Only applicable if kmsKey is set.
-  final pulumi.Input<String>? kmsKeyActiveVersion;
+  final pulumi.Input<String?>? kmsKeyActiveVersion;
   /// (Output)
   /// Availability of the Cloud KMS CryptoKey. If not `KEY_AVAILABLE`, then
   /// nodes may go offline as they cannot access their local data. This can be
   /// caused by a lack of permissions to use the key, or if the key is disabled
   /// or deleted.
-  final pulumi.Input<String>? kmsKeyState;
+  final pulumi.Input<String?>? kmsKeyState;
   /// (Output)
   /// Error status returned by Cloud KMS when using this key. This field may be
   /// populated only if `kmsKeyState` is not `KMS_KEY_STATE_KEY_AVAILABLE`.
@@ -27,7 +27,7 @@ class ClusterControlPlaneEncryption {
   ///
   ///
   /// &lt;a name="nestedControlPlaneEncryptionKmsStatus"&gt;&lt;/a&gt;The `kmsStatus` block contains:
-  final pulumi.Input<List<ClusterControlPlaneEncryptionKmsStatus>>? kmsStatuses;
+  final pulumi.Input<List<ClusterControlPlaneEncryptionKmsStatus>?>? kmsStatuses;
 
   /// Creates a new [ClusterControlPlaneEncryption].
   /// [kmsKey] The Cloud KMS CryptoKey e.g.

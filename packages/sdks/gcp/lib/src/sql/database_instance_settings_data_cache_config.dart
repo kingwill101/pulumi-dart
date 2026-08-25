@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DatabaseInstanceSettingsDataCacheConfig {
   /// Whether data cache is enabled for the instance. Defaults to `true` for MYSQL Enterprise Plus and PostgreSQL Enterprise Plus instances only. For SQL Server Enterprise Plus instances it defaults to `false`.
-  final pulumi.Input<bool>? dataCacheEnabled;
+  final pulumi.Input<bool?>? dataCacheEnabled;
 
   /// Creates a new [DatabaseInstanceSettingsDataCacheConfig].
   /// [dataCacheEnabled] Whether data cache is enabled for the instance. Defaults to `true` for MYSQL Enterprise Plus and PostgreSQL Enterprise Plus instances only. For SQL Server Enterprise Plus instances it defaults to `false`.

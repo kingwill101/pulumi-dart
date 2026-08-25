@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AiReasoningEngineSpecSourceCodeSpecImageSpec {
   /// Build arguments to be used. They will be passed through --build-arg flags.
-  final pulumi.Input<Map<String, String>>? buildArgs;
+  final pulumi.Input<Map<String, String>?>? buildArgs;
 
   /// Creates a new [AiReasoningEngineSpecSourceCodeSpecImageSpec].
   /// [buildArgs] Build arguments to be used. They will be passed through --build-arg flags.

@@ -9,23 +9,23 @@ import 'node_pool_node_config_linux_node_config_swap_config.dart';
 
 class NodePoolNodeConfigLinuxNodeConfig {
   /// The settings for the accurate time configuration.
-  final pulumi.Input<NodePoolNodeConfigLinuxNodeConfigAccurateTimeConfig>? accurateTimeConfig;
+  final pulumi.Input<NodePoolNodeConfigLinuxNodeConfigAccurateTimeConfig?>? accurateTimeConfig;
   /// cgroupMode specifies the cgroup mode to be used on the node.
-  final pulumi.Input<String>? cgroupMode;
+  final pulumi.Input<String?>? cgroupMode;
   /// The custom node init settings.
-  final pulumi.Input<NodePoolNodeConfigLinuxNodeConfigCustomNodeInit>? customNodeInit;
+  final pulumi.Input<NodePoolNodeConfigLinuxNodeConfigCustomNodeInit?>? customNodeInit;
   /// Amounts for 2M and 1G hugepages.
-  final pulumi.Input<NodePoolNodeConfigLinuxNodeConfigHugepagesConfig>? hugepagesConfig;
+  final pulumi.Input<NodePoolNodeConfigLinuxNodeConfigHugepagesConfig?>? hugepagesConfig;
   /// The settings for kernel module loading.
-  final pulumi.Input<NodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoading>? nodeKernelModuleLoading;
+  final pulumi.Input<NodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoading?>? nodeKernelModuleLoading;
   /// Swap configuration for the node.
-  final pulumi.Input<NodePoolNodeConfigLinuxNodeConfigSwapConfig>? swapConfig;
+  final pulumi.Input<NodePoolNodeConfigLinuxNodeConfigSwapConfig?>? swapConfig;
   /// The Linux kernel parameters to be applied to the nodes and all pods running on the nodes.
-  final pulumi.Input<Map<String, String>>? sysctls;
+  final pulumi.Input<Map<String, String>?>? sysctls;
   /// The Linux kernel transparent hugepage defrag setting.
-  final pulumi.Input<String>? transparentHugepageDefrag;
+  final pulumi.Input<String?>? transparentHugepageDefrag;
   /// The Linux kernel transparent hugepage setting.
-  final pulumi.Input<String>? transparentHugepageEnabled;
+  final pulumi.Input<String?>? transparentHugepageEnabled;
 
   /// Creates a new [NodePoolNodeConfigLinuxNodeConfig].
   /// [accurateTimeConfig] The settings for the accurate time configuration.

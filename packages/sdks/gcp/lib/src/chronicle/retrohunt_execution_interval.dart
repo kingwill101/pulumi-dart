@@ -6,11 +6,11 @@ class RetrohuntExecutionInterval {
   /// Optional. Exclusive end of the interval.
   /// If specified, a Timestamp matching this interval will have to be before the
   /// end.
-  final pulumi.Input<String>? endTime;
+  final pulumi.Input<String?>? endTime;
   /// Optional. Inclusive start of the interval.
   /// If specified, a Timestamp matching this interval will have to be the same
   /// or after the start.
-  final pulumi.Input<String>? startTime;
+  final pulumi.Input<String?>? startTime;
 
   /// Creates a new [RetrohuntExecutionInterval].
   /// [endTime] Optional. Exclusive end of the interval.

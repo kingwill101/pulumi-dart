@@ -19,11 +19,11 @@ class RegionalSecretVersionArgs {
   /// * DISABLE
   /// * ABANDON
   /// * PREVENT
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The current state of the regional secret version.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// If set to 'true', the secret data is expected to be base64-encoded string and would be sent as is.
-  final pulumi.Input<bool>? isSecretDataBase64;
+  final pulumi.Input<bool?>? isSecretDataBase64;
   /// Secret Manager regional secret resource.
   final pulumi.Input<String> secret;
   /// The secret data. Must be no larger than 64KiB.

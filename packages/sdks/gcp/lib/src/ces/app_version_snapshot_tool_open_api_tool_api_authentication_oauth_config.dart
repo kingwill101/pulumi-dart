@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AppVersionSnapshotToolOpenApiToolApiAuthenticationOauthConfig {
   /// (Output)
   /// The client ID from the OAuth provider.
-  final pulumi.Input<String>? clientId;
+  final pulumi.Input<String?>? clientId;
   /// (Output)
   /// The name of the SecretManager secret version resource storing the
   /// client secret.
@@ -13,18 +13,18 @@ class AppVersionSnapshotToolOpenApiToolApiAuthenticationOauthConfig {
   /// Note: You should grant `roles/secretmanager.secretAccessor` role to the CES
   /// service agent
   /// `service-@gcp-sa-ces.iam.gserviceaccount.com`.
-  final pulumi.Input<String>? clientSecretVersion;
+  final pulumi.Input<String?>? clientSecretVersion;
   /// (Output)
   /// OAuth grant types.
   /// Possible values:
   /// CLIENT_CREDENTIAL
-  final pulumi.Input<String>? oauthGrantType;
+  final pulumi.Input<String?>? oauthGrantType;
   /// (Output)
   /// The OAuth scopes to grant.
-  final pulumi.Input<List<String>>? scopes;
+  final pulumi.Input<List<String>?>? scopes;
   /// (Output)
   /// The token endpoint in the OAuth provider to exchange for an access token.
-  final pulumi.Input<String>? tokenEndpoint;
+  final pulumi.Input<String?>? tokenEndpoint;
 
   /// Creates a new [AppVersionSnapshotToolOpenApiToolApiAuthenticationOauthConfig].
   /// [clientId] (Output)

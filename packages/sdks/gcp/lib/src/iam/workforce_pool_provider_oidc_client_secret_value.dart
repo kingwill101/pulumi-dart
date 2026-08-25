@@ -5,19 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkforcePoolProviderOidcClientSecretValue {
   /// The plain text of the client secret value.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
-  final pulumi.Input<String>? plainText;
+  final pulumi.Input<String?>? plainText;
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
   /// (Optional, Write-Only)
   /// The plain text of the client secret value.
   /// **Note**: This property is write-only and will not be read from the API.
   ///
   /// &gt; **Note:** One of `plainText` or `plainTextWo` can only be set.
-  final pulumi.Input<String>? plainTextWo;
+  final pulumi.Input<String?>? plainTextWo;
   /// Triggers update of `plainTextWo` write-only. Increment this value when an update to `plainTextWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
-  final pulumi.Input<String>? plainTextWoVersion;
+  final pulumi.Input<String?>? plainTextWoVersion;
   /// (Output)
   /// A thumbprint to represent the current client secret value.
-  final pulumi.Input<String>? thumbprint;
+  final pulumi.Input<String?>? thumbprint;
 
   /// Creates a new [WorkforcePoolProviderOidcClientSecretValue].
   /// [plainText] The plain text of the client secret value.

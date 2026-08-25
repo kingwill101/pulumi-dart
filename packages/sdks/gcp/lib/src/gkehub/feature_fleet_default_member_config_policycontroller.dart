@@ -8,7 +8,7 @@ class FeatureFleetDefaultMemberConfigPolicycontroller {
   /// Structure is documented below.
   final pulumi.Input<FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfig> policyControllerHubConfig;
   /// Configures the version of Policy Controller
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [FeatureFleetDefaultMemberConfigPolicycontroller].
   /// [policyControllerHubConfig] Configuration of Policy Controller

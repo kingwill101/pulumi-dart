@@ -13,31 +13,31 @@ class ServiceState {
   /// is also set.
   /// (For legacy support, if `template.metadata.name` is unset in state while
   /// this field is set to false, the revision name will still autogenerate.)
-  final pulumi.Input<bool>? autogenerateRevisionName;
+  final pulumi.Input<bool?>? autogenerateRevisionName;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The location of the cloud run instance. eg us-central1
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Metadata associated with this Service, including name, namespace, labels,
   /// and annotations.
   /// Structure is documented below.
-  final pulumi.Input<ServiceMetadata>? metadata;
+  final pulumi.Input<ServiceMetadata?>? metadata;
   /// Name must be unique within a Google Cloud project and region.
   /// Is required when creating resources. Name is primarily intended
   /// for creation idempotence and configuration definition. Cannot be updated.
   /// More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// (Output)
   /// Status of the condition, one of True, False, Unknown.
-  final pulumi.Input<List<ServiceStatus>>? statuses;
+  final pulumi.Input<List<ServiceStatus>?>? statuses;
   /// template holds the latest specification for the Revision to
   /// be stamped out. The template references the container image, and may also
   /// include labels and annotations that should be attached to the Revision.
@@ -48,11 +48,11 @@ class ServiceState {
   /// Cloud Run does not currently support referencing a build that is
   /// responsible for materializing the container image from source.
   /// Structure is documented below.
-  final pulumi.Input<ServiceTemplate>? template;
+  final pulumi.Input<ServiceTemplate?>? template;
   /// Traffic specifies how to distribute traffic over a collection of Knative Revisions
   /// and Configurations
   /// Structure is documented below.
-  final pulumi.Input<List<ServiceTraffic>>? traffics;
+  final pulumi.Input<List<ServiceTraffic>?>? traffics;
 
   /// Creates a new [ServiceState].
   /// [autogenerateRevisionName] If set to `true`, the revision name (template.metadata.name) will be omitted and

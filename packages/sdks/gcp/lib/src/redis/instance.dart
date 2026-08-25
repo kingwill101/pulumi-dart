@@ -1,7 +1,10 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'instance_args.dart';
 import 'instance_maintenance_policy.dart';
+import 'instance_maintenance_schedule.dart';
+import 'instance_node.dart';
 import 'instance_persistence_config.dart';
+import 'instance_server_ca_cert.dart';
 import 'instance_state.dart';
 
 /// A Google Cloud Redis instance.
@@ -1746,7 +1749,7 @@ class Instance extends pulumi.CustomResource {
   late final pulumi.Output<InstanceMaintenancePolicy?> maintenancePolicy;
   /// Upcoming maintenance schedule.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> maintenanceSchedules;
+  late final pulumi.Output<List<InstanceMaintenanceSchedule>> maintenanceSchedules;
   /// The self service update maintenance version.
   late final pulumi.Output<String> maintenanceVersion;
   /// Redis memory size in GiB.
@@ -1755,7 +1758,7 @@ class Instance extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// Output only. Info per node.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> nodes;
+  late final pulumi.Output<List<InstanceNode>> nodes;
   /// Persistence configuration for an instance.
   /// Structure is documented below.
   late final pulumi.Output<InstancePersistenceConfig> persistenceConfig;
@@ -1815,7 +1818,7 @@ class Instance extends pulumi.CustomResource {
   late final pulumi.Output<String> secondaryIpRange;
   /// List of server CA certificates for the instance.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> serverCaCerts;
+  late final pulumi.Output<List<InstanceServerCaCert>> serverCaCerts;
   /// The service tier of the instance. Must be one of these values:
   /// - BASIC: standalone instance
   /// - STANDARD_HA: highly available primary/replica instances
@@ -1840,11 +1843,12 @@ class Instance extends pulumi.CustomResource {
           'gcp:redis/instance:Instance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['authString', 'effectiveLabels', 'pulumiLabels'],
         ) {
     alternativeLocationId = registerOutput<String>('alternativeLocationId');
     authEnabled = registerOutput<bool?>('authEnabled');
-    authString = registerOutput<String>('authString');
+    authString = registerOutput<String>('authString', isSecret: true);
     authorizedNetwork = registerOutput<String>('authorizedNetwork');
     connectMode = registerOutput<String?>('connectMode');
     createTime = registerOutput<String>('createTime');
@@ -1853,32 +1857,32 @@ class Instance extends pulumi.CustomResource {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     deletionProtection = registerOutput<bool?>('deletionProtection');
     displayName = registerOutput<String?>('displayName');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     effectiveReservedIpRange = registerOutput<String>('effectiveReservedIpRange');
     host = registerOutput<String>('host');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     locationId = registerOutput<String>('locationId');
     maintenancePolicy = registerOutput<InstanceMaintenancePolicy?>('maintenancePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceMaintenancePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    maintenanceSchedules = registerOutput<List<Map<String, dynamic>>>('maintenanceSchedules');
+    maintenanceSchedules = registerOutput<List<InstanceMaintenanceSchedule>>('maintenanceSchedules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InstanceMaintenanceSchedule>(guardedValue, (value) => InstanceMaintenanceSchedule.fromMap((value as Map).cast<String, dynamic>())); });
     maintenanceVersion = registerOutput<String>('maintenanceVersion');
     memorySizeGb = registerOutput<int>('memorySizeGb');
     this.name = registerOutput<String>('name');
-    nodes = registerOutput<List<Map<String, dynamic>>>('nodes');
+    nodes = registerOutput<List<InstanceNode>>('nodes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InstanceNode>(guardedValue, (value) => InstanceNode.fromMap((value as Map).cast<String, dynamic>())); });
     persistenceConfig = registerOutput<InstancePersistenceConfig>('persistenceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstancePersistenceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     persistenceIamIdentity = registerOutput<String>('persistenceIamIdentity');
     port = registerOutput<int>('port');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     readEndpoint = registerOutput<String>('readEndpoint');
     readEndpointPort = registerOutput<int>('readEndpointPort');
     readReplicasMode = registerOutput<String>('readReplicasMode');
-    redisConfigs = registerOutput<Map<String, String>?>('redisConfigs');
+    redisConfigs = registerOutput<Map<String, String>?>('redisConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     redisVersion = registerOutput<String>('redisVersion');
     region = registerOutput<String>('region');
     replicaCount = registerOutput<int>('replicaCount');
     reservedIpRange = registerOutput<String>('reservedIpRange');
     secondaryIpRange = registerOutput<String>('secondaryIpRange');
-    serverCaCerts = registerOutput<List<Map<String, dynamic>>>('serverCaCerts');
+    serverCaCerts = registerOutput<List<InstanceServerCaCert>>('serverCaCerts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InstanceServerCaCert>(guardedValue, (value) => InstanceServerCaCert.fromMap((value as Map).cast<String, dynamic>())); });
     tier = registerOutput<String?>('tier');
     transitEncryptionMode = registerOutput<String?>('transitEncryptionMode');
   }
@@ -1888,11 +1892,12 @@ class Instance extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     InstanceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Instance._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1908,7 +1913,7 @@ class Instance extends pulumi.CustomResource {
         ) {
     alternativeLocationId = registerOutput<String>('alternativeLocationId');
     authEnabled = registerOutput<bool?>('authEnabled');
-    authString = registerOutput<String>('authString');
+    authString = registerOutput<String>('authString', isSecret: true);
     authorizedNetwork = registerOutput<String>('authorizedNetwork');
     connectMode = registerOutput<String?>('connectMode');
     createTime = registerOutput<String>('createTime');
@@ -1917,32 +1922,83 @@ class Instance extends pulumi.CustomResource {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     deletionProtection = registerOutput<bool?>('deletionProtection');
     displayName = registerOutput<String?>('displayName');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     effectiveReservedIpRange = registerOutput<String>('effectiveReservedIpRange');
     host = registerOutput<String>('host');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     locationId = registerOutput<String>('locationId');
     maintenancePolicy = registerOutput<InstanceMaintenancePolicy?>('maintenancePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceMaintenancePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    maintenanceSchedules = registerOutput<List<Map<String, dynamic>>>('maintenanceSchedules');
+    maintenanceSchedules = registerOutput<List<InstanceMaintenanceSchedule>>('maintenanceSchedules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InstanceMaintenanceSchedule>(guardedValue, (value) => InstanceMaintenanceSchedule.fromMap((value as Map).cast<String, dynamic>())); });
     maintenanceVersion = registerOutput<String>('maintenanceVersion');
     memorySizeGb = registerOutput<int>('memorySizeGb');
     this.name = registerOutput<String>('name');
-    nodes = registerOutput<List<Map<String, dynamic>>>('nodes');
+    nodes = registerOutput<List<InstanceNode>>('nodes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InstanceNode>(guardedValue, (value) => InstanceNode.fromMap((value as Map).cast<String, dynamic>())); });
     persistenceConfig = registerOutput<InstancePersistenceConfig>('persistenceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstancePersistenceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     persistenceIamIdentity = registerOutput<String>('persistenceIamIdentity');
     port = registerOutput<int>('port');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     readEndpoint = registerOutput<String>('readEndpoint');
     readEndpointPort = registerOutput<int>('readEndpointPort');
     readReplicasMode = registerOutput<String>('readReplicasMode');
-    redisConfigs = registerOutput<Map<String, String>?>('redisConfigs');
+    redisConfigs = registerOutput<Map<String, String>?>('redisConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     redisVersion = registerOutput<String>('redisVersion');
     region = registerOutput<String>('region');
     replicaCount = registerOutput<int>('replicaCount');
     reservedIpRange = registerOutput<String>('reservedIpRange');
     secondaryIpRange = registerOutput<String>('secondaryIpRange');
-    serverCaCerts = registerOutput<List<Map<String, dynamic>>>('serverCaCerts');
+    serverCaCerts = registerOutput<List<InstanceServerCaCert>>('serverCaCerts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InstanceServerCaCert>(guardedValue, (value) => InstanceServerCaCert.fromMap((value as Map).cast<String, dynamic>())); });
+    tier = registerOutput<String?>('tier');
+    transitEncryptionMode = registerOutput<String?>('transitEncryptionMode');
+  }
+
+  /// Creates a typed reference to an existing [Instance] resource.
+  Instance.reference(String urn)
+    : super(
+        'gcp:redis/instance:Instance',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['authString', 'effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    alternativeLocationId = registerOutput<String>('alternativeLocationId');
+    authEnabled = registerOutput<bool?>('authEnabled');
+    authString = registerOutput<String>('authString', isSecret: true);
+    authorizedNetwork = registerOutput<String>('authorizedNetwork');
+    connectMode = registerOutput<String?>('connectMode');
+    createTime = registerOutput<String>('createTime');
+    currentLocationId = registerOutput<String>('currentLocationId');
+    customerManagedKey = registerOutput<String?>('customerManagedKey');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    deletionProtection = registerOutput<bool?>('deletionProtection');
+    displayName = registerOutput<String?>('displayName');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    effectiveReservedIpRange = registerOutput<String>('effectiveReservedIpRange');
+    host = registerOutput<String>('host');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    locationId = registerOutput<String>('locationId');
+    maintenancePolicy = registerOutput<InstanceMaintenancePolicy?>('maintenancePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceMaintenancePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    maintenanceSchedules = registerOutput<List<InstanceMaintenanceSchedule>>('maintenanceSchedules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InstanceMaintenanceSchedule>(guardedValue, (value) => InstanceMaintenanceSchedule.fromMap((value as Map).cast<String, dynamic>())); });
+    maintenanceVersion = registerOutput<String>('maintenanceVersion');
+    memorySizeGb = registerOutput<int>('memorySizeGb');
+    this.name = registerOutput<String>('name');
+    nodes = registerOutput<List<InstanceNode>>('nodes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InstanceNode>(guardedValue, (value) => InstanceNode.fromMap((value as Map).cast<String, dynamic>())); });
+    persistenceConfig = registerOutput<InstancePersistenceConfig>('persistenceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstancePersistenceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    persistenceIamIdentity = registerOutput<String>('persistenceIamIdentity');
+    port = registerOutput<int>('port');
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    readEndpoint = registerOutput<String>('readEndpoint');
+    readEndpointPort = registerOutput<int>('readEndpointPort');
+    readReplicasMode = registerOutput<String>('readReplicasMode');
+    redisConfigs = registerOutput<Map<String, String>?>('redisConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    redisVersion = registerOutput<String>('redisVersion');
+    region = registerOutput<String>('region');
+    replicaCount = registerOutput<int>('replicaCount');
+    reservedIpRange = registerOutput<String>('reservedIpRange');
+    secondaryIpRange = registerOutput<String>('secondaryIpRange');
+    serverCaCerts = registerOutput<List<InstanceServerCaCert>>('serverCaCerts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InstanceServerCaCert>(guardedValue, (value) => InstanceServerCaCert.fromMap((value as Map).cast<String, dynamic>())); });
     tier = registerOutput<String?>('tier');
     transitEncryptionMode = registerOutput<String?>('transitEncryptionMode');
   }

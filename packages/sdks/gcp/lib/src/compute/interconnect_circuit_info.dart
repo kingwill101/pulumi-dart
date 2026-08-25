@@ -5,14 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InterconnectCircuitInfo {
   /// (Output)
   /// Customer-side demarc ID for this circuit.
-  final pulumi.Input<String>? customerDemarcId;
+  final pulumi.Input<String?>? customerDemarcId;
   /// (Output)
   /// Google-assigned unique ID for this circuit. Assigned at circuit turn-up.
-  final pulumi.Input<String>? googleCircuitId;
+  final pulumi.Input<String?>? googleCircuitId;
   /// (Output)
   /// Google-side demarc ID for this circuit. Assigned at circuit turn-up and provided by
   /// Google to the customer in the LOA.
-  final pulumi.Input<String>? googleDemarcId;
+  final pulumi.Input<String?>? googleDemarcId;
 
   /// Creates a new [InterconnectCircuitInfo].
   /// [customerDemarcId] (Output)

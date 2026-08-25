@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MigrationJobPerformanceConfig {
   /// Initial dump parallelism level.
   /// Possible values are: `MIN`, `OPTIMAL`, `MAX`.
-  final pulumi.Input<String>? dumpParallelLevel;
+  final pulumi.Input<String?>? dumpParallelLevel;
 
   /// Creates a new [MigrationJobPerformanceConfig].
   /// [dumpParallelLevel] Initial dump parallelism level.

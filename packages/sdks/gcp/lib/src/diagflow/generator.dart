@@ -265,7 +265,7 @@ class Generator extends pulumi.CustomResource {
           'gcp:diagflow/generator:Generator',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
@@ -284,11 +284,12 @@ class Generator extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     GeneratorState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Generator._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -302,6 +303,27 @@ class Generator extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    generatorId = registerOutput<String>('generatorId');
+    inferenceParameter = registerOutput<GeneratorInferenceParameter?>('inferenceParameter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GeneratorInferenceParameter.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    publishedModel = registerOutput<String?>('publishedModel');
+    summarizationContext = registerOutput<GeneratorSummarizationContext>('summarizationContext', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GeneratorSummarizationContext.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    triggerEvent = registerOutput<String?>('triggerEvent');
+  }
+
+  /// Creates a typed reference to an existing [Generator] resource.
+  Generator.reference(String urn)
+    : super(
+        'gcp:diagflow/generator:Generator',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     generatorId = registerOutput<String>('generatorId');

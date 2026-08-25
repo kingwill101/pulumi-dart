@@ -8,7 +8,7 @@ class ConnectionProfileAlloydbSettingsInitialUser {
   final pulumi.Input<String> password;
   /// (Output)
   /// Output only. Indicates if the initialUser.password field has been set.
-  final pulumi.Input<bool>? passwordSet;
+  final pulumi.Input<bool?>? passwordSet;
   /// The database username.
   final pulumi.Input<String> user;
 

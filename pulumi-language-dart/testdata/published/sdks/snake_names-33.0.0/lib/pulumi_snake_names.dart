@@ -3,11 +3,11 @@
 import 'package:pulumi_snake_names/cool_module.dart' as module_cool_module;
 import 'package:pulumi_snake_names/providers.dart' as module_providers;
 
-final cool_module = const _CoolModuleModuleNamespace();
-final providers = const _ProvidersModuleNamespace();
+final cool_module = _CoolModuleModuleNamespace();
+final providers = _ProvidersModuleNamespace();
 
 class _CoolModuleModuleNamespace {
-  const _CoolModuleModuleNamespace();
+  _CoolModuleModuleNamespace();
   final AnotherResource = module_cool_module.AnotherResource.new;
   final AnotherResourceArgs = module_cool_module.AnotherResourceArgs.new;
   final Entry = module_cool_module.Entry.new;
@@ -25,6 +25,6 @@ class _CoolModuleModuleNamespace {
 }
 
 class _ProvidersModuleNamespace {
-  const _ProvidersModuleNamespace();
+  _ProvidersModuleNamespace();
   final SnakeNames = module_providers.ProviderProvider.new;
 }

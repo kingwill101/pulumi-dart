@@ -9,21 +9,21 @@ import 'patch_deployment_recurring_schedule_weekly.dart';
 class PatchDeploymentRecurringSchedule {
   /// The end time at which a recurring patch deployment schedule is no longer active.
   /// A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
-  final pulumi.Input<String>? endTime;
+  final pulumi.Input<String?>? endTime;
   /// (Output)
   /// The time the last patch job ran successfully.
   /// A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
-  final pulumi.Input<String>? lastExecuteTime;
+  final pulumi.Input<String?>? lastExecuteTime;
   /// Schedule with monthly executions.
   /// Structure is documented below.
-  final pulumi.Input<PatchDeploymentRecurringScheduleMonthly>? monthly;
+  final pulumi.Input<PatchDeploymentRecurringScheduleMonthly?>? monthly;
   /// (Output)
   /// The time the next patch job is scheduled to run.
   /// A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
-  final pulumi.Input<String>? nextExecuteTime;
+  final pulumi.Input<String?>? nextExecuteTime;
   /// The time that the recurring schedule becomes effective. Defaults to createTime of the patch deployment.
   /// A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
-  final pulumi.Input<String>? startTime;
+  final pulumi.Input<String?>? startTime;
   /// Time of the day to run a recurring deployment.
   /// Structure is documented below.
   final pulumi.Input<PatchDeploymentRecurringScheduleTimeOfDay> timeOfDay;
@@ -33,7 +33,7 @@ class PatchDeploymentRecurringSchedule {
   final pulumi.Input<PatchDeploymentRecurringScheduleTimeZone> timeZone;
   /// Schedule with weekly executions.
   /// Structure is documented below.
-  final pulumi.Input<PatchDeploymentRecurringScheduleWeekly>? weekly;
+  final pulumi.Input<PatchDeploymentRecurringScheduleWeekly?>? weekly;
 
   /// Creates a new [PatchDeploymentRecurringSchedule].
   /// [endTime] The end time at which a recurring patch deployment schedule is no longer active.

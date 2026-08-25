@@ -1,6 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'authz_policy_args.dart';
 import 'authz_policy_custom_provider.dart';
+import 'authz_policy_http_rule.dart';
+import 'authz_policy_network_rule.dart';
 import 'authz_policy_state.dart';
 import 'authz_policy_target.dart';
 
@@ -390,7 +392,7 @@ class AuthzPolicy extends pulumi.CustomResource {
   /// A list of authorization HTTP rules to match against the incoming request.A policy match occurs when at least one HTTP rule matches the request or when no HTTP rules are specified in the policy. At least one HTTP Rule is required for Allow or Deny Action.
   /// Limited to 5 rules.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> httpRules;
+  late final pulumi.Output<List<AuthzPolicyHttpRule>?> httpRules;
   /// Set of labels associated with the AuthzExtension resource.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -403,7 +405,7 @@ class AuthzPolicy extends pulumi.CustomResource {
   /// A list of authorization HTTP rules to match against the incoming request.A policy match occurs when at least one HTTP rule matches the request or when no HTTP rules are specified in the policy. At least one HTTP Rule is required for Allow or Deny Action.
   /// Limited to 5 rules.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> networkRules;
+  late final pulumi.Output<List<AuthzPolicyNetworkRule>?> networkRules;
   /// Defines the type of authorization being performed. `REQUEST_AUTHZ` applies to request authorization. CUSTOM
   /// authorization policies with Authz extensions will be allowed with extAuthz or extProc protocols. Extensions are
   /// invoked only once when the request headers arrive. `CONTENT_AUTHZ` applies to content security, sanitization, etc.
@@ -436,22 +438,23 @@ class AuthzPolicy extends pulumi.CustomResource {
           'gcp:networksecurity/authzPolicy:AuthzPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     action = registerOutput<String>('action');
     createTime = registerOutput<String>('createTime');
     customProvider = registerOutput<AuthzPolicyCustomProvider?>('customProvider', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AuthzPolicyCustomProvider.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    httpRules = registerOutput<List<Map<String, dynamic>>?>('httpRules');
-    labels = registerOutput<Map<String, String>?>('labels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    httpRules = registerOutput<List<AuthzPolicyHttpRule>?>('httpRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AuthzPolicyHttpRule>(guardedValue, (value) => AuthzPolicyHttpRule.fromMap((value as Map).cast<String, dynamic>())); });
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    networkRules = registerOutput<List<Map<String, dynamic>>?>('networkRules');
+    networkRules = registerOutput<List<AuthzPolicyNetworkRule>?>('networkRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AuthzPolicyNetworkRule>(guardedValue, (value) => AuthzPolicyNetworkRule.fromMap((value as Map).cast<String, dynamic>())); });
     policyProfile = registerOutput<String>('policyProfile');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     target = registerOutput<AuthzPolicyTarget>('target', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AuthzPolicyTarget.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     updateTime = registerOutput<String>('updateTime');
   }
@@ -461,11 +464,12 @@ class AuthzPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AuthzPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AuthzPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -484,15 +488,43 @@ class AuthzPolicy extends pulumi.CustomResource {
     customProvider = registerOutput<AuthzPolicyCustomProvider?>('customProvider', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AuthzPolicyCustomProvider.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    httpRules = registerOutput<List<Map<String, dynamic>>?>('httpRules');
-    labels = registerOutput<Map<String, String>?>('labels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    httpRules = registerOutput<List<AuthzPolicyHttpRule>?>('httpRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AuthzPolicyHttpRule>(guardedValue, (value) => AuthzPolicyHttpRule.fromMap((value as Map).cast<String, dynamic>())); });
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    networkRules = registerOutput<List<Map<String, dynamic>>?>('networkRules');
+    networkRules = registerOutput<List<AuthzPolicyNetworkRule>?>('networkRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AuthzPolicyNetworkRule>(guardedValue, (value) => AuthzPolicyNetworkRule.fromMap((value as Map).cast<String, dynamic>())); });
     policyProfile = registerOutput<String>('policyProfile');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    target = registerOutput<AuthzPolicyTarget>('target', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AuthzPolicyTarget.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [AuthzPolicy] resource.
+  AuthzPolicy.reference(String urn)
+    : super(
+        'gcp:networksecurity/authzPolicy:AuthzPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    action = registerOutput<String>('action');
+    createTime = registerOutput<String>('createTime');
+    customProvider = registerOutput<AuthzPolicyCustomProvider?>('customProvider', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AuthzPolicyCustomProvider.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    httpRules = registerOutput<List<AuthzPolicyHttpRule>?>('httpRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AuthzPolicyHttpRule>(guardedValue, (value) => AuthzPolicyHttpRule.fromMap((value as Map).cast<String, dynamic>())); });
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    networkRules = registerOutput<List<AuthzPolicyNetworkRule>?>('networkRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AuthzPolicyNetworkRule>(guardedValue, (value) => AuthzPolicyNetworkRule.fromMap((value as Map).cast<String, dynamic>())); });
+    policyProfile = registerOutput<String>('policyProfile');
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     target = registerOutput<AuthzPolicyTarget>('target', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AuthzPolicyTarget.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     updateTime = registerOutput<String>('updateTime');
   }

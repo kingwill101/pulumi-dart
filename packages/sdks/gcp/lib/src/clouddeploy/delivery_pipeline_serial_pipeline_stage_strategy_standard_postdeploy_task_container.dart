@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainer {
   /// Optional. Args is the container arguments to use. This overrides the default arguments defined in the container image.
-  final pulumi.Input<List<String>>? args;
+  final pulumi.Input<List<String>?>? args;
   /// Optional. Command is the container entrypoint to use. This overrides the default entrypoint defined in the container image.
-  final pulumi.Input<List<String>>? commands;
+  final pulumi.Input<List<String>?>? commands;
   /// Optional. Environment variables that are set in the container.
-  final pulumi.Input<Map<String, String>>? env;
+  final pulumi.Input<Map<String, String>?>? env;
   /// Required. Image is the container image to use.
   final pulumi.Input<String> image;
 

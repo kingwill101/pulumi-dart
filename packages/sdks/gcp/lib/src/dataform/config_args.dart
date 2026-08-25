@@ -8,10 +8,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_dataform_config_config_args_doc}
 class ConfigArgs {
   /// Optional. A reference to the customer-managed encryption key (CMEK) that will be used by default to encrypt user data.
-  final pulumi.Input<String>? defaultKmsKeyName;
+  final pulumi.Input<String?>? defaultKmsKeyName;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// A reference to the region
   final pulumi.Input<String> region;
 

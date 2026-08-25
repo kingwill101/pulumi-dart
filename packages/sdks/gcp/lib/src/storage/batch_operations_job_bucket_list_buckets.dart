@@ -9,10 +9,10 @@ class BatchOperationsJobBucketListBuckets {
   final pulumi.Input<String> bucket;
   /// contain the manifest source file that is a CSV file in a Google Cloud Storage bucket.
   /// Structure is documented below.
-  final pulumi.Input<BatchOperationsJobBucketListBucketsManifest>? manifest;
+  final pulumi.Input<BatchOperationsJobBucketListBucketsManifest?>? manifest;
   /// Specifies objects matching a prefix set.
   /// Structure is documented below.
-  final pulumi.Input<BatchOperationsJobBucketListBucketsPrefixList>? prefixList;
+  final pulumi.Input<BatchOperationsJobBucketListBucketsPrefixList?>? prefixList;
 
   /// Creates a new [BatchOperationsJobBucketListBuckets].
   /// [bucket] Bucket name for the objects to be transformed.

@@ -273,7 +273,7 @@ class OrganizationSettings extends pulumi.CustomResource {
           'gcp:logging/organizationSettings:OrganizationSettings',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     disableDefaultSink = registerOutput<bool>('disableDefaultSink');
     kmsKeyName = registerOutput<String>('kmsKeyName');
@@ -289,11 +289,12 @@ class OrganizationSettings extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     OrganizationSettingsState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return OrganizationSettings._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -307,6 +308,24 @@ class OrganizationSettings extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    disableDefaultSink = registerOutput<bool>('disableDefaultSink');
+    kmsKeyName = registerOutput<String>('kmsKeyName');
+    kmsServiceAccountId = registerOutput<String>('kmsServiceAccountId');
+    loggingServiceAccountId = registerOutput<String>('loggingServiceAccountId');
+    this.name = registerOutput<String>('name');
+    organization = registerOutput<String>('organization');
+    storageLocation = registerOutput<String>('storageLocation');
+  }
+
+  /// Creates a typed reference to an existing [OrganizationSettings] resource.
+  OrganizationSettings.reference(String urn)
+    : super(
+        'gcp:logging/organizationSettings:OrganizationSettings',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     disableDefaultSink = registerOutput<bool>('disableDefaultSink');
     kmsKeyName = registerOutput<String>('kmsKeyName');
     kmsServiceAccountId = registerOutput<String>('kmsServiceAccountId');

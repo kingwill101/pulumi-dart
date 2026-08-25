@@ -8,13 +8,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_storage_get_control_project_intelligence_findings_get_control_project_intelligence_findings_args_doc}
 class GetControlProjectIntelligenceFindingsArgs {
   /// The filter expression to apply. Supports filtering by type and associated_resources.
-  final pulumi.Input<String>? filter;
+  final pulumi.Input<String?>? filter;
   /// The location of the intelligence findings. Currently default value is global and users cannot use for input for now.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The maximum number of IntelligenceFinding resources to return. The maximum value is 100; values greater than 100 become 100. The default value is 100.
-  final pulumi.Input<int>? pageSize;
+  final pulumi.Input<int?>? pageSize;
   /// The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetControlProjectIntelligenceFindingsArgs].
   /// [filter] The filter expression to apply. Supports filtering by type and associated_resources.
@@ -41,7 +41,7 @@ class GetControlProjectIntelligenceFindingsArgs {
     return GetControlProjectIntelligenceFindingsArgs(
       filter: (() { final guardedValue = map['filter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      pageSize: (() { final guardedValue = map['pageSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      pageSize: (() { final guardedValue = map['pageSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

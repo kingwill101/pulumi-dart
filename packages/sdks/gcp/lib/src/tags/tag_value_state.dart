@@ -6,28 +6,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TagValueState {
   /// Output only. Creation time.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// User-assigned description of the TagValue. Must not exceed 256 characters.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The generated numeric id for the TagValue.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Output only. Namespaced name of the TagValue. Will be in the format {parentNamespace}/{tagKeyShortName}/{shortName}.
-  final pulumi.Input<String>? namespacedName;
+  final pulumi.Input<String?>? namespacedName;
   /// Input only. The resource name of the new TagValue's parent. Must be of the form tagKeys/{tag_key_id}.
-  final pulumi.Input<String>? parent;
+  final pulumi.Input<String?>? parent;
   /// Input only. User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey.
   /// The short name can have a maximum length of 256 characters. The permitted character set for the shortName includes all UTF-8 encoded Unicode characters except single quotes ('), double quotes ("), backslashes (\\), and forward slashes (/).
-  final pulumi.Input<String>? shortName;
+  final pulumi.Input<String?>? shortName;
   /// Output only. Update time.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [TagValueState].
   /// [createTime] Output only. Creation time.

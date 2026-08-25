@@ -7,10 +7,10 @@ import 'http_route_rule_action_fault_injection_policy_delay.dart';
 class HttpRouteRuleActionFaultInjectionPolicy {
   /// Specification of how client requests are aborted as part of fault injection before being sent to a destination.
   /// Structure is documented below.
-  final pulumi.Input<HttpRouteRuleActionFaultInjectionPolicyAbort>? abort;
+  final pulumi.Input<HttpRouteRuleActionFaultInjectionPolicyAbort?>? abort;
   /// Specification of how client requests are delayed as part of fault injection before being sent to a destination.
   /// Structure is documented below.
-  final pulumi.Input<HttpRouteRuleActionFaultInjectionPolicyDelay>? delay;
+  final pulumi.Input<HttpRouteRuleActionFaultInjectionPolicyDelay?>? delay;
 
   /// Creates a new [HttpRouteRuleActionFaultInjectionPolicy].
   /// [abort] Specification of how client requests are aborted as part of fault injection before being sent to a destination.

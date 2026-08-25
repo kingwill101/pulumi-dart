@@ -338,9 +338,10 @@ class UserWorkloadsSecret extends pulumi.CustomResource {
           'gcp:composer/userWorkloadsSecret:UserWorkloadsSecret',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['data'],
         ) {
-    data = registerOutput<Map<String, String>?>('data');
+    data = registerOutput<Map<String, String>?>('data', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     deletionPolicy = registerOutput<String>('deletionPolicy');
     environment = registerOutput<String>('environment');
     this.name = registerOutput<String>('name');
@@ -353,11 +354,12 @@ class UserWorkloadsSecret extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     UserWorkloadsSecretState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return UserWorkloadsSecret._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -371,7 +373,25 @@ class UserWorkloadsSecret extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    data = registerOutput<Map<String, String>?>('data');
+    data = registerOutput<Map<String, String>?>('data', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    environment = registerOutput<String>('environment');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [UserWorkloadsSecret] resource.
+  UserWorkloadsSecret.reference(String urn)
+    : super(
+        'gcp:composer/userWorkloadsSecret:UserWorkloadsSecret',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['data'],
+        isResourceReference: true,
+      ) {
+    data = registerOutput<Map<String, String>?>('data', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     deletionPolicy = registerOutput<String>('deletionPolicy');
     environment = registerOutput<String>('environment');
     this.name = registerOutput<String>('name');

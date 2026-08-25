@@ -16,14 +16,14 @@ class BitbucketServerConfigArgs {
   final pulumi.Input<String> configId;
   /// Connected Bitbucket Server repositories for this config.
   /// Structure is documented below.
-  final pulumi.Input<List<BitbucketServerConfigConnectedRepository>>? connectedRepositories;
+  final pulumi.Input<List<BitbucketServerConfigConnectedRepository>?>? connectedRepositories;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Immutable. The URI of the Bitbucket Server host. Once this field has been set, it cannot be changed.
   /// If you need to change it, please create another BitbucketServerConfig.
   final pulumi.Input<String> hostUri;
@@ -33,15 +33,15 @@ class BitbucketServerConfigArgs {
   /// This should be set if the Bitbucket Server instance is hosted on-premises and not reachable by public internet. If this field is left empty,
   /// no network peering will occur and calls to the Bitbucket Server instance will be made over the public internet. Must be in the format
   /// projects/{project}/global/networks/{network}, where {project} is a project number or id and {network} is the name of a VPC network in the project.
-  final pulumi.Input<String>? peeredNetwork;
+  final pulumi.Input<String?>? peeredNetwork;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Secret Manager secrets needed by the config.
   /// Structure is documented below.
   final pulumi.Input<BitbucketServerConfigSecrets> secrets;
   /// SSL certificate to use for requests to Bitbucket Server. The format should be PEM format but the extension can be one of .pem, .cer, or .crt.
-  final pulumi.Input<String>? sslCa;
+  final pulumi.Input<String?>? sslCa;
   /// Username of the account Cloud Build will use on Bitbucket Server.
   final pulumi.Input<String> username;
 

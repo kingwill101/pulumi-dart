@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'qa_scorecard_revision_args.dart';
+import 'qa_scorecard_revision_snapshot.dart';
 import 'qa_scorecard_revision_state.dart';
 
 /// A revision of a QaScorecard.
@@ -49,7 +50,7 @@ class QaScorecardRevision extends pulumi.CustomResource {
   /// A QaScorecard represents a collection of questions to be scored during
   /// analysis.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> snapshots;
+  late final pulumi.Output<List<QaScorecardRevisionSnapshot>> snapshots;
   /// State of the scorecard revision, indicating whether it's ready to
   /// be used in analysis.
   /// Possible values:
@@ -73,16 +74,16 @@ class QaScorecardRevision extends pulumi.CustomResource {
           'gcp:contactcenterinsights/qaScorecardRevision:QaScorecardRevision',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
-    alternateIds = registerOutput<List<String>>('alternateIds');
+    alternateIds = registerOutput<List<String>>('alternateIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     createTime = registerOutput<String>('createTime');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     qaScorecard = registerOutput<String>('qaScorecard');
     qaScorecardRevisionId = registerOutput<String>('qaScorecardRevisionId');
-    snapshots = registerOutput<List<Map<String, dynamic>>>('snapshots');
+    snapshots = registerOutput<List<QaScorecardRevisionSnapshot>>('snapshots', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<QaScorecardRevisionSnapshot>(guardedValue, (value) => QaScorecardRevisionSnapshot.fromMap((value as Map).cast<String, dynamic>())); });
     state = registerOutput<String>('state');
   }
 
@@ -91,11 +92,12 @@ class QaScorecardRevision extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     QaScorecardRevisionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return QaScorecardRevision._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -109,14 +111,34 @@ class QaScorecardRevision extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    alternateIds = registerOutput<List<String>>('alternateIds');
+    alternateIds = registerOutput<List<String>>('alternateIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     createTime = registerOutput<String>('createTime');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     qaScorecard = registerOutput<String>('qaScorecard');
     qaScorecardRevisionId = registerOutput<String>('qaScorecardRevisionId');
-    snapshots = registerOutput<List<Map<String, dynamic>>>('snapshots');
+    snapshots = registerOutput<List<QaScorecardRevisionSnapshot>>('snapshots', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<QaScorecardRevisionSnapshot>(guardedValue, (value) => QaScorecardRevisionSnapshot.fromMap((value as Map).cast<String, dynamic>())); });
     this.state = registerOutput<String>('state');
+  }
+
+  /// Creates a typed reference to an existing [QaScorecardRevision] resource.
+  QaScorecardRevision.reference(String urn)
+    : super(
+        'gcp:contactcenterinsights/qaScorecardRevision:QaScorecardRevision',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    alternateIds = registerOutput<List<String>>('alternateIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    createTime = registerOutput<String>('createTime');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    qaScorecard = registerOutput<String>('qaScorecard');
+    qaScorecardRevisionId = registerOutput<String>('qaScorecardRevisionId');
+    snapshots = registerOutput<List<QaScorecardRevisionSnapshot>>('snapshots', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<QaScorecardRevisionSnapshot>(guardedValue, (value) => QaScorecardRevisionSnapshot.fromMap((value as Map).cast<String, dynamic>())); });
+    state = registerOutput<String>('state');
   }
 }

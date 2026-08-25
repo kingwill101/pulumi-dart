@@ -6,43 +6,43 @@ import 'goldengate_connection_assignment_properties.dart';
 /// Input properties used for looking up and filtering GoldengateConnectionAssignment resources.
 class GoldengateConnectionAssignmentState {
   /// The time when the connection assignment was created.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
-  final pulumi.Input<bool>? deletionProtection;
+  final pulumi.Input<bool?>? deletionProtection;
   /// The display name for the GoldengateConnectionAssignment.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveLabels;
+  final pulumi.Input<Map<String, String>?>? effectiveLabels;
   /// The OCID of the entitlement linked to this resource.
-  final pulumi.Input<String>? entitlementId;
+  final pulumi.Input<String?>? entitlementId;
   /// The ID of the GoldengateConnectionAssignment to create.
-  final pulumi.Input<String>? goldengateConnectionAssignmentId;
+  final pulumi.Input<String?>? goldengateConnectionAssignmentId;
   /// The labels or tags associated with the GoldengateConnectionAssignment.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Identifier. The name of the GoldengateConnectionAssignment resource in the following
   /// format:
   /// projects/{project}/locations/{region}/goldengateConnectionAssignments/{goldengate_connection_assignment}
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The properties of a GoldengateConnectionAssignment.
   /// Structure is documented below.
-  final pulumi.Input<GoldengateConnectionAssignmentProperties>? properties;
+  final pulumi.Input<GoldengateConnectionAssignmentProperties?>? properties;
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  final pulumi.Input<Map<String, String>>? pulumiLabels;
+  final pulumi.Input<Map<String, String>?>? pulumiLabels;
 
   /// Creates a new [GoldengateConnectionAssignmentState].
   /// [createTime] The time when the connection assignment was created.

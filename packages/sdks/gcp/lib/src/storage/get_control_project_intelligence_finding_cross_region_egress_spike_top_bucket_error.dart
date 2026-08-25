@@ -25,7 +25,7 @@ class GetControlProjectIntelligenceFindingCrossRegionEgressSpikeTopBucketError {
 
   factory GetControlProjectIntelligenceFindingCrossRegionEgressSpikeTopBucketError.fromMap(Map<String, dynamic> map) {
     return GetControlProjectIntelligenceFindingCrossRegionEgressSpikeTopBucketError(
-      code: pulumi.Input.fromValue(map['code'] as int),
+      code: pulumi.Input.fromValue((map['code'] as num).toInt()),
       message: pulumi.Input.fromValue(map['message'] as String),
     );
   }

@@ -6,7 +6,7 @@ class ConfigSignInPhoneNumber {
   /// Whether phone number auth is enabled for the project or not.
   final pulumi.Input<bool> enabled;
   /// A map of &lt;test phone number, fake code&gt; that can be used for phone auth testing.
-  final pulumi.Input<Map<String, String>>? testPhoneNumbers;
+  final pulumi.Input<Map<String, String>?>? testPhoneNumbers;
 
   /// Creates a new [ConfigSignInPhoneNumber].
   /// [enabled] Whether phone number auth is enabled for the project or not.

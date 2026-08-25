@@ -7,25 +7,25 @@ import 'reservation_specific_reservation_instance_properties_local_ssd.dart';
 class ReservationSpecificReservationInstanceProperties {
   /// Guest accelerator type and count.
   /// Structure is documented below.
-  final pulumi.Input<List<ReservationSpecificReservationInstancePropertiesGuestAccelerator>>? guestAccelerators;
+  final pulumi.Input<List<ReservationSpecificReservationInstancePropertiesGuestAccelerator>?>? guestAccelerators;
   /// The amount of local ssd to reserve with each instance. This
   /// reserves disks of type `local-ssd`.
   /// Structure is documented below.
-  final pulumi.Input<List<ReservationSpecificReservationInstancePropertiesLocalSsd>>? localSsds;
+  final pulumi.Input<List<ReservationSpecificReservationInstancePropertiesLocalSsd>?>? localSsds;
   /// (Output)
   /// An opaque location hint used to place the allocation close to other resources. This field is for use by internal tools that use the public API.
-  final pulumi.Input<String>? locationHint;
+  final pulumi.Input<String?>? locationHint;
   /// The name of the machine type to reserve.
   final pulumi.Input<String> machineType;
   /// (Optional, Beta)
   /// Specifies the frequency of planned maintenance events.
   /// Possible values are: `AS_NEEDED`, `PERIODIC`, `RECURRENT`.
-  final pulumi.Input<String>? maintenanceInterval;
+  final pulumi.Input<String?>? maintenanceInterval;
   /// The minimum CPU platform for the reservation. For example,
   /// `"Intel Skylake"`. See
   /// the CPU platform availability reference](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform#availablezones)
   /// for information on available CPU platforms.
-  final pulumi.Input<String>? minCpuPlatform;
+  final pulumi.Input<String?>? minCpuPlatform;
 
   /// Creates a new [ReservationSpecificReservationInstanceProperties].
   /// [guestAccelerators] Guest accelerator type and count.

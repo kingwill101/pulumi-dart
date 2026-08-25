@@ -10,18 +10,18 @@ class TaxonomyArgs {
   /// A list of policy types that are activated for this taxonomy. If not set,
   /// defaults to an empty list.
   /// Each value may be one of: `POLICY_TYPE_UNSPECIFIED`, `FINE_GRAINED_ACCESS_CONTROL`.
-  final pulumi.Input<List<String>>? activatedPolicyTypes;
+  final pulumi.Input<List<String>?>? activatedPolicyTypes;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Description of this taxonomy. It must: contain only unicode characters,
   /// tabs, newlines, carriage returns and page breaks; and be at most 2000 bytes
   /// long when encoded in UTF-8. If not set, defaults to an empty description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// User defined name of this taxonomy.
   /// The taxonomy display name must be unique within an organization.
   /// It must: contain only unicode letters, numbers, underscores, dashes
@@ -30,9 +30,9 @@ class TaxonomyArgs {
   final pulumi.Input<String> displayName;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Taxonomy location region.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [TaxonomyArgs].
   /// [activatedPolicyTypes] A list of policy types that are activated for this taxonomy. If not set,

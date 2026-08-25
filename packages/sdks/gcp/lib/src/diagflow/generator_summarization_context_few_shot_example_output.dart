@@ -6,7 +6,7 @@ import 'generator_summarization_context_few_shot_example_output_summary_suggesti
 class GeneratorSummarizationContextFewShotExampleOutput {
   /// Optional. Suggested summary.
   /// Structure is documented below.
-  final pulumi.Input<GeneratorSummarizationContextFewShotExampleOutputSummarySuggestion>? summarySuggestion;
+  final pulumi.Input<GeneratorSummarizationContextFewShotExampleOutputSummarySuggestion?>? summarySuggestion;
 
   /// Creates a new [GeneratorSummarizationContextFewShotExampleOutput].
   /// [summarySuggestion] Optional. Suggested summary.

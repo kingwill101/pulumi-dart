@@ -13,12 +13,12 @@ class EnvironmentKeyvaluemapsEntriesArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The Apigee environment keyvalumaps Id associated with the Apigee environment,
   /// in the format `organizations/{{org_name}}/environments/{{env_name}}/keyvaluemaps/{{keyvaluemap_name}}`.
   final pulumi.Input<String> envKeyvaluemapId;
   /// Required. Resource URI that can be used to identify the scope of the key value map entries.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Required. Data or payload that is being retrieved and associated with the unique key.
   final pulumi.Input<String> value;
 

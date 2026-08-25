@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MulticastDomainUllMulticastDomain {
   /// The preconfigured Ultra-Low-Latency domain name.
-  final pulumi.Input<String>? preconfiguredUllDomain;
+  final pulumi.Input<String?>? preconfiguredUllDomain;
 
   /// Creates a new [MulticastDomainUllMulticastDomain].
   /// [preconfiguredUllDomain] The preconfigured Ultra-Low-Latency domain name.

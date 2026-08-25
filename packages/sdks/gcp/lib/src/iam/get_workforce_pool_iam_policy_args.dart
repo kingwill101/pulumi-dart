@@ -10,7 +10,7 @@ class GetWorkforcePoolIamPolicyArgs {
   /// The location for the resource. Used to find the parent resource to bind the IAM policy to. If not specified,
   /// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
   /// location is specified, it is taken from the provider configuration.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Used to find the parent resource to bind the IAM policy to
   final pulumi.Input<String> workforcePoolId;
 

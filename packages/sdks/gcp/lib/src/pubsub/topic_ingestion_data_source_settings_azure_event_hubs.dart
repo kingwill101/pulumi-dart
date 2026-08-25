@@ -4,21 +4,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TopicIngestionDataSourceSettingsAzureEventHubs {
   /// The Azure event hub client ID to use for ingestion.
-  final pulumi.Input<String>? clientId;
+  final pulumi.Input<String?>? clientId;
   /// The Azure event hub to ingest data from.
-  final pulumi.Input<String>? eventHub;
+  final pulumi.Input<String?>? eventHub;
   /// The GCP service account to be used for Federated Identity authentication
   /// with Azure (via a `AssumeRoleWithWebIdentity` call for the provided
   /// role).
-  final pulumi.Input<String>? gcpServiceAccount;
+  final pulumi.Input<String?>? gcpServiceAccount;
   /// The Azure event hub namespace to ingest data from.
-  final pulumi.Input<String>? namespace;
+  final pulumi.Input<String?>? namespace;
   /// The name of the resource group within an Azure subscription.
-  final pulumi.Input<String>? resourceGroup;
+  final pulumi.Input<String?>? resourceGroup;
   /// The Azure event hub subscription ID to use for ingestion.
-  final pulumi.Input<String>? subscriptionId;
+  final pulumi.Input<String?>? subscriptionId;
   /// The Azure event hub tenant ID to use for ingestion.
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
 
   /// Creates a new [TopicIngestionDataSourceSettingsAzureEventHubs].
   /// [clientId] The Azure event hub client ID to use for ingestion.

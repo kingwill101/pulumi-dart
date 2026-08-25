@@ -2,6 +2,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'data_connector_action_config.dart';
 import 'data_connector_args.dart';
 import 'data_connector_bap_config.dart';
+import 'data_connector_destination_config.dart';
+import 'data_connector_entity.dart';
+import 'data_connector_error.dart';
 import 'data_connector_state.dart';
 
 /// DataConnector manages the connection to external data sources for all data stores grouped
@@ -1119,13 +1122,13 @@ class DataConnector extends pulumi.CustomResource {
   /// Destination connector configurations for the data connector,
   /// used to configure where data is served.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> destinationConfigs;
+  late final pulumi.Output<List<DataConnectorDestinationConfig>?> destinationConfigs;
   /// List of entities from the connected data source to ingest.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> entities;
+  late final pulumi.Output<List<DataConnectorEntity>?> entities;
   /// The errors from initialization or from the latest connector run.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> errors;
+  late final pulumi.Output<List<DataConnectorError>> errors;
   /// The refresh interval specifically for incremental data syncs. If unset,
   /// incremental syncs will use the default from env, set to 3hrs.
   /// The minimum is 30 minutes and maximum is 7 days. Applicable to only 3P
@@ -1203,24 +1206,24 @@ class DataConnector extends pulumi.CustomResource {
           'gcp:discoveryengine/dataConnector:DataConnector',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     actionConfig = registerOutput<DataConnectorActionConfig?>('actionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataConnectorActionConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     actionState = registerOutput<String>('actionState');
     autoRunDisabled = registerOutput<bool?>('autoRunDisabled');
     bapConfig = registerOutput<DataConnectorBapConfig?>('bapConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataConnectorBapConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    blockingReasons = registerOutput<List<String>>('blockingReasons');
+    blockingReasons = registerOutput<List<String>>('blockingReasons', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     collectionDisplayName = registerOutput<String>('collectionDisplayName');
     collectionId = registerOutput<String>('collectionId');
-    connectorModes = registerOutput<List<String>?>('connectorModes');
+    connectorModes = registerOutput<List<String>?>('connectorModes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     connectorType = registerOutput<String>('connectorType');
     createTime = registerOutput<String>('createTime');
     dataSource = registerOutput<String>('dataSource');
     dataSourceVersion = registerOutput<int>('dataSourceVersion');
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    destinationConfigs = registerOutput<List<Map<String, dynamic>>?>('destinationConfigs');
-    entities = registerOutput<List<Map<String, dynamic>>?>('entities');
-    errors = registerOutput<List<Map<String, dynamic>>>('errors');
+    destinationConfigs = registerOutput<List<DataConnectorDestinationConfig>?>('destinationConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DataConnectorDestinationConfig>(guardedValue, (value) => DataConnectorDestinationConfig.fromMap((value as Map).cast<String, dynamic>())); });
+    entities = registerOutput<List<DataConnectorEntity>?>('entities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DataConnectorEntity>(guardedValue, (value) => DataConnectorEntity.fromMap((value as Map).cast<String, dynamic>())); });
+    errors = registerOutput<List<DataConnectorError>>('errors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DataConnectorError>(guardedValue, (value) => DataConnectorError.fromMap((value as Map).cast<String, dynamic>())); });
     incrementalRefreshInterval = registerOutput<String?>('incrementalRefreshInterval');
     incrementalSyncDisabled = registerOutput<bool?>('incrementalSyncDisabled');
     jsonParams = registerOutput<String?>('jsonParams');
@@ -1229,13 +1232,13 @@ class DataConnector extends pulumi.CustomResource {
     latestPauseTime = registerOutput<String>('latestPauseTime');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    params = registerOutput<Map<String, String>?>('params');
+    params = registerOutput<Map<String, String>?>('params', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     privateConnectivityProjectId = registerOutput<String>('privateConnectivityProjectId');
     project = registerOutput<String>('project');
     realtimeState = registerOutput<String>('realtimeState');
     refreshInterval = registerOutput<String>('refreshInterval');
     state = registerOutput<String>('state');
-    staticIpAddresses = registerOutput<List<String>>('staticIpAddresses');
+    staticIpAddresses = registerOutput<List<String>>('staticIpAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     staticIpEnabled = registerOutput<bool?>('staticIpEnabled');
     syncMode = registerOutput<String?>('syncMode');
     updateTime = registerOutput<String>('updateTime');
@@ -1246,11 +1249,12 @@ class DataConnector extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DataConnectorState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DataConnector._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1268,18 +1272,18 @@ class DataConnector extends pulumi.CustomResource {
     actionState = registerOutput<String>('actionState');
     autoRunDisabled = registerOutput<bool?>('autoRunDisabled');
     bapConfig = registerOutput<DataConnectorBapConfig?>('bapConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataConnectorBapConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    blockingReasons = registerOutput<List<String>>('blockingReasons');
+    blockingReasons = registerOutput<List<String>>('blockingReasons', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     collectionDisplayName = registerOutput<String>('collectionDisplayName');
     collectionId = registerOutput<String>('collectionId');
-    connectorModes = registerOutput<List<String>?>('connectorModes');
+    connectorModes = registerOutput<List<String>?>('connectorModes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     connectorType = registerOutput<String>('connectorType');
     createTime = registerOutput<String>('createTime');
     dataSource = registerOutput<String>('dataSource');
     dataSourceVersion = registerOutput<int>('dataSourceVersion');
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    destinationConfigs = registerOutput<List<Map<String, dynamic>>?>('destinationConfigs');
-    entities = registerOutput<List<Map<String, dynamic>>?>('entities');
-    errors = registerOutput<List<Map<String, dynamic>>>('errors');
+    destinationConfigs = registerOutput<List<DataConnectorDestinationConfig>?>('destinationConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DataConnectorDestinationConfig>(guardedValue, (value) => DataConnectorDestinationConfig.fromMap((value as Map).cast<String, dynamic>())); });
+    entities = registerOutput<List<DataConnectorEntity>?>('entities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DataConnectorEntity>(guardedValue, (value) => DataConnectorEntity.fromMap((value as Map).cast<String, dynamic>())); });
+    errors = registerOutput<List<DataConnectorError>>('errors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DataConnectorError>(guardedValue, (value) => DataConnectorError.fromMap((value as Map).cast<String, dynamic>())); });
     incrementalRefreshInterval = registerOutput<String?>('incrementalRefreshInterval');
     incrementalSyncDisabled = registerOutput<bool?>('incrementalSyncDisabled');
     jsonParams = registerOutput<String?>('jsonParams');
@@ -1288,13 +1292,58 @@ class DataConnector extends pulumi.CustomResource {
     latestPauseTime = registerOutput<String>('latestPauseTime');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    params = registerOutput<Map<String, String>?>('params');
+    params = registerOutput<Map<String, String>?>('params', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     privateConnectivityProjectId = registerOutput<String>('privateConnectivityProjectId');
     project = registerOutput<String>('project');
     realtimeState = registerOutput<String>('realtimeState');
     refreshInterval = registerOutput<String>('refreshInterval');
     this.state = registerOutput<String>('state');
-    staticIpAddresses = registerOutput<List<String>>('staticIpAddresses');
+    staticIpAddresses = registerOutput<List<String>>('staticIpAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    staticIpEnabled = registerOutput<bool?>('staticIpEnabled');
+    syncMode = registerOutput<String?>('syncMode');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [DataConnector] resource.
+  DataConnector.reference(String urn)
+    : super(
+        'gcp:discoveryengine/dataConnector:DataConnector',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    actionConfig = registerOutput<DataConnectorActionConfig?>('actionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataConnectorActionConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    actionState = registerOutput<String>('actionState');
+    autoRunDisabled = registerOutput<bool?>('autoRunDisabled');
+    bapConfig = registerOutput<DataConnectorBapConfig?>('bapConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataConnectorBapConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    blockingReasons = registerOutput<List<String>>('blockingReasons', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    collectionDisplayName = registerOutput<String>('collectionDisplayName');
+    collectionId = registerOutput<String>('collectionId');
+    connectorModes = registerOutput<List<String>?>('connectorModes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    connectorType = registerOutput<String>('connectorType');
+    createTime = registerOutput<String>('createTime');
+    dataSource = registerOutput<String>('dataSource');
+    dataSourceVersion = registerOutput<int>('dataSourceVersion');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    destinationConfigs = registerOutput<List<DataConnectorDestinationConfig>?>('destinationConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DataConnectorDestinationConfig>(guardedValue, (value) => DataConnectorDestinationConfig.fromMap((value as Map).cast<String, dynamic>())); });
+    entities = registerOutput<List<DataConnectorEntity>?>('entities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DataConnectorEntity>(guardedValue, (value) => DataConnectorEntity.fromMap((value as Map).cast<String, dynamic>())); });
+    errors = registerOutput<List<DataConnectorError>>('errors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DataConnectorError>(guardedValue, (value) => DataConnectorError.fromMap((value as Map).cast<String, dynamic>())); });
+    incrementalRefreshInterval = registerOutput<String?>('incrementalRefreshInterval');
+    incrementalSyncDisabled = registerOutput<bool?>('incrementalSyncDisabled');
+    jsonParams = registerOutput<String?>('jsonParams');
+    kmsKeyName = registerOutput<String?>('kmsKeyName');
+    lastSyncTime = registerOutput<String>('lastSyncTime');
+    latestPauseTime = registerOutput<String>('latestPauseTime');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    params = registerOutput<Map<String, String>?>('params', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    privateConnectivityProjectId = registerOutput<String>('privateConnectivityProjectId');
+    project = registerOutput<String>('project');
+    realtimeState = registerOutput<String>('realtimeState');
+    refreshInterval = registerOutput<String>('refreshInterval');
+    state = registerOutput<String>('state');
+    staticIpAddresses = registerOutput<List<String>>('staticIpAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     staticIpEnabled = registerOutput<bool?>('staticIpEnabled');
     syncMode = registerOutput<String?>('syncMode');
     updateTime = registerOutput<String>('updateTime');

@@ -9,7 +9,7 @@ class ServiceTemplateSpecContainerVolumeMount {
   /// This must match the Name of a Volume.
   final pulumi.Input<String> name;
   /// Path within the volume from which the container's volume should be mounted.
-  final pulumi.Input<String>? subPath;
+  final pulumi.Input<String?>? subPath;
 
   /// Creates a new [ServiceTemplateSpecContainerVolumeMount].
   /// [mountPath] Path within the container at which the volume should be mounted.  Must

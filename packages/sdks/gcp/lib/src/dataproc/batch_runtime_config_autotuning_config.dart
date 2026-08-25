@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BatchRuntimeConfigAutotuningConfig {
   /// Optional. Scenarios for which tunings are applied.
   /// Each value may be one of: `AUTO`, `SCALING`, `BROADCAST_HASH_JOIN`, `MEMORY`.
-  final pulumi.Input<List<String>>? scenarios;
+  final pulumi.Input<List<String>?>? scenarios;
 
   /// Creates a new [BatchRuntimeConfigAutotuningConfig].
   /// [scenarios] Optional. Scenarios for which tunings are applied.

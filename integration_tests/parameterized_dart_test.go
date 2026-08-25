@@ -129,7 +129,7 @@ func TestParameterizedDart(t *testing.T) {
 			}
 			for _, expected := range []string{
 				"import 'package:" + packageName + "/index.dart' as module_index;",
-				"final index = const _IndexModuleNamespace();",
+				"final index = _IndexModuleNamespace();",
 			} {
 				if !strings.Contains(string(rootSDK), expected) {
 					return fmt.Errorf("generated sdk root library missing %q: %s", expected, rootSDKPath)

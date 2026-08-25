@@ -161,7 +161,7 @@ class PipelineDestinationHttpEndpoint {
   /// The Pipeline expects that the message it receives adheres to the
   /// standard CloudEvent format. If it doesn't then the outgoing message
   /// request may fail with a persistent error.
-  final pulumi.Input<String>? messageBindingTemplate;
+  final pulumi.Input<String?>? messageBindingTemplate;
   /// The URI of the HTTP enpdoint.
   /// The value must be a RFC2396 URI string.
   /// Examples: `https://svc.us-central1.p.local:8080/route`.

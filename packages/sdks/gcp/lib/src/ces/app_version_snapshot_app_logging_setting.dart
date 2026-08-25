@@ -11,23 +11,23 @@ class AppVersionSnapshotAppLoggingSetting {
   /// (Output)
   /// Configuration for how the audio interactions should be recorded.
   /// Structure is documented below.
-  final pulumi.Input<List<AppVersionSnapshotAppLoggingSettingAudioRecordingConfig>>? audioRecordingConfigs;
+  final pulumi.Input<List<AppVersionSnapshotAppLoggingSettingAudioRecordingConfig>?>? audioRecordingConfigs;
   /// (Output)
   /// Settings to describe the BigQuery export behaviors for the app.
   /// Structure is documented below.
-  final pulumi.Input<List<AppVersionSnapshotAppLoggingSettingBigqueryExportSetting>>? bigqueryExportSettings;
+  final pulumi.Input<List<AppVersionSnapshotAppLoggingSettingBigqueryExportSetting>?>? bigqueryExportSettings;
   /// (Output)
   /// Settings to describe the Cloud Logging behaviors for the app.
   /// Structure is documented below.
-  final pulumi.Input<List<AppVersionSnapshotAppLoggingSettingCloudLoggingSetting>>? cloudLoggingSettings;
+  final pulumi.Input<List<AppVersionSnapshotAppLoggingSettingCloudLoggingSetting>?>? cloudLoggingSettings;
   /// (Output)
   /// Settings to describe the conversation logging behaviors for the app.
   /// Structure is documented below.
-  final pulumi.Input<List<AppVersionSnapshotAppLoggingSettingConversationLoggingSetting>>? conversationLoggingSettings;
+  final pulumi.Input<List<AppVersionSnapshotAppLoggingSettingConversationLoggingSetting>?>? conversationLoggingSettings;
   /// (Output)
   /// Configuration to instruct how sensitive data should be handled.
   /// Structure is documented below.
-  final pulumi.Input<List<AppVersionSnapshotAppLoggingSettingRedactionConfig>>? redactionConfigs;
+  final pulumi.Input<List<AppVersionSnapshotAppLoggingSettingRedactionConfig>?>? redactionConfigs;
 
   /// Creates a new [AppVersionSnapshotAppLoggingSetting].
   /// [audioRecordingConfigs] (Output)

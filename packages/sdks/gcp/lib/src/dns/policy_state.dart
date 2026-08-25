@@ -11,35 +11,35 @@ class PolicyState {
   /// When specified, all DNS queries are forwarded to a name server that you choose.
   /// Names such as .internal are not available when an alternative name server is specified.
   /// Structure is documented below.
-  final pulumi.Input<PolicyAlternativeNameServerConfig>? alternativeNameServerConfig;
+  final pulumi.Input<PolicyAlternativeNameServerConfig?>? alternativeNameServerConfig;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// A textual description field. Defaults to 'Managed by Pulumi'.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Configurations related to DNS64 for this Policy.
   /// Structure is documented below.
-  final pulumi.Input<PolicyDns64Config>? dns64Config;
+  final pulumi.Input<PolicyDns64Config?>? dns64Config;
   /// Allows networks bound to this policy to receive DNS queries sent
   /// by VMs or applications over VPN connections. When enabled, a
   /// virtual IP address will be allocated from each of the sub-networks
   /// that are bound to this policy.
-  final pulumi.Input<bool>? enableInboundForwarding;
+  final pulumi.Input<bool?>? enableInboundForwarding;
   /// Controls whether logging is enabled for the networks bound to this policy.
   /// Defaults to no logging if not set.
-  final pulumi.Input<bool>? enableLogging;
+  final pulumi.Input<bool?>? enableLogging;
   /// User assigned name for this policy.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// List of network names specifying networks to which this policy is applied.
   /// Structure is documented below.
-  final pulumi.Input<List<PolicyNetwork>>? networks;
+  final pulumi.Input<List<PolicyNetwork>?>? networks;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [PolicyState].
   /// [alternativeNameServerConfig] Sets an alternative name server for the associated networks.

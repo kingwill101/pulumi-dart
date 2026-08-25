@@ -46,9 +46,9 @@ class GetInstanceAccessRulesOption {
   factory GetInstanceAccessRulesOption.fromMap(Map<String, dynamic> map) {
     return GetInstanceAccessRulesOption(
       accessRules: pulumi.Input.fromValue(pulumi.Input.decodeList<GetInstanceAccessRulesOptionAccessRule>(map['accessRules']!, (value) => GetInstanceAccessRulesOptionAccessRule.fromMap((value as Map).cast<String, dynamic>()))),
-      defaultSquashGid: pulumi.Input.fromValue(map['defaultSquashGid'] as int),
+      defaultSquashGid: pulumi.Input.fromValue((map['defaultSquashGid'] as num).toInt()),
       defaultSquashMode: pulumi.Input.fromValue(map['defaultSquashMode'] as String),
-      defaultSquashUid: pulumi.Input.fromValue(map['defaultSquashUid'] as int),
+      defaultSquashUid: pulumi.Input.fromValue((map['defaultSquashUid'] as num).toInt()),
     );
   }
 }

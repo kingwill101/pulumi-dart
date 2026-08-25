@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'keystores_aliases_self_signed_cert_args.dart';
+import 'keystores_aliases_self_signed_cert_certs_info.dart';
 import 'keystores_aliases_self_signed_cert_state.dart';
 import 'keystores_aliases_self_signed_cert_subject.dart';
 import 'keystores_aliases_self_signed_cert_subject_alternative_dns_names.dart';
@@ -832,7 +833,7 @@ class KeystoresAliasesSelfSignedCert extends pulumi.CustomResource {
   late final pulumi.Output<int?> certValidityInDays;
   /// Chain of certificates under this alias.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> certsInfos;
+  late final pulumi.Output<List<KeystoresAliasesSelfSignedCertCertsInfo>> certsInfos;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -871,11 +872,11 @@ class KeystoresAliasesSelfSignedCert extends pulumi.CustomResource {
           'gcp:apigee/keystoresAliasesSelfSignedCert:KeystoresAliasesSelfSignedCert',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     alias = registerOutput<String>('alias');
     certValidityInDays = registerOutput<int?>('certValidityInDays');
-    certsInfos = registerOutput<List<Map<String, dynamic>>>('certsInfos');
+    certsInfos = registerOutput<List<KeystoresAliasesSelfSignedCertCertsInfo>>('certsInfos', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KeystoresAliasesSelfSignedCertCertsInfo>(guardedValue, (value) => KeystoresAliasesSelfSignedCertCertsInfo.fromMap((value as Map).cast<String, dynamic>())); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     environment = registerOutput<String>('environment');
     keySize = registerOutput<String?>('keySize');
@@ -892,11 +893,12 @@ class KeystoresAliasesSelfSignedCert extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     KeystoresAliasesSelfSignedCertState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return KeystoresAliasesSelfSignedCert._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -912,7 +914,30 @@ class KeystoresAliasesSelfSignedCert extends pulumi.CustomResource {
         ) {
     alias = registerOutput<String>('alias');
     certValidityInDays = registerOutput<int?>('certValidityInDays');
-    certsInfos = registerOutput<List<Map<String, dynamic>>>('certsInfos');
+    certsInfos = registerOutput<List<KeystoresAliasesSelfSignedCertCertsInfo>>('certsInfos', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KeystoresAliasesSelfSignedCertCertsInfo>(guardedValue, (value) => KeystoresAliasesSelfSignedCertCertsInfo.fromMap((value as Map).cast<String, dynamic>())); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    environment = registerOutput<String>('environment');
+    keySize = registerOutput<String?>('keySize');
+    keystore = registerOutput<String>('keystore');
+    orgId = registerOutput<String>('orgId');
+    sigAlg = registerOutput<String>('sigAlg');
+    subject = registerOutput<KeystoresAliasesSelfSignedCertSubject>('subject', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KeystoresAliasesSelfSignedCertSubject.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    subjectAlternativeDnsNames = registerOutput<KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames?>('subjectAlternativeDnsNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [KeystoresAliasesSelfSignedCert] resource.
+  KeystoresAliasesSelfSignedCert.reference(String urn)
+    : super(
+        'gcp:apigee/keystoresAliasesSelfSignedCert:KeystoresAliasesSelfSignedCert',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    alias = registerOutput<String>('alias');
+    certValidityInDays = registerOutput<int?>('certValidityInDays');
+    certsInfos = registerOutput<List<KeystoresAliasesSelfSignedCertCertsInfo>>('certsInfos', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KeystoresAliasesSelfSignedCertCertsInfo>(guardedValue, (value) => KeystoresAliasesSelfSignedCertCertsInfo.fromMap((value as Map).cast<String, dynamic>())); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     environment = registerOutput<String>('environment');
     keySize = registerOutput<String?>('keySize');

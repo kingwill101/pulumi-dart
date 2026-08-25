@@ -20,7 +20,7 @@ class HostProjectRegistrationArgs {
   final pulumi.Input<String> location;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [HostProjectRegistrationArgs].
   /// [gcpProject] Required. Immutable. Google cloud project name in the format: "projects/abc" or "projects/123".

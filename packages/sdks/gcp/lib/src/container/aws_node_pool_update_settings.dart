@@ -5,7 +5,7 @@ import 'aws_node_pool_update_settings_surge_settings.dart';
 
 class AwsNodePoolUpdateSettings {
   /// Optional. Settings for surge update.
-  final pulumi.Input<AwsNodePoolUpdateSettingsSurgeSettings>? surgeSettings;
+  final pulumi.Input<AwsNodePoolUpdateSettingsSurgeSettings?>? surgeSettings;
 
   /// Creates a new [AwsNodePoolUpdateSettings].
   /// [surgeSettings] Optional. Settings for surge update.

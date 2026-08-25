@@ -6,9 +6,9 @@ import 'feed_details_qualys_vm_settings_authentication.dart';
 class FeedDetailsQualysVmSettings {
   /// Info for username and secret based authentication.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsQualysVmSettingsAuthentication>? authentication;
+  final pulumi.Input<FeedDetailsQualysVmSettingsAuthentication?>? authentication;
   /// API Hostname.
-  final pulumi.Input<String>? hostname;
+  final pulumi.Input<String?>? hostname;
 
   /// Creates a new [FeedDetailsQualysVmSettings].
   /// [authentication] Info for username and secret based authentication.

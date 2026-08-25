@@ -127,3 +127,14 @@ Future<GetNoteIamPolicyResult> getNoteIamPolicy(
   );
   return GetNoteIamPolicyResult.fromMap(result);
 }
+
+pulumi.Output<GetNoteIamPolicyResult> getNoteIamPolicyOutput(
+  GetNoteIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:containeranalysis/getNoteIamPolicy:getNoteIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNoteIamPolicyResult.fromMap);
+}

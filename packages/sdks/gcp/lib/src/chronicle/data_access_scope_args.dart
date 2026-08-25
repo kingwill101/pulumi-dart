@@ -17,7 +17,7 @@ class DataAccessScopeArgs {
   /// A customer with scope with denied labels A and B and allowAll will be able
   /// to see all data except data labeled with A and data labeled with B and data
   /// with labels A and B.
-  final pulumi.Input<bool>? allowAll;
+  final pulumi.Input<bool?>? allowAll;
   /// The allowed labels for the scope. There has to be at
   /// least one label allowed for the scope to be valid.
   /// The logical operator for evaluation of the allowed labels is OR.
@@ -25,7 +25,7 @@ class DataAccessScopeArgs {
   /// E.g.: A customer with scope with allowed labels A and B will be able
   /// to see data with labeled with A or B or (A and B).
   /// Structure is documented below.
-  final pulumi.Input<List<DataAccessScopeAllowedDataAccessLabel>>? allowedDataAccessLabels;
+  final pulumi.Input<List<DataAccessScopeAllowedDataAccessLabel>?>? allowedDataAccessLabels;
   /// Required. The user provided scope id which will become the last part of the name
   /// of the scope resource.
   /// Needs to be compliant with https://google.aip.dev/122
@@ -36,23 +36,23 @@ class DataAccessScopeArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Optional. The denied labels for the scope.
   /// The logical operator for evaluation of the denied labels is AND.
   /// E.g.: A customer with scope with denied labels A and B won't be able
   /// to see data labeled with A and data labeled with B
   /// and data with labels A and B.
   /// Structure is documented below.
-  final pulumi.Input<List<DataAccessScopeDeniedDataAccessLabel>>? deniedDataAccessLabels;
+  final pulumi.Input<List<DataAccessScopeDeniedDataAccessLabel>?>? deniedDataAccessLabels;
   /// Optional. A description of the data access scope for a human reader.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The unique identifier for the Chronicle instance, which is the same as the customer ID.
   final pulumi.Input<String> instance;
   /// The location of the resource. This is the geographical region where the Chronicle instance resides, such as "us" or "europe-west2".
   final pulumi.Input<String> location;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [DataAccessScopeArgs].
   /// [allowAll] Optional. Whether or not the scope allows all labels, allowAll and

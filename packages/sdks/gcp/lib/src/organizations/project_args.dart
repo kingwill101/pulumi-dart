@@ -13,41 +13,41 @@ class ProjectArgs {
   /// network slot available to create the project successfully, even if you set `autoCreateNetwork` to
   /// `false`. Note that when `false`, Terraform enables `compute.googleapis.com` on the project to interact
   /// with the GCE API and currently leaves it enabled.
-  final pulumi.Input<bool>? autoCreateNetwork;
+  final pulumi.Input<bool?>? autoCreateNetwork;
   /// The alphanumeric ID of the billing account this project
   /// belongs to. The user or service account performing this operation with the provider
   /// must have at minimum Billing Account User privileges (`roles/billing.user`) on the billing account.
   /// See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/docs/how-to/billing-access)
   /// for more details.
-  final pulumi.Input<String>? billingAccount;
+  final pulumi.Input<String?>? billingAccount;
   /// The deletion policy for the Project. Setting PREVENT will protect the project
   /// against any destroy actions caused by a pulumi up or terraform destroy. Setting ABANDON allows the resource
   /// to be abandoned rather than deleted, i.e., the Terraform resource can be deleted without deleting the Project via
   /// the Google API. Possible values are: "PREVENT", "ABANDON", "DELETE". Default value is `PREVENT`.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The numeric ID of the folder this project should be
   /// created under. Only one of `orgId` or `folderId` may be
   /// specified. If the `folderId` is specified, then the project is
   /// created under the specified folder. Changing this forces the
   /// project to be migrated to the newly specified folder.
-  final pulumi.Input<String>? folderId;
+  final pulumi.Input<String?>? folderId;
   /// A set of key/value label pairs to assign to the project.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field 'effective_labels' for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The display name of the project.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The numeric ID of the organization this project belongs to.
   /// Changing this forces a new project to be created.  Only one of
   /// `orgId` or `folderId` may be specified. If the `orgId` is
   /// specified then the project is created at the top level. Changing
   /// this forces the project to be migrated to the newly specified
   /// organization.
-  final pulumi.Input<String>? orgId;
+  final pulumi.Input<String?>? orgId;
   /// The project ID. Changing this forces a new project to be created.
-  final pulumi.Input<String>? projectId;
+  final pulumi.Input<String?>? projectId;
   /// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when empty. The field is immutable and causes resource replacement when mutated. This field is only set at create time and modifying this field after creation will trigger recreation. To apply tags to an existing resource, see the `gcp.tags.TagValue` resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ProjectArgs].
   /// [autoCreateNetwork] Controls whether the 'default' network exists on the project. Defaults

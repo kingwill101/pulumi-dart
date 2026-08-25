@@ -2,6 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'assets_export_job_args.dart';
 import 'assets_export_job_condition.dart';
 import 'assets_export_job_performance_data.dart';
+import 'assets_export_job_recent_execution.dart';
 import 'assets_export_job_signed_uri_destination.dart';
 import 'assets_export_job_state.dart';
 
@@ -256,7 +257,7 @@ class AssetsExportJob extends pulumi.CustomResource {
   late final pulumi.Output<Map<String, String>> pulumiLabels;
   /// Recent non expired executions of the job.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> recentExecutions;
+  late final pulumi.Output<List<AssetsExportJobRecentExecution>> recentExecutions;
   /// When this value is set to 'true' the response will include all assets,
   /// including those that are hidden.
   late final pulumi.Output<bool?> showHidden;
@@ -278,22 +279,23 @@ class AssetsExportJob extends pulumi.CustomResource {
           'gcp:migrationcenter/assetsExportJob:AssetsExportJob',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     assetsExportJobId = registerOutput<String>('assetsExportJobId');
     condition = registerOutput<AssetsExportJobCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AssetsExportJobCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    inventories = registerOutput<List<Map<String, dynamic>>>('inventories');
-    labels = registerOutput<Map<String, String>?>('labels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    inventories = registerOutput<List<Map<String, dynamic>>>('inventories', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<Map<String, dynamic>>(); });
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    networkDependencies = registerOutput<List<Map<String, dynamic>>>('networkDependencies');
+    networkDependencies = registerOutput<List<Map<String, dynamic>>>('networkDependencies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<Map<String, dynamic>>(); });
     performanceData = registerOutput<AssetsExportJobPerformanceData?>('performanceData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AssetsExportJobPerformanceData.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    recentExecutions = registerOutput<List<Map<String, dynamic>>>('recentExecutions');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    recentExecutions = registerOutput<List<AssetsExportJobRecentExecution>>('recentExecutions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AssetsExportJobRecentExecution>(guardedValue, (value) => AssetsExportJobRecentExecution.fromMap((value as Map).cast<String, dynamic>())); });
     showHidden = registerOutput<bool?>('showHidden');
     signedUriDestination = registerOutput<AssetsExportJobSignedUriDestination?>('signedUriDestination', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AssetsExportJobSignedUriDestination.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     updateTime = registerOutput<String>('updateTime');
@@ -304,11 +306,12 @@ class AssetsExportJob extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AssetsExportJobState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AssetsExportJob._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -326,16 +329,45 @@ class AssetsExportJob extends pulumi.CustomResource {
     condition = registerOutput<AssetsExportJobCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AssetsExportJobCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    inventories = registerOutput<List<Map<String, dynamic>>>('inventories');
-    labels = registerOutput<Map<String, String>?>('labels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    inventories = registerOutput<List<Map<String, dynamic>>>('inventories', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<Map<String, dynamic>>(); });
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    networkDependencies = registerOutput<List<Map<String, dynamic>>>('networkDependencies');
+    networkDependencies = registerOutput<List<Map<String, dynamic>>>('networkDependencies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<Map<String, dynamic>>(); });
     performanceData = registerOutput<AssetsExportJobPerformanceData?>('performanceData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AssetsExportJobPerformanceData.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    recentExecutions = registerOutput<List<Map<String, dynamic>>>('recentExecutions');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    recentExecutions = registerOutput<List<AssetsExportJobRecentExecution>>('recentExecutions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AssetsExportJobRecentExecution>(guardedValue, (value) => AssetsExportJobRecentExecution.fromMap((value as Map).cast<String, dynamic>())); });
+    showHidden = registerOutput<bool?>('showHidden');
+    signedUriDestination = registerOutput<AssetsExportJobSignedUriDestination?>('signedUriDestination', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AssetsExportJobSignedUriDestination.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [AssetsExportJob] resource.
+  AssetsExportJob.reference(String urn)
+    : super(
+        'gcp:migrationcenter/assetsExportJob:AssetsExportJob',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    assetsExportJobId = registerOutput<String>('assetsExportJobId');
+    condition = registerOutput<AssetsExportJobCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AssetsExportJobCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    inventories = registerOutput<List<Map<String, dynamic>>>('inventories', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<Map<String, dynamic>>(); });
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    networkDependencies = registerOutput<List<Map<String, dynamic>>>('networkDependencies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<Map<String, dynamic>>(); });
+    performanceData = registerOutput<AssetsExportJobPerformanceData?>('performanceData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AssetsExportJobPerformanceData.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    recentExecutions = registerOutput<List<AssetsExportJobRecentExecution>>('recentExecutions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AssetsExportJobRecentExecution>(guardedValue, (value) => AssetsExportJobRecentExecution.fromMap((value as Map).cast<String, dynamic>())); });
     showHidden = registerOutput<bool?>('showHidden');
     signedUriDestination = registerOutput<AssetsExportJobSignedUriDestination?>('signedUriDestination', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AssetsExportJobSignedUriDestination.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     updateTime = registerOutput<String>('updateTime');

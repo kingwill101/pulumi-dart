@@ -6,9 +6,9 @@ class ListingBigqueryDatasetSelectedResource {
   /// Format: For routine: projects/{projectId}/datasets/{datasetId}/routines/{routineId} Example:"projects/test_project/datasets/test_dataset/routines/test_routine"
   ///
   /// &lt;a name="nestedBigqueryDatasetEffectiveReplicas"&gt;&lt;/a&gt;The `effectiveReplicas` block contains:
-  final pulumi.Input<String>? routine;
+  final pulumi.Input<String?>? routine;
   /// Format: For table: projects/{projectId}/datasets/{datasetId}/tables/{tableId} Example:"projects/test_project/datasets/test_dataset/tables/test_table"
-  final pulumi.Input<String>? table;
+  final pulumi.Input<String?>? table;
 
   /// Creates a new [ListingBigqueryDatasetSelectedResource].
   /// [routine] Format: For routine: projects/{projectId}/datasets/{datasetId}/routines/{routineId} Example:"projects/test_project/datasets/test_dataset/routines/test_routine"

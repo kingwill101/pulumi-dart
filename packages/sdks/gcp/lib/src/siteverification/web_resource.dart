@@ -330,10 +330,10 @@ class WebResource extends pulumi.CustomResource {
           'gcp:siteverification/webResource:WebResource',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    owners = registerOutput<List<String>>('owners');
+    owners = registerOutput<List<String>>('owners', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     site = registerOutput<WebResourceSite>('site', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebResourceSite.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     verificationMethod = registerOutput<String>('verificationMethod');
     webResourceId = registerOutput<String>('webResourceId');
@@ -344,11 +344,12 @@ class WebResource extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     WebResourceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return WebResource._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -363,7 +364,23 @@ class WebResource extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    owners = registerOutput<List<String>>('owners');
+    owners = registerOutput<List<String>>('owners', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    site = registerOutput<WebResourceSite>('site', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebResourceSite.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    verificationMethod = registerOutput<String>('verificationMethod');
+    webResourceId = registerOutput<String>('webResourceId');
+  }
+
+  /// Creates a typed reference to an existing [WebResource] resource.
+  WebResource.reference(String urn)
+    : super(
+        'gcp:siteverification/webResource:WebResource',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    owners = registerOutput<List<String>>('owners', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     site = registerOutput<WebResourceSite>('site', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebResourceSite.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     verificationMethod = registerOutput<String>('verificationMethod');
     webResourceId = registerOutput<String>('webResourceId');

@@ -1,6 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'service_args.dart';
 import 'service_attributes.dart';
+import 'service_service_property.dart';
+import 'service_service_reference.dart';
 import 'service_state.dart';
 
 /// Service is a network/api interface that exposes some functionality to clients for consumption over the network. Service typically has one or more Workloads behind it. It registers identified service to the Application.
@@ -1928,10 +1930,10 @@ class Service extends pulumi.CustomResource {
   late final pulumi.Output<String> serviceId;
   /// Properties of an underlying cloud resource that can comprise a Service.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> serviceProperties;
+  late final pulumi.Output<List<ServiceServiceProperty>> serviceProperties;
   /// Reference to an underlying networking resource that can comprise a Service.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> serviceReferences;
+  late final pulumi.Output<List<ServiceServiceReference>> serviceReferences;
   /// Output only. Service state. Possible values: STATE_UNSPECIFIED CREATING ACTIVE DELETING DETACHED
   late final pulumi.Output<String> state;
   /// Output only. A universally unique identifier (UUID) for the `Service` in the UUID4
@@ -1952,7 +1954,7 @@ class Service extends pulumi.CustomResource {
           'gcp:apphub/service:Service',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     applicationId = registerOutput<String>('applicationId');
     attributes = registerOutput<ServiceAttributes?>('attributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceAttributes.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -1965,8 +1967,8 @@ class Service extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     serviceId = registerOutput<String>('serviceId');
-    serviceProperties = registerOutput<List<Map<String, dynamic>>>('serviceProperties');
-    serviceReferences = registerOutput<List<Map<String, dynamic>>>('serviceReferences');
+    serviceProperties = registerOutput<List<ServiceServiceProperty>>('serviceProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServiceServiceProperty>(guardedValue, (value) => ServiceServiceProperty.fromMap((value as Map).cast<String, dynamic>())); });
+    serviceReferences = registerOutput<List<ServiceServiceReference>>('serviceReferences', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServiceServiceReference>(guardedValue, (value) => ServiceServiceReference.fromMap((value as Map).cast<String, dynamic>())); });
     state = registerOutput<String>('state');
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
@@ -1977,11 +1979,12 @@ class Service extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ServiceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Service._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -2006,9 +2009,36 @@ class Service extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     serviceId = registerOutput<String>('serviceId');
-    serviceProperties = registerOutput<List<Map<String, dynamic>>>('serviceProperties');
-    serviceReferences = registerOutput<List<Map<String, dynamic>>>('serviceReferences');
+    serviceProperties = registerOutput<List<ServiceServiceProperty>>('serviceProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServiceServiceProperty>(guardedValue, (value) => ServiceServiceProperty.fromMap((value as Map).cast<String, dynamic>())); });
+    serviceReferences = registerOutput<List<ServiceServiceReference>>('serviceReferences', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServiceServiceReference>(guardedValue, (value) => ServiceServiceReference.fromMap((value as Map).cast<String, dynamic>())); });
     this.state = registerOutput<String>('state');
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [Service] resource.
+  Service.reference(String urn)
+    : super(
+        'gcp:apphub/service:Service',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    applicationId = registerOutput<String>('applicationId');
+    attributes = registerOutput<ServiceAttributes?>('attributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceAttributes.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    discoveredService = registerOutput<String>('discoveredService');
+    displayName = registerOutput<String?>('displayName');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    serviceId = registerOutput<String>('serviceId');
+    serviceProperties = registerOutput<List<ServiceServiceProperty>>('serviceProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServiceServiceProperty>(guardedValue, (value) => ServiceServiceProperty.fromMap((value as Map).cast<String, dynamic>())); });
+    serviceReferences = registerOutput<List<ServiceServiceReference>>('serviceReferences', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServiceServiceReference>(guardedValue, (value) => ServiceServiceReference.fromMap((value as Map).cast<String, dynamic>())); });
+    state = registerOutput<String>('state');
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
   }

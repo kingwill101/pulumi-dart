@@ -8,10 +8,10 @@ class TrustConfigTrustStore {
   /// Set of intermediate CA certificates used for the path building phase of chain validation.
   /// The field is currently not supported if trust config is used for the workload certificate feature.
   /// Structure is documented below.
-  final pulumi.Input<List<TrustConfigTrustStoreIntermediateCa>>? intermediateCas;
+  final pulumi.Input<List<TrustConfigTrustStoreIntermediateCa>?>? intermediateCas;
   /// List of Trust Anchors to be used while performing validation against a given TrustStore.
   /// Structure is documented below.
-  final pulumi.Input<List<TrustConfigTrustStoreTrustAnchor>>? trustAnchors;
+  final pulumi.Input<List<TrustConfigTrustStoreTrustAnchor>?>? trustAnchors;
 
   /// Creates a new [TrustConfigTrustStore].
   /// [intermediateCas] Set of intermediate CA certificates used for the path building phase of chain validation.

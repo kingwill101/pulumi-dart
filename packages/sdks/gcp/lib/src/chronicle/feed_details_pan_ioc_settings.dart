@@ -6,11 +6,11 @@ import 'feed_details_pan_ioc_settings_authentication.dart';
 class FeedDetailsPanIocSettings {
   /// HTTP header based authentication.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsPanIocSettingsAuthentication>? authentication;
+  final pulumi.Input<FeedDetailsPanIocSettingsAuthentication?>? authentication;
   /// PAN IOC feed name.
-  final pulumi.Input<String>? feed;
+  final pulumi.Input<String?>? feed;
   /// PAN IOC feed ID.
-  final pulumi.Input<String>? feedId;
+  final pulumi.Input<String?>? feedId;
 
   /// Creates a new [FeedDetailsPanIocSettings].
   /// [authentication] HTTP header based authentication.

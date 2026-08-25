@@ -212,13 +212,13 @@ class BucketACL extends pulumi.CustomResource {
           'gcp:storage/bucketACL:BucketACL',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     bucket = registerOutput<String>('bucket');
     defaultAcl = registerOutput<String?>('defaultAcl');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     predefinedAcl = registerOutput<String?>('predefinedAcl');
-    roleEntities = registerOutput<List<String>>('roleEntities');
+    roleEntities = registerOutput<List<String>>('roleEntities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [BucketACL] resource's state with the given [name] and [id].
@@ -226,11 +226,12 @@ class BucketACL extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     BucketACLState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return BucketACL._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -248,6 +249,22 @@ class BucketACL extends pulumi.CustomResource {
     defaultAcl = registerOutput<String?>('defaultAcl');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     predefinedAcl = registerOutput<String?>('predefinedAcl');
-    roleEntities = registerOutput<List<String>>('roleEntities');
+    roleEntities = registerOutput<List<String>>('roleEntities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [BucketACL] resource.
+  BucketACL.reference(String urn)
+    : super(
+        'gcp:storage/bucketACL:BucketACL',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    bucket = registerOutput<String>('bucket');
+    defaultAcl = registerOutput<String?>('defaultAcl');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    predefinedAcl = registerOutput<String?>('predefinedAcl');
+    roleEntities = registerOutput<List<String>>('roleEntities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

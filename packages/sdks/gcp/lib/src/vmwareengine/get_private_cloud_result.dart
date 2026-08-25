@@ -9,119 +9,119 @@ import 'get_private_cloud_vcenter.dart';
 
 /// Result data returned by getPrivateCloud.
 class GetPrivateCloudResult {
-  final String createTime;
-  final String deleteTime;
-  final int deletionDelayHours;
-  final String deletionPolicy;
-  final String description;
-  final String expireTime;
-  final List<GetPrivateCloudHcx> hcxes;
+  final String? createTime;
+  final String? deleteTime;
+  final int? deletionDelayHours;
+  final String? deletionPolicy;
+  final String? description;
+  final String? expireTime;
+  final List<GetPrivateCloudHcx>? hcxes;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final String location;
-  final List<GetPrivateCloudManagementCluster> managementClusters;
-  final String name;
-  final List<GetPrivateCloudNetworkConfig> networkConfigs;
-  final List<GetPrivateCloudNsx> nsxes;
+  final String? id;
+  final String? location;
+  final List<GetPrivateCloudManagementCluster>? managementClusters;
+  final String? name;
+  final List<GetPrivateCloudNetworkConfig>? networkConfigs;
+  final List<GetPrivateCloudNsx>? nsxes;
   final String? project;
-  final bool sendDeletionDelayHoursIfZero;
-  final String state;
-  final String type;
-  final String uid;
-  final String updateTime;
-  final List<GetPrivateCloudVcenter> vcenters;
+  final bool? sendDeletionDelayHoursIfZero;
+  final String? state;
+  final String? type;
+  final String? uid;
+  final String? updateTime;
+  final List<GetPrivateCloudVcenter>? vcenters;
 
   /// Creates a new [GetPrivateCloudResult].
-  /// [createTime] Required.
-  /// [deleteTime] Required.
-  /// [deletionDelayHours] Required.
-  /// [deletionPolicy] Required.
-  /// [description] Required.
-  /// [expireTime] Required.
-  /// [hcxes] Required.
+  /// [createTime] Optional.
+  /// [deleteTime] Optional.
+  /// [deletionDelayHours] Optional.
+  /// [deletionPolicy] Optional.
+  /// [description] Optional.
+  /// [expireTime] Optional.
+  /// [hcxes] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [location] Required.
-  /// [managementClusters] Required.
-  /// [name] Required.
-  /// [networkConfigs] Required.
-  /// [nsxes] Required.
+  /// [location] Optional.
+  /// [managementClusters] Optional.
+  /// [name] Optional.
+  /// [networkConfigs] Optional.
+  /// [nsxes] Optional.
   /// [project] Optional.
-  /// [sendDeletionDelayHoursIfZero] Required.
-  /// [state] Required.
-  /// [type] Required.
-  /// [uid] Required.
-  /// [updateTime] Required.
-  /// [vcenters] Required.
+  /// [sendDeletionDelayHoursIfZero] Optional.
+  /// [state] Optional.
+  /// [type] Optional.
+  /// [uid] Optional.
+  /// [updateTime] Optional.
+  /// [vcenters] Optional.
   const GetPrivateCloudResult({
-    required this.createTime,
-    required this.deleteTime,
-    required this.deletionDelayHours,
-    required this.deletionPolicy,
-    required this.description,
-    required this.expireTime,
-    required this.hcxes,
-    required this.id,
-    required this.location,
-    required this.managementClusters,
-    required this.name,
-    required this.networkConfigs,
-    required this.nsxes,
+    this.createTime,
+    this.deleteTime,
+    this.deletionDelayHours,
+    this.deletionPolicy,
+    this.description,
+    this.expireTime,
+    this.hcxes,
+    this.id,
+    this.location,
+    this.managementClusters,
+    this.name,
+    this.networkConfigs,
+    this.nsxes,
     this.project,
-    required this.sendDeletionDelayHoursIfZero,
-    required this.state,
-    required this.type,
-    required this.uid,
-    required this.updateTime,
-    required this.vcenters,
+    this.sendDeletionDelayHoursIfZero,
+    this.state,
+    this.type,
+    this.uid,
+    this.updateTime,
+    this.vcenters,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'createTime': createTime,
-      'deleteTime': deleteTime,
-      'deletionDelayHours': deletionDelayHours,
-      'deletionPolicy': deletionPolicy,
-      'description': description,
-      'expireTime': expireTime,
-      'hcxes': pulumi.Input.encodeList<GetPrivateCloudHcx, Map<String, dynamic>>(hcxes, (value) => value.toMap()),
-      'id': id,
-      'location': location,
-      'managementClusters': pulumi.Input.encodeList<GetPrivateCloudManagementCluster, Map<String, dynamic>>(managementClusters, (value) => value.toMap()),
-      'name': name,
-      'networkConfigs': pulumi.Input.encodeList<GetPrivateCloudNetworkConfig, Map<String, dynamic>>(networkConfigs, (value) => value.toMap()),
-      'nsxes': pulumi.Input.encodeList<GetPrivateCloudNsx, Map<String, dynamic>>(nsxes, (value) => value.toMap()),
+      'createTime': ?createTime,
+      'deleteTime': ?deleteTime,
+      'deletionDelayHours': ?deletionDelayHours,
+      'deletionPolicy': ?deletionPolicy,
+      'description': ?description,
+      'expireTime': ?expireTime,
+      'hcxes': ?(() { final guardedValue = hcxes; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetPrivateCloudHcx, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'id': ?id,
+      'location': ?location,
+      'managementClusters': ?(() { final guardedValue = managementClusters; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetPrivateCloudManagementCluster, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'name': ?name,
+      'networkConfigs': ?(() { final guardedValue = networkConfigs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetPrivateCloudNetworkConfig, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'nsxes': ?(() { final guardedValue = nsxes; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetPrivateCloudNsx, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'project': ?project,
-      'sendDeletionDelayHoursIfZero': sendDeletionDelayHoursIfZero,
-      'state': state,
-      'type': type,
-      'uid': uid,
-      'updateTime': updateTime,
-      'vcenters': pulumi.Input.encodeList<GetPrivateCloudVcenter, Map<String, dynamic>>(vcenters, (value) => value.toMap()),
+      'sendDeletionDelayHoursIfZero': ?sendDeletionDelayHoursIfZero,
+      'state': ?state,
+      'type': ?type,
+      'uid': ?uid,
+      'updateTime': ?updateTime,
+      'vcenters': ?(() { final guardedValue = vcenters; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetPrivateCloudVcenter, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
     };
   }
 
   factory GetPrivateCloudResult.fromMap(Map<String, dynamic> map) {
     return GetPrivateCloudResult(
-      createTime: map['createTime'] as String,
-      deleteTime: map['deleteTime'] as String,
-      deletionDelayHours: map['deletionDelayHours'] as int,
-      deletionPolicy: map['deletionPolicy'] as String,
-      description: map['description'] as String,
-      expireTime: map['expireTime'] as String,
-      hcxes: pulumi.Input.decodeList<GetPrivateCloudHcx>(map['hcxes']!, (value) => GetPrivateCloudHcx.fromMap((value as Map).cast<String, dynamic>())),
-      id: map['id'] as String,
-      location: map['location'] as String,
-      managementClusters: pulumi.Input.decodeList<GetPrivateCloudManagementCluster>(map['managementClusters']!, (value) => GetPrivateCloudManagementCluster.fromMap((value as Map).cast<String, dynamic>())),
-      name: map['name'] as String,
-      networkConfigs: pulumi.Input.decodeList<GetPrivateCloudNetworkConfig>(map['networkConfigs']!, (value) => GetPrivateCloudNetworkConfig.fromMap((value as Map).cast<String, dynamic>())),
-      nsxes: pulumi.Input.decodeList<GetPrivateCloudNsx>(map['nsxes']!, (value) => GetPrivateCloudNsx.fromMap((value as Map).cast<String, dynamic>())),
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      deleteTime: (() { final guardedValue = map['deleteTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      deletionDelayHours: (() { final guardedValue = map['deletionDelayHours']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      expireTime: (() { final guardedValue = map['expireTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      hcxes: (() { final guardedValue = map['hcxes']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetPrivateCloudHcx>(guardedValue, (value) => GetPrivateCloudHcx.fromMap((value as Map).cast<String, dynamic>())); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      managementClusters: (() { final guardedValue = map['managementClusters']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetPrivateCloudManagementCluster>(guardedValue, (value) => GetPrivateCloudManagementCluster.fromMap((value as Map).cast<String, dynamic>())); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      networkConfigs: (() { final guardedValue = map['networkConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetPrivateCloudNetworkConfig>(guardedValue, (value) => GetPrivateCloudNetworkConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
+      nsxes: (() { final guardedValue = map['nsxes']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetPrivateCloudNsx>(guardedValue, (value) => GetPrivateCloudNsx.fromMap((value as Map).cast<String, dynamic>())); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      sendDeletionDelayHoursIfZero: map['sendDeletionDelayHoursIfZero'] as bool,
-      state: map['state'] as String,
-      type: map['type'] as String,
-      uid: map['uid'] as String,
-      updateTime: map['updateTime'] as String,
-      vcenters: pulumi.Input.decodeList<GetPrivateCloudVcenter>(map['vcenters']!, (value) => GetPrivateCloudVcenter.fromMap((value as Map).cast<String, dynamic>())),
+      sendDeletionDelayHoursIfZero: (() { final guardedValue = map['sendDeletionDelayHoursIfZero']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      uid: (() { final guardedValue = map['uid']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      vcenters: (() { final guardedValue = map['vcenters']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetPrivateCloudVcenter>(guardedValue, (value) => GetPrivateCloudVcenter.fromMap((value as Map).cast<String, dynamic>())); })(),
     );
   }
 }

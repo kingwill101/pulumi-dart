@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames {
   /// Subject Alternative Name
-  final pulumi.Input<String>? subjectAlternativeName;
+  final pulumi.Input<String?>? subjectAlternativeName;
 
   /// Creates a new [KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames].
   /// [subjectAlternativeName] Subject Alternative Name

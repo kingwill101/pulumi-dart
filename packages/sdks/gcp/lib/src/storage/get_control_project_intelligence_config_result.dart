@@ -7,54 +7,54 @@ import 'get_control_project_intelligence_config_trial_config.dart';
 
 /// Result data returned by getControlProjectIntelligenceConfig.
 class GetControlProjectIntelligenceConfigResult {
-  final String editionConfig;
-  final List<GetControlProjectIntelligenceConfigEffectiveIntelligenceConfig> effectiveIntelligenceConfigs;
-  final List<GetControlProjectIntelligenceConfigFilter> filters;
+  final String? editionConfig;
+  final List<GetControlProjectIntelligenceConfigEffectiveIntelligenceConfig>? effectiveIntelligenceConfigs;
+  final List<GetControlProjectIntelligenceConfigFilter>? filters;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final String name;
-  final List<GetControlProjectIntelligenceConfigTrialConfig> trialConfigs;
-  final String updateTime;
+  final String? id;
+  final String? name;
+  final List<GetControlProjectIntelligenceConfigTrialConfig>? trialConfigs;
+  final String? updateTime;
 
   /// Creates a new [GetControlProjectIntelligenceConfigResult].
-  /// [editionConfig] Required.
-  /// [effectiveIntelligenceConfigs] Required.
-  /// [filters] Required.
+  /// [editionConfig] Optional.
+  /// [effectiveIntelligenceConfigs] Optional.
+  /// [filters] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [name] Required.
-  /// [trialConfigs] Required.
-  /// [updateTime] Required.
+  /// [name] Optional.
+  /// [trialConfigs] Optional.
+  /// [updateTime] Optional.
   const GetControlProjectIntelligenceConfigResult({
-    required this.editionConfig,
-    required this.effectiveIntelligenceConfigs,
-    required this.filters,
-    required this.id,
-    required this.name,
-    required this.trialConfigs,
-    required this.updateTime,
+    this.editionConfig,
+    this.effectiveIntelligenceConfigs,
+    this.filters,
+    this.id,
+    this.name,
+    this.trialConfigs,
+    this.updateTime,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'editionConfig': editionConfig,
-      'effectiveIntelligenceConfigs': pulumi.Input.encodeList<GetControlProjectIntelligenceConfigEffectiveIntelligenceConfig, Map<String, dynamic>>(effectiveIntelligenceConfigs, (value) => value.toMap()),
-      'filters': pulumi.Input.encodeList<GetControlProjectIntelligenceConfigFilter, Map<String, dynamic>>(filters, (value) => value.toMap()),
-      'id': id,
-      'name': name,
-      'trialConfigs': pulumi.Input.encodeList<GetControlProjectIntelligenceConfigTrialConfig, Map<String, dynamic>>(trialConfigs, (value) => value.toMap()),
-      'updateTime': updateTime,
+      'editionConfig': ?editionConfig,
+      'effectiveIntelligenceConfigs': ?(() { final guardedValue = effectiveIntelligenceConfigs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetControlProjectIntelligenceConfigEffectiveIntelligenceConfig, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'filters': ?(() { final guardedValue = filters; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetControlProjectIntelligenceConfigFilter, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'id': ?id,
+      'name': ?name,
+      'trialConfigs': ?(() { final guardedValue = trialConfigs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetControlProjectIntelligenceConfigTrialConfig, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'updateTime': ?updateTime,
     };
   }
 
   factory GetControlProjectIntelligenceConfigResult.fromMap(Map<String, dynamic> map) {
     return GetControlProjectIntelligenceConfigResult(
-      editionConfig: map['editionConfig'] as String,
-      effectiveIntelligenceConfigs: pulumi.Input.decodeList<GetControlProjectIntelligenceConfigEffectiveIntelligenceConfig>(map['effectiveIntelligenceConfigs']!, (value) => GetControlProjectIntelligenceConfigEffectiveIntelligenceConfig.fromMap((value as Map).cast<String, dynamic>())),
-      filters: pulumi.Input.decodeList<GetControlProjectIntelligenceConfigFilter>(map['filters']!, (value) => GetControlProjectIntelligenceConfigFilter.fromMap((value as Map).cast<String, dynamic>())),
-      id: map['id'] as String,
-      name: map['name'] as String,
-      trialConfigs: pulumi.Input.decodeList<GetControlProjectIntelligenceConfigTrialConfig>(map['trialConfigs']!, (value) => GetControlProjectIntelligenceConfigTrialConfig.fromMap((value as Map).cast<String, dynamic>())),
-      updateTime: map['updateTime'] as String,
+      editionConfig: (() { final guardedValue = map['editionConfig']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      effectiveIntelligenceConfigs: (() { final guardedValue = map['effectiveIntelligenceConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetControlProjectIntelligenceConfigEffectiveIntelligenceConfig>(guardedValue, (value) => GetControlProjectIntelligenceConfigEffectiveIntelligenceConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
+      filters: (() { final guardedValue = map['filters']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetControlProjectIntelligenceConfigFilter>(guardedValue, (value) => GetControlProjectIntelligenceConfigFilter.fromMap((value as Map).cast<String, dynamic>())); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      trialConfigs: (() { final guardedValue = map['trialConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetControlProjectIntelligenceConfigTrialConfig>(guardedValue, (value) => GetControlProjectIntelligenceConfigTrialConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
+      updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

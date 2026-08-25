@@ -10,7 +10,7 @@ class GroupAdditionalGroupKey {
   /// For external-identity-mapped entities, the id must be a string conforming
   /// to the Identity Source's requirements.
   /// Must be unique within a namespace.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// (Output)
   /// The namespace in which the entity exists.
   /// If not specified, the EntityKey represents a Google-managed entity
@@ -18,7 +18,7 @@ class GroupAdditionalGroupKey {
   /// If specified, the EntityKey represents an external-identity-mapped group.
   /// The namespace must correspond to an identity source created in Admin Console
   /// and must be in the form of `identitysources/{identity_source_id}`.
-  final pulumi.Input<String>? namespace;
+  final pulumi.Input<String?>? namespace;
 
   /// Creates a new [GroupAdditionalGroupKey].
   /// [id] (Output)

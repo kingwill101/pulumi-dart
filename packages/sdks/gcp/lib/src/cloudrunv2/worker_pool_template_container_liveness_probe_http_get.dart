@@ -6,11 +6,11 @@ import 'worker_pool_template_container_liveness_probe_http_get_http_headers.dart
 class WorkerPoolTemplateContainerLivenessProbeHttpGet {
   /// Optional. Custom headers to set in the request. HTTP allows repeated headers.
   /// Structure is documented below.
-  final pulumi.Input<WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders>? httpHeaders;
+  final pulumi.Input<WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders?>? httpHeaders;
   /// Optional. Path to access on the HTTP server. Defaults to '/'.
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? path;
   /// Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
-  final pulumi.Input<int>? port;
+  final pulumi.Input<int?>? port;
 
   /// Creates a new [WorkerPoolTemplateContainerLivenessProbeHttpGet].
   /// [httpHeaders] Optional. Custom headers to set in the request. HTTP allows repeated headers.
@@ -34,7 +34,7 @@ class WorkerPoolTemplateContainerLivenessProbeHttpGet {
     return WorkerPoolTemplateContainerLivenessProbeHttpGet(
       httpHeaders: (() { final guardedValue = map['httpHeaders']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeaders.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       path: (() { final guardedValue = map['path']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

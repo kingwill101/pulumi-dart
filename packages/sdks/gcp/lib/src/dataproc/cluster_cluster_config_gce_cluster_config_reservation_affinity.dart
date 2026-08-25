@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterClusterConfigGceClusterConfigReservationAffinity {
   /// Corresponds to the type of reservation consumption.
-  final pulumi.Input<String>? consumeReservationType;
+  final pulumi.Input<String?>? consumeReservationType;
   /// Corresponds to the label key of reservation resource.
-  final pulumi.Input<String>? key;
+  final pulumi.Input<String?>? key;
   /// Corresponds to the label values of reservation resource.
-  final pulumi.Input<List<String>>? values;
+  final pulumi.Input<List<String>?>? values;
 
   /// Creates a new [ClusterClusterConfigGceClusterConfigReservationAffinity].
   /// [consumeReservationType] Corresponds to the type of reservation consumption.

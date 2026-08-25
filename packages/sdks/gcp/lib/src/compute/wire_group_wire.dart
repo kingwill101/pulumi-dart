@@ -6,15 +6,15 @@ import 'wire_group_wire_wire_property.dart';
 
 class WireGroupWire {
   /// Indicates whether the wire group is administratively enabled.
-  final pulumi.Input<bool>? adminEnabled;
+  final pulumi.Input<bool?>? adminEnabled;
   /// Endpoints grouped by location, each mapping to interconnect configurations.
   /// Structure is documented below.
-  final pulumi.Input<List<WireGroupWireEndpoint>>? endpoints;
+  final pulumi.Input<List<WireGroupWireEndpoint>?>? endpoints;
   /// (Output)
-  final pulumi.Input<String>? label;
+  final pulumi.Input<String?>? label;
   /// Default properties for wires within the group.
   /// Structure is documented below.
-  final pulumi.Input<List<WireGroupWireWireProperty>>? wireProperties;
+  final pulumi.Input<List<WireGroupWireWireProperty>?>? wireProperties;
 
   /// Creates a new [WireGroupWire].
   /// [adminEnabled] Indicates whether the wire group is administratively enabled.

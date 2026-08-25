@@ -13,7 +13,7 @@ class DataObjectArgs {
   /// The JSON data of the DataObject. Must be a JSON object whose field
   /// names match the fields defined in the parent Collection's
   /// `dataSchema`.
-  final pulumi.Input<String>? data;
+  final pulumi.Input<String?>? data;
   /// ID of the DataObject to create.
   /// The id must be 1-63 characters long, and comply with
   /// [RFC1035](https://www.ietf.org/rfc/rfc1035.txt).
@@ -26,15 +26,15 @@ class DataObjectArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The etag of the DataObject, used for optimistic concurrency
   /// control on updates and deletes.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final pulumi.Input<String> location;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The vectors of the DataObject, keyed by the vector field name as
   /// defined in the parent Collection's `vectorSchema`.
   /// If a vector field is configured with a `vertexEmbeddingConfig` on
@@ -42,7 +42,7 @@ class DataObjectArgs {
   /// from the corresponding text in `data` and the field should be
   /// omitted here.
   /// Structure is documented below.
-  final pulumi.Input<List<DataObjectVector>>? vectors;
+  final pulumi.Input<List<DataObjectVector>?>? vectors;
 
   /// Creates a new [DataObjectArgs].
   /// [collectionId] The ID of the parent Collection.

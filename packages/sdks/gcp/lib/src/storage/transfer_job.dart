@@ -840,7 +840,7 @@ class TransferJob extends pulumi.CustomResource {
           'gcp:storage/transferJob:TransferJob',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     creationTime = registerOutput<String>('creationTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -864,11 +864,12 @@ class TransferJob extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TransferJobState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return TransferJob._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -882,6 +883,32 @@ class TransferJob extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    creationTime = registerOutput<String>('creationTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    deletionTime = registerOutput<String>('deletionTime');
+    description = registerOutput<String>('description');
+    eventStream = registerOutput<TransferJobEventStream?>('eventStream', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TransferJobEventStream.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    lastModificationTime = registerOutput<String>('lastModificationTime');
+    loggingConfig = registerOutput<TransferJobLoggingConfig?>('loggingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TransferJobLoggingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    notificationConfig = registerOutput<TransferJobNotificationConfig?>('notificationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TransferJobNotificationConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    project = registerOutput<String>('project');
+    replicationSpec = registerOutput<TransferJobReplicationSpec?>('replicationSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TransferJobReplicationSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    schedule = registerOutput<TransferJobSchedule?>('schedule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TransferJobSchedule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    serviceAccount = registerOutput<String?>('serviceAccount');
+    status = registerOutput<String?>('status');
+    transferSpec = registerOutput<TransferJobTransferSpec?>('transferSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TransferJobTransferSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [TransferJob] resource.
+  TransferJob.reference(String urn)
+    : super(
+        'gcp:storage/transferJob:TransferJob',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     creationTime = registerOutput<String>('creationTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     deletionTime = registerOutput<String>('deletionTime');

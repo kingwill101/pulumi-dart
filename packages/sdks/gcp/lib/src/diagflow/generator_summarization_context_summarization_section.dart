@@ -4,12 +4,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GeneratorSummarizationContextSummarizationSection {
   /// Optional. Definition of the section, for example, "what the customer needs help with or has question about."
-  final pulumi.Input<String>? definition;
+  final pulumi.Input<String?>? definition;
   /// Optional. Name of the section, for example, "situation".
-  final pulumi.Input<String>? key;
+  final pulumi.Input<String?>? key;
   /// Optional. Type of the summarization section.
   /// Possible values are: `SITUATION`, `ACTION`, `RESOLUTION`, `REASON_FOR_CANCELLATION`, `CUSTOMER_SATISFACTION`, `ENTITIES`, `CUSTOMER_DEFINED`, `SITUATION_CONCISE`, `ACTION_CONCISE`.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [GeneratorSummarizationContextSummarizationSection].
   /// [definition] Optional. Definition of the section, for example, "what the customer needs help with or has question about."

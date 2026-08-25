@@ -12,23 +12,23 @@ class CertificateManaged {
   ///
   ///
   /// &lt;a name="nestedManagedProvisioningIssue"&gt;&lt;/a&gt;The `provisioningIssue` block contains:
-  final pulumi.Input<List<CertificateManagedAuthorizationAttemptInfo>>? authorizationAttemptInfos;
+  final pulumi.Input<List<CertificateManagedAuthorizationAttemptInfo>?>? authorizationAttemptInfos;
   /// Authorizations that will be used for performing domain authorization. Either issuanceConfig or dnsAuthorizations should be specificed, but not both.
-  final pulumi.Input<List<String>>? dnsAuthorizations;
+  final pulumi.Input<List<String>?>? dnsAuthorizations;
   /// The domains for which a managed SSL certificate will be generated.
   /// Wildcard domains are only supported with DNS challenge resolution
-  final pulumi.Input<List<String>>? domains;
+  final pulumi.Input<List<String>?>? domains;
   /// The resource name for a CertificateIssuanceConfig used to configure private PKI certificates in the format projects/*/locations/*/certificateIssuanceConfigs/*.
   /// If this field is not set, the certificates will instead be publicly signed as documented at https://cloud.google.com/load-balancing/docs/ssl-certificates/google-managed-certs#caa.
   /// Either issuanceConfig or dnsAuthorizations should be specificed, but not both.
-  final pulumi.Input<String>? issuanceConfig;
+  final pulumi.Input<String?>? issuanceConfig;
   /// (Output)
   /// Information about issues with provisioning this Managed Certificate.
   /// Structure is documented below.
-  final pulumi.Input<List<CertificateManagedProvisioningIssue>>? provisioningIssues;
+  final pulumi.Input<List<CertificateManagedProvisioningIssue>?>? provisioningIssues;
   /// (Output)
   /// State of the domain for managed certificate issuance.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
 
   /// Creates a new [CertificateManaged].
   /// [authorizationAttemptInfos] (Output)

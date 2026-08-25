@@ -14,10 +14,10 @@ class PipelineJobMappingPipelineJob {
   /// [disableReferentialIntegrity][FhirStore.disable_referential_integrity]
   /// to true. The destination store must use FHIR version R4.
   /// Format: project/{projectID}/locations/{locationID}/datasets/{datasetName}/fhirStores/{fhirStoreID}.
-  final pulumi.Input<String>? fhirStoreDestination;
+  final pulumi.Input<String?>? fhirStoreDestination;
   /// A streaming FHIR data source.
   /// Structure is documented below.
-  final pulumi.Input<PipelineJobMappingPipelineJobFhirStreamingSource>? fhirStreamingSource;
+  final pulumi.Input<PipelineJobMappingPipelineJobFhirStreamingSource?>? fhirStreamingSource;
   /// The location of the mapping configuration.
   /// Structure is documented below.
   final pulumi.Input<PipelineJobMappingPipelineJobMappingConfig> mappingConfig;
@@ -25,7 +25,7 @@ class PipelineJobMappingPipelineJob {
   /// to the reconciliation pipeline in its dataset. A reconciliation
   /// pipeline must exist in this dataset before a mapping pipeline
   /// with a reconciliation destination can be created.
-  final pulumi.Input<bool>? reconciliationDestination;
+  final pulumi.Input<bool?>? reconciliationDestination;
 
   /// Creates a new [PipelineJobMappingPipelineJob].
   /// [fhirStoreDestination] If set, the mapping pipeline will write snapshots to this

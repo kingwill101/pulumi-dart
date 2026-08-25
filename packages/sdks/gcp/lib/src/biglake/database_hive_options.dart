@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DatabaseHiveOptions {
   /// Cloud Storage folder URI where the database data is stored, starting with "gs://".
-  final pulumi.Input<String>? locationUri;
+  final pulumi.Input<String?>? locationUri;
   /// Stores user supplied Hive database parameters. An object containing a
   /// list of"key": value pairs.
   /// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
-  final pulumi.Input<Map<String, String>>? parameters;
+  final pulumi.Input<Map<String, String>?>? parameters;
 
   /// Creates a new [DatabaseHiveOptions].
   /// [locationUri] Cloud Storage folder URI where the database data is stored, starting with "gs://".

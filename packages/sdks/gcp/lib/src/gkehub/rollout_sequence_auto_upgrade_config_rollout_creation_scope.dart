@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RolloutSequenceAutoUpgradeConfigRolloutCreationScope {
   /// The list of enabled upgrade types.
   /// Current valid values are `CONTROL_PLANE_MINOR`, `CONTROL_PLANE_PATCH`, `NODE_MINOR`, and `NODE_PATCH`.
-  final pulumi.Input<List<String>>? upgradeTypes;
+  final pulumi.Input<List<String>?>? upgradeTypes;
 
   /// Creates a new [RolloutSequenceAutoUpgradeConfigRolloutCreationScope].
   /// [upgradeTypes] The list of enabled upgrade types.

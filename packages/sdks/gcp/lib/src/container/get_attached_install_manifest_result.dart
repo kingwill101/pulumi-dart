@@ -3,50 +3,50 @@
 
 /// Result data returned by getAttachedInstallManifest.
 class GetAttachedInstallManifestResult {
-  final String clusterId;
+  final String? clusterId;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final String location;
+  final String? id;
+  final String? location;
   /// A string with the YAML manifest that needs to be applied to the cluster.
-  final String manifest;
-  final String platformVersion;
-  final String project;
+  final String? manifest;
+  final String? platformVersion;
+  final String? project;
 
   /// Creates a new [GetAttachedInstallManifestResult].
-  /// [clusterId] Required.
+  /// [clusterId] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [location] Required.
+  /// [location] Optional.
   /// [manifest] A string with the YAML manifest that needs to be applied to the cluster.
-  /// [platformVersion] Required.
-  /// [project] Required.
+  /// [platformVersion] Optional.
+  /// [project] Optional.
   const GetAttachedInstallManifestResult({
-    required this.clusterId,
-    required this.id,
-    required this.location,
-    required this.manifest,
-    required this.platformVersion,
-    required this.project,
+    this.clusterId,
+    this.id,
+    this.location,
+    this.manifest,
+    this.platformVersion,
+    this.project,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'clusterId': clusterId,
-      'id': id,
-      'location': location,
-      'manifest': manifest,
-      'platformVersion': platformVersion,
-      'project': project,
+      'clusterId': ?clusterId,
+      'id': ?id,
+      'location': ?location,
+      'manifest': ?manifest,
+      'platformVersion': ?platformVersion,
+      'project': ?project,
     };
   }
 
   factory GetAttachedInstallManifestResult.fromMap(Map<String, dynamic> map) {
     return GetAttachedInstallManifestResult(
-      clusterId: map['clusterId'] as String,
-      id: map['id'] as String,
-      location: map['location'] as String,
-      manifest: map['manifest'] as String,
-      platformVersion: map['platformVersion'] as String,
-      project: map['project'] as String,
+      clusterId: (() { final guardedValue = map['clusterId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      manifest: (() { final guardedValue = map['manifest']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      platformVersion: (() { final guardedValue = map['platformVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

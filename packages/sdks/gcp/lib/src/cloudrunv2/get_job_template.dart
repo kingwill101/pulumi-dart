@@ -53,8 +53,8 @@ class GetJobTemplate {
     return GetJobTemplate(
       annotations: pulumi.Input.fromValue((map['annotations'] as Map).cast<String, String>()),
       labels: pulumi.Input.fromValue((map['labels'] as Map).cast<String, String>()),
-      parallelism: pulumi.Input.fromValue(map['parallelism'] as int),
-      taskCount: pulumi.Input.fromValue(map['taskCount'] as int),
+      parallelism: pulumi.Input.fromValue((map['parallelism'] as num).toInt()),
+      taskCount: pulumi.Input.fromValue((map['taskCount'] as num).toInt()),
       templates: pulumi.Input.fromValue(pulumi.Input.decodeList<GetJobTemplateTemplate>(map['templates']!, (value) => GetJobTemplateTemplate.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }

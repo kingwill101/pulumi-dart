@@ -4,10 +4,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class QueryTemplateRoutine {
   /// SQL query logic.
-  final pulumi.Input<String>? definitionBody;
+  final pulumi.Input<String?>? definitionBody;
   /// Type of routine (e.g., TABLE_VALUED_FUNCTION).
   /// Possible values are: `TABLE_VALUED_FUNCTION`.
-  final pulumi.Input<String>? routineType;
+  final pulumi.Input<String?>? routineType;
 
   /// Creates a new [QueryTemplateRoutine].
   /// [definitionBody] SQL query logic.

@@ -8,20 +8,20 @@ import 'config_sign_in_phone_number.dart';
 
 class ConfigSignIn {
   /// Whether to allow more than one account to have the same email.
-  final pulumi.Input<bool>? allowDuplicateEmails;
+  final pulumi.Input<bool?>? allowDuplicateEmails;
   /// Configuration options related to authenticating an anonymous user.
   /// Structure is documented below.
-  final pulumi.Input<ConfigSignInAnonymous>? anonymous;
+  final pulumi.Input<ConfigSignInAnonymous?>? anonymous;
   /// Configuration options related to authenticating a user by their email address.
   /// Structure is documented below.
-  final pulumi.Input<ConfigSignInEmail>? email;
+  final pulumi.Input<ConfigSignInEmail?>? email;
   /// (Output)
   /// Output only. Hash config information.
   /// Structure is documented below.
-  final pulumi.Input<List<ConfigSignInHashConfig>>? hashConfigs;
+  final pulumi.Input<List<ConfigSignInHashConfig>?>? hashConfigs;
   /// Configuration options related to authenticated a user by their phone number.
   /// Structure is documented below.
-  final pulumi.Input<ConfigSignInPhoneNumber>? phoneNumber;
+  final pulumi.Input<ConfigSignInPhoneNumber?>? phoneNumber;
 
   /// Creates a new [ConfigSignIn].
   /// [allowDuplicateEmails] Whether to allow more than one account to have the same email.

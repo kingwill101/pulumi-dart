@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VpnConnectionVpcProject {
   /// The project of the VPC to connect to. If not specified, it is the same as the cluster project.
-  final pulumi.Input<String>? projectId;
+  final pulumi.Input<String?>? projectId;
 
   /// Creates a new [VpnConnectionVpcProject].
   /// [projectId] The project of the VPC to connect to. If not specified, it is the same as the cluster project.

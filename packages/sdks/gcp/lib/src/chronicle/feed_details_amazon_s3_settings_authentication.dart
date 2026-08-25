@@ -4,15 +4,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FeedDetailsAmazonS3SettingsAuthentication {
   /// Access key ID.
-  final pulumi.Input<String>? accessKeyId;
+  final pulumi.Input<String?>? accessKeyId;
   /// Client ID.
-  final pulumi.Input<String>? clientId;
+  final pulumi.Input<String?>? clientId;
   /// Client Secret.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
-  final pulumi.Input<String>? clientSecret;
+  final pulumi.Input<String?>? clientSecret;
   /// Refresh URI. Used when using OAuth auth.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
-  final pulumi.Input<String>? refreshUri;
+  final pulumi.Input<String?>? refreshUri;
   /// Possible values:
   /// US_EAST_1
   /// US_EAST_2
@@ -50,7 +50,7 @@ class FeedDetailsAmazonS3SettingsAuthentication {
   final pulumi.Input<String> region;
   /// Secret access key.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
-  final pulumi.Input<String>? secretAccessKey;
+  final pulumi.Input<String?>? secretAccessKey;
 
   /// Creates a new [FeedDetailsAmazonS3SettingsAuthentication].
   /// [accessKeyId] Access key ID.

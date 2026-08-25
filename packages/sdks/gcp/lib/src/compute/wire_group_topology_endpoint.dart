@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WireGroupTopologyEndpoint {
   /// (Output)
-  final pulumi.Input<String>? city;
+  final pulumi.Input<String?>? city;
   /// (Output)
-  final pulumi.Input<String>? label;
+  final pulumi.Input<String?>? label;
 
   /// Creates a new [WireGroupTopologyEndpoint].
   /// [city] (Output)

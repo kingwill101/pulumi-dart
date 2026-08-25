@@ -7,7 +7,7 @@ class AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFile {
   /// (Output)
   /// Contains a signed URI.
   /// Structure is documented below.
-  final pulumi.Input<List<AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileSignedUri>>? signedUris;
+  final pulumi.Input<List<AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFileSignedUri>?>? signedUris;
 
   /// Creates a new [AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFile].
   /// [signedUris] (Output)

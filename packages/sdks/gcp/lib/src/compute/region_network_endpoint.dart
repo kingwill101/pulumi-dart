@@ -947,7 +947,7 @@ class RegionNetworkEndpoint extends pulumi.CustomResource {
           'gcp:compute/regionNetworkEndpoint:RegionNetworkEndpoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     clientDestinationPort = registerOutput<int?>('clientDestinationPort');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -966,11 +966,12 @@ class RegionNetworkEndpoint extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RegionNetworkEndpointState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RegionNetworkEndpoint._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -984,6 +985,27 @@ class RegionNetworkEndpoint extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    clientDestinationPort = registerOutput<int?>('clientDestinationPort');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    fqdn = registerOutput<String?>('fqdn');
+    instance = registerOutput<String?>('instance');
+    ipAddress = registerOutput<String?>('ipAddress');
+    networkEndpointId = registerOutput<int>('networkEndpointId');
+    port = registerOutput<int>('port');
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+    regionNetworkEndpointGroup = registerOutput<String>('regionNetworkEndpointGroup');
+  }
+
+  /// Creates a typed reference to an existing [RegionNetworkEndpoint] resource.
+  RegionNetworkEndpoint.reference(String urn)
+    : super(
+        'gcp:compute/regionNetworkEndpoint:RegionNetworkEndpoint',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     clientDestinationPort = registerOutput<int?>('clientDestinationPort');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     fqdn = registerOutput<String?>('fqdn');

@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BackendBucketCdnPolicyBypassCacheOnRequestHeader {
   /// The header field name to match on when bypassing cache. Values are case-insensitive.
-  final pulumi.Input<String>? headerName;
+  final pulumi.Input<String?>? headerName;
 
   /// Creates a new [BackendBucketCdnPolicyBypassCacheOnRequestHeader].
   /// [headerName] The header field name to match on when bypassing cache. Values are case-insensitive.

@@ -3,69 +3,69 @@
 
 /// Result data returned by getIamCustomRole.
 class GetIamCustomRoleResult {
-  final bool deleted;
-  final String deletionPolicy;
-  final String description;
+  final bool? deleted;
+  final String? deletionPolicy;
+  final String? description;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final String name;
-  final String orgId;
-  final List<String> permissions;
-  final String roleId;
-  final String stage;
-  final String title;
+  final String? id;
+  final String? name;
+  final String? orgId;
+  final List<String>? permissions;
+  final String? roleId;
+  final String? stage;
+  final String? title;
 
   /// Creates a new [GetIamCustomRoleResult].
-  /// [deleted] Required.
-  /// [deletionPolicy] Required.
-  /// [description] Required.
+  /// [deleted] Optional.
+  /// [deletionPolicy] Optional.
+  /// [description] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [name] Required.
-  /// [orgId] Required.
-  /// [permissions] Required.
-  /// [roleId] Required.
-  /// [stage] Required.
-  /// [title] Required.
+  /// [name] Optional.
+  /// [orgId] Optional.
+  /// [permissions] Optional.
+  /// [roleId] Optional.
+  /// [stage] Optional.
+  /// [title] Optional.
   const GetIamCustomRoleResult({
-    required this.deleted,
-    required this.deletionPolicy,
-    required this.description,
-    required this.id,
-    required this.name,
-    required this.orgId,
-    required this.permissions,
-    required this.roleId,
-    required this.stage,
-    required this.title,
+    this.deleted,
+    this.deletionPolicy,
+    this.description,
+    this.id,
+    this.name,
+    this.orgId,
+    this.permissions,
+    this.roleId,
+    this.stage,
+    this.title,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'deleted': deleted,
-      'deletionPolicy': deletionPolicy,
-      'description': description,
-      'id': id,
-      'name': name,
-      'orgId': orgId,
-      'permissions': permissions,
-      'roleId': roleId,
-      'stage': stage,
-      'title': title,
+      'deleted': ?deleted,
+      'deletionPolicy': ?deletionPolicy,
+      'description': ?description,
+      'id': ?id,
+      'name': ?name,
+      'orgId': ?orgId,
+      'permissions': ?permissions,
+      'roleId': ?roleId,
+      'stage': ?stage,
+      'title': ?title,
     };
   }
 
   factory GetIamCustomRoleResult.fromMap(Map<String, dynamic> map) {
     return GetIamCustomRoleResult(
-      deleted: map['deleted'] as bool,
-      deletionPolicy: map['deletionPolicy'] as String,
-      description: map['description'] as String,
-      id: map['id'] as String,
-      name: map['name'] as String,
-      orgId: map['orgId'] as String,
-      permissions: (map['permissions'] as List).cast<String>(),
-      roleId: map['roleId'] as String,
-      stage: map['stage'] as String,
-      title: map['title'] as String,
+      deleted: (() { final guardedValue = map['deleted']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      orgId: (() { final guardedValue = map['orgId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      permissions: (() { final guardedValue = map['permissions']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      roleId: (() { final guardedValue = map['roleId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      stage: (() { final guardedValue = map['stage']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      title: (() { final guardedValue = map['title']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

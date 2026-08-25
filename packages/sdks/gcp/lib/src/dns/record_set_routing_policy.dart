@@ -7,18 +7,18 @@ import 'record_set_routing_policy_wrr.dart';
 
 class RecordSetRoutingPolicy {
   /// Specifies whether to enable fencing for geo queries.
-  final pulumi.Input<bool>? enableGeoFencing;
+  final pulumi.Input<bool?>? enableGeoFencing;
   /// The configuration for Geolocation based routing policy.
   /// Structure is documented below.
-  final pulumi.Input<List<RecordSetRoutingPolicyGeo>>? geos;
+  final pulumi.Input<List<RecordSetRoutingPolicyGeo>?>? geos;
   /// Specifies the health check (used with external endpoints).
-  final pulumi.Input<String>? healthCheck;
+  final pulumi.Input<String?>? healthCheck;
   /// The configuration for a failover policy with global to regional failover. Queries are responded to with the global primary targets, but if none of the primary targets are healthy, then we fallback to a regional failover policy.
   /// Structure is documented below.
-  final pulumi.Input<RecordSetRoutingPolicyPrimaryBackup>? primaryBackup;
+  final pulumi.Input<RecordSetRoutingPolicyPrimaryBackup?>? primaryBackup;
   /// The configuration for Weighted Round Robin based routing policy.
   /// Structure is documented below.
-  final pulumi.Input<List<RecordSetRoutingPolicyWrr>>? wrrs;
+  final pulumi.Input<List<RecordSetRoutingPolicyWrr>?>? wrrs;
 
   /// Creates a new [RecordSetRoutingPolicy].
   /// [enableGeoFencing] Specifies whether to enable fencing for geo queries.

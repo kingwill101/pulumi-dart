@@ -24,7 +24,7 @@ class GetInstancePerformanceConfigIopsPerTb {
 
   factory GetInstancePerformanceConfigIopsPerTb.fromMap(Map<String, dynamic> map) {
     return GetInstancePerformanceConfigIopsPerTb(
-      maxIopsPerTb: pulumi.Input.fromValue(map['maxIopsPerTb'] as int),
+      maxIopsPerTb: pulumi.Input.fromValue((map['maxIopsPerTb'] as num).toInt()),
     );
   }
 }

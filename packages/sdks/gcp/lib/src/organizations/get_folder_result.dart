@@ -4,37 +4,37 @@
 /// Result data returned by getFolder.
 class GetFolderResult {
   /// Optional capabilities configured for this folder.
-  final List<String> configuredCapabilities;
+  final List<String>? configuredCapabilities;
   /// Timestamp when the Organization was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
-  final String createTime;
-  final String deletionPolicy;
-  final bool deletionProtection;
+  final String? createTime;
+  final String? deletionPolicy;
+  final bool? deletionProtection;
   /// The folder's display name.
-  final String displayName;
-  final String folder;
-  final String folderId;
+  final String? displayName;
+  final String? folder;
+  final String? folderId;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// The Folder's current lifecycle state.
-  final String lifecycleState;
+  final String? lifecycleState;
   final bool? lookupOrganization;
   /// Management Project associated with this folder (if capability is enabled).
-  final String managementProject;
+  final String? managementProject;
   /// The resource name of the Folder in the form `folders/{folder_id}`.
-  final String name;
+  final String? name;
   /// If `lookupOrganization` is enable, the resource name of the Organization that the folder belongs.
-  final String organization;
+  final String? organization;
   /// The resource name of the parent Folder or Organization.
-  final String parent;
+  final String? parent;
 
   /// Creates a new [GetFolderResult].
   /// [configuredCapabilities] Optional capabilities configured for this folder.
   /// [createTime] Timestamp when the Organization was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
-  /// [deletionPolicy] Required.
-  /// [deletionProtection] Required.
+  /// [deletionPolicy] Optional.
+  /// [deletionProtection] Optional.
   /// [displayName] The folder's display name.
-  /// [folder] Required.
-  /// [folderId] Required.
+  /// [folder] Optional.
+  /// [folderId] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [lifecycleState] The Folder's current lifecycle state.
   /// [lookupOrganization] Optional.
@@ -43,57 +43,57 @@ class GetFolderResult {
   /// [organization] If `lookupOrganization` is enable, the resource name of the Organization that the folder belongs.
   /// [parent] The resource name of the parent Folder or Organization.
   const GetFolderResult({
-    required this.configuredCapabilities,
-    required this.createTime,
-    required this.deletionPolicy,
-    required this.deletionProtection,
-    required this.displayName,
-    required this.folder,
-    required this.folderId,
-    required this.id,
-    required this.lifecycleState,
+    this.configuredCapabilities,
+    this.createTime,
+    this.deletionPolicy,
+    this.deletionProtection,
+    this.displayName,
+    this.folder,
+    this.folderId,
+    this.id,
+    this.lifecycleState,
     this.lookupOrganization,
-    required this.managementProject,
-    required this.name,
-    required this.organization,
-    required this.parent,
+    this.managementProject,
+    this.name,
+    this.organization,
+    this.parent,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'configuredCapabilities': configuredCapabilities,
-      'createTime': createTime,
-      'deletionPolicy': deletionPolicy,
-      'deletionProtection': deletionProtection,
-      'displayName': displayName,
-      'folder': folder,
-      'folderId': folderId,
-      'id': id,
-      'lifecycleState': lifecycleState,
+      'configuredCapabilities': ?configuredCapabilities,
+      'createTime': ?createTime,
+      'deletionPolicy': ?deletionPolicy,
+      'deletionProtection': ?deletionProtection,
+      'displayName': ?displayName,
+      'folder': ?folder,
+      'folderId': ?folderId,
+      'id': ?id,
+      'lifecycleState': ?lifecycleState,
       'lookupOrganization': ?lookupOrganization,
-      'managementProject': managementProject,
-      'name': name,
-      'organization': organization,
-      'parent': parent,
+      'managementProject': ?managementProject,
+      'name': ?name,
+      'organization': ?organization,
+      'parent': ?parent,
     };
   }
 
   factory GetFolderResult.fromMap(Map<String, dynamic> map) {
     return GetFolderResult(
-      configuredCapabilities: (map['configuredCapabilities'] as List).cast<String>(),
-      createTime: map['createTime'] as String,
-      deletionPolicy: map['deletionPolicy'] as String,
-      deletionProtection: map['deletionProtection'] as bool,
-      displayName: map['displayName'] as String,
-      folder: map['folder'] as String,
-      folderId: map['folderId'] as String,
-      id: map['id'] as String,
-      lifecycleState: map['lifecycleState'] as String,
+      configuredCapabilities: (() { final guardedValue = map['configuredCapabilities']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      deletionProtection: (() { final guardedValue = map['deletionProtection']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      folder: (() { final guardedValue = map['folder']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      folderId: (() { final guardedValue = map['folderId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      lifecycleState: (() { final guardedValue = map['lifecycleState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       lookupOrganization: (() { final guardedValue = map['lookupOrganization']; if (guardedValue == null) return null; return guardedValue as bool; })(),
-      managementProject: map['managementProject'] as String,
-      name: map['name'] as String,
-      organization: map['organization'] as String,
-      parent: map['parent'] as String,
+      managementProject: (() { final guardedValue = map['managementProject']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      organization: (() { final guardedValue = map['organization']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      parent: (() { final guardedValue = map['parent']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

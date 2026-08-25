@@ -7,7 +7,7 @@ class AttachedClusterFleet {
   /// The name of the managed Hub Membership resource associated to this
   /// cluster. Membership names are formatted as
   /// projects/&lt;project-number&gt;/locations/global/membership/&lt;cluster-id&gt;.
-  final pulumi.Input<String>? membership;
+  final pulumi.Input<String?>? membership;
   /// The number of the Fleet host project where this cluster will be registered.
   final pulumi.Input<String> project;
 

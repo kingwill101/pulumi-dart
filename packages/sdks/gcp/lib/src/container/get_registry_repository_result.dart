@@ -4,39 +4,39 @@
 /// Result data returned by getRegistryRepository.
 class GetRegistryRepositoryResult {
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final String project;
+  final String? id;
+  final String? project;
   final String? region;
   /// The URL at which the repository can be accessed.
-  final String repositoryUrl;
+  final String? repositoryUrl;
 
   /// Creates a new [GetRegistryRepositoryResult].
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [project] Required.
+  /// [project] Optional.
   /// [region] Optional.
   /// [repositoryUrl] The URL at which the repository can be accessed.
   const GetRegistryRepositoryResult({
-    required this.id,
-    required this.project,
+    this.id,
+    this.project,
     this.region,
-    required this.repositoryUrl,
+    this.repositoryUrl,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'id': id,
-      'project': project,
+      'id': ?id,
+      'project': ?project,
       'region': ?region,
-      'repositoryUrl': repositoryUrl,
+      'repositoryUrl': ?repositoryUrl,
     };
   }
 
   factory GetRegistryRepositoryResult.fromMap(Map<String, dynamic> map) {
     return GetRegistryRepositoryResult(
-      id: map['id'] as String,
-      project: map['project'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      repositoryUrl: map['repositoryUrl'] as String,
+      repositoryUrl: (() { final guardedValue = map['repositoryUrl']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

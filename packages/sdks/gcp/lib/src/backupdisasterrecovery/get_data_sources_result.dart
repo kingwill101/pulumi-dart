@@ -5,56 +5,56 @@ import 'get_data_sources_data_source.dart';
 
 /// Result data returned by getDataSources.
 class GetDataSourcesResult {
-  final String backupVaultId;
+  final String? backupVaultId;
   /// A list of Data Sources matching the criteria.
-  final List<GetDataSourcesDataSource> dataSources;
+  final List<GetDataSourcesDataSource>? dataSources;
   final String? filter;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// The location of the GCP resource.
-  final String location;
+  final String? location;
   final String? orderBy;
-  final String project;
+  final String? project;
 
   /// Creates a new [GetDataSourcesResult].
-  /// [backupVaultId] Required.
+  /// [backupVaultId] Optional.
   /// [dataSources] A list of Data Sources matching the criteria.
   /// [filter] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [location] The location of the GCP resource.
   /// [orderBy] Optional.
-  /// [project] Required.
+  /// [project] Optional.
   const GetDataSourcesResult({
-    required this.backupVaultId,
-    required this.dataSources,
+    this.backupVaultId,
+    this.dataSources,
     this.filter,
-    required this.id,
-    required this.location,
+    this.id,
+    this.location,
     this.orderBy,
-    required this.project,
+    this.project,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'backupVaultId': backupVaultId,
-      'dataSources': pulumi.Input.encodeList<GetDataSourcesDataSource, Map<String, dynamic>>(dataSources, (value) => value.toMap()),
+      'backupVaultId': ?backupVaultId,
+      'dataSources': ?(() { final guardedValue = dataSources; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetDataSourcesDataSource, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'filter': ?filter,
-      'id': id,
-      'location': location,
+      'id': ?id,
+      'location': ?location,
       'orderBy': ?orderBy,
-      'project': project,
+      'project': ?project,
     };
   }
 
   factory GetDataSourcesResult.fromMap(Map<String, dynamic> map) {
     return GetDataSourcesResult(
-      backupVaultId: map['backupVaultId'] as String,
-      dataSources: pulumi.Input.decodeList<GetDataSourcesDataSource>(map['dataSources']!, (value) => GetDataSourcesDataSource.fromMap((value as Map).cast<String, dynamic>())),
+      backupVaultId: (() { final guardedValue = map['backupVaultId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      dataSources: (() { final guardedValue = map['dataSources']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetDataSourcesDataSource>(guardedValue, (value) => GetDataSourcesDataSource.fromMap((value as Map).cast<String, dynamic>())); })(),
       filter: (() { final guardedValue = map['filter']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
-      location: map['location'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
       orderBy: (() { final guardedValue = map['orderBy']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      project: map['project'] as String,
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

@@ -14,10 +14,10 @@ import 'connection_profile_postgresql.dart';
 class ConnectionProfileArgs {
   /// Specifies required connection parameters, and the parameters required to create an AlloyDB destination cluster.
   /// Structure is documented below.
-  final pulumi.Input<ConnectionProfileAlloydb>? alloydb;
+  final pulumi.Input<ConnectionProfileAlloydb?>? alloydb;
   /// Specifies required connection parameters, and, optionally, the parameters required to create a Cloud SQL destination database instance.
   /// Structure is documented below.
-  final pulumi.Input<ConnectionProfileCloudsql>? cloudsql;
+  final pulumi.Input<ConnectionProfileCloudsql?>? cloudsql;
   /// The ID of the connection profile.
   final pulumi.Input<String> connectionProfileId;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -26,31 +26,31 @@ class ConnectionProfileArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The connection profile display name.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The resource labels for connection profile to use to annotate any related underlying resources such as Compute Engine VMs.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The location where the connection profile should reside.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Specifies connection parameters required specifically for MySQL databases.
   /// Structure is documented below.
-  final pulumi.Input<ConnectionProfileMysql>? mysql;
+  final pulumi.Input<ConnectionProfileMysql?>? mysql;
   /// Specifies connection parameters required specifically for Oracle databases.
   /// Structure is documented below.
-  final pulumi.Input<ConnectionProfileOracle>? oracle;
+  final pulumi.Input<ConnectionProfileOracle?>? oracle;
   /// Specifies connection parameters required specifically for PostgreSQL databases.
   /// Structure is documented below.
-  final pulumi.Input<ConnectionProfilePostgresql>? postgresql;
+  final pulumi.Input<ConnectionProfilePostgresql?>? postgresql;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The connection profile role.
   /// Possible values are: `SOURCE`, `DESTINATION`.
-  final pulumi.Input<String>? role;
+  final pulumi.Input<String?>? role;
 
   /// Creates a new [ConnectionProfileArgs].
   /// [alloydb] Specifies required connection parameters, and the parameters required to create an AlloyDB destination cluster.

@@ -7,13 +7,13 @@ class RepositoryWorkflowConfigRecentScheduledExecutionRecord {
   /// (Output)
   /// The error status encountered upon this attempt to create the workflow invocation, if the attempt was unsuccessful.
   /// Structure is documented below.
-  final pulumi.Input<List<RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatus>>? errorStatuses;
+  final pulumi.Input<List<RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatus>?>? errorStatuses;
   /// (Output)
   /// The timestamp of this workflow attempt.
-  final pulumi.Input<String>? executionTime;
+  final pulumi.Input<String?>? executionTime;
   /// (Output)
   /// The name of the created workflow invocation, if one was successfully created. In the format projects/*/locations/*/repositories/*/workflowInvocations/*.
-  final pulumi.Input<String>? workflowInvocation;
+  final pulumi.Input<String?>? workflowInvocation;
 
   /// Creates a new [RepositoryWorkflowConfigRecentScheduledExecutionRecord].
   /// [errorStatuses] (Output)

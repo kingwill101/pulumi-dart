@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TransferJobLoggingConfig {
   /// For transfers with a PosixFilesystem source, this option enables the Cloud Storage transfer logs for this transfer.
-  final pulumi.Input<bool>? enableOnPremGcsTransferLogs;
+  final pulumi.Input<bool?>? enableOnPremGcsTransferLogs;
   /// States in which logActions are logged. Not supported for transfers with PosifxFilesystem data sources; use enableOnPremGcsTransferLogs instead.
-  final pulumi.Input<List<String>>? logActionStates;
+  final pulumi.Input<List<String>?>? logActionStates;
   /// Specifies the actions to be logged. Not supported for transfers with PosifxFilesystem data sources; use enableOnPremGcsTransferLogs instead.
-  final pulumi.Input<List<String>>? logActions;
+  final pulumi.Input<List<String>?>? logActions;
 
   /// Creates a new [TransferJobLoggingConfig].
   /// [enableOnPremGcsTransferLogs] For transfers with a PosixFilesystem source, this option enables the Cloud Storage transfer logs for this transfer.

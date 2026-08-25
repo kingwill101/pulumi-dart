@@ -9,21 +9,21 @@ import 'trigger_destination_network_config.dart';
 class TriggerDestination {
   /// (Output)
   /// The Cloud Function resource name. Only Cloud Functions V2 is supported. Format projects/{project}/locations/{location}/functions/{function} This is a read-only field. [WARNING] Creating Cloud Functions V2 triggers is only supported via the Cloud Functions product. An error will be returned if the user sets this value.
-  final pulumi.Input<String>? cloudFunction;
+  final pulumi.Input<String?>? cloudFunction;
   /// Cloud Run fully-managed service that receives the events. The service should be running in the same project of the trigger.
   /// Structure is documented below.
-  final pulumi.Input<TriggerDestinationCloudRunService>? cloudRunService;
+  final pulumi.Input<TriggerDestinationCloudRunService?>? cloudRunService;
   /// A GKE service capable of receiving events. The service should be running in the same project as the trigger.
   /// Structure is documented below.
-  final pulumi.Input<TriggerDestinationGke>? gke;
+  final pulumi.Input<TriggerDestinationGke?>? gke;
   /// An HTTP endpoint destination described by an URI.
   /// Structure is documented below.
-  final pulumi.Input<TriggerDestinationHttpEndpoint>? httpEndpoint;
+  final pulumi.Input<TriggerDestinationHttpEndpoint?>? httpEndpoint;
   /// Optional. Network config is used to configure how Eventarc resolves and connect to a destination. This should only be used with HttpEndpoint destination type.
   /// Structure is documented below.
-  final pulumi.Input<TriggerDestinationNetworkConfig>? networkConfig;
+  final pulumi.Input<TriggerDestinationNetworkConfig?>? networkConfig;
   /// The resource name of the Workflow whose Executions are triggered by the events. The Workflow resource should be deployed in the same project as the trigger. Format: `projects/{project}/locations/{location}/workflows/{workflow}`
-  final pulumi.Input<String>? workflow;
+  final pulumi.Input<String?>? workflow;
 
   /// Creates a new [TriggerDestination].
   /// [cloudFunction] (Output)

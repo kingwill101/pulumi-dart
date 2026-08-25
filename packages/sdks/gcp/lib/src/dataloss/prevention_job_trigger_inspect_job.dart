@@ -8,12 +8,12 @@ import 'prevention_job_trigger_inspect_job_storage_config.dart';
 class PreventionJobTriggerInspectJob {
   /// Configuration block for the actions to execute on the completion of a job. Can be specified multiple times, but only one for each type. Each action block supports fields documented below. This argument is processed in attribute-as-blocks mode.
   /// Structure is documented below.
-  final pulumi.Input<List<PreventionJobTriggerInspectJobAction>>? actions;
+  final pulumi.Input<List<PreventionJobTriggerInspectJobAction>?>? actions;
   /// The core content of the template.
   /// Structure is documented below.
-  final pulumi.Input<PreventionJobTriggerInspectJobInspectConfig>? inspectConfig;
+  final pulumi.Input<PreventionJobTriggerInspectJobInspectConfig?>? inspectConfig;
   /// The name of the template to run when this job is triggered.
-  final pulumi.Input<String>? inspectTemplateName;
+  final pulumi.Input<String?>? inspectTemplateName;
   /// Information on where to inspect
   /// Structure is documented below.
   final pulumi.Input<PreventionJobTriggerInspectJobStorageConfig> storageConfig;

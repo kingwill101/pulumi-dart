@@ -6,9 +6,9 @@ import 'environment_config_data_retention_config_task_logs_retention_config.dart
 
 class EnvironmentConfigDataRetentionConfig {
   /// Optional. The policy for airflow metadata database retention.
-  final pulumi.Input<List<EnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfig>>? airflowMetadataRetentionConfigs;
+  final pulumi.Input<List<EnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfig>?>? airflowMetadataRetentionConfigs;
   /// Optional. The configuration setting for Task Logs.
-  final pulumi.Input<List<EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfig>>? taskLogsRetentionConfigs;
+  final pulumi.Input<List<EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfig>?>? taskLogsRetentionConfigs;
 
   /// Creates a new [EnvironmentConfigDataRetentionConfig].
   /// [airflowMetadataRetentionConfigs] Optional. The policy for airflow metadata database retention.

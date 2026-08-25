@@ -6,7 +6,7 @@ class UnitKindOutputVariableMappingTo {
   /// Alias of the dependency that the inputVariable will pass its value to
   final pulumi.Input<String> dependency;
   /// Tells App Lifecycle Manager if this mapping should be used during lookup or not
-  final pulumi.Input<bool>? ignoreForLookup;
+  final pulumi.Input<bool?>? ignoreForLookup;
   /// Name of the inputVariable on the dependency
   final pulumi.Input<String> inputVariable;
 

@@ -382,12 +382,13 @@ class SecretCiphertext extends pulumi.CustomResource {
           'gcp:kms/secretCiphertext:SecretCiphertext',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['additionalAuthenticatedData', 'plaintext'],
         ) {
-    additionalAuthenticatedData = registerOutput<String?>('additionalAuthenticatedData');
+    additionalAuthenticatedData = registerOutput<String?>('additionalAuthenticatedData', isSecret: true);
     ciphertext = registerOutput<String>('ciphertext');
     cryptoKey = registerOutput<String>('cryptoKey');
-    plaintext = registerOutput<String>('plaintext');
+    plaintext = registerOutput<String>('plaintext', isSecret: true);
   }
 
   /// Gets an existing [SecretCiphertext] resource's state with the given [name] and [id].
@@ -395,11 +396,12 @@ class SecretCiphertext extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SecretCiphertextState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SecretCiphertext._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -413,9 +415,25 @@ class SecretCiphertext extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    additionalAuthenticatedData = registerOutput<String?>('additionalAuthenticatedData');
+    additionalAuthenticatedData = registerOutput<String?>('additionalAuthenticatedData', isSecret: true);
     ciphertext = registerOutput<String>('ciphertext');
     cryptoKey = registerOutput<String>('cryptoKey');
-    plaintext = registerOutput<String>('plaintext');
+    plaintext = registerOutput<String>('plaintext', isSecret: true);
+  }
+
+  /// Creates a typed reference to an existing [SecretCiphertext] resource.
+  SecretCiphertext.reference(String urn)
+    : super(
+        'gcp:kms/secretCiphertext:SecretCiphertext',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['additionalAuthenticatedData', 'plaintext'],
+        isResourceReference: true,
+      ) {
+    additionalAuthenticatedData = registerOutput<String?>('additionalAuthenticatedData', isSecret: true);
+    ciphertext = registerOutput<String>('ciphertext');
+    cryptoKey = registerOutput<String>('cryptoKey');
+    plaintext = registerOutput<String>('plaintext', isSecret: true);
   }
 }

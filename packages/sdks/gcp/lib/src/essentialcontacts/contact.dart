@@ -215,13 +215,13 @@ class Contact extends pulumi.CustomResource {
           'gcp:essentialcontacts/contact:Contact',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     email = registerOutput<String>('email');
     languageTag = registerOutput<String>('languageTag');
     this.name = registerOutput<String>('name');
-    notificationCategorySubscriptions = registerOutput<List<String>>('notificationCategorySubscriptions');
+    notificationCategorySubscriptions = registerOutput<List<String>>('notificationCategorySubscriptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     parent = registerOutput<String>('parent');
   }
 
@@ -230,11 +230,12 @@ class Contact extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ContactState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Contact._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -252,7 +253,24 @@ class Contact extends pulumi.CustomResource {
     email = registerOutput<String>('email');
     languageTag = registerOutput<String>('languageTag');
     this.name = registerOutput<String>('name');
-    notificationCategorySubscriptions = registerOutput<List<String>>('notificationCategorySubscriptions');
+    notificationCategorySubscriptions = registerOutput<List<String>>('notificationCategorySubscriptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    parent = registerOutput<String>('parent');
+  }
+
+  /// Creates a typed reference to an existing [Contact] resource.
+  Contact.reference(String urn)
+    : super(
+        'gcp:essentialcontacts/contact:Contact',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    email = registerOutput<String>('email');
+    languageTag = registerOutput<String>('languageTag');
+    this.name = registerOutput<String>('name');
+    notificationCategorySubscriptions = registerOutput<List<String>>('notificationCategorySubscriptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     parent = registerOutput<String>('parent');
   }
 }

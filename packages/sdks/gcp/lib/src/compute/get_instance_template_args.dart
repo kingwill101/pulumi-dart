@@ -11,16 +11,16 @@ class GetInstanceTemplateArgs {
   /// See [API filter parameter documentation](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/list#body.QUERY_PARAMETERS.filter) for reference.
   /// If multiple instance templates match, either adjust the filter or specify `mostRecent`.
   /// One of `name`, `filter` or `selfLinkUnique` must be provided.
-  final pulumi.Input<String>? filter;
+  final pulumi.Input<String?>? filter;
   /// If `filter` is provided, ensures the most recent template is returned when multiple instance templates match. One of `name`, `filter` or `selfLinkUnique` must be provided.
-  final pulumi.Input<bool>? mostRecent;
+  final pulumi.Input<bool?>? mostRecent;
   /// The name of the instance template. One of `name`, `filter` or `selfLinkUnique` must be provided.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If `project` is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The selfLinkUnique URI of the instance template. One of `name`, `filter` or `selfLinkUnique` must be provided.
-  final pulumi.Input<String>? selfLinkUnique;
+  final pulumi.Input<String?>? selfLinkUnique;
 
   /// Creates a new [GetInstanceTemplateArgs].
   /// [filter] A filter to retrieve the instance templates.

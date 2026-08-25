@@ -2,7 +2,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'service_args.dart';
 import 'service_metadata.dart';
 import 'service_state.dart';
+import 'service_status.dart';
 import 'service_template.dart';
+import 'service_traffic.dart';
 
 /// A Cloud Run service has a unique endpoint and autoscales containers.
 ///
@@ -3073,7 +3075,7 @@ class Service extends pulumi.CustomResource {
   late final pulumi.Output<String> project;
   /// (Output)
   /// Status of the condition, one of True, False, Unknown.
-  late final pulumi.Output<List<Map<String, dynamic>>> statuses;
+  late final pulumi.Output<List<ServiceStatus>> statuses;
   /// template holds the latest specification for the Revision to
   /// be stamped out. The template references the container image, and may also
   /// include labels and annotations that should be attached to the Revision.
@@ -3088,7 +3090,7 @@ class Service extends pulumi.CustomResource {
   /// Traffic specifies how to distribute traffic over a collection of Knative Revisions
   /// and Configurations
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> traffics;
+  late final pulumi.Output<List<ServiceTraffic>> traffics;
 
   /// Creates a new [Service].
   /// [name] The Pulumi resource name.
@@ -3102,7 +3104,7 @@ class Service extends pulumi.CustomResource {
           'gcp:cloudrun/service:Service',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     autogenerateRevisionName = registerOutput<bool?>('autogenerateRevisionName');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -3110,9 +3112,9 @@ class Service extends pulumi.CustomResource {
     metadata = registerOutput<ServiceMetadata>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceMetadata.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    statuses = registerOutput<List<Map<String, dynamic>>>('statuses');
+    statuses = registerOutput<List<ServiceStatus>>('statuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServiceStatus>(guardedValue, (value) => ServiceStatus.fromMap((value as Map).cast<String, dynamic>())); });
     template = registerOutput<ServiceTemplate?>('template', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceTemplate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    traffics = registerOutput<List<Map<String, dynamic>>>('traffics');
+    traffics = registerOutput<List<ServiceTraffic>>('traffics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServiceTraffic>(guardedValue, (value) => ServiceTraffic.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [Service] resource's state with the given [name] and [id].
@@ -3120,11 +3122,12 @@ class Service extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ServiceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Service._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -3144,8 +3147,28 @@ class Service extends pulumi.CustomResource {
     metadata = registerOutput<ServiceMetadata>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceMetadata.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    statuses = registerOutput<List<Map<String, dynamic>>>('statuses');
+    statuses = registerOutput<List<ServiceStatus>>('statuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServiceStatus>(guardedValue, (value) => ServiceStatus.fromMap((value as Map).cast<String, dynamic>())); });
     template = registerOutput<ServiceTemplate?>('template', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceTemplate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    traffics = registerOutput<List<Map<String, dynamic>>>('traffics');
+    traffics = registerOutput<List<ServiceTraffic>>('traffics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServiceTraffic>(guardedValue, (value) => ServiceTraffic.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [Service] resource.
+  Service.reference(String urn)
+    : super(
+        'gcp:cloudrun/service:Service',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    autogenerateRevisionName = registerOutput<bool?>('autogenerateRevisionName');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    location = registerOutput<String>('location');
+    metadata = registerOutput<ServiceMetadata>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceMetadata.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    statuses = registerOutput<List<ServiceStatus>>('statuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServiceStatus>(guardedValue, (value) => ServiceStatus.fromMap((value as Map).cast<String, dynamic>())); });
+    template = registerOutput<ServiceTemplate?>('template', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceTemplate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    traffics = registerOutput<List<ServiceTraffic>>('traffics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServiceTraffic>(guardedValue, (value) => ServiceTraffic.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

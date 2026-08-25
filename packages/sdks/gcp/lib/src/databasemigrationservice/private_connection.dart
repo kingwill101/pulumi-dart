@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'private_connection_args.dart';
+import 'private_connection_error.dart';
 import 'private_connection_psc_interface_config.dart';
 import 'private_connection_state.dart';
 import 'private_connection_vpc_peering_config.dart';
@@ -569,7 +570,7 @@ class PrivateConnection extends pulumi.CustomResource {
   late final pulumi.Output<Map<String, String>> effectiveLabels;
   /// The PrivateConnection error in case of failure.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> errors;
+  late final pulumi.Output<List<PrivateConnectionError>> errors;
   /// Labels.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
@@ -609,20 +610,21 @@ class PrivateConnection extends pulumi.CustomResource {
           'gcp:databasemigrationservice/privateConnection:PrivateConnection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createWithoutValidation = registerOutput<bool?>('createWithoutValidation');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    errors = registerOutput<List<Map<String, dynamic>>>('errors');
-    labels = registerOutput<Map<String, String>?>('labels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    errors = registerOutput<List<PrivateConnectionError>>('errors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PrivateConnectionError>(guardedValue, (value) => PrivateConnectionError.fromMap((value as Map).cast<String, dynamic>())); });
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     privateConnectionId = registerOutput<String>('privateConnectionId');
     project = registerOutput<String>('project');
     pscInterfaceConfig = registerOutput<PrivateConnectionPscInterfaceConfig?>('pscInterfaceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PrivateConnectionPscInterfaceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     state = registerOutput<String>('state');
     vpcPeeringConfig = registerOutput<PrivateConnectionVpcPeeringConfig?>('vpcPeeringConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PrivateConnectionVpcPeeringConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
@@ -632,11 +634,12 @@ class PrivateConnection extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PrivateConnectionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return PrivateConnection._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -653,16 +656,42 @@ class PrivateConnection extends pulumi.CustomResource {
     createWithoutValidation = registerOutput<bool?>('createWithoutValidation');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    errors = registerOutput<List<Map<String, dynamic>>>('errors');
-    labels = registerOutput<Map<String, String>?>('labels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    errors = registerOutput<List<PrivateConnectionError>>('errors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PrivateConnectionError>(guardedValue, (value) => PrivateConnectionError.fromMap((value as Map).cast<String, dynamic>())); });
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     privateConnectionId = registerOutput<String>('privateConnectionId');
     project = registerOutput<String>('project');
     pscInterfaceConfig = registerOutput<PrivateConnectionPscInterfaceConfig?>('pscInterfaceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PrivateConnectionPscInterfaceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     this.state = registerOutput<String>('state');
+    vpcPeeringConfig = registerOutput<PrivateConnectionVpcPeeringConfig?>('vpcPeeringConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PrivateConnectionVpcPeeringConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [PrivateConnection] resource.
+  PrivateConnection.reference(String urn)
+    : super(
+        'gcp:databasemigrationservice/privateConnection:PrivateConnection',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    createWithoutValidation = registerOutput<bool?>('createWithoutValidation');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    displayName = registerOutput<String>('displayName');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    errors = registerOutput<List<PrivateConnectionError>>('errors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PrivateConnectionError>(guardedValue, (value) => PrivateConnectionError.fromMap((value as Map).cast<String, dynamic>())); });
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    privateConnectionId = registerOutput<String>('privateConnectionId');
+    project = registerOutput<String>('project');
+    pscInterfaceConfig = registerOutput<PrivateConnectionPscInterfaceConfig?>('pscInterfaceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PrivateConnectionPscInterfaceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    state = registerOutput<String>('state');
     vpcPeeringConfig = registerOutput<PrivateConnectionVpcPeeringConfig?>('vpcPeeringConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PrivateConnectionVpcPeeringConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

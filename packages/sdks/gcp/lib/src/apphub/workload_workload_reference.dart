@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkloadWorkloadReference {
   /// (Output)
   /// Output only. The underlying compute resource uri.
-  final pulumi.Input<String>? uri;
+  final pulumi.Input<String?>? uri;
 
   /// Creates a new [WorkloadWorkloadReference].
   /// [uri] (Output)

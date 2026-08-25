@@ -6,41 +6,41 @@ import 'database_hive_options.dart';
 /// Input properties used for looking up and filtering Database resources.
 class DatabaseState {
   /// The parent catalog.
-  final pulumi.Input<String>? catalog;
+  final pulumi.Input<String?>? catalog;
   /// Output only. The creation time of the database. A timestamp in RFC3339
   /// UTC "Zulu" format, with nanosecond resolution and up to nine fractional
   /// digits. Examples: "2014-10-02T15:01:23Z" and
   /// "2014-10-02T15:01:23.045123456Z".
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Output only. The deletion time of the database. Only set after the
   /// database is deleted. A timestamp in RFC3339 UTC "Zulu" format, with
   /// nanosecond resolution and up to nine fractional digits. Examples:
   /// "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-  final pulumi.Input<String>? deleteTime;
+  final pulumi.Input<String?>? deleteTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Output only. The time when this database is considered expired. Only set
   /// after the database is deleted. A timestamp in RFC3339 UTC "Zulu" format,
   /// with nanosecond resolution and up to nine fractional digits. Examples:
   /// "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-  final pulumi.Input<String>? expireTime;
+  final pulumi.Input<String?>? expireTime;
   /// Options of a Hive database.
   /// Structure is documented below.
-  final pulumi.Input<DatabaseHiveOptions>? hiveOptions;
+  final pulumi.Input<DatabaseHiveOptions?>? hiveOptions;
   /// The name of the database.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The database type.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// Output only. The last modification time of the database. A timestamp in
   /// RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
   /// fractional digits. Examples: "2014-10-02T15:01:23Z" and
   /// "2014-10-02T15:01:23.045123456Z".
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [DatabaseState].
   /// [catalog] The parent catalog.

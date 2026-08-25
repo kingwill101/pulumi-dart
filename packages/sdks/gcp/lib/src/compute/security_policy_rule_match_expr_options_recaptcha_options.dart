@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SecurityPolicyRuleMatchExprOptionsRecaptchaOptions {
   /// A list of site keys to be used during the validation of reCAPTCHA action-tokens. The provided site keys need to be created from reCAPTCHA API under the same project where the security policy is created.
-  final pulumi.Input<List<String>>? actionTokenSiteKeys;
+  final pulumi.Input<List<String>?>? actionTokenSiteKeys;
   /// A list of site keys to be used during the validation of reCAPTCHA session-tokens. The provided site keys need to be created from reCAPTCHA API under the same project where the security policy is created.
-  final pulumi.Input<List<String>>? sessionTokenSiteKeys;
+  final pulumi.Input<List<String>?>? sessionTokenSiteKeys;
 
   /// Creates a new [SecurityPolicyRuleMatchExprOptionsRecaptchaOptions].
   /// [actionTokenSiteKeys] A list of site keys to be used during the validation of reCAPTCHA action-tokens. The provided site keys need to be created from reCAPTCHA API under the same project where the security policy is created.

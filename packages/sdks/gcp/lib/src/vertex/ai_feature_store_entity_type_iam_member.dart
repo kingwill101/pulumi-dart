@@ -983,7 +983,7 @@ class AiFeatureStoreEntityTypeIamMember extends pulumi.CustomResource {
           'gcp:vertex/aiFeatureStoreEntityTypeIamMember:AiFeatureStoreEntityTypeIamMember',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     condition = registerOutput<AiFeatureStoreEntityTypeIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiFeatureStoreEntityTypeIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     entitytype = registerOutput<String>('entitytype');
@@ -998,11 +998,12 @@ class AiFeatureStoreEntityTypeIamMember extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AiFeatureStoreEntityTypeIamMemberState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AiFeatureStoreEntityTypeIamMember._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1016,6 +1017,23 @@ class AiFeatureStoreEntityTypeIamMember extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    condition = registerOutput<AiFeatureStoreEntityTypeIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiFeatureStoreEntityTypeIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    entitytype = registerOutput<String>('entitytype');
+    etag = registerOutput<String>('etag');
+    featurestore = registerOutput<String>('featurestore');
+    member = registerOutput<String>('member');
+    role = registerOutput<String>('role');
+  }
+
+  /// Creates a typed reference to an existing [AiFeatureStoreEntityTypeIamMember] resource.
+  AiFeatureStoreEntityTypeIamMember.reference(String urn)
+    : super(
+        'gcp:vertex/aiFeatureStoreEntityTypeIamMember:AiFeatureStoreEntityTypeIamMember',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     condition = registerOutput<AiFeatureStoreEntityTypeIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiFeatureStoreEntityTypeIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     entitytype = registerOutput<String>('entitytype');
     etag = registerOutput<String>('etag');

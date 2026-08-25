@@ -2,6 +2,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'function_args.dart';
 import 'function_event_trigger.dart';
 import 'function_on_deploy_update_policy.dart';
+import 'function_secret_environment_variable.dart';
+import 'function_secret_volume.dart';
 import 'function_source_repository.dart';
 import 'function_state.dart';
 
@@ -751,9 +753,9 @@ class FunctionType extends pulumi.CustomResource {
   /// - - -
   late final pulumi.Output<String> runtime;
   /// Secret environment variables configuration. Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> secretEnvironmentVariables;
+  late final pulumi.Output<List<FunctionSecretEnvironmentVariable>?> secretEnvironmentVariables;
   /// Secret volumes configuration. Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> secretVolumes;
+  late final pulumi.Output<List<FunctionSecretVolume>?> secretVolumes;
   /// If provided, the self-provided service account to run the function with.
   late final pulumi.Output<String> serviceAccountEmail;
   /// The GCS bucket containing the zip archive which contains the function.
@@ -788,36 +790,37 @@ class FunctionType extends pulumi.CustomResource {
           'gcp:cloudfunctions/function:Function',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     automaticUpdatePolicy = registerOutput<Map<String, dynamic>>('automaticUpdatePolicy');
     availableMemoryMb = registerOutput<int?>('availableMemoryMb');
-    buildEnvironmentVariables = registerOutput<Map<String, String>?>('buildEnvironmentVariables');
+    buildEnvironmentVariables = registerOutput<Map<String, String>?>('buildEnvironmentVariables', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     buildServiceAccount = registerOutput<String>('buildServiceAccount');
     buildWorkerPool = registerOutput<String?>('buildWorkerPool');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     dockerRegistry = registerOutput<String>('dockerRegistry');
     dockerRepository = registerOutput<String?>('dockerRepository');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     entryPoint = registerOutput<String?>('entryPoint');
-    environmentVariables = registerOutput<Map<String, String>?>('environmentVariables');
+    environmentVariables = registerOutput<Map<String, String>?>('environmentVariables', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     eventTrigger = registerOutput<FunctionEventTrigger>('eventTrigger', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionEventTrigger.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     httpsTriggerSecurityLevel = registerOutput<String>('httpsTriggerSecurityLevel');
     httpsTriggerUrl = registerOutput<String>('httpsTriggerUrl');
     ingressSettings = registerOutput<String?>('ingressSettings');
     kmsKeyName = registerOutput<String?>('kmsKeyName');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     maxInstances = registerOutput<int>('maxInstances');
     minInstances = registerOutput<int?>('minInstances');
     this.name = registerOutput<String>('name');
     onDeployUpdatePolicy = registerOutput<FunctionOnDeployUpdatePolicy?>('onDeployUpdatePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionOnDeployUpdatePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     region = registerOutput<String>('region');
     runtime = registerOutput<String>('runtime');
-    secretEnvironmentVariables = registerOutput<List<Map<String, dynamic>>?>('secretEnvironmentVariables');
-    secretVolumes = registerOutput<List<Map<String, dynamic>>?>('secretVolumes');
+    secretEnvironmentVariables = registerOutput<List<FunctionSecretEnvironmentVariable>?>('secretEnvironmentVariables', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FunctionSecretEnvironmentVariable>(guardedValue, (value) => FunctionSecretEnvironmentVariable.fromMap((value as Map).cast<String, dynamic>())); });
+    secretVolumes = registerOutput<List<FunctionSecretVolume>?>('secretVolumes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FunctionSecretVolume>(guardedValue, (value) => FunctionSecretVolume.fromMap((value as Map).cast<String, dynamic>())); });
     serviceAccountEmail = registerOutput<String>('serviceAccountEmail');
     sourceArchiveBucket = registerOutput<String?>('sourceArchiveBucket');
     sourceArchiveObject = registerOutput<String?>('sourceArchiveObject');
@@ -835,11 +838,12 @@ class FunctionType extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FunctionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return FunctionType._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -855,32 +859,82 @@ class FunctionType extends pulumi.CustomResource {
         ) {
     automaticUpdatePolicy = registerOutput<Map<String, dynamic>>('automaticUpdatePolicy');
     availableMemoryMb = registerOutput<int?>('availableMemoryMb');
-    buildEnvironmentVariables = registerOutput<Map<String, String>?>('buildEnvironmentVariables');
+    buildEnvironmentVariables = registerOutput<Map<String, String>?>('buildEnvironmentVariables', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     buildServiceAccount = registerOutput<String>('buildServiceAccount');
     buildWorkerPool = registerOutput<String?>('buildWorkerPool');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     dockerRegistry = registerOutput<String>('dockerRegistry');
     dockerRepository = registerOutput<String?>('dockerRepository');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     entryPoint = registerOutput<String?>('entryPoint');
-    environmentVariables = registerOutput<Map<String, String>?>('environmentVariables');
+    environmentVariables = registerOutput<Map<String, String>?>('environmentVariables', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     eventTrigger = registerOutput<FunctionEventTrigger>('eventTrigger', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionEventTrigger.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     httpsTriggerSecurityLevel = registerOutput<String>('httpsTriggerSecurityLevel');
     httpsTriggerUrl = registerOutput<String>('httpsTriggerUrl');
     ingressSettings = registerOutput<String?>('ingressSettings');
     kmsKeyName = registerOutput<String?>('kmsKeyName');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     maxInstances = registerOutput<int>('maxInstances');
     minInstances = registerOutput<int?>('minInstances');
     this.name = registerOutput<String>('name');
     onDeployUpdatePolicy = registerOutput<FunctionOnDeployUpdatePolicy?>('onDeployUpdatePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionOnDeployUpdatePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     region = registerOutput<String>('region');
     runtime = registerOutput<String>('runtime');
-    secretEnvironmentVariables = registerOutput<List<Map<String, dynamic>>?>('secretEnvironmentVariables');
-    secretVolumes = registerOutput<List<Map<String, dynamic>>?>('secretVolumes');
+    secretEnvironmentVariables = registerOutput<List<FunctionSecretEnvironmentVariable>?>('secretEnvironmentVariables', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FunctionSecretEnvironmentVariable>(guardedValue, (value) => FunctionSecretEnvironmentVariable.fromMap((value as Map).cast<String, dynamic>())); });
+    secretVolumes = registerOutput<List<FunctionSecretVolume>?>('secretVolumes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FunctionSecretVolume>(guardedValue, (value) => FunctionSecretVolume.fromMap((value as Map).cast<String, dynamic>())); });
+    serviceAccountEmail = registerOutput<String>('serviceAccountEmail');
+    sourceArchiveBucket = registerOutput<String?>('sourceArchiveBucket');
+    sourceArchiveObject = registerOutput<String?>('sourceArchiveObject');
+    sourceRepository = registerOutput<FunctionSourceRepository?>('sourceRepository', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionSourceRepository.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    status = registerOutput<String>('status');
+    timeout = registerOutput<int?>('timeout');
+    triggerHttp = registerOutput<bool?>('triggerHttp');
+    versionId = registerOutput<String>('versionId');
+    vpcConnector = registerOutput<String?>('vpcConnector');
+    vpcConnectorEgressSettings = registerOutput<String>('vpcConnectorEgressSettings');
+  }
+
+  /// Creates a typed reference to an existing [FunctionType] resource.
+  FunctionType.reference(String urn)
+    : super(
+        'gcp:cloudfunctions/function:Function',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    automaticUpdatePolicy = registerOutput<Map<String, dynamic>>('automaticUpdatePolicy');
+    availableMemoryMb = registerOutput<int?>('availableMemoryMb');
+    buildEnvironmentVariables = registerOutput<Map<String, String>?>('buildEnvironmentVariables', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    buildServiceAccount = registerOutput<String>('buildServiceAccount');
+    buildWorkerPool = registerOutput<String?>('buildWorkerPool');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    dockerRegistry = registerOutput<String>('dockerRegistry');
+    dockerRepository = registerOutput<String?>('dockerRepository');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    entryPoint = registerOutput<String?>('entryPoint');
+    environmentVariables = registerOutput<Map<String, String>?>('environmentVariables', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    eventTrigger = registerOutput<FunctionEventTrigger>('eventTrigger', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionEventTrigger.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    httpsTriggerSecurityLevel = registerOutput<String>('httpsTriggerSecurityLevel');
+    httpsTriggerUrl = registerOutput<String>('httpsTriggerUrl');
+    ingressSettings = registerOutput<String?>('ingressSettings');
+    kmsKeyName = registerOutput<String?>('kmsKeyName');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    maxInstances = registerOutput<int>('maxInstances');
+    minInstances = registerOutput<int?>('minInstances');
+    this.name = registerOutput<String>('name');
+    onDeployUpdatePolicy = registerOutput<FunctionOnDeployUpdatePolicy?>('onDeployUpdatePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FunctionOnDeployUpdatePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    region = registerOutput<String>('region');
+    runtime = registerOutput<String>('runtime');
+    secretEnvironmentVariables = registerOutput<List<FunctionSecretEnvironmentVariable>?>('secretEnvironmentVariables', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FunctionSecretEnvironmentVariable>(guardedValue, (value) => FunctionSecretEnvironmentVariable.fromMap((value as Map).cast<String, dynamic>())); });
+    secretVolumes = registerOutput<List<FunctionSecretVolume>?>('secretVolumes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FunctionSecretVolume>(guardedValue, (value) => FunctionSecretVolume.fromMap((value as Map).cast<String, dynamic>())); });
     serviceAccountEmail = registerOutput<String>('serviceAccountEmail');
     sourceArchiveBucket = registerOutput<String?>('sourceArchiveBucket');
     sourceArchiveObject = registerOutput<String?>('sourceArchiveObject');

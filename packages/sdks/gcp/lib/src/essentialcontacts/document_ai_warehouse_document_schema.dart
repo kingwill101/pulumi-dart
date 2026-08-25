@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'document_ai_warehouse_document_schema_args.dart';
+import 'document_ai_warehouse_document_schema_property_definition.dart';
 import 'document_ai_warehouse_document_schema_state.dart';
 
 /// A document schema is used to define document structure.
@@ -314,7 +315,7 @@ class DocumentAiWarehouseDocumentSchema extends pulumi.CustomResource {
   late final pulumi.Output<String> projectNumber;
   /// Defines the metadata for a schema property.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> propertyDefinitions;
+  late final pulumi.Output<List<DocumentAiWarehouseDocumentSchemaPropertyDefinition>> propertyDefinitions;
 
   /// Creates a new [DocumentAiWarehouseDocumentSchema].
   /// [name] The Pulumi resource name.
@@ -328,7 +329,7 @@ class DocumentAiWarehouseDocumentSchema extends pulumi.CustomResource {
           'gcp:essentialcontacts/documentAiWarehouseDocumentSchema:DocumentAiWarehouseDocumentSchema',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
@@ -336,7 +337,7 @@ class DocumentAiWarehouseDocumentSchema extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     projectNumber = registerOutput<String>('projectNumber');
-    propertyDefinitions = registerOutput<List<Map<String, dynamic>>>('propertyDefinitions');
+    propertyDefinitions = registerOutput<List<DocumentAiWarehouseDocumentSchemaPropertyDefinition>>('propertyDefinitions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DocumentAiWarehouseDocumentSchemaPropertyDefinition>(guardedValue, (value) => DocumentAiWarehouseDocumentSchemaPropertyDefinition.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [DocumentAiWarehouseDocumentSchema] resource's state with the given [name] and [id].
@@ -344,11 +345,12 @@ class DocumentAiWarehouseDocumentSchema extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DocumentAiWarehouseDocumentSchemaState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DocumentAiWarehouseDocumentSchema._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -368,6 +370,24 @@ class DocumentAiWarehouseDocumentSchema extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     projectNumber = registerOutput<String>('projectNumber');
-    propertyDefinitions = registerOutput<List<Map<String, dynamic>>>('propertyDefinitions');
+    propertyDefinitions = registerOutput<List<DocumentAiWarehouseDocumentSchemaPropertyDefinition>>('propertyDefinitions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DocumentAiWarehouseDocumentSchemaPropertyDefinition>(guardedValue, (value) => DocumentAiWarehouseDocumentSchemaPropertyDefinition.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [DocumentAiWarehouseDocumentSchema] resource.
+  DocumentAiWarehouseDocumentSchema.reference(String urn)
+    : super(
+        'gcp:essentialcontacts/documentAiWarehouseDocumentSchema:DocumentAiWarehouseDocumentSchema',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    displayName = registerOutput<String>('displayName');
+    documentIsFolder = registerOutput<bool?>('documentIsFolder');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    projectNumber = registerOutput<String>('projectNumber');
+    propertyDefinitions = registerOutput<List<DocumentAiWarehouseDocumentSchemaPropertyDefinition>>('propertyDefinitions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DocumentAiWarehouseDocumentSchemaPropertyDefinition>(guardedValue, (value) => DocumentAiWarehouseDocumentSchemaPropertyDefinition.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

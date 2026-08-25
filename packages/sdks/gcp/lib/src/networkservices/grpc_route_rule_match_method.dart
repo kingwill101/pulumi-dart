@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GrpcRouteRuleMatchMethod {
   /// Specifies that matches are case sensitive. The default value is true.
-  final pulumi.Input<bool>? caseSensitive;
+  final pulumi.Input<bool?>? caseSensitive;
   /// Required. Name of the method to match against.
   final pulumi.Input<String> grpcMethod;
   /// Required. Name of the service to match against.

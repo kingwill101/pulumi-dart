@@ -6,7 +6,7 @@ import 'plugin_config_template_auth_config_template_service_account.dart';
 class PluginConfigTemplateAuthConfigTemplate {
   /// Config for Google service account authentication.
   /// Structure is documented below.
-  final pulumi.Input<PluginConfigTemplateAuthConfigTemplateServiceAccount>? serviceAccount;
+  final pulumi.Input<PluginConfigTemplateAuthConfigTemplateServiceAccount?>? serviceAccount;
   /// The list of authentication types supported by the plugin.
   final pulumi.Input<List<String>> supportedAuthTypes;
 

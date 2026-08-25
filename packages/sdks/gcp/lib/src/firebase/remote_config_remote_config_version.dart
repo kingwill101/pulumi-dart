@@ -7,33 +7,33 @@ class RemoteConfigRemoteConfigVersion {
   /// (Output)
   /// `True` if this Remote Config template was published before
   /// version history was supported.
-  final pulumi.Input<bool>? isLegacy;
+  final pulumi.Input<bool?>? isLegacy;
   /// (Output)
   /// Only present if this version is the result of a rollback, and
   /// will be the version number of the Remote Config template that was
   /// rolled-back to.
-  final pulumi.Input<String>? rollbackSource;
+  final pulumi.Input<String?>? rollbackSource;
   /// (Output)
   /// Where the update action originated.
   /// For possible values, see the [API docs](https://firebase.google.com/docs/reference/remote-config/rest/v1/Version#remoteconfigupdateorigin).
-  final pulumi.Input<String>? updateOrigin;
+  final pulumi.Input<String?>? updateOrigin;
   /// (Output)
   /// When the Remote Config template was written to the Remote
   /// Config server.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
   /// (Output)
   /// What type of update was made.
   /// For possible values, see the [API docs](https://firebase.google.com/docs/reference/remote-config/rest/v1/Version#remoteconfigupdatetype).
-  final pulumi.Input<String>? updateType;
+  final pulumi.Input<String?>? updateType;
   /// (Output)
   /// All the fields associated with the person/service account that wrote a
   /// Remote Config template.
   /// Structure is documented below.
-  final pulumi.Input<List<RemoteConfigRemoteConfigVersionUpdateUser>>? updateUsers;
+  final pulumi.Input<List<RemoteConfigRemoteConfigVersionUpdateUser>?>? updateUsers;
   /// (Output)
   /// The version number of the version's corresponding
   /// Remote Config template.
-  final pulumi.Input<String>? versionNumber;
+  final pulumi.Input<String?>? versionNumber;
 
   /// Creates a new [RemoteConfigRemoteConfigVersion].
   /// [isLegacy] (Output)

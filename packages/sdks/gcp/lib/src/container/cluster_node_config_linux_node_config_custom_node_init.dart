@@ -5,7 +5,7 @@ import 'cluster_node_config_linux_node_config_custom_node_init_init_script.dart'
 
 class ClusterNodeConfigLinuxNodeConfigCustomNodeInit {
   /// The init script configuration. Structure is documented below.
-  final pulumi.Input<ClusterNodeConfigLinuxNodeConfigCustomNodeInitInitScript>? initScript;
+  final pulumi.Input<ClusterNodeConfigLinuxNodeConfigCustomNodeInitInitScript?>? initScript;
 
   /// Creates a new [ClusterNodeConfigLinuxNodeConfigCustomNodeInit].
   /// [initScript] The init script configuration. Structure is documented below.

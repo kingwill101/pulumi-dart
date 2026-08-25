@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConnectionNodeConfig {
   /// Minimum number of nodes in the runtime nodes.
-  final pulumi.Input<int>? maxNodeCount;
+  final pulumi.Input<int?>? maxNodeCount;
   /// Minimum number of nodes in the runtime nodes.
-  final pulumi.Input<int>? minNodeCount;
+  final pulumi.Input<int?>? minNodeCount;
 
   /// Creates a new [ConnectionNodeConfig].
   /// [maxNodeCount] Minimum number of nodes in the runtime nodes.
@@ -25,8 +25,8 @@ class ConnectionNodeConfig {
 
   factory ConnectionNodeConfig.fromMap(Map<String, dynamic> map) {
     return ConnectionNodeConfig(
-      maxNodeCount: (() { final guardedValue = map['maxNodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      minNodeCount: (() { final guardedValue = map['minNodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxNodeCount: (() { final guardedValue = map['maxNodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      minNodeCount: (() { final guardedValue = map['minNodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

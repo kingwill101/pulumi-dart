@@ -965,7 +965,7 @@ class EnvironmentIamPolicy extends pulumi.CustomResource {
           'gcp:apigee/environmentIamPolicy:EnvironmentIamPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     envId = registerOutput<String>('envId');
     etag = registerOutput<String>('etag');
@@ -978,11 +978,12 @@ class EnvironmentIamPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EnvironmentIamPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return EnvironmentIamPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -996,6 +997,21 @@ class EnvironmentIamPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    envId = registerOutput<String>('envId');
+    etag = registerOutput<String>('etag');
+    orgId = registerOutput<String>('orgId');
+    policyData = registerOutput<String>('policyData');
+  }
+
+  /// Creates a typed reference to an existing [EnvironmentIamPolicy] resource.
+  EnvironmentIamPolicy.reference(String urn)
+    : super(
+        'gcp:apigee/environmentIamPolicy:EnvironmentIamPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     envId = registerOutput<String>('envId');
     etag = registerOutput<String>('etag');
     orgId = registerOutput<String>('orgId');

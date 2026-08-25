@@ -6,9 +6,9 @@ import 'feed_details_thinkst_canary_settings_authentication.dart';
 class FeedDetailsThinkstCanarySettings {
   /// HTTP header based authentication.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsThinkstCanarySettingsAuthentication>? authentication;
+  final pulumi.Input<FeedDetailsThinkstCanarySettingsAuthentication?>? authentication;
   /// API Hostname.
-  final pulumi.Input<String>? hostname;
+  final pulumi.Input<String?>? hostname;
 
   /// Creates a new [FeedDetailsThinkstCanarySettings].
   /// [authentication] HTTP header based authentication.

@@ -27,7 +27,7 @@ class GetServiceTemplateSpecContainerReadinessProbeHttpGet {
   factory GetServiceTemplateSpecContainerReadinessProbeHttpGet.fromMap(Map<String, dynamic> map) {
     return GetServiceTemplateSpecContainerReadinessProbeHttpGet(
       path: pulumi.Input.fromValue(map['path'] as String),
-      port: pulumi.Input.fromValue(map['port'] as int),
+      port: pulumi.Input.fromValue((map['port'] as num).toInt()),
     );
   }
 }

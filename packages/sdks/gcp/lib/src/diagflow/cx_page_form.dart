@@ -6,7 +6,7 @@ import 'cx_page_form_parameter.dart';
 class CxPageForm {
   /// Parameters to collect from the user.
   /// Structure is documented below.
-  final pulumi.Input<List<CxPageFormParameter>>? parameters;
+  final pulumi.Input<List<CxPageFormParameter>?>? parameters;
 
   /// Creates a new [CxPageForm].
   /// [parameters] Parameters to collect from the user.

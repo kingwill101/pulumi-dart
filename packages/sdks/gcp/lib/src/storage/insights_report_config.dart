@@ -550,7 +550,7 @@ class InsightsReportConfig extends pulumi.CustomResource {
           'gcp:storage/insightsReportConfig:InsightsReportConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     csvOptions = registerOutput<InsightsReportConfigCsvOptions?>('csvOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InsightsReportConfigCsvOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -569,11 +569,12 @@ class InsightsReportConfig extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     InsightsReportConfigState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return InsightsReportConfig._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -587,6 +588,27 @@ class InsightsReportConfig extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    csvOptions = registerOutput<InsightsReportConfigCsvOptions?>('csvOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InsightsReportConfigCsvOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    displayName = registerOutput<String?>('displayName');
+    forceDestroy = registerOutput<bool?>('forceDestroy');
+    frequencyOptions = registerOutput<InsightsReportConfigFrequencyOptions?>('frequencyOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InsightsReportConfigFrequencyOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    objectMetadataReportOptions = registerOutput<InsightsReportConfigObjectMetadataReportOptions?>('objectMetadataReportOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InsightsReportConfigObjectMetadataReportOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    parquetOptions = registerOutput<Map<String, dynamic>?>('parquetOptions');
+    project = registerOutput<String>('project');
+  }
+
+  /// Creates a typed reference to an existing [InsightsReportConfig] resource.
+  InsightsReportConfig.reference(String urn)
+    : super(
+        'gcp:storage/insightsReportConfig:InsightsReportConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     csvOptions = registerOutput<InsightsReportConfigCsvOptions?>('csvOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InsightsReportConfigCsvOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');

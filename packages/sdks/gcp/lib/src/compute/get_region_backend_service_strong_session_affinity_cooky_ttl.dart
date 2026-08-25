@@ -29,8 +29,8 @@ class GetRegionBackendServiceStrongSessionAffinityCookyTtl {
 
   factory GetRegionBackendServiceStrongSessionAffinityCookyTtl.fromMap(Map<String, dynamic> map) {
     return GetRegionBackendServiceStrongSessionAffinityCookyTtl(
-      nanos: pulumi.Input.fromValue(map['nanos'] as int),
-      seconds: pulumi.Input.fromValue(map['seconds'] as int),
+      nanos: pulumi.Input.fromValue((map['nanos'] as num).toInt()),
+      seconds: pulumi.Input.fromValue((map['seconds'] as num).toInt()),
     );
   }
 }

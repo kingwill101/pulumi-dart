@@ -8,15 +8,15 @@ import 'grpc_route_rule_action_retry_policy.dart';
 class GrpcRouteRuleAction {
   /// The destination to which traffic should be forwarded.
   /// Structure is documented below.
-  final pulumi.Input<List<GrpcRouteRuleActionDestination>>? destinations;
+  final pulumi.Input<List<GrpcRouteRuleActionDestination>?>? destinations;
   /// The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
   /// Structure is documented below.
-  final pulumi.Input<GrpcRouteRuleActionFaultInjectionPolicy>? faultInjectionPolicy;
+  final pulumi.Input<GrpcRouteRuleActionFaultInjectionPolicy?>? faultInjectionPolicy;
   /// Specifies the retry policy associated with this route.
   /// Structure is documented below.
-  final pulumi.Input<GrpcRouteRuleActionRetryPolicy>? retryPolicy;
+  final pulumi.Input<GrpcRouteRuleActionRetryPolicy?>? retryPolicy;
   /// Specifies the timeout for selected route.
-  final pulumi.Input<String>? timeout;
+  final pulumi.Input<String?>? timeout;
 
   /// Creates a new [GrpcRouteRuleAction].
   /// [destinations] The destination to which traffic should be forwarded.

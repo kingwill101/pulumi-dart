@@ -7,10 +7,10 @@ class GetManagedZonesManagedZone {
   final pulumi.Input<String> dnsName;
   final pulumi.Input<String> id;
   final pulumi.Input<String> managedZoneId;
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   final pulumi.Input<List<String>> nameServers;
   /// The ID of the project containing Google Cloud DNS zones. If this is not provided the default project will be used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> visibility;
 
   /// Creates a new [GetManagedZonesManagedZone].

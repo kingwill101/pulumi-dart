@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FutureReservationTimeWindowDuration {
   /// Span of time that's a fraction of a second at nanosecond resolution.
-  final pulumi.Input<int>? nanos;
+  final pulumi.Input<int?>? nanos;
   /// Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
-  final pulumi.Input<String>? seconds;
+  final pulumi.Input<String?>? seconds;
 
   /// Creates a new [FutureReservationTimeWindowDuration].
   /// [nanos] Span of time that's a fraction of a second at nanosecond resolution.
@@ -25,7 +25,7 @@ class FutureReservationTimeWindowDuration {
 
   factory FutureReservationTimeWindowDuration.fromMap(Map<String, dynamic> map) {
     return FutureReservationTimeWindowDuration(
-      nanos: (() { final guardedValue = map['nanos']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      nanos: (() { final guardedValue = map['nanos']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       seconds: (() { final guardedValue = map['seconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

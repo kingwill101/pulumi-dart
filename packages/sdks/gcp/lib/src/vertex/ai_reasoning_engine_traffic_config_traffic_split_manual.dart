@@ -7,7 +7,7 @@ class AiReasoningEngineTrafficConfigTrafficSplitManual {
   /// Optional. A list of traffic targets for the Runtimes Revisions. The sum of
   /// percentages must equal to 100.
   /// Structure is documented below.
-  final pulumi.Input<List<AiReasoningEngineTrafficConfigTrafficSplitManualTarget>>? targets;
+  final pulumi.Input<List<AiReasoningEngineTrafficConfigTrafficSplitManualTarget>?>? targets;
 
   /// Creates a new [AiReasoningEngineTrafficConfigTrafficSplitManual].
   /// [targets] Optional. A list of traffic targets for the Runtimes Revisions. The sum of

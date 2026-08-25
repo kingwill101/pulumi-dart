@@ -7,10 +7,10 @@ class AuthzPolicyTarget {
   /// Gateway. All resources referenced by this policy and extensions must share the same load balancing scheme.
   /// For more information, refer to [Backend services overview](https://cloud.google.com/load-balancing/docs/backend-service).
   /// Possible values are: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
-  final pulumi.Input<String>? loadBalancingScheme;
+  final pulumi.Input<String?>? loadBalancingScheme;
   /// A list of references to the Forwarding Rules or Secure Web Proxy Gateways or Agent Gateways on which this
   /// policy will be applied.
-  final pulumi.Input<List<String>>? resources;
+  final pulumi.Input<List<String>?>? resources;
 
   /// Creates a new [AuthzPolicyTarget].
   /// [loadBalancingScheme] Required when targeting forwarding rules and secure web proxy. Must not be specified when targeting Agent

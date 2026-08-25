@@ -981,12 +981,12 @@ class EnvironmentIamBinding extends pulumi.CustomResource {
           'gcp:apigee/environmentIamBinding:EnvironmentIamBinding',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     condition = registerOutput<EnvironmentIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnvironmentIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     envId = registerOutput<String>('envId');
     etag = registerOutput<String>('etag');
-    members = registerOutput<List<String>>('members');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     orgId = registerOutput<String>('orgId');
     role = registerOutput<String>('role');
   }
@@ -996,11 +996,12 @@ class EnvironmentIamBinding extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EnvironmentIamBindingState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return EnvironmentIamBinding._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1017,7 +1018,24 @@ class EnvironmentIamBinding extends pulumi.CustomResource {
     condition = registerOutput<EnvironmentIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnvironmentIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     envId = registerOutput<String>('envId');
     etag = registerOutput<String>('etag');
-    members = registerOutput<List<String>>('members');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    orgId = registerOutput<String>('orgId');
+    role = registerOutput<String>('role');
+  }
+
+  /// Creates a typed reference to an existing [EnvironmentIamBinding] resource.
+  EnvironmentIamBinding.reference(String urn)
+    : super(
+        'gcp:apigee/environmentIamBinding:EnvironmentIamBinding',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    condition = registerOutput<EnvironmentIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnvironmentIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    envId = registerOutput<String>('envId');
+    etag = registerOutput<String>('etag');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     orgId = registerOutput<String>('orgId');
     role = registerOutput<String>('role');
   }

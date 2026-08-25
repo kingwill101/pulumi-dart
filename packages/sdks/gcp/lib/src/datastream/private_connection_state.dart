@@ -8,7 +8,7 @@ import 'private_connection_vpc_peering_config.dart';
 /// Input properties used for looking up and filtering PrivateConnection resources.
 class PrivateConnectionState {
   /// If set to true, will skip validations.
-  final pulumi.Input<bool>? createWithoutValidation;
+  final pulumi.Input<bool?>? createWithoutValidation;
   /// The deletion policy for the private connection. Setting `FORCE` will also delete any child
   /// routes that belong to this private connection. Setting `DEFAULT` will fail the delete if
   /// child routes exist. Defaults to `FORCE` for backwards compatibility.
@@ -18,40 +18,40 @@ class PrivateConnectionState {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", the command will behave as if set to "DEFAULT".
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Display name.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveLabels;
+  final pulumi.Input<Map<String, String>?>? effectiveLabels;
   /// The PrivateConnection error in case of failure.
   /// Structure is documented below.
-  final pulumi.Input<List<PrivateConnectionError>>? errors;
+  final pulumi.Input<List<PrivateConnectionError>?>? errors;
   /// Labels.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The name of the location this private connection is located in.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The resource's name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The private connectivity identifier.
-  final pulumi.Input<String>? privateConnectionId;
+  final pulumi.Input<String?>? privateConnectionId;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The PSC Interface configuration is used to create PSC Interface
   /// between Datastream and the consumer's PSC.
   /// Structure is documented below.
-  final pulumi.Input<PrivateConnectionPscInterfaceConfig>? pscInterfaceConfig;
+  final pulumi.Input<PrivateConnectionPscInterfaceConfig?>? pscInterfaceConfig;
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  final pulumi.Input<Map<String, String>>? pulumiLabels;
+  final pulumi.Input<Map<String, String>?>? pulumiLabels;
   /// State of the PrivateConnection.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// The VPC Peering configuration is used to create VPC peering
   /// between Datastream and the consumer's VPC.
   /// Structure is documented below.
-  final pulumi.Input<PrivateConnectionVpcPeeringConfig>? vpcPeeringConfig;
+  final pulumi.Input<PrivateConnectionVpcPeeringConfig?>? vpcPeeringConfig;
 
   /// Creates a new [PrivateConnectionState].
   /// [createWithoutValidation] If set to true, will skip validations.

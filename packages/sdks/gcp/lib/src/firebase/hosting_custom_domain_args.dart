@@ -11,7 +11,7 @@ class HostingCustomDomainArgs {
   /// for your domain name. Spark plan `CustomDomain`s only have access to the
   /// `GROUPED` cert type, while Blaze plan can select any option.
   /// Possible values are: `GROUPED`, `PROJECT_GROUPED`, `DEDICATED`.
-  final pulumi.Input<String>? certPreference;
+  final pulumi.Input<String?>? certPreference;
   /// The ID of the `CustomDomain`, which is the domain name you'd like to use with Firebase Hosting.
   final pulumi.Input<String> customDomain;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -20,21 +20,21 @@ class HostingCustomDomainArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// A domain name that this CustomDomain should direct traffic towards. If
   /// specified, Hosting will respond to requests against this CustomDomain
   /// with an HTTP 301 code, and route traffic to the specified `redirectTarget`
   /// instead.
-  final pulumi.Input<String>? redirectTarget;
+  final pulumi.Input<String?>? redirectTarget;
   /// The ID of the site in which to create this custom domain association.
   final pulumi.Input<String> siteId;
   /// If true, Terraform will wait for DNS records to be fully resolved on the `CustomDomain`.
   /// If false, Terraform will not wait for DNS records on the `CustomDomain`. Any issues in
   /// the `CustomDomain` will be returned and stored in the Terraform state.
-  final pulumi.Input<bool>? waitDnsVerification;
+  final pulumi.Input<bool?>? waitDnsVerification;
 
   /// Creates a new [HostingCustomDomainArgs].
   /// [certPreference] A field that lets you specify which SSL certificate type Hosting creates

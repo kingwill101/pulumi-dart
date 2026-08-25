@@ -8,12 +8,12 @@ class RuntimeVirtualMachineVirtualMachineConfigDataDisk {
   /// Optional. Specifies whether the disk will be auto-deleted
   /// when the instance is deleted (but not when the disk is
   /// detached from the instance).
-  final pulumi.Input<bool>? autoDelete;
+  final pulumi.Input<bool?>? autoDelete;
   /// (Output)
   /// Optional. Indicates that this is a boot disk. The virtual
   /// machine will use the first partition of the disk for its
   /// root filesystem.
-  final pulumi.Input<bool>? boot;
+  final pulumi.Input<bool?>? boot;
   /// (Output)
   /// Optional. Specifies a unique device name of your choice
   /// that is reflected into the /dev/disk/by-id/google-* tree
@@ -24,19 +24,19 @@ class RuntimeVirtualMachineVirtualMachineConfigDataDisk {
   /// to apply to this disk, in the form persistent-disk-x, where
   /// x is a number assigned by Google Compute Engine. This field
   /// is only applicable for persistent disks.
-  final pulumi.Input<String>? deviceName;
+  final pulumi.Input<String?>? deviceName;
   /// (Output)
   /// Indicates a list of features to enable on the guest operating
   /// system. Applicable only for bootable images. To see a list of
   /// available features, read `https://cloud.google.com/compute/docs/
   /// images/create-delete-deprecate-private-images#guest-os-features`
   /// options. ``
-  final pulumi.Input<List<String>>? guestOsFeatures;
+  final pulumi.Input<List<String>?>? guestOsFeatures;
   /// (Output)
   /// Output only. A zero-based index to this disk, where 0 is
   /// reserved for the boot disk. If you have many disks attached
   /// to an instance, each disk would have a unique index number.
-  final pulumi.Input<int>? index;
+  final pulumi.Input<int?>? index;
   /// Input only. Specifies the parameters for a new disk that will
   /// be created alongside the new instance. Use initialization
   /// parameters to create boot disks or local SSDs attached to the
@@ -44,31 +44,31 @@ class RuntimeVirtualMachineVirtualMachineConfigDataDisk {
   /// source property; you can only define one or the other, but not
   /// both.
   /// Structure is documented below.
-  final pulumi.Input<RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParams>? initializeParams;
+  final pulumi.Input<RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParams?>? initializeParams;
   /// "Specifies the disk interface to use for attaching this disk,
   /// which is either SCSI or NVME. The default is SCSI. Persistent
   /// disks must always use SCSI and the request will fail if you attempt
   /// to attach a persistent disk in any other format than SCSI. Local SSDs
   /// can use either NVME or SCSI. For performance characteristics of SCSI
   /// over NVMe, see Local SSD performance. Valid values: * NVME * SCSI".
-  final pulumi.Input<String>? interface;
+  final pulumi.Input<String?>? interface;
   /// (Output)
   /// Type of the resource. Always compute#attachedDisk for attached
   /// disks.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// (Output)
   /// Output only. Any valid publicly visible licenses.
-  final pulumi.Input<List<String>>? licenses;
+  final pulumi.Input<List<String>?>? licenses;
   /// The mode in which to attach this disk, either READ_WRITE
   /// or READ_ONLY. If not specified, the default is to attach
   /// the disk in READ_WRITE mode.
-  final pulumi.Input<String>? mode;
+  final pulumi.Input<String?>? mode;
   /// Specifies a valid partial or full URL to an existing
   /// Persistent Disk resource.
-  final pulumi.Input<String>? source;
+  final pulumi.Input<String?>? source;
   /// Specifies the type of the disk, either SCRATCH or PERSISTENT.
   /// If not specified, the default is PERSISTENT.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [RuntimeVirtualMachineVirtualMachineConfigDataDisk].
   /// [autoDelete] (Output)
@@ -121,7 +121,7 @@ class RuntimeVirtualMachineVirtualMachineConfigDataDisk {
       boot: (() { final guardedValue = map['boot']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       deviceName: (() { final guardedValue = map['deviceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       guestOsFeatures: (() { final guardedValue = map['guestOsFeatures']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      index: (() { final guardedValue = map['index']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      index: (() { final guardedValue = map['index']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       initializeParams: (() { final guardedValue = map['initializeParams']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParams.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       interface: (() { final guardedValue = map['interface']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

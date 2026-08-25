@@ -143,7 +143,7 @@ class ProjectDefaultNetworkTier extends pulumi.CustomResource {
           'gcp:compute/projectDefaultNetworkTier:ProjectDefaultNetworkTier',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     networkTier = registerOutput<String>('networkTier');
     project = registerOutput<String>('project');
@@ -154,11 +154,12 @@ class ProjectDefaultNetworkTier extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ProjectDefaultNetworkTierState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ProjectDefaultNetworkTier._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -172,6 +173,19 @@ class ProjectDefaultNetworkTier extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    networkTier = registerOutput<String>('networkTier');
+    project = registerOutput<String>('project');
+  }
+
+  /// Creates a typed reference to an existing [ProjectDefaultNetworkTier] resource.
+  ProjectDefaultNetworkTier.reference(String urn)
+    : super(
+        'gcp:compute/projectDefaultNetworkTier:ProjectDefaultNetworkTier',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     networkTier = registerOutput<String>('networkTier');
     project = registerOutput<String>('project');
   }

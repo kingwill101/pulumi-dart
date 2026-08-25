@@ -197,7 +197,7 @@ class ProjectConfig extends pulumi.CustomResource {
           'gcp:artifactregistry/projectConfig:ProjectConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -210,11 +210,12 @@ class ProjectConfig extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ProjectConfigState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ProjectConfig._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -228,6 +229,21 @@ class ProjectConfig extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    platformLogsConfig = registerOutput<ProjectConfigPlatformLogsConfig?>('platformLogsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProjectConfigPlatformLogsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    project = registerOutput<String>('project');
+  }
+
+  /// Creates a typed reference to an existing [ProjectConfig] resource.
+  ProjectConfig.reference(String urn)
+    : super(
+        'gcp:artifactregistry/projectConfig:ProjectConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     platformLogsConfig = registerOutput<ProjectConfigPlatformLogsConfig?>('platformLogsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProjectConfigPlatformLogsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

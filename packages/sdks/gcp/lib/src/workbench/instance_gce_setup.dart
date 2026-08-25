@@ -17,54 +17,54 @@ class InstanceGceSetup {
   /// [enough vCPUs and memory to support the `machineType` you have selected](https://cloud.google.com/compute/docs/gpus/#gpus-list).
   /// Currently supports only one accelerator configuration.
   /// Structure is documented below.
-  final pulumi.Input<List<InstanceGceSetupAcceleratorConfig>>? acceleratorConfigs;
+  final pulumi.Input<List<InstanceGceSetupAcceleratorConfig>?>? acceleratorConfigs;
   /// The definition of a boot disk.
   /// Structure is documented below.
-  final pulumi.Input<InstanceGceSetupBootDisk>? bootDisk;
+  final pulumi.Input<InstanceGceSetupBootDisk?>? bootDisk;
   /// (Output)
   /// Output only. The unique numeric identifier of the underlying Compute Engine VM instance.
-  final pulumi.Input<String>? computeInstanceId;
+  final pulumi.Input<String?>? computeInstanceId;
   /// Confidential instance configuration.
   /// Structure is documented below.
-  final pulumi.Input<InstanceGceSetupConfidentialInstanceConfig>? confidentialInstanceConfig;
+  final pulumi.Input<InstanceGceSetupConfidentialInstanceConfig?>? confidentialInstanceConfig;
   /// Use a container image to start the workbench instance.
   /// Structure is documented below.
-  final pulumi.Input<InstanceGceSetupContainerImage>? containerImage;
+  final pulumi.Input<InstanceGceSetupContainerImage?>? containerImage;
   /// Data disks attached to the VM instance. Currently supports only one data disk.
   /// Structure is documented below.
-  final pulumi.Input<InstanceGceSetupDataDisks>? dataDisks;
+  final pulumi.Input<InstanceGceSetupDataDisks?>? dataDisks;
   /// Optional. If true, no external IP will be assigned to this VM instance.
-  final pulumi.Input<bool>? disablePublicIp;
+  final pulumi.Input<bool?>? disablePublicIp;
   /// Optional. Flag to enable ip forwarding or not, default false/off.
   /// https://cloud.google.com/vpc/docs/using-routes#canipforward
-  final pulumi.Input<bool>? enableIpForwarding;
+  final pulumi.Input<bool?>? enableIpForwarding;
   /// Optional. The machine type of the VM instance. https://cloud.google.com/compute/docs/machine-resource
-  final pulumi.Input<String>? machineType;
+  final pulumi.Input<String?>? machineType;
   /// Optional. Custom metadata to apply to this instance.
-  final pulumi.Input<Map<String, String>>? metadata;
+  final pulumi.Input<Map<String, String>?>? metadata;
   /// Optional. The minimum CPU platform to use for this instance.
-  final pulumi.Input<String>? minCpuPlatform;
+  final pulumi.Input<String?>? minCpuPlatform;
   /// The network interfaces for the VM. Supports only one interface.
   /// Structure is documented below.
-  final pulumi.Input<List<InstanceGceSetupNetworkInterface>>? networkInterfaces;
+  final pulumi.Input<List<InstanceGceSetupNetworkInterface>?>? networkInterfaces;
   /// Reservations that this instance can consume from.
   /// Structure is documented below.
-  final pulumi.Input<InstanceGceSetupReservationAffinity>? reservationAffinity;
+  final pulumi.Input<InstanceGceSetupReservationAffinity?>? reservationAffinity;
   /// The service account that serves as an identity for the VM instance. Currently supports only one service account.
   /// Structure is documented below.
-  final pulumi.Input<List<InstanceGceSetupServiceAccount>>? serviceAccounts;
+  final pulumi.Input<List<InstanceGceSetupServiceAccount>?>? serviceAccounts;
   /// A set of Shielded Instance options. See [Images using supported Shielded
   /// VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm).
   /// Not all combinations are valid.
   /// Structure is documented below.
-  final pulumi.Input<InstanceGceSetupShieldedInstanceConfig>? shieldedInstanceConfig;
+  final pulumi.Input<InstanceGceSetupShieldedInstanceConfig?>? shieldedInstanceConfig;
   /// Optional. The Compute Engine tags to add to instance (see [Tagging
   /// instances](https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).
-  final pulumi.Input<List<String>>? tags;
+  final pulumi.Input<List<String>?>? tags;
   /// Definition of a custom Compute Engine virtual machine image for starting
   /// a workbench instance with the environment installed directly on the VM.
   /// Structure is documented below.
-  final pulumi.Input<InstanceGceSetupVmImage>? vmImage;
+  final pulumi.Input<InstanceGceSetupVmImage?>? vmImage;
 
   /// Creates a new [InstanceGceSetup].
   /// [acceleratorConfigs] The hardware accelerators used on this instance. If you use accelerators, make sure that your configuration has

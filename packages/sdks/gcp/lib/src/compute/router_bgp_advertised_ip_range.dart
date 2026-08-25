@@ -6,7 +6,7 @@ class RouterBgpAdvertisedIpRange {
   /// User-specified description for the IP range.
   ///
   /// &lt;a name="nestedMd5AuthenticationKeys"&gt;&lt;/a&gt;The `md5AuthenticationKeys` block supports:
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The IP range to advertise. The value must be a
   /// CIDR-formatted string.
   final pulumi.Input<String> range;

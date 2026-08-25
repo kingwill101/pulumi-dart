@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'external_vpn_gateway_args.dart';
+import 'external_vpn_gateway_interface.dart';
 import 'external_vpn_gateway_params.dart';
 import 'external_vpn_gateway_state.dart';
 
@@ -854,7 +855,7 @@ class ExternalVpnGateway extends pulumi.CustomResource {
   late final pulumi.Output<Map<String, String>> effectiveLabels;
   /// A list of interfaces on this external VPN gateway.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> interfaces;
+  late final pulumi.Output<List<ExternalVpnGatewayInterface>?> interfaces;
   /// The fingerprint used for optimistic locking of this resource.  Used
   /// internally during updates.
   late final pulumi.Output<String> labelFingerprint;
@@ -897,18 +898,19 @@ class ExternalVpnGateway extends pulumi.CustomResource {
           'gcp:compute/externalVpnGateway:ExternalVpnGateway',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    interfaces = registerOutput<List<Map<String, dynamic>>?>('interfaces');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    interfaces = registerOutput<List<ExternalVpnGatewayInterface>?>('interfaces', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ExternalVpnGatewayInterface>(guardedValue, (value) => ExternalVpnGatewayInterface.fromMap((value as Map).cast<String, dynamic>())); });
     labelFingerprint = registerOutput<String>('labelFingerprint');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     params = registerOutput<ExternalVpnGatewayParams?>('params', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExternalVpnGatewayParams.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     redundancyType = registerOutput<String?>('redundancyType');
     selfLink = registerOutput<String>('selfLink');
   }
@@ -918,11 +920,12 @@ class ExternalVpnGateway extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ExternalVpnGatewayState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ExternalVpnGateway._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -938,14 +941,38 @@ class ExternalVpnGateway extends pulumi.CustomResource {
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    interfaces = registerOutput<List<Map<String, dynamic>>?>('interfaces');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    interfaces = registerOutput<List<ExternalVpnGatewayInterface>?>('interfaces', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ExternalVpnGatewayInterface>(guardedValue, (value) => ExternalVpnGatewayInterface.fromMap((value as Map).cast<String, dynamic>())); });
     labelFingerprint = registerOutput<String>('labelFingerprint');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     params = registerOutput<ExternalVpnGatewayParams?>('params', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExternalVpnGatewayParams.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    redundancyType = registerOutput<String?>('redundancyType');
+    selfLink = registerOutput<String>('selfLink');
+  }
+
+  /// Creates a typed reference to an existing [ExternalVpnGateway] resource.
+  ExternalVpnGateway.reference(String urn)
+    : super(
+        'gcp:compute/externalVpnGateway:ExternalVpnGateway',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    interfaces = registerOutput<List<ExternalVpnGatewayInterface>?>('interfaces', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ExternalVpnGatewayInterface>(guardedValue, (value) => ExternalVpnGatewayInterface.fromMap((value as Map).cast<String, dynamic>())); });
+    labelFingerprint = registerOutput<String>('labelFingerprint');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    this.name = registerOutput<String>('name');
+    params = registerOutput<ExternalVpnGatewayParams?>('params', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExternalVpnGatewayParams.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     redundancyType = registerOutput<String?>('redundancyType');
     selfLink = registerOutput<String>('selfLink');
   }

@@ -1,6 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'instance_args.dart';
 import 'instance_maintenance_policy.dart';
+import 'instance_maintenance_schedule.dart';
+import 'instance_memcache_node.dart';
 import 'instance_memcache_parameters.dart';
 import 'instance_node_config.dart';
 import 'instance_state.dart';
@@ -535,12 +537,12 @@ class Instance extends pulumi.CustomResource {
   late final pulumi.Output<InstanceMaintenancePolicy?> maintenancePolicy;
   /// Output only. Published maintenance schedule.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> maintenanceSchedules;
+  late final pulumi.Output<List<InstanceMaintenanceSchedule>> maintenanceSchedules;
   /// The full version of memcached server running on this instance.
   late final pulumi.Output<String> memcacheFullVersion;
   /// Additional information about the instance state, if available.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> memcacheNodes;
+  late final pulumi.Output<List<InstanceMemcacheNode>> memcacheNodes;
   /// User-specified parameters for this memcache instance.
   /// Structure is documented below.
   late final pulumi.Output<InstanceMemcacheParameters?> memcacheParameters;
@@ -585,7 +587,8 @@ class Instance extends pulumi.CustomResource {
           'gcp:memcache/instance:Instance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     authorizedNetwork = registerOutput<String>('authorizedNetwork');
     createTime = registerOutput<String>('createTime');
@@ -593,22 +596,22 @@ class Instance extends pulumi.CustomResource {
     deletionProtection = registerOutput<bool?>('deletionProtection');
     discoveryEndpoint = registerOutput<String>('discoveryEndpoint');
     displayName = registerOutput<String>('displayName');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    labels = registerOutput<Map<String, String>?>('labels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     maintenancePolicy = registerOutput<InstanceMaintenancePolicy?>('maintenancePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceMaintenancePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    maintenanceSchedules = registerOutput<List<Map<String, dynamic>>>('maintenanceSchedules');
+    maintenanceSchedules = registerOutput<List<InstanceMaintenanceSchedule>>('maintenanceSchedules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InstanceMaintenanceSchedule>(guardedValue, (value) => InstanceMaintenanceSchedule.fromMap((value as Map).cast<String, dynamic>())); });
     memcacheFullVersion = registerOutput<String>('memcacheFullVersion');
-    memcacheNodes = registerOutput<List<Map<String, dynamic>>>('memcacheNodes');
+    memcacheNodes = registerOutput<List<InstanceMemcacheNode>>('memcacheNodes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InstanceMemcacheNode>(guardedValue, (value) => InstanceMemcacheNode.fromMap((value as Map).cast<String, dynamic>())); });
     memcacheParameters = registerOutput<InstanceMemcacheParameters?>('memcacheParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceMemcacheParameters.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     memcacheVersion = registerOutput<String?>('memcacheVersion');
     this.name = registerOutput<String>('name');
     nodeConfig = registerOutput<InstanceNodeConfig>('nodeConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceNodeConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     nodeCount = registerOutput<int>('nodeCount');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     region = registerOutput<String>('region');
-    reservedIpRangeIds = registerOutput<List<String>?>('reservedIpRangeIds');
-    zones = registerOutput<List<String>>('zones');
+    reservedIpRangeIds = registerOutput<List<String>?>('reservedIpRangeIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    zones = registerOutput<List<String>>('zones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [Instance] resource's state with the given [name] and [id].
@@ -616,11 +619,12 @@ class Instance extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     InstanceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Instance._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -640,21 +644,55 @@ class Instance extends pulumi.CustomResource {
     deletionProtection = registerOutput<bool?>('deletionProtection');
     discoveryEndpoint = registerOutput<String>('discoveryEndpoint');
     displayName = registerOutput<String>('displayName');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    labels = registerOutput<Map<String, String>?>('labels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     maintenancePolicy = registerOutput<InstanceMaintenancePolicy?>('maintenancePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceMaintenancePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    maintenanceSchedules = registerOutput<List<Map<String, dynamic>>>('maintenanceSchedules');
+    maintenanceSchedules = registerOutput<List<InstanceMaintenanceSchedule>>('maintenanceSchedules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InstanceMaintenanceSchedule>(guardedValue, (value) => InstanceMaintenanceSchedule.fromMap((value as Map).cast<String, dynamic>())); });
     memcacheFullVersion = registerOutput<String>('memcacheFullVersion');
-    memcacheNodes = registerOutput<List<Map<String, dynamic>>>('memcacheNodes');
+    memcacheNodes = registerOutput<List<InstanceMemcacheNode>>('memcacheNodes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InstanceMemcacheNode>(guardedValue, (value) => InstanceMemcacheNode.fromMap((value as Map).cast<String, dynamic>())); });
     memcacheParameters = registerOutput<InstanceMemcacheParameters?>('memcacheParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceMemcacheParameters.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     memcacheVersion = registerOutput<String?>('memcacheVersion');
     this.name = registerOutput<String>('name');
     nodeConfig = registerOutput<InstanceNodeConfig>('nodeConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceNodeConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     nodeCount = registerOutput<int>('nodeCount');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     region = registerOutput<String>('region');
-    reservedIpRangeIds = registerOutput<List<String>?>('reservedIpRangeIds');
-    zones = registerOutput<List<String>>('zones');
+    reservedIpRangeIds = registerOutput<List<String>?>('reservedIpRangeIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    zones = registerOutput<List<String>>('zones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Instance] resource.
+  Instance.reference(String urn)
+    : super(
+        'gcp:memcache/instance:Instance',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    authorizedNetwork = registerOutput<String>('authorizedNetwork');
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    deletionProtection = registerOutput<bool?>('deletionProtection');
+    discoveryEndpoint = registerOutput<String>('discoveryEndpoint');
+    displayName = registerOutput<String>('displayName');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    maintenancePolicy = registerOutput<InstanceMaintenancePolicy?>('maintenancePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceMaintenancePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    maintenanceSchedules = registerOutput<List<InstanceMaintenanceSchedule>>('maintenanceSchedules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InstanceMaintenanceSchedule>(guardedValue, (value) => InstanceMaintenanceSchedule.fromMap((value as Map).cast<String, dynamic>())); });
+    memcacheFullVersion = registerOutput<String>('memcacheFullVersion');
+    memcacheNodes = registerOutput<List<InstanceMemcacheNode>>('memcacheNodes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InstanceMemcacheNode>(guardedValue, (value) => InstanceMemcacheNode.fromMap((value as Map).cast<String, dynamic>())); });
+    memcacheParameters = registerOutput<InstanceMemcacheParameters?>('memcacheParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceMemcacheParameters.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    memcacheVersion = registerOutput<String?>('memcacheVersion');
+    this.name = registerOutput<String>('name');
+    nodeConfig = registerOutput<InstanceNodeConfig>('nodeConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceNodeConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    nodeCount = registerOutput<int>('nodeCount');
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    region = registerOutput<String>('region');
+    reservedIpRangeIds = registerOutput<List<String>?>('reservedIpRangeIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    zones = registerOutput<List<String>>('zones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

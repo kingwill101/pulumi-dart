@@ -8,13 +8,13 @@ class ServicePerimeterSpecIngressPolicy {
   /// Defines the conditions on the source of a request causing this `IngressPolicy`
   /// to apply.
   /// Structure is documented below.
-  final pulumi.Input<ServicePerimeterSpecIngressPolicyIngressFrom>? ingressFrom;
+  final pulumi.Input<ServicePerimeterSpecIngressPolicyIngressFrom?>? ingressFrom;
   /// Defines the conditions on the `ApiOperation` and request destination that cause
   /// this `IngressPolicy` to apply.
   /// Structure is documented below.
-  final pulumi.Input<ServicePerimeterSpecIngressPolicyIngressTo>? ingressTo;
+  final pulumi.Input<ServicePerimeterSpecIngressPolicyIngressTo?>? ingressTo;
   /// Human readable title. Must be unique within the perimeter. Does not affect behavior.
-  final pulumi.Input<String>? title;
+  final pulumi.Input<String?>? title;
 
   /// Creates a new [ServicePerimeterSpecIngressPolicy].
   /// [ingressFrom] Defines the conditions on the source of a request causing this `IngressPolicy`

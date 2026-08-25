@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ToolAgentTool {
   /// Optional. The resource name of the agent that is the entry point of the tool.
   /// Format: projects/{project}/locations/{location}/agents/{agent}
-  final pulumi.Input<String>? agent;
+  final pulumi.Input<String?>? agent;
   /// Optional. Description of the tool's purpose.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Required. The name of the agent tool.
   final pulumi.Input<String> name;
 

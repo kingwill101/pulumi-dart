@@ -263,7 +263,7 @@ class NetworkFirewallPolicyAssociation extends pulumi.CustomResource {
           'gcp:compute/networkFirewallPolicyAssociation:NetworkFirewallPolicyAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     attachmentTarget = registerOutput<String>('attachmentTarget');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -278,11 +278,12 @@ class NetworkFirewallPolicyAssociation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     NetworkFirewallPolicyAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return NetworkFirewallPolicyAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -296,6 +297,23 @@ class NetworkFirewallPolicyAssociation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    attachmentTarget = registerOutput<String>('attachmentTarget');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    firewallPolicy = registerOutput<String>('firewallPolicy');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    shortName = registerOutput<String>('shortName');
+  }
+
+  /// Creates a typed reference to an existing [NetworkFirewallPolicyAssociation] resource.
+  NetworkFirewallPolicyAssociation.reference(String urn)
+    : super(
+        'gcp:compute/networkFirewallPolicyAssociation:NetworkFirewallPolicyAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     attachmentTarget = registerOutput<String>('attachmentTarget');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     firewallPolicy = registerOutput<String>('firewallPolicy');

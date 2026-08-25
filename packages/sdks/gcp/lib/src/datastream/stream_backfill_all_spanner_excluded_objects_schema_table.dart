@@ -6,7 +6,7 @@ import 'stream_backfill_all_spanner_excluded_objects_schema_table_column.dart';
 class StreamBackfillAllSpannerExcludedObjectsSchemaTable {
   /// Spanner columns in the table. When unspecified as part of include/exclude objects, includes/excludes everything.
   /// Structure is documented below.
-  final pulumi.Input<List<StreamBackfillAllSpannerExcludedObjectsSchemaTableColumn>>? columns;
+  final pulumi.Input<List<StreamBackfillAllSpannerExcludedObjectsSchemaTableColumn>?>? columns;
   /// Table name.
   final pulumi.Input<String> table;
 

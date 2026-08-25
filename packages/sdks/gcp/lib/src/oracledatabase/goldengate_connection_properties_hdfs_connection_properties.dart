@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoldengateConnectionPropertiesHdfsConnectionProperties {
   /// The content of the Hadoop Distributed File System
   /// configuration file (core-site.xml).
-  final pulumi.Input<String>? coreSiteXml;
+  final pulumi.Input<String?>? coreSiteXml;
   /// The technology type of HdfsConnection.
-  final pulumi.Input<String>? technologyType;
+  final pulumi.Input<String?>? technologyType;
 
   /// Creates a new [GoldengateConnectionPropertiesHdfsConnectionProperties].
   /// [coreSiteXml] The content of the Hadoop Distributed File System

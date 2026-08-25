@@ -652,7 +652,7 @@ class Floorsetting extends pulumi.CustomResource {
           'gcp:modelarmor/floorsetting:Floorsetting',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     aiPlatformFloorSetting = registerOutput<FloorsettingAiPlatformFloorSetting?>('aiPlatformFloorSetting', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FloorsettingAiPlatformFloorSetting.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
@@ -660,7 +660,7 @@ class Floorsetting extends pulumi.CustomResource {
     filterConfig = registerOutput<FloorsettingFilterConfig>('filterConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FloorsettingFilterConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     floorSettingMetadata = registerOutput<FloorsettingFloorSettingMetadata?>('floorSettingMetadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FloorsettingFloorSettingMetadata.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     googleMcpServerFloorSetting = registerOutput<FloorsettingGoogleMcpServerFloorSetting?>('googleMcpServerFloorSetting', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FloorsettingGoogleMcpServerFloorSetting.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    integratedServices = registerOutput<List<String>?>('integratedServices');
+    integratedServices = registerOutput<List<String>?>('integratedServices', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     parent = registerOutput<String>('parent');
@@ -672,11 +672,12 @@ class Floorsetting extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FloorsettingState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Floorsetting._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -696,7 +697,29 @@ class Floorsetting extends pulumi.CustomResource {
     filterConfig = registerOutput<FloorsettingFilterConfig>('filterConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FloorsettingFilterConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     floorSettingMetadata = registerOutput<FloorsettingFloorSettingMetadata?>('floorSettingMetadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FloorsettingFloorSettingMetadata.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     googleMcpServerFloorSetting = registerOutput<FloorsettingGoogleMcpServerFloorSetting?>('googleMcpServerFloorSetting', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FloorsettingGoogleMcpServerFloorSetting.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    integratedServices = registerOutput<List<String>?>('integratedServices');
+    integratedServices = registerOutput<List<String>?>('integratedServices', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    parent = registerOutput<String>('parent');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [Floorsetting] resource.
+  Floorsetting.reference(String urn)
+    : super(
+        'gcp:modelarmor/floorsetting:Floorsetting',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    aiPlatformFloorSetting = registerOutput<FloorsettingAiPlatformFloorSetting?>('aiPlatformFloorSetting', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FloorsettingAiPlatformFloorSetting.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createTime = registerOutput<String>('createTime');
+    enableFloorSettingEnforcement = registerOutput<bool?>('enableFloorSettingEnforcement');
+    filterConfig = registerOutput<FloorsettingFilterConfig>('filterConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FloorsettingFilterConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    floorSettingMetadata = registerOutput<FloorsettingFloorSettingMetadata?>('floorSettingMetadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FloorsettingFloorSettingMetadata.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    googleMcpServerFloorSetting = registerOutput<FloorsettingGoogleMcpServerFloorSetting?>('googleMcpServerFloorSetting', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FloorsettingGoogleMcpServerFloorSetting.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    integratedServices = registerOutput<List<String>?>('integratedServices', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     parent = registerOutput<String>('parent');

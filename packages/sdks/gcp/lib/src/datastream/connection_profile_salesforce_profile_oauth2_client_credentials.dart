@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConnectionProfileSalesforceProfileOauth2ClientCredentials {
   /// Client ID to use for authentication.
-  final pulumi.Input<String>? clientId;
+  final pulumi.Input<String?>? clientId;
   /// Client secret to use for authentication.
-  final pulumi.Input<String>? clientSecret;
+  final pulumi.Input<String?>? clientSecret;
   /// A reference to a Secret Manager resource name storing the client secret.
-  final pulumi.Input<String>? secretManagerStoredClientSecret;
+  final pulumi.Input<String?>? secretManagerStoredClientSecret;
 
   /// Creates a new [ConnectionProfileSalesforceProfileOauth2ClientCredentials].
   /// [clientId] Client ID to use for authentication.

@@ -16,117 +16,117 @@ class InstanceArgs {
   /// make sure that your configuration has enough vCPUs and memory to support the
   /// machineType you have selected.
   /// Structure is documented below.
-  final pulumi.Input<InstanceAcceleratorConfig>? acceleratorConfig;
+  final pulumi.Input<InstanceAcceleratorConfig?>? acceleratorConfig;
   /// The size of the boot disk in GB attached to this instance,
   /// up to a maximum of 64000 GB (64 TB). The minimum recommended value is 100 GB.
   /// If not specified, this defaults to 100.
-  final pulumi.Input<int>? bootDiskSizeGb;
+  final pulumi.Input<int?>? bootDiskSizeGb;
   /// Possible disk types for notebook instances.
   /// Possible values are: `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
-  final pulumi.Input<String>? bootDiskType;
+  final pulumi.Input<String?>? bootDiskType;
   /// Use a container image to start the notebook instance.
   /// Structure is documented below.
-  final pulumi.Input<InstanceContainerImage>? containerImage;
+  final pulumi.Input<InstanceContainerImage?>? containerImage;
   /// Instance creation time
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Specify a custom Cloud Storage path where the GPU driver is stored.
   /// If not specified, we'll automatically choose from official GPU drivers.
-  final pulumi.Input<String>? customGpuDriverPath;
+  final pulumi.Input<String?>? customGpuDriverPath;
   /// The size of the data disk in GB attached to this instance,
   /// up to a maximum of 64000 GB (64 TB).
   /// You can choose the size of the data disk based on how big your notebooks and data are.
   /// If not specified, this defaults to 100.
-  final pulumi.Input<int>? dataDiskSizeGb;
+  final pulumi.Input<int?>? dataDiskSizeGb;
   /// Possible disk types for notebook instances.
   /// Possible values are: `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
-  final pulumi.Input<String>? dataDiskType;
+  final pulumi.Input<String?>? dataDiskType;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Desired state of the Notebook Instance. Set this field to `ACTIVE` to start the Instance, and `STOPPED` to stop the Instance.
-  final pulumi.Input<String>? desiredState;
+  final pulumi.Input<String?>? desiredState;
   /// Disk encryption method used on the boot and data disks, defaults to GMEK.
   /// Possible values are: `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, `CMEK`.
-  final pulumi.Input<String>? diskEncryption;
+  final pulumi.Input<String?>? diskEncryption;
   /// Whether the end user authorizes Google Cloud to install GPU driver
   /// on this instance. If this field is empty or set to false, the GPU driver
   /// won't be installed. Only applicable to instances with GPUs.
-  final pulumi.Input<bool>? installGpuDriver;
+  final pulumi.Input<bool?>? installGpuDriver;
   /// The list of owners of this instance after creation.
   /// Format: alias@example.com.
   /// Currently supports one owner only.
   /// If not specified, all of the service account users of
   /// your VM instance's service account can use the instance.
-  final pulumi.Input<List<String>>? instanceOwners;
+  final pulumi.Input<List<String>?>? instanceOwners;
   /// The KMS key used to encrypt the disks, only applicable if diskEncryption is CMEK.
   /// Format: projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}
-  final pulumi.Input<String>? kmsKey;
+  final pulumi.Input<String?>? kmsKey;
   /// Labels to apply to this instance. These can be later modified by the setLabels method.
   /// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// A reference to the zone where the machine resides.
   final pulumi.Input<String> location;
   /// A reference to a machine type which defines VM kind.
   final pulumi.Input<String> machineType;
   /// Custom metadata to apply to this instance.
   /// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
-  final pulumi.Input<Map<String, String>>? metadata;
+  final pulumi.Input<Map<String, String>?>? metadata;
   /// The name specified for the Notebook instance.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the VPC that this instance is in.
   /// Format: projects/{project_id}/global/networks/{network_id}
-  final pulumi.Input<String>? network;
+  final pulumi.Input<String?>? network;
   /// The type of vNIC driver.
   /// Possible values are: `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, `GVNIC`.
-  final pulumi.Input<String>? nicType;
+  final pulumi.Input<String?>? nicType;
   /// The notebook instance will not register with the proxy..
-  final pulumi.Input<bool>? noProxyAccess;
+  final pulumi.Input<bool?>? noProxyAccess;
   /// No public IP will be assigned to this instance.
-  final pulumi.Input<bool>? noPublicIp;
+  final pulumi.Input<bool?>? noPublicIp;
   /// If true, the data disk will not be auto deleted when deleting the instance.
-  final pulumi.Input<bool>? noRemoveDataDisk;
+  final pulumi.Input<bool?>? noRemoveDataDisk;
   /// Path to a Bash script that automatically runs after a
   /// notebook instance fully boots up. The path must be a URL
   /// or Cloud Storage path (gs://path-to-file/file-name).
-  final pulumi.Input<String>? postStartupScript;
+  final pulumi.Input<String?>? postStartupScript;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Reservation Affinity for consuming Zonal reservation.
   /// Structure is documented below.
-  final pulumi.Input<InstanceReservationAffinity>? reservationAffinity;
+  final pulumi.Input<InstanceReservationAffinity?>? reservationAffinity;
   /// The service account on this instance, giving access to other
   /// Google Cloud services. You can use any service account within
   /// the same project, but you must have the service account user
   /// permission to use the instance. If not specified,
   /// the Compute Engine default service account is used.
-  final pulumi.Input<String>? serviceAccount;
+  final pulumi.Input<String?>? serviceAccount;
   /// Optional. The URIs of service account scopes to be included in Compute Engine instances.
   /// If not specified, the following scopes are defined:
   /// - https://www.googleapis.com/auth/cloud-platform
   /// - https://www.googleapis.com/auth/userinfo.email
-  final pulumi.Input<List<String>>? serviceAccountScopes;
+  final pulumi.Input<List<String>?>? serviceAccountScopes;
   /// A set of Shielded Instance options. Check [Images using supported Shielded VM features]
   /// Not all combinations are valid
   /// Structure is documented below.
-  final pulumi.Input<InstanceShieldedInstanceConfig>? shieldedInstanceConfig;
+  final pulumi.Input<InstanceShieldedInstanceConfig?>? shieldedInstanceConfig;
   /// The name of the subnet that this instance is in.
   /// Format: projects/{project_id}/regions/{region}/subnetworks/{subnetwork_id}
-  final pulumi.Input<String>? subnet;
+  final pulumi.Input<String?>? subnet;
   /// The Compute Engine tags to add to instance.
-  final pulumi.Input<List<String>>? tags;
+  final pulumi.Input<List<String>?>? tags;
   /// Instance update time.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
   /// Use a Compute Engine VM image to start the notebook instance.
   /// Structure is documented below.
-  final pulumi.Input<InstanceVmImage>? vmImage;
+  final pulumi.Input<InstanceVmImage?>? vmImage;
 
   /// Creates a new [InstanceArgs].
   /// [acceleratorConfig] The hardware accelerator used on this instance. If you use accelerators,
@@ -242,12 +242,12 @@ class InstanceArgs {
   factory InstanceArgs.fromMap(Map<String, dynamic> map) {
     return InstanceArgs(
       acceleratorConfig: (() { final guardedValue = map['acceleratorConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InstanceAcceleratorConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      bootDiskSizeGb: (() { final guardedValue = map['bootDiskSizeGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      bootDiskSizeGb: (() { final guardedValue = map['bootDiskSizeGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       bootDiskType: (() { final guardedValue = map['bootDiskType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       containerImage: (() { final guardedValue = map['containerImage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InstanceContainerImage.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       customGpuDriverPath: (() { final guardedValue = map['customGpuDriverPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      dataDiskSizeGb: (() { final guardedValue = map['dataDiskSizeGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      dataDiskSizeGb: (() { final guardedValue = map['dataDiskSizeGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       dataDiskType: (() { final guardedValue = map['dataDiskType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       desiredState: (() { final guardedValue = map['desiredState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

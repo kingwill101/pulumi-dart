@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ControlConditionActiveTimeRange {
   /// The end time of the active time range.
-  final pulumi.Input<String>? endTime;
+  final pulumi.Input<String?>? endTime;
   /// The start time of the active time range.
-  final pulumi.Input<String>? startTime;
+  final pulumi.Input<String?>? startTime;
 
   /// Creates a new [ControlConditionActiveTimeRange].
   /// [endTime] The end time of the active time range.

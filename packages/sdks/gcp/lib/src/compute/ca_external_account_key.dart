@@ -165,13 +165,14 @@ class CaExternalAccountKey extends pulumi.CustomResource {
           'gcp:compute/caExternalAccountKey:CaExternalAccountKey',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['b64MacKey', 'b64urlMacKey', 'keyId', 'macKey'],
         ) {
-    b64MacKey = registerOutput<String>('b64MacKey');
-    b64urlMacKey = registerOutput<String>('b64urlMacKey');
-    keyId = registerOutput<String>('keyId');
+    b64MacKey = registerOutput<String>('b64MacKey', isSecret: true);
+    b64urlMacKey = registerOutput<String>('b64urlMacKey', isSecret: true);
+    keyId = registerOutput<String>('keyId', isSecret: true);
     location = registerOutput<String?>('location');
-    macKey = registerOutput<String>('macKey');
+    macKey = registerOutput<String>('macKey', isSecret: true);
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
   }
@@ -181,11 +182,12 @@ class CaExternalAccountKey extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CaExternalAccountKeyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return CaExternalAccountKey._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -199,11 +201,30 @@ class CaExternalAccountKey extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    b64MacKey = registerOutput<String>('b64MacKey');
-    b64urlMacKey = registerOutput<String>('b64urlMacKey');
-    keyId = registerOutput<String>('keyId');
+    b64MacKey = registerOutput<String>('b64MacKey', isSecret: true);
+    b64urlMacKey = registerOutput<String>('b64urlMacKey', isSecret: true);
+    keyId = registerOutput<String>('keyId', isSecret: true);
     location = registerOutput<String?>('location');
-    macKey = registerOutput<String>('macKey');
+    macKey = registerOutput<String>('macKey', isSecret: true);
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+  }
+
+  /// Creates a typed reference to an existing [CaExternalAccountKey] resource.
+  CaExternalAccountKey.reference(String urn)
+    : super(
+        'gcp:compute/caExternalAccountKey:CaExternalAccountKey',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['b64MacKey', 'b64urlMacKey', 'keyId', 'macKey'],
+        isResourceReference: true,
+      ) {
+    b64MacKey = registerOutput<String>('b64MacKey', isSecret: true);
+    b64urlMacKey = registerOutput<String>('b64urlMacKey', isSecret: true);
+    keyId = registerOutput<String>('keyId', isSecret: true);
+    location = registerOutput<String?>('location');
+    macKey = registerOutput<String>('macKey', isSecret: true);
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
   }

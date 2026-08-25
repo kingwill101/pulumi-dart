@@ -6,9 +6,9 @@ import 'cluster_cluster_config_master_config_instance_flexibility_policy_instanc
 
 class ClusterClusterConfigMasterConfigInstanceFlexibilityPolicy {
   /// List of instance selection options that the group will use when creating new VMs.
-  final pulumi.Input<List<ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionList>>? instanceSelectionLists;
+  final pulumi.Input<List<ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionList>?>? instanceSelectionLists;
   /// A list of instance selection results in the group.
-  final pulumi.Input<List<ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResult>>? instanceSelectionResults;
+  final pulumi.Input<List<ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResult>?>? instanceSelectionResults;
 
   /// Creates a new [ClusterClusterConfigMasterConfigInstanceFlexibilityPolicy].
   /// [instanceSelectionLists] List of instance selection options that the group will use when creating new VMs.

@@ -15,22 +15,22 @@ class DeploymentChannelProfile {
   /// CONTACT_CENTER_AS_A_SERVICE
   /// FIVE9
   /// CONTACT_CENTER_INTEGRATION
-  final pulumi.Input<String>? channelType;
+  final pulumi.Input<String?>? channelType;
   /// Whether to disable user barge-in control in the conversation.
   /// - **true**: User interruptions are disabled while the agent is speaking.
   /// - **false**: The agent retains automatic control over when the user can
   /// interrupt.
-  final pulumi.Input<bool>? disableBargeInControl;
+  final pulumi.Input<bool?>? disableBargeInControl;
   /// Whether to disable DTMF (dual-tone multi-frequency).
-  final pulumi.Input<bool>? disableDtmf;
+  final pulumi.Input<bool?>? disableDtmf;
   /// Represents the persona property of a channel.
   /// Structure is documented below.
-  final pulumi.Input<DeploymentChannelProfilePersonaProperty>? personaProperty;
+  final pulumi.Input<DeploymentChannelProfilePersonaProperty?>? personaProperty;
   /// The unique identifier of the channel profile.
-  final pulumi.Input<String>? profileId;
+  final pulumi.Input<String?>? profileId;
   /// Message for configuration for the web widget.
   /// Structure is documented below.
-  final pulumi.Input<DeploymentChannelProfileWebWidgetConfig>? webWidgetConfig;
+  final pulumi.Input<DeploymentChannelProfileWebWidgetConfig?>? webWidgetConfig;
 
   /// Creates a new [DeploymentChannelProfile].
   /// [channelType] The type of the channel profile.

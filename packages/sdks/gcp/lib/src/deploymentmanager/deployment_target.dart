@@ -12,7 +12,7 @@ class DeploymentTarget {
   /// used to import templates or other files. For example, you might
   /// import a text file in order to use the file in a template.
   /// Structure is documented below.
-  final pulumi.Input<List<DeploymentTargetImport>>? imports;
+  final pulumi.Input<List<DeploymentTargetImport>?>? imports;
 
   /// Creates a new [DeploymentTarget].
   /// [config] The root configuration file to use for this deployment.

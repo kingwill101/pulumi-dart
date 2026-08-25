@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PluginDocumentation {
   /// The uri of the externally hosted documentation.
-  final pulumi.Input<String>? externalUri;
+  final pulumi.Input<String?>? externalUri;
 
   /// Creates a new [PluginDocumentation].
   /// [externalUri] The uri of the externally hosted documentation.

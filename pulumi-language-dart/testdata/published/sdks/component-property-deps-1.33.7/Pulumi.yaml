@@ -1,0 +1,3 @@
+name: dart-component-property-deps-example
+runtime: dart
+main: example/main.dart

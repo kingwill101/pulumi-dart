@@ -6,7 +6,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
   /// Labels are identified by key/value pairs in this map.
   /// A VM should contain all the key/value pairs specified in this
   /// map to be selected.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
 
   /// Creates a new [V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabel].
   /// [labels] Labels are identified by key/value pairs in this map.

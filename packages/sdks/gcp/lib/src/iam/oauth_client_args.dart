@@ -26,23 +26,23 @@ class OauthClientArgs {
   /// CLIENT_TYPE_UNSPECIFIED
   /// PUBLIC_CLIENT
   /// CONFIDENTIAL_CLIENT
-  final pulumi.Input<String>? clientType;
+  final pulumi.Input<String?>? clientType;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// A user-specified description of the OauthClient.
   /// Cannot exceed 256 characters.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Whether the OauthClient is disabled. You cannot use a disabled OAuth
   /// client.
-  final pulumi.Input<bool>? disabled;
+  final pulumi.Input<bool?>? disabled;
   /// A user-specified display name of the OauthClient.
   /// Cannot exceed 32 characters.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final pulumi.Input<String> location;
   /// Required. The ID to use for the OauthClient, which becomes the final component of
@@ -53,7 +53,7 @@ class OauthClientArgs {
   final pulumi.Input<String> oauthClientId;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [OauthClientArgs].
   /// [allowedGrantTypes] Required. The list of OAuth grant types is allowed for the OauthClient.

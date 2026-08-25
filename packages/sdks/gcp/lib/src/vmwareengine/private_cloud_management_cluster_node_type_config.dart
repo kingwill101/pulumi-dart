@@ -7,7 +7,7 @@ class PrivateCloudManagementClusterNodeTypeConfig {
   /// This number must always be one of `nodeType.availableCustomCoreCounts`.
   /// If zero is provided max value from `nodeType.availableCustomCoreCounts` will be used.
   /// This cannot be changed once the PrivateCloud is created.
-  final pulumi.Input<int>? customCoreCount;
+  final pulumi.Input<int?>? customCoreCount;
   /// The number of nodes of this type in the cluster.
   final pulumi.Input<int> nodeCount;
   /// The identifier for this object. Format specified above.
@@ -33,8 +33,8 @@ class PrivateCloudManagementClusterNodeTypeConfig {
 
   factory PrivateCloudManagementClusterNodeTypeConfig.fromMap(Map<String, dynamic> map) {
     return PrivateCloudManagementClusterNodeTypeConfig(
-      customCoreCount: (() { final guardedValue = map['customCoreCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      nodeCount: pulumi.Input.fromValue(map['nodeCount'] as int),
+      customCoreCount: (() { final guardedValue = map['customCoreCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      nodeCount: pulumi.Input.fromValue((map['nodeCount'] as num).toInt()),
       nodeTypeId: pulumi.Input.fromValue(map['nodeTypeId'] as String),
     );
   }

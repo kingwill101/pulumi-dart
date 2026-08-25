@@ -980,11 +980,11 @@ class NoteIamBinding extends pulumi.CustomResource {
           'gcp:containeranalysis/noteIamBinding:NoteIamBinding',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     condition = registerOutput<NoteIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NoteIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
-    members = registerOutput<List<String>>('members');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     note = registerOutput<String>('note');
     project = registerOutput<String>('project');
     role = registerOutput<String>('role');
@@ -995,11 +995,12 @@ class NoteIamBinding extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     NoteIamBindingState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return NoteIamBinding._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1015,7 +1016,24 @@ class NoteIamBinding extends pulumi.CustomResource {
         ) {
     condition = registerOutput<NoteIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NoteIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
-    members = registerOutput<List<String>>('members');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    note = registerOutput<String>('note');
+    project = registerOutput<String>('project');
+    role = registerOutput<String>('role');
+  }
+
+  /// Creates a typed reference to an existing [NoteIamBinding] resource.
+  NoteIamBinding.reference(String urn)
+    : super(
+        'gcp:containeranalysis/noteIamBinding:NoteIamBinding',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    condition = registerOutput<NoteIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NoteIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    etag = registerOutput<String>('etag');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     note = registerOutput<String>('note');
     project = registerOutput<String>('project');
     role = registerOutput<String>('role');

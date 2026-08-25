@@ -12,37 +12,37 @@ import 'patch_deployment_patch_config_zypper.dart';
 class PatchDeploymentPatchConfig {
   /// Apt update settings. Use this setting to override the default apt patch rules.
   /// Structure is documented below.
-  final pulumi.Input<PatchDeploymentPatchConfigApt>? apt;
+  final pulumi.Input<PatchDeploymentPatchConfigApt?>? apt;
   /// goo update settings. Use this setting to override the default goo patch rules.
   /// Structure is documented below.
-  final pulumi.Input<PatchDeploymentPatchConfigGoo>? goo;
+  final pulumi.Input<PatchDeploymentPatchConfigGoo?>? goo;
   /// Allows the patch job to run on Managed instance groups (MIGs).
-  final pulumi.Input<bool>? migInstancesAllowed;
+  final pulumi.Input<bool?>? migInstancesAllowed;
   /// The ExecStep to run after the patch update.
   /// Structure is documented below.
-  final pulumi.Input<PatchDeploymentPatchConfigPostStep>? postStep;
+  final pulumi.Input<PatchDeploymentPatchConfigPostStep?>? postStep;
   /// The ExecStep to run before the patch update.
   /// Structure is documented below.
-  final pulumi.Input<PatchDeploymentPatchConfigPreStep>? preStep;
+  final pulumi.Input<PatchDeploymentPatchConfigPreStep?>? preStep;
   /// Post-patch reboot settings.
   /// Possible values are: `DEFAULT`, `ALWAYS`, `NEVER`.
-  final pulumi.Input<String>? rebootConfig;
+  final pulumi.Input<String?>? rebootConfig;
   /// Enables enhanced reporting for the patch job:
   /// 1. The patch job skips instances that cannot be patched and reports them as `SKIPPED`. An instance cannot be patched for two reasons:
   /// * The instance runs Container-Optimized OS (COS), which cannot be patched.
   /// * The instance is part of a managed instance group (MIG), and patching MIG instances is disabled in the patch job's configuration (`migInstancesAllowed` is false).
   /// 2. The patch job is reported as `SUCCEEDED` if it completes without errors, even if some instances are `SKIPPED`.
   /// 3. The patch job is reported as `COMPLETED_WITH_INACTIVE_VMS` if it completes without errors, but does not patch instances that are `INACTIVE`.
-  final pulumi.Input<bool>? skipUnpatchableVms;
+  final pulumi.Input<bool?>? skipUnpatchableVms;
   /// Windows update settings. Use this setting to override the default Windows patch rules.
   /// Structure is documented below.
-  final pulumi.Input<PatchDeploymentPatchConfigWindowsUpdate>? windowsUpdate;
+  final pulumi.Input<PatchDeploymentPatchConfigWindowsUpdate?>? windowsUpdate;
   /// Yum update settings. Use this setting to override the default yum patch rules.
   /// Structure is documented below.
-  final pulumi.Input<PatchDeploymentPatchConfigYum>? yum;
+  final pulumi.Input<PatchDeploymentPatchConfigYum?>? yum;
   /// zypper update settings. Use this setting to override the default zypper patch rules.
   /// Structure is documented below.
-  final pulumi.Input<PatchDeploymentPatchConfigZypper>? zypper;
+  final pulumi.Input<PatchDeploymentPatchConfigZypper?>? zypper;
 
   /// Creates a new [PatchDeploymentPatchConfig].
   /// [apt] Apt update settings. Use this setting to override the default apt patch rules.

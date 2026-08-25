@@ -703,7 +703,7 @@ class DicomStoreIamPolicy extends pulumi.CustomResource {
           'gcp:healthcare/dicomStoreIamPolicy:DicomStoreIamPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     dicomStoreId = registerOutput<String>('dicomStoreId');
     etag = registerOutput<String>('etag');
@@ -715,11 +715,12 @@ class DicomStoreIamPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DicomStoreIamPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DicomStoreIamPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -733,6 +734,20 @@ class DicomStoreIamPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    dicomStoreId = registerOutput<String>('dicomStoreId');
+    etag = registerOutput<String>('etag');
+    policyData = registerOutput<String>('policyData');
+  }
+
+  /// Creates a typed reference to an existing [DicomStoreIamPolicy] resource.
+  DicomStoreIamPolicy.reference(String urn)
+    : super(
+        'gcp:healthcare/dicomStoreIamPolicy:DicomStoreIamPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     dicomStoreId = registerOutput<String>('dicomStoreId');
     etag = registerOutput<String>('etag');
     policyData = registerOutput<String>('policyData');

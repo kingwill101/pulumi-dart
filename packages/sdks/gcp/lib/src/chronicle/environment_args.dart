@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_chronicle_environment_environment_args_doc}
 class EnvironmentArgs {
   /// Environment nicknames.
-  final pulumi.Input<String>? aliasesJson;
+  final pulumi.Input<String?>? aliasesJson;
   /// MAX_NAME_LENGTH = 256
   /// Name of the contact for the environment.
   final pulumi.Input<String> contact;
@@ -19,16 +19,16 @@ class EnvironmentArgs {
   /// Phone number of the contact for the environment.
   final pulumi.Input<String> contactPhone;
   /// data access scopes.
-  final pulumi.Input<String>? dataAccessScopesJson;
+  final pulumi.Input<String?>? dataAccessScopesJson;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Whether Terraform will be prevented from destroying the environment. Deleting an environment will remove all its data and all playbooks, environments, integrations instances, reports and agents related to the environment. Once you delete an environment, it cannot be reversed. Deleting environments via terraform destroy or pulumi up will only succeed if this field is false in the Terraform state.
-  final pulumi.Input<bool>? deletionProtection;
+  final pulumi.Input<bool?>? deletionProtection;
   /// MAX_NAME_LENGTH = 256
   /// Description of the environment.
   final pulumi.Input<String> description;
@@ -41,7 +41,7 @@ class EnvironmentArgs {
   final pulumi.Input<String> location;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Environment data retention in months.
   final pulumi.Input<int> retentionDuration;
 
@@ -107,7 +107,7 @@ class EnvironmentArgs {
       instance: pulumi.Input.fromValue(map['instance'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      retentionDuration: pulumi.Input.fromValue(map['retentionDuration'] as int),
+      retentionDuration: pulumi.Input.fromValue((map['retentionDuration'] as num).toInt()),
     );
   }
 }

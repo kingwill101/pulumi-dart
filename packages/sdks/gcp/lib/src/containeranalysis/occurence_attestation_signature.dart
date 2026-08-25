@@ -21,7 +21,7 @@ class OccurenceAttestationSignature {
   /// payload explicitly. Alternatively, a message might
   /// have a canonical serialization that can always be
   /// unambiguously computed to derive the payload.
-  final pulumi.Input<String>? signature;
+  final pulumi.Input<String?>? signature;
 
   /// Creates a new [OccurenceAttestationSignature].
   /// [publicKeyId] The identifier for the public key that verifies this

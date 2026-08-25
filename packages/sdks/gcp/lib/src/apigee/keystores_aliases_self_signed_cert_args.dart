@@ -14,18 +14,18 @@ class KeystoresAliasesSelfSignedCertArgs {
   /// this parameter or the JSON body.
   final pulumi.Input<String> alias;
   /// Validity duration of certificate, in days. Accepts positive non-zero value. Defaults to 365.
-  final pulumi.Input<int>? certValidityInDays;
+  final pulumi.Input<int?>? certValidityInDays;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The Apigee environment name
   final pulumi.Input<String> environment;
   /// Key size. Default and maximum value is 2048 bits.
-  final pulumi.Input<String>? keySize;
+  final pulumi.Input<String?>? keySize;
   /// The Apigee keystore name associated in an Apigee environment
   final pulumi.Input<String> keystore;
   /// The Apigee Organization name associated with the Apigee environment
@@ -37,7 +37,7 @@ class KeystoresAliasesSelfSignedCertArgs {
   final pulumi.Input<KeystoresAliasesSelfSignedCertSubject> subject;
   /// List of alternative host names. Maximum length is 255 characters for each value.
   /// Structure is documented below.
-  final pulumi.Input<KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames>? subjectAlternativeDnsNames;
+  final pulumi.Input<KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames?>? subjectAlternativeDnsNames;
 
   /// Creates a new [KeystoresAliasesSelfSignedCertArgs].
   /// [alias] Alias for the key/certificate pair. Values must match the regular expression [\w\s-.]{1,255}.
@@ -81,7 +81,7 @@ class KeystoresAliasesSelfSignedCertArgs {
   factory KeystoresAliasesSelfSignedCertArgs.fromMap(Map<String, dynamic> map) {
     return KeystoresAliasesSelfSignedCertArgs(
       alias: pulumi.Input.fromValue(map['alias'] as String),
-      certValidityInDays: (() { final guardedValue = map['certValidityInDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      certValidityInDays: (() { final guardedValue = map['certValidityInDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       environment: pulumi.Input.fromValue(map['environment'] as String),
       keySize: (() { final guardedValue = map['keySize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

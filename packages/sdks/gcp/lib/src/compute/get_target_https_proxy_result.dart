@@ -3,114 +3,114 @@
 
 /// Result data returned by getTargetHttpsProxy.
 class GetTargetHttpsProxyResult {
-  final List<String> certificateManagerCertificates;
-  final String certificateMap;
-  final String creationTimestamp;
-  final String deletionPolicy;
-  final String description;
-  final String fingerprint;
-  final int httpKeepAliveTimeoutSec;
+  final List<String>? certificateManagerCertificates;
+  final String? certificateMap;
+  final String? creationTimestamp;
+  final String? deletionPolicy;
+  final String? description;
+  final String? fingerprint;
+  final int? httpKeepAliveTimeoutSec;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final String name;
+  final String? id;
+  final String? name;
   final String? project;
-  final bool proxyBind;
-  final int proxyId;
-  final String quicOverride;
-  final String selfLink;
-  final String serverTlsPolicy;
-  final List<String> sslCertificates;
-  final String sslPolicy;
-  final String tlsEarlyData;
-  final String urlMap;
+  final bool? proxyBind;
+  final int? proxyId;
+  final String? quicOverride;
+  final String? selfLink;
+  final String? serverTlsPolicy;
+  final List<String>? sslCertificates;
+  final String? sslPolicy;
+  final String? tlsEarlyData;
+  final String? urlMap;
 
   /// Creates a new [GetTargetHttpsProxyResult].
-  /// [certificateManagerCertificates] Required.
-  /// [certificateMap] Required.
-  /// [creationTimestamp] Required.
-  /// [deletionPolicy] Required.
-  /// [description] Required.
-  /// [fingerprint] Required.
-  /// [httpKeepAliveTimeoutSec] Required.
+  /// [certificateManagerCertificates] Optional.
+  /// [certificateMap] Optional.
+  /// [creationTimestamp] Optional.
+  /// [deletionPolicy] Optional.
+  /// [description] Optional.
+  /// [fingerprint] Optional.
+  /// [httpKeepAliveTimeoutSec] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [name] Required.
+  /// [name] Optional.
   /// [project] Optional.
-  /// [proxyBind] Required.
-  /// [proxyId] Required.
-  /// [quicOverride] Required.
-  /// [selfLink] Required.
-  /// [serverTlsPolicy] Required.
-  /// [sslCertificates] Required.
-  /// [sslPolicy] Required.
-  /// [tlsEarlyData] Required.
-  /// [urlMap] Required.
+  /// [proxyBind] Optional.
+  /// [proxyId] Optional.
+  /// [quicOverride] Optional.
+  /// [selfLink] Optional.
+  /// [serverTlsPolicy] Optional.
+  /// [sslCertificates] Optional.
+  /// [sslPolicy] Optional.
+  /// [tlsEarlyData] Optional.
+  /// [urlMap] Optional.
   const GetTargetHttpsProxyResult({
-    required this.certificateManagerCertificates,
-    required this.certificateMap,
-    required this.creationTimestamp,
-    required this.deletionPolicy,
-    required this.description,
-    required this.fingerprint,
-    required this.httpKeepAliveTimeoutSec,
-    required this.id,
-    required this.name,
+    this.certificateManagerCertificates,
+    this.certificateMap,
+    this.creationTimestamp,
+    this.deletionPolicy,
+    this.description,
+    this.fingerprint,
+    this.httpKeepAliveTimeoutSec,
+    this.id,
+    this.name,
     this.project,
-    required this.proxyBind,
-    required this.proxyId,
-    required this.quicOverride,
-    required this.selfLink,
-    required this.serverTlsPolicy,
-    required this.sslCertificates,
-    required this.sslPolicy,
-    required this.tlsEarlyData,
-    required this.urlMap,
+    this.proxyBind,
+    this.proxyId,
+    this.quicOverride,
+    this.selfLink,
+    this.serverTlsPolicy,
+    this.sslCertificates,
+    this.sslPolicy,
+    this.tlsEarlyData,
+    this.urlMap,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'certificateManagerCertificates': certificateManagerCertificates,
-      'certificateMap': certificateMap,
-      'creationTimestamp': creationTimestamp,
-      'deletionPolicy': deletionPolicy,
-      'description': description,
-      'fingerprint': fingerprint,
-      'httpKeepAliveTimeoutSec': httpKeepAliveTimeoutSec,
-      'id': id,
-      'name': name,
+      'certificateManagerCertificates': ?certificateManagerCertificates,
+      'certificateMap': ?certificateMap,
+      'creationTimestamp': ?creationTimestamp,
+      'deletionPolicy': ?deletionPolicy,
+      'description': ?description,
+      'fingerprint': ?fingerprint,
+      'httpKeepAliveTimeoutSec': ?httpKeepAliveTimeoutSec,
+      'id': ?id,
+      'name': ?name,
       'project': ?project,
-      'proxyBind': proxyBind,
-      'proxyId': proxyId,
-      'quicOverride': quicOverride,
-      'selfLink': selfLink,
-      'serverTlsPolicy': serverTlsPolicy,
-      'sslCertificates': sslCertificates,
-      'sslPolicy': sslPolicy,
-      'tlsEarlyData': tlsEarlyData,
-      'urlMap': urlMap,
+      'proxyBind': ?proxyBind,
+      'proxyId': ?proxyId,
+      'quicOverride': ?quicOverride,
+      'selfLink': ?selfLink,
+      'serverTlsPolicy': ?serverTlsPolicy,
+      'sslCertificates': ?sslCertificates,
+      'sslPolicy': ?sslPolicy,
+      'tlsEarlyData': ?tlsEarlyData,
+      'urlMap': ?urlMap,
     };
   }
 
   factory GetTargetHttpsProxyResult.fromMap(Map<String, dynamic> map) {
     return GetTargetHttpsProxyResult(
-      certificateManagerCertificates: (map['certificateManagerCertificates'] as List).cast<String>(),
-      certificateMap: map['certificateMap'] as String,
-      creationTimestamp: map['creationTimestamp'] as String,
-      deletionPolicy: map['deletionPolicy'] as String,
-      description: map['description'] as String,
-      fingerprint: map['fingerprint'] as String,
-      httpKeepAliveTimeoutSec: map['httpKeepAliveTimeoutSec'] as int,
-      id: map['id'] as String,
-      name: map['name'] as String,
+      certificateManagerCertificates: (() { final guardedValue = map['certificateManagerCertificates']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      certificateMap: (() { final guardedValue = map['certificateMap']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      creationTimestamp: (() { final guardedValue = map['creationTimestamp']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      fingerprint: (() { final guardedValue = map['fingerprint']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      httpKeepAliveTimeoutSec: (() { final guardedValue = map['httpKeepAliveTimeoutSec']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      proxyBind: map['proxyBind'] as bool,
-      proxyId: map['proxyId'] as int,
-      quicOverride: map['quicOverride'] as String,
-      selfLink: map['selfLink'] as String,
-      serverTlsPolicy: map['serverTlsPolicy'] as String,
-      sslCertificates: (map['sslCertificates'] as List).cast<String>(),
-      sslPolicy: map['sslPolicy'] as String,
-      tlsEarlyData: map['tlsEarlyData'] as String,
-      urlMap: map['urlMap'] as String,
+      proxyBind: (() { final guardedValue = map['proxyBind']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      proxyId: (() { final guardedValue = map['proxyId']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      quicOverride: (() { final guardedValue = map['quicOverride']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      selfLink: (() { final guardedValue = map['selfLink']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      serverTlsPolicy: (() { final guardedValue = map['serverTlsPolicy']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      sslCertificates: (() { final guardedValue = map['sslCertificates']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      sslPolicy: (() { final guardedValue = map['sslPolicy']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tlsEarlyData: (() { final guardedValue = map['tlsEarlyData']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      urlMap: (() { final guardedValue = map['urlMap']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

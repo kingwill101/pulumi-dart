@@ -85,18 +85,19 @@ class AppConnection extends pulumi.CustomResource {
           'gcp:beyondcorp/appConnection:AppConnection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     applicationEndpoint = registerOutput<AppConnectionApplicationEndpoint>('applicationEndpoint', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppConnectionApplicationEndpoint.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    connectors = registerOutput<List<String>?>('connectors');
+    connectors = registerOutput<List<String>?>('connectors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     gateway = registerOutput<AppConnectionGateway>('gateway', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppConnectionGateway.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     region = registerOutput<String?>('region');
     type = registerOutput<String?>('type');
   }
@@ -106,11 +107,12 @@ class AppConnection extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AppConnectionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AppConnection._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -125,15 +127,39 @@ class AppConnection extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     applicationEndpoint = registerOutput<AppConnectionApplicationEndpoint>('applicationEndpoint', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppConnectionApplicationEndpoint.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    connectors = registerOutput<List<String>?>('connectors');
+    connectors = registerOutput<List<String>?>('connectors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     gateway = registerOutput<AppConnectionGateway>('gateway', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppConnectionGateway.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    region = registerOutput<String?>('region');
+    type = registerOutput<String?>('type');
+  }
+
+  /// Creates a typed reference to an existing [AppConnection] resource.
+  AppConnection.reference(String urn)
+    : super(
+        'gcp:beyondcorp/appConnection:AppConnection',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    applicationEndpoint = registerOutput<AppConnectionApplicationEndpoint>('applicationEndpoint', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppConnectionApplicationEndpoint.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    connectors = registerOutput<List<String>?>('connectors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    displayName = registerOutput<String?>('displayName');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    gateway = registerOutput<AppConnectionGateway>('gateway', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppConnectionGateway.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     region = registerOutput<String?>('region');
     type = registerOutput<String?>('type');
   }

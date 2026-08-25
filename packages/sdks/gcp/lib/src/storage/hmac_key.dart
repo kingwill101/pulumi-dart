@@ -218,12 +218,13 @@ class HmacKey extends pulumi.CustomResource {
           'gcp:storage/hmacKey:HmacKey',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['secret'],
         ) {
     accessId = registerOutput<String>('accessId');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     project = registerOutput<String>('project');
-    secret = registerOutput<String>('secret');
+    secret = registerOutput<String>('secret', isSecret: true);
     serviceAccountEmail = registerOutput<String>('serviceAccountEmail');
     state = registerOutput<String?>('state');
     timeCreated = registerOutput<String>('timeCreated');
@@ -235,11 +236,12 @@ class HmacKey extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     HmacKeyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return HmacKey._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -256,9 +258,29 @@ class HmacKey extends pulumi.CustomResource {
     accessId = registerOutput<String>('accessId');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     project = registerOutput<String>('project');
-    secret = registerOutput<String>('secret');
+    secret = registerOutput<String>('secret', isSecret: true);
     serviceAccountEmail = registerOutput<String>('serviceAccountEmail');
     this.state = registerOutput<String?>('state');
+    timeCreated = registerOutput<String>('timeCreated');
+    updated = registerOutput<String>('updated');
+  }
+
+  /// Creates a typed reference to an existing [HmacKey] resource.
+  HmacKey.reference(String urn)
+    : super(
+        'gcp:storage/hmacKey:HmacKey',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['secret'],
+        isResourceReference: true,
+      ) {
+    accessId = registerOutput<String>('accessId');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    project = registerOutput<String>('project');
+    secret = registerOutput<String>('secret', isSecret: true);
+    serviceAccountEmail = registerOutput<String>('serviceAccountEmail');
+    state = registerOutput<String?>('state');
     timeCreated = registerOutput<String>('timeCreated');
     updated = registerOutput<String>('updated');
   }

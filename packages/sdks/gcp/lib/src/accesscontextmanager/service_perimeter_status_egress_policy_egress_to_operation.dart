@@ -9,11 +9,11 @@ class ServicePerimeterStatusEgressPolicyEgressToOperation {
   /// entry with `*` specified for the `method` field will allow all methods
   /// AND permissions for the service specified in `serviceName`.
   /// Structure is documented below.
-  final pulumi.Input<List<ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelector>>? methodSelectors;
+  final pulumi.Input<List<ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelector>?>? methodSelectors;
   /// The name of the API whose methods or permissions the `IngressPolicy` or
   /// `EgressPolicy` want to allow. A single `ApiOperation` with serviceName
   /// field set to `*` will allow all methods AND permissions for all services.
-  final pulumi.Input<String>? serviceName;
+  final pulumi.Input<String?>? serviceName;
 
   /// Creates a new [ServicePerimeterStatusEgressPolicyEgressToOperation].
   /// [methodSelectors] API methods or permissions to allow. Method or permission must belong

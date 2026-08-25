@@ -92,7 +92,7 @@ class KeystoresAliasesKeyCertFileCertsInfo {
       subject: pulumi.Input.fromValue(map['subject'] as String),
       subjectAlternativeNames: pulumi.Input.fromValue((map['subjectAlternativeNames'] as List).cast<String>()),
       validFrom: pulumi.Input.fromValue(map['validFrom'] as String),
-      version: pulumi.Input.fromValue(map['version'] as int),
+      version: pulumi.Input.fromValue((map['version'] as num).toInt()),
     );
   }
 }

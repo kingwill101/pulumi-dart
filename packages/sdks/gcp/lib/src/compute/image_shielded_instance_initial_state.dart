@@ -9,16 +9,16 @@ import 'image_shielded_instance_initial_state_pk.dart';
 class ImageShieldedInstanceInitialState {
   /// The Key Database (db).
   /// Structure is documented below.
-  final pulumi.Input<List<ImageShieldedInstanceInitialStateDb>>? dbs;
+  final pulumi.Input<List<ImageShieldedInstanceInitialStateDb>?>? dbs;
   /// The forbidden key database (dbx).
   /// Structure is documented below.
-  final pulumi.Input<List<ImageShieldedInstanceInitialStateDbx>>? dbxs;
+  final pulumi.Input<List<ImageShieldedInstanceInitialStateDbx>?>? dbxs;
   /// The Key Exchange Key (KEK).
   /// Structure is documented below.
-  final pulumi.Input<List<ImageShieldedInstanceInitialStateKek>>? keks;
+  final pulumi.Input<List<ImageShieldedInstanceInitialStateKek>?>? keks;
   /// The Platform Key (PK).
   /// Structure is documented below.
-  final pulumi.Input<ImageShieldedInstanceInitialStatePk>? pk;
+  final pulumi.Input<ImageShieldedInstanceInitialStatePk?>? pk;
 
   /// Creates a new [ImageShieldedInstanceInitialState].
   /// [dbs] The Key Database (db).

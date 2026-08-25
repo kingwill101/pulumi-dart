@@ -57,7 +57,7 @@ class EnvReferences extends pulumi.CustomResource {
           'gcp:apigee/envReferences:EnvReferences',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
@@ -72,11 +72,12 @@ class EnvReferences extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EnvReferencesState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return EnvReferences._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -90,6 +91,23 @@ class EnvReferences extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    envId = registerOutput<String>('envId');
+    this.name = registerOutput<String>('name');
+    refers = registerOutput<String>('refers');
+    resourceType = registerOutput<String>('resourceType');
+  }
+
+  /// Creates a typed reference to an existing [EnvReferences] resource.
+  EnvReferences.reference(String urn)
+    : super(
+        'gcp:apigee/envReferences:EnvReferences',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     envId = registerOutput<String>('envId');

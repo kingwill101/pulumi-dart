@@ -23,21 +23,21 @@ class PacketMirroringArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// A human-readable description of the rule.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Indicates whether or not this packet mirroring takes effect. If set to FALSE, this packet mirroring
   /// policy will not be enforced on the network. The default is TRUE.
   /// Possible values are: `TRUE`, `FALSE`.
-  final pulumi.Input<String>? enable;
+  final pulumi.Input<String?>? enable;
   /// A filter for mirrored traffic.  If unset, all traffic is mirrored.
   /// Structure is documented below.
-  final pulumi.Input<PacketMirroringFilter>? filter;
+  final pulumi.Input<PacketMirroringFilter?>? filter;
   /// A means of specifying which resources to mirror.
   /// Structure is documented below.
   final pulumi.Input<PacketMirroringMirroredResources> mirroredResources;
   /// The name of the packet mirroring rule
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specifies the mirrored VPC network. Only packets in this network
   /// will be mirrored. All mirrored VMs should have a NIC in the given
   /// network. All mirrored subnetworks should belong to the given network.
@@ -46,13 +46,13 @@ class PacketMirroringArgs {
   /// Since only one rule can be active at a time, priority is
   /// used to break ties in the case of two rules that apply to
   /// the same instances.
-  final pulumi.Input<int>? priority;
+  final pulumi.Input<int?>? priority;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The Region in which the created address should reside.
   /// If it is not provided, the provider region is used.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [PacketMirroringArgs].
   /// [collectorIlb] The Forwarding Rule resource (of type load_balancing_scheme=INTERNAL)
@@ -106,7 +106,7 @@ class PacketMirroringArgs {
       mirroredResources: pulumi.Input.fromValue(PacketMirroringMirroredResources.fromMap((map['mirroredResources']! as Map).cast<String, dynamic>())),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       network: pulumi.Input.fromValue(PacketMirroringNetwork.fromMap((map['network']! as Map).cast<String, dynamic>())),
-      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

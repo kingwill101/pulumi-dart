@@ -5,10 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClusterPscServiceAttachment {
   /// (Output)
   /// Type of a PSC connection targeting this service attachment.
-  final pulumi.Input<String>? connectionType;
+  final pulumi.Input<String?>? connectionType;
   /// (Output)
   /// Service attachment URI which your self-created PscConnection should use as
-  final pulumi.Input<String>? serviceAttachment;
+  final pulumi.Input<String?>? serviceAttachment;
 
   /// Creates a new [ClusterPscServiceAttachment].
   /// [connectionType] (Output)

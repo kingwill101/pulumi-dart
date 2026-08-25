@@ -8,30 +8,30 @@ class EnvironmentDebugmaskState {
   /// `organizations/{{org_name}}/environments/{{env_name}}`.
   ///
   /// - - -
-  final pulumi.Input<String>? envId;
+  final pulumi.Input<String?>? envId;
   /// List of XPath expressions that specify the XML elements or attributes that the
   /// debug mask applies to for fault messages.
-  final pulumi.Input<List<String>>? faultXPaths;
+  final pulumi.Input<List<String>?>? faultXPaths;
   /// The fully qualified name of the debug mask, in the format
   /// `organizations/{{org_name}}/environments/{{env_name}}/debugmask`.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Map of namespace prefixes to URIs used to evaluate the configured XPath
   /// expressions.
-  final pulumi.Input<Map<String, String>>? namespaces;
+  final pulumi.Input<Map<String, String>?>? namespaces;
   /// List of JSONPath expressions that specify the JSON elements or attributes that
   /// the debug mask applies to for request messages.
-  final pulumi.Input<List<String>>? requestJsonPaths;
+  final pulumi.Input<List<String>?>? requestJsonPaths;
   /// List of XPath expressions that specify the XML elements or attributes that the
   /// debug mask applies to for request messages.
-  final pulumi.Input<List<String>>? requestXPaths;
+  final pulumi.Input<List<String>?>? requestXPaths;
   /// List of JSONPath expressions that specify the JSON elements or attributes that
   /// the debug mask applies to for response messages.
-  final pulumi.Input<List<String>>? responseJsonPaths;
+  final pulumi.Input<List<String>?>? responseJsonPaths;
   /// List of XPath expressions that specify the XML elements or attributes that the
   /// debug mask applies to for response messages.
-  final pulumi.Input<List<String>>? responseXPaths;
+  final pulumi.Input<List<String>?>? responseXPaths;
   /// List of flow variables that the debug mask applies to.
-  final pulumi.Input<List<String>>? variables;
+  final pulumi.Input<List<String>?>? variables;
 
   /// Creates a new [EnvironmentDebugmaskState].
   /// [envId] The Apigee environment associated with the debug mask, in the format

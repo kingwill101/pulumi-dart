@@ -750,7 +750,7 @@ class AutokeyConfig extends pulumi.CustomResource {
           'gcp:kms/autokeyConfig:AutokeyConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     etag = registerOutput<String>('etag');
@@ -764,11 +764,12 @@ class AutokeyConfig extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AutokeyConfigState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AutokeyConfig._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -782,6 +783,22 @@ class AutokeyConfig extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    etag = registerOutput<String>('etag');
+    folder = registerOutput<String>('folder');
+    keyProject = registerOutput<String?>('keyProject');
+    keyProjectResolutionMode = registerOutput<String?>('keyProjectResolutionMode');
+  }
+
+  /// Creates a typed reference to an existing [AutokeyConfig] resource.
+  AutokeyConfig.reference(String urn)
+    : super(
+        'gcp:kms/autokeyConfig:AutokeyConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     etag = registerOutput<String>('etag');
     folder = registerOutput<String>('folder');

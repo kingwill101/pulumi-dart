@@ -8,25 +8,25 @@ import 'settings_service_account_approver_settings.dart';
 class SettingsState {
   /// Create timestamp. Uses RFC 3339, where generated output will always be Z-normalized and use 0, 3, 6 or 9 fractional digits. Offsets other than "Z" are also accepted.
   /// Examples: "2014-10-02T15:01:23Z", "2014-10-02T15:01:23.045123456Z" or "2014-10-02T15:01:23+05:30".
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// EmailNotificationSettings defines node-wide email notification preferences for various PAM events.
   /// Structure is documented below.
-  final pulumi.Input<SettingsEmailNotificationSettings>? emailNotificationSettings;
+  final pulumi.Input<SettingsEmailNotificationSettings?>? emailNotificationSettings;
   /// Fingerprint for optimistic concurrency returned in the response of GetSettings. Must be provided in the requests to UpdateSettings. If the value provided does not match the value known to the server, ABORTED will be thrown, and the client should retry the read-modify-write cycle.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// The region of the PAM settings resource.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Name of the settings resource. Possible formats:
   /// projects/{project-id|project-number}/locations/{location}/settings folders/{folder-number}/locations/{location}/settings organizations/{organization-number}/locations/{location}/settings
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Format: projects/{project-id|project-number} or organizations/{organization-number} or folders/{folder-number}
-  final pulumi.Input<String>? parent;
+  final pulumi.Input<String?>? parent;
   /// This controls the node-level settings for allowing service accounts as approvers.
   /// Structure is documented below.
-  final pulumi.Input<SettingsServiceAccountApproverSettings>? serviceAccountApproverSettings;
+  final pulumi.Input<SettingsServiceAccountApproverSettings?>? serviceAccountApproverSettings;
   /// Update timestamp. Uses RFC 3339, where generated output will always be Z-normalized and use 0, 3, 6 or 9 fractional digits. Offsets other than "Z" are also accepted.
   /// Examples: "2014-10-02T15:01:23Z", "2014-10-02T15:01:23.045123456Z" or "2014-10-02T15:01:23+05:30".
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [SettingsState].
   /// [createTime] Create timestamp. Uses RFC 3339, where generated output will always be Z-normalized and use 0, 3, 6 or 9 fractional digits. Offsets other than "Z" are also accepted.

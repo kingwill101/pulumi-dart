@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'parser_args.dart';
+import 'parser_changelog.dart';
+import 'parser_creator.dart';
 import 'parser_low_code.dart';
 import 'parser_state.dart';
 import 'parser_version_info.dart';
@@ -490,13 +492,13 @@ class Parser extends pulumi.CustomResource {
   late final pulumi.Output<String?> cbn;
   /// Changelogs of a parser.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> changelogs;
+  late final pulumi.Output<List<ParserChangelog>> changelogs;
   /// (Output)
   /// Time at which changelog was created.
   late final pulumi.Output<String> createTime;
   /// Information about the creator of the parser.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> creators;
+  late final pulumi.Output<List<ParserCreator>> creators;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -601,12 +603,12 @@ class Parser extends pulumi.CustomResource {
           'gcp:chronicle/parser:Parser',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     cbn = registerOutput<String?>('cbn');
-    changelogs = registerOutput<List<Map<String, dynamic>>>('changelogs');
+    changelogs = registerOutput<List<ParserChangelog>>('changelogs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ParserChangelog>(guardedValue, (value) => ParserChangelog.fromMap((value as Map).cast<String, dynamic>())); });
     createTime = registerOutput<String>('createTime');
-    creators = registerOutput<List<Map<String, dynamic>>>('creators');
+    creators = registerOutput<List<ParserCreator>>('creators', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ParserCreator>(guardedValue, (value) => ParserCreator.fromMap((value as Map).cast<String, dynamic>())); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     dynamicParsingConfig = registerOutput<String>('dynamicParsingConfig');
     instance = registerOutput<String>('instance');
@@ -632,11 +634,12 @@ class Parser extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ParserState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Parser._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -651,9 +654,9 @@ class Parser extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     cbn = registerOutput<String?>('cbn');
-    changelogs = registerOutput<List<Map<String, dynamic>>>('changelogs');
+    changelogs = registerOutput<List<ParserChangelog>>('changelogs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ParserChangelog>(guardedValue, (value) => ParserChangelog.fromMap((value as Map).cast<String, dynamic>())); });
     createTime = registerOutput<String>('createTime');
-    creators = registerOutput<List<Map<String, dynamic>>>('creators');
+    creators = registerOutput<List<ParserCreator>>('creators', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ParserCreator>(guardedValue, (value) => ParserCreator.fromMap((value as Map).cast<String, dynamic>())); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     dynamicParsingConfig = registerOutput<String>('dynamicParsingConfig');
     instance = registerOutput<String>('instance');
@@ -666,6 +669,39 @@ class Parser extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     releaseStage = registerOutput<String>('releaseStage');
     this.state = registerOutput<String>('state');
+    type = registerOutput<String>('type');
+    validatedOnEmptyLogs = registerOutput<bool?>('validatedOnEmptyLogs');
+    validationReport = registerOutput<String>('validationReport');
+    validationSkipped = registerOutput<bool?>('validationSkipped');
+    validationStage = registerOutput<String>('validationStage');
+    versionInfo = registerOutput<ParserVersionInfo?>('versionInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ParserVersionInfo.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Parser] resource.
+  Parser.reference(String urn)
+    : super(
+        'gcp:chronicle/parser:Parser',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    cbn = registerOutput<String?>('cbn');
+    changelogs = registerOutput<List<ParserChangelog>>('changelogs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ParserChangelog>(guardedValue, (value) => ParserChangelog.fromMap((value as Map).cast<String, dynamic>())); });
+    createTime = registerOutput<String>('createTime');
+    creators = registerOutput<List<ParserCreator>>('creators', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ParserCreator>(guardedValue, (value) => ParserCreator.fromMap((value as Map).cast<String, dynamic>())); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    dynamicParsingConfig = registerOutput<String>('dynamicParsingConfig');
+    instance = registerOutput<String>('instance');
+    location = registerOutput<String>('location');
+    logtype = registerOutput<String>('logtype');
+    lowCode = registerOutput<ParserLowCode?>('lowCode', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ParserLowCode.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    parser = registerOutput<String>('parser');
+    parserExtension = registerOutput<String>('parserExtension');
+    project = registerOutput<String>('project');
+    releaseStage = registerOutput<String>('releaseStage');
+    state = registerOutput<String>('state');
     type = registerOutput<String>('type');
     validatedOnEmptyLogs = registerOutput<bool?>('validatedOnEmptyLogs');
     validationReport = registerOutput<String>('validationReport');

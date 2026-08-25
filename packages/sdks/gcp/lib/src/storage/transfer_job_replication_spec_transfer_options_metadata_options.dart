@@ -4,23 +4,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TransferJobReplicationSpecTransferOptionsMetadataOptions {
   /// Specifies how each object's ACLs should be preserved for transfers between Google Cloud Storage buckets.
-  final pulumi.Input<String>? acl;
+  final pulumi.Input<String?>? acl;
   /// Specifies how each file's POSIX group ID (GID) attribute should be handled by the transfer.
-  final pulumi.Input<String>? gid;
+  final pulumi.Input<String?>? gid;
   /// Specifies how each object's Cloud KMS customer-managed encryption key (CMEK) is preserved for transfers between Google Cloud Storage buckets.
-  final pulumi.Input<String>? kmsKey;
+  final pulumi.Input<String?>? kmsKey;
   /// Specifies how each file's mode attribute should be handled by the transfer.
-  final pulumi.Input<String>? mode;
+  final pulumi.Input<String?>? mode;
   /// Specifies the storage class to set on objects being transferred to Google Cloud Storage buckets.
-  final pulumi.Input<String>? storageClass;
+  final pulumi.Input<String?>? storageClass;
   /// Specifies how symlinks should be handled by the transfer.
-  final pulumi.Input<String>? symlink;
+  final pulumi.Input<String?>? symlink;
   /// Specifies how each object's temporary hold status should be preserved for transfers between Google Cloud Storage buckets.
-  final pulumi.Input<String>? temporaryHold;
+  final pulumi.Input<String?>? temporaryHold;
   /// Specifies how each object's timeCreated metadata is preserved for transfers.
-  final pulumi.Input<String>? timeCreated;
+  final pulumi.Input<String?>? timeCreated;
   /// Specifies how each file's POSIX user ID (UID) attribute should be handled by the transfer.
-  final pulumi.Input<String>? uid;
+  final pulumi.Input<String?>? uid;
 
   /// Creates a new [TransferJobReplicationSpecTransferOptionsMetadataOptions].
   /// [acl] Specifies how each object's ACLs should be preserved for transfers between Google Cloud Storage buckets.

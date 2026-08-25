@@ -16,29 +16,29 @@ class AiEndpointWithModelGardenDeploymentArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The deploy config to use for the deployment.
   /// Structure is documented below.
-  final pulumi.Input<AiEndpointWithModelGardenDeploymentDeployConfig>? deployConfig;
+  final pulumi.Input<AiEndpointWithModelGardenDeploymentDeployConfig?>? deployConfig;
   /// The endpoint config to use for the deployment.
   /// Structure is documented below.
-  final pulumi.Input<AiEndpointWithModelGardenDeploymentEndpointConfig>? endpointConfig;
+  final pulumi.Input<AiEndpointWithModelGardenDeploymentEndpointConfig?>? endpointConfig;
   /// The Hugging Face model to deploy.
   /// Format: Hugging Face model ID like `google/gemma-2-2b-it`.
-  final pulumi.Input<String>? huggingFaceModelId;
+  final pulumi.Input<String?>? huggingFaceModelId;
   /// Resource ID segment making up resource `location`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final pulumi.Input<String> location;
   /// The model config to use for the deployment.
   /// Structure is documented below.
-  final pulumi.Input<AiEndpointWithModelGardenDeploymentModelConfig>? modelConfig;
+  final pulumi.Input<AiEndpointWithModelGardenDeploymentModelConfig?>? modelConfig;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The Model Garden model to deploy.
   /// Format:
   /// `publishers/{publisher}/models/{publisher_model}@{version_id}`, or
   /// `publishers/hf-{hugging-face-author}/models/{hugging-face-model-name}@001`.
-  final pulumi.Input<String>? publisherModelName;
+  final pulumi.Input<String?>? publisherModelName;
 
   /// Creates a new [AiEndpointWithModelGardenDeploymentArgs].
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

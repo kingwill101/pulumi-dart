@@ -439,7 +439,7 @@ class ExternalAddress extends pulumi.CustomResource {
           'gcp:vmwareengine/externalAddress:ExternalAddress',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -458,11 +458,12 @@ class ExternalAddress extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ExternalAddressState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ExternalAddress._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -484,6 +485,27 @@ class ExternalAddress extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     parent = registerOutput<String>('parent');
     this.state = registerOutput<String>('state');
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [ExternalAddress] resource.
+  ExternalAddress.reference(String urn)
+    : super(
+        'gcp:vmwareengine/externalAddress:ExternalAddress',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    externalIp = registerOutput<String>('externalIp');
+    internalIp = registerOutput<String>('internalIp');
+    this.name = registerOutput<String>('name');
+    parent = registerOutput<String>('parent');
+    state = registerOutput<String>('state');
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
   }

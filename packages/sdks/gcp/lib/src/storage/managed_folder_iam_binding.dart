@@ -2067,13 +2067,13 @@ class ManagedFolderIamBinding extends pulumi.CustomResource {
           'gcp:storage/managedFolderIamBinding:ManagedFolderIamBinding',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     bucket = registerOutput<String>('bucket');
     condition = registerOutput<ManagedFolderIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedFolderIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
     managedFolder = registerOutput<String>('managedFolder');
-    members = registerOutput<List<String>>('members');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     role = registerOutput<String>('role');
   }
 
@@ -2082,11 +2082,12 @@ class ManagedFolderIamBinding extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ManagedFolderIamBindingState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ManagedFolderIamBinding._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -2104,7 +2105,24 @@ class ManagedFolderIamBinding extends pulumi.CustomResource {
     condition = registerOutput<ManagedFolderIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedFolderIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
     managedFolder = registerOutput<String>('managedFolder');
-    members = registerOutput<List<String>>('members');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    role = registerOutput<String>('role');
+  }
+
+  /// Creates a typed reference to an existing [ManagedFolderIamBinding] resource.
+  ManagedFolderIamBinding.reference(String urn)
+    : super(
+        'gcp:storage/managedFolderIamBinding:ManagedFolderIamBinding',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    bucket = registerOutput<String>('bucket');
+    condition = registerOutput<ManagedFolderIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedFolderIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    etag = registerOutput<String>('etag');
+    managedFolder = registerOutput<String>('managedFolder');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     role = registerOutput<String>('role');
   }
 }

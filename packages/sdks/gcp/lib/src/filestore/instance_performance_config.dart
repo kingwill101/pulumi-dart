@@ -9,11 +9,11 @@ class InstancePerformanceConfig {
   /// which will remain constant regardless of instance
   /// capacity.
   /// Structure is documented below.
-  final pulumi.Input<InstancePerformanceConfigFixedIops>? fixedIops;
+  final pulumi.Input<InstancePerformanceConfigFixedIops?>? fixedIops;
   /// The instance provisioned IOPS will change dynamically
   /// based on the capacity of the instance.
   /// Structure is documented below.
-  final pulumi.Input<InstancePerformanceConfigIopsPerTb>? iopsPerTb;
+  final pulumi.Input<InstancePerformanceConfigIopsPerTb?>? iopsPerTb;
 
   /// Creates a new [InstancePerformanceConfig].
   /// [fixedIops] The instance will have a fixed provisioned IOPS value,

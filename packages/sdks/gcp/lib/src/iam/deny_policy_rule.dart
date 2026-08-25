@@ -6,9 +6,9 @@ import 'deny_policy_rule_deny_rule.dart';
 class DenyPolicyRule {
   /// A deny rule in an IAM deny policy.
   /// Structure is documented below.
-  final pulumi.Input<DenyPolicyRuleDenyRule>? denyRule;
+  final pulumi.Input<DenyPolicyRuleDenyRule?>? denyRule;
   /// The description of the rule.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
 
   /// Creates a new [DenyPolicyRule].
   /// [denyRule] A deny rule in an IAM deny policy.

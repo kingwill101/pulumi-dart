@@ -5,14 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FeedDetailsSftpSettingsAuthentication {
   /// Password. Used for username and password authentication.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// Private key. Used for private key authentication.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
-  final pulumi.Input<String>? privateKey;
+  final pulumi.Input<String?>? privateKey;
   /// Private key passphrase. Used for private key authentication.
-  final pulumi.Input<String>? privateKeyPassphrase;
+  final pulumi.Input<String?>? privateKeyPassphrase;
   /// Username. Used for username and password authentication.
-  final pulumi.Input<String>? username;
+  final pulumi.Input<String?>? username;
 
   /// Creates a new [FeedDetailsSftpSettingsAuthentication].
   /// [password] Password. Used for username and password authentication.

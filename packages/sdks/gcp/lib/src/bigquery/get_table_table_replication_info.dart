@@ -35,7 +35,7 @@ class GetTableTableReplicationInfo {
 
   factory GetTableTableReplicationInfo.fromMap(Map<String, dynamic> map) {
     return GetTableTableReplicationInfo(
-      replicationIntervalMs: pulumi.Input.fromValue(map['replicationIntervalMs'] as int),
+      replicationIntervalMs: pulumi.Input.fromValue((map['replicationIntervalMs'] as num).toInt()),
       sourceDatasetId: pulumi.Input.fromValue(map['sourceDatasetId'] as String),
       sourceProjectId: pulumi.Input.fromValue(map['sourceProjectId'] as String),
       sourceTableId: pulumi.Input.fromValue(map['sourceTableId'] as String),

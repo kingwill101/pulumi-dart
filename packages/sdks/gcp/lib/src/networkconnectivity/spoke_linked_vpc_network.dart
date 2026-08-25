@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SpokeLinkedVpcNetwork {
   /// IP ranges encompassing the subnets to be excluded from peering.
-  final pulumi.Input<List<String>>? excludeExportRanges;
+  final pulumi.Input<List<String>?>? excludeExportRanges;
   /// IP ranges allowed to be included from peering.
-  final pulumi.Input<List<String>>? includeExportRanges;
+  final pulumi.Input<List<String>?>? includeExportRanges;
   /// The URI of the VPC network resource.
   final pulumi.Input<String> uri;
 

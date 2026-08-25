@@ -6,17 +6,17 @@ import 'cluster_continuous_backup_info_encryption_info.dart';
 class ClusterContinuousBackupInfo {
   /// (Output)
   /// The earliest restorable time that can be restored to. Output only field.
-  final pulumi.Input<String>? earliestRestorableTime;
+  final pulumi.Input<String?>? earliestRestorableTime;
   /// (Output)
   /// When ContinuousBackup was most recently enabled. Set to null if ContinuousBackup is not enabled.
-  final pulumi.Input<String>? enabledTime;
+  final pulumi.Input<String?>? enabledTime;
   /// (Output)
   /// Output only. The encryption information for the WALs and backups required for ContinuousBackup.
   /// Structure is documented below.
-  final pulumi.Input<List<ClusterContinuousBackupInfoEncryptionInfo>>? encryptionInfos;
+  final pulumi.Input<List<ClusterContinuousBackupInfoEncryptionInfo>?>? encryptionInfos;
   /// (Output)
   /// Days of the week on which a continuous backup is taken. Output only field. Ignored if passed into the request.
-  final pulumi.Input<List<String>>? schedules;
+  final pulumi.Input<List<String>?>? schedules;
 
   /// Creates a new [ClusterContinuousBackupInfo].
   /// [earliestRestorableTime] (Output)

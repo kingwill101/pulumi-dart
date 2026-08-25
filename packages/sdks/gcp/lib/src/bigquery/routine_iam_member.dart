@@ -1025,7 +1025,7 @@ class RoutineIamMember extends pulumi.CustomResource {
           'gcp:bigquery/routineIamMember:RoutineIamMember',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     condition = registerOutput<RoutineIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RoutineIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     datasetId = registerOutput<String>('datasetId');
@@ -1041,11 +1041,12 @@ class RoutineIamMember extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RoutineIamMemberState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RoutineIamMember._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1059,6 +1060,24 @@ class RoutineIamMember extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    condition = registerOutput<RoutineIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RoutineIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    datasetId = registerOutput<String>('datasetId');
+    etag = registerOutput<String>('etag');
+    member = registerOutput<String>('member');
+    project = registerOutput<String>('project');
+    role = registerOutput<String>('role');
+    routineId = registerOutput<String>('routineId');
+  }
+
+  /// Creates a typed reference to an existing [RoutineIamMember] resource.
+  RoutineIamMember.reference(String urn)
+    : super(
+        'gcp:bigquery/routineIamMember:RoutineIamMember',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     condition = registerOutput<RoutineIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RoutineIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     datasetId = registerOutput<String>('datasetId');
     etag = registerOutput<String>('etag');

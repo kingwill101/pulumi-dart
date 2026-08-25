@@ -1,15 +1,16 @@
-// ignore_for_file: unused_import
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'package:pulumi_reservednames/pulumi_reservednames.dart' as provider;
+import 'package:pulumi_reservednames/providers.dart' as provider;
 
-class ExampleStack extends pulumi.Stack {
-  ExampleStack() {
-    // Add resources from package:pulumi_reservednames.
-    // Example:
-    // final resource = provider.YourResource("example");
+class ReservednamesStack extends pulumi.Stack {
+  ReservednamesStack() {
+    // An explicit provider is useful when a stack needs more than one provider
+    // configuration. Most programs can omit it and use the default provider.
+    final configuredProvider = provider.ProviderProvider('example');
+
+    registerOutputs({'providerUrn': configuredProvider.urn});
   }
 }
 
 Future<void> main() async {
-  await pulumi.Deployment.runOrThrow(() => ExampleStack());
+  await pulumi.Deployment.runOrThrow(() => ReservednamesStack());
 }

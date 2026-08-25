@@ -8,7 +8,7 @@ class DashboardChartDashboardChartVisualizationMarkdown {
   final pulumi.Input<String> content;
   /// A nested object resource.
   /// Structure is documented below.
-  final pulumi.Input<DashboardChartDashboardChartVisualizationMarkdownProperties>? properties;
+  final pulumi.Input<DashboardChartDashboardChartVisualizationMarkdownProperties?>? properties;
 
   /// Creates a new [DashboardChartDashboardChartVisualizationMarkdown].
   /// [content] (Required)

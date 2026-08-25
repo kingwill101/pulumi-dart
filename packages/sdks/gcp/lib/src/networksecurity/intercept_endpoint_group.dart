@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'intercept_endpoint_group_args.dart';
+import 'intercept_endpoint_group_association.dart';
+import 'intercept_endpoint_group_connected_deployment_group.dart';
 import 'intercept_endpoint_group_state.dart';
 
 /// An endpoint group is a consumer frontend for a deployment group (backend).
@@ -256,10 +258,10 @@ import 'intercept_endpoint_group_state.dart';
 class InterceptEndpointGroup extends pulumi.CustomResource {
   /// List of associations to this endpoint group.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> associations;
+  late final pulumi.Output<List<InterceptEndpointGroupAssociation>> associations;
   /// The endpoint group's view of a connected deployment group.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> connectedDeploymentGroups;
+  late final pulumi.Output<List<InterceptEndpointGroupConnectedDeploymentGroup>> connectedDeploymentGroups;
   /// The timestamp when the resource was created.
   /// See https://google.aip.dev/148#timestamps.
   late final pulumi.Output<String> createTime;
@@ -327,21 +329,22 @@ class InterceptEndpointGroup extends pulumi.CustomResource {
           'gcp:networksecurity/interceptEndpointGroup:InterceptEndpointGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
-    associations = registerOutput<List<Map<String, dynamic>>>('associations');
-    connectedDeploymentGroups = registerOutput<List<Map<String, dynamic>>>('connectedDeploymentGroups');
+    associations = registerOutput<List<InterceptEndpointGroupAssociation>>('associations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InterceptEndpointGroupAssociation>(guardedValue, (value) => InterceptEndpointGroupAssociation.fromMap((value as Map).cast<String, dynamic>())); });
+    connectedDeploymentGroups = registerOutput<List<InterceptEndpointGroupConnectedDeploymentGroup>>('connectedDeploymentGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InterceptEndpointGroupConnectedDeploymentGroup>(guardedValue, (value) => InterceptEndpointGroupConnectedDeploymentGroup.fromMap((value as Map).cast<String, dynamic>())); });
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     interceptDeploymentGroup = registerOutput<String>('interceptDeploymentGroup');
     interceptEndpointGroupId = registerOutput<String>('interceptEndpointGroupId');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     reconciling = registerOutput<bool>('reconciling');
     state = registerOutput<String>('state');
     updateTime = registerOutput<String>('updateTime');
@@ -352,11 +355,12 @@ class InterceptEndpointGroup extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     InterceptEndpointGroupState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return InterceptEndpointGroup._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -370,21 +374,49 @@ class InterceptEndpointGroup extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    associations = registerOutput<List<Map<String, dynamic>>>('associations');
-    connectedDeploymentGroups = registerOutput<List<Map<String, dynamic>>>('connectedDeploymentGroups');
+    associations = registerOutput<List<InterceptEndpointGroupAssociation>>('associations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InterceptEndpointGroupAssociation>(guardedValue, (value) => InterceptEndpointGroupAssociation.fromMap((value as Map).cast<String, dynamic>())); });
+    connectedDeploymentGroups = registerOutput<List<InterceptEndpointGroupConnectedDeploymentGroup>>('connectedDeploymentGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InterceptEndpointGroupConnectedDeploymentGroup>(guardedValue, (value) => InterceptEndpointGroupConnectedDeploymentGroup.fromMap((value as Map).cast<String, dynamic>())); });
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     interceptDeploymentGroup = registerOutput<String>('interceptDeploymentGroup');
     interceptEndpointGroupId = registerOutput<String>('interceptEndpointGroupId');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     reconciling = registerOutput<bool>('reconciling');
     this.state = registerOutput<String>('state');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [InterceptEndpointGroup] resource.
+  InterceptEndpointGroup.reference(String urn)
+    : super(
+        'gcp:networksecurity/interceptEndpointGroup:InterceptEndpointGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    associations = registerOutput<List<InterceptEndpointGroupAssociation>>('associations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InterceptEndpointGroupAssociation>(guardedValue, (value) => InterceptEndpointGroupAssociation.fromMap((value as Map).cast<String, dynamic>())); });
+    connectedDeploymentGroups = registerOutput<List<InterceptEndpointGroupConnectedDeploymentGroup>>('connectedDeploymentGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InterceptEndpointGroupConnectedDeploymentGroup>(guardedValue, (value) => InterceptEndpointGroupConnectedDeploymentGroup.fromMap((value as Map).cast<String, dynamic>())); });
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    interceptDeploymentGroup = registerOutput<String>('interceptDeploymentGroup');
+    interceptEndpointGroupId = registerOutput<String>('interceptEndpointGroupId');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    reconciling = registerOutput<bool>('reconciling');
+    state = registerOutput<String>('state');
     updateTime = registerOutput<String>('updateTime');
   }
 }

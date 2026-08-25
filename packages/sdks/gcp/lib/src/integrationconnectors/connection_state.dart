@@ -17,86 +17,86 @@ import 'connection_status.dart';
 class ConnectionState {
   /// authConfig for the connection.
   /// Structure is documented below.
-  final pulumi.Input<ConnectionAuthConfig>? authConfig;
+  final pulumi.Input<ConnectionAuthConfig?>? authConfig;
   /// Config Variables for the connection.
   /// Structure is documented below.
-  final pulumi.Input<List<ConnectionConfigVariable>>? configVariables;
+  final pulumi.Input<List<ConnectionConfigVariable>?>? configVariables;
   /// Connection revision. This field is only updated when the connection is created or updated by User.
-  final pulumi.Input<String>? connectionRevision;
+  final pulumi.Input<String?>? connectionRevision;
   /// connectorVersion of the Connector.
-  final pulumi.Input<String>? connectorVersion;
+  final pulumi.Input<String?>? connectorVersion;
   /// This configuration provides infra configs like rate limit threshold which need to be configurable for every connector version.
   /// Structure is documented below.
-  final pulumi.Input<List<ConnectionConnectorVersionInfraConfig>>? connectorVersionInfraConfigs;
+  final pulumi.Input<List<ConnectionConnectorVersionInfraConfig>?>? connectorVersionInfraConfigs;
   /// Flag to mark the version indicating the launch stage.
-  final pulumi.Input<String>? connectorVersionLaunchStage;
+  final pulumi.Input<String?>? connectorVersionLaunchStage;
   /// Time the Namespace was created in UTC.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// An arbitrary description for the Connection.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Define the Connectors target endpoint.
   /// Structure is documented below.
-  final pulumi.Input<List<ConnectionDestinationConfig>>? destinationConfigs;
+  final pulumi.Input<List<ConnectionDestinationConfig>?>? destinationConfigs;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveLabels;
+  final pulumi.Input<Map<String, String>?>? effectiveLabels;
   /// Eventing Configuration of a connection
   /// Structure is documented below.
-  final pulumi.Input<ConnectionEventingConfig>? eventingConfig;
+  final pulumi.Input<ConnectionEventingConfig?>? eventingConfig;
   /// Eventing enablement type. Will be nil if eventing is not enabled.
   /// Possible values are: `EVENTING_AND_CONNECTION`, `ONLY_EVENTING`.
-  final pulumi.Input<String>? eventingEnablementType;
+  final pulumi.Input<String?>? eventingEnablementType;
   /// Eventing Runtime Data.
   /// Structure is documented below.
-  final pulumi.Input<List<ConnectionEventingRuntimeData>>? eventingRuntimeDatas;
+  final pulumi.Input<List<ConnectionEventingRuntimeData>?>? eventingRuntimeDatas;
   /// Resource labels to represent user provided metadata.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Location in which Connection needs to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Determines whether or no a connection is locked. If locked, a reason must be specified.
   /// Structure is documented below.
-  final pulumi.Input<ConnectionLockConfig>? lockConfig;
+  final pulumi.Input<ConnectionLockConfig?>? lockConfig;
   /// Log configuration for the connection.
   /// Structure is documented below.
-  final pulumi.Input<ConnectionLogConfig>? logConfig;
+  final pulumi.Input<ConnectionLogConfig?>? logConfig;
   /// Name of Connection needs to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Node configuration for the connection.
   /// Structure is documented below.
-  final pulumi.Input<ConnectionNodeConfig>? nodeConfig;
+  final pulumi.Input<ConnectionNodeConfig?>? nodeConfig;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  final pulumi.Input<Map<String, String>>? pulumiLabels;
+  final pulumi.Input<Map<String, String>?>? pulumiLabels;
   /// Service account needed for runtime plane to access Google Cloud resources.
-  final pulumi.Input<String>? serviceAccount;
+  final pulumi.Input<String?>? serviceAccount;
   /// The name of the Service Directory service name. Used for Private Harpoon to resolve the ILB address.
   /// e.g. "projects/cloud-connectors-e2e-testing/locations/us-central1/namespaces/istio-system/services/istio-ingressgateway-connectors"
-  final pulumi.Input<String>? serviceDirectory;
+  final pulumi.Input<String?>? serviceDirectory;
   /// SSL Configuration of a connection
   /// Structure is documented below.
-  final pulumi.Input<ConnectionSslConfig>? sslConfig;
+  final pulumi.Input<ConnectionSslConfig?>? sslConfig;
   /// (Output)
   /// Current status of eventing.
   /// Structure is documented below.
-  final pulumi.Input<List<ConnectionStatus>>? statuses;
+  final pulumi.Input<List<ConnectionStatus>?>? statuses;
   /// This subscription type enum states the subscription type of the project.
-  final pulumi.Input<String>? subscriptionType;
+  final pulumi.Input<String?>? subscriptionType;
   /// Suspended indicates if a user has suspended a connection or not.
-  final pulumi.Input<bool>? suspended;
+  final pulumi.Input<bool?>? suspended;
   /// Time the Namespace was updated in UTC.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [ConnectionState].
   /// [authConfig] authConfig for the connection.

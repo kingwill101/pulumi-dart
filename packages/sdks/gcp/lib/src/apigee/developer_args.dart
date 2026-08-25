@@ -10,14 +10,14 @@ import 'developer_attribute.dart';
 class DeveloperArgs {
   /// Developer attributes (name/value pairs). The custom attribute limit is 18.
   /// Structure is documented below.
-  final pulumi.Input<List<DeveloperAttribute>>? attributes;
+  final pulumi.Input<List<DeveloperAttribute>?>? attributes;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Email address of the developer. This value is used to uniquely identify the developer in Apigee hybrid. Note that the email address has to be in lowercase only..
   final pulumi.Input<String> email;
   /// First name of the developer.

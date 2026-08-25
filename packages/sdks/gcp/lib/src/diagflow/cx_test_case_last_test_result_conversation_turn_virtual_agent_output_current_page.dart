@@ -5,10 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPage {
   /// (Output)
   /// The human-readable name of the page, unique within the flow.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The unique identifier of the page.
   /// Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/flows/&lt;Flow ID&gt;/pages/&lt;Page ID&gt;.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPage].
   /// [displayName] (Output)

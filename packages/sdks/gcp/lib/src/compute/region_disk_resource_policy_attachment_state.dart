@@ -10,17 +10,17 @@ class RegionDiskResourcePolicyAttachmentState {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The name of the regional disk in which the resource policies are attached to.
-  final pulumi.Input<String>? disk;
+  final pulumi.Input<String?>? disk;
   /// The resource policy to be attached to the disk for scheduling snapshot
   /// creation. Do not specify the self link.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// A reference to the region where the disk resides.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [RegionDiskResourcePolicyAttachmentState].
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

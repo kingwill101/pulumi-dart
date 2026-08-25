@@ -9,10 +9,10 @@ class FutureReservationAggregateReservation {
   final pulumi.Input<List<FutureReservationAggregateReservationReservedResource>> reservedResources;
   /// The VM family that all instances scheduled against this reservation must belong to.
   /// Possible values are: `VM_FAMILY_CLOUD_TPU_DEVICE_CT3`, `VM_FAMILY_CLOUD_TPU_LITE_DEVICE_CT5L`, `VM_FAMILY_CLOUD_TPU_LITE_POD_SLICE_CT5LP`, `VM_FAMILY_CLOUD_TPU_LITE_POD_SLICE_CT6E`, `VM_FAMILY_CLOUD_TPU_POD_SLICE_CT3P`, `VM_FAMILY_CLOUD_TPU_POD_SLICE_CT4P`, `VM_FAMILY_CLOUD_TPU_POD_SLICE_CT5P`.
-  final pulumi.Input<String>? vmFamily;
+  final pulumi.Input<String?>? vmFamily;
   /// The workload type of the instances that will target this reservation.
   /// Possible values are: `BATCH`, `SERVING`, `UNSPECIFIED`.
-  final pulumi.Input<String>? workloadType;
+  final pulumi.Input<String?>? workloadType;
 
   /// Creates a new [FutureReservationAggregateReservation].
   /// [reservedResources] futureReservations.list of reserved resources (CPUs, memory, accelerators).

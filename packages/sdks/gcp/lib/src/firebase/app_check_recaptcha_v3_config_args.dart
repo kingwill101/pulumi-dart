@@ -12,7 +12,7 @@ class AppCheckRecaptchaV3ConfigArgs {
   final pulumi.Input<String> appId;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The site secret used to identify your service for reCAPTCHA v3 verification.
   /// For security reasons, this field will never be populated in any response.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
@@ -20,7 +20,7 @@ class AppCheckRecaptchaV3ConfigArgs {
   /// Specifies the duration for which App Check tokens exchanged from reCAPTCHA V3 artifacts will be valid.
   /// If unset, a default value of 1 hour is assumed. Must be between 30 minutes and 7 days, inclusive.
   /// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
-  final pulumi.Input<String>? tokenTtl;
+  final pulumi.Input<String?>? tokenTtl;
 
   /// Creates a new [AppCheckRecaptchaV3ConfigArgs].
   /// [appId] The ID of an

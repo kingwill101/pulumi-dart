@@ -8,7 +8,7 @@ class StreamBackfillAllSqlServerExcludedObjectsSchema {
   final pulumi.Input<String> schema;
   /// Tables in the schema.
   /// Structure is documented below.
-  final pulumi.Input<List<StreamBackfillAllSqlServerExcludedObjectsSchemaTable>>? tables;
+  final pulumi.Input<List<StreamBackfillAllSqlServerExcludedObjectsSchemaTable>?>? tables;
 
   /// Creates a new [StreamBackfillAllSqlServerExcludedObjectsSchema].
   /// [schema] Schema name.

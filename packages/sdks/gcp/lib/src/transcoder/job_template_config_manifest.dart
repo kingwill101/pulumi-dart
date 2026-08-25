@@ -4,12 +4,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class JobTemplateConfigManifest {
   /// The name of the generated file. The default is `manifest`.
-  final pulumi.Input<String>? fileName;
+  final pulumi.Input<String?>? fileName;
   /// List of user supplied MuxStream.key values that should appear in this manifest.
-  final pulumi.Input<List<String>>? muxStreams;
+  final pulumi.Input<List<String>?>? muxStreams;
   /// Type of the manifest.
   /// Possible values are: `MANIFEST_TYPE_UNSPECIFIED`, `HLS`, `DASH`.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [JobTemplateConfigManifest].
   /// [fileName] The name of the generated file. The default is `manifest`.

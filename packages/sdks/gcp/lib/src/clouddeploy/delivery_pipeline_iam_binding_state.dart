@@ -5,13 +5,13 @@ import 'delivery_pipeline_iam_binding_condition.dart';
 
 /// Input properties used for looking up and filtering DeliveryPipelineIamBinding resources.
 class DeliveryPipelineIamBindingState {
-  final pulumi.Input<DeliveryPipelineIamBindingCondition>? condition;
-  final pulumi.Input<String>? etag;
-  final pulumi.Input<String>? location;
-  final pulumi.Input<List<String>>? members;
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? project;
-  final pulumi.Input<String>? role;
+  final pulumi.Input<DeliveryPipelineIamBindingCondition?>? condition;
+  final pulumi.Input<String?>? etag;
+  final pulumi.Input<String?>? location;
+  final pulumi.Input<List<String>?>? members;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? project;
+  final pulumi.Input<String?>? role;
 
   /// Creates a new [DeliveryPipelineIamBindingState].
   /// [condition] Optional.

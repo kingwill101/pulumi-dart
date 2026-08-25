@@ -5,10 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering DocumentAiProcessorDefaultVersion resources.
 class DocumentAiProcessorDefaultVersionState {
   /// The processor to set the version on.
-  final pulumi.Input<String>? processor;
+  final pulumi.Input<String?>? processor;
   /// The version to set. Using `stable` or `rc` will cause the API to return the latest version in that release channel.
   /// Apply `lifecycle.ignore_changes` to the `version` field to suppress this diff.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [DocumentAiProcessorDefaultVersionState].
   /// [processor] The processor to set the version on.

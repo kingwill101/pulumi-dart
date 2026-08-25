@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BareMetalAdminClusterClusterOperations {
   /// Whether collection of application logs/metrics should be enabled (in addition to system logs/metrics).
-  final pulumi.Input<bool>? enableApplicationLogs;
+  final pulumi.Input<bool?>? enableApplicationLogs;
 
   /// Creates a new [BareMetalAdminClusterClusterOperations].
   /// [enableApplicationLogs] Whether collection of application logs/metrics should be enabled (in addition to system logs/metrics).

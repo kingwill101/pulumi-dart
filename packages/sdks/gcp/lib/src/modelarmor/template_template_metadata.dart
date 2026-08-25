@@ -7,33 +7,33 @@ import 'template_template_metadata_multi_language_detection.dart';
 class TemplateTemplateMetadata {
   /// Indicates the custom error code set by the user to be returned to the end
   /// user if the LLM response trips Model Armor filters.
-  final pulumi.Input<int>? customLlmResponseSafetyErrorCode;
+  final pulumi.Input<int?>? customLlmResponseSafetyErrorCode;
   /// Indicates the custom error message set by the user to be returned to the
   /// end user if the LLM response trips Model Armor filters.
-  final pulumi.Input<String>? customLlmResponseSafetyErrorMessage;
+  final pulumi.Input<String?>? customLlmResponseSafetyErrorMessage;
   /// Indicates the custom error code set by the user to be returned to the end
   /// user by the service extension if the prompt trips Model Armor filters.
-  final pulumi.Input<int>? customPromptSafetyErrorCode;
+  final pulumi.Input<int?>? customPromptSafetyErrorCode;
   /// Indicates the custom error message set by the user to be returned to the
   /// end user if the prompt trips Model Armor filters.
-  final pulumi.Input<String>? customPromptSafetyErrorMessage;
+  final pulumi.Input<String?>? customPromptSafetyErrorMessage;
   /// Possible values:
   /// INSPECT_ONLY
   /// INSPECT_AND_BLOCK
-  final pulumi.Input<String>? enforcementType;
+  final pulumi.Input<String?>? enforcementType;
   /// Selects the filter version to use for this template. Set exactly one of
   /// 'alias' or 'version'.
   /// Structure is documented below.
-  final pulumi.Input<TemplateTemplateMetadataFilterVersionSelector>? filterVersionSelector;
+  final pulumi.Input<TemplateTemplateMetadataFilterVersionSelector?>? filterVersionSelector;
   /// If true, partial detector failures should be ignored.
-  final pulumi.Input<bool>? ignorePartialInvocationFailures;
+  final pulumi.Input<bool?>? ignorePartialInvocationFailures;
   /// If true, log sanitize operations.
-  final pulumi.Input<bool>? logSanitizeOperations;
+  final pulumi.Input<bool?>? logSanitizeOperations;
   /// If true, log template crud operations.
-  final pulumi.Input<bool>? logTemplateOperations;
+  final pulumi.Input<bool?>? logTemplateOperations;
   /// Metadata to enable multi language detection via template.
   /// Structure is documented below.
-  final pulumi.Input<TemplateTemplateMetadataMultiLanguageDetection>? multiLanguageDetection;
+  final pulumi.Input<TemplateTemplateMetadataMultiLanguageDetection?>? multiLanguageDetection;
 
   /// Creates a new [TemplateTemplateMetadata].
   /// [customLlmResponseSafetyErrorCode] Indicates the custom error code set by the user to be returned to the end
@@ -76,9 +76,9 @@ class TemplateTemplateMetadata {
 
   factory TemplateTemplateMetadata.fromMap(Map<String, dynamic> map) {
     return TemplateTemplateMetadata(
-      customLlmResponseSafetyErrorCode: (() { final guardedValue = map['customLlmResponseSafetyErrorCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      customLlmResponseSafetyErrorCode: (() { final guardedValue = map['customLlmResponseSafetyErrorCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       customLlmResponseSafetyErrorMessage: (() { final guardedValue = map['customLlmResponseSafetyErrorMessage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      customPromptSafetyErrorCode: (() { final guardedValue = map['customPromptSafetyErrorCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      customPromptSafetyErrorCode: (() { final guardedValue = map['customPromptSafetyErrorCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       customPromptSafetyErrorMessage: (() { final guardedValue = map['customPromptSafetyErrorMessage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       enforcementType: (() { final guardedValue = map['enforcementType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       filterVersionSelector: (() { final guardedValue = map['filterVersionSelector']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TemplateTemplateMetadataFilterVersionSelector.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

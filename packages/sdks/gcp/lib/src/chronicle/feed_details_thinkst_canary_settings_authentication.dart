@@ -6,7 +6,7 @@ import 'feed_details_thinkst_canary_settings_authentication_header_key_value.dar
 class FeedDetailsThinkstCanarySettingsAuthentication {
   /// Header key-value pairs.
   /// Structure is documented below.
-  final pulumi.Input<List<FeedDetailsThinkstCanarySettingsAuthenticationHeaderKeyValue>>? headerKeyValues;
+  final pulumi.Input<List<FeedDetailsThinkstCanarySettingsAuthenticationHeaderKeyValue>?>? headerKeyValues;
 
   /// Creates a new [FeedDetailsThinkstCanarySettingsAuthentication].
   /// [headerKeyValues] Header key-value pairs.

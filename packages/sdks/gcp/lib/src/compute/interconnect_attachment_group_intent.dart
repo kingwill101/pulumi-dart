@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InterconnectAttachmentGroupIntent {
   /// Which SLA the user intends this group to support.
   /// Possible values are: `PRODUCTION_NON_CRITICAL`, `PRODUCTION_CRITICAL`, `NO_SLA`, `AVAILABILITY_SLA_UNSPECIFIED`.
-  final pulumi.Input<String>? availabilitySla;
+  final pulumi.Input<String?>? availabilitySla;
 
   /// Creates a new [InterconnectAttachmentGroupIntent].
   /// [availabilitySla] Which SLA the user intends this group to support.

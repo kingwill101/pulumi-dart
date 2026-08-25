@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_sql_get_tiers_get_tiers_args_doc}
 class GetTiersArgs {
   /// The Project ID for which to list tiers. If `project` is not provided, the project defined within the default provider configuration is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetTiersArgs].
   /// [project] The Project ID for which to list tiers. If `project` is not provided, the project defined within the default provider configuration is used.

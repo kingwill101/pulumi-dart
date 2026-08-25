@@ -9,21 +9,21 @@ import 'service_template_spec_volume_secret.dart';
 class ServiceTemplateSpecVolume {
   /// A filesystem specified by the Container Storage Interface (CSI).
   /// Structure is documented below.
-  final pulumi.Input<ServiceTemplateSpecVolumeCsi>? csi;
+  final pulumi.Input<ServiceTemplateSpecVolumeCsi?>? csi;
   /// Ephemeral storage which can be backed by real disks (HD, SSD), network storage or memory (i.e. tmpfs). For now only in memory (tmpfs) is supported. It is ephemeral in the sense that when the sandbox is taken down, the data is destroyed with it (it does not persist across sandbox runs).
   /// Structure is documented below.
-  final pulumi.Input<ServiceTemplateSpecVolumeEmptyDir>? emptyDir;
+  final pulumi.Input<ServiceTemplateSpecVolumeEmptyDir?>? emptyDir;
   /// Volume's name.
   final pulumi.Input<String> name;
   /// A filesystem backed by a Network File System share. This filesystem requires the
   /// run.googleapis.com/execution-environment annotation to be unset or set to "gen2"
   /// Structure is documented below.
-  final pulumi.Input<ServiceTemplateSpecVolumeNfs>? nfs;
+  final pulumi.Input<ServiceTemplateSpecVolumeNfs?>? nfs;
   /// The secret's value will be presented as the content of a file whose
   /// name is defined in the item path. If no items are defined, the name of
   /// the file is the secret_name.
   /// Structure is documented below.
-  final pulumi.Input<ServiceTemplateSpecVolumeSecret>? secret;
+  final pulumi.Input<ServiceTemplateSpecVolumeSecret?>? secret;
 
   /// Creates a new [ServiceTemplateSpecVolume].
   /// [csi] A filesystem specified by the Container Storage Interface (CSI).

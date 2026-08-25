@@ -9,11 +9,11 @@ class ClusterPersistenceConfigRdbConfig {
   /// - TWELVE_HOURS:	Snapshot every 12 hours.
   /// - TWENTY_FOUR_HOURS:	Snapshot every 24 hours.
   /// Possible values are: `SNAPSHOT_PERIOD_UNSPECIFIED`, `ONE_HOUR`, `SIX_HOURS`, `TWELVE_HOURS`, `TWENTY_FOUR_HOURS`.
-  final pulumi.Input<String>? rdbSnapshotPeriod;
+  final pulumi.Input<String?>? rdbSnapshotPeriod;
   /// The time that the first snapshot was/will be attempted, and to which
   /// future snapshots will be aligned.
   /// If not provided, the current time will be used.
-  final pulumi.Input<String>? rdbSnapshotStartTime;
+  final pulumi.Input<String?>? rdbSnapshotStartTime;
 
   /// Creates a new [ClusterPersistenceConfigRdbConfig].
   /// [rdbSnapshotPeriod] Optional. Available snapshot periods for scheduling.

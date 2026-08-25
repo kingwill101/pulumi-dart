@@ -6,11 +6,11 @@ import 'feed_details_okta_user_context_settings_authentication.dart';
 class FeedDetailsOktaUserContextSettings {
   /// HTTP header based authentication.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsOktaUserContextSettingsAuthentication>? authentication;
+  final pulumi.Input<FeedDetailsOktaUserContextSettingsAuthentication?>? authentication;
   /// API Hostname.
-  final pulumi.Input<String>? hostname;
+  final pulumi.Input<String?>? hostname;
   /// Manager id reference field.
-  final pulumi.Input<String>? managerIdReferenceField;
+  final pulumi.Input<String?>? managerIdReferenceField;
 
   /// Creates a new [FeedDetailsOktaUserContextSettings].
   /// [authentication] HTTP header based authentication.

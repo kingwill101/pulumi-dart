@@ -6,7 +6,7 @@ import 'environment_client_ip_resolution_config_header_index_algorithm.dart';
 class EnvironmentClientIpResolutionConfig {
   /// Resolves the client ip based on a custom header.
   /// Structure is documented below.
-  final pulumi.Input<EnvironmentClientIpResolutionConfigHeaderIndexAlgorithm>? headerIndexAlgorithm;
+  final pulumi.Input<EnvironmentClientIpResolutionConfigHeaderIndexAlgorithm?>? headerIndexAlgorithm;
 
   /// Creates a new [EnvironmentClientIpResolutionConfig].
   /// [headerIndexAlgorithm] Resolves the client ip based on a custom header.

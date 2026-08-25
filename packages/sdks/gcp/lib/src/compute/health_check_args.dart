@@ -17,38 +17,38 @@ import 'health_check_tcp_health_check.dart';
 class HealthCheckArgs {
   /// How often (in seconds) to send a health check. The default value is 5
   /// seconds.
-  final pulumi.Input<int>? checkIntervalSec;
+  final pulumi.Input<int?>? checkIntervalSec;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// An optional description of this resource. Provide this property when
   /// you create the resource.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// A nested object resource.
   /// Structure is documented below.
-  final pulumi.Input<HealthCheckGrpcHealthCheck>? grpcHealthCheck;
+  final pulumi.Input<HealthCheckGrpcHealthCheck?>? grpcHealthCheck;
   /// A nested object resource.
   /// Structure is documented below.
-  final pulumi.Input<HealthCheckGrpcTlsHealthCheck>? grpcTlsHealthCheck;
+  final pulumi.Input<HealthCheckGrpcTlsHealthCheck?>? grpcTlsHealthCheck;
   /// A so-far unhealthy instance will be marked healthy after this many
   /// consecutive successes. The default value is 2.
-  final pulumi.Input<int>? healthyThreshold;
+  final pulumi.Input<int?>? healthyThreshold;
   /// A nested object resource.
   /// Structure is documented below.
-  final pulumi.Input<HealthCheckHttp2HealthCheck>? http2HealthCheck;
+  final pulumi.Input<HealthCheckHttp2HealthCheck?>? http2HealthCheck;
   /// A nested object resource.
   /// Structure is documented below.
-  final pulumi.Input<HealthCheckHttpHealthCheck>? httpHealthCheck;
+  final pulumi.Input<HealthCheckHttpHealthCheck?>? httpHealthCheck;
   /// A nested object resource.
   /// Structure is documented below.
-  final pulumi.Input<HealthCheckHttpsHealthCheck>? httpsHealthCheck;
+  final pulumi.Input<HealthCheckHttpsHealthCheck?>? httpsHealthCheck;
   /// Configure logging on this health check.
   /// Structure is documented below.
-  final pulumi.Input<HealthCheckLogConfig>? logConfig;
+  final pulumi.Input<HealthCheckLogConfig?>? logConfig;
   /// Name of the resource. Provided by the client when the resource is
   /// created. The name must be 1-63 characters long, and comply with
   /// RFC1035.  Specifically, the name must be 1-63 characters long and
@@ -56,10 +56,10 @@ class HealthCheckArgs {
   /// the first character must be a lowercase letter, and all following
   /// characters must be a dash, lowercase letter, or digit, except the
   /// last character, which cannot be a dash.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The list of cloud regions from which health checks are performed. If
   /// any regions are specified, then exactly 3 regions should be specified.
   /// The region names must be valid names of Google Cloud regions. This can
@@ -72,20 +72,20 @@ class HealthCheckArgs {
   /// * The checkIntervalSec field must be at least 30.
   /// * The health check cannot be used with BackendService nor with managed
   /// instance group auto-healing.
-  final pulumi.Input<List<String>>? sourceRegions;
+  final pulumi.Input<List<String>?>? sourceRegions;
   /// A nested object resource.
   /// Structure is documented below.
-  final pulumi.Input<HealthCheckSslHealthCheck>? sslHealthCheck;
+  final pulumi.Input<HealthCheckSslHealthCheck?>? sslHealthCheck;
   /// A nested object resource.
   /// Structure is documented below.
-  final pulumi.Input<HealthCheckTcpHealthCheck>? tcpHealthCheck;
+  final pulumi.Input<HealthCheckTcpHealthCheck?>? tcpHealthCheck;
   /// How long (in seconds) to wait before claiming failure.
   /// The default value is 5 seconds.  It is invalid for timeoutSec to have
   /// greater value than checkIntervalSec.
-  final pulumi.Input<int>? timeoutSec;
+  final pulumi.Input<int?>? timeoutSec;
   /// A so-far healthy instance will be marked unhealthy after this many
   /// consecutive failures. The default value is 2.
-  final pulumi.Input<int>? unhealthyThreshold;
+  final pulumi.Input<int?>? unhealthyThreshold;
 
   /// Creates a new [HealthCheckArgs].
   /// [checkIntervalSec] How often (in seconds) to send a health check. The default value is 5
@@ -149,12 +149,12 @@ class HealthCheckArgs {
 
   factory HealthCheckArgs.fromMap(Map<String, dynamic> map) {
     return HealthCheckArgs(
-      checkIntervalSec: (() { final guardedValue = map['checkIntervalSec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      checkIntervalSec: (() { final guardedValue = map['checkIntervalSec']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       grpcHealthCheck: (() { final guardedValue = map['grpcHealthCheck']; if (guardedValue == null) return null; return pulumi.Input.fromValue(HealthCheckGrpcHealthCheck.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       grpcTlsHealthCheck: (() { final guardedValue = map['grpcTlsHealthCheck']; if (guardedValue == null) return null; return pulumi.Input.fromValue(HealthCheckGrpcTlsHealthCheck.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      healthyThreshold: (() { final guardedValue = map['healthyThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      healthyThreshold: (() { final guardedValue = map['healthyThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       http2HealthCheck: (() { final guardedValue = map['http2HealthCheck']; if (guardedValue == null) return null; return pulumi.Input.fromValue(HealthCheckHttp2HealthCheck.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       httpHealthCheck: (() { final guardedValue = map['httpHealthCheck']; if (guardedValue == null) return null; return pulumi.Input.fromValue(HealthCheckHttpHealthCheck.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       httpsHealthCheck: (() { final guardedValue = map['httpsHealthCheck']; if (guardedValue == null) return null; return pulumi.Input.fromValue(HealthCheckHttpsHealthCheck.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -164,8 +164,8 @@ class HealthCheckArgs {
       sourceRegions: (() { final guardedValue = map['sourceRegions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       sslHealthCheck: (() { final guardedValue = map['sslHealthCheck']; if (guardedValue == null) return null; return pulumi.Input.fromValue(HealthCheckSslHealthCheck.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       tcpHealthCheck: (() { final guardedValue = map['tcpHealthCheck']; if (guardedValue == null) return null; return pulumi.Input.fromValue(HealthCheckTcpHealthCheck.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      timeoutSec: (() { final guardedValue = map['timeoutSec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      unhealthyThreshold: (() { final guardedValue = map['unhealthyThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      timeoutSec: (() { final guardedValue = map['timeoutSec']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      unhealthyThreshold: (() { final guardedValue = map['unhealthyThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

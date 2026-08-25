@@ -7,70 +7,70 @@ class GoldengateConnectionPropertiesJavaMessageServiceConnectionProperties {
   /// Possible values:
   /// NONE
   /// BASIC
-  final pulumi.Input<String>? authenticationType;
+  final pulumi.Input<String?>? authenticationType;
   /// The Java class implementing javax.jms.ConnectionFactory interface supplied
   /// by the JMS provider.
-  final pulumi.Input<String>? connectionFactory;
+  final pulumi.Input<String?>? connectionFactory;
   /// Connection URL of the Java Message Service, specifying the protocol, host,
   /// and port. e.g.: 'mq://myjms.host.domain:7676'
-  final pulumi.Input<String>? connectionUrl;
+  final pulumi.Input<String?>? connectionUrl;
   /// The Connection Factory can be looked up using this name.
   /// e.g.: 'ConnectionFactory'
-  final pulumi.Input<String>? jndiConnectionFactory;
+  final pulumi.Input<String?>? jndiConnectionFactory;
   /// The implementation of javax.naming.spi.InitialContextFactory interface
   /// used to obtain initial naming context.
-  final pulumi.Input<String>? jndiInitialContextFactory;
+  final pulumi.Input<String?>? jndiInitialContextFactory;
   /// The URL that Java Message Service will use to contact the JNDI provider.
   /// e.g.: 'tcp://myjms.host.domain:61616?jms.prefetchPolicy.all=1000'
-  final pulumi.Input<String>? jndiProviderUrl;
+  final pulumi.Input<String?>? jndiProviderUrl;
   /// The password associated to the principal.
-  final pulumi.Input<String>? jndiSecurityCredentialsSecret;
+  final pulumi.Input<String?>? jndiSecurityCredentialsSecret;
   /// Specifies the identity of the principal (user) to be authenticated.
-  final pulumi.Input<String>? jndiSecurityPrincipal;
+  final pulumi.Input<String?>? jndiSecurityPrincipal;
   /// The content of the KeyStore file.
-  final pulumi.Input<String>? keyStoreFile;
+  final pulumi.Input<String?>? keyStoreFile;
   /// Input only. The KeyStore password in plain text.
-  final pulumi.Input<String>? keyStorePassword;
+  final pulumi.Input<String?>? keyStorePassword;
   /// Input only. The resource name of a secret version in Secret Manager which contains
   /// the KeyStore password.
   /// Format: projects/{project}/secrets/{secret}/versions/{version}.
-  final pulumi.Input<String>? keyStorePasswordSecretVersion;
+  final pulumi.Input<String?>? keyStorePasswordSecretVersion;
   /// Input only. The password Oracle Goldengate uses to connect the Java Message Service
   /// in plain text.
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// Input only. The resource name of a secret version in Secret Manager which contains
   /// the password Oracle Goldengate uses to connect the associated Java
   /// Message Service.
   /// Format: projects/{project}/secrets/{secret}/versions/{version}.
-  final pulumi.Input<String>? passwordSecretVersion;
+  final pulumi.Input<String?>? passwordSecretVersion;
   /// Security protocol for Java Message Service.
   /// Possible values:
   /// PLAIN
   /// TLS
   /// MTLS
-  final pulumi.Input<String>? securityProtocol;
+  final pulumi.Input<String?>? securityProtocol;
   /// Input only. The password for the cert inside of the KeyStore in plain text.
-  final pulumi.Input<String>? sslKeyPassword;
+  final pulumi.Input<String?>? sslKeyPassword;
   /// Input only. The resource name of a secret version in Secret Manager which contains
   /// the password for the cert inside of the KeyStore.
   /// Format: projects/{project}/secrets/{secret}/versions/{version}.
-  final pulumi.Input<String>? sslKeyPasswordSecretVersion;
+  final pulumi.Input<String?>? sslKeyPasswordSecretVersion;
   /// The technology type of JavaMessageServiceConnection.
-  final pulumi.Input<String>? technologyType;
+  final pulumi.Input<String?>? technologyType;
   /// The content of the TrustStore file.
-  final pulumi.Input<String>? trustStoreFile;
+  final pulumi.Input<String?>? trustStoreFile;
   /// Input only. The TrustStore password in plain text.
-  final pulumi.Input<String>? trustStorePassword;
+  final pulumi.Input<String?>? trustStorePassword;
   /// Input only. The resource name of a secret version in Secret Manager which contains
   /// the TrustStore password.
   /// Format: projects/{project}/secrets/{secret}/versions/{version}.
-  final pulumi.Input<String>? trustStorePasswordSecretVersion;
+  final pulumi.Input<String?>? trustStorePasswordSecretVersion;
   /// If set to true, Java Naming and Directory Interface (JNDI) properties
   /// should be provided.
-  final pulumi.Input<bool>? useJndi;
+  final pulumi.Input<bool?>? useJndi;
   /// The username Oracle Goldengate uses to connect to the Java Message
   /// Service.
-  final pulumi.Input<String>? username;
+  final pulumi.Input<String?>? username;
 
   /// Creates a new [GoldengateConnectionPropertiesJavaMessageServiceConnectionProperties].
   /// [authenticationType] Authentication type for Java Message Service.

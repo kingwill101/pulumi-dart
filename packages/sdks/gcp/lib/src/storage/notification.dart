@@ -391,11 +391,11 @@ class Notification extends pulumi.CustomResource {
           'gcp:storage/notification:Notification',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     bucket = registerOutput<String>('bucket');
-    customAttributes = registerOutput<Map<String, String>?>('customAttributes');
-    eventTypes = registerOutput<List<String>?>('eventTypes');
+    customAttributes = registerOutput<Map<String, String>?>('customAttributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    eventTypes = registerOutput<List<String>?>('eventTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     notificationId = registerOutput<String>('notificationId');
     objectNamePrefix = registerOutput<String?>('objectNamePrefix');
     payloadFormat = registerOutput<String>('payloadFormat');
@@ -408,11 +408,12 @@ class Notification extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     NotificationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Notification._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -427,8 +428,27 @@ class Notification extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     bucket = registerOutput<String>('bucket');
-    customAttributes = registerOutput<Map<String, String>?>('customAttributes');
-    eventTypes = registerOutput<List<String>?>('eventTypes');
+    customAttributes = registerOutput<Map<String, String>?>('customAttributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    eventTypes = registerOutput<List<String>?>('eventTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    notificationId = registerOutput<String>('notificationId');
+    objectNamePrefix = registerOutput<String?>('objectNamePrefix');
+    payloadFormat = registerOutput<String>('payloadFormat');
+    selfLink = registerOutput<String>('selfLink');
+    topic = registerOutput<String>('topic');
+  }
+
+  /// Creates a typed reference to an existing [Notification] resource.
+  Notification.reference(String urn)
+    : super(
+        'gcp:storage/notification:Notification',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    bucket = registerOutput<String>('bucket');
+    customAttributes = registerOutput<Map<String, String>?>('customAttributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    eventTypes = registerOutput<List<String>?>('eventTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     notificationId = registerOutput<String>('notificationId');
     objectNamePrefix = registerOutput<String?>('objectNamePrefix');
     payloadFormat = registerOutput<String>('payloadFormat');

@@ -5,28 +5,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoldengateDeploymentPropertiesDeploymentDiagnosticData {
   /// (Output)
   /// The bucket name.
-  final pulumi.Input<String>? bucket;
+  final pulumi.Input<String?>? bucket;
   /// (Output)
   /// The time diagnostic end.
-  final pulumi.Input<String>? diagnosticEndTime;
+  final pulumi.Input<String?>? diagnosticEndTime;
   /// (Output)
   /// The time diagnostic start.
-  final pulumi.Input<String>? diagnosticStartTime;
+  final pulumi.Input<String?>? diagnosticStartTime;
   /// (Output)
   /// The diagnostic state.
   /// Possible values:
   /// IN_PROGRESS
   /// SUCCEEDED
   /// FAILED
-  final pulumi.Input<String>? diagnosticState;
+  final pulumi.Input<String?>? diagnosticState;
   /// (Output)
   /// The namespace name.
-  final pulumi.Input<String>? namespace;
+  final pulumi.Input<String?>? namespace;
   /// (Output)
   /// The object name.
   ///
   /// &lt;a name="nestedPropertiesIngressIps"&gt;&lt;/a&gt;The `ingressIps` block contains:
-  final pulumi.Input<String>? object_;
+  final pulumi.Input<String?>? object_;
 
   /// Creates a new [GoldengateDeploymentPropertiesDeploymentDiagnosticData].
   /// [bucket] (Output)

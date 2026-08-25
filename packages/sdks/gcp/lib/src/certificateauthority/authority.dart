@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'authority_access_url.dart';
 import 'authority_args.dart';
 import 'authority_config.dart';
 import 'authority_key_spec.dart';
@@ -2359,7 +2360,7 @@ import 'authority_user_defined_access_urls.dart';
 class Authority extends pulumi.CustomResource {
   /// URLs for accessing content published by this CA, such as the CA certificate and CRLs.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> accessUrls;
+  late final pulumi.Output<List<AuthorityAccessUrl>> accessUrls;
   /// The user provided Resource ID for this Certificate Authority.
   late final pulumi.Output<String> certificateAuthorityId;
   /// The config used to create a self-signed X.509 certificate or CSR.
@@ -2470,28 +2471,29 @@ class Authority extends pulumi.CustomResource {
           'gcp:certificateauthority/authority:Authority',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
-    accessUrls = registerOutput<List<Map<String, dynamic>>>('accessUrls');
+    accessUrls = registerOutput<List<AuthorityAccessUrl>>('accessUrls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AuthorityAccessUrl>(guardedValue, (value) => AuthorityAccessUrl.fromMap((value as Map).cast<String, dynamic>())); });
     certificateAuthorityId = registerOutput<String>('certificateAuthorityId');
     config = registerOutput<AuthorityConfig>('config', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AuthorityConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     deletionProtection = registerOutput<bool?>('deletionProtection');
     desiredState = registerOutput<String?>('desiredState');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     gcsBucket = registerOutput<String?>('gcsBucket');
     ignoreActiveCertificatesOnDeletion = registerOutput<bool?>('ignoreActiveCertificatesOnDeletion');
     keySpec = registerOutput<AuthorityKeySpec>('keySpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AuthorityKeySpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     lifetime = registerOutput<String?>('lifetime');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     pemCaCertificate = registerOutput<String?>('pemCaCertificate');
-    pemCaCertificates = registerOutput<List<String>>('pemCaCertificates');
+    pemCaCertificates = registerOutput<List<String>>('pemCaCertificates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     pool = registerOutput<String>('pool');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     skipGracePeriod = registerOutput<bool?>('skipGracePeriod');
     state = registerOutput<String>('state');
     subordinateConfig = registerOutput<AuthoritySubordinateConfig?>('subordinateConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AuthoritySubordinateConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -2505,11 +2507,12 @@ class Authority extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AuthorityState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Authority._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -2523,28 +2526,66 @@ class Authority extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    accessUrls = registerOutput<List<Map<String, dynamic>>>('accessUrls');
+    accessUrls = registerOutput<List<AuthorityAccessUrl>>('accessUrls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AuthorityAccessUrl>(guardedValue, (value) => AuthorityAccessUrl.fromMap((value as Map).cast<String, dynamic>())); });
     certificateAuthorityId = registerOutput<String>('certificateAuthorityId');
     config = registerOutput<AuthorityConfig>('config', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AuthorityConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     deletionProtection = registerOutput<bool?>('deletionProtection');
     desiredState = registerOutput<String?>('desiredState');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     gcsBucket = registerOutput<String?>('gcsBucket');
     ignoreActiveCertificatesOnDeletion = registerOutput<bool?>('ignoreActiveCertificatesOnDeletion');
     keySpec = registerOutput<AuthorityKeySpec>('keySpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AuthorityKeySpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     lifetime = registerOutput<String?>('lifetime');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     pemCaCertificate = registerOutput<String?>('pemCaCertificate');
-    pemCaCertificates = registerOutput<List<String>>('pemCaCertificates');
+    pemCaCertificates = registerOutput<List<String>>('pemCaCertificates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     pool = registerOutput<String>('pool');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     skipGracePeriod = registerOutput<bool?>('skipGracePeriod');
     this.state = registerOutput<String>('state');
+    subordinateConfig = registerOutput<AuthoritySubordinateConfig?>('subordinateConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AuthoritySubordinateConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String?>('type');
+    updateTime = registerOutput<String>('updateTime');
+    userDefinedAccessUrls = registerOutput<AuthorityUserDefinedAccessUrls?>('userDefinedAccessUrls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AuthorityUserDefinedAccessUrls.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Authority] resource.
+  Authority.reference(String urn)
+    : super(
+        'gcp:certificateauthority/authority:Authority',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    accessUrls = registerOutput<List<AuthorityAccessUrl>>('accessUrls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AuthorityAccessUrl>(guardedValue, (value) => AuthorityAccessUrl.fromMap((value as Map).cast<String, dynamic>())); });
+    certificateAuthorityId = registerOutput<String>('certificateAuthorityId');
+    config = registerOutput<AuthorityConfig>('config', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AuthorityConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    deletionProtection = registerOutput<bool?>('deletionProtection');
+    desiredState = registerOutput<String?>('desiredState');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    gcsBucket = registerOutput<String?>('gcsBucket');
+    ignoreActiveCertificatesOnDeletion = registerOutput<bool?>('ignoreActiveCertificatesOnDeletion');
+    keySpec = registerOutput<AuthorityKeySpec>('keySpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AuthorityKeySpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    lifetime = registerOutput<String?>('lifetime');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    pemCaCertificate = registerOutput<String?>('pemCaCertificate');
+    pemCaCertificates = registerOutput<List<String>>('pemCaCertificates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    pool = registerOutput<String>('pool');
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    skipGracePeriod = registerOutput<bool?>('skipGracePeriod');
+    state = registerOutput<String>('state');
     subordinateConfig = registerOutput<AuthoritySubordinateConfig?>('subordinateConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AuthoritySubordinateConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String?>('type');
     updateTime = registerOutput<String>('updateTime');

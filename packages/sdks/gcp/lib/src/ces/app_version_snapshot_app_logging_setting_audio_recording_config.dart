@@ -9,7 +9,7 @@ class AppVersionSnapshotAppLoggingSettingAudioRecordingConfig {
   /// Note: If the Cloud Storage bucket is in a different project from the app,
   /// you should grant `storage.objects.create` permission to the CES service
   /// agent `service-@gcp-sa-ces.iam.gserviceaccount.com`.
-  final pulumi.Input<String>? gcsBucket;
+  final pulumi.Input<String?>? gcsBucket;
   /// (Output)
   /// The Cloud Storage path prefix for audio recordings.
   /// This prefix can include the following placeholders, which will be
@@ -21,7 +21,7 @@ class AppVersionSnapshotAppLoggingSettingAudioRecordingConfig {
   /// - $session:   session ID
   /// If the path prefix is not specified, the default prefix
   /// `$project/$location/$app/$date/$session/` will be used.
-  final pulumi.Input<String>? gcsPathPrefix;
+  final pulumi.Input<String?>? gcsPathPrefix;
 
   /// Creates a new [AppVersionSnapshotAppLoggingSettingAudioRecordingConfig].
   /// [gcsBucket] (Output)

@@ -5,9 +5,9 @@ import 'prevention_discovery_config_target_other_cloud_target_filter_collection_
 
 class PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRegexesPatternAmazonS3BucketRegex {
   /// The AWS account regex
-  final pulumi.Input<PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRegexesPatternAmazonS3BucketRegexAwsAccountRegex>? awsAccountRegex;
+  final pulumi.Input<PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRegexesPatternAmazonS3BucketRegexAwsAccountRegex?>? awsAccountRegex;
   /// Regex to test the bucket name against. If empty, all buckets match.
-  final pulumi.Input<String>? bucketNameRegex;
+  final pulumi.Input<String?>? bucketNameRegex;
 
   /// Creates a new [PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRegexesPatternAmazonS3BucketRegex].
   /// [awsAccountRegex] The AWS account regex

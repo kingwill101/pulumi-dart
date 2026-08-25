@@ -7,7 +7,7 @@ class InstanceManagedServerCa {
   /// (Output)
   /// The PEM encoded CA certificate chains for managed server authentication
   /// Structure is documented below.
-  final pulumi.Input<List<InstanceManagedServerCaCaCert>>? caCerts;
+  final pulumi.Input<List<InstanceManagedServerCaCaCert>?>? caCerts;
 
   /// Creates a new [InstanceManagedServerCa].
   /// [caCerts] (Output)

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AppVersionSnapshotAppLoggingSettingCloudLoggingSetting {
   /// (Output)
   /// Whether to enable Cloud Logging for the sessions.
-  final pulumi.Input<bool>? enableCloudLogging;
+  final pulumi.Input<bool?>? enableCloudLogging;
 
   /// Creates a new [AppVersionSnapshotAppLoggingSettingCloudLoggingSetting].
   /// [enableCloudLogging] (Output)

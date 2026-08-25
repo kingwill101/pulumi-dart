@@ -6,9 +6,9 @@ class GlobalVmExtensionPolicyExtensionPolicy {
   /// The identifier for this object. Format specified above.
   final pulumi.Input<String> extensionName;
   /// The version pinning for the extension.
-  final pulumi.Input<String>? pinnedVersion;
+  final pulumi.Input<String?>? pinnedVersion;
   /// String configuration payload.
-  final pulumi.Input<String>? stringConfig;
+  final pulumi.Input<String?>? stringConfig;
 
   /// Creates a new [GlobalVmExtensionPolicyExtensionPolicy].
   /// [extensionName] The identifier for this object. Format specified above.

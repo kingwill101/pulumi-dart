@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'service_perimeters_args.dart';
+import 'service_perimeters_service_perimeter.dart';
 import 'service_perimeters_state.dart';
 
 /// Replace all existing Service Perimeters in an Access Policy with the Service Perimeters provided. This is done atomically.
@@ -473,7 +474,7 @@ class ServicePerimeters extends pulumi.CustomResource {
   late final pulumi.Output<String> parent;
   /// The desired Service Perimeters that should replace all existing Service Perimeters in the Access Policy.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> servicePerimeters;
+  late final pulumi.Output<List<ServicePerimetersServicePerimeter>?> servicePerimeters;
 
   /// Creates a new [ServicePerimeters].
   /// [name] The Pulumi resource name.
@@ -487,11 +488,11 @@ class ServicePerimeters extends pulumi.CustomResource {
           'gcp:accesscontextmanager/servicePerimeters:ServicePerimeters',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     parent = registerOutput<String>('parent');
-    servicePerimeters = registerOutput<List<Map<String, dynamic>>?>('servicePerimeters');
+    servicePerimeters = registerOutput<List<ServicePerimetersServicePerimeter>?>('servicePerimeters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServicePerimetersServicePerimeter>(guardedValue, (value) => ServicePerimetersServicePerimeter.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [ServicePerimeters] resource's state with the given [name] and [id].
@@ -499,11 +500,12 @@ class ServicePerimeters extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ServicePerimetersState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ServicePerimeters._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -519,6 +521,20 @@ class ServicePerimeters extends pulumi.CustomResource {
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     parent = registerOutput<String>('parent');
-    servicePerimeters = registerOutput<List<Map<String, dynamic>>?>('servicePerimeters');
+    servicePerimeters = registerOutput<List<ServicePerimetersServicePerimeter>?>('servicePerimeters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServicePerimetersServicePerimeter>(guardedValue, (value) => ServicePerimetersServicePerimeter.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [ServicePerimeters] resource.
+  ServicePerimeters.reference(String urn)
+    : super(
+        'gcp:accesscontextmanager/servicePerimeters:ServicePerimeters',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    parent = registerOutput<String>('parent');
+    servicePerimeters = registerOutput<List<ServicePerimetersServicePerimeter>?>('servicePerimeters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServicePerimetersServicePerimeter>(guardedValue, (value) => ServicePerimetersServicePerimeter.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

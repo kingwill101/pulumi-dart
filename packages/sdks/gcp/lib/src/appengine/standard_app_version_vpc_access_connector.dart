@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class StandardAppVersionVpcAccessConnector {
   /// The egress setting for the connector, controlling what traffic is diverted through it.
-  final pulumi.Input<String>? egressSetting;
+  final pulumi.Input<String?>? egressSetting;
   /// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
   final pulumi.Input<String> name;
 

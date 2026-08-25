@@ -20,7 +20,7 @@ class GetDatabaseInstancesInstanceSettingAdvancedMachineFeature {
 
   factory GetDatabaseInstancesInstanceSettingAdvancedMachineFeature.fromMap(Map<String, dynamic> map) {
     return GetDatabaseInstancesInstanceSettingAdvancedMachineFeature(
-      threadsPerCore: pulumi.Input.fromValue(map['threadsPerCore'] as int),
+      threadsPerCore: pulumi.Input.fromValue((map['threadsPerCore'] as num).toInt()),
     );
   }
 }

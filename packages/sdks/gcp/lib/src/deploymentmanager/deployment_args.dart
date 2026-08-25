@@ -16,7 +16,7 @@ class DeploymentArgs {
   /// actually affect the deployment, just how it is updated.
   /// Default value is `CREATE_OR_ACQUIRE`.
   /// Possible values are: `ACQUIRE`, `CREATE_OR_ACQUIRE`.
-  final pulumi.Input<String>? createPolicy;
+  final pulumi.Input<String?>? createPolicy;
   /// Set the policy to use for deleting new resources on update/delete.
   /// Valid values are `DELETE` (default) or `ABANDON`. If `DELETE`,
   /// resource is deleted after removal from Deployment Manager. If
@@ -25,21 +25,21 @@ class DeploymentArgs {
   /// actually change the deployment, just how it is updated.
   /// Default value is `DELETE`.
   /// Possible values are: `ABANDON`, `DELETE`.
-  final pulumi.Input<String>? deletePolicy;
+  final pulumi.Input<String?>? deletePolicy;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Optional user-provided description of deployment.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Key-value pairs to apply to this labels.
   /// Structure is documented below.
-  final pulumi.Input<List<DeploymentLabel>>? labels;
+  final pulumi.Input<List<DeploymentLabel>?>? labels;
   /// Unique name for the deployment
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// If set to true, a deployment is created with "shell" resources
   /// that are not actually instantiated. This allows you to preview a
   /// deployment. It can be updated to false to actually deploy
@@ -48,10 +48,10 @@ class DeploymentArgs {
   /// of a deployment in preview (unless updating to preview=false). Thus,
   /// the provider will force-recreate deployments if either preview is updated
   /// to true or if other fields are updated while preview is true.
-  final pulumi.Input<bool>? preview;
+  final pulumi.Input<bool?>? preview;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Parameters that define your deployment, including the deployment
   /// configuration and relevant templates.
   /// Structure is documented below.

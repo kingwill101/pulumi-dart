@@ -6,7 +6,7 @@ import 'feed_details_pan_ioc_settings_authentication_header_key_value.dart';
 class FeedDetailsPanIocSettingsAuthentication {
   /// Header key-value pairs.
   /// Structure is documented below.
-  final pulumi.Input<List<FeedDetailsPanIocSettingsAuthenticationHeaderKeyValue>>? headerKeyValues;
+  final pulumi.Input<List<FeedDetailsPanIocSettingsAuthenticationHeaderKeyValue>?>? headerKeyValues;
 
   /// Creates a new [FeedDetailsPanIocSettingsAuthentication].
   /// [headerKeyValues] Header key-value pairs.

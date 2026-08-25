@@ -6,7 +6,7 @@ import 'pipeline_mediation_transformation.dart';
 class PipelineMediation {
   /// Transformation defines the way to transform an incoming message.
   /// Structure is documented below.
-  final pulumi.Input<PipelineMediationTransformation>? transformation;
+  final pulumi.Input<PipelineMediationTransformation?>? transformation;
 
   /// Creates a new [PipelineMediation].
   /// [transformation] Transformation defines the way to transform an incoming message.

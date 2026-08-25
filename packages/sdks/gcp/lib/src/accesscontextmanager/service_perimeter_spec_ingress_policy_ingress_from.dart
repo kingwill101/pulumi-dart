@@ -7,15 +7,15 @@ class ServicePerimeterSpecIngressPolicyIngressFrom {
   /// A list of identities that are allowed access through this ingress policy.
   /// Should be in the format of email address. The email address should represent
   /// individual user or service account only.
-  final pulumi.Input<List<String>>? identities;
+  final pulumi.Input<List<String>?>? identities;
   /// Specifies the type of identities that are allowed access from outside the
   /// perimeter. If left unspecified, then members of `identities` field will be
   /// allowed access.
   /// Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
-  final pulumi.Input<String>? identityType;
+  final pulumi.Input<String?>? identityType;
   /// Sources that this `IngressPolicy` authorizes access from.
   /// Structure is documented below.
-  final pulumi.Input<List<ServicePerimeterSpecIngressPolicyIngressFromSource>>? sources;
+  final pulumi.Input<List<ServicePerimeterSpecIngressPolicyIngressFromSource>?>? sources;
 
   /// Creates a new [ServicePerimeterSpecIngressPolicyIngressFrom].
   /// [identities] A list of identities that are allowed access through this ingress policy.

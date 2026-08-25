@@ -13,7 +13,7 @@ import 'dataset_external_dataset_reference.dart';
 class DatasetArgs {
   /// An array of objects that define dataset access for one or more entities.
   /// Structure is documented below.
-  final pulumi.Input<List<DatasetAccess>>? accesses;
+  final pulumi.Input<List<DatasetAccess>?>? accesses;
   /// A unique ID for this dataset, without the project name. The ID
   /// must contain only letters (a-z, A-Z), numbers (0-9), or
   /// underscores (_). The maximum length is 1,024 characters.
@@ -27,12 +27,12 @@ class DatasetArgs {
   /// The following values are supported:
   /// - 'und:ci': undetermined locale, case insensitive.
   /// - '': empty string. Default to case-sensitive behavior.
-  final pulumi.Input<String>? defaultCollation;
+  final pulumi.Input<String?>? defaultCollation;
   /// The default encryption key for all tables in the dataset. Once this property is set,
   /// all newly-created partitioned tables in the dataset will have encryption key set to
   /// this value, unless table creation request (or query) overrides the key.
   /// Structure is documented below.
-  final pulumi.Input<DatasetDefaultEncryptionConfiguration>? defaultEncryptionConfiguration;
+  final pulumi.Input<DatasetDefaultEncryptionConfiguration?>? defaultEncryptionConfiguration;
   /// The default partition expiration for all partitioned tables in
   /// the dataset, in milliseconds.
   /// Once this property is set, all newly-created partitioned tables in
@@ -46,7 +46,7 @@ class DatasetArgs {
   /// table. If you provide an explicit `timePartitioning.expirationMs` when
   /// creating or updating a partitioned table, that value takes precedence
   /// over the default partition expiration time indicated by this property.
-  final pulumi.Input<int>? defaultPartitionExpirationMs;
+  final pulumi.Input<int?>? defaultPartitionExpirationMs;
   /// The default lifetime of all tables in the dataset, in milliseconds.
   /// The minimum value is 3600000 milliseconds (one hour).
   /// Once this property is set, all newly-created tables in the dataset
@@ -58,39 +58,39 @@ class DatasetArgs {
   /// table expires, or if you provide an explicit `expirationTime` when
   /// creating a table, that value takes precedence over the default
   /// expiration time indicated by this property.
-  final pulumi.Input<int>? defaultTableExpirationMs;
+  final pulumi.Input<int?>? defaultTableExpirationMs;
   /// If set to `true`, delete all the tables in the
   /// dataset when destroying the resource; otherwise,
   /// destroying the resource will fail if tables are present.
-  final pulumi.Input<bool>? deleteContentsOnDestroy;
+  final pulumi.Input<bool?>? deleteContentsOnDestroy;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// A user-friendly description of the dataset
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Options defining open source compatible datasets living in the BigQuery catalog. Contains
   /// metadata of open source database, schema or namespace represented by the current dataset.
   /// Structure is documented below.
-  final pulumi.Input<DatasetExternalCatalogDatasetOptions>? externalCatalogDatasetOptions;
+  final pulumi.Input<DatasetExternalCatalogDatasetOptions?>? externalCatalogDatasetOptions;
   /// Information about the external metadata storage where the dataset is defined.
   /// Structure is documented below.
-  final pulumi.Input<DatasetExternalDatasetReference>? externalDatasetReference;
+  final pulumi.Input<DatasetExternalDatasetReference?>? externalDatasetReference;
   /// A descriptive name for the dataset
-  final pulumi.Input<String>? friendlyName;
+  final pulumi.Input<String?>? friendlyName;
   /// TRUE if the dataset and its table names are case-insensitive, otherwise FALSE.
   /// By default, this is FALSE, which means the dataset and its table names are
   /// case-sensitive. This field does not affect routine references.
-  final pulumi.Input<bool>? isCaseInsensitive;
+  final pulumi.Input<bool?>? isCaseInsensitive;
   /// The labels associated with this dataset. You can use these to
   /// organize and group your datasets.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The geographic location where the dataset should reside.
   /// See [official docs](https://cloud.google.com/bigquery/docs/dataset-locations).
   /// There are two types of locations, regional or multi-regional. A regional
@@ -99,23 +99,23 @@ class DatasetArgs {
   /// contains at least two geographic places.
   /// The default value is multi-regional location `US`.
   /// Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Defines the time travel window in hours. The value can be from 48 to 168 hours (2 to 7 days).
-  final pulumi.Input<String>? maxTimeTravelHours;
+  final pulumi.Input<String?>? maxTimeTravelHours;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The tags attached to this table. Tag keys are globally unique. Tag key is expected to be
   /// in the namespaced format, for example "123456789012/environment" where 123456789012 is the
   /// ID of the parent organization or project resource for this tag key. Tag value is expected
   /// to be the short name, for example "Production". See [Tag definitions](https://cloud.google.com/iam/docs/tags-access-control#definitions)
   /// for more details.
-  final pulumi.Input<Map<String, String>>? resourceTags;
+  final pulumi.Input<Map<String, String>?>? resourceTags;
   /// Specifies the storage billing model for the dataset.
   /// Set this flag value to LOGICAL to use logical bytes for storage billing,
   /// or to PHYSICAL to use physical bytes instead.
   /// LOGICAL is the default if this flag isn't specified.
-  final pulumi.Input<String>? storageBillingModel;
+  final pulumi.Input<String?>? storageBillingModel;
 
   /// Creates a new [DatasetArgs].
   /// [accesses] An array of objects that define dataset access for one or more entities.
@@ -189,8 +189,8 @@ class DatasetArgs {
       datasetId: pulumi.Input.fromValue(map['datasetId'] as String),
       defaultCollation: (() { final guardedValue = map['defaultCollation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       defaultEncryptionConfiguration: (() { final guardedValue = map['defaultEncryptionConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DatasetDefaultEncryptionConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      defaultPartitionExpirationMs: (() { final guardedValue = map['defaultPartitionExpirationMs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      defaultTableExpirationMs: (() { final guardedValue = map['defaultTableExpirationMs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      defaultPartitionExpirationMs: (() { final guardedValue = map['defaultPartitionExpirationMs']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      defaultTableExpirationMs: (() { final guardedValue = map['defaultTableExpirationMs']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       deleteContentsOnDestroy: (() { final guardedValue = map['deleteContentsOnDestroy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

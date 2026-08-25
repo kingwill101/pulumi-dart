@@ -10,30 +10,30 @@ class NamespaceState {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveLabels;
+  final pulumi.Input<Map<String, String>?>? effectiveLabels;
   /// Resource labels associated with this Namespace. No more than 64 user
   /// labels can be associated with a given resource. Label keys and values can
   /// be no longer than 63 characters.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The location for the Namespace.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The resource name for the namespace
   /// in the format `projects/*/locations/*/namespaces/*`.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The Resource ID must be 1-63 characters long, including digits,
   /// lowercase letters or the hyphen character.
-  final pulumi.Input<String>? namespaceId;
+  final pulumi.Input<String?>? namespaceId;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  final pulumi.Input<Map<String, String>>? pulumiLabels;
+  final pulumi.Input<Map<String, String>?>? pulumiLabels;
 
   /// Creates a new [NamespaceState].
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

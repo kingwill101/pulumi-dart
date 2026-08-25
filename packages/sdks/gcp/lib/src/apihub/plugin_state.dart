@@ -10,49 +10,49 @@ import 'plugin_hosting_service.dart';
 class PluginState {
   /// The configuration of actions supported by the plugin.
   /// Structure is documented below.
-  final pulumi.Input<List<PluginActionsConfig>>? actionsConfigs;
+  final pulumi.Input<List<PluginActionsConfig>?>? actionsConfigs;
   /// ConfigTemplate represents the configuration template for a plugin.
   /// Structure is documented below.
-  final pulumi.Input<PluginConfigTemplate>? configTemplate;
+  final pulumi.Input<PluginConfigTemplate?>? configTemplate;
   /// Timestamp indicating when the plugin was created.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The plugin description. Max length is 2000 characters (Unicode code
   /// points).
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The display name of the plugin. Max length is 50 characters (Unicode code
   /// points).
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Documentation details.
   /// Structure is documented below.
-  final pulumi.Input<PluginDocumentation>? documentation;
+  final pulumi.Input<PluginDocumentation?>? documentation;
   /// The information related to the service implemented by the plugin
   /// developer, used to invoke the plugin's functionality.
   /// Structure is documented below.
-  final pulumi.Input<PluginHostingService>? hostingService;
+  final pulumi.Input<PluginHostingService?>? hostingService;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Identifier. The name of the plugin.
   /// Format: `projects/{project}/locations/{location}/plugins/{plugin}`
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The type of the plugin, indicating whether it is 'SYSTEM_OWNED' or
   /// 'USER_OWNED'.
   /// Possible values:
   /// OWNERSHIP_TYPE_UNSPECIFIED
   /// SYSTEM_OWNED
   /// USER_OWNED
-  final pulumi.Input<String>? ownershipType;
+  final pulumi.Input<String?>? ownershipType;
   /// Possible values:
   /// PLUGIN_CATEGORY_UNSPECIFIED
   /// API_GATEWAY
   /// API_PRODUCER
-  final pulumi.Input<String>? pluginCategory;
+  final pulumi.Input<String?>? pluginCategory;
   /// The ID to use for the Plugin resource, which will become the final
   /// component of the Plugin's resource name. This field is optional.
   /// * If provided, the same will be used. The service will throw an error if
@@ -64,10 +64,10 @@ class PluginState {
   /// `projects/{project}/locations/{location}/plugins/{plugin}`,
   /// its length is limited to 1000 characters and valid characters are
   /// /a-z[0-9]-_/.
-  final pulumi.Input<String>? pluginId;
+  final pulumi.Input<String?>? pluginId;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Represents the state of the plugin.
   /// Note this field will not be set for plugins developed via plugin
   /// framework as the state will be managed at plugin instance level.
@@ -75,9 +75,9 @@ class PluginState {
   /// STATE_UNSPECIFIED
   /// ENABLED
   /// DISABLED
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// Timestamp indicating when the plugin was last updated.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [PluginState].
   /// [actionsConfigs] The configuration of actions supported by the plugin.

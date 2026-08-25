@@ -4,10 +4,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConnectionEventingRuntimeDataStatus {
   /// An arbitrary description for the Connection.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// (Output)
   /// State of the Eventing
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
 
   /// Creates a new [ConnectionEventingRuntimeDataStatus].
   /// [description] An arbitrary description for the Connection.

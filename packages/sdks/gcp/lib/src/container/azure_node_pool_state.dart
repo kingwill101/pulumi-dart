@@ -12,50 +12,50 @@ class AzureNodePoolState {
   ///
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
-  final pulumi.Input<Map<String, String>>? annotations;
+  final pulumi.Input<Map<String, String>?>? annotations;
   /// Autoscaler configuration for this node pool.
-  final pulumi.Input<AzureNodePoolAutoscaling>? autoscaling;
+  final pulumi.Input<AzureNodePoolAutoscaling?>? autoscaling;
   /// Optional. The Azure availability zone of the nodes in this nodepool. When unspecified, it defaults to `1`.
-  final pulumi.Input<String>? azureAvailabilityZone;
+  final pulumi.Input<String?>? azureAvailabilityZone;
   /// The azureCluster for the resource
-  final pulumi.Input<String>? cluster;
+  final pulumi.Input<String?>? cluster;
   /// The node configuration of the node pool.
-  final pulumi.Input<AzureNodePoolConfig>? config;
+  final pulumi.Input<AzureNodePoolConfig?>? config;
   /// Output only. The time at which this node pool was created.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveAnnotations;
+  final pulumi.Input<Map<String, String>?>? effectiveAnnotations;
   /// Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// The location for the resource
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The Management configuration for this node pool.
-  final pulumi.Input<AzureNodePoolManagement>? management;
+  final pulumi.Input<AzureNodePoolManagement?>? management;
   /// The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
-  final pulumi.Input<AzureNodePoolMaxPodsConstraint>? maxPodsConstraint;
+  final pulumi.Input<AzureNodePoolMaxPodsConstraint?>? maxPodsConstraint;
   /// The name of this resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The project for the resource
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Output only. If set, there are currently pending changes to the node pool.
-  final pulumi.Input<bool>? reconciling;
+  final pulumi.Input<bool?>? reconciling;
   /// Output only. The current state of the node pool. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR, DEGRADED
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// The ARM ID of the subnet where the node pool VMs run. Make sure it's a subnet under the virtual network in the cluster configuration.
-  final pulumi.Input<String>? subnetId;
+  final pulumi.Input<String?>? subnetId;
   /// Output only. A globally unique identifier for the node pool.
-  final pulumi.Input<String>? uid;
+  final pulumi.Input<String?>? uid;
   /// Output only. The time at which this node pool was last updated.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
   /// The Kubernetes version (e.g. `1.19.10-gke.1000`) running on this node pool.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [AzureNodePoolState].
   /// [annotations] Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.

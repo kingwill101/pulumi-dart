@@ -8,41 +8,41 @@ import 'assessment_rule_schedule_info.dart';
 class AssessmentRuleState {
   /// If true, apply this rule to conversations. Otherwise, this rule is
   /// inactive.
-  final pulumi.Input<bool>? active;
+  final pulumi.Input<bool?>? active;
   /// A unique ID for the new AssessmentRule. This ID will become the final
   /// component of the AssessmentRule's resource name. If no ID is specified,
   /// a server-generated ID will be used.
   /// This value should be 4-64 characters and must match the regular
   /// expression `^[A-Za-z0-9]{4,64}$`.
-  final pulumi.Input<String>? assessmentRuleId;
+  final pulumi.Input<String?>? assessmentRuleId;
   /// The time at which this assessment rule was created.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Display Name of the assessment rule.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Location of the resource.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Identifier. The resource name of the assessment rule.
   /// Format:
   /// projects/{project}/locations/{location}/assessmentRules/{assessment_rule}
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Message for sampling conversations.
   /// Structure is documented below.
-  final pulumi.Input<AssessmentRuleSampleRule>? sampleRule;
+  final pulumi.Input<AssessmentRuleSampleRule?>? sampleRule;
   /// Message for schedule info.
   /// Structure is documented below.
-  final pulumi.Input<AssessmentRuleScheduleInfo>? scheduleInfo;
+  final pulumi.Input<AssessmentRuleScheduleInfo?>? scheduleInfo;
   /// The most recent time at which this assessment rule was updated.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [AssessmentRuleState].
   /// [active] If true, apply this rule to conversations. Otherwise, this rule is

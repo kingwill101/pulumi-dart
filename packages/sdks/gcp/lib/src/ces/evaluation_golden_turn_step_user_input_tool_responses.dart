@@ -6,7 +6,7 @@ import 'evaluation_golden_turn_step_user_input_tool_responses_tool_response.dart
 class EvaluationGoldenTurnStepUserInputToolResponses {
   /// The list of tool execution results.
   /// Structure is documented below.
-  final pulumi.Input<List<EvaluationGoldenTurnStepUserInputToolResponsesToolResponse>>? toolResponses;
+  final pulumi.Input<List<EvaluationGoldenTurnStepUserInputToolResponsesToolResponse>?>? toolResponses;
 
   /// Creates a new [EvaluationGoldenTurnStepUserInputToolResponses].
   /// [toolResponses] The list of tool execution results.

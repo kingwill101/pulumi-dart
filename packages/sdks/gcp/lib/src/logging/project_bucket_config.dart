@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'project_bucket_config_args.dart';
 import 'project_bucket_config_cmek_settings.dart';
+import 'project_bucket_config_index_config.dart';
 import 'project_bucket_config_state.dart';
 
 /// Manages a project-level logging bucket config. For more information see
@@ -944,7 +945,7 @@ class ProjectBucketConfig extends pulumi.CustomResource {
   /// Whether or not Log Analytics is enabled. Logs for buckets with Log Analytics enabled can be queried in the **Log Analytics** page using SQL queries. Cannot be disabled once enabled.
   late final pulumi.Output<bool?> enableAnalytics;
   /// A list of indexed fields and related configuration data. Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> indexConfigs;
+  late final pulumi.Output<List<ProjectBucketConfigIndexConfig>?> indexConfigs;
   /// The bucket's lifecycle such as active or deleted. See [LifecycleState](https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.buckets#LogBucket.LifecycleState).
   late final pulumi.Output<String> lifecycleState;
   /// The location of the bucket.
@@ -970,14 +971,14 @@ class ProjectBucketConfig extends pulumi.CustomResource {
           'gcp:logging/projectBucketConfig:ProjectBucketConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     bucketId = registerOutput<String>('bucketId');
     cmekSettings = registerOutput<ProjectBucketConfigCmekSettings?>('cmekSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProjectBucketConfigCmekSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String>('description');
     enableAnalytics = registerOutput<bool?>('enableAnalytics');
-    indexConfigs = registerOutput<List<Map<String, dynamic>>?>('indexConfigs');
+    indexConfigs = registerOutput<List<ProjectBucketConfigIndexConfig>?>('indexConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ProjectBucketConfigIndexConfig>(guardedValue, (value) => ProjectBucketConfigIndexConfig.fromMap((value as Map).cast<String, dynamic>())); });
     lifecycleState = registerOutput<String>('lifecycleState');
     location = registerOutput<String>('location');
     locked = registerOutput<bool?>('locked');
@@ -991,11 +992,12 @@ class ProjectBucketConfig extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ProjectBucketConfigState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ProjectBucketConfig._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1014,7 +1016,30 @@ class ProjectBucketConfig extends pulumi.CustomResource {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String>('description');
     enableAnalytics = registerOutput<bool?>('enableAnalytics');
-    indexConfigs = registerOutput<List<Map<String, dynamic>>?>('indexConfigs');
+    indexConfigs = registerOutput<List<ProjectBucketConfigIndexConfig>?>('indexConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ProjectBucketConfigIndexConfig>(guardedValue, (value) => ProjectBucketConfigIndexConfig.fromMap((value as Map).cast<String, dynamic>())); });
+    lifecycleState = registerOutput<String>('lifecycleState');
+    location = registerOutput<String>('location');
+    locked = registerOutput<bool?>('locked');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    retentionDays = registerOutput<int?>('retentionDays');
+  }
+
+  /// Creates a typed reference to an existing [ProjectBucketConfig] resource.
+  ProjectBucketConfig.reference(String urn)
+    : super(
+        'gcp:logging/projectBucketConfig:ProjectBucketConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    bucketId = registerOutput<String>('bucketId');
+    cmekSettings = registerOutput<ProjectBucketConfigCmekSettings?>('cmekSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProjectBucketConfigCmekSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String>('description');
+    enableAnalytics = registerOutput<bool?>('enableAnalytics');
+    indexConfigs = registerOutput<List<ProjectBucketConfigIndexConfig>?>('indexConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ProjectBucketConfigIndexConfig>(guardedValue, (value) => ProjectBucketConfigIndexConfig.fromMap((value as Map).cast<String, dynamic>())); });
     lifecycleState = registerOutput<String>('lifecycleState');
     location = registerOutput<String>('location');
     locked = registerOutput<bool?>('locked');

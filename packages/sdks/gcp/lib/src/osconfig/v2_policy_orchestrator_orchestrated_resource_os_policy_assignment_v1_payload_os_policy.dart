@@ -8,10 +8,10 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
   /// resource groups within the policy are applicable for a VM. Set this value
   /// to `true` if the policy needs to be reported as compliant even if the
   /// policy has nothing to validate or enforce.
-  final pulumi.Input<bool>? allowNoResourceGroupMatch;
+  final pulumi.Input<bool?>? allowNoResourceGroupMatch;
   /// Policy description.
   /// Length of the description is limited to 1024 characters.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Required. The id of the OS policy with the following restrictions:
   /// * Must contain only lowercase letters, numbers, and hyphens.
   /// * Must start with a letter.

@@ -6,13 +6,13 @@ class ToolWidgetToolDataMappingPythonFunction {
   /// (Output)
   /// The description of the Python function, parsed from the python code's
   /// docstring.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Optional. The name of the Python function to execute. Must match a Python function
   /// name defined in the python code. Case sensitive. If the name is not
   /// provided, the first function defined in the python code will be used.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Optional. The Python code to execute for the tool.
-  final pulumi.Input<String>? pythonCode;
+  final pulumi.Input<String?>? pythonCode;
 
   /// Creates a new [ToolWidgetToolDataMappingPythonFunction].
   /// [description] (Output)

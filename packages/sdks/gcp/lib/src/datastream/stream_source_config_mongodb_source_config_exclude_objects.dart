@@ -6,7 +6,7 @@ import 'stream_source_config_mongodb_source_config_exclude_objects_database.dart
 class StreamSourceConfigMongodbSourceConfigExcludeObjects {
   /// MongoDB databases in the cluster.
   /// Structure is documented below.
-  final pulumi.Input<List<StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabase>>? databases;
+  final pulumi.Input<List<StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabase>?>? databases;
 
   /// Creates a new [StreamSourceConfigMongodbSourceConfigExcludeObjects].
   /// [databases] MongoDB databases in the cluster.

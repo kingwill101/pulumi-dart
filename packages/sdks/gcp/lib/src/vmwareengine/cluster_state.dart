@@ -9,45 +9,45 @@ import 'cluster_node_type_config.dart';
 class ClusterState {
   /// Configuration of the autoscaling applied to this cluster
   /// Structure is documented below.
-  final pulumi.Input<ClusterAutoscalingSettings>? autoscalingSettings;
+  final pulumi.Input<ClusterAutoscalingSettings?>? autoscalingSettings;
   /// Creation time of this resource.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
   /// up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Optional. Configuration to mount a datastore.
   /// Mount can be done along with cluster create or during cluster update
   /// Since service subnet is not configured with ip range on mgmt cluster creation, mount on management cluster is done as update only
   /// for unmount remove 'datastore_mount_config' config from the update of cluster resource
   /// Structure is documented below.
-  final pulumi.Input<List<ClusterDatastoreMountConfig>>? datastoreMountConfigs;
+  final pulumi.Input<List<ClusterDatastoreMountConfig>?>? datastoreMountConfigs;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// True if the cluster is a management cluster; false otherwise.
   /// There can only be one management cluster in a private cloud and it has to be the first one.
-  final pulumi.Input<bool>? management;
+  final pulumi.Input<bool?>? management;
   /// The ID of the Cluster.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The map of cluster node types in this cluster,
   /// where the key is canonical identifier of the node type (corresponds to the NodeType).
   /// Structure is documented below.
-  final pulumi.Input<List<ClusterNodeTypeConfig>>? nodeTypeConfigs;
+  final pulumi.Input<List<ClusterNodeTypeConfig>?>? nodeTypeConfigs;
   /// The resource name of the private cloud to create a new cluster in.
   /// Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
   /// For example: projects/my-project/locations/us-west1-a/privateClouds/my-cloud
-  final pulumi.Input<String>? parent;
+  final pulumi.Input<String?>? parent;
   /// State of the Cluster.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// System-generated unique identifier for the resource.
-  final pulumi.Input<String>? uid;
+  final pulumi.Input<String?>? uid;
   /// Last updated time of this resource.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
   /// fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [ClusterState].
   /// [autoscalingSettings] Configuration of the autoscaling applied to this cluster

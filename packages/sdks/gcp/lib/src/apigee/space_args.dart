@@ -13,7 +13,7 @@ class SpaceArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The display name of the Space.
   final pulumi.Input<String> displayName;
   /// The Apigee Organization associated with the Apigee Space, in the format `organizations/{{org_name}}`.

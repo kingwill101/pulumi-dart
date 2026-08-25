@@ -35,7 +35,7 @@ class GetBucketCor {
 
   factory GetBucketCor.fromMap(Map<String, dynamic> map) {
     return GetBucketCor(
-      maxAgeSeconds: pulumi.Input.fromValue(map['maxAgeSeconds'] as int),
+      maxAgeSeconds: pulumi.Input.fromValue((map['maxAgeSeconds'] as num).toInt()),
       methods: pulumi.Input.fromValue((map['methods'] as List).cast<String>()),
       origins: pulumi.Input.fromValue((map['origins'] as List).cast<String>()),
       responseHeaders: pulumi.Input.fromValue((map['responseHeaders'] as List).cast<String>()),

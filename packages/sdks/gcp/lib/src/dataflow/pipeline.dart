@@ -516,7 +516,7 @@ class Pipeline extends pulumi.CustomResource {
           'gcp:dataflow/pipeline:Pipeline',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -524,7 +524,7 @@ class Pipeline extends pulumi.CustomResource {
     jobCount = registerOutput<int>('jobCount');
     lastUpdateTime = registerOutput<String>('lastUpdateTime');
     this.name = registerOutput<String>('name');
-    pipelineSources = registerOutput<Map<String, String>?>('pipelineSources');
+    pipelineSources = registerOutput<Map<String, String>?>('pipelineSources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     project = registerOutput<String>('project');
     region = registerOutput<String?>('region');
     scheduleInfo = registerOutput<PipelineScheduleInfo?>('scheduleInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PipelineScheduleInfo.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -539,11 +539,12 @@ class Pipeline extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PipelineState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Pipeline._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -563,12 +564,37 @@ class Pipeline extends pulumi.CustomResource {
     jobCount = registerOutput<int>('jobCount');
     lastUpdateTime = registerOutput<String>('lastUpdateTime');
     this.name = registerOutput<String>('name');
-    pipelineSources = registerOutput<Map<String, String>?>('pipelineSources');
+    pipelineSources = registerOutput<Map<String, String>?>('pipelineSources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     project = registerOutput<String>('project');
     region = registerOutput<String?>('region');
     scheduleInfo = registerOutput<PipelineScheduleInfo?>('scheduleInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PipelineScheduleInfo.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     schedulerServiceAccountEmail = registerOutput<String>('schedulerServiceAccountEmail');
     this.state = registerOutput<String>('state');
+    type = registerOutput<String>('type');
+    workload = registerOutput<PipelineWorkload?>('workload', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PipelineWorkload.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Pipeline] resource.
+  Pipeline.reference(String urn)
+    : super(
+        'gcp:dataflow/pipeline:Pipeline',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    displayName = registerOutput<String?>('displayName');
+    jobCount = registerOutput<int>('jobCount');
+    lastUpdateTime = registerOutput<String>('lastUpdateTime');
+    this.name = registerOutput<String>('name');
+    pipelineSources = registerOutput<Map<String, String>?>('pipelineSources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    project = registerOutput<String>('project');
+    region = registerOutput<String?>('region');
+    scheduleInfo = registerOutput<PipelineScheduleInfo?>('scheduleInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PipelineScheduleInfo.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    schedulerServiceAccountEmail = registerOutput<String>('schedulerServiceAccountEmail');
+    state = registerOutput<String>('state');
     type = registerOutput<String>('type');
     workload = registerOutput<PipelineWorkload?>('workload', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PipelineWorkload.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }

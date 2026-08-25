@@ -8,89 +8,89 @@ import 'get_topic_schema_setting.dart';
 
 /// Result data returned by getTopic.
 class GetTopicResult {
-  final String deletionPolicy;
-  final Map<String, String> effectiveLabels;
+  final String? deletionPolicy;
+  final Map<String, String>? effectiveLabels;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final List<GetTopicIngestionDataSourceSetting> ingestionDataSourceSettings;
-  final String kmsKeyName;
-  final Map<String, String> labels;
-  final String messageRetentionDuration;
-  final List<GetTopicMessageStoragePolicy> messageStoragePolicies;
-  final List<GetTopicMessageTransform> messageTransforms;
-  final String name;
+  final String? id;
+  final List<GetTopicIngestionDataSourceSetting>? ingestionDataSourceSettings;
+  final String? kmsKeyName;
+  final Map<String, String>? labels;
+  final String? messageRetentionDuration;
+  final List<GetTopicMessageStoragePolicy>? messageStoragePolicies;
+  final List<GetTopicMessageTransform>? messageTransforms;
+  final String? name;
   final String? project;
-  final Map<String, String> pulumiLabels;
-  final List<GetTopicSchemaSetting> schemaSettings;
-  final Map<String, String> tags;
+  final Map<String, String>? pulumiLabels;
+  final List<GetTopicSchemaSetting>? schemaSettings;
+  final Map<String, String>? tags;
 
   /// Creates a new [GetTopicResult].
-  /// [deletionPolicy] Required.
-  /// [effectiveLabels] Required.
+  /// [deletionPolicy] Optional.
+  /// [effectiveLabels] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [ingestionDataSourceSettings] Required.
-  /// [kmsKeyName] Required.
-  /// [labels] Required.
-  /// [messageRetentionDuration] Required.
-  /// [messageStoragePolicies] Required.
-  /// [messageTransforms] Required.
-  /// [name] Required.
+  /// [ingestionDataSourceSettings] Optional.
+  /// [kmsKeyName] Optional.
+  /// [labels] Optional.
+  /// [messageRetentionDuration] Optional.
+  /// [messageStoragePolicies] Optional.
+  /// [messageTransforms] Optional.
+  /// [name] Optional.
   /// [project] Optional.
-  /// [pulumiLabels] Required.
-  /// [schemaSettings] Required.
-  /// [tags] Required.
+  /// [pulumiLabels] Optional.
+  /// [schemaSettings] Optional.
+  /// [tags] Optional.
   const GetTopicResult({
-    required this.deletionPolicy,
-    required this.effectiveLabels,
-    required this.id,
-    required this.ingestionDataSourceSettings,
-    required this.kmsKeyName,
-    required this.labels,
-    required this.messageRetentionDuration,
-    required this.messageStoragePolicies,
-    required this.messageTransforms,
-    required this.name,
+    this.deletionPolicy,
+    this.effectiveLabels,
+    this.id,
+    this.ingestionDataSourceSettings,
+    this.kmsKeyName,
+    this.labels,
+    this.messageRetentionDuration,
+    this.messageStoragePolicies,
+    this.messageTransforms,
+    this.name,
     this.project,
-    required this.pulumiLabels,
-    required this.schemaSettings,
-    required this.tags,
+    this.pulumiLabels,
+    this.schemaSettings,
+    this.tags,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'deletionPolicy': deletionPolicy,
-      'effectiveLabels': effectiveLabels,
-      'id': id,
-      'ingestionDataSourceSettings': pulumi.Input.encodeList<GetTopicIngestionDataSourceSetting, Map<String, dynamic>>(ingestionDataSourceSettings, (value) => value.toMap()),
-      'kmsKeyName': kmsKeyName,
-      'labels': labels,
-      'messageRetentionDuration': messageRetentionDuration,
-      'messageStoragePolicies': pulumi.Input.encodeList<GetTopicMessageStoragePolicy, Map<String, dynamic>>(messageStoragePolicies, (value) => value.toMap()),
-      'messageTransforms': pulumi.Input.encodeList<GetTopicMessageTransform, Map<String, dynamic>>(messageTransforms, (value) => value.toMap()),
-      'name': name,
+      'deletionPolicy': ?deletionPolicy,
+      'effectiveLabels': ?effectiveLabels,
+      'id': ?id,
+      'ingestionDataSourceSettings': ?(() { final guardedValue = ingestionDataSourceSettings; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetTopicIngestionDataSourceSetting, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'kmsKeyName': ?kmsKeyName,
+      'labels': ?labels,
+      'messageRetentionDuration': ?messageRetentionDuration,
+      'messageStoragePolicies': ?(() { final guardedValue = messageStoragePolicies; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetTopicMessageStoragePolicy, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'messageTransforms': ?(() { final guardedValue = messageTransforms; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetTopicMessageTransform, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'name': ?name,
       'project': ?project,
-      'pulumiLabels': pulumiLabels,
-      'schemaSettings': pulumi.Input.encodeList<GetTopicSchemaSetting, Map<String, dynamic>>(schemaSettings, (value) => value.toMap()),
-      'tags': tags,
+      'pulumiLabels': ?pulumiLabels,
+      'schemaSettings': ?(() { final guardedValue = schemaSettings; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetTopicSchemaSetting, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'tags': ?tags,
     };
   }
 
   factory GetTopicResult.fromMap(Map<String, dynamic> map) {
     return GetTopicResult(
-      deletionPolicy: map['deletionPolicy'] as String,
-      effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
-      id: map['id'] as String,
-      ingestionDataSourceSettings: pulumi.Input.decodeList<GetTopicIngestionDataSourceSetting>(map['ingestionDataSourceSettings']!, (value) => GetTopicIngestionDataSourceSetting.fromMap((value as Map).cast<String, dynamic>())),
-      kmsKeyName: map['kmsKeyName'] as String,
-      labels: (map['labels'] as Map).cast<String, String>(),
-      messageRetentionDuration: map['messageRetentionDuration'] as String,
-      messageStoragePolicies: pulumi.Input.decodeList<GetTopicMessageStoragePolicy>(map['messageStoragePolicies']!, (value) => GetTopicMessageStoragePolicy.fromMap((value as Map).cast<String, dynamic>())),
-      messageTransforms: pulumi.Input.decodeList<GetTopicMessageTransform>(map['messageTransforms']!, (value) => GetTopicMessageTransform.fromMap((value as Map).cast<String, dynamic>())),
-      name: map['name'] as String,
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      ingestionDataSourceSettings: (() { final guardedValue = map['ingestionDataSourceSettings']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetTopicIngestionDataSourceSetting>(guardedValue, (value) => GetTopicIngestionDataSourceSetting.fromMap((value as Map).cast<String, dynamic>())); })(),
+      kmsKeyName: (() { final guardedValue = map['kmsKeyName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      messageRetentionDuration: (() { final guardedValue = map['messageRetentionDuration']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      messageStoragePolicies: (() { final guardedValue = map['messageStoragePolicies']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetTopicMessageStoragePolicy>(guardedValue, (value) => GetTopicMessageStoragePolicy.fromMap((value as Map).cast<String, dynamic>())); })(),
+      messageTransforms: (() { final guardedValue = map['messageTransforms']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetTopicMessageTransform>(guardedValue, (value) => GetTopicMessageTransform.fromMap((value as Map).cast<String, dynamic>())); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
-      schemaSettings: pulumi.Input.decodeList<GetTopicSchemaSetting>(map['schemaSettings']!, (value) => GetTopicSchemaSetting.fromMap((value as Map).cast<String, dynamic>())),
-      tags: (map['tags'] as Map).cast<String, String>(),
+      pulumiLabels: (() { final guardedValue = map['pulumiLabels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      schemaSettings: (() { final guardedValue = map['schemaSettings']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetTopicSchemaSetting>(guardedValue, (value) => GetTopicSchemaSetting.fromMap((value as Map).cast<String, dynamic>())); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
     );
   }
 }

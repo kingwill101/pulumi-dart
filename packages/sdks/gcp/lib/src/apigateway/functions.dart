@@ -134,6 +134,17 @@ Future<GetApiConfigIamPolicyResult> getApiConfigIamPolicy(
   return GetApiConfigIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetApiConfigIamPolicyResult> getApiConfigIamPolicyOutput(
+  GetApiConfigIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:apigateway/getApiConfigIamPolicy:getApiConfigIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetApiConfigIamPolicyResult.fromMap);
+}
+
 /// Retrieves the current IAM policy data for api
 /// &gt; **Warning:** This datasource is in beta, and should be used with the terraform-provider-google-beta provider.
 /// See Provider Versions for more details on beta resources.
@@ -260,6 +271,17 @@ Future<GetApiIamPolicyResult> getApiIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetApiIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetApiIamPolicyResult> getApiIamPolicyOutput(
+  GetApiIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:apigateway/getApiIamPolicy:getApiIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetApiIamPolicyResult.fromMap);
 }
 
 /// Retrieves the current IAM policy data for gateway
@@ -395,4 +417,15 @@ Future<GetGatewayIamPolicyResult> getGatewayIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetGatewayIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetGatewayIamPolicyResult> getGatewayIamPolicyOutput(
+  GetGatewayIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:apigateway/getGatewayIamPolicy:getGatewayIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGatewayIamPolicyResult.fromMap);
 }

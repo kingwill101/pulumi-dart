@@ -15,25 +15,25 @@ class CxPlaybookArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The human-readable name of the playbook, unique within an agent.
   final pulumi.Input<String> displayName;
   /// High level description of the goal the playbook intend to accomplish. A goal should be concise since it's visible to other playbooks that may reference this playbook.
   final pulumi.Input<String> goal;
   /// Instruction to accomplish target goal.
   /// Structure is documented below.
-  final pulumi.Input<CxPlaybookInstruction>? instruction;
+  final pulumi.Input<CxPlaybookInstruction?>? instruction;
   /// Llm model settings for the playbook.
   /// Structure is documented below.
-  final pulumi.Input<CxPlaybookLlmModelSettings>? llmModelSettings;
+  final pulumi.Input<CxPlaybookLlmModelSettings?>? llmModelSettings;
   /// The agent to create a Playbook for.
   /// Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;.
-  final pulumi.Input<String>? parent;
+  final pulumi.Input<String?>? parent;
   /// Type of the playbook.
   /// Possible values are: `PLAYBOOK_TYPE_UNSPECIFIED`, `TASK`, `ROUTINE`.
-  final pulumi.Input<String>? playbookType;
+  final pulumi.Input<String?>? playbookType;
   /// The resource name of tools referenced by the current playbook in the instructions. If not provided explicitly, they are will be implied using the tool being referenced in goal and steps.
-  final pulumi.Input<List<String>>? referencedTools;
+  final pulumi.Input<List<String>?>? referencedTools;
 
   /// Creates a new [CxPlaybookArgs].
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

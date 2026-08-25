@@ -3,51 +3,51 @@
 
 /// Result data returned by getDatabaseIamPolicy.
 class GetDatabaseIamPolicyResult {
-  final String database;
+  final String? database;
   /// (Computed) The etag of the IAM policy.
-  final String etag;
+  final String? etag;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final String instance;
+  final String? id;
+  final String? instance;
   /// (Computed) The policy data
-  final String policyData;
-  final String project;
+  final String? policyData;
+  final String? project;
 
   /// Creates a new [GetDatabaseIamPolicyResult].
-  /// [database] Required.
+  /// [database] Optional.
   /// [etag] (Computed) The etag of the IAM policy.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [instance] Required.
+  /// [instance] Optional.
   /// [policyData] (Computed) The policy data
-  /// [project] Required.
+  /// [project] Optional.
   const GetDatabaseIamPolicyResult({
-    required this.database,
-    required this.etag,
-    required this.id,
-    required this.instance,
-    required this.policyData,
-    required this.project,
+    this.database,
+    this.etag,
+    this.id,
+    this.instance,
+    this.policyData,
+    this.project,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'database': database,
-      'etag': etag,
-      'id': id,
-      'instance': instance,
-      'policyData': policyData,
-      'project': project,
+      'database': ?database,
+      'etag': ?etag,
+      'id': ?id,
+      'instance': ?instance,
+      'policyData': ?policyData,
+      'project': ?project,
     };
   }
 
   factory GetDatabaseIamPolicyResult.fromMap(Map<String, dynamic> map) {
     return GetDatabaseIamPolicyResult(
-      database: map['database'] as String,
-      etag: map['etag'] as String,
-      id: map['id'] as String,
-      instance: map['instance'] as String,
-      policyData: map['policyData'] as String,
-      project: map['project'] as String,
+      database: (() { final guardedValue = map['database']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      instance: (() { final guardedValue = map['instance']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      policyData: (() { final guardedValue = map['policyData']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

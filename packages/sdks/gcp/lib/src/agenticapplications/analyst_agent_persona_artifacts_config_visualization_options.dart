@@ -5,7 +5,7 @@ import 'analyst_agent_persona_artifacts_config_visualization_options_visualizati
 
 class AnalystAgentPersonaArtifactsConfigVisualizationOptions {
   /// Examples for visualizations.
-  final pulumi.Input<List<AnalystAgentPersonaArtifactsConfigVisualizationOptionsVisualizationExample>>? visualizationExamples;
+  final pulumi.Input<List<AnalystAgentPersonaArtifactsConfigVisualizationOptionsVisualizationExample>?>? visualizationExamples;
 
   /// Creates a new [AnalystAgentPersonaArtifactsConfigVisualizationOptions].
   /// [visualizationExamples] Examples for visualizations.

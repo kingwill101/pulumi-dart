@@ -13,41 +13,41 @@ class CaPoolState {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveLabels;
+  final pulumi.Input<Map<String, String>?>? effectiveLabels;
   /// Used when customer would like to encrypt data at rest. The customer-provided key will be used
   /// to encrypt the Subject, SubjectAltNames and PEM-encoded certificate fields. When unspecified,
   /// customer data will remain unencrypted.
   /// Structure is documented below.
-  final pulumi.Input<CaPoolEncryptionSpec>? encryptionSpec;
+  final pulumi.Input<CaPoolEncryptionSpec?>? encryptionSpec;
   /// The IssuancePolicy to control how Certificates will be issued from this CaPool.
   /// Structure is documented below.
-  final pulumi.Input<CaPoolIssuancePolicy>? issuancePolicy;
+  final pulumi.Input<CaPoolIssuancePolicy?>? issuancePolicy;
   /// Labels with user-defined metadata.
   /// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass":
   /// "1.3kg", "count": "3" }.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Location of the CaPool. A full list of valid locations can be found by
   /// running `gcloud privateca locations list`.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name for this CaPool.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The PublishingOptions to follow when issuing Certificates from any CertificateAuthority in this CaPool.
   /// Structure is documented below.
-  final pulumi.Input<CaPoolPublishingOptions>? publishingOptions;
+  final pulumi.Input<CaPoolPublishingOptions?>? publishingOptions;
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  final pulumi.Input<Map<String, String>>? pulumiLabels;
+  final pulumi.Input<Map<String, String>?>? pulumiLabels;
   /// The Tier of this CaPool.
   /// Possible values are: `ENTERPRISE`, `DEVOPS`.
-  final pulumi.Input<String>? tier;
+  final pulumi.Input<String?>? tier;
 
   /// Creates a new [CaPoolState].
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

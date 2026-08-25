@@ -8,7 +8,7 @@ class RuntimeVirtualMachineVirtualMachineConfigEncryptionConfig {
   /// It has the following format:
   /// `projects/{PROJECT_ID}/locations/{REGION}/keyRings/
   /// {KEY_RING_NAME}/cryptoKeys/{KEY_NAME}`
-  final pulumi.Input<String>? kmsKey;
+  final pulumi.Input<String?>? kmsKey;
 
   /// Creates a new [RuntimeVirtualMachineVirtualMachineConfigEncryptionConfig].
   /// [kmsKey] The Cloud KMS resource identifier of the customer-managed

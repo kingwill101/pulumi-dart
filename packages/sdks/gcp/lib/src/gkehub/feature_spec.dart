@@ -10,19 +10,19 @@ import 'feature_spec_workloadidentity.dart';
 class FeatureSpec {
   /// Clusterupgrade feature spec.
   /// Structure is documented below.
-  final pulumi.Input<FeatureSpecClusterupgrade>? clusterupgrade;
+  final pulumi.Input<FeatureSpecClusterupgrade?>? clusterupgrade;
   /// Fleet Observability feature spec.
   /// Structure is documented below.
-  final pulumi.Input<FeatureSpecFleetobservability>? fleetobservability;
+  final pulumi.Input<FeatureSpecFleetobservability?>? fleetobservability;
   /// Multicluster Ingress-specific spec.
   /// Structure is documented below.
-  final pulumi.Input<FeatureSpecMulticlusteringress>? multiclusteringress;
+  final pulumi.Input<FeatureSpecMulticlusteringress?>? multiclusteringress;
   /// RBACRolebinding Actuation feature spec.
   /// Structure is documented below.
-  final pulumi.Input<FeatureSpecRbacrolebindingactuation>? rbacrolebindingactuation;
+  final pulumi.Input<FeatureSpecRbacrolebindingactuation?>? rbacrolebindingactuation;
   /// Workload Identity feature spec.
   /// Structure is documented below.
-  final pulumi.Input<FeatureSpecWorkloadidentity>? workloadidentity;
+  final pulumi.Input<FeatureSpecWorkloadidentity?>? workloadidentity;
 
   /// Creates a new [FeatureSpec].
   /// [clusterupgrade] Clusterupgrade feature spec.

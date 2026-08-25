@@ -6,7 +6,7 @@ import 'remote_config_remote_config_parameter_group_parameter.dart';
 class RemoteConfigRemoteConfigParameterGroup {
   /// A description for the group. Its length must be less than or equal to 256
   /// characters. A description may contain any Unicode characters.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The identifier for this object. Format specified above.
   final pulumi.Input<String> parameterGroupName;
   /// Map of parameter keys to their optional default values and optional
@@ -15,7 +15,7 @@ class RemoteConfigRemoteConfigParameterGroup {
   /// appears at the top level; a parameter organized within a group appears
   /// within its group's map of parameters.
   /// Structure is documented below.
-  final pulumi.Input<List<RemoteConfigRemoteConfigParameterGroupParameter>>? parameters;
+  final pulumi.Input<List<RemoteConfigRemoteConfigParameterGroupParameter>?>? parameters;
 
   /// Creates a new [RemoteConfigRemoteConfigParameterGroup].
   /// [description] A description for the group. Its length must be less than or equal to 256

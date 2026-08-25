@@ -359,12 +359,13 @@ class AppCheckDeviceCheckConfig extends pulumi.CustomResource {
           'gcp:firebase/appCheckDeviceCheckConfig:AppCheckDeviceCheckConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['privateKey'],
         ) {
     appId = registerOutput<String>('appId');
     keyId = registerOutput<String>('keyId');
     this.name = registerOutput<String>('name');
-    privateKey = registerOutput<String>('privateKey');
+    privateKey = registerOutput<String>('privateKey', isSecret: true);
     privateKeySet = registerOutput<bool>('privateKeySet');
     project = registerOutput<String>('project');
     tokenTtl = registerOutput<String>('tokenTtl');
@@ -375,11 +376,12 @@ class AppCheckDeviceCheckConfig extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AppCheckDeviceCheckConfigState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AppCheckDeviceCheckConfig._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -396,7 +398,26 @@ class AppCheckDeviceCheckConfig extends pulumi.CustomResource {
     appId = registerOutput<String>('appId');
     keyId = registerOutput<String>('keyId');
     this.name = registerOutput<String>('name');
-    privateKey = registerOutput<String>('privateKey');
+    privateKey = registerOutput<String>('privateKey', isSecret: true);
+    privateKeySet = registerOutput<bool>('privateKeySet');
+    project = registerOutput<String>('project');
+    tokenTtl = registerOutput<String>('tokenTtl');
+  }
+
+  /// Creates a typed reference to an existing [AppCheckDeviceCheckConfig] resource.
+  AppCheckDeviceCheckConfig.reference(String urn)
+    : super(
+        'gcp:firebase/appCheckDeviceCheckConfig:AppCheckDeviceCheckConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['privateKey'],
+        isResourceReference: true,
+      ) {
+    appId = registerOutput<String>('appId');
+    keyId = registerOutput<String>('keyId');
+    this.name = registerOutput<String>('name');
+    privateKey = registerOutput<String>('privateKey', isSecret: true);
     privateKeySet = registerOutput<bool>('privateKeySet');
     project = registerOutput<String>('project');
     tokenTtl = registerOutput<String>('tokenTtl');

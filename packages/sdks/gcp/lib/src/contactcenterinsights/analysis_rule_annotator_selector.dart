@@ -10,38 +10,38 @@ class AnalysisRuleAnnotatorSelector {
   /// inference if the issue model is deployed and if runIssueModelAnnotator
   /// is set to true. If more than one issue model is provided, only the first
   /// provided issue model will be used for inference.
-  final pulumi.Input<List<String>>? issueModels;
+  final pulumi.Input<List<String>?>? issueModels;
   /// The list of phrase matchers to run. If not provided, all active phrase
   /// matchers will be used. If inactive phrase matchers are provided, they will
   /// not be used. Phrase matchers will be run only if
   /// runPhraseMatcherAnnotator is set to true. Format:
   /// projects/{project}/locations/{location}/phraseMatchers/{phrase_matcher}
-  final pulumi.Input<List<String>>? phraseMatchers;
+  final pulumi.Input<List<String>?>? phraseMatchers;
   /// Configuration for the QA feature.
   /// Structure is documented below.
-  final pulumi.Input<AnalysisRuleAnnotatorSelectorQaConfig>? qaConfig;
+  final pulumi.Input<AnalysisRuleAnnotatorSelectorQaConfig?>? qaConfig;
   /// Whether to run the entity annotator.
-  final pulumi.Input<bool>? runEntityAnnotator;
+  final pulumi.Input<bool?>? runEntityAnnotator;
   /// Whether to run the intent annotator.
-  final pulumi.Input<bool>? runIntentAnnotator;
+  final pulumi.Input<bool?>? runIntentAnnotator;
   /// Whether to run the interruption annotator.
-  final pulumi.Input<bool>? runInterruptionAnnotator;
+  final pulumi.Input<bool?>? runInterruptionAnnotator;
   /// Whether to run the issue model annotator. A model should have already been
   /// deployed for this to take effect.
-  final pulumi.Input<bool>? runIssueModelAnnotator;
+  final pulumi.Input<bool?>? runIssueModelAnnotator;
   /// Whether to run the active phrase matcher annotator(s).
-  final pulumi.Input<bool>? runPhraseMatcherAnnotator;
+  final pulumi.Input<bool?>? runPhraseMatcherAnnotator;
   /// Whether to run the QA annotator.
-  final pulumi.Input<bool>? runQaAnnotator;
+  final pulumi.Input<bool?>? runQaAnnotator;
   /// Whether to run the sentiment annotator.
-  final pulumi.Input<bool>? runSentimentAnnotator;
+  final pulumi.Input<bool?>? runSentimentAnnotator;
   /// Whether to run the silence annotator.
-  final pulumi.Input<bool>? runSilenceAnnotator;
+  final pulumi.Input<bool?>? runSilenceAnnotator;
   /// Whether to run the summarization annotator.
-  final pulumi.Input<bool>? runSummarizationAnnotator;
+  final pulumi.Input<bool?>? runSummarizationAnnotator;
   /// Configuration for summarization.
   /// Structure is documented below.
-  final pulumi.Input<AnalysisRuleAnnotatorSelectorSummarizationConfig>? summarizationConfig;
+  final pulumi.Input<AnalysisRuleAnnotatorSelectorSummarizationConfig?>? summarizationConfig;
 
   /// Creates a new [AnalysisRuleAnnotatorSelector].
   /// [issueModels] The issue model to run. If not provided, the most recently deployed topic

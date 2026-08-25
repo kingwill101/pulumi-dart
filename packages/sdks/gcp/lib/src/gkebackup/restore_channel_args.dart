@@ -13,9 +13,9 @@ class RestoreChannelArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// User specified descriptive string for this RestoreChannel.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The project where Backups will be restored.
   /// The format is `projects/{project}`.
   /// {project} can be project number or project id.
@@ -26,14 +26,14 @@ class RestoreChannelArgs {
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The region of the Restore Channel.
   final pulumi.Input<String> location;
   /// The full name of the RestoreChannel Resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [RestoreChannelArgs].
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

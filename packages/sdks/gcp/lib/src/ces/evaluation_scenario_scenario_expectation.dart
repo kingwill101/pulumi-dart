@@ -7,10 +7,10 @@ import 'evaluation_scenario_scenario_expectation_tool_expectation.dart';
 class EvaluationScenarioScenarioExpectation {
   /// Agent response.
   /// Structure is documented below.
-  final pulumi.Input<EvaluationScenarioScenarioExpectationAgentResponse>? agentResponse;
+  final pulumi.Input<EvaluationScenarioScenarioExpectationAgentResponse?>? agentResponse;
   /// Tool expectation.
   /// Structure is documented below.
-  final pulumi.Input<EvaluationScenarioScenarioExpectationToolExpectation>? toolExpectation;
+  final pulumi.Input<EvaluationScenarioScenarioExpectationToolExpectation?>? toolExpectation;
 
   /// Creates a new [EvaluationScenarioScenarioExpectation].
   /// [agentResponse] Agent response.

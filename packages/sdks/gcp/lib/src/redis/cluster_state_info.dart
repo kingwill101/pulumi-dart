@@ -6,7 +6,7 @@ import 'cluster_state_info_update_info.dart';
 class ClusterStateInfo {
   /// A nested object resource.
   /// Structure is documented below.
-  final pulumi.Input<ClusterStateInfoUpdateInfo>? updateInfo;
+  final pulumi.Input<ClusterStateInfoUpdateInfo?>? updateInfo;
 
   /// Creates a new [ClusterStateInfo].
   /// [updateInfo] A nested object resource.

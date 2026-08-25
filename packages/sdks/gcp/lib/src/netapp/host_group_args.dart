@@ -13,20 +13,20 @@ class HostGroupArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// An optional description of this resource.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The list of hosts associated with the host group
   final pulumi.Input<List<String>> hosts;
   /// Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Location (region) of the Host Group.
   final pulumi.Input<String> location;
   /// The resource name of the Host Group. Needs to be unique per location.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The OS type of the host group. It indicates the type of operating system
   /// used by all of the hosts in the HostGroup. All hosts in a HostGroup must be
   /// of the same OS type. This can be set only when creating a HostGroup.
@@ -34,7 +34,7 @@ class HostGroupArgs {
   final pulumi.Input<String> osType;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Type of the host group.
   /// Possible values are: `ISCSI_INITIATOR`.
   final pulumi.Input<String> type;

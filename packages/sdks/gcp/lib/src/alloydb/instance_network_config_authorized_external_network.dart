@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceNetworkConfigAuthorizedExternalNetwork {
   /// CIDR range for one authorized network of the instance.
-  final pulumi.Input<String>? cidrRange;
+  final pulumi.Input<String?>? cidrRange;
 
   /// Creates a new [InstanceNetworkConfigAuthorizedExternalNetwork].
   /// [cidrRange] CIDR range for one authorized network of the instance.

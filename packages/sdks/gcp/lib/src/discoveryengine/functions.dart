@@ -231,6 +231,17 @@ Future<GetDataStoreResult> getDataStore(
   return GetDataStoreResult.fromMap(result);
 }
 
+pulumi.Output<GetDataStoreResult> getDataStoreOutput(
+  GetDataStoreArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:discoveryengine/getDataStore:getDataStore',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDataStoreResult.fromMap);
+}
+
 /// Gets a list of existing Discovery Engine data stores.
 /// See [the official documentation](https://cloud.google.com/generative-ai-app-builder/docs/manage-data-stores)
 /// and [API](https://cloud.google.com/generative-ai-app-builder/docs/reference/rest/v1/projects.locations.collections.dataStores/list).
@@ -349,6 +360,17 @@ Future<GetDataStoresResult> getDataStores(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDataStoresResult.fromMap(result);
+}
+
+pulumi.Output<GetDataStoresResult> getDataStoresOutput(
+  GetDataStoresArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:discoveryengine/getDataStores:getDataStores',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDataStoresResult.fromMap);
 }
 
 /// Retrieves the current IAM policy data for searchengine
@@ -489,4 +511,15 @@ Future<GetSearchEngineIamPolicyResult> getSearchEngineIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSearchEngineIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetSearchEngineIamPolicyResult> getSearchEngineIamPolicyOutput(
+  GetSearchEngineIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:discoveryengine/getSearchEngineIamPolicy:getSearchEngineIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSearchEngineIamPolicyResult.fromMap);
 }

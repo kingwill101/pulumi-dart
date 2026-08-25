@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RegionPerInstanceConfigPreservedStateInternalIpIpAddress {
   /// The URL of the reservation for this IP address.
-  final pulumi.Input<String>? address;
+  final pulumi.Input<String?>? address;
 
   /// Creates a new [RegionPerInstanceConfigPreservedStateInternalIpIpAddress].
   /// [address] The URL of the reservation for this IP address.

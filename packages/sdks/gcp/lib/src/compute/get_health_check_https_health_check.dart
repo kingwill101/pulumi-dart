@@ -72,7 +72,7 @@ class GetHealthCheckHttpsHealthCheck {
   factory GetHealthCheckHttpsHealthCheck.fromMap(Map<String, dynamic> map) {
     return GetHealthCheckHttpsHealthCheck(
       host: pulumi.Input.fromValue(map['host'] as String),
-      port: pulumi.Input.fromValue(map['port'] as int),
+      port: pulumi.Input.fromValue((map['port'] as num).toInt()),
       portName: pulumi.Input.fromValue(map['portName'] as String),
       portSpecification: pulumi.Input.fromValue(map['portSpecification'] as String),
       proxyHeader: pulumi.Input.fromValue(map['proxyHeader'] as String),

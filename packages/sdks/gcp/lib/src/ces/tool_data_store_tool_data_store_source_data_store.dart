@@ -7,20 +7,20 @@ class ToolDataStoreToolDataStoreSourceDataStore {
   /// (Output)
   /// The connector config for the data store connection.
   /// Structure is documented below.
-  final pulumi.Input<List<ToolDataStoreToolDataStoreSourceDataStoreConnectorConfig>>? connectorConfigs;
+  final pulumi.Input<List<ToolDataStoreToolDataStoreSourceDataStoreConnectorConfig>?>? connectorConfigs;
   /// (Output)
   /// Timestamp when the data store was created.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// (Output)
   /// The display name of the data store.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// (Output)
   /// The document processing mode for the data store connection.
   /// Only set for PUBLIC_WEB and UNSTRUCTURED data stores.
   /// Possible values:
   /// DOCUMENTS
   /// CHUNKS
-  final pulumi.Input<String>? documentProcessingMode;
+  final pulumi.Input<String?>? documentProcessingMode;
   /// Full resource name of the DataStore.
   /// Format:
   /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{dataStore}`
@@ -36,7 +36,7 @@ class ToolDataStoreToolDataStoreSourceDataStore {
   ///
   ///
   /// &lt;a name="nestedDataStoreToolEngineSourceDataStoreSourcesDataStoreConnectorConfig"&gt;&lt;/a&gt;The `connectorConfig` block contains:
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [ToolDataStoreToolDataStoreSourceDataStore].
   /// [connectorConfigs] (Output)

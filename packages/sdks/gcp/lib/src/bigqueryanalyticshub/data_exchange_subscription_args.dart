@@ -20,24 +20,24 @@ class DataExchangeSubscriptionArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// BigQuery destination dataset to create for the subscriber.
   /// Structure is documented below.
-  final pulumi.Input<DataExchangeSubscriptionDestinationDataset>? destinationDataset;
+  final pulumi.Input<DataExchangeSubscriptionDestinationDataset?>? destinationDataset;
   /// The geographic location where the Subscription (and its linked dataset) should reside.
   /// This is the subscriber's desired location for the created resources.
   /// See https://cloud.google.com/bigquery/docs/locations for supported locations.
   final pulumi.Input<String> location;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Controls when the subscription is automatically refreshed by the provider.
   /// * `ON_READ`: Default value if not specified. The subscription will be refreshed every time Terraform performs a read operation (e.g., `pulumi preview`, `pulumi up`, `terraform refresh`). This ensures the state is always up-to-date.
   /// * `ON_STALE`: The subscription will only be refreshed when its reported `state` (an output-only field from the API) is `STATE_STALE` during a Terraform read operation.
   /// * `NEVER`: The provider will not automatically refresh the subscription.
-  final pulumi.Input<String>? refreshPolicy;
+  final pulumi.Input<String?>? refreshPolicy;
   /// Email of the subscriber.
-  final pulumi.Input<String>? subscriberContact;
+  final pulumi.Input<String?>? subscriberContact;
   /// Name of the subscription to create.
   final pulumi.Input<String> subscriptionId;
 

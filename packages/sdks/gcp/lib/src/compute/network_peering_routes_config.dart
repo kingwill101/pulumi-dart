@@ -940,7 +940,7 @@ class NetworkPeeringRoutesConfig extends pulumi.CustomResource {
           'gcp:compute/networkPeeringRoutesConfig:NetworkPeeringRoutesConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     exportCustomRoutes = registerOutput<bool>('exportCustomRoutes');
     exportSubnetRoutesWithPublicIp = registerOutput<bool>('exportSubnetRoutesWithPublicIp');
@@ -956,11 +956,12 @@ class NetworkPeeringRoutesConfig extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     NetworkPeeringRoutesConfigState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return NetworkPeeringRoutesConfig._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -974,6 +975,24 @@ class NetworkPeeringRoutesConfig extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    exportCustomRoutes = registerOutput<bool>('exportCustomRoutes');
+    exportSubnetRoutesWithPublicIp = registerOutput<bool>('exportSubnetRoutesWithPublicIp');
+    importCustomRoutes = registerOutput<bool>('importCustomRoutes');
+    importSubnetRoutesWithPublicIp = registerOutput<bool>('importSubnetRoutesWithPublicIp');
+    network = registerOutput<String>('network');
+    peering = registerOutput<String>('peering');
+    project = registerOutput<String>('project');
+  }
+
+  /// Creates a typed reference to an existing [NetworkPeeringRoutesConfig] resource.
+  NetworkPeeringRoutesConfig.reference(String urn)
+    : super(
+        'gcp:compute/networkPeeringRoutesConfig:NetworkPeeringRoutesConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     exportCustomRoutes = registerOutput<bool>('exportCustomRoutes');
     exportSubnetRoutesWithPublicIp = registerOutput<bool>('exportSubnetRoutesWithPublicIp');
     importCustomRoutes = registerOutput<bool>('importCustomRoutes');

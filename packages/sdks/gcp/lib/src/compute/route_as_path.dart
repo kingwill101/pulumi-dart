@@ -5,14 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RouteAsPath {
   /// (Output)
   /// The AS numbers of the AS Path.
-  final pulumi.Input<List<int>>? asLists;
+  final pulumi.Input<List<int>?>? asLists;
   /// (Output)
   /// The type of the AS Path, which can be one of the following values:
   /// - 'AS_SET': unordered set of autonomous systems that the route in has traversed
   /// - 'AS_SEQUENCE': ordered set of autonomous systems that the route has traversed
   /// - 'AS_CONFED_SEQUENCE': ordered set of Member Autonomous Systems in the local confederation that the route has traversed
   /// - 'AS_CONFED_SET': unordered set of Member Autonomous Systems in the local confederation that the route has traversed
-  final pulumi.Input<String>? pathSegmentType;
+  final pulumi.Input<String?>? pathSegmentType;
 
   /// Creates a new [RouteAsPath].
   /// [asLists] (Output)

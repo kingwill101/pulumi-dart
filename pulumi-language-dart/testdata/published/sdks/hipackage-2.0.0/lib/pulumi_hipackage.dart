@@ -3,11 +3,11 @@
 import 'package:pulumi_hipackage/index.dart' as module_index;
 import 'package:pulumi_hipackage/providers.dart' as module_providers;
 
-final index = const _IndexModuleNamespace();
-final providers = const _ProvidersModuleNamespace();
+final index = _IndexModuleNamespace();
+final providers = _ProvidersModuleNamespace();
 
 class _IndexModuleNamespace {
-  const _IndexModuleNamespace();
+  _IndexModuleNamespace();
   final DoHelloWorldArgs = module_index.DoHelloWorldArgs.new;
   final DoHelloWorldResult = module_index.DoHelloWorldResult.new;
   final DoHelloWorldResultArgs = module_index.DoHelloWorldResult.new;
@@ -17,7 +17,7 @@ class _IndexModuleNamespace {
 }
 
 class _ProvidersModuleNamespace {
-  const _ProvidersModuleNamespace();
+  _ProvidersModuleNamespace();
   final Hipackage = module_providers.ProviderProvider.new;
   final HipackageArgs = module_providers.ProviderArgs.new;
   final ProviderArgs = module_providers.ProviderArgs.new;

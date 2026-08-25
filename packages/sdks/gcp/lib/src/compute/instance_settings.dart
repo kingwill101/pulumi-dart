@@ -201,7 +201,7 @@ class InstanceSettings extends pulumi.CustomResource {
           'gcp:compute/instanceSettings:InstanceSettings',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     fingerprint = registerOutput<String>('fingerprint');
@@ -215,11 +215,12 @@ class InstanceSettings extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     InstanceSettingsState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return InstanceSettings._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -233,6 +234,22 @@ class InstanceSettings extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    fingerprint = registerOutput<String>('fingerprint');
+    metadata = registerOutput<InstanceSettingsMetadata?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceSettingsMetadata.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    project = registerOutput<String>('project');
+    zone = registerOutput<String>('zone');
+  }
+
+  /// Creates a typed reference to an existing [InstanceSettings] resource.
+  InstanceSettings.reference(String urn)
+    : super(
+        'gcp:compute/instanceSettings:InstanceSettings',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     fingerprint = registerOutput<String>('fingerprint');
     metadata = registerOutput<InstanceSettingsMetadata?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceSettingsMetadata.fromMap((guardedValue as Map).cast<String, dynamic>()); });

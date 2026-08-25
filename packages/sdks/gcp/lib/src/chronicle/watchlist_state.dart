@@ -8,51 +8,51 @@ import 'watchlist_watchlist_user_preferences.dart';
 /// Input properties used for looking up and filtering Watchlist resources.
 class WatchlistState {
   /// Output only. Time the watchlist was created.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Optional. Description of the watchlist.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Required. Display name of the watchlist.
   /// Note that it must be at least one character and less than 63 characters
   /// (https://google.aip.dev/148).
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Count of different types of entities in the watchlist.
   /// Structure is documented below.
-  final pulumi.Input<List<WatchlistEntityCount>>? entityCounts;
+  final pulumi.Input<List<WatchlistEntityCount>?>? entityCounts;
   /// Mechanism to populate entities in the watchlist.
   /// Structure is documented below.
-  final pulumi.Input<WatchlistEntityPopulationMechanism>? entityPopulationMechanism;
+  final pulumi.Input<WatchlistEntityPopulationMechanism?>? entityPopulationMechanism;
   /// The unique identifier for the Chronicle instance, which is the same as the customer ID.
-  final pulumi.Input<String>? instance;
+  final pulumi.Input<String?>? instance;
   /// The location of the resource. This is the geographical region where the Chronicle instance resides, such as "us" or "europe-west2".
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Optional. Weight applied to the risk score for entities
   /// in this watchlist.
   /// The default is 1.0 if it is not specified.
-  final pulumi.Input<double>? multiplyingFactor;
+  final pulumi.Input<double?>? multiplyingFactor;
   /// Identifier. Resource name of the watchlist. This unique identifier is generated using values provided for the URL parameters.
   /// Format:
   /// projects/{project}/locations/{location}/instances/{instance}/watchlists/{watchlist}
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Output only. Time the watchlist was last updated.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
   /// Optional. The ID to use for the watchlist,
   /// which will become the final component of the watchlist's resource name.
   /// This value should be 4-63 characters, and valid characters
   /// are /a-z-/.
-  final pulumi.Input<String>? watchlistId;
+  final pulumi.Input<String?>? watchlistId;
   /// A collection of user preferences for watchlist UI configuration.
   /// Structure is documented below.
-  final pulumi.Input<WatchlistWatchlistUserPreferences>? watchlistUserPreferences;
+  final pulumi.Input<WatchlistWatchlistUserPreferences?>? watchlistUserPreferences;
 
   /// Creates a new [WatchlistState].
   /// [createTime] Output only. Time the watchlist was created.
@@ -115,7 +115,7 @@ class WatchlistState {
       entityPopulationMechanism: (() { final guardedValue = map['entityPopulationMechanism']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WatchlistEntityPopulationMechanism.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       instance: (() { final guardedValue = map['instance']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      multiplyingFactor: (() { final guardedValue = map['multiplyingFactor']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      multiplyingFactor: (() { final guardedValue = map['multiplyingFactor']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

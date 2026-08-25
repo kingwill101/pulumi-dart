@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'gcp_user_access_binding_args.dart';
 import 'gcp_user_access_binding_principal.dart';
+import 'gcp_user_access_binding_scoped_access_setting.dart';
 import 'gcp_user_access_binding_session_settings.dart';
 import 'gcp_user_access_binding_state.dart';
 
@@ -464,7 +465,7 @@ class GcpUserAccessBinding extends pulumi.CustomResource {
   late final pulumi.Output<GcpUserAccessBindingPrincipal?> principal;
   /// Optional. A list of scoped access settings that set this binding's restrictions on a subset of applications.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> scopedAccessSettings;
+  late final pulumi.Output<List<GcpUserAccessBindingScopedAccessSetting>?> scopedAccessSettings;
   /// Optional. The Google Cloud session length (GCSL) policy for the group key.
   /// Structure is documented below.
   late final pulumi.Output<GcpUserAccessBindingSessionSettings?> sessionSettings;
@@ -481,7 +482,7 @@ class GcpUserAccessBinding extends pulumi.CustomResource {
           'gcp:accesscontextmanager/gcpUserAccessBinding:GcpUserAccessBinding',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     accessLevels = registerOutput<String?>('accessLevels');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -490,7 +491,7 @@ class GcpUserAccessBinding extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     organizationId = registerOutput<String>('organizationId');
     principal = registerOutput<GcpUserAccessBindingPrincipal?>('principal', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GcpUserAccessBindingPrincipal.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    scopedAccessSettings = registerOutput<List<Map<String, dynamic>>?>('scopedAccessSettings');
+    scopedAccessSettings = registerOutput<List<GcpUserAccessBindingScopedAccessSetting>?>('scopedAccessSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GcpUserAccessBindingScopedAccessSetting>(guardedValue, (value) => GcpUserAccessBindingScopedAccessSetting.fromMap((value as Map).cast<String, dynamic>())); });
     sessionSettings = registerOutput<GcpUserAccessBindingSessionSettings?>('sessionSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GcpUserAccessBindingSessionSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
@@ -499,11 +500,12 @@ class GcpUserAccessBinding extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     GcpUserAccessBindingState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return GcpUserAccessBinding._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -524,7 +526,27 @@ class GcpUserAccessBinding extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     organizationId = registerOutput<String>('organizationId');
     principal = registerOutput<GcpUserAccessBindingPrincipal?>('principal', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GcpUserAccessBindingPrincipal.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    scopedAccessSettings = registerOutput<List<Map<String, dynamic>>?>('scopedAccessSettings');
+    scopedAccessSettings = registerOutput<List<GcpUserAccessBindingScopedAccessSetting>?>('scopedAccessSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GcpUserAccessBindingScopedAccessSetting>(guardedValue, (value) => GcpUserAccessBindingScopedAccessSetting.fromMap((value as Map).cast<String, dynamic>())); });
+    sessionSettings = registerOutput<GcpUserAccessBindingSessionSettings?>('sessionSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GcpUserAccessBindingSessionSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [GcpUserAccessBinding] resource.
+  GcpUserAccessBinding.reference(String urn)
+    : super(
+        'gcp:accesscontextmanager/gcpUserAccessBinding:GcpUserAccessBinding',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    accessLevels = registerOutput<String?>('accessLevels');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    dryRunAccessLevels = registerOutput<String?>('dryRunAccessLevels');
+    groupKey = registerOutput<String?>('groupKey');
+    this.name = registerOutput<String>('name');
+    organizationId = registerOutput<String>('organizationId');
+    principal = registerOutput<GcpUserAccessBindingPrincipal?>('principal', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GcpUserAccessBindingPrincipal.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    scopedAccessSettings = registerOutput<List<GcpUserAccessBindingScopedAccessSetting>?>('scopedAccessSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GcpUserAccessBindingScopedAccessSetting>(guardedValue, (value) => GcpUserAccessBindingScopedAccessSetting.fromMap((value as Map).cast<String, dynamic>())); });
     sessionSettings = registerOutput<GcpUserAccessBindingSessionSettings?>('sessionSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GcpUserAccessBindingSessionSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'router_named_set_args.dart';
+import 'router_named_set_element.dart';
 import 'router_named_set_state.dart';
 
 /// A Named Set is a collection of IP addresses or ranges (for PREFIX type) or
@@ -1033,7 +1034,7 @@ class RouterNamedSet extends pulumi.CustomResource {
   late final pulumi.Output<String?> description;
   /// CEL expressions that are comparable to constructs of this set's type.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> elements;
+  late final pulumi.Output<List<RouterNamedSetElement>?> elements;
   /// The fingerprint used for optimistic locking of this resource. Used
   /// internally during updates.
   late final pulumi.Output<String> fingerprint;
@@ -1063,11 +1064,11 @@ class RouterNamedSet extends pulumi.CustomResource {
           'gcp:compute/routerNamedSet:RouterNamedSet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    elements = registerOutput<List<Map<String, dynamic>>?>('elements');
+    elements = registerOutput<List<RouterNamedSetElement>?>('elements', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RouterNamedSetElement>(guardedValue, (value) => RouterNamedSetElement.fromMap((value as Map).cast<String, dynamic>())); });
     fingerprint = registerOutput<String>('fingerprint');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
@@ -1081,11 +1082,12 @@ class RouterNamedSet extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RouterNamedSetState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RouterNamedSet._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1101,7 +1103,27 @@ class RouterNamedSet extends pulumi.CustomResource {
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    elements = registerOutput<List<Map<String, dynamic>>?>('elements');
+    elements = registerOutput<List<RouterNamedSetElement>?>('elements', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RouterNamedSetElement>(guardedValue, (value) => RouterNamedSetElement.fromMap((value as Map).cast<String, dynamic>())); });
+    fingerprint = registerOutput<String>('fingerprint');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+    router = registerOutput<String>('router');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [RouterNamedSet] resource.
+  RouterNamedSet.reference(String urn)
+    : super(
+        'gcp:compute/routerNamedSet:RouterNamedSet',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    elements = registerOutput<List<RouterNamedSetElement>?>('elements', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RouterNamedSetElement>(guardedValue, (value) => RouterNamedSetElement.fromMap((value as Map).cast<String, dynamic>())); });
     fingerprint = registerOutput<String>('fingerprint');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

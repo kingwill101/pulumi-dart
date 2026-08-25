@@ -6,7 +6,7 @@ import 'security_gateway_hub_internet_gateway.dart';
 class SecurityGatewayHub {
   /// Internet Gateway configuration.
   /// Structure is documented below.
-  final pulumi.Input<SecurityGatewayHubInternetGateway>? internetGateway;
+  final pulumi.Input<SecurityGatewayHubInternetGateway?>? internetGateway;
   /// The identifier for this object. Format specified above.
   final pulumi.Input<String> region;
 

@@ -5,44 +5,44 @@
 class GetProjectServiceAccountResult {
   /// The email address of the service account. This value is often used to refer to the service account
   /// in order to grant IAM permissions.
-  final String emailAddress;
+  final String? emailAddress;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// The Identity of the service account in the form `serviceAccount:{email_address}`. This value is often used to refer to the service account in order to grant IAM permissions.
-  final String member;
-  final String project;
+  final String? member;
+  final String? project;
   final String? userProject;
 
   /// Creates a new [GetProjectServiceAccountResult].
   /// [emailAddress] The email address of the service account. This value is often used to refer to the service account
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [member] The Identity of the service account in the form `serviceAccount:{email_address}`. This value is often used to refer to the service account in order to grant IAM permissions.
-  /// [project] Required.
+  /// [project] Optional.
   /// [userProject] Optional.
   const GetProjectServiceAccountResult({
-    required this.emailAddress,
-    required this.id,
-    required this.member,
-    required this.project,
+    this.emailAddress,
+    this.id,
+    this.member,
+    this.project,
     this.userProject,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'emailAddress': emailAddress,
-      'id': id,
-      'member': member,
-      'project': project,
+      'emailAddress': ?emailAddress,
+      'id': ?id,
+      'member': ?member,
+      'project': ?project,
       'userProject': ?userProject,
     };
   }
 
   factory GetProjectServiceAccountResult.fromMap(Map<String, dynamic> map) {
     return GetProjectServiceAccountResult(
-      emailAddress: map['emailAddress'] as String,
-      id: map['id'] as String,
-      member: map['member'] as String,
-      project: map['project'] as String,
+      emailAddress: (() { final guardedValue = map['emailAddress']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      member: (() { final guardedValue = map['member']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
       userProject: (() { final guardedValue = map['userProject']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }

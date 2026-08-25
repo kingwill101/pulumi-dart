@@ -25,7 +25,7 @@ class BareMetalClusterLoadBalancerBgpLbConfig {
   /// is required among nodes in this pool. If missing, the control plane node
   /// pool is used for data plane load balancing.
   /// Structure is documented below.
-  final pulumi.Input<BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfig>? loadBalancerNodePoolConfig;
+  final pulumi.Input<BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfig?>? loadBalancerNodePoolConfig;
 
   /// Creates a new [BareMetalClusterLoadBalancerBgpLbConfig].
   /// [addressPools] AddressPools is a list of non-overlapping IP pools used by load balancer
@@ -51,7 +51,7 @@ class BareMetalClusterLoadBalancerBgpLbConfig {
   factory BareMetalClusterLoadBalancerBgpLbConfig.fromMap(Map<String, dynamic> map) {
     return BareMetalClusterLoadBalancerBgpLbConfig(
       addressPools: pulumi.Input.fromValue(pulumi.Input.decodeList<BareMetalClusterLoadBalancerBgpLbConfigAddressPool>(map['addressPools']!, (value) => BareMetalClusterLoadBalancerBgpLbConfigAddressPool.fromMap((value as Map).cast<String, dynamic>()))),
-      asn: pulumi.Input.fromValue(map['asn'] as int),
+      asn: pulumi.Input.fromValue((map['asn'] as num).toInt()),
       bgpPeerConfigs: pulumi.Input.fromValue(pulumi.Input.decodeList<BareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfig>(map['bgpPeerConfigs']!, (value) => BareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfig.fromMap((value as Map).cast<String, dynamic>()))),
       loadBalancerNodePoolConfig: (() { final guardedValue = map['loadBalancerNodePoolConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );

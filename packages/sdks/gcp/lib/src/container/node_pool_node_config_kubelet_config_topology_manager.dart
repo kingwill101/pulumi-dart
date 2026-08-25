@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NodePoolNodeConfigKubeletConfigTopologyManager {
   /// The Topology Manager policy to use. This policy dictates how resource alignment is handled on the node.
-  final pulumi.Input<String>? policy;
+  final pulumi.Input<String?>? policy;
   /// The Topology Manager scope, defining the granularity at which policy decisions are applied. Valid values are "container" (resources are aligned per container within a pod) or "pod" (resources are aligned for the entire pod).
-  final pulumi.Input<String>? scope;
+  final pulumi.Input<String?>? scope;
 
   /// Creates a new [NodePoolNodeConfigKubeletConfigTopologyManager].
   /// [policy] The Topology Manager policy to use. This policy dictates how resource alignment is handled on the node.

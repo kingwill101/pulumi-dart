@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'key_ring_import_job_args.dart';
+import 'key_ring_import_job_attestation.dart';
+import 'key_ring_import_job_public_key.dart';
 import 'key_ring_import_job_state.dart';
 
 /// A `KeyRingImportJob` can be used to create `CryptoKeys` and `CryptoKeyVersions` using pre-existing
@@ -37,7 +39,7 @@ class KeyRingImportJob extends pulumi.CustomResource {
   /// Use this statement to verify attributes of the key as stored on the HSM, independently of Google.
   /// Only present if the chosen ImportMethod is one with a protection level of HSM.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> attestations;
+  late final pulumi.Output<List<KeyRingImportJobAttestation>> attestations;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -64,7 +66,7 @@ class KeyRingImportJob extends pulumi.CustomResource {
   late final pulumi.Output<String> protectionLevel;
   /// The public key with which to wrap key material prior to import. Only returned if state is `ACTIVE`.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> publicKeys;
+  late final pulumi.Output<List<KeyRingImportJobPublicKey>> publicKeys;
   /// The current state of the ImportJob, indicating if it can be used.
   late final pulumi.Output<String> state;
 
@@ -80,9 +82,9 @@ class KeyRingImportJob extends pulumi.CustomResource {
           'gcp:kms/keyRingImportJob:KeyRingImportJob',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
-    attestations = registerOutput<List<Map<String, dynamic>>>('attestations');
+    attestations = registerOutput<List<KeyRingImportJobAttestation>>('attestations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KeyRingImportJobAttestation>(guardedValue, (value) => KeyRingImportJobAttestation.fromMap((value as Map).cast<String, dynamic>())); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     expireTime = registerOutput<String>('expireTime');
     importJobId = registerOutput<String>('importJobId');
@@ -90,7 +92,7 @@ class KeyRingImportJob extends pulumi.CustomResource {
     keyRing = registerOutput<String>('keyRing');
     this.name = registerOutput<String>('name');
     protectionLevel = registerOutput<String>('protectionLevel');
-    publicKeys = registerOutput<List<Map<String, dynamic>>>('publicKeys');
+    publicKeys = registerOutput<List<KeyRingImportJobPublicKey>>('publicKeys', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KeyRingImportJobPublicKey>(guardedValue, (value) => KeyRingImportJobPublicKey.fromMap((value as Map).cast<String, dynamic>())); });
     state = registerOutput<String>('state');
   }
 
@@ -99,11 +101,12 @@ class KeyRingImportJob extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     KeyRingImportJobState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return KeyRingImportJob._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -117,7 +120,7 @@ class KeyRingImportJob extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    attestations = registerOutput<List<Map<String, dynamic>>>('attestations');
+    attestations = registerOutput<List<KeyRingImportJobAttestation>>('attestations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KeyRingImportJobAttestation>(guardedValue, (value) => KeyRingImportJobAttestation.fromMap((value as Map).cast<String, dynamic>())); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     expireTime = registerOutput<String>('expireTime');
     importJobId = registerOutput<String>('importJobId');
@@ -125,7 +128,28 @@ class KeyRingImportJob extends pulumi.CustomResource {
     keyRing = registerOutput<String>('keyRing');
     this.name = registerOutput<String>('name');
     protectionLevel = registerOutput<String>('protectionLevel');
-    publicKeys = registerOutput<List<Map<String, dynamic>>>('publicKeys');
+    publicKeys = registerOutput<List<KeyRingImportJobPublicKey>>('publicKeys', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KeyRingImportJobPublicKey>(guardedValue, (value) => KeyRingImportJobPublicKey.fromMap((value as Map).cast<String, dynamic>())); });
     this.state = registerOutput<String>('state');
+  }
+
+  /// Creates a typed reference to an existing [KeyRingImportJob] resource.
+  KeyRingImportJob.reference(String urn)
+    : super(
+        'gcp:kms/keyRingImportJob:KeyRingImportJob',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    attestations = registerOutput<List<KeyRingImportJobAttestation>>('attestations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KeyRingImportJobAttestation>(guardedValue, (value) => KeyRingImportJobAttestation.fromMap((value as Map).cast<String, dynamic>())); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    expireTime = registerOutput<String>('expireTime');
+    importJobId = registerOutput<String>('importJobId');
+    importMethod = registerOutput<String>('importMethod');
+    keyRing = registerOutput<String>('keyRing');
+    this.name = registerOutput<String>('name');
+    protectionLevel = registerOutput<String>('protectionLevel');
+    publicKeys = registerOutput<List<KeyRingImportJobPublicKey>>('publicKeys', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KeyRingImportJobPublicKey>(guardedValue, (value) => KeyRingImportJobPublicKey.fromMap((value as Map).cast<String, dynamic>())); });
+    state = registerOutput<String>('state');
   }
 }

@@ -5,12 +5,12 @@ import 'vmware_cluster_network_config_control_plane_v2_config_control_plane_ip_b
 
 class VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlock {
   /// The network gateway used by the VMware User Cluster.
-  final pulumi.Input<String>? gateway;
+  final pulumi.Input<String?>? gateway;
   /// The node's network configurations used by the VMware User Cluster.
   /// Structure is documented below.
-  final pulumi.Input<List<VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIp>>? ips;
+  final pulumi.Input<List<VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIp>?>? ips;
   /// The netmask used by the VMware User Cluster.
-  final pulumi.Input<String>? netmask;
+  final pulumi.Input<String?>? netmask;
 
   /// Creates a new [VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlock].
   /// [gateway] The network gateway used by the VMware User Cluster.

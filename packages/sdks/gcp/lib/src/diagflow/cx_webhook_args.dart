@@ -15,28 +15,28 @@ class CxWebhookArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Indicates whether the webhook is disabled.
-  final pulumi.Input<bool>? disabled;
+  final pulumi.Input<bool?>? disabled;
   /// The human-readable name of the webhook, unique within the agent.
   final pulumi.Input<String> displayName;
   /// Deprecated. Indicates if automatic spell correction is enabled in detect intent requests.
-  final pulumi.Input<bool>? enableSpellCorrection;
+  final pulumi.Input<bool?>? enableSpellCorrection;
   /// Deprecated. Determines whether this agent should log conversation queries.
-  final pulumi.Input<bool>? enableStackdriverLogging;
+  final pulumi.Input<bool?>? enableStackdriverLogging;
   /// Represents configuration for a generic web service.
   /// Structure is documented below.
-  final pulumi.Input<CxWebhookGenericWebService>? genericWebService;
+  final pulumi.Input<CxWebhookGenericWebService?>? genericWebService;
   /// The agent to create a webhook for.
   /// Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;.
-  final pulumi.Input<String>? parent;
+  final pulumi.Input<String?>? parent;
   /// Deprecated. Name of the SecuritySettings reference for the agent. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/securitySettings/&lt;Security Settings ID&gt;.
-  final pulumi.Input<String>? securitySettings;
+  final pulumi.Input<String?>? securitySettings;
   /// Configuration for a Service Directory service.
   /// Structure is documented below.
-  final pulumi.Input<CxWebhookServiceDirectory>? serviceDirectory;
+  final pulumi.Input<CxWebhookServiceDirectory?>? serviceDirectory;
   /// Webhook execution timeout.
-  final pulumi.Input<String>? timeout;
+  final pulumi.Input<String?>? timeout;
 
   /// Creates a new [CxWebhookArgs].
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

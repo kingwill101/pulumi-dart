@@ -6,7 +6,7 @@ import 'ai_reasoning_engine_context_spec_memory_bank_config_generation_config_ge
 class AiReasoningEngineContextSpecMemoryBankConfigGenerationConfig {
   /// Optional. Configuration for triggering memory generation.
   /// Structure is documented below.
-  final pulumi.Input<AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfig>? generationTriggerConfig;
+  final pulumi.Input<AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfig?>? generationTriggerConfig;
   /// The model used to generate memories. Format: projects/{project}/locations/{location}/publishers/google/models/{model}.
   final pulumi.Input<String> model;
 

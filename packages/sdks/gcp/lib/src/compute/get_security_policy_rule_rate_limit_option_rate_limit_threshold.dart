@@ -25,8 +25,8 @@ class GetSecurityPolicyRuleRateLimitOptionRateLimitThreshold {
 
   factory GetSecurityPolicyRuleRateLimitOptionRateLimitThreshold.fromMap(Map<String, dynamic> map) {
     return GetSecurityPolicyRuleRateLimitOptionRateLimitThreshold(
-      count: pulumi.Input.fromValue(map['count'] as int),
-      intervalSec: pulumi.Input.fromValue(map['intervalSec'] as int),
+      count: pulumi.Input.fromValue((map['count'] as num).toInt()),
+      intervalSec: pulumi.Input.fromValue((map['intervalSec'] as num).toInt()),
     );
   }
 }

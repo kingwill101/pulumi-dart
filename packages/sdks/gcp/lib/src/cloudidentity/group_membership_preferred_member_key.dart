@@ -16,7 +16,7 @@ class GroupMembershipPreferredMemberKey {
   /// If specified, the EntityKey represents an external-identity-mapped group.
   /// The namespace must correspond to an identity source created in Admin Console
   /// and must be in the form of `identitysources/{identity_source_id}`.
-  final pulumi.Input<String>? namespace;
+  final pulumi.Input<String?>? namespace;
 
   /// Creates a new [GroupMembershipPreferredMemberKey].
   /// [id] The ID of the entity.

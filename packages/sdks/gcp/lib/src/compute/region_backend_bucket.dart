@@ -840,7 +840,7 @@ class RegionBackendBucket extends pulumi.CustomResource {
           'gcp:compute/regionBackendBucket:RegionBackendBucket',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     bucketName = registerOutput<String>('bucketName');
     creationTimestamp = registerOutput<String>('creationTimestamp');
@@ -858,11 +858,12 @@ class RegionBackendBucket extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RegionBackendBucketState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RegionBackendBucket._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -876,6 +877,26 @@ class RegionBackendBucket extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    bucketName = registerOutput<String>('bucketName');
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    loadBalancingScheme = registerOutput<String>('loadBalancingScheme');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+    selfLink = registerOutput<String>('selfLink');
+  }
+
+  /// Creates a typed reference to an existing [RegionBackendBucket] resource.
+  RegionBackendBucket.reference(String urn)
+    : super(
+        'gcp:compute/regionBackendBucket:RegionBackendBucket',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     bucketName = registerOutput<String>('bucketName');
     creationTimestamp = registerOutput<String>('creationTimestamp');
     deletionPolicy = registerOutput<String>('deletionPolicy');

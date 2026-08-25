@@ -4,14 +4,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PolicyBasedRouteFilter {
   /// The destination IP range of outgoing packets that this policy-based route applies to. Default is "0.0.0.0/0".
-  final pulumi.Input<String>? destRange;
+  final pulumi.Input<String?>? destRange;
   /// The IP protocol that this policy-based route applies to. Valid values are 'TCP', 'UDP', and 'ALL'. Default is 'ALL'.
-  final pulumi.Input<String>? ipProtocol;
+  final pulumi.Input<String?>? ipProtocol;
   /// Internet protocol versions this policy-based route applies to.
   /// Possible values are: `IPV4`, `IPV6`.
   final pulumi.Input<String> protocolVersion;
   /// The source IP range of outgoing packets that this policy-based route applies to. Default is "0.0.0.0/0".
-  final pulumi.Input<String>? srcRange;
+  final pulumi.Input<String?>? srcRange;
 
   /// Creates a new [PolicyBasedRouteFilter].
   /// [destRange] The destination IP range of outgoing packets that this policy-based route applies to. Default is "0.0.0.0/0".

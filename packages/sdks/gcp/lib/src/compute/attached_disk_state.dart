@@ -10,7 +10,7 @@ class AttachedDiskState {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Specifies a unique device name of your choice that is
   /// reflected into the /dev/disk/by-id/google-* tree of a Linux operating
   /// system running within the instance. This name can be used to
@@ -20,17 +20,17 @@ class AttachedDiskState {
   /// If not specified, the server chooses a default device name to apply
   /// to this disk, in the form persistent-disks-x, where x is a number
   /// assigned by Google Compute Engine.
-  final pulumi.Input<String>? deviceName;
+  final pulumi.Input<String?>? deviceName;
   /// `name` or `selfLink` of the disk that will be attached.
   ///
   ///
   /// - - -
-  final pulumi.Input<String>? disk;
+  final pulumi.Input<String?>? disk;
   /// `name` or `selfLink` of the compute instance that the disk will be attached to.
   /// If the `selfLink` is provided then `zone` and `project` are extracted from the
   /// self link. If only the name is used then `zone` and `project` must be defined
   /// as properties on the resource or provider.
-  final pulumi.Input<String>? instance;
+  final pulumi.Input<String?>? instance;
   /// The disk interface used for attaching this disk.
   ///
   /// This field is only used for specific cases, please don't specify
@@ -40,7 +40,7 @@ class AttachedDiskState {
   /// Possible values:
   /// "SCSI"
   /// "NVME"
-  final pulumi.Input<String>? interface;
+  final pulumi.Input<String?>? interface;
   /// The mode in which to attach this disk, either READ_WRITE or
   /// READ_ONLY. If not specified, the default is to attach the disk in
   /// READ_WRITE mode.
@@ -48,13 +48,13 @@ class AttachedDiskState {
   /// Possible values:
   /// "READ_ONLY"
   /// "READ_WRITE"
-  final pulumi.Input<String>? mode;
+  final pulumi.Input<String?>? mode;
   /// The project that the referenced compute instance is a part of. If `instance` is referenced by its
   /// `selfLink` the project defined in the link will take precedence.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The zone that the referenced compute instance is located within. If `instance` is referenced by its
   /// `selfLink` the zone defined in the link will take precedence.
-  final pulumi.Input<String>? zone;
+  final pulumi.Input<String?>? zone;
 
   /// Creates a new [AttachedDiskState].
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".

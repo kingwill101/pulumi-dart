@@ -10,7 +10,7 @@ import 'hosting_version_config.dart';
 class HostingVersionArgs {
   /// The configuration for the behavior of the site. This configuration exists in the `firebase.json` file.
   /// Structure is documented below.
-  final pulumi.Input<HostingVersionConfig>? config;
+  final pulumi.Input<HostingVersionConfig?>? config;
   /// Required. The ID of the site in which to create this Version.
   final pulumi.Input<String> siteId;
 

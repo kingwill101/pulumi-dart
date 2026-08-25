@@ -6,9 +6,9 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesSe
   /// Required. Name of the Kubernetes Deployment whose traffic is managed by the specified Service.
   final pulumi.Input<String> deployment;
   /// Optional. Whether to disable Pod overprovisioning. If Pod overprovisioning is disabled then Cloud Deploy will limit the number of total Pods used for the deployment strategy to the number of Pods the Deployment has on the cluster.
-  final pulumi.Input<bool>? disablePodOverprovisioning;
+  final pulumi.Input<bool?>? disablePodOverprovisioning;
   /// Optional. The label to use when selecting Pods for the Deployment resource. This label must already be present in the Deployment.
-  final pulumi.Input<String>? podSelectorLabel;
+  final pulumi.Input<String?>? podSelectorLabel;
   /// Required. Name of the Kubernetes Service.
   final pulumi.Input<String> service;
 

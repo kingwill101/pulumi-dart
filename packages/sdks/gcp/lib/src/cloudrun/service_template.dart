@@ -13,10 +13,10 @@ class ServiceTemplate {
   /// connections for the revision, use the "run.googleapis.com/cloudsql-instances"
   /// annotation key.
   /// Structure is documented below.
-  final pulumi.Input<ServiceTemplateMetadata>? metadata;
+  final pulumi.Input<ServiceTemplateMetadata?>? metadata;
   /// RevisionSpec holds the desired state of the Revision (from the client).
   /// Structure is documented below.
-  final pulumi.Input<ServiceTemplateSpec>? spec;
+  final pulumi.Input<ServiceTemplateSpec?>? spec;
 
   /// Creates a new [ServiceTemplate].
   /// [metadata] Optional metadata for this Revision, including labels and annotations.

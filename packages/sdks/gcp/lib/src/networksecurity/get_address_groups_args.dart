@@ -14,9 +14,9 @@ class GetAddressGroupsArgs {
   /// The parent of the Address Group. Use `organizations/{organization_id}` for organization-level address groups or `projects/{project_id}` for project-level address groups. Conflicts with `project`.
   ///
   /// &gt; **Note:** Exactly one of `project` or `parent` should be specified. If neither is set, the project is inferred from the provider configuration.
-  final pulumi.Input<String>? parent;
+  final pulumi.Input<String?>? parent;
   /// The ID of the project. Conflicts with `parent`.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetAddressGroupsArgs].
   /// [location] The location of the Address Group.

@@ -7,34 +7,34 @@ import 'crypto_key_version_external_protection_level_options.dart';
 /// Input properties used for looking up and filtering CryptoKeyVersion resources.
 class CryptoKeyVersionState {
   /// The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports.
-  final pulumi.Input<String>? algorithm;
+  final pulumi.Input<String?>? algorithm;
   /// Statement that was generated and signed by the HSM at key creation time. Use this statement to verify attributes of the key as stored on the HSM, independently of Google.
   /// Only provided for key versions with protectionLevel HSM.
   /// Structure is documented below.
-  final pulumi.Input<List<CryptoKeyVersionAttestation>>? attestations;
+  final pulumi.Input<List<CryptoKeyVersionAttestation>?>? attestations;
   /// The name of the cryptoKey associated with the CryptoKeyVersions.
   /// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyring}}/cryptoKeys/{{cryptoKey}}'`
-  final pulumi.Input<String>? cryptoKey;
+  final pulumi.Input<String?>? cryptoKey;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
   /// Structure is documented below.
-  final pulumi.Input<CryptoKeyVersionExternalProtectionLevelOptions>? externalProtectionLevelOptions;
+  final pulumi.Input<CryptoKeyVersionExternalProtectionLevelOptions?>? externalProtectionLevelOptions;
   /// The time this CryptoKeyVersion key material was generated
-  final pulumi.Input<String>? generateTime;
+  final pulumi.Input<String?>? generateTime;
   /// The resource name for this CryptoKeyVersion.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ProtectionLevel describing how crypto operations are performed with this CryptoKeyVersion.
-  final pulumi.Input<String>? protectionLevel;
+  final pulumi.Input<String?>? protectionLevel;
   /// The current state of the CryptoKeyVersion. Note: you can only specify this field to manually `ENABLE` or `DISABLE` the CryptoKeyVersion,
   /// otherwise the value of this field is always retrieved automatically.
   /// Possible values are: `PENDING_GENERATION`, `ENABLED`, `DISABLED`, `DESTROYED`, `DESTROY_SCHEDULED`, `PENDING_IMPORT`, `IMPORT_FAILED`.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
 
   /// Creates a new [CryptoKeyVersionState].
   /// [algorithm] The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports.

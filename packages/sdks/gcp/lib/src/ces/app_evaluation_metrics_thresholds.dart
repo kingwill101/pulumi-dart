@@ -6,7 +6,7 @@ import 'app_evaluation_metrics_thresholds_golden_evaluation_metrics_thresholds.d
 class AppEvaluationMetricsThresholds {
   /// Settings for golden evaluations.
   /// Structure is documented below.
-  final pulumi.Input<AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholds>? goldenEvaluationMetricsThresholds;
+  final pulumi.Input<AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholds?>? goldenEvaluationMetricsThresholds;
 
   /// Creates a new [AppEvaluationMetricsThresholds].
   /// [goldenEvaluationMetricsThresholds] Settings for golden evaluations.

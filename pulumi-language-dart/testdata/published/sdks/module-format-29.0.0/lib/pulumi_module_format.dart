@@ -7,15 +7,15 @@ import 'package:pulumi_module_format/mod_concat_world.dart' as module_mod_concat
 import 'package:pulumi_module_format/mod_resource.dart' as module_mod_resource;
 import 'package:pulumi_module_format/providers.dart' as module_providers;
 
-final index_concat_world = const _IndexConcatWorldModuleNamespace();
-final index_resource = const _IndexResourceModuleNamespace();
-final mod = const _ModModuleNamespace();
-final mod_concat_world = const _ModConcatWorldModuleNamespace();
-final mod_resource = const _ModResourceModuleNamespace();
-final providers = const _ProvidersModuleNamespace();
+final index_concat_world = _IndexConcatWorldModuleNamespace();
+final index_resource = _IndexResourceModuleNamespace();
+final mod = _ModModuleNamespace();
+final mod_concat_world = _ModConcatWorldModuleNamespace();
+final mod_resource = _ModResourceModuleNamespace();
+final providers = _ProvidersModuleNamespace();
 
 class _IndexConcatWorldModuleNamespace {
-  const _IndexConcatWorldModuleNamespace();
+  _IndexConcatWorldModuleNamespace();
   final ConcatWorldArgs = module_index_concat_world.ConcatWorldArgs.new;
   final ConcatWorldResult = module_index_concat_world.ConcatWorldResult.new;
   final ConcatWorldResultArgs = module_index_concat_world.ConcatWorldResult.new;
@@ -23,7 +23,7 @@ class _IndexConcatWorldModuleNamespace {
 }
 
 class _IndexResourceModuleNamespace {
-  const _IndexResourceModuleNamespace();
+  _IndexResourceModuleNamespace();
   final CallArgs = module_index_resource.CallArgs.new;
   final CallResult = module_index_resource.CallResult.new;
   final CallResultArgs = module_index_resource.CallResult.new;
@@ -36,7 +36,7 @@ class _IndexResourceModuleNamespace {
 }
 
 class _ModModuleNamespace {
-  const _ModModuleNamespace();
+  _ModModuleNamespace();
   final CallArgs = module_mod.CallArgs.new;
   final CallResult = module_mod.CallResult.new;
   final CallResultArgs = module_mod.CallResult.new;
@@ -53,7 +53,7 @@ class _ModModuleNamespace {
 }
 
 class _ModConcatWorldModuleNamespace {
-  const _ModConcatWorldModuleNamespace();
+  _ModConcatWorldModuleNamespace();
   final ConcatWorldArgs = module_mod_concat_world.ConcatWorldArgs.new;
   final ConcatWorldResult = module_mod_concat_world.ConcatWorldResult.new;
   final ConcatWorldResultArgs = module_mod_concat_world.ConcatWorldResult.new;
@@ -61,7 +61,7 @@ class _ModConcatWorldModuleNamespace {
 }
 
 class _ModResourceModuleNamespace {
-  const _ModResourceModuleNamespace();
+  _ModResourceModuleNamespace();
   final CallArgs = module_mod_resource.CallArgs.new;
   final CallResult = module_mod_resource.CallResult.new;
   final CallResultArgs = module_mod_resource.CallResult.new;
@@ -74,6 +74,6 @@ class _ModResourceModuleNamespace {
 }
 
 class _ProvidersModuleNamespace {
-  const _ProvidersModuleNamespace();
+  _ProvidersModuleNamespace();
   final ModuleFormat = module_providers.ProviderProvider.new;
 }

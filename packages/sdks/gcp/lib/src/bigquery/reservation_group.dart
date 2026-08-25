@@ -168,7 +168,7 @@ class ReservationGroup extends pulumi.CustomResource {
           'gcp:bigquery/reservationGroup:ReservationGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     location = registerOutput<String?>('location');
@@ -181,11 +181,12 @@ class ReservationGroup extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ReservationGroupState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ReservationGroup._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -199,6 +200,21 @@ class ReservationGroup extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+  }
+
+  /// Creates a typed reference to an existing [ReservationGroup] resource.
+  ReservationGroup.reference(String urn)
+    : super(
+        'gcp:bigquery/reservationGroup:ReservationGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');

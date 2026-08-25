@@ -251,7 +251,7 @@ class V2OrganizationNotificationConfig extends pulumi.CustomResource {
           'gcp:securitycenter/v2OrganizationNotificationConfig:V2OrganizationNotificationConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     configId = registerOutput<String>('configId');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -269,11 +269,12 @@ class V2OrganizationNotificationConfig extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     V2OrganizationNotificationConfigState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return V2OrganizationNotificationConfig._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -287,6 +288,26 @@ class V2OrganizationNotificationConfig extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    configId = registerOutput<String>('configId');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    organization = registerOutput<String>('organization');
+    pubsubTopic = registerOutput<String>('pubsubTopic');
+    serviceAccount = registerOutput<String>('serviceAccount');
+    streamingConfig = registerOutput<V2OrganizationNotificationConfigStreamingConfig>('streamingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V2OrganizationNotificationConfigStreamingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [V2OrganizationNotificationConfig] resource.
+  V2OrganizationNotificationConfig.reference(String urn)
+    : super(
+        'gcp:securitycenter/v2OrganizationNotificationConfig:V2OrganizationNotificationConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     configId = registerOutput<String>('configId');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');

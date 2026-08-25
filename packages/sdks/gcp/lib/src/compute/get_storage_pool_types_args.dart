@@ -7,7 +7,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_compute_get_storage_pool_types_get_storage_pool_types_args_doc}
 class GetStoragePoolTypesArgs {
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> storagePoolType;
   final pulumi.Input<String> zone;
 

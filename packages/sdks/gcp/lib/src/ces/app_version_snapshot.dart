@@ -12,26 +12,26 @@ class AppVersionSnapshot {
   /// (Output)
   /// List of agents in the app.
   /// Structure is documented below.
-  final pulumi.Input<List<AppVersionSnapshotAgent>>? agents;
+  final pulumi.Input<List<AppVersionSnapshotAgent>?>? agents;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-  final pulumi.Input<List<AppVersionSnapshotApp>>? apps;
+  final pulumi.Input<List<AppVersionSnapshotApp>?>? apps;
   /// (Output)
   /// List of examples in the app.
   /// Structure is documented below.
-  final pulumi.Input<List<AppVersionSnapshotExample>>? examples;
+  final pulumi.Input<List<AppVersionSnapshotExample>?>? examples;
   /// (Output)
   /// List of guardrails for the app.
   /// Format:
   /// `projects/{project}/locations/{location}/apps/{app}/guardrails/{guardrail}`
-  final pulumi.Input<List<AppVersionSnapshotGuardrail>>? guardrails;
+  final pulumi.Input<List<AppVersionSnapshotGuardrail>?>? guardrails;
   /// (Output)
   /// List of available tools for the agent.
   /// Format: `projects/{project}/locations/{location}/apps/{app}/tools/{tool}`
-  final pulumi.Input<List<AppVersionSnapshotTool>>? tools;
+  final pulumi.Input<List<AppVersionSnapshotTool>?>? tools;
   /// (Output)
   /// List of toolsets for the agent.
   /// Structure is documented below.
-  final pulumi.Input<List<AppVersionSnapshotToolset>>? toolsets;
+  final pulumi.Input<List<AppVersionSnapshotToolset>?>? toolsets;
 
   /// Creates a new [AppVersionSnapshot].
   /// [agents] (Output)

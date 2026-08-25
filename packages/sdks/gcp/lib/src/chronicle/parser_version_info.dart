@@ -10,16 +10,16 @@ class ParserVersionInfo {
   /// The resource name of latest Parser for this logtype.
   /// Format:
   /// projects/{project}/locations/{region}/instances/{instance}/logTypes/{log_type}/parsers/{parser}/{id}
-  final pulumi.Input<String>? latestParser;
+  final pulumi.Input<String?>? latestParser;
   /// (Output)
   /// The version for the latest available stable version of the parser.
-  final pulumi.Input<String>? latestParserVersion;
+  final pulumi.Input<String?>? latestParserVersion;
   /// (Output)
   /// Signifies if rollback is available for this parser version.
-  final pulumi.Input<bool>? rollbackAvailable;
+  final pulumi.Input<bool?>? rollbackAvailable;
   /// (Output)
   /// The version of the parser.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [ParserVersionInfo].
   /// [autoUpgradeDisabled] Signifies if the parser is disabled for auto upgrade. If true, the parser

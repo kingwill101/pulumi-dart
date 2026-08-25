@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CxPlaybookInstructionStep {
   /// Sub-processing needed to execute the current step.
   /// This field uses JSON data as a string. The value provided must be a valid JSON representation documented in [Step](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.playbooks#step).
-  final pulumi.Input<String>? steps;
+  final pulumi.Input<String?>? steps;
   /// Step instruction in text format.
-  final pulumi.Input<String>? text;
+  final pulumi.Input<String?>? text;
 
   /// Creates a new [CxPlaybookInstructionStep].
   /// [steps] Sub-processing needed to execute the current step.

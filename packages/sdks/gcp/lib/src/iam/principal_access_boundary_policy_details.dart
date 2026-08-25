@@ -8,7 +8,7 @@ class PrincipalAccessBoundaryPolicyDetails {
   /// are included in the enforcement (e.g. \"latest\", \"1\", ...). If empty, the
   /// PAB policy version will be set to the current latest version, and this version
   /// won't get updated when new versions are released.
-  final pulumi.Input<String>? enforcementVersion;
+  final pulumi.Input<String?>? enforcementVersion;
   /// A list of principal access boundary policy rules. The number of rules in a policy is limited to 500.
   /// Structure is documented below.
   final pulumi.Input<List<PrincipalAccessBoundaryPolicyDetailsRule>> rules;

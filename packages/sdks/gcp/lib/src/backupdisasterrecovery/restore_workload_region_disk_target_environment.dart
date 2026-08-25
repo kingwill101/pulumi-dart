@@ -10,7 +10,7 @@ class RestoreWorkloadRegionDiskTargetEnvironment {
   /// Required. Target URLs of the replica zones for the disk.
   final pulumi.Input<List<String>> replicaZones;
   /// If true, use the BackupDR P4SA credentials for same-project restores. Default is false.
-  final pulumi.Input<bool>? useProjectServiceAccount;
+  final pulumi.Input<bool?>? useProjectServiceAccount;
 
   /// Creates a new [RestoreWorkloadRegionDiskTargetEnvironment].
   /// [project] Required. Target project for the disk.

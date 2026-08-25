@@ -11,24 +11,24 @@ import 'access_level_custom.dart';
 class AccessLevelArgs {
   /// A set of predefined conditions for the access level and a combining function.
   /// Structure is documented below.
-  final pulumi.Input<AccessLevelBasic>? basic;
+  final pulumi.Input<AccessLevelBasic?>? basic;
   /// Custom access level conditions are set using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request.
   /// See CEL spec at: https://github.com/google/cel-spec.
   /// Structure is documented below.
-  final pulumi.Input<AccessLevelCustom>? custom;
+  final pulumi.Input<AccessLevelCustom?>? custom;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Description of the AccessLevel and its use. Does not affect behavior.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Resource name for the Access Level. The shortName component must begin
   /// with a letter and only include alphanumeric and '_'.
   /// Format: accessPolicies/{policy_id}/accessLevels/{short_name}
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The AccessPolicy this AccessLevel lives in.
   /// Format: accessPolicies/{policy_id}
   final pulumi.Input<String> parent;

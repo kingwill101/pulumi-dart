@@ -8,15 +8,15 @@ import 'prevention_discovery_config_target_big_query_target_filter.dart';
 class PreventionDiscoveryConfigTargetBigQueryTarget {
   /// How often and when to update profiles. New tables that match both the fiter and conditions are scanned as quickly as possible depending on system capacity.
   /// Structure is documented below.
-  final pulumi.Input<PreventionDiscoveryConfigTargetBigQueryTargetCadence>? cadence;
+  final pulumi.Input<PreventionDiscoveryConfigTargetBigQueryTargetCadence?>? cadence;
   /// In addition to matching the filter, these conditions must be true before a profile is generated
   /// Structure is documented below.
-  final pulumi.Input<PreventionDiscoveryConfigTargetBigQueryTargetConditions>? conditions;
+  final pulumi.Input<PreventionDiscoveryConfigTargetBigQueryTargetConditions?>? conditions;
   /// Tables that match this filter will not have profiles created.
-  final pulumi.Input<Map<String, dynamic>>? disabled;
+  final pulumi.Input<Map<String, dynamic>?>? disabled;
   /// Required. The tables the discovery cadence applies to. The first target with a matching filter will be the one to apply to a table
   /// Structure is documented below.
-  final pulumi.Input<PreventionDiscoveryConfigTargetBigQueryTargetFilter>? filter;
+  final pulumi.Input<PreventionDiscoveryConfigTargetBigQueryTargetFilter?>? filter;
 
   /// Creates a new [PreventionDiscoveryConfigTargetBigQueryTarget].
   /// [cadence] How often and when to update profiles. New tables that match both the fiter and conditions are scanned as quickly as possible depending on system capacity.

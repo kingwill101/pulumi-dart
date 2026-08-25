@@ -8,7 +8,7 @@ class ConnectionProfileAlloydb {
   final pulumi.Input<String> clusterId;
   /// Immutable. Metadata used to create the destination AlloyDB cluster.
   /// Structure is documented below.
-  final pulumi.Input<ConnectionProfileAlloydbSettings>? settings;
+  final pulumi.Input<ConnectionProfileAlloydbSettings?>? settings;
 
   /// Creates a new [ConnectionProfileAlloydb].
   /// [clusterId] Required. The AlloyDB cluster ID that this connection profile is associated with.

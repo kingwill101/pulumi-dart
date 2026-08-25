@@ -277,7 +277,7 @@ class Settings extends pulumi.CustomResource {
           'gcp:migrationcenter/settings:Settings',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     disableCloudLogging = registerOutput<bool?>('disableCloudLogging');
@@ -292,11 +292,12 @@ class Settings extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SettingsState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Settings._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -310,6 +311,23 @@ class Settings extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    disableCloudLogging = registerOutput<bool?>('disableCloudLogging');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    preferenceSet = registerOutput<String?>('preferenceSet');
+    project = registerOutput<String>('project');
+  }
+
+  /// Creates a typed reference to an existing [Settings] resource.
+  Settings.reference(String urn)
+    : super(
+        'gcp:migrationcenter/settings:Settings',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     disableCloudLogging = registerOutput<bool?>('disableCloudLogging');
     location = registerOutput<String>('location');

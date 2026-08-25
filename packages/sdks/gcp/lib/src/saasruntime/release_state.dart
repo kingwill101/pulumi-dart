@@ -15,77 +15,77 @@ class ReleaseState {
   /// More info: https://kubernetes.io/docs/user-guide/annotations
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
-  final pulumi.Input<Map<String, String>>? annotations;
+  final pulumi.Input<Map<String, String>?>? annotations;
   /// Blueprints are OCI Images that contain all of the artifacts needed to
   /// provision a unit. Metadata such as, type of the engine used to actuate the
   /// blueprint (e.g. terraform, helm etc) and version will come from the image
   /// manifest. If the hostname is omitted, it will be assumed to be the regional
   /// path to Artifact Registry (eg. us-east1-docker.pkg.dev).
   /// Structure is documented below.
-  final pulumi.Input<ReleaseBlueprint>? blueprint;
+  final pulumi.Input<ReleaseBlueprint?>? blueprint;
   /// The timestamp when the resource was created.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveAnnotations;
+  final pulumi.Input<Map<String, String>?>? effectiveAnnotations;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveLabels;
+  final pulumi.Input<Map<String, String>?>? effectiveLabels;
   /// An opaque value that uniquely identifies a version or
   /// generation of a resource. It can be used to confirm that the client
   /// and server agree on the ordering of a resource being written.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// Mapping of input variables to default values. Maximum 100
   /// Structure is documented below.
-  final pulumi.Input<List<ReleaseInputVariableDefault>>? inputVariableDefaults;
+  final pulumi.Input<List<ReleaseInputVariableDefault>?>? inputVariableDefaults;
   /// List of input variables declared on the blueprint and can be present with
   /// their values on the unit spec
   /// Structure is documented below.
-  final pulumi.Input<List<ReleaseInputVariable>>? inputVariables;
+  final pulumi.Input<List<ReleaseInputVariable>?>? inputVariables;
   /// The labels on the resource, which can be used for categorization.
   /// similar to Kubernetes resource labels.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Identifier. The resource name (full URI of the resource) following the standard naming
   /// scheme:
   /// "projects/{project}/locations/{location}/releases/{release}"
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// List of output variables declared on the blueprint and can be present with
   /// their values on the unit status
   /// Structure is documented below.
-  final pulumi.Input<List<ReleaseOutputVariable>>? outputVariables;
+  final pulumi.Input<List<ReleaseOutputVariable>?>? outputVariables;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  final pulumi.Input<Map<String, String>>? pulumiLabels;
+  final pulumi.Input<Map<String, String>?>? pulumiLabels;
   /// The ID value for the new release.
-  final pulumi.Input<String>? releaseId;
+  final pulumi.Input<String?>? releaseId;
   /// Set of requirements to be fulfilled on the Unit when using this Release.
   /// Structure is documented below.
-  final pulumi.Input<ReleaseReleaseRequirements>? releaseRequirements;
+  final pulumi.Input<ReleaseReleaseRequirements?>? releaseRequirements;
   /// The unique identifier of the resource. UID is unique in the time
   /// and space for this resource within the scope of the service. It is
   /// typically generated by the server on successful creation of a resource
   /// and must not be changed. UID is used to uniquely identify resources
   /// with resource name reuses. This should be a UUID4.
-  final pulumi.Input<String>? uid;
+  final pulumi.Input<String?>? uid;
   /// Reference to the UnitKind this Release corresponds to (required and
   /// immutable once created).
-  final pulumi.Input<String>? unitKind;
+  final pulumi.Input<String?>? unitKind;
   /// The timestamp when the resource was last updated. Any
   /// change to the resource made by users must refresh this value.
   /// Changes to a resource made by the service should refresh this value.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [ReleaseState].
   /// [annotations] Annotations is an unstructured key-value map stored with a resource that

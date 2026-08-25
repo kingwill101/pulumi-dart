@@ -31,7 +31,7 @@ class GetControlProjectIntelligenceFindingThrottledRequestsSpike {
 
   factory GetControlProjectIntelligenceFindingThrottledRequestsSpike.fromMap(Map<String, dynamic> map) {
     return GetControlProjectIntelligenceFindingThrottledRequestsSpike(
-      percentageIncrease: pulumi.Input.fromValue(map['percentageIncrease'] as double),
+      percentageIncrease: pulumi.Input.fromValue((map['percentageIncrease'] as num).toDouble()),
       throttledRequests: pulumi.Input.fromValue(map['throttledRequests'] as String),
       topBuckets: pulumi.Input.fromValue(pulumi.Input.decodeList<GetControlProjectIntelligenceFindingThrottledRequestsSpikeTopBucket>(map['topBuckets']!, (value) => GetControlProjectIntelligenceFindingThrottledRequestsSpikeTopBucket.fromMap((value as Map).cast<String, dynamic>()))),
     );

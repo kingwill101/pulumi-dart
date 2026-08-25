@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'report_config_args.dart';
+import 'report_config_group_preferenceset_assignment.dart';
 import 'report_config_state.dart';
 
 /// ReportConfig defines the configuration and criteria used to generate Migration Center reports.
@@ -273,7 +274,7 @@ class ReportConfig extends pulumi.CustomResource {
   late final pulumi.Output<String?> displayName;
   /// Collection of combinations of groups and preference sets.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> groupPreferencesetAssignments;
+  late final pulumi.Output<List<ReportConfigGroupPreferencesetAssignment>> groupPreferencesetAssignments;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   late final pulumi.Output<String> location;
   /// Name of resource.
@@ -302,13 +303,13 @@ class ReportConfig extends pulumi.CustomResource {
           'gcp:migrationcenter/reportConfig:ReportConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
-    groupPreferencesetAssignments = registerOutput<List<Map<String, dynamic>>>('groupPreferencesetAssignments');
+    groupPreferencesetAssignments = registerOutput<List<ReportConfigGroupPreferencesetAssignment>>('groupPreferencesetAssignments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ReportConfigGroupPreferencesetAssignment>(guardedValue, (value) => ReportConfigGroupPreferencesetAssignment.fromMap((value as Map).cast<String, dynamic>())); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
@@ -321,11 +322,12 @@ class ReportConfig extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ReportConfigState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ReportConfig._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -343,7 +345,28 @@ class ReportConfig extends pulumi.CustomResource {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
-    groupPreferencesetAssignments = registerOutput<List<Map<String, dynamic>>>('groupPreferencesetAssignments');
+    groupPreferencesetAssignments = registerOutput<List<ReportConfigGroupPreferencesetAssignment>>('groupPreferencesetAssignments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ReportConfigGroupPreferencesetAssignment>(guardedValue, (value) => ReportConfigGroupPreferencesetAssignment.fromMap((value as Map).cast<String, dynamic>())); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    reportConfigId = registerOutput<String>('reportConfigId');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [ReportConfig] resource.
+  ReportConfig.reference(String urn)
+    : super(
+        'gcp:migrationcenter/reportConfig:ReportConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String?>('displayName');
+    groupPreferencesetAssignments = registerOutput<List<ReportConfigGroupPreferencesetAssignment>>('groupPreferencesetAssignments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ReportConfigGroupPreferencesetAssignment>(guardedValue, (value) => ReportConfigGroupPreferencesetAssignment.fromMap((value as Map).cast<String, dynamic>())); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

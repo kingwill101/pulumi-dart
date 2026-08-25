@@ -6,15 +6,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SecretCiphertextState {
   /// The additional authenticated data used for integrity checks during encryption and decryption.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
-  final pulumi.Input<String>? additionalAuthenticatedData;
+  final pulumi.Input<String?>? additionalAuthenticatedData;
   /// Contains the result of encrypting the provided plaintext, encoded in base64.
-  final pulumi.Input<String>? ciphertext;
+  final pulumi.Input<String?>? ciphertext;
   /// The full name of the CryptoKey that will be used to encrypt the provided plaintext.
   /// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}/cryptoKeys/{{cryptoKey}}'`
-  final pulumi.Input<String>? cryptoKey;
+  final pulumi.Input<String?>? cryptoKey;
   /// The plaintext to be encrypted.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
-  final pulumi.Input<String>? plaintext;
+  final pulumi.Input<String?>? plaintext;
 
   /// Creates a new [SecretCiphertextState].
   /// [additionalAuthenticatedData] The additional authenticated data used for integrity checks during encryption and decryption.

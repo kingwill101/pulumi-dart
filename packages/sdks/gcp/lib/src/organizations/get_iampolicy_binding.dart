@@ -5,7 +5,7 @@ import 'get_iampolicy_binding_condition.dart';
 
 class GetIAMPolicyBinding {
   /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding. Structure is documented below.
-  final pulumi.Input<GetIAMPolicyBindingCondition>? condition;
+  final pulumi.Input<GetIAMPolicyBindingCondition?>? condition;
   /// An array of identities that will be granted the privilege in the `role`. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
   /// Each entry can have one of the following values:
   /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account. Some resources **don't** support this identity.

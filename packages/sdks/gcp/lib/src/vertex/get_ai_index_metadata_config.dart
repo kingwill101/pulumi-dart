@@ -60,8 +60,8 @@ class GetAiIndexMetadataConfig {
   factory GetAiIndexMetadataConfig.fromMap(Map<String, dynamic> map) {
     return GetAiIndexMetadataConfig(
       algorithmConfigs: pulumi.Input.fromValue(pulumi.Input.decodeList<GetAiIndexMetadataConfigAlgorithmConfig>(map['algorithmConfigs']!, (value) => GetAiIndexMetadataConfigAlgorithmConfig.fromMap((value as Map).cast<String, dynamic>()))),
-      approximateNeighborsCount: pulumi.Input.fromValue(map['approximateNeighborsCount'] as int),
-      dimensions: pulumi.Input.fromValue(map['dimensions'] as int),
+      approximateNeighborsCount: pulumi.Input.fromValue((map['approximateNeighborsCount'] as num).toInt()),
+      dimensions: pulumi.Input.fromValue((map['dimensions'] as num).toInt()),
       distanceMeasureType: pulumi.Input.fromValue(map['distanceMeasureType'] as String),
       featureNormType: pulumi.Input.fromValue(map['featureNormType'] as String),
       shardSize: pulumi.Input.fromValue(map['shardSize'] as String),

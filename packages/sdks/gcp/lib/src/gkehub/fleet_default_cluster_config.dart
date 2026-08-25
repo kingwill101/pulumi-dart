@@ -7,10 +7,10 @@ import 'fleet_default_cluster_config_security_posture_config.dart';
 class FleetDefaultClusterConfig {
   /// Enable/Disable binary authorization features for the cluster.
   /// Structure is documented below.
-  final pulumi.Input<FleetDefaultClusterConfigBinaryAuthorizationConfig>? binaryAuthorizationConfig;
+  final pulumi.Input<FleetDefaultClusterConfigBinaryAuthorizationConfig?>? binaryAuthorizationConfig;
   /// Enable/Disable Security Posture features for the cluster.
   /// Structure is documented below.
-  final pulumi.Input<FleetDefaultClusterConfigSecurityPostureConfig>? securityPostureConfig;
+  final pulumi.Input<FleetDefaultClusterConfigSecurityPostureConfig?>? securityPostureConfig;
 
   /// Creates a new [FleetDefaultClusterConfig].
   /// [binaryAuthorizationConfig] Enable/Disable binary authorization features for the cluster.

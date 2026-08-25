@@ -180,7 +180,7 @@ class NetworkFirewallPolicy extends pulumi.CustomResource {
           'gcp:compute/networkFirewallPolicy:NetworkFirewallPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     creationTimestamp = registerOutput<String>('creationTimestamp');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -200,11 +200,12 @@ class NetworkFirewallPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     NetworkFirewallPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return NetworkFirewallPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -218,6 +219,28 @@ class NetworkFirewallPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    fingerprint = registerOutput<String>('fingerprint');
+    this.name = registerOutput<String>('name');
+    networkFirewallPolicyId = registerOutput<String>('networkFirewallPolicyId');
+    policyType = registerOutput<String>('policyType');
+    project = registerOutput<String>('project');
+    ruleTupleCount = registerOutput<int>('ruleTupleCount');
+    selfLink = registerOutput<String>('selfLink');
+    selfLinkWithId = registerOutput<String>('selfLinkWithId');
+  }
+
+  /// Creates a typed reference to an existing [NetworkFirewallPolicy] resource.
+  NetworkFirewallPolicy.reference(String urn)
+    : super(
+        'gcp:compute/networkFirewallPolicy:NetworkFirewallPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     creationTimestamp = registerOutput<String>('creationTimestamp');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');

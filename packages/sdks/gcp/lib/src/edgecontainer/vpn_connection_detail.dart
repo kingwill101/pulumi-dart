@@ -8,17 +8,17 @@ class VpnConnectionDetail {
   /// (Output)
   /// The Cloud Router info.
   /// Structure is documented below.
-  final pulumi.Input<List<VpnConnectionDetailCloudRouter>>? cloudRouters;
+  final pulumi.Input<List<VpnConnectionDetailCloudRouter>?>? cloudRouters;
   /// (Output)
   /// Each connection has multiple Cloud VPN gateways.
   /// Structure is documented below.
-  final pulumi.Input<List<VpnConnectionDetailCloudVpn>>? cloudVpns;
+  final pulumi.Input<List<VpnConnectionDetailCloudVpn>?>? cloudVpns;
   /// (Output)
   /// The error message. This is only populated when state=ERROR.
-  final pulumi.Input<String>? error;
+  final pulumi.Input<String?>? error;
   /// (Output)
   /// The current connection state.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
 
   /// Creates a new [VpnConnectionDetail].
   /// [cloudRouters] (Output)

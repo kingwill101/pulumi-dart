@@ -25,7 +25,7 @@ class GetRegionInstanceTemplateGuestAccelerator {
 
   factory GetRegionInstanceTemplateGuestAccelerator.fromMap(Map<String, dynamic> map) {
     return GetRegionInstanceTemplateGuestAccelerator(
-      count: pulumi.Input.fromValue(map['count'] as int),
+      count: pulumi.Input.fromValue((map['count'] as num).toInt()),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }

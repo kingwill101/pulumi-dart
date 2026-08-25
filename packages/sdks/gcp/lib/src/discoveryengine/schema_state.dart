@@ -5,29 +5,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering Schema resources.
 class SchemaState {
   /// The unique id of the data store.
-  final pulumi.Input<String>? dataStoreId;
+  final pulumi.Input<String?>? dataStoreId;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The JSON representation of the schema.
-  final pulumi.Input<String>? jsonSchema;
+  final pulumi.Input<String?>? jsonSchema;
   /// The geographic location where the data store should reside. The value can
   /// only be one of "global", "us" and "eu".
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The unique full resource name of the schema. Values are of the format
   /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}/schemas/{schema_id}`.
   /// This field must be a UTF-8 encoded string with a length limit of 1024
   /// characters.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The unique id of the schema.
-  final pulumi.Input<String>? schemaId;
+  final pulumi.Input<String?>? schemaId;
 
   /// Creates a new [SchemaState].
   /// [dataStoreId] The unique id of the data store.

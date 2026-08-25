@@ -5,38 +5,38 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClusterMaintenanceEvent {
   /// (Output)
   /// The time when the maintenance event request was created.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// (Output)
   /// The time when the maintenance event ended, either successfully or not. If
   /// the maintenance event is split into multiple maintenance windows,
   /// endTime is only updated when the whole flow ends.
-  final pulumi.Input<String>? endTime;
+  final pulumi.Input<String?>? endTime;
   /// (Output)
   /// The operation for running the maintenance event. Specified in the format
   /// projects/*/locations/*/operations/*. If the maintenance event is split
   /// into multiple operations (e.g. due to maintenance windows), the latest
   /// one is recorded.
-  final pulumi.Input<String>? operation;
+  final pulumi.Input<String?>? operation;
   /// (Output)
   /// The schedule of the maintenance event.
-  final pulumi.Input<String>? schedule;
+  final pulumi.Input<String?>? schedule;
   /// (Output)
   /// The time when the maintenance event started.
-  final pulumi.Input<String>? startTime;
+  final pulumi.Input<String?>? startTime;
   /// (Output)
   /// Indicates the maintenance event state.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// The target cluster version. For example: "1.5.0".
-  final pulumi.Input<String>? targetVersion;
+  final pulumi.Input<String?>? targetVersion;
   /// (Output)
   /// Indicates the maintenance event type.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// (Output)
   /// The time when the maintenance event message was updated.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
   /// (Output)
   /// UUID of the maintenance event.
-  final pulumi.Input<String>? uuid;
+  final pulumi.Input<String?>? uuid;
 
   /// Creates a new [ClusterMaintenanceEvent].
   /// [createTime] (Output)

@@ -715,7 +715,7 @@ class Hl7StoreIamMember extends pulumi.CustomResource {
           'gcp:healthcare/hl7StoreIamMember:Hl7StoreIamMember',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     condition = registerOutput<Hl7StoreIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return Hl7StoreIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
@@ -729,11 +729,12 @@ class Hl7StoreIamMember extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     Hl7StoreIamMemberState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Hl7StoreIamMember._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -747,6 +748,22 @@ class Hl7StoreIamMember extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    condition = registerOutput<Hl7StoreIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return Hl7StoreIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    etag = registerOutput<String>('etag');
+    hl7V2StoreId = registerOutput<String>('hl7V2StoreId');
+    member = registerOutput<String>('member');
+    role = registerOutput<String>('role');
+  }
+
+  /// Creates a typed reference to an existing [Hl7StoreIamMember] resource.
+  Hl7StoreIamMember.reference(String urn)
+    : super(
+        'gcp:healthcare/hl7StoreIamMember:Hl7StoreIamMember',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     condition = registerOutput<Hl7StoreIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return Hl7StoreIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
     hl7V2StoreId = registerOutput<String>('hl7V2StoreId');

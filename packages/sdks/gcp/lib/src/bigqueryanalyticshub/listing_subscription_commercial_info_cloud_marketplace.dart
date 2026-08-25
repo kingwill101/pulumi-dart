@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListingSubscriptionCommercialInfoCloudMarketplace {
   /// (Output)
   /// Resource name of the Marketplace Order.
-  final pulumi.Input<String>? order;
+  final pulumi.Input<String?>? order;
 
   /// Creates a new [ListingSubscriptionCommercialInfoCloudMarketplace].
   /// [order] (Output)

@@ -11,43 +11,43 @@ import 'transfer_job_transfer_spec.dart';
 /// Input properties used for looking up and filtering TransferJob resources.
 class TransferJobState {
   /// When the Transfer Job was created.
-  final pulumi.Input<String>? creationTime;
+  final pulumi.Input<String?>? creationTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// When the Transfer Job was deleted.
-  final pulumi.Input<String>? deletionTime;
+  final pulumi.Input<String?>? deletionTime;
   /// Unique description to identify the Transfer Job.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Specifies the Event-driven transfer options. Event-driven transfers listen to an event stream to transfer updated files. Structure documented below Either `eventStream` or `schedule` must be set.
-  final pulumi.Input<TransferJobEventStream>? eventStream;
+  final pulumi.Input<TransferJobEventStream?>? eventStream;
   /// When the Transfer Job was last modified.
-  final pulumi.Input<String>? lastModificationTime;
+  final pulumi.Input<String?>? lastModificationTime;
   /// Logging configuration. Structure documented below.
-  final pulumi.Input<TransferJobLoggingConfig>? loggingConfig;
+  final pulumi.Input<TransferJobLoggingConfig?>? loggingConfig;
   /// The name of the Transfer Job. This name must start with "transferJobs/" prefix and end with a letter or a number, and should be no more than 128 characters ( `transferJobs/^(?!OPI)[A-Za-z0-9-._~]*[A-Za-z0-9]$` ). For transfers involving PosixFilesystem, this name must start with transferJobs/OPI specifically ( `transferJobs/OPI^[A-Za-z0-9-._~]*[A-Za-z0-9]$` ). For all other transfer types, this name must not start with transferJobs/OPI. Default the provider will assign a random unique name with `transferJobs/{{name}}` format, where `name` is a numeric value.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Notification configuration. This is not supported for transfers involving PosixFilesystem. Structure documented below.
-  final pulumi.Input<TransferJobNotificationConfig>? notificationConfig;
+  final pulumi.Input<TransferJobNotificationConfig?>? notificationConfig;
   /// The project in which the resource belongs. If it
   /// is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Replication specification. Structure documented below. User should not configure `schedule`, `eventStream` with this argument. One of `transferSpec`, or `replicationSpec` must be specified.
   ///
   /// - - -
-  final pulumi.Input<TransferJobReplicationSpec>? replicationSpec;
+  final pulumi.Input<TransferJobReplicationSpec?>? replicationSpec;
   /// Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below. Either `schedule` or `eventStream` must be set.
-  final pulumi.Input<TransferJobSchedule>? schedule;
+  final pulumi.Input<TransferJobSchedule?>? schedule;
   /// The user-managed service account to run the job. If this field is specified, the given service account is granted the necessary permissions to all applicable resources (e.g. GCS buckets) required by the job.
-  final pulumi.Input<String>? serviceAccount;
+  final pulumi.Input<String?>? serviceAccount;
   /// Status of the job. Default: `ENABLED`. **NOTE: The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.**
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// Transfer specification. Structure documented below. One of `transferSpec`, or `replicationSpec` can be specified.
-  final pulumi.Input<TransferJobTransferSpec>? transferSpec;
+  final pulumi.Input<TransferJobTransferSpec?>? transferSpec;
 
   /// Creates a new [TransferJobState].
   /// [creationTime] When the Transfer Job was created.

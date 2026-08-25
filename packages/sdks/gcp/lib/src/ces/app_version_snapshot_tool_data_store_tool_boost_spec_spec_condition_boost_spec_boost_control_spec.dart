@@ -13,23 +13,23 @@ class AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostCon
   /// Possible values:
   /// NUMERICAL
   /// FRESHNESS
-  final pulumi.Input<String>? attributeType;
+  final pulumi.Input<String?>? attributeType;
   /// (Output)
   /// The control points used to define the curve. The monotonic function
   /// (defined through the interpolationType above) passes through the
   /// control points listed here.
   /// Structure is documented below.
-  final pulumi.Input<List<AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPoint>>? controlPoints;
+  final pulumi.Input<List<AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPoint>?>? controlPoints;
   /// (Output)
   /// The name of the field whose value will be used to determine the
   /// boost amount.
-  final pulumi.Input<String>? fieldName;
+  final pulumi.Input<String?>? fieldName;
   /// (Output)
   /// The interpolation type to be applied to connect the control points
   /// listed below.
   /// Possible values:
   /// LINEAR
-  final pulumi.Input<String>? interpolationType;
+  final pulumi.Input<String?>? interpolationType;
 
   /// Creates a new [AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpec].
   /// [attributeType] (Output)

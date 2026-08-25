@@ -14,52 +14,52 @@ class AwsNodePoolState {
   ///
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
-  final pulumi.Input<Map<String, String>>? annotations;
+  final pulumi.Input<Map<String, String>?>? annotations;
   /// Autoscaler configuration for this node pool.
-  final pulumi.Input<AwsNodePoolAutoscaling>? autoscaling;
+  final pulumi.Input<AwsNodePoolAutoscaling?>? autoscaling;
   /// The awsCluster for the resource
-  final pulumi.Input<String>? cluster;
+  final pulumi.Input<String?>? cluster;
   /// The configuration of the node pool.
-  final pulumi.Input<AwsNodePoolConfig>? config;
+  final pulumi.Input<AwsNodePoolConfig?>? config;
   /// Output only. The time at which this node pool was created.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveAnnotations;
+  final pulumi.Input<Map<String, String>?>? effectiveAnnotations;
   /// Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// The kubelet configuration for the node pool.
-  final pulumi.Input<AwsNodePoolKubeletConfig>? kubeletConfig;
+  final pulumi.Input<AwsNodePoolKubeletConfig?>? kubeletConfig;
   /// The location for the resource
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The Management configuration for this node pool.
-  final pulumi.Input<AwsNodePoolManagement>? management;
+  final pulumi.Input<AwsNodePoolManagement?>? management;
   /// The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
-  final pulumi.Input<AwsNodePoolMaxPodsConstraint>? maxPodsConstraint;
+  final pulumi.Input<AwsNodePoolMaxPodsConstraint?>? maxPodsConstraint;
   /// The name of this resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The project for the resource
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Output only. If set, there are currently changes in flight to the node pool.
-  final pulumi.Input<bool>? reconciling;
+  final pulumi.Input<bool?>? reconciling;
   /// Output only. The lifecycle state of the node pool. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR, DEGRADED
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// The subnet where the node pool node run.
-  final pulumi.Input<String>? subnetId;
+  final pulumi.Input<String?>? subnetId;
   /// Output only. A globally unique identifier for the node pool.
-  final pulumi.Input<String>? uid;
+  final pulumi.Input<String?>? uid;
   /// Optional. Update settings control the speed and disruption of the node pool update.
-  final pulumi.Input<AwsNodePoolUpdateSettings>? updateSettings;
+  final pulumi.Input<AwsNodePoolUpdateSettings?>? updateSettings;
   /// Output only. The time at which this node pool was last updated.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
   /// The Kubernetes version to run on this node pool (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling GetAwsServerConfig.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [AwsNodePoolState].
   /// [annotations] Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.

@@ -13,9 +13,9 @@ class GetDiskArgs {
   final pulumi.Input<String> name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// A reference to the zone where the disk resides.
-  final pulumi.Input<String>? zone;
+  final pulumi.Input<String?>? zone;
 
   /// Creates a new [GetDiskArgs].
   /// [name] The name of a specific disk.

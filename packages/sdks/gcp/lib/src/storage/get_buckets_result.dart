@@ -6,9 +6,9 @@ import 'get_buckets_bucket.dart';
 /// Result data returned by getBuckets.
 class GetBucketsResult {
   /// A list of all retrieved GCS buckets. Structure is defined below.
-  final List<GetBucketsBucket> buckets;
+  final List<GetBucketsBucket>? buckets;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   final String? prefix;
   final String? project;
 
@@ -18,16 +18,16 @@ class GetBucketsResult {
   /// [prefix] Optional.
   /// [project] Optional.
   const GetBucketsResult({
-    required this.buckets,
-    required this.id,
+    this.buckets,
+    this.id,
     this.prefix,
     this.project,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'buckets': pulumi.Input.encodeList<GetBucketsBucket, Map<String, dynamic>>(buckets, (value) => value.toMap()),
-      'id': id,
+      'buckets': ?(() { final guardedValue = buckets; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetBucketsBucket, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'id': ?id,
       'prefix': ?prefix,
       'project': ?project,
     };
@@ -35,8 +35,8 @@ class GetBucketsResult {
 
   factory GetBucketsResult.fromMap(Map<String, dynamic> map) {
     return GetBucketsResult(
-      buckets: pulumi.Input.decodeList<GetBucketsBucket>(map['buckets']!, (value) => GetBucketsBucket.fromMap((value as Map).cast<String, dynamic>())),
-      id: map['id'] as String,
+      buckets: (() { final guardedValue = map['buckets']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetBucketsBucket>(guardedValue, (value) => GetBucketsBucket.fromMap((value as Map).cast<String, dynamic>())); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       prefix: (() { final guardedValue = map['prefix']; if (guardedValue == null) return null; return guardedValue as String; })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );

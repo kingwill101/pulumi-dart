@@ -1,5 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'service_attachment_args.dart';
+import 'service_attachment_connected_endpoint.dart';
+import 'service_attachment_consumer_accept_list.dart';
+import 'service_attachment_psc_service_attachment_id.dart';
 import 'service_attachment_state.dart';
 import 'service_attachment_tunneling_config.dart';
 
@@ -3723,14 +3726,14 @@ class ServiceAttachment extends pulumi.CustomResource {
   /// An array of the consumer forwarding rules connected to this service
   /// attachment.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> connectedEndpoints;
+  late final pulumi.Output<List<ServiceAttachmentConnectedEndpoint>> connectedEndpoints;
   /// The connection preference to use for this service attachment. Valid
   /// values include "ACCEPT_AUTOMATIC", "ACCEPT_MANUAL".
   late final pulumi.Output<String> connectionPreference;
   /// An array of projects that are allowed to connect to this service
   /// attachment.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> consumerAcceptLists;
+  late final pulumi.Output<List<ServiceAttachmentConsumerAcceptList>?> consumerAcceptLists;
   /// An array of projects that are not allowed to connect to this service
   /// attachment.
   late final pulumi.Output<List<String>?> consumerRejectLists;
@@ -3775,7 +3778,7 @@ class ServiceAttachment extends pulumi.CustomResource {
   late final pulumi.Output<int> propagatedConnectionLimit;
   /// An 128-bit global unique ID of the PSC service attachment.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> pscServiceAttachmentIds;
+  late final pulumi.Output<List<ServiceAttachmentPscServiceAttachmentId>> pscServiceAttachmentIds;
   /// This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints.
   /// If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified .
   /// If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list.
@@ -3812,22 +3815,22 @@ class ServiceAttachment extends pulumi.CustomResource {
           'gcp:compute/serviceAttachment:ServiceAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
-    connectedEndpoints = registerOutput<List<Map<String, dynamic>>>('connectedEndpoints');
+    connectedEndpoints = registerOutput<List<ServiceAttachmentConnectedEndpoint>>('connectedEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServiceAttachmentConnectedEndpoint>(guardedValue, (value) => ServiceAttachmentConnectedEndpoint.fromMap((value as Map).cast<String, dynamic>())); });
     connectionPreference = registerOutput<String>('connectionPreference');
-    consumerAcceptLists = registerOutput<List<Map<String, dynamic>>?>('consumerAcceptLists');
-    consumerRejectLists = registerOutput<List<String>?>('consumerRejectLists');
+    consumerAcceptLists = registerOutput<List<ServiceAttachmentConsumerAcceptList>?>('consumerAcceptLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServiceAttachmentConsumerAcceptList>(guardedValue, (value) => ServiceAttachmentConsumerAcceptList.fromMap((value as Map).cast<String, dynamic>())); });
+    consumerRejectLists = registerOutput<List<String>?>('consumerRejectLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    domainNames = registerOutput<List<String>?>('domainNames');
+    domainNames = registerOutput<List<String>?>('domainNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     enableProxyProtocol = registerOutput<bool>('enableProxyProtocol');
     fingerprint = registerOutput<String>('fingerprint');
     this.name = registerOutput<String>('name');
-    natSubnets = registerOutput<List<String>>('natSubnets');
+    natSubnets = registerOutput<List<String>>('natSubnets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     project = registerOutput<String>('project');
     propagatedConnectionLimit = registerOutput<int>('propagatedConnectionLimit');
-    pscServiceAttachmentIds = registerOutput<List<Map<String, dynamic>>>('pscServiceAttachmentIds');
+    pscServiceAttachmentIds = registerOutput<List<ServiceAttachmentPscServiceAttachmentId>>('pscServiceAttachmentIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServiceAttachmentPscServiceAttachmentId>(guardedValue, (value) => ServiceAttachmentPscServiceAttachmentId.fromMap((value as Map).cast<String, dynamic>())); });
     reconcileConnections = registerOutput<bool>('reconcileConnections');
     region = registerOutput<String>('region');
     selfLink = registerOutput<String>('selfLink');
@@ -3842,11 +3845,12 @@ class ServiceAttachment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ServiceAttachmentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ServiceAttachment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -3860,20 +3864,52 @@ class ServiceAttachment extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    connectedEndpoints = registerOutput<List<Map<String, dynamic>>>('connectedEndpoints');
+    connectedEndpoints = registerOutput<List<ServiceAttachmentConnectedEndpoint>>('connectedEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServiceAttachmentConnectedEndpoint>(guardedValue, (value) => ServiceAttachmentConnectedEndpoint.fromMap((value as Map).cast<String, dynamic>())); });
     connectionPreference = registerOutput<String>('connectionPreference');
-    consumerAcceptLists = registerOutput<List<Map<String, dynamic>>?>('consumerAcceptLists');
-    consumerRejectLists = registerOutput<List<String>?>('consumerRejectLists');
+    consumerAcceptLists = registerOutput<List<ServiceAttachmentConsumerAcceptList>?>('consumerAcceptLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServiceAttachmentConsumerAcceptList>(guardedValue, (value) => ServiceAttachmentConsumerAcceptList.fromMap((value as Map).cast<String, dynamic>())); });
+    consumerRejectLists = registerOutput<List<String>?>('consumerRejectLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    domainNames = registerOutput<List<String>?>('domainNames');
+    domainNames = registerOutput<List<String>?>('domainNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     enableProxyProtocol = registerOutput<bool>('enableProxyProtocol');
     fingerprint = registerOutput<String>('fingerprint');
     this.name = registerOutput<String>('name');
-    natSubnets = registerOutput<List<String>>('natSubnets');
+    natSubnets = registerOutput<List<String>>('natSubnets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     project = registerOutput<String>('project');
     propagatedConnectionLimit = registerOutput<int>('propagatedConnectionLimit');
-    pscServiceAttachmentIds = registerOutput<List<Map<String, dynamic>>>('pscServiceAttachmentIds');
+    pscServiceAttachmentIds = registerOutput<List<ServiceAttachmentPscServiceAttachmentId>>('pscServiceAttachmentIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServiceAttachmentPscServiceAttachmentId>(guardedValue, (value) => ServiceAttachmentPscServiceAttachmentId.fromMap((value as Map).cast<String, dynamic>())); });
+    reconcileConnections = registerOutput<bool>('reconcileConnections');
+    region = registerOutput<String>('region');
+    selfLink = registerOutput<String>('selfLink');
+    sendPropagatedConnectionLimitIfZero = registerOutput<bool?>('sendPropagatedConnectionLimitIfZero');
+    showNatIps = registerOutput<bool?>('showNatIps');
+    targetService = registerOutput<String>('targetService');
+    tunnelingConfig = registerOutput<ServiceAttachmentTunnelingConfig?>('tunnelingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceAttachmentTunnelingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [ServiceAttachment] resource.
+  ServiceAttachment.reference(String urn)
+    : super(
+        'gcp:compute/serviceAttachment:ServiceAttachment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    connectedEndpoints = registerOutput<List<ServiceAttachmentConnectedEndpoint>>('connectedEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServiceAttachmentConnectedEndpoint>(guardedValue, (value) => ServiceAttachmentConnectedEndpoint.fromMap((value as Map).cast<String, dynamic>())); });
+    connectionPreference = registerOutput<String>('connectionPreference');
+    consumerAcceptLists = registerOutput<List<ServiceAttachmentConsumerAcceptList>?>('consumerAcceptLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServiceAttachmentConsumerAcceptList>(guardedValue, (value) => ServiceAttachmentConsumerAcceptList.fromMap((value as Map).cast<String, dynamic>())); });
+    consumerRejectLists = registerOutput<List<String>?>('consumerRejectLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    domainNames = registerOutput<List<String>?>('domainNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    enableProxyProtocol = registerOutput<bool>('enableProxyProtocol');
+    fingerprint = registerOutput<String>('fingerprint');
+    this.name = registerOutput<String>('name');
+    natSubnets = registerOutput<List<String>>('natSubnets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    project = registerOutput<String>('project');
+    propagatedConnectionLimit = registerOutput<int>('propagatedConnectionLimit');
+    pscServiceAttachmentIds = registerOutput<List<ServiceAttachmentPscServiceAttachmentId>>('pscServiceAttachmentIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServiceAttachmentPscServiceAttachmentId>(guardedValue, (value) => ServiceAttachmentPscServiceAttachmentId.fromMap((value as Map).cast<String, dynamic>())); });
     reconcileConnections = registerOutput<bool>('reconcileConnections');
     region = registerOutput<String>('region');
     selfLink = registerOutput<String>('selfLink');

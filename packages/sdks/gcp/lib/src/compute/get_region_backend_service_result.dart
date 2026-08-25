@@ -21,219 +21,219 @@ import 'get_region_backend_service_tls_setting.dart';
 
 /// Result data returned by getRegionBackendService.
 class GetRegionBackendServiceResult {
-  final int affinityCookieTtlSec;
-  final List<GetRegionBackendServiceBackend> backends;
-  final List<GetRegionBackendServiceCdnPolicy> cdnPolicies;
-  final List<GetRegionBackendServiceCircuitBreaker> circuitBreakers;
-  final int connectionDrainingTimeoutSec;
-  final List<GetRegionBackendServiceConnectionTrackingPolicy> connectionTrackingPolicies;
-  final List<GetRegionBackendServiceConsistentHash> consistentHashes;
-  final String creationTimestamp;
-  final List<GetRegionBackendServiceCustomMetric> customMetrics;
-  final String deletionPolicy;
-  final String description;
-  final List<GetRegionBackendServiceDynamicForwarding> dynamicForwardings;
-  final bool enableCdn;
-  final List<GetRegionBackendServiceFailoverPolicy> failoverPolicies;
-  final String fingerprint;
-  final int generatedId;
-  final List<GetRegionBackendServiceHaPolicy> haPolicies;
-  final List<String> healthChecks;
-  final List<GetRegionBackendServiceIap> iaps;
+  final int? affinityCookieTtlSec;
+  final List<GetRegionBackendServiceBackend>? backends;
+  final List<GetRegionBackendServiceCdnPolicy>? cdnPolicies;
+  final List<GetRegionBackendServiceCircuitBreaker>? circuitBreakers;
+  final int? connectionDrainingTimeoutSec;
+  final List<GetRegionBackendServiceConnectionTrackingPolicy>? connectionTrackingPolicies;
+  final List<GetRegionBackendServiceConsistentHash>? consistentHashes;
+  final String? creationTimestamp;
+  final List<GetRegionBackendServiceCustomMetric>? customMetrics;
+  final String? deletionPolicy;
+  final String? description;
+  final List<GetRegionBackendServiceDynamicForwarding>? dynamicForwardings;
+  final bool? enableCdn;
+  final List<GetRegionBackendServiceFailoverPolicy>? failoverPolicies;
+  final String? fingerprint;
+  final int? generatedId;
+  final List<GetRegionBackendServiceHaPolicy>? haPolicies;
+  final List<String>? healthChecks;
+  final List<GetRegionBackendServiceIap>? iaps;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final String ipAddressSelectionPolicy;
-  final String loadBalancingScheme;
-  final String localityLbPolicy;
-  final List<GetRegionBackendServiceLogConfig> logConfigs;
-  final String name;
-  final String network;
-  final List<GetRegionBackendServiceNetworkPassThroughLbTrafficPolicy> networkPassThroughLbTrafficPolicies;
-  final List<GetRegionBackendServiceOutlierDetection> outlierDetections;
-  final List<GetRegionBackendServiceParam> params;
-  final String portName;
+  final String? id;
+  final String? ipAddressSelectionPolicy;
+  final String? loadBalancingScheme;
+  final String? localityLbPolicy;
+  final List<GetRegionBackendServiceLogConfig>? logConfigs;
+  final String? name;
+  final String? network;
+  final List<GetRegionBackendServiceNetworkPassThroughLbTrafficPolicy>? networkPassThroughLbTrafficPolicies;
+  final List<GetRegionBackendServiceOutlierDetection>? outlierDetections;
+  final List<GetRegionBackendServiceParam>? params;
+  final String? portName;
   final String? project;
-  final String protocol;
+  final String? protocol;
   final String? region;
-  final String securityPolicy;
-  final String selfLink;
-  final String sessionAffinity;
-  final List<GetRegionBackendServiceStrongSessionAffinityCooky> strongSessionAffinityCookies;
-  final List<GetRegionBackendServiceSubsetting> subsettings;
-  final int timeoutSec;
-  final List<GetRegionBackendServiceTlsSetting> tlsSettings;
+  final String? securityPolicy;
+  final String? selfLink;
+  final String? sessionAffinity;
+  final List<GetRegionBackendServiceStrongSessionAffinityCooky>? strongSessionAffinityCookies;
+  final List<GetRegionBackendServiceSubsetting>? subsettings;
+  final int? timeoutSec;
+  final List<GetRegionBackendServiceTlsSetting>? tlsSettings;
 
   /// Creates a new [GetRegionBackendServiceResult].
-  /// [affinityCookieTtlSec] Required.
-  /// [backends] Required.
-  /// [cdnPolicies] Required.
-  /// [circuitBreakers] Required.
-  /// [connectionDrainingTimeoutSec] Required.
-  /// [connectionTrackingPolicies] Required.
-  /// [consistentHashes] Required.
-  /// [creationTimestamp] Required.
-  /// [customMetrics] Required.
-  /// [deletionPolicy] Required.
-  /// [description] Required.
-  /// [dynamicForwardings] Required.
-  /// [enableCdn] Required.
-  /// [failoverPolicies] Required.
-  /// [fingerprint] Required.
-  /// [generatedId] Required.
-  /// [haPolicies] Required.
-  /// [healthChecks] Required.
-  /// [iaps] Required.
+  /// [affinityCookieTtlSec] Optional.
+  /// [backends] Optional.
+  /// [cdnPolicies] Optional.
+  /// [circuitBreakers] Optional.
+  /// [connectionDrainingTimeoutSec] Optional.
+  /// [connectionTrackingPolicies] Optional.
+  /// [consistentHashes] Optional.
+  /// [creationTimestamp] Optional.
+  /// [customMetrics] Optional.
+  /// [deletionPolicy] Optional.
+  /// [description] Optional.
+  /// [dynamicForwardings] Optional.
+  /// [enableCdn] Optional.
+  /// [failoverPolicies] Optional.
+  /// [fingerprint] Optional.
+  /// [generatedId] Optional.
+  /// [haPolicies] Optional.
+  /// [healthChecks] Optional.
+  /// [iaps] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [ipAddressSelectionPolicy] Required.
-  /// [loadBalancingScheme] Required.
-  /// [localityLbPolicy] Required.
-  /// [logConfigs] Required.
-  /// [name] Required.
-  /// [network] Required.
-  /// [networkPassThroughLbTrafficPolicies] Required.
-  /// [outlierDetections] Required.
-  /// [params] Required.
-  /// [portName] Required.
+  /// [ipAddressSelectionPolicy] Optional.
+  /// [loadBalancingScheme] Optional.
+  /// [localityLbPolicy] Optional.
+  /// [logConfigs] Optional.
+  /// [name] Optional.
+  /// [network] Optional.
+  /// [networkPassThroughLbTrafficPolicies] Optional.
+  /// [outlierDetections] Optional.
+  /// [params] Optional.
+  /// [portName] Optional.
   /// [project] Optional.
-  /// [protocol] Required.
+  /// [protocol] Optional.
   /// [region] Optional.
-  /// [securityPolicy] Required.
-  /// [selfLink] Required.
-  /// [sessionAffinity] Required.
-  /// [strongSessionAffinityCookies] Required.
-  /// [subsettings] Required.
-  /// [timeoutSec] Required.
-  /// [tlsSettings] Required.
+  /// [securityPolicy] Optional.
+  /// [selfLink] Optional.
+  /// [sessionAffinity] Optional.
+  /// [strongSessionAffinityCookies] Optional.
+  /// [subsettings] Optional.
+  /// [timeoutSec] Optional.
+  /// [tlsSettings] Optional.
   const GetRegionBackendServiceResult({
-    required this.affinityCookieTtlSec,
-    required this.backends,
-    required this.cdnPolicies,
-    required this.circuitBreakers,
-    required this.connectionDrainingTimeoutSec,
-    required this.connectionTrackingPolicies,
-    required this.consistentHashes,
-    required this.creationTimestamp,
-    required this.customMetrics,
-    required this.deletionPolicy,
-    required this.description,
-    required this.dynamicForwardings,
-    required this.enableCdn,
-    required this.failoverPolicies,
-    required this.fingerprint,
-    required this.generatedId,
-    required this.haPolicies,
-    required this.healthChecks,
-    required this.iaps,
-    required this.id,
-    required this.ipAddressSelectionPolicy,
-    required this.loadBalancingScheme,
-    required this.localityLbPolicy,
-    required this.logConfigs,
-    required this.name,
-    required this.network,
-    required this.networkPassThroughLbTrafficPolicies,
-    required this.outlierDetections,
-    required this.params,
-    required this.portName,
+    this.affinityCookieTtlSec,
+    this.backends,
+    this.cdnPolicies,
+    this.circuitBreakers,
+    this.connectionDrainingTimeoutSec,
+    this.connectionTrackingPolicies,
+    this.consistentHashes,
+    this.creationTimestamp,
+    this.customMetrics,
+    this.deletionPolicy,
+    this.description,
+    this.dynamicForwardings,
+    this.enableCdn,
+    this.failoverPolicies,
+    this.fingerprint,
+    this.generatedId,
+    this.haPolicies,
+    this.healthChecks,
+    this.iaps,
+    this.id,
+    this.ipAddressSelectionPolicy,
+    this.loadBalancingScheme,
+    this.localityLbPolicy,
+    this.logConfigs,
+    this.name,
+    this.network,
+    this.networkPassThroughLbTrafficPolicies,
+    this.outlierDetections,
+    this.params,
+    this.portName,
     this.project,
-    required this.protocol,
+    this.protocol,
     this.region,
-    required this.securityPolicy,
-    required this.selfLink,
-    required this.sessionAffinity,
-    required this.strongSessionAffinityCookies,
-    required this.subsettings,
-    required this.timeoutSec,
-    required this.tlsSettings,
+    this.securityPolicy,
+    this.selfLink,
+    this.sessionAffinity,
+    this.strongSessionAffinityCookies,
+    this.subsettings,
+    this.timeoutSec,
+    this.tlsSettings,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'affinityCookieTtlSec': affinityCookieTtlSec,
-      'backends': pulumi.Input.encodeList<GetRegionBackendServiceBackend, Map<String, dynamic>>(backends, (value) => value.toMap()),
-      'cdnPolicies': pulumi.Input.encodeList<GetRegionBackendServiceCdnPolicy, Map<String, dynamic>>(cdnPolicies, (value) => value.toMap()),
-      'circuitBreakers': pulumi.Input.encodeList<GetRegionBackendServiceCircuitBreaker, Map<String, dynamic>>(circuitBreakers, (value) => value.toMap()),
-      'connectionDrainingTimeoutSec': connectionDrainingTimeoutSec,
-      'connectionTrackingPolicies': pulumi.Input.encodeList<GetRegionBackendServiceConnectionTrackingPolicy, Map<String, dynamic>>(connectionTrackingPolicies, (value) => value.toMap()),
-      'consistentHashes': pulumi.Input.encodeList<GetRegionBackendServiceConsistentHash, Map<String, dynamic>>(consistentHashes, (value) => value.toMap()),
-      'creationTimestamp': creationTimestamp,
-      'customMetrics': pulumi.Input.encodeList<GetRegionBackendServiceCustomMetric, Map<String, dynamic>>(customMetrics, (value) => value.toMap()),
-      'deletionPolicy': deletionPolicy,
-      'description': description,
-      'dynamicForwardings': pulumi.Input.encodeList<GetRegionBackendServiceDynamicForwarding, Map<String, dynamic>>(dynamicForwardings, (value) => value.toMap()),
-      'enableCdn': enableCdn,
-      'failoverPolicies': pulumi.Input.encodeList<GetRegionBackendServiceFailoverPolicy, Map<String, dynamic>>(failoverPolicies, (value) => value.toMap()),
-      'fingerprint': fingerprint,
-      'generatedId': generatedId,
-      'haPolicies': pulumi.Input.encodeList<GetRegionBackendServiceHaPolicy, Map<String, dynamic>>(haPolicies, (value) => value.toMap()),
-      'healthChecks': healthChecks,
-      'iaps': pulumi.Input.encodeList<GetRegionBackendServiceIap, Map<String, dynamic>>(iaps, (value) => value.toMap()),
-      'id': id,
-      'ipAddressSelectionPolicy': ipAddressSelectionPolicy,
-      'loadBalancingScheme': loadBalancingScheme,
-      'localityLbPolicy': localityLbPolicy,
-      'logConfigs': pulumi.Input.encodeList<GetRegionBackendServiceLogConfig, Map<String, dynamic>>(logConfigs, (value) => value.toMap()),
-      'name': name,
-      'network': network,
-      'networkPassThroughLbTrafficPolicies': pulumi.Input.encodeList<GetRegionBackendServiceNetworkPassThroughLbTrafficPolicy, Map<String, dynamic>>(networkPassThroughLbTrafficPolicies, (value) => value.toMap()),
-      'outlierDetections': pulumi.Input.encodeList<GetRegionBackendServiceOutlierDetection, Map<String, dynamic>>(outlierDetections, (value) => value.toMap()),
-      'params': pulumi.Input.encodeList<GetRegionBackendServiceParam, Map<String, dynamic>>(params, (value) => value.toMap()),
-      'portName': portName,
+      'affinityCookieTtlSec': ?affinityCookieTtlSec,
+      'backends': ?(() { final guardedValue = backends; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetRegionBackendServiceBackend, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'cdnPolicies': ?(() { final guardedValue = cdnPolicies; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetRegionBackendServiceCdnPolicy, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'circuitBreakers': ?(() { final guardedValue = circuitBreakers; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetRegionBackendServiceCircuitBreaker, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'connectionDrainingTimeoutSec': ?connectionDrainingTimeoutSec,
+      'connectionTrackingPolicies': ?(() { final guardedValue = connectionTrackingPolicies; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetRegionBackendServiceConnectionTrackingPolicy, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'consistentHashes': ?(() { final guardedValue = consistentHashes; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetRegionBackendServiceConsistentHash, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'creationTimestamp': ?creationTimestamp,
+      'customMetrics': ?(() { final guardedValue = customMetrics; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetRegionBackendServiceCustomMetric, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'deletionPolicy': ?deletionPolicy,
+      'description': ?description,
+      'dynamicForwardings': ?(() { final guardedValue = dynamicForwardings; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetRegionBackendServiceDynamicForwarding, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'enableCdn': ?enableCdn,
+      'failoverPolicies': ?(() { final guardedValue = failoverPolicies; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetRegionBackendServiceFailoverPolicy, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'fingerprint': ?fingerprint,
+      'generatedId': ?generatedId,
+      'haPolicies': ?(() { final guardedValue = haPolicies; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetRegionBackendServiceHaPolicy, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'healthChecks': ?healthChecks,
+      'iaps': ?(() { final guardedValue = iaps; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetRegionBackendServiceIap, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'id': ?id,
+      'ipAddressSelectionPolicy': ?ipAddressSelectionPolicy,
+      'loadBalancingScheme': ?loadBalancingScheme,
+      'localityLbPolicy': ?localityLbPolicy,
+      'logConfigs': ?(() { final guardedValue = logConfigs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetRegionBackendServiceLogConfig, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'name': ?name,
+      'network': ?network,
+      'networkPassThroughLbTrafficPolicies': ?(() { final guardedValue = networkPassThroughLbTrafficPolicies; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetRegionBackendServiceNetworkPassThroughLbTrafficPolicy, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'outlierDetections': ?(() { final guardedValue = outlierDetections; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetRegionBackendServiceOutlierDetection, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'params': ?(() { final guardedValue = params; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetRegionBackendServiceParam, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'portName': ?portName,
       'project': ?project,
-      'protocol': protocol,
+      'protocol': ?protocol,
       'region': ?region,
-      'securityPolicy': securityPolicy,
-      'selfLink': selfLink,
-      'sessionAffinity': sessionAffinity,
-      'strongSessionAffinityCookies': pulumi.Input.encodeList<GetRegionBackendServiceStrongSessionAffinityCooky, Map<String, dynamic>>(strongSessionAffinityCookies, (value) => value.toMap()),
-      'subsettings': pulumi.Input.encodeList<GetRegionBackendServiceSubsetting, Map<String, dynamic>>(subsettings, (value) => value.toMap()),
-      'timeoutSec': timeoutSec,
-      'tlsSettings': pulumi.Input.encodeList<GetRegionBackendServiceTlsSetting, Map<String, dynamic>>(tlsSettings, (value) => value.toMap()),
+      'securityPolicy': ?securityPolicy,
+      'selfLink': ?selfLink,
+      'sessionAffinity': ?sessionAffinity,
+      'strongSessionAffinityCookies': ?(() { final guardedValue = strongSessionAffinityCookies; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetRegionBackendServiceStrongSessionAffinityCooky, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'subsettings': ?(() { final guardedValue = subsettings; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetRegionBackendServiceSubsetting, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'timeoutSec': ?timeoutSec,
+      'tlsSettings': ?(() { final guardedValue = tlsSettings; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetRegionBackendServiceTlsSetting, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
     };
   }
 
   factory GetRegionBackendServiceResult.fromMap(Map<String, dynamic> map) {
     return GetRegionBackendServiceResult(
-      affinityCookieTtlSec: map['affinityCookieTtlSec'] as int,
-      backends: pulumi.Input.decodeList<GetRegionBackendServiceBackend>(map['backends']!, (value) => GetRegionBackendServiceBackend.fromMap((value as Map).cast<String, dynamic>())),
-      cdnPolicies: pulumi.Input.decodeList<GetRegionBackendServiceCdnPolicy>(map['cdnPolicies']!, (value) => GetRegionBackendServiceCdnPolicy.fromMap((value as Map).cast<String, dynamic>())),
-      circuitBreakers: pulumi.Input.decodeList<GetRegionBackendServiceCircuitBreaker>(map['circuitBreakers']!, (value) => GetRegionBackendServiceCircuitBreaker.fromMap((value as Map).cast<String, dynamic>())),
-      connectionDrainingTimeoutSec: map['connectionDrainingTimeoutSec'] as int,
-      connectionTrackingPolicies: pulumi.Input.decodeList<GetRegionBackendServiceConnectionTrackingPolicy>(map['connectionTrackingPolicies']!, (value) => GetRegionBackendServiceConnectionTrackingPolicy.fromMap((value as Map).cast<String, dynamic>())),
-      consistentHashes: pulumi.Input.decodeList<GetRegionBackendServiceConsistentHash>(map['consistentHashes']!, (value) => GetRegionBackendServiceConsistentHash.fromMap((value as Map).cast<String, dynamic>())),
-      creationTimestamp: map['creationTimestamp'] as String,
-      customMetrics: pulumi.Input.decodeList<GetRegionBackendServiceCustomMetric>(map['customMetrics']!, (value) => GetRegionBackendServiceCustomMetric.fromMap((value as Map).cast<String, dynamic>())),
-      deletionPolicy: map['deletionPolicy'] as String,
-      description: map['description'] as String,
-      dynamicForwardings: pulumi.Input.decodeList<GetRegionBackendServiceDynamicForwarding>(map['dynamicForwardings']!, (value) => GetRegionBackendServiceDynamicForwarding.fromMap((value as Map).cast<String, dynamic>())),
-      enableCdn: map['enableCdn'] as bool,
-      failoverPolicies: pulumi.Input.decodeList<GetRegionBackendServiceFailoverPolicy>(map['failoverPolicies']!, (value) => GetRegionBackendServiceFailoverPolicy.fromMap((value as Map).cast<String, dynamic>())),
-      fingerprint: map['fingerprint'] as String,
-      generatedId: map['generatedId'] as int,
-      haPolicies: pulumi.Input.decodeList<GetRegionBackendServiceHaPolicy>(map['haPolicies']!, (value) => GetRegionBackendServiceHaPolicy.fromMap((value as Map).cast<String, dynamic>())),
-      healthChecks: (map['healthChecks'] as List).cast<String>(),
-      iaps: pulumi.Input.decodeList<GetRegionBackendServiceIap>(map['iaps']!, (value) => GetRegionBackendServiceIap.fromMap((value as Map).cast<String, dynamic>())),
-      id: map['id'] as String,
-      ipAddressSelectionPolicy: map['ipAddressSelectionPolicy'] as String,
-      loadBalancingScheme: map['loadBalancingScheme'] as String,
-      localityLbPolicy: map['localityLbPolicy'] as String,
-      logConfigs: pulumi.Input.decodeList<GetRegionBackendServiceLogConfig>(map['logConfigs']!, (value) => GetRegionBackendServiceLogConfig.fromMap((value as Map).cast<String, dynamic>())),
-      name: map['name'] as String,
-      network: map['network'] as String,
-      networkPassThroughLbTrafficPolicies: pulumi.Input.decodeList<GetRegionBackendServiceNetworkPassThroughLbTrafficPolicy>(map['networkPassThroughLbTrafficPolicies']!, (value) => GetRegionBackendServiceNetworkPassThroughLbTrafficPolicy.fromMap((value as Map).cast<String, dynamic>())),
-      outlierDetections: pulumi.Input.decodeList<GetRegionBackendServiceOutlierDetection>(map['outlierDetections']!, (value) => GetRegionBackendServiceOutlierDetection.fromMap((value as Map).cast<String, dynamic>())),
-      params: pulumi.Input.decodeList<GetRegionBackendServiceParam>(map['params']!, (value) => GetRegionBackendServiceParam.fromMap((value as Map).cast<String, dynamic>())),
-      portName: map['portName'] as String,
+      affinityCookieTtlSec: (() { final guardedValue = map['affinityCookieTtlSec']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      backends: (() { final guardedValue = map['backends']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetRegionBackendServiceBackend>(guardedValue, (value) => GetRegionBackendServiceBackend.fromMap((value as Map).cast<String, dynamic>())); })(),
+      cdnPolicies: (() { final guardedValue = map['cdnPolicies']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetRegionBackendServiceCdnPolicy>(guardedValue, (value) => GetRegionBackendServiceCdnPolicy.fromMap((value as Map).cast<String, dynamic>())); })(),
+      circuitBreakers: (() { final guardedValue = map['circuitBreakers']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetRegionBackendServiceCircuitBreaker>(guardedValue, (value) => GetRegionBackendServiceCircuitBreaker.fromMap((value as Map).cast<String, dynamic>())); })(),
+      connectionDrainingTimeoutSec: (() { final guardedValue = map['connectionDrainingTimeoutSec']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      connectionTrackingPolicies: (() { final guardedValue = map['connectionTrackingPolicies']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetRegionBackendServiceConnectionTrackingPolicy>(guardedValue, (value) => GetRegionBackendServiceConnectionTrackingPolicy.fromMap((value as Map).cast<String, dynamic>())); })(),
+      consistentHashes: (() { final guardedValue = map['consistentHashes']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetRegionBackendServiceConsistentHash>(guardedValue, (value) => GetRegionBackendServiceConsistentHash.fromMap((value as Map).cast<String, dynamic>())); })(),
+      creationTimestamp: (() { final guardedValue = map['creationTimestamp']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      customMetrics: (() { final guardedValue = map['customMetrics']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetRegionBackendServiceCustomMetric>(guardedValue, (value) => GetRegionBackendServiceCustomMetric.fromMap((value as Map).cast<String, dynamic>())); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      dynamicForwardings: (() { final guardedValue = map['dynamicForwardings']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetRegionBackendServiceDynamicForwarding>(guardedValue, (value) => GetRegionBackendServiceDynamicForwarding.fromMap((value as Map).cast<String, dynamic>())); })(),
+      enableCdn: (() { final guardedValue = map['enableCdn']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      failoverPolicies: (() { final guardedValue = map['failoverPolicies']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetRegionBackendServiceFailoverPolicy>(guardedValue, (value) => GetRegionBackendServiceFailoverPolicy.fromMap((value as Map).cast<String, dynamic>())); })(),
+      fingerprint: (() { final guardedValue = map['fingerprint']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      generatedId: (() { final guardedValue = map['generatedId']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      haPolicies: (() { final guardedValue = map['haPolicies']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetRegionBackendServiceHaPolicy>(guardedValue, (value) => GetRegionBackendServiceHaPolicy.fromMap((value as Map).cast<String, dynamic>())); })(),
+      healthChecks: (() { final guardedValue = map['healthChecks']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      iaps: (() { final guardedValue = map['iaps']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetRegionBackendServiceIap>(guardedValue, (value) => GetRegionBackendServiceIap.fromMap((value as Map).cast<String, dynamic>())); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      ipAddressSelectionPolicy: (() { final guardedValue = map['ipAddressSelectionPolicy']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      loadBalancingScheme: (() { final guardedValue = map['loadBalancingScheme']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      localityLbPolicy: (() { final guardedValue = map['localityLbPolicy']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      logConfigs: (() { final guardedValue = map['logConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetRegionBackendServiceLogConfig>(guardedValue, (value) => GetRegionBackendServiceLogConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      network: (() { final guardedValue = map['network']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      networkPassThroughLbTrafficPolicies: (() { final guardedValue = map['networkPassThroughLbTrafficPolicies']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetRegionBackendServiceNetworkPassThroughLbTrafficPolicy>(guardedValue, (value) => GetRegionBackendServiceNetworkPassThroughLbTrafficPolicy.fromMap((value as Map).cast<String, dynamic>())); })(),
+      outlierDetections: (() { final guardedValue = map['outlierDetections']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetRegionBackendServiceOutlierDetection>(guardedValue, (value) => GetRegionBackendServiceOutlierDetection.fromMap((value as Map).cast<String, dynamic>())); })(),
+      params: (() { final guardedValue = map['params']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetRegionBackendServiceParam>(guardedValue, (value) => GetRegionBackendServiceParam.fromMap((value as Map).cast<String, dynamic>())); })(),
+      portName: (() { final guardedValue = map['portName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      protocol: map['protocol'] as String,
+      protocol: (() { final guardedValue = map['protocol']; if (guardedValue == null) return null; return guardedValue as String; })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      securityPolicy: map['securityPolicy'] as String,
-      selfLink: map['selfLink'] as String,
-      sessionAffinity: map['sessionAffinity'] as String,
-      strongSessionAffinityCookies: pulumi.Input.decodeList<GetRegionBackendServiceStrongSessionAffinityCooky>(map['strongSessionAffinityCookies']!, (value) => GetRegionBackendServiceStrongSessionAffinityCooky.fromMap((value as Map).cast<String, dynamic>())),
-      subsettings: pulumi.Input.decodeList<GetRegionBackendServiceSubsetting>(map['subsettings']!, (value) => GetRegionBackendServiceSubsetting.fromMap((value as Map).cast<String, dynamic>())),
-      timeoutSec: map['timeoutSec'] as int,
-      tlsSettings: pulumi.Input.decodeList<GetRegionBackendServiceTlsSetting>(map['tlsSettings']!, (value) => GetRegionBackendServiceTlsSetting.fromMap((value as Map).cast<String, dynamic>())),
+      securityPolicy: (() { final guardedValue = map['securityPolicy']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      selfLink: (() { final guardedValue = map['selfLink']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      sessionAffinity: (() { final guardedValue = map['sessionAffinity']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      strongSessionAffinityCookies: (() { final guardedValue = map['strongSessionAffinityCookies']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetRegionBackendServiceStrongSessionAffinityCooky>(guardedValue, (value) => GetRegionBackendServiceStrongSessionAffinityCooky.fromMap((value as Map).cast<String, dynamic>())); })(),
+      subsettings: (() { final guardedValue = map['subsettings']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetRegionBackendServiceSubsetting>(guardedValue, (value) => GetRegionBackendServiceSubsetting.fromMap((value as Map).cast<String, dynamic>())); })(),
+      timeoutSec: (() { final guardedValue = map['timeoutSec']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      tlsSettings: (() { final guardedValue = map['tlsSettings']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetRegionBackendServiceTlsSetting>(guardedValue, (value) => GetRegionBackendServiceTlsSetting.fromMap((value as Map).cast<String, dynamic>())); })(),
     );
   }
 }

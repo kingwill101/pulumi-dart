@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfig {
   /// Output only. The name of the Instance Group Manager for this group.
-  final pulumi.Input<String>? instanceGroupManagerName;
+  final pulumi.Input<String?>? instanceGroupManagerName;
   /// Output only. The name of the Instance Template used for the Managed Instance Group.
-  final pulumi.Input<String>? instanceTemplateName;
+  final pulumi.Input<String?>? instanceTemplateName;
 
   /// Creates a new [WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfig].
   /// [instanceGroupManagerName] Output only. The name of the Instance Group Manager for this group.

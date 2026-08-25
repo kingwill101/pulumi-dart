@@ -7,7 +7,7 @@ class PreventionInspectTemplateInspectConfigMinLikelihoodPerInfoTypeInfoType {
   /// listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
   final pulumi.Input<String> name;
   /// Version name for this InfoType.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [PreventionInspectTemplateInspectConfigMinLikelihoodPerInfoTypeInfoType].
   /// [name] Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names

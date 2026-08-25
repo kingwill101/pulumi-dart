@@ -7,10 +7,10 @@ class AppVersionSnapshotExampleMessage {
   /// (Output)
   /// Content of the message as a series of chunks.
   /// Structure is documented below.
-  final pulumi.Input<List<AppVersionSnapshotExampleMessageChunk>>? chunks;
+  final pulumi.Input<List<AppVersionSnapshotExampleMessageChunk>?>? chunks;
   /// (Output)
   /// The role within the conversation, e.g., user, agent.
-  final pulumi.Input<String>? role;
+  final pulumi.Input<String?>? role;
 
   /// Creates a new [AppVersionSnapshotExampleMessage].
   /// [chunks] (Output)

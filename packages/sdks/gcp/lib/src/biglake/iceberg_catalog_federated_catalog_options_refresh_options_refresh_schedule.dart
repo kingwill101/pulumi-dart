@@ -6,7 +6,7 @@ class IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshSchedule {
   /// The interval between metadata refreshes, expressed as a duration
   /// string (e.g., `300s`).
   /// The value must be at least 300s or 0s to disable refresh.
-  final pulumi.Input<String>? refreshInterval;
+  final pulumi.Input<String?>? refreshInterval;
 
   /// Creates a new [IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshSchedule].
   /// [refreshInterval] The interval between metadata refreshes, expressed as a duration

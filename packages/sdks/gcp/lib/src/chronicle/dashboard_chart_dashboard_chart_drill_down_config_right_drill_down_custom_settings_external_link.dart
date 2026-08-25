@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DashboardChartDashboardChartDrillDownConfigRightDrillDownCustomSettingsExternalLink {
   /// (Optional)
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// (Required)
   final pulumi.Input<String> link;
 

@@ -11,43 +11,43 @@ class DeploymentArgs {
   /// Optional. Arbitrary key-value metadata storage.
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
-  final pulumi.Input<Map<String, String>>? annotations;
+  final pulumi.Input<Map<String, String>?>? annotations;
   /// Location for Cloud Build logs and artifacts.
-  final pulumi.Input<String>? artifactsGcsBucket;
+  final pulumi.Input<String?>? artifactsGcsBucket;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// If true, deletes the deployment and its nested resources.
-  final pulumi.Input<bool>? forceDestroy;
+  final pulumi.Input<bool?>? forceDestroy;
   /// If true, attempts to automatically import resources on 409 conflict.
-  final pulumi.Input<bool>? importExistingResources;
+  final pulumi.Input<bool?>? importExistingResources;
   /// Optional. User-defined metadata for the deployment.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The location for the resource
   final pulumi.Input<String> location;
   /// The user-specified ID of the deployment.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Controls quota checks.
   /// Possible values are: `ENABLED`, `ENFORCED`.
-  final pulumi.Input<String>? quotaValidation;
+  final pulumi.Input<String?>? quotaValidation;
   /// Required. User-specified Service Account (SA) credentials to be used when actuating resources.
   final pulumi.Input<String> serviceAccount;
   /// A bundle of HCL files in a GCS bucket or Git repo.
   /// Structure is documented below.
   final pulumi.Input<DeploymentTerraformBlueprint> terraformBlueprint;
   /// Optional constraint on the Terraform version.
-  final pulumi.Input<String>? tfVersionConstraint;
+  final pulumi.Input<String?>? tfVersionConstraint;
   /// Custom Cloud Build worker pool resource name.
-  final pulumi.Input<String>? workerPool;
+  final pulumi.Input<String?>? workerPool;
 
   /// Creates a new [DeploymentArgs].
   /// [annotations] Optional. Arbitrary key-value metadata storage.

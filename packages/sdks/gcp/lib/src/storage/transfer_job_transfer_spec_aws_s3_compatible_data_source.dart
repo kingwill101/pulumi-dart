@@ -9,11 +9,11 @@ class TransferJobTransferSpecAwsS3CompatibleDataSource {
   /// Endpoint of the storage service.
   final pulumi.Input<String> endpoint;
   /// Specifies the path to transfer objects.
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? path;
   /// Specifies the region to sign requests with. This can be left blank if requests should be signed with an empty region.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// S3 compatible metadata.
-  final pulumi.Input<TransferJobTransferSpecAwsS3CompatibleDataSourceS3Metadata>? s3Metadata;
+  final pulumi.Input<TransferJobTransferSpecAwsS3CompatibleDataSourceS3Metadata?>? s3Metadata;
 
   /// Creates a new [TransferJobTransferSpecAwsS3CompatibleDataSource].
   /// [bucketName] Name of the bucket.

@@ -416,31 +416,32 @@ class ActiveDirectory extends pulumi.CustomResource {
           'gcp:netapp/activeDirectory:ActiveDirectory',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'password', 'pulumiLabels'],
         ) {
-    administrators = registerOutput<List<String>?>('administrators');
+    administrators = registerOutput<List<String>?>('administrators', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     aesEncryption = registerOutput<bool?>('aesEncryption');
-    backupOperators = registerOutput<List<String>?>('backupOperators');
+    backupOperators = registerOutput<List<String>?>('backupOperators', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     dns = registerOutput<String>('dns');
     domain = registerOutput<String>('domain');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     encryptDcConnections = registerOutput<bool?>('encryptDcConnections');
     kdcHostname = registerOutput<String?>('kdcHostname');
     kdcIp = registerOutput<String?>('kdcIp');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     ldapSigning = registerOutput<bool?>('ldapSigning');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     netBiosPrefix = registerOutput<String>('netBiosPrefix');
     nfsUsersWithLdap = registerOutput<bool?>('nfsUsersWithLdap');
     organizationalUnit = registerOutput<String>('organizationalUnit');
-    password = registerOutput<String>('password');
+    password = registerOutput<String>('password', isSecret: true);
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    securityOperators = registerOutput<List<String>?>('securityOperators');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    securityOperators = registerOutput<List<String>?>('securityOperators', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     site = registerOutput<String?>('site');
     state = registerOutput<String>('state');
     stateDetails = registerOutput<String>('stateDetails');
@@ -452,11 +453,12 @@ class ActiveDirectory extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ActiveDirectoryState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ActiveDirectory._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -470,31 +472,70 @@ class ActiveDirectory extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    administrators = registerOutput<List<String>?>('administrators');
+    administrators = registerOutput<List<String>?>('administrators', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     aesEncryption = registerOutput<bool?>('aesEncryption');
-    backupOperators = registerOutput<List<String>?>('backupOperators');
+    backupOperators = registerOutput<List<String>?>('backupOperators', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     dns = registerOutput<String>('dns');
     domain = registerOutput<String>('domain');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     encryptDcConnections = registerOutput<bool?>('encryptDcConnections');
     kdcHostname = registerOutput<String?>('kdcHostname');
     kdcIp = registerOutput<String?>('kdcIp');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     ldapSigning = registerOutput<bool?>('ldapSigning');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     netBiosPrefix = registerOutput<String>('netBiosPrefix');
     nfsUsersWithLdap = registerOutput<bool?>('nfsUsersWithLdap');
     organizationalUnit = registerOutput<String>('organizationalUnit');
-    password = registerOutput<String>('password');
+    password = registerOutput<String>('password', isSecret: true);
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    securityOperators = registerOutput<List<String>?>('securityOperators');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    securityOperators = registerOutput<List<String>?>('securityOperators', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     site = registerOutput<String?>('site');
     this.state = registerOutput<String>('state');
+    stateDetails = registerOutput<String>('stateDetails');
+    username = registerOutput<String>('username');
+  }
+
+  /// Creates a typed reference to an existing [ActiveDirectory] resource.
+  ActiveDirectory.reference(String urn)
+    : super(
+        'gcp:netapp/activeDirectory:ActiveDirectory',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'password', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    administrators = registerOutput<List<String>?>('administrators', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    aesEncryption = registerOutput<bool?>('aesEncryption');
+    backupOperators = registerOutput<List<String>?>('backupOperators', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    dns = registerOutput<String>('dns');
+    domain = registerOutput<String>('domain');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    encryptDcConnections = registerOutput<bool?>('encryptDcConnections');
+    kdcHostname = registerOutput<String?>('kdcHostname');
+    kdcIp = registerOutput<String?>('kdcIp');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    ldapSigning = registerOutput<bool?>('ldapSigning');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    netBiosPrefix = registerOutput<String>('netBiosPrefix');
+    nfsUsersWithLdap = registerOutput<bool?>('nfsUsersWithLdap');
+    organizationalUnit = registerOutput<String>('organizationalUnit');
+    password = registerOutput<String>('password', isSecret: true);
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    securityOperators = registerOutput<List<String>?>('securityOperators', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    site = registerOutput<String?>('site');
+    state = registerOutput<String>('state');
     stateDetails = registerOutput<String>('stateDetails');
     username = registerOutput<String>('username');
   }

@@ -123,6 +123,17 @@ Future<GetNamespaceIamPolicyResult> getNamespaceIamPolicy(
   return GetNamespaceIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetNamespaceIamPolicyResult> getNamespaceIamPolicyOutput(
+  GetNamespaceIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:servicedirectory/getNamespaceIamPolicy:getNamespaceIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNamespaceIamPolicyResult.fromMap);
+}
+
 /// Retrieves the current IAM policy data for service
 ///
 ///
@@ -240,4 +251,15 @@ Future<GetServiceIamPolicyResult> getServiceIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetServiceIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetServiceIamPolicyResult> getServiceIamPolicyOutput(
+  GetServiceIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:servicedirectory/getServiceIamPolicy:getServiceIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServiceIamPolicyResult.fromMap);
 }

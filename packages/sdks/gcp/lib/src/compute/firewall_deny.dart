@@ -9,7 +9,7 @@ class FirewallDeny {
   /// applies to connections through any port.
   /// Example inputs include: [22], [80, 443], and
   /// ["12345-12349"].
-  final pulumi.Input<List<String>>? ports;
+  final pulumi.Input<List<String>?>? ports;
   /// The IP protocol to which this rule applies. The protocol type is
   /// required when creating a firewall rule. This value can either be
   /// one of the following well known protocol strings (tcp, udp,

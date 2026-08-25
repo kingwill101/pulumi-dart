@@ -8,11 +8,11 @@ import 'delivery_pipeline_iam_binding_condition.dart';
 /// {@endtemplate}
 /// {@macro pulumi_clouddeploy_delivery_pipeline_iam_binding_delivery_pipeline_iam_binding_args_doc}
 class DeliveryPipelineIamBindingArgs {
-  final pulumi.Input<DeliveryPipelineIamBindingCondition>? condition;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<DeliveryPipelineIamBindingCondition?>? condition;
+  final pulumi.Input<String?>? location;
   final pulumi.Input<List<String>> members;
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> role;
 
   /// Creates a new [DeliveryPipelineIamBindingArgs].

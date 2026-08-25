@@ -4,16 +4,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SpokeLinkedProducerVpcNetwork {
   /// IP ranges encompassing the subnets to be excluded from peering.
-  final pulumi.Input<List<String>>? excludeExportRanges;
+  final pulumi.Input<List<String>?>? excludeExportRanges;
   /// IP ranges allowed to be included from peering.
-  final pulumi.Input<List<String>>? includeExportRanges;
+  final pulumi.Input<List<String>?>? includeExportRanges;
   /// The URI of the Service Consumer VPC that the Producer VPC is peered with.
   final pulumi.Input<String> network;
   /// The name of the VPC peering between the Service Consumer VPC and the Producer VPC (defined in the Tenant project) which is added to the NCC hub. This peering must be in ACTIVE state.
   final pulumi.Input<String> peering;
   /// (Output)
   /// The URI of the Producer VPC.
-  final pulumi.Input<String>? producerNetwork;
+  final pulumi.Input<String?>? producerNetwork;
 
   /// Creates a new [SpokeLinkedProducerVpcNetwork].
   /// [excludeExportRanges] IP ranges encompassing the subnets to be excluded from peering.

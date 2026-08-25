@@ -6,7 +6,7 @@ import 'stream_source_config_postgresql_source_config_include_objects_postgresql
 class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchema {
   /// Tables in the schema.
   /// Structure is documented below.
-  final pulumi.Input<List<StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTable>>? postgresqlTables;
+  final pulumi.Input<List<StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTable>?>? postgresqlTables;
   /// Database name.
   final pulumi.Input<String> schema;
 

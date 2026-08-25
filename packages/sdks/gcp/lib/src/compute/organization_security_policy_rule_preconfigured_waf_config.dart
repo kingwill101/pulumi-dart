@@ -6,7 +6,7 @@ import 'organization_security_policy_rule_preconfigured_waf_config_exclusion.dar
 class OrganizationSecurityPolicyRulePreconfiguredWafConfig {
   /// An exclusion to apply during preconfigured WAF evaluation.
   /// Structure is documented below.
-  final pulumi.Input<List<OrganizationSecurityPolicyRulePreconfiguredWafConfigExclusion>>? exclusions;
+  final pulumi.Input<List<OrganizationSecurityPolicyRulePreconfiguredWafConfigExclusion>?>? exclusions;
 
   /// Creates a new [OrganizationSecurityPolicyRulePreconfiguredWafConfig].
   /// [exclusions] An exclusion to apply during preconfigured WAF evaluation.

@@ -563,7 +563,8 @@ class WorkforcePoolProviderScimToken extends pulumi.CustomResource {
           'gcp:iam/workforcePoolProviderScimToken:WorkforcePoolProviderScimToken',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['securityToken'],
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
@@ -572,7 +573,7 @@ class WorkforcePoolProviderScimToken extends pulumi.CustomResource {
     providerId = registerOutput<String>('providerId');
     scimTenantId = registerOutput<String>('scimTenantId');
     scimTokenId = registerOutput<String>('scimTokenId');
-    securityToken = registerOutput<String>('securityToken');
+    securityToken = registerOutput<String>('securityToken', isSecret: true);
     state = registerOutput<String>('state');
     workforcePoolId = registerOutput<String>('workforcePoolId');
   }
@@ -582,11 +583,12 @@ class WorkforcePoolProviderScimToken extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     WorkforcePoolProviderScimTokenState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return WorkforcePoolProviderScimToken._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -607,8 +609,30 @@ class WorkforcePoolProviderScimToken extends pulumi.CustomResource {
     providerId = registerOutput<String>('providerId');
     scimTenantId = registerOutput<String>('scimTenantId');
     scimTokenId = registerOutput<String>('scimTokenId');
-    securityToken = registerOutput<String>('securityToken');
+    securityToken = registerOutput<String>('securityToken', isSecret: true);
     this.state = registerOutput<String>('state');
+    workforcePoolId = registerOutput<String>('workforcePoolId');
+  }
+
+  /// Creates a typed reference to an existing [WorkforcePoolProviderScimToken] resource.
+  WorkforcePoolProviderScimToken.reference(String urn)
+    : super(
+        'gcp:iam/workforcePoolProviderScimToken:WorkforcePoolProviderScimToken',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['securityToken'],
+        isResourceReference: true,
+      ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    displayName = registerOutput<String?>('displayName');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    providerId = registerOutput<String>('providerId');
+    scimTenantId = registerOutput<String>('scimTenantId');
+    scimTokenId = registerOutput<String>('scimTokenId');
+    securityToken = registerOutput<String>('securityToken', isSecret: true);
+    state = registerOutput<String>('state');
     workforcePoolId = registerOutput<String>('workforcePoolId');
   }
 }

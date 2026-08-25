@@ -10,14 +10,14 @@ class EnvGroupState {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Hostnames of the environment group.
-  final pulumi.Input<List<String>>? hostnames;
+  final pulumi.Input<List<String>?>? hostnames;
   /// The resource ID of the environment group.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The Apigee Organization associated with the Apigee environment group,
   /// in the format `organizations/{{org_name}}`.
-  final pulumi.Input<String>? orgId;
+  final pulumi.Input<String?>? orgId;
 
   /// Creates a new [EnvGroupState].
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

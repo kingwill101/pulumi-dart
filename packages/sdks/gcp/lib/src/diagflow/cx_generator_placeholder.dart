@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CxGeneratorPlaceholder {
   /// Unique ID used to map custom placeholder to parameters in fulfillment.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Custom placeholder value in the prompt text.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [CxGeneratorPlaceholder].
   /// [id] Unique ID used to map custom placeholder to parameters in fulfillment.

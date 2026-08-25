@@ -194,7 +194,7 @@ class CrossSiteNetwork extends pulumi.CustomResource {
           'gcp:compute/crossSiteNetwork:CrossSiteNetwork',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
@@ -207,11 +207,12 @@ class CrossSiteNetwork extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CrossSiteNetworkState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return CrossSiteNetwork._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -225,6 +226,21 @@ class CrossSiteNetwork extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+  }
+
+  /// Creates a typed reference to an existing [CrossSiteNetwork] resource.
+  CrossSiteNetwork.reference(String urn)
+    : super(
+        'gcp:compute/crossSiteNetwork:CrossSiteNetwork',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');

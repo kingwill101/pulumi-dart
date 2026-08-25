@@ -272,13 +272,13 @@ class IcebergNamespace extends pulumi.CustomResource {
           'gcp:biglake/icebergNamespace:IcebergNamespace',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     catalog = registerOutput<String>('catalog');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     namespaceId = registerOutput<String>('namespaceId');
     project = registerOutput<String>('project');
-    properties = registerOutput<Map<String, String>>('properties');
+    properties = registerOutput<Map<String, String>>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [IcebergNamespace] resource's state with the given [name] and [id].
@@ -286,11 +286,12 @@ class IcebergNamespace extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     IcebergNamespaceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return IcebergNamespace._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -308,6 +309,22 @@ class IcebergNamespace extends pulumi.CustomResource {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     namespaceId = registerOutput<String>('namespaceId');
     project = registerOutput<String>('project');
-    properties = registerOutput<Map<String, String>>('properties');
+    properties = registerOutput<Map<String, String>>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [IcebergNamespace] resource.
+  IcebergNamespace.reference(String urn)
+    : super(
+        'gcp:biglake/icebergNamespace:IcebergNamespace',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    catalog = registerOutput<String>('catalog');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    namespaceId = registerOutput<String>('namespaceId');
+    project = registerOutput<String>('project');
+    properties = registerOutput<Map<String, String>>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

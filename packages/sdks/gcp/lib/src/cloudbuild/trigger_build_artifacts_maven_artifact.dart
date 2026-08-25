@@ -4,16 +4,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TriggerBuildArtifactsMavenArtifact {
   /// Maven artifactId value used when uploading the artifact to Artifact Registry.
-  final pulumi.Input<String>? artifactId;
+  final pulumi.Input<String?>? artifactId;
   /// Maven groupId value used when uploading the artifact to Artifact Registry.
-  final pulumi.Input<String>? groupId;
+  final pulumi.Input<String?>? groupId;
   /// Path to an artifact in the build's workspace to be uploaded to Artifact Registry. This can be either an absolute path, e.g. /workspace/my-app/target/my-app-1.0.SNAPSHOT.jar or a relative path from /workspace, e.g. my-app/target/my-app-1.0.SNAPSHOT.jar.
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? path;
   /// Artifact Registry repository, in the form "https://$REGION-maven.pkg.dev/$PROJECT/$REPOSITORY"
   /// Artifact in the workspace specified by path will be uploaded to Artifact Registry with this location as a prefix.
-  final pulumi.Input<String>? repository;
+  final pulumi.Input<String?>? repository;
   /// Maven version value used when uploading the artifact to Artifact Registry.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [TriggerBuildArtifactsMavenArtifact].
   /// [artifactId] Maven artifactId value used when uploading the artifact to Artifact Registry.

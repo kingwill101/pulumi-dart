@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PipelineJobBackfillPipelineJob {
   /// Specifies the mapping pipeline job to backfill, the name format
   /// should follow: projects/{projectId}/locations/{locationId}/datasets/{datasetId}/pipelineJobs/{pipelineJobId}.
-  final pulumi.Input<String>? mappingPipelineJob;
+  final pulumi.Input<String?>? mappingPipelineJob;
 
   /// Creates a new [PipelineJobBackfillPipelineJob].
   /// [mappingPipelineJob] Specifies the mapping pipeline job to backfill, the name format

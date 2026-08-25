@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GoldengateDeploymentPropertiesIngressIp {
   /// The ingress IP.
-  final pulumi.Input<String>? ingressIpAddress;
+  final pulumi.Input<String?>? ingressIpAddress;
 
   /// Creates a new [GoldengateDeploymentPropertiesIngressIp].
   /// [ingressIpAddress] The ingress IP.

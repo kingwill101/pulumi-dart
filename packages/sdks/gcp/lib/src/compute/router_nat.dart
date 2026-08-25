@@ -1,7 +1,10 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'router_nat_args.dart';
 import 'router_nat_log_config.dart';
+import 'router_nat_nat64_subnetwork.dart';
+import 'router_nat_rule.dart';
 import 'router_nat_state.dart';
+import 'router_nat_subnetwork.dart';
 
 /// A NAT service created in a router.
 ///
@@ -1413,7 +1416,7 @@ class RouterNat extends pulumi.CustomResource {
   /// One or more subnetwork NAT configurations whose traffic should be translated by NAT64 Gateway.
   /// Only used if `sourceSubnetworkIpRangesToNat64` is set to `LIST_OF_IPV6_SUBNETWORKS`
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> nat64Subnetworks;
+  late final pulumi.Output<List<RouterNatNat64Subnetwork>?> nat64Subnetworks;
   /// How external IPs should be allocated for this NAT. Valid values are
   /// `AUTO_ONLY` for only allowing NAT IPs allocated by Google Cloud
   /// Platform, or `MANUAL_ONLY` for only user-allocated NAT IP addresses.
@@ -1434,7 +1437,7 @@ class RouterNat extends pulumi.CustomResource {
   late final pulumi.Output<String> router;
   /// A list of rules associated with this NAT.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> rules;
+  late final pulumi.Output<List<RouterNatRule>?> rules;
   /// How NAT should be configured per Subnetwork.
   /// If `ALL_SUBNETWORKS_ALL_IP_RANGES`, all of the
   /// IP ranges in every Subnetwork are allowed to Nat.
@@ -1457,7 +1460,7 @@ class RouterNat extends pulumi.CustomResource {
   /// One or more subnetwork NAT configurations. Only used if
   /// `sourceSubnetworkIpRangesToNat` is set to `LIST_OF_SUBNETWORKS`
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> subnetworks;
+  late final pulumi.Output<List<RouterNatSubnetwork>?> subnetworks;
   /// Timeout (in seconds) for TCP established connections.
   /// Defaults to 1200s if not set.
   late final pulumi.Output<int?> tcpEstablishedIdleTimeoutSec;
@@ -1489,30 +1492,30 @@ class RouterNat extends pulumi.CustomResource {
           'gcp:compute/routerNat:RouterNat',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     autoNetworkTier = registerOutput<String>('autoNetworkTier');
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    drainNatIps = registerOutput<List<String>>('drainNatIps');
+    drainNatIps = registerOutput<List<String>>('drainNatIps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     enableDynamicPortAllocation = registerOutput<bool>('enableDynamicPortAllocation');
     enableEndpointIndependentMapping = registerOutput<bool>('enableEndpointIndependentMapping');
-    endpointTypes = registerOutput<List<String>>('endpointTypes');
+    endpointTypes = registerOutput<List<String>>('endpointTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     icmpIdleTimeoutSec = registerOutput<int?>('icmpIdleTimeoutSec');
-    initialNatIps = registerOutput<List<String>?>('initialNatIps');
+    initialNatIps = registerOutput<List<String>?>('initialNatIps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     logConfig = registerOutput<RouterNatLogConfig?>('logConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RouterNatLogConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     maxPortsPerVm = registerOutput<int?>('maxPortsPerVm');
     minPortsPerVm = registerOutput<int>('minPortsPerVm');
     this.name = registerOutput<String>('name');
-    nat64Subnetworks = registerOutput<List<Map<String, dynamic>>?>('nat64Subnetworks');
+    nat64Subnetworks = registerOutput<List<RouterNatNat64Subnetwork>?>('nat64Subnetworks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RouterNatNat64Subnetwork>(guardedValue, (value) => RouterNatNat64Subnetwork.fromMap((value as Map).cast<String, dynamic>())); });
     natIpAllocateOption = registerOutput<String?>('natIpAllocateOption');
-    natIps = registerOutput<List<String>>('natIps');
+    natIps = registerOutput<List<String>>('natIps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     project = registerOutput<String>('project');
     region = registerOutput<String>('region');
     router = registerOutput<String>('router');
-    rules = registerOutput<List<Map<String, dynamic>>?>('rules');
+    rules = registerOutput<List<RouterNatRule>?>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RouterNatRule>(guardedValue, (value) => RouterNatRule.fromMap((value as Map).cast<String, dynamic>())); });
     sourceSubnetworkIpRangesToNat = registerOutput<String>('sourceSubnetworkIpRangesToNat');
     sourceSubnetworkIpRangesToNat64 = registerOutput<String?>('sourceSubnetworkIpRangesToNat64');
-    subnetworks = registerOutput<List<Map<String, dynamic>>?>('subnetworks');
+    subnetworks = registerOutput<List<RouterNatSubnetwork>?>('subnetworks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RouterNatSubnetwork>(guardedValue, (value) => RouterNatSubnetwork.fromMap((value as Map).cast<String, dynamic>())); });
     tcpEstablishedIdleTimeoutSec = registerOutput<int?>('tcpEstablishedIdleTimeoutSec');
     tcpTimeWaitTimeoutSec = registerOutput<int?>('tcpTimeWaitTimeoutSec');
     tcpTransitoryIdleTimeoutSec = registerOutput<int?>('tcpTransitoryIdleTimeoutSec');
@@ -1525,11 +1528,12 @@ class RouterNat extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RouterNatState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RouterNat._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1545,26 +1549,64 @@ class RouterNat extends pulumi.CustomResource {
         ) {
     autoNetworkTier = registerOutput<String>('autoNetworkTier');
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    drainNatIps = registerOutput<List<String>>('drainNatIps');
+    drainNatIps = registerOutput<List<String>>('drainNatIps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     enableDynamicPortAllocation = registerOutput<bool>('enableDynamicPortAllocation');
     enableEndpointIndependentMapping = registerOutput<bool>('enableEndpointIndependentMapping');
-    endpointTypes = registerOutput<List<String>>('endpointTypes');
+    endpointTypes = registerOutput<List<String>>('endpointTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     icmpIdleTimeoutSec = registerOutput<int?>('icmpIdleTimeoutSec');
-    initialNatIps = registerOutput<List<String>?>('initialNatIps');
+    initialNatIps = registerOutput<List<String>?>('initialNatIps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     logConfig = registerOutput<RouterNatLogConfig?>('logConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RouterNatLogConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     maxPortsPerVm = registerOutput<int?>('maxPortsPerVm');
     minPortsPerVm = registerOutput<int>('minPortsPerVm');
     this.name = registerOutput<String>('name');
-    nat64Subnetworks = registerOutput<List<Map<String, dynamic>>?>('nat64Subnetworks');
+    nat64Subnetworks = registerOutput<List<RouterNatNat64Subnetwork>?>('nat64Subnetworks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RouterNatNat64Subnetwork>(guardedValue, (value) => RouterNatNat64Subnetwork.fromMap((value as Map).cast<String, dynamic>())); });
     natIpAllocateOption = registerOutput<String?>('natIpAllocateOption');
-    natIps = registerOutput<List<String>>('natIps');
+    natIps = registerOutput<List<String>>('natIps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     project = registerOutput<String>('project');
     region = registerOutput<String>('region');
     router = registerOutput<String>('router');
-    rules = registerOutput<List<Map<String, dynamic>>?>('rules');
+    rules = registerOutput<List<RouterNatRule>?>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RouterNatRule>(guardedValue, (value) => RouterNatRule.fromMap((value as Map).cast<String, dynamic>())); });
     sourceSubnetworkIpRangesToNat = registerOutput<String>('sourceSubnetworkIpRangesToNat');
     sourceSubnetworkIpRangesToNat64 = registerOutput<String?>('sourceSubnetworkIpRangesToNat64');
-    subnetworks = registerOutput<List<Map<String, dynamic>>?>('subnetworks');
+    subnetworks = registerOutput<List<RouterNatSubnetwork>?>('subnetworks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RouterNatSubnetwork>(guardedValue, (value) => RouterNatSubnetwork.fromMap((value as Map).cast<String, dynamic>())); });
+    tcpEstablishedIdleTimeoutSec = registerOutput<int?>('tcpEstablishedIdleTimeoutSec');
+    tcpTimeWaitTimeoutSec = registerOutput<int?>('tcpTimeWaitTimeoutSec');
+    tcpTransitoryIdleTimeoutSec = registerOutput<int?>('tcpTransitoryIdleTimeoutSec');
+    type = registerOutput<String?>('type');
+    udpIdleTimeoutSec = registerOutput<int?>('udpIdleTimeoutSec');
+  }
+
+  /// Creates a typed reference to an existing [RouterNat] resource.
+  RouterNat.reference(String urn)
+    : super(
+        'gcp:compute/routerNat:RouterNat',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    autoNetworkTier = registerOutput<String>('autoNetworkTier');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    drainNatIps = registerOutput<List<String>>('drainNatIps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    enableDynamicPortAllocation = registerOutput<bool>('enableDynamicPortAllocation');
+    enableEndpointIndependentMapping = registerOutput<bool>('enableEndpointIndependentMapping');
+    endpointTypes = registerOutput<List<String>>('endpointTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    icmpIdleTimeoutSec = registerOutput<int?>('icmpIdleTimeoutSec');
+    initialNatIps = registerOutput<List<String>?>('initialNatIps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    logConfig = registerOutput<RouterNatLogConfig?>('logConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RouterNatLogConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    maxPortsPerVm = registerOutput<int?>('maxPortsPerVm');
+    minPortsPerVm = registerOutput<int>('minPortsPerVm');
+    this.name = registerOutput<String>('name');
+    nat64Subnetworks = registerOutput<List<RouterNatNat64Subnetwork>?>('nat64Subnetworks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RouterNatNat64Subnetwork>(guardedValue, (value) => RouterNatNat64Subnetwork.fromMap((value as Map).cast<String, dynamic>())); });
+    natIpAllocateOption = registerOutput<String?>('natIpAllocateOption');
+    natIps = registerOutput<List<String>>('natIps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+    router = registerOutput<String>('router');
+    rules = registerOutput<List<RouterNatRule>?>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RouterNatRule>(guardedValue, (value) => RouterNatRule.fromMap((value as Map).cast<String, dynamic>())); });
+    sourceSubnetworkIpRangesToNat = registerOutput<String>('sourceSubnetworkIpRangesToNat');
+    sourceSubnetworkIpRangesToNat64 = registerOutput<String?>('sourceSubnetworkIpRangesToNat64');
+    subnetworks = registerOutput<List<RouterNatSubnetwork>?>('subnetworks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RouterNatSubnetwork>(guardedValue, (value) => RouterNatSubnetwork.fromMap((value as Map).cast<String, dynamic>())); });
     tcpEstablishedIdleTimeoutSec = registerOutput<int?>('tcpEstablishedIdleTimeoutSec');
     tcpTimeWaitTimeoutSec = registerOutput<int?>('tcpTimeWaitTimeoutSec');
     tcpTransitoryIdleTimeoutSec = registerOutput<int?>('tcpTransitoryIdleTimeoutSec');

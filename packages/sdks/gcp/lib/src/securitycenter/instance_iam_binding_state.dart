@@ -5,17 +5,17 @@ import 'instance_iam_binding_condition.dart';
 
 /// Input properties used for looking up and filtering InstanceIamBinding resources.
 class InstanceIamBindingState {
-  final pulumi.Input<InstanceIamBindingCondition>? condition;
-  final pulumi.Input<String>? etag;
-  final pulumi.Input<List<String>>? members;
+  final pulumi.Input<InstanceIamBindingCondition?>? condition;
+  final pulumi.Input<String?>? etag;
+  final pulumi.Input<List<String>?>? members;
   /// The ID of the instance or a fully qualified identifier for the instance.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The region of the Data Fusion instance.
-  final pulumi.Input<String>? region;
-  final pulumi.Input<String>? role;
+  final pulumi.Input<String?>? region;
+  final pulumi.Input<String?>? role;
 
   /// Creates a new [InstanceIamBindingState].
   /// [condition] Optional.

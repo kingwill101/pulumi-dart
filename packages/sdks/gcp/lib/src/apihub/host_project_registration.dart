@@ -380,7 +380,7 @@ class HostProjectRegistration extends pulumi.CustomResource {
           'gcp:apihub/hostProjectRegistration:HostProjectRegistration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     gcpProject = registerOutput<String>('gcpProject');
@@ -395,11 +395,12 @@ class HostProjectRegistration extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     HostProjectRegistrationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return HostProjectRegistration._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -413,6 +414,23 @@ class HostProjectRegistration extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    createTime = registerOutput<String>('createTime');
+    gcpProject = registerOutput<String>('gcpProject');
+    hostProjectRegistrationId = registerOutput<String>('hostProjectRegistrationId');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+  }
+
+  /// Creates a typed reference to an existing [HostProjectRegistration] resource.
+  HostProjectRegistration.reference(String urn)
+    : super(
+        'gcp:apihub/hostProjectRegistration:HostProjectRegistration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     createTime = registerOutput<String>('createTime');
     gcpProject = registerOutput<String>('gcpProject');
     hostProjectRegistrationId = registerOutput<String>('hostProjectRegistrationId');

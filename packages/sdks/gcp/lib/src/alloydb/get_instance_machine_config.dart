@@ -27,7 +27,7 @@ class GetInstanceMachineConfig {
 
   factory GetInstanceMachineConfig.fromMap(Map<String, dynamic> map) {
     return GetInstanceMachineConfig(
-      cpuCount: pulumi.Input.fromValue(map['cpuCount'] as int),
+      cpuCount: pulumi.Input.fromValue((map['cpuCount'] as num).toInt()),
       machineType: pulumi.Input.fromValue(map['machineType'] as String),
     );
   }

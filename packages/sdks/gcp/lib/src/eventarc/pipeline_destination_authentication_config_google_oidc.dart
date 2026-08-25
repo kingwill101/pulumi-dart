@@ -6,7 +6,7 @@ class PipelineDestinationAuthenticationConfigGoogleOidc {
   /// Audience to be used to generate the OIDC Token. The audience claim
   /// identifies the recipient that the JWT is intended for. If
   /// unspecified, the destination URI will be used.
-  final pulumi.Input<String>? audience;
+  final pulumi.Input<String?>? audience;
   /// Service account email used to generate the OIDC Token.
   /// The principal who calls this API must have
   /// iam.serviceAccounts.actAs permission in the service account. See

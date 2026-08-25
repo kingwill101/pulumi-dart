@@ -5,18 +5,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicy {
   /// In response to a preflight request, setting this to true indicates that the actual request can include user credentials.
   /// This translates to the Access-Control-Allow-Credentials response header.
-  final pulumi.Input<bool>? allowCredentials;
+  final pulumi.Input<bool?>? allowCredentials;
   /// Specifies the content for the Access-Control-Allow-Headers response header.
-  final pulumi.Input<List<String>>? allowHeaders;
+  final pulumi.Input<List<String>?>? allowHeaders;
   /// Specifies the content for the Access-Control-Allow-Methods response header.
-  final pulumi.Input<List<String>>? allowMethods;
+  final pulumi.Input<List<String>?>? allowMethods;
   /// Specifies the list of origins that will be allowed to do CORS requests.
   /// This translates to the Access-Control-Allow-Origin response header.
-  final pulumi.Input<List<String>>? allowOrigins;
+  final pulumi.Input<List<String>?>? allowOrigins;
   /// If true, specifies the CORS policy is disabled. The default value is false, which indicates that the CORS policy is in effect.
-  final pulumi.Input<bool>? disabled;
+  final pulumi.Input<bool?>? disabled;
   /// Specifies the content for the Access-Control-Allow-Headers response header.
-  final pulumi.Input<List<String>>? exposeHeaders;
+  final pulumi.Input<List<String>?>? exposeHeaders;
   /// Specifies how long results of a preflight request can be cached by a client in seconds. Note that many browser clients enforce a maximum TTL of 600s (10 minutes).
   /// - Setting the value to -1 forces a pre-flight check for all requests (not recommended)
   /// - A maximum TTL of 86400s can be set, but note that (as above) some clients may force pre-flight checks at a more regular interval.

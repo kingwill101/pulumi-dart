@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AnalystAgentPersonaArtifactExampleResourceGoogleCloudStorageResource {
   /// If non-empty, only files with these extensions are included when
   /// expanding the resource.  If empty, all files are included.
-  final pulumi.Input<List<String>>? fileExtensionRestrictions;
+  final pulumi.Input<List<String>?>? fileExtensionRestrictions;
   /// The Google Cloud Storage object or folder.
   ///
   /// Format: /

@@ -5,16 +5,16 @@ import 'transfer_job_transfer_spec_transfer_options_metadata_options.dart';
 
 class TransferJobTransferSpecTransferOptions {
   /// Whether objects should be deleted from the source after they are transferred to the sink. Note that this option and `deleteObjectsUniqueInSink` are mutually exclusive.
-  final pulumi.Input<bool>? deleteObjectsFromSourceAfterTransfer;
+  final pulumi.Input<bool?>? deleteObjectsFromSourceAfterTransfer;
   /// Whether objects that exist only in the sink should be deleted. Note that this option and
   /// `deleteObjectsFromSourceAfterTransfer` are mutually exclusive.
-  final pulumi.Input<bool>? deleteObjectsUniqueInSink;
+  final pulumi.Input<bool?>? deleteObjectsUniqueInSink;
   /// Specifies the metadata options for running a transfer. Structure documented below.
-  final pulumi.Input<TransferJobTransferSpecTransferOptionsMetadataOptions>? metadataOptions;
+  final pulumi.Input<TransferJobTransferSpecTransferOptionsMetadataOptions?>? metadataOptions;
   /// Whether overwriting objects that already exist in the sink is allowed.
-  final pulumi.Input<bool>? overwriteObjectsAlreadyExistingInSink;
+  final pulumi.Input<bool?>? overwriteObjectsAlreadyExistingInSink;
   /// When to overwrite objects that already exist in the sink. If not set, overwrite behavior is determined by `overwriteObjectsAlreadyExistingInSink`. Possible values: ALWAYS, DIFFERENT, NEVER.
-  final pulumi.Input<String>? overwriteWhen;
+  final pulumi.Input<String?>? overwriteWhen;
 
   /// Creates a new [TransferJobTransferSpecTransferOptions].
   /// [deleteObjectsFromSourceAfterTransfer] Whether objects should be deleted from the source after they are transferred to the sink. Note that this option and `deleteObjectsUniqueInSink` are mutually exclusive.

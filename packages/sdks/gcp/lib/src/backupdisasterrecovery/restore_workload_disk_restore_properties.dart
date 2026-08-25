@@ -9,42 +9,42 @@ import 'restore_workload_disk_restore_properties_resource_manager_tag.dart';
 class RestoreWorkloadDiskRestoreProperties {
   /// Optional. The access mode of the disk.
   /// Possible values are: `READ_WRITE_SINGLE`, `READ_WRITE_MANY`, `READ_ONLY_MANY`.
-  final pulumi.Input<String>? accessMode;
+  final pulumi.Input<String?>? accessMode;
   /// Optional. The architecture of the source disk.
   /// Possible values are: `ARCHITECTURE_UNSPECIFIED`, `X86_64`, `ARM64`.
-  final pulumi.Input<String>? architecture;
+  final pulumi.Input<String?>? architecture;
   /// Optional. An optional description of this resource.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Optional. Encrypts the disk using a customer-supplied encryption key.
   /// Structure is documented below.
-  final pulumi.Input<RestoreWorkloadDiskRestorePropertiesDiskEncryptionKey>? diskEncryptionKey;
+  final pulumi.Input<RestoreWorkloadDiskRestorePropertiesDiskEncryptionKey?>? diskEncryptionKey;
   /// Optional. Indicates whether this disk is using confidential compute mode.
-  final pulumi.Input<bool>? enableConfidentialCompute;
+  final pulumi.Input<bool?>? enableConfidentialCompute;
   /// Optional. A list of features to enable in the guest operating system.
   /// Structure is documented below.
-  final pulumi.Input<List<RestoreWorkloadDiskRestorePropertiesGuestOsFeature>>? guestOsFeatures;
+  final pulumi.Input<List<RestoreWorkloadDiskRestorePropertiesGuestOsFeature>?>? guestOsFeatures;
   /// Optional. Labels to apply to this disk.
   /// Structure is documented below.
-  final pulumi.Input<List<RestoreWorkloadDiskRestorePropertiesLabel>>? labels;
+  final pulumi.Input<List<RestoreWorkloadDiskRestorePropertiesLabel>?>? labels;
   /// Optional. A list of publicly available licenses that are applicable to this backup.
-  final pulumi.Input<List<String>>? licenses;
+  final pulumi.Input<List<String>?>? licenses;
   /// Required. Name of the disk.
   final pulumi.Input<String> name;
   /// Optional. Physical block size of the persistent disk, in bytes.
-  final pulumi.Input<int>? physicalBlockSizeBytes;
+  final pulumi.Input<int?>? physicalBlockSizeBytes;
   /// Optional. Indicates how many IOPS to provision for the disk.
-  final pulumi.Input<int>? provisionedIops;
+  final pulumi.Input<int?>? provisionedIops;
   /// Optional. Indicates how much throughput to provision for the disk.
-  final pulumi.Input<int>? provisionedThroughput;
+  final pulumi.Input<int?>? provisionedThroughput;
   /// Optional. Resource manager tags to be bound to the disk.
   /// Structure is documented below.
-  final pulumi.Input<List<RestoreWorkloadDiskRestorePropertiesResourceManagerTag>>? resourceManagerTags;
+  final pulumi.Input<List<RestoreWorkloadDiskRestorePropertiesResourceManagerTag>?>? resourceManagerTags;
   /// Optional. Resource policies applied to this disk.
-  final pulumi.Input<List<String>>? resourcePolicies;
+  final pulumi.Input<List<String>?>? resourcePolicies;
   /// Required. The size of the disk in GB.
   final pulumi.Input<int> sizeGb;
   /// Optional. The storage pool in which the new disk is created.
-  final pulumi.Input<String>? storagePool;
+  final pulumi.Input<String?>? storagePool;
   /// Required. URL of the disk type resource describing which disk type to use.
   final pulumi.Input<String> type;
 
@@ -119,12 +119,12 @@ class RestoreWorkloadDiskRestoreProperties {
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<RestoreWorkloadDiskRestorePropertiesLabel>(guardedValue, (value) => RestoreWorkloadDiskRestorePropertiesLabel.fromMap((value as Map).cast<String, dynamic>()))); })(),
       licenses: (() { final guardedValue = map['licenses']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
-      physicalBlockSizeBytes: (() { final guardedValue = map['physicalBlockSizeBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      provisionedIops: (() { final guardedValue = map['provisionedIops']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      provisionedThroughput: (() { final guardedValue = map['provisionedThroughput']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      physicalBlockSizeBytes: (() { final guardedValue = map['physicalBlockSizeBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      provisionedIops: (() { final guardedValue = map['provisionedIops']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      provisionedThroughput: (() { final guardedValue = map['provisionedThroughput']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       resourceManagerTags: (() { final guardedValue = map['resourceManagerTags']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<RestoreWorkloadDiskRestorePropertiesResourceManagerTag>(guardedValue, (value) => RestoreWorkloadDiskRestorePropertiesResourceManagerTag.fromMap((value as Map).cast<String, dynamic>()))); })(),
       resourcePolicies: (() { final guardedValue = map['resourcePolicies']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      sizeGb: pulumi.Input.fromValue(map['sizeGb'] as int),
+      sizeGb: pulumi.Input.fromValue((map['sizeGb'] as num).toInt()),
       storagePool: (() { final guardedValue = map['storagePool']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
     );

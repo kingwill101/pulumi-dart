@@ -7,13 +7,13 @@ import 'prevention_discovery_config_target_cloud_sql_target_generation_cadence_s
 class PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadence {
   /// Governs when to update data profiles when the inspection rules defined by the `InspectTemplate` change. If not set, changing the template will not cause a data profile to update.
   /// Structure is documented below.
-  final pulumi.Input<PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceInspectTemplateModifiedCadence>? inspectTemplateModifiedCadence;
+  final pulumi.Input<PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceInspectTemplateModifiedCadence?>? inspectTemplateModifiedCadence;
   /// Frequency to update profiles regardless of whether the underlying resource has changes. Defaults to never.
   /// Possible values are: `UPDATE_FREQUENCY_NEVER`, `UPDATE_FREQUENCY_DAILY`, `UPDATE_FREQUENCY_MONTHLY`.
-  final pulumi.Input<String>? refreshFrequency;
+  final pulumi.Input<String?>? refreshFrequency;
   /// Governs when to update data profiles when a schema is modified
   /// Structure is documented below.
-  final pulumi.Input<PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceSchemaModifiedCadence>? schemaModifiedCadence;
+  final pulumi.Input<PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceSchemaModifiedCadence?>? schemaModifiedCadence;
 
   /// Creates a new [PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadence].
   /// [inspectTemplateModifiedCadence] Governs when to update data profiles when the inspection rules defined by the `InspectTemplate` change. If not set, changing the template will not cause a data profile to update.

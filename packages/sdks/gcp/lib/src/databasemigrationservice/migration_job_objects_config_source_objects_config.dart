@@ -7,13 +7,13 @@ class MigrationJobObjectsConfigSourceObjectsConfig {
   /// The list of objects to migrate. Should only be set when
   /// `objectsSelectionType` is `SPECIFIED_OBJECTS`.
   /// Structure is documented below.
-  final pulumi.Input<List<MigrationJobObjectsConfigSourceObjectsConfigObjectConfig>>? objectConfigs;
+  final pulumi.Input<List<MigrationJobObjectsConfigSourceObjectsConfigObjectConfig>?>? objectConfigs;
   /// The objects selection type of the migration job. When set to
   /// `SPECIFIED_OBJECTS`, only the objects listed in `objectConfigs` are
   /// migrated. When set to `ALL_OBJECTS`, all objects available on the
   /// source are migrated.
   /// Possible values are: `ALL_OBJECTS`, `SPECIFIED_OBJECTS`.
-  final pulumi.Input<String>? objectsSelectionType;
+  final pulumi.Input<String?>? objectsSelectionType;
 
   /// Creates a new [MigrationJobObjectsConfigSourceObjectsConfig].
   /// [objectConfigs] The list of objects to migrate. Should only be set when

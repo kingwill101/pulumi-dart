@@ -6,7 +6,7 @@ import 'feed_details_dummy_log_type_settings_authentication_header_key_value.dar
 class FeedDetailsDummyLogTypeSettingsAuthentication {
   /// Header key-value pairs.
   /// Structure is documented below.
-  final pulumi.Input<List<FeedDetailsDummyLogTypeSettingsAuthenticationHeaderKeyValue>>? headerKeyValues;
+  final pulumi.Input<List<FeedDetailsDummyLogTypeSettingsAuthenticationHeaderKeyValue>?>? headerKeyValues;
 
   /// Creates a new [FeedDetailsDummyLogTypeSettingsAuthentication].
   /// [headerKeyValues] Header key-value pairs.

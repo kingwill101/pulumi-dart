@@ -10,7 +10,7 @@ class AppDataStoreSettings {
   ///
   ///
   /// &lt;a name="nestedDataStoreSettingsEngines"&gt;&lt;/a&gt;The `engines` block contains:
-  final pulumi.Input<List<AppDataStoreSettingsEngine>>? engines;
+  final pulumi.Input<List<AppDataStoreSettingsEngine>?>? engines;
 
   /// Creates a new [AppDataStoreSettings].
   /// [engines] (Output)

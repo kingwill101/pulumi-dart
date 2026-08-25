@@ -8,11 +8,11 @@ class AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThre
   /// (Output)
   /// Expectation level metrics thresholds.
   /// Structure is documented below.
-  final pulumi.Input<List<AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdExpectationLevelMetricsThreshold>>? expectationLevelMetricsThresholds;
+  final pulumi.Input<List<AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdExpectationLevelMetricsThreshold>?>? expectationLevelMetricsThresholds;
   /// (Output)
   /// Turn level metrics thresholds.
   /// Structure is documented below.
-  final pulumi.Input<List<AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdTurnLevelMetricsThreshold>>? turnLevelMetricsThresholds;
+  final pulumi.Input<List<AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdTurnLevelMetricsThreshold>?>? turnLevelMetricsThresholds;
 
   /// Creates a new [AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThreshold].
   /// [expectationLevelMetricsThresholds] (Output)

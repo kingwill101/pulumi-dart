@@ -7,11 +7,11 @@ import 'cluster_node_config_containerd_config_writable_cgroups.dart';
 
 class ClusterNodeConfigContainerdConfig {
   /// Configuration for private container registries. There are two fields in this config:
-  final pulumi.Input<ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfig>? privateRegistryAccessConfig;
+  final pulumi.Input<ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfig?>? privateRegistryAccessConfig;
   /// Defines containerd registry host configuration. Each `registryHosts` entry represents a `hosts.toml` file. See [customize containerd configuration in GKE nodes](https://docs.cloud.google.com/kubernetes-engine/docs/how-to/customize-containerd-configuration#registryHosts) for more detail. Example:
-  final pulumi.Input<List<ClusterNodeConfigContainerdConfigRegistryHost>>? registryHosts;
+  final pulumi.Input<List<ClusterNodeConfigContainerdConfigRegistryHost>?>? registryHosts;
   /// Configuration for writable cgroups. This allows containers to have a writable `/sys/fs/cgroup` directory, which is required for some workloads to create their own sub-cgroups. The `writableCgroups` block supports:
-  final pulumi.Input<ClusterNodeConfigContainerdConfigWritableCgroups>? writableCgroups;
+  final pulumi.Input<ClusterNodeConfigContainerdConfigWritableCgroups?>? writableCgroups;
 
   /// Creates a new [ClusterNodeConfigContainerdConfig].
   /// [privateRegistryAccessConfig] Configuration for private container registries. There are two fields in this config:

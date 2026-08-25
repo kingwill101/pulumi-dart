@@ -5,9 +5,9 @@ import 'cluster_cluster_config_auxiliary_node_group_node_group_node_group_config
 
 class ClusterClusterConfigAuxiliaryNodeGroupNodeGroup {
   /// The Node group resource name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The node group instance group configuration.
-  final pulumi.Input<ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfig>? nodeGroupConfig;
+  final pulumi.Input<ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfig?>? nodeGroupConfig;
   /// Node group roles.
   /// One of `"DRIVER"`.
   final pulumi.Input<List<String>> roles;

@@ -19,16 +19,16 @@ class DatascanArgs {
   final pulumi.Input<DatascanData> data;
   /// DataDiscoveryScan related setting.
   /// Structure is documented below.
-  final pulumi.Input<DatascanDataDiscoverySpec>? dataDiscoverySpec;
+  final pulumi.Input<DatascanDataDiscoverySpec?>? dataDiscoverySpec;
   /// DataDocumentationScan related setting.
   /// Structure is documented below.
-  final pulumi.Input<DatascanDataDocumentationSpec>? dataDocumentationSpec;
+  final pulumi.Input<DatascanDataDocumentationSpec?>? dataDocumentationSpec;
   /// DataProfileScan related setting.
   /// Structure is documented below.
-  final pulumi.Input<DatascanDataProfileSpec>? dataProfileSpec;
+  final pulumi.Input<DatascanDataProfileSpec?>? dataProfileSpec;
   /// DataQualityScan related setting.
   /// Structure is documented below.
-  final pulumi.Input<DatascanDataQualitySpec>? dataQualitySpec;
+  final pulumi.Input<DatascanDataQualitySpec?>? dataQualitySpec;
   /// DataScan identifier. Must contain only lowercase letters, numbers and hyphens. Must start with a letter. Must end with a number or a letter.
   final pulumi.Input<String> dataScanId;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -37,14 +37,14 @@ class DatascanArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Description of the scan.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// User friendly display name.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The identity to run the datascan. If not specified, defaults to the Dataplex Service Agent.
   /// Structure is documented below.
-  final pulumi.Input<DatascanExecutionIdentity>? executionIdentity;
+  final pulumi.Input<DatascanExecutionIdentity?>? executionIdentity;
   /// DataScan execution settings.
   /// Structure is documented below.
   final pulumi.Input<DatascanExecutionSpec> executionSpec;
@@ -52,12 +52,12 @@ class DatascanArgs {
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The location where the data scan should reside.
   final pulumi.Input<String> location;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [DatascanArgs].
   /// [data] The data source for DataScan.

@@ -40,7 +40,7 @@ class GetServiceTrafficStatus {
 
   factory GetServiceTrafficStatus.fromMap(Map<String, dynamic> map) {
     return GetServiceTrafficStatus(
-      percent: pulumi.Input.fromValue(map['percent'] as int),
+      percent: pulumi.Input.fromValue((map['percent'] as num).toInt()),
       revision: pulumi.Input.fromValue(map['revision'] as String),
       tag: pulumi.Input.fromValue(map['tag'] as String),
       type: pulumi.Input.fromValue(map['type'] as String),

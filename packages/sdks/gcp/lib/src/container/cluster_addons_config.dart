@@ -26,82 +26,82 @@ import 'cluster_addons_config_stateful_ha_config.dart';
 
 class ClusterAddonsConfig {
   /// Configuration for the Agent Sandbox addon. Structure is documented below:
-  final pulumi.Input<ClusterAddonsConfigAgentSandboxConfig>? agentSandboxConfig;
+  final pulumi.Input<ClusterAddonsConfigAgentSandboxConfig?>? agentSandboxConfig;
   /// . Structure is documented below.
-  final pulumi.Input<ClusterAddonsConfigCloudrunConfig>? cloudrunConfig;
+  final pulumi.Input<ClusterAddonsConfigCloudrunConfig?>? cloudrunConfig;
   /// .
   /// The status of the ConfigConnector addon. It is disabled by default; Set `enabled = true` to enable.
-  final pulumi.Input<ClusterAddonsConfigConfigConnectorConfig>? configConnectorConfig;
+  final pulumi.Input<ClusterAddonsConfigConfigConnectorConfig?>? configConnectorConfig;
   /// .
   /// The status of the NodeLocal DNSCache addon. It is disabled by default.
   /// Set `enabled = true` to enable.
   ///
   /// **Enabling/Disabling NodeLocal DNSCache in an existing cluster is a disruptive operation.
   /// All cluster nodes running GKE 1.15 and higher are recreated.**
-  final pulumi.Input<ClusterAddonsConfigDnsCacheConfig>? dnsCacheConfig;
+  final pulumi.Input<ClusterAddonsConfigDnsCacheConfig?>? dnsCacheConfig;
   /// .
   /// Whether this cluster should enable the Google Compute Engine Persistent Disk Container Storage Interface (CSI) Driver. Set `enabled = true` to enable.
   ///
   /// **Note:** The Compute Engine persistent disk CSI Driver is enabled by default on newly created clusters for the following versions: Linux clusters: GKE version 1.18.10-gke.2100 or later, or 1.19.3-gke.2100 or later.
-  final pulumi.Input<ClusterAddonsConfigGcePersistentDiskCsiDriverConfig>? gcePersistentDiskCsiDriverConfig;
+  final pulumi.Input<ClusterAddonsConfigGcePersistentDiskCsiDriverConfig?>? gcePersistentDiskCsiDriverConfig;
   /// The status of the Filestore CSI driver addon,
   /// which allows the usage of filestore instance as volumes.
   /// It is disabled by default; set `enabled = true` to enable.
-  final pulumi.Input<ClusterAddonsConfigGcpFilestoreCsiDriverConfig>? gcpFilestoreCsiDriverConfig;
+  final pulumi.Input<ClusterAddonsConfigGcpFilestoreCsiDriverConfig?>? gcpFilestoreCsiDriverConfig;
   /// The status of the GCSFuse CSI driver addon,
   /// which allows the usage of a gcs bucket as volumes.
   /// It is disabled by default for Standard clusters; set `enabled = true` to enable.
   /// It is enabled by default for Autopilot clusters with version 1.24 or later; set `enabled = true` to enable it explicitly.
   /// See [Enable the Cloud Storage FUSE CSI driver](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/cloud-storage-fuse-csi-driver#enable) for more information.
-  final pulumi.Input<ClusterAddonsConfigGcsFuseCsiDriverConfig>? gcsFuseCsiDriverConfig;
+  final pulumi.Input<ClusterAddonsConfigGcsFuseCsiDriverConfig?>? gcsFuseCsiDriverConfig;
   /// .
   /// The status of the Backup for GKE agent addon. It is disabled by default; Set `enabled = true` to enable.
-  final pulumi.Input<ClusterAddonsConfigGkeBackupAgentConfig>? gkeBackupAgentConfig;
+  final pulumi.Input<ClusterAddonsConfigGkeBackupAgentConfig?>? gkeBackupAgentConfig;
   /// The status of the High Scale Checkpointing addon, which enables Multi-Tier Checkpointing for Machine Learning workloads. Structure is documented below.
-  final pulumi.Input<ClusterAddonsConfigHighScaleCheckpointingConfig>? highScaleCheckpointingConfig;
+  final pulumi.Input<ClusterAddonsConfigHighScaleCheckpointingConfig?>? highScaleCheckpointingConfig;
   /// The status of the Horizontal Pod Autoscaling
   /// addon, which increases or decreases the number of replica pods a replication controller
   /// has based on the resource usage of the existing pods.
   /// It is enabled by default;
   /// set `disabled = true` to disable.
-  final pulumi.Input<ClusterAddonsConfigHorizontalPodAutoscaling>? horizontalPodAutoscaling;
+  final pulumi.Input<ClusterAddonsConfigHorizontalPodAutoscaling?>? horizontalPodAutoscaling;
   /// The status of the HTTP (L7) load balancing
   /// controller addon, which makes it easy to set up HTTP load balancers for services in a
   /// cluster. It is enabled by default; set `disabled = true` to disable.
-  final pulumi.Input<ClusterAddonsConfigHttpLoadBalancing>? httpLoadBalancing;
+  final pulumi.Input<ClusterAddonsConfigHttpLoadBalancing?>? httpLoadBalancing;
   /// ).
   /// Structure is documented below.
-  final pulumi.Input<ClusterAddonsConfigIstioConfig>? istioConfig;
+  final pulumi.Input<ClusterAddonsConfigIstioConfig?>? istioConfig;
   /// ).
   /// Configuration for the KALM addon, which manages the lifecycle of k8s. It is disabled by default; Set `enabled = true` to enable.
-  final pulumi.Input<ClusterAddonsConfigKalmConfig>? kalmConfig;
+  final pulumi.Input<ClusterAddonsConfigKalmConfig?>? kalmConfig;
   /// The status of the Lustre CSI driver addon,
   /// which allows the usage of a Lustre instances as volumes.
   /// It is disabled by default for Standard clusters; set `enabled = true` to enable.
   /// It is disabled by default for Autopilot clusters; set `enabled = true` to enable.
   /// See [Enable Lustre CSI driver](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/lustre-csi-driver-new-volume) for more information.
   /// Lustre CSI Driver Config has optional subfields:
-  final pulumi.Input<ClusterAddonsConfigLustreCsiDriverConfig>? lustreCsiDriverConfig;
+  final pulumi.Input<ClusterAddonsConfigLustreCsiDriverConfig?>? lustreCsiDriverConfig;
   /// Whether we should enable the network policy addon
   /// for the master.  This must be enabled in order to enable network policy for the nodes.
   /// To enable this, you must also define a `networkPolicy` block,
   /// otherwise nothing will happen.
   /// It can only be disabled if the nodes already do not have network policies enabled.
   /// Defaults to disabled; set `disabled = false` to enable.
-  final pulumi.Input<ClusterAddonsConfigNetworkPolicyConfig>? networkPolicyConfig;
+  final pulumi.Input<ClusterAddonsConfigNetworkPolicyConfig?>? networkPolicyConfig;
   /// The status of the Node Readiness Controller addon. It is disabled by default. Set `enabled = true` to enable.
   /// Structure is documented below.
   ///
   /// This example `addonsConfig` disables two addons:
-  final pulumi.Input<ClusterAddonsConfigNodeReadinessConfig>? nodeReadinessConfig;
+  final pulumi.Input<ClusterAddonsConfigNodeReadinessConfig?>? nodeReadinessConfig;
   /// The status of the Parallelstore CSI driver addon,
   /// which allows the usage of a Parallelstore instances as volumes.
   /// It is disabled by default for Standard clusters; set `enabled = true` to enable.
   /// It is enabled by default for Autopilot clusters with version 1.29 or later; set `enabled = true` to enable it explicitly.
   /// See [Enable the Parallelstore CSI driver](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/parallelstore-csi-new-volume#enable) for more information.
-  final pulumi.Input<ClusterAddonsConfigParallelstoreCsiDriverConfig>? parallelstoreCsiDriverConfig;
+  final pulumi.Input<ClusterAddonsConfigParallelstoreCsiDriverConfig?>? parallelstoreCsiDriverConfig;
   /// The status of the Pod Snapshot addon. It is disabled by default. Set `enabled = true` to enable.
-  final pulumi.Input<ClusterAddonsConfigPodSnapshotConfig>? podSnapshotConfig;
+  final pulumi.Input<ClusterAddonsConfigPodSnapshotConfig?>? podSnapshotConfig;
   /// . The status of the [Ray Operator
   /// addon](https://cloud.google.com/kubernetes-engine/docs/add-on/ray-on-gke/concepts/overview).
   /// It is disabled by default. Set `enabled = true` to enable. The minimum
@@ -114,20 +114,20 @@ class ClusterAddonsConfig {
   /// clusters on
   /// GKE](https://cloud.google.com/kubernetes-engine/docs/add-on/ray-on-gke/how-to/collect-view-logs-metrics)
   /// for more information.
-  final pulumi.Input<List<ClusterAddonsConfigRayOperatorConfig>>? rayOperatorConfigs;
+  final pulumi.Input<List<ClusterAddonsConfigRayOperatorConfig>?>? rayOperatorConfigs;
   /// .
   /// The status of the slice controller addon.
   /// It is disabled by default. Set `enabled = true` to enable.
-  final pulumi.Input<ClusterAddonsConfigSliceControllerConfig>? sliceControllerConfig;
+  final pulumi.Input<ClusterAddonsConfigSliceControllerConfig?>? sliceControllerConfig;
   /// The status of the Slurm Operator addon,
   /// which creates slurm related CRDs and KCP pods to manage them.
   /// Defaults to disabled for Standard clusters; set `enabled = true` to enable.
   /// It can not be enabled for Autopilot clusters.
-  final pulumi.Input<ClusterAddonsConfigSlurmOperatorConfig>? slurmOperatorConfig;
+  final pulumi.Input<ClusterAddonsConfigSlurmOperatorConfig?>? slurmOperatorConfig;
   /// .
   /// The status of the Stateful HA addon, which provides automatic configurable failover for stateful applications.
   /// It is disabled by default for Standard clusters. Set `enabled = true` to enable.
-  final pulumi.Input<ClusterAddonsConfigStatefulHaConfig>? statefulHaConfig;
+  final pulumi.Input<ClusterAddonsConfigStatefulHaConfig?>? statefulHaConfig;
 
   /// Creates a new [ClusterAddonsConfig].
   /// [agentSandboxConfig] Configuration for the Agent Sandbox addon. Structure is documented below:

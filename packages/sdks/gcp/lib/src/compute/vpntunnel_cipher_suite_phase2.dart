@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VPNTunnelCipherSuitePhase2 {
   /// Encryption algorithms.
-  final pulumi.Input<List<String>>? encryptions;
+  final pulumi.Input<List<String>?>? encryptions;
   /// Integrity algorithms.
-  final pulumi.Input<List<String>>? integrities;
+  final pulumi.Input<List<String>?>? integrities;
   /// Perfect forward secrecy groups.
-  final pulumi.Input<List<String>>? pfs;
+  final pulumi.Input<List<String>?>? pfs;
 
   /// Creates a new [VPNTunnelCipherSuitePhase2].
   /// [encryptions] Encryption algorithms.

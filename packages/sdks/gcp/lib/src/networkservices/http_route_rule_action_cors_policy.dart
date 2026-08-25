@@ -4,21 +4,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class HttpRouteRuleActionCorsPolicy {
   /// In response to a preflight request, setting this to true indicates that the actual request can include user credentials.
-  final pulumi.Input<bool>? allowCredentials;
+  final pulumi.Input<bool?>? allowCredentials;
   /// Specifies the content for Access-Control-Allow-Headers header.
-  final pulumi.Input<List<String>>? allowHeaders;
+  final pulumi.Input<List<String>?>? allowHeaders;
   /// Specifies the content for Access-Control-Allow-Methods header.
-  final pulumi.Input<List<String>>? allowMethods;
+  final pulumi.Input<List<String>?>? allowMethods;
   /// Specifies the regular expression patterns that match allowed origins.
-  final pulumi.Input<List<String>>? allowOriginRegexes;
+  final pulumi.Input<List<String>?>? allowOriginRegexes;
   /// Specifies the list of origins that will be allowed to do CORS requests.
-  final pulumi.Input<List<String>>? allowOrigins;
+  final pulumi.Input<List<String>?>? allowOrigins;
   /// If true, the CORS policy is disabled. The default value is false, which indicates that the CORS policy is in effect.
-  final pulumi.Input<bool>? disabled;
+  final pulumi.Input<bool?>? disabled;
   /// Specifies the content for Access-Control-Expose-Headers header.
-  final pulumi.Input<List<String>>? exposeHeaders;
+  final pulumi.Input<List<String>?>? exposeHeaders;
   /// Specifies how long result of a preflight request can be cached in seconds.
-  final pulumi.Input<String>? maxAge;
+  final pulumi.Input<String?>? maxAge;
 
   /// Creates a new [HttpRouteRuleActionCorsPolicy].
   /// [allowCredentials] In response to a preflight request, setting this to true indicates that the actual request can include user credentials.

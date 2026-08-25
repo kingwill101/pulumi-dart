@@ -7,22 +7,22 @@ import 'autonomous_database_properties_connection_string_profile.dart';
 class AutonomousDatabasePropertiesConnectionString {
   /// A list of all connection strings that can be used to connect to the
   /// Autonomous Database.
-  final pulumi.Input<List<AutonomousDatabasePropertiesConnectionStringAllConnectionString>>? allConnectionStrings;
+  final pulumi.Input<List<AutonomousDatabasePropertiesConnectionStringAllConnectionString>?>? allConnectionStrings;
   /// The database service provides the least level of resources to each SQL
   /// statement, but supports the most number of concurrent SQL statements.
-  final pulumi.Input<String>? dedicated;
+  final pulumi.Input<String?>? dedicated;
   /// The database service provides the highest level of resources to each SQL
   /// statement.
-  final pulumi.Input<String>? high;
+  final pulumi.Input<String?>? high;
   /// The database service provides the least level of resources to each SQL
   /// statement.
-  final pulumi.Input<String>? low;
+  final pulumi.Input<String?>? low;
   /// The database service provides a lower level of resources to each SQL
   /// statement.
-  final pulumi.Input<String>? medium;
+  final pulumi.Input<String?>? medium;
   /// A list of connection string profiles to allow clients to group, filter, and
   /// select values based on the structured metadata.
-  final pulumi.Input<List<AutonomousDatabasePropertiesConnectionStringProfile>>? profiles;
+  final pulumi.Input<List<AutonomousDatabasePropertiesConnectionStringProfile>?>? profiles;
 
   /// Creates a new [AutonomousDatabasePropertiesConnectionString].
   /// [allConnectionStrings] A list of all connection strings that can be used to connect to the

@@ -9,20 +9,20 @@ import 'toolset_mcp_toolset_api_authentication_service_account_auth_config.dart'
 class ToolsetMcpToolsetApiAuthentication {
   /// Configurations for authentication with API key.
   /// Structure is documented below.
-  final pulumi.Input<ToolsetMcpToolsetApiAuthenticationApiKeyConfig>? apiKeyConfig;
+  final pulumi.Input<ToolsetMcpToolsetApiAuthenticationApiKeyConfig?>? apiKeyConfig;
   /// Configurations for authentication with a bearer token.
   /// Structure is documented below.
-  final pulumi.Input<ToolsetMcpToolsetApiAuthenticationBearerTokenConfig>? bearerTokenConfig;
+  final pulumi.Input<ToolsetMcpToolsetApiAuthenticationBearerTokenConfig?>? bearerTokenConfig;
   /// Configurations for authentication with OAuth.
   /// Structure is documented below.
-  final pulumi.Input<ToolsetMcpToolsetApiAuthenticationOauthConfig>? oauthConfig;
+  final pulumi.Input<ToolsetMcpToolsetApiAuthenticationOauthConfig?>? oauthConfig;
   /// Configurations for authentication using a custom service account.
   /// Structure is documented below.
-  final pulumi.Input<ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfig>? serviceAccountAuthConfig;
+  final pulumi.Input<ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfig?>? serviceAccountAuthConfig;
   /// Configurations for authentication with [ID
   /// token](https://cloud.google.com/docs/authentication/token-types#id) generated
   /// from service agent.
-  final pulumi.Input<Map<String, dynamic>>? serviceAgentIdTokenAuthConfig;
+  final pulumi.Input<Map<String, dynamic>?>? serviceAgentIdTokenAuthConfig;
 
   /// Creates a new [ToolsetMcpToolsetApiAuthentication].
   /// [apiKeyConfig] Configurations for authentication with API key.

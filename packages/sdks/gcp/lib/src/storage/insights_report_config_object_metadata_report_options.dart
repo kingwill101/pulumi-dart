@@ -12,7 +12,7 @@ class InsightsReportConfigObjectMetadataReportOptions {
   final pulumi.Input<InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptions> storageDestinationOptions;
   /// A nested object resource.
   /// Structure is documented below.
-  final pulumi.Input<InsightsReportConfigObjectMetadataReportOptionsStorageFilters>? storageFilters;
+  final pulumi.Input<InsightsReportConfigObjectMetadataReportOptionsStorageFilters?>? storageFilters;
 
   /// Creates a new [InsightsReportConfigObjectMetadataReportOptions].
   /// [metadataFields] The metadata fields included in an inventory report.

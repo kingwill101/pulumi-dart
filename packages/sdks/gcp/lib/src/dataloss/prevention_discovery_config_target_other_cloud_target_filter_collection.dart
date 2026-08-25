@@ -6,7 +6,7 @@ import 'prevention_discovery_config_target_other_cloud_target_filter_collection_
 class PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollection {
   /// A collection of regular expressions to match a resource against.
   /// Structure is documented below.
-  final pulumi.Input<PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRegexes>? includeRegexes;
+  final pulumi.Input<PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRegexes?>? includeRegexes;
 
   /// Creates a new [PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollection].
   /// [includeRegexes] A collection of regular expressions to match a resource against.

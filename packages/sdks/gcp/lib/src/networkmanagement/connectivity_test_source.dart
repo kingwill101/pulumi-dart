@@ -8,29 +8,29 @@ import 'connectivity_test_source_cloud_run_revision.dart';
 class ConnectivityTestSource {
   /// An App Engine service version.
   /// Structure is documented below.
-  final pulumi.Input<ConnectivityTestSourceAppEngineVersion>? appEngineVersion;
+  final pulumi.Input<ConnectivityTestSourceAppEngineVersion?>? appEngineVersion;
   /// A Cloud Function.
   /// Structure is documented below.
-  final pulumi.Input<ConnectivityTestSourceCloudFunction>? cloudFunction;
+  final pulumi.Input<ConnectivityTestSourceCloudFunction?>? cloudFunction;
   /// A Cloud Run revision.
   /// Structure is documented below.
-  final pulumi.Input<ConnectivityTestSourceCloudRunRevision>? cloudRunRevision;
+  final pulumi.Input<ConnectivityTestSourceCloudRunRevision?>? cloudRunRevision;
   /// A Cloud SQL instance URI.
-  final pulumi.Input<String>? cloudSqlInstance;
+  final pulumi.Input<String?>? cloudSqlInstance;
   /// A cluster URI for Google Kubernetes Engine cluster control plane.
-  final pulumi.Input<String>? gkeMasterCluster;
+  final pulumi.Input<String?>? gkeMasterCluster;
   /// A Compute Engine instance URI.
-  final pulumi.Input<String>? instance;
+  final pulumi.Input<String?>? instance;
   /// The IP address of the endpoint, which can be an external or internal IP.
-  final pulumi.Input<String>? ipAddress;
+  final pulumi.Input<String?>? ipAddress;
   /// A VPC network URI.
-  final pulumi.Input<String>? network;
+  final pulumi.Input<String?>? network;
   /// Type of the network where the endpoint is located.
   /// Possible values are: `GCP_NETWORK`, `NON_GCP_NETWORK`.
-  final pulumi.Input<String>? networkType;
+  final pulumi.Input<String?>? networkType;
   /// The IP protocol port of the endpoint. Only applicable when protocol is
   /// TCP or UDP.
-  final pulumi.Input<int>? port;
+  final pulumi.Input<int?>? port;
   /// Project ID where the endpoint is located.
   /// The project ID can be derived from the URI if you provide a endpoint or
   /// network URI.
@@ -40,7 +40,7 @@ class ConnectivityTestSource {
   /// 2. When you are using Shared VPC and the IP address that you provide is
   /// from the service project. In this case, the network that the IP address
   /// resides in is defined in the host project.
-  final pulumi.Input<String>? projectId;
+  final pulumi.Input<String?>? projectId;
 
   /// Creates a new [ConnectivityTestSource].
   /// [appEngineVersion] An App Engine service version.
@@ -95,7 +95,7 @@ class ConnectivityTestSource {
       ipAddress: (() { final guardedValue = map['ipAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       network: (() { final guardedValue = map['network']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       networkType: (() { final guardedValue = map['networkType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       projectId: (() { final guardedValue = map['projectId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

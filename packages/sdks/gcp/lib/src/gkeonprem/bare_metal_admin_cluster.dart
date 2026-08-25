@@ -2,6 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'bare_metal_admin_cluster_args.dart';
 import 'bare_metal_admin_cluster_cluster_operations.dart';
 import 'bare_metal_admin_cluster_control_plane.dart';
+import 'bare_metal_admin_cluster_fleet.dart';
 import 'bare_metal_admin_cluster_load_balancer.dart';
 import 'bare_metal_admin_cluster_maintenance_config.dart';
 import 'bare_metal_admin_cluster_network_config.dart';
@@ -10,7 +11,9 @@ import 'bare_metal_admin_cluster_node_config.dart';
 import 'bare_metal_admin_cluster_proxy.dart';
 import 'bare_metal_admin_cluster_security_config.dart';
 import 'bare_metal_admin_cluster_state.dart';
+import 'bare_metal_admin_cluster_status.dart';
 import 'bare_metal_admin_cluster_storage.dart';
+import 'bare_metal_admin_cluster_validation_check.dart';
 
 /// A Google Bare Metal Admin Cluster.
 ///
@@ -1748,7 +1751,7 @@ class BareMetalAdminCluster extends pulumi.CustomResource {
   /// See [Anthos Fleets](https://cloud.google.com/anthos/multicluster-management/fleets) for
   /// more details on Anthos multi-cluster capabilities using Fleets.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> fleets;
+  late final pulumi.Output<List<BareMetalAdminClusterFleet>> fleets;
   /// Specifies the load balancer configuration.
   /// Structure is documented below.
   late final pulumi.Output<BareMetalAdminClusterLoadBalancer?> loadBalancer;
@@ -1796,7 +1799,7 @@ class BareMetalAdminCluster extends pulumi.CustomResource {
   /// (Output)
   /// Specifies the detailed validation check status
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> statuses;
+  late final pulumi.Output<List<BareMetalAdminClusterStatus>> statuses;
   /// Specifies the cluster storage configuration.
   /// Structure is documented below.
   late final pulumi.Output<BareMetalAdminClusterStorage?> storage;
@@ -1806,7 +1809,7 @@ class BareMetalAdminCluster extends pulumi.CustomResource {
   late final pulumi.Output<String> updateTime;
   /// Specifies the security related settings for the Bare Metal Admin Cluster.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> validationChecks;
+  late final pulumi.Output<List<BareMetalAdminClusterValidationCheck>> validationChecks;
 
   /// Creates a new [BareMetalAdminCluster].
   /// [name] The Pulumi resource name.
@@ -1820,19 +1823,19 @@ class BareMetalAdminCluster extends pulumi.CustomResource {
           'gcp:gkeonprem/bareMetalAdminCluster:BareMetalAdminCluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
-    annotations = registerOutput<Map<String, String>?>('annotations');
+    annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     bareMetalVersion = registerOutput<String?>('bareMetalVersion');
     clusterOperations = registerOutput<BareMetalAdminClusterClusterOperations?>('clusterOperations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BareMetalAdminClusterClusterOperations.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     controlPlane = registerOutput<BareMetalAdminClusterControlPlane?>('controlPlane', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BareMetalAdminClusterControlPlane.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     deleteTime = registerOutput<String>('deleteTime');
     description = registerOutput<String?>('description');
-    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
+    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     endpoint = registerOutput<String>('endpoint');
     etag = registerOutput<String>('etag');
-    fleets = registerOutput<List<Map<String, dynamic>>>('fleets');
+    fleets = registerOutput<List<BareMetalAdminClusterFleet>>('fleets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BareMetalAdminClusterFleet>(guardedValue, (value) => BareMetalAdminClusterFleet.fromMap((value as Map).cast<String, dynamic>())); });
     loadBalancer = registerOutput<BareMetalAdminClusterLoadBalancer?>('loadBalancer', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BareMetalAdminClusterLoadBalancer.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     localName = registerOutput<String>('localName');
     location = registerOutput<String>('location');
@@ -1846,11 +1849,11 @@ class BareMetalAdminCluster extends pulumi.CustomResource {
     reconciling = registerOutput<bool>('reconciling');
     securityConfig = registerOutput<BareMetalAdminClusterSecurityConfig?>('securityConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BareMetalAdminClusterSecurityConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     state = registerOutput<String>('state');
-    statuses = registerOutput<List<Map<String, dynamic>>>('statuses');
+    statuses = registerOutput<List<BareMetalAdminClusterStatus>>('statuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BareMetalAdminClusterStatus>(guardedValue, (value) => BareMetalAdminClusterStatus.fromMap((value as Map).cast<String, dynamic>())); });
     storage = registerOutput<BareMetalAdminClusterStorage?>('storage', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BareMetalAdminClusterStorage.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
-    validationChecks = registerOutput<List<Map<String, dynamic>>>('validationChecks');
+    validationChecks = registerOutput<List<BareMetalAdminClusterValidationCheck>>('validationChecks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BareMetalAdminClusterValidationCheck>(guardedValue, (value) => BareMetalAdminClusterValidationCheck.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [BareMetalAdminCluster] resource's state with the given [name] and [id].
@@ -1858,11 +1861,12 @@ class BareMetalAdminCluster extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     BareMetalAdminClusterState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return BareMetalAdminCluster._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1876,17 +1880,17 @@ class BareMetalAdminCluster extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    annotations = registerOutput<Map<String, String>?>('annotations');
+    annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     bareMetalVersion = registerOutput<String?>('bareMetalVersion');
     clusterOperations = registerOutput<BareMetalAdminClusterClusterOperations?>('clusterOperations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BareMetalAdminClusterClusterOperations.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     controlPlane = registerOutput<BareMetalAdminClusterControlPlane?>('controlPlane', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BareMetalAdminClusterControlPlane.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     deleteTime = registerOutput<String>('deleteTime');
     description = registerOutput<String?>('description');
-    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
+    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     endpoint = registerOutput<String>('endpoint');
     etag = registerOutput<String>('etag');
-    fleets = registerOutput<List<Map<String, dynamic>>>('fleets');
+    fleets = registerOutput<List<BareMetalAdminClusterFleet>>('fleets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BareMetalAdminClusterFleet>(guardedValue, (value) => BareMetalAdminClusterFleet.fromMap((value as Map).cast<String, dynamic>())); });
     loadBalancer = registerOutput<BareMetalAdminClusterLoadBalancer?>('loadBalancer', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BareMetalAdminClusterLoadBalancer.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     localName = registerOutput<String>('localName');
     location = registerOutput<String>('location');
@@ -1900,10 +1904,50 @@ class BareMetalAdminCluster extends pulumi.CustomResource {
     reconciling = registerOutput<bool>('reconciling');
     securityConfig = registerOutput<BareMetalAdminClusterSecurityConfig?>('securityConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BareMetalAdminClusterSecurityConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.state = registerOutput<String>('state');
-    statuses = registerOutput<List<Map<String, dynamic>>>('statuses');
+    statuses = registerOutput<List<BareMetalAdminClusterStatus>>('statuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BareMetalAdminClusterStatus>(guardedValue, (value) => BareMetalAdminClusterStatus.fromMap((value as Map).cast<String, dynamic>())); });
     storage = registerOutput<BareMetalAdminClusterStorage?>('storage', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BareMetalAdminClusterStorage.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
-    validationChecks = registerOutput<List<Map<String, dynamic>>>('validationChecks');
+    validationChecks = registerOutput<List<BareMetalAdminClusterValidationCheck>>('validationChecks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BareMetalAdminClusterValidationCheck>(guardedValue, (value) => BareMetalAdminClusterValidationCheck.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [BareMetalAdminCluster] resource.
+  BareMetalAdminCluster.reference(String urn)
+    : super(
+        'gcp:gkeonprem/bareMetalAdminCluster:BareMetalAdminCluster',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    bareMetalVersion = registerOutput<String?>('bareMetalVersion');
+    clusterOperations = registerOutput<BareMetalAdminClusterClusterOperations?>('clusterOperations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BareMetalAdminClusterClusterOperations.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    controlPlane = registerOutput<BareMetalAdminClusterControlPlane?>('controlPlane', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BareMetalAdminClusterControlPlane.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createTime = registerOutput<String>('createTime');
+    deleteTime = registerOutput<String>('deleteTime');
+    description = registerOutput<String?>('description');
+    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    endpoint = registerOutput<String>('endpoint');
+    etag = registerOutput<String>('etag');
+    fleets = registerOutput<List<BareMetalAdminClusterFleet>>('fleets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BareMetalAdminClusterFleet>(guardedValue, (value) => BareMetalAdminClusterFleet.fromMap((value as Map).cast<String, dynamic>())); });
+    loadBalancer = registerOutput<BareMetalAdminClusterLoadBalancer?>('loadBalancer', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BareMetalAdminClusterLoadBalancer.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    localName = registerOutput<String>('localName');
+    location = registerOutput<String>('location');
+    maintenanceConfig = registerOutput<BareMetalAdminClusterMaintenanceConfig?>('maintenanceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BareMetalAdminClusterMaintenanceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    networkConfig = registerOutput<BareMetalAdminClusterNetworkConfig?>('networkConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BareMetalAdminClusterNetworkConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    nodeAccessConfig = registerOutput<BareMetalAdminClusterNodeAccessConfig?>('nodeAccessConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BareMetalAdminClusterNodeAccessConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    nodeConfig = registerOutput<BareMetalAdminClusterNodeConfig?>('nodeConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BareMetalAdminClusterNodeConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    project = registerOutput<String>('project');
+    proxy = registerOutput<BareMetalAdminClusterProxy?>('proxy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BareMetalAdminClusterProxy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    reconciling = registerOutput<bool>('reconciling');
+    securityConfig = registerOutput<BareMetalAdminClusterSecurityConfig?>('securityConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BareMetalAdminClusterSecurityConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    state = registerOutput<String>('state');
+    statuses = registerOutput<List<BareMetalAdminClusterStatus>>('statuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BareMetalAdminClusterStatus>(guardedValue, (value) => BareMetalAdminClusterStatus.fromMap((value as Map).cast<String, dynamic>())); });
+    storage = registerOutput<BareMetalAdminClusterStorage?>('storage', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BareMetalAdminClusterStorage.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
+    validationChecks = registerOutput<List<BareMetalAdminClusterValidationCheck>>('validationChecks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BareMetalAdminClusterValidationCheck>(guardedValue, (value) => BareMetalAdminClusterValidationCheck.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

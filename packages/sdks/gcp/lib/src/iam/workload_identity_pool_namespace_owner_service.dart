@@ -6,7 +6,7 @@ class WorkloadIdentityPoolNamespaceOwnerService {
   /// (Output)
   /// The service agent principal subject, e.g.
   /// `serviceAccount:service-1234@gcp-sa-gkehub.iam.gserviceaccount.com`.
-  final pulumi.Input<String>? principalSubject;
+  final pulumi.Input<String?>? principalSubject;
 
   /// Creates a new [WorkloadIdentityPoolNamespaceOwnerService].
   /// [principalSubject] (Output)

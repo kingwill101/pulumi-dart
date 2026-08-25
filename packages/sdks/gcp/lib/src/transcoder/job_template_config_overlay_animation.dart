@@ -6,7 +6,7 @@ import 'job_template_config_overlay_animation_animation_fade.dart';
 class JobTemplateConfigOverlayAnimation {
   /// Display overlay object with fade animation.
   /// Structure is documented below.
-  final pulumi.Input<JobTemplateConfigOverlayAnimationAnimationFade>? animationFade;
+  final pulumi.Input<JobTemplateConfigOverlayAnimationAnimationFade?>? animationFade;
 
   /// Creates a new [JobTemplateConfigOverlayAnimation].
   /// [animationFade] Display overlay object with fade animation.

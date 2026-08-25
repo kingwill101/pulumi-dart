@@ -5,31 +5,31 @@ import 'entry_entry_source_ancestor.dart';
 
 class EntryEntrySource {
   /// Structure is documented below.
-  final pulumi.Input<List<EntryEntrySourceAncestor>>? ancestors;
+  final pulumi.Input<List<EntryEntrySourceAncestor>?>? ancestors;
   /// The time when the resource was created in the source system.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// A description of the data resource. Maximum length is 2,000 characters.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// A user-friendly display name. Maximum length is 500 characters.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// User-defined labels. The maximum size of keys and values is 128 characters each.
   /// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// (Output)
   /// Location of the resource in the source system. You can search the entry by this location.
   /// By default, this should match the location of the entry group containing this entry.
   /// A different value allows capturing the source location for data external to Google Cloud.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The platform containing the source system. Maximum length is 64 characters.
-  final pulumi.Input<String>? platform;
+  final pulumi.Input<String?>? platform;
   /// The name of the resource in the source system. Maximum length is 4,000 characters.
-  final pulumi.Input<String>? resource;
+  final pulumi.Input<String?>? resource;
   /// The name of the source system. Maximum length is 64 characters.
-  final pulumi.Input<String>? system;
+  final pulumi.Input<String?>? system;
   /// The time when the resource was last updated in the source system.
   /// If the entry exists in the system and its EntrySource has updateTime populated,
   /// further updates to the EntrySource of the entry must provide incremental updates to its updateTime.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [EntryEntrySource].
   /// [ancestors] Structure is documented below.

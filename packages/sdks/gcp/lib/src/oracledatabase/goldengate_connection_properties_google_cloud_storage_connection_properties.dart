@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoldengateConnectionPropertiesGoogleCloudStorageConnectionProperties {
   /// The service account key Cloud Storage file containing the
   /// credentials required to use Google Cloud Storage.
-  final pulumi.Input<String>? serviceAccountKeyFile;
+  final pulumi.Input<String?>? serviceAccountKeyFile;
   /// The technology type.
-  final pulumi.Input<String>? technologyType;
+  final pulumi.Input<String?>? technologyType;
 
   /// Creates a new [GoldengateConnectionPropertiesGoogleCloudStorageConnectionProperties].
   /// [serviceAccountKeyFile] The service account key Cloud Storage file containing the

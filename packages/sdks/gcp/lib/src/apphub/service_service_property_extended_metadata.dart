@@ -6,11 +6,11 @@ import 'service_service_property_extended_metadata_value.dart';
 class ServiceServicePropertyExtendedMetadata {
   /// (Output)
   /// The key of the extended metadata.
-  final pulumi.Input<String>? key;
+  final pulumi.Input<String?>? key;
   /// (Output)
   /// The value of the extended metadata.
   /// Structure is documented below.
-  final pulumi.Input<List<ServiceServicePropertyExtendedMetadataValue>>? values;
+  final pulumi.Input<List<ServiceServicePropertyExtendedMetadataValue>?>? values;
 
   /// Creates a new [ServiceServicePropertyExtendedMetadata].
   /// [key] (Output)

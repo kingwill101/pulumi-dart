@@ -5,18 +5,18 @@ import 'service_perimeters_service_perimeter_status_ingress_policy_ingress_from_
 
 class ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSource {
   /// An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.
-  final pulumi.Input<String>? accessLevel;
+  final pulumi.Input<String?>? accessLevel;
   /// A Private Service Connect endpoint that is allowed to access data outside the perimeter.
   /// The Private Service Connect endpoint may be in any organization, not just the organization that the perimeter is defined in.
   /// Structure is documented below.
-  final pulumi.Input<ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpoint>? pscEndpoint;
+  final pulumi.Input<ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourcePscEndpoint?>? pscEndpoint;
   /// A Google Cloud resource that is allowed to egress the perimeter.
   /// Requests from these resources are allowed to access data outside the perimeter.
   /// Currently only projects are allowed. Project format: `projects/{project_number}`.
   /// The resource may be in any Google Cloud organization, not just the
   /// organization that the perimeter is defined in. `*` is not allowed, the
   /// case of allowing all Google Cloud resources only is not supported.
-  final pulumi.Input<String>? resource;
+  final pulumi.Input<String?>? resource;
 
   /// Creates a new [ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSource].
   /// [accessLevel] An AccessLevel resource name that allows resources outside the ServicePerimeter to be accessed from the inside.

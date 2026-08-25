@@ -11,19 +11,19 @@ class WebResourceState {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The email addresses of all direct, verified owners of this exact property. Indirect owners —
   /// for example verified owners of the containing domain—are not included in this list.
-  final pulumi.Input<List<String>>? owners;
+  final pulumi.Input<List<String>?>? owners;
   /// Container for the address and type of a site for which a verification token will be verified.
   /// Structure is documented below.
-  final pulumi.Input<WebResourceSite>? site;
+  final pulumi.Input<WebResourceSite?>? site;
   /// The verification method for the Site Verification system to use to verify
   /// this site or domain.
   /// Possible values are: `ANALYTICS`, `DNS_CNAME`, `DNS_TXT`, `FILE`, `META`, `TAG_MANAGER`.
-  final pulumi.Input<String>? verificationMethod;
+  final pulumi.Input<String?>? verificationMethod;
   /// The string used to identify this web resource.
-  final pulumi.Input<String>? webResourceId;
+  final pulumi.Input<String?>? webResourceId;
 
   /// Creates a new [WebResourceState].
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

@@ -8,30 +8,30 @@ import 'backup_plan_backup_config_selected_namespaces.dart';
 
 class BackupPlanBackupConfig {
   /// If True, include all namespaced resources.
-  final pulumi.Input<bool>? allNamespaces;
+  final pulumi.Input<bool?>? allNamespaces;
   /// This defines a customer managed encryption key that will be used to encrypt the "config"
   /// portion (the Kubernetes resources) of Backups created via this plan.
   /// Structure is documented below.
-  final pulumi.Input<BackupPlanBackupConfigEncryptionKey>? encryptionKey;
+  final pulumi.Input<BackupPlanBackupConfigEncryptionKey?>? encryptionKey;
   /// This flag specifies whether Kubernetes Secret resources should be included
   /// when they fall into the scope of Backups.
-  final pulumi.Input<bool>? includeSecrets;
+  final pulumi.Input<bool?>? includeSecrets;
   /// This flag specifies whether volume data should be backed up when PVCs are
   /// included in the scope of a Backup.
-  final pulumi.Input<bool>? includeVolumeData;
+  final pulumi.Input<bool?>? includeVolumeData;
   /// This flag specifies whether Backups will not fail when
   /// Backup for GKE detects Kubernetes configuration that is
   /// non-standard or requires additional setup to restore.
-  final pulumi.Input<bool>? permissiveMode;
+  final pulumi.Input<bool?>? permissiveMode;
   /// A list of namespaced Kubernetes Resources.
   /// Structure is documented below.
-  final pulumi.Input<BackupPlanBackupConfigSelectedApplications>? selectedApplications;
+  final pulumi.Input<BackupPlanBackupConfigSelectedApplications?>? selectedApplications;
   /// If set, include just the resources in the listed namespace Labels.
   /// Structure is documented below.
-  final pulumi.Input<BackupPlanBackupConfigSelectedNamespaceLabels>? selectedNamespaceLabels;
+  final pulumi.Input<BackupPlanBackupConfigSelectedNamespaceLabels?>? selectedNamespaceLabels;
   /// If set, include just the resources in the listed namespaces.
   /// Structure is documented below.
-  final pulumi.Input<BackupPlanBackupConfigSelectedNamespaces>? selectedNamespaces;
+  final pulumi.Input<BackupPlanBackupConfigSelectedNamespaces?>? selectedNamespaces;
 
   /// Creates a new [BackupPlanBackupConfig].
   /// [allNamespaces] If True, include all namespaced resources.

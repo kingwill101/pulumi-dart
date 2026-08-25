@@ -12,7 +12,7 @@ class GetKeyHandlesArgs {
   final pulumi.Input<String> location;
   /// The project in which the resource belongs. If it
   /// is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The resource type by which to filter KeyHandle e.g. {SERVICE}.googleapis.com/{TYPE}. See documentation for supported resource types.
   ///
   /// - - -

@@ -5,23 +5,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConnectionAzure {
   /// (Output)
   /// The name of the Azure Active Directory Application.
-  final pulumi.Input<String>? application;
+  final pulumi.Input<String?>? application;
   /// (Output)
   /// The client id of the Azure Active Directory Application.
-  final pulumi.Input<String>? clientId;
+  final pulumi.Input<String?>? clientId;
   /// The id of customer's directory that host the data.
   final pulumi.Input<String> customerTenantId;
   /// The Azure Application (client) ID where the federated credentials will be hosted.
-  final pulumi.Input<String>? federatedApplicationClientId;
+  final pulumi.Input<String?>? federatedApplicationClientId;
   /// (Output)
   /// A unique Google-owned and Google-generated identity for the Connection. This identity will be used to access the user's Azure Active Directory Application.
-  final pulumi.Input<String>? identity;
+  final pulumi.Input<String?>? identity;
   /// (Output)
   /// The object id of the Azure Active Directory Application.
-  final pulumi.Input<String>? objectId;
+  final pulumi.Input<String?>? objectId;
   /// (Output)
   /// The URL user will be redirected to after granting consent during connection setup.
-  final pulumi.Input<String>? redirectUri;
+  final pulumi.Input<String?>? redirectUri;
 
   /// Creates a new [ConnectionAzure].
   /// [application] (Output)

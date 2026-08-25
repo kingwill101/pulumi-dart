@@ -406,7 +406,7 @@ class ServiceNetworkSettings extends pulumi.CustomResource {
           'gcp:appengine/serviceNetworkSettings:ServiceNetworkSettings',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     networkSettings = registerOutput<ServiceNetworkSettingsNetworkSettings>('networkSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceNetworkSettingsNetworkSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
@@ -418,11 +418,12 @@ class ServiceNetworkSettings extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ServiceNetworkSettingsState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ServiceNetworkSettings._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -436,6 +437,20 @@ class ServiceNetworkSettings extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    networkSettings = registerOutput<ServiceNetworkSettingsNetworkSettings>('networkSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceNetworkSettingsNetworkSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    project = registerOutput<String>('project');
+    service = registerOutput<String>('service');
+  }
+
+  /// Creates a typed reference to an existing [ServiceNetworkSettings] resource.
+  ServiceNetworkSettings.reference(String urn)
+    : super(
+        'gcp:appengine/serviceNetworkSettings:ServiceNetworkSettings',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     networkSettings = registerOutput<ServiceNetworkSettingsNetworkSettings>('networkSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceNetworkSettingsNetworkSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
     service = registerOutput<String>('service');

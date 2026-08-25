@@ -4,19 +4,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DashboardChartDashboardChartVisualizationSeriesAreaStyle {
   /// (Optional)
-  final pulumi.Input<String>? color;
+  final pulumi.Input<String?>? color;
   /// (Optional)
-  final pulumi.Input<int>? opacity;
+  final pulumi.Input<int?>? opacity;
   /// (Optional)
-  final pulumi.Input<String>? origin;
+  final pulumi.Input<String?>? origin;
   /// (Optional)
-  final pulumi.Input<int>? shadowBlur;
+  final pulumi.Input<int?>? shadowBlur;
   /// (Optional)
-  final pulumi.Input<String>? shadowColor;
+  final pulumi.Input<String?>? shadowColor;
   /// (Optional)
-  final pulumi.Input<int>? shadowOffsetX;
+  final pulumi.Input<int?>? shadowOffsetX;
   /// (Optional)
-  final pulumi.Input<int>? shadowOffsetY;
+  final pulumi.Input<int?>? shadowOffsetY;
 
   /// Creates a new [DashboardChartDashboardChartVisualizationSeriesAreaStyle].
   /// [color] (Optional)
@@ -51,12 +51,12 @@ class DashboardChartDashboardChartVisualizationSeriesAreaStyle {
   factory DashboardChartDashboardChartVisualizationSeriesAreaStyle.fromMap(Map<String, dynamic> map) {
     return DashboardChartDashboardChartVisualizationSeriesAreaStyle(
       color: (() { final guardedValue = map['color']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      opacity: (() { final guardedValue = map['opacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      opacity: (() { final guardedValue = map['opacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       origin: (() { final guardedValue = map['origin']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      shadowBlur: (() { final guardedValue = map['shadowBlur']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      shadowBlur: (() { final guardedValue = map['shadowBlur']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       shadowColor: (() { final guardedValue = map['shadowColor']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      shadowOffsetX: (() { final guardedValue = map['shadowOffsetX']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      shadowOffsetY: (() { final guardedValue = map['shadowOffsetY']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      shadowOffsetX: (() { final guardedValue = map['shadowOffsetX']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      shadowOffsetY: (() { final guardedValue = map['shadowOffsetY']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

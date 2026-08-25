@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ZoneAssetStatus {
   /// Number of active assets.
-  final pulumi.Input<int>? activeAssets;
+  final pulumi.Input<int?>? activeAssets;
   /// Number of assets that are in process of updating the security policy on attached resources.
-  final pulumi.Input<int>? securityPolicyApplyingAssets;
+  final pulumi.Input<int?>? securityPolicyApplyingAssets;
   /// Output only. The time when the zone was last updated.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [ZoneAssetStatus].
   /// [activeAssets] Number of active assets.
@@ -30,8 +30,8 @@ class ZoneAssetStatus {
 
   factory ZoneAssetStatus.fromMap(Map<String, dynamic> map) {
     return ZoneAssetStatus(
-      activeAssets: (() { final guardedValue = map['activeAssets']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      securityPolicyApplyingAssets: (() { final guardedValue = map['securityPolicyApplyingAssets']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      activeAssets: (() { final guardedValue = map['activeAssets']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      securityPolicyApplyingAssets: (() { final guardedValue = map['securityPolicyApplyingAssets']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

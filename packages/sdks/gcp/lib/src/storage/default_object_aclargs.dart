@@ -15,11 +15,11 @@ class DefaultObjectACLArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// List of role/entity pairs in the form `ROLE:entity`.
   /// See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
   /// Omitting the field is the same as providing an empty list.
-  final pulumi.Input<List<String>>? roleEntities;
+  final pulumi.Input<List<String>?>? roleEntities;
 
   /// Creates a new [DefaultObjectACLArgs].
   /// [bucket] The name of the bucket it applies to.

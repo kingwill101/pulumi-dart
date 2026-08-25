@@ -4,17 +4,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WorkloadIdentityServiceAgentServiceAgent {
   /// (Output)
-  final pulumi.Input<String>? container;
+  final pulumi.Input<String?>? container;
   /// (Output)
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// (Output)
-  final pulumi.Input<String>? principal;
+  final pulumi.Input<String?>? principal;
   /// (Output)
-  final pulumi.Input<String>? role;
+  final pulumi.Input<String?>? role;
   /// (Output)
-  final pulumi.Input<String>? serviceProducer;
+  final pulumi.Input<String?>? serviceProducer;
   /// (Output)
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
 
   /// Creates a new [WorkloadIdentityServiceAgentServiceAgent].
   /// [container] (Output)

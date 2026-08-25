@@ -35,7 +35,7 @@ class GetClusterContinuousBackupConfig {
     return GetClusterContinuousBackupConfig(
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
       encryptionConfigs: pulumi.Input.fromValue(pulumi.Input.decodeList<GetClusterContinuousBackupConfigEncryptionConfig>(map['encryptionConfigs']!, (value) => GetClusterContinuousBackupConfigEncryptionConfig.fromMap((value as Map).cast<String, dynamic>()))),
-      recoveryWindowDays: pulumi.Input.fromValue(map['recoveryWindowDays'] as int),
+      recoveryWindowDays: pulumi.Input.fromValue((map['recoveryWindowDays'] as num).toInt()),
     );
   }
 }

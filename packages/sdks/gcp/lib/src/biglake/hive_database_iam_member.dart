@@ -1030,7 +1030,7 @@ class HiveDatabaseIamMember extends pulumi.CustomResource {
           'gcp:biglake/hiveDatabaseIamMember:HiveDatabaseIamMember',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     catalog = registerOutput<String>('catalog');
     condition = registerOutput<HiveDatabaseIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HiveDatabaseIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -1046,11 +1046,12 @@ class HiveDatabaseIamMember extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     HiveDatabaseIamMemberState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return HiveDatabaseIamMember._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1064,6 +1065,24 @@ class HiveDatabaseIamMember extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    catalog = registerOutput<String>('catalog');
+    condition = registerOutput<HiveDatabaseIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HiveDatabaseIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    etag = registerOutput<String>('etag');
+    member = registerOutput<String>('member');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    role = registerOutput<String>('role');
+  }
+
+  /// Creates a typed reference to an existing [HiveDatabaseIamMember] resource.
+  HiveDatabaseIamMember.reference(String urn)
+    : super(
+        'gcp:biglake/hiveDatabaseIamMember:HiveDatabaseIamMember',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     catalog = registerOutput<String>('catalog');
     condition = registerOutput<HiveDatabaseIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HiveDatabaseIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');

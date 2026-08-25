@@ -9,7 +9,7 @@ import 'cluster_storage_resource_lustre.dart';
 class ClusterStorageResource {
   /// (Output)
   /// Name of the bucket.
-  final pulumi.Input<List<ClusterStorageResourceBucket>>? buckets;
+  final pulumi.Input<List<ClusterStorageResourceBucket>?>? buckets;
   /// Describes how a storage resource should be initialized. Each storage resource
   /// can either be imported from an existing Google Cloud resource or initialized
   /// when the cluster is created.
@@ -18,7 +18,7 @@ class ClusterStorageResource {
   /// (Output)
   /// A reference to a [Filestore](https://cloud.google.com/filestore) instance.
   /// Structure is documented below.
-  final pulumi.Input<List<ClusterStorageResourceFilestore>>? filestores;
+  final pulumi.Input<List<ClusterStorageResourceFilestore>?>? filestores;
   /// The identifier for this object. Format specified above.
   final pulumi.Input<String> id;
   /// (Output)
@@ -28,7 +28,7 @@ class ClusterStorageResource {
   ///
   ///
   /// &lt;a name="nestedStorageResourcesBucket"&gt;&lt;/a&gt;The `bucket` block contains:
-  final pulumi.Input<List<ClusterStorageResourceLustre>>? lustres;
+  final pulumi.Input<List<ClusterStorageResourceLustre>?>? lustres;
 
   /// Creates a new [ClusterStorageResource].
   /// [buckets] (Output)

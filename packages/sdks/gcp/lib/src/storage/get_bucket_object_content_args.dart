@@ -10,7 +10,7 @@ class GetBucketObjectContentArgs {
   /// The name of the containing bucket.
   final pulumi.Input<String> bucket;
   /// (Computed) The content of the object.
-  final pulumi.Input<String>? content;
+  final pulumi.Input<String?>? content;
   /// The name of the object.
   final pulumi.Input<String> name;
 

@@ -6,7 +6,7 @@ import 'prevention_discovery_config_target_cloud_storage_target_filter_collectio
 class PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeTags {
   /// A resource must match ALL of the specified tag filters to be included in the collection.
   /// Structure is documented below.
-  final pulumi.Input<List<PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeTagsTagFilter>>? tagFilters;
+  final pulumi.Input<List<PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeTagsTagFilter>?>? tagFilters;
 
   /// Creates a new [PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeTags].
   /// [tagFilters] A resource must match ALL of the specified tag filters to be included in the collection.

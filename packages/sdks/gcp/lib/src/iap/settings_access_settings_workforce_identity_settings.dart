@@ -10,9 +10,9 @@ class SettingsAccessSettingsWorkforceIdentitySettings {
   ///
   ///
   /// &lt;a name="nestedAccessSettingsWorkforceIdentitySettingsOauth2"&gt;&lt;/a&gt;The `oauth2` block supports:
-  final pulumi.Input<SettingsAccessSettingsWorkforceIdentitySettingsOauth2>? oauth2;
+  final pulumi.Input<SettingsAccessSettingsWorkforceIdentitySettingsOauth2?>? oauth2;
   /// The workforce pool resources. Only one workforce pool is accepted.
-  final pulumi.Input<String>? workforcePools;
+  final pulumi.Input<String?>? workforcePools;
 
   /// Creates a new [SettingsAccessSettingsWorkforceIdentitySettings].
   /// [oauth2] OAuth 2.0 settings for IAP to perform OIDC flow with workforce identity

@@ -9,10 +9,10 @@ class DestinationEndpoint {
   final pulumi.Input<String> csp;
   /// (Output)
   /// The state of the DestinationEndpoint resource.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// (Output)
   /// Time when the DestinationEndpoint resource was updated.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [DestinationEndpoint].
   /// [asn] The ASN of the remote IP prefix.

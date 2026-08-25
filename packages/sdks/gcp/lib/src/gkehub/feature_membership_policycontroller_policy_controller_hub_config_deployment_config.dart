@@ -8,13 +8,13 @@ class FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfig
   /// The name of the component. One of `admission` `audit` or `mutation`
   final pulumi.Input<String> componentName;
   /// Container resource requirements.
-  final pulumi.Input<FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResources>? containerResources;
+  final pulumi.Input<FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResources?>? containerResources;
   /// Pod affinity configuration. Possible values: AFFINITY_UNSPECIFIED, NO_AFFINITY, ANTI_AFFINITY
-  final pulumi.Input<String>? podAffinity;
+  final pulumi.Input<String?>? podAffinity;
   /// Pod tolerations of node taints.
-  final pulumi.Input<List<FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodToleration>>? podTolerations;
+  final pulumi.Input<List<FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodToleration>?>? podTolerations;
   /// Pod replica count.
-  final pulumi.Input<int>? replicaCount;
+  final pulumi.Input<int?>? replicaCount;
 
   /// Creates a new [FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfig].
   /// [componentName] The name of the component. One of `admission` `audit` or `mutation`
@@ -46,7 +46,7 @@ class FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfig
       containerResources: (() { final guardedValue = map['containerResources']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResources.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       podAffinity: (() { final guardedValue = map['podAffinity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       podTolerations: (() { final guardedValue = map['podTolerations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodToleration>(guardedValue, (value) => FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodToleration.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      replicaCount: (() { final guardedValue = map['replicaCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      replicaCount: (() { final guardedValue = map['replicaCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

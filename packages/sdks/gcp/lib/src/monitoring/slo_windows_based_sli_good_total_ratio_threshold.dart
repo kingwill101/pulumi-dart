@@ -7,13 +7,13 @@ import 'slo_windows_based_sli_good_total_ratio_threshold_performance.dart';
 class SloWindowsBasedSliGoodTotalRatioThreshold {
   /// Basic SLI to evaluate to judge window quality.
   /// Structure is documented below.
-  final pulumi.Input<SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance>? basicSliPerformance;
+  final pulumi.Input<SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance?>? basicSliPerformance;
   /// Request-based SLI to evaluate to judge window quality.
   /// Structure is documented below.
-  final pulumi.Input<SloWindowsBasedSliGoodTotalRatioThresholdPerformance>? performance;
+  final pulumi.Input<SloWindowsBasedSliGoodTotalRatioThresholdPerformance?>? performance;
   /// If window performance &gt;= threshold, the window is counted
   /// as good.
-  final pulumi.Input<double>? threshold;
+  final pulumi.Input<double?>? threshold;
 
   /// Creates a new [SloWindowsBasedSliGoodTotalRatioThreshold].
   /// [basicSliPerformance] Basic SLI to evaluate to judge window quality.
@@ -37,7 +37,7 @@ class SloWindowsBasedSliGoodTotalRatioThreshold {
     return SloWindowsBasedSliGoodTotalRatioThreshold(
       basicSliPerformance: (() { final guardedValue = map['basicSliPerformance']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       performance: (() { final guardedValue = map['performance']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SloWindowsBasedSliGoodTotalRatioThresholdPerformance.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      threshold: (() { final guardedValue = map['threshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      threshold: (() { final guardedValue = map['threshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

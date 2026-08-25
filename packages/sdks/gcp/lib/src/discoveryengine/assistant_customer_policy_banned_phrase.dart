@@ -5,10 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AssistantCustomerPolicyBannedPhrase {
   /// If true, diacritical marks (e.g., accents, umlauts) are ignored when
   /// matching banned phrases. For example, "cafe" would match "café".
-  final pulumi.Input<bool>? ignoreDiacritics;
+  final pulumi.Input<bool?>? ignoreDiacritics;
   /// Match type for the banned phrase.
   /// The supported values: 'SIMPLE_STRING_MATCH', 'WORD_BOUNDARY_STRING_MATCH'.
-  final pulumi.Input<String>? matchType;
+  final pulumi.Input<String?>? matchType;
   /// The raw string content to be banned.
   final pulumi.Input<String> phrase;
 

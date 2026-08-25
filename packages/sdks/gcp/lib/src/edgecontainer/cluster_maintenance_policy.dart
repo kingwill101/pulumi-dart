@@ -9,7 +9,7 @@ class ClusterMaintenancePolicy {
   /// in these windows. Each exclusion has a unique name and may be active or expired.
   /// The max number of maintenance exclusions allowed at a given time is 3.
   /// Structure is documented below.
-  final pulumi.Input<List<ClusterMaintenancePolicyMaintenanceExclusion>>? maintenanceExclusions;
+  final pulumi.Input<List<ClusterMaintenancePolicyMaintenanceExclusion>?>? maintenanceExclusions;
   /// Specifies the maintenance window in which maintenance may be performed.
   /// Structure is documented below.
   final pulumi.Input<ClusterMaintenancePolicyWindow> window;

@@ -6,9 +6,9 @@ import 'bucket_ip_filter_vpc_network_source.dart';
 
 class BucketIpFilter {
   /// While set `true`, allows all service agents to access the bucket regardless of the IP filter configuration.
-  final pulumi.Input<bool>? allowAllServiceAgentAccess;
+  final pulumi.Input<bool?>? allowAllServiceAgentAccess;
   /// While set `true`, allows cross-org VPCs in the bucket's IP filter configuration.
-  final pulumi.Input<bool>? allowCrossOrgVpcs;
+  final pulumi.Input<bool?>? allowCrossOrgVpcs;
   /// The state of the IP filter configuration. Valid values are `Enabled` and `Disabled`. When set to `Enabled`, IP filtering rules are applied to a bucket and all incoming requests to the bucket are evaluated against these rules. When set to `Disabled`, IP filtering rules are not applied to a bucket.
   ///
   /// **Note**: Once ipFilter is setup, it can either be `Enabled` or `Disabled` and cannot be removed from config.
@@ -16,9 +16,9 @@ class BucketIpFilter {
   /// **Note**: `allowAllServiceAgentAccess` must be supplied when `mode` is set to `Enabled`, it can be ommited for other values.
   final pulumi.Input<String> mode;
   /// The public network IP address ranges that can access the bucket and its data. Structure is documented below.
-  final pulumi.Input<BucketIpFilterPublicNetworkSource>? publicNetworkSource;
+  final pulumi.Input<BucketIpFilterPublicNetworkSource?>? publicNetworkSource;
   /// The list of VPC networks that can access the bucket. Structure is documented below.
-  final pulumi.Input<List<BucketIpFilterVpcNetworkSource>>? vpcNetworkSources;
+  final pulumi.Input<List<BucketIpFilterVpcNetworkSource>?>? vpcNetworkSources;
 
   /// Creates a new [BucketIpFilter].
   /// [allowAllServiceAgentAccess] While set `true`, allows all service agents to access the bucket regardless of the IP filter configuration.

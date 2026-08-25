@@ -85,7 +85,7 @@ class AssessmentRule extends pulumi.CustomResource {
           'gcp:contactcenterinsights/assessmentRule:AssessmentRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     active = registerOutput<bool?>('active');
     assessmentRuleId = registerOutput<String?>('assessmentRuleId');
@@ -105,11 +105,12 @@ class AssessmentRule extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AssessmentRuleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AssessmentRule._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -123,6 +124,28 @@ class AssessmentRule extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    active = registerOutput<bool?>('active');
+    assessmentRuleId = registerOutput<String?>('assessmentRuleId');
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    displayName = registerOutput<String?>('displayName');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    sampleRule = registerOutput<AssessmentRuleSampleRule?>('sampleRule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AssessmentRuleSampleRule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    scheduleInfo = registerOutput<AssessmentRuleScheduleInfo?>('scheduleInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AssessmentRuleScheduleInfo.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [AssessmentRule] resource.
+  AssessmentRule.reference(String urn)
+    : super(
+        'gcp:contactcenterinsights/assessmentRule:AssessmentRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     active = registerOutput<bool?>('active');
     assessmentRuleId = registerOutput<String?>('assessmentRuleId');
     createTime = registerOutput<String>('createTime');

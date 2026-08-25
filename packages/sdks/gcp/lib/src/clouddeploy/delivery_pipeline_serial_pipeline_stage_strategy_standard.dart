@@ -8,15 +8,15 @@ import 'delivery_pipeline_serial_pipeline_stage_strategy_standard_verify_config.
 
 class DeliveryPipelineSerialPipelineStageStrategyStandard {
   /// Optional. Configuration for the analysis job.
-  final pulumi.Input<DeliveryPipelineSerialPipelineStageStrategyStandardAnalysis>? analysis;
+  final pulumi.Input<DeliveryPipelineSerialPipelineStageStrategyStandardAnalysis?>? analysis;
   /// Optional. Configuration for the postdeploy job. If this is not configured, postdeploy job will not be present.
-  final pulumi.Input<DeliveryPipelineSerialPipelineStageStrategyStandardPostdeploy>? postdeploy;
+  final pulumi.Input<DeliveryPipelineSerialPipelineStageStrategyStandardPostdeploy?>? postdeploy;
   /// Optional. Configuration for the predeploy job. If this is not configured, predeploy job will not be present.
-  final pulumi.Input<DeliveryPipelineSerialPipelineStageStrategyStandardPredeploy>? predeploy;
+  final pulumi.Input<DeliveryPipelineSerialPipelineStageStrategyStandardPredeploy?>? predeploy;
   /// Whether to verify a deployment.
-  final pulumi.Input<bool>? verify;
+  final pulumi.Input<bool?>? verify;
   /// Optional. Configuration for the verify job.
-  final pulumi.Input<DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfig>? verifyConfig;
+  final pulumi.Input<DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfig?>? verifyConfig;
 
   /// Creates a new [DeliveryPipelineSerialPipelineStageStrategyStandard].
   /// [analysis] Optional. Configuration for the analysis job.

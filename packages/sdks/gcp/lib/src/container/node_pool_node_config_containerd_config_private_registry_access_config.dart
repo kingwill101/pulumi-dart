@@ -5,7 +5,7 @@ import 'node_pool_node_config_containerd_config_private_registry_access_config_c
 
 class NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig {
   /// Parameters for configuring CA certificate and domains.
-  final pulumi.Input<List<NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig>>? certificateAuthorityDomainConfigs;
+  final pulumi.Input<List<NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfig>?>? certificateAuthorityDomainConfigs;
   /// Whether or not private registries are configured.
   final pulumi.Input<bool> enabled;
 

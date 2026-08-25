@@ -383,6 +383,17 @@ Future<GetAppEngineServiceResult> getAppEngineService(
   return GetAppEngineServiceResult.fromMap(result);
 }
 
+pulumi.Output<GetAppEngineServiceResult> getAppEngineServiceOutput(
+  GetAppEngineServiceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:monitoring/getAppEngineService:getAppEngineService',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAppEngineServiceResult.fromMap);
+}
+
 /// A Monitoring Service is the root resource under which operational aspects of a
 /// generic service are accessible. A service is some discrete, autonomous, and
 /// network-accessible unit, designed to solve an individual concern
@@ -546,6 +557,17 @@ Future<GetClusterIstioServiceResult> getClusterIstioService(
   return GetClusterIstioServiceResult.fromMap(result);
 }
 
+pulumi.Output<GetClusterIstioServiceResult> getClusterIstioServiceOutput(
+  GetClusterIstioServiceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:monitoring/getClusterIstioService:getClusterIstioService',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetClusterIstioServiceResult.fromMap);
+}
+
 /// A Monitoring Service is the root resource under which operational aspects of a
 /// generic service are accessible. A service is some discrete, autonomous, and
 /// network-accessible unit, designed to solve an individual concern
@@ -702,6 +724,17 @@ Future<GetIstioCanonicalServiceResult> getIstioCanonicalService(
   return GetIstioCanonicalServiceResult.fromMap(result);
 }
 
+pulumi.Output<GetIstioCanonicalServiceResult> getIstioCanonicalServiceOutput(
+  GetIstioCanonicalServiceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:monitoring/getIstioCanonicalService:getIstioCanonicalService',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetIstioCanonicalServiceResult.fromMap);
+}
+
 /// A Monitoring Service is the root resource under which operational aspects of a
 /// generic service are accessible. A service is some discrete, autonomous, and
 /// network-accessible unit, designed to solve an individual concern
@@ -856,6 +889,17 @@ Future<GetMeshIstioServiceResult> getMeshIstioService(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetMeshIstioServiceResult.fromMap(result);
+}
+
+pulumi.Output<GetMeshIstioServiceResult> getMeshIstioServiceOutput(
+  GetMeshIstioServiceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:monitoring/getMeshIstioService:getMeshIstioService',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMeshIstioServiceResult.fromMap);
 }
 
 /// A NotificationChannel is a medium through which an alert is delivered
@@ -1140,6 +1184,17 @@ Future<GetNotificationChannelResult> getNotificationChannel(
   return GetNotificationChannelResult.fromMap(result);
 }
 
+pulumi.Output<GetNotificationChannelResult> getNotificationChannelOutput(
+  GetNotificationChannelArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:monitoring/getNotificationChannel:getNotificationChannel',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNotificationChannelResult.fromMap);
+}
+
 /// Get the value and metadata from a Secret Manager secret version. For more information see the [official documentation](https://cloud.google.com/secret-manager/docs/) and [API](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.secrets.versions). If you don't need the metadata (i.e., if you want to use a more limited role to access the secret version only), see also the gcp.secretmanager.getSecretVersionAccess datasource.
 ///
 /// ## Example Usage
@@ -1256,6 +1311,17 @@ Future<GetSecretVersionResult> getSecretVersion(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSecretVersionResult.fromMap(result);
+}
+
+pulumi.Output<GetSecretVersionResult> getSecretVersionOutput(
+  GetSecretVersionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:monitoring/getSecretVersion:getSecretVersion',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSecretVersionResult.fromMap);
 }
 
 /// Returns the list of IP addresses that checkers run from. For more information see
@@ -1376,4 +1442,15 @@ Future<GetUptimeCheckIPsResult> getUptimeCheckIPs(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetUptimeCheckIPsResult.fromMap(result);
+}
+
+pulumi.Output<GetUptimeCheckIPsResult> getUptimeCheckIPsOutput(
+  {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:monitoring/getUptimeCheckIPs:getUptimeCheckIPs',
+    const <String, pulumi.Input<dynamic>>{},
+    options: options,
+  ).apply(GetUptimeCheckIPsResult.fromMap);
 }

@@ -65,12 +65,12 @@ class GetConnectivityTestRunReachabilityDetailTraceEndpointInfo {
     return GetConnectivityTestRunReachabilityDetailTraceEndpointInfo(
       destinationIp: pulumi.Input.fromValue(map['destinationIp'] as String),
       destinationNetworkUri: pulumi.Input.fromValue(map['destinationNetworkUri'] as String),
-      destinationPort: pulumi.Input.fromValue(map['destinationPort'] as int),
+      destinationPort: pulumi.Input.fromValue((map['destinationPort'] as num).toInt()),
       protocol: pulumi.Input.fromValue(map['protocol'] as String),
       sourceAgentUri: pulumi.Input.fromValue(map['sourceAgentUri'] as String),
       sourceIp: pulumi.Input.fromValue(map['sourceIp'] as String),
       sourceNetworkUri: pulumi.Input.fromValue(map['sourceNetworkUri'] as String),
-      sourcePort: pulumi.Input.fromValue(map['sourcePort'] as int),
+      sourcePort: pulumi.Input.fromValue((map['sourcePort'] as num).toInt()),
     );
   }
 }

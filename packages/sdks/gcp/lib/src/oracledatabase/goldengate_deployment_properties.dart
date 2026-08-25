@@ -13,69 +13,69 @@ import 'goldengate_deployment_properties_placement.dart';
 class GoldengateDeploymentProperties {
   /// The backup schedule of the GoldengateDeployment.
   /// Structure is documented below.
-  final pulumi.Input<GoldengateDeploymentPropertiesBackupSchedule>? backupSchedule;
+  final pulumi.Input<GoldengateDeploymentPropertiesBackupSchedule?>? backupSchedule;
   /// (Output)
   /// The category of the GoldengateDeployment.
   /// Possible values:
   /// DATA_REPLICATION
   /// DATA_TRANSFORMS
-  final pulumi.Input<String>? category;
+  final pulumi.Input<String?>? category;
   /// The Minimum number of OCPUs to be made available for this Deployment.
-  final pulumi.Input<int>? cpuCoreCount;
+  final pulumi.Input<int?>? cpuCoreCount;
   /// (Output)
   /// The deployment backup id of the GoldengateDeployment.
-  final pulumi.Input<String>? deploymentBackupId;
+  final pulumi.Input<String?>? deploymentBackupId;
   /// The deployment diagnostic data.
   /// Structure is documented below.
-  final pulumi.Input<GoldengateDeploymentPropertiesDeploymentDiagnosticData>? deploymentDiagnosticData;
+  final pulumi.Input<GoldengateDeploymentPropertiesDeploymentDiagnosticData?>? deploymentDiagnosticData;
   /// (Output)
   /// The deployment role of the GoldengateDeployment.
   /// Possible values:
   /// PRIMARY
   /// STANDBY
-  final pulumi.Input<String>? deploymentRole;
+  final pulumi.Input<String?>? deploymentRole;
   /// A valid Goldengate Deployment type. For a list of supported types, use
   /// the `ListGoldengateDeploymentTypes` operation.
   final pulumi.Input<String> deploymentType;
   /// (Output)
   /// The deployment url of the GoldengateDeployment.
-  final pulumi.Input<String>? deploymentUrl;
+  final pulumi.Input<String?>? deploymentUrl;
   /// The description of the GoldengateDeployment.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The environment type of the GoldengateDeployment.
-  final pulumi.Input<String>? environmentType;
+  final pulumi.Input<String?>? environmentType;
   /// (Output)
   /// The Fully Qualified Domain Name of the GoldengateDeployment.
-  final pulumi.Input<String>? fqdn;
+  final pulumi.Input<String?>? fqdn;
   /// (Output)
   /// Whether the GoldengateDeployment is healthy.
-  final pulumi.Input<bool>? healthy;
+  final pulumi.Input<bool?>? healthy;
   /// (Output)
   /// The ingress ips of the GoldengateDeployment.
   /// Structure is documented below.
-  final pulumi.Input<List<GoldengateDeploymentPropertiesIngressIp>>? ingressIps;
+  final pulumi.Input<List<GoldengateDeploymentPropertiesIngressIp>?>? ingressIps;
   /// Indicates if auto scaling is enabled for the Deployment's CPU core count.
-  final pulumi.Input<bool>? isAutoScalingEnabled;
+  final pulumi.Input<bool?>? isAutoScalingEnabled;
   /// (Output)
   /// Whether the GoldengateDeployment is of the latest version.
-  final pulumi.Input<bool>? isLatestVersion;
+  final pulumi.Input<bool?>? isLatestVersion;
   /// (Output)
   /// Whether the GoldengateDeployment is public.
-  final pulumi.Input<bool>? isPublic;
+  final pulumi.Input<bool?>? isPublic;
   /// (Output)
   /// Whether storage utilization limit is exceeded of the GoldengateDeployment.
-  final pulumi.Input<bool>? isStorageUtilizationLimitExceeded;
+  final pulumi.Input<bool?>? isStorageUtilizationLimitExceeded;
   /// (Output)
   /// The time last backup scheduled of the GoldengateDeployment.
-  final pulumi.Input<String>? lastBackupScheduleTime;
+  final pulumi.Input<String?>? lastBackupScheduleTime;
   /// The Oracle license model that applies to a Deployment.
   /// Possible values:
   /// LICENSE_INCLUDED
   /// BRING_YOUR_OWN_LICENSE
-  final pulumi.Input<String>? licenseModel;
+  final pulumi.Input<String?>? licenseModel;
   /// (Output)
   /// The lifecycle details of the GoldengateDeployment.
-  final pulumi.Input<String>? lifecycleDetails;
+  final pulumi.Input<String?>? lifecycleDetails;
   /// (Output)
   /// State of the GoldengateDeployment.
   /// Possible values:
@@ -92,7 +92,7 @@ class GoldengateDeploymentProperties {
   /// CANCELLED
   /// SUCCEEDED
   /// WAITING
-  final pulumi.Input<String>? lifecycleState;
+  final pulumi.Input<String?>? lifecycleState;
   /// (Output)
   /// The lifecycle sub-state of the GoldengateDeployment.
   /// Possible values:
@@ -104,71 +104,71 @@ class GoldengateDeploymentProperties {
   /// RESTORING
   /// BACKING_UP
   /// ROLLING_BACK
-  final pulumi.Input<String>? lifecycleSubState;
+  final pulumi.Input<String?>? lifecycleSubState;
   /// (Output)
   /// The load balancer id of the GoldengateDeployment.
-  final pulumi.Input<String>? loadBalancerId;
+  final pulumi.Input<String?>? loadBalancerId;
   /// (Output)
   /// The load balancer subnet id of the GoldengateDeployment.
-  final pulumi.Input<String>? loadBalancerSubnetId;
+  final pulumi.Input<String?>? loadBalancerSubnetId;
   /// (Output)
   /// The locks of the GoldengateDeployment.
   /// Structure is documented below.
-  final pulumi.Input<List<GoldengateDeploymentPropertiesLock>>? locks;
+  final pulumi.Input<List<GoldengateDeploymentPropertiesLock>?>? locks;
   /// The maintenance configuration of the GoldengateDeployment.
   /// Structure is documented below.
-  final pulumi.Input<GoldengateDeploymentPropertiesMaintenanceConfig>? maintenanceConfig;
+  final pulumi.Input<GoldengateDeploymentPropertiesMaintenanceConfig?>? maintenanceConfig;
   /// The maintenance window of the GoldengateDeployment.
   /// Structure is documented below.
-  final pulumi.Input<GoldengateDeploymentPropertiesMaintenanceWindow>? maintenanceWindow;
+  final pulumi.Input<GoldengateDeploymentPropertiesMaintenanceWindow?>? maintenanceWindow;
   /// (Output)
   /// The time next backup scheduled of the GoldengateDeployment.
-  final pulumi.Input<String>? nextBackupScheduleTime;
+  final pulumi.Input<String?>? nextBackupScheduleTime;
   /// (Output)
   /// The next maintenance action type of the GoldengateDeployment.
   /// Possible values:
   /// UPGRADE
-  final pulumi.Input<String>? nextMaintenanceActionType;
+  final pulumi.Input<String?>? nextMaintenanceActionType;
   /// (Output)
   /// The next maintenance description of the GoldengateDeployment.
-  final pulumi.Input<String>? nextMaintenanceDescription;
+  final pulumi.Input<String?>? nextMaintenanceDescription;
   /// (Output)
   /// The time of next maintenance of the GoldengateDeployment.
-  final pulumi.Input<String>? nextMaintenanceTime;
+  final pulumi.Input<String?>? nextMaintenanceTime;
   /// (Output)
   /// The nsg ids of the GoldengateDeployment.
-  final pulumi.Input<List<String>>? nsgIds;
+  final pulumi.Input<List<String>?>? nsgIds;
   /// (Output)
   /// OCID of the GoldengateDeployment.
-  final pulumi.Input<String>? ocid;
+  final pulumi.Input<String?>? ocid;
   /// The Ogg data of the GoldengateDeployment.
   /// Structure is documented below.
   final pulumi.Input<GoldengateDeploymentPropertiesOggData> oggData;
   /// (Output)
   /// The time ogg version supported until of the GoldengateDeployment.
-  final pulumi.Input<String>? oggVersionSupportEndTime;
+  final pulumi.Input<String?>? oggVersionSupportEndTime;
   /// (Output)
   /// The placements of the GoldengateDeployment.
   /// Structure is documented below.
-  final pulumi.Input<List<GoldengateDeploymentPropertiesPlacement>>? placements;
+  final pulumi.Input<List<GoldengateDeploymentPropertiesPlacement>?>? placements;
   /// (Output)
   /// The private ip address of the GoldengateDeployment.
-  final pulumi.Input<String>? privateIpAddress;
+  final pulumi.Input<String?>? privateIpAddress;
   /// (Output)
   /// The public ip address of the GoldengateDeployment.
-  final pulumi.Input<String>? publicIpAddress;
+  final pulumi.Input<String?>? publicIpAddress;
   /// (Output)
   /// The time when the role of the GoldengateDeployment was changed.
-  final pulumi.Input<String>? roleChangeTime;
+  final pulumi.Input<String?>? roleChangeTime;
   /// (Output)
   /// The storage utilization in bytes of the GoldengateDeployment.
-  final pulumi.Input<String>? storageUtilizationBytes;
+  final pulumi.Input<String?>? storageUtilizationBytes;
   /// (Output)
   /// The time the GoldengateDeployment was updated.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
   /// (Output)
   /// The time upgrade required of the GoldengateDeployment.
-  final pulumi.Input<String>? upgradeRequiredTime;
+  final pulumi.Input<String?>? upgradeRequiredTime;
 
   /// Creates a new [GoldengateDeploymentProperties].
   /// [backupSchedule] The backup schedule of the GoldengateDeployment.
@@ -309,7 +309,7 @@ class GoldengateDeploymentProperties {
     return GoldengateDeploymentProperties(
       backupSchedule: (() { final guardedValue = map['backupSchedule']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GoldengateDeploymentPropertiesBackupSchedule.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       category: (() { final guardedValue = map['category']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      cpuCoreCount: (() { final guardedValue = map['cpuCoreCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      cpuCoreCount: (() { final guardedValue = map['cpuCoreCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       deploymentBackupId: (() { final guardedValue = map['deploymentBackupId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deploymentDiagnosticData: (() { final guardedValue = map['deploymentDiagnosticData']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GoldengateDeploymentPropertiesDeploymentDiagnosticData.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       deploymentRole: (() { final guardedValue = map['deploymentRole']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

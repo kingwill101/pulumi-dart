@@ -7,7 +7,7 @@ class ListingCommercialInfo {
   /// (Output)
   /// Details of the Marketplace Data Product associated with the Listing.
   /// Structure is documented below.
-  final pulumi.Input<List<ListingCommercialInfoCloudMarketplace>>? cloudMarketplaces;
+  final pulumi.Input<List<ListingCommercialInfoCloudMarketplace>?>? cloudMarketplaces;
 
   /// Creates a new [ListingCommercialInfo].
   /// [cloudMarketplaces] (Output)

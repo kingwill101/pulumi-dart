@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterNodeConfigContainerdConfigRegistryHostHostClientCert {
   /// URI for the Secret Manager secret that hosts the client certificate.
-  final pulumi.Input<String>? gcpSecretManagerSecretUri;
+  final pulumi.Input<String?>? gcpSecretManagerSecretUri;
 
   /// Creates a new [ClusterNodeConfigContainerdConfigRegistryHostHostClientCert].
   /// [gcpSecretManagerSecretUri] URI for the Secret Manager secret that hosts the client certificate.

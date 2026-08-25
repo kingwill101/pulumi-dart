@@ -71,7 +71,7 @@ class ConsumersIamPolicy extends pulumi.CustomResource {
           'gcp:endpoints/consumersIamPolicy:ConsumersIamPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     consumerProject = registerOutput<String>('consumerProject');
     etag = registerOutput<String>('etag');
@@ -84,11 +84,12 @@ class ConsumersIamPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ConsumersIamPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ConsumersIamPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -102,6 +103,21 @@ class ConsumersIamPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    consumerProject = registerOutput<String>('consumerProject');
+    etag = registerOutput<String>('etag');
+    policyData = registerOutput<String>('policyData');
+    serviceName = registerOutput<String>('serviceName');
+  }
+
+  /// Creates a typed reference to an existing [ConsumersIamPolicy] resource.
+  ConsumersIamPolicy.reference(String urn)
+    : super(
+        'gcp:endpoints/consumersIamPolicy:ConsumersIamPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     consumerProject = registerOutput<String>('consumerProject');
     etag = registerOutput<String>('etag');
     policyData = registerOutput<String>('policyData');

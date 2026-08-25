@@ -10,17 +10,17 @@ class AppVersionSnapshotAppDefaultChannelProfileWebWidgetConfig {
   /// CHAT_AND_VOICE
   /// VOICE_ONLY
   /// CHAT_ONLY
-  final pulumi.Input<String>? modality;
+  final pulumi.Input<String?>? modality;
   /// (Output)
   /// The theme of the web widget.
   /// Possible values:
   /// UNKNOWN_THEME
   /// LIGHT
   /// DARK
-  final pulumi.Input<String>? theme;
+  final pulumi.Input<String?>? theme;
   /// (Output)
   /// The title of the web widget.
-  final pulumi.Input<String>? webWidgetTitle;
+  final pulumi.Input<String?>? webWidgetTitle;
 
   /// Creates a new [AppVersionSnapshotAppDefaultChannelProfileWebWidgetConfig].
   /// [modality] (Output)

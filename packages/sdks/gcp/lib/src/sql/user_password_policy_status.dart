@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class UserPasswordPolicyStatus {
   /// If true, user does not have login privileges.
-  final pulumi.Input<bool>? locked;
+  final pulumi.Input<bool?>? locked;
   /// Password expiration duration with one week grace period.
-  final pulumi.Input<String>? passwordExpirationTime;
+  final pulumi.Input<String?>? passwordExpirationTime;
 
   /// Creates a new [UserPasswordPolicyStatus].
   /// [locked] If true, user does not have login privileges.

@@ -11,7 +11,7 @@ import 'recommendation_engine_media_recommendation_engine_config.dart';
 class RecommendationEngineArgs {
   /// Common config spec that specifies the metadata of the engine.
   /// Structure is documented below.
-  final pulumi.Input<RecommendationEngineCommonConfig>? commonConfig;
+  final pulumi.Input<RecommendationEngineCommonConfig?>? commonConfig;
   /// The data stores associated with this engine. For SOLUTION_TYPE_RECOMMENDATION type of engines, they can only associate with at most one data store.
   final pulumi.Input<List<String>> dataStoreIds;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -20,7 +20,7 @@ class RecommendationEngineArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Required. The display name of the engine. Should be human readable. UTF-8 encoded string with limit of 1024 characters.
   final pulumi.Input<String> displayName;
   /// Unique ID to use for Recommendation Engine.
@@ -28,17 +28,17 @@ class RecommendationEngineArgs {
   /// The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore: If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
   /// Default value is `GENERIC`.
   /// Possible values are: `GENERIC`, `MEDIA`.
-  final pulumi.Input<String>? industryVertical;
+  final pulumi.Input<String?>? industryVertical;
   /// The geographic location where the data store should reside. The value can
   /// only be one of "global", "us" and "eu".
   final pulumi.Input<String> location;
   /// Configurations for a Media Recommendation Engine. Only applicable on the data stores
   /// with SOLUTION_TYPE_RECOMMENDATION solution type and MEDIA industry vertical.
   /// Structure is documented below.
-  final pulumi.Input<RecommendationEngineMediaRecommendationEngineConfig>? mediaRecommendationEngineConfig;
+  final pulumi.Input<RecommendationEngineMediaRecommendationEngineConfig?>? mediaRecommendationEngineConfig;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [RecommendationEngineArgs].
   /// [commonConfig] Common config spec that specifies the metadata of the engine.

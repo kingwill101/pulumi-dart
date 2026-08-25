@@ -5,19 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ImageImageEncryptionKey {
   /// The self link of the encryption key that is stored in Google Cloud
   /// KMS.
-  final pulumi.Input<String>? kmsKeySelfLink;
+  final pulumi.Input<String?>? kmsKeySelfLink;
   /// The service account being used for the encryption request for the
   /// given KMS key. If absent, the Compute Engine default service
   /// account is used.
-  final pulumi.Input<String>? kmsKeyServiceAccount;
+  final pulumi.Input<String?>? kmsKeyServiceAccount;
   /// Specifies a 256-bit customer-supplied encryption key, encoded in
   /// RFC 4648 base64 to either encrypt or decrypt this resource.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
-  final pulumi.Input<String>? rawKey;
+  final pulumi.Input<String?>? rawKey;
   /// Specifies a 256-bit customer-supplied encryption key, encoded in
   /// RFC 4648 base64 to either encrypt or decrypt this resource.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
-  final pulumi.Input<String>? rsaEncryptedKey;
+  final pulumi.Input<String?>? rsaEncryptedKey;
 
   /// Creates a new [ImageImageEncryptionKey].
   /// [kmsKeySelfLink] The self link of the encryption key that is stored in Google Cloud

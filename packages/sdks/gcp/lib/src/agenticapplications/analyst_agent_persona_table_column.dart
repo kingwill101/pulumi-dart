@@ -8,7 +8,7 @@ class AnalystAgentPersonaTableColumn {
   /// RANGE are not supported.
   final pulumi.Input<String> dataType;
   /// The description of the column.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Identifier. The resource name of the analyst agent persona.
   /// Format:
   /// projects/{project}/locations/{location}/analystAgentPersonas/{analyst_agent_persona}

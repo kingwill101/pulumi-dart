@@ -8,10 +8,10 @@ class AiReasoningEngineContextSpec {
   /// (Optional, Beta)
   /// Optional. Specification for an Example Store, which manages few-shot examples for the Agent Engine.
   /// Structure is documented below.
-  final pulumi.Input<AiReasoningEngineContextSpecExampleStoreConfig>? exampleStoreConfig;
+  final pulumi.Input<AiReasoningEngineContextSpecExampleStoreConfig?>? exampleStoreConfig;
   /// Specification for a Memory Bank, which manages memories for the Agent Engine.
   /// Structure is documented below.
-  final pulumi.Input<AiReasoningEngineContextSpecMemoryBankConfig>? memoryBankConfig;
+  final pulumi.Input<AiReasoningEngineContextSpecMemoryBankConfig?>? memoryBankConfig;
 
   /// Creates a new [AiReasoningEngineContextSpec].
   /// [exampleStoreConfig] (Optional, Beta)

@@ -2069,7 +2069,7 @@ class WebBackendServiceIamMember extends pulumi.CustomResource {
           'gcp:iap/webBackendServiceIamMember:WebBackendServiceIamMember',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     condition = registerOutput<WebBackendServiceIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebBackendServiceIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
@@ -2084,11 +2084,12 @@ class WebBackendServiceIamMember extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     WebBackendServiceIamMemberState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return WebBackendServiceIamMember._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -2102,6 +2103,23 @@ class WebBackendServiceIamMember extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    condition = registerOutput<WebBackendServiceIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebBackendServiceIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    etag = registerOutput<String>('etag');
+    member = registerOutput<String>('member');
+    project = registerOutput<String>('project');
+    role = registerOutput<String>('role');
+    webBackendService = registerOutput<String>('webBackendService');
+  }
+
+  /// Creates a typed reference to an existing [WebBackendServiceIamMember] resource.
+  WebBackendServiceIamMember.reference(String urn)
+    : super(
+        'gcp:iap/webBackendServiceIamMember:WebBackendServiceIamMember',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     condition = registerOutput<WebBackendServiceIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebBackendServiceIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
     member = registerOutput<String>('member');

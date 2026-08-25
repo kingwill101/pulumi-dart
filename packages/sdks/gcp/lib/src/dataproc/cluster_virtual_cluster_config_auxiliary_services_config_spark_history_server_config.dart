@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfig {
   /// Resource name of an existing Dataproc Cluster to act as a Spark History Server for the workload.
   /// - - -
-  final pulumi.Input<String>? dataprocCluster;
+  final pulumi.Input<String?>? dataprocCluster;
 
   /// Creates a new [ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfig].
   /// [dataprocCluster] Resource name of an existing Dataproc Cluster to act as a Spark History Server for the workload.

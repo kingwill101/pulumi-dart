@@ -8,36 +8,36 @@ import 'entry_link_entry_reference.dart';
 class EntryLinkState {
   /// The Aspects attached to the Entry Link.
   /// Structure is documented below.
-  final pulumi.Input<List<EntryLinkAspect>>? aspects;
+  final pulumi.Input<List<EntryLinkAspect>?>? aspects;
   /// The time when the Entry Link was created.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The id of the entry group this entry link is in.
-  final pulumi.Input<String>? entryGroupId;
+  final pulumi.Input<String?>? entryGroupId;
   /// The id of the entry link to create.
-  final pulumi.Input<String>? entryLinkId;
+  final pulumi.Input<String?>? entryLinkId;
   /// Relative resource name of the Entry Link Type used to create this Entry Link. For example:
   /// projects/dataplex-types/locations/global/entryLinkTypes/definition
-  final pulumi.Input<String>? entryLinkType;
+  final pulumi.Input<String?>? entryLinkType;
   /// Specifies the Entries referenced in the Entry Link. There should be exactly two entry references.
   /// Structure is documented below.
-  final pulumi.Input<List<EntryLinkEntryReference>>? entryReferences;
+  final pulumi.Input<List<EntryLinkEntryReference>?>? entryReferences;
   /// The location for the entry.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The relative resource name of the Entry Link, of the form:
   /// projects/{project_id_or_number}/locations/{location_id}/entryGroups/{entry_group_id}/entryLinks/{entry_link_id}
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The time when the Entry Link was last updated.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [EntryLinkState].
   /// [aspects] The Aspects attached to the Entry Link.

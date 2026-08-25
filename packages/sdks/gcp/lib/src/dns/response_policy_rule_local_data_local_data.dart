@@ -6,10 +6,10 @@ class ResponsePolicyRuleLocalDataLocalData {
   /// For example, www.example.com.
   final pulumi.Input<String> name;
   /// As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1)
-  final pulumi.Input<List<String>>? rrdatas;
+  final pulumi.Input<List<String>?>? rrdatas;
   /// Number of seconds that this ResourceRecordSet can be cached by
   /// resolvers.
-  final pulumi.Input<int>? ttl;
+  final pulumi.Input<int?>? ttl;
   /// One of valid DNS resource types.
   /// Possible values are: `A`, `AAAA`, `CAA`, `CNAME`, `DNSKEY`, `DS`, `HTTPS`, `IPSECVPNKEY`, `MX`, `NAPTR`, `NS`, `PTR`, `SOA`, `SPF`, `SRV`, `SSHFP`, `SVCB`, `TLSA`, `TXT`.
   final pulumi.Input<String> type;
@@ -39,7 +39,7 @@ class ResponsePolicyRuleLocalDataLocalData {
     return ResponsePolicyRuleLocalDataLocalData(
       name: pulumi.Input.fromValue(map['name'] as String),
       rrdatas: (() { final guardedValue = map['rrdatas']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      ttl: (() { final guardedValue = map['ttl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      ttl: (() { final guardedValue = map['ttl']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }

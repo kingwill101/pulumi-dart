@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InsightsDatasetConfigSourceProjects {
   /// The list of project numbers to include in the DatasetConfig.
-  final pulumi.Input<List<String>>? projectNumbers;
+  final pulumi.Input<List<String>?>? projectNumbers;
 
   /// Creates a new [InsightsDatasetConfigSourceProjects].
   /// [projectNumbers] The list of project numbers to include in the DatasetConfig.

@@ -13,13 +13,13 @@ class OrganizationFeedArgs {
   /// assetNames and assetTypes. Only asset updates matching specified assetNames and assetTypes are
   /// exported to the feed. For example: //compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1.
   /// See https://cloud.google.com/apis/design/resourceNames#fullResourceName for more info.
-  final pulumi.Input<List<String>>? assetNames;
+  final pulumi.Input<List<String>?>? assetNames;
   /// A list of types of the assets to receive updates. You must specify either or both of assetNames
   /// and assetTypes. Only asset updates matching specified assetNames and assetTypes are exported to
   /// the feed. For example: "compute.googleapis.com/Disk"
   /// See https://cloud.google.com/asset-inventory/docs/supported-asset-types for a list of all
   /// supported asset types.
-  final pulumi.Input<List<String>>? assetTypes;
+  final pulumi.Input<List<String>?>? assetTypes;
   /// The project whose identity will be used when sending messages to the
   /// destination pubsub topic. It also specifies the project for API
   /// enablement check, quota, and billing.
@@ -30,17 +30,17 @@ class OrganizationFeedArgs {
   /// expression "temporal_asset.deleted == true" will only publish Asset deletions. Other fields of
   /// condition are optional.
   /// Structure is documented below.
-  final pulumi.Input<OrganizationFeedCondition>? condition;
+  final pulumi.Input<OrganizationFeedCondition?>? condition;
   /// Asset content type. If not specified, no content but the asset name and type will be returned.
   /// Possible values are: `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, `OS_INVENTORY`, `ACCESS_POLICY`.
-  final pulumi.Input<String>? contentType;
+  final pulumi.Input<String?>? contentType;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// This is the client-assigned asset feed identifier and it needs to be unique under a specific parent.
   final pulumi.Input<String> feedId;
   /// Output configuration for asset feed destination.

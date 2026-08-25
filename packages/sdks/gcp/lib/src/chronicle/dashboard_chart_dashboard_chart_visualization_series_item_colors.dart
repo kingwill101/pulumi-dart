@@ -5,7 +5,7 @@ import 'dashboard_chart_dashboard_chart_visualization_series_item_colors_color.d
 
 class DashboardChartDashboardChartVisualizationSeriesItemColors {
   /// Structure is documented below.
-  final pulumi.Input<List<DashboardChartDashboardChartVisualizationSeriesItemColorsColor>>? colors;
+  final pulumi.Input<List<DashboardChartDashboardChartVisualizationSeriesItemColorsColor>?>? colors;
 
   /// Creates a new [DashboardChartDashboardChartVisualizationSeriesItemColors].
   /// [colors] Structure is documented below.

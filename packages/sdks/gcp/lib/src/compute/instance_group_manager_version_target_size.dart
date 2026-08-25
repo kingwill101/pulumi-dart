@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceGroupManagerVersionTargetSize {
   /// , The number of instances which are managed for this version. Conflicts with `percent`.
-  final pulumi.Input<int>? fixed;
+  final pulumi.Input<int?>? fixed;
   /// , The number of instances (calculated as percentage) which are managed for this version. Conflicts with `fixed`.
   /// Note that when using `percent`, rounding will be in favor of explicitly set `targetSize` values; a managed instance group with 2 instances and 2 `version`s,
   /// one of which has a `target_size.percent` of `60` will create 2 instances of that `version`.
-  final pulumi.Input<int>? percent;
+  final pulumi.Input<int?>? percent;
 
   /// Creates a new [InstanceGroupManagerVersionTargetSize].
   /// [fixed] , The number of instances which are managed for this version. Conflicts with `percent`.
@@ -27,8 +27,8 @@ class InstanceGroupManagerVersionTargetSize {
 
   factory InstanceGroupManagerVersionTargetSize.fromMap(Map<String, dynamic> map) {
     return InstanceGroupManagerVersionTargetSize(
-      fixed: (() { final guardedValue = map['fixed']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      percent: (() { final guardedValue = map['percent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      fixed: (() { final guardedValue = map['fixed']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      percent: (() { final guardedValue = map['percent']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

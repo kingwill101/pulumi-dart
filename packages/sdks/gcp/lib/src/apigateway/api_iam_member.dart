@@ -984,7 +984,7 @@ class ApiIamMember extends pulumi.CustomResource {
           'gcp:apigateway/apiIamMember:ApiIamMember',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     api = registerOutput<String>('api');
     condition = registerOutput<ApiIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApiIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -999,11 +999,12 @@ class ApiIamMember extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ApiIamMemberState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ApiIamMember._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1017,6 +1018,23 @@ class ApiIamMember extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    api = registerOutput<String>('api');
+    condition = registerOutput<ApiIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApiIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    etag = registerOutput<String>('etag');
+    member = registerOutput<String>('member');
+    project = registerOutput<String>('project');
+    role = registerOutput<String>('role');
+  }
+
+  /// Creates a typed reference to an existing [ApiIamMember] resource.
+  ApiIamMember.reference(String urn)
+    : super(
+        'gcp:apigateway/apiIamMember:ApiIamMember',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     api = registerOutput<String>('api');
     condition = registerOutput<ApiIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApiIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');

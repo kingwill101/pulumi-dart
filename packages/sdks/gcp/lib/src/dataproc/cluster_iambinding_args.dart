@@ -12,7 +12,7 @@ class ClusterIAMBindingArgs {
   ///
   /// For `gcp.dataproc.ClusterIAMMember` or `gcp.dataproc.ClusterIAMBinding`:
   final pulumi.Input<String> cluster;
-  final pulumi.Input<ClusterIAMBindingCondition>? condition;
+  final pulumi.Input<ClusterIAMBindingCondition?>? condition;
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
   /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -24,10 +24,10 @@ class ClusterIAMBindingArgs {
   final pulumi.Input<List<String>> members;
   /// The project in which the cluster belongs. If it
   /// is not provided, the provider will use a default.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The region in which the cluster belongs. If it
   /// is not provided, the provider will use a default.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The role that should be applied. Only one
   /// `gcp.dataproc.ClusterIAMBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.

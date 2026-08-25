@@ -4,19 +4,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DatabaseInstanceSettingsPasswordValidationPolicy {
   /// Checks if the password is a combination of lowercase, uppercase, numeric, and non-alphanumeric characters.
-  final pulumi.Input<String>? complexity;
+  final pulumi.Input<String?>? complexity;
   /// Prevents the use of the username in the password.
-  final pulumi.Input<bool>? disallowUsernameSubstring;
+  final pulumi.Input<bool?>? disallowUsernameSubstring;
   /// Enables or disable the password validation policy.
   ///
   /// The optional `settings.performance_capture_config`  subblock for instances declares Performance Capture configuration. It contains:
   final pulumi.Input<bool> enablePasswordPolicy;
   /// Specifies the minimum number of characters that the password must have.
-  final pulumi.Input<int>? minLength;
+  final pulumi.Input<int?>? minLength;
   /// Specifies the minimum duration after which you can change the password.
-  final pulumi.Input<String>? passwordChangeInterval;
+  final pulumi.Input<String?>? passwordChangeInterval;
   /// Specifies the number of previous passwords that you can't reuse.
-  final pulumi.Input<int>? reuseInterval;
+  final pulumi.Input<int?>? reuseInterval;
 
   /// Creates a new [DatabaseInstanceSettingsPasswordValidationPolicy].
   /// [complexity] Checks if the password is a combination of lowercase, uppercase, numeric, and non-alphanumeric characters.
@@ -50,9 +50,9 @@ class DatabaseInstanceSettingsPasswordValidationPolicy {
       complexity: (() { final guardedValue = map['complexity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       disallowUsernameSubstring: (() { final guardedValue = map['disallowUsernameSubstring']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       enablePasswordPolicy: pulumi.Input.fromValue(map['enablePasswordPolicy'] as bool),
-      minLength: (() { final guardedValue = map['minLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      minLength: (() { final guardedValue = map['minLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       passwordChangeInterval: (() { final guardedValue = map['passwordChangeInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      reuseInterval: (() { final guardedValue = map['reuseInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      reuseInterval: (() { final guardedValue = map['reuseInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

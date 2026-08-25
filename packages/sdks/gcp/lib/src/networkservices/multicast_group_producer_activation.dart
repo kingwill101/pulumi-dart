@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'multicast_group_producer_activation_args.dart';
 import 'multicast_group_producer_activation_networkservices_state.dart';
+import 'multicast_group_producer_activation_state.dart';
 
 /// Create a multicast group producer activation in the specified location of the current project.
 ///
@@ -604,7 +605,7 @@ class MulticastGroupProducerActivation extends pulumi.CustomResource {
   /// UPDATING
   /// UPDATE_FAILED
   /// INACTIVE
-  late final pulumi.Output<List<Map<String, dynamic>>> states;
+  late final pulumi.Output<List<MulticastGroupProducerActivationState>> states;
   /// The Google-generated UUID for the resource. This value is
   /// unique across all multicast group producer activation resources. If a group
   /// producer activation is deleted and another with the same name is created,
@@ -626,21 +627,22 @@ class MulticastGroupProducerActivation extends pulumi.CustomResource {
           'gcp:networkservices/multicastGroupProducerActivation:MulticastGroupProducerActivation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    labels = registerOutput<Map<String, String>?>('labels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     multicastGroupProducerActivationId = registerOutput<String>('multicastGroupProducerActivationId');
     multicastGroupRangeActivation = registerOutput<String>('multicastGroupRangeActivation');
     multicastProducerAssociation = registerOutput<String>('multicastProducerAssociation');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    states = registerOutput<List<Map<String, dynamic>>>('states');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    states = registerOutput<List<MulticastGroupProducerActivationState>>('states', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MulticastGroupProducerActivationState>(guardedValue, (value) => MulticastGroupProducerActivationState.fromMap((value as Map).cast<String, dynamic>())); });
     uniqueId = registerOutput<String>('uniqueId');
     updateTime = registerOutput<String>('updateTime');
   }
@@ -650,11 +652,12 @@ class MulticastGroupProducerActivation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     MulticastGroupProducerActivationNetworkservicesState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return MulticastGroupProducerActivation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -671,16 +674,43 @@ class MulticastGroupProducerActivation extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    labels = registerOutput<Map<String, String>?>('labels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     multicastGroupProducerActivationId = registerOutput<String>('multicastGroupProducerActivationId');
     multicastGroupRangeActivation = registerOutput<String>('multicastGroupRangeActivation');
     multicastProducerAssociation = registerOutput<String>('multicastProducerAssociation');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    states = registerOutput<List<Map<String, dynamic>>>('states');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    states = registerOutput<List<MulticastGroupProducerActivationState>>('states', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MulticastGroupProducerActivationState>(guardedValue, (value) => MulticastGroupProducerActivationState.fromMap((value as Map).cast<String, dynamic>())); });
+    uniqueId = registerOutput<String>('uniqueId');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [MulticastGroupProducerActivation] resource.
+  MulticastGroupProducerActivation.reference(String urn)
+    : super(
+        'gcp:networkservices/multicastGroupProducerActivation:MulticastGroupProducerActivation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    multicastGroupProducerActivationId = registerOutput<String>('multicastGroupProducerActivationId');
+    multicastGroupRangeActivation = registerOutput<String>('multicastGroupRangeActivation');
+    multicastProducerAssociation = registerOutput<String>('multicastProducerAssociation');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    states = registerOutput<List<MulticastGroupProducerActivationState>>('states', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MulticastGroupProducerActivationState>(guardedValue, (value) => MulticastGroupProducerActivationState.fromMap((value as Map).cast<String, dynamic>())); });
     uniqueId = registerOutput<String>('uniqueId');
     updateTime = registerOutput<String>('updateTime');
   }

@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'mirroring_deployment_group_args.dart';
+import 'mirroring_deployment_group_connected_endpoint_group.dart';
+import 'mirroring_deployment_group_location.dart';
 import 'mirroring_deployment_group_state.dart';
 
 /// A deployment group aggregates many zonal mirroring backends (deployments)
@@ -215,7 +217,7 @@ import 'mirroring_deployment_group_state.dart';
 class MirroringDeploymentGroup extends pulumi.CustomResource {
   /// The list of endpoint groups that are connected to this resource.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> connectedEndpointGroups;
+  late final pulumi.Output<List<MirroringDeploymentGroupConnectedEndpointGroup>> connectedEndpointGroups;
   /// The timestamp when the resource was created.
   /// See https://google.aip.dev/148#timestamps.
   late final pulumi.Output<String> createTime;
@@ -239,7 +241,7 @@ class MirroringDeploymentGroup extends pulumi.CustomResource {
   late final pulumi.Output<String> location;
   /// The list of locations where the deployment group is present.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> locations;
+  late final pulumi.Output<List<MirroringDeploymentGroupLocation>> locations;
   /// The ID to use for the new deployment group, which will become the final
   /// component of the deployment group's resource name.
   late final pulumi.Output<String> mirroringDeploymentGroupId;
@@ -286,21 +288,22 @@ class MirroringDeploymentGroup extends pulumi.CustomResource {
           'gcp:networksecurity/mirroringDeploymentGroup:MirroringDeploymentGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
-    connectedEndpointGroups = registerOutput<List<Map<String, dynamic>>>('connectedEndpointGroups');
+    connectedEndpointGroups = registerOutput<List<MirroringDeploymentGroupConnectedEndpointGroup>>('connectedEndpointGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MirroringDeploymentGroupConnectedEndpointGroup>(guardedValue, (value) => MirroringDeploymentGroupConnectedEndpointGroup.fromMap((value as Map).cast<String, dynamic>())); });
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    labels = registerOutput<Map<String, String>?>('labels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
-    locations = registerOutput<List<Map<String, dynamic>>>('locations');
+    locations = registerOutput<List<MirroringDeploymentGroupLocation>>('locations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MirroringDeploymentGroupLocation>(guardedValue, (value) => MirroringDeploymentGroupLocation.fromMap((value as Map).cast<String, dynamic>())); });
     mirroringDeploymentGroupId = registerOutput<String>('mirroringDeploymentGroupId');
     this.name = registerOutput<String>('name');
     network = registerOutput<String>('network');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     reconciling = registerOutput<bool>('reconciling');
     state = registerOutput<String>('state');
     updateTime = registerOutput<String>('updateTime');
@@ -311,11 +314,12 @@ class MirroringDeploymentGroup extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     MirroringDeploymentGroupState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return MirroringDeploymentGroup._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -329,21 +333,49 @@ class MirroringDeploymentGroup extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    connectedEndpointGroups = registerOutput<List<Map<String, dynamic>>>('connectedEndpointGroups');
+    connectedEndpointGroups = registerOutput<List<MirroringDeploymentGroupConnectedEndpointGroup>>('connectedEndpointGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MirroringDeploymentGroupConnectedEndpointGroup>(guardedValue, (value) => MirroringDeploymentGroupConnectedEndpointGroup.fromMap((value as Map).cast<String, dynamic>())); });
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    labels = registerOutput<Map<String, String>?>('labels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
-    locations = registerOutput<List<Map<String, dynamic>>>('locations');
+    locations = registerOutput<List<MirroringDeploymentGroupLocation>>('locations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MirroringDeploymentGroupLocation>(guardedValue, (value) => MirroringDeploymentGroupLocation.fromMap((value as Map).cast<String, dynamic>())); });
     mirroringDeploymentGroupId = registerOutput<String>('mirroringDeploymentGroupId');
     this.name = registerOutput<String>('name');
     network = registerOutput<String>('network');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     reconciling = registerOutput<bool>('reconciling');
     this.state = registerOutput<String>('state');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [MirroringDeploymentGroup] resource.
+  MirroringDeploymentGroup.reference(String urn)
+    : super(
+        'gcp:networksecurity/mirroringDeploymentGroup:MirroringDeploymentGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    connectedEndpointGroups = registerOutput<List<MirroringDeploymentGroupConnectedEndpointGroup>>('connectedEndpointGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MirroringDeploymentGroupConnectedEndpointGroup>(guardedValue, (value) => MirroringDeploymentGroupConnectedEndpointGroup.fromMap((value as Map).cast<String, dynamic>())); });
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    locations = registerOutput<List<MirroringDeploymentGroupLocation>>('locations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MirroringDeploymentGroupLocation>(guardedValue, (value) => MirroringDeploymentGroupLocation.fromMap((value as Map).cast<String, dynamic>())); });
+    mirroringDeploymentGroupId = registerOutput<String>('mirroringDeploymentGroupId');
+    this.name = registerOutput<String>('name');
+    network = registerOutput<String>('network');
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    reconciling = registerOutput<bool>('reconciling');
+    state = registerOutput<String>('state');
     updateTime = registerOutput<String>('updateTime');
   }
 }

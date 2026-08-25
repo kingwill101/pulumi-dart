@@ -1014,7 +1014,7 @@ class Network extends pulumi.CustomResource {
           'gcp:compute/network:Network',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     autoCreateSubnetworks = registerOutput<bool?>('autoCreateSubnetworks');
     bgpAlwaysCompareMed = registerOutput<bool>('bgpAlwaysCompareMed');
@@ -1044,11 +1044,12 @@ class Network extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     NetworkState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Network._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1062,6 +1063,38 @@ class Network extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    autoCreateSubnetworks = registerOutput<bool?>('autoCreateSubnetworks');
+    bgpAlwaysCompareMed = registerOutput<bool>('bgpAlwaysCompareMed');
+    bgpBestPathSelectionMode = registerOutput<String>('bgpBestPathSelectionMode');
+    bgpInterRegionCost = registerOutput<String>('bgpInterRegionCost');
+    deleteBgpAlwaysCompareMed = registerOutput<bool?>('deleteBgpAlwaysCompareMed');
+    deleteDefaultRoutesOnCreate = registerOutput<bool?>('deleteDefaultRoutesOnCreate');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    enableUlaInternalIpv6 = registerOutput<bool?>('enableUlaInternalIpv6');
+    gatewayIpv4 = registerOutput<String>('gatewayIpv4');
+    internalIpv6Range = registerOutput<String>('internalIpv6Range');
+    mtu = registerOutput<int>('mtu');
+    this.name = registerOutput<String>('name');
+    networkFirewallPolicyEnforcementOrder = registerOutput<String?>('networkFirewallPolicyEnforcementOrder');
+    networkId = registerOutput<String>('networkId');
+    networkProfile = registerOutput<String?>('networkProfile');
+    numericId = registerOutput<String>('numericId');
+    params = registerOutput<NetworkParams?>('params', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkParams.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    project = registerOutput<String>('project');
+    routingMode = registerOutput<String>('routingMode');
+    selfLink = registerOutput<String>('selfLink');
+  }
+
+  /// Creates a typed reference to an existing [Network] resource.
+  Network.reference(String urn)
+    : super(
+        'gcp:compute/network:Network',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     autoCreateSubnetworks = registerOutput<bool?>('autoCreateSubnetworks');
     bgpAlwaysCompareMed = registerOutput<bool>('bgpAlwaysCompareMed');
     bgpBestPathSelectionMode = registerOutput<String>('bgpBestPathSelectionMode');

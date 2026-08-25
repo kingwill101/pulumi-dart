@@ -4,10 +4,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TableExternalCatalogTableOptionsStorageDescriptorSerdeInfo {
   /// Name of the SerDe. The maximum length is 256 characters.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Key-value pairs that define the initialization
   /// parameters for the serialization library. Maximum size 10 Kib.
-  final pulumi.Input<Map<String, String>>? parameters;
+  final pulumi.Input<Map<String, String>?>? parameters;
   /// Specifies a fully-qualified class name of
   /// the serialization library that is responsible for the translation of data
   /// between table representation and the underlying low-level input and output

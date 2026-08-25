@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'retrohunt_args.dart';
+import 'retrohunt_execution_interval.dart';
 import 'retrohunt_process_interval.dart';
 import 'retrohunt_state.dart';
 
@@ -270,7 +271,7 @@ class Retrohunt extends pulumi.CustomResource {
   /// When the start equals the end, the interval is empty (matches no time).
   /// When both start and end are unspecified, the interval matches any time.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> executionIntervals;
+  late final pulumi.Output<List<RetrohuntExecutionInterval>> executionIntervals;
   /// The unique identifier for the Chronicle instance, which is the same as the customer ID.
   late final pulumi.Output<String> instance;
   /// The location of the resource. This is the geographical region where the Chronicle instance resides, such as "us" or "europe-west2".
@@ -315,10 +316,10 @@ class Retrohunt extends pulumi.CustomResource {
           'gcp:chronicle/retrohunt:Retrohunt',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     retrohuntId = registerOutput<String>('RetrohuntId');
-    executionIntervals = registerOutput<List<Map<String, dynamic>>>('executionIntervals');
+    executionIntervals = registerOutput<List<RetrohuntExecutionInterval>>('executionIntervals', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RetrohuntExecutionInterval>(guardedValue, (value) => RetrohuntExecutionInterval.fromMap((value as Map).cast<String, dynamic>())); });
     instance = registerOutput<String>('instance');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -334,11 +335,12 @@ class Retrohunt extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RetrohuntState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Retrohunt._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -353,7 +355,7 @@ class Retrohunt extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     retrohuntId = registerOutput<String>('RetrohuntId');
-    executionIntervals = registerOutput<List<Map<String, dynamic>>>('executionIntervals');
+    executionIntervals = registerOutput<List<RetrohuntExecutionInterval>>('executionIntervals', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RetrohuntExecutionInterval>(guardedValue, (value) => RetrohuntExecutionInterval.fromMap((value as Map).cast<String, dynamic>())); });
     instance = registerOutput<String>('instance');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -362,5 +364,26 @@ class Retrohunt extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     rule = registerOutput<String>('rule');
     this.state = registerOutput<String>('state');
+  }
+
+  /// Creates a typed reference to an existing [Retrohunt] resource.
+  Retrohunt.reference(String urn)
+    : super(
+        'gcp:chronicle/retrohunt:Retrohunt',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    retrohuntId = registerOutput<String>('RetrohuntId');
+    executionIntervals = registerOutput<List<RetrohuntExecutionInterval>>('executionIntervals', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RetrohuntExecutionInterval>(guardedValue, (value) => RetrohuntExecutionInterval.fromMap((value as Map).cast<String, dynamic>())); });
+    instance = registerOutput<String>('instance');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    processInterval = registerOutput<RetrohuntProcessInterval>('processInterval', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RetrohuntProcessInterval.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    progressPercentage = registerOutput<double>('progressPercentage');
+    project = registerOutput<String>('project');
+    rule = registerOutput<String>('rule');
+    state = registerOutput<String>('state');
   }
 }

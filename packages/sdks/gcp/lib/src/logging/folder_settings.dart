@@ -319,7 +319,7 @@ class FolderSettings extends pulumi.CustomResource {
           'gcp:logging/folderSettings:FolderSettings',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     disableDefaultSink = registerOutput<bool>('disableDefaultSink');
     folder = registerOutput<String>('folder');
@@ -335,11 +335,12 @@ class FolderSettings extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FolderSettingsState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return FolderSettings._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -353,6 +354,24 @@ class FolderSettings extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    disableDefaultSink = registerOutput<bool>('disableDefaultSink');
+    folder = registerOutput<String>('folder');
+    kmsKeyName = registerOutput<String>('kmsKeyName');
+    kmsServiceAccountId = registerOutput<String>('kmsServiceAccountId');
+    loggingServiceAccountId = registerOutput<String>('loggingServiceAccountId');
+    this.name = registerOutput<String>('name');
+    storageLocation = registerOutput<String>('storageLocation');
+  }
+
+  /// Creates a typed reference to an existing [FolderSettings] resource.
+  FolderSettings.reference(String urn)
+    : super(
+        'gcp:logging/folderSettings:FolderSettings',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     disableDefaultSink = registerOutput<bool>('disableDefaultSink');
     folder = registerOutput<String>('folder');
     kmsKeyName = registerOutput<String>('kmsKeyName');

@@ -5,13 +5,13 @@ import 'ai_feature_store_entity_type_iam_member_condition.dart';
 
 /// Input properties used for looking up and filtering AiFeatureStoreEntityTypeIamMember resources.
 class AiFeatureStoreEntityTypeIamMemberState {
-  final pulumi.Input<AiFeatureStoreEntityTypeIamMemberCondition>? condition;
+  final pulumi.Input<AiFeatureStoreEntityTypeIamMemberCondition?>? condition;
   /// Used to find the parent resource to bind the IAM policy to
-  final pulumi.Input<String>? entitytype;
+  final pulumi.Input<String?>? entitytype;
   /// (Computed) The etag of the IAM policy.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}. Used to find the parent resource to bind the IAM policy to
-  final pulumi.Input<String>? featurestore;
+  final pulumi.Input<String?>? featurestore;
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
   /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -24,11 +24,11 @@ class AiFeatureStoreEntityTypeIamMemberState {
   /// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
   /// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
   /// * **Federated identities**: One or more federated identities in a workload or workforce identity pool, workload running on GKE, etc. Refer to the [Principal identifiers documentation](https://cloud.google.com/iam/docs/principal-identifiers#allow) for examples of targets and valid configuration. For example, "principal://iam.googleapis.com/locations/global/workforcePools/example-contractors/subject/joe@example.com"
-  final pulumi.Input<String>? member;
+  final pulumi.Input<String?>? member;
   /// The role that should be applied. Only one
   /// `gcp.vertex.AiFeatureStoreEntityTypeIamBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
-  final pulumi.Input<String>? role;
+  final pulumi.Input<String?>? role;
 
   /// Creates a new [AiFeatureStoreEntityTypeIamMemberState].
   /// [condition] Optional.

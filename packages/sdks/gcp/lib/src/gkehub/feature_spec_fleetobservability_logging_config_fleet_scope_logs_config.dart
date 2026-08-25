@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfig {
   /// Specified if fleet logging feature is enabled.
   /// Possible values are: `MODE_UNSPECIFIED`, `COPY`, `MOVE`.
-  final pulumi.Input<String>? mode;
+  final pulumi.Input<String?>? mode;
 
   /// Creates a new [FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfig].
   /// [mode] Specified if fleet logging feature is enabled.

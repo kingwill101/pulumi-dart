@@ -48,7 +48,7 @@ class GetHealthCheckGrpcTlsHealthCheck {
   factory GetHealthCheckGrpcTlsHealthCheck.fromMap(Map<String, dynamic> map) {
     return GetHealthCheckGrpcTlsHealthCheck(
       grpcServiceName: pulumi.Input.fromValue(map['grpcServiceName'] as String),
-      port: pulumi.Input.fromValue(map['port'] as int),
+      port: pulumi.Input.fromValue((map['port'] as num).toInt()),
       portSpecification: pulumi.Input.fromValue(map['portSpecification'] as String),
     );
   }

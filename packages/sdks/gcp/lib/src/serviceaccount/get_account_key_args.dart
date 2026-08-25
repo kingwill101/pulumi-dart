@@ -12,7 +12,7 @@ class GetAccountKeyArgs {
   /// is the email address or unique id of the service account.
   final pulumi.Input<String> name;
   /// The output format of the public key requested. TYPE_X509_PEM_FILE is the default output format.
-  final pulumi.Input<String>? publicKeyType;
+  final pulumi.Input<String?>? publicKeyType;
 
   /// Creates a new [GetAccountKeyArgs].
   /// [name] The name of the service account key. This must have format

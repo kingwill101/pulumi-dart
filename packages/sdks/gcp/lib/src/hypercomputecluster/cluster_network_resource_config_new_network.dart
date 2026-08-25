@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterNetworkResourceConfigNewNetwork {
   /// Description of the network. Maximum of 2048 characters.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// (Output)
   /// Name of the network, in the format
   /// `projects/{project}/global/networks/{network}`.

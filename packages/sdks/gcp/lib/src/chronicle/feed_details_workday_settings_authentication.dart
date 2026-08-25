@@ -4,25 +4,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FeedDetailsWorkdaySettingsAuthentication {
   /// Client ID.
-  final pulumi.Input<String>? clientId;
+  final pulumi.Input<String?>? clientId;
   /// Client Secret.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
-  final pulumi.Input<String>? clientSecret;
+  final pulumi.Input<String?>? clientSecret;
   /// Refresh Token.
-  final pulumi.Input<String>? refreshToken;
+  final pulumi.Input<String?>? refreshToken;
   /// The access token used to authenticate against Workday. This field is called
   /// "secret" to maintain backwards compatibility. Workday was (only) configured
   /// using username (which was unused) and secret (which is used as the access
   /// token). Either this field or all of the other OAuth fields below must be
   /// specified.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
-  final pulumi.Input<String>? secret;
+  final pulumi.Input<String?>? secret;
   /// Token endpoint to get the OAuth token from.
-  final pulumi.Input<String>? tokenEndpoint;
+  final pulumi.Input<String?>? tokenEndpoint;
   /// Username. This is unused: Workday feeds were originally configured using a
   /// username and secret authentication method, but only the secret field was
   /// used, and it was used to supply the OAuth access token.
-  final pulumi.Input<String>? user;
+  final pulumi.Input<String?>? user;
 
   /// Creates a new [FeedDetailsWorkdaySettingsAuthentication].
   /// [clientId] Client ID.

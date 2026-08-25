@@ -8,26 +8,26 @@ class ClusterClusterAutoscaling {
   /// Contains defaults for a node pool created by NAP. A subset of fields also apply to
   /// GKE Autopilot clusters.
   /// Structure is documented below.
-  final pulumi.Input<ClusterClusterAutoscalingAutoProvisioningDefaults>? autoProvisioningDefaults;
+  final pulumi.Input<ClusterClusterAutoscalingAutoProvisioningDefaults?>? autoProvisioningDefaults;
   /// The list of Google Compute Engine
   /// [zones](https://cloud.google.com/compute/docs/zones#available) in which the
   /// NodePool's nodes can be created by NAP.
-  final pulumi.Input<List<String>>? autoProvisioningLocations;
+  final pulumi.Input<List<String>?>? autoProvisioningLocations;
   /// Configuration
   /// options for the [Autoscaling profile](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-autoscaler#autoscaling_profiles)
   /// feature, which lets you choose whether the cluster autoscaler should optimize for resource utilization or resource availability
   /// when deciding to remove nodes from a cluster. Can be `BALANCED` or `OPTIMIZE_UTILIZATION`. Defaults to `BALANCED`.
-  final pulumi.Input<String>? autoscalingProfile;
+  final pulumi.Input<String?>? autoscalingProfile;
   /// Specifies whether default compute class behaviour is enabled. If enabled, cluster autoscaler will use Compute Class with name default for all the workloads, if not overriden.
-  final pulumi.Input<bool>? defaultComputeClassEnabled;
+  final pulumi.Input<bool?>? defaultComputeClassEnabled;
   /// Whether node auto-provisioning is enabled. Must be supplied for GKE Standard clusters, `true` is implied
   /// for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// Global constraints for machine resources in the
   /// cluster. Configuring the `cpu` and `memory` types is required if node
   /// auto-provisioning is enabled. These limits will apply to node pool autoscaling
   /// in addition to node auto-provisioning. Limits can't be unset entirely, they can only be replaced. Structure is documented below.
-  final pulumi.Input<List<ClusterClusterAutoscalingResourceLimit>>? resourceLimits;
+  final pulumi.Input<List<ClusterClusterAutoscalingResourceLimit>?>? resourceLimits;
 
   /// Creates a new [ClusterClusterAutoscaling].
   /// [autoProvisioningDefaults] Contains defaults for a node pool created by NAP. A subset of fields also apply to

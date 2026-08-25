@@ -31,7 +31,7 @@ class GetControlProjectIntelligenceFindingsFindingCrossRegionEgressSpike {
 
   factory GetControlProjectIntelligenceFindingsFindingCrossRegionEgressSpike.fromMap(Map<String, dynamic> map) {
     return GetControlProjectIntelligenceFindingsFindingCrossRegionEgressSpike(
-      percentageIncrease: pulumi.Input.fromValue(map['percentageIncrease'] as double),
+      percentageIncrease: pulumi.Input.fromValue((map['percentageIncrease'] as num).toDouble()),
       topBuckets: pulumi.Input.fromValue(pulumi.Input.decodeList<GetControlProjectIntelligenceFindingsFindingCrossRegionEgressSpikeTopBucket>(map['topBuckets']!, (value) => GetControlProjectIntelligenceFindingsFindingCrossRegionEgressSpikeTopBucket.fromMap((value as Map).cast<String, dynamic>()))),
       totalEgressBytes: pulumi.Input.fromValue(map['totalEgressBytes'] as String),
     );

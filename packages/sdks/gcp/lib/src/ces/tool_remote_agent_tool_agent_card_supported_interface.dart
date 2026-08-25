@@ -6,18 +6,18 @@ class ToolRemoteAgentToolAgentCardSupportedInterface {
   /// (Output)
   /// The protocol binding supported at this URL. The core ones officially
   /// supported are JSONRPC, GRPC and HTTP+JSON.
-  final pulumi.Input<String>? protocolBinding;
+  final pulumi.Input<String?>? protocolBinding;
   /// (Output)
   /// The version of the A2A protocol this interface exposes.
   /// Examples: "0.3", "1.0"
-  final pulumi.Input<String>? protocolVersion;
+  final pulumi.Input<String?>? protocolVersion;
   /// (Output)
   /// Tenant ID to be used in the request when calling the agent.
-  final pulumi.Input<String>? tenant;
+  final pulumi.Input<String?>? tenant;
   /// (Output)
   /// The URL where this interface is available. Must be a valid absolute
   /// HTTPS URL in production.
-  final pulumi.Input<String>? url;
+  final pulumi.Input<String?>? url;
 
   /// Creates a new [ToolRemoteAgentToolAgentCardSupportedInterface].
   /// [protocolBinding] (Output)

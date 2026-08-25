@@ -15,22 +15,22 @@ class AiIndexArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The description of the Index.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The display name of the Index. The name can be up to 128 characters long and can consist of any UTF-8 characters.
   final pulumi.Input<String> displayName;
   /// Customer-managed encryption key spec for an Index. If set, this Index and all sub-resources of this Index will be secured by this key.
   /// Structure is documented below.
-  final pulumi.Input<AiIndexEncryptionSpec>? encryptionSpec;
+  final pulumi.Input<AiIndexEncryptionSpec?>? encryptionSpec;
   /// The update method to use with this Index. The value must be the followings. If not set, BATCH_UPDATE will be used by default.
   /// * BATCH_UPDATE: user can call indexes.patch with files on Cloud Storage of datapoints to update.
   /// * STREAM_UPDATE: user can call indexes.upsertDatapoints/DeleteDatapoints to update the Index and the updates will be applied in corresponding DeployedIndexes in nearly real-time.
-  final pulumi.Input<String>? indexUpdateMethod;
+  final pulumi.Input<String?>? indexUpdateMethod;
   /// The labels with user-defined metadata to organize your Indexes.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Additional information about the Index.
   /// Although this field is not marked as required in the API specification, it is currently required when creating an Index and must be provided.
   /// Attempts to create an Index without this field will result in an API error.
@@ -38,9 +38,9 @@ class AiIndexArgs {
   final pulumi.Input<AiIndexMetadata> metadata;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The region of the index. eg us-central1
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [AiIndexArgs].
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

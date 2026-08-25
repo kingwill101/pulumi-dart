@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'repository_group_args.dart';
+import 'repository_group_repository.dart';
 import 'repository_group_state.dart';
 
 /// The resource for managing Repository Group for Gemini Code Assist.
@@ -228,7 +229,7 @@ class RepositoryGroup extends pulumi.CustomResource {
   late final pulumi.Output<Map<String, String>> pulumiLabels;
   /// Required. List of repositories to group.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> repositories;
+  late final pulumi.Output<List<RepositoryGroupRepository>> repositories;
   /// Required. Id of the Repository Group.
   late final pulumi.Output<String> repositoryGroupId;
   /// Output only. Update time stamp.
@@ -246,18 +247,19 @@ class RepositoryGroup extends pulumi.CustomResource {
           'gcp:gemini/repositoryGroup:RepositoryGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     codeRepositoryIndex = registerOutput<String>('codeRepositoryIndex');
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    labels = registerOutput<Map<String, String>?>('labels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    repositories = registerOutput<List<Map<String, dynamic>>>('repositories');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    repositories = registerOutput<List<RepositoryGroupRepository>>('repositories', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RepositoryGroupRepository>(guardedValue, (value) => RepositoryGroupRepository.fromMap((value as Map).cast<String, dynamic>())); });
     repositoryGroupId = registerOutput<String>('repositoryGroupId');
     updateTime = registerOutput<String>('updateTime');
   }
@@ -267,11 +269,12 @@ class RepositoryGroup extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RepositoryGroupState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RepositoryGroup._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -288,13 +291,37 @@ class RepositoryGroup extends pulumi.CustomResource {
     codeRepositoryIndex = registerOutput<String>('codeRepositoryIndex');
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    labels = registerOutput<Map<String, String>?>('labels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    repositories = registerOutput<List<Map<String, dynamic>>>('repositories');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    repositories = registerOutput<List<RepositoryGroupRepository>>('repositories', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RepositoryGroupRepository>(guardedValue, (value) => RepositoryGroupRepository.fromMap((value as Map).cast<String, dynamic>())); });
+    repositoryGroupId = registerOutput<String>('repositoryGroupId');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [RepositoryGroup] resource.
+  RepositoryGroup.reference(String urn)
+    : super(
+        'gcp:gemini/repositoryGroup:RepositoryGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    codeRepositoryIndex = registerOutput<String>('codeRepositoryIndex');
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    repositories = registerOutput<List<RepositoryGroupRepository>>('repositories', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RepositoryGroupRepository>(guardedValue, (value) => RepositoryGroupRepository.fromMap((value as Map).cast<String, dynamic>())); });
     repositoryGroupId = registerOutput<String>('repositoryGroupId');
     updateTime = registerOutput<String>('updateTime');
   }

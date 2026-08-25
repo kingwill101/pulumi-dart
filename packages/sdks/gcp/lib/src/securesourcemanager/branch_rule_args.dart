@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_securesourcemanager_branch_rule_branch_rule_args_doc}
 class BranchRuleArgs {
   /// Determines if allow stale reviews or approvals before merging to the branch.
-  final pulumi.Input<bool>? allowStaleReviews;
+  final pulumi.Input<bool?>? allowStaleReviews;
   /// The ID for the BranchRule.
   final pulumi.Input<String> branchRuleId;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -17,28 +17,28 @@ class BranchRuleArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Determines if the branch rule is disabled or not.
-  final pulumi.Input<bool>? disabled;
+  final pulumi.Input<bool?>? disabled;
   /// The BranchRule matches branches based on the specified regular expression. Use .* to match all branches.
   final pulumi.Input<String> includePattern;
   /// The location for the Repository.
   final pulumi.Input<String> location;
   /// The minimum number of approvals required for the branch rule to be matched.
-  final pulumi.Input<int>? minimumApprovalsCount;
+  final pulumi.Input<int?>? minimumApprovalsCount;
   /// The minimum number of reviews required for the branch rule to be matched.
-  final pulumi.Input<int>? minimumReviewsCount;
+  final pulumi.Input<int?>? minimumReviewsCount;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The ID for the Repository.
   final pulumi.Input<String> repositoryId;
   /// Determines if require comments resolved before merging to the branch.
-  final pulumi.Input<bool>? requireCommentsResolved;
+  final pulumi.Input<bool?>? requireCommentsResolved;
   /// Determines if require linear history before merging to the branch.
-  final pulumi.Input<bool>? requireLinearHistory;
+  final pulumi.Input<bool?>? requireLinearHistory;
   /// Determines if the branch rule requires a pull request or not.
-  final pulumi.Input<bool>? requirePullRequest;
+  final pulumi.Input<bool?>? requirePullRequest;
 
   /// Creates a new [BranchRuleArgs].
   /// [allowStaleReviews] Determines if allow stale reviews or approvals before merging to the branch.
@@ -96,8 +96,8 @@ class BranchRuleArgs {
       disabled: (() { final guardedValue = map['disabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       includePattern: pulumi.Input.fromValue(map['includePattern'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
-      minimumApprovalsCount: (() { final guardedValue = map['minimumApprovalsCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      minimumReviewsCount: (() { final guardedValue = map['minimumReviewsCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      minimumApprovalsCount: (() { final guardedValue = map['minimumApprovalsCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      minimumReviewsCount: (() { final guardedValue = map['minimumReviewsCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       repositoryId: pulumi.Input.fromValue(map['repositoryId'] as String),
       requireCommentsResolved: (() { final guardedValue = map['requireCommentsResolved']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),

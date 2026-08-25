@@ -99,16 +99,16 @@ class GetBackendServiceOutlierDetection {
   factory GetBackendServiceOutlierDetection.fromMap(Map<String, dynamic> map) {
     return GetBackendServiceOutlierDetection(
       baseEjectionTimes: pulumi.Input.fromValue(pulumi.Input.decodeList<GetBackendServiceOutlierDetectionBaseEjectionTime>(map['baseEjectionTimes']!, (value) => GetBackendServiceOutlierDetectionBaseEjectionTime.fromMap((value as Map).cast<String, dynamic>()))),
-      consecutiveErrors: pulumi.Input.fromValue(map['consecutiveErrors'] as int),
-      consecutiveGatewayFailure: pulumi.Input.fromValue(map['consecutiveGatewayFailure'] as int),
-      enforcingConsecutiveErrors: pulumi.Input.fromValue(map['enforcingConsecutiveErrors'] as int),
-      enforcingConsecutiveGatewayFailure: pulumi.Input.fromValue(map['enforcingConsecutiveGatewayFailure'] as int),
-      enforcingSuccessRate: pulumi.Input.fromValue(map['enforcingSuccessRate'] as int),
+      consecutiveErrors: pulumi.Input.fromValue((map['consecutiveErrors'] as num).toInt()),
+      consecutiveGatewayFailure: pulumi.Input.fromValue((map['consecutiveGatewayFailure'] as num).toInt()),
+      enforcingConsecutiveErrors: pulumi.Input.fromValue((map['enforcingConsecutiveErrors'] as num).toInt()),
+      enforcingConsecutiveGatewayFailure: pulumi.Input.fromValue((map['enforcingConsecutiveGatewayFailure'] as num).toInt()),
+      enforcingSuccessRate: pulumi.Input.fromValue((map['enforcingSuccessRate'] as num).toInt()),
       intervals: pulumi.Input.fromValue(pulumi.Input.decodeList<GetBackendServiceOutlierDetectionInterval>(map['intervals']!, (value) => GetBackendServiceOutlierDetectionInterval.fromMap((value as Map).cast<String, dynamic>()))),
-      maxEjectionPercent: pulumi.Input.fromValue(map['maxEjectionPercent'] as int),
-      successRateMinimumHosts: pulumi.Input.fromValue(map['successRateMinimumHosts'] as int),
-      successRateRequestVolume: pulumi.Input.fromValue(map['successRateRequestVolume'] as int),
-      successRateStdevFactor: pulumi.Input.fromValue(map['successRateStdevFactor'] as int),
+      maxEjectionPercent: pulumi.Input.fromValue((map['maxEjectionPercent'] as num).toInt()),
+      successRateMinimumHosts: pulumi.Input.fromValue((map['successRateMinimumHosts'] as num).toInt()),
+      successRateRequestVolume: pulumi.Input.fromValue((map['successRateRequestVolume'] as num).toInt()),
+      successRateStdevFactor: pulumi.Input.fromValue((map['successRateStdevFactor'] as num).toInt()),
     );
   }
 }

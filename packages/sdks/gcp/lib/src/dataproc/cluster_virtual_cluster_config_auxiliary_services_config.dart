@@ -6,9 +6,9 @@ import 'cluster_virtual_cluster_config_auxiliary_services_config_spark_history_s
 
 class ClusterVirtualClusterConfigAuxiliaryServicesConfig {
   /// The Hive Metastore configuration for this workload.
-  final pulumi.Input<ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfig>? metastoreConfig;
+  final pulumi.Input<ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfig?>? metastoreConfig;
   /// The Spark History Server configuration for the workload.
-  final pulumi.Input<ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfig>? sparkHistoryServerConfig;
+  final pulumi.Input<ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfig?>? sparkHistoryServerConfig;
 
   /// Creates a new [ClusterVirtualClusterConfigAuxiliaryServicesConfig].
   /// [metastoreConfig] The Hive Metastore configuration for this workload.

@@ -14,26 +14,26 @@ class AppVersionSnapshotAppDefaultChannelProfile {
   /// TWILIO
   /// GOOGLE_TELEPHONY_PLATFORM
   /// CONTACT_CENTER_AS_A_SERVICE
-  final pulumi.Input<String>? channelType;
+  final pulumi.Input<String?>? channelType;
   /// (Output)
   /// Whether to disable user barge-in in the conversation.
   /// - true: User interruptions are disabled while the agent is speaking.
   /// - false: The agent retains automatic control over when the user can interrupt.
-  final pulumi.Input<bool>? disableBargeInControl;
+  final pulumi.Input<bool?>? disableBargeInControl;
   /// (Output)
   /// Whether to disable DTMF (dual-tone multi-frequency).
-  final pulumi.Input<bool>? disableDtmf;
+  final pulumi.Input<bool?>? disableDtmf;
   /// (Output)
   /// Represents the persona property of a channel.
   /// Structure is documented below.
-  final pulumi.Input<List<AppVersionSnapshotAppDefaultChannelProfilePersonaProperty>>? personaProperties;
+  final pulumi.Input<List<AppVersionSnapshotAppDefaultChannelProfilePersonaProperty>?>? personaProperties;
   /// (Output)
   /// The unique identifier of the channel profile.
-  final pulumi.Input<String>? profileId;
+  final pulumi.Input<String?>? profileId;
   /// (Output)
   /// Message for configuration for the web widget.
   /// Structure is documented below.
-  final pulumi.Input<List<AppVersionSnapshotAppDefaultChannelProfileWebWidgetConfig>>? webWidgetConfigs;
+  final pulumi.Input<List<AppVersionSnapshotAppDefaultChannelProfileWebWidgetConfig>?>? webWidgetConfigs;
 
   /// Creates a new [AppVersionSnapshotAppDefaultChannelProfile].
   /// [channelType] (Output)

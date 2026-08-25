@@ -6,7 +6,7 @@ import 'stream_backfill_all_oracle_excluded_objects_oracle_schema_oracle_table_o
 class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable {
   /// Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
   /// Structure is documented below.
-  final pulumi.Input<List<StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumn>>? oracleColumns;
+  final pulumi.Input<List<StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumn>?>? oracleColumns;
   /// Table name.
   final pulumi.Input<String> table;
 

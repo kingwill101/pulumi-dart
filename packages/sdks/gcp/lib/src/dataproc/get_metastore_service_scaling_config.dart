@@ -33,7 +33,7 @@ class GetMetastoreServiceScalingConfig {
     return GetMetastoreServiceScalingConfig(
       autoscalingConfigs: pulumi.Input.fromValue(pulumi.Input.decodeList<GetMetastoreServiceScalingConfigAutoscalingConfig>(map['autoscalingConfigs']!, (value) => GetMetastoreServiceScalingConfigAutoscalingConfig.fromMap((value as Map).cast<String, dynamic>()))),
       instanceSize: pulumi.Input.fromValue(map['instanceSize'] as String),
-      scalingFactor: pulumi.Input.fromValue(map['scalingFactor'] as double),
+      scalingFactor: pulumi.Input.fromValue((map['scalingFactor'] as num).toDouble()),
     );
   }
 }

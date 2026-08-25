@@ -9,11 +9,11 @@ class FeedDetailsProofpointMailSettingsAuthentication {
   /// token). Either this field or all of the other OAuth fields below must be
   /// specified.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
-  final pulumi.Input<String>? secret;
+  final pulumi.Input<String?>? secret;
   /// Username. This is unused: Workday feeds were originally configured using a
   /// username and secret authentication method, but only the secret field was
   /// used, and it was used to supply the OAuth access token.
-  final pulumi.Input<String>? user;
+  final pulumi.Input<String?>? user;
 
   /// Creates a new [FeedDetailsProofpointMailSettingsAuthentication].
   /// [secret] The access token used to authenticate against Workday. This field is called

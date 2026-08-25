@@ -5,34 +5,34 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering ReservationAssignment resources.
 class ReservationAssignmentState {
   /// The resource which will use the reservation. E.g. projects/myproject, folders/123, organizations/456.
-  final pulumi.Input<String>? assignee;
+  final pulumi.Input<String?>? assignee;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Types of job, which could be specified when using the reservation. Possible values: JOB_TYPE_UNSPECIFIED, PIPELINE, QUERY, CONTINUOUS
-  final pulumi.Input<String>? jobType;
+  final pulumi.Input<String?>? jobType;
   /// The location for the resource
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Output only. The resource name of the assignment.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Optional. Represents the principal for this assignment. If not empty, jobs run by this principal will utilize the associated reservation. Otherwise, jobs will fall back to using the reservation assigned to the project, folder, or organization (in that order). If no reservation is assigned at any of these levels, on-demand capacity will be used. The supported formats are:
   /// * `principal://goog/subject/USER_EMAIL_ADDRESS` for users,
   /// * `principal://iam.googleapis.com/projects/-/serviceAccounts/SA_EMAIL_ADDRESS` for service accounts,
   /// * `principal://iam.googleapis.com/projects/PROJECT_NUMBER/locations/global/workloadIdentityPools/POOL_ID/subject/SUBJECT_ID` for workload identity pool identities.
   /// * The special value `unknownOrDeletedUser` represents principals which cannot be read from the user info service, for example deleted users.
-  final pulumi.Input<String>? principal;
+  final pulumi.Input<String?>? principal;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The reservation for the resource
-  final pulumi.Input<String>? reservation;
+  final pulumi.Input<String?>? reservation;
   /// Assignment will remain in PENDING state if no active capacity commitment is present. It will become ACTIVE when some capacity commitment becomes active.
   /// Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
 
   /// Creates a new [ReservationAssignmentState].
   /// [assignee] The resource which will use the reservation. E.g. projects/myproject, folders/123, organizations/456.

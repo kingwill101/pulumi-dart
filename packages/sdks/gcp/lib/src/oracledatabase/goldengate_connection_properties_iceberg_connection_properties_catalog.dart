@@ -17,16 +17,16 @@ class GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalog {
   final pulumi.Input<String> catalogType;
   /// The Glue Iceberg catalog.
   /// Structure is documented below.
-  final pulumi.Input<GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalog>? glueIcebergCatalog;
+  final pulumi.Input<GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalog?>? glueIcebergCatalog;
   /// The Nessie Iceberg catalog.
   /// Structure is documented below.
-  final pulumi.Input<GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalog>? nessieIcebergCatalog;
+  final pulumi.Input<GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalog?>? nessieIcebergCatalog;
   /// The Polaris Iceberg catalog.
   /// Structure is documented below.
-  final pulumi.Input<GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalog>? polarisIcebergCatalog;
+  final pulumi.Input<GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalog?>? polarisIcebergCatalog;
   /// The REST Iceberg catalog.
   /// Structure is documented below.
-  final pulumi.Input<GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalog>? restIcebergCatalog;
+  final pulumi.Input<GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalog?>? restIcebergCatalog;
 
   /// Creates a new [GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalog].
   /// [catalogType] The type of Iceberg catalog.

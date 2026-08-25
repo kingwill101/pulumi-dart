@@ -16,31 +16,31 @@ class DataExchangeArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Description of the data exchange.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Type of discovery on the discovery page for all the listings under this exchange. Cannot be set for a Data Clean Room. Updating this field also updates (overwrites) the discoveryType field for all the listings under this exchange.
   /// Possible values are: `DISCOVERY_TYPE_PRIVATE`, `DISCOVERY_TYPE_PUBLIC`.
-  final pulumi.Input<String>? discoveryType;
+  final pulumi.Input<String?>? discoveryType;
   /// Human-readable display name of the data exchange. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and must not start or end with spaces.
   final pulumi.Input<String> displayName;
   /// Documentation describing the data exchange.
-  final pulumi.Input<String>? documentation;
+  final pulumi.Input<String?>? documentation;
   /// Base64 encoded image representing the data exchange.
-  final pulumi.Input<String>? icon;
+  final pulumi.Input<String?>? icon;
   /// The name of the location this data exchange.
   final pulumi.Input<String> location;
   /// If true, subscriber email logging is enabled and all queries on the linked dataset will log the email address of the querying user. Once enabled, this setting cannot be turned off.
-  final pulumi.Input<bool>? logLinkedDatasetQueryUserEmail;
+  final pulumi.Input<bool?>? logLinkedDatasetQueryUserEmail;
   /// Email or URL of the primary point of contact of the data exchange.
-  final pulumi.Input<String>? primaryContact;
+  final pulumi.Input<String?>? primaryContact;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Configurable data sharing environment option for a data exchange.
   /// This field is required for data clean room exchanges.
   /// Structure is documented below.
-  final pulumi.Input<DataExchangeSharingEnvironmentConfig>? sharingEnvironmentConfig;
+  final pulumi.Input<DataExchangeSharingEnvironmentConfig?>? sharingEnvironmentConfig;
 
   /// Creates a new [DataExchangeArgs].
   /// [dataExchangeId] The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.

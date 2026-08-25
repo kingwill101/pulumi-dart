@@ -17,7 +17,7 @@ class ToolsetOpenApiToolsetApiAuthenticationOauthConfig {
   /// CLIENT_CREDENTIAL
   final pulumi.Input<String> oauthGrantType;
   /// The OAuth scopes to grant.
-  final pulumi.Input<List<String>>? scopes;
+  final pulumi.Input<List<String>?>? scopes;
   /// The token endpoint in the OAuth provider to exchange for an access token.
   final pulumi.Input<String> tokenEndpoint;
 

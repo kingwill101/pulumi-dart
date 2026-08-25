@@ -14,25 +14,25 @@ class MulticloudDataTransferConfigArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// A description of this resource.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// User-defined labels.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The location of the multicloud data transfer config.
   final pulumi.Input<String> location;
   /// The name of the MulticloudDataTransferConfig resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Maps services to their current or planned states. Service names are keys,
   /// and the associated values describe the state of the service.
   /// Structure is documented below.
-  final pulumi.Input<List<MulticloudDataTransferConfigService>>? services;
+  final pulumi.Input<List<MulticloudDataTransferConfigService>?>? services;
 
   /// Creates a new [MulticloudDataTransferConfigArgs].
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

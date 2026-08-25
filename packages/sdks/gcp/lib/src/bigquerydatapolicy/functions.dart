@@ -134,3 +134,14 @@ Future<GetIamPolicyResult> getIamPolicy(
   );
   return GetIamPolicyResult.fromMap(result);
 }
+
+pulumi.Output<GetIamPolicyResult> getIamPolicyOutput(
+  GetIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:bigquerydatapolicy/getIamPolicy:getIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetIamPolicyResult.fromMap);
+}

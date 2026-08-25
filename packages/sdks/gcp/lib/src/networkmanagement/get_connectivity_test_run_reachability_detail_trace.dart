@@ -38,7 +38,7 @@ class GetConnectivityTestRunReachabilityDetailTrace {
   factory GetConnectivityTestRunReachabilityDetailTrace.fromMap(Map<String, dynamic> map) {
     return GetConnectivityTestRunReachabilityDetailTrace(
       endpointInfos: pulumi.Input.fromValue(pulumi.Input.decodeList<GetConnectivityTestRunReachabilityDetailTraceEndpointInfo>(map['endpointInfos']!, (value) => GetConnectivityTestRunReachabilityDetailTraceEndpointInfo.fromMap((value as Map).cast<String, dynamic>()))),
-      forwardTraceId: pulumi.Input.fromValue(map['forwardTraceId'] as int),
+      forwardTraceId: pulumi.Input.fromValue((map['forwardTraceId'] as num).toInt()),
       steps: pulumi.Input.fromValue(pulumi.Input.decodeList<GetConnectivityTestRunReachabilityDetailTraceStep>(map['steps']!, (value) => GetConnectivityTestRunReachabilityDetailTraceStep.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }

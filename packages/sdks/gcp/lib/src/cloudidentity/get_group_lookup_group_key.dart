@@ -14,7 +14,7 @@ class GetGroupLookupGroupKey {
   /// If populated, the EntityKey represents an external-identity-mapped group.
   /// The namespace must correspond to an identity source created in Admin Console
   /// and must be in the form of `identitysources/{identity_source_id}`.
-  final pulumi.Input<String>? namespace;
+  final pulumi.Input<String?>? namespace;
 
   /// Creates a new [GetGroupLookupGroupKey].
   /// [id] (Required) The ID of the entity.

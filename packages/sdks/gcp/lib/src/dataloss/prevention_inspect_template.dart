@@ -2178,7 +2178,7 @@ class PreventionInspectTemplate extends pulumi.CustomResource {
           'gcp:dataloss/preventionInspectTemplate:PreventionInspectTemplate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     allowLimitedAvailabilityInfoTypes = registerOutput<bool?>('allowLimitedAvailabilityInfoTypes');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -2195,11 +2195,12 @@ class PreventionInspectTemplate extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PreventionInspectTemplateState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return PreventionInspectTemplate._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -2213,6 +2214,25 @@ class PreventionInspectTemplate extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    allowLimitedAvailabilityInfoTypes = registerOutput<bool?>('allowLimitedAvailabilityInfoTypes');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String?>('displayName');
+    inspectConfig = registerOutput<PreventionInspectTemplateInspectConfig?>('inspectConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PreventionInspectTemplateInspectConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    parent = registerOutput<String>('parent');
+    templateId = registerOutput<String>('templateId');
+  }
+
+  /// Creates a typed reference to an existing [PreventionInspectTemplate] resource.
+  PreventionInspectTemplate.reference(String urn)
+    : super(
+        'gcp:dataloss/preventionInspectTemplate:PreventionInspectTemplate',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     allowLimitedAvailabilityInfoTypes = registerOutput<bool?>('allowLimitedAvailabilityInfoTypes');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');

@@ -6,7 +6,7 @@ class ClusterNodeConfigKubeletConfigMemoryManager {
   /// The [Memory
   /// Manager](https://kubernetes.io/docs/tasks/administer-cluster/memory-manager/)
   /// policy can be set to None (default) or Static. This policy dictates how memory alignment is handled on the node.  If unset (or set to the empty string `""`), the API will treat the field as if set to "None".
-  final pulumi.Input<String>? policy;
+  final pulumi.Input<String?>? policy;
 
   /// Creates a new [ClusterNodeConfigKubeletConfigMemoryManager].
   /// [policy] The [Memory

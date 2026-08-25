@@ -6,7 +6,7 @@ class ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocati
   /// (Output)
   /// Name of the Sole Tenant node. Consult
   /// https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes
-  final pulumi.Input<String>? nodeName;
+  final pulumi.Input<String?>? nodeName;
 
   /// Creates a new [ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocationNode].
   /// [nodeName] (Output)

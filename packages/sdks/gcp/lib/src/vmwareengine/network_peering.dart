@@ -533,7 +533,7 @@ class NetworkPeering extends pulumi.CustomResource {
           'gcp:vmwareengine/networkPeering:NetworkPeering',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -559,11 +559,12 @@ class NetworkPeering extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     NetworkPeeringState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return NetworkPeering._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -589,6 +590,34 @@ class NetworkPeering extends pulumi.CustomResource {
     peerNetworkType = registerOutput<String>('peerNetworkType');
     project = registerOutput<String>('project');
     this.state = registerOutput<String>('state');
+    stateDetails = registerOutput<String>('stateDetails');
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
+    vmwareEngineNetwork = registerOutput<String>('vmwareEngineNetwork');
+    vmwareEngineNetworkCanonical = registerOutput<String>('vmwareEngineNetworkCanonical');
+  }
+
+  /// Creates a typed reference to an existing [NetworkPeering] resource.
+  NetworkPeering.reference(String urn)
+    : super(
+        'gcp:vmwareengine/networkPeering:NetworkPeering',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    exportCustomRoutes = registerOutput<bool?>('exportCustomRoutes');
+    exportCustomRoutesWithPublicIp = registerOutput<bool?>('exportCustomRoutesWithPublicIp');
+    importCustomRoutes = registerOutput<bool?>('importCustomRoutes');
+    importCustomRoutesWithPublicIp = registerOutput<bool?>('importCustomRoutesWithPublicIp');
+    this.name = registerOutput<String>('name');
+    peerNetwork = registerOutput<String>('peerNetwork');
+    peerNetworkType = registerOutput<String>('peerNetworkType');
+    project = registerOutput<String>('project');
+    state = registerOutput<String>('state');
     stateDetails = registerOutput<String>('stateDetails');
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');

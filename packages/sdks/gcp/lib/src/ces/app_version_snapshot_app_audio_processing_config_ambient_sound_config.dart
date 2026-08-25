@@ -9,14 +9,14 @@ class AppVersionSnapshotAppAudioProcessingConfigAmbientSoundConfig {
   /// Note: Please make sure the CES service agent
   /// `service-@gcp-sa-ces.iam.gserviceaccount.com` has
   /// `storage.objects.get` permission to the Cloud Storage object.
-  final pulumi.Input<String>? gcsUri;
+  final pulumi.Input<String?>? gcsUri;
   /// (Output)
   /// Name of the prebuilt ambient sound.
   /// Valid values are: - "coffeeShop" - "keyboard" - "keypad" - "hum"
   /// -"office1" - "office2" - "office3"
   /// -"room1" - "room2" - "room3"
   /// -"room4" - "room5" - "airConditioner"
-  final pulumi.Input<String>? prebuiltAmbientSound;
+  final pulumi.Input<String?>? prebuiltAmbientSound;
   /// (Output)
   /// Volume gain (in dB) of the normal native volume supported by
   /// ambient noise, in the range [-96.0, 16.0]. If unset, or set to a value of
@@ -26,7 +26,7 @@ class AppVersionSnapshotAppAudioProcessingConfigAmbientSoundConfig {
   /// amplitude of the normal native signal amplitude. We strongly recommend not
   /// to exceed +10 (dB) as there's usually no effective increase in loudness for
   /// any value greater than that.
-  final pulumi.Input<double>? volumeGainDb;
+  final pulumi.Input<double?>? volumeGainDb;
 
   /// Creates a new [AppVersionSnapshotAppAudioProcessingConfigAmbientSoundConfig].
   /// [gcsUri] (Output)
@@ -50,7 +50,7 @@ class AppVersionSnapshotAppAudioProcessingConfigAmbientSoundConfig {
     return AppVersionSnapshotAppAudioProcessingConfigAmbientSoundConfig(
       gcsUri: (() { final guardedValue = map['gcsUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       prebuiltAmbientSound: (() { final guardedValue = map['prebuiltAmbientSound']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      volumeGainDb: (() { final guardedValue = map['volumeGainDb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      volumeGainDb: (() { final guardedValue = map['volumeGainDb']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

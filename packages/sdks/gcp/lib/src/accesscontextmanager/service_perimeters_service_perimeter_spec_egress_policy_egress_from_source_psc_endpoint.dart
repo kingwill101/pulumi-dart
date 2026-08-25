@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpoint {
   /// The full resource name of the global forwarding rule that identifies a Private Service Connect endpoint.
   /// Forwarding rule format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/forwardingRules/{FORWARDING_RULE_ID}`.
-  final pulumi.Input<String>? forwardingRule;
+  final pulumi.Input<String?>? forwardingRule;
 
   /// Creates a new [ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourcePscEndpoint].
   /// [forwardingRule] The full resource name of the global forwarding rule that identifies a Private Service Connect endpoint.

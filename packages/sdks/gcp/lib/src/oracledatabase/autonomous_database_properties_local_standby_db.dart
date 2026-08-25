@@ -5,16 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AutonomousDatabasePropertiesLocalStandbyDb {
   /// The date and time the Autonomous Data Guard role was switched for the
   /// standby Autonomous Database.
-  final pulumi.Input<String>? dataGuardRoleChangedTime;
+  final pulumi.Input<String?>? dataGuardRoleChangedTime;
   /// The date and time the Disaster Recovery role was switched for the standby
   /// Autonomous Database.
-  final pulumi.Input<String>? disasterRecoveryRoleChangedTime;
+  final pulumi.Input<String?>? disasterRecoveryRoleChangedTime;
   /// The amount of time, in seconds, that the data of the standby database lags
   /// in comparison to the data of the primary database.
-  final pulumi.Input<String>? lagTimeDuration;
+  final pulumi.Input<String?>? lagTimeDuration;
   /// The additional details about the current lifecycle state of the
   /// Autonomous Database.
-  final pulumi.Input<String>? lifecycleDetails;
+  final pulumi.Input<String?>? lifecycleDetails;
   /// Possible values:
   /// STATE_UNSPECIFIED
   /// PROVISIONING
@@ -38,7 +38,7 @@ class AutonomousDatabasePropertiesLocalStandbyDb {
   /// UPGRADING
   /// INACCESSIBLE
   /// STANDBY
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
 
   /// Creates a new [AutonomousDatabasePropertiesLocalStandbyDb].
   /// [dataGuardRoleChangedTime] The date and time the Autonomous Data Guard role was switched for the

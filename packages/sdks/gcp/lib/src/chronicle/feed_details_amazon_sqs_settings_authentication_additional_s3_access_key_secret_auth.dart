@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FeedDetailsAmazonSqsSettingsAuthenticationAdditionalS3AccessKeySecretAuth {
   /// Access key ID.
-  final pulumi.Input<String>? accessKeyId;
+  final pulumi.Input<String?>? accessKeyId;
   /// Secret access key.
-  final pulumi.Input<String>? secretAccessKey;
+  final pulumi.Input<String?>? secretAccessKey;
 
   /// Creates a new [FeedDetailsAmazonSqsSettingsAuthenticationAdditionalS3AccessKeySecretAuth].
   /// [accessKeyId] Access key ID.

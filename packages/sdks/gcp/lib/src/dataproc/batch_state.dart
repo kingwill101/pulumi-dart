@@ -14,71 +14,71 @@ import 'batch_state_history.dart';
 class BatchState {
   /// The ID to use for the batch, which will become the final component of the batch's resource name.
   /// This value must be 4-63 characters. Valid characters are /[a-z][0-9]-/.
-  final pulumi.Input<String>? batchId;
+  final pulumi.Input<String?>? batchId;
   /// The time when the batch was created.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// The email address of the user who created the batch.
-  final pulumi.Input<String>? creator;
+  final pulumi.Input<String?>? creator;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveLabels;
+  final pulumi.Input<Map<String, String>?>? effectiveLabels;
   /// Environment configuration for the batch execution.
   /// Structure is documented below.
-  final pulumi.Input<BatchEnvironmentConfig>? environmentConfig;
+  final pulumi.Input<BatchEnvironmentConfig?>? environmentConfig;
   /// The labels to associate with this batch.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The location in which the batch will be created in.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The resource name of the batch.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The resource name of the operation associated with this batch.
-  final pulumi.Input<String>? operation;
+  final pulumi.Input<String?>? operation;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  final pulumi.Input<Map<String, String>>? pulumiLabels;
+  final pulumi.Input<Map<String, String>?>? pulumiLabels;
   /// PySpark batch config.
   /// Structure is documented below.
-  final pulumi.Input<BatchPysparkBatch>? pysparkBatch;
+  final pulumi.Input<BatchPysparkBatch?>? pysparkBatch;
   /// Runtime configuration for the batch execution.
   /// Structure is documented below.
-  final pulumi.Input<BatchRuntimeConfig>? runtimeConfig;
+  final pulumi.Input<BatchRuntimeConfig?>? runtimeConfig;
   /// Runtime information about batch execution.
   /// Structure is documented below.
-  final pulumi.Input<List<BatchRuntimeInfo>>? runtimeInfos;
+  final pulumi.Input<List<BatchRuntimeInfo>?>? runtimeInfos;
   /// Spark batch config.
   /// Structure is documented below.
-  final pulumi.Input<BatchSparkBatch>? sparkBatch;
+  final pulumi.Input<BatchSparkBatch?>? sparkBatch;
   /// SparkR batch config.
   /// Structure is documented below.
-  final pulumi.Input<BatchSparkRBatch>? sparkRBatch;
+  final pulumi.Input<BatchSparkRBatch?>? sparkRBatch;
   /// Spark SQL batch config.
   /// Structure is documented below.
-  final pulumi.Input<BatchSparkSqlBatch>? sparkSqlBatch;
+  final pulumi.Input<BatchSparkSqlBatch?>? sparkSqlBatch;
   /// (Output)
   /// The state of the batch at this point in history. For possible values, see the [API documentation](https://cloud.google.com/dataproc-serverless/docs/reference/rest/v1/projects.locations.batches#State).
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// Historical state information for the batch.
   /// Structure is documented below.
-  final pulumi.Input<List<BatchStateHistory>>? stateHistories;
+  final pulumi.Input<List<BatchStateHistory>?>? stateHistories;
   /// (Output)
   /// Details about the state at this point in history.
-  final pulumi.Input<String>? stateMessage;
+  final pulumi.Input<String?>? stateMessage;
   /// Batch state details, such as a failure description if the state is FAILED.
-  final pulumi.Input<String>? stateTime;
+  final pulumi.Input<String?>? stateTime;
   /// A batch UUID (Unique Universal Identifier). The service generates this value when it creates the batch.
-  final pulumi.Input<String>? uuid;
+  final pulumi.Input<String?>? uuid;
 
   /// Creates a new [BatchState].
   /// [batchId] The ID to use for the batch, which will become the final component of the batch's resource name.

@@ -6,7 +6,7 @@ import 'service_template_container_env_value_source_secret_key_ref.dart';
 class ServiceTemplateContainerEnvValueSource {
   /// Selects a secret and a specific version from Cloud Secret Manager.
   /// Structure is documented below.
-  final pulumi.Input<ServiceTemplateContainerEnvValueSourceSecretKeyRef>? secretKeyRef;
+  final pulumi.Input<ServiceTemplateContainerEnvValueSourceSecretKeyRef?>? secretKeyRef;
 
   /// Creates a new [ServiceTemplateContainerEnvValueSource].
   /// [secretKeyRef] Selects a secret and a specific version from Cloud Secret Manager.

@@ -7,7 +7,7 @@ class ListingSubscriptionCommercialInfo {
   /// (Output)
   /// Cloud Marketplace commercial metadata for this subscription.
   /// Structure is documented below.
-  final pulumi.Input<List<ListingSubscriptionCommercialInfoCloudMarketplace>>? cloudMarketplaces;
+  final pulumi.Input<List<ListingSubscriptionCommercialInfoCloudMarketplace>?>? cloudMarketplaces;
 
   /// Creates a new [ListingSubscriptionCommercialInfo].
   /// [cloudMarketplaces] (Output)

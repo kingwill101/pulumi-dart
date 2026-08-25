@@ -7,10 +7,10 @@ import 'db_system_properties_db_home_database_properties_db_backup_config.dart';
 class DbSystemPropertiesDbHomeDatabaseProperties {
   /// The configuration of the Database Management service.
   /// Structure is documented below.
-  final pulumi.Input<DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfig>? databaseManagementConfig;
+  final pulumi.Input<DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfig?>? databaseManagementConfig;
   /// Backup Options for the Database.
   /// Structure is documented below.
-  final pulumi.Input<DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfig>? dbBackupConfig;
+  final pulumi.Input<DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfig?>? dbBackupConfig;
   /// The Oracle Database version.
   final pulumi.Input<String> dbVersion;
   /// (Output)
@@ -26,7 +26,7 @@ class DbSystemPropertiesDbHomeDatabaseProperties {
   /// TERMINATED
   /// RESTORE_FAILED
   /// FAILED
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
 
   /// Creates a new [DbSystemPropertiesDbHomeDatabaseProperties].
   /// [databaseManagementConfig] The configuration of the Database Management service.

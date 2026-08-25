@@ -10,13 +10,13 @@ class FeedDetailsAzureBlobStoreV2Settings {
   final pulumi.Input<String> azureUri;
   /// SA that will read data, this is Storage Transfer Service SA of Customer's
   /// Tenancy Project.
-  final pulumi.Input<String>? chronicleServiceAccount;
+  final pulumi.Input<String?>? chronicleServiceAccount;
   /// Maximum File Age to ingest in days.
-  final pulumi.Input<int>? maxLookbackDays;
+  final pulumi.Input<int?>? maxLookbackDays;
   /// Possible values:
   /// NEVER
   /// ON_SUCCESS
-  final pulumi.Input<String>? sourceDeletionOption;
+  final pulumi.Input<String?>? sourceDeletionOption;
 
   /// Creates a new [FeedDetailsAzureBlobStoreV2Settings].
   /// [authentication] A message containing fields used to authenticate with Azure Blob Storage.
@@ -47,7 +47,7 @@ class FeedDetailsAzureBlobStoreV2Settings {
       authentication: pulumi.Input.fromValue(FeedDetailsAzureBlobStoreV2SettingsAuthentication.fromMap((map['authentication']! as Map).cast<String, dynamic>())),
       azureUri: pulumi.Input.fromValue(map['azureUri'] as String),
       chronicleServiceAccount: (() { final guardedValue = map['chronicleServiceAccount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      maxLookbackDays: (() { final guardedValue = map['maxLookbackDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxLookbackDays: (() { final guardedValue = map['maxLookbackDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       sourceDeletionOption: (() { final guardedValue = map['sourceDeletionOption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

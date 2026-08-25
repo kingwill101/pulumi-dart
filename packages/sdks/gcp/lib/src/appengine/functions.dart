@@ -123,3 +123,14 @@ Future<GetDefaultServiceAccountResult> getDefaultServiceAccount(
   );
   return GetDefaultServiceAccountResult.fromMap(result);
 }
+
+pulumi.Output<GetDefaultServiceAccountResult> getDefaultServiceAccountOutput(
+  GetDefaultServiceAccountArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:appengine/getDefaultServiceAccount:getDefaultServiceAccount',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDefaultServiceAccountResult.fromMap);
+}

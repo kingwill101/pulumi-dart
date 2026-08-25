@@ -13,7 +13,7 @@ class SupportEventSubscriptionArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The organization ID for the support event subscription.
   final pulumi.Input<String> organization;
   /// The name of the Pub/Sub topic to publish notifications to.

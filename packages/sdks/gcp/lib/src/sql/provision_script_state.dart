@@ -9,38 +9,38 @@ class ProvisionScriptState {
   /// required for Postgres instances. It's optional for MySQL, but some of your queries may require
   /// a database. You can create and use a database in the script or explicitly reference a
   /// google_sql_database.
-  final pulumi.Input<String>? database;
+  final pulumi.Input<String?>? database;
   /// The deletion policy for the resources created by the script. The
   /// default is "ABANDON". It must be "ABANDON" to allow Terraform to abandon the resources. If you
   /// want to delete resources, add statements in the script such as `drop … if exists`.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The description of the provision script.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The name of the Cloud SQL instance. Changing this forces the script to
   /// be run on the new instance.
-  final pulumi.Input<String>? instance;
+  final pulumi.Input<String?>? instance;
   /// The resource name of the Secret Manager secret storing the
   /// password. The secret should be a regional secret and stored in the exact same region as the Cloud
   /// SQL instance. Follow https://docs.cloud.google.com/secret-manager/regional-secrets/create-regional-secret.
   /// When user and passwordSecretVersion are provided, the script is run using this user.
   /// Otherwise, the script is run using the identity account used to apply your Terraform config.
   /// Changing this field forces the script to be run again.
-  final pulumi.Input<String>? passwordSecretVersion;
+  final pulumi.Input<String?>? passwordSecretVersion;
   /// The ID of the project in which the resource belongs. If it is not provided,
   /// the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The SQL script to provision database resources. Its execution time limit
   /// is 30 s and it will be canceled if it takes longer than 30 s. You can use patterns like
   /// `create if not exists …` or `if not exists (select …) then … end if` to avoid existence-related
   /// errors. If it's not possible to make a statement idempotent, you can run it once and then remove
   /// it from this script.
-  final pulumi.Input<String>? script;
+  final pulumi.Input<String?>? script;
   /// The name of the built-in database user to authenticate as. For MySQL user,
   /// omit '@' and the hostname. The user should exist as a built-in user in the database.
   /// When `user` and `passwordSecretVersion` are provided, the script is run using this user.
   /// Otherwise, the script is run using the identity account used to apply your Terraform config.
   /// Changing this forces the script to be run using the new user.
-  final pulumi.Input<String>? user;
+  final pulumi.Input<String?>? user;
 
   /// Creates a new [ProvisionScriptState].
   /// [database] The name of the database to which Terraform connects. Changing

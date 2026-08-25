@@ -7,16 +7,16 @@ import 'organization_security_policy_rule_match_expr.dart';
 class OrganizationSecurityPolicyRuleMatch {
   /// The configuration options for matching the rule.
   /// Structure is documented below.
-  final pulumi.Input<OrganizationSecurityPolicyRuleMatchConfig>? config;
+  final pulumi.Input<OrganizationSecurityPolicyRuleMatchConfig?>? config;
   /// A description of the rule.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
   /// Structure is documented below.
-  final pulumi.Input<OrganizationSecurityPolicyRuleMatchExpr>? expr;
+  final pulumi.Input<OrganizationSecurityPolicyRuleMatchExpr?>? expr;
   /// Preconfigured versioned expression. For organization security policy rules,
   /// the only supported type is "SRC_IPS_V1".
   /// **NOTE** : 'FIREWALL' type is deprecated. Please use 'google_compute_firewall_policy_rule' resource instead.
-  final pulumi.Input<String>? versionedExpr;
+  final pulumi.Input<String?>? versionedExpr;
 
   /// Creates a new [OrganizationSecurityPolicyRuleMatch].
   /// [config] The configuration options for matching the rule.

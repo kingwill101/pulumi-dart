@@ -519,13 +519,13 @@ class OrganizationSecurityPolicyAssociation extends pulumi.CustomResource {
           'gcp:compute/organizationSecurityPolicyAssociation:OrganizationSecurityPolicyAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     attachmentId = registerOutput<String>('attachmentId');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
-    excludedFolders = registerOutput<List<String>?>('excludedFolders');
-    excludedProjects = registerOutput<List<String>?>('excludedProjects');
+    excludedFolders = registerOutput<List<String>?>('excludedFolders', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    excludedProjects = registerOutput<List<String>?>('excludedProjects', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     policyId = registerOutput<String>('policyId');
   }
@@ -535,11 +535,12 @@ class OrganizationSecurityPolicyAssociation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     OrganizationSecurityPolicyAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return OrganizationSecurityPolicyAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -556,8 +557,26 @@ class OrganizationSecurityPolicyAssociation extends pulumi.CustomResource {
     attachmentId = registerOutput<String>('attachmentId');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
-    excludedFolders = registerOutput<List<String>?>('excludedFolders');
-    excludedProjects = registerOutput<List<String>?>('excludedProjects');
+    excludedFolders = registerOutput<List<String>?>('excludedFolders', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    excludedProjects = registerOutput<List<String>?>('excludedProjects', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    this.name = registerOutput<String>('name');
+    policyId = registerOutput<String>('policyId');
+  }
+
+  /// Creates a typed reference to an existing [OrganizationSecurityPolicyAssociation] resource.
+  OrganizationSecurityPolicyAssociation.reference(String urn)
+    : super(
+        'gcp:compute/organizationSecurityPolicyAssociation:OrganizationSecurityPolicyAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    attachmentId = registerOutput<String>('attachmentId');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    displayName = registerOutput<String>('displayName');
+    excludedFolders = registerOutput<List<String>?>('excludedFolders', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    excludedProjects = registerOutput<List<String>?>('excludedProjects', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     policyId = registerOutput<String>('policyId');
   }

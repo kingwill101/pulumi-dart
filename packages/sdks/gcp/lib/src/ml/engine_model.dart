@@ -351,18 +351,19 @@ class EngineModel extends pulumi.CustomResource {
           'gcp:ml/engineModel:EngineModel',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     defaultVersion = registerOutput<EngineModelDefaultVersion?>('defaultVersion', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EngineModelDefaultVersion.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    labels = registerOutput<Map<String, String>?>('labels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     onlinePredictionConsoleLogging = registerOutput<bool?>('onlinePredictionConsoleLogging');
     onlinePredictionLogging = registerOutput<bool?>('onlinePredictionLogging');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     regions = registerOutput<String?>('regions');
   }
 
@@ -371,11 +372,12 @@ class EngineModel extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EngineModelState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return EngineModel._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -392,13 +394,36 @@ class EngineModel extends pulumi.CustomResource {
     defaultVersion = registerOutput<EngineModelDefaultVersion?>('defaultVersion', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EngineModelDefaultVersion.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    labels = registerOutput<Map<String, String>?>('labels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     onlinePredictionConsoleLogging = registerOutput<bool?>('onlinePredictionConsoleLogging');
     onlinePredictionLogging = registerOutput<bool?>('onlinePredictionLogging');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    regions = registerOutput<String?>('regions');
+  }
+
+  /// Creates a typed reference to an existing [EngineModel] resource.
+  EngineModel.reference(String urn)
+    : super(
+        'gcp:ml/engineModel:EngineModel',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    defaultVersion = registerOutput<EngineModelDefaultVersion?>('defaultVersion', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EngineModelDefaultVersion.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    this.name = registerOutput<String>('name');
+    onlinePredictionConsoleLogging = registerOutput<bool?>('onlinePredictionConsoleLogging');
+    onlinePredictionLogging = registerOutput<bool?>('onlinePredictionLogging');
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     regions = registerOutput<String?>('regions');
   }
 }

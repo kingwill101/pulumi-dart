@@ -6,7 +6,7 @@ class TopicMessageTransformAiInferenceUnstructuredInference {
   /// A parameters object to be included in each inference request.
   /// The parameters object is combined with the data field of the Pub/Sub
   /// message to form the inference request.
-  final pulumi.Input<Map<String, String>>? parameters;
+  final pulumi.Input<Map<String, String>?>? parameters;
 
   /// Creates a new [TopicMessageTransformAiInferenceUnstructuredInference].
   /// [parameters] A parameters object to be included in each inference request.

@@ -8,13 +8,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_compute_get_instance_groups_get_instance_groups_args_doc}
 class GetInstanceGroupsArgs {
   /// A string filter as defined in the [REST API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroups/list#query-parameters).
-  final pulumi.Input<String>? filter;
+  final pulumi.Input<String?>? filter;
   /// The ID of the project in which the resource belongs. If it
   /// is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The zone of the instance groups. If
   /// it is not provided, the provider zone is used.
-  final pulumi.Input<String>? zone;
+  final pulumi.Input<String?>? zone;
 
   /// Creates a new [GetInstanceGroupsArgs].
   /// [filter] A string filter as defined in the [REST API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroups/list#query-parameters).

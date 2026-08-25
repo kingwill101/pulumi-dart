@@ -8,20 +8,20 @@ class ImageSourceImageEncryptionKey {
   /// (`service-{{PROJECT_NUMBER}}@compute-system.iam.gserviceaccount.com`) must have
   /// `roles/cloudkms.cryptoKeyEncrypterDecrypter` to use this feature.
   /// See https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
-  final pulumi.Input<String>? kmsKeySelfLink;
+  final pulumi.Input<String?>? kmsKeySelfLink;
   /// The service account being used for the encryption request for the
   /// given KMS key. If absent, the Compute Engine default service
   /// account is used.
-  final pulumi.Input<String>? kmsKeyServiceAccount;
+  final pulumi.Input<String?>? kmsKeyServiceAccount;
   /// Specifies a 256-bit customer-supplied encryption key, encoded in
   /// RFC 4648 base64 to either encrypt or decrypt this resource.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
-  final pulumi.Input<String>? rawKey;
+  final pulumi.Input<String?>? rawKey;
   /// Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
   /// customer-supplied encryption key to either encrypt or decrypt
   /// this resource. You can provide either the rawKey or the rsaEncryptedKey.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
-  final pulumi.Input<String>? rsaEncryptedKey;
+  final pulumi.Input<String?>? rsaEncryptedKey;
 
   /// Creates a new [ImageSourceImageEncryptionKey].
   /// [kmsKeySelfLink] The self link of the encryption key used to decrypt this resource. Also called KmsKeyName

@@ -14,7 +14,7 @@ class FhirStoreStreamConfig {
   /// Supply a FHIR resource type (such as "Patient" or "Observation"). See
   /// https://www.hl7.org/fhir/valueset-resource-types.html for a list of all FHIR resource types. The server treats
   /// an empty list as an intent to stream all the supported resource types in this FHIR store.
-  final pulumi.Input<List<String>>? resourceTypes;
+  final pulumi.Input<List<String>?>? resourceTypes;
 
   /// Creates a new [FhirStoreStreamConfig].
   /// [bigqueryDestination] The destination BigQuery structure that contains both the dataset location and corresponding schema config.

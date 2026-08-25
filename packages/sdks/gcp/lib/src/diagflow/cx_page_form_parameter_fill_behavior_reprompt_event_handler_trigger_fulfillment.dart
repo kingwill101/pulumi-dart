@@ -8,19 +8,19 @@ import 'cx_page_form_parameter_fill_behavior_reprompt_event_handler_trigger_fulf
 class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillment {
   /// Conditional cases for this fulfillment.
   /// Structure is documented below.
-  final pulumi.Input<List<CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCase>>? conditionalCases;
+  final pulumi.Input<List<CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCase>?>? conditionalCases;
   /// The list of rich message responses to present to the user.
   /// Structure is documented below.
-  final pulumi.Input<List<CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessage>>? messages;
+  final pulumi.Input<List<CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessage>?>? messages;
   /// Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
-  final pulumi.Input<bool>? returnPartialResponses;
+  final pulumi.Input<bool?>? returnPartialResponses;
   /// Set parameter values before executing the webhook.
   /// Structure is documented below.
-  final pulumi.Input<List<CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterAction>>? setParameterActions;
+  final pulumi.Input<List<CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterAction>?>? setParameterActions;
   /// The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
-  final pulumi.Input<String>? tag;
+  final pulumi.Input<String?>? tag;
   /// The webhook to call. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/webhooks/&lt;Webhook ID&gt;.
-  final pulumi.Input<String>? webhook;
+  final pulumi.Input<String?>? webhook;
 
   /// Creates a new [CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillment].
   /// [conditionalCases] Conditional cases for this fulfillment.

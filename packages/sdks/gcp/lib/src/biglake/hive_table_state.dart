@@ -7,43 +7,43 @@ import 'hive_table_storage_descriptor.dart';
 /// Input properties used for looking up and filtering HiveTable resources.
 class HiveTableState {
   /// The Hive catalog where the table is located.
-  final pulumi.Input<String>? catalog;
+  final pulumi.Input<String?>? catalog;
   /// Output only. The creation time of the table.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// The Hive database where the table is located.
-  final pulumi.Input<String>? database;
+  final pulumi.Input<String?>? database;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Description of the table.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Output only. Last access time of the table.
-  final pulumi.Input<String>? lastAccessTime;
+  final pulumi.Input<String?>? lastAccessTime;
   /// The name of the table.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Additional parameters associated with the table.
-  final pulumi.Input<Map<String, String>>? parameters;
+  final pulumi.Input<Map<String, String>?>? parameters;
   /// Partition keys of the table.
   /// Structure is documented below.
-  final pulumi.Input<List<HiveTablePartitionKey>>? partitionKeys;
+  final pulumi.Input<List<HiveTablePartitionKey>?>? partitionKeys;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Storage descriptor of the table.
   /// Structure is documented below.
-  final pulumi.Input<HiveTableStorageDescriptor>? storageDescriptor;
+  final pulumi.Input<HiveTableStorageDescriptor?>? storageDescriptor;
   /// Output only. The type of the table.
-  final pulumi.Input<String>? tableType;
+  final pulumi.Input<String?>? tableType;
   /// Output only. The update time of the table
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
   /// Expanded view text for Hive views. Empty for non-view.
-  final pulumi.Input<String>? viewExpandedText;
+  final pulumi.Input<String?>? viewExpandedText;
   /// Original view text for Hive views. Empty for non-view.
-  final pulumi.Input<String>? viewOriginalText;
+  final pulumi.Input<String?>? viewOriginalText;
 
   /// Creates a new [HiveTableState].
   /// [catalog] The Hive catalog where the table is located.

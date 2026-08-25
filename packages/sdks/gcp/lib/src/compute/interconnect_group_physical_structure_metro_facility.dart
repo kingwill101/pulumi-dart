@@ -8,11 +8,11 @@ class InterconnectGroupPhysicalStructureMetroFacility {
   /// The ID of this facility, as a numeric string like
   /// "5467". This is the third component of the location of Interconnects
   /// in this facility.
-  final pulumi.Input<String>? facility;
+  final pulumi.Input<String?>? facility;
   /// (Output)
   /// Zones used to explain this blocker in more detail.
   /// Zone names are "zone1" and/or "zone2".
-  final pulumi.Input<List<InterconnectGroupPhysicalStructureMetroFacilityZone>>? zones;
+  final pulumi.Input<List<InterconnectGroupPhysicalStructureMetroFacilityZone>?>? zones;
 
   /// Creates a new [InterconnectGroupPhysicalStructureMetroFacility].
   /// [facility] (Output)

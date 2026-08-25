@@ -11,59 +11,59 @@ import 'routine_spark_options.dart';
 class RoutineState {
   /// Input/output argument of a function or a stored procedure.
   /// Structure is documented below.
-  final pulumi.Input<List<RoutineArgument>>? arguments;
+  final pulumi.Input<List<RoutineArgument>?>? arguments;
   /// The time when this routine was created, in milliseconds since the
   /// epoch.
-  final pulumi.Input<int>? creationTime;
+  final pulumi.Input<int?>? creationTime;
   /// If set to DATA_MASKING, the function is validated and made available as a masking function. For more information, see https://cloud.google.com/bigquery/docs/user-defined-functions#custom-mask
   /// Possible values are: `DATA_MASKING`.
-  final pulumi.Input<String>? dataGovernanceType;
+  final pulumi.Input<String?>? dataGovernanceType;
   /// The ID of the dataset containing this routine
-  final pulumi.Input<String>? datasetId;
+  final pulumi.Input<String?>? datasetId;
   /// The body of the routine. For functions, this is the expression in the AS clause.
   /// If language=SQL, it is the substring inside (but excluding) the parentheses.
-  final pulumi.Input<String>? definitionBody;
+  final pulumi.Input<String?>? definitionBody;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The description of the routine if defined.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The determinism level of the JavaScript UDF if defined.
   /// Possible values are: `DETERMINISM_LEVEL_UNSPECIFIED`, `DETERMINISTIC`, `NOT_DETERMINISTIC`.
-  final pulumi.Input<String>? determinismLevel;
+  final pulumi.Input<String?>? determinismLevel;
   /// (Optional, Beta)
   /// Options for the runtime of the external system.
   /// This field is only applicable for Python UDFs.
   /// Structure is documented below.
-  final pulumi.Input<RoutineExternalRuntimeOptions>? externalRuntimeOptions;
+  final pulumi.Input<RoutineExternalRuntimeOptions?>? externalRuntimeOptions;
   /// Optional. If language = "JAVASCRIPT", this field stores the path of the
   /// imported JAVASCRIPT libraries.
-  final pulumi.Input<List<String>>? importedLibraries;
+  final pulumi.Input<List<String>?>? importedLibraries;
   /// The language of the routine.
   /// Possible values are: `SQL`, `JAVASCRIPT`, `PYTHON`, `JAVA`, `SCALA`.
-  final pulumi.Input<String>? language;
+  final pulumi.Input<String?>? language;
   /// The time when this routine was modified, in milliseconds since the
   /// epoch.
-  final pulumi.Input<int>? lastModifiedTime;
+  final pulumi.Input<int?>? lastModifiedTime;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// (Optional, Beta)
   /// Options for a user-defined Python function.
   /// Structure is documented below.
-  final pulumi.Input<RoutinePythonOptions>? pythonOptions;
+  final pulumi.Input<RoutinePythonOptions?>? pythonOptions;
   /// Remote function specific options.
   /// Structure is documented below.
-  final pulumi.Input<RoutineRemoteFunctionOptions>? remoteFunctionOptions;
+  final pulumi.Input<RoutineRemoteFunctionOptions?>? remoteFunctionOptions;
   /// Optional. Can be set only if routineType = "TABLE_VALUED_FUNCTION".
   /// If absent, the return table type is inferred from definitionBody at query time in each query
   /// that references this routine. If present, then the columns in the evaluated table result will
   /// be cast to match the column types specificed in return table type, at query time.
-  final pulumi.Input<String>? returnTableType;
+  final pulumi.Input<String?>? returnTableType;
   /// A JSON schema for the return type. Optional if language = "SQL"; required otherwise.
   /// If absent, the return type is inferred from definitionBody at query time in each query
   /// that references this routine. If present, then the evaluated result will be cast to
@@ -73,18 +73,18 @@ class RoutineState {
   /// d the order of values or replaced STRUCT field type with RECORD field type, we currently
   /// cannot suppress the recurring diff this causes. As a workaround, we recommend using
   /// the schema as returned by the API.
-  final pulumi.Input<String>? returnType;
+  final pulumi.Input<String?>? returnType;
   /// The ID of the the routine. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 256 characters.
-  final pulumi.Input<String>? routineId;
+  final pulumi.Input<String?>? routineId;
   /// The type of routine.
   /// Possible values are: `SCALAR_FUNCTION`, `PROCEDURE`, `TABLE_VALUED_FUNCTION`.
-  final pulumi.Input<String>? routineType;
+  final pulumi.Input<String?>? routineType;
   /// Optional. The security mode of the routine, if defined. If not defined, the security mode is automatically determined from the routine's configuration.
   /// Possible values are: `DEFINER`, `INVOKER`.
-  final pulumi.Input<String>? securityMode;
+  final pulumi.Input<String?>? securityMode;
   /// Optional. If language is one of "PYTHON", "JAVA", "SCALA", this field stores the options for spark stored procedure.
   /// Structure is documented below.
-  final pulumi.Input<RoutineSparkOptions>? sparkOptions;
+  final pulumi.Input<RoutineSparkOptions?>? sparkOptions;
 
   /// Creates a new [RoutineState].
   /// [arguments] Input/output argument of a function or a stored procedure.
@@ -161,7 +161,7 @@ class RoutineState {
   factory RoutineState.fromMap(Map<String, dynamic> map) {
     return RoutineState(
       arguments: (() { final guardedValue = map['arguments']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<RoutineArgument>(guardedValue, (value) => RoutineArgument.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      creationTime: (() { final guardedValue = map['creationTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      creationTime: (() { final guardedValue = map['creationTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       dataGovernanceType: (() { final guardedValue = map['dataGovernanceType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       datasetId: (() { final guardedValue = map['datasetId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       definitionBody: (() { final guardedValue = map['definitionBody']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -171,7 +171,7 @@ class RoutineState {
       externalRuntimeOptions: (() { final guardedValue = map['externalRuntimeOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RoutineExternalRuntimeOptions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       importedLibraries: (() { final guardedValue = map['importedLibraries']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       language: (() { final guardedValue = map['language']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      lastModifiedTime: (() { final guardedValue = map['lastModifiedTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      lastModifiedTime: (() { final guardedValue = map['lastModifiedTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       pythonOptions: (() { final guardedValue = map['pythonOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RoutinePythonOptions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       remoteFunctionOptions: (() { final guardedValue = map['remoteFunctionOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RoutineRemoteFunctionOptions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

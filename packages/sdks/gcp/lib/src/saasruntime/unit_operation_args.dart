@@ -15,33 +15,33 @@ class UnitOperationArgs {
   /// More info: https://kubernetes.io/docs/user-guide/annotations
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
-  final pulumi.Input<Map<String, String>>? annotations;
+  final pulumi.Input<Map<String, String>?>? annotations;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Deprovision is the unit operation that deprovision the underlying
   /// resources represented by a Unit. Can only execute if the Unit is currently
   /// provisioned.
-  final pulumi.Input<Map<String, dynamic>>? deprovision;
+  final pulumi.Input<Map<String, dynamic>?>? deprovision;
   /// The labels on the resource, which can be used for categorization.
   /// similar to Kubernetes resource labels.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final pulumi.Input<String> location;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Provision is the unit operation that provision the underlying resources
   /// represented by a Unit. Can only execute if the Unit is not currently
   /// provisioned.
   /// Structure is documented below.
-  final pulumi.Input<UnitOperationProvision>? provision;
+  final pulumi.Input<UnitOperationProvision?>? provision;
   /// The Unit a given UnitOperation will act upon.
   final pulumi.Input<String> unit;
   /// The ID value for the new unit operation.
@@ -50,10 +50,10 @@ class UnitOperationArgs {
   /// also include the underlying resources represented by a Unit. Can only execute
   /// if the Unit is currently provisioned.
   /// Structure is documented below.
-  final pulumi.Input<UnitOperationUpgrade>? upgrade;
+  final pulumi.Input<UnitOperationUpgrade?>? upgrade;
   /// If true, wait for the UnitOperation to reach a terminal state (SUCCEEDED, FAILED, CANCELLED)
   /// before completing the apply.
-  final pulumi.Input<bool>? waitForCompletion;
+  final pulumi.Input<bool?>? waitForCompletion;
 
   /// Creates a new [UnitOperationArgs].
   /// [annotations] Annotations is an unstructured key-value map stored with a resource that

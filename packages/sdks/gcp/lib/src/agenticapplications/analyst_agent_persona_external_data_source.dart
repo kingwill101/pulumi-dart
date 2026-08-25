@@ -4,27 +4,27 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AnalystAgentPersonaExternalDataSource {
   /// Configurations for the AirQuality external data source.
-  final pulumi.Input<Map<String, dynamic>>? airQuality;
+  final pulumi.Input<Map<String, dynamic>?>? airQuality;
   /// Configurations for the BureauLaborStatistics external data source.
-  final pulumi.Input<Map<String, dynamic>>? bureauLaborStatistics;
+  final pulumi.Input<Map<String, dynamic>?>? bureauLaborStatistics;
   /// Configurations for the Coindesk external data source.
-  final pulumi.Input<Map<String, dynamic>>? coindesk;
+  final pulumi.Input<Map<String, dynamic>?>? coindesk;
   /// Whether this external data source is enabled for the current analysis.
   final pulumi.Input<bool> enabled;
   /// Configurations for the Finnhub external data source.
-  final pulumi.Input<Map<String, dynamic>>? finnhub;
+  final pulumi.Input<Map<String, dynamic>?>? finnhub;
   /// Configurations for the Fred external data source.
-  final pulumi.Input<Map<String, dynamic>>? fred;
+  final pulumi.Input<Map<String, dynamic>?>? fred;
   /// Configurations for the SecEdgar external data source.
-  final pulumi.Input<Map<String, dynamic>>? secEdgar;
+  final pulumi.Input<Map<String, dynamic>?>? secEdgar;
   /// The name of the external data source, used for custom org policy
   /// evaluation. Output-only (populated automatically with the selection case
   /// name).
-  final pulumi.Input<String>? selectionName;
+  final pulumi.Input<String?>? selectionName;
   /// Configurations for the TreasurySecuritiesAuctions external data source.
-  final pulumi.Input<Map<String, dynamic>>? treasurySecuritiesAuctions;
+  final pulumi.Input<Map<String, dynamic>?>? treasurySecuritiesAuctions;
   /// Configurations for the USDA external data source.
-  final pulumi.Input<Map<String, dynamic>>? usda;
+  final pulumi.Input<Map<String, dynamic>?>? usda;
 
   /// Creates a new [AnalystAgentPersonaExternalDataSource].
   /// [airQuality] Configurations for the AirQuality external data source.

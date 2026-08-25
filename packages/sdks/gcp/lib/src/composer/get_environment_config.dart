@@ -140,7 +140,7 @@ class GetEnvironmentConfig {
       maintenanceWindows: pulumi.Input.fromValue(pulumi.Input.decodeList<GetEnvironmentConfigMaintenanceWindow>(map['maintenanceWindows']!, (value) => GetEnvironmentConfigMaintenanceWindow.fromMap((value as Map).cast<String, dynamic>()))),
       masterAuthorizedNetworksConfigs: pulumi.Input.fromValue(pulumi.Input.decodeList<GetEnvironmentConfigMasterAuthorizedNetworksConfig>(map['masterAuthorizedNetworksConfigs']!, (value) => GetEnvironmentConfigMasterAuthorizedNetworksConfig.fromMap((value as Map).cast<String, dynamic>()))),
       nodeConfigs: pulumi.Input.fromValue(pulumi.Input.decodeList<GetEnvironmentConfigNodeConfig>(map['nodeConfigs']!, (value) => GetEnvironmentConfigNodeConfig.fromMap((value as Map).cast<String, dynamic>()))),
-      nodeCount: pulumi.Input.fromValue(map['nodeCount'] as int),
+      nodeCount: pulumi.Input.fromValue((map['nodeCount'] as num).toInt()),
       privateEnvironmentConfigs: pulumi.Input.fromValue(pulumi.Input.decodeList<GetEnvironmentConfigPrivateEnvironmentConfig>(map['privateEnvironmentConfigs']!, (value) => GetEnvironmentConfigPrivateEnvironmentConfig.fromMap((value as Map).cast<String, dynamic>()))),
       recoveryConfigs: pulumi.Input.fromValue(pulumi.Input.decodeList<GetEnvironmentConfigRecoveryConfig>(map['recoveryConfigs']!, (value) => GetEnvironmentConfigRecoveryConfig.fromMap((value as Map).cast<String, dynamic>()))),
       resilienceMode: pulumi.Input.fromValue(map['resilienceMode'] as String),

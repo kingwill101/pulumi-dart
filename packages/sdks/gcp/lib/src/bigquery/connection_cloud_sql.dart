@@ -13,7 +13,7 @@ class ConnectionCloudSql {
   final pulumi.Input<String> instanceId;
   /// (Output)
   /// When the connection is used in the context of an operation in BigQuery, this service account will serve as the identity being used for connecting to the CloudSQL instance specified in this connection.
-  final pulumi.Input<String>? serviceAccountId;
+  final pulumi.Input<String?>? serviceAccountId;
   /// Type of the Cloud SQL database.
   /// Possible values are: `DATABASE_TYPE_UNSPECIFIED`, `POSTGRES`, `MYSQL`.
   final pulumi.Input<String> type;

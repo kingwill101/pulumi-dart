@@ -11,17 +11,17 @@ class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfig 
   /// source properties that are defined here are included in the finding JSON
   /// under `sourceProperties`.
   /// Structure is documented below.
-  final pulumi.Input<PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutput>? customOutput;
+  final pulumi.Input<PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutput?>? customOutput;
   /// Text that describes the vulnerability or misconfiguration that the custom
   /// module detects.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The CEL expression to evaluate to produce findings.When the expression
   /// evaluates to true against a resource, a finding is generated.
   /// Structure is documented below.
   final pulumi.Input<PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigPredicate> predicate;
   /// An explanation of the recommended steps that security teams can take to
   /// resolve the detected issue
-  final pulumi.Input<String>? recommendation;
+  final pulumi.Input<String?>? recommendation;
   /// The resource types that the custom module operates on. Each custom module
   /// can specify up to 5 resource types.
   /// Structure is documented below.

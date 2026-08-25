@@ -11,33 +11,33 @@ import 'client_tls_policy_server_validation_ca.dart';
 class ClientTlsPolicyArgs {
   /// Defines a mechanism to provision client identity (public and private keys) for peer to peer authentication. The presence of this dictates mTLS.
   /// Structure is documented below.
-  final pulumi.Input<ClientTlsPolicyClientCertificate>? clientCertificate;
+  final pulumi.Input<ClientTlsPolicyClientCertificate?>? clientCertificate;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// A free-text description of the resource. Max length 1024 characters.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Set of label tags associated with the ClientTlsPolicy resource.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The location of the client tls policy.
   /// The default value is `global`.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Name of the ClientTlsPolicy resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Defines the mechanism to obtain the Certificate Authority certificate to validate the server certificate. If empty, client does not validate the server certificate.
   /// Structure is documented below.
-  final pulumi.Input<List<ClientTlsPolicyServerValidationCa>>? serverValidationCas;
+  final pulumi.Input<List<ClientTlsPolicyServerValidationCa>?>? serverValidationCas;
   /// Server Name Indication string to present to the server during TLS handshake. E.g: "secure.example.com".
-  final pulumi.Input<String>? sni;
+  final pulumi.Input<String?>? sni;
 
   /// Creates a new [ClientTlsPolicyArgs].
   /// [clientCertificate] Defines a mechanism to provision client identity (public and private keys) for peer to peer authentication. The presence of this dictates mTLS.

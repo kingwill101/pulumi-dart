@@ -7,12 +7,12 @@ class TableHiveOptions {
   /// Stores user supplied Hive table parameters. An object containing a
   /// list of "key": value pairs.
   /// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
-  final pulumi.Input<Map<String, String>>? parameters;
+  final pulumi.Input<Map<String, String>?>? parameters;
   /// Stores physical storage information on the data.
   /// Structure is documented below.
-  final pulumi.Input<TableHiveOptionsStorageDescriptor>? storageDescriptor;
+  final pulumi.Input<TableHiveOptionsStorageDescriptor?>? storageDescriptor;
   /// Hive table type. For example, MANAGED_TABLE, EXTERNAL_TABLE.
-  final pulumi.Input<String>? tableType;
+  final pulumi.Input<String?>? tableType;
 
   /// Creates a new [TableHiveOptions].
   /// [parameters] Stores user supplied Hive table parameters. An object containing a

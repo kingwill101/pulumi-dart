@@ -8,13 +8,13 @@ import 'cloud_control_parameter_spec_sub_parameter_validation_regexp_pattern.dar
 class CloudControlParameterSpecSubParameterValidation {
   /// Allowed set of values for the parameter.
   /// Structure is documented below.
-  final pulumi.Input<CloudControlParameterSpecSubParameterValidationAllowedValues>? allowedValues;
+  final pulumi.Input<CloudControlParameterSpecSubParameterValidationAllowedValues?>? allowedValues;
   /// Number range for number parameters.
   /// Structure is documented below.
-  final pulumi.Input<CloudControlParameterSpecSubParameterValidationIntRange>? intRange;
+  final pulumi.Input<CloudControlParameterSpecSubParameterValidationIntRange?>? intRange;
   /// Regular Expression Validator for parameter values.
   /// Structure is documented below.
-  final pulumi.Input<CloudControlParameterSpecSubParameterValidationRegexpPattern>? regexpPattern;
+  final pulumi.Input<CloudControlParameterSpecSubParameterValidationRegexpPattern?>? regexpPattern;
 
   /// Creates a new [CloudControlParameterSpecSubParameterValidation].
   /// [allowedValues] Allowed set of values for the parameter.

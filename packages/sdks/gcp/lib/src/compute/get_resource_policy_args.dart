@@ -10,9 +10,9 @@ class GetResourcePolicyArgs {
   /// The name of the Resource Policy.
   final pulumi.Input<String> name;
   /// Project from which to list the Resource Policy. Defaults to project declared in the provider.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Region where the Resource Policy resides.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [GetResourcePolicyArgs].
   /// [name] The name of the Resource Policy.

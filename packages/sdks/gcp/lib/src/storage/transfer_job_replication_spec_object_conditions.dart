@@ -4,17 +4,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TransferJobReplicationSpecObjectConditions {
   /// `excludePrefixes` must follow the requirements described for `includePrefixes`. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
-  final pulumi.Input<List<String>>? excludePrefixes;
+  final pulumi.Input<List<String>?>? excludePrefixes;
   /// If `includePrefixes` is specified, objects that satisfy the object conditions must have names that start with one of the `includePrefixes` and that do not start with any of the `excludePrefixes`. If `includePrefixes` is not specified, all objects except those that have names starting with one of the `excludePrefixes` must satisfy the object conditions. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
-  final pulumi.Input<List<String>>? includePrefixes;
+  final pulumi.Input<List<String>?>? includePrefixes;
   /// If specified, only objects with a "last modification time" before this timestamp and objects that don't have a "last modification time" are transferred. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-  final pulumi.Input<String>? lastModifiedBefore;
+  final pulumi.Input<String?>? lastModifiedBefore;
   /// If specified, only objects with a "last modification time" on or after this timestamp and objects that don't have a "last modification time" are transferred. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-  final pulumi.Input<String>? lastModifiedSince;
+  final pulumi.Input<String?>? lastModifiedSince;
   /// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
-  final pulumi.Input<String>? maxTimeElapsedSinceLastModification;
+  final pulumi.Input<String?>? maxTimeElapsedSinceLastModification;
   /// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
-  final pulumi.Input<String>? minTimeElapsedSinceLastModification;
+  final pulumi.Input<String?>? minTimeElapsedSinceLastModification;
 
   /// Creates a new [TransferJobReplicationSpecObjectConditions].
   /// [excludePrefixes] `excludePrefixes` must follow the requirements described for `includePrefixes`. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).

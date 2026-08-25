@@ -4,10 +4,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SessionTemplateJupyterSession {
   /// Display name, shown in the Jupyter kernelspec card.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Kernel to be used with Jupyter interactive session.
   /// Possible values are: `PYTHON`, `SCALA`.
-  final pulumi.Input<String>? kernel;
+  final pulumi.Input<String?>? kernel;
 
   /// Creates a new [SessionTemplateJupyterSession].
   /// [displayName] Display name, shown in the Jupyter kernelspec card.

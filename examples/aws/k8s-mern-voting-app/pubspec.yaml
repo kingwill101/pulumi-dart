@@ -7,9 +7,9 @@ environment:
   sdk: ">=3.11.0 <4.0.0"
 dependencies:
   pulumi: ^3.0.0
-  pulumi_awsx: 3.8.0
-  pulumi_eks: 4.3.0
-  pulumi_kubernetes: 4.33.0
+  pulumi_awsx: 3.8.0+1
+  pulumi_eks: 4.3.0+1
+  pulumi_kubernetes: 4.33.0+1
 
 dev_dependencies:
   lints: ^6.1.0

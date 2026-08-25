@@ -2138,7 +2138,7 @@ class SecurityGatewayApplicationIamPolicy extends pulumi.CustomResource {
           'gcp:beyondcorp/securityGatewayApplicationIamPolicy:SecurityGatewayApplicationIamPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     applicationId = registerOutput<String>('applicationId');
     etag = registerOutput<String>('etag');
@@ -2152,11 +2152,12 @@ class SecurityGatewayApplicationIamPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SecurityGatewayApplicationIamPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SecurityGatewayApplicationIamPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -2170,6 +2171,22 @@ class SecurityGatewayApplicationIamPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    applicationId = registerOutput<String>('applicationId');
+    etag = registerOutput<String>('etag');
+    policyData = registerOutput<String>('policyData');
+    project = registerOutput<String>('project');
+    securityGatewayId = registerOutput<String>('securityGatewayId');
+  }
+
+  /// Creates a typed reference to an existing [SecurityGatewayApplicationIamPolicy] resource.
+  SecurityGatewayApplicationIamPolicy.reference(String urn)
+    : super(
+        'gcp:beyondcorp/securityGatewayApplicationIamPolicy:SecurityGatewayApplicationIamPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     applicationId = registerOutput<String>('applicationId');
     etag = registerOutput<String>('etag');
     policyData = registerOutput<String>('policyData');

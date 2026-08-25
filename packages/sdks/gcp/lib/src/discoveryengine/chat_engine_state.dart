@@ -9,46 +9,46 @@ import 'chat_engine_common_config.dart';
 class ChatEngineState {
   /// Configurations for a chat Engine.
   /// Structure is documented below.
-  final pulumi.Input<ChatEngineChatEngineConfig>? chatEngineConfig;
+  final pulumi.Input<ChatEngineChatEngineConfig?>? chatEngineConfig;
   /// Additional information of the Chat Engine.
   /// Structure is documented below.
-  final pulumi.Input<List<ChatEngineChatEngineMetadata>>? chatEngineMetadatas;
+  final pulumi.Input<List<ChatEngineChatEngineMetadata>?>? chatEngineMetadatas;
   /// The collection ID.
-  final pulumi.Input<String>? collectionId;
+  final pulumi.Input<String?>? collectionId;
   /// Common config spec that specifies the metadata of the engine.
   /// Structure is documented below.
-  final pulumi.Input<ChatEngineCommonConfig>? commonConfig;
+  final pulumi.Input<ChatEngineCommonConfig?>? commonConfig;
   /// Timestamp the Engine was created at.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// The data stores associated with this engine. Multiple DataStores in the same Collection can be associated here. All listed DataStores must be `SOLUTION_TYPE_CHAT`.
-  final pulumi.Input<List<String>>? dataStoreIds;
+  final pulumi.Input<List<String>?>? dataStoreIds;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The display name of the engine. Should be human readable. UTF-8 encoded string with limit of 1024 characters.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The ID to use for chat engine.
-  final pulumi.Input<String>? engineId;
+  final pulumi.Input<String?>? engineId;
   /// The industry vertical that the chat engine registers. Vertical on Engine has to match vertical of the DataStore linked to the engine.
   /// Default value is `GENERIC`.
   /// Possible values are: `GENERIC`.
-  final pulumi.Input<String>? industryVertical;
+  final pulumi.Input<String?>? industryVertical;
   /// Location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The unique full resource name of the chat engine. Values are of the format
   /// `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}`.
   /// This field must be a UTF-8 encoded string with a length limit of 1024
   /// characters.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Timestamp the Engine was last updated.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [ChatEngineState].
   /// [chatEngineConfig] Configurations for a chat Engine.

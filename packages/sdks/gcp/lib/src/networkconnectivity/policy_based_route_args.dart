@@ -16,37 +16,37 @@ class PolicyBasedRouteArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// An optional description of this resource.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The filter to match L4 traffic.
   /// Structure is documented below.
   final pulumi.Input<PolicyBasedRouteFilter> filter;
   /// The interconnect attachments that this policy-based route applies to.
   /// Structure is documented below.
-  final pulumi.Input<PolicyBasedRouteInterconnectAttachment>? interconnectAttachment;
+  final pulumi.Input<PolicyBasedRouteInterconnectAttachment?>? interconnectAttachment;
   /// User-defined labels.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The name of the policy based route.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Fully-qualified URL of the network that this route applies to, for example: projects/my-project/global/networks/my-network.
   final pulumi.Input<String> network;
   /// The IP address of a global-access-enabled L4 ILB that is the next hop for matching packets.
-  final pulumi.Input<String>? nextHopIlbIp;
+  final pulumi.Input<String?>? nextHopIlbIp;
   /// Other routes that will be referenced to determine the next hop of the packet.
   /// Possible values are: `DEFAULT_ROUTING`.
-  final pulumi.Input<String>? nextHopOtherRoutes;
+  final pulumi.Input<String?>? nextHopOtherRoutes;
   /// The priority of this policy-based route. Priority is used to break ties in cases where there are more than one matching policy-based routes found. In cases where multiple policy-based routes are matched, the one with the lowest-numbered priority value wins. The default value is 1000. The priority value must be from 1 to 65535, inclusive.
-  final pulumi.Input<int>? priority;
+  final pulumi.Input<int?>? priority;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// VM instances to which this policy-based route applies to.
   /// Structure is documented below.
-  final pulumi.Input<PolicyBasedRouteVirtualMachine>? virtualMachine;
+  final pulumi.Input<PolicyBasedRouteVirtualMachine?>? virtualMachine;
 
   /// Creates a new [PolicyBasedRouteArgs].
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -104,7 +104,7 @@ class PolicyBasedRouteArgs {
       network: pulumi.Input.fromValue(map['network'] as String),
       nextHopIlbIp: (() { final guardedValue = map['nextHopIlbIp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       nextHopOtherRoutes: (() { final guardedValue = map['nextHopOtherRoutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       virtualMachine: (() { final guardedValue = map['virtualMachine']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PolicyBasedRouteVirtualMachine.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );

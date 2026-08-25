@@ -7,7 +7,7 @@ class ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSe
   /// Code to identify VMware Engine node series, e.g. "ve1-standard-72". Based
   /// on the displayName of
   /// cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.nodeTypes
-  final pulumi.Input<String>? code;
+  final pulumi.Input<String?>? code;
 
   /// Creates a new [ReportSummaryGroupFindingPreferenceSetFindingComputeEngineFindingMachineSeriesAllocationMachineSeries].
   /// [code] (Output)

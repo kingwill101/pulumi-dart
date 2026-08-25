@@ -13,20 +13,20 @@ class HiveCatalogArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Description of the Hive catalog.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Cloud Storage location path where the catalog data will be stored. Format: gs://bucket/path/to/catalog
   final pulumi.Input<String> locationUri;
   /// Name of the Hive Catalog.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The primary location for mirroring the remote catalog metadata. It must be
   /// a BigLake-supported location, and it should be proximate to the remote
   /// catalog's location.
   final pulumi.Input<String> primaryLocation;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [HiveCatalogArgs].
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

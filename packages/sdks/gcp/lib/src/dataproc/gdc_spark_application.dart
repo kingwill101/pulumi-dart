@@ -1471,25 +1471,26 @@ class GdcSparkApplication extends pulumi.CustomResource {
           'gcp:dataproc/gdcSparkApplication:GdcSparkApplication',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
-    annotations = registerOutput<Map<String, String>?>('annotations');
+    annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     applicationEnvironment = registerOutput<String?>('applicationEnvironment');
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    dependencyImages = registerOutput<List<String>?>('dependencyImages');
+    dependencyImages = registerOutput<List<String>?>('dependencyImages', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     displayName = registerOutput<String?>('displayName');
-    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    labels = registerOutput<Map<String, String>?>('labels');
+    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     monitoringEndpoint = registerOutput<String>('monitoringEndpoint');
     this.name = registerOutput<String>('name');
     namespace = registerOutput<String?>('namespace');
     outputUri = registerOutput<String>('outputUri');
     project = registerOutput<String>('project');
-    properties = registerOutput<Map<String, String>?>('properties');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    properties = registerOutput<Map<String, String>?>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     pysparkApplicationConfig = registerOutput<GdcSparkApplicationPysparkApplicationConfig?>('pysparkApplicationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GdcSparkApplicationPysparkApplicationConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     reconciling = registerOutput<bool>('reconciling');
     serviceinstance = registerOutput<String>('serviceinstance');
@@ -1509,11 +1510,12 @@ class GdcSparkApplication extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     GdcSparkApplicationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return GdcSparkApplication._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1527,23 +1529,23 @@ class GdcSparkApplication extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    annotations = registerOutput<Map<String, String>?>('annotations');
+    annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     applicationEnvironment = registerOutput<String?>('applicationEnvironment');
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    dependencyImages = registerOutput<List<String>?>('dependencyImages');
+    dependencyImages = registerOutput<List<String>?>('dependencyImages', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     displayName = registerOutput<String?>('displayName');
-    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    labels = registerOutput<Map<String, String>?>('labels');
+    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     monitoringEndpoint = registerOutput<String>('monitoringEndpoint');
     this.name = registerOutput<String>('name');
     namespace = registerOutput<String?>('namespace');
     outputUri = registerOutput<String>('outputUri');
     project = registerOutput<String>('project');
-    properties = registerOutput<Map<String, String>?>('properties');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    properties = registerOutput<Map<String, String>?>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     pysparkApplicationConfig = registerOutput<GdcSparkApplicationPysparkApplicationConfig?>('pysparkApplicationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GdcSparkApplicationPysparkApplicationConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     reconciling = registerOutput<bool>('reconciling');
     serviceinstance = registerOutput<String>('serviceinstance');
@@ -1552,6 +1554,47 @@ class GdcSparkApplication extends pulumi.CustomResource {
     sparkRApplicationConfig = registerOutput<GdcSparkApplicationSparkRApplicationConfig?>('sparkRApplicationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GdcSparkApplicationSparkRApplicationConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     sparkSqlApplicationConfig = registerOutput<GdcSparkApplicationSparkSqlApplicationConfig?>('sparkSqlApplicationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GdcSparkApplicationSparkSqlApplicationConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.state = registerOutput<String>('state');
+    stateMessage = registerOutput<String>('stateMessage');
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
+    version = registerOutput<String?>('version');
+  }
+
+  /// Creates a typed reference to an existing [GdcSparkApplication] resource.
+  GdcSparkApplication.reference(String urn)
+    : super(
+        'gcp:dataproc/gdcSparkApplication:GdcSparkApplication',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    applicationEnvironment = registerOutput<String?>('applicationEnvironment');
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    dependencyImages = registerOutput<List<String>?>('dependencyImages', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    displayName = registerOutput<String?>('displayName');
+    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    monitoringEndpoint = registerOutput<String>('monitoringEndpoint');
+    this.name = registerOutput<String>('name');
+    namespace = registerOutput<String?>('namespace');
+    outputUri = registerOutput<String>('outputUri');
+    project = registerOutput<String>('project');
+    properties = registerOutput<Map<String, String>?>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    pysparkApplicationConfig = registerOutput<GdcSparkApplicationPysparkApplicationConfig?>('pysparkApplicationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GdcSparkApplicationPysparkApplicationConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    reconciling = registerOutput<bool>('reconciling');
+    serviceinstance = registerOutput<String>('serviceinstance');
+    sparkApplicationConfig = registerOutput<GdcSparkApplicationSparkApplicationConfig?>('sparkApplicationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GdcSparkApplicationSparkApplicationConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sparkApplicationId = registerOutput<String>('sparkApplicationId');
+    sparkRApplicationConfig = registerOutput<GdcSparkApplicationSparkRApplicationConfig?>('sparkRApplicationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GdcSparkApplicationSparkRApplicationConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sparkSqlApplicationConfig = registerOutput<GdcSparkApplicationSparkSqlApplicationConfig?>('sparkSqlApplicationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GdcSparkApplicationSparkSqlApplicationConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    state = registerOutput<String>('state');
     stateMessage = registerOutput<String>('stateMessage');
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');

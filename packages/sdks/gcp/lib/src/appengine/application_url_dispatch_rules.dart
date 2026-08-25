@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'application_url_dispatch_rules_args.dart';
+import 'application_url_dispatch_rules_dispatch_rule.dart';
 import 'application_url_dispatch_rules_state.dart';
 
 /// Rules to match an HTTP request and dispatch that request to a service.
@@ -438,7 +439,7 @@ class ApplicationUrlDispatchRules extends pulumi.CustomResource {
   late final pulumi.Output<String> deletionPolicy;
   /// Rules to match an HTTP request and dispatch that request to a service.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> dispatchRules;
+  late final pulumi.Output<List<ApplicationUrlDispatchRulesDispatchRule>> dispatchRules;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
@@ -455,10 +456,10 @@ class ApplicationUrlDispatchRules extends pulumi.CustomResource {
           'gcp:appengine/applicationUrlDispatchRules:ApplicationUrlDispatchRules',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    dispatchRules = registerOutput<List<Map<String, dynamic>>>('dispatchRules');
+    dispatchRules = registerOutput<List<ApplicationUrlDispatchRulesDispatchRule>>('dispatchRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationUrlDispatchRulesDispatchRule>(guardedValue, (value) => ApplicationUrlDispatchRulesDispatchRule.fromMap((value as Map).cast<String, dynamic>())); });
     project = registerOutput<String>('project');
   }
 
@@ -467,11 +468,12 @@ class ApplicationUrlDispatchRules extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ApplicationUrlDispatchRulesState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ApplicationUrlDispatchRules._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -486,7 +488,21 @@ class ApplicationUrlDispatchRules extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    dispatchRules = registerOutput<List<Map<String, dynamic>>>('dispatchRules');
+    dispatchRules = registerOutput<List<ApplicationUrlDispatchRulesDispatchRule>>('dispatchRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationUrlDispatchRulesDispatchRule>(guardedValue, (value) => ApplicationUrlDispatchRulesDispatchRule.fromMap((value as Map).cast<String, dynamic>())); });
+    project = registerOutput<String>('project');
+  }
+
+  /// Creates a typed reference to an existing [ApplicationUrlDispatchRules] resource.
+  ApplicationUrlDispatchRules.reference(String urn)
+    : super(
+        'gcp:appengine/applicationUrlDispatchRules:ApplicationUrlDispatchRules',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    dispatchRules = registerOutput<List<ApplicationUrlDispatchRulesDispatchRule>>('dispatchRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationUrlDispatchRulesDispatchRule>(guardedValue, (value) => ApplicationUrlDispatchRulesDispatchRule.fromMap((value as Map).cast<String, dynamic>())); });
     project = registerOutput<String>('project');
   }
 }

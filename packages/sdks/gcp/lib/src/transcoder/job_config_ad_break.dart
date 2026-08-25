@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class JobConfigAdBreak {
   /// Start time in seconds for the ad break, relative to the output file timeline
-  final pulumi.Input<String>? startTimeOffset;
+  final pulumi.Input<String?>? startTimeOffset;
 
   /// Creates a new [JobConfigAdBreak].
   /// [startTimeOffset] Start time in seconds for the ad break, relative to the output file timeline

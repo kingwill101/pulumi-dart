@@ -6,7 +6,7 @@ import 'ai_reasoning_engine_context_spec_example_store_config_similarity_search_
 class AiReasoningEngineContextSpecExampleStoreConfig {
   /// Optional. Configuration for how to perform similarity search on examples.
   /// Structure is documented below.
-  final pulumi.Input<AiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfig>? similaritySearchConfig;
+  final pulumi.Input<AiReasoningEngineContextSpecExampleStoreConfigSimilaritySearchConfig?>? similaritySearchConfig;
 
   /// Creates a new [AiReasoningEngineContextSpecExampleStoreConfig].
   /// [similaritySearchConfig] Optional. Configuration for how to perform similarity search on examples.

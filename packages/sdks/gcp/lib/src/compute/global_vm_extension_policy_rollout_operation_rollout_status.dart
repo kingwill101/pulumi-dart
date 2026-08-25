@@ -6,9 +6,9 @@ import 'global_vm_extension_policy_rollout_operation_rollout_status_previous_rol
 
 class GlobalVmExtensionPolicyRolloutOperationRolloutStatus {
   /// The current rollouts for the latest version of the resource.
-  final pulumi.Input<List<GlobalVmExtensionPolicyRolloutOperationRolloutStatusCurrentRollout>>? currentRollouts;
+  final pulumi.Input<List<GlobalVmExtensionPolicyRolloutOperationRolloutStatusCurrentRollout>?>? currentRollouts;
   /// Rollout status of the previous rollout.
-  final pulumi.Input<List<GlobalVmExtensionPolicyRolloutOperationRolloutStatusPreviousRollout>>? previousRollouts;
+  final pulumi.Input<List<GlobalVmExtensionPolicyRolloutOperationRolloutStatusPreviousRollout>?>? previousRollouts;
 
   /// Creates a new [GlobalVmExtensionPolicyRolloutOperationRolloutStatus].
   /// [currentRollouts] The current rollouts for the latest version of the resource.

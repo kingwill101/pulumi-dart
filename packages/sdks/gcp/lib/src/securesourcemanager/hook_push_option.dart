@@ -7,7 +7,7 @@ class HookPushOption {
   /// Specified as glob pattern. If empty or *, events for all branches are
   /// reported. Examples: main, {main,release*}.
   /// See https://pkg.go.dev/github.com/gobwas/glob documentation.
-  final pulumi.Input<String>? branchFilter;
+  final pulumi.Input<String?>? branchFilter;
 
   /// Creates a new [HookPushOption].
   /// [branchFilter] Trigger hook for matching branches only.

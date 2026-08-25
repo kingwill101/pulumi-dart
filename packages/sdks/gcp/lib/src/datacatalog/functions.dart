@@ -131,6 +131,17 @@ Future<GetEntryGroupIamPolicyResult> getEntryGroupIamPolicy(
   return GetEntryGroupIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetEntryGroupIamPolicyResult> getEntryGroupIamPolicyOutput(
+  GetEntryGroupIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:datacatalog/getEntryGroupIamPolicy:getEntryGroupIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEntryGroupIamPolicyResult.fromMap);
+}
+
 /// Retrieves the current IAM policy data for policytag
 ///
 ///
@@ -248,6 +259,17 @@ Future<GetPolicyTagIamPolicyResult> getPolicyTagIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPolicyTagIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetPolicyTagIamPolicyResult> getPolicyTagIamPolicyOutput(
+  GetPolicyTagIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:datacatalog/getPolicyTagIamPolicy:getPolicyTagIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPolicyTagIamPolicyResult.fromMap);
 }
 
 /// &gt; **Warning:** The parent resource has been deprecated: `gcp.datacatalog.TagTemplate` is deprecated and will be removed in a future major release. Use `gcp.dataplex.AspectType` instead. For steps to transition your Data Catalog users, workloads, and content to Dataplex Catalog, see https://cloud.google.com/dataplex/docs/transition-to-dataplex-catalog.
@@ -369,6 +391,17 @@ Future<GetTagTemplateIamPolicyResult> getTagTemplateIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetTagTemplateIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetTagTemplateIamPolicyResult> getTagTemplateIamPolicyOutput(
+  GetTagTemplateIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:datacatalog/getTagTemplateIamPolicy:getTagTemplateIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTagTemplateIamPolicyResult.fromMap);
 }
 
 /// Get information about a Google Data Catalog Taxonomy. For more information see
@@ -545,6 +578,17 @@ Future<GetTaxonomyResult> getTaxonomy(
   return GetTaxonomyResult.fromMap(result);
 }
 
+pulumi.Output<GetTaxonomyResult> getTaxonomyOutput(
+  GetTaxonomyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:datacatalog/getTaxonomy:getTaxonomy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTaxonomyResult.fromMap);
+}
+
 /// Retrieves the current IAM policy data for taxonomy
 ///
 ///
@@ -662,4 +706,15 @@ Future<GetTaxonomyIamPolicyResult> getTaxonomyIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetTaxonomyIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetTaxonomyIamPolicyResult> getTaxonomyIamPolicyOutput(
+  GetTaxonomyIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:datacatalog/getTaxonomyIamPolicy:getTaxonomyIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTaxonomyIamPolicyResult.fromMap);
 }

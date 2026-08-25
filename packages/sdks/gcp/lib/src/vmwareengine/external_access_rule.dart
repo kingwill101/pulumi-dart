@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'external_access_rule_args.dart';
+import 'external_access_rule_destination_ip_range.dart';
+import 'external_access_rule_source_ip_range.dart';
 import 'external_access_rule_state.dart';
 
 /// External access firewall rules for filtering incoming traffic destined to `ExternalAddress` resources.
@@ -844,7 +846,7 @@ class ExternalAccessRule extends pulumi.CustomResource {
   /// If destination ranges are specified, the external access rule applies only to
   /// traffic that has a destination IP address in these ranges.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> destinationIpRanges;
+  late final pulumi.Output<List<ExternalAccessRuleDestinationIpRange>> destinationIpRanges;
   /// A list of destination ports to which the external access rule applies.
   late final pulumi.Output<List<String>> destinationPorts;
   /// The IP protocol to which the external access rule applies.
@@ -860,7 +862,7 @@ class ExternalAccessRule extends pulumi.CustomResource {
   /// If source ranges are specified, the external access rule applies only to
   /// traffic that has a source IP address in these ranges.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> sourceIpRanges;
+  late final pulumi.Output<List<ExternalAccessRuleSourceIpRange>> sourceIpRanges;
   /// A list of source ports to which the external access rule applies.
   late final pulumi.Output<List<String>> sourcePorts;
   /// State of the Cluster.
@@ -884,20 +886,20 @@ class ExternalAccessRule extends pulumi.CustomResource {
           'gcp:vmwareengine/externalAccessRule:ExternalAccessRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     action = registerOutput<String>('action');
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    destinationIpRanges = registerOutput<List<Map<String, dynamic>>>('destinationIpRanges');
-    destinationPorts = registerOutput<List<String>>('destinationPorts');
+    destinationIpRanges = registerOutput<List<ExternalAccessRuleDestinationIpRange>>('destinationIpRanges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ExternalAccessRuleDestinationIpRange>(guardedValue, (value) => ExternalAccessRuleDestinationIpRange.fromMap((value as Map).cast<String, dynamic>())); });
+    destinationPorts = registerOutput<List<String>>('destinationPorts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     ipProtocol = registerOutput<String>('ipProtocol');
     this.name = registerOutput<String>('name');
     parent = registerOutput<String>('parent');
     priority = registerOutput<int>('priority');
-    sourceIpRanges = registerOutput<List<Map<String, dynamic>>>('sourceIpRanges');
-    sourcePorts = registerOutput<List<String>>('sourcePorts');
+    sourceIpRanges = registerOutput<List<ExternalAccessRuleSourceIpRange>>('sourceIpRanges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ExternalAccessRuleSourceIpRange>(guardedValue, (value) => ExternalAccessRuleSourceIpRange.fromMap((value as Map).cast<String, dynamic>())); });
+    sourcePorts = registerOutput<List<String>>('sourcePorts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     state = registerOutput<String>('state');
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
@@ -908,11 +910,12 @@ class ExternalAccessRule extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ExternalAccessRuleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ExternalAccessRule._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -930,15 +933,41 @@ class ExternalAccessRule extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    destinationIpRanges = registerOutput<List<Map<String, dynamic>>>('destinationIpRanges');
-    destinationPorts = registerOutput<List<String>>('destinationPorts');
+    destinationIpRanges = registerOutput<List<ExternalAccessRuleDestinationIpRange>>('destinationIpRanges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ExternalAccessRuleDestinationIpRange>(guardedValue, (value) => ExternalAccessRuleDestinationIpRange.fromMap((value as Map).cast<String, dynamic>())); });
+    destinationPorts = registerOutput<List<String>>('destinationPorts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     ipProtocol = registerOutput<String>('ipProtocol');
     this.name = registerOutput<String>('name');
     parent = registerOutput<String>('parent');
     priority = registerOutput<int>('priority');
-    sourceIpRanges = registerOutput<List<Map<String, dynamic>>>('sourceIpRanges');
-    sourcePorts = registerOutput<List<String>>('sourcePorts');
+    sourceIpRanges = registerOutput<List<ExternalAccessRuleSourceIpRange>>('sourceIpRanges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ExternalAccessRuleSourceIpRange>(guardedValue, (value) => ExternalAccessRuleSourceIpRange.fromMap((value as Map).cast<String, dynamic>())); });
+    sourcePorts = registerOutput<List<String>>('sourcePorts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.state = registerOutput<String>('state');
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [ExternalAccessRule] resource.
+  ExternalAccessRule.reference(String urn)
+    : super(
+        'gcp:vmwareengine/externalAccessRule:ExternalAccessRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    action = registerOutput<String>('action');
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    destinationIpRanges = registerOutput<List<ExternalAccessRuleDestinationIpRange>>('destinationIpRanges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ExternalAccessRuleDestinationIpRange>(guardedValue, (value) => ExternalAccessRuleDestinationIpRange.fromMap((value as Map).cast<String, dynamic>())); });
+    destinationPorts = registerOutput<List<String>>('destinationPorts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    ipProtocol = registerOutput<String>('ipProtocol');
+    this.name = registerOutput<String>('name');
+    parent = registerOutput<String>('parent');
+    priority = registerOutput<int>('priority');
+    sourceIpRanges = registerOutput<List<ExternalAccessRuleSourceIpRange>>('sourceIpRanges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ExternalAccessRuleSourceIpRange>(guardedValue, (value) => ExternalAccessRuleSourceIpRange.fromMap((value as Map).cast<String, dynamic>())); });
+    sourcePorts = registerOutput<List<String>>('sourcePorts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    state = registerOutput<String>('state');
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
   }

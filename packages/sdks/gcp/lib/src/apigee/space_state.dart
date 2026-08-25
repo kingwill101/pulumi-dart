@@ -5,24 +5,24 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering Space resources.
 class SpaceState {
   /// Create timestamp of the space.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The display name of the Space.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Identifier. Id of the space. This field is used as the resource name, and must follow AIP-122 guidelines.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The Apigee Organization associated with the Apigee Space, in the format `organizations/{{org_name}}`.
-  final pulumi.Input<String>? orgId;
+  final pulumi.Input<String?>? orgId;
   /// Space ID of the Apigee Space.
-  final pulumi.Input<String>? spaceId;
+  final pulumi.Input<String?>? spaceId;
   /// Last modified timestamp of the space.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [SpaceState].
   /// [createTime] Create timestamp of the space.

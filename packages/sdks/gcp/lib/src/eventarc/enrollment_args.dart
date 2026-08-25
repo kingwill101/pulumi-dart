@@ -10,7 +10,7 @@ class EnrollmentArgs {
   /// Resource annotations.
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
-  final pulumi.Input<Map<String, String>>? annotations;
+  final pulumi.Input<Map<String, String>?>? annotations;
   /// A CEL expression identifying which messages this enrollment applies to.
   final pulumi.Input<String> celMatch;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -19,20 +19,20 @@ class EnrollmentArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Destination is the Pipeline that the Enrollment is delivering to. It must
   /// point to the full resource name of a Pipeline. Format:
   /// "projects/{PROJECT_ID}/locations/{region}/pipelines/{PIPELINE_ID)"
   final pulumi.Input<String> destination;
   /// Resource display name.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The user-provided ID to be assigned to the Enrollment. It should match the
   /// format `^a-z?$`.
   final pulumi.Input<String> enrollmentId;
   /// Resource labels.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final pulumi.Input<String> location;
   /// Resource name of the message bus identifying the source of the messages. It
@@ -41,7 +41,7 @@ class EnrollmentArgs {
   final pulumi.Input<String> messageBus;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [EnrollmentArgs].
   /// [annotations] Resource annotations.

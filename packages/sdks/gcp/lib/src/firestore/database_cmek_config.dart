@@ -9,7 +9,7 @@ class DatabaseCmekConfig {
   /// multiple in-use key versions.
   /// The expected format is
   /// `projects/{project_id}/locations/{kms_location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}/cryptoKeyVersions/{key_version}`.
-  final pulumi.Input<List<String>>? activeKeyVersions;
+  final pulumi.Input<List<String>?>? activeKeyVersions;
   /// The resource ID of a Cloud KMS key. If set, the database created will
   /// be a Customer-managed Encryption Key (CMEK) database encrypted with
   /// this key. This feature is allowlist only in initial launch.

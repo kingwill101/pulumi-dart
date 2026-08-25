@@ -6,9 +6,9 @@ import 'get_locations_location.dart';
 /// Result data returned by getLocations.
 class GetLocationsResult {
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// Contains a list of `location`, which contains the details about a particular location.
-  final List<GetLocationsLocation> locations;
+  final List<GetLocationsLocation>? locations;
   final String? project;
 
   /// Creates a new [GetLocationsResult].
@@ -16,23 +16,23 @@ class GetLocationsResult {
   /// [locations] Contains a list of `location`, which contains the details about a particular location.
   /// [project] Optional.
   const GetLocationsResult({
-    required this.id,
-    required this.locations,
+    this.id,
+    this.locations,
     this.project,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'id': id,
-      'locations': pulumi.Input.encodeList<GetLocationsLocation, Map<String, dynamic>>(locations, (value) => value.toMap()),
+      'id': ?id,
+      'locations': ?(() { final guardedValue = locations; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetLocationsLocation, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'project': ?project,
     };
   }
 
   factory GetLocationsResult.fromMap(Map<String, dynamic> map) {
     return GetLocationsResult(
-      id: map['id'] as String,
-      locations: pulumi.Input.decodeList<GetLocationsLocation>(map['locations']!, (value) => GetLocationsLocation.fromMap((value as Map).cast<String, dynamic>())),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      locations: (() { final guardedValue = map['locations']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetLocationsLocation>(guardedValue, (value) => GetLocationsLocation.fromMap((value as Map).cast<String, dynamic>())); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }

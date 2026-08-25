@@ -37,10 +37,10 @@ class GetAutonomousDatabasePropertyScheduledOperationDetailStopTime {
 
   factory GetAutonomousDatabasePropertyScheduledOperationDetailStopTime.fromMap(Map<String, dynamic> map) {
     return GetAutonomousDatabasePropertyScheduledOperationDetailStopTime(
-      hours: pulumi.Input.fromValue(map['hours'] as int),
-      minutes: pulumi.Input.fromValue(map['minutes'] as int),
-      nanos: pulumi.Input.fromValue(map['nanos'] as int),
-      seconds: pulumi.Input.fromValue(map['seconds'] as int),
+      hours: pulumi.Input.fromValue((map['hours'] as num).toInt()),
+      minutes: pulumi.Input.fromValue((map['minutes'] as num).toInt()),
+      nanos: pulumi.Input.fromValue((map['nanos'] as num).toInt()),
+      seconds: pulumi.Input.fromValue((map['seconds'] as num).toInt()),
     );
   }
 }

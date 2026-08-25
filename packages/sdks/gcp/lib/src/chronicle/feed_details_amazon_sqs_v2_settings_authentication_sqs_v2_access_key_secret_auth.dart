@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FeedDetailsAmazonSqsV2SettingsAuthenticationSqsV2AccessKeySecretAuth {
   /// Access key ID of the S3 bucket.  Ex: AKIABCDEFGHIJKL.
-  final pulumi.Input<String>? accessKeyId;
+  final pulumi.Input<String?>? accessKeyId;
   /// Secret access key to access the S3 bucket.
-  final pulumi.Input<String>? secretAccessKey;
+  final pulumi.Input<String?>? secretAccessKey;
 
   /// Creates a new [FeedDetailsAmazonSqsV2SettingsAuthenticationSqsV2AccessKeySecretAuth].
   /// [accessKeyId] Access key ID of the S3 bucket.  Ex: AKIABCDEFGHIJKL.

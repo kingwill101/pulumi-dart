@@ -14,7 +14,7 @@ class ProjectDefaultNetworkTierArgs {
   final pulumi.Input<String> networkTier;
   /// The ID of the project in which the resource belongs. If it
   /// is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [ProjectDefaultNetworkTierArgs].
   /// [networkTier] The default network tier to be configured for the project.

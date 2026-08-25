@@ -7,7 +7,7 @@ class AppVersionSnapshotAppDataStoreSettingEngine {
   /// Identifier. The unique identifier of the toolset.
   /// Format:
   /// `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// (Output)
   /// The type of the data store. This field is readonly and populated by the
   /// server.
@@ -16,7 +16,7 @@ class AppVersionSnapshotAppDataStoreSettingEngine {
   /// UNSTRUCTURED
   /// FAQ
   /// CONNECTOR
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [AppVersionSnapshotAppDataStoreSettingEngine].
   /// [name] (Output)

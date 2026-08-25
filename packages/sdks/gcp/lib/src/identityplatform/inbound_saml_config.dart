@@ -300,7 +300,7 @@ class InboundSamlConfig extends pulumi.CustomResource {
           'gcp:identityplatform/inboundSamlConfig:InboundSamlConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
@@ -316,11 +316,12 @@ class InboundSamlConfig extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     InboundSamlConfigState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return InboundSamlConfig._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -334,6 +335,24 @@ class InboundSamlConfig extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    displayName = registerOutput<String>('displayName');
+    enabled = registerOutput<bool?>('enabled');
+    idpConfig = registerOutput<InboundSamlConfigIdpConfig>('idpConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InboundSamlConfigIdpConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    spConfig = registerOutput<InboundSamlConfigSpConfig>('spConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InboundSamlConfigSpConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [InboundSamlConfig] resource.
+  InboundSamlConfig.reference(String urn)
+    : super(
+        'gcp:identityplatform/inboundSamlConfig:InboundSamlConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
     enabled = registerOutput<bool?>('enabled');

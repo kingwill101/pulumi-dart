@@ -9,7 +9,7 @@ import 'plugin_instance_auth_config_user_password_config.dart';
 class PluginInstanceAuthConfig {
   /// Config for authentication with API key.
   /// Structure is documented below.
-  final pulumi.Input<PluginInstanceAuthConfigApiKeyConfig>? apiKeyConfig;
+  final pulumi.Input<PluginInstanceAuthConfigApiKeyConfig?>? apiKeyConfig;
   /// Possible values:
   /// AUTH_TYPE_UNSPECIFIED
   /// NO_AUTH
@@ -20,14 +20,14 @@ class PluginInstanceAuthConfig {
   final pulumi.Input<String> authType;
   /// Config for Google service account authentication.
   /// Structure is documented below.
-  final pulumi.Input<PluginInstanceAuthConfigGoogleServiceAccountConfig>? googleServiceAccountConfig;
+  final pulumi.Input<PluginInstanceAuthConfigGoogleServiceAccountConfig?>? googleServiceAccountConfig;
   /// Parameters to support Oauth 2.0 client credentials grant authentication.
   /// See https://tools.ietf.org/html/rfc6749#section-1.3.4 for more details.
   /// Structure is documented below.
-  final pulumi.Input<PluginInstanceAuthConfigOauth2ClientCredentialsConfig>? oauth2ClientCredentialsConfig;
+  final pulumi.Input<PluginInstanceAuthConfigOauth2ClientCredentialsConfig?>? oauth2ClientCredentialsConfig;
   /// Parameters to support Username and Password Authentication.
   /// Structure is documented below.
-  final pulumi.Input<PluginInstanceAuthConfigUserPasswordConfig>? userPasswordConfig;
+  final pulumi.Input<PluginInstanceAuthConfigUserPasswordConfig?>? userPasswordConfig;
 
   /// Creates a new [PluginInstanceAuthConfig].
   /// [apiKeyConfig] Config for authentication with API key.

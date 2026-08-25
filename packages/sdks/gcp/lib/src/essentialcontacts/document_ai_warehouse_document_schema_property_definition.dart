@@ -7,43 +7,43 @@ import 'document_ai_warehouse_document_schema_property_definition_schema_source.
 
 class DocumentAiWarehouseDocumentSchemaPropertyDefinition {
   /// Date time property. Not supported by CMEK compliant deployment.
-  final pulumi.Input<Map<String, dynamic>>? dateTimeTypeOptions;
+  final pulumi.Input<Map<String, dynamic>?>? dateTimeTypeOptions;
   /// The display-name for the property, used for front-end.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Enum/categorical property.
   /// Structure is documented below.
-  final pulumi.Input<DocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptions>? enumTypeOptions;
+  final pulumi.Input<DocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptions?>? enumTypeOptions;
   /// Float property.
-  final pulumi.Input<Map<String, dynamic>>? floatTypeOptions;
+  final pulumi.Input<Map<String, dynamic>?>? floatTypeOptions;
   /// Integer property.
-  final pulumi.Input<Map<String, dynamic>>? integerTypeOptions;
+  final pulumi.Input<Map<String, dynamic>?>? integerTypeOptions;
   /// Whether the property can be filtered. If this is a sub-property, all the parent properties must be marked filterable.
-  final pulumi.Input<bool>? isFilterable;
+  final pulumi.Input<bool?>? isFilterable;
   /// Whether the property is user supplied metadata.
-  final pulumi.Input<bool>? isMetadata;
+  final pulumi.Input<bool?>? isMetadata;
   /// Whether the property can have multiple values.
-  final pulumi.Input<bool>? isRepeatable;
+  final pulumi.Input<bool?>? isRepeatable;
   /// Whether the property is mandatory.
-  final pulumi.Input<bool>? isRequired;
+  final pulumi.Input<bool?>? isRequired;
   /// Indicates that the property should be included in a global search.
-  final pulumi.Input<bool>? isSearchable;
+  final pulumi.Input<bool?>? isSearchable;
   /// Map property.
-  final pulumi.Input<Map<String, dynamic>>? mapTypeOptions;
+  final pulumi.Input<Map<String, dynamic>?>? mapTypeOptions;
   /// The name of the metadata property.
   final pulumi.Input<String> name;
   /// Nested structured data property.
   /// Structure is documented below.
-  final pulumi.Input<DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptions>? propertyTypeOptions;
+  final pulumi.Input<DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptions?>? propertyTypeOptions;
   /// Stores the retrieval importance.
   /// Possible values are: `HIGHEST`, `HIGHER`, `HIGH`, `MEDIUM`, `LOW`, `LOWEST`.
-  final pulumi.Input<String>? retrievalImportance;
+  final pulumi.Input<String?>? retrievalImportance;
   /// The schema source information.
   /// Structure is documented below.
-  final pulumi.Input<List<DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSource>>? schemaSources;
+  final pulumi.Input<List<DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSource>?>? schemaSources;
   /// Text property.
-  final pulumi.Input<Map<String, dynamic>>? textTypeOptions;
+  final pulumi.Input<Map<String, dynamic>?>? textTypeOptions;
   /// Timestamp property. Not supported by CMEK compliant deployment.
-  final pulumi.Input<Map<String, dynamic>>? timestampTypeOptions;
+  final pulumi.Input<Map<String, dynamic>?>? timestampTypeOptions;
 
   /// Creates a new [DocumentAiWarehouseDocumentSchemaPropertyDefinition].
   /// [dateTimeTypeOptions] Date time property. Not supported by CMEK compliant deployment.

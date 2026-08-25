@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'developer_args.dart';
+import 'developer_attribute.dart';
 import 'developer_state.dart';
 
 /// A `Developer` is an API consumer that can have apps registered in Apigee.
@@ -935,7 +936,7 @@ import 'developer_state.dart';
 class Developer extends pulumi.CustomResource {
   /// Developer attributes (name/value pairs). The custom attribute limit is 18.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> attributes;
+  late final pulumi.Output<List<DeveloperAttribute>?> attributes;
   /// Time at which the developer was created in milliseconds since epoch.
   late final pulumi.Output<String> createdAt;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -975,9 +976,9 @@ class Developer extends pulumi.CustomResource {
           'gcp:apigee/developer:Developer',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
-    attributes = registerOutput<List<Map<String, dynamic>>?>('attributes');
+    attributes = registerOutput<List<DeveloperAttribute>?>('attributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DeveloperAttribute>(guardedValue, (value) => DeveloperAttribute.fromMap((value as Map).cast<String, dynamic>())); });
     createdAt = registerOutput<String>('createdAt');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     email = registerOutput<String>('email');
@@ -995,11 +996,12 @@ class Developer extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DeveloperState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Developer._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1013,7 +1015,29 @@ class Developer extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    attributes = registerOutput<List<Map<String, dynamic>>?>('attributes');
+    attributes = registerOutput<List<DeveloperAttribute>?>('attributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DeveloperAttribute>(guardedValue, (value) => DeveloperAttribute.fromMap((value as Map).cast<String, dynamic>())); });
+    createdAt = registerOutput<String>('createdAt');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    email = registerOutput<String>('email');
+    firstName = registerOutput<String>('firstName');
+    lastModifiedAt = registerOutput<String>('lastModifiedAt');
+    lastName = registerOutput<String>('lastName');
+    orgId = registerOutput<String>('orgId');
+    organizatioName = registerOutput<String>('organizatioName');
+    status = registerOutput<String>('status');
+    userName = registerOutput<String>('userName');
+  }
+
+  /// Creates a typed reference to an existing [Developer] resource.
+  Developer.reference(String urn)
+    : super(
+        'gcp:apigee/developer:Developer',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    attributes = registerOutput<List<DeveloperAttribute>?>('attributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DeveloperAttribute>(guardedValue, (value) => DeveloperAttribute.fromMap((value as Map).cast<String, dynamic>())); });
     createdAt = registerOutput<String>('createdAt');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     email = registerOutput<String>('email');

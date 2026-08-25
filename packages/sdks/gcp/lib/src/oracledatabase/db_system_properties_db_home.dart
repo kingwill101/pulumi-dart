@@ -13,9 +13,9 @@ class DbSystemPropertiesDbHome {
   final pulumi.Input<String> dbVersion;
   /// The display name for the Database Home. The name does not have to
   /// be unique within your project.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Whether unified auditing is enabled for the Database Home.
-  final pulumi.Input<bool>? isUnifiedAuditingEnabled;
+  final pulumi.Input<bool?>? isUnifiedAuditingEnabled;
 
   /// Creates a new [DbSystemPropertiesDbHome].
   /// [database] Details of the Database resource.

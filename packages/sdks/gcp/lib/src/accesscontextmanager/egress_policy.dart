@@ -48,7 +48,7 @@ class EgressPolicy extends pulumi.CustomResource {
           'gcp:accesscontextmanager/egressPolicy:EgressPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     accessPolicyId = registerOutput<String>('accessPolicyId');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -61,11 +61,12 @@ class EgressPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EgressPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return EgressPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -79,6 +80,21 @@ class EgressPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    accessPolicyId = registerOutput<String>('accessPolicyId');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    egressPolicyName = registerOutput<String>('egressPolicyName');
+    resource = registerOutput<String>('resource');
+  }
+
+  /// Creates a typed reference to an existing [EgressPolicy] resource.
+  EgressPolicy.reference(String urn)
+    : super(
+        'gcp:accesscontextmanager/egressPolicy:EgressPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     accessPolicyId = registerOutput<String>('accessPolicyId');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     egressPolicyName = registerOutput<String>('egressPolicyName');

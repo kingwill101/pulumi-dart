@@ -9,7 +9,7 @@ class ConnectionBitbucketCloudConfigAuthorizerCredential {
   final pulumi.Input<String> userTokenSecretVersion;
   /// (Output)
   /// Output only. The username associated with this token.
-  final pulumi.Input<String>? username;
+  final pulumi.Input<String?>? username;
 
   /// Creates a new [ConnectionBitbucketCloudConfigAuthorizerCredential].
   /// [userTokenSecretVersion] Required. A SecretManager resource containing the user token that authorizes

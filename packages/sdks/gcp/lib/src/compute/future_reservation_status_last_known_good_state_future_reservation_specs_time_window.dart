@@ -6,11 +6,11 @@ import 'future_reservation_status_last_known_good_state_future_reservation_specs
 class FutureReservationStatusLastKnownGoodStateFutureReservationSpecsTimeWindow {
   /// Duration of the future reservation
   /// Structure is documented below.
-  final pulumi.Input<FutureReservationStatusLastKnownGoodStateFutureReservationSpecsTimeWindowDuration>? duration;
+  final pulumi.Input<FutureReservationStatusLastKnownGoodStateFutureReservationSpecsTimeWindowDuration?>? duration;
   /// End time of the future reservation in RFC3339 format.
-  final pulumi.Input<String>? endTime;
+  final pulumi.Input<String?>? endTime;
   /// Start time of the future reservation in RFC3339 format.
-  final pulumi.Input<String>? startTime;
+  final pulumi.Input<String?>? startTime;
 
   /// Creates a new [FutureReservationStatusLastKnownGoodStateFutureReservationSpecsTimeWindow].
   /// [duration] Duration of the future reservation

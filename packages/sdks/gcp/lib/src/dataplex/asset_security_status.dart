@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AssetSecurityStatus {
   /// Additional information about the current state.
-  final pulumi.Input<String>? message;
+  final pulumi.Input<String?>? message;
   /// Output only. Current state of the asset. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// Output only. The time when the asset was last updated.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [AssetSecurityStatus].
   /// [message] Additional information about the current state.

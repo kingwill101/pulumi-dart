@@ -31,7 +31,7 @@ class FlexibleAppVersionResourcesVolume {
   factory FlexibleAppVersionResourcesVolume.fromMap(Map<String, dynamic> map) {
     return FlexibleAppVersionResourcesVolume(
       name: pulumi.Input.fromValue(map['name'] as String),
-      sizeGb: pulumi.Input.fromValue(map['sizeGb'] as int),
+      sizeGb: pulumi.Input.fromValue((map['sizeGb'] as num).toInt()),
       volumeType: pulumi.Input.fromValue(map['volumeType'] as String),
     );
   }

@@ -1510,7 +1510,7 @@ class Organization extends pulumi.CustomResource {
           'gcp:apigee/organization:Organization',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     analyticsRegion = registerOutput<String?>('analyticsRegion');
     apiConsumerDataEncryptionKeyName = registerOutput<String?>('apiConsumerDataEncryptionKeyName');
@@ -1538,11 +1538,12 @@ class Organization extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     OrganizationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Organization._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1556,6 +1557,36 @@ class Organization extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    analyticsRegion = registerOutput<String?>('analyticsRegion');
+    apiConsumerDataEncryptionKeyName = registerOutput<String?>('apiConsumerDataEncryptionKeyName');
+    apiConsumerDataLocation = registerOutput<String?>('apiConsumerDataLocation');
+    apigeeProjectId = registerOutput<String>('apigeeProjectId');
+    authorizedNetwork = registerOutput<String?>('authorizedNetwork');
+    billingType = registerOutput<String>('billingType');
+    caCertificate = registerOutput<String>('caCertificate');
+    controlPlaneEncryptionKeyName = registerOutput<String?>('controlPlaneEncryptionKeyName');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    disableVpcPeering = registerOutput<bool?>('disableVpcPeering');
+    displayName = registerOutput<String?>('displayName');
+    this.name = registerOutput<String>('name');
+    projectId = registerOutput<String>('projectId');
+    properties = registerOutput<OrganizationProperties>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OrganizationProperties.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    retention = registerOutput<String?>('retention');
+    runtimeDatabaseEncryptionKeyName = registerOutput<String?>('runtimeDatabaseEncryptionKeyName');
+    runtimeType_ = registerOutput<String?>('runtimeType');
+    subscriptionType = registerOutput<String>('subscriptionType');
+  }
+
+  /// Creates a typed reference to an existing [Organization] resource.
+  Organization.reference(String urn)
+    : super(
+        'gcp:apigee/organization:Organization',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     analyticsRegion = registerOutput<String?>('analyticsRegion');
     apiConsumerDataEncryptionKeyName = registerOutput<String?>('apiConsumerDataEncryptionKeyName');
     apiConsumerDataLocation = registerOutput<String?>('apiConsumerDataLocation');

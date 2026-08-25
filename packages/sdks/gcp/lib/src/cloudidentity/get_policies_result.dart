@@ -7,9 +7,9 @@ import 'get_policies_policy.dart';
 class GetPoliciesResult {
   final String? filter;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// List of Cloud Identity policies that match the filter (or all policies if no filter is provided). Structure is documented below.
-  final List<GetPoliciesPolicy> policies;
+  final List<GetPoliciesPolicy>? policies;
 
   /// Creates a new [GetPoliciesResult].
   /// [filter] Optional.
@@ -17,23 +17,23 @@ class GetPoliciesResult {
   /// [policies] List of Cloud Identity policies that match the filter (or all policies if no filter is provided). Structure is documented below.
   const GetPoliciesResult({
     this.filter,
-    required this.id,
-    required this.policies,
+    this.id,
+    this.policies,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'filter': ?filter,
-      'id': id,
-      'policies': pulumi.Input.encodeList<GetPoliciesPolicy, Map<String, dynamic>>(policies, (value) => value.toMap()),
+      'id': ?id,
+      'policies': ?(() { final guardedValue = policies; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetPoliciesPolicy, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
     };
   }
 
   factory GetPoliciesResult.fromMap(Map<String, dynamic> map) {
     return GetPoliciesResult(
       filter: (() { final guardedValue = map['filter']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
-      policies: pulumi.Input.decodeList<GetPoliciesPolicy>(map['policies']!, (value) => GetPoliciesPolicy.fromMap((value as Map).cast<String, dynamic>())),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      policies: (() { final guardedValue = map['policies']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetPoliciesPolicy>(guardedValue, (value) => GetPoliciesPolicy.fromMap((value as Map).cast<String, dynamic>())); })(),
     );
   }
 }

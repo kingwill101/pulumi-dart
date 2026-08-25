@@ -5,10 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SacRealmPairingKey {
   /// (Output)
   /// Timestamp in UTC of when this resource is considered expired. It expires 7 days after creation.
-  final pulumi.Input<String>? expireTime;
+  final pulumi.Input<String?>? expireTime;
   /// (Output)
   /// Key value.
-  final pulumi.Input<String>? key;
+  final pulumi.Input<String?>? key;
 
   /// Creates a new [SacRealmPairingKey].
   /// [expireTime] (Output)

@@ -161,7 +161,7 @@ class ProjectMetadataItem extends pulumi.CustomResource {
           'gcp:compute/projectMetadataItem:ProjectMetadataItem',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     key = registerOutput<String>('key');
@@ -174,11 +174,12 @@ class ProjectMetadataItem extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ProjectMetadataItemState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ProjectMetadataItem._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -192,6 +193,21 @@ class ProjectMetadataItem extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    key = registerOutput<String>('key');
+    project = registerOutput<String>('project');
+    value = registerOutput<String>('value');
+  }
+
+  /// Creates a typed reference to an existing [ProjectMetadataItem] resource.
+  ProjectMetadataItem.reference(String urn)
+    : super(
+        'gcp:compute/projectMetadataItem:ProjectMetadataItem',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     key = registerOutput<String>('key');
     project = registerOutput<String>('project');

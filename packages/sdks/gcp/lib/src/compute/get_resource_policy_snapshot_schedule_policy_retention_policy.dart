@@ -26,7 +26,7 @@ class GetResourcePolicySnapshotSchedulePolicyRetentionPolicy {
 
   factory GetResourcePolicySnapshotSchedulePolicyRetentionPolicy.fromMap(Map<String, dynamic> map) {
     return GetResourcePolicySnapshotSchedulePolicyRetentionPolicy(
-      maxRetentionDays: pulumi.Input.fromValue(map['maxRetentionDays'] as int),
+      maxRetentionDays: pulumi.Input.fromValue((map['maxRetentionDays'] as num).toInt()),
       onSourceDiskDelete: pulumi.Input.fromValue(map['onSourceDiskDelete'] as String),
     );
   }

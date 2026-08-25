@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MulticloudDataTransferConfigServiceState {
   /// The time when the state becomes effective
-  final pulumi.Input<String>? effectiveTime;
+  final pulumi.Input<String?>? effectiveTime;
   /// The state of the resource.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
 
   /// Creates a new [MulticloudDataTransferConfigServiceState].
   /// [effectiveTime] The time when the state becomes effective

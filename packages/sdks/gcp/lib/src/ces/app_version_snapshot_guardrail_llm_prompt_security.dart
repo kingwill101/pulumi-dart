@@ -9,15 +9,15 @@ class AppVersionSnapshotGuardrailLlmPromptSecurity {
   /// Guardrail that blocks the conversation if the LLM response is considered
   /// violating the policy based on the LLM classification.
   /// Structure is documented below.
-  final pulumi.Input<List<AppVersionSnapshotGuardrailLlmPromptSecurityCustomPolicy>>? customPolicies;
+  final pulumi.Input<List<AppVersionSnapshotGuardrailLlmPromptSecurityCustomPolicy>?>? customPolicies;
   /// (Output)
   /// Configuration for default system security settings.
   /// Structure is documented below.
-  final pulumi.Input<List<AppVersionSnapshotGuardrailLlmPromptSecurityDefaultSetting>>? defaultSettings;
+  final pulumi.Input<List<AppVersionSnapshotGuardrailLlmPromptSecurityDefaultSetting>?>? defaultSettings;
   /// (Output)
   /// If an error occurs during the policy check, fail open and do not trigger
   /// the guardrail.
-  final pulumi.Input<bool>? failOpen;
+  final pulumi.Input<bool?>? failOpen;
 
   /// Creates a new [AppVersionSnapshotGuardrailLlmPromptSecurity].
   /// [customPolicies] (Output)

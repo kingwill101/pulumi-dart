@@ -1009,7 +1009,7 @@ class IamPolicy extends pulumi.CustomResource {
           'gcp:bigquery/iamPolicy:IamPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     datasetId = registerOutput<String>('datasetId');
     etag = registerOutput<String>('etag');
@@ -1023,11 +1023,12 @@ class IamPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     IamPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return IamPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1041,6 +1042,22 @@ class IamPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    datasetId = registerOutput<String>('datasetId');
+    etag = registerOutput<String>('etag');
+    policyData = registerOutput<String>('policyData');
+    project = registerOutput<String>('project');
+    tableId = registerOutput<String>('tableId');
+  }
+
+  /// Creates a typed reference to an existing [IamPolicy] resource.
+  IamPolicy.reference(String urn)
+    : super(
+        'gcp:bigquery/iamPolicy:IamPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     datasetId = registerOutput<String>('datasetId');
     etag = registerOutput<String>('etag');
     policyData = registerOutput<String>('policyData');

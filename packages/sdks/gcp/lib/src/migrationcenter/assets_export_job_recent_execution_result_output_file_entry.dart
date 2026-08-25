@@ -8,14 +8,14 @@ class AssetsExportJobRecentExecutionResultOutputFileEntry {
   /// (Output)
   /// Contains a single output file of type CSV.
   /// Structure is documented below.
-  final pulumi.Input<List<AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFile>>? csvOutputFiles;
+  final pulumi.Input<List<AssetsExportJobRecentExecutionResultOutputFileEntryCsvOutputFile>?>? csvOutputFiles;
   /// (Output)
   /// File size in bytes.
-  final pulumi.Input<String>? fileSizeBytes;
+  final pulumi.Input<String?>? fileSizeBytes;
   /// (Output)
   /// Contains a single output file of type XLSX.
   /// Structure is documented below.
-  final pulumi.Input<List<AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFile>>? xlsxOutputFiles;
+  final pulumi.Input<List<AssetsExportJobRecentExecutionResultOutputFileEntryXlsxOutputFile>?>? xlsxOutputFiles;
 
   /// Creates a new [AssetsExportJobRecentExecutionResultOutputFileEntry].
   /// [csvOutputFiles] (Output)

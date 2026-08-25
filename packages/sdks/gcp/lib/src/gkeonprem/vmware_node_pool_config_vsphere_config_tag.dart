@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VMwareNodePoolConfigVsphereConfigTag {
   /// The Vsphere tag category.
-  final pulumi.Input<String>? category;
+  final pulumi.Input<String?>? category;
   /// The Vsphere tag name.
-  final pulumi.Input<String>? tag;
+  final pulumi.Input<String?>? tag;
 
   /// Creates a new [VMwareNodePoolConfigVsphereConfigTag].
   /// [category] The Vsphere tag category.

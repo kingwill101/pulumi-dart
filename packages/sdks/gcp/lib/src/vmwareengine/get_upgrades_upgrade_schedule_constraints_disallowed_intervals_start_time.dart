@@ -23,8 +23,8 @@ class GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsStartTime {
 
   factory GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsStartTime.fromMap(Map<String, dynamic> map) {
     return GetUpgradesUpgradeScheduleConstraintsDisallowedIntervalsStartTime(
-      hours: pulumi.Input.fromValue(map['hours'] as int),
-      minutes: pulumi.Input.fromValue(map['minutes'] as int),
+      hours: pulumi.Input.fromValue((map['hours'] as num).toInt()),
+      minutes: pulumi.Input.fromValue((map['minutes'] as num).toInt()),
     );
   }
 }

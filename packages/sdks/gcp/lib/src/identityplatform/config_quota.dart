@@ -6,7 +6,7 @@ import 'config_quota_sign_up_quota_config.dart';
 class ConfigQuota {
   /// Quota for the Signup endpoint, if overwritten. Signup quota is measured in sign ups per project per hour per IP. None of quota, startTime, or quotaDuration can be skipped.
   /// Structure is documented below.
-  final pulumi.Input<ConfigQuotaSignUpQuotaConfig>? signUpQuotaConfig;
+  final pulumi.Input<ConfigQuotaSignUpQuotaConfig?>? signUpQuotaConfig;
 
   /// Creates a new [ConfigQuota].
   /// [signUpQuotaConfig] Quota for the Signup endpoint, if overwritten. Signup quota is measured in sign ups per project per hour per IP. None of quota, startTime, or quotaDuration can be skipped.

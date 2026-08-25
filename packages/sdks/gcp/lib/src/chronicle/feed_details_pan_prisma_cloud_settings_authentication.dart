@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FeedDetailsPanPrismaCloudSettingsAuthentication {
   /// Password. Used for username and password authentication.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// Username. This is unused: Workday feeds were originally configured using a
   /// username and secret authentication method, but only the secret field was
   /// used, and it was used to supply the OAuth access token.
-  final pulumi.Input<String>? user;
+  final pulumi.Input<String?>? user;
 
   /// Creates a new [FeedDetailsPanPrismaCloudSettingsAuthentication].
   /// [password] Password. Used for username and password authentication.

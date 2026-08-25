@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRun {
   /// Whether Cloud Deploy should update the traffic stanza in a Cloud Run Service on the user's behalf to facilitate traffic splitting. This is required to be true for CanaryDeployments, but optional for CustomCanaryDeployments.
-  final pulumi.Input<bool>? automaticTrafficControl;
+  final pulumi.Input<bool?>? automaticTrafficControl;
   /// Optional. A list of tags that are added to the canary revision while the canary phase is in progress.
-  final pulumi.Input<List<String>>? canaryRevisionTags;
+  final pulumi.Input<List<String>?>? canaryRevisionTags;
   /// Optional. A list of tags that are added to the prior revision while the canary phase is in progress.
-  final pulumi.Input<List<String>>? priorRevisionTags;
+  final pulumi.Input<List<String>?>? priorRevisionTags;
   /// Optional. A list of tags that are added to the final stable revision when the stable phase is applied.
-  final pulumi.Input<List<String>>? stableRevisionTags;
+  final pulumi.Input<List<String>?>? stableRevisionTags;
 
   /// Creates a new [DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRun].
   /// [automaticTrafficControl] Whether Cloud Deploy should update the traffic stanza in a Cloud Run Service on the user's behalf to facilitate traffic splitting. This is required to be true for CanaryDeployments, but optional for CustomCanaryDeployments.

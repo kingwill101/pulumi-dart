@@ -1623,27 +1623,28 @@ class InternalRange extends pulumi.CustomResource {
           'gcp:networkconnectivity/internalRange:InternalRange',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     allocationOptions = registerOutput<InternalRangeAllocationOptions?>('allocationOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InternalRangeAllocationOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    excludeCidrRanges = registerOutput<List<String>?>('excludeCidrRanges');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    excludeCidrRanges = registerOutput<List<String>?>('excludeCidrRanges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     immutable = registerOutput<bool?>('immutable');
     ipCidrRange = registerOutput<String>('ipCidrRange');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     migration = registerOutput<InternalRangeMigration?>('migration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InternalRangeMigration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     network = registerOutput<String>('network');
-    overlaps = registerOutput<List<String>?>('overlaps');
+    overlaps = registerOutput<List<String>?>('overlaps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     peering = registerOutput<String>('peering');
     prefixLength = registerOutput<int?>('prefixLength');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    targetCidrRanges = registerOutput<List<String>?>('targetCidrRanges');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    targetCidrRanges = registerOutput<List<String>?>('targetCidrRanges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     usage = registerOutput<String>('usage');
-    users = registerOutput<List<String>>('users');
+    users = registerOutput<List<String>>('users', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [InternalRange] resource's state with the given [name] and [id].
@@ -1651,11 +1652,12 @@ class InternalRange extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     InternalRangeState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return InternalRange._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1672,21 +1674,52 @@ class InternalRange extends pulumi.CustomResource {
     allocationOptions = registerOutput<InternalRangeAllocationOptions?>('allocationOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InternalRangeAllocationOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    excludeCidrRanges = registerOutput<List<String>?>('excludeCidrRanges');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    excludeCidrRanges = registerOutput<List<String>?>('excludeCidrRanges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     immutable = registerOutput<bool?>('immutable');
     ipCidrRange = registerOutput<String>('ipCidrRange');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     migration = registerOutput<InternalRangeMigration?>('migration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InternalRangeMigration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     network = registerOutput<String>('network');
-    overlaps = registerOutput<List<String>?>('overlaps');
+    overlaps = registerOutput<List<String>?>('overlaps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     peering = registerOutput<String>('peering');
     prefixLength = registerOutput<int?>('prefixLength');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    targetCidrRanges = registerOutput<List<String>?>('targetCidrRanges');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    targetCidrRanges = registerOutput<List<String>?>('targetCidrRanges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     usage = registerOutput<String>('usage');
-    users = registerOutput<List<String>>('users');
+    users = registerOutput<List<String>>('users', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [InternalRange] resource.
+  InternalRange.reference(String urn)
+    : super(
+        'gcp:networkconnectivity/internalRange:InternalRange',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    allocationOptions = registerOutput<InternalRangeAllocationOptions?>('allocationOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InternalRangeAllocationOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    excludeCidrRanges = registerOutput<List<String>?>('excludeCidrRanges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    immutable = registerOutput<bool?>('immutable');
+    ipCidrRange = registerOutput<String>('ipCidrRange');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    migration = registerOutput<InternalRangeMigration?>('migration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InternalRangeMigration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    network = registerOutput<String>('network');
+    overlaps = registerOutput<List<String>?>('overlaps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    peering = registerOutput<String>('peering');
+    prefixLength = registerOutput<int?>('prefixLength');
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    targetCidrRanges = registerOutput<List<String>?>('targetCidrRanges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    usage = registerOutput<String>('usage');
+    users = registerOutput<List<String>>('users', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

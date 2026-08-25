@@ -4,21 +4,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FeatureMembershipConfigmanagementConfigSyncGit {
   /// The GCP Service Account Email used for auth when secretType is gcpServiceAccount.
-  final pulumi.Input<String>? gcpServiceAccountEmail;
+  final pulumi.Input<String?>? gcpServiceAccountEmail;
   /// URL for the HTTPS proxy to be used when communicating with the Git repo.
-  final pulumi.Input<String>? httpsProxy;
+  final pulumi.Input<String?>? httpsProxy;
   /// The path within the Git repository that represents the top level of the repo to sync. Default: the root directory of the repository.
-  final pulumi.Input<String>? policyDir;
+  final pulumi.Input<String?>? policyDir;
   /// Type of secret configured for access to the Git repo.
-  final pulumi.Input<String>? secretType;
+  final pulumi.Input<String?>? secretType;
   /// The branch of the repository to sync from. Default: master.
-  final pulumi.Input<String>? syncBranch;
+  final pulumi.Input<String?>? syncBranch;
   /// The URL of the Git repository to use as the source of truth.
-  final pulumi.Input<String>? syncRepo;
+  final pulumi.Input<String?>? syncRepo;
   /// Git revision (tag or hash) to check out. Default HEAD.
-  final pulumi.Input<String>? syncRev;
+  final pulumi.Input<String?>? syncRev;
   /// Period in seconds between consecutive syncs. Default: 15.
-  final pulumi.Input<String>? syncWaitSecs;
+  final pulumi.Input<String?>? syncWaitSecs;
 
   /// Creates a new [FeatureMembershipConfigmanagementConfigSyncGit].
   /// [gcpServiceAccountEmail] The GCP Service Account Email used for auth when secretType is gcpServiceAccount.

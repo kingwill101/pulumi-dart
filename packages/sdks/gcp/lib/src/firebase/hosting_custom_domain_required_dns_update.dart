@@ -7,12 +7,12 @@ import 'hosting_custom_domain_required_dns_update_discovered.dart';
 class HostingCustomDomainRequiredDnsUpdate {
   /// (Output)
   /// The last time Hosting checked your CustomDomain's DNS records.
-  final pulumi.Input<String>? checkTime;
+  final pulumi.Input<String?>? checkTime;
   /// A text string to serve at the path.
-  final pulumi.Input<List<HostingCustomDomainRequiredDnsUpdateDesired>>? desireds;
+  final pulumi.Input<List<HostingCustomDomainRequiredDnsUpdateDesired>?>? desireds;
   /// Whether Hosting was able to find the required file contents on the
   /// specified path during its last check.
-  final pulumi.Input<List<HostingCustomDomainRequiredDnsUpdateDiscovered>>? discovereds;
+  final pulumi.Input<List<HostingCustomDomainRequiredDnsUpdateDiscovered>?>? discovereds;
 
   /// Creates a new [HostingCustomDomainRequiredDnsUpdate].
   /// [checkTime] (Output)

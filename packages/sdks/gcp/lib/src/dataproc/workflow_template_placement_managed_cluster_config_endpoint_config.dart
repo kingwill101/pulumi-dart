@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WorkflowTemplatePlacementManagedClusterConfigEndpointConfig {
   /// If true, enable http access to specific ports on the cluster from external sources. Defaults to false.
-  final pulumi.Input<bool>? enableHttpPortAccess;
+  final pulumi.Input<bool?>? enableHttpPortAccess;
   /// Output only. The map of port descriptions to URLs. Will only be populated if enableHttpPortAccess is true.
-  final pulumi.Input<Map<String, String>>? httpPorts;
+  final pulumi.Input<Map<String, String>?>? httpPorts;
 
   /// Creates a new [WorkflowTemplatePlacementManagedClusterConfigEndpointConfig].
   /// [enableHttpPortAccess] If true, enable http access to specific ports on the cluster from external sources. Defaults to false.

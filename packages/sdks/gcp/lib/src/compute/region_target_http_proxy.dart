@@ -1080,7 +1080,7 @@ class RegionTargetHttpProxy extends pulumi.CustomResource {
           'gcp:compute/regionTargetHttpProxy:RegionTargetHttpProxy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     creationTimestamp = registerOutput<String>('creationTimestamp');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -1099,11 +1099,12 @@ class RegionTargetHttpProxy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RegionTargetHttpProxyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RegionTargetHttpProxy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1117,6 +1118,27 @@ class RegionTargetHttpProxy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    httpKeepAliveTimeoutSec = registerOutput<int?>('httpKeepAliveTimeoutSec');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    proxyId = registerOutput<int>('proxyId');
+    region = registerOutput<String>('region');
+    selfLink = registerOutput<String>('selfLink');
+    urlMap = registerOutput<String>('urlMap');
+  }
+
+  /// Creates a typed reference to an existing [RegionTargetHttpProxy] resource.
+  RegionTargetHttpProxy.reference(String urn)
+    : super(
+        'gcp:compute/regionTargetHttpProxy:RegionTargetHttpProxy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     creationTimestamp = registerOutput<String>('creationTimestamp');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');

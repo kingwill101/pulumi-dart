@@ -16,7 +16,7 @@ class CmekConfigArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// KMS key resource name which will be used to encrypt resources
   /// `projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{keyId}`.
   final pulumi.Input<String> kmsKey;
@@ -25,13 +25,13 @@ class CmekConfigArgs {
   final pulumi.Input<String> location;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Set the following CmekConfig as the default to be used for child resources
   /// if one is not specified. The default value is true.
-  final pulumi.Input<bool>? setDefault;
+  final pulumi.Input<bool?>? setDefault;
   /// Single-regional CMEKs that are required for some VAIS features.
   /// Structure is documented below.
-  final pulumi.Input<List<CmekConfigSingleRegionKey>>? singleRegionKeys;
+  final pulumi.Input<List<CmekConfigSingleRegionKey>?>? singleRegionKeys;
 
   /// Creates a new [CmekConfigArgs].
   /// [cmekConfigId] The unique id of the cmek config.

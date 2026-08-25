@@ -32,7 +32,7 @@ class GetRepositoryVirtualRepositoryConfigUpstreamPolicy {
   factory GetRepositoryVirtualRepositoryConfigUpstreamPolicy.fromMap(Map<String, dynamic> map) {
     return GetRepositoryVirtualRepositoryConfigUpstreamPolicy(
       id: pulumi.Input.fromValue(map['id'] as String),
-      priority: pulumi.Input.fromValue(map['priority'] as int),
+      priority: pulumi.Input.fromValue((map['priority'] as num).toInt()),
       repository: pulumi.Input.fromValue(map['repository'] as String),
     );
   }

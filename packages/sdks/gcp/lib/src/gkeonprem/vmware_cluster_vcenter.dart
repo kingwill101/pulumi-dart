@@ -5,21 +5,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VMwareClusterVcenter {
   /// (Output)
   /// The vCenter IP address.
-  final pulumi.Input<String>? address;
+  final pulumi.Input<String?>? address;
   /// Contains the vCenter CA certificate public key for SSL verification.
-  final pulumi.Input<String>? caCertData;
+  final pulumi.Input<String?>? caCertData;
   /// The name of the vCenter cluster for the user cluster.
-  final pulumi.Input<String>? cluster;
+  final pulumi.Input<String?>? cluster;
   /// The name of the vCenter datacenter for the user cluster.
-  final pulumi.Input<String>? datacenter;
+  final pulumi.Input<String?>? datacenter;
   /// The name of the vCenter datastore for the user cluster.
-  final pulumi.Input<String>? datastore;
+  final pulumi.Input<String?>? datastore;
   /// The name of the vCenter folder for the user cluster.
-  final pulumi.Input<String>? folder;
+  final pulumi.Input<String?>? folder;
   /// The name of the vCenter resource pool for the user cluster.
-  final pulumi.Input<String>? resourcePool;
+  final pulumi.Input<String?>? resourcePool;
   /// The name of the vCenter storage policy for the user cluster.
-  final pulumi.Input<String>? storagePolicyName;
+  final pulumi.Input<String?>? storagePolicyName;
 
   /// Creates a new [VMwareClusterVcenter].
   /// [address] (Output)

@@ -8,18 +8,18 @@ import 'data_store_document_processing_config_parsing_config_override.dart';
 class DataStoreDocumentProcessingConfig {
   /// Whether chunking mode is enabled.
   /// Structure is documented below.
-  final pulumi.Input<DataStoreDocumentProcessingConfigChunkingConfig>? chunkingConfig;
+  final pulumi.Input<DataStoreDocumentProcessingConfigChunkingConfig?>? chunkingConfig;
   /// Configurations for default Document parser. If not specified, this resource
   /// will be configured to use a default DigitalParsingConfig, and the default parsing
   /// config will be applied to all file types for Document parsing.
   /// Structure is documented below.
-  final pulumi.Input<DataStoreDocumentProcessingConfigDefaultParsingConfig>? defaultParsingConfig;
+  final pulumi.Input<DataStoreDocumentProcessingConfigDefaultParsingConfig?>? defaultParsingConfig;
   /// (Output)
   /// The full resource name of the Document Processing Config. Format:
   /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}/documentProcessingConfig`.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Map from file type to override the default parsing configuration based on the file type. Supported keys:
-  final pulumi.Input<List<DataStoreDocumentProcessingConfigParsingConfigOverride>>? parsingConfigOverrides;
+  final pulumi.Input<List<DataStoreDocumentProcessingConfigParsingConfigOverride>?>? parsingConfigOverrides;
 
   /// Creates a new [DataStoreDocumentProcessingConfig].
   /// [chunkingConfig] Whether chunking mode is enabled.

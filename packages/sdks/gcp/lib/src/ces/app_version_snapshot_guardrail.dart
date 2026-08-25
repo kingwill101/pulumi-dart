@@ -12,55 +12,55 @@ class AppVersionSnapshotGuardrail {
   /// (Output)
   /// Action that is taken when a certain precondition is met.
   /// Structure is documented below.
-  final pulumi.Input<List<AppVersionSnapshotGuardrailAction>>? actions;
+  final pulumi.Input<List<AppVersionSnapshotGuardrailAction>?>? actions;
   /// (Output)
   /// Guardrail that blocks the conversation based on the code callbacks
   /// provided.
   /// Structure is documented below.
-  final pulumi.Input<List<AppVersionSnapshotGuardrailCodeCallback>>? codeCallbacks;
+  final pulumi.Input<List<AppVersionSnapshotGuardrailCodeCallback>?>? codeCallbacks;
   /// (Output)
   /// Guardrail that bans certain content from being used in the conversation.
   /// Structure is documented below.
-  final pulumi.Input<List<AppVersionSnapshotGuardrailContentFilter>>? contentFilters;
+  final pulumi.Input<List<AppVersionSnapshotGuardrailContentFilter>?>? contentFilters;
   /// (Output)
   /// Timestamp when the toolset was created.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// The description of the app version.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The display name of the app version.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// (Output)
   /// Whether the guardrail is enabled.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// (Output)
   /// ETag used to ensure the object hasn't changed during a read-modify-write
   /// operation. If the etag is empty, the update will overwrite any concurrent
   /// changes.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// (Output)
   /// Guardrail that blocks the conversation if the LLM response is considered
   /// violating the policy based on the LLM classification.
   /// Structure is documented below.
-  final pulumi.Input<List<AppVersionSnapshotGuardrailLlmPolicy>>? llmPolicies;
+  final pulumi.Input<List<AppVersionSnapshotGuardrailLlmPolicy>?>? llmPolicies;
   /// (Output)
   /// Guardrail that blocks the conversation if the input is considered unsafe
   /// based on the LLM classification.
   /// Structure is documented below.
-  final pulumi.Input<List<AppVersionSnapshotGuardrailLlmPromptSecurity>>? llmPromptSecurities;
+  final pulumi.Input<List<AppVersionSnapshotGuardrailLlmPromptSecurity>?>? llmPromptSecurities;
   /// (Output)
   /// Model safety settings overrides. When this is set, it will override the
   /// default settings and trigger the guardrail if the response is considered
   /// unsafe.
   /// Structure is documented below.
-  final pulumi.Input<List<AppVersionSnapshotGuardrailModelSafety>>? modelSafeties;
+  final pulumi.Input<List<AppVersionSnapshotGuardrailModelSafety>?>? modelSafeties;
   /// (Output)
   /// Identifier. The unique identifier of the toolset.
   /// Format:
   /// `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// (Output)
   /// Timestamp when the toolset was last updated.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [AppVersionSnapshotGuardrail].
   /// [actions] (Output)

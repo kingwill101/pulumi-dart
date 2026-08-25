@@ -11,45 +11,45 @@ import 'notebook_execution_workbench_runtime.dart';
 class NotebookExecutionState {
   /// Compute configuration to use for an execution job
   /// Structure is documented below.
-  final pulumi.Input<NotebookExecutionCustomEnvironmentSpec>? customEnvironmentSpec;
+  final pulumi.Input<NotebookExecutionCustomEnvironmentSpec?>? customEnvironmentSpec;
   /// The Dataform Repository containing the input notebook.
   /// Structure is documented below.
-  final pulumi.Input<NotebookExecutionDataformRepositorySource>? dataformRepositorySource;
+  final pulumi.Input<NotebookExecutionDataformRepositorySource?>? dataformRepositorySource;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The content of the input notebook in ipynb format.
   /// Structure is documented below.
-  final pulumi.Input<NotebookExecutionDirectNotebookSource>? directNotebookSource;
+  final pulumi.Input<NotebookExecutionDirectNotebookSource?>? directNotebookSource;
   /// Required. The display name of the Notebook Execution.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Max running time of the execution job in seconds (default 86400s / 24 hrs).
-  final pulumi.Input<String>? executionTimeout;
+  final pulumi.Input<String?>? executionTimeout;
   /// The user email to run the execution as.
-  final pulumi.Input<String>? executionUser;
+  final pulumi.Input<String?>? executionUser;
   /// The Cloud Storage uri for the input notebook.
   /// Structure is documented below.
-  final pulumi.Input<NotebookExecutionGcsNotebookSource>? gcsNotebookSource;
+  final pulumi.Input<NotebookExecutionGcsNotebookSource?>? gcsNotebookSource;
   /// The Cloud Storage location to upload the result to. Format:`gs://bucket-name`
-  final pulumi.Input<String>? gcsOutputUri;
+  final pulumi.Input<String?>? gcsOutputUri;
   /// The location for the resource: https://cloud.google.com/colab/docs/locations
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// User specified ID for the Notebook Execution Job
-  final pulumi.Input<String>? notebookExecutionJobId;
+  final pulumi.Input<String?>? notebookExecutionJobId;
   /// The NotebookRuntimeTemplate to source compute configuration from.
-  final pulumi.Input<String>? notebookRuntimeTemplateResourceName;
+  final pulumi.Input<String?>? notebookRuntimeTemplateResourceName;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The service account to run the execution as.
-  final pulumi.Input<String>? serviceAccount;
+  final pulumi.Input<String?>? serviceAccount;
   /// Configuration for a Workbench Instances-based environment.
   /// Structure is documented below.
-  final pulumi.Input<NotebookExecutionWorkbenchRuntime>? workbenchRuntime;
+  final pulumi.Input<NotebookExecutionWorkbenchRuntime?>? workbenchRuntime;
 
   /// Creates a new [NotebookExecutionState].
   /// [customEnvironmentSpec] Compute configuration to use for an execution job

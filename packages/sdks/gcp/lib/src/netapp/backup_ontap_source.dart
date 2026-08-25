@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BackupOntapSource {
   /// The UUID of the ONTAP source snapshot.
-  final pulumi.Input<String>? snapshotUuid;
+  final pulumi.Input<String?>? snapshotUuid;
   /// Name of the storage pool. This must be specified for creating backups for ONTAP mode volumes.
   /// Format: `projects/{{project}}/locations/{{location}}/storagePools/{{storage_pool_id}}`
   final pulumi.Input<String> storagePool;

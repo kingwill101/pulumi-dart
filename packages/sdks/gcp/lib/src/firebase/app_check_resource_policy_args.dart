@@ -13,7 +13,7 @@ class AppCheckResourcePolicyArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The App Check enforcement mode for a service supported by App Check. This will override the EnforcementMode setting on the service.
   /// Valid values are:
   /// (Unset)
@@ -41,10 +41,10 @@ class AppCheckResourcePolicyArgs {
   /// If your app has not launched yet, you should enable enforcement immediately, since there are no outdated
   /// clients in use.
   /// Possible values are: `UNENFORCED`, `ENFORCED`.
-  final pulumi.Input<String>? enforcementMode;
+  final pulumi.Input<String?>? enforcementMode;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The identifier of the service to configure a Resource Policy for.
   /// Currently, the following service IDs are supported:
   /// * `oauth2.googleapis.com` (Google Identity for iOS)

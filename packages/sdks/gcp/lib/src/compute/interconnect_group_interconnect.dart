@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InterconnectGroupInterconnect {
   /// The URL of an Interconnect in this group. All Interconnects in the group are unique.
-  final pulumi.Input<String>? interconnect;
+  final pulumi.Input<String?>? interconnect;
   /// The identifier for this object. Format specified above.
   final pulumi.Input<String> name;
 

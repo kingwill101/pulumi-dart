@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRegionalParameterVersionRenderArgs {
   /// Location of Parameter Manager regional Parameter resource.
   /// It must be provided when the `parameter` field provided consists of only the name of the regional parameter.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The Parameter for obtaining the Regional Parameter Version.
   /// This can be either the reference of the parameter as in `projects/{{project}}/locations/{{location}}/parameters/{{parameter_id}}` or only the name of the parameter as in `{{parameter_id}}`.
   final pulumi.Input<String> parameter;
@@ -17,7 +17,7 @@ class GetRegionalParameterVersionRenderArgs {
   final pulumi.Input<String> parameterVersionId;
   /// The project for retrieving the Regional Parameter Version. If it's not
   /// specified, the provider project will be used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetRegionalParameterVersionRenderArgs].
   /// [location] Location of Parameter Manager regional Parameter resource.

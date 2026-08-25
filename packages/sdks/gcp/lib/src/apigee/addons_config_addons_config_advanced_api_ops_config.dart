@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AddonsConfigAddonsConfigAdvancedApiOpsConfig {
   /// Flag that specifies whether the Advanced API Ops add-on is enabled.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
 
   /// Creates a new [AddonsConfigAddonsConfigAdvancedApiOpsConfig].
   /// [enabled] Flag that specifies whether the Advanced API Ops add-on is enabled.

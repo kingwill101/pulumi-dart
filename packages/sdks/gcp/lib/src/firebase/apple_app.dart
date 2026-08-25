@@ -420,7 +420,7 @@ class AppleApp extends pulumi.CustomResource {
           'gcp:firebase/appleApp:AppleApp',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     apiKeyId = registerOutput<String>('apiKeyId');
     appId = registerOutput<String>('appId');
@@ -438,11 +438,12 @@ class AppleApp extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AppleAppState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AppleApp._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -456,6 +457,26 @@ class AppleApp extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    apiKeyId = registerOutput<String>('apiKeyId');
+    appId = registerOutput<String>('appId');
+    appStoreId = registerOutput<String?>('appStoreId');
+    bundleId = registerOutput<String>('bundleId');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    displayName = registerOutput<String>('displayName');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    teamId = registerOutput<String?>('teamId');
+  }
+
+  /// Creates a typed reference to an existing [AppleApp] resource.
+  AppleApp.reference(String urn)
+    : super(
+        'gcp:firebase/appleApp:AppleApp',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     apiKeyId = registerOutput<String>('apiKeyId');
     appId = registerOutput<String>('appId');
     appStoreId = registerOutput<String?>('appStoreId');

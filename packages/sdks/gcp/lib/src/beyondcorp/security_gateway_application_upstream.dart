@@ -9,16 +9,16 @@ import 'security_gateway_application_upstream_proxy_protocol.dart';
 class SecurityGatewayApplicationUpstream {
   /// Optional. Routing policy information.
   /// Structure is documented below.
-  final pulumi.Input<SecurityGatewayApplicationUpstreamEgressPolicy>? egressPolicy;
+  final pulumi.Input<SecurityGatewayApplicationUpstreamEgressPolicy?>? egressPolicy;
   /// List of the external endpoints to forward traffic to.
   /// Structure is documented below.
-  final pulumi.Input<SecurityGatewayApplicationUpstreamExternal>? external;
+  final pulumi.Input<SecurityGatewayApplicationUpstreamExternal?>? external;
   /// Network to forward traffic to.
   /// Structure is documented below.
-  final pulumi.Input<SecurityGatewayApplicationUpstreamNetwork>? network;
+  final pulumi.Input<SecurityGatewayApplicationUpstreamNetwork?>? network;
   /// Shared proxy configuration for all apps.
   /// Structure is documented below.
-  final pulumi.Input<SecurityGatewayApplicationUpstreamProxyProtocol>? proxyProtocol;
+  final pulumi.Input<SecurityGatewayApplicationUpstreamProxyProtocol?>? proxyProtocol;
 
   /// Creates a new [SecurityGatewayApplicationUpstream].
   /// [egressPolicy] Optional. Routing policy information.

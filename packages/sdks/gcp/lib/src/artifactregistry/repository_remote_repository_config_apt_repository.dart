@@ -6,7 +6,7 @@ import 'repository_remote_repository_config_apt_repository_public_repository.dar
 class RepositoryRemoteRepositoryConfigAptRepository {
   /// One of the publicly available Apt repositories supported by Artifact Registry.
   /// Structure is documented below.
-  final pulumi.Input<RepositoryRemoteRepositoryConfigAptRepositoryPublicRepository>? publicRepository;
+  final pulumi.Input<RepositoryRemoteRepositoryConfigAptRepositoryPublicRepository?>? publicRepository;
 
   /// Creates a new [RepositoryRemoteRepositoryConfigAptRepository].
   /// [publicRepository] One of the publicly available Apt repositories supported by Artifact Registry.

@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterTrialMetadata {
   /// End time of the trial cluster.
-  final pulumi.Input<String>? endTime;
+  final pulumi.Input<String?>? endTime;
   /// Grace end time of the trial cluster.
-  final pulumi.Input<String>? graceEndTime;
+  final pulumi.Input<String?>? graceEndTime;
   /// Start time of the trial cluster.
-  final pulumi.Input<String>? startTime;
+  final pulumi.Input<String?>? startTime;
   /// Upgrade time of the trial cluster to standard cluster.
-  final pulumi.Input<String>? upgradeTime;
+  final pulumi.Input<String?>? upgradeTime;
 
   /// Creates a new [ClusterTrialMetadata].
   /// [endTime] End time of the trial cluster.

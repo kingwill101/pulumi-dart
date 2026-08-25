@@ -1,6 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'import_job_args.dart';
+import 'import_job_execution_report.dart';
 import 'import_job_state.dart';
+import 'import_job_validation_report.dart';
 
 /// ImportJob represents a batch data import task that processes uploaded data files and populates Migration Center assets.
 ///
@@ -241,7 +243,7 @@ class ImportJob extends pulumi.CustomResource {
   late final pulumi.Output<Map<String, String>> effectiveLabels;
   /// A resource that reports result of the import job execution.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> executionReports;
+  late final pulumi.Output<List<ImportJobExecutionReport>> executionReports;
   /// ID of the import job.
   late final pulumi.Output<String> importJobId;
   /// Labels as key value pairs.
@@ -272,7 +274,7 @@ class ImportJob extends pulumi.CustomResource {
   late final pulumi.Output<String> updateTime;
   /// A resource that aggregates errors across import job files.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> validationReports;
+  late final pulumi.Output<List<ImportJobValidationReport>> validationReports;
 
   /// Creates a new [ImportJob].
   /// [name] The Pulumi resource name.
@@ -286,24 +288,25 @@ class ImportJob extends pulumi.CustomResource {
           'gcp:migrationcenter/importJob:ImportJob',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     assetSource = registerOutput<String>('assetSource');
     completeTime = registerOutput<String>('completeTime');
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    executionReports = registerOutput<List<Map<String, dynamic>>>('executionReports');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    executionReports = registerOutput<List<ImportJobExecutionReport>>('executionReports', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ImportJobExecutionReport>(guardedValue, (value) => ImportJobExecutionReport.fromMap((value as Map).cast<String, dynamic>())); });
     importJobId = registerOutput<String>('importJobId');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     state = registerOutput<String>('state');
     updateTime = registerOutput<String>('updateTime');
-    validationReports = registerOutput<List<Map<String, dynamic>>>('validationReports');
+    validationReports = registerOutput<List<ImportJobValidationReport>>('validationReports', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ImportJobValidationReport>(guardedValue, (value) => ImportJobValidationReport.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [ImportJob] resource's state with the given [name] and [id].
@@ -311,11 +314,12 @@ class ImportJob extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ImportJobState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ImportJob._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -334,16 +338,44 @@ class ImportJob extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    executionReports = registerOutput<List<Map<String, dynamic>>>('executionReports');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    executionReports = registerOutput<List<ImportJobExecutionReport>>('executionReports', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ImportJobExecutionReport>(guardedValue, (value) => ImportJobExecutionReport.fromMap((value as Map).cast<String, dynamic>())); });
     importJobId = registerOutput<String>('importJobId');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     this.state = registerOutput<String>('state');
     updateTime = registerOutput<String>('updateTime');
-    validationReports = registerOutput<List<Map<String, dynamic>>>('validationReports');
+    validationReports = registerOutput<List<ImportJobValidationReport>>('validationReports', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ImportJobValidationReport>(guardedValue, (value) => ImportJobValidationReport.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [ImportJob] resource.
+  ImportJob.reference(String urn)
+    : super(
+        'gcp:migrationcenter/importJob:ImportJob',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    assetSource = registerOutput<String>('assetSource');
+    completeTime = registerOutput<String>('completeTime');
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    displayName = registerOutput<String?>('displayName');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    executionReports = registerOutput<List<ImportJobExecutionReport>>('executionReports', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ImportJobExecutionReport>(guardedValue, (value) => ImportJobExecutionReport.fromMap((value as Map).cast<String, dynamic>())); });
+    importJobId = registerOutput<String>('importJobId');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    state = registerOutput<String>('state');
+    updateTime = registerOutput<String>('updateTime');
+    validationReports = registerOutput<List<ImportJobValidationReport>>('validationReports', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ImportJobValidationReport>(guardedValue, (value) => ImportJobValidationReport.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

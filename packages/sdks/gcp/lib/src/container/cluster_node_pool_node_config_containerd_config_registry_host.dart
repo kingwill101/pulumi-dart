@@ -5,7 +5,7 @@ import 'cluster_node_pool_node_config_containerd_config_registry_host_host.dart'
 
 class ClusterNodePoolNodeConfigContainerdConfigRegistryHost {
   /// Configures a list of host-specific configurations for the server.
-  final pulumi.Input<List<ClusterNodePoolNodeConfigContainerdConfigRegistryHostHost>>? hosts;
+  final pulumi.Input<List<ClusterNodePoolNodeConfigContainerdConfigRegistryHostHost>?>? hosts;
   /// Defines the host name of the registry server.
   final pulumi.Input<String> server;
 

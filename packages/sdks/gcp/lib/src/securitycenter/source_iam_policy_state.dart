@@ -4,12 +4,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Input properties used for looking up and filtering SourceIamPolicy resources.
 class SourceIamPolicyState {
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// The organization whose Cloud Security Command Center the Source
   /// lives in.
-  final pulumi.Input<String>? organization;
-  final pulumi.Input<String>? policyData;
-  final pulumi.Input<String>? source;
+  final pulumi.Input<String?>? organization;
+  final pulumi.Input<String?>? policyData;
+  final pulumi.Input<String?>? source;
 
   /// Creates a new [SourceIamPolicyState].
   /// [etag] Optional.

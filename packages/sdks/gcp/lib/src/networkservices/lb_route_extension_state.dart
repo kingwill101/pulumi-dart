@@ -11,40 +11,40 @@ class LbRouteExtensionState {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// A human-readable description of the resource.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveLabels;
+  final pulumi.Input<Map<String, String>?>? effectiveLabels;
   /// A set of ordered extension chains that contain the match conditions and extensions to execute.
   /// Match conditions for each extension chain are evaluated in sequence for a given request.
   /// The first extension chain that has a condition that matches the request is executed.
   /// Any subsequent extension chains do not execute. Limited to 5 extension chains per resource.
   /// Further information can be found at https://cloud.google.com/service-extensions/docs/reference/rest/v1/ExtensionChain
   /// Structure is documented below.
-  final pulumi.Input<List<LbRouteExtensionExtensionChain>>? extensionChains;
+  final pulumi.Input<List<LbRouteExtensionExtensionChain>?>? extensionChains;
   /// A list of references to the forwarding rules to which this service extension is attached to.
   /// At least one forwarding rule is required. There can be only one LbRouteExtension resource per forwarding rule.
-  final pulumi.Input<List<String>>? forwardingRules;
+  final pulumi.Input<List<String>?>? forwardingRules;
   /// Set of labels associated with the LbRouteExtension resource.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// All backend services and forwarding rules referenced by this extension must share the same load balancing scheme.
   /// For more information, refer to [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service) and
   /// [Supported application load balancers](https://cloud.google.com/service-extensions/docs/callouts-overview#supported-lbs).
   /// Possible values are: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
-  final pulumi.Input<String>? loadBalancingScheme;
+  final pulumi.Input<String?>? loadBalancingScheme;
   /// The location of the route extension
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Name of the LbRouteExtension resource in the following format: projects/{project}/locations/{location}/lbRouteExtensions/{lbRouteExtension}
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  final pulumi.Input<Map<String, String>>? pulumiLabels;
+  final pulumi.Input<Map<String, String>?>? pulumiLabels;
 
   /// Creates a new [LbRouteExtensionState].
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

@@ -7,10 +7,10 @@ import 'prevention_deidentify_template_deidentify_config_record_transformations_
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformations {
   /// Transform the record by applying various field transformations.
   /// Structure is documented below.
-  final pulumi.Input<List<PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformation>>? fieldTransformations;
+  final pulumi.Input<List<PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformation>?>? fieldTransformations;
   /// Configuration defining which records get suppressed entirely. Records that match any suppression rule are omitted from the output.
   /// Structure is documented below.
-  final pulumi.Input<List<PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppression>>? recordSuppressions;
+  final pulumi.Input<List<PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppression>?>? recordSuppressions;
 
   /// Creates a new [PreventionDeidentifyTemplateDeidentifyConfigRecordTransformations].
   /// [fieldTransformations] Transform the record by applying various field transformations.

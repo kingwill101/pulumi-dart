@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ExternalAccessRuleSourceIpRange {
   /// A single IP address.
-  final pulumi.Input<String>? ipAddress;
+  final pulumi.Input<String?>? ipAddress;
   /// An IP address range in the CIDR format.
-  final pulumi.Input<String>? ipAddressRange;
+  final pulumi.Input<String?>? ipAddressRange;
 
   /// Creates a new [ExternalAccessRuleSourceIpRange].
   /// [ipAddress] A single IP address.

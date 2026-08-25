@@ -11,14 +11,14 @@ import 'settings_service_account_approver_settings.dart';
 class SettingsArgs {
   /// EmailNotificationSettings defines node-wide email notification preferences for various PAM events.
   /// Structure is documented below.
-  final pulumi.Input<SettingsEmailNotificationSettings>? emailNotificationSettings;
+  final pulumi.Input<SettingsEmailNotificationSettings?>? emailNotificationSettings;
   /// The region of the PAM settings resource.
   final pulumi.Input<String> location;
   /// Format: projects/{project-id|project-number} or organizations/{organization-number} or folders/{folder-number}
   final pulumi.Input<String> parent;
   /// This controls the node-level settings for allowing service accounts as approvers.
   /// Structure is documented below.
-  final pulumi.Input<SettingsServiceAccountApproverSettings>? serviceAccountApproverSettings;
+  final pulumi.Input<SettingsServiceAccountApproverSettings?>? serviceAccountApproverSettings;
 
   /// Creates a new [SettingsArgs].
   /// [emailNotificationSettings] EmailNotificationSettings defines node-wide email notification preferences for various PAM events.

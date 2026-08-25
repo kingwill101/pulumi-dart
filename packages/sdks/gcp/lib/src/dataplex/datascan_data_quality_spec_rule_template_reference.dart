@@ -8,7 +8,7 @@ class DatascanDataQualitySpecRuleTemplateReference {
   final pulumi.Input<String> name;
   /// The map of parameter name and value.
   /// Structure is documented below.
-  final pulumi.Input<List<DatascanDataQualitySpecRuleTemplateReferenceValue>>? values;
+  final pulumi.Input<List<DatascanDataQualitySpecRuleTemplateReferenceValue>?>? values;
 
   /// Creates a new [DatascanDataQualitySpecRuleTemplateReference].
   /// [name] The resource name of the template entry.

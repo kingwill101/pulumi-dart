@@ -7,12 +7,12 @@ import 'prevention_discovery_config_target_cloud_storage_target_filter_collectio
 class PreventionDiscoveryConfigTargetCloudStorageTargetFilter {
   /// The bucket to scan. Targets including this can only include one target (the target with this bucket). This enables profiling the contents of a single bucket, while the other options allow for easy profiling of many buckets within a project or an organization.
   /// Structure is documented below.
-  final pulumi.Input<PreventionDiscoveryConfigTargetCloudStorageTargetFilterCloudStorageResourceReference>? cloudStorageResourceReference;
+  final pulumi.Input<PreventionDiscoveryConfigTargetCloudStorageTargetFilterCloudStorageResourceReference?>? cloudStorageResourceReference;
   /// A collection of resources for this filter to apply to.
   /// Structure is documented below.
-  final pulumi.Input<PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollection>? collection;
+  final pulumi.Input<PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollection?>? collection;
   /// Match discovery resources not covered by any other filter.
-  final pulumi.Input<Map<String, dynamic>>? others;
+  final pulumi.Input<Map<String, dynamic>?>? others;
 
   /// Creates a new [PreventionDiscoveryConfigTargetCloudStorageTargetFilter].
   /// [cloudStorageResourceReference] The bucket to scan. Targets including this can only include one target (the target with this bucket). This enables profiling the contents of a single bucket, while the other options allow for easy profiling of many buckets within a project or an organization.

@@ -13,17 +13,17 @@ class PreventionJobTriggerInspectJobActionSaveFindingsOutputConfig {
   /// table with no schema, and no changes will be made to an existing table that has a schema.
   /// Only for use with external storage.
   /// Possible values are: `BASIC_COLUMNS`, `GCS_COLUMNS`, `DATASTORE_COLUMNS`, `BIG_QUERY_COLUMNS`, `ALL_COLUMNS`.
-  final pulumi.Input<String>? outputSchema;
+  final pulumi.Input<String?>? outputSchema;
   /// Store findings in an existing Cloud Storage bucket. Files will be generated with the job ID and file part number
   /// as the filename, and will contain findings in textproto format as SaveToGcsFindingsOutput. The file name will use
   /// the naming convention &lt;job_id&gt;-&lt;shard_number&gt;, for example: my-job-id-2.
   /// Supported for InspectJobs. The bucket must not be the same as the bucket being inspected. If storing findings to
   /// Cloud Storage, the output schema field should not be set. If set, it will be ignored.
   /// Structure is documented below.
-  final pulumi.Input<PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigStoragePath>? storagePath;
+  final pulumi.Input<PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigStoragePath?>? storagePath;
   /// Information on the location of the target BigQuery Table.
   /// Structure is documented below.
-  final pulumi.Input<PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTable>? table;
+  final pulumi.Input<PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTable?>? table;
 
   /// Creates a new [PreventionJobTriggerInspectJobActionSaveFindingsOutputConfig].
   /// [outputSchema] Schema used for writing the findings for Inspect jobs. This field is only used for

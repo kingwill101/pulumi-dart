@@ -10,28 +10,28 @@ import 'app_group_attribute.dart';
 class AppGroupArgs {
   /// A list of attributes
   /// Structure is documented below.
-  final pulumi.Input<List<AppGroupAttribute>>? attributes;
+  final pulumi.Input<List<AppGroupAttribute>?>? attributes;
   /// Channel identifier identifies the owner maintaining this grouping.
-  final pulumi.Input<String>? channelId;
+  final pulumi.Input<String?>? channelId;
   /// A reference to the associated storefront/marketplace.
-  final pulumi.Input<String>? channelUri;
+  final pulumi.Input<String?>? channelUri;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// App group name displayed in the UI
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Name of the AppGroup. Characters you can use in the name are restricted to: A-Z0-9._-$ %.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The Apigee Organization associated with the Apigee app group,
   /// in the format `organizations/{{org_name}}`.
   final pulumi.Input<String> orgId;
   /// Valid values are active or inactive. Note that the status of the AppGroup should be updated via UpdateAppGroupRequest by setting the action as active or inactive.
   /// Possible values are: `active`, `inactive`.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
 
   /// Creates a new [AppGroupArgs].
   /// [attributes] A list of attributes

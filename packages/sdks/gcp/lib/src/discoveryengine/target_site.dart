@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'target_site_args.dart';
+import 'target_site_failure_reason.dart';
+import 'target_site_site_verification_info.dart';
 import 'target_site_state.dart';
 
 /// TargetSite represents a URI pattern that the users want to confine their
@@ -480,7 +482,7 @@ class TargetSite extends pulumi.CustomResource {
   late final pulumi.Output<bool?> exactMatch;
   /// Site search indexing failure reasons.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> failureReasons;
+  late final pulumi.Output<List<TargetSiteFailureReason>> failureReasons;
   /// This is system-generated based on the `providedUriPattern`.
   late final pulumi.Output<String> generatedUriPattern;
   /// The indexing status.
@@ -503,7 +505,7 @@ class TargetSite extends pulumi.CustomResource {
   late final pulumi.Output<String> rootDomainUri;
   /// Site ownership and validity verification status.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> siteVerificationInfos;
+  late final pulumi.Output<List<TargetSiteSiteVerificationInfo>> siteVerificationInfos;
   /// The unique id of the target site.
   late final pulumi.Output<String> targetSiteId;
   /// The possible target site types.
@@ -524,12 +526,12 @@ class TargetSite extends pulumi.CustomResource {
           'gcp:discoveryengine/targetSite:TargetSite',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     dataStoreId = registerOutput<String>('dataStoreId');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     exactMatch = registerOutput<bool?>('exactMatch');
-    failureReasons = registerOutput<List<Map<String, dynamic>>>('failureReasons');
+    failureReasons = registerOutput<List<TargetSiteFailureReason>>('failureReasons', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TargetSiteFailureReason>(guardedValue, (value) => TargetSiteFailureReason.fromMap((value as Map).cast<String, dynamic>())); });
     generatedUriPattern = registerOutput<String>('generatedUriPattern');
     indexingStatus = registerOutput<String>('indexingStatus');
     location = registerOutput<String>('location');
@@ -537,7 +539,7 @@ class TargetSite extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     providedUriPattern = registerOutput<String>('providedUriPattern');
     rootDomainUri = registerOutput<String>('rootDomainUri');
-    siteVerificationInfos = registerOutput<List<Map<String, dynamic>>>('siteVerificationInfos');
+    siteVerificationInfos = registerOutput<List<TargetSiteSiteVerificationInfo>>('siteVerificationInfos', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TargetSiteSiteVerificationInfo>(guardedValue, (value) => TargetSiteSiteVerificationInfo.fromMap((value as Map).cast<String, dynamic>())); });
     targetSiteId = registerOutput<String>('targetSiteId');
     type = registerOutput<String?>('type');
     updateTime = registerOutput<String>('updateTime');
@@ -548,11 +550,12 @@ class TargetSite extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TargetSiteState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return TargetSite._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -569,7 +572,7 @@ class TargetSite extends pulumi.CustomResource {
     dataStoreId = registerOutput<String>('dataStoreId');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     exactMatch = registerOutput<bool?>('exactMatch');
-    failureReasons = registerOutput<List<Map<String, dynamic>>>('failureReasons');
+    failureReasons = registerOutput<List<TargetSiteFailureReason>>('failureReasons', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TargetSiteFailureReason>(guardedValue, (value) => TargetSiteFailureReason.fromMap((value as Map).cast<String, dynamic>())); });
     generatedUriPattern = registerOutput<String>('generatedUriPattern');
     indexingStatus = registerOutput<String>('indexingStatus');
     location = registerOutput<String>('location');
@@ -577,7 +580,33 @@ class TargetSite extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     providedUriPattern = registerOutput<String>('providedUriPattern');
     rootDomainUri = registerOutput<String>('rootDomainUri');
-    siteVerificationInfos = registerOutput<List<Map<String, dynamic>>>('siteVerificationInfos');
+    siteVerificationInfos = registerOutput<List<TargetSiteSiteVerificationInfo>>('siteVerificationInfos', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TargetSiteSiteVerificationInfo>(guardedValue, (value) => TargetSiteSiteVerificationInfo.fromMap((value as Map).cast<String, dynamic>())); });
+    targetSiteId = registerOutput<String>('targetSiteId');
+    type = registerOutput<String?>('type');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [TargetSite] resource.
+  TargetSite.reference(String urn)
+    : super(
+        'gcp:discoveryengine/targetSite:TargetSite',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    dataStoreId = registerOutput<String>('dataStoreId');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    exactMatch = registerOutput<bool?>('exactMatch');
+    failureReasons = registerOutput<List<TargetSiteFailureReason>>('failureReasons', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TargetSiteFailureReason>(guardedValue, (value) => TargetSiteFailureReason.fromMap((value as Map).cast<String, dynamic>())); });
+    generatedUriPattern = registerOutput<String>('generatedUriPattern');
+    indexingStatus = registerOutput<String>('indexingStatus');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    providedUriPattern = registerOutput<String>('providedUriPattern');
+    rootDomainUri = registerOutput<String>('rootDomainUri');
+    siteVerificationInfos = registerOutput<List<TargetSiteSiteVerificationInfo>>('siteVerificationInfos', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TargetSiteSiteVerificationInfo>(guardedValue, (value) => TargetSiteSiteVerificationInfo.fromMap((value as Map).cast<String, dynamic>())); });
     targetSiteId = registerOutput<String>('targetSiteId');
     type = registerOutput<String?>('type');
     updateTime = registerOutput<String>('updateTime');

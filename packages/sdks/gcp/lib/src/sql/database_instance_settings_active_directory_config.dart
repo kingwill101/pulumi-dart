@@ -4,15 +4,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DatabaseInstanceSettingsActiveDirectoryConfig {
   /// The secret manager key storing the administrator credential. (e.g., `projects/{project}/secrets/{secret}`).
-  final pulumi.Input<String>? adminCredentialSecretName;
+  final pulumi.Input<String?>? adminCredentialSecretName;
   /// Domain controller IPv4 addresses used to bootstrap Active Directory.
-  final pulumi.Input<List<String>>? dnsServers;
+  final pulumi.Input<List<String>?>? dnsServers;
   /// The domain name for the active directory (e.g., mydomain.com). Can only be used with SQL Server.
   final pulumi.Input<String> domain;
   /// The mode of the Active Directory configuration. Can be `MANAGED_ACTIVE_DIRECTORY` or `CUSTOMER_MANAGED_ACTIVE_DIRECTORY`.
-  final pulumi.Input<String>? mode;
+  final pulumi.Input<String?>? mode;
   /// The organizational unit distinguished name. This is the full hierarchical path to the organizational unit.
-  final pulumi.Input<String>? organizationalUnit;
+  final pulumi.Input<String?>? organizationalUnit;
 
   /// Creates a new [DatabaseInstanceSettingsActiveDirectoryConfig].
   /// [adminCredentialSecretName] The secret manager key storing the administrator credential. (e.g., `projects/{project}/secrets/{secret}`).

@@ -8,7 +8,7 @@ class DeploymentChannelProfilePersonaProperty {
   /// UNKNOWN
   /// CONCISE
   /// CHATTY
-  final pulumi.Input<String>? persona;
+  final pulumi.Input<String?>? persona;
 
   /// Creates a new [DeploymentChannelProfilePersonaProperty].
   /// [persona] The persona of the channel.

@@ -5,10 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClusterCrossClusterReplicationConfigMembershipSecondaryCluster {
   /// (Output)
   /// The full resource path of the secondary cluster in the format: projects/{project}/locations/{region}/clusters/{cluster-id}
-  final pulumi.Input<String>? cluster;
+  final pulumi.Input<String?>? cluster;
   /// (Output)
   /// The unique id of the secondary cluster.
-  final pulumi.Input<String>? uid;
+  final pulumi.Input<String?>? uid;
 
   /// Creates a new [ClusterCrossClusterReplicationConfigMembershipSecondaryCluster].
   /// [cluster] (Output)

@@ -193,9 +193,9 @@ class Taxonomy extends pulumi.CustomResource {
           'gcp:datacatalog/taxonomy:Taxonomy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
-    activatedPolicyTypes = registerOutput<List<String>?>('activatedPolicyTypes');
+    activatedPolicyTypes = registerOutput<List<String>?>('activatedPolicyTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
@@ -209,11 +209,12 @@ class Taxonomy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TaxonomyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Taxonomy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -227,7 +228,25 @@ class Taxonomy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    activatedPolicyTypes = registerOutput<List<String>?>('activatedPolicyTypes');
+    activatedPolicyTypes = registerOutput<List<String>?>('activatedPolicyTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [Taxonomy] resource.
+  Taxonomy.reference(String urn)
+    : super(
+        'gcp:datacatalog/taxonomy:Taxonomy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    activatedPolicyTypes = registerOutput<List<String>?>('activatedPolicyTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');

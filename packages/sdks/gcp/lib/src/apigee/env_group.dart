@@ -399,10 +399,10 @@ class EnvGroup extends pulumi.CustomResource {
           'gcp:apigee/envGroup:EnvGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    hostnames = registerOutput<List<String>?>('hostnames');
+    hostnames = registerOutput<List<String>?>('hostnames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     orgId = registerOutput<String>('orgId');
   }
@@ -412,11 +412,12 @@ class EnvGroup extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EnvGroupState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return EnvGroup._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -431,7 +432,22 @@ class EnvGroup extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    hostnames = registerOutput<List<String>?>('hostnames');
+    hostnames = registerOutput<List<String>?>('hostnames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    this.name = registerOutput<String>('name');
+    orgId = registerOutput<String>('orgId');
+  }
+
+  /// Creates a typed reference to an existing [EnvGroup] resource.
+  EnvGroup.reference(String urn)
+    : super(
+        'gcp:apigee/envGroup:EnvGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    hostnames = registerOutput<List<String>?>('hostnames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     orgId = registerOutput<String>('orgId');
   }

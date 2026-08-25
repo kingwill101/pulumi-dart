@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FleetState {
   /// (Output)
   /// Describes the state of a Fleet resource.
-  final pulumi.Input<String>? code;
+  final pulumi.Input<String?>? code;
 
   /// Creates a new [FleetState].
   /// [code] (Output)

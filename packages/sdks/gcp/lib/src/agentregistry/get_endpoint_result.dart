@@ -6,85 +6,85 @@ import 'get_endpoint_interface.dart';
 /// Result data returned by getEndpoint.
 class GetEndpointResult {
   /// Attributes of the Endpoint.
-  final Map<String, String> attributes;
+  final Map<String, String>? attributes;
   /// Create time.
-  final String createTime;
+  final String? createTime;
   /// The description of the Endpoint.
-  final String description;
+  final String? description;
   /// The display name of the Endpoint.
-  final String displayName;
-  final String endpointId;
+  final String? displayName;
+  final String? endpointId;
   final String? filter;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// The connection details for the Endpoint.
-  final List<GetEndpointInterface> interfaces;
-  final String location;
-  final String project;
+  final List<GetEndpointInterface>? interfaces;
+  final String? location;
+  final String? project;
   /// Update time.
-  final String updateTime;
+  final String? updateTime;
   /// The URN of the Endpoint.
-  final String urn;
+  final String? urn;
 
   /// Creates a new [GetEndpointResult].
   /// [attributes] Attributes of the Endpoint.
   /// [createTime] Create time.
   /// [description] The description of the Endpoint.
   /// [displayName] The display name of the Endpoint.
-  /// [endpointId] Required.
+  /// [endpointId] Optional.
   /// [filter] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [interfaces] The connection details for the Endpoint.
-  /// [location] Required.
-  /// [project] Required.
+  /// [location] Optional.
+  /// [project] Optional.
   /// [updateTime] Update time.
   /// [urn] The URN of the Endpoint.
   const GetEndpointResult({
-    required this.attributes,
-    required this.createTime,
-    required this.description,
-    required this.displayName,
-    required this.endpointId,
+    this.attributes,
+    this.createTime,
+    this.description,
+    this.displayName,
+    this.endpointId,
     this.filter,
-    required this.id,
-    required this.interfaces,
-    required this.location,
-    required this.project,
-    required this.updateTime,
-    required this.urn,
+    this.id,
+    this.interfaces,
+    this.location,
+    this.project,
+    this.updateTime,
+    this.urn,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'attributes': attributes,
-      'createTime': createTime,
-      'description': description,
-      'displayName': displayName,
-      'endpointId': endpointId,
+      'attributes': ?attributes,
+      'createTime': ?createTime,
+      'description': ?description,
+      'displayName': ?displayName,
+      'endpointId': ?endpointId,
       'filter': ?filter,
-      'id': id,
-      'interfaces': pulumi.Input.encodeList<GetEndpointInterface, Map<String, dynamic>>(interfaces, (value) => value.toMap()),
-      'location': location,
-      'project': project,
-      'updateTime': updateTime,
-      'urn': urn,
+      'id': ?id,
+      'interfaces': ?(() { final guardedValue = interfaces; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetEndpointInterface, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'location': ?location,
+      'project': ?project,
+      'updateTime': ?updateTime,
+      'urn': ?urn,
     };
   }
 
   factory GetEndpointResult.fromMap(Map<String, dynamic> map) {
     return GetEndpointResult(
-      attributes: (map['attributes'] as Map).cast<String, String>(),
-      createTime: map['createTime'] as String,
-      description: map['description'] as String,
-      displayName: map['displayName'] as String,
-      endpointId: map['endpointId'] as String,
+      attributes: (() { final guardedValue = map['attributes']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      endpointId: (() { final guardedValue = map['endpointId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       filter: (() { final guardedValue = map['filter']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
-      interfaces: pulumi.Input.decodeList<GetEndpointInterface>(map['interfaces']!, (value) => GetEndpointInterface.fromMap((value as Map).cast<String, dynamic>())),
-      location: map['location'] as String,
-      project: map['project'] as String,
-      updateTime: map['updateTime'] as String,
-      urn: map['urn'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      interfaces: (() { final guardedValue = map['interfaces']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetEndpointInterface>(guardedValue, (value) => GetEndpointInterface.fromMap((value as Map).cast<String, dynamic>())); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      urn: (() { final guardedValue = map['urn']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

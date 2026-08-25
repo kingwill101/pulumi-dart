@@ -9,7 +9,7 @@ class ClusterStorageResourceConfigNewBucketAutoclass {
   /// Possible values:
   /// NEARLINE
   /// ARCHIVE
-  final pulumi.Input<String>? terminalStorageClass;
+  final pulumi.Input<String?>? terminalStorageClass;
 
   /// Creates a new [ClusterStorageResourceConfigNewBucketAutoclass].
   /// [enabled] Enables Auto-class feature.

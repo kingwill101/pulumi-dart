@@ -10,7 +10,7 @@ class GetDiscoveredServiceArgs {
   /// The location of the discovered service.
   final pulumi.Input<String> location;
   /// The host project of the discovered service.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The uri of the service.
   final pulumi.Input<String> serviceUri;
 

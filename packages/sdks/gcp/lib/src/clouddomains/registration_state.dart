@@ -9,52 +9,52 @@ import 'registration_yearly_price.dart';
 /// Input properties used for looking up and filtering Registration resources.
 class RegistrationState {
   /// The list of contact notices that the caller acknowledges. Possible value is PUBLIC_CONTACT_DATA_ACKNOWLEDGEMENT
-  final pulumi.Input<List<String>>? contactNotices;
+  final pulumi.Input<List<String>?>? contactNotices;
   /// Required. Settings for contact information linked to the Registration.
   /// Structure is documented below.
-  final pulumi.Input<RegistrationContactSettings>? contactSettings;
+  final pulumi.Input<RegistrationContactSettings?>? contactSettings;
   /// Output only. Time at which the automation was created.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Settings controlling the DNS configuration of the Registration.
   /// Structure is documented below.
-  final pulumi.Input<RegistrationDnsSettings>? dnsSettings;
+  final pulumi.Input<RegistrationDnsSettings?>? dnsSettings;
   /// Required. The domain name. Unicode domain names must be expressed in Punycode format.
-  final pulumi.Input<String>? domainName;
+  final pulumi.Input<String?>? domainName;
   /// The list of domain notices that you acknowledge. Possible value is HSTS_PRELOADED
-  final pulumi.Input<List<String>>? domainNotices;
+  final pulumi.Input<List<String>?>? domainNotices;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveLabels;
+  final pulumi.Input<Map<String, String>?>? effectiveLabels;
   /// Output only. Time at which the automation was updated.
-  final pulumi.Input<String>? expireTime;
+  final pulumi.Input<String?>? expireTime;
   /// Output only. The set of issues with the Registration that require attention.
-  final pulumi.Input<List<String>>? issues;
+  final pulumi.Input<List<String>?>? issues;
   /// Set of labels associated with the Registration.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The location for the resource
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Settings for management of the Registration, including renewal, billing, and transfer
   /// Structure is documented below.
-  final pulumi.Input<RegistrationManagementSettings>? managementSettings;
+  final pulumi.Input<RegistrationManagementSettings?>? managementSettings;
   /// Output only. Name of the Registration resource, in the format projects/*/locations/*/registrations/&lt;domain_name&gt;.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  final pulumi.Input<Map<String, String>>? pulumiLabels;
+  final pulumi.Input<Map<String, String>?>? pulumiLabels;
   /// Output only. The reason the domain registration failed. Only set for domains in REGISTRATION_FAILED state.
-  final pulumi.Input<String>? registerFailureReason;
+  final pulumi.Input<String?>? registerFailureReason;
   /// Output only. The current state of the Registration.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// Output only. Set of options for the contactSettings.privacy field that this Registration supports.
-  final pulumi.Input<List<String>>? supportedPrivacies;
+  final pulumi.Input<List<String>?>? supportedPrivacies;
   /// Required. Yearly price to register or renew the domain. The value that should be put here can be obtained from
   /// registrations.retrieveRegisterParameters or registrations.searchDomains calls.
   /// Structure is documented below.
-  final pulumi.Input<RegistrationYearlyPrice>? yearlyPrice;
+  final pulumi.Input<RegistrationYearlyPrice?>? yearlyPrice;
 
   /// Creates a new [RegistrationState].
   /// [contactNotices] The list of contact notices that the caller acknowledges. Possible value is PUBLIC_CONTACT_DATA_ACKNOWLEDGEMENT

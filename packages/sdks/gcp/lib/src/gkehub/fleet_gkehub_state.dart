@@ -7,34 +7,34 @@ import 'fleet_state.dart';
 /// Input properties used for looking up and filtering Fleet resources.
 class FleetGkehubState {
   /// The time the fleet was created, in RFC3339 text format.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// The default cluster configurations to apply across the fleet.
   /// Structure is documented below.
-  final pulumi.Input<FleetDefaultClusterConfig>? defaultClusterConfig;
+  final pulumi.Input<FleetDefaultClusterConfig?>? defaultClusterConfig;
   /// The time the fleet was deleted, in RFC3339 text format.
-  final pulumi.Input<String>? deleteTime;
+  final pulumi.Input<String?>? deleteTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// A user-assigned display name of the Fleet. When present, it must be between 4 to 30 characters.
   /// Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space, and exclamation point.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The state of the fleet resource.
   /// Structure is documented below.
-  final pulumi.Input<List<FleetState>>? states;
+  final pulumi.Input<List<FleetState>?>? states;
   /// Google-generated UUID for this resource. This is unique across all
   /// Fleet resources. If a Fleet resource is deleted and another
   /// resource with the same name is created, it gets a different uid.
-  final pulumi.Input<String>? uid;
+  final pulumi.Input<String?>? uid;
   /// The time the fleet was last updated, in RFC3339 text format.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [FleetGkehubState].
   /// [createTime] The time the fleet was created, in RFC3339 text format.

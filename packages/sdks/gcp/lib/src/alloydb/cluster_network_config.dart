@@ -5,10 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClusterNetworkConfig {
   /// The name of the allocated IP range for the private IP AlloyDB cluster. For example: "google-managed-services-default".
   /// If set, the instance IPs for this cluster will be created in the allocated range.
-  final pulumi.Input<String>? allocatedIpRange;
+  final pulumi.Input<String?>? allocatedIpRange;
   /// The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster.
   /// It is specified in the form: "projects/{projectNumber}/global/networks/{network_id}".
-  final pulumi.Input<String>? network;
+  final pulumi.Input<String?>? network;
 
   /// Creates a new [ClusterNetworkConfig].
   /// [allocatedIpRange] The name of the allocated IP range for the private IP AlloyDB cluster. For example: "google-managed-services-default".

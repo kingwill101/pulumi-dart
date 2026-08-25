@@ -10,21 +10,21 @@ import 'ai_reasoning_engine_context_spec_memory_bank_config_ttl_config.dart';
 class AiReasoningEngineContextSpecMemoryBankConfig {
   /// Optional. Customization configs for how Agent Engine sub-resources manage context at different scope levels.
   /// Structure is documented below.
-  final pulumi.Input<List<AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfig>>? customizationConfigs;
+  final pulumi.Input<List<AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfig>?>? customizationConfigs;
   /// If true, no memory revisions will be created for any requests to the Memory Bank.
-  final pulumi.Input<bool>? disableMemoryRevisions;
+  final pulumi.Input<bool?>? disableMemoryRevisions;
   /// Configuration for how to generate memories for the Memory Bank.
   /// Structure is documented below.
-  final pulumi.Input<AiReasoningEngineContextSpecMemoryBankConfigGenerationConfig>? generationConfig;
+  final pulumi.Input<AiReasoningEngineContextSpecMemoryBankConfigGenerationConfig?>? generationConfig;
   /// Configuration for how to perform similarity search on memories.
   /// Structure is documented below.
-  final pulumi.Input<AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfig>? similaritySearchConfig;
+  final pulumi.Input<AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfig?>? similaritySearchConfig;
   /// Optional. Structured memory configurations for Agent Engine sub-resources.
   /// Structure is documented below.
-  final pulumi.Input<List<AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfig>>? structuredMemoryConfigs;
+  final pulumi.Input<List<AiReasoningEngineContextSpecMemoryBankConfigStructuredMemoryConfig>?>? structuredMemoryConfigs;
   /// Configuration for automatic TTL ("time-to-live") of the memories in the Memory Bank.
   /// Structure is documented below.
-  final pulumi.Input<AiReasoningEngineContextSpecMemoryBankConfigTtlConfig>? ttlConfig;
+  final pulumi.Input<AiReasoningEngineContextSpecMemoryBankConfigTtlConfig?>? ttlConfig;
 
   /// Creates a new [AiReasoningEngineContextSpecMemoryBankConfig].
   /// [customizationConfigs] Optional. Customization configs for how Agent Engine sub-resources manage context at different scope levels.

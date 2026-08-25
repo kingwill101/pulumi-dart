@@ -8,8 +8,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_dataform_repository_iam_policy_repository_iam_policy_args_doc}
 class RepositoryIamPolicyArgs {
   final pulumi.Input<String> policyData;
-  final pulumi.Input<String>? project;
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? project;
+  final pulumi.Input<String?>? region;
   final pulumi.Input<String> repository;
 
   /// Creates a new [RepositoryIamPolicyArgs].

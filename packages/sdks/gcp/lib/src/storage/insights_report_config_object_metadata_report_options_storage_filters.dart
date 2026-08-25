@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InsightsReportConfigObjectMetadataReportOptionsStorageFilters {
   /// The filter to use when specifying which bucket to generate inventory reports for.
-  final pulumi.Input<String>? bucket;
+  final pulumi.Input<String?>? bucket;
 
   /// Creates a new [InsightsReportConfigObjectMetadataReportOptionsStorageFilters].
   /// [bucket] The filter to use when specifying which bucket to generate inventory reports for.

@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ProjectConfigPlatformLogsConfig {
   /// The state of the platform logs: enabled or disabled.
   /// Possible values are: `ENABLED`, `DISABLED`.
-  final pulumi.Input<String>? loggingState;
+  final pulumi.Input<String?>? loggingState;
   /// The severity level for the logs. Logs will be generated if their
   /// severity level is &gt;= than the value of the severity level mentioned here.
   /// Possible values are: `DEBUG`, `INFO`, `NOTICE`, `WARNING`, `ERROR`, `CRITICAL`, `ALERT`, `EMERGENCY`.
-  final pulumi.Input<String>? severityLevel;
+  final pulumi.Input<String?>? severityLevel;
 
   /// Creates a new [ProjectConfigPlatformLogsConfig].
   /// [loggingState] The state of the platform logs: enabled or disabled.

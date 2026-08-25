@@ -6,11 +6,11 @@ class ClusterMaintenanceUpdatePolicyMaintenanceWindowStartTime {
   /// Hours of day in 24 hour format. Should be from 0 to 23.
   final pulumi.Input<int> hours;
   /// Minutes of hour of day. Currently, only the value 0 is supported.
-  final pulumi.Input<int>? minutes;
+  final pulumi.Input<int?>? minutes;
   /// Fractions of seconds in nanoseconds. Currently, only the value 0 is supported.
-  final pulumi.Input<int>? nanos;
+  final pulumi.Input<int?>? nanos;
   /// Seconds of minutes of the time. Currently, only the value 0 is supported.
-  final pulumi.Input<int>? seconds;
+  final pulumi.Input<int?>? seconds;
 
   /// Creates a new [ClusterMaintenanceUpdatePolicyMaintenanceWindowStartTime].
   /// [hours] Hours of day in 24 hour format. Should be from 0 to 23.
@@ -35,10 +35,10 @@ class ClusterMaintenanceUpdatePolicyMaintenanceWindowStartTime {
 
   factory ClusterMaintenanceUpdatePolicyMaintenanceWindowStartTime.fromMap(Map<String, dynamic> map) {
     return ClusterMaintenanceUpdatePolicyMaintenanceWindowStartTime(
-      hours: pulumi.Input.fromValue(map['hours'] as int),
-      minutes: (() { final guardedValue = map['minutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      nanos: (() { final guardedValue = map['nanos']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      seconds: (() { final guardedValue = map['seconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      hours: pulumi.Input.fromValue((map['hours'] as num).toInt()),
+      minutes: (() { final guardedValue = map['minutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      nanos: (() { final guardedValue = map['nanos']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      seconds: (() { final guardedValue = map['seconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

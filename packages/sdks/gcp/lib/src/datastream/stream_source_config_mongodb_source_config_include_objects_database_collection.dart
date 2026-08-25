@@ -5,10 +5,10 @@ import 'stream_source_config_mongodb_source_config_include_objects_database_coll
 
 class StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollection {
   /// Collection name.
-  final pulumi.Input<String>? collection;
+  final pulumi.Input<String?>? collection;
   /// Fields in the collection.
   /// Structure is documented below.
-  final pulumi.Input<List<StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionField>>? fields;
+  final pulumi.Input<List<StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionField>?>? fields;
 
   /// Creates a new [StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollection].
   /// [collection] Collection name.

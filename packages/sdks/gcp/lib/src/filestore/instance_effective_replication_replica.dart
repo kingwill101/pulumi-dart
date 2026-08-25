@@ -7,15 +7,15 @@ class InstanceEffectiveReplicationReplica {
   /// Output only. The timestamp of the latest replication snapshot taken on the active instance and is already replicated safely.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
   /// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
-  final pulumi.Input<String>? lastActiveSyncTime;
+  final pulumi.Input<String?>? lastActiveSyncTime;
   /// The peer instance.
-  final pulumi.Input<String>? peerInstance;
+  final pulumi.Input<String?>? peerInstance;
   /// (Output)
   /// Output only. The replica state
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// (Output)
   /// Output only. Additional information about the replication state, if available.
-  final pulumi.Input<List<String>>? stateReasons;
+  final pulumi.Input<List<String>?>? stateReasons;
 
   /// Creates a new [InstanceEffectiveReplicationReplica].
   /// [lastActiveSyncTime] (Output)

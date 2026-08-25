@@ -25,7 +25,7 @@ class InstanceFromMachineImageGuestAccelerator {
 
   factory InstanceFromMachineImageGuestAccelerator.fromMap(Map<String, dynamic> map) {
     return InstanceFromMachineImageGuestAccelerator(
-      count: pulumi.Input.fromValue(map['count'] as int),
+      count: pulumi.Input.fromValue((map['count'] as num).toInt()),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }

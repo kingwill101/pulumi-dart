@@ -6,7 +6,7 @@ import 'feed_details_google_cloud_identity_device_users_settings_authentication.
 class FeedDetailsGoogleCloudIdentityDeviceUsersSettings {
   /// OAuth 2.0 JWT grant. See, https://tools.ietf.org/html/rfc7519
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsGoogleCloudIdentityDeviceUsersSettingsAuthentication>? authentication;
+  final pulumi.Input<FeedDetailsGoogleCloudIdentityDeviceUsersSettingsAuthentication?>? authentication;
 
   /// Creates a new [FeedDetailsGoogleCloudIdentityDeviceUsersSettings].
   /// [authentication] OAuth 2.0 JWT grant. See, https://tools.ietf.org/html/rfc7519

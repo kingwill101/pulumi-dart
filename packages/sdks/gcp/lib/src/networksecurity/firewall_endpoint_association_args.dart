@@ -13,29 +13,29 @@ class FirewallEndpointAssociationArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Whether the association is disabled. True indicates that traffic will not be intercepted.
   /// &gt; **Note:** The API will reject the request if this value is set to true when creating the resource,
   /// otherwise on an update the association can be disabled.
-  final pulumi.Input<bool>? disabled;
+  final pulumi.Input<bool?>? disabled;
   /// The URL of the firewall endpoint that is being associated.
   final pulumi.Input<String> firewallEndpoint;
   /// A map of key/value label pairs to assign to the resource.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The location (zone) of the firewall endpoint association.
   final pulumi.Input<String> location;
   /// The name of the firewall endpoint association resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The URL of the network that is being associated.
   final pulumi.Input<String> network;
   /// The name of the parent this firewall endpoint association belongs to.
   /// Format: projects/{project_id}.
-  final pulumi.Input<String>? parent;
+  final pulumi.Input<String?>? parent;
   /// The URL of the TlsInspectionPolicy that is being associated.
-  final pulumi.Input<String>? tlsInspectionPolicy;
+  final pulumi.Input<String?>? tlsInspectionPolicy;
 
   /// Creates a new [FirewallEndpointAssociationArgs].
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

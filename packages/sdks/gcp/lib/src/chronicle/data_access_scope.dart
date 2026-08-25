@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'data_access_scope_allowed_data_access_label.dart';
 import 'data_access_scope_args.dart';
+import 'data_access_scope_denied_data_access_label.dart';
 import 'data_access_scope_state.dart';
 
 /// A DataAccessScope is a boolean expression of data access labels used to restrict access to data for users.
@@ -1045,7 +1047,7 @@ class DataAccessScope extends pulumi.CustomResource {
   /// E.g.: A customer with scope with allowed labels A and B will be able
   /// to see data with labeled with A or B or (A and B).
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> allowedDataAccessLabels;
+  late final pulumi.Output<List<DataAccessScopeAllowedDataAccessLabel>?> allowedDataAccessLabels;
   /// Output only. The user who created the data access scope.
   late final pulumi.Output<String> author;
   /// Output only. The time at which the data access scope was created.
@@ -1067,7 +1069,7 @@ class DataAccessScope extends pulumi.CustomResource {
   /// to see data labeled with A and data labeled with B
   /// and data with labels A and B.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> deniedDataAccessLabels;
+  late final pulumi.Output<List<DataAccessScopeDeniedDataAccessLabel>?> deniedDataAccessLabels;
   /// Optional. A description of the data access scope for a human reader.
   late final pulumi.Output<String?> description;
   /// Output only. The name to be used for display to customers of the data access scope.
@@ -1100,15 +1102,15 @@ class DataAccessScope extends pulumi.CustomResource {
           'gcp:chronicle/dataAccessScope:DataAccessScope',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     allowAll = registerOutput<bool?>('allowAll');
-    allowedDataAccessLabels = registerOutput<List<Map<String, dynamic>>?>('allowedDataAccessLabels');
+    allowedDataAccessLabels = registerOutput<List<DataAccessScopeAllowedDataAccessLabel>?>('allowedDataAccessLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DataAccessScopeAllowedDataAccessLabel>(guardedValue, (value) => DataAccessScopeAllowedDataAccessLabel.fromMap((value as Map).cast<String, dynamic>())); });
     author = registerOutput<String>('author');
     createTime = registerOutput<String>('createTime');
     dataAccessScopeId = registerOutput<String>('dataAccessScopeId');
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    deniedDataAccessLabels = registerOutput<List<Map<String, dynamic>>?>('deniedDataAccessLabels');
+    deniedDataAccessLabels = registerOutput<List<DataAccessScopeDeniedDataAccessLabel>?>('deniedDataAccessLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DataAccessScopeDeniedDataAccessLabel>(guardedValue, (value) => DataAccessScopeDeniedDataAccessLabel.fromMap((value as Map).cast<String, dynamic>())); });
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     instance = registerOutput<String>('instance');
@@ -1124,11 +1126,12 @@ class DataAccessScope extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DataAccessScopeState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DataAccessScope._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1143,12 +1146,38 @@ class DataAccessScope extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     allowAll = registerOutput<bool?>('allowAll');
-    allowedDataAccessLabels = registerOutput<List<Map<String, dynamic>>?>('allowedDataAccessLabels');
+    allowedDataAccessLabels = registerOutput<List<DataAccessScopeAllowedDataAccessLabel>?>('allowedDataAccessLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DataAccessScopeAllowedDataAccessLabel>(guardedValue, (value) => DataAccessScopeAllowedDataAccessLabel.fromMap((value as Map).cast<String, dynamic>())); });
     author = registerOutput<String>('author');
     createTime = registerOutput<String>('createTime');
     dataAccessScopeId = registerOutput<String>('dataAccessScopeId');
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    deniedDataAccessLabels = registerOutput<List<Map<String, dynamic>>?>('deniedDataAccessLabels');
+    deniedDataAccessLabels = registerOutput<List<DataAccessScopeDeniedDataAccessLabel>?>('deniedDataAccessLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DataAccessScopeDeniedDataAccessLabel>(guardedValue, (value) => DataAccessScopeDeniedDataAccessLabel.fromMap((value as Map).cast<String, dynamic>())); });
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    instance = registerOutput<String>('instance');
+    lastEditor = registerOutput<String>('lastEditor');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [DataAccessScope] resource.
+  DataAccessScope.reference(String urn)
+    : super(
+        'gcp:chronicle/dataAccessScope:DataAccessScope',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    allowAll = registerOutput<bool?>('allowAll');
+    allowedDataAccessLabels = registerOutput<List<DataAccessScopeAllowedDataAccessLabel>?>('allowedDataAccessLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DataAccessScopeAllowedDataAccessLabel>(guardedValue, (value) => DataAccessScopeAllowedDataAccessLabel.fromMap((value as Map).cast<String, dynamic>())); });
+    author = registerOutput<String>('author');
+    createTime = registerOutput<String>('createTime');
+    dataAccessScopeId = registerOutput<String>('dataAccessScopeId');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    deniedDataAccessLabels = registerOutput<List<DataAccessScopeDeniedDataAccessLabel>?>('deniedDataAccessLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DataAccessScopeDeniedDataAccessLabel>(guardedValue, (value) => DataAccessScopeDeniedDataAccessLabel.fromMap((value as Map).cast<String, dynamic>())); });
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     instance = registerOutput<String>('instance');

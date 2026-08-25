@@ -9,9 +9,9 @@ class PreventionDiscoveryConfigTargetOtherCloudTargetConditions {
   ///
   ///
   /// &lt;a name="nestedTargetsOtherCloudTargetConditionsAmazonS3BucketConditions"&gt;&lt;/a&gt;The `amazonS3BucketConditions` block supports:
-  final pulumi.Input<PreventionDiscoveryConfigTargetOtherCloudTargetConditionsAmazonS3BucketConditions>? amazonS3BucketConditions;
+  final pulumi.Input<PreventionDiscoveryConfigTargetOtherCloudTargetConditionsAmazonS3BucketConditions?>? amazonS3BucketConditions;
   /// Duration format.  Minimum age a resource must be before a profile can be generated. Value must be 1 hour or greater. Minimum age is not supported for Azure Blob Storage containers.
-  final pulumi.Input<String>? minAge;
+  final pulumi.Input<String?>? minAge;
 
   /// Creates a new [PreventionDiscoveryConfigTargetOtherCloudTargetConditions].
   /// [amazonS3BucketConditions] Amazon S3 bucket conditions.

@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AuthzPolicyNetworkRuleToOperationSni {
   /// (Optional)
-  final pulumi.Input<String>? exact;
+  final pulumi.Input<String?>? exact;
 
   /// Creates a new [AuthzPolicyNetworkRuleToOperationSni].
   /// [exact] (Optional)

@@ -7,10 +7,10 @@ class AuthzPolicyHttpRuleToOperationMcp {
   /// If specified, matches on the MCP protocol’s non-access specific methods namely: * initialize/ * completion/ * logging/ * notifications/ * ping
   /// Default value is `SKIP_BASE_PROTOCOL_METHODS`.
   /// Possible values are: `SKIP_BASE_PROTOCOL_METHODS`, `MATCH_BASE_PROTOCOL_METHODS`.
-  final pulumi.Input<String>? baseProtocolMethodsOption;
+  final pulumi.Input<String?>? baseProtocolMethodsOption;
   /// Defines a set of MCP methods and associated parameters to match on. It is recommended to use this field to match on tools, prompts and resource accesses while setting the includeBaseProtocolMethods to true to match on all the other MCP protocol methods.
   /// Structure is documented below.
-  final pulumi.Input<List<AuthzPolicyHttpRuleToOperationMcpMethod>>? methods;
+  final pulumi.Input<List<AuthzPolicyHttpRuleToOperationMcpMethod>?>? methods;
 
   /// Creates a new [AuthzPolicyHttpRuleToOperationMcp].
   /// [baseProtocolMethodsOption] If specified, matches on the MCP protocol’s non-access specific methods namely: * initialize/ * completion/ * logging/ * notifications/ * ping

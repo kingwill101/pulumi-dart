@@ -5,10 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CxToolVersionToolFunctionSpec {
   /// Optional. The JSON schema is encapsulated in a [google.protobuf.Struct](https://protobuf.dev/reference/protobuf/google.protobuf/#struct) to describe the input of the function.
   /// This input is a JSON object that contains the function's parameters as properties of the object
-  final pulumi.Input<String>? inputSchema;
+  final pulumi.Input<String?>? inputSchema;
   /// Optional. The JSON schema is encapsulated in a [google.protobuf.Struct](https://protobuf.dev/reference/protobuf/google.protobuf/#struct) to describe the output of the function.
   /// This output is a JSON object that contains the function's parameters as properties of the object
-  final pulumi.Input<String>? outputSchema;
+  final pulumi.Input<String?>? outputSchema;
 
   /// Creates a new [CxToolVersionToolFunctionSpec].
   /// [inputSchema] Optional. The JSON schema is encapsulated in a [google.protobuf.Struct](https://protobuf.dev/reference/protobuf/google.protobuf/#struct) to describe the input of the function.

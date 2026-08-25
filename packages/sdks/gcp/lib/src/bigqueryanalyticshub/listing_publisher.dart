@@ -6,7 +6,7 @@ class ListingPublisher {
   /// Name of the listing publisher.
   final pulumi.Input<String> name;
   /// Email or URL of the listing publisher.
-  final pulumi.Input<String>? primaryContact;
+  final pulumi.Input<String?>? primaryContact;
 
   /// Creates a new [ListingPublisher].
   /// [name] Name of the listing publisher.

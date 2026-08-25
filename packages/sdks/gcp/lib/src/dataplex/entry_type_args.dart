@@ -14,32 +14,32 @@ class EntryTypeArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Description of the EntryType.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// User friendly display name.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The entry type id of the entry type.
-  final pulumi.Input<String>? entryTypeId;
+  final pulumi.Input<String?>? entryTypeId;
   /// User-defined labels for the EntryType.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The location where entry type will be created in.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The platform that Entries of this type belongs to.
-  final pulumi.Input<String>? platform;
+  final pulumi.Input<String?>? platform;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// AspectInfo for the entry type.
   /// Structure is documented below.
-  final pulumi.Input<List<EntryTypeRequiredAspect>>? requiredAspects;
+  final pulumi.Input<List<EntryTypeRequiredAspect>?>? requiredAspects;
   /// The system that Entries of this type belongs to.
-  final pulumi.Input<String>? system;
+  final pulumi.Input<String?>? system;
   /// Indicates the class this Entry Type belongs to, for example, TABLE, DATABASE, MODEL.
-  final pulumi.Input<List<String>>? typeAliases;
+  final pulumi.Input<List<String>?>? typeAliases;
 
   /// Creates a new [EntryTypeArgs].
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

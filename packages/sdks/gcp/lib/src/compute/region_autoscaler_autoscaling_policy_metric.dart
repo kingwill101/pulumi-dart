@@ -30,7 +30,7 @@ class RegionAutoscalerAutoscalingPolicyMetric {
   /// (if you are using gceInstance resource type). If multiple
   /// TimeSeries are returned upon the query execution, the autoscaler
   /// will sum their respective values to obtain its scaling value.
-  final pulumi.Input<String>? filter;
+  final pulumi.Input<String?>? filter;
   /// The identifier (type) of the Stackdriver Monitoring metric.
   /// The metric cannot have negative values.
   /// The metric must have a value type of INT64 or DOUBLE.
@@ -49,7 +49,7 @@ class RegionAutoscalerAutoscalingPolicyMetric {
   /// latency, since this value can't include a chunk assignable to a
   /// single instance, it could be better used with utilizationTarget
   /// instead.
-  final pulumi.Input<double>? singleInstanceAssignment;
+  final pulumi.Input<double?>? singleInstanceAssignment;
   /// The target value of the metric that autoscaler should
   /// maintain. This must be a positive value. A utilization
   /// metric scales number of virtual machines handling requests
@@ -58,11 +58,11 @@ class RegionAutoscalerAutoscalingPolicyMetric {
   /// www.googleapis.com/compute/instance/network/received_bytes_count.
   /// The autoscaler will work to keep this value constant for each
   /// of the instances.
-  final pulumi.Input<double>? target;
+  final pulumi.Input<double?>? target;
   /// Defines how target utilization value is expressed for a
   /// Stackdriver Monitoring metric.
   /// Possible values are: `GAUGE`, `DELTA_PER_SECOND`, `DELTA_PER_MINUTE`.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [RegionAutoscalerAutoscalingPolicyMetric].
   /// [filter] A filter string to be used as the filter string for
@@ -92,8 +92,8 @@ class RegionAutoscalerAutoscalingPolicyMetric {
     return RegionAutoscalerAutoscalingPolicyMetric(
       filter: (() { final guardedValue = map['filter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
-      singleInstanceAssignment: (() { final guardedValue = map['singleInstanceAssignment']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      target: (() { final guardedValue = map['target']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      singleInstanceAssignment: (() { final guardedValue = map['singleInstanceAssignment']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      target: (() { final guardedValue = map['target']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

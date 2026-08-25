@@ -9,27 +9,27 @@ class AppVersionSnapshotToolDataStoreTool {
   /// (Output)
   /// Boost specification to boost certain documents.
   /// Structure is documented below.
-  final pulumi.Input<List<AppVersionSnapshotToolDataStoreToolBoostSpec>>? boostSpecs;
+  final pulumi.Input<List<AppVersionSnapshotToolDataStoreToolBoostSpec>?>? boostSpecs;
   /// The description of the app version.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// (Output)
   /// Configuration for searching within an Engine, potentially targeting
   /// specific DataStores.
   /// Structure is documented below.
-  final pulumi.Input<List<AppVersionSnapshotToolDataStoreToolEngineSource>>? engineSources;
+  final pulumi.Input<List<AppVersionSnapshotToolDataStoreToolEngineSource>?>? engineSources;
   /// (Output)
   /// Number of search results to return per query.
   /// The default value is 10. The maximum allowed value is 10.
-  final pulumi.Input<int>? maxResults;
+  final pulumi.Input<int?>? maxResults;
   /// (Output)
   /// The modality configs for the data store.
   /// Structure is documented below.
-  final pulumi.Input<List<AppVersionSnapshotToolDataStoreToolModalityConfig>>? modalityConfigs;
+  final pulumi.Input<List<AppVersionSnapshotToolDataStoreToolModalityConfig>?>? modalityConfigs;
   /// (Output)
   /// Identifier. The unique identifier of the toolset.
   /// Format:
   /// `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [AppVersionSnapshotToolDataStoreTool].
   /// [boostSpecs] (Output)
@@ -63,7 +63,7 @@ class AppVersionSnapshotToolDataStoreTool {
       boostSpecs: (() { final guardedValue = map['boostSpecs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AppVersionSnapshotToolDataStoreToolBoostSpec>(guardedValue, (value) => AppVersionSnapshotToolDataStoreToolBoostSpec.fromMap((value as Map).cast<String, dynamic>()))); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       engineSources: (() { final guardedValue = map['engineSources']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AppVersionSnapshotToolDataStoreToolEngineSource>(guardedValue, (value) => AppVersionSnapshotToolDataStoreToolEngineSource.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      maxResults: (() { final guardedValue = map['maxResults']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxResults: (() { final guardedValue = map['maxResults']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       modalityConfigs: (() { final guardedValue = map['modalityConfigs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AppVersionSnapshotToolDataStoreToolModalityConfig>(guardedValue, (value) => AppVersionSnapshotToolDataStoreToolModalityConfig.fromMap((value as Map).cast<String, dynamic>()))); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

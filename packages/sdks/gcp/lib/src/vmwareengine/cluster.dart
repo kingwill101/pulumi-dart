@@ -1,6 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cluster_args.dart';
 import 'cluster_autoscaling_settings.dart';
+import 'cluster_datastore_mount_config.dart';
+import 'cluster_node_type_config.dart';
 import 'cluster_state.dart';
 
 /// A cluster in a private cloud.
@@ -2869,7 +2871,7 @@ class Cluster extends pulumi.CustomResource {
   /// Since service subnet is not configured with ip range on mgmt cluster creation, mount on management cluster is done as update only
   /// for unmount remove 'datastore_mount_config' config from the update of cluster resource
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> datastoreMountConfigs;
+  late final pulumi.Output<List<ClusterDatastoreMountConfig>?> datastoreMountConfigs;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -2885,7 +2887,7 @@ class Cluster extends pulumi.CustomResource {
   /// The map of cluster node types in this cluster,
   /// where the key is canonical identifier of the node type (corresponds to the NodeType).
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> nodeTypeConfigs;
+  late final pulumi.Output<List<ClusterNodeTypeConfig>?> nodeTypeConfigs;
   /// The resource name of the private cloud to create a new cluster in.
   /// Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
   /// For example: projects/my-project/locations/us-west1-a/privateClouds/my-cloud
@@ -2911,15 +2913,15 @@ class Cluster extends pulumi.CustomResource {
           'gcp:vmwareengine/cluster:Cluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     autoscalingSettings = registerOutput<ClusterAutoscalingSettings?>('autoscalingSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterAutoscalingSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
-    datastoreMountConfigs = registerOutput<List<Map<String, dynamic>>?>('datastoreMountConfigs');
+    datastoreMountConfigs = registerOutput<List<ClusterDatastoreMountConfig>?>('datastoreMountConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterDatastoreMountConfig>(guardedValue, (value) => ClusterDatastoreMountConfig.fromMap((value as Map).cast<String, dynamic>())); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     management = registerOutput<bool>('management');
     this.name = registerOutput<String>('name');
-    nodeTypeConfigs = registerOutput<List<Map<String, dynamic>>?>('nodeTypeConfigs');
+    nodeTypeConfigs = registerOutput<List<ClusterNodeTypeConfig>?>('nodeTypeConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterNodeTypeConfig>(guardedValue, (value) => ClusterNodeTypeConfig.fromMap((value as Map).cast<String, dynamic>())); });
     parent = registerOutput<String>('parent');
     state = registerOutput<String>('state');
     uid = registerOutput<String>('uid');
@@ -2931,11 +2933,12 @@ class Cluster extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ClusterState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Cluster._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -2951,13 +2954,35 @@ class Cluster extends pulumi.CustomResource {
         ) {
     autoscalingSettings = registerOutput<ClusterAutoscalingSettings?>('autoscalingSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterAutoscalingSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
-    datastoreMountConfigs = registerOutput<List<Map<String, dynamic>>?>('datastoreMountConfigs');
+    datastoreMountConfigs = registerOutput<List<ClusterDatastoreMountConfig>?>('datastoreMountConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterDatastoreMountConfig>(guardedValue, (value) => ClusterDatastoreMountConfig.fromMap((value as Map).cast<String, dynamic>())); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     management = registerOutput<bool>('management');
     this.name = registerOutput<String>('name');
-    nodeTypeConfigs = registerOutput<List<Map<String, dynamic>>?>('nodeTypeConfigs');
+    nodeTypeConfigs = registerOutput<List<ClusterNodeTypeConfig>?>('nodeTypeConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterNodeTypeConfig>(guardedValue, (value) => ClusterNodeTypeConfig.fromMap((value as Map).cast<String, dynamic>())); });
     parent = registerOutput<String>('parent');
     this.state = registerOutput<String>('state');
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [Cluster] resource.
+  Cluster.reference(String urn)
+    : super(
+        'gcp:vmwareengine/cluster:Cluster',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    autoscalingSettings = registerOutput<ClusterAutoscalingSettings?>('autoscalingSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterAutoscalingSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createTime = registerOutput<String>('createTime');
+    datastoreMountConfigs = registerOutput<List<ClusterDatastoreMountConfig>?>('datastoreMountConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterDatastoreMountConfig>(guardedValue, (value) => ClusterDatastoreMountConfig.fromMap((value as Map).cast<String, dynamic>())); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    management = registerOutput<bool>('management');
+    this.name = registerOutput<String>('name');
+    nodeTypeConfigs = registerOutput<List<ClusterNodeTypeConfig>?>('nodeTypeConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterNodeTypeConfig>(guardedValue, (value) => ClusterNodeTypeConfig.fromMap((value as Map).cast<String, dynamic>())); });
+    parent = registerOutput<String>('parent');
+    state = registerOutput<String>('state');
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
   }

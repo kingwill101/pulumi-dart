@@ -8,7 +8,7 @@ import 'consumers_iam_member_condition.dart';
 /// {@endtemplate}
 /// {@macro pulumi_endpoints_consumers_iam_member_consumers_iam_member_args_doc}
 class ConsumersIamMemberArgs {
-  final pulumi.Input<ConsumersIamMemberCondition>? condition;
+  final pulumi.Input<ConsumersIamMemberCondition?>? condition;
   /// Used to find the parent resource to bind the IAM policy to
   final pulumi.Input<String> consumerProject;
   /// Identities that will be granted the privilege in `role`.

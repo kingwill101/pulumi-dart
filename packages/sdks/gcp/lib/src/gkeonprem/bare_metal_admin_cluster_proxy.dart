@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BareMetalAdminClusterProxy {
   /// A list of IPs, hostnames, and domains that should skip the proxy.
   /// For example: ["127.0.0.1", "example.com", ".corp", "localhost"].
-  final pulumi.Input<List<String>>? noProxies;
+  final pulumi.Input<List<String>?>? noProxies;
   /// Specifies the address of your proxy server.
   /// For Example: http://domain
   /// WARNING: Do not provide credentials in the format

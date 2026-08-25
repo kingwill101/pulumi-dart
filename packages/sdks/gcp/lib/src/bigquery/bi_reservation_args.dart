@@ -14,17 +14,17 @@ class BiReservationArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// LOCATION_DESCRIPTION
   final pulumi.Input<String> location;
   /// Preferred tables to use BI capacity for.
   /// Structure is documented below.
-  final pulumi.Input<List<BiReservationPreferredTable>>? preferredTables;
+  final pulumi.Input<List<BiReservationPreferredTable>?>? preferredTables;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Size of a reservation, in bytes.
-  final pulumi.Input<int>? size;
+  final pulumi.Input<int?>? size;
 
   /// Creates a new [BiReservationArgs].
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -56,7 +56,7 @@ class BiReservationArgs {
       location: pulumi.Input.fromValue(map['location'] as String),
       preferredTables: (() { final guardedValue = map['preferredTables']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<BiReservationPreferredTable>(guardedValue, (value) => BiReservationPreferredTable.fromMap((value as Map).cast<String, dynamic>()))); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      size: (() { final guardedValue = map['size']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      size: (() { final guardedValue = map['size']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RestoreWorkloadComputeInstanceRestorePropertiesServiceAccount {
   /// (Optional)
-  final pulumi.Input<String>? email;
+  final pulumi.Input<String?>? email;
   /// (Optional)
-  final pulumi.Input<List<String>>? scopes;
+  final pulumi.Input<List<String>?>? scopes;
 
   /// Creates a new [RestoreWorkloadComputeInstanceRestorePropertiesServiceAccount].
   /// [email] (Optional)

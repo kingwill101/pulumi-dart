@@ -18,224 +18,224 @@ import 'get_cluster_zone_distribution_config.dart';
 
 /// Result data returned by getCluster.
 class GetClusterResult {
-  final String authorizationMode;
-  final List<GetClusterAutomatedBackupConfig> automatedBackupConfigs;
-  final List<String> availableMaintenanceVersions;
-  final String backupCollection;
-  final String createTime;
-  final List<GetClusterCrossClusterReplicationConfig> crossClusterReplicationConfigs;
-  final String deletionPolicy;
-  final bool deletionProtectionEnabled;
-  final List<GetClusterDiscoveryEndpoint> discoveryEndpoints;
-  final Map<String, String> effectiveLabels;
-  final String effectiveMaintenanceVersion;
-  final List<GetClusterGcsSource> gcsSources;
+  final String? authorizationMode;
+  final List<GetClusterAutomatedBackupConfig>? automatedBackupConfigs;
+  final List<String>? availableMaintenanceVersions;
+  final String? backupCollection;
+  final String? createTime;
+  final List<GetClusterCrossClusterReplicationConfig>? crossClusterReplicationConfigs;
+  final String? deletionPolicy;
+  final bool? deletionProtectionEnabled;
+  final List<GetClusterDiscoveryEndpoint>? discoveryEndpoints;
+  final Map<String, String>? effectiveLabels;
+  final String? effectiveMaintenanceVersion;
+  final List<GetClusterGcsSource>? gcsSources;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final String kmsKey;
-  final Map<String, String> labels;
-  final List<GetClusterMaintenancePolicy> maintenancePolicies;
-  final List<GetClusterMaintenanceSchedule> maintenanceSchedules;
-  final String maintenanceVersion;
-  final List<GetClusterManagedBackupSource> managedBackupSources;
-  final List<GetClusterManagedServerCa> managedServerCas;
-  final String name;
-  final String nodeType;
-  final List<GetClusterPersistenceConfig> persistenceConfigs;
-  final double preciseSizeGb;
+  final String? id;
+  final String? kmsKey;
+  final Map<String, String>? labels;
+  final List<GetClusterMaintenancePolicy>? maintenancePolicies;
+  final List<GetClusterMaintenanceSchedule>? maintenanceSchedules;
+  final String? maintenanceVersion;
+  final List<GetClusterManagedBackupSource>? managedBackupSources;
+  final List<GetClusterManagedServerCa>? managedServerCas;
+  final String? name;
+  final String? nodeType;
+  final List<GetClusterPersistenceConfig>? persistenceConfigs;
+  final double? preciseSizeGb;
   final String? project;
-  final List<GetClusterPscConfig> pscConfigs;
-  final List<GetClusterPscConnection> pscConnections;
-  final List<GetClusterPscServiceAttachment> pscServiceAttachments;
-  final Map<String, String> pulumiLabels;
-  final Map<String, String> redisConfigs;
+  final List<GetClusterPscConfig>? pscConfigs;
+  final List<GetClusterPscConnection>? pscConnections;
+  final List<GetClusterPscServiceAttachment>? pscServiceAttachments;
+  final Map<String, String>? pulumiLabels;
+  final Map<String, String>? redisConfigs;
   final String? region;
-  final int replicaCount;
-  final String serverCaMode;
-  final String serverCaPool;
-  final int shardCount;
-  final int sizeGb;
-  final String state;
-  final List<GetClusterStateInfo> stateInfos;
-  final String transitEncryptionMode;
-  final String uid;
-  final List<GetClusterZoneDistributionConfig> zoneDistributionConfigs;
+  final int? replicaCount;
+  final String? serverCaMode;
+  final String? serverCaPool;
+  final int? shardCount;
+  final int? sizeGb;
+  final String? state;
+  final List<GetClusterStateInfo>? stateInfos;
+  final String? transitEncryptionMode;
+  final String? uid;
+  final List<GetClusterZoneDistributionConfig>? zoneDistributionConfigs;
 
   /// Creates a new [GetClusterResult].
-  /// [authorizationMode] Required.
-  /// [automatedBackupConfigs] Required.
-  /// [availableMaintenanceVersions] Required.
-  /// [backupCollection] Required.
-  /// [createTime] Required.
-  /// [crossClusterReplicationConfigs] Required.
-  /// [deletionPolicy] Required.
-  /// [deletionProtectionEnabled] Required.
-  /// [discoveryEndpoints] Required.
-  /// [effectiveLabels] Required.
-  /// [effectiveMaintenanceVersion] Required.
-  /// [gcsSources] Required.
+  /// [authorizationMode] Optional.
+  /// [automatedBackupConfigs] Optional.
+  /// [availableMaintenanceVersions] Optional.
+  /// [backupCollection] Optional.
+  /// [createTime] Optional.
+  /// [crossClusterReplicationConfigs] Optional.
+  /// [deletionPolicy] Optional.
+  /// [deletionProtectionEnabled] Optional.
+  /// [discoveryEndpoints] Optional.
+  /// [effectiveLabels] Optional.
+  /// [effectiveMaintenanceVersion] Optional.
+  /// [gcsSources] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [kmsKey] Required.
-  /// [labels] Required.
-  /// [maintenancePolicies] Required.
-  /// [maintenanceSchedules] Required.
-  /// [maintenanceVersion] Required.
-  /// [managedBackupSources] Required.
-  /// [managedServerCas] Required.
-  /// [name] Required.
-  /// [nodeType] Required.
-  /// [persistenceConfigs] Required.
-  /// [preciseSizeGb] Required.
+  /// [kmsKey] Optional.
+  /// [labels] Optional.
+  /// [maintenancePolicies] Optional.
+  /// [maintenanceSchedules] Optional.
+  /// [maintenanceVersion] Optional.
+  /// [managedBackupSources] Optional.
+  /// [managedServerCas] Optional.
+  /// [name] Optional.
+  /// [nodeType] Optional.
+  /// [persistenceConfigs] Optional.
+  /// [preciseSizeGb] Optional.
   /// [project] Optional.
-  /// [pscConfigs] Required.
-  /// [pscConnections] Required.
-  /// [pscServiceAttachments] Required.
-  /// [pulumiLabels] Required.
-  /// [redisConfigs] Required.
+  /// [pscConfigs] Optional.
+  /// [pscConnections] Optional.
+  /// [pscServiceAttachments] Optional.
+  /// [pulumiLabels] Optional.
+  /// [redisConfigs] Optional.
   /// [region] Optional.
-  /// [replicaCount] Required.
-  /// [serverCaMode] Required.
-  /// [serverCaPool] Required.
-  /// [shardCount] Required.
-  /// [sizeGb] Required.
-  /// [state] Required.
-  /// [stateInfos] Required.
-  /// [transitEncryptionMode] Required.
-  /// [uid] Required.
-  /// [zoneDistributionConfigs] Required.
+  /// [replicaCount] Optional.
+  /// [serverCaMode] Optional.
+  /// [serverCaPool] Optional.
+  /// [shardCount] Optional.
+  /// [sizeGb] Optional.
+  /// [state] Optional.
+  /// [stateInfos] Optional.
+  /// [transitEncryptionMode] Optional.
+  /// [uid] Optional.
+  /// [zoneDistributionConfigs] Optional.
   const GetClusterResult({
-    required this.authorizationMode,
-    required this.automatedBackupConfigs,
-    required this.availableMaintenanceVersions,
-    required this.backupCollection,
-    required this.createTime,
-    required this.crossClusterReplicationConfigs,
-    required this.deletionPolicy,
-    required this.deletionProtectionEnabled,
-    required this.discoveryEndpoints,
-    required this.effectiveLabels,
-    required this.effectiveMaintenanceVersion,
-    required this.gcsSources,
-    required this.id,
-    required this.kmsKey,
-    required this.labels,
-    required this.maintenancePolicies,
-    required this.maintenanceSchedules,
-    required this.maintenanceVersion,
-    required this.managedBackupSources,
-    required this.managedServerCas,
-    required this.name,
-    required this.nodeType,
-    required this.persistenceConfigs,
-    required this.preciseSizeGb,
+    this.authorizationMode,
+    this.automatedBackupConfigs,
+    this.availableMaintenanceVersions,
+    this.backupCollection,
+    this.createTime,
+    this.crossClusterReplicationConfigs,
+    this.deletionPolicy,
+    this.deletionProtectionEnabled,
+    this.discoveryEndpoints,
+    this.effectiveLabels,
+    this.effectiveMaintenanceVersion,
+    this.gcsSources,
+    this.id,
+    this.kmsKey,
+    this.labels,
+    this.maintenancePolicies,
+    this.maintenanceSchedules,
+    this.maintenanceVersion,
+    this.managedBackupSources,
+    this.managedServerCas,
+    this.name,
+    this.nodeType,
+    this.persistenceConfigs,
+    this.preciseSizeGb,
     this.project,
-    required this.pscConfigs,
-    required this.pscConnections,
-    required this.pscServiceAttachments,
-    required this.pulumiLabels,
-    required this.redisConfigs,
+    this.pscConfigs,
+    this.pscConnections,
+    this.pscServiceAttachments,
+    this.pulumiLabels,
+    this.redisConfigs,
     this.region,
-    required this.replicaCount,
-    required this.serverCaMode,
-    required this.serverCaPool,
-    required this.shardCount,
-    required this.sizeGb,
-    required this.state,
-    required this.stateInfos,
-    required this.transitEncryptionMode,
-    required this.uid,
-    required this.zoneDistributionConfigs,
+    this.replicaCount,
+    this.serverCaMode,
+    this.serverCaPool,
+    this.shardCount,
+    this.sizeGb,
+    this.state,
+    this.stateInfos,
+    this.transitEncryptionMode,
+    this.uid,
+    this.zoneDistributionConfigs,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'authorizationMode': authorizationMode,
-      'automatedBackupConfigs': pulumi.Input.encodeList<GetClusterAutomatedBackupConfig, Map<String, dynamic>>(automatedBackupConfigs, (value) => value.toMap()),
-      'availableMaintenanceVersions': availableMaintenanceVersions,
-      'backupCollection': backupCollection,
-      'createTime': createTime,
-      'crossClusterReplicationConfigs': pulumi.Input.encodeList<GetClusterCrossClusterReplicationConfig, Map<String, dynamic>>(crossClusterReplicationConfigs, (value) => value.toMap()),
-      'deletionPolicy': deletionPolicy,
-      'deletionProtectionEnabled': deletionProtectionEnabled,
-      'discoveryEndpoints': pulumi.Input.encodeList<GetClusterDiscoveryEndpoint, Map<String, dynamic>>(discoveryEndpoints, (value) => value.toMap()),
-      'effectiveLabels': effectiveLabels,
-      'effectiveMaintenanceVersion': effectiveMaintenanceVersion,
-      'gcsSources': pulumi.Input.encodeList<GetClusterGcsSource, Map<String, dynamic>>(gcsSources, (value) => value.toMap()),
-      'id': id,
-      'kmsKey': kmsKey,
-      'labels': labels,
-      'maintenancePolicies': pulumi.Input.encodeList<GetClusterMaintenancePolicy, Map<String, dynamic>>(maintenancePolicies, (value) => value.toMap()),
-      'maintenanceSchedules': pulumi.Input.encodeList<GetClusterMaintenanceSchedule, Map<String, dynamic>>(maintenanceSchedules, (value) => value.toMap()),
-      'maintenanceVersion': maintenanceVersion,
-      'managedBackupSources': pulumi.Input.encodeList<GetClusterManagedBackupSource, Map<String, dynamic>>(managedBackupSources, (value) => value.toMap()),
-      'managedServerCas': pulumi.Input.encodeList<GetClusterManagedServerCa, Map<String, dynamic>>(managedServerCas, (value) => value.toMap()),
-      'name': name,
-      'nodeType': nodeType,
-      'persistenceConfigs': pulumi.Input.encodeList<GetClusterPersistenceConfig, Map<String, dynamic>>(persistenceConfigs, (value) => value.toMap()),
-      'preciseSizeGb': preciseSizeGb,
+      'authorizationMode': ?authorizationMode,
+      'automatedBackupConfigs': ?(() { final guardedValue = automatedBackupConfigs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetClusterAutomatedBackupConfig, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'availableMaintenanceVersions': ?availableMaintenanceVersions,
+      'backupCollection': ?backupCollection,
+      'createTime': ?createTime,
+      'crossClusterReplicationConfigs': ?(() { final guardedValue = crossClusterReplicationConfigs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetClusterCrossClusterReplicationConfig, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'deletionPolicy': ?deletionPolicy,
+      'deletionProtectionEnabled': ?deletionProtectionEnabled,
+      'discoveryEndpoints': ?(() { final guardedValue = discoveryEndpoints; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetClusterDiscoveryEndpoint, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'effectiveLabels': ?effectiveLabels,
+      'effectiveMaintenanceVersion': ?effectiveMaintenanceVersion,
+      'gcsSources': ?(() { final guardedValue = gcsSources; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetClusterGcsSource, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'id': ?id,
+      'kmsKey': ?kmsKey,
+      'labels': ?labels,
+      'maintenancePolicies': ?(() { final guardedValue = maintenancePolicies; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetClusterMaintenancePolicy, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'maintenanceSchedules': ?(() { final guardedValue = maintenanceSchedules; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetClusterMaintenanceSchedule, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'maintenanceVersion': ?maintenanceVersion,
+      'managedBackupSources': ?(() { final guardedValue = managedBackupSources; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetClusterManagedBackupSource, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'managedServerCas': ?(() { final guardedValue = managedServerCas; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetClusterManagedServerCa, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'name': ?name,
+      'nodeType': ?nodeType,
+      'persistenceConfigs': ?(() { final guardedValue = persistenceConfigs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetClusterPersistenceConfig, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'preciseSizeGb': ?preciseSizeGb,
       'project': ?project,
-      'pscConfigs': pulumi.Input.encodeList<GetClusterPscConfig, Map<String, dynamic>>(pscConfigs, (value) => value.toMap()),
-      'pscConnections': pulumi.Input.encodeList<GetClusterPscConnection, Map<String, dynamic>>(pscConnections, (value) => value.toMap()),
-      'pscServiceAttachments': pulumi.Input.encodeList<GetClusterPscServiceAttachment, Map<String, dynamic>>(pscServiceAttachments, (value) => value.toMap()),
-      'pulumiLabels': pulumiLabels,
-      'redisConfigs': redisConfigs,
+      'pscConfigs': ?(() { final guardedValue = pscConfigs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetClusterPscConfig, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'pscConnections': ?(() { final guardedValue = pscConnections; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetClusterPscConnection, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'pscServiceAttachments': ?(() { final guardedValue = pscServiceAttachments; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetClusterPscServiceAttachment, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'pulumiLabels': ?pulumiLabels,
+      'redisConfigs': ?redisConfigs,
       'region': ?region,
-      'replicaCount': replicaCount,
-      'serverCaMode': serverCaMode,
-      'serverCaPool': serverCaPool,
-      'shardCount': shardCount,
-      'sizeGb': sizeGb,
-      'state': state,
-      'stateInfos': pulumi.Input.encodeList<GetClusterStateInfo, Map<String, dynamic>>(stateInfos, (value) => value.toMap()),
-      'transitEncryptionMode': transitEncryptionMode,
-      'uid': uid,
-      'zoneDistributionConfigs': pulumi.Input.encodeList<GetClusterZoneDistributionConfig, Map<String, dynamic>>(zoneDistributionConfigs, (value) => value.toMap()),
+      'replicaCount': ?replicaCount,
+      'serverCaMode': ?serverCaMode,
+      'serverCaPool': ?serverCaPool,
+      'shardCount': ?shardCount,
+      'sizeGb': ?sizeGb,
+      'state': ?state,
+      'stateInfos': ?(() { final guardedValue = stateInfos; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetClusterStateInfo, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'transitEncryptionMode': ?transitEncryptionMode,
+      'uid': ?uid,
+      'zoneDistributionConfigs': ?(() { final guardedValue = zoneDistributionConfigs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetClusterZoneDistributionConfig, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
     };
   }
 
   factory GetClusterResult.fromMap(Map<String, dynamic> map) {
     return GetClusterResult(
-      authorizationMode: map['authorizationMode'] as String,
-      automatedBackupConfigs: pulumi.Input.decodeList<GetClusterAutomatedBackupConfig>(map['automatedBackupConfigs']!, (value) => GetClusterAutomatedBackupConfig.fromMap((value as Map).cast<String, dynamic>())),
-      availableMaintenanceVersions: (map['availableMaintenanceVersions'] as List).cast<String>(),
-      backupCollection: map['backupCollection'] as String,
-      createTime: map['createTime'] as String,
-      crossClusterReplicationConfigs: pulumi.Input.decodeList<GetClusterCrossClusterReplicationConfig>(map['crossClusterReplicationConfigs']!, (value) => GetClusterCrossClusterReplicationConfig.fromMap((value as Map).cast<String, dynamic>())),
-      deletionPolicy: map['deletionPolicy'] as String,
-      deletionProtectionEnabled: map['deletionProtectionEnabled'] as bool,
-      discoveryEndpoints: pulumi.Input.decodeList<GetClusterDiscoveryEndpoint>(map['discoveryEndpoints']!, (value) => GetClusterDiscoveryEndpoint.fromMap((value as Map).cast<String, dynamic>())),
-      effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
-      effectiveMaintenanceVersion: map['effectiveMaintenanceVersion'] as String,
-      gcsSources: pulumi.Input.decodeList<GetClusterGcsSource>(map['gcsSources']!, (value) => GetClusterGcsSource.fromMap((value as Map).cast<String, dynamic>())),
-      id: map['id'] as String,
-      kmsKey: map['kmsKey'] as String,
-      labels: (map['labels'] as Map).cast<String, String>(),
-      maintenancePolicies: pulumi.Input.decodeList<GetClusterMaintenancePolicy>(map['maintenancePolicies']!, (value) => GetClusterMaintenancePolicy.fromMap((value as Map).cast<String, dynamic>())),
-      maintenanceSchedules: pulumi.Input.decodeList<GetClusterMaintenanceSchedule>(map['maintenanceSchedules']!, (value) => GetClusterMaintenanceSchedule.fromMap((value as Map).cast<String, dynamic>())),
-      maintenanceVersion: map['maintenanceVersion'] as String,
-      managedBackupSources: pulumi.Input.decodeList<GetClusterManagedBackupSource>(map['managedBackupSources']!, (value) => GetClusterManagedBackupSource.fromMap((value as Map).cast<String, dynamic>())),
-      managedServerCas: pulumi.Input.decodeList<GetClusterManagedServerCa>(map['managedServerCas']!, (value) => GetClusterManagedServerCa.fromMap((value as Map).cast<String, dynamic>())),
-      name: map['name'] as String,
-      nodeType: map['nodeType'] as String,
-      persistenceConfigs: pulumi.Input.decodeList<GetClusterPersistenceConfig>(map['persistenceConfigs']!, (value) => GetClusterPersistenceConfig.fromMap((value as Map).cast<String, dynamic>())),
-      preciseSizeGb: map['preciseSizeGb'] as double,
+      authorizationMode: (() { final guardedValue = map['authorizationMode']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      automatedBackupConfigs: (() { final guardedValue = map['automatedBackupConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetClusterAutomatedBackupConfig>(guardedValue, (value) => GetClusterAutomatedBackupConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
+      availableMaintenanceVersions: (() { final guardedValue = map['availableMaintenanceVersions']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      backupCollection: (() { final guardedValue = map['backupCollection']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      crossClusterReplicationConfigs: (() { final guardedValue = map['crossClusterReplicationConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetClusterCrossClusterReplicationConfig>(guardedValue, (value) => GetClusterCrossClusterReplicationConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      deletionProtectionEnabled: (() { final guardedValue = map['deletionProtectionEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      discoveryEndpoints: (() { final guardedValue = map['discoveryEndpoints']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetClusterDiscoveryEndpoint>(guardedValue, (value) => GetClusterDiscoveryEndpoint.fromMap((value as Map).cast<String, dynamic>())); })(),
+      effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      effectiveMaintenanceVersion: (() { final guardedValue = map['effectiveMaintenanceVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      gcsSources: (() { final guardedValue = map['gcsSources']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetClusterGcsSource>(guardedValue, (value) => GetClusterGcsSource.fromMap((value as Map).cast<String, dynamic>())); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      kmsKey: (() { final guardedValue = map['kmsKey']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      maintenancePolicies: (() { final guardedValue = map['maintenancePolicies']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetClusterMaintenancePolicy>(guardedValue, (value) => GetClusterMaintenancePolicy.fromMap((value as Map).cast<String, dynamic>())); })(),
+      maintenanceSchedules: (() { final guardedValue = map['maintenanceSchedules']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetClusterMaintenanceSchedule>(guardedValue, (value) => GetClusterMaintenanceSchedule.fromMap((value as Map).cast<String, dynamic>())); })(),
+      maintenanceVersion: (() { final guardedValue = map['maintenanceVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      managedBackupSources: (() { final guardedValue = map['managedBackupSources']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetClusterManagedBackupSource>(guardedValue, (value) => GetClusterManagedBackupSource.fromMap((value as Map).cast<String, dynamic>())); })(),
+      managedServerCas: (() { final guardedValue = map['managedServerCas']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetClusterManagedServerCa>(guardedValue, (value) => GetClusterManagedServerCa.fromMap((value as Map).cast<String, dynamic>())); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      nodeType: (() { final guardedValue = map['nodeType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      persistenceConfigs: (() { final guardedValue = map['persistenceConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetClusterPersistenceConfig>(guardedValue, (value) => GetClusterPersistenceConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
+      preciseSizeGb: (() { final guardedValue = map['preciseSizeGb']; if (guardedValue == null) return null; return (guardedValue as num).toDouble(); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      pscConfigs: pulumi.Input.decodeList<GetClusterPscConfig>(map['pscConfigs']!, (value) => GetClusterPscConfig.fromMap((value as Map).cast<String, dynamic>())),
-      pscConnections: pulumi.Input.decodeList<GetClusterPscConnection>(map['pscConnections']!, (value) => GetClusterPscConnection.fromMap((value as Map).cast<String, dynamic>())),
-      pscServiceAttachments: pulumi.Input.decodeList<GetClusterPscServiceAttachment>(map['pscServiceAttachments']!, (value) => GetClusterPscServiceAttachment.fromMap((value as Map).cast<String, dynamic>())),
-      pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
-      redisConfigs: (map['redisConfigs'] as Map).cast<String, String>(),
+      pscConfigs: (() { final guardedValue = map['pscConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetClusterPscConfig>(guardedValue, (value) => GetClusterPscConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
+      pscConnections: (() { final guardedValue = map['pscConnections']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetClusterPscConnection>(guardedValue, (value) => GetClusterPscConnection.fromMap((value as Map).cast<String, dynamic>())); })(),
+      pscServiceAttachments: (() { final guardedValue = map['pscServiceAttachments']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetClusterPscServiceAttachment>(guardedValue, (value) => GetClusterPscServiceAttachment.fromMap((value as Map).cast<String, dynamic>())); })(),
+      pulumiLabels: (() { final guardedValue = map['pulumiLabels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      redisConfigs: (() { final guardedValue = map['redisConfigs']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      replicaCount: map['replicaCount'] as int,
-      serverCaMode: map['serverCaMode'] as String,
-      serverCaPool: map['serverCaPool'] as String,
-      shardCount: map['shardCount'] as int,
-      sizeGb: map['sizeGb'] as int,
-      state: map['state'] as String,
-      stateInfos: pulumi.Input.decodeList<GetClusterStateInfo>(map['stateInfos']!, (value) => GetClusterStateInfo.fromMap((value as Map).cast<String, dynamic>())),
-      transitEncryptionMode: map['transitEncryptionMode'] as String,
-      uid: map['uid'] as String,
-      zoneDistributionConfigs: pulumi.Input.decodeList<GetClusterZoneDistributionConfig>(map['zoneDistributionConfigs']!, (value) => GetClusterZoneDistributionConfig.fromMap((value as Map).cast<String, dynamic>())),
+      replicaCount: (() { final guardedValue = map['replicaCount']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      serverCaMode: (() { final guardedValue = map['serverCaMode']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      serverCaPool: (() { final guardedValue = map['serverCaPool']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      shardCount: (() { final guardedValue = map['shardCount']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      sizeGb: (() { final guardedValue = map['sizeGb']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      stateInfos: (() { final guardedValue = map['stateInfos']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetClusterStateInfo>(guardedValue, (value) => GetClusterStateInfo.fromMap((value as Map).cast<String, dynamic>())); })(),
+      transitEncryptionMode: (() { final guardedValue = map['transitEncryptionMode']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      uid: (() { final guardedValue = map['uid']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      zoneDistributionConfigs: (() { final guardedValue = map['zoneDistributionConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetClusterZoneDistributionConfig>(guardedValue, (value) => GetClusterZoneDistributionConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
     );
   }
 }

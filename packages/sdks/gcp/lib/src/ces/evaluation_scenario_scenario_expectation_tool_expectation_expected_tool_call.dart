@@ -5,17 +5,17 @@ import 'evaluation_scenario_scenario_expectation_tool_expectation_expected_tool_
 
 class EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCall {
   /// The input parameters and values for the tool in JSON object format.
-  final pulumi.Input<Map<String, String>>? args;
+  final pulumi.Input<Map<String, String>?>? args;
   /// (Output)
   /// Output only. Display name of the tool.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Optional. The unique identifier of the tool call.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Name of the tool.
-  final pulumi.Input<String>? tool;
+  final pulumi.Input<String?>? tool;
   /// The toolset tool.
   /// Structure is documented below.
-  final pulumi.Input<EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetTool>? toolsetTool;
+  final pulumi.Input<EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetTool?>? toolsetTool;
 
   /// Creates a new [EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCall].
   /// [args] The input parameters and values for the tool in JSON object format.

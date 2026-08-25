@@ -7,10 +7,10 @@ import 'iceberg_catalog_federated_catalog_options_refresh_options_refresh_scope.
 class IcebergCatalogFederatedCatalogOptionsRefreshOptions {
   /// Schedule for periodic metadata refresh.
   /// Structure is documented below.
-  final pulumi.Input<IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshSchedule>? refreshSchedule;
+  final pulumi.Input<IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshSchedule?>? refreshSchedule;
   /// Scope of metadata to synchronize from the remote catalog.
   /// Structure is documented below.
-  final pulumi.Input<IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScope>? refreshScope;
+  final pulumi.Input<IcebergCatalogFederatedCatalogOptionsRefreshOptionsRefreshScope?>? refreshScope;
 
   /// Creates a new [IcebergCatalogFederatedCatalogOptionsRefreshOptions].
   /// [refreshSchedule] Schedule for periodic metadata refresh.

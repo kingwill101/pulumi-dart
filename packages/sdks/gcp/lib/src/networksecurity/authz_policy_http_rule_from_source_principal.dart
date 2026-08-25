@@ -10,41 +10,41 @@ class AuthzPolicyHttpRuleFromSourcePrincipal {
   /// * abc matches the value xyz.abc.def
   ///
   /// &gt; **Warning:** `principals.contains` is deprecated and will be removed in a future major release. Use `principals.principal.contains` instead.
-  final pulumi.Input<String>? contains;
+  final pulumi.Input<String?>? contains;
   /// (Optional, Deprecated)
   /// The input string must match exactly the string specified here.
   /// Examples:
   /// * abc only matches the value abc.
   ///
   /// &gt; **Warning:** `principals.exact` is deprecated and will be removed in a future major release. Use `principals.principal.exact` instead.
-  final pulumi.Input<String>? exact;
+  final pulumi.Input<String?>? exact;
   /// (Optional, Deprecated)
   /// If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
   ///
   /// &gt; **Warning:** `principals.ignore_case` is deprecated and will be removed in a future major release. Use `principals.principal.ignore_case` instead.
-  final pulumi.Input<bool>? ignoreCase;
+  final pulumi.Input<bool?>? ignoreCase;
   /// (Optional, Deprecated)
   /// The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
   /// Examples:
   /// * abc matches the value abc.xyz
   ///
   /// &gt; **Warning:** `principals.prefix` is deprecated and will be removed in a future major release. Use `principals.principal.prefix` instead.
-  final pulumi.Input<String>? prefix;
+  final pulumi.Input<String?>? prefix;
   /// Required. A non-empty string whose value is matched against the principal value based on the principalSelector.
   /// Only exact match can be applied for CLIENT_CERT_URI_SAN, CLIENT_CERT_DNS_NAME_SAN, CLIENT_CERT_COMMON_NAME selectors.
   /// Structure is documented below.
-  final pulumi.Input<AuthzPolicyHttpRuleFromSourcePrincipalPrincipal>? principal;
+  final pulumi.Input<AuthzPolicyHttpRuleFromSourcePrincipalPrincipal?>? principal;
   /// An enum to decide what principal value the principal rule will match against. If not specified, the PrincipalSelector is CLIENT_CERT_URI_SAN.
   /// Default value is `CLIENT_CERT_URI_SAN`.
   /// Possible values are: `PRINCIPAL_SELECTOR_UNSPECIFIED`, `CLIENT_CERT_URI_SAN`, `CLIENT_CERT_DNS_NAME_SAN`, `CLIENT_CERT_COMMON_NAME`.
-  final pulumi.Input<String>? principalSelector;
+  final pulumi.Input<String?>? principalSelector;
   /// (Optional, Deprecated)
   /// The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
   /// Examples:
   /// * abc matches the value xyz.abc
   ///
   /// &gt; **Warning:** `principals.suffix` is deprecated and will be removed in a future major release. Use `principals.principal.suffix` instead.
-  final pulumi.Input<String>? suffix;
+  final pulumi.Input<String?>? suffix;
 
   /// Creates a new [AuthzPolicyHttpRuleFromSourcePrincipal].
   /// [contains] (Optional, Deprecated)

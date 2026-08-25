@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class OrganizationSecurityPolicyRuleRedirectOptions {
   /// Target for the redirect action. This is required if the type is EXTERNAL_302.
-  final pulumi.Input<String>? target;
+  final pulumi.Input<String?>? target;
   /// Type of the redirect action. For organization security policies, only EXTERNAL_302 is supported.
   final pulumi.Input<String> type;
 

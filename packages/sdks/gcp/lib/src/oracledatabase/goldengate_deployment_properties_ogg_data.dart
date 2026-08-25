@@ -5,35 +5,35 @@ import 'goldengate_deployment_properties_ogg_data_group_roles_mapping.dart';
 
 class GoldengateDeploymentPropertiesOggData {
   /// The Goldengate deployment console password in plain text.
-  final pulumi.Input<String>? adminPassword;
+  final pulumi.Input<String?>? adminPassword;
   /// Input only. The Goldengate deployment console password secret version.
-  final pulumi.Input<String>? adminPasswordSecretVersion;
+  final pulumi.Input<String?>? adminPasswordSecretVersion;
   /// The Goldengate deployment console username.
   final pulumi.Input<String> adminUsername;
   /// (Output)
   /// The certificate of the GoldengateDeployment.
-  final pulumi.Input<String>? certificate;
+  final pulumi.Input<String?>? certificate;
   /// (Output)
   /// The credential store of the GoldengateDeployment.
   /// Possible values:
   /// GOLDENGATE
   /// IAM
-  final pulumi.Input<String>? credentialStore;
+  final pulumi.Input<String?>? credentialStore;
   /// The name given to the Goldengate service deployment. The name must be 1 to
   /// 32 characters long, must contain only alphanumeric characters and must
   /// start with a letter.
   final pulumi.Input<String> deployment;
   /// The group to roles mapping of the GoldengateDeployment.
   /// Structure is documented below.
-  final pulumi.Input<GoldengateDeploymentPropertiesOggDataGroupRolesMapping>? groupRolesMapping;
+  final pulumi.Input<GoldengateDeploymentPropertiesOggDataGroupRolesMapping?>? groupRolesMapping;
   /// (Output)
   /// The identity domain id of the GoldengateDeployment.
-  final pulumi.Input<String>? identityDomainId;
+  final pulumi.Input<String?>? identityDomainId;
   /// Version of OGG
-  final pulumi.Input<String>? oggVersion;
+  final pulumi.Input<String?>? oggVersion;
   /// (Output)
   /// The password secret id of the GoldengateDeployment.
-  final pulumi.Input<String>? passwordSecretId;
+  final pulumi.Input<String?>? passwordSecretId;
 
   /// Creates a new [GoldengateDeploymentPropertiesOggData].
   /// [adminPassword] The Goldengate deployment console password in plain text.

@@ -16,27 +16,27 @@ class SecurityGatewayArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Optional. An arbitrary user-provided name for the SecurityGateway.
   /// Cannot exceed 64 characters.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Optional. Map of Hubs that represents regional data path deployment with GCP region
   /// as a key.
   /// Structure is documented below.
-  final pulumi.Input<List<SecurityGatewayHub>>? hubs;
+  final pulumi.Input<List<SecurityGatewayHub>?>? hubs;
   /// (Optional, Deprecated)
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. Must be omitted or set to `global`.
   ///
   /// &gt; **Warning:** `location` is deprecated and will be removed in a future major release.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Settings related to Cloud Logging.
-  final pulumi.Input<Map<String, dynamic>>? logging;
+  final pulumi.Input<Map<String, dynamic>?>? logging;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Shared proxy configuration for all apps.
   /// Structure is documented below.
-  final pulumi.Input<SecurityGatewayProxyProtocolConfig>? proxyProtocolConfig;
+  final pulumi.Input<SecurityGatewayProxyProtocolConfig?>? proxyProtocolConfig;
   /// Optional. User-settable SecurityGateway resource ID.
   /// * Must start with a letter.
   /// * Must contain between 4-63 characters from `/a-z-/`.
@@ -44,7 +44,7 @@ class SecurityGatewayArgs {
   final pulumi.Input<String> securityGatewayId;
   /// Settings related to the Service Discovery.
   /// Structure is documented below.
-  final pulumi.Input<SecurityGatewayServiceDiscovery>? serviceDiscovery;
+  final pulumi.Input<SecurityGatewayServiceDiscovery?>? serviceDiscovery;
 
   /// Creates a new [SecurityGatewayArgs].
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

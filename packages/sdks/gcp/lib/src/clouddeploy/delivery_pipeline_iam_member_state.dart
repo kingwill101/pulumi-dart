@@ -5,13 +5,13 @@ import 'delivery_pipeline_iam_member_condition.dart';
 
 /// Input properties used for looking up and filtering DeliveryPipelineIamMember resources.
 class DeliveryPipelineIamMemberState {
-  final pulumi.Input<DeliveryPipelineIamMemberCondition>? condition;
-  final pulumi.Input<String>? etag;
-  final pulumi.Input<String>? location;
-  final pulumi.Input<String>? member;
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? project;
-  final pulumi.Input<String>? role;
+  final pulumi.Input<DeliveryPipelineIamMemberCondition?>? condition;
+  final pulumi.Input<String?>? etag;
+  final pulumi.Input<String?>? location;
+  final pulumi.Input<String?>? member;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? project;
+  final pulumi.Input<String?>? role;
 
   /// Creates a new [DeliveryPipelineIamMemberState].
   /// [condition] Optional.

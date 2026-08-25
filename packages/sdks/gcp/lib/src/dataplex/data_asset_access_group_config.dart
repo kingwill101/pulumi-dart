@@ -6,7 +6,7 @@ class DataAssetAccessGroupConfig {
   /// The identifier for this object. Format specified above.
   final pulumi.Input<String> accessGroup;
   /// IAM roles granted on the resource.
-  final pulumi.Input<List<String>>? iamRoles;
+  final pulumi.Input<List<String>?>? iamRoles;
 
   /// Creates a new [DataAssetAccessGroupConfig].
   /// [accessGroup] The identifier for this object. Format specified above.

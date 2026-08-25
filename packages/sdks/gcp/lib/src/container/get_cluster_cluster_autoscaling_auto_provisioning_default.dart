@@ -69,7 +69,7 @@ class GetClusterClusterAutoscalingAutoProvisioningDefault {
   factory GetClusterClusterAutoscalingAutoProvisioningDefault.fromMap(Map<String, dynamic> map) {
     return GetClusterClusterAutoscalingAutoProvisioningDefault(
       bootDiskKmsKey: pulumi.Input.fromValue(map['bootDiskKmsKey'] as String),
-      diskSize: pulumi.Input.fromValue(map['diskSize'] as int),
+      diskSize: pulumi.Input.fromValue((map['diskSize'] as num).toInt()),
       diskType: pulumi.Input.fromValue(map['diskType'] as String),
       imageType: pulumi.Input.fromValue(map['imageType'] as String),
       managements: pulumi.Input.fromValue(pulumi.Input.decodeList<GetClusterClusterAutoscalingAutoProvisioningDefaultManagement>(map['managements']!, (value) => GetClusterClusterAutoscalingAutoProvisioningDefaultManagement.fromMap((value as Map).cast<String, dynamic>()))),

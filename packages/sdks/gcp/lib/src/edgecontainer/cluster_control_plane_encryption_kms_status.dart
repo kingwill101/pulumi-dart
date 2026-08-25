@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterControlPlaneEncryptionKmsStatus {
   /// The status code, which should be an enum value of google.rpc.Code.
-  final pulumi.Input<int>? code;
+  final pulumi.Input<int?>? code;
   /// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
-  final pulumi.Input<String>? message;
+  final pulumi.Input<String?>? message;
 
   /// Creates a new [ClusterControlPlaneEncryptionKmsStatus].
   /// [code] The status code, which should be an enum value of google.rpc.Code.
@@ -25,7 +25,7 @@ class ClusterControlPlaneEncryptionKmsStatus {
 
   factory ClusterControlPlaneEncryptionKmsStatus.fromMap(Map<String, dynamic> map) {
     return ClusterControlPlaneEncryptionKmsStatus(
-      code: (() { final guardedValue = map['code']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      code: (() { final guardedValue = map['code']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       message: (() { final guardedValue = map['message']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

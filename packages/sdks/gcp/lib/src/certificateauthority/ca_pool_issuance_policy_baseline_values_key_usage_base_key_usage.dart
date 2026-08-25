@@ -4,23 +4,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsage {
   /// The key may be used to sign certificates.
-  final pulumi.Input<bool>? certSign;
+  final pulumi.Input<bool?>? certSign;
   /// The key may be used for cryptographic commitments. Note that this may also be referred to as "non-repudiation".
-  final pulumi.Input<bool>? contentCommitment;
+  final pulumi.Input<bool?>? contentCommitment;
   /// The key may be used sign certificate revocation lists.
-  final pulumi.Input<bool>? crlSign;
+  final pulumi.Input<bool?>? crlSign;
   /// The key may be used to encipher data.
-  final pulumi.Input<bool>? dataEncipherment;
+  final pulumi.Input<bool?>? dataEncipherment;
   /// The key may be used to decipher only.
-  final pulumi.Input<bool>? decipherOnly;
+  final pulumi.Input<bool?>? decipherOnly;
   /// The key may be used for digital signatures.
-  final pulumi.Input<bool>? digitalSignature;
+  final pulumi.Input<bool?>? digitalSignature;
   /// The key may be used to encipher only.
-  final pulumi.Input<bool>? encipherOnly;
+  final pulumi.Input<bool?>? encipherOnly;
   /// The key may be used in a key agreement protocol.
-  final pulumi.Input<bool>? keyAgreement;
+  final pulumi.Input<bool?>? keyAgreement;
   /// The key may be used to encipher other keys.
-  final pulumi.Input<bool>? keyEncipherment;
+  final pulumi.Input<bool?>? keyEncipherment;
 
   /// Creates a new [CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsage].
   /// [certSign] The key may be used to sign certificates.

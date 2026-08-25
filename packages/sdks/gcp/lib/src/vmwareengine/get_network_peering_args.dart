@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNetworkPeeringArgs {
   /// Name of the resource.
   final pulumi.Input<String> name;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetNetworkPeeringArgs].
   /// [name] Name of the resource.

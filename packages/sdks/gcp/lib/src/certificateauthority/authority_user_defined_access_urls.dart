@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AuthorityUserDefinedAccessUrls {
   /// A list of URLs where this CertificateAuthority's CA certificate is published that is specified by users.
-  final pulumi.Input<List<String>>? aiaIssuingCertificateUrls;
+  final pulumi.Input<List<String>?>? aiaIssuingCertificateUrls;
   /// A list of URLs where this CertificateAuthority's CRLs are published that is specified by users.
-  final pulumi.Input<List<String>>? crlAccessUrls;
+  final pulumi.Input<List<String>?>? crlAccessUrls;
 
   /// Creates a new [AuthorityUserDefinedAccessUrls].
   /// [aiaIssuingCertificateUrls] A list of URLs where this CertificateAuthority's CA certificate is published that is specified by users.

@@ -373,7 +373,7 @@ class V2FolderSccBigQueryExport extends pulumi.CustomResource {
           'gcp:securitycenter/v2FolderSccBigQueryExport:V2FolderSccBigQueryExport',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     bigQueryExportId = registerOutput<String>('bigQueryExportId');
     createTime = registerOutput<String>('createTime');
@@ -394,11 +394,12 @@ class V2FolderSccBigQueryExport extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     V2FolderSccBigQueryExportState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return V2FolderSccBigQueryExport._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -412,6 +413,29 @@ class V2FolderSccBigQueryExport extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    bigQueryExportId = registerOutput<String>('bigQueryExportId');
+    createTime = registerOutput<String>('createTime');
+    dataset = registerOutput<String?>('dataset');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    filter = registerOutput<String?>('filter');
+    folder = registerOutput<String>('folder');
+    location = registerOutput<String?>('location');
+    mostRecentEditor = registerOutput<String>('mostRecentEditor');
+    this.name = registerOutput<String>('name');
+    principal = registerOutput<String>('principal');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [V2FolderSccBigQueryExport] resource.
+  V2FolderSccBigQueryExport.reference(String urn)
+    : super(
+        'gcp:securitycenter/v2FolderSccBigQueryExport:V2FolderSccBigQueryExport',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     bigQueryExportId = registerOutput<String>('bigQueryExportId');
     createTime = registerOutput<String>('createTime');
     dataset = registerOutput<String?>('dataset');

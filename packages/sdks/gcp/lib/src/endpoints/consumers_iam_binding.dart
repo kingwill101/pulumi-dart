@@ -87,12 +87,12 @@ class ConsumersIamBinding extends pulumi.CustomResource {
           'gcp:endpoints/consumersIamBinding:ConsumersIamBinding',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     condition = registerOutput<ConsumersIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConsumersIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     consumerProject = registerOutput<String>('consumerProject');
     etag = registerOutput<String>('etag');
-    members = registerOutput<List<String>>('members');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     role = registerOutput<String>('role');
     serviceName = registerOutput<String>('serviceName');
   }
@@ -102,11 +102,12 @@ class ConsumersIamBinding extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ConsumersIamBindingState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ConsumersIamBinding._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -123,7 +124,24 @@ class ConsumersIamBinding extends pulumi.CustomResource {
     condition = registerOutput<ConsumersIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConsumersIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     consumerProject = registerOutput<String>('consumerProject');
     etag = registerOutput<String>('etag');
-    members = registerOutput<List<String>>('members');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    role = registerOutput<String>('role');
+    serviceName = registerOutput<String>('serviceName');
+  }
+
+  /// Creates a typed reference to an existing [ConsumersIamBinding] resource.
+  ConsumersIamBinding.reference(String urn)
+    : super(
+        'gcp:endpoints/consumersIamBinding:ConsumersIamBinding',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    condition = registerOutput<ConsumersIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConsumersIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    consumerProject = registerOutput<String>('consumerProject');
+    etag = registerOutput<String>('etag');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     role = registerOutput<String>('role');
     serviceName = registerOutput<String>('serviceName');
   }

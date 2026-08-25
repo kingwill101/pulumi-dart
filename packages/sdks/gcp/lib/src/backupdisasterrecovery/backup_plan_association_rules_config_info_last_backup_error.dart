@@ -5,10 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BackupPlanAssociationRulesConfigInfoLastBackupError {
   /// (Output)
   /// The status code, which should be an enum value of [google.rpc.Code]
-  final pulumi.Input<double>? code;
+  final pulumi.Input<double?>? code;
   /// (Output)
   /// A developer-facing error message, which should be in English.
-  final pulumi.Input<String>? message;
+  final pulumi.Input<String?>? message;
 
   /// Creates a new [BackupPlanAssociationRulesConfigInfoLastBackupError].
   /// [code] (Output)
@@ -27,7 +27,7 @@ class BackupPlanAssociationRulesConfigInfoLastBackupError {
 
   factory BackupPlanAssociationRulesConfigInfoLastBackupError.fromMap(Map<String, dynamic> map) {
     return BackupPlanAssociationRulesConfigInfoLastBackupError(
-      code: (() { final guardedValue = map['code']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      code: (() { final guardedValue = map['code']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       message: (() { final guardedValue = map['message']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

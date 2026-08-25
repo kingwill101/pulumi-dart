@@ -30,9 +30,9 @@ class GetEnvironmentConfigWorkloadsConfigWebServer {
 
   factory GetEnvironmentConfigWorkloadsConfigWebServer.fromMap(Map<String, dynamic> map) {
     return GetEnvironmentConfigWorkloadsConfigWebServer(
-      cpu: pulumi.Input.fromValue(map['cpu'] as double),
-      memoryGb: pulumi.Input.fromValue(map['memoryGb'] as double),
-      storageGb: pulumi.Input.fromValue(map['storageGb'] as double),
+      cpu: pulumi.Input.fromValue((map['cpu'] as num).toDouble()),
+      memoryGb: pulumi.Input.fromValue((map['memoryGb'] as num).toDouble()),
+      storageGb: pulumi.Input.fromValue((map['storageGb'] as num).toDouble()),
     );
   }
 }

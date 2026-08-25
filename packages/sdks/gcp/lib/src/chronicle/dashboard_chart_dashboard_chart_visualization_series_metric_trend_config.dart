@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DashboardChartDashboardChartVisualizationSeriesMetricTrendConfig {
   /// Possible values are: `METRIC_DISPLAY_TREND_UNSPECIFIED`, `METRIC_DISPLAY_TREND_ABSOLUTE_VALUE`, `METRIC_DISPLAY_TREND_PERCENTAGE`, `METRIC_DISPLAY_TREND_ABSOLUTE_VALUE_AND_PERCENTAGE`.
-  final pulumi.Input<String>? metricDisplayTrend;
+  final pulumi.Input<String?>? metricDisplayTrend;
   /// Possible values are: `METRIC_FORMAT_UNSPECIFIED`, `METRIC_FORMAT_NUMBER`, `METRIC_FORMAT_PLAIN_TEXT`.
-  final pulumi.Input<String>? metricFormat;
+  final pulumi.Input<String?>? metricFormat;
   /// Possible values are: `METRIC_TREND_TYPE_UNSPECIFIED`, `METRIC_TREND_TYPE_REGULAR`, `METRIC_TREND_TYPE_INVERSE`.
-  final pulumi.Input<String>? metricTrendType;
+  final pulumi.Input<String?>? metricTrendType;
   /// (Optional)
-  final pulumi.Input<bool>? showMetricTrend;
+  final pulumi.Input<bool?>? showMetricTrend;
 
   /// Creates a new [DashboardChartDashboardChartVisualizationSeriesMetricTrendConfig].
   /// [metricDisplayTrend] Possible values are: `METRIC_DISPLAY_TREND_UNSPECIFIED`, `METRIC_DISPLAY_TREND_ABSOLUTE_VALUE`, `METRIC_DISPLAY_TREND_PERCENTAGE`, `METRIC_DISPLAY_TREND_ABSOLUTE_VALUE_AND_PERCENTAGE`.

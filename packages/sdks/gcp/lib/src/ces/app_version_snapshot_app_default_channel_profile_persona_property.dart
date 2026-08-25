@@ -9,7 +9,7 @@ class AppVersionSnapshotAppDefaultChannelProfilePersonaProperty {
   /// UNKNOWN
   /// CONCISE
   /// CHATTY
-  final pulumi.Input<String>? persona;
+  final pulumi.Input<String?>? persona;
 
   /// Creates a new [AppVersionSnapshotAppDefaultChannelProfilePersonaProperty].
   /// [persona] (Output)

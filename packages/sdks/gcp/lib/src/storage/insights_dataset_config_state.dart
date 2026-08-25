@@ -13,72 +13,72 @@ import 'insights_dataset_config_source_projects.dart';
 /// Input properties used for looking up and filtering InsightsDatasetConfig resources.
 class InsightsDatasetConfigState {
   /// Number of days of activity data that must be retained. If not specified, retentionPeriodDays will be used. Set to 0 to turn off the activity data.
-  final pulumi.Input<int>? activityDataRetentionPeriodDays;
+  final pulumi.Input<int?>? activityDataRetentionPeriodDays;
   /// The UTC time at which the DatasetConfig was created. This is auto-populated.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// The user-defined ID of the DatasetConfig
-  final pulumi.Input<String>? datasetConfigId;
+  final pulumi.Input<String?>? datasetConfigId;
   /// State of the DatasetConfig.
-  final pulumi.Input<String>? datasetConfigState;
+  final pulumi.Input<String?>? datasetConfigState;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// An optional user-provided description for the dataset configuration with a maximum length of 256 characters.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Defined the options for excluding cloud storage buckets for the DatasetConfig.
   /// Structure is documented below.
-  final pulumi.Input<InsightsDatasetConfigExcludeCloudStorageBuckets>? excludeCloudStorageBuckets;
+  final pulumi.Input<InsightsDatasetConfigExcludeCloudStorageBuckets?>? excludeCloudStorageBuckets;
   /// Defines the options for excluding cloud storage locations for the DatasetConfig.
   /// Structure is documented below.
-  final pulumi.Input<InsightsDatasetConfigExcludeCloudStorageLocations>? excludeCloudStorageLocations;
+  final pulumi.Input<InsightsDatasetConfigExcludeCloudStorageLocations?>? excludeCloudStorageLocations;
   /// Identity used by DatasetConfig.
   /// Structure is documented below.
-  final pulumi.Input<InsightsDatasetConfigIdentity>? identity;
+  final pulumi.Input<InsightsDatasetConfigIdentity?>? identity;
   /// Defines the options for including cloud storage buckets for the DatasetConfig.
   /// Structure is documented below.
-  final pulumi.Input<InsightsDatasetConfigIncludeCloudStorageBuckets>? includeCloudStorageBuckets;
+  final pulumi.Input<InsightsDatasetConfigIncludeCloudStorageBuckets?>? includeCloudStorageBuckets;
   /// Defines the options for including cloud storage locations for the DatasetConfig.
   /// Structure is documented below.
-  final pulumi.Input<InsightsDatasetConfigIncludeCloudStorageLocations>? includeCloudStorageLocations;
+  final pulumi.Input<InsightsDatasetConfigIncludeCloudStorageLocations?>? includeCloudStorageLocations;
   /// If set to true, the request includes all the newly created buckets in the dataset that meet the inclusion and exclusion rules.
-  final pulumi.Input<bool>? includeNewlyCreatedBuckets;
+  final pulumi.Input<bool?>? includeNewlyCreatedBuckets;
   /// A boolean terraform only flag to link/unlink dataset.
   ///
   /// Setting this field to true while creation will automatically link the created dataset as an additional functionality.
   /// &gt; **Note** A dataset config resource can only be destroyed once it is unlinked,
   /// so users must set this field to false to unlink the dataset and destroy the dataset config resource.
-  final pulumi.Input<bool>? linkDataset;
+  final pulumi.Input<bool?>? linkDataset;
   /// Details of the linked DatasetConfig.
   /// Structure is documented below.
-  final pulumi.Input<List<InsightsDatasetConfigLink>>? links;
+  final pulumi.Input<List<InsightsDatasetConfigLink>?>? links;
   /// The location of the DatasetConfig.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The full canonical resource name of the DatasetConfig (e.g., projects/P/locations/L/datasetConfigs/ID).
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Organization resource ID that the source projects should belong to.
   /// Projects that do not belong to the provided organization are not considered when creating the dataset.
-  final pulumi.Input<String>? organizationNumber;
+  final pulumi.Input<String?>? organizationNumber;
   /// Defines the options for providing a source organization for the DatasetConfig.
-  final pulumi.Input<bool>? organizationScope;
+  final pulumi.Input<bool?>? organizationScope;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Number of days of history that must be retained.
-  final pulumi.Input<int>? retentionPeriodDays;
+  final pulumi.Input<int?>? retentionPeriodDays;
   /// Defines the options for providing source folders for the DatasetConfig.
   /// Structure is documented below.
-  final pulumi.Input<InsightsDatasetConfigSourceFolders>? sourceFolders;
+  final pulumi.Input<InsightsDatasetConfigSourceFolders?>? sourceFolders;
   /// Defines the options for providing source projects for the DatasetConfig.
   /// Structure is documented below.
-  final pulumi.Input<InsightsDatasetConfigSourceProjects>? sourceProjects;
+  final pulumi.Input<InsightsDatasetConfigSourceProjects?>? sourceProjects;
   /// System generated unique identifier for the resource.
-  final pulumi.Input<String>? uid;
+  final pulumi.Input<String?>? uid;
   /// The UTC time at which the DatasetConfig was updated. This is auto-populated.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [InsightsDatasetConfigState].
   /// [activityDataRetentionPeriodDays] Number of days of activity data that must be retained. If not specified, retentionPeriodDays will be used. Set to 0 to turn off the activity data.
@@ -163,7 +163,7 @@ class InsightsDatasetConfigState {
 
   factory InsightsDatasetConfigState.fromMap(Map<String, dynamic> map) {
     return InsightsDatasetConfigState(
-      activityDataRetentionPeriodDays: (() { final guardedValue = map['activityDataRetentionPeriodDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      activityDataRetentionPeriodDays: (() { final guardedValue = map['activityDataRetentionPeriodDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       datasetConfigId: (() { final guardedValue = map['datasetConfigId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       datasetConfigState: (() { final guardedValue = map['datasetConfigState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -182,7 +182,7 @@ class InsightsDatasetConfigState {
       organizationNumber: (() { final guardedValue = map['organizationNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       organizationScope: (() { final guardedValue = map['organizationScope']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      retentionPeriodDays: (() { final guardedValue = map['retentionPeriodDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      retentionPeriodDays: (() { final guardedValue = map['retentionPeriodDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       sourceFolders: (() { final guardedValue = map['sourceFolders']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InsightsDatasetConfigSourceFolders.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       sourceProjects: (() { final guardedValue = map['sourceProjects']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InsightsDatasetConfigSourceProjects.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       uid: (() { final guardedValue = map['uid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

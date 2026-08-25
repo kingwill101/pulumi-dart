@@ -13,7 +13,7 @@ class ServiceNetworkSettingsArgs {
   final pulumi.Input<ServiceNetworkSettingsNetworkSettings> networkSettings;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The name of the service these settings apply to.
   final pulumi.Input<String> service;
 

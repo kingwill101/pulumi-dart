@@ -9,13 +9,13 @@ class TriggerDeveloperConnectEventConfig {
   final pulumi.Input<String> gitRepositoryLink;
   /// (Output)
   /// The type of DeveloperConnect GitRepositoryLink.
-  final pulumi.Input<String>? gitRepositoryLinkType;
+  final pulumi.Input<String?>? gitRepositoryLinkType;
   /// Filter to match changes in pull requests.
   /// Structure is documented below.
-  final pulumi.Input<TriggerDeveloperConnectEventConfigPullRequest>? pullRequest;
+  final pulumi.Input<TriggerDeveloperConnectEventConfigPullRequest?>? pullRequest;
   /// Filter to match changes in refs like branches and tags.
   /// Structure is documented below.
-  final pulumi.Input<TriggerDeveloperConnectEventConfigPush>? push;
+  final pulumi.Input<TriggerDeveloperConnectEventConfigPush?>? push;
 
   /// Creates a new [TriggerDeveloperConnectEventConfig].
   /// [gitRepositoryLink] The Developer Connect Git repository link, formatted as `projects/*/locations/*/connections/*/gitRepositoryLink/*`.

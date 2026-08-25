@@ -4,12 +4,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GlobalForwardingRuleServiceDirectoryRegistrations {
   /// Service Directory namespace to register the forwarding rule under.
-  final pulumi.Input<String>? namespace;
+  final pulumi.Input<String?>? namespace;
   /// [Optional] Service Directory region to register this global forwarding rule under.
   /// Default to "us-central1". Only used for PSC for Google APIs. All PSC for
   /// Google APIs Forwarding Rules on the same network should use the same Service
   /// Directory region.
-  final pulumi.Input<String>? serviceDirectoryRegion;
+  final pulumi.Input<String?>? serviceDirectoryRegion;
 
   /// Creates a new [GlobalForwardingRuleServiceDirectoryRegistrations].
   /// [namespace] Service Directory namespace to register the forwarding rule under.

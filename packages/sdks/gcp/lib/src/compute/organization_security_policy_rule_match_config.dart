@@ -7,7 +7,7 @@ class OrganizationSecurityPolicyRuleMatchConfig {
   /// (Optional, Beta)
   /// Destination IP address range in CIDR format. Required for EGRESS rules.
   /// This field may only be specified when versionedExpr is set to FIREWALL.
-  final pulumi.Input<List<String>>? destIpRanges;
+  final pulumi.Input<List<String>?>? destIpRanges;
   /// (Optional, Beta)
   /// Pairs of IP protocols and ports that the rule should match.
   /// This field may only be specified when versionedExpr is set to FIREWALL.
@@ -15,10 +15,10 @@ class OrganizationSecurityPolicyRuleMatchConfig {
   ///
   ///
   /// &lt;a name="nestedMatchConfigLayer4Config"&gt;&lt;/a&gt;The `layer4Config` block supports:
-  final pulumi.Input<List<OrganizationSecurityPolicyRuleMatchConfigLayer4Config>>? layer4Configs;
+  final pulumi.Input<List<OrganizationSecurityPolicyRuleMatchConfigLayer4Config>?>? layer4Configs;
   /// Source IP address range in CIDR format. Required for
   /// INGRESS rules.
-  final pulumi.Input<List<String>>? srcIpRanges;
+  final pulumi.Input<List<String>?>? srcIpRanges;
 
   /// Creates a new [OrganizationSecurityPolicyRuleMatchConfig].
   /// [destIpRanges] (Optional, Beta)

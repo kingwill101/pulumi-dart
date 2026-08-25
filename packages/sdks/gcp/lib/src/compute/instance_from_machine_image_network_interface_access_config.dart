@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceFromMachineImageNetworkInterfaceAccessConfig {
   /// The IP address that is be 1:1 mapped to the instance's network ip.
-  final pulumi.Input<String>? natIp;
+  final pulumi.Input<String?>? natIp;
   /// The networking tier used for configuring this instance. One of PREMIUM or STANDARD.
-  final pulumi.Input<String>? networkTier;
+  final pulumi.Input<String?>? networkTier;
   /// The DNS domain name for the public PTR record.
-  final pulumi.Input<String>? publicPtrDomainName;
+  final pulumi.Input<String?>? publicPtrDomainName;
   /// A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
-  final pulumi.Input<String>? securityPolicy;
+  final pulumi.Input<String?>? securityPolicy;
 
   /// Creates a new [InstanceFromMachineImageNetworkInterfaceAccessConfig].
   /// [natIp] The IP address that is be 1:1 mapped to the instance's network ip.

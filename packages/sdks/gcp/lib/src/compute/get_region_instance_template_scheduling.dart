@@ -121,14 +121,14 @@ class GetRegionInstanceTemplateScheduling {
   factory GetRegionInstanceTemplateScheduling.fromMap(Map<String, dynamic> map) {
     return GetRegionInstanceTemplateScheduling(
       automaticRestart: pulumi.Input.fromValue(map['automaticRestart'] as bool),
-      availabilityDomain: pulumi.Input.fromValue(map['availabilityDomain'] as int),
+      availabilityDomain: pulumi.Input.fromValue((map['availabilityDomain'] as num).toInt()),
       gracefulShutdowns: pulumi.Input.fromValue(pulumi.Input.decodeList<GetRegionInstanceTemplateSchedulingGracefulShutdown>(map['gracefulShutdowns']!, (value) => GetRegionInstanceTemplateSchedulingGracefulShutdown.fromMap((value as Map).cast<String, dynamic>()))),
-      hostErrorTimeoutSeconds: pulumi.Input.fromValue(map['hostErrorTimeoutSeconds'] as int),
+      hostErrorTimeoutSeconds: pulumi.Input.fromValue((map['hostErrorTimeoutSeconds'] as num).toInt()),
       instanceTerminationAction: pulumi.Input.fromValue(map['instanceTerminationAction'] as String),
       localSsdRecoveryTimeouts: pulumi.Input.fromValue(pulumi.Input.decodeList<GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeout>(map['localSsdRecoveryTimeouts']!, (value) => GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeout.fromMap((value as Map).cast<String, dynamic>()))),
       maintenanceInterval: pulumi.Input.fromValue(map['maintenanceInterval'] as String),
       maxRunDurations: pulumi.Input.fromValue(pulumi.Input.decodeList<GetRegionInstanceTemplateSchedulingMaxRunDuration>(map['maxRunDurations']!, (value) => GetRegionInstanceTemplateSchedulingMaxRunDuration.fromMap((value as Map).cast<String, dynamic>()))),
-      minNodeCpus: pulumi.Input.fromValue(map['minNodeCpus'] as int),
+      minNodeCpus: pulumi.Input.fromValue((map['minNodeCpus'] as num).toInt()),
       nodeAffinities: pulumi.Input.fromValue(pulumi.Input.decodeList<GetRegionInstanceTemplateSchedulingNodeAffinity>(map['nodeAffinities']!, (value) => GetRegionInstanceTemplateSchedulingNodeAffinity.fromMap((value as Map).cast<String, dynamic>()))),
       onHostMaintenance: pulumi.Input.fromValue(map['onHostMaintenance'] as String),
       onInstanceStopActions: pulumi.Input.fromValue(pulumi.Input.decodeList<GetRegionInstanceTemplateSchedulingOnInstanceStopAction>(map['onInstanceStopActions']!, (value) => GetRegionInstanceTemplateSchedulingOnInstanceStopAction.fromMap((value as Map).cast<String, dynamic>()))),

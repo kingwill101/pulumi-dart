@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterStorageResourceConfigNewBucketHierarchicalNamespace {
   /// Enables hierarchical namespace setup for the bucket.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
 
   /// Creates a new [ClusterStorageResourceConfigNewBucketHierarchicalNamespace].
   /// [enabled] Enables hierarchical namespace setup for the bucket.

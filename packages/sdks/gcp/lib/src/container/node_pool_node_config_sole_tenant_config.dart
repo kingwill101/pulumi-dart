@@ -5,7 +5,7 @@ import 'node_pool_node_config_sole_tenant_config_node_affinity.dart';
 
 class NodePoolNodeConfigSoleTenantConfig {
   /// Specifies the minimum number of vCPUs that each sole tenant node must have to use CPU overcommit. If not specified, the CPU overcommit feature is disabled.
-  final pulumi.Input<int>? minNodeCpus;
+  final pulumi.Input<int?>? minNodeCpus;
   /// .
   final pulumi.Input<List<NodePoolNodeConfigSoleTenantConfigNodeAffinity>> nodeAffinities;
 
@@ -26,7 +26,7 @@ class NodePoolNodeConfigSoleTenantConfig {
 
   factory NodePoolNodeConfigSoleTenantConfig.fromMap(Map<String, dynamic> map) {
     return NodePoolNodeConfigSoleTenantConfig(
-      minNodeCpus: (() { final guardedValue = map['minNodeCpus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      minNodeCpus: (() { final guardedValue = map['minNodeCpus']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       nodeAffinities: pulumi.Input.fromValue(pulumi.Input.decodeList<NodePoolNodeConfigSoleTenantConfigNodeAffinity>(map['nodeAffinities']!, (value) => NodePoolNodeConfigSoleTenantConfigNodeAffinity.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }

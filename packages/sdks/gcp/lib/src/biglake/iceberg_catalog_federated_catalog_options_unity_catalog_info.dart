@@ -8,7 +8,7 @@ class IcebergCatalogFederatedCatalogOptionsUnityCatalogInfo {
   /// The Databricks workspace instance name.
   final pulumi.Input<String> instanceName;
   /// The application ID of the Databricks service principal for OIDC authentication.
-  final pulumi.Input<String>? servicePrincipalApplicationId;
+  final pulumi.Input<String?>? servicePrincipalApplicationId;
 
   /// Creates a new [IcebergCatalogFederatedCatalogOptionsUnityCatalogInfo].
   /// [catalogName] The name of the catalog within the Unity Catalog instance.

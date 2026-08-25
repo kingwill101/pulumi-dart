@@ -13,17 +13,17 @@ class PeeredDnsDomainArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The DNS domain suffix of the peered DNS domain. Make sure to suffix with a `.` (dot).
   final pulumi.Input<String> dnsSuffix;
   /// Internal name used for the peered DNS domain.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The network in the consumer project.
   final pulumi.Input<String> network;
   /// The producer project number. If not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Private service connection between service and consumer network, defaults to `servicenetworking.googleapis.com`
-  final pulumi.Input<String>? service;
+  final pulumi.Input<String?>? service;
 
   /// Creates a new [PeeredDnsDomainArgs].
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".

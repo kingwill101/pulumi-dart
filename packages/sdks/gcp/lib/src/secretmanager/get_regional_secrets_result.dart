@@ -7,13 +7,13 @@ import 'get_regional_secrets_secret.dart';
 class GetRegionalSecretsResult {
   final String? filter;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// The location in which the resource belongs.
-  final String location;
+  final String? location;
   /// The ID of the project in which the resource belongs.
-  final String project;
+  final String? project;
   /// A list of regional secrets present in the specified location and matching the filter. Structure is defined below.
-  final List<GetRegionalSecretsSecret> secrets;
+  final List<GetRegionalSecretsSecret>? secrets;
 
   /// Creates a new [GetRegionalSecretsResult].
   /// [filter] Optional.
@@ -23,29 +23,29 @@ class GetRegionalSecretsResult {
   /// [secrets] A list of regional secrets present in the specified location and matching the filter. Structure is defined below.
   const GetRegionalSecretsResult({
     this.filter,
-    required this.id,
-    required this.location,
-    required this.project,
-    required this.secrets,
+    this.id,
+    this.location,
+    this.project,
+    this.secrets,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'filter': ?filter,
-      'id': id,
-      'location': location,
-      'project': project,
-      'secrets': pulumi.Input.encodeList<GetRegionalSecretsSecret, Map<String, dynamic>>(secrets, (value) => value.toMap()),
+      'id': ?id,
+      'location': ?location,
+      'project': ?project,
+      'secrets': ?(() { final guardedValue = secrets; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetRegionalSecretsSecret, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
     };
   }
 
   factory GetRegionalSecretsResult.fromMap(Map<String, dynamic> map) {
     return GetRegionalSecretsResult(
       filter: (() { final guardedValue = map['filter']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
-      location: map['location'] as String,
-      project: map['project'] as String,
-      secrets: pulumi.Input.decodeList<GetRegionalSecretsSecret>(map['secrets']!, (value) => GetRegionalSecretsSecret.fromMap((value as Map).cast<String, dynamic>())),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      secrets: (() { final guardedValue = map['secrets']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetRegionalSecretsSecret>(guardedValue, (value) => GetRegionalSecretsSecret.fromMap((value as Map).cast<String, dynamic>())); })(),
     );
   }
 }

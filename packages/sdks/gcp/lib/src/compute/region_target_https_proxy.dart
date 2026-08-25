@@ -2325,9 +2325,9 @@ class RegionTargetHttpsProxy extends pulumi.CustomResource {
           'gcp:compute/regionTargetHttpsProxy:RegionTargetHttpsProxy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
-    certificateManagerCertificates = registerOutput<List<String>?>('certificateManagerCertificates');
+    certificateManagerCertificates = registerOutput<List<String>?>('certificateManagerCertificates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     creationTimestamp = registerOutput<String>('creationTimestamp');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
@@ -2338,7 +2338,7 @@ class RegionTargetHttpsProxy extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     selfLink = registerOutput<String>('selfLink');
     serverTlsPolicy = registerOutput<String?>('serverTlsPolicy');
-    sslCertificates = registerOutput<List<String>?>('sslCertificates');
+    sslCertificates = registerOutput<List<String>?>('sslCertificates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     sslPolicy = registerOutput<String?>('sslPolicy');
     urlMap = registerOutput<String>('urlMap');
   }
@@ -2348,11 +2348,12 @@ class RegionTargetHttpsProxy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RegionTargetHttpsProxyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RegionTargetHttpsProxy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -2366,7 +2367,7 @@ class RegionTargetHttpsProxy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    certificateManagerCertificates = registerOutput<List<String>?>('certificateManagerCertificates');
+    certificateManagerCertificates = registerOutput<List<String>?>('certificateManagerCertificates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     creationTimestamp = registerOutput<String>('creationTimestamp');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
@@ -2377,7 +2378,32 @@ class RegionTargetHttpsProxy extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     selfLink = registerOutput<String>('selfLink');
     serverTlsPolicy = registerOutput<String?>('serverTlsPolicy');
-    sslCertificates = registerOutput<List<String>?>('sslCertificates');
+    sslCertificates = registerOutput<List<String>?>('sslCertificates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    sslPolicy = registerOutput<String?>('sslPolicy');
+    urlMap = registerOutput<String>('urlMap');
+  }
+
+  /// Creates a typed reference to an existing [RegionTargetHttpsProxy] resource.
+  RegionTargetHttpsProxy.reference(String urn)
+    : super(
+        'gcp:compute/regionTargetHttpsProxy:RegionTargetHttpsProxy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    certificateManagerCertificates = registerOutput<List<String>?>('certificateManagerCertificates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    httpKeepAliveTimeoutSec = registerOutput<int?>('httpKeepAliveTimeoutSec');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    proxyId = registerOutput<int>('proxyId');
+    region = registerOutput<String>('region');
+    selfLink = registerOutput<String>('selfLink');
+    serverTlsPolicy = registerOutput<String?>('serverTlsPolicy');
+    sslCertificates = registerOutput<List<String>?>('sslCertificates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     sslPolicy = registerOutput<String?>('sslPolicy');
     urlMap = registerOutput<String>('urlMap');
   }

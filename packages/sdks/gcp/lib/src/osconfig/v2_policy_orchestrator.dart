@@ -2,6 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'v2_policy_orchestrator_args.dart';
 import 'v2_policy_orchestrator_orchestrated_resource.dart';
 import 'v2_policy_orchestrator_orchestration_scope.dart';
+import 'v2_policy_orchestrator_orchestration_state.dart';
 import 'v2_policy_orchestrator_state.dart';
 
 /// PolicyOrchestrator helps managing project+zone level policy resources (e.g.
@@ -444,7 +445,7 @@ class V2PolicyOrchestrator extends pulumi.CustomResource {
   late final pulumi.Output<V2PolicyOrchestratorOrchestrationScope?> orchestrationScope;
   /// Describes the state of the orchestration process.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> orchestrationStates;
+  late final pulumi.Output<List<V2PolicyOrchestratorOrchestrationState>> orchestrationStates;
   /// Required. The logical identifier of the policy orchestrator, with the following
   /// restrictions:
   /// * Must contain only lowercase letters, numbers, and hyphens.
@@ -485,21 +486,22 @@ class V2PolicyOrchestrator extends pulumi.CustomResource {
           'gcp:osconfig/v2PolicyOrchestrator:V2PolicyOrchestrator',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     action = registerOutput<String>('action');
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    labels = registerOutput<Map<String, String>?>('labels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     orchestratedResource = registerOutput<V2PolicyOrchestratorOrchestratedResource>('orchestratedResource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V2PolicyOrchestratorOrchestratedResource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     orchestrationScope = registerOutput<V2PolicyOrchestratorOrchestrationScope?>('orchestrationScope', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V2PolicyOrchestratorOrchestrationScope.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    orchestrationStates = registerOutput<List<Map<String, dynamic>>>('orchestrationStates');
+    orchestrationStates = registerOutput<List<V2PolicyOrchestratorOrchestrationState>>('orchestrationStates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<V2PolicyOrchestratorOrchestrationState>(guardedValue, (value) => V2PolicyOrchestratorOrchestrationState.fromMap((value as Map).cast<String, dynamic>())); });
     policyOrchestratorId = registerOutput<String>('policyOrchestratorId');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     reconciling = registerOutput<bool>('reconciling');
     state = registerOutput<String?>('state');
     updateTime = registerOutput<String>('updateTime');
@@ -510,11 +512,12 @@ class V2PolicyOrchestrator extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     V2PolicyOrchestratorState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return V2PolicyOrchestrator._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -532,17 +535,45 @@ class V2PolicyOrchestrator extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    labels = registerOutput<Map<String, String>?>('labels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     orchestratedResource = registerOutput<V2PolicyOrchestratorOrchestratedResource>('orchestratedResource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V2PolicyOrchestratorOrchestratedResource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     orchestrationScope = registerOutput<V2PolicyOrchestratorOrchestrationScope?>('orchestrationScope', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V2PolicyOrchestratorOrchestrationScope.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    orchestrationStates = registerOutput<List<Map<String, dynamic>>>('orchestrationStates');
+    orchestrationStates = registerOutput<List<V2PolicyOrchestratorOrchestrationState>>('orchestrationStates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<V2PolicyOrchestratorOrchestrationState>(guardedValue, (value) => V2PolicyOrchestratorOrchestrationState.fromMap((value as Map).cast<String, dynamic>())); });
     policyOrchestratorId = registerOutput<String>('policyOrchestratorId');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     reconciling = registerOutput<bool>('reconciling');
     this.state = registerOutput<String?>('state');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [V2PolicyOrchestrator] resource.
+  V2PolicyOrchestrator.reference(String urn)
+    : super(
+        'gcp:osconfig/v2PolicyOrchestrator:V2PolicyOrchestrator',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    action = registerOutput<String>('action');
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    this.name = registerOutput<String>('name');
+    orchestratedResource = registerOutput<V2PolicyOrchestratorOrchestratedResource>('orchestratedResource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V2PolicyOrchestratorOrchestratedResource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    orchestrationScope = registerOutput<V2PolicyOrchestratorOrchestrationScope?>('orchestrationScope', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V2PolicyOrchestratorOrchestrationScope.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    orchestrationStates = registerOutput<List<V2PolicyOrchestratorOrchestrationState>>('orchestrationStates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<V2PolicyOrchestratorOrchestrationState>(guardedValue, (value) => V2PolicyOrchestratorOrchestrationState.fromMap((value as Map).cast<String, dynamic>())); });
+    policyOrchestratorId = registerOutput<String>('policyOrchestratorId');
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    reconciling = registerOutput<bool>('reconciling');
+    state = registerOutput<String?>('state');
     updateTime = registerOutput<String>('updateTime');
   }
 }

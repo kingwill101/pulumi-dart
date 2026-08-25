@@ -25,8 +25,8 @@ class HttpRouteRuleMatchHeaderRangeMatch {
 
   factory HttpRouteRuleMatchHeaderRangeMatch.fromMap(Map<String, dynamic> map) {
     return HttpRouteRuleMatchHeaderRangeMatch(
-      end: pulumi.Input.fromValue(map['end'] as int),
-      start: pulumi.Input.fromValue(map['start'] as int),
+      end: pulumi.Input.fromValue((map['end'] as num).toInt()),
+      start: pulumi.Input.fromValue((map['start'] as num).toInt()),
     );
   }
 }

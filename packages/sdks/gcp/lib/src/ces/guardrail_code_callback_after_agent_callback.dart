@@ -4,10 +4,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GuardrailCodeCallbackAfterAgentCallback {
   /// Human-readable description of the callback.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Whether the callback is disabled. Disabled callbacks are ignored by the
   /// agent.
-  final pulumi.Input<bool>? disabled;
+  final pulumi.Input<bool?>? disabled;
   /// The python code to execute for the callback.
   final pulumi.Input<String> pythonCode;
 

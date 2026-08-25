@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AuthoritySubordinateConfigPemIssuerChain {
   /// Expected to be in leaf-to-root order according to RFC 5246.
-  final pulumi.Input<List<String>>? pemCertificates;
+  final pulumi.Input<List<String>?>? pemCertificates;
 
   /// Creates a new [AuthoritySubordinateConfigPemIssuerChain].
   /// [pemCertificates] Expected to be in leaf-to-root order according to RFC 5246.

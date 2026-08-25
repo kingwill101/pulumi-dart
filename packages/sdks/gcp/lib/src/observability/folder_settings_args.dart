@@ -8,11 +8,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_observability_folder_settings_folder_settings_args_doc}
 class FolderSettingsArgs {
   /// The default storage location for new resources, e.g. buckets. Only valid for global location.
-  final pulumi.Input<String>? defaultStorageLocation;
+  final pulumi.Input<String?>? defaultStorageLocation;
   /// The folder ID.
   final pulumi.Input<String> folder;
   /// The default Cloud KMS key to use for new resources. Only valid for regional locations.
-  final pulumi.Input<String>? kmsKeyName;
+  final pulumi.Input<String?>? kmsKeyName;
   /// The location of the settings.
   final pulumi.Input<String> location;
 

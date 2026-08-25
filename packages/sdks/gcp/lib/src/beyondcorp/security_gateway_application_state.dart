@@ -10,19 +10,19 @@ class SecurityGatewayApplicationState {
   /// * Must start with a letter.
   /// * Must contain between 4-63 characters from `/a-z-/`.
   /// * Must end with a number or letter.
-  final pulumi.Input<String>? applicationId;
+  final pulumi.Input<String?>? applicationId;
   /// Output only. Timestamp when the resource was created.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Optional. An arbitrary user-provided name for the Application resource.
   /// Cannot exceed 64 characters.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Required. Endpoint matchers associated with an application.
   /// A combination of hostname and ports as endpoint matcher is used to match
   /// the application.
@@ -35,22 +35,22 @@ class SecurityGatewayApplicationState {
   /// Hostname - ("*.abc.com"), ("xyz.abc.com")
   /// Hostname and Ports - ("abc.com" and "22"), ("abc.com" and "22,33") etc
   /// Structure is documented below.
-  final pulumi.Input<List<SecurityGatewayApplicationEndpointMatcher>>? endpointMatchers;
+  final pulumi.Input<List<SecurityGatewayApplicationEndpointMatcher>?>? endpointMatchers;
   /// Identifier. Name of the resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Type of the external application.
   /// Possible values are: `PROXY_GATEWAY`, `API_GATEWAY`.
-  final pulumi.Input<String>? schema;
+  final pulumi.Input<String?>? schema;
   /// ID of the Security Gateway resource this belongs to.
-  final pulumi.Input<String>? securityGatewayId;
+  final pulumi.Input<String?>? securityGatewayId;
   /// Output only. Timestamp when the resource was last modified.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
   /// Optional. List of which upstream resource(s) to forward traffic to.
   /// Structure is documented below.
-  final pulumi.Input<List<SecurityGatewayApplicationUpstream>>? upstreams;
+  final pulumi.Input<List<SecurityGatewayApplicationUpstream>?>? upstreams;
 
   /// Creates a new [SecurityGatewayApplicationState].
   /// [applicationId] User-settable Application resource ID.

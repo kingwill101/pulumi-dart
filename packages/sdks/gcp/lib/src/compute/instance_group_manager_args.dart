@@ -23,10 +23,10 @@ class InstanceGroupManagerArgs {
   /// Properties to set on all instances in the group. After setting
   /// allInstancesConfig on the group, you must update the group's instances to
   /// apply the configuration.
-  final pulumi.Input<InstanceGroupManagerAllInstancesConfig>? allInstancesConfig;
+  final pulumi.Input<InstanceGroupManagerAllInstancesConfig?>? allInstancesConfig;
   /// The autohealing policies for this managed instance
   /// group. You can specify only one value. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances#monitoring_groups).
-  final pulumi.Input<InstanceGroupManagerAutoHealingPolicies>? autoHealingPolicies;
+  final pulumi.Input<InstanceGroupManagerAutoHealingPolicies?>? autoHealingPolicies;
   /// The base instance name to use for
   /// instances in this group. The value must be a valid
   /// [RFC1035](https://www.ietf.org/rfc/rfc1035.txt) name. Supported characters
@@ -42,59 +42,59 @@ class InstanceGroupManagerArgs {
   /// When set to "DELETE", deleting the resource is allowed.
   ///
   /// - - -
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// An optional textual description of the instance
   /// group manager.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The instance lifecycle policy for this managed instance group.
-  final pulumi.Input<InstanceGroupManagerInstanceLifecyclePolicy>? instanceLifecyclePolicy;
+  final pulumi.Input<InstanceGroupManagerInstanceLifecyclePolicy?>? instanceLifecyclePolicy;
   /// Pagination behavior of the `listManagedInstances` API
   /// method for this managed instance group. Valid values are: `PAGELESS`, `PAGINATED`.
   /// If `PAGELESS` (default), Pagination is disabled for the group's `listManagedInstances` API method.
   /// `maxResults` and `pageToken` query parameters are ignored and all instances are returned in a single
   /// response. If `PAGINATED`, pagination is enabled, `maxResults` and `pageToken` query parameters are
   /// respected.
-  final pulumi.Input<String>? listManagedInstancesResults;
+  final pulumi.Input<String?>? listManagedInstancesResults;
   /// The name of the instance group manager. Must be 1-63
   /// characters long and comply with
   /// [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
   /// include lowercase letters, numbers, and hyphens.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The named port configuration. See the section below
   /// for details on configuration.
-  final pulumi.Input<List<InstanceGroupManagerNamedPort>>? namedPorts;
+  final pulumi.Input<List<InstanceGroupManagerNamedPort>?>? namedPorts;
   /// ) Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
-  final pulumi.Input<InstanceGroupManagerParams>? params;
+  final pulumi.Input<InstanceGroupManagerParams?>? params;
   /// The ID of the project in which the resource belongs. If it
   /// is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Resource policies for this managed instance group. Structure is documented below.
-  final pulumi.Input<InstanceGroupManagerResourcePolicies>? resourcePolicies;
+  final pulumi.Input<InstanceGroupManagerResourcePolicies?>? resourcePolicies;
   /// The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig).
-  final pulumi.Input<InstanceGroupManagerStandbyPolicy>? standbyPolicy;
+  final pulumi.Input<InstanceGroupManagerStandbyPolicy?>? standbyPolicy;
   /// Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
-  final pulumi.Input<List<InstanceGroupManagerStatefulDisk>>? statefulDisks;
+  final pulumi.Input<List<InstanceGroupManagerStatefulDisk>?>? statefulDisks;
   /// External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
-  final pulumi.Input<List<InstanceGroupManagerStatefulExternalIp>>? statefulExternalIps;
+  final pulumi.Input<List<InstanceGroupManagerStatefulExternalIp>?>? statefulExternalIps;
   /// Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
-  final pulumi.Input<List<InstanceGroupManagerStatefulInternalIp>>? statefulInternalIps;
+  final pulumi.Input<List<InstanceGroupManagerStatefulInternalIp>?>? statefulInternalIps;
   /// The full URL of all target pools to which new
   /// instances in the group are added. Updating the target pools attribute does
   /// not affect existing instances.
-  final pulumi.Input<List<String>>? targetPools;
+  final pulumi.Input<List<String>?>? targetPools;
   /// The target number of running instances for this managed
   /// instance group. This value will fight with autoscaler settings when set, and generally shouldn't be set
   /// when using one. If a value is required, such as to specify a creation-time target size for the MIG,
   /// `lifecycle.ignore_changes` can be used to prevent Terraform from modifying the value. Defaults to `0`.
-  final pulumi.Input<int>? targetSize;
+  final pulumi.Input<int?>? targetSize;
   /// The policy that specifies how the MIG creates its VMs to achieve the target size. Structure is documented below.
-  final pulumi.Input<List<InstanceGroupManagerTargetSizePolicy>>? targetSizePolicies;
+  final pulumi.Input<List<InstanceGroupManagerTargetSizePolicy>?>? targetSizePolicies;
   /// The target number of stopped instances for this managed instance group.
-  final pulumi.Input<int>? targetStoppedSize;
+  final pulumi.Input<int?>? targetStoppedSize;
   /// The target number of suspended instances for this managed instance group.
-  final pulumi.Input<int>? targetSuspendedSize;
+  final pulumi.Input<int?>? targetSuspendedSize;
   /// The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch).
-  final pulumi.Input<InstanceGroupManagerUpdatePolicy>? updatePolicy;
+  final pulumi.Input<InstanceGroupManagerUpdatePolicy?>? updatePolicy;
   /// Application versions managed by this instance group. Each
   /// version deals with a specific instance template, allowing canary release scenarios.
   /// Structure is documented below.
@@ -102,17 +102,17 @@ class InstanceGroupManagerArgs {
   /// Whether to wait for all instances to be created/updated before
   /// returning. Note that if this is set to true and the operation does not succeed, this provider will
   /// continue trying until it times out.
-  final pulumi.Input<bool>? waitForInstances;
+  final pulumi.Input<bool?>? waitForInstances;
   /// When used with `waitForInstances` it specifies the status to wait for.
   /// When `STABLE` is specified this resource will wait until the instances are stable before returning. When `UPDATED` is
   /// set, it will wait for the version target to be reached and any per instance configs to be effective as well as all
   /// instances to be stable before returning. The possible values are `STABLE` and `UPDATED`
-  final pulumi.Input<String>? waitForInstancesStatus;
+  final pulumi.Input<String?>? waitForInstancesStatus;
   /// The zone that instances in this group should be created
   /// in.
   ///
   /// - - -
-  final pulumi.Input<String>? zone;
+  final pulumi.Input<String?>? zone;
 
   /// Creates a new [InstanceGroupManagerArgs].
   /// [allInstancesConfig] Properties to set on all instances in the group. After setting
@@ -220,10 +220,10 @@ class InstanceGroupManagerArgs {
       statefulExternalIps: (() { final guardedValue = map['statefulExternalIps']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<InstanceGroupManagerStatefulExternalIp>(guardedValue, (value) => InstanceGroupManagerStatefulExternalIp.fromMap((value as Map).cast<String, dynamic>()))); })(),
       statefulInternalIps: (() { final guardedValue = map['statefulInternalIps']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<InstanceGroupManagerStatefulInternalIp>(guardedValue, (value) => InstanceGroupManagerStatefulInternalIp.fromMap((value as Map).cast<String, dynamic>()))); })(),
       targetPools: (() { final guardedValue = map['targetPools']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      targetSize: (() { final guardedValue = map['targetSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      targetSize: (() { final guardedValue = map['targetSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       targetSizePolicies: (() { final guardedValue = map['targetSizePolicies']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<InstanceGroupManagerTargetSizePolicy>(guardedValue, (value) => InstanceGroupManagerTargetSizePolicy.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      targetStoppedSize: (() { final guardedValue = map['targetStoppedSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      targetSuspendedSize: (() { final guardedValue = map['targetSuspendedSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      targetStoppedSize: (() { final guardedValue = map['targetStoppedSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      targetSuspendedSize: (() { final guardedValue = map['targetSuspendedSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       updatePolicy: (() { final guardedValue = map['updatePolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InstanceGroupManagerUpdatePolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       versions: pulumi.Input.fromValue(pulumi.Input.decodeList<InstanceGroupManagerVersion>(map['versions']!, (value) => InstanceGroupManagerVersion.fromMap((value as Map).cast<String, dynamic>()))),
       waitForInstances: (() { final guardedValue = map['waitForInstances']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),

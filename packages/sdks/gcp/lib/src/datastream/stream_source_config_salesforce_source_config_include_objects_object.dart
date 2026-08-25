@@ -6,9 +6,9 @@ import 'stream_source_config_salesforce_source_config_include_objects_object_fie
 class StreamSourceConfigSalesforceSourceConfigIncludeObjectsObject {
   /// Fields in the Salesforce object. When unspecified as part of include/exclude objects, includes/excludes everything/nothing.
   /// Structure is documented below.
-  final pulumi.Input<List<StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectField>>? fields;
+  final pulumi.Input<List<StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectField>?>? fields;
   /// Name of object in Salesforce Org.
-  final pulumi.Input<String>? objectName;
+  final pulumi.Input<String?>? objectName;
 
   /// Creates a new [StreamSourceConfigSalesforceSourceConfigIncludeObjectsObject].
   /// [fields] Fields in the Salesforce object. When unspecified as part of include/exclude objects, includes/excludes everything/nothing.

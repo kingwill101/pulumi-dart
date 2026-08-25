@@ -7,12 +7,12 @@ import 'feed_details_google_cloud_identity_devices_settings_authentication_rs_cr
 class FeedDetailsGoogleCloudIdentityDevicesSettingsAuthentication {
   /// Claims identifying a specific customer.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsGoogleCloudIdentityDevicesSettingsAuthenticationClaims>? claims;
+  final pulumi.Input<FeedDetailsGoogleCloudIdentityDevicesSettingsAuthenticationClaims?>? claims;
   /// RS credentials.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsGoogleCloudIdentityDevicesSettingsAuthenticationRsCredentials>? rsCredentials;
+  final pulumi.Input<FeedDetailsGoogleCloudIdentityDevicesSettingsAuthenticationRsCredentials?>? rsCredentials;
   /// Token endpoint to get the OAuth token from.
-  final pulumi.Input<String>? tokenEndpoint;
+  final pulumi.Input<String?>? tokenEndpoint;
 
   /// Creates a new [FeedDetailsGoogleCloudIdentityDevicesSettingsAuthentication].
   /// [claims] Claims identifying a specific customer.

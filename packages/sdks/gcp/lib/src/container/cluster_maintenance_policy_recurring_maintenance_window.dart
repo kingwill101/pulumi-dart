@@ -6,7 +6,7 @@ import 'cluster_maintenance_policy_recurring_maintenance_window_window_start_tim
 
 class ClusterMaintenancePolicyRecurringMaintenanceWindow {
   /// Specifies the initial date when the recurring window can start.
-  final pulumi.Input<ClusterMaintenancePolicyRecurringMaintenanceWindowDelayUntil>? delayUntil;
+  final pulumi.Input<ClusterMaintenancePolicyRecurringMaintenanceWindowDelayUntil?>? delayUntil;
   /// Defines when the window recurs, using the [RFC5545](https://tools.ietf.org/html/rfc5545#section-3.8.5.3) RRULE format.
   ///
   /// Examples:

@@ -7,23 +7,23 @@ import 'tool_remote_agent_tool_agent_card_supported_interface.dart';
 class ToolRemoteAgentToolAgentCard {
   /// (Output)
   /// The description of the system tool.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// (Output)
   /// The name of the system tool.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// (Output)
   /// Skills represent a unit of ability an agent can perform. This may
   /// somewhat abstract but represents a more focused set of actions that the agent is highly
   /// likely to succeed at.
   /// Structure is documented below.
-  final pulumi.Input<List<ToolRemoteAgentToolAgentCardSkill>>? skills;
+  final pulumi.Input<List<ToolRemoteAgentToolAgentCardSkill>?>? skills;
   /// (Output)
   /// Ordered list of supported interfaces. The first entry is preferred.
   /// Structure is documented below.
-  final pulumi.Input<List<ToolRemoteAgentToolAgentCardSupportedInterface>>? supportedInterfaces;
+  final pulumi.Input<List<ToolRemoteAgentToolAgentCardSupportedInterface>?>? supportedInterfaces;
   /// (Output)
   /// The version of the agent.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [ToolRemoteAgentToolAgentCard].
   /// [description] (Output)

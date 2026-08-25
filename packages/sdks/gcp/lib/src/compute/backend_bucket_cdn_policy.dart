@@ -8,34 +8,34 @@ import 'backend_bucket_cdn_policy_negative_caching_policy.dart';
 class BackendBucketCdnPolicy {
   /// Bypass the cache when the specified request headers are matched - e.g. Pragma or Authorization headers. Up to 5 headers can be specified. The cache is bypassed for all cdnPolicy.cacheMode settings.
   /// Structure is documented below.
-  final pulumi.Input<List<BackendBucketCdnPolicyBypassCacheOnRequestHeader>>? bypassCacheOnRequestHeaders;
+  final pulumi.Input<List<BackendBucketCdnPolicyBypassCacheOnRequestHeader>?>? bypassCacheOnRequestHeaders;
   /// The CacheKeyPolicy for this CdnPolicy.
   /// Structure is documented below.
-  final pulumi.Input<BackendBucketCdnPolicyCacheKeyPolicy>? cacheKeyPolicy;
+  final pulumi.Input<BackendBucketCdnPolicyCacheKeyPolicy?>? cacheKeyPolicy;
   /// Specifies the cache setting for all responses from this backend.
   /// The possible values are: USE_ORIGIN_HEADERS, FORCE_CACHE_ALL and CACHE_ALL_STATIC
   /// Possible values are: `USE_ORIGIN_HEADERS`, `FORCE_CACHE_ALL`, `CACHE_ALL_STATIC`.
-  final pulumi.Input<String>? cacheMode;
+  final pulumi.Input<String?>? cacheMode;
   /// Specifies the maximum allowed TTL for cached content served by this origin. When the
   /// `cacheMode` is set to "USE_ORIGIN_HEADERS", you must omit this field.
-  final pulumi.Input<int>? clientTtl;
+  final pulumi.Input<int?>? clientTtl;
   /// Specifies the default TTL for cached content served by this origin for responses
   /// that do not have an existing valid TTL (max-age or s-max-age). When the `cacheMode`
   /// is set to "USE_ORIGIN_HEADERS", you must omit this field.
-  final pulumi.Input<int>? defaultTtl;
+  final pulumi.Input<int?>? defaultTtl;
   /// Specifies the maximum allowed TTL for cached content served by this origin. When the
   /// `cacheMode` is set to "USE_ORIGIN_HEADERS", you must omit this field.
-  final pulumi.Input<int>? maxTtl;
+  final pulumi.Input<int?>? maxTtl;
   /// Negative caching allows per-status code TTLs to be set, in order to apply fine-grained caching for common errors or redirects.
-  final pulumi.Input<bool>? negativeCaching;
+  final pulumi.Input<bool?>? negativeCaching;
   /// Sets a cache TTL for the specified HTTP status code. negativeCaching must be enabled to configure negativeCachingPolicy.
   /// Omitting the policy and leaving negativeCaching enabled will use Cloud CDN's default cache TTLs.
   /// Structure is documented below.
-  final pulumi.Input<List<BackendBucketCdnPolicyNegativeCachingPolicy>>? negativeCachingPolicies;
+  final pulumi.Input<List<BackendBucketCdnPolicyNegativeCachingPolicy>?>? negativeCachingPolicies;
   /// If true then Cloud CDN will combine multiple concurrent cache fill requests into a small number of requests to the origin.
-  final pulumi.Input<bool>? requestCoalescing;
+  final pulumi.Input<bool?>? requestCoalescing;
   /// Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache.
-  final pulumi.Input<int>? serveWhileStale;
+  final pulumi.Input<int?>? serveWhileStale;
   /// Maximum number of seconds the response to a signed URL request will
   /// be considered fresh. After this time period,
   /// the response will be revalidated before being served.
@@ -44,7 +44,7 @@ class BackendBucketCdnPolicy {
   /// all responses from this backend had a "Cache-Control: public,
   /// max-age=[TTL]" header, regardless of any existing Cache-Control
   /// header. The actual headers served in responses will not be altered.
-  final pulumi.Input<int>? signedUrlCacheMaxAgeSec;
+  final pulumi.Input<int?>? signedUrlCacheMaxAgeSec;
 
   /// Creates a new [BackendBucketCdnPolicy].
   /// [bypassCacheOnRequestHeaders] Bypass the cache when the specified request headers are matched - e.g. Pragma or Authorization headers. Up to 5 headers can be specified. The cache is bypassed for all cdnPolicy.cacheMode settings.
@@ -93,14 +93,14 @@ class BackendBucketCdnPolicy {
       bypassCacheOnRequestHeaders: (() { final guardedValue = map['bypassCacheOnRequestHeaders']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<BackendBucketCdnPolicyBypassCacheOnRequestHeader>(guardedValue, (value) => BackendBucketCdnPolicyBypassCacheOnRequestHeader.fromMap((value as Map).cast<String, dynamic>()))); })(),
       cacheKeyPolicy: (() { final guardedValue = map['cacheKeyPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BackendBucketCdnPolicyCacheKeyPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       cacheMode: (() { final guardedValue = map['cacheMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      clientTtl: (() { final guardedValue = map['clientTtl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      defaultTtl: (() { final guardedValue = map['defaultTtl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      maxTtl: (() { final guardedValue = map['maxTtl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      clientTtl: (() { final guardedValue = map['clientTtl']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      defaultTtl: (() { final guardedValue = map['defaultTtl']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxTtl: (() { final guardedValue = map['maxTtl']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       negativeCaching: (() { final guardedValue = map['negativeCaching']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       negativeCachingPolicies: (() { final guardedValue = map['negativeCachingPolicies']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<BackendBucketCdnPolicyNegativeCachingPolicy>(guardedValue, (value) => BackendBucketCdnPolicyNegativeCachingPolicy.fromMap((value as Map).cast<String, dynamic>()))); })(),
       requestCoalescing: (() { final guardedValue = map['requestCoalescing']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      serveWhileStale: (() { final guardedValue = map['serveWhileStale']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      signedUrlCacheMaxAgeSec: (() { final guardedValue = map['signedUrlCacheMaxAgeSec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      serveWhileStale: (() { final guardedValue = map['serveWhileStale']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      signedUrlCacheMaxAgeSec: (() { final guardedValue = map['signedUrlCacheMaxAgeSec']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

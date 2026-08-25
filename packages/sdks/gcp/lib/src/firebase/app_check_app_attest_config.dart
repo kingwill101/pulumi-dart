@@ -552,7 +552,7 @@ class AppCheckAppAttestConfig extends pulumi.CustomResource {
           'gcp:firebase/appCheckAppAttestConfig:AppCheckAppAttestConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     appId = registerOutput<String>('appId');
     this.name = registerOutput<String>('name');
@@ -565,11 +565,12 @@ class AppCheckAppAttestConfig extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AppCheckAppAttestConfigState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AppCheckAppAttestConfig._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -583,6 +584,21 @@ class AppCheckAppAttestConfig extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    appId = registerOutput<String>('appId');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    tokenTtl = registerOutput<String>('tokenTtl');
+  }
+
+  /// Creates a typed reference to an existing [AppCheckAppAttestConfig] resource.
+  AppCheckAppAttestConfig.reference(String urn)
+    : super(
+        'gcp:firebase/appCheckAppAttestConfig:AppCheckAppAttestConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     appId = registerOutput<String>('appId');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

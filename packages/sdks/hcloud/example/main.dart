@@ -1,15 +1,30 @@
-// ignore_for_file: unused_import
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'package:pulumi_hcloud/pulumi_hcloud.dart' as provider;
 
-class ExampleStack extends pulumi.Stack {
-  ExampleStack() {
-    // Add resources from package:pulumi_hcloud.
-    // Example:
-    // final resource = provider.YourResource("example");
+import 'package:pulumi_hcloud/index.dart' as pulumi_hcloud_index;
+
+class HcloudStack extends pulumi.Stack {
+  late final List<pulumi.OutputProperty> _outputProperties;
+
+  HcloudStack() {
+    final firewall = pulumi_hcloud_index.Firewall(
+      'firewall',
+      args: pulumi_hcloud_index.FirewallArgs(
+        name: pulumi.Input.asInput('pulumi-dart-example'),
+      ),
+    );
+
+    _outputProperties = [
+      pulumi.OutputProperty(
+        'firewallId',
+        pulumi.output(firewall.id).apply<Object?>((value) => value),
+      ),
+    ];
   }
+
+  @override
+  List<pulumi.OutputProperty> getOutputProperties() => _outputProperties;
 }
 
 Future<void> main() async {
-  await pulumi.Deployment.runOrThrow(() => ExampleStack());
+  await pulumi.Deployment.runOrThrow(() => HcloudStack());
 }

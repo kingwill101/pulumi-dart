@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'repository_args.dart';
+import 'repository_pubsub_config.dart';
 import 'repository_state.dart';
 
 /// A repository (or repo) is a Git repository storing versioned source content.
@@ -356,7 +357,7 @@ class Repository extends pulumi.CustomResource {
   /// How this repository publishes a change in the repository through Cloud Pub/Sub.
   /// Keyed by the topic names.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> pubsubConfigs;
+  late final pulumi.Output<List<RepositoryPubsubConfig>?> pubsubConfigs;
   /// The disk usage of the repo, in bytes.
   late final pulumi.Output<int> size;
   /// URL to clone the repository from Google Cloud Source Repositories.
@@ -374,13 +375,13 @@ class Repository extends pulumi.CustomResource {
           'gcp:sourcerepo/repository:Repository',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     createIgnoreAlreadyExists = registerOutput<bool?>('createIgnoreAlreadyExists');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    pubsubConfigs = registerOutput<List<Map<String, dynamic>>?>('pubsubConfigs');
+    pubsubConfigs = registerOutput<List<RepositoryPubsubConfig>?>('pubsubConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RepositoryPubsubConfig>(guardedValue, (value) => RepositoryPubsubConfig.fromMap((value as Map).cast<String, dynamic>())); });
     size = registerOutput<int>('size');
     url = registerOutput<String>('url');
   }
@@ -390,11 +391,12 @@ class Repository extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RepositoryState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Repository._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -412,7 +414,25 @@ class Repository extends pulumi.CustomResource {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    pubsubConfigs = registerOutput<List<Map<String, dynamic>>?>('pubsubConfigs');
+    pubsubConfigs = registerOutput<List<RepositoryPubsubConfig>?>('pubsubConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RepositoryPubsubConfig>(guardedValue, (value) => RepositoryPubsubConfig.fromMap((value as Map).cast<String, dynamic>())); });
+    size = registerOutput<int>('size');
+    url = registerOutput<String>('url');
+  }
+
+  /// Creates a typed reference to an existing [Repository] resource.
+  Repository.reference(String urn)
+    : super(
+        'gcp:sourcerepo/repository:Repository',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createIgnoreAlreadyExists = registerOutput<bool?>('createIgnoreAlreadyExists');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    pubsubConfigs = registerOutput<List<RepositoryPubsubConfig>?>('pubsubConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RepositoryPubsubConfig>(guardedValue, (value) => RepositoryPubsubConfig.fromMap((value as Map).cast<String, dynamic>())); });
     size = registerOutput<int>('size');
     url = registerOutput<String>('url');
   }

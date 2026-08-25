@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResourceAmazonS3BucketAwsAccount {
   /// AWS account ID.
-  final pulumi.Input<String>? accountId;
+  final pulumi.Input<String?>? accountId;
 
   /// Creates a new [PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResourceAmazonS3BucketAwsAccount].
   /// [accountId] AWS account ID.

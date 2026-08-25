@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VmwareAdminClusterNetworkConfigHostConfig {
   /// DNS search domains.
-  final pulumi.Input<List<String>>? dnsSearchDomains;
+  final pulumi.Input<List<String>?>? dnsSearchDomains;
   /// DNS servers.
-  final pulumi.Input<List<String>>? dnsServers;
+  final pulumi.Input<List<String>?>? dnsServers;
   /// NTP servers.
-  final pulumi.Input<List<String>>? ntpServers;
+  final pulumi.Input<List<String>?>? ntpServers;
 
   /// Creates a new [VmwareAdminClusterNetworkConfigHostConfig].
   /// [dnsSearchDomains] DNS search domains.

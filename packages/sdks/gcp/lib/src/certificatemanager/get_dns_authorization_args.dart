@@ -10,11 +10,11 @@ class GetDnsAuthorizationArgs {
   /// The name of the DNS Authorization.
   final pulumi.Input<String> domain;
   /// The Certificate Manager location. If not specified, "global" is used.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the DNS Authorization.
   final pulumi.Input<String> name;
   /// The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetDnsAuthorizationArgs].
   /// [domain] The name of the DNS Authorization.

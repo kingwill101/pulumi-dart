@@ -5,10 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CertificateRevocationDetail {
   /// (Output)
   /// Indicates why a Certificate was revoked.
-  final pulumi.Input<String>? revocationState;
+  final pulumi.Input<String?>? revocationState;
   /// (Output)
   /// The time at which this Certificate was revoked.
-  final pulumi.Input<String>? revocationTime;
+  final pulumi.Input<String?>? revocationTime;
 
   /// Creates a new [CertificateRevocationDetail].
   /// [revocationState] (Output)

@@ -15,30 +15,30 @@ class FeedArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Additional details of the feed, these details are dynamic and will be
   /// different for each of the feeds.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetails>? details;
+  final pulumi.Input<FeedDetails?>? details;
   /// Customer-provided feed name.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Whether the feed is enabled.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// FeedFailureDetails contains details about the errors thrown by chronicle for
   /// the feeds. These are user visible details. These details help user identify
   /// the root cause and take appropriate action for the feed errors.
   /// NEXT TAG: 5
   /// Structure is documented below.
-  final pulumi.Input<FeedFailureDetails>? failureDetails;
+  final pulumi.Input<FeedFailureDetails?>? failureDetails;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-  final pulumi.Input<String>? feed;
+  final pulumi.Input<String?>? feed;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final pulumi.Input<String> instance;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final pulumi.Input<String> location;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [FeedArgs].
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

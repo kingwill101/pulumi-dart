@@ -18,7 +18,7 @@ class DicomStoreArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// User-supplied key-value pairs used to organize DICOM stores.
   /// Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
   /// conform to the following PCRE regular expression: [\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}
@@ -30,18 +30,18 @@ class DicomStoreArgs {
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The resource name for the DicomStore.
   /// ** Changing this property may recreate the Dicom store (removing all data) **
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A nested object resource.
   /// Structure is documented below.
-  final pulumi.Input<DicomStoreNotificationConfig>? notificationConfig;
+  final pulumi.Input<DicomStoreNotificationConfig?>? notificationConfig;
   /// (Optional, Beta)
   /// To enable streaming to BigQuery, configure the streamConfigs object in your DICOM store.
   /// streamConfigs is an array, so you can specify multiple BigQuery destinations. You can stream metadata from a single DICOM store to up to five BigQuery tables in a BigQuery dataset.
   /// Structure is documented below.
-  final pulumi.Input<List<DicomStoreStreamConfig>>? streamConfigs;
+  final pulumi.Input<List<DicomStoreStreamConfig>?>? streamConfigs;
 
   /// Creates a new [DicomStoreArgs].
   /// [dataset] Identifies the dataset addressed by this request. Must be in the format

@@ -1585,7 +1585,7 @@ class ServicePerimeter extends pulumi.CustomResource {
           'gcp:accesscontextmanager/servicePerimeter:ServicePerimeter',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -1605,11 +1605,12 @@ class ServicePerimeter extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ServicePerimeterState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ServicePerimeter._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1623,6 +1624,28 @@ class ServicePerimeter extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    parent = registerOutput<String>('parent');
+    perimeterType = registerOutput<String?>('perimeterType');
+    spec = registerOutput<ServicePerimeterSpec?>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServicePerimeterSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    status = registerOutput<ServicePerimeterStatus?>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServicePerimeterStatus.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    title = registerOutput<String>('title');
+    updateTime = registerOutput<String>('updateTime');
+    useExplicitDryRunSpec = registerOutput<bool?>('useExplicitDryRunSpec');
+  }
+
+  /// Creates a typed reference to an existing [ServicePerimeter] resource.
+  ServicePerimeter.reference(String urn)
+    : super(
+        'gcp:accesscontextmanager/servicePerimeter:ServicePerimeter',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');

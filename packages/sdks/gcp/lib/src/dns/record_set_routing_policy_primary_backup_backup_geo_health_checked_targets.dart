@@ -5,10 +5,10 @@ import 'record_set_routing_policy_primary_backup_backup_geo_health_checked_targe
 
 class RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargets {
   /// The list of external endpoint addresses to health check.
-  final pulumi.Input<List<String>>? externalEndpoints;
+  final pulumi.Input<List<String>?>? externalEndpoints;
   /// The list of internal load balancers to health check.
   /// Structure is documented below.
-  final pulumi.Input<List<RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancer>>? internalLoadBalancers;
+  final pulumi.Input<List<RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancer>?>? internalLoadBalancers;
 
   /// Creates a new [RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargets].
   /// [externalEndpoints] The list of external endpoint addresses to health check.

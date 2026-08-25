@@ -5,9 +5,9 @@ import 'database_instance_settings_connection_pool_config_flag.dart';
 
 class DatabaseInstanceSettingsConnectionPoolConfig {
   /// True if the manager connection pooling configuration is enabled.
-  final pulumi.Input<bool>? connectionPoolingEnabled;
+  final pulumi.Input<bool?>? connectionPoolingEnabled;
   /// List of connection pool configuration flags
-  final pulumi.Input<List<DatabaseInstanceSettingsConnectionPoolConfigFlag>>? flags;
+  final pulumi.Input<List<DatabaseInstanceSettingsConnectionPoolConfigFlag>?>? flags;
 
   /// Creates a new [DatabaseInstanceSettingsConnectionPoolConfig].
   /// [connectionPoolingEnabled] True if the manager connection pooling configuration is enabled.

@@ -9,14 +9,14 @@ class BackupPlanBackupSchedule {
   /// This is mutually exclusive with the rpoConfig field since at most one
   /// schedule can be defined for a BackupPlan.
   /// If this is defined, then backupRetainDays must also be defined.
-  final pulumi.Input<String>? cronSchedule;
+  final pulumi.Input<String?>? cronSchedule;
   /// This flag denotes whether automatic Backup creation is paused for this BackupPlan.
-  final pulumi.Input<bool>? paused;
+  final pulumi.Input<bool?>? paused;
   /// Defines the RPO schedule configuration for this BackupPlan. This is mutually
   /// exclusive with the cronSchedule field since at most one schedule can be defined
   /// for a BackupPLan. If this is defined, then backupRetainDays must also be defined.
   /// Structure is documented below.
-  final pulumi.Input<BackupPlanBackupScheduleRpoConfig>? rpoConfig;
+  final pulumi.Input<BackupPlanBackupScheduleRpoConfig?>? rpoConfig;
 
   /// Creates a new [BackupPlanBackupSchedule].
   /// [cronSchedule] A standard cron string that defines a repeating schedule for

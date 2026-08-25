@@ -15,7 +15,7 @@ class GetFunctionArgs {
   final pulumi.Input<String> name;
   /// The project in which the resource belongs. If it
   /// is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetFunctionArgs].
   /// [location] The location in which the resource belongs.

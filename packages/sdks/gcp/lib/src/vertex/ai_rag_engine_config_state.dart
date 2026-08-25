@@ -11,17 +11,17 @@ class AiRagEngineConfigState {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The resource name of the Dataset. This value is set by Google.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Required. The config of the RagManagedDb used by RagEngine.
   /// Structure is documented below.
-  final pulumi.Input<AiRagEngineConfigRagManagedDbConfig>? ragManagedDbConfig;
+  final pulumi.Input<AiRagEngineConfigRagManagedDbConfig?>? ragManagedDbConfig;
   /// The region of the RagEngineConfig. eg us-central1
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [AiRagEngineConfigState].
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

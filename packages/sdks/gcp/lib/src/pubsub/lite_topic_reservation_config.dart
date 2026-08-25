@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LiteTopicReservationConfig {
   /// The Reservation to use for this topic's throughput capacity.
-  final pulumi.Input<String>? throughputReservation;
+  final pulumi.Input<String?>? throughputReservation;
 
   /// Creates a new [LiteTopicReservationConfig].
   /// [throughputReservation] The Reservation to use for this topic's throughput capacity.

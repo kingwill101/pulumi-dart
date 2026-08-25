@@ -6,13 +6,13 @@ import 'feed_details_sentinelone_alert_settings_authentication.dart';
 class FeedDetailsSentineloneAlertSettings {
   /// HTTP header based authentication.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsSentineloneAlertSettingsAuthentication>? authentication;
+  final pulumi.Input<FeedDetailsSentineloneAlertSettingsAuthentication?>? authentication;
   /// Hostname of SentinelOne alert settings.
-  final pulumi.Input<String>? hostname;
+  final pulumi.Input<String?>? hostname;
   /// initialStartTime from when to fetch the alerts
-  final pulumi.Input<String>? initialStartTime;
+  final pulumi.Input<String?>? initialStartTime;
   /// Is the customer subscribed to Alerts Api
-  final pulumi.Input<bool>? isAlertApiSubscribed;
+  final pulumi.Input<bool?>? isAlertApiSubscribed;
 
   /// Creates a new [FeedDetailsSentineloneAlertSettings].
   /// [authentication] HTTP header based authentication.

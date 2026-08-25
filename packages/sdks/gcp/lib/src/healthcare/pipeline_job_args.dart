@@ -12,7 +12,7 @@ import 'pipeline_job_reconciliation_pipeline_job.dart';
 class PipelineJobArgs {
   /// Specifies the backfill configuration.
   /// Structure is documented below.
-  final pulumi.Input<PipelineJobBackfillPipelineJob>? backfillPipelineJob;
+  final pulumi.Input<PipelineJobBackfillPipelineJob?>? backfillPipelineJob;
   /// Healthcare Dataset under which the Pipeline Job is to run
   final pulumi.Input<String> dataset;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -21,9 +21,9 @@ class PipelineJobArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// If true, disables writing lineage for the pipeline.
-  final pulumi.Input<bool>? disableLineage;
+  final pulumi.Input<bool?>? disableLineage;
   /// User-supplied key-value pairs used to organize Pipeline Jobs.
   /// Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of
   /// maximum 128 bytes, and must conform to the following PCRE regular expression:
@@ -37,17 +37,17 @@ class PipelineJobArgs {
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Location where the Pipeline Job is to run
   final pulumi.Input<String> location;
   /// Specifies mapping configuration.
   /// Structure is documented below.
-  final pulumi.Input<PipelineJobMappingPipelineJob>? mappingPipelineJob;
+  final pulumi.Input<PipelineJobMappingPipelineJob?>? mappingPipelineJob;
   /// Specifies the name of the pipeline job. This field is user-assigned.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specifies reconciliation configuration.
   /// Structure is documented below.
-  final pulumi.Input<PipelineJobReconciliationPipelineJob>? reconciliationPipelineJob;
+  final pulumi.Input<PipelineJobReconciliationPipelineJob?>? reconciliationPipelineJob;
 
   /// Creates a new [PipelineJobArgs].
   /// [backfillPipelineJob] Specifies the backfill configuration.

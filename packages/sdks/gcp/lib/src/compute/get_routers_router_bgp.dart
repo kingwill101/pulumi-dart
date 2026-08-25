@@ -39,8 +39,8 @@ class GetRoutersRouterBgp {
       advertiseMode: pulumi.Input.fromValue(map['advertiseMode'] as String),
       advertisedGroups: pulumi.Input.fromValue((map['advertisedGroups'] as List).cast<String>()),
       advertisedIpRanges: pulumi.Input.fromValue(pulumi.Input.decodeList<GetRoutersRouterBgpAdvertisedIpRange>(map['advertisedIpRanges']!, (value) => GetRoutersRouterBgpAdvertisedIpRange.fromMap((value as Map).cast<String, dynamic>()))),
-      asn: pulumi.Input.fromValue(map['asn'] as int),
-      keepaliveInterval: pulumi.Input.fromValue(map['keepaliveInterval'] as int),
+      asn: pulumi.Input.fromValue((map['asn'] as num).toInt()),
+      keepaliveInterval: pulumi.Input.fromValue((map['keepaliveInterval'] as num).toInt()),
     );
   }
 }

@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceFromTemplateInstanceEncryptionKey {
   /// The self link of the encryption key that is stored in Google Cloud KMS.
-  final pulumi.Input<String>? kmsKeySelfLink;
+  final pulumi.Input<String?>? kmsKeySelfLink;
   /// The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used.
-  final pulumi.Input<String>? kmsKeyServiceAccount;
+  final pulumi.Input<String?>? kmsKeyServiceAccount;
   /// The SHA256 hash of the customer's encryption key.
-  final pulumi.Input<String>? sha256;
+  final pulumi.Input<String?>? sha256;
 
   /// Creates a new [InstanceFromTemplateInstanceEncryptionKey].
   /// [kmsKeySelfLink] The self link of the encryption key that is stored in Google Cloud KMS.

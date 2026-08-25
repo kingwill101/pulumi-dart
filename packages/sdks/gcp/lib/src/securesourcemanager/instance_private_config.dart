@@ -5,21 +5,21 @@ import 'instance_private_config_custom_host_config.dart';
 
 class InstancePrivateConfig {
   /// CA pool resource, resource must in the format of `projects/{project}/locations/{location}/caPools/{ca_pool}`.
-  final pulumi.Input<String>? caPool;
+  final pulumi.Input<String?>? caPool;
   /// Custom host configuration for the instance.
   /// Structure is documented below.
-  final pulumi.Input<InstancePrivateConfigCustomHostConfig>? customHostConfig;
+  final pulumi.Input<InstancePrivateConfigCustomHostConfig?>? customHostConfig;
   /// (Output)
   /// Service Attachment for HTTP, resource is in the format of `projects/{project}/regions/{region}/serviceAttachments/{service_attachment}`.
-  final pulumi.Input<String>? httpServiceAttachment;
+  final pulumi.Input<String?>? httpServiceAttachment;
   /// 'Indicate if it's private instance.'
   final pulumi.Input<bool> isPrivate;
   /// Optional. Additional allowed projects for setting up PSC connections.
   /// Instance host project is automatically allowed and does not need to be included in this list.
-  final pulumi.Input<List<String>>? pscAllowedProjects;
+  final pulumi.Input<List<String>?>? pscAllowedProjects;
   /// (Output)
   /// Service Attachment for SSH, resource is in the format of `projects/{project}/regions/{region}/serviceAttachments/{service_attachment}`.
-  final pulumi.Input<String>? sshServiceAttachment;
+  final pulumi.Input<String?>? sshServiceAttachment;
 
   /// Creates a new [InstancePrivateConfig].
   /// [caPool] CA pool resource, resource must in the format of `projects/{project}/locations/{location}/caPools/{ca_pool}`.

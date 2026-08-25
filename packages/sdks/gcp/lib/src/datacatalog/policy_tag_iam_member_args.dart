@@ -8,7 +8,7 @@ import 'policy_tag_iam_member_condition.dart';
 /// {@endtemplate}
 /// {@macro pulumi_datacatalog_policy_tag_iam_member_policy_tag_iam_member_args_doc}
 class PolicyTagIamMemberArgs {
-  final pulumi.Input<PolicyTagIamMemberCondition>? condition;
+  final pulumi.Input<PolicyTagIamMemberCondition?>? condition;
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
   /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.

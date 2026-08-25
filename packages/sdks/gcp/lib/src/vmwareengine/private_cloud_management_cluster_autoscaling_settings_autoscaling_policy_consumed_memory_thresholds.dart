@@ -25,8 +25,8 @@ class PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedM
 
   factory PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholds.fromMap(Map<String, dynamic> map) {
     return PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholds(
-      scaleIn: pulumi.Input.fromValue(map['scaleIn'] as int),
-      scaleOut: pulumi.Input.fromValue(map['scaleOut'] as int),
+      scaleIn: pulumi.Input.fromValue((map['scaleIn'] as num).toInt()),
+      scaleOut: pulumi.Input.fromValue((map['scaleOut'] as num).toInt()),
     );
   }
 }

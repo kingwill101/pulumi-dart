@@ -13,9 +13,9 @@ class ParameterVersionArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The current state of Parameter Version. This field is only applicable for updating Parameter Version.
-  final pulumi.Input<bool>? disabled;
+  final pulumi.Input<bool?>? disabled;
   /// Parameter Manager Parameter resource.
   final pulumi.Input<String> parameter;
   /// The Parameter data.

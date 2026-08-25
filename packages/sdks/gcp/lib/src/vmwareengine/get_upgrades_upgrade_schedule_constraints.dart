@@ -38,8 +38,8 @@ class GetUpgradesUpgradeScheduleConstraints {
   factory GetUpgradesUpgradeScheduleConstraints.fromMap(Map<String, dynamic> map) {
     return GetUpgradesUpgradeScheduleConstraints(
       disallowedIntervals: pulumi.Input.fromValue(GetUpgradesUpgradeScheduleConstraintsDisallowedIntervals.fromMap((map['disallowedIntervals']! as Map).cast<String, dynamic>())),
-      minHoursDay: pulumi.Input.fromValue(map['minHoursDay'] as int),
-      minHoursWeek: pulumi.Input.fromValue(map['minHoursWeek'] as int),
+      minHoursDay: pulumi.Input.fromValue((map['minHoursDay'] as num).toInt()),
+      minHoursWeek: pulumi.Input.fromValue((map['minHoursWeek'] as num).toInt()),
       rescheduleDateRange: pulumi.Input.fromValue(GetUpgradesUpgradeScheduleConstraintsRescheduleDateRange.fromMap((map['rescheduleDateRange']! as Map).cast<String, dynamic>())),
     );
   }

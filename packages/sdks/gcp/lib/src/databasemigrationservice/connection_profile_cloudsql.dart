@@ -6,16 +6,16 @@ import 'connection_profile_cloudsql_settings.dart';
 class ConnectionProfileCloudsql {
   /// (Output)
   /// Output only. The Cloud SQL instance ID that this connection profile is associated with.
-  final pulumi.Input<String>? cloudSqlId;
+  final pulumi.Input<String?>? cloudSqlId;
   /// (Output)
   /// Output only. The Cloud SQL database instance's private IP.
-  final pulumi.Input<String>? privateIp;
+  final pulumi.Input<String?>? privateIp;
   /// (Output)
   /// Output only. The Cloud SQL database instance's public IP.
-  final pulumi.Input<String>? publicIp;
+  final pulumi.Input<String?>? publicIp;
   /// Immutable. Metadata used to create the destination Cloud SQL database.
   /// Structure is documented below.
-  final pulumi.Input<ConnectionProfileCloudsqlSettings>? settings;
+  final pulumi.Input<ConnectionProfileCloudsqlSettings?>? settings;
 
   /// Creates a new [ConnectionProfileCloudsql].
   /// [cloudSqlId] (Output)

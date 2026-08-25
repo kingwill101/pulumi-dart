@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'plugin_instance_action.dart';
 import 'plugin_instance_args.dart';
 import 'plugin_instance_auth_config.dart';
 import 'plugin_instance_state.dart';
@@ -188,7 +189,7 @@ import 'plugin_instance_state.dart';
 class PluginInstance extends pulumi.CustomResource {
   /// The action status for the plugin instance.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> actions;
+  late final pulumi.Output<List<PluginInstanceAction>> actions;
   /// AuthConfig represents the authentication information.
   /// Structure is documented below.
   late final pulumi.Output<PluginInstanceAuthConfig?> authConfig;
@@ -257,9 +258,9 @@ class PluginInstance extends pulumi.CustomResource {
           'gcp:apihub/pluginInstance:PluginInstance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
-    actions = registerOutput<List<Map<String, dynamic>>>('actions');
+    actions = registerOutput<List<PluginInstanceAction>>('actions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PluginInstanceAction>(guardedValue, (value) => PluginInstanceAction.fromMap((value as Map).cast<String, dynamic>())); });
     authConfig = registerOutput<PluginInstanceAuthConfig?>('authConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PluginInstanceAuthConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -281,11 +282,12 @@ class PluginInstance extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PluginInstanceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return PluginInstance._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -299,7 +301,7 @@ class PluginInstance extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    actions = registerOutput<List<Map<String, dynamic>>>('actions');
+    actions = registerOutput<List<PluginInstanceAction>>('actions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PluginInstanceAction>(guardedValue, (value) => PluginInstanceAction.fromMap((value as Map).cast<String, dynamic>())); });
     authConfig = registerOutput<PluginInstanceAuthConfig?>('authConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PluginInstanceAuthConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -313,6 +315,32 @@ class PluginInstance extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     sourceProjectId = registerOutput<String?>('sourceProjectId');
     this.state = registerOutput<String>('state');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [PluginInstance] resource.
+  PluginInstance.reference(String urn)
+    : super(
+        'gcp:apihub/pluginInstance:PluginInstance',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    actions = registerOutput<List<PluginInstanceAction>>('actions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PluginInstanceAction>(guardedValue, (value) => PluginInstanceAction.fromMap((value as Map).cast<String, dynamic>())); });
+    authConfig = registerOutput<PluginInstanceAuthConfig?>('authConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PluginInstanceAuthConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    disable = registerOutput<bool?>('disable');
+    displayName = registerOutput<String>('displayName');
+    errorMessage = registerOutput<String>('errorMessage');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    plugin = registerOutput<String>('plugin');
+    pluginInstanceId = registerOutput<String>('pluginInstanceId');
+    project = registerOutput<String>('project');
+    sourceProjectId = registerOutput<String?>('sourceProjectId');
+    state = registerOutput<String>('state');
     updateTime = registerOutput<String>('updateTime');
   }
 }

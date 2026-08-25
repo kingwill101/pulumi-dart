@@ -6,9 +6,9 @@ import 'instance_cross_instance_replication_config_membership_secondary_instance
 
 class InstanceCrossInstanceReplicationConfigMembership {
   /// Details of the primary instance that is used as the replication source for all the secondary instances.
-  final pulumi.Input<List<InstanceCrossInstanceReplicationConfigMembershipPrimaryInstance>>? primaryInstances;
+  final pulumi.Input<List<InstanceCrossInstanceReplicationConfigMembershipPrimaryInstance>?>? primaryInstances;
   /// List of secondary instances that are replicating from the primary instance.
-  final pulumi.Input<List<InstanceCrossInstanceReplicationConfigMembershipSecondaryInstance>>? secondaryInstances;
+  final pulumi.Input<List<InstanceCrossInstanceReplicationConfigMembershipSecondaryInstance>?>? secondaryInstances;
 
   /// Creates a new [InstanceCrossInstanceReplicationConfigMembership].
   /// [primaryInstances] Details of the primary instance that is used as the replication source for all the secondary instances.

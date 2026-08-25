@@ -9,7 +9,7 @@ import 'retrohunt_process_interval.dart';
 /// {@macro pulumi_chronicle_retrohunt_retrohunt_args_doc}
 class RetrohuntArgs {
   /// The retrohunt ID of the Retrohunt. A retrohunt is an execution of a Rule over a time range in the past.
-  final pulumi.Input<String>? retrohuntId;
+  final pulumi.Input<String?>? retrohuntId;
   /// The unique identifier for the Chronicle instance, which is the same as the customer ID.
   final pulumi.Input<String> instance;
   /// The location of the resource. This is the geographical region where the Chronicle instance resides, such as "us" or "europe-west2".
@@ -23,7 +23,7 @@ class RetrohuntArgs {
   final pulumi.Input<RetrohuntProcessInterval> processInterval;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The Rule ID of the rule.
   final pulumi.Input<String> rule;
 

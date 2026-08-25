@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethods {
   /// The non-empty set of HTTP methods that are allowed for this route.
   /// Any combination of "GET", "HEAD", "OPTIONS", "PUT", "POST", "DELETE", and "PATCH".
-  final pulumi.Input<List<String>>? allowedMethods;
+  final pulumi.Input<List<String>?>? allowedMethods;
 
   /// Creates a new [EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethods].
   /// [allowedMethods] The non-empty set of HTTP methods that are allowed for this route.

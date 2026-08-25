@@ -8,7 +8,7 @@ import 'repository_iam_binding_condition.dart';
 /// {@endtemplate}
 /// {@macro pulumi_sourcerepo_repository_iam_binding_repository_iam_binding_args_doc}
 class RepositoryIamBindingArgs {
-  final pulumi.Input<RepositoryIamBindingCondition>? condition;
+  final pulumi.Input<RepositoryIamBindingCondition?>? condition;
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
   /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -24,7 +24,7 @@ class RepositoryIamBindingArgs {
   final pulumi.Input<List<String>> members;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Used to find the parent resource to bind the IAM policy to
   final pulumi.Input<String> repository;
   /// The role that should be applied. Only one

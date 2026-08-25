@@ -11,13 +11,13 @@ import 'security_action_flag.dart';
 /// {@macro pulumi_apigee_security_action_security_action_args_doc}
 class SecurityActionArgs {
   /// Allow a request through if it matches this SecurityAction.
-  final pulumi.Input<Map<String, dynamic>>? allow;
+  final pulumi.Input<Map<String, dynamic>?>? allow;
   /// If unset, this would apply to all proxies in the environment.
   /// If set, this action is enforced only if at least one proxy in the repeated
   /// list is deployed at the time of enforcement. If set, several restrictions are enforced on SecurityActions.
   /// There can be at most 100 enabled actions with proxies set in an env.
   /// Several other restrictions apply on conditions and are detailed later.
-  final pulumi.Input<List<String>>? apiProxies;
+  final pulumi.Input<List<String>?>? apiProxies;
   /// A valid SecurityAction must contain at least one condition.
   /// Structure is documented below.
   final pulumi.Input<SecurityActionConditionConfig> conditionConfig;
@@ -27,22 +27,22 @@ class SecurityActionArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Deny a request through if it matches this SecurityAction.
   /// Structure is documented below.
-  final pulumi.Input<SecurityActionDeny>? deny;
+  final pulumi.Input<SecurityActionDeny?>? deny;
   /// An optional user provided description of the SecurityAction.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The Apigee environment that this security action applies to.
   final pulumi.Input<String> envId;
   /// The expiration for this SecurityAction.
   /// Uses RFC 3339, where generated output will always be Z-normalized and uses 0, 3, 6 or 9
   /// fractional digits. Offsets other than "Z" are also accepted.
   /// Examples: "2014-10-02T15:01:23Z", "2014-10-02T15:01:23.045123456Z" or "2014-10-02T15:01:23+05:30".
-  final pulumi.Input<String>? expireTime;
+  final pulumi.Input<String?>? expireTime;
   /// Flag a request through if it matches this SecurityAction.
   /// Structure is documented below.
-  final pulumi.Input<SecurityActionFlag>? flag;
+  final pulumi.Input<SecurityActionFlag?>? flag;
   /// The organization that this security action applies to.
   final pulumi.Input<String> orgId;
   /// The ID to use for the SecurityAction, which will become the final component of the action's resource name.
@@ -53,7 +53,7 @@ class SecurityActionArgs {
   final pulumi.Input<String> state;
   /// The TTL for this SecurityAction.
   /// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
-  final pulumi.Input<String>? ttl;
+  final pulumi.Input<String?>? ttl;
 
   /// Creates a new [SecurityActionArgs].
   /// [allow] Allow a request through if it matches this SecurityAction.

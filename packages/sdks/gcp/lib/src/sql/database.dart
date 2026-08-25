@@ -458,7 +458,7 @@ class Database extends pulumi.CustomResource {
           'gcp:sql/database:Database',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     charset = registerOutput<String>('charset');
     collation = registerOutput<String>('collation');
@@ -474,11 +474,12 @@ class Database extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DatabaseState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Database._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -492,6 +493,24 @@ class Database extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    charset = registerOutput<String>('charset');
+    collation = registerOutput<String>('collation');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    instance = registerOutput<String>('instance');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    selfLink = registerOutput<String>('selfLink');
+  }
+
+  /// Creates a typed reference to an existing [Database] resource.
+  Database.reference(String urn)
+    : super(
+        'gcp:sql/database:Database',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     charset = registerOutput<String>('charset');
     collation = registerOutput<String>('collation');
     deletionPolicy = registerOutput<String>('deletionPolicy');

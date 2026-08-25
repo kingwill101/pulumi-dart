@@ -308,12 +308,13 @@ class AppCheckRecaptchaV3Config extends pulumi.CustomResource {
           'gcp:firebase/appCheckRecaptchaV3Config:AppCheckRecaptchaV3Config',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['siteSecret'],
         ) {
     appId = registerOutput<String>('appId');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    siteSecret = registerOutput<String>('siteSecret');
+    siteSecret = registerOutput<String>('siteSecret', isSecret: true);
     siteSecretSet = registerOutput<bool>('siteSecretSet');
     tokenTtl = registerOutput<String>('tokenTtl');
   }
@@ -323,11 +324,12 @@ class AppCheckRecaptchaV3Config extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AppCheckRecaptchaV3ConfigState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AppCheckRecaptchaV3Config._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -344,7 +346,25 @@ class AppCheckRecaptchaV3Config extends pulumi.CustomResource {
     appId = registerOutput<String>('appId');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    siteSecret = registerOutput<String>('siteSecret');
+    siteSecret = registerOutput<String>('siteSecret', isSecret: true);
+    siteSecretSet = registerOutput<bool>('siteSecretSet');
+    tokenTtl = registerOutput<String>('tokenTtl');
+  }
+
+  /// Creates a typed reference to an existing [AppCheckRecaptchaV3Config] resource.
+  AppCheckRecaptchaV3Config.reference(String urn)
+    : super(
+        'gcp:firebase/appCheckRecaptchaV3Config:AppCheckRecaptchaV3Config',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['siteSecret'],
+        isResourceReference: true,
+      ) {
+    appId = registerOutput<String>('appId');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    siteSecret = registerOutput<String>('siteSecret', isSecret: true);
     siteSecretSet = registerOutput<bool>('siteSecretSet');
     tokenTtl = registerOutput<String>('tokenTtl');
   }

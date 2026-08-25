@@ -21,56 +21,56 @@ class ClusterClusterConfig {
   /// Note that once set, if `autoscalingConfig` is the only field set in `clusterConfig`, it can
   /// only be removed by setting `policyUri = ""`, rather than removing the whole block.
   /// Structure defined below.
-  final pulumi.Input<ClusterClusterConfigAutoscalingConfig>? autoscalingConfig;
+  final pulumi.Input<ClusterClusterConfigAutoscalingConfig?>? autoscalingConfig;
   /// A Dataproc NodeGroup resource is a group of Dataproc cluster nodes that execute an assigned role.
   /// Structure defined below.
-  final pulumi.Input<List<ClusterClusterConfigAuxiliaryNodeGroup>>? auxiliaryNodeGroups;
+  final pulumi.Input<List<ClusterClusterConfigAuxiliaryNodeGroup>?>? auxiliaryNodeGroups;
   /// The name of the cloud storage bucket ultimately used to house the staging data
   /// for the cluster. If `stagingBucket` is specified, it will contain this value, otherwise
   /// it will be the auto generated name.
-  final pulumi.Input<String>? bucket;
+  final pulumi.Input<String?>? bucket;
   /// The tier of the cluster.
-  final pulumi.Input<String>? clusterTier;
+  final pulumi.Input<String?>? clusterTier;
   /// The type of the cluster.
-  final pulumi.Input<String>? clusterType;
+  final pulumi.Input<String?>? clusterType;
   /// The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.
   /// Structure defined below.
-  final pulumi.Input<ClusterClusterConfigDataprocMetricConfig>? dataprocMetricConfig;
+  final pulumi.Input<ClusterClusterConfigDataprocMetricConfig?>? dataprocMetricConfig;
   /// The Customer managed encryption keys settings for the cluster.
   /// Structure defined below.
-  final pulumi.Input<ClusterClusterConfigEncryptionConfig>? encryptionConfig;
+  final pulumi.Input<ClusterClusterConfigEncryptionConfig?>? encryptionConfig;
   /// The config settings for port access on the cluster.
   /// Structure defined below.
-  final pulumi.Input<ClusterClusterConfigEndpointConfig>? endpointConfig;
+  final pulumi.Input<ClusterClusterConfigEndpointConfig?>? endpointConfig;
   /// The cluster engine.
-  final pulumi.Input<String>? engine;
+  final pulumi.Input<String?>? engine;
   /// Common config settings for resources of Google Compute Engine cluster
   /// instances, applicable to all instances in the cluster. Structure defined below.
-  final pulumi.Input<ClusterClusterConfigGceClusterConfig>? gceClusterConfig;
+  final pulumi.Input<ClusterClusterConfigGceClusterConfig?>? gceClusterConfig;
   /// Commands to execute on each node after config is completed.
   /// You can specify multiple versions of these. Structure defined below.
-  final pulumi.Input<List<ClusterClusterConfigInitializationAction>>? initializationActions;
+  final pulumi.Input<List<ClusterClusterConfigInitializationAction>?>? initializationActions;
   /// The settings for auto deletion cluster schedule.
   /// Structure defined below.
-  final pulumi.Input<ClusterClusterConfigLifecycleConfig>? lifecycleConfig;
+  final pulumi.Input<ClusterClusterConfigLifecycleConfig?>? lifecycleConfig;
   /// The Google Compute Engine config settings for the master instances
   /// in a cluster. Structure defined below.
-  final pulumi.Input<ClusterClusterConfigMasterConfig>? masterConfig;
+  final pulumi.Input<ClusterClusterConfigMasterConfig?>? masterConfig;
   /// The config setting for metastore service with the cluster.
   /// Structure defined below.
   /// - - -
-  final pulumi.Input<ClusterClusterConfigMetastoreConfig>? metastoreConfig;
+  final pulumi.Input<ClusterClusterConfigMetastoreConfig?>? metastoreConfig;
   /// The Google Compute Engine config settings for the additional
   /// instances in a cluster. Structure defined below.
   /// * **NOTE** : `preemptibleWorkerConfig` is
   /// an alias for the api's [secondaryWorkerConfig](https://cloud.google.com/dataproc/docs/reference/rest/v1/ClusterConfig#InstanceGroupConfig). The name doesn't necessarily mean it is preemptible and is named as
   /// such for legacy/compatibility reasons.
-  final pulumi.Input<ClusterClusterConfigPreemptibleWorkerConfig>? preemptibleWorkerConfig;
+  final pulumi.Input<ClusterClusterConfigPreemptibleWorkerConfig?>? preemptibleWorkerConfig;
   /// Security related configuration. Structure defined below.
-  final pulumi.Input<ClusterClusterConfigSecurityConfig>? securityConfig;
+  final pulumi.Input<ClusterClusterConfigSecurityConfig?>? securityConfig;
   /// The config settings for software inside the cluster.
   /// Structure defined below.
-  final pulumi.Input<ClusterClusterConfigSoftwareConfig>? softwareConfig;
+  final pulumi.Input<ClusterClusterConfigSoftwareConfig?>? softwareConfig;
   /// The Cloud Storage staging bucket used to stage files,
   /// such as Hadoop jars, between client machines and the cluster.
   /// Note: If you don't explicitly specify a `stagingBucket`
@@ -78,14 +78,14 @@ class ClusterClusterConfig {
   /// an auto generated bucket which is solely dedicated to your cluster; it may be shared
   /// with other clusters in the same region/zone also choosing to use the auto generation
   /// option.
-  final pulumi.Input<String>? stagingBucket;
+  final pulumi.Input<String?>? stagingBucket;
   /// The Cloud Storage temp bucket used to store ephemeral cluster
   /// and jobs data, such as Spark and MapReduce history files.
   /// Note: If you don't explicitly specify a `tempBucket` then GCP will auto create / assign one for you.
-  final pulumi.Input<String>? tempBucket;
+  final pulumi.Input<String?>? tempBucket;
   /// The Google Compute Engine config settings for the worker instances
   /// in a cluster. Structure defined below.
-  final pulumi.Input<ClusterClusterConfigWorkerConfig>? workerConfig;
+  final pulumi.Input<ClusterClusterConfigWorkerConfig?>? workerConfig;
 
   /// Creates a new [ClusterClusterConfig].
   /// [autoscalingConfig] The autoscaling policy config associated with the cluster.

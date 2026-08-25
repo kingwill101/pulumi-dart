@@ -24,7 +24,7 @@ class AlertPolicyConditionConditionMonitoringQueryLanguage {
   /// metric-threshold conditions are evaluated when
   /// data stops arriving.
   /// Possible values are: `EVALUATION_MISSING_DATA_INACTIVE`, `EVALUATION_MISSING_DATA_ACTIVE`, `EVALUATION_MISSING_DATA_NO_OP`.
-  final pulumi.Input<String>? evaluationMissingData;
+  final pulumi.Input<String?>? evaluationMissingData;
   /// Monitoring Query Language query that outputs a boolean stream.
   final pulumi.Input<String> query;
   /// The number/percent of time series for which
@@ -36,7 +36,7 @@ class AlertPolicyConditionConditionMonitoringQueryLanguage {
   /// or by the ratio, if denominatorFilter and
   /// denominatorAggregations are specified.
   /// Structure is documented below.
-  final pulumi.Input<AlertPolicyConditionConditionMonitoringQueryLanguageTrigger>? trigger;
+  final pulumi.Input<AlertPolicyConditionConditionMonitoringQueryLanguageTrigger?>? trigger;
 
   /// Creates a new [AlertPolicyConditionConditionMonitoringQueryLanguage].
   /// [duration] The amount of time that a time series must

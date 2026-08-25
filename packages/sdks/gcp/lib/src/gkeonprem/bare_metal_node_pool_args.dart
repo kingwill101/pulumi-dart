@@ -19,7 +19,7 @@ class BareMetalNodePoolArgs {
   ///
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
-  final pulumi.Input<Map<String, String>>? annotations;
+  final pulumi.Input<Map<String, String>?>? annotations;
   /// The cluster this node pool belongs to.
   final pulumi.Input<String> bareMetalCluster;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -28,19 +28,19 @@ class BareMetalNodePoolArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The display name for the Bare Metal Node Pool.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The location of the resource.
   final pulumi.Input<String> location;
   /// The bare metal node pool name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Node pool configuration.
   /// Structure is documented below.
   final pulumi.Input<BareMetalNodePoolNodePoolConfig> nodePoolConfig;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [BareMetalNodePoolArgs].
   /// [annotations] Annotations on the Bare Metal Node Pool.

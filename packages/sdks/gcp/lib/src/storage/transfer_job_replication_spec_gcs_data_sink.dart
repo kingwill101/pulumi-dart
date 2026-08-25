@@ -6,7 +6,7 @@ class TransferJobReplicationSpecGcsDataSink {
   /// Google Cloud Storage bucket name.
   final pulumi.Input<String> bucketName;
   /// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? path;
 
   /// Creates a new [TransferJobReplicationSpecGcsDataSink].
   /// [bucketName] Google Cloud Storage bucket name.

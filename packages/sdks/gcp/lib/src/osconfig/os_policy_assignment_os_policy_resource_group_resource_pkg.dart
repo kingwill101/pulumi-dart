@@ -12,29 +12,29 @@ import 'os_policy_assignment_os_policy_resource_group_resource_pkg_zypper.dart';
 class OsPolicyAssignmentOsPolicyResourceGroupResourcePkg {
   /// A package managed by Apt. Structure is
   /// documented below.
-  final pulumi.Input<OsPolicyAssignmentOsPolicyResourceGroupResourcePkgApt>? apt;
+  final pulumi.Input<OsPolicyAssignmentOsPolicyResourceGroupResourcePkgApt?>? apt;
   /// A deb package file. Structure is
   /// documented below.
-  final pulumi.Input<OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDeb>? deb;
+  final pulumi.Input<OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDeb?>? deb;
   /// The desired state the agent should maintain for
   /// this package. Possible values are: `DESIRED_STATE_UNSPECIFIED`, `INSTALLED`,
   /// `REMOVED`.
   final pulumi.Input<String> desiredState;
   /// A package managed by GooGet. Structure is
   /// documented below.
-  final pulumi.Input<OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGooget>? googet;
+  final pulumi.Input<OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGooget?>? googet;
   /// An MSI package. Structure is
   /// documented below.
-  final pulumi.Input<OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi>? msi;
+  final pulumi.Input<OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi?>? msi;
   /// An rpm package file. Structure is
   /// documented below.
-  final pulumi.Input<OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpm>? rpm;
+  final pulumi.Input<OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpm?>? rpm;
   /// A package managed by YUM. Structure is
   /// documented below.
-  final pulumi.Input<OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYum>? yum;
+  final pulumi.Input<OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYum?>? yum;
   /// A package managed by Zypper. Structure is
   /// documented below.
-  final pulumi.Input<OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypper>? zypper;
+  final pulumi.Input<OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypper?>? zypper;
 
   /// Creates a new [OsPolicyAssignmentOsPolicyResourceGroupResourcePkg].
   /// [apt] A package managed by Apt. Structure is

@@ -9,14 +9,14 @@ class SubscriptionMessageTransform {
   /// requests built from the Pub/Sub message data and provided parameters will
   /// be sent to.
   /// Structure is documented below.
-  final pulumi.Input<SubscriptionMessageTransformAiInference>? aiInference;
+  final pulumi.Input<SubscriptionMessageTransformAiInference?>? aiInference;
   /// Controls whether or not to use this transform. If not set or `false`,
   /// the transform will be applied to messages. Default: `true`.
-  final pulumi.Input<bool>? disabled;
+  final pulumi.Input<bool?>? disabled;
   /// Javascript User Defined Function. If multiple Javascript UDFs are specified on a resource,
   /// each one must have a unique `functionName`.
   /// Structure is documented below.
-  final pulumi.Input<SubscriptionMessageTransformJavascriptUdf>? javascriptUdf;
+  final pulumi.Input<SubscriptionMessageTransformJavascriptUdf?>? javascriptUdf;
 
   /// Creates a new [SubscriptionMessageTransform].
   /// [aiInference] AI Inference. Specifies the Vertex AI endpoint that inference

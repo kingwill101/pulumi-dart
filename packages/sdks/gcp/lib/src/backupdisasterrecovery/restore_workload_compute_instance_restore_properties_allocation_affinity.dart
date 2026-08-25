@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinity {
   /// Possible values are: `TYPE_UNSPECIFIED`, `NO_RESERVATION`, `ANY_RESERVATION`, `SPECIFIC_RESERVATION`.
-  final pulumi.Input<String>? consumeAllocationType;
+  final pulumi.Input<String?>? consumeAllocationType;
   /// (Optional)
-  final pulumi.Input<String>? key;
+  final pulumi.Input<String?>? key;
   /// (Optional)
-  final pulumi.Input<List<String>>? values;
+  final pulumi.Input<List<String>?>? values;
 
   /// Creates a new [RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinity].
   /// [consumeAllocationType] Possible values are: `TYPE_UNSPECIFIED`, `NO_RESERVATION`, `ANY_RESERVATION`, `SPECIFIC_RESERVATION`.

@@ -11,15 +11,15 @@ class CertificateConfigX509Config {
   /// (Output)
   /// Describes custom X.509 extensions.
   /// Structure is documented below.
-  final pulumi.Input<List<CertificateConfigX509ConfigAdditionalExtension>>? additionalExtensions;
+  final pulumi.Input<List<CertificateConfigX509ConfigAdditionalExtension>?>? additionalExtensions;
   /// (Output)
   /// Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the
   /// "Authority Information Access" extension in the certificate.
-  final pulumi.Input<List<String>>? aiaOcspServers;
+  final pulumi.Input<List<String>?>? aiaOcspServers;
   /// (Output)
   /// Describes values that are relevant in a CA certificate.
   /// Structure is documented below.
-  final pulumi.Input<CertificateConfigX509ConfigCaOptions>? caOptions;
+  final pulumi.Input<CertificateConfigX509ConfigCaOptions?>? caOptions;
   /// (Output)
   /// Indicates the intended use for keys that correspond to a certificate.
   /// Structure is documented below.
@@ -27,11 +27,11 @@ class CertificateConfigX509Config {
   /// (Output)
   /// Describes the X.509 name constraints extension.
   /// Structure is documented below.
-  final pulumi.Input<CertificateConfigX509ConfigNameConstraints>? nameConstraints;
+  final pulumi.Input<CertificateConfigX509ConfigNameConstraints?>? nameConstraints;
   /// (Output)
   /// Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
   /// Structure is documented below.
-  final pulumi.Input<List<CertificateConfigX509ConfigPolicyId>>? policyIds;
+  final pulumi.Input<List<CertificateConfigX509ConfigPolicyId>?>? policyIds;
 
   /// Creates a new [CertificateConfigX509Config].
   /// [additionalExtensions] (Output)

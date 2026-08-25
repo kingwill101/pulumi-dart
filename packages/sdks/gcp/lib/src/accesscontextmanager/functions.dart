@@ -165,6 +165,17 @@ Future<GetAccessPolicyResult> getAccessPolicy(
   return GetAccessPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetAccessPolicyResult> getAccessPolicyOutput(
+  GetAccessPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:accesscontextmanager/getAccessPolicy:getAccessPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAccessPolicyResult.fromMap);
+}
+
 /// Retrieves the current IAM policy data for accesspolicy
 ///
 ///
@@ -282,6 +293,17 @@ Future<GetAccessPolicyIamPolicyResult> getAccessPolicyIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetAccessPolicyIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetAccessPolicyIamPolicyResult> getAccessPolicyIamPolicyOutput(
+  GetAccessPolicyIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:accesscontextmanager/getAccessPolicyIamPolicy:getAccessPolicyIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAccessPolicyIamPolicyResult.fromMap);
 }
 
 /// Get information about a VPC Service Controls supported service, including its supported methods.
@@ -519,6 +541,17 @@ Future<GetSupportedServiceResult> getSupportedService(
   return GetSupportedServiceResult.fromMap(result);
 }
 
+pulumi.Output<GetSupportedServiceResult> getSupportedServiceOutput(
+  GetSupportedServiceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:accesscontextmanager/getSupportedService:getSupportedService',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSupportedServiceResult.fromMap);
+}
+
 /// Lists all VPC Service Controls supported services.
 ///
 /// ## Example Usage
@@ -687,4 +720,15 @@ Future<GetSupportedServicesResult> getSupportedServices(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSupportedServicesResult.fromMap(result);
+}
+
+pulumi.Output<GetSupportedServicesResult> getSupportedServicesOutput(
+  {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:accesscontextmanager/getSupportedServices:getSupportedServices',
+    const <String, pulumi.Input<dynamic>>{},
+    options: options,
+  ).apply(GetSupportedServicesResult.fromMap);
 }

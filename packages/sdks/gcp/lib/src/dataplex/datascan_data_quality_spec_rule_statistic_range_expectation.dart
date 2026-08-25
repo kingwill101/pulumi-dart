@@ -5,19 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DatascanDataQualitySpecRuleStatisticRangeExpectation {
   /// The maximum column statistic value allowed for a row to pass this validation.
   /// At least one of minValue and maxValue need to be provided.
-  final pulumi.Input<String>? maxValue;
+  final pulumi.Input<String?>? maxValue;
   /// The minimum column statistic value allowed for a row to pass this validation.
   /// At least one of minValue and maxValue need to be provided.
-  final pulumi.Input<String>? minValue;
+  final pulumi.Input<String?>? minValue;
   /// column statistics.
   /// Possible values are: `STATISTIC_UNDEFINED`, `MEAN`, `MIN`, `MAX`.
   final pulumi.Input<String> statistic;
   /// Whether column statistic needs to be strictly lesser than ('&lt;') the maximum, or if equality is allowed.
   /// Only relevant if a maxValue has been defined. Default = false.
-  final pulumi.Input<bool>? strictMaxEnabled;
+  final pulumi.Input<bool?>? strictMaxEnabled;
   /// Whether column statistic needs to be strictly greater than ('&gt;') the minimum, or if equality is allowed.
   /// Only relevant if a minValue has been defined. Default = false.
-  final pulumi.Input<bool>? strictMinEnabled;
+  final pulumi.Input<bool?>? strictMinEnabled;
 
   /// Creates a new [DatascanDataQualitySpecRuleStatisticRangeExpectation].
   /// [maxValue] The maximum column statistic value allowed for a row to pass this validation.

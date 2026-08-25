@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CxToolOpenApiSpecAuthenticationApiKeyConfig {
   /// Optional. The API key. If the `secretVersionForApiKey`` field is set, this field will be ignored.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
-  final pulumi.Input<String>? apiKey;
+  final pulumi.Input<String?>? apiKey;
   /// The parameter name or the header name of the API key.
   /// E.g., If the API request is "https://example.com/act?X-Api-Key=", "X-Api-Key" would be the parameter name.
   final pulumi.Input<String> keyName;
@@ -15,7 +15,7 @@ class CxToolOpenApiSpecAuthenticationApiKeyConfig {
   /// Optional. The name of the SecretManager secret version resource storing the API key.
   /// If this field is set, the apiKey field will be ignored.
   /// Format: projects/{project}/secrets/{secret}/versions/{version}
-  final pulumi.Input<String>? secretVersionForApiKey;
+  final pulumi.Input<String?>? secretVersionForApiKey;
 
   /// Creates a new [CxToolOpenApiSpecAuthenticationApiKeyConfig].
   /// [apiKey] Optional. The API key. If the `secretVersionForApiKey`` field is set, this field will be ignored.

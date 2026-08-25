@@ -40,7 +40,7 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpec {
   /// This field corresponds to the `args` field of the Kubernetes Containers
   /// [v1 core
   /// API](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#container-v1-core).
-  final pulumi.Input<List<String>>? args;
+  final pulumi.Input<List<String>?>? args;
   /// Specifies the command that runs when the container starts. This overrides
   /// the container's
   /// [ENTRYPOINT](https://docs.docker.com/engine/reference/builder/#entrypoint).
@@ -72,10 +72,10 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpec {
   /// This field corresponds to the `command` field of the Kubernetes Containers
   /// [v1 core
   /// API](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#container-v1-core).
-  final pulumi.Input<List<String>>? commands;
+  final pulumi.Input<List<String>?>? commands;
   /// Deployment timeout.
   /// Limit for deployment timeout is 2 hours.
-  final pulumi.Input<String>? deploymentTimeout;
+  final pulumi.Input<String?>? deploymentTimeout;
   /// List of environment variables to set in the container. After the container
   /// starts running, code running in the container can read these environment
   /// variables.
@@ -101,7 +101,7 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpec {
   /// [v1 core
   /// API](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#container-v1-core).
   /// Structure is documented below.
-  final pulumi.Input<List<AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnv>>? envs;
+  final pulumi.Input<List<AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnv>?>? envs;
   /// List of ports to expose from the container. Vertex AI sends gRPC
   /// prediction requests that it receives to the first port on this list. Vertex
   /// AI also sends liveness and health checks to this port.
@@ -110,11 +110,11 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpec {
   /// Vertex AI does not use ports other than the first one listed. This field
   /// corresponds to the `ports` field of the Kubernetes Containers v1 core API.
   /// Structure is documented below.
-  final pulumi.Input<List<AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPort>>? grpcPorts;
+  final pulumi.Input<List<AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPort>?>? grpcPorts;
   /// Probe describes a health check to be performed against a container to
   /// determine whether it is alive or ready to receive traffic.
   /// Structure is documented below.
-  final pulumi.Input<AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbe>? healthProbe;
+  final pulumi.Input<AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbe?>? healthProbe;
   /// HTTP path on the container to send health checks to. Vertex AI
   /// intermittently sends GET requests to this path on the container's IP
   /// address and port to check that the container is healthy. Read more about
@@ -136,7 +136,7 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpec {
   /// (Vertex AI makes this value available to your container code as the
   /// [`AIP_DEPLOYED_MODEL_ID` environment
   /// variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).)
-  final pulumi.Input<String>? healthRoute;
+  final pulumi.Input<String?>? healthRoute;
   /// URI of the Docker image to be used as the custom container for serving
   /// predictions. This URI must identify an image in Artifact Registry or
   /// Container Registry. Learn more about the [container publishing
@@ -154,7 +154,7 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpec {
   /// Probe describes a health check to be performed against a container to
   /// determine whether it is alive or ready to receive traffic.
   /// Structure is documented below.
-  final pulumi.Input<AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbe>? livenessProbe;
+  final pulumi.Input<AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbe?>? livenessProbe;
   /// List of ports to expose from the container. Vertex AI sends any
   /// prediction requests that it receives to the first port on this list. Vertex
   /// AI also sends
@@ -174,7 +174,7 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpec {
   /// [v1 core
   /// API](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#container-v1-core).
   /// Structure is documented below.
-  final pulumi.Input<List<AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPort>>? ports;
+  final pulumi.Input<List<AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPort>?>? ports;
   /// HTTP path on the container to send prediction requests to. Vertex AI
   /// forwards requests sent using
   /// projects.locations.endpoints.predict to this
@@ -197,14 +197,14 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpec {
   /// (Vertex AI makes this value available to your container code
   /// as the [`AIP_DEPLOYED_MODEL_ID` environment
   /// variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).)
-  final pulumi.Input<String>? predictRoute;
+  final pulumi.Input<String?>? predictRoute;
   /// The amount of the VM memory to reserve as the shared memory for the model
   /// in megabytes.
-  final pulumi.Input<String>? sharedMemorySizeMb;
+  final pulumi.Input<String?>? sharedMemorySizeMb;
   /// Probe describes a health check to be performed against a container to
   /// determine whether it is alive or ready to receive traffic.
   /// Structure is documented below.
-  final pulumi.Input<AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbe>? startupProbe;
+  final pulumi.Input<AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbe?>? startupProbe;
 
   /// Creates a new [AiEndpointWithModelGardenDeploymentModelConfigContainerSpec].
   /// [args] Specifies arguments for the command that runs when the container starts.

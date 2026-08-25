@@ -9,12 +9,12 @@ class InterconnectGroupPhysicalStructureMetroFacilityZone {
   /// Note that there are add-members and remove-members methods in gcloud.
   /// The size of this map is limited by an "Interconnects per group" quota.
   /// Structure is documented below.
-  final pulumi.Input<List<String>>? interconnects;
+  final pulumi.Input<List<String>?>? interconnects;
   /// (Output)
   /// The name of the zone, either "zone1" or "zone2".
   /// This is the second component of the location of Interconnects in
   /// this facility.
-  final pulumi.Input<String>? zone;
+  final pulumi.Input<String?>? zone;
 
   /// Creates a new [InterconnectGroupPhysicalStructureMetroFacilityZone].
   /// [interconnects] Interconnects in the InterconnectGroup. Keys are arbitrary user-specified

@@ -8,7 +8,7 @@ class InstancePersistenceConfigAofConfig {
   /// NEVER
   /// EVERY_SEC
   /// ALWAYS
-  final pulumi.Input<String>? appendFsync;
+  final pulumi.Input<String?>? appendFsync;
 
   /// Creates a new [InstancePersistenceConfigAofConfig].
   /// [appendFsync] Optional. The fsync mode.

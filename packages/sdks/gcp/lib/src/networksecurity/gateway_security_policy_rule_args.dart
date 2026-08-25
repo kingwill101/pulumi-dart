@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_networksecurity_gateway_security_policy_rule_gateway_security_policy_rule_args_doc}
 class GatewaySecurityPolicyRuleArgs {
   /// CEL expression for matching on L7/application level criteria.
-  final pulumi.Input<String>? applicationMatcher;
+  final pulumi.Input<String?>? applicationMatcher;
   /// Profile which tells what the primitive action should be. Possible values are: * ALLOW * DENY.
   /// Possible values are: `BASIC_PROFILE_UNSPECIFIED`, `ALLOW`, `DENY`.
   final pulumi.Input<String> basicProfile;
@@ -18,9 +18,9 @@ class GatewaySecurityPolicyRuleArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Free-text description of the resource.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Whether the rule is enforced.
   final pulumi.Input<bool> enabled;
   /// The name of the gatewat security policy this rule belongs to.
@@ -29,17 +29,17 @@ class GatewaySecurityPolicyRuleArgs {
   final pulumi.Input<String> location;
   /// Name of the resource. ame is the full resource name so projects/{project}/locations/{location}/gatewaySecurityPolicies/{gateway_security_policy}/rules/{rule}
   /// rule should match the pattern: (^a-z?$).
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Priority of the rule. Lower number corresponds to higher precedence.
   final pulumi.Input<int> priority;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// CEL expression for matching on session criteria.
   final pulumi.Input<String> sessionMatcher;
   /// Flag to enable TLS inspection of traffic matching on. Can only be true if the
   /// parent GatewaySecurityPolicy references a TLSInspectionConfig.
-  final pulumi.Input<bool>? tlsInspectionEnabled;
+  final pulumi.Input<bool?>? tlsInspectionEnabled;
 
   /// Creates a new [GatewaySecurityPolicyRuleArgs].
   /// [applicationMatcher] CEL expression for matching on L7/application level criteria.
@@ -96,7 +96,7 @@ class GatewaySecurityPolicyRuleArgs {
       gatewaySecurityPolicy: pulumi.Input.fromValue(map['gatewaySecurityPolicy'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      priority: pulumi.Input.fromValue(map['priority'] as int),
+      priority: pulumi.Input.fromValue((map['priority'] as num).toInt()),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sessionMatcher: pulumi.Input.fromValue(map['sessionMatcher'] as String),
       tlsInspectionEnabled: (() { final guardedValue = map['tlsInspectionEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),

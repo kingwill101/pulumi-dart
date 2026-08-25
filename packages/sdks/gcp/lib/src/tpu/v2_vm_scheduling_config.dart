@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class V2VmSchedulingConfig {
   /// Defines whether the node is preemptible.
-  final pulumi.Input<bool>? preemptible;
+  final pulumi.Input<bool?>? preemptible;
   /// Whether the node is created under a reservation.
-  final pulumi.Input<bool>? reserved;
+  final pulumi.Input<bool?>? reserved;
   /// Optional. Defines whether the node is Spot VM.
-  final pulumi.Input<bool>? spot;
+  final pulumi.Input<bool?>? spot;
 
   /// Creates a new [V2VmSchedulingConfig].
   /// [preemptible] Defines whether the node is preemptible.

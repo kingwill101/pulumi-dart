@@ -25,8 +25,8 @@ class GetClusterNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfile {
 
   factory GetClusterNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfile.fromMap(Map<String, dynamic> map) {
     return GetClusterNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfile(
-      swapSizeGib: pulumi.Input.fromValue(map['swapSizeGib'] as int),
-      swapSizePercent: pulumi.Input.fromValue(map['swapSizePercent'] as int),
+      swapSizeGib: pulumi.Input.fromValue((map['swapSizeGib'] as num).toInt()),
+      swapSizePercent: pulumi.Input.fromValue((map['swapSizePercent'] as num).toInt()),
     );
   }
 }

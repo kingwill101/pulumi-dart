@@ -8,7 +8,7 @@ import 'ai_reasoning_engine_iam_binding_condition.dart';
 /// {@endtemplate}
 /// {@macro pulumi_vertex_ai_reasoning_engine_iam_binding_ai_reasoning_engine_iam_binding_args_doc}
 class AiReasoningEngineIamBindingArgs {
-  final pulumi.Input<AiReasoningEngineIamBindingCondition>? condition;
+  final pulumi.Input<AiReasoningEngineIamBindingCondition?>? condition;
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
   /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -24,13 +24,13 @@ class AiReasoningEngineIamBindingArgs {
   final pulumi.Input<List<String>> members;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Used to find the parent resource to bind the IAM policy to
   final pulumi.Input<String> reasoningEngine;
   /// The region of the reasoning engine. eg us-central1 Used to find the parent resource to bind the IAM policy to. If not specified,
   /// the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
   /// region is specified, it is taken from the provider configuration.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The role that should be applied. Only one
   /// `gcp.vertex.AiReasoningEngineIamBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.

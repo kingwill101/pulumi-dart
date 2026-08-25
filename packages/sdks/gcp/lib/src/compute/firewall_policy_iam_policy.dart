@@ -919,7 +919,7 @@ class FirewallPolicyIamPolicy extends pulumi.CustomResource {
           'gcp:compute/firewallPolicyIamPolicy:FirewallPolicyIamPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     etag = registerOutput<String>('etag');
     this.name = registerOutput<String>('name');
@@ -931,11 +931,12 @@ class FirewallPolicyIamPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FirewallPolicyIamPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return FirewallPolicyIamPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -949,6 +950,20 @@ class FirewallPolicyIamPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    etag = registerOutput<String>('etag');
+    this.name = registerOutput<String>('name');
+    policyData = registerOutput<String>('policyData');
+  }
+
+  /// Creates a typed reference to an existing [FirewallPolicyIamPolicy] resource.
+  FirewallPolicyIamPolicy.reference(String urn)
+    : super(
+        'gcp:compute/firewallPolicyIamPolicy:FirewallPolicyIamPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     etag = registerOutput<String>('etag');
     this.name = registerOutput<String>('name');
     policyData = registerOutput<String>('policyData');

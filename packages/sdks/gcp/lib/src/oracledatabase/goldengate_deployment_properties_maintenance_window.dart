@@ -33,7 +33,7 @@ class GoldengateDeploymentPropertiesMaintenanceWindow {
   factory GoldengateDeploymentPropertiesMaintenanceWindow.fromMap(Map<String, dynamic> map) {
     return GoldengateDeploymentPropertiesMaintenanceWindow(
       day: pulumi.Input.fromValue(map['day'] as String),
-      startHour: pulumi.Input.fromValue(map['startHour'] as int),
+      startHour: pulumi.Input.fromValue((map['startHour'] as num).toInt()),
     );
   }
 }

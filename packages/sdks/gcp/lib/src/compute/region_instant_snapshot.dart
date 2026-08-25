@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'region_instant_snapshot_args.dart';
 import 'region_instant_snapshot_params.dart';
+import 'region_instant_snapshot_resource_status.dart';
 import 'region_instant_snapshot_state.dart';
 
 /// Represents an instant snapshot resource.
@@ -276,7 +277,7 @@ class RegionInstantSnapshot extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// Resource status for the instant snapshot.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> resourceStatuses;
+  late final pulumi.Output<List<RegionInstantSnapshotResourceStatus>> resourceStatuses;
   /// The URI of the created resource.
   late final pulumi.Output<String> selfLink;
   /// The source disk used to create this instant snapshot. You can provide this as a partial or full URL to the resource.
@@ -302,22 +303,23 @@ class RegionInstantSnapshot extends pulumi.CustomResource {
           'gcp:compute/regionInstantSnapshot:RegionInstantSnapshot',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     architecture = registerOutput<String>('architecture');
     creationTimestamp = registerOutput<String>('creationTimestamp');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     diskSizeGb = registerOutput<int>('diskSizeGb');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     labelFingerprint = registerOutput<String>('labelFingerprint');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     params = registerOutput<RegionInstantSnapshotParams?>('params', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionInstantSnapshotParams.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     region = registerOutput<String>('region');
-    resourceStatuses = registerOutput<List<Map<String, dynamic>>>('resourceStatuses');
+    resourceStatuses = registerOutput<List<RegionInstantSnapshotResourceStatus>>('resourceStatuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegionInstantSnapshotResourceStatus>(guardedValue, (value) => RegionInstantSnapshotResourceStatus.fromMap((value as Map).cast<String, dynamic>())); });
     selfLink = registerOutput<String>('selfLink');
     sourceDisk = registerOutput<String>('sourceDisk');
     sourceDiskId = registerOutput<String>('sourceDiskId');
@@ -331,11 +333,12 @@ class RegionInstantSnapshot extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RegionInstantSnapshotState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RegionInstantSnapshot._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -354,15 +357,47 @@ class RegionInstantSnapshot extends pulumi.CustomResource {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     diskSizeGb = registerOutput<int>('diskSizeGb');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     labelFingerprint = registerOutput<String>('labelFingerprint');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     params = registerOutput<RegionInstantSnapshotParams?>('params', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionInstantSnapshotParams.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     region = registerOutput<String>('region');
-    resourceStatuses = registerOutput<List<Map<String, dynamic>>>('resourceStatuses');
+    resourceStatuses = registerOutput<List<RegionInstantSnapshotResourceStatus>>('resourceStatuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegionInstantSnapshotResourceStatus>(guardedValue, (value) => RegionInstantSnapshotResourceStatus.fromMap((value as Map).cast<String, dynamic>())); });
+    selfLink = registerOutput<String>('selfLink');
+    sourceDisk = registerOutput<String>('sourceDisk');
+    sourceDiskId = registerOutput<String>('sourceDiskId');
+    sourceInstantSnapshotGroup = registerOutput<String>('sourceInstantSnapshotGroup');
+    sourceInstantSnapshotGroupId = registerOutput<String>('sourceInstantSnapshotGroupId');
+    status = registerOutput<String>('status');
+  }
+
+  /// Creates a typed reference to an existing [RegionInstantSnapshot] resource.
+  RegionInstantSnapshot.reference(String urn)
+    : super(
+        'gcp:compute/regionInstantSnapshot:RegionInstantSnapshot',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    architecture = registerOutput<String>('architecture');
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    diskSizeGb = registerOutput<int>('diskSizeGb');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    labelFingerprint = registerOutput<String>('labelFingerprint');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    this.name = registerOutput<String>('name');
+    params = registerOutput<RegionInstantSnapshotParams?>('params', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionInstantSnapshotParams.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    region = registerOutput<String>('region');
+    resourceStatuses = registerOutput<List<RegionInstantSnapshotResourceStatus>>('resourceStatuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegionInstantSnapshotResourceStatus>(guardedValue, (value) => RegionInstantSnapshotResourceStatus.fromMap((value as Map).cast<String, dynamic>())); });
     selfLink = registerOutput<String>('selfLink');
     sourceDisk = registerOutput<String>('sourceDisk');
     sourceDiskId = registerOutput<String>('sourceDiskId');

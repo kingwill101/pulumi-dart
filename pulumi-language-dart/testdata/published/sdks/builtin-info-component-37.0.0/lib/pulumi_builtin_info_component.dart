@@ -3,15 +3,15 @@
 import 'package:pulumi_builtin_info_component/index.dart' as module_index;
 import 'package:pulumi_builtin_info_component/providers.dart' as module_providers;
 
-final index = const _IndexModuleNamespace();
-final providers = const _ProvidersModuleNamespace();
+final index = _IndexModuleNamespace();
+final providers = _ProvidersModuleNamespace();
 
 class _IndexModuleNamespace {
-  const _IndexModuleNamespace();
+  _IndexModuleNamespace();
   final BuiltinInfo = module_index.BuiltinInfo.new;
 }
 
 class _ProvidersModuleNamespace {
-  const _ProvidersModuleNamespace();
+  _ProvidersModuleNamespace();
   final BuiltinInfoComponent = module_providers.ProviderProvider.new;
 }

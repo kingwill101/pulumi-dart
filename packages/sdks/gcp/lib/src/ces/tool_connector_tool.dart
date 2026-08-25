@@ -7,19 +7,19 @@ class ToolConnectorTool {
   /// (Output)
   /// Action for the tool to use.
   /// Structure is documented below.
-  final pulumi.Input<List<ToolConnectorToolAction>>? actions;
+  final pulumi.Input<List<ToolConnectorToolAction>?>? actions;
   /// (Output)
   /// Configures how authentication is handled in Integration Connectors. By default, an admin authentication is passed in the Integration Connectors API requests. You can override it with a different end-user authentication config. Note: The Connection must have authentication override enabled in order to specify an EUC configuration here - otherwise, the ConnectorTool creation will fail. See https://cloud.google.com/application-integration/docs/configure-connectors-task#configure-authentication-override for details. Represents a JSON object.
-  final pulumi.Input<String>? authConfig;
+  final pulumi.Input<String?>? authConfig;
   /// (Output)
   /// The full resource name of the referenced Integration Connectors Connection. Format: projects/{project}/locations/{location}/connections/{connection}
-  final pulumi.Input<String>? connection;
+  final pulumi.Input<String?>? connection;
   /// (Output)
   /// The description of the system tool.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// (Output)
   /// The name of the system tool.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [ToolConnectorTool].
   /// [actions] (Output)

@@ -8,15 +8,15 @@ import 'instance_iam_member_condition.dart';
 /// {@endtemplate}
 /// {@macro pulumi_securitycenter_instance_iam_member_instance_iam_member_args_doc}
 class InstanceIamMemberArgs {
-  final pulumi.Input<InstanceIamMemberCondition>? condition;
+  final pulumi.Input<InstanceIamMemberCondition?>? condition;
   final pulumi.Input<String> member;
   /// The ID of the instance or a fully qualified identifier for the instance.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The region of the Data Fusion instance.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   final pulumi.Input<String> role;
 
   /// Creates a new [InstanceIamMemberArgs].

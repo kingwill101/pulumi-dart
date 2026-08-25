@@ -21,7 +21,7 @@ class ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfig {
 
   factory ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfig.fromMap(Map<String, dynamic> map) {
     return ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfig(
-      localSsdCount: pulumi.Input.fromValue(map['localSsdCount'] as int),
+      localSsdCount: pulumi.Input.fromValue((map['localSsdCount'] as num).toInt()),
     );
   }
 }

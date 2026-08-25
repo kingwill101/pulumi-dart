@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceFromMachineImageServiceAccount {
   /// The service account e-mail address.
-  final pulumi.Input<String>? email;
+  final pulumi.Input<String?>? email;
   /// A list of service scopes.
   final pulumi.Input<List<String>> scopes;
 

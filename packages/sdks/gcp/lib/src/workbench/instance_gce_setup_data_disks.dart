@@ -6,20 +6,20 @@ class InstanceGceSetupDataDisks {
   /// Optional. Input only. Disk encryption method used on the boot
   /// and data disks, defaults to GMEK.
   /// Possible values are: `GMEK`, `CMEK`.
-  final pulumi.Input<String>? diskEncryption;
+  final pulumi.Input<String?>? diskEncryption;
   /// Optional. The size of the disk in GB attached to this VM instance,
   /// up to a maximum of 64000 GB (64 TB). If not specified, this defaults to
   /// 100.
-  final pulumi.Input<String>? diskSizeGb;
+  final pulumi.Input<String?>? diskSizeGb;
   /// Optional. Input only. Indicates the type of the disk.
   /// Possible values are: `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`, `HYPERDISK_BALANCED`, `HYPERDISK_EXTREME`, `HYPERDISK_THROUGHPUT`, `HYPERDISK_BALANCED_HIGH_AVAILABILITY`, `HYPERDISK_ML`.
-  final pulumi.Input<String>? diskType;
+  final pulumi.Input<String?>? diskType;
   /// 'Optional. The KMS key used to encrypt the disks,
   /// only applicable if diskEncryption is CMEK. Format: `projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}`
   /// Learn more about using your own encryption keys.'
-  final pulumi.Input<String>? kmsKey;
+  final pulumi.Input<String?>? kmsKey;
   /// Optional. Resource policies applied to this disk.
-  final pulumi.Input<List<String>>? resourcePolicies;
+  final pulumi.Input<List<String>?>? resourcePolicies;
 
   /// Creates a new [InstanceGceSetupDataDisks].
   /// [diskEncryption] Optional. Input only. Disk encryption method used on the boot

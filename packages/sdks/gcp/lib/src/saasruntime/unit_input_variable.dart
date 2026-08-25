@@ -8,9 +8,9 @@ class UnitInputVariable {
   /// STRING
   /// INT
   /// BOOL
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// String encoded value for the variable.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
   /// Name of the variable from actuation configs.
   final pulumi.Input<String> variable;
 

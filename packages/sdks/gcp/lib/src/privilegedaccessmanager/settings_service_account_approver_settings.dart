@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SettingsServiceAccountApproverSettings {
   /// Indicates whether service account is allowed to grant approvals.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
 
   /// Creates a new [SettingsServiceAccountApproverSettings].
   /// [enabled] Indicates whether service account is allowed to grant approvals.

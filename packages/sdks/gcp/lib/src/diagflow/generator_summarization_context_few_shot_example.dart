@@ -8,15 +8,15 @@ import 'generator_summarization_context_few_shot_example_summarization_section_l
 class GeneratorSummarizationContextFewShotExample {
   /// Optional. Conversation transcripts.
   /// Structure is documented below.
-  final pulumi.Input<GeneratorSummarizationContextFewShotExampleConversationContext>? conversationContext;
+  final pulumi.Input<GeneratorSummarizationContextFewShotExampleConversationContext?>? conversationContext;
   /// Optional. Key is the placeholder field name in input, value is the value of the placeholder. E.g. instruction contains "@price", and ingested data has &lt;"price", "10"&gt;
-  final pulumi.Input<Map<String, String>>? extraInfo;
+  final pulumi.Input<Map<String, String>?>? extraInfo;
   /// Required. Example output of the model.
   /// Structure is documented below.
   final pulumi.Input<GeneratorSummarizationContextFewShotExampleOutput> output;
   /// Summarization sections.
   /// Structure is documented below.
-  final pulumi.Input<GeneratorSummarizationContextFewShotExampleSummarizationSectionList>? summarizationSectionList;
+  final pulumi.Input<GeneratorSummarizationContextFewShotExampleSummarizationSectionList?>? summarizationSectionList;
 
   /// Creates a new [GeneratorSummarizationContextFewShotExample].
   /// [conversationContext] Optional. Conversation transcripts.

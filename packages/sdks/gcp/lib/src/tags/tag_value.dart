@@ -226,7 +226,7 @@ class TagValue extends pulumi.CustomResource {
           'gcp:tags/tagValue:TagValue',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -243,11 +243,12 @@ class TagValue extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TagValueState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return TagValue._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -261,6 +262,25 @@ class TagValue extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    namespacedName = registerOutput<String>('namespacedName');
+    parent = registerOutput<String>('parent');
+    shortName = registerOutput<String>('shortName');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [TagValue] resource.
+  TagValue.reference(String urn)
+    : super(
+        'gcp:tags/tagValue:TagValue',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');

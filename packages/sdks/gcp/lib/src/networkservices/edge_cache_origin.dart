@@ -952,15 +952,16 @@ class EdgeCacheOrigin extends pulumi.CustomResource {
           'gcp:networkservices/edgeCacheOrigin:EdgeCacheOrigin',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     awsV4Authentication = registerOutput<EdgeCacheOriginAwsV4Authentication?>('awsV4Authentication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EdgeCacheOriginAwsV4Authentication.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     failoverOrigin = registerOutput<String?>('failoverOrigin');
     flexShielding = registerOutput<EdgeCacheOriginFlexShielding?>('flexShielding', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EdgeCacheOriginFlexShielding.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     maxAttempts = registerOutput<int?>('maxAttempts');
     this.name = registerOutput<String>('name');
     originAddress = registerOutput<String>('originAddress');
@@ -969,8 +970,8 @@ class EdgeCacheOrigin extends pulumi.CustomResource {
     port = registerOutput<int>('port');
     project = registerOutput<String>('project');
     protocol = registerOutput<String>('protocol');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    retryConditions = registerOutput<List<String>>('retryConditions');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    retryConditions = registerOutput<List<String>>('retryConditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     timeout = registerOutput<EdgeCacheOriginTimeout?>('timeout', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EdgeCacheOriginTimeout.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
@@ -979,11 +980,12 @@ class EdgeCacheOrigin extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EdgeCacheOriginState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return EdgeCacheOrigin._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1000,10 +1002,10 @@ class EdgeCacheOrigin extends pulumi.CustomResource {
     awsV4Authentication = registerOutput<EdgeCacheOriginAwsV4Authentication?>('awsV4Authentication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EdgeCacheOriginAwsV4Authentication.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     failoverOrigin = registerOutput<String?>('failoverOrigin');
     flexShielding = registerOutput<EdgeCacheOriginFlexShielding?>('flexShielding', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EdgeCacheOriginFlexShielding.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     maxAttempts = registerOutput<int?>('maxAttempts');
     this.name = registerOutput<String>('name');
     originAddress = registerOutput<String>('originAddress');
@@ -1012,8 +1014,38 @@ class EdgeCacheOrigin extends pulumi.CustomResource {
     port = registerOutput<int>('port');
     project = registerOutput<String>('project');
     protocol = registerOutput<String>('protocol');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    retryConditions = registerOutput<List<String>>('retryConditions');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    retryConditions = registerOutput<List<String>>('retryConditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    timeout = registerOutput<EdgeCacheOriginTimeout?>('timeout', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EdgeCacheOriginTimeout.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [EdgeCacheOrigin] resource.
+  EdgeCacheOrigin.reference(String urn)
+    : super(
+        'gcp:networkservices/edgeCacheOrigin:EdgeCacheOrigin',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    awsV4Authentication = registerOutput<EdgeCacheOriginAwsV4Authentication?>('awsV4Authentication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EdgeCacheOriginAwsV4Authentication.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    failoverOrigin = registerOutput<String?>('failoverOrigin');
+    flexShielding = registerOutput<EdgeCacheOriginFlexShielding?>('flexShielding', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EdgeCacheOriginFlexShielding.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    maxAttempts = registerOutput<int?>('maxAttempts');
+    this.name = registerOutput<String>('name');
+    originAddress = registerOutput<String>('originAddress');
+    originOverrideAction = registerOutput<EdgeCacheOriginOriginOverrideAction?>('originOverrideAction', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EdgeCacheOriginOriginOverrideAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    originRedirect = registerOutput<EdgeCacheOriginOriginRedirect?>('originRedirect', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EdgeCacheOriginOriginRedirect.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    port = registerOutput<int>('port');
+    project = registerOutput<String>('project');
+    protocol = registerOutput<String>('protocol');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    retryConditions = registerOutput<List<String>>('retryConditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     timeout = registerOutput<EdgeCacheOriginTimeout?>('timeout', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EdgeCacheOriginTimeout.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

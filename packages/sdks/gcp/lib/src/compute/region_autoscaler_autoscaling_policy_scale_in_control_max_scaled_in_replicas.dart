@@ -5,10 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RegionAutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicas {
   /// Specifies a fixed number of VM instances. This must be a positive
   /// integer.
-  final pulumi.Input<int>? fixed;
+  final pulumi.Input<int?>? fixed;
   /// Specifies a percentage of instances between 0 to 100%, inclusive.
   /// For example, specify 80 for 80%.
-  final pulumi.Input<int>? percent;
+  final pulumi.Input<int?>? percent;
 
   /// Creates a new [RegionAutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicas].
   /// [fixed] Specifies a fixed number of VM instances. This must be a positive
@@ -27,8 +27,8 @@ class RegionAutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicas {
 
   factory RegionAutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicas.fromMap(Map<String, dynamic> map) {
     return RegionAutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicas(
-      fixed: (() { final guardedValue = map['fixed']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      percent: (() { final guardedValue = map['percent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      fixed: (() { final guardedValue = map['fixed']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      percent: (() { final guardedValue = map['percent']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

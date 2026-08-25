@@ -8,15 +8,15 @@ import 'cx_test_case_test_case_conversation_turn_virtual_agent_output_triggered_
 class CxTestCaseTestCaseConversationTurnVirtualAgentOutput {
   /// The [Page](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.flows.pages#Page) on which the utterance was spoken.
   /// Structure is documented below.
-  final pulumi.Input<CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPage>? currentPage;
+  final pulumi.Input<CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPage?>? currentPage;
   /// The session parameters available to the bot at this point.
-  final pulumi.Input<String>? sessionParameters;
+  final pulumi.Input<String?>? sessionParameters;
   /// The text responses from the agent for the turn.
   /// Structure is documented below.
-  final pulumi.Input<List<CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponse>>? textResponses;
+  final pulumi.Input<List<CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponse>?>? textResponses;
   /// The [Intent](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.intents#Intent) that triggered the response.
   /// Structure is documented below.
-  final pulumi.Input<CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntent>? triggeredIntent;
+  final pulumi.Input<CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntent?>? triggeredIntent;
 
   /// Creates a new [CxTestCaseTestCaseConversationTurnVirtualAgentOutput].
   /// [currentPage] The [Page](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.flows.pages#Page) on which the utterance was spoken.

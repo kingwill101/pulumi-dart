@@ -259,26 +259,27 @@ class AuthProvider extends pulumi.CustomResource {
           'gcp:agentidentity/authProvider:AuthProvider',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
-    allowedScopes = registerOutput<List<String>?>('allowedScopes');
+    allowedScopes = registerOutput<List<String>?>('allowedScopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     authProviderId = registerOutput<String>('authProviderId');
     authProviderTypeParams = registerOutput<AuthProviderAuthProviderTypeParams>('authProviderTypeParams', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AuthProviderAuthProviderTypeParams.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    blockedScopes = registerOutput<List<String>?>('blockedScopes');
+    blockedScopes = registerOutput<List<String>?>('blockedScopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     createTime = registerOutput<String>('createTime');
     deleted = registerOutput<bool>('deleted');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     expireTime = registerOutput<String>('expireTime');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     state = registerOutput<String>('state');
     updateTime = registerOutput<String>('updateTime');
-    workloadIds = registerOutput<List<String>?>('workloadIds');
+    workloadIds = registerOutput<List<String>?>('workloadIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [AuthProvider] resource's state with the given [name] and [id].
@@ -286,11 +287,12 @@ class AuthProvider extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AuthProviderState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AuthProvider._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -304,23 +306,53 @@ class AuthProvider extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    allowedScopes = registerOutput<List<String>?>('allowedScopes');
+    allowedScopes = registerOutput<List<String>?>('allowedScopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     authProviderId = registerOutput<String>('authProviderId');
     authProviderTypeParams = registerOutput<AuthProviderAuthProviderTypeParams>('authProviderTypeParams', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AuthProviderAuthProviderTypeParams.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    blockedScopes = registerOutput<List<String>?>('blockedScopes');
+    blockedScopes = registerOutput<List<String>?>('blockedScopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     createTime = registerOutput<String>('createTime');
     deleted = registerOutput<bool>('deleted');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     expireTime = registerOutput<String>('expireTime');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     this.state = registerOutput<String>('state');
     updateTime = registerOutput<String>('updateTime');
-    workloadIds = registerOutput<List<String>?>('workloadIds');
+    workloadIds = registerOutput<List<String>?>('workloadIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [AuthProvider] resource.
+  AuthProvider.reference(String urn)
+    : super(
+        'gcp:agentidentity/authProvider:AuthProvider',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    allowedScopes = registerOutput<List<String>?>('allowedScopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    authProviderId = registerOutput<String>('authProviderId');
+    authProviderTypeParams = registerOutput<AuthProviderAuthProviderTypeParams>('authProviderTypeParams', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AuthProviderAuthProviderTypeParams.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    blockedScopes = registerOutput<List<String>?>('blockedScopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    createTime = registerOutput<String>('createTime');
+    deleted = registerOutput<bool>('deleted');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    expireTime = registerOutput<String>('expireTime');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    state = registerOutput<String>('state');
+    updateTime = registerOutput<String>('updateTime');
+    workloadIds = registerOutput<List<String>?>('workloadIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

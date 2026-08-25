@@ -8,7 +8,7 @@ import 'job_iambinding_condition.dart';
 /// {@endtemplate}
 /// {@macro pulumi_dataproc_job_iambinding_job_iambinding_args_doc}
 class JobIAMBindingArgs {
-  final pulumi.Input<JobIAMBindingCondition>? condition;
+  final pulumi.Input<JobIAMBindingCondition?>? condition;
   final pulumi.Input<String> jobId;
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
@@ -21,10 +21,10 @@ class JobIAMBindingArgs {
   final pulumi.Input<List<String>> members;
   /// The project in which the job belongs. If it
   /// is not provided, the provider will use a default.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The region in which the job belongs. If it
   /// is not provided, the provider will use a default.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The role that should be applied. Only one
   /// `gcp.dataproc.JobIAMBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.

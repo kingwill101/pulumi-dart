@@ -7,7 +7,7 @@ class BareMetalAdminClusterValidationCheckStatus {
   /// (Output)
   /// Individual checks which failed as part of the Preflight check execution.
   /// Structure is documented below.
-  final pulumi.Input<List<BareMetalAdminClusterValidationCheckStatusResult>>? results;
+  final pulumi.Input<List<BareMetalAdminClusterValidationCheckStatusResult>?>? results;
 
   /// Creates a new [BareMetalAdminClusterValidationCheckStatus].
   /// [results] (Output)

@@ -8,13 +8,13 @@ import 'evaluation_golden_turn_step_user_input.dart';
 class EvaluationGoldenTurnStep {
   /// Represents an event indicating the transfer of the conversation to a different agent.
   /// Structure is documented below.
-  final pulumi.Input<EvaluationGoldenTurnStepAgentTransfer>? agentTransfer;
+  final pulumi.Input<EvaluationGoldenTurnStepAgentTransfer?>? agentTransfer;
   /// Executes an expectation on the current turn to verify the agent's behavior. Note: 'user_input' and 'expectation' are mutually exclusive.
   /// Structure is documented below.
-  final pulumi.Input<EvaluationGoldenTurnStepExpectation>? expectation;
+  final pulumi.Input<EvaluationGoldenTurnStepExpectation?>? expectation;
   /// Represents user input for the conversation. Note: 'user_input' and 'expectation' are mutually exclusive.
   /// Structure is documented below.
-  final pulumi.Input<EvaluationGoldenTurnStepUserInput>? userInput;
+  final pulumi.Input<EvaluationGoldenTurnStepUserInput?>? userInput;
 
   /// Creates a new [EvaluationGoldenTurnStep].
   /// [agentTransfer] Represents an event indicating the transfer of the conversation to a different agent.

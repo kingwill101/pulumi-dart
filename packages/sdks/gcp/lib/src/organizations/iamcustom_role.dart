@@ -216,14 +216,14 @@ class IAMCustomRole extends pulumi.CustomResource {
           'gcp:organizations/iAMCustomRole:IAMCustomRole',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     deleted = registerOutput<bool>('deleted');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     orgId = registerOutput<String>('orgId');
-    permissions = registerOutput<List<String>>('permissions');
+    permissions = registerOutput<List<String>>('permissions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     roleId = registerOutput<String>('roleId');
     stage = registerOutput<String?>('stage');
     title = registerOutput<String>('title');
@@ -234,11 +234,12 @@ class IAMCustomRole extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     IAMCustomRoleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return IAMCustomRole._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -257,7 +258,27 @@ class IAMCustomRole extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     orgId = registerOutput<String>('orgId');
-    permissions = registerOutput<List<String>>('permissions');
+    permissions = registerOutput<List<String>>('permissions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    roleId = registerOutput<String>('roleId');
+    stage = registerOutput<String?>('stage');
+    title = registerOutput<String>('title');
+  }
+
+  /// Creates a typed reference to an existing [IAMCustomRole] resource.
+  IAMCustomRole.reference(String urn)
+    : super(
+        'gcp:organizations/iAMCustomRole:IAMCustomRole',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    deleted = registerOutput<bool>('deleted');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    orgId = registerOutput<String>('orgId');
+    permissions = registerOutput<List<String>>('permissions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     roleId = registerOutput<String>('roleId');
     stage = registerOutput<String?>('stage');
     title = registerOutput<String>('title');

@@ -421,9 +421,9 @@ class UserWorkloadsConfigMap extends pulumi.CustomResource {
           'gcp:composer/userWorkloadsConfigMap:UserWorkloadsConfigMap',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
-    data = registerOutput<Map<String, String>?>('data');
+    data = registerOutput<Map<String, String>?>('data', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     environment = registerOutput<String>('environment');
     this.name = registerOutput<String>('name');
@@ -436,11 +436,12 @@ class UserWorkloadsConfigMap extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     UserWorkloadsConfigMapState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return UserWorkloadsConfigMap._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -454,7 +455,24 @@ class UserWorkloadsConfigMap extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    data = registerOutput<Map<String, String>?>('data');
+    data = registerOutput<Map<String, String>?>('data', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    environment = registerOutput<String>('environment');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [UserWorkloadsConfigMap] resource.
+  UserWorkloadsConfigMap.reference(String urn)
+    : super(
+        'gcp:composer/userWorkloadsConfigMap:UserWorkloadsConfigMap',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    data = registerOutput<Map<String, String>?>('data', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     environment = registerOutput<String>('environment');
     this.name = registerOutput<String>('name');

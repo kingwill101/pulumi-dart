@@ -6,10 +6,10 @@ import 'prevention_job_trigger_inspect_job_storage_config_cloud_storage_options_
 class PreventionJobTriggerInspectJobStorageConfigCloudStorageOptions {
   /// Max number of bytes to scan from a file. If a scanned file's size is bigger than this value
   /// then the rest of the bytes are omitted.
-  final pulumi.Input<int>? bytesLimitPerFile;
+  final pulumi.Input<int?>? bytesLimitPerFile;
   /// Max percentage of bytes to scan from a file. The rest are omitted. The number of bytes scanned is rounded down.
   /// Must be between 0 and 100, inclusively. Both 0 and 100 means no limit.
-  final pulumi.Input<int>? bytesLimitPerFilePercent;
+  final pulumi.Input<int?>? bytesLimitPerFilePercent;
   /// Set of files to scan.
   /// Structure is documented below.
   final pulumi.Input<PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSet> fileSet;
@@ -17,14 +17,14 @@ class PreventionJobTriggerInspectJobStorageConfigCloudStorageOptions {
   /// format processors are applied. In addition, the binary content of the selected files is always scanned as well.
   /// Images are scanned only as binary if the specified region does not support image inspection and no fileTypes were specified.
   /// Each value may be one of: `BINARY_FILE`, `TEXT_FILE`, `IMAGE`, `WORD`, `PDF`, `AVRO`, `CSV`, `TSV`, `POWERPOINT`, `EXCEL`.
-  final pulumi.Input<List<String>>? fileTypes;
+  final pulumi.Input<List<String>?>? fileTypes;
   /// Limits the number of files to scan to this percentage of the input FileSet. Number of files scanned is rounded down.
   /// Must be between 0 and 100, inclusively. Both 0 and 100 means no limit.
-  final pulumi.Input<int>? filesLimitPercent;
+  final pulumi.Input<int?>? filesLimitPercent;
   /// How to sample bytes if not all bytes are scanned. Meaningful only when used in conjunction with bytesLimitPerFile.
   /// If not specified, scanning would start from the top.
   /// Possible values are: `TOP`, `RANDOM_START`.
-  final pulumi.Input<String>? sampleMethod;
+  final pulumi.Input<String?>? sampleMethod;
 
   /// Creates a new [PreventionJobTriggerInspectJobStorageConfigCloudStorageOptions].
   /// [bytesLimitPerFile] Max number of bytes to scan from a file. If a scanned file's size is bigger than this value
@@ -55,11 +55,11 @@ class PreventionJobTriggerInspectJobStorageConfigCloudStorageOptions {
 
   factory PreventionJobTriggerInspectJobStorageConfigCloudStorageOptions.fromMap(Map<String, dynamic> map) {
     return PreventionJobTriggerInspectJobStorageConfigCloudStorageOptions(
-      bytesLimitPerFile: (() { final guardedValue = map['bytesLimitPerFile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      bytesLimitPerFilePercent: (() { final guardedValue = map['bytesLimitPerFilePercent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      bytesLimitPerFile: (() { final guardedValue = map['bytesLimitPerFile']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      bytesLimitPerFilePercent: (() { final guardedValue = map['bytesLimitPerFilePercent']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       fileSet: pulumi.Input.fromValue(PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSet.fromMap((map['fileSet']! as Map).cast<String, dynamic>())),
       fileTypes: (() { final guardedValue = map['fileTypes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      filesLimitPercent: (() { final guardedValue = map['filesLimitPercent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      filesLimitPercent: (() { final guardedValue = map['filesLimitPercent']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       sampleMethod: (() { final guardedValue = map['sampleMethod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

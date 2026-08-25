@@ -8,7 +8,7 @@ import 'instance_iammember_condition.dart';
 /// {@endtemplate}
 /// {@macro pulumi_spanner_instance_iammember_instance_iammember_args_doc}
 class InstanceIAMMemberArgs {
-  final pulumi.Input<InstanceIAMMemberCondition>? condition;
+  final pulumi.Input<InstanceIAMMemberCondition?>? condition;
   /// The name of the instance.
   final pulumi.Input<String> instance;
   /// Identities that will be granted the privilege in `role`.
@@ -24,7 +24,7 @@ class InstanceIAMMemberArgs {
   final pulumi.Input<String> member;
   /// The ID of the project in which the resource belongs. If it
   /// is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The role that should be applied. Only one
   /// `gcp.spanner.InstanceIAMBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.

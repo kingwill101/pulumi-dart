@@ -7,7 +7,7 @@ class V2VmDataDisk {
   /// mode. Only applicable to dataDisks.
   /// Default value is `READ_WRITE`.
   /// Possible values are: `READ_WRITE`, `READ_ONLY`.
-  final pulumi.Input<String>? mode;
+  final pulumi.Input<String?>? mode;
   /// Specifies the full path to an existing disk. For example:
   /// "projects/my-project/zones/us-central1-c/disks/my-disk".
   final pulumi.Input<String> sourceDisk;

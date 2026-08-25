@@ -13,12 +13,12 @@ class MembershipBindingArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Labels for this Membership binding.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Location of the membership
   final pulumi.Input<String> location;
   /// The client-provided identifier of the membership binding.
@@ -27,7 +27,7 @@ class MembershipBindingArgs {
   final pulumi.Input<String> membershipId;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// A Workspace resource name in the format
   /// `projects/*/locations/*/scopes/*`.
   final pulumi.Input<String> scope;

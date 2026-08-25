@@ -13,10 +13,10 @@ class GetConnectorArgs {
   final pulumi.Input<String> name;
   /// The ID of the project in which the resource belongs. If it
   /// is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The region in which the resource belongs. If it
   /// is not provided, the provider region is used.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [GetConnectorArgs].
   /// [name] Name of the resource.

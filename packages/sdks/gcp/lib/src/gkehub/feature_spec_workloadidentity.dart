@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FeatureSpecWorkloadidentity {
   /// Pool to be used for Workload Identity. This pool in trust-domain mode is used with Fleet Tenancy, so that sameness can be enforced. ex: projects/example/locations/global/workloadidentitypools/custompool
-  final pulumi.Input<String>? scopeTenancyPool;
+  final pulumi.Input<String?>? scopeTenancyPool;
 
   /// Creates a new [FeatureSpecWorkloadidentity].
   /// [scopeTenancyPool] Pool to be used for Workload Identity. This pool in trust-domain mode is used with Fleet Tenancy, so that sameness can be enforced. ex: projects/example/locations/global/workloadidentitypools/custompool

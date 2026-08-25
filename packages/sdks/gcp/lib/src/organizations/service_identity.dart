@@ -201,7 +201,7 @@ class ServiceIdentity extends pulumi.CustomResource {
           'gcp:organizations/serviceIdentity:ServiceIdentity',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     email = registerOutput<String>('email');
     member = registerOutput<String>('member');
@@ -214,11 +214,12 @@ class ServiceIdentity extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ServiceIdentityState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ServiceIdentity._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -232,6 +233,21 @@ class ServiceIdentity extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    email = registerOutput<String>('email');
+    member = registerOutput<String>('member');
+    organization = registerOutput<String>('organization');
+    service = registerOutput<String>('service');
+  }
+
+  /// Creates a typed reference to an existing [ServiceIdentity] resource.
+  ServiceIdentity.reference(String urn)
+    : super(
+        'gcp:organizations/serviceIdentity:ServiceIdentity',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     email = registerOutput<String>('email');
     member = registerOutput<String>('member');
     organization = registerOutput<String>('organization');

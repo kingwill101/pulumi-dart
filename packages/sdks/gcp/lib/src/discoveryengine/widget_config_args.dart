@@ -13,30 +13,30 @@ import 'widget_config_ui_settings.dart';
 class WidgetConfigArgs {
   /// Describes widget access settings.
   /// Structure is documented below.
-  final pulumi.Input<WidgetConfigAccessSettings>? accessSettings;
+  final pulumi.Input<WidgetConfigAccessSettings?>? accessSettings;
   /// The collection ID.
-  final pulumi.Input<String>? collectionId;
+  final pulumi.Input<String?>? collectionId;
   /// The engine ID.
   final pulumi.Input<String> engineId;
   /// Describes the homepage setting of the widget. It includes all homepage related settings
   /// and configurations, such as shortcuts.
   /// Structure is documented below.
-  final pulumi.Input<WidgetConfigHomepageSetting>? homepageSetting;
+  final pulumi.Input<WidgetConfigHomepageSetting?>? homepageSetting;
   /// The geographic location where the data store should reside. The value can
   /// only be one of "global", "us" and "eu".
   final pulumi.Input<String> location;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Describes search widget UI branding settings, such as the widget title, logo,
   /// favicons, and colors.
   /// Structure is documented below.
-  final pulumi.Input<WidgetConfigUiBranding>? uiBranding;
+  final pulumi.Input<WidgetConfigUiBranding?>? uiBranding;
   /// Describes general widget (or web app) UI settings as seen in the cloud console UI configuration page.
   /// Structure is documented below.
-  final pulumi.Input<WidgetConfigUiSettings>? uiSettings;
+  final pulumi.Input<WidgetConfigUiSettings?>? uiSettings;
   /// The unique ID to use for the WidgetConfig. Currently only accepts "defaultSearchWidgetConfig".
-  final pulumi.Input<String>? widgetConfigId;
+  final pulumi.Input<String?>? widgetConfigId;
 
   /// Creates a new [WidgetConfigArgs].
   /// [accessSettings] Describes widget access settings.

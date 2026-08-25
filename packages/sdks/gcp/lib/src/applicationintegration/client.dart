@@ -513,7 +513,7 @@ class Client extends pulumi.CustomResource {
           'gcp:applicationintegration/client:Client',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     cloudKmsConfig = registerOutput<ClientCloudKmsConfig?>('cloudKmsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClientCloudKmsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createSampleIntegrations = registerOutput<bool?>('createSampleIntegrations');
@@ -528,11 +528,12 @@ class Client extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ClientState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Client._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -546,6 +547,23 @@ class Client extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    cloudKmsConfig = registerOutput<ClientCloudKmsConfig?>('cloudKmsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClientCloudKmsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createSampleIntegrations = registerOutput<bool?>('createSampleIntegrations');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    location = registerOutput<String>('location');
+    project = registerOutput<String>('project');
+    runAsServiceAccount = registerOutput<String?>('runAsServiceAccount');
+  }
+
+  /// Creates a typed reference to an existing [Client] resource.
+  Client.reference(String urn)
+    : super(
+        'gcp:applicationintegration/client:Client',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     cloudKmsConfig = registerOutput<ClientCloudKmsConfig?>('cloudKmsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClientCloudKmsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createSampleIntegrations = registerOutput<bool?>('createSampleIntegrations');
     deletionPolicy = registerOutput<String>('deletionPolicy');

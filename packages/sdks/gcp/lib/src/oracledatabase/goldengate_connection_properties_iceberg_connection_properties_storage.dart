@@ -8,13 +8,13 @@ import 'goldengate_connection_properties_iceberg_connection_properties_storage_g
 class GoldengateConnectionPropertiesIcebergConnectionPropertiesStorage {
   /// The Amazon S3 Iceberg storage.
   /// Structure is documented below.
-  final pulumi.Input<GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStorage>? amazonS3IcebergStorage;
+  final pulumi.Input<GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStorage?>? amazonS3IcebergStorage;
   /// The Azure Data Lake Storage Iceberg storage.
   /// Structure is documented below.
-  final pulumi.Input<GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStorage>? azureDataLakeStorageIcebergStorage;
+  final pulumi.Input<GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStorage?>? azureDataLakeStorageIcebergStorage;
   /// The Google Cloud Storage Iceberg storage.
   /// Structure is documented below.
-  final pulumi.Input<GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStorage>? googleCloudStorageIcebergStorage;
+  final pulumi.Input<GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStorage?>? googleCloudStorageIcebergStorage;
   /// The type of Iceberg storage.
   /// Possible values:
   /// AMAZON_S3

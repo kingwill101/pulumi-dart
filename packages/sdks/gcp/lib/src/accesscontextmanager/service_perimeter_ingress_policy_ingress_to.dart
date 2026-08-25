@@ -7,7 +7,7 @@ class ServicePerimeterIngressPolicyIngressTo {
   /// A list of `ApiOperations` the sources specified in corresponding `IngressFrom`
   /// are allowed to perform in this `ServicePerimeter`.
   /// Structure is documented below.
-  final pulumi.Input<List<ServicePerimeterIngressPolicyIngressToOperation>>? operations;
+  final pulumi.Input<List<ServicePerimeterIngressPolicyIngressToOperation>?>? operations;
   /// A list of resources, currently only projects in the form
   /// `projects/&lt;projectnumber&gt;`, protected by this `ServicePerimeter`
   /// that are allowed to be accessed by sources defined in the
@@ -16,11 +16,11 @@ class ServicePerimeterIngressPolicyIngressTo {
   /// then this `IngressTo` rule will authorize access to all
   /// resources inside the perimeter, provided that the request
   /// also matches the `operations` field.
-  final pulumi.Input<List<String>>? resources;
+  final pulumi.Input<List<String>?>? resources;
   /// A list of IAM roles that represent the set of operations that the sources
   /// specified in the corresponding `IngressFrom`
   /// are allowed to perform.
-  final pulumi.Input<List<String>>? roles;
+  final pulumi.Input<List<String>?>? roles;
 
   /// Creates a new [ServicePerimeterIngressPolicyIngressTo].
   /// [operations] A list of `ApiOperations` the sources specified in corresponding `IngressFrom`

@@ -7,7 +7,7 @@ class DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings {
   /// is 'COUNT', we will retain this many backups.
   final pulumi.Input<int> retainedBackups;
   /// The unit that 'retained_backups' represents. Defaults to `COUNT`.
-  final pulumi.Input<String>? retentionUnit;
+  final pulumi.Input<String?>? retentionUnit;
 
   /// Creates a new [DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings].
   /// [retainedBackups] Depending on the value of retention_unit, this is used to determine if a backup needs to be deleted. If retentionUnit
@@ -26,7 +26,7 @@ class DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings {
 
   factory DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings.fromMap(Map<String, dynamic> map) {
     return DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings(
-      retainedBackups: pulumi.Input.fromValue(map['retainedBackups'] as int),
+      retainedBackups: pulumi.Input.fromValue((map['retainedBackups'] as num).toInt()),
       retentionUnit: (() { final guardedValue = map['retentionUnit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

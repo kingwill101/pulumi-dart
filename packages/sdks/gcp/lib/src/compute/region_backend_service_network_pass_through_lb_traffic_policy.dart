@@ -6,7 +6,7 @@ import 'region_backend_service_network_pass_through_lb_traffic_policy_zonal_affi
 class RegionBackendServiceNetworkPassThroughLbTrafficPolicy {
   /// When configured, new connections are load balanced across healthy backend endpoints in the local zone.
   /// Structure is documented below.
-  final pulumi.Input<RegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity>? zonalAffinity;
+  final pulumi.Input<RegionBackendServiceNetworkPassThroughLbTrafficPolicyZonalAffinity?>? zonalAffinity;
 
   /// Creates a new [RegionBackendServiceNetworkPassThroughLbTrafficPolicy].
   /// [zonalAffinity] When configured, new connections are load balanced across healthy backend endpoints in the local zone.

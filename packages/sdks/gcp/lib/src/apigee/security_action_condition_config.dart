@@ -4,31 +4,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SecurityActionConditionConfig {
   /// A list of accessTokens. Limit 1000 per action.
-  final pulumi.Input<List<String>>? accessTokens;
+  final pulumi.Input<List<String>?>? accessTokens;
   /// A list of API keys. Limit 1000 per action.
-  final pulumi.Input<List<String>>? apiKeys;
+  final pulumi.Input<List<String>?>? apiKeys;
   /// A list of API Products. Limit 1000 per action.
-  final pulumi.Input<List<String>>? apiProducts;
+  final pulumi.Input<List<String>?>? apiProducts;
   /// A list of ASN numbers to act on, e.g. 23. https://en.wikipedia.org/wiki/Autonomous_system_(Internet)
   /// This uses int64 instead of uint32 because of https://linter.aip.dev/141/forbidden-types.
-  final pulumi.Input<List<String>>? asns;
+  final pulumi.Input<List<String>?>? asns;
   /// A list of Bot Reasons. Current options: Flooder, Brute Guessor, Static Content Scraper,
   /// OAuth Abuser, Robot Abuser, TorListRule, Advanced Anomaly Detection, Advanced API Scraper,
   /// Search Engine Crawlers, Public Clouds, Public Cloud AWS, Public Cloud Azure, and Public Cloud Google.
-  final pulumi.Input<List<String>>? botReasons;
+  final pulumi.Input<List<String>?>? botReasons;
   /// A list of developer apps. Limit 1000 per action.
-  final pulumi.Input<List<String>>? developerApps;
+  final pulumi.Input<List<String>?>? developerApps;
   /// A list of developers. Limit 1000 per action.
-  final pulumi.Input<List<String>>? developers;
+  final pulumi.Input<List<String>?>? developers;
   /// Act only on particular HTTP methods. E.g. A read-only API can block POST/PUT/DELETE methods.
   /// Accepted values are: GET, HEAD, POST, PUT, DELETE, CONNECT, OPTIONS, TRACE and PATCH.
-  final pulumi.Input<List<String>>? httpMethods;
+  final pulumi.Input<List<String>?>? httpMethods;
   /// A list of IP addresses. This could be either IPv4 or IPv6. Limited to 100 per action.
-  final pulumi.Input<List<String>>? ipAddressRanges;
+  final pulumi.Input<List<String>?>? ipAddressRanges;
   /// A list of countries/region codes to act on, e.g. US. This follows https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2.
-  final pulumi.Input<List<String>>? regionCodes;
+  final pulumi.Input<List<String>?>? regionCodes;
   /// A list of user agents to deny. We look for exact matches. Limit 50 per action.
-  final pulumi.Input<List<String>>? userAgents;
+  final pulumi.Input<List<String>?>? userAgents;
 
   /// Creates a new [SecurityActionConditionConfig].
   /// [accessTokens] A list of accessTokens. Limit 1000 per action.

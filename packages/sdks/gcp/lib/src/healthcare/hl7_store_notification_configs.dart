@@ -12,7 +12,7 @@ class Hl7StoreNotificationConfigs {
   /// * sendFacility, the care center that the message came from, from the MSH-4 segment. For example, sendFacility = "ABC".
   /// * PatientId(value, type), which matches if the message lists a patient having an ID of the given value and type in the PID-2, PID-3, or PID-4 segments. For example, PatientId("123456", "MRN").
   /// * labels.x, a string value of the label with key x as set using the Message.labels map. For example, labels."priority"="high". The operator :* can be used to assert the existence of a label. For example, labels."priority":*.
-  final pulumi.Input<String>? filter;
+  final pulumi.Input<String?>? filter;
   /// The Cloud Pub/Sub topic that notifications of changes are published on. Supplied by the client.
   /// PubsubMessage.Data will contain the resource name. PubsubMessage.MessageId is the ID of this message.
   /// It is guaranteed to be unique within the topic. PubsubMessage.PublishTime is the time at which the message

@@ -9,7 +9,7 @@ class EndpointPolicyEndpointMatcherMetadataLabelMatcher {
   final pulumi.Input<String> metadataLabelMatchCriteria;
   /// The list of label value pairs that must match labels in the provided metadata based on filterMatchCriteria
   /// Structure is documented below.
-  final pulumi.Input<List<EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabel>>? metadataLabels;
+  final pulumi.Input<List<EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabel>?>? metadataLabels;
 
   /// Creates a new [EndpointPolicyEndpointMatcherMetadataLabelMatcher].
   /// [metadataLabelMatchCriteria] Specifies how matching should be done.

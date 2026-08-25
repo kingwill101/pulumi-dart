@@ -31,7 +31,7 @@ class GetServiceTemplateVolumeSecret {
 
   factory GetServiceTemplateVolumeSecret.fromMap(Map<String, dynamic> map) {
     return GetServiceTemplateVolumeSecret(
-      defaultMode: pulumi.Input.fromValue(map['defaultMode'] as int),
+      defaultMode: pulumi.Input.fromValue((map['defaultMode'] as num).toInt()),
       items: pulumi.Input.fromValue(pulumi.Input.decodeList<GetServiceTemplateVolumeSecretItem>(map['items']!, (value) => GetServiceTemplateVolumeSecretItem.fromMap((value as Map).cast<String, dynamic>()))),
       secret: pulumi.Input.fromValue(map['secret'] as String),
     );

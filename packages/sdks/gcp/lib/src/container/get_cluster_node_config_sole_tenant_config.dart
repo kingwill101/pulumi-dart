@@ -26,7 +26,7 @@ class GetClusterNodeConfigSoleTenantConfig {
 
   factory GetClusterNodeConfigSoleTenantConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterNodeConfigSoleTenantConfig(
-      minNodeCpus: pulumi.Input.fromValue(map['minNodeCpus'] as int),
+      minNodeCpus: pulumi.Input.fromValue((map['minNodeCpus'] as num).toInt()),
       nodeAffinities: pulumi.Input.fromValue(pulumi.Input.decodeList<GetClusterNodeConfigSoleTenantConfigNodeAffinity>(map['nodeAffinities']!, (value) => GetClusterNodeConfigSoleTenantConfigNodeAffinity.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }

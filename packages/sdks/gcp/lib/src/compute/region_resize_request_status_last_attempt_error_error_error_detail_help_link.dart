@@ -4,10 +4,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailHelpLink {
   /// An optional description of this resize-request.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// (Output)
   /// The URL of the link.
-  final pulumi.Input<String>? url;
+  final pulumi.Input<String?>? url;
 
   /// Creates a new [RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailHelpLink].
   /// [description] An optional description of this resize-request.

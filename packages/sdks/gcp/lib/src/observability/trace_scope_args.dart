@@ -13,15 +13,15 @@ class TraceScopeArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Describes this trace scope.
   /// The maximum length of the description is 8000 characters.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// GCP region the TraceScope is stored in. Only `global` is supported.
   final pulumi.Input<String> location;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Names of the projects that are included in this trace scope.
   /// *  `projects/[PROJECT_ID]`
   /// A trace scope can include a maximum of 20 projects.

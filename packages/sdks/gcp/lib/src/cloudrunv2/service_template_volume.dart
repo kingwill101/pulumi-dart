@@ -10,21 +10,21 @@ import 'service_template_volume_secret.dart';
 class ServiceTemplateVolume {
   /// For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
   /// Structure is documented below.
-  final pulumi.Input<ServiceTemplateVolumeCloudSqlInstance>? cloudSqlInstance;
+  final pulumi.Input<ServiceTemplateVolumeCloudSqlInstance?>? cloudSqlInstance;
   /// Ephemeral storage used as a shared volume.
   /// Structure is documented below.
-  final pulumi.Input<ServiceTemplateVolumeEmptyDir>? emptyDir;
+  final pulumi.Input<ServiceTemplateVolumeEmptyDir?>? emptyDir;
   /// Cloud Storage bucket mounted as a volume using GCSFuse. This feature is only supported in the gen2 execution environment.
   /// Structure is documented below.
-  final pulumi.Input<ServiceTemplateVolumeGcs>? gcs;
+  final pulumi.Input<ServiceTemplateVolumeGcs?>? gcs;
   /// Volume's name.
   final pulumi.Input<String> name;
   /// Represents an NFS mount.
   /// Structure is documented below.
-  final pulumi.Input<ServiceTemplateVolumeNfs>? nfs;
+  final pulumi.Input<ServiceTemplateVolumeNfs?>? nfs;
   /// Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
   /// Structure is documented below.
-  final pulumi.Input<ServiceTemplateVolumeSecret>? secret;
+  final pulumi.Input<ServiceTemplateVolumeSecret?>? secret;
 
   /// Creates a new [ServiceTemplateVolume].
   /// [cloudSqlInstance] For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.

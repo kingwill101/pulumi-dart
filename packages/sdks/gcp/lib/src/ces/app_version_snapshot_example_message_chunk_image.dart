@@ -5,14 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AppVersionSnapshotExampleMessageChunkImage {
   /// (Output)
   /// Raw bytes of the image.
-  final pulumi.Input<String>? data;
+  final pulumi.Input<String?>? data;
   /// (Output)
   /// The IANA standard MIME type of the source data.
   /// Supported image types includes:
   /// * image/png
   /// * image/jpeg
   /// * image/webp
-  final pulumi.Input<String>? mimeType;
+  final pulumi.Input<String?>? mimeType;
 
   /// Creates a new [AppVersionSnapshotExampleMessageChunkImage].
   /// [data] (Output)

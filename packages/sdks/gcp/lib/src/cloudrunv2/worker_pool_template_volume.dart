@@ -10,21 +10,21 @@ import 'worker_pool_template_volume_secret.dart';
 class WorkerPoolTemplateVolume {
   /// For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
   /// Structure is documented below.
-  final pulumi.Input<WorkerPoolTemplateVolumeCloudSqlInstance>? cloudSqlInstance;
+  final pulumi.Input<WorkerPoolTemplateVolumeCloudSqlInstance?>? cloudSqlInstance;
   /// Ephemeral storage used as a shared volume.
   /// Structure is documented below.
-  final pulumi.Input<WorkerPoolTemplateVolumeEmptyDir>? emptyDir;
+  final pulumi.Input<WorkerPoolTemplateVolumeEmptyDir?>? emptyDir;
   /// Cloud Storage bucket mounted as a volume using GCSFuse. This feature is only supported in the gen2 execution environment.
   /// Structure is documented below.
-  final pulumi.Input<WorkerPoolTemplateVolumeGcs>? gcs;
+  final pulumi.Input<WorkerPoolTemplateVolumeGcs?>? gcs;
   /// Volume's name.
   final pulumi.Input<String> name;
   /// Represents an NFS mount.
   /// Structure is documented below.
-  final pulumi.Input<WorkerPoolTemplateVolumeNfs>? nfs;
+  final pulumi.Input<WorkerPoolTemplateVolumeNfs?>? nfs;
   /// Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
   /// Structure is documented below.
-  final pulumi.Input<WorkerPoolTemplateVolumeSecret>? secret;
+  final pulumi.Input<WorkerPoolTemplateVolumeSecret?>? secret;
 
   /// Creates a new [WorkerPoolTemplateVolume].
   /// [cloudSqlInstance] For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.

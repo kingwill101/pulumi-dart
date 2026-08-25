@@ -1,0 +1,3 @@
+name: dart-scalar-returns-example
+runtime: dart
+main: example/main.dart

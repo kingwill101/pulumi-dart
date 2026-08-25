@@ -3,11 +3,11 @@
 import 'package:pulumi_configurer/index.dart' as module_index;
 import 'package:pulumi_configurer/providers.dart' as module_providers;
 
-final index = const _IndexModuleNamespace();
-final providers = const _ProvidersModuleNamespace();
+final index = _IndexModuleNamespace();
+final providers = _ProvidersModuleNamespace();
 
 class _IndexModuleNamespace {
-  const _IndexModuleNamespace();
+  _IndexModuleNamespace();
   final Configurer = module_index.Configurer.new;
   final ConfigurerArgs = module_index.ConfigurerArgs.new;
   final ConfigurerNestedPlainProviderResult = module_index.ConfigurerNestedPlainProviderResult.new;
@@ -25,7 +25,7 @@ class _IndexModuleNamespace {
 }
 
 class _ProvidersModuleNamespace {
-  const _ProvidersModuleNamespace();
+  _ProvidersModuleNamespace();
   final Configurer = module_providers.ProviderProvider.new;
   final ConfigurerArgs = module_providers.ProviderArgs.new;
   final ProviderArgs = module_providers.ProviderArgs.new;

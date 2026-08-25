@@ -263,7 +263,7 @@ class FirewallPolicyAssociation extends pulumi.CustomResource {
           'gcp:compute/firewallPolicyAssociation:FirewallPolicyAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     attachmentTarget = registerOutput<String>('attachmentTarget');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -277,11 +277,12 @@ class FirewallPolicyAssociation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FirewallPolicyAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return FirewallPolicyAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -295,6 +296,22 @@ class FirewallPolicyAssociation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    attachmentTarget = registerOutput<String>('attachmentTarget');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    firewallPolicy = registerOutput<String>('firewallPolicy');
+    this.name = registerOutput<String>('name');
+    shortName = registerOutput<String>('shortName');
+  }
+
+  /// Creates a typed reference to an existing [FirewallPolicyAssociation] resource.
+  FirewallPolicyAssociation.reference(String urn)
+    : super(
+        'gcp:compute/firewallPolicyAssociation:FirewallPolicyAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     attachmentTarget = registerOutput<String>('attachmentTarget');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     firewallPolicy = registerOutput<String>('firewallPolicy');

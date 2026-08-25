@@ -5,10 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SubnetDhcpAddressRange {
   /// (Output)
   /// The first IP address of the range.
-  final pulumi.Input<String>? firstAddress;
+  final pulumi.Input<String?>? firstAddress;
   /// (Output)
   /// The last IP address of the range.
-  final pulumi.Input<String>? lastAddress;
+  final pulumi.Input<String?>? lastAddress;
 
   /// Creates a new [SubnetDhcpAddressRange].
   /// [firstAddress] (Output)

@@ -5,51 +5,51 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering GatewayAdvertisedRoute resources.
 class GatewayAdvertisedRouteState {
   /// The time the gateway advertised route was created.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// An optional description of the gateway advertised route.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveLabels;
+  final pulumi.Input<Map<String, String>?>? effectiveLabels;
   /// This route's advertised IP address range. Must be a valid CIDR-formatted prefix.
   /// If an IP address is provided without a subnet mask, it is interpreted as, for IPv4, a /32 singular IP address range, and, for IPv6, /128
-  final pulumi.Input<String>? ipRange;
+  final pulumi.Input<String?>? ipRange;
   /// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The location for the resource
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the gateway advertised route. Route names must be unique.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The priority of this advertised route. You can choose a value from 0 to 65335.
   /// If you don't provide a value, Google Cloud assigns a priority of 100 to the ranges.
-  final pulumi.Input<int>? priority;
+  final pulumi.Input<int?>? priority;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  final pulumi.Input<Map<String, String>>? pulumiLabels;
+  final pulumi.Input<Map<String, String>?>? pulumiLabels;
   /// the recipient of this advertised route
   /// Possible values are: `RECIPIENT_UNSPECIFIED`, `ADVERTISE_TO_HUB`.
-  final pulumi.Input<String>? recipient;
+  final pulumi.Input<String?>? recipient;
   /// The name of the spoke
-  final pulumi.Input<String>? spoke;
+  final pulumi.Input<String?>? spoke;
   /// The current lifecycle state of this gateway advertised route.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// The Google-generated UUID for the gateway advertised route.
   /// This value is unique across all gateway advertised route resources.
   /// If a gateway advertised route is deleted and another with the same name is created, the new route is assigned a different uniqueId.
-  final pulumi.Input<String>? uniqueId;
+  final pulumi.Input<String?>? uniqueId;
   /// The time the gateway advertised route was last updated.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [GatewayAdvertisedRouteState].
   /// [createTime] The time the gateway advertised route was created.
@@ -118,7 +118,7 @@ class GatewayAdvertisedRouteState {
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       pulumiLabels: (() { final guardedValue = map['pulumiLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       recipient: (() { final guardedValue = map['recipient']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

@@ -6,35 +6,35 @@ import 'prevention_deidentify_template_deidentify_config.dart';
 /// Input properties used for looking up and filtering PreventionDeidentifyTemplate resources.
 class PreventionDeidentifyTemplateState {
   /// The creation timestamp of an deidentifyTemplate. Set by the server.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Configuration of the deidentify template
   /// Structure is documented below.
-  final pulumi.Input<PreventionDeidentifyTemplateDeidentifyConfig>? deidentifyConfig;
+  final pulumi.Input<PreventionDeidentifyTemplateDeidentifyConfig?>? deidentifyConfig;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// A description of the template.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// User set display name of the template.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The resource name of the template. Set by the server.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The parent of the template in any of the following formats:
   /// * `projects/{{project}}`
   /// * `projects/{{project}}/locations/{{location}}`
   /// * `organizations/{{organization_id}}`
   /// * `organizations/{{organization_id}}/locations/{{location}}`
-  final pulumi.Input<String>? parent;
+  final pulumi.Input<String?>? parent;
   /// The template id can contain uppercase and lowercase letters, numbers, and hyphens;
   /// that is, it must match the regular expression: [a-zA-Z\d-_]+. The maximum length is
   /// 100 characters. Can be empty to allow the system to generate one.
-  final pulumi.Input<String>? templateId;
+  final pulumi.Input<String?>? templateId;
   /// The last update timestamp of an deidentifyTemplate. Set by the server.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [PreventionDeidentifyTemplateState].
   /// [createTime] The creation timestamp of an deidentifyTemplate. Set by the server.

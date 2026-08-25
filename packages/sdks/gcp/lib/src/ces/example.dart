@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'example_args.dart';
+import 'example_message.dart';
 import 'example_state.dart';
 
 /// An example represents a sample conversation between the user and the agent(s).
@@ -1433,7 +1434,7 @@ class Example extends pulumi.CustomResource {
   late final pulumi.Output<String> location;
   /// The collection of messages that make up the conversation.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> messages;
+  late final pulumi.Output<List<ExampleMessage>?> messages;
   /// Identifier. The unique identifier of the example.
   /// Format:
   /// `projects/{project}/locations/{location}/apps/{app}/examples/{example}`
@@ -1456,7 +1457,7 @@ class Example extends pulumi.CustomResource {
           'gcp:ces/example:Example',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     app = registerOutput<String>('app');
     createTime = registerOutput<String>('createTime');
@@ -1468,7 +1469,7 @@ class Example extends pulumi.CustomResource {
     exampleId = registerOutput<String>('exampleId');
     invalid = registerOutput<bool>('invalid');
     location = registerOutput<String>('location');
-    messages = registerOutput<List<Map<String, dynamic>>?>('messages');
+    messages = registerOutput<List<ExampleMessage>?>('messages', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ExampleMessage>(guardedValue, (value) => ExampleMessage.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     updateTime = registerOutput<String>('updateTime');
@@ -1479,11 +1480,12 @@ class Example extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ExampleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Example._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1507,7 +1509,32 @@ class Example extends pulumi.CustomResource {
     exampleId = registerOutput<String>('exampleId');
     invalid = registerOutput<bool>('invalid');
     location = registerOutput<String>('location');
-    messages = registerOutput<List<Map<String, dynamic>>?>('messages');
+    messages = registerOutput<List<ExampleMessage>?>('messages', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ExampleMessage>(guardedValue, (value) => ExampleMessage.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [Example] resource.
+  Example.reference(String urn)
+    : super(
+        'gcp:ces/example:Example',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    app = registerOutput<String>('app');
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    entryAgent = registerOutput<String?>('entryAgent');
+    etag = registerOutput<String>('etag');
+    exampleId = registerOutput<String>('exampleId');
+    invalid = registerOutput<bool>('invalid');
+    location = registerOutput<String>('location');
+    messages = registerOutput<List<ExampleMessage>?>('messages', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ExampleMessage>(guardedValue, (value) => ExampleMessage.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     updateTime = registerOutput<String>('updateTime');

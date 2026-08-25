@@ -8,9 +8,9 @@ class AiFeatureOnlineStoreBigtable {
   /// Structure is documented below.
   final pulumi.Input<AiFeatureOnlineStoreBigtableAutoScaling> autoScaling;
   /// Optional. If true, enable direct access to the Bigtable instance.
-  final pulumi.Input<bool>? enableDirectBigtableAccess;
+  final pulumi.Input<bool?>? enableDirectBigtableAccess;
   /// The zone where the Bigtable instance will be created.
-  final pulumi.Input<String>? zone;
+  final pulumi.Input<String?>? zone;
 
   /// Creates a new [AiFeatureOnlineStoreBigtable].
   /// [autoScaling] Autoscaling config applied to Bigtable Instance.

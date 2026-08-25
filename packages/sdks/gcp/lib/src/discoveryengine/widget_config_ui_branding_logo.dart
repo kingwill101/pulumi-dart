@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WidgetConfigUiBrandingLogo {
   /// Image URL.
-  final pulumi.Input<String>? url;
+  final pulumi.Input<String?>? url;
 
   /// Creates a new [WidgetConfigUiBrandingLogo].
   /// [url] Image URL.

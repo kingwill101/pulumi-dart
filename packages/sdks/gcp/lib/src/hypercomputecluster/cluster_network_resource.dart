@@ -9,14 +9,14 @@ class ClusterNetworkResource {
   /// can either be imported from an existing Google Cloud resource or initialized
   /// when the cluster is created.
   /// Structure is documented below.
-  final pulumi.Input<ClusterNetworkResourceConfig>? config;
+  final pulumi.Input<ClusterNetworkResourceConfig?>? config;
   /// The identifier for this object. Format specified above.
   final pulumi.Input<String> id;
   /// (Output)
   /// A reference to a [VPC network](https://cloud.google.com/vpc/docs/vpc) in
   /// Google Compute Engine.
   /// Structure is documented below.
-  final pulumi.Input<List<ClusterNetworkResourceNetwork>>? networks;
+  final pulumi.Input<List<ClusterNetworkResourceNetwork>?>? networks;
 
   /// Creates a new [ClusterNetworkResource].
   /// [config] Describes how a network resource should be initialized. Each network resource

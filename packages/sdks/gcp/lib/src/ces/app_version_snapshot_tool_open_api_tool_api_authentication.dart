@@ -9,20 +9,20 @@ class AppVersionSnapshotToolOpenApiToolApiAuthentication {
   /// (Output)
   /// Configurations for authentication with API key.
   /// Structure is documented below.
-  final pulumi.Input<List<AppVersionSnapshotToolOpenApiToolApiAuthenticationApiKeyConfig>>? apiKeyConfigs;
+  final pulumi.Input<List<AppVersionSnapshotToolOpenApiToolApiAuthenticationApiKeyConfig>?>? apiKeyConfigs;
   /// (Output)
   /// Configurations for authentication with OAuth.
   /// Structure is documented below.
-  final pulumi.Input<List<AppVersionSnapshotToolOpenApiToolApiAuthenticationOauthConfig>>? oauthConfigs;
+  final pulumi.Input<List<AppVersionSnapshotToolOpenApiToolApiAuthenticationOauthConfig>?>? oauthConfigs;
   /// (Output)
   /// Configurations for authentication using a custom service account.
   /// Structure is documented below.
-  final pulumi.Input<List<AppVersionSnapshotToolOpenApiToolApiAuthenticationServiceAccountAuthConfig>>? serviceAccountAuthConfigs;
+  final pulumi.Input<List<AppVersionSnapshotToolOpenApiToolApiAuthenticationServiceAccountAuthConfig>?>? serviceAccountAuthConfigs;
   /// (Output)
   /// Configurations for authentication with [ID
   /// token](https://cloud.google.com/docs/authentication/token-types#id) generated
   /// from service agent.
-  final pulumi.Input<List<Map<String, dynamic>>>? serviceAgentIdTokenAuthConfigs;
+  final pulumi.Input<List<Map<String, dynamic>>?>? serviceAgentIdTokenAuthConfigs;
 
   /// Creates a new [AppVersionSnapshotToolOpenApiToolApiAuthentication].
   /// [apiKeyConfigs] (Output)

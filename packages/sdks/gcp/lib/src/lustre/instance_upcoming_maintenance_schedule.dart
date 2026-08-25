@@ -5,10 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstanceUpcomingMaintenanceSchedule {
   /// (Output)
   /// The scheduled end time for the maintenance.
-  final pulumi.Input<String>? endTime;
+  final pulumi.Input<String?>? endTime;
   /// (Output)
   /// The scheduled start time for the maintenance.
-  final pulumi.Input<String>? startTime;
+  final pulumi.Input<String?>? startTime;
 
   /// Creates a new [InstanceUpcomingMaintenanceSchedule].
   /// [endTime] (Output)

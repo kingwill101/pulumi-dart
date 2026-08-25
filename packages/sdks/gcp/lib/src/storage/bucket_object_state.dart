@@ -8,78 +8,78 @@ import 'bucket_object_retention.dart';
 /// Input properties used for looking up and filtering BucketObject resources.
 class BucketObjectState {
   /// The name of the containing bucket.
-  final pulumi.Input<String>? bucket;
+  final pulumi.Input<String?>? bucket;
   /// [Cache-Control](https://tools.ietf.org/html/rfc7234#section-5.2)
   /// directive to specify caching behavior of object data. If omitted and object is accessible to all anonymous users, the default will be public, max-age=3600
-  final pulumi.Input<String>? cacheControl;
+  final pulumi.Input<String?>? cacheControl;
   /// Data as `string` to be uploaded. Must be defined if `source` is not. **Note**: The `content` field is marked as sensitive.
-  final pulumi.Input<String>? content;
+  final pulumi.Input<String?>? content;
   /// [Content-Disposition](https://tools.ietf.org/html/rfc6266) of the object data.
-  final pulumi.Input<String>? contentDisposition;
+  final pulumi.Input<String?>? contentDisposition;
   /// [Content-Encoding](https://tools.ietf.org/html/rfc7231#section-3.1.2.2) of the object data.
-  final pulumi.Input<String>? contentEncoding;
+  final pulumi.Input<String?>? contentEncoding;
   /// [Content-Language](https://tools.ietf.org/html/rfc7231#section-3.1.3.2) of the object data.
-  final pulumi.Input<String>? contentLanguage;
+  final pulumi.Input<String?>? contentLanguage;
   /// [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) of the object data. Defaults to "application/octet-stream" or "text/plain; charset=utf-8".
-  final pulumi.Input<String>? contentType;
+  final pulumi.Input<String?>? contentType;
   /// Contexts attached to an object, in key-value pairs. For more information about object contexts, see [Object contexts overview](https://cloud.google.com/storage/docs/object-contexts). Structure is documented below.
-  final pulumi.Input<BucketObjectContexts>? contexts;
+  final pulumi.Input<BucketObjectContexts?>? contexts;
   /// (Computed) Base 64 CRC32 hash of the uploaded data.
-  final pulumi.Input<String>? crc32c;
+  final pulumi.Input<String?>? crc32c;
   /// Enables object encryption with Customer-Supplied Encryption Key (CSEK). Google [documentation about CSEK.](https://cloud.google.com/storage/docs/encryption/customer-supplied-keys)
   /// Structure is documented below.
-  final pulumi.Input<BucketObjectCustomerEncryption>? customerEncryption;
+  final pulumi.Input<BucketObjectCustomerEncryption?>? customerEncryption;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Detect changes to local file or changes made outside of Terraform to the file stored on the server. MD5 hash of the data, encoded using [base64](https://datatracker.ietf.org/doc/html/rfc4648#section-4). This field is not present for [composite objects](https://cloud.google.com/storage/docs/composite-objects). For more information about using the MD5 hash, see [Hashes and ETags: Best Practices](https://cloud.google.com/storage/docs/hashes-etags#json-api).
   ///
   /// &gt; **Warning:** For dynamically populated files or objects, `detectMd5hash` cannot track or detect changes and will not trigger updates to the objects in the bucket. Please use `sourceMd5hash` instead.
-  final pulumi.Input<String>? detectMd5hash;
+  final pulumi.Input<String?>? detectMd5hash;
   /// Whether an object is under [event-based hold](https://cloud.google.com/storage/docs/object-holds#hold-types). Event-based hold is a way to retain objects until an event occurs, which is signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects will be subject to bucket-level retention (if any).
-  final pulumi.Input<bool>? eventBasedHold;
+  final pulumi.Input<bool?>? eventBasedHold;
   /// When set to true, it ensure the object's Content-Type is empty.
-  final pulumi.Input<bool>? forceEmptyContentType;
+  final pulumi.Input<bool?>? forceEmptyContentType;
   /// (Computed) The content generation of this object. Used for object [versioning](https://cloud.google.com/storage/docs/object-versioning) and [soft delete](https://cloud.google.com/storage/docs/soft-delete).
-  final pulumi.Input<int>? generation;
+  final pulumi.Input<int?>? generation;
   /// The resource name of the Cloud KMS key that will be used to [encrypt](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) the object.
-  final pulumi.Input<String>? kmsKeyName;
+  final pulumi.Input<String?>? kmsKeyName;
   /// (Computed) Base 64 MD5 hash of the uploaded data.
-  final pulumi.Input<String>? md5hash;
+  final pulumi.Input<String?>? md5hash;
   /// (Computed) Hex value of md5hash`
-  final pulumi.Input<String>? md5hexhash;
+  final pulumi.Input<String?>? md5hexhash;
   /// (Computed) A url reference to download this object.
-  final pulumi.Input<String>? mediaLink;
+  final pulumi.Input<String?>? mediaLink;
   /// User-provided metadata, in key/value pairs.
   ///
   /// One of the following is required:
-  final pulumi.Input<Map<String, String>>? metadata;
+  final pulumi.Input<Map<String, String>?>? metadata;
   /// The name of the object. If you're interpolating the name of this object, see `outputName` instead.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// (Computed) The name of the object. Use this field in interpolations with `gcp.storage.ObjectACL` to recreate
   /// `gcp.storage.ObjectACL` resources when your `gcp.storage.BucketObject` is recreated.
-  final pulumi.Input<String>? outputName;
+  final pulumi.Input<String?>? outputName;
   /// The [object retention](http://cloud.google.com/storage/docs/object-lock) settings for the object. The retention settings allow an object to be retained until a provided date. Structure is documented below.
-  final pulumi.Input<BucketObjectRetention>? retention;
+  final pulumi.Input<BucketObjectRetention?>? retention;
   /// (Computed) A url reference to this object.
-  final pulumi.Input<String>? selfLink;
+  final pulumi.Input<String?>? selfLink;
   /// A path to the data you want to upload. Must be defined
   /// if `content` is not.
   ///
   /// - - -
   final pulumi.Input<dynamic>? source;
   /// User-provided md5hash to trigger replacement of object in storage bucket, Must be Base 64 MD5 hash of the object data. The usual way to set this is filemd5("file.zip"), where "file.zip" is the local filename
-  final pulumi.Input<String>? sourceMd5hash;
+  final pulumi.Input<String?>? sourceMd5hash;
   /// The [StorageClass](https://cloud.google.com/storage/docs/storage-classes) of the new bucket object.
   /// Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`. If not provided, this defaults to the bucket's default
   /// storage class or to a [standard](https://cloud.google.com/storage/docs/storage-classes#standard) class.
-  final pulumi.Input<String>? storageClass;
+  final pulumi.Input<String?>? storageClass;
   /// Whether an object is under [temporary hold](https://cloud.google.com/storage/docs/object-holds#hold-types). While this flag is set to true, the object is protected against deletion and overwrites.
-  final pulumi.Input<bool>? temporaryHold;
+  final pulumi.Input<bool?>? temporaryHold;
 
   /// Creates a new [BucketObjectState].
   /// [bucket] The name of the containing bucket.
@@ -190,7 +190,7 @@ class BucketObjectState {
       detectMd5hash: (() { final guardedValue = map['detectMd5hash']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       eventBasedHold: (() { final guardedValue = map['eventBasedHold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       forceEmptyContentType: (() { final guardedValue = map['forceEmptyContentType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      generation: (() { final guardedValue = map['generation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      generation: (() { final guardedValue = map['generation']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       kmsKeyName: (() { final guardedValue = map['kmsKeyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       md5hash: (() { final guardedValue = map['md5hash']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       md5hexhash: (() { final guardedValue = map['md5hexhash']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

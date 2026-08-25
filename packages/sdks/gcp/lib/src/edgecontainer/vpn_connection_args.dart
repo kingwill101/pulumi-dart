@@ -16,30 +16,30 @@ class VpnConnectionArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Whether this VPN connection has HA enabled on cluster side. If enabled, when creating VPN connection we will attempt to use 2 ANG floating IPs.
-  final pulumi.Input<bool>? enableHighAvailability;
+  final pulumi.Input<bool?>? enableHighAvailability;
   /// Labels associated with this resource.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Google Cloud Platform location.
   final pulumi.Input<String> location;
   /// The resource name of VPN connection
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// NAT gateway IP, or WAN IP address. If a customer has multiple NAT IPs, the customer needs to configure NAT such that only one external IP maps to the GMEC Anthos cluster.
   /// This is empty if NAT is not used.
-  final pulumi.Input<String>? natGatewayIp;
+  final pulumi.Input<String?>? natGatewayIp;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The VPN connection Cloud Router name.
-  final pulumi.Input<String>? router;
+  final pulumi.Input<String?>? router;
   /// The network ID of VPC to connect to.
-  final pulumi.Input<String>? vpc;
+  final pulumi.Input<String?>? vpc;
   /// Project detail of the VPC network. Required if VPC is in a different project than the cluster project.
   /// Structure is documented below.
-  final pulumi.Input<VpnConnectionVpcProject>? vpcProject;
+  final pulumi.Input<VpnConnectionVpcProject?>? vpcProject;
 
   /// Creates a new [VpnConnectionArgs].
   /// [cluster] The canonical Cluster name to connect to. It is in the form of projects/{project}/locations/{location}/clusters/{cluster}.

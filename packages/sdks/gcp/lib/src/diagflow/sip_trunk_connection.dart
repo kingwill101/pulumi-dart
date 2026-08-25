@@ -6,17 +6,17 @@ import 'sip_trunk_connection_error_detail.dart';
 class SipTrunkConnection {
   /// (Output)
   /// Output only. The unique identifier of the connection.
-  final pulumi.Input<String>? connectionId;
+  final pulumi.Input<String?>? connectionId;
   /// (Output)
   /// Output only. The error details of the connection.
   /// Structure is documented below.
-  final pulumi.Input<List<SipTrunkConnectionErrorDetail>>? errorDetails;
+  final pulumi.Input<List<SipTrunkConnectionErrorDetail>?>? errorDetails;
   /// (Output)
   /// Output only. The state of the connection.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// (Output)
   /// Output only. The last update time of the connection.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [SipTrunkConnection].
   /// [connectionId] (Output)

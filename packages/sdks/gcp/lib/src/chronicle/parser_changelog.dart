@@ -6,7 +6,7 @@ import 'parser_changelog_entry.dart';
 class ParserChangelog {
   /// all the changelog of a parser.
   /// Structure is documented below.
-  final pulumi.Input<List<ParserChangelogEntry>>? entries;
+  final pulumi.Input<List<ParserChangelogEntry>?>? entries;
 
   /// Creates a new [ParserChangelog].
   /// [entries] all the changelog of a parser.

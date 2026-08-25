@@ -10,29 +10,29 @@ import 'application_iap.dart';
 /// {@macro pulumi_appengine_application_application_args_doc}
 class ApplicationArgs {
   /// The domain to authenticate users with when using App Engine's User API.
-  final pulumi.Input<String>? authDomain;
+  final pulumi.Input<String?>? authDomain;
   /// The type of the Cloud Firestore or Cloud Datastore database associated with this application.
   /// Can be `CLOUD_FIRESTORE` or `CLOUD_DATASTORE_COMPATIBILITY` for new
   /// instances.  To support old instances, the value `CLOUD_DATASTORE` is accepted by the provider, but will be rejected by the API.
   /// To create a Cloud Firestore database without creating an App Engine application, use the
   /// `gcp.firestore.Database`
   /// resource instead.
-  final pulumi.Input<String>? databaseType;
+  final pulumi.Input<String?>? databaseType;
   /// A block of optional settings to configure specific App Engine features:
-  final pulumi.Input<ApplicationFeatureSettings>? featureSettings;
+  final pulumi.Input<ApplicationFeatureSettings?>? featureSettings;
   /// Settings for enabling Cloud Identity Aware Proxy
-  final pulumi.Input<ApplicationIap>? iap;
+  final pulumi.Input<ApplicationIap?>? iap;
   /// The [location](https://cloud.google.com/appengine/docs/locations)
   /// to serve the app from.
   final pulumi.Input<String> locationId;
   /// The project ID to create the application under.
   /// ~&gt;**NOTE:** GCP only accepts project ID, not project number. If you are using number,
   /// you may get a "Permission denied" error.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The serving status of the app.
-  final pulumi.Input<String>? servingStatus;
+  final pulumi.Input<String?>? servingStatus;
   /// A list of the SSL policy that will be applied. Each block has a `SSL_POLICY_UNSPECIFIED`, `DEFAULT`, and `MODERN` field.
-  final pulumi.Input<String>? sslPolicy;
+  final pulumi.Input<String?>? sslPolicy;
 
   /// Creates a new [ApplicationArgs].
   /// [authDomain] The domain to authenticate users with when using App Engine's User API.

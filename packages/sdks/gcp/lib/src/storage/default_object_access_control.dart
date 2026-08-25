@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'default_object_access_control_args.dart';
+import 'default_object_access_control_project_team.dart';
 import 'default_object_access_control_state.dart';
 
 /// The DefaultObjectAccessControls resources represent the Access Control
@@ -224,7 +225,7 @@ class DefaultObjectAccessControl extends pulumi.CustomResource {
   late final pulumi.Output<String?> object_;
   /// The project team associated with the entity
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> projectTeams;
+  late final pulumi.Output<List<DefaultObjectAccessControlProjectTeam>> projectTeams;
   /// The access permission for the entity.
   /// Possible values are: `OWNER`, `READER`.
   late final pulumi.Output<String> role;
@@ -241,7 +242,7 @@ class DefaultObjectAccessControl extends pulumi.CustomResource {
           'gcp:storage/defaultObjectAccessControl:DefaultObjectAccessControl',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     bucket = registerOutput<String>('bucket');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -251,7 +252,7 @@ class DefaultObjectAccessControl extends pulumi.CustomResource {
     entityId = registerOutput<String>('entityId');
     generation = registerOutput<int>('generation');
     object_ = registerOutput<String?>('object');
-    projectTeams = registerOutput<List<Map<String, dynamic>>>('projectTeams');
+    projectTeams = registerOutput<List<DefaultObjectAccessControlProjectTeam>>('projectTeams', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DefaultObjectAccessControlProjectTeam>(guardedValue, (value) => DefaultObjectAccessControlProjectTeam.fromMap((value as Map).cast<String, dynamic>())); });
     role = registerOutput<String>('role');
   }
 
@@ -260,11 +261,12 @@ class DefaultObjectAccessControl extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DefaultObjectAccessControlState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DefaultObjectAccessControl._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -286,7 +288,28 @@ class DefaultObjectAccessControl extends pulumi.CustomResource {
     entityId = registerOutput<String>('entityId');
     generation = registerOutput<int>('generation');
     object_ = registerOutput<String?>('object');
-    projectTeams = registerOutput<List<Map<String, dynamic>>>('projectTeams');
+    projectTeams = registerOutput<List<DefaultObjectAccessControlProjectTeam>>('projectTeams', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DefaultObjectAccessControlProjectTeam>(guardedValue, (value) => DefaultObjectAccessControlProjectTeam.fromMap((value as Map).cast<String, dynamic>())); });
+    role = registerOutput<String>('role');
+  }
+
+  /// Creates a typed reference to an existing [DefaultObjectAccessControl] resource.
+  DefaultObjectAccessControl.reference(String urn)
+    : super(
+        'gcp:storage/defaultObjectAccessControl:DefaultObjectAccessControl',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    bucket = registerOutput<String>('bucket');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    domain = registerOutput<String>('domain');
+    email = registerOutput<String>('email');
+    entity = registerOutput<String>('entity');
+    entityId = registerOutput<String>('entityId');
+    generation = registerOutput<int>('generation');
+    object_ = registerOutput<String?>('object');
+    projectTeams = registerOutput<List<DefaultObjectAccessControlProjectTeam>>('projectTeams', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DefaultObjectAccessControlProjectTeam>(guardedValue, (value) => DefaultObjectAccessControlProjectTeam.fromMap((value as Map).cast<String, dynamic>())); });
     role = registerOutput<String>('role');
   }
 }

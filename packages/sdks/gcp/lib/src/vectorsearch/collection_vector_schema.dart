@@ -6,11 +6,11 @@ import 'collection_vector_schema_dense_vector.dart';
 class CollectionVectorSchema {
   /// Message describing a dense vector field.
   /// Structure is documented below.
-  final pulumi.Input<CollectionVectorSchemaDenseVector>? denseVector;
+  final pulumi.Input<CollectionVectorSchemaDenseVector?>? denseVector;
   /// The identifier for this object. Format specified above.
   final pulumi.Input<String> fieldName;
   /// Message describing a sparse vector field.
-  final pulumi.Input<Map<String, dynamic>>? sparseVector;
+  final pulumi.Input<Map<String, dynamic>?>? sparseVector;
 
   /// Creates a new [CollectionVectorSchema].
   /// [denseVector] Message describing a dense vector field.

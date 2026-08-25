@@ -8,7 +8,7 @@ class ToolDataStoreToolEngineSource {
   /// If empty, the search applies to all DataStores associated with the
   /// Engine.
   /// Structure is documented below.
-  final pulumi.Input<List<ToolDataStoreToolEngineSourceDataStoreSource>>? dataStoreSources;
+  final pulumi.Input<List<ToolDataStoreToolEngineSourceDataStoreSource>?>? dataStoreSources;
   /// Full resource name of the Engine.
   /// Format:
   /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}`
@@ -17,7 +17,7 @@ class ToolDataStoreToolEngineSource {
   /// used if 'data_store_sources' is provided.
   /// See:
   /// https://cloud.google.com/generative-ai-app-builder/docs/filter-search-metadata
-  final pulumi.Input<String>? filter;
+  final pulumi.Input<String?>? filter;
 
   /// Creates a new [ToolDataStoreToolEngineSource].
   /// [dataStoreSources] Use to target specific DataStores within the Engine.

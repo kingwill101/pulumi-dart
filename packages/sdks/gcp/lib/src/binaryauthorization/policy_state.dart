@@ -11,7 +11,7 @@ class PolicyState {
   /// image's name matches a whitelist pattern, the image's admission
   /// requests will always be permitted regardless of your admission rules.
   /// Structure is documented below.
-  final pulumi.Input<List<PolicyAdmissionWhitelistPattern>>? admissionWhitelistPatterns;
+  final pulumi.Input<List<PolicyAdmissionWhitelistPattern>?>? admissionWhitelistPatterns;
   /// Per-cluster admission rules. An admission rule specifies either that
   /// all container images used in a pod creation request must be attested
   /// to by one or more attestors, that all pod creations will be allowed,
@@ -21,28 +21,28 @@ class PolicyState {
   /// A location is either a compute zone (e.g. `us-central1-a`) or a region
   /// (e.g. `us-central1`).
   /// Structure is documented below.
-  final pulumi.Input<List<PolicyClusterAdmissionRule>>? clusterAdmissionRules;
+  final pulumi.Input<List<PolicyClusterAdmissionRule>?>? clusterAdmissionRules;
   /// Default admission rule for a cluster without a per-cluster admission
   /// rule.
   /// Structure is documented below.
-  final pulumi.Input<PolicyDefaultAdmissionRule>? defaultAdmissionRule;
+  final pulumi.Input<PolicyDefaultAdmissionRule?>? defaultAdmissionRule;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// A descriptive comment.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Controls the evaluation of a Google-maintained global admission policy
   /// for common system-level images. Images not covered by the global
   /// policy will be subject to the project admission policy.
   /// Possible values are: `ENABLE`, `DISABLE`.
-  final pulumi.Input<String>? globalPolicyEvaluationMode;
+  final pulumi.Input<String?>? globalPolicyEvaluationMode;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [PolicyState].
   /// [admissionWhitelistPatterns] A whitelist of image patterns to exclude from admission rules. If an

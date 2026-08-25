@@ -11,13 +11,13 @@ class QaScorecardRevisionArgs {
   final pulumi.Input<String> location;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final pulumi.Input<String> qaScorecard;
   /// A unique ID for the new QaScorecardRevision. This ID will become the final
   /// component of the QaScorecardRevision's resource name.
   /// If no ID is specified this resource will get the latest revision on the given scorecard.
-  final pulumi.Input<String>? qaScorecardRevisionId;
+  final pulumi.Input<String?>? qaScorecardRevisionId;
 
   /// Creates a new [QaScorecardRevisionArgs].
   /// [location] Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.

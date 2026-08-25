@@ -6,7 +6,7 @@ class RuntimeMetric {
   /// (Output)
   /// Contains runtime daemon metrics, such as OS and kernels and
   /// sessions stats.
-  final pulumi.Input<Map<String, String>>? systemMetrics;
+  final pulumi.Input<Map<String, String>?>? systemMetrics;
 
   /// Creates a new [RuntimeMetric].
   /// [systemMetrics] (Output)

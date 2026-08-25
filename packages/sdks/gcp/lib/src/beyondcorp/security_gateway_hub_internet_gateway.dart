@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SecurityGatewayHubInternetGateway {
   /// (Output)
   /// Output only. List of IP addresses assigned to the Cloud NAT.
-  final pulumi.Input<List<String>>? assignedIps;
+  final pulumi.Input<List<String>?>? assignedIps;
 
   /// Creates a new [SecurityGatewayHubInternetGateway].
   /// [assignedIps] (Output)

@@ -7,15 +7,15 @@ class RouteWarning {
   /// (Output)
   /// A warning code, if applicable. For example, Compute Engine returns
   /// NO_RESULTS_ON_PAGE if there are no results in the response.
-  final pulumi.Input<String>? code;
+  final pulumi.Input<String?>? code;
   /// (Output)
   /// Metadata about this warning in key: value format. For example:
   /// "data":   {  "key": "scope",  "value": "zones/us-east1-d"  }
   /// Structure is [documented below.
-  final pulumi.Input<List<RouteWarningData>>? datas;
+  final pulumi.Input<List<RouteWarningData>?>? datas;
   /// (Output)
   /// A human-readable description of the warning code.
-  final pulumi.Input<String>? message;
+  final pulumi.Input<String?>? message;
 
   /// Creates a new [RouteWarning].
   /// [code] (Output)

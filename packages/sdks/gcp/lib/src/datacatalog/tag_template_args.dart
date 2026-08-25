@@ -14,19 +14,19 @@ class TagTemplateArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The display name for this template.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Set of tag template field IDs and the settings for the field. This set is an exhaustive list of the allowed fields. This set must contain at least one field and at most 500 fields. The change of fieldId will be resulting in re-creating of field. The change of primitiveType will be resulting in re-creating of field, however if the field is a required, you cannot update it.
   /// Structure is documented below.
   final pulumi.Input<List<TagTemplateField>> fields;
   /// This confirms the deletion of any possible tags using this template. Must be set to true in order to delete the tag template.
-  final pulumi.Input<bool>? forceDelete;
+  final pulumi.Input<bool?>? forceDelete;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Template location region.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The id of the tag template to create.
   final pulumi.Input<String> tagTemplateId;
 

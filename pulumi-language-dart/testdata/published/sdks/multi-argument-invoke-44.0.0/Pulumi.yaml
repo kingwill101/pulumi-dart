@@ -1,0 +1,3 @@
+name: dart-multi-argument-invoke-example
+runtime: dart
+main: example/main.dart

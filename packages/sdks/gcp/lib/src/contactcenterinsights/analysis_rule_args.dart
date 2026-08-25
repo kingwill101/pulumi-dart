@@ -10,35 +10,35 @@ import 'analysis_rule_annotator_selector.dart';
 class AnalysisRuleArgs {
   /// If true, apply this rule to conversations. Otherwise, this rule is
   /// inactive and saved as a draft.
-  final pulumi.Input<bool>? active;
+  final pulumi.Input<bool?>? active;
   /// Percentage of conversations that we should apply this analysis setting
   /// automatically, between [0, 1]. For example, 0.1 means 10%. Conversations
   /// are sampled in a determenestic way. The original runtimePercentage &
   /// upload percentage will be replaced by defining filters on the conversation.
-  final pulumi.Input<double>? analysisPercentage;
+  final pulumi.Input<double?>? analysisPercentage;
   /// Selector of all available annotators and phrase matchers to run.
   /// Structure is documented below.
-  final pulumi.Input<AnalysisRuleAnnotatorSelector>? annotatorSelector;
+  final pulumi.Input<AnalysisRuleAnnotatorSelector?>? annotatorSelector;
   /// Filter for the conversations that should apply this analysis
   /// rule. An empty filter means this analysis rule applies to all
   /// conversations.
   /// Refer to https://cloud.google.com/contact-center/insights/docs/filtering
   /// for details.
-  final pulumi.Input<String>? conversationFilter;
+  final pulumi.Input<String?>? conversationFilter;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Display Name of the analysis rule.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Location of the resource.
   final pulumi.Input<String> location;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [AnalysisRuleArgs].
   /// [active] If true, apply this rule to conversations. Otherwise, this rule is
@@ -76,7 +76,7 @@ class AnalysisRuleArgs {
   factory AnalysisRuleArgs.fromMap(Map<String, dynamic> map) {
     return AnalysisRuleArgs(
       active: (() { final guardedValue = map['active']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      analysisPercentage: (() { final guardedValue = map['analysisPercentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      analysisPercentage: (() { final guardedValue = map['analysisPercentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       annotatorSelector: (() { final guardedValue = map['annotatorSelector']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AnalysisRuleAnnotatorSelector.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       conversationFilter: (() { final guardedValue = map['conversationFilter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'keystores_aliases_key_cert_file_args.dart';
+import 'keystores_aliases_key_cert_file_certs_info.dart';
 import 'keystores_aliases_key_cert_file_state.dart';
 import 'keystores_aliases_key_cert_file_timeouts.dart';
 
@@ -35,7 +36,7 @@ class KeystoresAliasesKeyCertFile extends pulumi.CustomResource {
   late final pulumi.Output<String> cert;
   /// Chain of certificates under this alias.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> certsInfos;
+  late final pulumi.Output<List<KeystoresAliasesKeyCertFileCertsInfo>> certsInfos;
   /// Environment associated with the alias
   late final pulumi.Output<String> environment;
   /// Private Key content, omit if uploading to truststore
@@ -62,16 +63,17 @@ class KeystoresAliasesKeyCertFile extends pulumi.CustomResource {
           'gcp:apigee/keystoresAliasesKeyCertFile:KeystoresAliasesKeyCertFile',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['key', 'password'],
         ) {
     alias = registerOutput<String>('alias');
     cert = registerOutput<String>('cert');
-    certsInfos = registerOutput<List<Map<String, dynamic>>>('certsInfos');
+    certsInfos = registerOutput<List<KeystoresAliasesKeyCertFileCertsInfo>>('certsInfos', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KeystoresAliasesKeyCertFileCertsInfo>(guardedValue, (value) => KeystoresAliasesKeyCertFileCertsInfo.fromMap((value as Map).cast<String, dynamic>())); });
     environment = registerOutput<String>('environment');
-    key = registerOutput<String?>('key');
+    key = registerOutput<String?>('key', isSecret: true);
     keystore = registerOutput<String>('keystore');
     orgId = registerOutput<String>('orgId');
-    password = registerOutput<String?>('password');
+    password = registerOutput<String?>('password', isSecret: true);
     timeouts = registerOutput<KeystoresAliasesKeyCertFileTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KeystoresAliasesKeyCertFileTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
@@ -81,11 +83,12 @@ class KeystoresAliasesKeyCertFile extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     KeystoresAliasesKeyCertFileState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return KeystoresAliasesKeyCertFile._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -101,12 +104,34 @@ class KeystoresAliasesKeyCertFile extends pulumi.CustomResource {
         ) {
     alias = registerOutput<String>('alias');
     cert = registerOutput<String>('cert');
-    certsInfos = registerOutput<List<Map<String, dynamic>>>('certsInfos');
+    certsInfos = registerOutput<List<KeystoresAliasesKeyCertFileCertsInfo>>('certsInfos', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KeystoresAliasesKeyCertFileCertsInfo>(guardedValue, (value) => KeystoresAliasesKeyCertFileCertsInfo.fromMap((value as Map).cast<String, dynamic>())); });
     environment = registerOutput<String>('environment');
-    key = registerOutput<String?>('key');
+    key = registerOutput<String?>('key', isSecret: true);
     keystore = registerOutput<String>('keystore');
     orgId = registerOutput<String>('orgId');
-    password = registerOutput<String?>('password');
+    password = registerOutput<String?>('password', isSecret: true);
+    timeouts = registerOutput<KeystoresAliasesKeyCertFileTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KeystoresAliasesKeyCertFileTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [KeystoresAliasesKeyCertFile] resource.
+  KeystoresAliasesKeyCertFile.reference(String urn)
+    : super(
+        'gcp:apigee/keystoresAliasesKeyCertFile:KeystoresAliasesKeyCertFile',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['key', 'password'],
+        isResourceReference: true,
+      ) {
+    alias = registerOutput<String>('alias');
+    cert = registerOutput<String>('cert');
+    certsInfos = registerOutput<List<KeystoresAliasesKeyCertFileCertsInfo>>('certsInfos', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KeystoresAliasesKeyCertFileCertsInfo>(guardedValue, (value) => KeystoresAliasesKeyCertFileCertsInfo.fromMap((value as Map).cast<String, dynamic>())); });
+    environment = registerOutput<String>('environment');
+    key = registerOutput<String?>('key', isSecret: true);
+    keystore = registerOutput<String>('keystore');
+    orgId = registerOutput<String>('orgId');
+    password = registerOutput<String?>('password', isSecret: true);
     timeouts = registerOutput<KeystoresAliasesKeyCertFileTimeouts?>('timeouts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KeystoresAliasesKeyCertFileTimeouts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }

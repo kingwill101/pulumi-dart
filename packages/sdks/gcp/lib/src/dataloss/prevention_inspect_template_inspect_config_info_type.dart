@@ -9,9 +9,9 @@ class PreventionInspectTemplateInspectConfigInfoType {
   final pulumi.Input<String> name;
   /// Optional custom sensitivity for this InfoType. This only applies to data profiling.
   /// Structure is documented below.
-  final pulumi.Input<PreventionInspectTemplateInspectConfigInfoTypeSensitivityScore>? sensitivityScore;
+  final pulumi.Input<PreventionInspectTemplateInspectConfigInfoTypeSensitivityScore?>? sensitivityScore;
   /// Version name for this InfoType.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [PreventionInspectTemplateInspectConfigInfoType].
   /// [name] Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed

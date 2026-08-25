@@ -8,10 +8,10 @@ class ProjectDefaultNetworkTierState {
   /// This field can take the following values: `PREMIUM` or `STANDARD`.
   ///
   /// - - -
-  final pulumi.Input<String>? networkTier;
+  final pulumi.Input<String?>? networkTier;
   /// The ID of the project in which the resource belongs. If it
   /// is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [ProjectDefaultNetworkTierState].
   /// [networkTier] The default network tier to be configured for the project.

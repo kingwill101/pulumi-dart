@@ -6,7 +6,7 @@ import 'sharedflow_meta_data.dart';
 /// Input properties used for looking up and filtering Sharedflow resources.
 class SharedflowState {
   /// Path to the config zip bundle.
-  final pulumi.Input<String>? configBundle;
+  final pulumi.Input<String?>? configBundle;
   /// (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -15,22 +15,22 @@ class SharedflowState {
   /// When set to "DELETE", deleting the resource is allowed.
   ///
   /// - - -
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// (Optional) Detect changes to local config bundle file or changes made outside of Terraform. MD5 hash of the data, encoded using base64. Hash is automatically computed without need for user input.
-  final pulumi.Input<String>? detectMd5hash;
+  final pulumi.Input<String?>? detectMd5hash;
   /// The id of the most recently created revision for this shared flow.
-  final pulumi.Input<String>? latestRevisionId;
+  final pulumi.Input<String?>? latestRevisionId;
   /// (Computed) Base 64 MD5 hash of the uploaded data. It is speculative as remote does not return hash of the bundle. Remote changes are detected using returned lastModified timestamp.
-  final pulumi.Input<String>? md5hash;
+  final pulumi.Input<String?>? md5hash;
   /// Metadata describing the shared flow.
   /// Structure is documented below.
-  final pulumi.Input<List<SharedflowMetaData>>? metaDatas;
+  final pulumi.Input<List<SharedflowMetaData>?>? metaDatas;
   /// The ID of the shared flow.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The Apigee Organization name associated with the Apigee instance.
-  final pulumi.Input<String>? orgId;
+  final pulumi.Input<String?>? orgId;
   /// A list of revisions of this shared flow.
-  final pulumi.Input<List<String>>? revisions;
+  final pulumi.Input<List<String>?>? revisions;
 
   /// Creates a new [SharedflowState].
   /// [configBundle] Path to the config zip bundle.

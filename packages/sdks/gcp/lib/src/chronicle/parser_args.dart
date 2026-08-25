@@ -12,14 +12,14 @@ class ParserArgs {
   /// if the parser is built using config
   /// documentation:
   /// https://cloud.google.com/chronicle/docs/preview/parser-extensions/parsing-overview
-  final pulumi.Input<String>? cbn;
+  final pulumi.Input<String?>? cbn;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final pulumi.Input<String> instance;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
@@ -28,22 +28,22 @@ class ParserArgs {
   final pulumi.Input<String> logtype;
   /// Message to represent LowCodeParser.
   /// Structure is documented below.
-  final pulumi.Input<ParserLowCode>? lowCode;
+  final pulumi.Input<ParserLowCode?>? lowCode;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Flag to bypass parser validation when no logs are found.
   /// If enabled, the parser won't be be rejected during the validation
   /// phase when no logs are found.
-  final pulumi.Input<bool>? validatedOnEmptyLogs;
+  final pulumi.Input<bool?>? validatedOnEmptyLogs;
   /// If true, bypasses parser validation.
   /// If enabled, the parser won't be rejected during the validation
   /// phase and validation will be skipped.
-  final pulumi.Input<bool>? validationSkipped;
+  final pulumi.Input<bool?>? validationSkipped;
   /// ParserVersionInfo gives the version information of the parser and related
   /// properties like pinned etc.
   /// Structure is documented below.
-  final pulumi.Input<ParserVersionInfo>? versionInfo;
+  final pulumi.Input<ParserVersionInfo?>? versionInfo;
 
   /// Creates a new [ParserArgs].
   /// [cbn] if the parser is built using config

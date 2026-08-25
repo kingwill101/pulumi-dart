@@ -8,40 +8,40 @@ import 'global_vm_extension_policy_rollout_operation.dart';
 /// Input properties used for looking up and filtering GlobalVmExtensionPolicy resources.
 class GlobalVmExtensionPolicyState {
   /// Creation timestamp in RFC3339 text format.
-  final pulumi.Input<String>? creationTimestamp;
+  final pulumi.Input<String?>? creationTimestamp;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// An optional description of this resource.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Map from extension (eg: "cloudops") to its policy configuration.
   /// Structure is documented below.
-  final pulumi.Input<List<GlobalVmExtensionPolicyExtensionPolicy>>? extensionPolicies;
+  final pulumi.Input<List<GlobalVmExtensionPolicyExtensionPolicy>?>? extensionPolicies;
   /// Selector to target VMs for a policy.
   /// Structure is documented below.
-  final pulumi.Input<List<GlobalVmExtensionPolicyInstanceSelector>>? instanceSelectors;
+  final pulumi.Input<List<GlobalVmExtensionPolicyInstanceSelector>?>? instanceSelectors;
   /// Type of the resource.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long and match the regular expression '^a-z?$' to comply with RFC1035.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Used to resolve conflicts when multiple policies are active. Defaults to 0.
-  final pulumi.Input<int>? priority;
+  final pulumi.Input<int?>? priority;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Represents the rollout operation.
   /// Structure is documented below.
-  final pulumi.Input<GlobalVmExtensionPolicyRolloutOperation>? rolloutOperation;
+  final pulumi.Input<GlobalVmExtensionPolicyRolloutOperation?>? rolloutOperation;
   /// The scoped resource status.
-  final pulumi.Input<String>? scopedResourceStatus;
+  final pulumi.Input<String?>? scopedResourceStatus;
   /// Server-defined fully-qualified URL for this resource.
-  final pulumi.Input<String>? selfLink;
+  final pulumi.Input<String?>? selfLink;
   /// Update timestamp in RFC3339 text format.
-  final pulumi.Input<String>? updateTimestamp;
+  final pulumi.Input<String?>? updateTimestamp;
 
   /// Creates a new [GlobalVmExtensionPolicyState].
   /// [creationTimestamp] Creation timestamp in RFC3339 text format.
@@ -100,7 +100,7 @@ class GlobalVmExtensionPolicyState {
       instanceSelectors: (() { final guardedValue = map['instanceSelectors']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GlobalVmExtensionPolicyInstanceSelector>(guardedValue, (value) => GlobalVmExtensionPolicyInstanceSelector.fromMap((value as Map).cast<String, dynamic>()))); })(),
       kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       rolloutOperation: (() { final guardedValue = map['rolloutOperation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GlobalVmExtensionPolicyRolloutOperation.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       scopedResourceStatus: (() { final guardedValue = map['scopedResourceStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

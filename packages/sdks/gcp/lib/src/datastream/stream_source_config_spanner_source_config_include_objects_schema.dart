@@ -8,7 +8,7 @@ class StreamSourceConfigSpannerSourceConfigIncludeObjectsSchema {
   final pulumi.Input<String> schema;
   /// Tables in the schema.
   /// Structure is documented below.
-  final pulumi.Input<List<StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTable>>? tables;
+  final pulumi.Input<List<StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTable>?>? tables;
 
   /// Creates a new [StreamSourceConfigSpannerSourceConfigIncludeObjectsSchema].
   /// [schema] Schema name.

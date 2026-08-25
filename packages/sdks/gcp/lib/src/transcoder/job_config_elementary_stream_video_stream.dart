@@ -9,7 +9,7 @@ class JobConfigElementaryStreamVideoStream {
   ///
   ///
   /// &lt;a name="nestedConfigElementaryStreamsVideoStreamH264"&gt;&lt;/a&gt;The `h264` block supports:
-  final pulumi.Input<JobConfigElementaryStreamVideoStreamH264>? h264;
+  final pulumi.Input<JobConfigElementaryStreamVideoStreamH264?>? h264;
 
   /// Creates a new [JobConfigElementaryStreamVideoStream].
   /// [h264] H264 codec settings

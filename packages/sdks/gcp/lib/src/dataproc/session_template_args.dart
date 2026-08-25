@@ -16,31 +16,31 @@ class SessionTemplateArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Environment configuration for the session execution.
   /// Structure is documented below.
-  final pulumi.Input<SessionTemplateEnvironmentConfig>? environmentConfig;
+  final pulumi.Input<SessionTemplateEnvironmentConfig?>? environmentConfig;
   /// Jupyter configuration for an interactive session.
   /// Structure is documented below.
-  final pulumi.Input<SessionTemplateJupyterSession>? jupyterSession;
+  final pulumi.Input<SessionTemplateJupyterSession?>? jupyterSession;
   /// The labels to associate with this session template.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The location in which the session template will be created in.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The resource name of the session template in the following format:
   /// projects/{project}/locations/{location}/sessionTemplates/{template_id}
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Runtime configuration for the session template.
   /// Structure is documented below.
-  final pulumi.Input<SessionTemplateRuntimeConfig>? runtimeConfig;
+  final pulumi.Input<SessionTemplateRuntimeConfig?>? runtimeConfig;
   /// Spark connect configuration for an interactive session.
-  final pulumi.Input<Map<String, dynamic>>? sparkConnectSession;
+  final pulumi.Input<Map<String, dynamic>?>? sparkConnectSession;
 
   /// Creates a new [SessionTemplateArgs].
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

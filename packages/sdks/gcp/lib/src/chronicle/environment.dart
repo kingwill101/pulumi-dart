@@ -285,7 +285,7 @@ class Environment extends pulumi.CustomResource {
           'gcp:chronicle/environment:Environment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     aliasesJson = registerOutput<String?>('aliasesJson');
     contact = registerOutput<String>('contact');
@@ -309,11 +309,12 @@ class Environment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EnvironmentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Environment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -327,6 +328,32 @@ class Environment extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    aliasesJson = registerOutput<String?>('aliasesJson');
+    contact = registerOutput<String>('contact');
+    contactEmails = registerOutput<String>('contactEmails');
+    contactPhone = registerOutput<String>('contactPhone');
+    dataAccessScopesJson = registerOutput<String?>('dataAccessScopesJson');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    deletionProtection = registerOutput<bool?>('deletionProtection');
+    description = registerOutput<String>('description');
+    displayName = registerOutput<String>('displayName');
+    environmentId = registerOutput<String>('environmentId');
+    instance = registerOutput<String>('instance');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    retentionDuration = registerOutput<int>('retentionDuration');
+  }
+
+  /// Creates a typed reference to an existing [Environment] resource.
+  Environment.reference(String urn)
+    : super(
+        'gcp:chronicle/environment:Environment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     aliasesJson = registerOutput<String?>('aliasesJson');
     contact = registerOutput<String>('contact');
     contactEmails = registerOutput<String>('contactEmails');

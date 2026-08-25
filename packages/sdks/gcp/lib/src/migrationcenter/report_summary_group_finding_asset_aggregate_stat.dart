@@ -14,47 +14,47 @@ class ReportSummaryGroupFindingAssetAggregateStat {
   /// A Histogram Chart shows a distribution of values into buckets, showing
   /// a count of values which fall into a bucket.
   /// Structure is documented below.
-  final pulumi.Input<List<ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogram>>? coreCountHistograms;
+  final pulumi.Input<List<ReportSummaryGroupFindingAssetAggregateStatCoreCountHistogram>?>? coreCountHistograms;
   /// (Output)
   /// A Histogram Chart shows a distribution of values into buckets, showing
   /// a count of values which fall into a bucket.
   /// Structure is documented below.
-  final pulumi.Input<List<ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogram>>? memoryBytesHistograms;
+  final pulumi.Input<List<ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogram>?>? memoryBytesHistograms;
   /// (Output)
   /// Utilization Chart is a specific type of visualization which displays
   /// a metric classified into "Used" and "Free" buckets.
   /// Structure is documented below.
-  final pulumi.Input<List<ReportSummaryGroupFindingAssetAggregateStatMemoryUtilizationChart>>? memoryUtilizationCharts;
+  final pulumi.Input<List<ReportSummaryGroupFindingAssetAggregateStatMemoryUtilizationChart>?>? memoryUtilizationCharts;
   /// (Output)
   /// Describes a collection of data points rendered as a Chart.
   /// Structure is documented below.
-  final pulumi.Input<List<ReportSummaryGroupFindingAssetAggregateStatOperatingSystem>>? operatingSystems;
+  final pulumi.Input<List<ReportSummaryGroupFindingAssetAggregateStatOperatingSystem>?>? operatingSystems;
   /// (Output)
   /// Describes a collection of data points rendered as a Chart.
   /// Structure is documented below.
-  final pulumi.Input<List<ReportSummaryGroupFindingAssetAggregateStatSoftwareInstance>>? softwareInstances;
+  final pulumi.Input<List<ReportSummaryGroupFindingAssetAggregateStatSoftwareInstance>?>? softwareInstances;
   /// (Output)
   /// A Histogram Chart shows a distribution of values into buckets, showing
   /// a count of values which fall into a bucket.
   /// Structure is documented below.
-  final pulumi.Input<List<ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogram>>? storageBytesHistograms;
+  final pulumi.Input<List<ReportSummaryGroupFindingAssetAggregateStatStorageBytesHistogram>?>? storageBytesHistograms;
   /// (Output)
   /// Utilization Chart is a specific type of visualization which displays
   /// a metric classified into "Used" and "Free" buckets.
   /// Structure is documented below.
-  final pulumi.Input<List<ReportSummaryGroupFindingAssetAggregateStatStorageUtilizationChart>>? storageUtilizationCharts;
+  final pulumi.Input<List<ReportSummaryGroupFindingAssetAggregateStatStorageUtilizationChart>?>? storageUtilizationCharts;
   /// (Output)
   /// Count of the number of unique assets in this collection.
-  final pulumi.Input<String>? totalAssets;
+  final pulumi.Input<String?>? totalAssets;
   /// (Output)
   /// Sum of the CPU core count of all the assets in this collection.
-  final pulumi.Input<String>? totalCores;
+  final pulumi.Input<String?>? totalCores;
   /// (Output)
   /// Sum of the memory in bytes of all the assets in this collection.
-  final pulumi.Input<String>? totalMemoryBytes;
+  final pulumi.Input<String?>? totalMemoryBytes;
   /// (Output)
   /// Sum of persistent storage in bytes of all the assets in this collection.
-  final pulumi.Input<String>? totalStorageBytes;
+  final pulumi.Input<String?>? totalStorageBytes;
 
   /// Creates a new [ReportSummaryGroupFindingAssetAggregateStat].
   /// [coreCountHistograms] (Output)

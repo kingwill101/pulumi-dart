@@ -8,49 +8,49 @@ import 'session_template_runtime_config.dart';
 /// Input properties used for looking up and filtering SessionTemplate resources.
 class SessionTemplateState {
   /// The time when the session template was created.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// The email address of the user who created the session template.
-  final pulumi.Input<String>? creator;
+  final pulumi.Input<String?>? creator;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveLabels;
+  final pulumi.Input<Map<String, String>?>? effectiveLabels;
   /// Environment configuration for the session execution.
   /// Structure is documented below.
-  final pulumi.Input<SessionTemplateEnvironmentConfig>? environmentConfig;
+  final pulumi.Input<SessionTemplateEnvironmentConfig?>? environmentConfig;
   /// Jupyter configuration for an interactive session.
   /// Structure is documented below.
-  final pulumi.Input<SessionTemplateJupyterSession>? jupyterSession;
+  final pulumi.Input<SessionTemplateJupyterSession?>? jupyterSession;
   /// The labels to associate with this session template.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The location in which the session template will be created in.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The resource name of the session template in the following format:
   /// projects/{project}/locations/{location}/sessionTemplates/{template_id}
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  final pulumi.Input<Map<String, String>>? pulumiLabels;
+  final pulumi.Input<Map<String, String>?>? pulumiLabels;
   /// Runtime configuration for the session template.
   /// Structure is documented below.
-  final pulumi.Input<SessionTemplateRuntimeConfig>? runtimeConfig;
+  final pulumi.Input<SessionTemplateRuntimeConfig?>? runtimeConfig;
   /// Spark connect configuration for an interactive session.
-  final pulumi.Input<Map<String, dynamic>>? sparkConnectSession;
+  final pulumi.Input<Map<String, dynamic>?>? sparkConnectSession;
   /// The time when the session template was updated.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
   /// A session template UUID (Unique Universal Identifier). The service generates this value when it creates the session template.
-  final pulumi.Input<String>? uuid;
+  final pulumi.Input<String?>? uuid;
 
   /// Creates a new [SessionTemplateState].
   /// [createTime] The time when the session template was created.

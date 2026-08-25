@@ -8,12 +8,12 @@ class BudgetAmount {
   /// last period's spend.
   /// Boolean. Set value to true to use. Do not set to false, instead
   /// use the `specifiedAmount` block.
-  final pulumi.Input<bool>? lastPeriodAmount;
+  final pulumi.Input<bool?>? lastPeriodAmount;
   /// A specified amount to use as the budget. currencyCode is
   /// optional. If specified, it must match the currency of the
   /// billing account. The currencyCode is provided on output.
   /// Structure is documented below.
-  final pulumi.Input<BudgetAmountSpecifiedAmount>? specifiedAmount;
+  final pulumi.Input<BudgetAmountSpecifiedAmount?>? specifiedAmount;
 
   /// Creates a new [BudgetAmount].
   /// [lastPeriodAmount] Configures a budget amount that is automatically set to 100% of

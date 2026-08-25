@@ -7,18 +7,18 @@ class ClusterMaintenanceSchedule {
   /// Output only. The end time of any upcoming scheduled maintenance for this cluster.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
   /// resolution and up to nine fractional digits.
-  final pulumi.Input<String>? endTime;
+  final pulumi.Input<String?>? endTime;
   /// (Output)
   /// Output only. The deadline that the maintenance schedule start time
   /// can not go beyond, including reschedule.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
   /// resolution and up to nine fractional digits.
-  final pulumi.Input<String>? scheduleDeadlineTime;
+  final pulumi.Input<String?>? scheduleDeadlineTime;
   /// (Output)
   /// Output only. The start time of any upcoming scheduled maintenance for this cluster.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
   /// resolution and up to nine fractional digits.
-  final pulumi.Input<String>? startTime;
+  final pulumi.Input<String?>? startTime;
 
   /// Creates a new [ClusterMaintenanceSchedule].
   /// [endTime] (Output)

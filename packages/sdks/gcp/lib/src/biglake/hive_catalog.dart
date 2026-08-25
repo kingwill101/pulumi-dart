@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'hive_catalog_args.dart';
+import 'hive_catalog_replica.dart';
 import 'hive_catalog_state.dart';
 
 /// Hive Catalogs in Biglake Metastore
@@ -446,7 +447,7 @@ class HiveCatalog extends pulumi.CustomResource {
   late final pulumi.Output<String> project;
   /// Output only. The replicas for the catalog metadata.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> replicas;
+  late final pulumi.Output<List<HiveCatalogReplica>> replicas;
   /// Output only. The update time of the catalog.
   late final pulumi.Output<String> updateTime;
 
@@ -462,7 +463,7 @@ class HiveCatalog extends pulumi.CustomResource {
           'gcp:biglake/hiveCatalog:HiveCatalog',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -471,7 +472,7 @@ class HiveCatalog extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     primaryLocation = registerOutput<String>('primaryLocation');
     project = registerOutput<String>('project');
-    replicas = registerOutput<List<Map<String, dynamic>>>('replicas');
+    replicas = registerOutput<List<HiveCatalogReplica>>('replicas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<HiveCatalogReplica>(guardedValue, (value) => HiveCatalogReplica.fromMap((value as Map).cast<String, dynamic>())); });
     updateTime = registerOutput<String>('updateTime');
   }
 
@@ -480,11 +481,12 @@ class HiveCatalog extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     HiveCatalogState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return HiveCatalog._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -505,7 +507,27 @@ class HiveCatalog extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     primaryLocation = registerOutput<String>('primaryLocation');
     project = registerOutput<String>('project');
-    replicas = registerOutput<List<Map<String, dynamic>>>('replicas');
+    replicas = registerOutput<List<HiveCatalogReplica>>('replicas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<HiveCatalogReplica>(guardedValue, (value) => HiveCatalogReplica.fromMap((value as Map).cast<String, dynamic>())); });
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [HiveCatalog] resource.
+  HiveCatalog.reference(String urn)
+    : super(
+        'gcp:biglake/hiveCatalog:HiveCatalog',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    locationUri = registerOutput<String>('locationUri');
+    this.name = registerOutput<String>('name');
+    primaryLocation = registerOutput<String>('primaryLocation');
+    project = registerOutput<String>('project');
+    replicas = registerOutput<List<HiveCatalogReplica>>('replicas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<HiveCatalogReplica>(guardedValue, (value) => HiveCatalogReplica.fromMap((value as Map).cast<String, dynamic>())); });
     updateTime = registerOutput<String>('updateTime');
   }
 }

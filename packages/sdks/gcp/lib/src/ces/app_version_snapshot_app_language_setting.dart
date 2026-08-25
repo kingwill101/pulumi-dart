@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AppVersionSnapshotAppLanguageSetting {
   /// (Output)
   /// The default language code of the app.
-  final pulumi.Input<String>? defaultLanguageCode;
+  final pulumi.Input<String?>? defaultLanguageCode;
   /// (Output)
   /// Enables multilingual support. If true, agents in the app will use pre-built
   /// instructions to improve handling of multilingual input.
-  final pulumi.Input<bool>? enableMultilingualSupport;
+  final pulumi.Input<bool?>? enableMultilingualSupport;
   /// (Output)
   /// The action to perform when an agent receives input in an unsupported
   /// language.
@@ -19,11 +19,11 @@ class AppVersionSnapshotAppLanguageSetting {
   /// - A predefined system action, such as "escalate" or "exit", which triggers
   /// an EndSession signal with corresponding metadata
   /// to terminate the conversation.
-  final pulumi.Input<String>? fallbackAction;
+  final pulumi.Input<String?>? fallbackAction;
   /// (Output)
   /// List of languages codes supported by the app, in addition to the
   /// `defaultLanguageCode`.
-  final pulumi.Input<List<String>>? supportedLanguageCodes;
+  final pulumi.Input<List<String>?>? supportedLanguageCodes;
 
   /// Creates a new [AppVersionSnapshotAppLanguageSetting].
   /// [defaultLanguageCode] (Output)

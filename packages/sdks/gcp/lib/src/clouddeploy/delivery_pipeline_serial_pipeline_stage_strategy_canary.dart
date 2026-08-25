@@ -7,11 +7,11 @@ import 'delivery_pipeline_serial_pipeline_stage_strategy_canary_runtime_config.d
 
 class DeliveryPipelineSerialPipelineStageStrategyCanary {
   /// Configures the progressive based deployment for a Target.
-  final pulumi.Input<DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeployment>? canaryDeployment;
+  final pulumi.Input<DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeployment?>? canaryDeployment;
   /// Configures the progressive based deployment for a Target, but allows customizing at the phase level where a phase represents each of the percentage deployments.
-  final pulumi.Input<DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeployment>? customCanaryDeployment;
+  final pulumi.Input<DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeployment?>? customCanaryDeployment;
   /// Optional. Runtime specific configurations for the deployment strategy. The runtime configuration is used to determine how Cloud Deploy will split traffic to enable a progressive deployment.
-  final pulumi.Input<DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfig>? runtimeConfig;
+  final pulumi.Input<DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfig?>? runtimeConfig;
 
   /// Creates a new [DeliveryPipelineSerialPipelineStageStrategyCanary].
   /// [canaryDeployment] Configures the progressive based deployment for a Target.

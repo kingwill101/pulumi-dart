@@ -10,7 +10,7 @@ import 'crypto_key_iammember_condition.dart';
 class CryptoKeyIAMMemberArgs {
   /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
   /// Structure is documented below.
-  final pulumi.Input<CryptoKeyIAMMemberCondition>? condition;
+  final pulumi.Input<CryptoKeyIAMMemberCondition?>? condition;
   /// The crypto key ID, in the form
   /// `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
   /// `{location_name}/{key_ring_name}/{crypto_key_name}`. In the second form,

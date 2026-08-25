@@ -5,16 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstanceHostConfig {
   /// (Output)
   /// API hostname.
-  final pulumi.Input<String>? api;
+  final pulumi.Input<String?>? api;
   /// (Output)
   /// Git HTTP hostname.
-  final pulumi.Input<String>? gitHttp;
+  final pulumi.Input<String?>? gitHttp;
   /// (Output)
   /// Git SSH hostname.
-  final pulumi.Input<String>? gitSsh;
+  final pulumi.Input<String?>? gitSsh;
   /// (Output)
   /// HTML hostname.
-  final pulumi.Input<String>? html;
+  final pulumi.Input<String?>? html;
 
   /// Creates a new [InstanceHostConfig].
   /// [api] (Output)

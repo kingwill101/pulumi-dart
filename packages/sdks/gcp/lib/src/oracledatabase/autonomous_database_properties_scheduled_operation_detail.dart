@@ -14,15 +14,15 @@ class AutonomousDatabasePropertiesScheduledOperationDetail {
   /// FRIDAY
   /// SATURDAY
   /// SUNDAY
-  final pulumi.Input<String>? dayOfWeek;
+  final pulumi.Input<String?>? dayOfWeek;
   /// Represents a time of day. The date and time zone are either not significant
   /// or are specified elsewhere. An API may choose to allow leap seconds. Related
   /// types are google.type.Date and 'google.protobuf.Timestamp'.
-  final pulumi.Input<List<AutonomousDatabasePropertiesScheduledOperationDetailStartTime>>? startTimes;
+  final pulumi.Input<List<AutonomousDatabasePropertiesScheduledOperationDetailStartTime>?>? startTimes;
   /// Represents a time of day. The date and time zone are either not significant
   /// or are specified elsewhere. An API may choose to allow leap seconds. Related
   /// types are google.type.Date and 'google.protobuf.Timestamp'.
-  final pulumi.Input<List<AutonomousDatabasePropertiesScheduledOperationDetailStopTime>>? stopTimes;
+  final pulumi.Input<List<AutonomousDatabasePropertiesScheduledOperationDetailStopTime>?>? stopTimes;
 
   /// Creates a new [AutonomousDatabasePropertiesScheduledOperationDetail].
   /// [dayOfWeek] Possible values:

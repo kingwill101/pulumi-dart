@@ -1,6 +1,9 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'interconnect_group_args.dart';
+import 'interconnect_group_configured.dart';
 import 'interconnect_group_intent.dart';
+import 'interconnect_group_interconnect.dart';
+import 'interconnect_group_physical_structure.dart';
 import 'interconnect_group_state.dart';
 
 /// An interconnect group resource allows customers to create, analyze, and
@@ -163,7 +166,7 @@ class InterconnectGroup extends pulumi.CustomResource {
   /// method, but does not take into account the operational status of each
   /// resource.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> configureds;
+  late final pulumi.Output<List<InterconnectGroupConfigured>> configureds;
   /// Creation timestamp in RFC3339 text format.
   late final pulumi.Output<String> creationTimestamp;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -185,7 +188,7 @@ class InterconnectGroup extends pulumi.CustomResource {
   /// Note that there are add-members and remove-members methods in gcloud.
   /// The size of this map is limited by an "Interconnects per group" quota.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> interconnects;
+  late final pulumi.Output<List<InterconnectGroupInterconnect>?> interconnects;
   /// Name of the resource. Provided by the client when the resource is created. The name must be
   /// 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters
   /// long and match the regular expression `a-z?` which means the first
@@ -195,7 +198,7 @@ class InterconnectGroup extends pulumi.CustomResource {
   /// An analysis of the physical layout of Interconnects in this
   /// group. Every Interconnect in the group is shown once in this structure.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> physicalStructures;
+  late final pulumi.Output<List<InterconnectGroupPhysicalStructure>> physicalStructures;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
@@ -212,16 +215,16 @@ class InterconnectGroup extends pulumi.CustomResource {
           'gcp:compute/interconnectGroup:InterconnectGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
-    configureds = registerOutput<List<Map<String, dynamic>>>('configureds');
+    configureds = registerOutput<List<InterconnectGroupConfigured>>('configureds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InterconnectGroupConfigured>(guardedValue, (value) => InterconnectGroupConfigured.fromMap((value as Map).cast<String, dynamic>())); });
     creationTimestamp = registerOutput<String>('creationTimestamp');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     intent = registerOutput<InterconnectGroupIntent>('intent', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InterconnectGroupIntent.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    interconnects = registerOutput<List<Map<String, dynamic>>?>('interconnects');
+    interconnects = registerOutput<List<InterconnectGroupInterconnect>?>('interconnects', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InterconnectGroupInterconnect>(guardedValue, (value) => InterconnectGroupInterconnect.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
-    physicalStructures = registerOutput<List<Map<String, dynamic>>>('physicalStructures');
+    physicalStructures = registerOutput<List<InterconnectGroupPhysicalStructure>>('physicalStructures', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InterconnectGroupPhysicalStructure>(guardedValue, (value) => InterconnectGroupPhysicalStructure.fromMap((value as Map).cast<String, dynamic>())); });
     project = registerOutput<String>('project');
   }
 
@@ -230,11 +233,12 @@ class InterconnectGroup extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     InterconnectGroupState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return InterconnectGroup._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -248,14 +252,34 @@ class InterconnectGroup extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    configureds = registerOutput<List<Map<String, dynamic>>>('configureds');
+    configureds = registerOutput<List<InterconnectGroupConfigured>>('configureds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InterconnectGroupConfigured>(guardedValue, (value) => InterconnectGroupConfigured.fromMap((value as Map).cast<String, dynamic>())); });
     creationTimestamp = registerOutput<String>('creationTimestamp');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     intent = registerOutput<InterconnectGroupIntent>('intent', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InterconnectGroupIntent.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    interconnects = registerOutput<List<Map<String, dynamic>>?>('interconnects');
+    interconnects = registerOutput<List<InterconnectGroupInterconnect>?>('interconnects', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InterconnectGroupInterconnect>(guardedValue, (value) => InterconnectGroupInterconnect.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
-    physicalStructures = registerOutput<List<Map<String, dynamic>>>('physicalStructures');
+    physicalStructures = registerOutput<List<InterconnectGroupPhysicalStructure>>('physicalStructures', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InterconnectGroupPhysicalStructure>(guardedValue, (value) => InterconnectGroupPhysicalStructure.fromMap((value as Map).cast<String, dynamic>())); });
+    project = registerOutput<String>('project');
+  }
+
+  /// Creates a typed reference to an existing [InterconnectGroup] resource.
+  InterconnectGroup.reference(String urn)
+    : super(
+        'gcp:compute/interconnectGroup:InterconnectGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    configureds = registerOutput<List<InterconnectGroupConfigured>>('configureds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InterconnectGroupConfigured>(guardedValue, (value) => InterconnectGroupConfigured.fromMap((value as Map).cast<String, dynamic>())); });
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    intent = registerOutput<InterconnectGroupIntent>('intent', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InterconnectGroupIntent.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    interconnects = registerOutput<List<InterconnectGroupInterconnect>?>('interconnects', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InterconnectGroupInterconnect>(guardedValue, (value) => InterconnectGroupInterconnect.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    physicalStructures = registerOutput<List<InterconnectGroupPhysicalStructure>>('physicalStructures', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InterconnectGroupPhysicalStructure>(guardedValue, (value) => InterconnectGroupPhysicalStructure.fromMap((value as Map).cast<String, dynamic>())); });
     project = registerOutput<String>('project');
   }
 }

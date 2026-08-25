@@ -144,6 +144,17 @@ Future<GetWorkstationConfigIamPolicyResult> getWorkstationConfigIamPolicy(
   return GetWorkstationConfigIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetWorkstationConfigIamPolicyResult> getWorkstationConfigIamPolicyOutput(
+  GetWorkstationConfigIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:workstations/getWorkstationConfigIamPolicy:getWorkstationConfigIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWorkstationConfigIamPolicyResult.fromMap);
+}
+
 /// Retrieves the current IAM policy data for workstation
 ///
 ///
@@ -289,4 +300,15 @@ Future<GetWorkstationIamPolicyResult> getWorkstationIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWorkstationIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetWorkstationIamPolicyResult> getWorkstationIamPolicyOutput(
+  GetWorkstationIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:workstations/getWorkstationIamPolicy:getWorkstationIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWorkstationIamPolicyResult.fromMap);
 }

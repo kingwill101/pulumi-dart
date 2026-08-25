@@ -8,7 +8,7 @@ class InterconnectAttachmentParams {
   /// and values are in the format tagValues/456.
   ///
   /// &lt;a name="nestedL2Forwarding"&gt;&lt;/a&gt;The `l2Forwarding` block supports:
-  final pulumi.Input<Map<String, String>>? resourceManagerTags;
+  final pulumi.Input<Map<String, String>?>? resourceManagerTags;
 
   /// Creates a new [InterconnectAttachmentParams].
   /// [resourceManagerTags] Resource manager tags to be bound to the interconnect attachment. Tag keys and values have the

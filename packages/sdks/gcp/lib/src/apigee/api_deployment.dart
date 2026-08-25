@@ -62,7 +62,7 @@ class ApiDeployment extends pulumi.CustomResource {
           'gcp:apigee/apiDeployment:ApiDeployment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     environment = registerOutput<String>('environment');
@@ -77,11 +77,12 @@ class ApiDeployment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ApiDeploymentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ApiDeployment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -95,6 +96,23 @@ class ApiDeployment extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    environment = registerOutput<String>('environment');
+    orgId = registerOutput<String>('orgId');
+    proxyId = registerOutput<String>('proxyId');
+    revision = registerOutput<String>('revision');
+    serviceAccount = registerOutput<String?>('serviceAccount');
+  }
+
+  /// Creates a typed reference to an existing [ApiDeployment] resource.
+  ApiDeployment.reference(String urn)
+    : super(
+        'gcp:apigee/apiDeployment:ApiDeployment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     environment = registerOutput<String>('environment');
     orgId = registerOutput<String>('orgId');

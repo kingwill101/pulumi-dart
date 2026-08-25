@@ -21,7 +21,7 @@ class RepositoryIamPolicy extends pulumi.CustomResource {
           'gcp:dataform/repositoryIamPolicy:RepositoryIamPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     etag = registerOutput<String>('etag');
     policyData = registerOutput<String>('policyData');
@@ -35,11 +35,12 @@ class RepositoryIamPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RepositoryIamPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RepositoryIamPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -53,6 +54,22 @@ class RepositoryIamPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    etag = registerOutput<String>('etag');
+    policyData = registerOutput<String>('policyData');
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+    repository = registerOutput<String>('repository');
+  }
+
+  /// Creates a typed reference to an existing [RepositoryIamPolicy] resource.
+  RepositoryIamPolicy.reference(String urn)
+    : super(
+        'gcp:dataform/repositoryIamPolicy:RepositoryIamPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     etag = registerOutput<String>('etag');
     policyData = registerOutput<String>('policyData');
     project = registerOutput<String>('project');

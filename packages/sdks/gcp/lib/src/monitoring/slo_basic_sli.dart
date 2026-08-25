@@ -7,31 +7,31 @@ import 'slo_basic_sli_latency.dart';
 class SloBasicSli {
   /// Availability based SLI, dervied from count of requests made to this service that return successfully.
   /// Structure is documented below.
-  final pulumi.Input<SloBasicSliAvailability>? availability;
+  final pulumi.Input<SloBasicSliAvailability?>? availability;
   /// Parameters for a latency threshold SLI.
   /// Structure is documented below.
-  final pulumi.Input<SloBasicSliLatency>? latency;
+  final pulumi.Input<SloBasicSliLatency?>? latency;
   /// An optional set of locations to which this SLI is relevant.
   /// Telemetry from other locations will not be used to calculate
   /// performance for this SLI. If omitted, this SLI applies to all
   /// locations in which the Service has activity. For service types
   /// that don't support breaking down by location, setting this
   /// field will result in an error.
-  final pulumi.Input<List<String>>? locations;
+  final pulumi.Input<List<String>?>? locations;
   /// An optional set of RPCs to which this SLI is relevant.
   /// Telemetry from other methods will not be used to calculate
   /// performance for this SLI. If omitted, this SLI applies to all
   /// the Service's methods. For service types that don't support
   /// breaking down by method, setting this field will result in an
   /// error.
-  final pulumi.Input<List<String>>? methods;
+  final pulumi.Input<List<String>?>? methods;
   /// The set of API versions to which this SLI is relevant.
   /// Telemetry from other API versions will not be used to
   /// calculate performance for this SLI. If omitted,
   /// this SLI applies to all API versions. For service types
   /// that don't support breaking down by version, setting this
   /// field will result in an error.
-  final pulumi.Input<List<String>>? versions;
+  final pulumi.Input<List<String>?>? versions;
 
   /// Creates a new [SloBasicSli].
   /// [availability] Availability based SLI, dervied from count of requests made to this service that return successfully.

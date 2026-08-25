@@ -656,7 +656,7 @@ class PerInstanceConfig extends pulumi.CustomResource {
           'gcp:compute/perInstanceConfig:PerInstanceConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     instanceGroupManager = registerOutput<String>('instanceGroupManager');
@@ -675,11 +675,12 @@ class PerInstanceConfig extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PerInstanceConfigState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return PerInstanceConfig._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -693,6 +694,27 @@ class PerInstanceConfig extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    instanceGroupManager = registerOutput<String>('instanceGroupManager');
+    minimalAction = registerOutput<String?>('minimalAction');
+    mostDisruptiveAllowedAction = registerOutput<String?>('mostDisruptiveAllowedAction');
+    this.name = registerOutput<String>('name');
+    preservedState = registerOutput<PerInstanceConfigPreservedState?>('preservedState', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PerInstanceConfigPreservedState.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    project = registerOutput<String>('project');
+    removeInstanceOnDestroy = registerOutput<bool?>('removeInstanceOnDestroy');
+    removeInstanceStateOnDestroy = registerOutput<bool?>('removeInstanceStateOnDestroy');
+    zone = registerOutput<String>('zone');
+  }
+
+  /// Creates a typed reference to an existing [PerInstanceConfig] resource.
+  PerInstanceConfig.reference(String urn)
+    : super(
+        'gcp:compute/perInstanceConfig:PerInstanceConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     instanceGroupManager = registerOutput<String>('instanceGroupManager');
     minimalAction = registerOutput<String?>('minimalAction');

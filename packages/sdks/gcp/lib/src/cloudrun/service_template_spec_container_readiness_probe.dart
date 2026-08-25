@@ -7,22 +7,22 @@ import 'service_template_spec_container_readiness_probe_http_get.dart';
 class ServiceTemplateSpecContainerReadinessProbe {
   /// Minimum consecutive failures for the probe to be considered failed after
   /// having succeeded. Defaults to 3.
-  final pulumi.Input<int>? failureThreshold;
+  final pulumi.Input<int?>? failureThreshold;
   /// GRPC specifies an action involving a GRPC port.
   /// Structure is documented below.
-  final pulumi.Input<ServiceTemplateSpecContainerReadinessProbeGrpc>? grpc;
+  final pulumi.Input<ServiceTemplateSpecContainerReadinessProbeGrpc?>? grpc;
   /// HttpGet specifies the http request to perform.
   /// Structure is documented below.
-  final pulumi.Input<ServiceTemplateSpecContainerReadinessProbeHttpGet>? httpGet;
+  final pulumi.Input<ServiceTemplateSpecContainerReadinessProbeHttpGet?>? httpGet;
   /// How often (in seconds) to perform the probe.
   /// Default to 10 seconds.
-  final pulumi.Input<int>? periodSeconds;
+  final pulumi.Input<int?>? periodSeconds;
   /// Minimum consecutive successes for the probe to be considered successful after having failed.
   /// Defaults to 2.
-  final pulumi.Input<int>? successThreshold;
+  final pulumi.Input<int?>? successThreshold;
   /// Number of seconds after which the probe times out.
   /// Defaults to 1 second. Must be smaller than period_seconds.
-  final pulumi.Input<int>? timeoutSeconds;
+  final pulumi.Input<int?>? timeoutSeconds;
 
   /// Creates a new [ServiceTemplateSpecContainerReadinessProbe].
   /// [failureThreshold] Minimum consecutive failures for the probe to be considered failed after
@@ -53,12 +53,12 @@ class ServiceTemplateSpecContainerReadinessProbe {
 
   factory ServiceTemplateSpecContainerReadinessProbe.fromMap(Map<String, dynamic> map) {
     return ServiceTemplateSpecContainerReadinessProbe(
-      failureThreshold: (() { final guardedValue = map['failureThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      failureThreshold: (() { final guardedValue = map['failureThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       grpc: (() { final guardedValue = map['grpc']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ServiceTemplateSpecContainerReadinessProbeGrpc.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       httpGet: (() { final guardedValue = map['httpGet']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ServiceTemplateSpecContainerReadinessProbeHttpGet.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      periodSeconds: (() { final guardedValue = map['periodSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      successThreshold: (() { final guardedValue = map['successThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      timeoutSeconds: (() { final guardedValue = map['timeoutSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      periodSeconds: (() { final guardedValue = map['periodSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      successThreshold: (() { final guardedValue = map['successThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      timeoutSeconds: (() { final guardedValue = map['timeoutSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

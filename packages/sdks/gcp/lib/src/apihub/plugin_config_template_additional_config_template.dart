@@ -6,21 +6,21 @@ import 'plugin_config_template_additional_config_template_multi_select_option.da
 
 class PluginConfigTemplateAdditionalConfigTemplate {
   /// Description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Enum options. To be populated if `ValueType` is `ENUM`.
   /// Structure is documented below.
-  final pulumi.Input<List<PluginConfigTemplateAdditionalConfigTemplateEnumOption>>? enumOptions;
+  final pulumi.Input<List<PluginConfigTemplateAdditionalConfigTemplateEnumOption>?>? enumOptions;
   /// ID of the config variable. Must be unique within the configuration.
   final pulumi.Input<String> id;
   /// Multi select options. To be populated if `ValueType` is `MULTI_SELECT`.
   /// Structure is documented below.
-  final pulumi.Input<List<PluginConfigTemplateAdditionalConfigTemplateMultiSelectOption>>? multiSelectOptions;
+  final pulumi.Input<List<PluginConfigTemplateAdditionalConfigTemplateMultiSelectOption>?>? multiSelectOptions;
   /// Flag represents that this `ConfigVariable` must be provided for a
   /// PluginInstance.
-  final pulumi.Input<bool>? required;
+  final pulumi.Input<bool?>? required;
   /// Regular expression in RE2 syntax used for validating the `value` of a
   /// `ConfigVariable`.
-  final pulumi.Input<String>? validationRegex;
+  final pulumi.Input<String?>? validationRegex;
   /// Type of the parameter: string, int, bool etc.
   /// Possible values:
   /// VALUE_TYPE_UNSPECIFIED

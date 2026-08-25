@@ -6,7 +6,7 @@ import 'tls_route_rule_action_destination.dart';
 class TlsRouteRuleAction {
   /// The destination to which traffic should be forwarded.
   /// Structure is documented below.
-  final pulumi.Input<List<TlsRouteRuleActionDestination>>? destinations;
+  final pulumi.Input<List<TlsRouteRuleActionDestination>?>? destinations;
 
   /// Creates a new [TlsRouteRuleAction].
   /// [destinations] The destination to which traffic should be forwarded.

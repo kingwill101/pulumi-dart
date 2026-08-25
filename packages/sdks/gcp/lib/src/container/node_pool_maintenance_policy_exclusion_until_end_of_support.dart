@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NodePoolMaintenancePolicyExclusionUntilEndOfSupport {
   /// When true, the node pool will not be automatically upgraded by GKE until the node pool version's end of support date.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// The time when the maintenance policy is no longer effective, i.e., the node pool version's end of support date.
-  final pulumi.Input<String>? endTime;
+  final pulumi.Input<String?>? endTime;
   /// The time when the maintenance policy is first created.
-  final pulumi.Input<String>? startTime;
+  final pulumi.Input<String?>? startTime;
 
   /// Creates a new [NodePoolMaintenancePolicyExclusionUntilEndOfSupport].
   /// [enabled] When true, the node pool will not be automatically upgraded by GKE until the node pool version's end of support date.

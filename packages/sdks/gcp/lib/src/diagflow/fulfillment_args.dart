@@ -15,20 +15,20 @@ class FulfillmentArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The human-readable name of the fulfillment, unique within the agent.
   final pulumi.Input<String> displayName;
   /// Whether fulfillment is enabled.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// The field defines whether the fulfillment is enabled for certain features.
   /// Structure is documented below.
-  final pulumi.Input<List<FulfillmentFeature>>? features;
+  final pulumi.Input<List<FulfillmentFeature>?>? features;
   /// Represents configuration for a generic web service. Dialogflow supports two mechanisms for authentications: - Basic authentication with username and password. - Authentication with additional authentication headers.
   /// Structure is documented below.
-  final pulumi.Input<FulfillmentGenericWebService>? genericWebService;
+  final pulumi.Input<FulfillmentGenericWebService?>? genericWebService;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [FulfillmentArgs].
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

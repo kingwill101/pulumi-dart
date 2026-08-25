@@ -8,7 +8,7 @@ import 'subscription_iammember_condition.dart';
 /// {@endtemplate}
 /// {@macro pulumi_pubsub_subscription_iammember_subscription_iammember_args_doc}
 class SubscriptionIAMMemberArgs {
-  final pulumi.Input<SubscriptionIAMMemberCondition>? condition;
+  final pulumi.Input<SubscriptionIAMMemberCondition?>? condition;
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
   /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -20,7 +20,7 @@ class SubscriptionIAMMemberArgs {
   final pulumi.Input<String> member;
   /// The project in which the resource belongs. If it
   /// is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The role that should be applied. Only one
   /// `gcp.pubsub.SubscriptionIAMBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.

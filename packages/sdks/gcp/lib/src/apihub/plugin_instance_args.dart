@@ -11,19 +11,19 @@ import 'plugin_instance_auth_config.dart';
 class PluginInstanceArgs {
   /// The action status for the plugin instance.
   /// Structure is documented below.
-  final pulumi.Input<List<PluginInstanceAction>>? actions;
+  final pulumi.Input<List<PluginInstanceAction>?>? actions;
   /// AuthConfig represents the authentication information.
   /// Structure is documented below.
-  final pulumi.Input<PluginInstanceAuthConfig>? authConfig;
+  final pulumi.Input<PluginInstanceAuthConfig?>? authConfig;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The display name for this plugin instance. Max length is 255 characters.
-  final pulumi.Input<bool>? disable;
+  final pulumi.Input<bool?>? disable;
   /// The display name for this plugin instance. Max length is 255 characters.
   final pulumi.Input<String> displayName;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
@@ -41,9 +41,9 @@ class PluginInstanceArgs {
   final pulumi.Input<String> pluginInstanceId;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Optional. The source project id of the plugin instance. This will be the id of runtime project in case of gcp based plugins and org id in case of non gcp based plugins. This field will be a required field for Google provided on-ramp plugins.
-  final pulumi.Input<String>? sourceProjectId;
+  final pulumi.Input<String?>? sourceProjectId;
 
   /// Creates a new [PluginInstanceArgs].
   /// [actions] The action status for the plugin instance.

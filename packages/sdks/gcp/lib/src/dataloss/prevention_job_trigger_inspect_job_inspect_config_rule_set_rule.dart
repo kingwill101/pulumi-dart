@@ -7,10 +7,10 @@ import 'prevention_job_trigger_inspect_job_inspect_config_rule_set_rule_hotword_
 class PreventionJobTriggerInspectJobInspectConfigRuleSetRule {
   /// The rule that specifies conditions when findings of infoTypes specified in InspectionRuleSet are removed from results.
   /// Structure is documented below.
-  final pulumi.Input<PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRule>? exclusionRule;
+  final pulumi.Input<PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRule?>? exclusionRule;
   /// Hotword-based detection rule.
   /// Structure is documented below.
-  final pulumi.Input<PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRule>? hotwordRule;
+  final pulumi.Input<PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRule?>? hotwordRule;
 
   /// Creates a new [PreventionJobTriggerInspectJobInspectConfigRuleSetRule].
   /// [exclusionRule] The rule that specifies conditions when findings of infoTypes specified in InspectionRuleSet are removed from results.

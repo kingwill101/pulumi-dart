@@ -12,16 +12,16 @@ class AutonomousDatabaseProperties {
   /// (Output)
   /// The amount of storage currently being used for user and system data, in
   /// terabytes.
-  final pulumi.Input<double>? actualUsedDataStorageSizeTb;
+  final pulumi.Input<double?>? actualUsedDataStorageSizeTb;
   /// (Output)
   /// The amount of storage currently allocated for the database tables and
   /// billed for, rounded up in terabytes.
-  final pulumi.Input<double>? allocatedStorageSizeTb;
+  final pulumi.Input<double?>? allocatedStorageSizeTb;
   /// (Output)
   /// Oracle APEX Application Development.
   /// https://docs.oracle.com/en-us/iaas/api/#/en/database/20160918/datatypes/AutonomousDatabaseApex
   /// Structure is documented below.
-  final pulumi.Input<List<AutonomousDatabasePropertiesApexDetail>>? apexDetails;
+  final pulumi.Input<List<AutonomousDatabasePropertiesApexDetail>?>? apexDetails;
   /// (Output)
   /// This field indicates the status of Data Guard and Access control for the
   /// Autonomous Database. The field's value is null if Data Guard is disabled
@@ -31,38 +31,38 @@ class AutonomousDatabaseProperties {
   /// FALSE if both Data Guard and Access Control are enabled, and the Autonomous
   /// Database is using a different IP access control list (ACL) for standby
   /// compared to primary.
-  final pulumi.Input<bool>? arePrimaryAllowlistedIpsUsed;
+  final pulumi.Input<bool?>? arePrimaryAllowlistedIpsUsed;
   /// (Output)
   /// The Autonomous Container Database OCID.
-  final pulumi.Input<String>? autonomousContainerDatabaseId;
+  final pulumi.Input<String?>? autonomousContainerDatabaseId;
   /// (Output)
   /// The list of available Oracle Database upgrade versions for an Autonomous
   /// Database.
-  final pulumi.Input<List<String>>? availableUpgradeVersions;
+  final pulumi.Input<List<String>?>? availableUpgradeVersions;
   /// The retention period for the Autonomous Database. This field is specified
   /// in days, can range from 1 day to 60 days, and has a default value of
   /// 60 days.
-  final pulumi.Input<int>? backupRetentionPeriodDays;
+  final pulumi.Input<int?>? backupRetentionPeriodDays;
   /// The character set for the Autonomous Database. The default is AL32UTF8.
-  final pulumi.Input<String>? characterSet;
+  final pulumi.Input<String?>? characterSet;
   /// The number of compute servers for the Autonomous Database.
-  final pulumi.Input<double>? computeCount;
+  final pulumi.Input<double?>? computeCount;
   /// (Output)
   /// The connection string used to connect to the Autonomous Database.
   /// https://docs.oracle.com/en-us/iaas/api/#/en/database/20160918/datatypes/AutonomousDatabaseConnectionStrings
   /// Structure is documented below.
-  final pulumi.Input<List<AutonomousDatabasePropertiesConnectionString>>? connectionStrings;
+  final pulumi.Input<List<AutonomousDatabasePropertiesConnectionString>?>? connectionStrings;
   /// (Output)
   /// The URLs for accessing Oracle Application Express (APEX) and SQL Developer
   /// Web with a browser from a Compute instance.
   /// https://docs.oracle.com/en-us/iaas/api/#/en/database/20160918/datatypes/AutonomousDatabaseConnectionUrls
   /// Structure is documented below.
-  final pulumi.Input<List<AutonomousDatabasePropertiesConnectionUrl>>? connectionUrls;
+  final pulumi.Input<List<AutonomousDatabasePropertiesConnectionUrl>?>? connectionUrls;
   /// The number of CPU cores to be made available to the database.
-  final pulumi.Input<int>? cpuCoreCount;
+  final pulumi.Input<int?>? cpuCoreCount;
   /// The list of customer contacts.
   /// Structure is documented below.
-  final pulumi.Input<List<AutonomousDatabasePropertiesCustomerContact>>? customerContacts;
+  final pulumi.Input<List<AutonomousDatabasePropertiesCustomerContact>?>? customerContacts;
   /// (Output)
   /// The current state of the Data Safe registration for the
   /// Autonomous Database.
@@ -73,11 +73,11 @@ class AutonomousDatabaseProperties {
   /// DEREGISTERING
   /// NOT_REGISTERED
   /// FAILED
-  final pulumi.Input<String>? dataSafeState;
+  final pulumi.Input<String?>? dataSafeState;
   /// The size of the data stored in the database, in gigabytes.
-  final pulumi.Input<int>? dataStorageSizeGb;
+  final pulumi.Input<int?>? dataStorageSizeGb;
   /// The size of the data stored in the database, in terabytes.
-  final pulumi.Input<int>? dataStorageSizeTb;
+  final pulumi.Input<int?>? dataStorageSizeTb;
   /// (Output)
   /// The current state of database management for the Autonomous Database.
   /// Possible values:
@@ -88,15 +88,15 @@ class AutonomousDatabaseProperties {
   /// NOT_ENABLED
   /// FAILED_ENABLING
   /// FAILED_DISABLING
-  final pulumi.Input<String>? databaseManagementState;
+  final pulumi.Input<String?>? databaseManagementState;
   /// The edition of the Autonomous Databases.
   /// Possible values:
   /// DATABASE_EDITION_UNSPECIFIED
   /// STANDARD_EDITION
   /// ENTERPRISE_EDITION
-  final pulumi.Input<String>? dbEdition;
+  final pulumi.Input<String?>? dbEdition;
   /// The Oracle Database version for the Autonomous Database.
-  final pulumi.Input<String>? dbVersion;
+  final pulumi.Input<String?>? dbVersion;
   /// Possible values:
   /// DB_WORKLOAD_UNSPECIFIED
   /// OLTP
@@ -107,17 +107,17 @@ class AutonomousDatabaseProperties {
   /// (Output)
   /// This field indicates the number of seconds of data loss during a Data
   /// Guard failover.
-  final pulumi.Input<String>? failedDataRecoveryDuration;
+  final pulumi.Input<String?>? failedDataRecoveryDuration;
   /// This field indicates if auto scaling is enabled for the Autonomous Database
   /// CPU core count.
-  final pulumi.Input<bool>? isAutoScalingEnabled;
+  final pulumi.Input<bool?>? isAutoScalingEnabled;
   /// (Output)
   /// This field indicates whether the Autonomous Database has local (in-region)
   /// Data Guard enabled.
-  final pulumi.Input<bool>? isLocalDataGuardEnabled;
+  final pulumi.Input<bool?>? isLocalDataGuardEnabled;
   /// This field indicates if auto scaling is enabled for the Autonomous Database
   /// storage.
-  final pulumi.Input<bool>? isStorageAutoScalingEnabled;
+  final pulumi.Input<bool?>? isStorageAutoScalingEnabled;
   /// The license type used for the Autonomous Database.
   /// Possible values:
   /// LICENSE_TYPE_UNSPECIFIED
@@ -126,11 +126,11 @@ class AutonomousDatabaseProperties {
   final pulumi.Input<String> licenseType;
   /// (Output)
   /// The details of the current lifestyle state of the Autonomous Database.
-  final pulumi.Input<String>? lifecycleDetails;
+  final pulumi.Input<String?>? lifecycleDetails;
   /// (Output)
   /// This field indicates the maximum data loss limit for an Autonomous
   /// Database, in seconds.
-  final pulumi.Input<int>? localAdgAutoFailoverMaxDataLossLimit;
+  final pulumi.Input<int?>? localAdgAutoFailoverMaxDataLossLimit;
   /// (Output)
   /// This field indicates the local disaster recovery (DR) type of an
   /// Autonomous Database.
@@ -138,52 +138,52 @@ class AutonomousDatabaseProperties {
   /// LOCAL_DISASTER_RECOVERY_TYPE_UNSPECIFIED
   /// ADG
   /// BACKUP_BASED
-  final pulumi.Input<String>? localDisasterRecoveryType;
+  final pulumi.Input<String?>? localDisasterRecoveryType;
   /// (Output)
   /// Autonomous Data Guard standby database details.
   /// https://docs.oracle.com/en-us/iaas/api/#/en/database/20160918/datatypes/AutonomousDatabaseStandbySummary
   /// Structure is documented below.
-  final pulumi.Input<List<AutonomousDatabasePropertiesLocalStandbyDb>>? localStandbyDbs;
+  final pulumi.Input<List<AutonomousDatabasePropertiesLocalStandbyDb>?>? localStandbyDbs;
   /// (Output)
   /// The date and time when maintenance will begin.
-  final pulumi.Input<String>? maintenanceBeginTime;
+  final pulumi.Input<String?>? maintenanceBeginTime;
   /// (Output)
   /// The date and time when maintenance will end.
-  final pulumi.Input<String>? maintenanceEndTime;
+  final pulumi.Input<String?>? maintenanceEndTime;
   /// The maintenance schedule of the Autonomous Database.
   /// Possible values:
   /// MAINTENANCE_SCHEDULE_TYPE_UNSPECIFIED
   /// EARLY
   /// REGULAR
-  final pulumi.Input<String>? maintenanceScheduleType;
+  final pulumi.Input<String?>? maintenanceScheduleType;
   /// (Output)
   /// The amount of memory enabled per ECPU, in gigabytes.
-  final pulumi.Input<int>? memoryPerOracleComputeUnitGbs;
+  final pulumi.Input<int?>? memoryPerOracleComputeUnitGbs;
   /// (Output)
   /// The memory assigned to in-memory tables in an Autonomous Database.
-  final pulumi.Input<int>? memoryTableGbs;
+  final pulumi.Input<int?>? memoryTableGbs;
   /// This field specifies if the Autonomous Database requires mTLS connections.
-  final pulumi.Input<bool>? mtlsConnectionRequired;
+  final pulumi.Input<bool?>? mtlsConnectionRequired;
   /// The national character set for the Autonomous Database. The default is
   /// AL16UTF16.
-  final pulumi.Input<String>? nCharacterSet;
+  final pulumi.Input<String?>? nCharacterSet;
   /// (Output)
   /// The long term backup schedule of the Autonomous Database.
-  final pulumi.Input<String>? nextLongTermBackupTime;
+  final pulumi.Input<String?>? nextLongTermBackupTime;
   /// (Output)
   /// The Oracle Cloud Infrastructure link for the Autonomous Database.
-  final pulumi.Input<String>? ociUrl;
+  final pulumi.Input<String?>? ociUrl;
   /// (Output)
   /// OCID of the Autonomous Database.
   /// https://docs.oracle.com/en-us/iaas/Content/General/Concepts/identifiers.htm#Oracle
-  final pulumi.Input<String>? ocid;
+  final pulumi.Input<String?>? ocid;
   /// (Output)
   /// This field indicates the current mode of the Autonomous Database.
   /// Possible values:
   /// OPEN_MODE_UNSPECIFIED
   /// READ_ONLY
   /// READ_WRITE
-  final pulumi.Input<String>? openMode;
+  final pulumi.Input<String?>? openMode;
   /// Possible values:
   /// OPERATIONS_INSIGHTS_STATE_UNSPECIFIED
   /// ENABLING
@@ -192,39 +192,39 @@ class AutonomousDatabaseProperties {
   /// NOT_ENABLED
   /// FAILED_ENABLING
   /// FAILED_DISABLING
-  final pulumi.Input<String>? operationsInsightsState;
+  final pulumi.Input<String?>? operationsInsightsState;
   /// (Output)
   /// The list of OCIDs of standby databases located in Autonomous Data Guard
   /// remote regions that are associated with the source database.
-  final pulumi.Input<List<String>>? peerDbIds;
+  final pulumi.Input<List<String>?>? peerDbIds;
   /// (Output)
   /// The permission level of the Autonomous Database.
   /// Possible values:
   /// PERMISSION_LEVEL_UNSPECIFIED
   /// RESTRICTED
   /// UNRESTRICTED
-  final pulumi.Input<String>? permissionLevel;
+  final pulumi.Input<String?>? permissionLevel;
   /// (Output)
   /// The private endpoint for the Autonomous Database.
-  final pulumi.Input<String>? privateEndpoint;
+  final pulumi.Input<String?>? privateEndpoint;
   /// The private endpoint IP address for the Autonomous Database.
-  final pulumi.Input<String>? privateEndpointIp;
+  final pulumi.Input<String?>? privateEndpointIp;
   /// The private endpoint label for the Autonomous Database.
-  final pulumi.Input<String>? privateEndpointLabel;
+  final pulumi.Input<String?>? privateEndpointLabel;
   /// (Output)
   /// The refresh mode of the cloned Autonomous Database.
   /// Possible values:
   /// REFRESHABLE_MODE_UNSPECIFIED
   /// AUTOMATIC
   /// MANUAL
-  final pulumi.Input<String>? refreshableMode;
+  final pulumi.Input<String?>? refreshableMode;
   /// (Output)
   /// The refresh State of the clone.
   /// Possible values:
   /// REFRESHABLE_STATE_UNSPECIFIED
   /// REFRESHING
   /// NOT_REFRESHING
-  final pulumi.Input<String>? refreshableState;
+  final pulumi.Input<String?>? refreshableState;
   /// (Output)
   /// The Data Guard role of the Autonomous Database.
   /// Possible values:
@@ -234,17 +234,17 @@ class AutonomousDatabaseProperties {
   /// DISABLED_STANDBY
   /// BACKUP_COPY
   /// SNAPSHOT_STANDBY
-  final pulumi.Input<String>? role;
+  final pulumi.Input<String?>? role;
   /// (Output)
   /// The list and details of the scheduled operations of the Autonomous
   /// Database.
   /// Structure is documented below.
-  final pulumi.Input<List<AutonomousDatabasePropertiesScheduledOperationDetail>>? scheduledOperationDetails;
+  final pulumi.Input<List<AutonomousDatabasePropertiesScheduledOperationDetail>?>? scheduledOperationDetails;
   /// The ID of the Oracle Cloud Infrastructure vault secret.
-  final pulumi.Input<String>? secretId;
+  final pulumi.Input<String?>? secretId;
   /// (Output)
   /// The SQL Web Developer URL for the Autonomous Database.
-  final pulumi.Input<String>? sqlWebDeveloperUrl;
+  final pulumi.Input<String?>? sqlWebDeveloperUrl;
   /// (Output)
   /// Possible values:
   /// STATE_UNSPECIFIED
@@ -269,20 +269,20 @@ class AutonomousDatabaseProperties {
   /// UPGRADING
   /// INACCESSIBLE
   /// STANDBY
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// (Output)
   /// The list of available regions that can be used to create a clone for the
   /// Autonomous Database.
-  final pulumi.Input<List<String>>? supportedCloneRegions;
+  final pulumi.Input<List<String>?>? supportedCloneRegions;
   /// (Output)
   /// The storage space used by automatic backups of Autonomous Database, in
   /// gigabytes.
-  final pulumi.Input<double>? totalAutoBackupStorageSizeGbs;
+  final pulumi.Input<double?>? totalAutoBackupStorageSizeGbs;
   /// (Output)
   /// The storage space used by Autonomous Database, in gigabytes.
-  final pulumi.Input<int>? usedDataStorageSizeTbs;
+  final pulumi.Input<int?>? usedDataStorageSizeTbs;
   /// The ID of the Oracle Cloud Infrastructure vault.
-  final pulumi.Input<String>? vaultId;
+  final pulumi.Input<String?>? vaultId;
 
   /// Creates a new [AutonomousDatabaseProperties].
   /// [actualUsedDataStorageSizeTb] (Output)
@@ -466,22 +466,22 @@ class AutonomousDatabaseProperties {
 
   factory AutonomousDatabaseProperties.fromMap(Map<String, dynamic> map) {
     return AutonomousDatabaseProperties(
-      actualUsedDataStorageSizeTb: (() { final guardedValue = map['actualUsedDataStorageSizeTb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      allocatedStorageSizeTb: (() { final guardedValue = map['allocatedStorageSizeTb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      actualUsedDataStorageSizeTb: (() { final guardedValue = map['actualUsedDataStorageSizeTb']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      allocatedStorageSizeTb: (() { final guardedValue = map['allocatedStorageSizeTb']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       apexDetails: (() { final guardedValue = map['apexDetails']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AutonomousDatabasePropertiesApexDetail>(guardedValue, (value) => AutonomousDatabasePropertiesApexDetail.fromMap((value as Map).cast<String, dynamic>()))); })(),
       arePrimaryAllowlistedIpsUsed: (() { final guardedValue = map['arePrimaryAllowlistedIpsUsed']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       autonomousContainerDatabaseId: (() { final guardedValue = map['autonomousContainerDatabaseId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       availableUpgradeVersions: (() { final guardedValue = map['availableUpgradeVersions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      backupRetentionPeriodDays: (() { final guardedValue = map['backupRetentionPeriodDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      backupRetentionPeriodDays: (() { final guardedValue = map['backupRetentionPeriodDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       characterSet: (() { final guardedValue = map['characterSet']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      computeCount: (() { final guardedValue = map['computeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      computeCount: (() { final guardedValue = map['computeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       connectionStrings: (() { final guardedValue = map['connectionStrings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AutonomousDatabasePropertiesConnectionString>(guardedValue, (value) => AutonomousDatabasePropertiesConnectionString.fromMap((value as Map).cast<String, dynamic>()))); })(),
       connectionUrls: (() { final guardedValue = map['connectionUrls']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AutonomousDatabasePropertiesConnectionUrl>(guardedValue, (value) => AutonomousDatabasePropertiesConnectionUrl.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      cpuCoreCount: (() { final guardedValue = map['cpuCoreCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      cpuCoreCount: (() { final guardedValue = map['cpuCoreCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       customerContacts: (() { final guardedValue = map['customerContacts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AutonomousDatabasePropertiesCustomerContact>(guardedValue, (value) => AutonomousDatabasePropertiesCustomerContact.fromMap((value as Map).cast<String, dynamic>()))); })(),
       dataSafeState: (() { final guardedValue = map['dataSafeState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      dataStorageSizeGb: (() { final guardedValue = map['dataStorageSizeGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      dataStorageSizeTb: (() { final guardedValue = map['dataStorageSizeTb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      dataStorageSizeGb: (() { final guardedValue = map['dataStorageSizeGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      dataStorageSizeTb: (() { final guardedValue = map['dataStorageSizeTb']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       databaseManagementState: (() { final guardedValue = map['databaseManagementState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dbEdition: (() { final guardedValue = map['dbEdition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dbVersion: (() { final guardedValue = map['dbVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -492,14 +492,14 @@ class AutonomousDatabaseProperties {
       isStorageAutoScalingEnabled: (() { final guardedValue = map['isStorageAutoScalingEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       licenseType: pulumi.Input.fromValue(map['licenseType'] as String),
       lifecycleDetails: (() { final guardedValue = map['lifecycleDetails']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      localAdgAutoFailoverMaxDataLossLimit: (() { final guardedValue = map['localAdgAutoFailoverMaxDataLossLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      localAdgAutoFailoverMaxDataLossLimit: (() { final guardedValue = map['localAdgAutoFailoverMaxDataLossLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       localDisasterRecoveryType: (() { final guardedValue = map['localDisasterRecoveryType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       localStandbyDbs: (() { final guardedValue = map['localStandbyDbs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AutonomousDatabasePropertiesLocalStandbyDb>(guardedValue, (value) => AutonomousDatabasePropertiesLocalStandbyDb.fromMap((value as Map).cast<String, dynamic>()))); })(),
       maintenanceBeginTime: (() { final guardedValue = map['maintenanceBeginTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       maintenanceEndTime: (() { final guardedValue = map['maintenanceEndTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       maintenanceScheduleType: (() { final guardedValue = map['maintenanceScheduleType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      memoryPerOracleComputeUnitGbs: (() { final guardedValue = map['memoryPerOracleComputeUnitGbs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      memoryTableGbs: (() { final guardedValue = map['memoryTableGbs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      memoryPerOracleComputeUnitGbs: (() { final guardedValue = map['memoryPerOracleComputeUnitGbs']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      memoryTableGbs: (() { final guardedValue = map['memoryTableGbs']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       mtlsConnectionRequired: (() { final guardedValue = map['mtlsConnectionRequired']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       nCharacterSet: (() { final guardedValue = map['nCharacterSet']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       nextLongTermBackupTime: (() { final guardedValue = map['nextLongTermBackupTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -520,8 +520,8 @@ class AutonomousDatabaseProperties {
       sqlWebDeveloperUrl: (() { final guardedValue = map['sqlWebDeveloperUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       supportedCloneRegions: (() { final guardedValue = map['supportedCloneRegions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      totalAutoBackupStorageSizeGbs: (() { final guardedValue = map['totalAutoBackupStorageSizeGbs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      usedDataStorageSizeTbs: (() { final guardedValue = map['usedDataStorageSizeTbs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      totalAutoBackupStorageSizeGbs: (() { final guardedValue = map['totalAutoBackupStorageSizeGbs']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      usedDataStorageSizeTbs: (() { final guardedValue = map['usedDataStorageSizeTbs']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       vaultId: (() { final guardedValue = map['vaultId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

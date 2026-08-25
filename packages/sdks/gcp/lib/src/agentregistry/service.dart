@@ -2,6 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'service_agent_spec.dart';
 import 'service_args.dart';
 import 'service_endpoint_spec.dart';
+import 'service_interface.dart';
 import 'service_mcp_server_spec.dart';
 import 'service_state.dart';
 
@@ -417,7 +418,7 @@ class Service extends pulumi.CustomResource {
   late final pulumi.Output<ServiceEndpointSpec?> endpointSpec;
   /// The connection details for the Service.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> interfaces;
+  late final pulumi.Output<List<ServiceInterface>?> interfaces;
   /// The location of the resource.
   late final pulumi.Output<String> location;
   /// The spec of the MCP Server. When set, the type of the Service is MCP Server.
@@ -447,7 +448,7 @@ class Service extends pulumi.CustomResource {
           'gcp:agentregistry/service:Service',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     agentSpec = registerOutput<ServiceAgentSpec?>('agentSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceAgentSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
@@ -455,7 +456,7 @@ class Service extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
     endpointSpec = registerOutput<ServiceEndpointSpec?>('endpointSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceEndpointSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    interfaces = registerOutput<List<Map<String, dynamic>>?>('interfaces');
+    interfaces = registerOutput<List<ServiceInterface>?>('interfaces', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServiceInterface>(guardedValue, (value) => ServiceInterface.fromMap((value as Map).cast<String, dynamic>())); });
     location = registerOutput<String>('location');
     mcpServerSpec = registerOutput<ServiceMcpServerSpec?>('mcpServerSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceMcpServerSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
@@ -470,11 +471,12 @@ class Service extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ServiceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Service._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -494,7 +496,32 @@ class Service extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
     endpointSpec = registerOutput<ServiceEndpointSpec?>('endpointSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceEndpointSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    interfaces = registerOutput<List<Map<String, dynamic>>?>('interfaces');
+    interfaces = registerOutput<List<ServiceInterface>?>('interfaces', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServiceInterface>(guardedValue, (value) => ServiceInterface.fromMap((value as Map).cast<String, dynamic>())); });
+    location = registerOutput<String>('location');
+    mcpServerSpec = registerOutput<ServiceMcpServerSpec?>('mcpServerSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceMcpServerSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    registryResource = registerOutput<String>('registryResource');
+    serviceId = registerOutput<String>('serviceId');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [Service] resource.
+  Service.reference(String urn)
+    : super(
+        'gcp:agentregistry/service:Service',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    agentSpec = registerOutput<ServiceAgentSpec?>('agentSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceAgentSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String?>('displayName');
+    endpointSpec = registerOutput<ServiceEndpointSpec?>('endpointSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceEndpointSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    interfaces = registerOutput<List<ServiceInterface>?>('interfaces', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServiceInterface>(guardedValue, (value) => ServiceInterface.fromMap((value as Map).cast<String, dynamic>())); });
     location = registerOutput<String>('location');
     mcpServerSpec = registerOutput<ServiceMcpServerSpec?>('mcpServerSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceMcpServerSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');

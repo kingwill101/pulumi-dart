@@ -6,19 +6,19 @@ import 'feed_details_azure_blob_store_settings_authentication.dart';
 class FeedDetailsAzureBlobStoreSettings {
   /// Azure auth.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsAzureBlobStoreSettingsAuthentication>? authentication;
+  final pulumi.Input<FeedDetailsAzureBlobStoreSettingsAuthentication?>? authentication;
   /// Azure URI.
-  final pulumi.Input<String>? azureUri;
+  final pulumi.Input<String?>? azureUri;
   /// Possible values:
   /// SOURCE_DELETION_NEVER
   /// SOURCE_DELETION_ON_SUCCESS
   /// SOURCE_DELETION_ON_SUCCESS_FILES_ONLY
-  final pulumi.Input<String>? sourceDeletionOption;
+  final pulumi.Input<String?>? sourceDeletionOption;
   /// Possible values:
   /// FILES
   /// FOLDERS
   /// FOLDERS_RECURSIVE
-  final pulumi.Input<String>? sourceType;
+  final pulumi.Input<String?>? sourceType;
 
   /// Creates a new [FeedDetailsAzureBlobStoreSettings].
   /// [authentication] Azure auth.

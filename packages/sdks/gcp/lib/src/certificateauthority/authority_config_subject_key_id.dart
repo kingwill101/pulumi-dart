@@ -6,7 +6,7 @@ class AuthorityConfigSubjectKeyId {
   /// The value of the KeyId in lowercase hexadecimal.
   ///
   /// &lt;a name="nestedConfigX509Config"&gt;&lt;/a&gt;The `x509Config` block supports:
-  final pulumi.Input<String>? keyId;
+  final pulumi.Input<String?>? keyId;
 
   /// Creates a new [AuthorityConfigSubjectKeyId].
   /// [keyId] The value of the KeyId in lowercase hexadecimal.

@@ -7,10 +7,10 @@ import 'grpc_route_rule_action_fault_injection_policy_delay.dart';
 class GrpcRouteRuleActionFaultInjectionPolicy {
   /// Specification of how client requests are aborted as part of fault injection before being sent to a destination.
   /// Structure is documented below.
-  final pulumi.Input<GrpcRouteRuleActionFaultInjectionPolicyAbort>? abort;
+  final pulumi.Input<GrpcRouteRuleActionFaultInjectionPolicyAbort?>? abort;
   /// Specification of how client requests are delayed as part of fault injection before being sent to a destination.
   /// Structure is documented below.
-  final pulumi.Input<GrpcRouteRuleActionFaultInjectionPolicyDelay>? delay;
+  final pulumi.Input<GrpcRouteRuleActionFaultInjectionPolicyDelay?>? delay;
 
   /// Creates a new [GrpcRouteRuleActionFaultInjectionPolicy].
   /// [abort] Specification of how client requests are aborted as part of fault injection before being sent to a destination.

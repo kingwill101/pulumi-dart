@@ -9,20 +9,20 @@ import 'pipeline_job_reconciliation_pipeline_job.dart';
 class PipelineJobState {
   /// Specifies the backfill configuration.
   /// Structure is documented below.
-  final pulumi.Input<PipelineJobBackfillPipelineJob>? backfillPipelineJob;
+  final pulumi.Input<PipelineJobBackfillPipelineJob?>? backfillPipelineJob;
   /// Healthcare Dataset under which the Pipeline Job is to run
-  final pulumi.Input<String>? dataset;
+  final pulumi.Input<String?>? dataset;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// If true, disables writing lineage for the pipeline.
-  final pulumi.Input<bool>? disableLineage;
+  final pulumi.Input<bool?>? disableLineage;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveLabels;
+  final pulumi.Input<Map<String, String>?>? effectiveLabels;
   /// User-supplied key-value pairs used to organize Pipeline Jobs.
   /// Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of
   /// maximum 128 bytes, and must conform to the following PCRE regular expression:
@@ -36,22 +36,22 @@ class PipelineJobState {
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Location where the Pipeline Job is to run
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Specifies mapping configuration.
   /// Structure is documented below.
-  final pulumi.Input<PipelineJobMappingPipelineJob>? mappingPipelineJob;
+  final pulumi.Input<PipelineJobMappingPipelineJob?>? mappingPipelineJob;
   /// Specifies the name of the pipeline job. This field is user-assigned.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  final pulumi.Input<Map<String, String>>? pulumiLabels;
+  final pulumi.Input<Map<String, String>?>? pulumiLabels;
   /// Specifies reconciliation configuration.
   /// Structure is documented below.
-  final pulumi.Input<PipelineJobReconciliationPipelineJob>? reconciliationPipelineJob;
+  final pulumi.Input<PipelineJobReconciliationPipelineJob?>? reconciliationPipelineJob;
   /// The fully qualified name of this dataset
-  final pulumi.Input<String>? selfLink;
+  final pulumi.Input<String?>? selfLink;
 
   /// Creates a new [PipelineJobState].
   /// [backfillPipelineJob] Specifies the backfill configuration.

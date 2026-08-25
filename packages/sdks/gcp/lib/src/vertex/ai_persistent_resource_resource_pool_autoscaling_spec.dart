@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AiPersistentResourceResourcePoolAutoscalingSpec {
   /// max replicas in the node pool,
   /// must be ≥ replicaCount and &gt; minReplicaCount or will throw error
-  final pulumi.Input<String>? maxReplicaCount;
+  final pulumi.Input<String?>? maxReplicaCount;
   /// min replicas in the node pool,
   /// must be ≤ replicaCount and &lt; maxReplicaCount or will throw error.
   /// For autoscaling enabled Ray-on-Vertex, we allow minReplicaCount of a
@@ -14,7 +14,7 @@ class AiPersistentResourceResourcePoolAutoscalingSpec {
   /// As for Persistent Resource, the minReplicaCount must be &gt; 0, we added
   /// a corresponding validation inside
   /// CreatePersistentResourceRequestValidator.java.
-  final pulumi.Input<String>? minReplicaCount;
+  final pulumi.Input<String?>? minReplicaCount;
 
   /// Creates a new [AiPersistentResourceResourcePoolAutoscalingSpec].
   /// [maxReplicaCount] max replicas in the node pool,

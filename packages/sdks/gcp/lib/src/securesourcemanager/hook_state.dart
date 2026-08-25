@@ -6,44 +6,44 @@ import 'hook_push_option.dart';
 /// Input properties used for looking up and filtering Hook resources.
 class HookState {
   /// Create timestamp.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Determines if the hook disabled or not.
   /// Set to true to stop sending traffic.
-  final pulumi.Input<bool>? disabled;
+  final pulumi.Input<bool?>? disabled;
   /// The events that trigger hook on.
   /// Each value may be one of: `PUSH`, `PULL_REQUEST`.
-  final pulumi.Input<List<String>>? events;
+  final pulumi.Input<List<String>?>? events;
   /// The ID for the Hook.
-  final pulumi.Input<String>? hookId;
+  final pulumi.Input<String?>? hookId;
   /// The location for the Repository.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// A unique identifier for a Hook. The name should be of the format:
   /// `projects/{project}/locations/{location_id}/repositories/{repository_id}/hooks/{hook_id}`
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The trigger option for push events.
   /// Structure is documented below.
-  final pulumi.Input<HookPushOption>? pushOption;
+  final pulumi.Input<HookPushOption?>? pushOption;
   /// The ID for the Repository.
-  final pulumi.Input<String>? repositoryId;
+  final pulumi.Input<String?>? repositoryId;
   /// The sensitive query string to be appended to the target URI.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
-  final pulumi.Input<String>? sensitiveQueryString;
+  final pulumi.Input<String?>? sensitiveQueryString;
   /// The target URI to which the payloads will be delivered.
-  final pulumi.Input<String>? targetUri;
+  final pulumi.Input<String?>? targetUri;
   /// Unique identifier of the hook.
-  final pulumi.Input<String>? uid;
+  final pulumi.Input<String?>? uid;
   /// Update timestamp.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [HookState].
   /// [createTime] Create timestamp.

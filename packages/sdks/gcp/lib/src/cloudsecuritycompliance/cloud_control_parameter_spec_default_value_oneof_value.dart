@@ -5,10 +5,10 @@ import 'cloud_control_parameter_spec_default_value_oneof_value_parameter_value.d
 
 class CloudControlParameterSpecDefaultValueOneofValue {
   /// The name of the parameter.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The value of the parameter.
   /// Structure is documented below.
-  final pulumi.Input<CloudControlParameterSpecDefaultValueOneofValueParameterValue>? parameterValue;
+  final pulumi.Input<CloudControlParameterSpecDefaultValueOneofValueParameterValue?>? parameterValue;
 
   /// Creates a new [CloudControlParameterSpecDefaultValueOneofValue].
   /// [name] The name of the parameter.

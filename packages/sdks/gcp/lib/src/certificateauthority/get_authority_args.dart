@@ -10,14 +10,14 @@ class GetAuthorityArgs {
   /// ID of the certificate authority.
   ///
   /// - - -
-  final pulumi.Input<String>? certificateAuthorityId;
+  final pulumi.Input<String?>? certificateAuthorityId;
   /// The location the certificate authority exists in.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the pool the certificate authority belongs to.
-  final pulumi.Input<String>? pool;
+  final pulumi.Input<String?>? pool;
   /// The ID of the project in which the resource belongs. If it
   /// is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetAuthorityArgs].
   /// [certificateAuthorityId] ID of the certificate authority.

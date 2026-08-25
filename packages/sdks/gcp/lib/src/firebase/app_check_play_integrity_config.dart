@@ -680,7 +680,7 @@ class AppCheckPlayIntegrityConfig extends pulumi.CustomResource {
           'gcp:firebase/appCheckPlayIntegrityConfig:AppCheckPlayIntegrityConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     appId = registerOutput<String>('appId');
     this.name = registerOutput<String>('name');
@@ -693,11 +693,12 @@ class AppCheckPlayIntegrityConfig extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AppCheckPlayIntegrityConfigState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AppCheckPlayIntegrityConfig._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -711,6 +712,21 @@ class AppCheckPlayIntegrityConfig extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    appId = registerOutput<String>('appId');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    tokenTtl = registerOutput<String>('tokenTtl');
+  }
+
+  /// Creates a typed reference to an existing [AppCheckPlayIntegrityConfig] resource.
+  AppCheckPlayIntegrityConfig.reference(String urn)
+    : super(
+        'gcp:firebase/appCheckPlayIntegrityConfig:AppCheckPlayIntegrityConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     appId = registerOutput<String>('appId');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

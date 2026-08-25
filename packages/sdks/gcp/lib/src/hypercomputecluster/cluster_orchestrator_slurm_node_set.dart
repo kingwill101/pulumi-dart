@@ -7,11 +7,11 @@ import 'cluster_orchestrator_slurm_node_set_storage_config.dart';
 class ClusterOrchestratorSlurmNodeSet {
   /// ID of the compute resource on which this nodeset will run. Must match a key
   /// in the cluster's compute_resources.
-  final pulumi.Input<String>? computeId;
+  final pulumi.Input<String?>? computeId;
   /// When set in a SlurmNodeSet, indicates that the nodeset should be backed
   /// by Compute Engine VM instances.
   /// Structure is documented below.
-  final pulumi.Input<ClusterOrchestratorSlurmNodeSetComputeInstance>? computeInstance;
+  final pulumi.Input<ClusterOrchestratorSlurmNodeSetComputeInstance?>? computeInstance;
   /// Identifier for the nodeset, which allows it to be referenced by partitions.
   /// Must conform to
   /// [RFC-1034](https://datatracker.ietf.org/doc/html/rfc1034) (lower-case,
@@ -22,14 +22,14 @@ class ClusterOrchestratorSlurmNodeSet {
   /// number of additional nodes the cluster can bring online. Leave empty if you
   /// do not want the cluster to create nodes dynamically, and instead rely only
   /// on static nodes.
-  final pulumi.Input<String>? maxDynamicNodeCount;
+  final pulumi.Input<String?>? maxDynamicNodeCount;
   /// Number of nodes to be statically created for this nodeset. The cluster will
   /// attempt to ensure that at least this many nodes exist at all times.
-  final pulumi.Input<String>? staticNodeCount;
+  final pulumi.Input<String?>? staticNodeCount;
   /// How storage resources should be mounted on each compute
   /// node.
   /// Structure is documented below.
-  final pulumi.Input<List<ClusterOrchestratorSlurmNodeSetStorageConfig>>? storageConfigs;
+  final pulumi.Input<List<ClusterOrchestratorSlurmNodeSetStorageConfig>?>? storageConfigs;
 
   /// Creates a new [ClusterOrchestratorSlurmNodeSet].
   /// [computeId] ID of the compute resource on which this nodeset will run. Must match a key

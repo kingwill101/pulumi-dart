@@ -34,7 +34,7 @@ class GetCryptoKeysKey {
   /// This field is currently in beta and is subject to change.
   final pulumi.Input<List<GetCryptoKeysKeyKeyAccessJustificationsPolicy>> keyAccessJustificationsPolicies;
   /// The key ring that the keys belongs to. Format: 'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'.,
-  final pulumi.Input<String>? keyRing;
+  final pulumi.Input<String?>? keyRing;
   /// Labels with user-defined metadata to apply to this resource.
   ///
   ///
@@ -42,7 +42,7 @@ class GetCryptoKeysKey {
   /// Please refer to the field 'effective_labels' for all of the labels present on the resource.
   final pulumi.Input<Map<String, String>> labels;
   /// The resource name for the CryptoKey.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A copy of the primary CryptoKeyVersion that will be used by cryptoKeys.encrypt when this CryptoKey is given in EncryptRequest.name.
   /// Keys with purpose ENCRYPT_DECRYPT may have a primary. For other keys, this field will be unset.
   final pulumi.Input<List<GetCryptoKeysKeyPrimary>> primaries;

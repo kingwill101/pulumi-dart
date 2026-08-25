@@ -10,61 +10,61 @@ class EntryState {
   /// Specification for a group of BigQuery tables with name pattern [prefix]YYYYMMDD.
   /// Context: https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding.
   /// Structure is documented below.
-  final pulumi.Input<List<EntryBigqueryDateShardedSpec>>? bigqueryDateShardedSpecs;
+  final pulumi.Input<List<EntryBigqueryDateShardedSpec>?>? bigqueryDateShardedSpecs;
   /// Specification that applies to a BigQuery table. This is only valid on entries of type TABLE.
   /// Structure is documented below.
-  final pulumi.Input<List<EntryBigqueryTableSpec>>? bigqueryTableSpecs;
+  final pulumi.Input<List<EntryBigqueryTableSpec>?>? bigqueryTableSpecs;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Entry description, which can consist of several sentences or paragraphs that describe entry contents.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Display information such as title and description. A short name to identify the entry,
   /// for example, "Analytics Data - Jan 2011".
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The name of the entry group this entry is in.
-  final pulumi.Input<String>? entryGroup;
+  final pulumi.Input<String?>? entryGroup;
   /// The id of the entry to create.
-  final pulumi.Input<String>? entryId;
+  final pulumi.Input<String?>? entryId;
   /// Specification that applies to a Cloud Storage fileset. This is only valid on entries of type FILESET.
   /// Structure is documented below.
-  final pulumi.Input<EntryGcsFilesetSpec>? gcsFilesetSpec;
+  final pulumi.Input<EntryGcsFilesetSpec?>? gcsFilesetSpec;
   /// This field indicates the entry's source system that Data Catalog integrates with, such as BigQuery or Pub/Sub.
-  final pulumi.Input<String>? integratedSystem;
+  final pulumi.Input<String?>? integratedSystem;
   /// The resource this metadata entry refers to.
   /// For Google Cloud Platform resources, linkedResource is the full name of the resource.
   /// For example, the linkedResource for a table resource from BigQuery is:
   /// //bigquery.googleapis.com/projects/projectId/datasets/datasetId/tables/tableId
   /// Output only when Entry is of type in the EntryType enum. For entries with userSpecifiedType,
   /// this field is optional and defaults to an empty string.
-  final pulumi.Input<String>? linkedResource;
+  final pulumi.Input<String?>? linkedResource;
   /// The Data Catalog resource name of the entry in URL format.
   /// Example: projects/{project_id}/locations/{location}/entryGroups/{entryGroupId}/entries/{entryId}.
   /// Note that this Entry and its child resources may not actually be stored in the location in this name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Schema of the entry (e.g. BigQuery, GoogleSQL, Avro schema), as a json string. An entry might not have any schema
   /// attached to it. See
   /// https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.entryGroups.entries#schema
   /// for what fields this schema can contain.
-  final pulumi.Input<String>? schema;
+  final pulumi.Input<String?>? schema;
   /// The type of the entry. Only used for Entries with types in the EntryType enum.
   /// Currently, only FILESET enum value is allowed. All other entries created through Data Catalog must use userSpecifiedType.
   /// Possible values are: `FILESET`.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// This field indicates the entry's source system that Data Catalog does not integrate with.
   /// userSpecifiedSystem strings must begin with a letter or underscore and can only contain letters, numbers,
   /// and underscores; are case insensitive; must be at least 1 character and at most 64 characters long.
-  final pulumi.Input<String>? userSpecifiedSystem;
+  final pulumi.Input<String?>? userSpecifiedSystem;
   /// Entry type if it does not fit any of the input-allowed values listed in EntryType enum above.
   /// When creating an entry, users should check the enum values first, if nothing matches the entry
   /// to be created, then provide a custom value, for example "mySpecialType".
   /// userSpecifiedType strings must begin with a letter or underscore and can only contain letters,
   /// numbers, and underscores; are case insensitive; must be at least 1 character and at most 64 characters long.
-  final pulumi.Input<String>? userSpecifiedType;
+  final pulumi.Input<String?>? userSpecifiedType;
 
   /// Creates a new [EntryState].
   /// [bigqueryDateShardedSpecs] Specification for a group of BigQuery tables with name pattern [prefix]YYYYMMDD.

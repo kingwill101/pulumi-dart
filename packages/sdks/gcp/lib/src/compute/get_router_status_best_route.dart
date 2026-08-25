@@ -218,7 +218,7 @@ class GetRouterStatusBestRoute {
       nextHopPeering: pulumi.Input.fromValue(map['nextHopPeering'] as String),
       nextHopVpnTunnel: pulumi.Input.fromValue(map['nextHopVpnTunnel'] as String),
       params: pulumi.Input.fromValue(pulumi.Input.decodeList<GetRouterStatusBestRouteParam>(map['params']!, (value) => GetRouterStatusBestRouteParam.fromMap((value as Map).cast<String, dynamic>()))),
-      priority: pulumi.Input.fromValue(map['priority'] as int),
+      priority: pulumi.Input.fromValue((map['priority'] as num).toInt()),
       project: pulumi.Input.fromValue(map['project'] as String),
       routeStatus: pulumi.Input.fromValue(map['routeStatus'] as String),
       routeType: pulumi.Input.fromValue(map['routeType'] as String),

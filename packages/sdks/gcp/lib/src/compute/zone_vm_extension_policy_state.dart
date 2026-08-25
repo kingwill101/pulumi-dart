@@ -7,37 +7,37 @@ import 'zone_vm_extension_policy_instance_selector.dart';
 /// Input properties used for looking up and filtering ZoneVmExtensionPolicy resources.
 class ZoneVmExtensionPolicyState {
   /// Creation timestamp in RFC3339 text format.
-  final pulumi.Input<String>? creationTimestamp;
+  final pulumi.Input<String?>? creationTimestamp;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// An optional description of this resource.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// A map of extension names (for example, "ops-agent") to their corresponding policy configurations.
   /// Structure is documented below.
-  final pulumi.Input<List<ZoneVmExtensionPolicyExtensionPolicy>>? extensionPolicies;
+  final pulumi.Input<List<ZoneVmExtensionPolicyExtensionPolicy>?>? extensionPolicies;
   /// Selectors to target VMs for this policy.
   /// Structure is documented below.
-  final pulumi.Input<List<ZoneVmExtensionPolicyInstanceSelector>>? instanceSelectors;
+  final pulumi.Input<List<ZoneVmExtensionPolicyInstanceSelector>?>? instanceSelectors;
   /// Type of the resource.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// Indicates if this policy is managed by a global policy.
-  final pulumi.Input<bool>? managedByGlobal;
+  final pulumi.Input<bool?>? managedByGlobal;
   /// Name of the resource. Provided by the client when the resource is created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Priority of this policy.
-  final pulumi.Input<int>? priority;
+  final pulumi.Input<int?>? priority;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Current state of the policy.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// Name of the zone for this request.
-  final pulumi.Input<String>? zone;
+  final pulumi.Input<String?>? zone;
 
   /// Creates a new [ZoneVmExtensionPolicyState].
   /// [creationTimestamp] Creation timestamp in RFC3339 text format.
@@ -94,7 +94,7 @@ class ZoneVmExtensionPolicyState {
       kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       managedByGlobal: (() { final guardedValue = map['managedByGlobal']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       zone: (() { final guardedValue = map['zone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

@@ -225,16 +225,17 @@ class DomainTrust extends pulumi.CustomResource {
           'gcp:activedirectory/domainTrust:DomainTrust',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['trustHandshakeSecret'],
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     domain = registerOutput<String>('domain');
     project = registerOutput<String>('project');
     selectiveAuthentication = registerOutput<bool?>('selectiveAuthentication');
-    targetDnsIpAddresses = registerOutput<List<String>>('targetDnsIpAddresses');
+    targetDnsIpAddresses = registerOutput<List<String>>('targetDnsIpAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     targetDomainName = registerOutput<String>('targetDomainName');
     trustDirection = registerOutput<String>('trustDirection');
-    trustHandshakeSecret = registerOutput<String>('trustHandshakeSecret');
+    trustHandshakeSecret = registerOutput<String>('trustHandshakeSecret', isSecret: true);
     trustType = registerOutput<String>('trustType');
   }
 
@@ -243,11 +244,12 @@ class DomainTrust extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DomainTrustState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DomainTrust._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -265,10 +267,31 @@ class DomainTrust extends pulumi.CustomResource {
     domain = registerOutput<String>('domain');
     project = registerOutput<String>('project');
     selectiveAuthentication = registerOutput<bool?>('selectiveAuthentication');
-    targetDnsIpAddresses = registerOutput<List<String>>('targetDnsIpAddresses');
+    targetDnsIpAddresses = registerOutput<List<String>>('targetDnsIpAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     targetDomainName = registerOutput<String>('targetDomainName');
     trustDirection = registerOutput<String>('trustDirection');
-    trustHandshakeSecret = registerOutput<String>('trustHandshakeSecret');
+    trustHandshakeSecret = registerOutput<String>('trustHandshakeSecret', isSecret: true);
+    trustType = registerOutput<String>('trustType');
+  }
+
+  /// Creates a typed reference to an existing [DomainTrust] resource.
+  DomainTrust.reference(String urn)
+    : super(
+        'gcp:activedirectory/domainTrust:DomainTrust',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['trustHandshakeSecret'],
+        isResourceReference: true,
+      ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    domain = registerOutput<String>('domain');
+    project = registerOutput<String>('project');
+    selectiveAuthentication = registerOutput<bool?>('selectiveAuthentication');
+    targetDnsIpAddresses = registerOutput<List<String>>('targetDnsIpAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    targetDomainName = registerOutput<String>('targetDomainName');
+    trustDirection = registerOutput<String>('trustDirection');
+    trustHandshakeSecret = registerOutput<String>('trustHandshakeSecret', isSecret: true);
     trustType = registerOutput<String>('trustType');
   }
 }

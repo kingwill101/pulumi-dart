@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RegionUrlMapHostRule {
   /// An optional description of this HostRule. Provide this property
   /// when you create the resource.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The list of host patterns to match. They must be valid
   /// hostnames, except * will match any string of ([a-z0-9-.]*). In
   /// that case, * must be the first character and must be followed in

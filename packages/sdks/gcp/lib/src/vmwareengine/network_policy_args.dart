@@ -15,9 +15,9 @@ class NetworkPolicyArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// User-provided description for this network policy.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// IP address range in CIDR notation used to create internet access and external IP access.
   /// An RFC 1918 CIDR block, with a "/26" prefix, is required. The range cannot overlap with any
   /// prefixes either in the consumer VPC network or in use by the private clouds attached to that VPC network.
@@ -25,19 +25,19 @@ class NetworkPolicyArgs {
   /// Network service that allows External IP addresses to be assigned to VMware workloads.
   /// This service can only be enabled when internetAccess is also enabled.
   /// Structure is documented below.
-  final pulumi.Input<NetworkPolicyExternalIp>? externalIp;
+  final pulumi.Input<NetworkPolicyExternalIp?>? externalIp;
   /// Network service that allows VMware workloads to access the internet.
   /// Structure is documented below.
-  final pulumi.Input<NetworkPolicyInternetAccess>? internetAccess;
+  final pulumi.Input<NetworkPolicyInternetAccess?>? internetAccess;
   /// The resource name of the location (region) to create the new network policy in.
   /// Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
   /// For example: projects/my-project/locations/us-central1
   final pulumi.Input<String> location;
   /// The ID of the Network Policy.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The relative resource name of the VMware Engine network. Specify the name in the following form:
   /// projects/{project}/locations/{location}/vmwareEngineNetworks/{vmwareEngineNetworkId} where {project}
   /// can either be a project number or a project ID.

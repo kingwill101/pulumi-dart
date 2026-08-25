@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SacRealmSymantecOptions {
   /// (Output)
   /// Symantec site IDs which the user can choose to connect to.
-  final pulumi.Input<List<String>>? availableSymantecSites;
+  final pulumi.Input<List<String>?>? availableSymantecSites;
   /// API Key used to call Symantec APIs on the user's behalf. Required if using Symantec Cloud SWG. P4SA account needs permissions granted to read this secret.
   /// A secret ID, secret name, or secret URI can be specified, but it will be parsed and stored as a secret URI in the form projects/{projectNumber}/secrets/my-secret.
-  final pulumi.Input<String>? secretPath;
+  final pulumi.Input<String?>? secretPath;
   /// (Output)
   /// Connection status to Symantec API
-  final pulumi.Input<String>? symantecConnectionState;
+  final pulumi.Input<String?>? symantecConnectionState;
 
   /// Creates a new [SacRealmSymantecOptions].
   /// [availableSymantecSites] (Output)

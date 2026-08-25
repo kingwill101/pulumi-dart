@@ -3,54 +3,54 @@
 
 /// Result data returned by getFolderSettings.
 class GetFolderSettingsResult {
-  final String defaultStorageLocation;
-  final String folder;
+  final String? defaultStorageLocation;
+  final String? folder;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final String kmsKeyName;
-  final String location;
-  final String name;
-  final String serviceAccountId;
+  final String? id;
+  final String? kmsKeyName;
+  final String? location;
+  final String? name;
+  final String? serviceAccountId;
 
   /// Creates a new [GetFolderSettingsResult].
-  /// [defaultStorageLocation] Required.
-  /// [folder] Required.
+  /// [defaultStorageLocation] Optional.
+  /// [folder] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [kmsKeyName] Required.
-  /// [location] Required.
-  /// [name] Required.
-  /// [serviceAccountId] Required.
+  /// [kmsKeyName] Optional.
+  /// [location] Optional.
+  /// [name] Optional.
+  /// [serviceAccountId] Optional.
   const GetFolderSettingsResult({
-    required this.defaultStorageLocation,
-    required this.folder,
-    required this.id,
-    required this.kmsKeyName,
-    required this.location,
-    required this.name,
-    required this.serviceAccountId,
+    this.defaultStorageLocation,
+    this.folder,
+    this.id,
+    this.kmsKeyName,
+    this.location,
+    this.name,
+    this.serviceAccountId,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'defaultStorageLocation': defaultStorageLocation,
-      'folder': folder,
-      'id': id,
-      'kmsKeyName': kmsKeyName,
-      'location': location,
-      'name': name,
-      'serviceAccountId': serviceAccountId,
+      'defaultStorageLocation': ?defaultStorageLocation,
+      'folder': ?folder,
+      'id': ?id,
+      'kmsKeyName': ?kmsKeyName,
+      'location': ?location,
+      'name': ?name,
+      'serviceAccountId': ?serviceAccountId,
     };
   }
 
   factory GetFolderSettingsResult.fromMap(Map<String, dynamic> map) {
     return GetFolderSettingsResult(
-      defaultStorageLocation: map['defaultStorageLocation'] as String,
-      folder: map['folder'] as String,
-      id: map['id'] as String,
-      kmsKeyName: map['kmsKeyName'] as String,
-      location: map['location'] as String,
-      name: map['name'] as String,
-      serviceAccountId: map['serviceAccountId'] as String,
+      defaultStorageLocation: (() { final guardedValue = map['defaultStorageLocation']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      folder: (() { final guardedValue = map['folder']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      kmsKeyName: (() { final guardedValue = map['kmsKeyName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      serviceAccountId: (() { final guardedValue = map['serviceAccountId']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

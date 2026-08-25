@@ -3,6 +3,7 @@ import 'vmware_node_pool_args.dart';
 import 'vmware_node_pool_config.dart';
 import 'vmware_node_pool_node_pool_autoscaling.dart';
 import 'vmware_node_pool_state.dart';
+import 'vmware_node_pool_status.dart';
 
 /// A Google Vmware Node Pool.
 ///
@@ -1267,7 +1268,7 @@ class VMwareNodePool extends pulumi.CustomResource {
   late final pulumi.Output<String> state;
   /// ResourceStatus representing detailed cluster state.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> statuses;
+  late final pulumi.Output<List<VMwareNodePoolStatus>> statuses;
   /// The unique identifier of the node pool.
   late final pulumi.Output<String> uid;
   /// The time the cluster was last updated, in RFC3339 text format.
@@ -1287,15 +1288,15 @@ class VMwareNodePool extends pulumi.CustomResource {
           'gcp:gkeonprem/vMwareNodePool:VMwareNodePool',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
-    annotations = registerOutput<Map<String, String>?>('annotations');
+    annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     config = registerOutput<VMwareNodePoolConfig>('config', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VMwareNodePoolConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     deleteTime = registerOutput<String>('deleteTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
-    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
+    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -1304,7 +1305,7 @@ class VMwareNodePool extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     reconciling = registerOutput<bool>('reconciling');
     state = registerOutput<String>('state');
-    statuses = registerOutput<List<Map<String, dynamic>>>('statuses');
+    statuses = registerOutput<List<VMwareNodePoolStatus>>('statuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VMwareNodePoolStatus>(guardedValue, (value) => VMwareNodePoolStatus.fromMap((value as Map).cast<String, dynamic>())); });
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
     vmwareCluster = registerOutput<String>('vmwareCluster');
@@ -1315,11 +1316,12 @@ class VMwareNodePool extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VMwareNodePoolState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VMwareNodePool._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1333,13 +1335,13 @@ class VMwareNodePool extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    annotations = registerOutput<Map<String, String>?>('annotations');
+    annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     config = registerOutput<VMwareNodePoolConfig>('config', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VMwareNodePoolConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     deleteTime = registerOutput<String>('deleteTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
-    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
+    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -1348,7 +1350,37 @@ class VMwareNodePool extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     reconciling = registerOutput<bool>('reconciling');
     this.state = registerOutput<String>('state');
-    statuses = registerOutput<List<Map<String, dynamic>>>('statuses');
+    statuses = registerOutput<List<VMwareNodePoolStatus>>('statuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VMwareNodePoolStatus>(guardedValue, (value) => VMwareNodePoolStatus.fromMap((value as Map).cast<String, dynamic>())); });
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
+    vmwareCluster = registerOutput<String>('vmwareCluster');
+  }
+
+  /// Creates a typed reference to an existing [VMwareNodePool] resource.
+  VMwareNodePool.reference(String urn)
+    : super(
+        'gcp:gkeonprem/vMwareNodePool:VMwareNodePool',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    config = registerOutput<VMwareNodePoolConfig>('config', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VMwareNodePoolConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createTime = registerOutput<String>('createTime');
+    deleteTime = registerOutput<String>('deleteTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    displayName = registerOutput<String?>('displayName');
+    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    etag = registerOutput<String>('etag');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    nodePoolAutoscaling = registerOutput<VMwareNodePoolNodePoolAutoscaling?>('nodePoolAutoscaling', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VMwareNodePoolNodePoolAutoscaling.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    onPremVersion = registerOutput<String?>('onPremVersion');
+    project = registerOutput<String>('project');
+    reconciling = registerOutput<bool>('reconciling');
+    state = registerOutput<String>('state');
+    statuses = registerOutput<List<VMwareNodePoolStatus>>('statuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VMwareNodePoolStatus>(guardedValue, (value) => VMwareNodePoolStatus.fromMap((value as Map).cast<String, dynamic>())); });
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
     vmwareCluster = registerOutput<String>('vmwareCluster');

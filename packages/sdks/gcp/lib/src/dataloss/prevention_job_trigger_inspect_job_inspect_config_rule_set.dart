@@ -7,7 +7,7 @@ import 'prevention_job_trigger_inspect_job_inspect_config_rule_set_rule.dart';
 class PreventionJobTriggerInspectJobInspectConfigRuleSet {
   /// List of infoTypes this rule set is applied to.
   /// Structure is documented below.
-  final pulumi.Input<List<PreventionJobTriggerInspectJobInspectConfigRuleSetInfoType>>? infoTypes;
+  final pulumi.Input<List<PreventionJobTriggerInspectJobInspectConfigRuleSetInfoType>?>? infoTypes;
   /// Set of rules to be applied to infoTypes. The rules are applied in order.
   /// Structure is documented below.
   final pulumi.Input<List<PreventionJobTriggerInspectJobInspectConfigRuleSetRule>> rules;

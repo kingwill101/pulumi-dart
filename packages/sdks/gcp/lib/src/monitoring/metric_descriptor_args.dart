@@ -15,26 +15,26 @@ class MetricDescriptorArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// A detailed description of the metric, which can be used in documentation.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example "Request count".
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The set of labels that can be used to describe a specific instance of this metric type. In order to delete a label, the entire resource must be deleted, then created with the desired labels.
   /// Structure is documented below.
-  final pulumi.Input<List<MetricDescriptorLabel>>? labels;
+  final pulumi.Input<List<MetricDescriptorLabel>?>? labels;
   /// The launch stage of the metric definition.
   /// Possible values are: `LAUNCH_STAGE_UNSPECIFIED`, `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
-  final pulumi.Input<String>? launchStage;
+  final pulumi.Input<String?>? launchStage;
   /// Metadata which can be used to guide usage of the metric.
   /// Structure is documented below.
-  final pulumi.Input<MetricDescriptorMetadata>? metadata;
+  final pulumi.Input<MetricDescriptorMetadata?>? metadata;
   /// Whether the metric records instantaneous values, changes to a value, etc. Some combinations of metricKind and valueType might not be supported.
   /// Possible values are: `METRIC_KIND_UNSPECIFIED`, `GAUGE`, `DELTA`, `CUMULATIVE`.
   final pulumi.Input<String> metricKind;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The metric type, including its DNS name prefix. The type is not URL-encoded. All service defined metrics must be prefixed with the service name, in the format of {service name}/{relative metric name}, such as cloudsql.googleapis.com/database/cpu/utilization. The relative metric name must have only upper and lower-case letters, digits, '/' and underscores '_' are allowed. Additionally, the maximum number of characters allowed for the relativeMetricName is 100. All user-defined metric types have the DNS name custom.googleapis.com, external.googleapis.com, or logging.googleapis.com/user/.
   final pulumi.Input<String> type;
   /// The units in which the metric value is reported. It is only applicable if the
@@ -54,7 +54,7 @@ class MetricDescriptorArgs {
   /// The supported units are a subset of The Unified Code for Units of Measure standard.
   /// More info can be found in the API documentation
   /// (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors).
-  final pulumi.Input<String>? unit;
+  final pulumi.Input<String?>? unit;
   /// Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
   /// Possible values are: `BOOL`, `INT64`, `DOUBLE`, `STRING`, `DISTRIBUTION`.
   final pulumi.Input<String> valueType;

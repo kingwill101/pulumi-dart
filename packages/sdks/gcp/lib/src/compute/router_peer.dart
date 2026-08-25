@@ -1,6 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'router_peer_advertised_ip_range.dart';
 import 'router_peer_args.dart';
 import 'router_peer_bfd.dart';
+import 'router_peer_custom_learned_ip_range.dart';
 import 'router_peer_md5_authentication_key.dart';
 import 'router_peer_state.dart';
 
@@ -2804,7 +2806,7 @@ class RouterPeer extends pulumi.CustomResource {
   /// ranges will be advertised in addition to any specified groups.
   /// Leave this field blank to advertise no custom IP ranges.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> advertisedIpRanges;
+  late final pulumi.Output<List<RouterPeerAdvertisedIpRange>?> advertisedIpRanges;
   /// The priority of routes advertised to this BGP peer.
   /// Where there is more than one matching route of maximum
   /// length, the routes with the lowest priority value win.
@@ -2816,7 +2818,7 @@ class RouterPeer extends pulumi.CustomResource {
   /// If an IP address is provided without a subnet mask, it is interpreted as, for IPv4,
   /// a /32 singular IP address range, and, for IPv6, /128.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> customLearnedIpRanges;
+  late final pulumi.Output<List<RouterPeerCustomLearnedIpRange>?> customLearnedIpRanges;
   /// The user-defined custom learned route priority for a BGP session.
   /// This value is applied to all custom learned route ranges for the session.
   /// You can choose a value from 0 to 65335. If you don't provide a value,
@@ -2930,21 +2932,21 @@ class RouterPeer extends pulumi.CustomResource {
           'gcp:compute/routerPeer:RouterPeer',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     advertiseMode = registerOutput<String?>('advertiseMode');
-    advertisedGroups = registerOutput<List<String>?>('advertisedGroups');
-    advertisedIpRanges = registerOutput<List<Map<String, dynamic>>?>('advertisedIpRanges');
+    advertisedGroups = registerOutput<List<String>?>('advertisedGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    advertisedIpRanges = registerOutput<List<RouterPeerAdvertisedIpRange>?>('advertisedIpRanges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RouterPeerAdvertisedIpRange>(guardedValue, (value) => RouterPeerAdvertisedIpRange.fromMap((value as Map).cast<String, dynamic>())); });
     advertisedRoutePriority = registerOutput<int?>('advertisedRoutePriority');
     bfd = registerOutput<RouterPeerBfd>('bfd', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RouterPeerBfd.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    customLearnedIpRanges = registerOutput<List<Map<String, dynamic>>?>('customLearnedIpRanges');
+    customLearnedIpRanges = registerOutput<List<RouterPeerCustomLearnedIpRange>?>('customLearnedIpRanges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RouterPeerCustomLearnedIpRange>(guardedValue, (value) => RouterPeerCustomLearnedIpRange.fromMap((value as Map).cast<String, dynamic>())); });
     customLearnedRoutePriority = registerOutput<int?>('customLearnedRoutePriority');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     enable = registerOutput<bool?>('enable');
     enableIpv4 = registerOutput<bool>('enableIpv4');
     enableIpv6 = registerOutput<bool?>('enableIpv6');
-    exportPolicies = registerOutput<List<String>?>('exportPolicies');
-    importPolicies = registerOutput<List<String>?>('importPolicies');
+    exportPolicies = registerOutput<List<String>?>('exportPolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    importPolicies = registerOutput<List<String>?>('importPolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     interface = registerOutput<String>('interface');
     ipAddress = registerOutput<String>('ipAddress');
     ipv4NexthopAddress = registerOutput<String>('ipv4NexthopAddress');
@@ -2971,11 +2973,12 @@ class RouterPeer extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RouterPeerState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RouterPeer._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -2990,18 +2993,61 @@ class RouterPeer extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     advertiseMode = registerOutput<String?>('advertiseMode');
-    advertisedGroups = registerOutput<List<String>?>('advertisedGroups');
-    advertisedIpRanges = registerOutput<List<Map<String, dynamic>>?>('advertisedIpRanges');
+    advertisedGroups = registerOutput<List<String>?>('advertisedGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    advertisedIpRanges = registerOutput<List<RouterPeerAdvertisedIpRange>?>('advertisedIpRanges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RouterPeerAdvertisedIpRange>(guardedValue, (value) => RouterPeerAdvertisedIpRange.fromMap((value as Map).cast<String, dynamic>())); });
     advertisedRoutePriority = registerOutput<int?>('advertisedRoutePriority');
     bfd = registerOutput<RouterPeerBfd>('bfd', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RouterPeerBfd.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    customLearnedIpRanges = registerOutput<List<Map<String, dynamic>>?>('customLearnedIpRanges');
+    customLearnedIpRanges = registerOutput<List<RouterPeerCustomLearnedIpRange>?>('customLearnedIpRanges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RouterPeerCustomLearnedIpRange>(guardedValue, (value) => RouterPeerCustomLearnedIpRange.fromMap((value as Map).cast<String, dynamic>())); });
     customLearnedRoutePriority = registerOutput<int?>('customLearnedRoutePriority');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     enable = registerOutput<bool?>('enable');
     enableIpv4 = registerOutput<bool>('enableIpv4');
     enableIpv6 = registerOutput<bool?>('enableIpv6');
-    exportPolicies = registerOutput<List<String>?>('exportPolicies');
-    importPolicies = registerOutput<List<String>?>('importPolicies');
+    exportPolicies = registerOutput<List<String>?>('exportPolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    importPolicies = registerOutput<List<String>?>('importPolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    interface = registerOutput<String>('interface');
+    ipAddress = registerOutput<String>('ipAddress');
+    ipv4NexthopAddress = registerOutput<String>('ipv4NexthopAddress');
+    ipv6NexthopAddress = registerOutput<String>('ipv6NexthopAddress');
+    isAdvertisedRoutePrioritySet = registerOutput<bool>('isAdvertisedRoutePrioritySet');
+    isCustomLearnedPrioritySet = registerOutput<bool>('isCustomLearnedPrioritySet');
+    managementType = registerOutput<String>('managementType');
+    md5AuthenticationKey = registerOutput<RouterPeerMd5AuthenticationKey?>('md5AuthenticationKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RouterPeerMd5AuthenticationKey.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    peerAsn = registerOutput<int>('peerAsn');
+    peerIpAddress = registerOutput<String>('peerIpAddress');
+    peerIpv4NexthopAddress = registerOutput<String>('peerIpv4NexthopAddress');
+    peerIpv6NexthopAddress = registerOutput<String>('peerIpv6NexthopAddress');
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+    router = registerOutput<String>('router');
+    routerApplianceInstance = registerOutput<String?>('routerApplianceInstance');
+    zeroAdvertisedRoutePriority = registerOutput<bool?>('zeroAdvertisedRoutePriority');
+    zeroCustomLearnedRoutePriority = registerOutput<bool?>('zeroCustomLearnedRoutePriority');
+  }
+
+  /// Creates a typed reference to an existing [RouterPeer] resource.
+  RouterPeer.reference(String urn)
+    : super(
+        'gcp:compute/routerPeer:RouterPeer',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    advertiseMode = registerOutput<String?>('advertiseMode');
+    advertisedGroups = registerOutput<List<String>?>('advertisedGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    advertisedIpRanges = registerOutput<List<RouterPeerAdvertisedIpRange>?>('advertisedIpRanges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RouterPeerAdvertisedIpRange>(guardedValue, (value) => RouterPeerAdvertisedIpRange.fromMap((value as Map).cast<String, dynamic>())); });
+    advertisedRoutePriority = registerOutput<int?>('advertisedRoutePriority');
+    bfd = registerOutput<RouterPeerBfd>('bfd', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RouterPeerBfd.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    customLearnedIpRanges = registerOutput<List<RouterPeerCustomLearnedIpRange>?>('customLearnedIpRanges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RouterPeerCustomLearnedIpRange>(guardedValue, (value) => RouterPeerCustomLearnedIpRange.fromMap((value as Map).cast<String, dynamic>())); });
+    customLearnedRoutePriority = registerOutput<int?>('customLearnedRoutePriority');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    enable = registerOutput<bool?>('enable');
+    enableIpv4 = registerOutput<bool>('enableIpv4');
+    enableIpv6 = registerOutput<bool?>('enableIpv6');
+    exportPolicies = registerOutput<List<String>?>('exportPolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    importPolicies = registerOutput<List<String>?>('importPolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     interface = registerOutput<String>('interface');
     ipAddress = registerOutput<String>('ipAddress');
     ipv4NexthopAddress = registerOutput<String>('ipv4NexthopAddress');

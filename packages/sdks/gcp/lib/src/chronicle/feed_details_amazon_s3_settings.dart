@@ -5,7 +5,7 @@ import 'feed_details_amazon_s3_settings_authentication.dart';
 
 class FeedDetailsAmazonS3Settings {
   /// Amazon S3 auth.
-  final pulumi.Input<FeedDetailsAmazonS3SettingsAuthentication>? authentication;
+  final pulumi.Input<FeedDetailsAmazonS3SettingsAuthentication?>? authentication;
   /// S3 URI.
   final pulumi.Input<String> s3Uri;
   /// Possible values:

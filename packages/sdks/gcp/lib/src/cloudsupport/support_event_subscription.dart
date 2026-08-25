@@ -618,7 +618,7 @@ class SupportEventSubscription extends pulumi.CustomResource {
           'gcp:cloudsupport/supportEventSubscription:SupportEventSubscription',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     deleteTime = registerOutput<String>('deleteTime');
@@ -637,11 +637,12 @@ class SupportEventSubscription extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SupportEventSubscriptionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SupportEventSubscription._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -664,6 +665,27 @@ class SupportEventSubscription extends pulumi.CustomResource {
     pubSubTopic = registerOutput<String>('pubSubTopic');
     purgeTime = registerOutput<String>('purgeTime');
     this.state = registerOutput<String>('state');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [SupportEventSubscription] resource.
+  SupportEventSubscription.reference(String urn)
+    : super(
+        'gcp:cloudsupport/supportEventSubscription:SupportEventSubscription',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    deleteTime = registerOutput<String>('deleteTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    failureReason = registerOutput<String>('failureReason');
+    this.name = registerOutput<String>('name');
+    organization = registerOutput<String>('organization');
+    pubSubTopic = registerOutput<String>('pubSubTopic');
+    purgeTime = registerOutput<String>('purgeTime');
+    state = registerOutput<String>('state');
     updateTime = registerOutput<String>('updateTime');
   }
 }

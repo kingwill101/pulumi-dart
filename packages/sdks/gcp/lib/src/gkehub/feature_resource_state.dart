@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FeatureResourceState {
   /// (Output)
   /// Whether this Feature has outstanding resources that need to be cleaned up before it can be disabled.
-  final pulumi.Input<bool>? hasResources;
+  final pulumi.Input<bool?>? hasResources;
   /// (Output)
   /// Output only. The "running state" of the Feature in this Hub.
   /// Structure is documented below.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
 
   /// Creates a new [FeatureResourceState].
   /// [hasResources] (Output)

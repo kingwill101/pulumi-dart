@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GCPolicyMaxAge {
   /// Number of days before applying GC policy.
-  final pulumi.Input<int>? days;
+  final pulumi.Input<int?>? days;
   /// Duration before applying GC policy (ex. "8h"). This is required when `days` isn't set
   ///
   /// -----
-  final pulumi.Input<String>? duration;
+  final pulumi.Input<String?>? duration;
 
   /// Creates a new [GCPolicyMaxAge].
   /// [days] Number of days before applying GC policy.
@@ -27,7 +27,7 @@ class GCPolicyMaxAge {
 
   factory GCPolicyMaxAge.fromMap(Map<String, dynamic> map) {
     return GCPolicyMaxAge(
-      days: (() { final guardedValue = map['days']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      days: (() { final guardedValue = map['days']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       duration: (() { final guardedValue = map['duration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

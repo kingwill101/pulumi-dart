@@ -5,7 +5,7 @@ import 'region_network_policy_traffic_classification_rule_match_layer4_config.da
 
 class RegionNetworkPolicyTrafficClassificationRuleMatch {
   /// CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
-  final pulumi.Input<List<String>>? destIpRanges;
+  final pulumi.Input<List<String>?>? destIpRanges;
   /// Pairs of IP protocols and ports that the rule should match.
   /// Structure is documented below.
   ///
@@ -13,7 +13,7 @@ class RegionNetworkPolicyTrafficClassificationRuleMatch {
   /// &lt;a name="nestedMatchLayer4Configs"&gt;&lt;/a&gt;The `layer4Configs` block supports:
   final pulumi.Input<List<RegionNetworkPolicyTrafficClassificationRuleMatchLayer4Config>> layer4Configs;
   /// CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
-  final pulumi.Input<List<String>>? srcIpRanges;
+  final pulumi.Input<List<String>?>? srcIpRanges;
 
   /// Creates a new [RegionNetworkPolicyTrafficClassificationRuleMatch].
   /// [destIpRanges] CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.

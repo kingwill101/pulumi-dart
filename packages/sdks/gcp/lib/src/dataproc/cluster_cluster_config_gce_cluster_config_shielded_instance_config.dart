@@ -6,11 +6,11 @@ class ClusterClusterConfigGceClusterConfigShieldedInstanceConfig {
   /// Defines whether instances have integrity monitoring enabled.
   ///
   /// - - -
-  final pulumi.Input<bool>? enableIntegrityMonitoring;
+  final pulumi.Input<bool?>? enableIntegrityMonitoring;
   /// Defines whether instances have Secure Boot enabled.
-  final pulumi.Input<bool>? enableSecureBoot;
+  final pulumi.Input<bool?>? enableSecureBoot;
   /// Defines whether instances have the [vTPM](https://cloud.google.com/security/shielded-cloud/shielded-vm#vtpm) enabled.
-  final pulumi.Input<bool>? enableVtpm;
+  final pulumi.Input<bool?>? enableVtpm;
 
   /// Creates a new [ClusterClusterConfigGceClusterConfigShieldedInstanceConfig].
   /// [enableIntegrityMonitoring] Defines whether instances have integrity monitoring enabled.

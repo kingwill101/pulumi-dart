@@ -9,214 +9,214 @@ import 'get_region_disk_source_snapshot_encryption_key.dart';
 
 /// Result data returned by getRegionDisk.
 class GetRegionDiskResult {
-  final String accessMode;
-  final List<GetRegionDiskAsyncPrimaryDisk> asyncPrimaryDisks;
-  final bool createSnapshotBeforeDestroy;
-  final String createSnapshotBeforeDestroyPrefix;
-  final String creationTimestamp;
-  final String deletionPolicy;
-  final String description;
-  final List<GetRegionDiskDiskEncryptionKey> diskEncryptionKeys;
-  final String diskId;
-  final Map<String, String> effectiveLabels;
-  final bool eraseWindowsVssSignature;
-  final List<GetRegionDiskGuestOsFeature> guestOsFeatures;
+  final String? accessMode;
+  final List<GetRegionDiskAsyncPrimaryDisk>? asyncPrimaryDisks;
+  final bool? createSnapshotBeforeDestroy;
+  final String? createSnapshotBeforeDestroyPrefix;
+  final String? creationTimestamp;
+  final String? deletionPolicy;
+  final String? description;
+  final List<GetRegionDiskDiskEncryptionKey>? diskEncryptionKeys;
+  final String? diskId;
+  final Map<String, String>? effectiveLabels;
+  final bool? eraseWindowsVssSignature;
+  final List<GetRegionDiskGuestOsFeature>? guestOsFeatures;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final String image;
-  final String interface;
-  final String labelFingerprint;
-  final Map<String, String> labels;
-  final String lastAttachTimestamp;
-  final String lastDetachTimestamp;
-  final List<String> licenses;
-  final String name;
-  final int physicalBlockSizeBytes;
+  final String? id;
+  final String? image;
+  final String? interface;
+  final String? labelFingerprint;
+  final Map<String, String>? labels;
+  final String? lastAttachTimestamp;
+  final String? lastDetachTimestamp;
+  final List<String>? licenses;
+  final String? name;
+  final int? physicalBlockSizeBytes;
   final String? project;
-  final int provisionedIops;
-  final int provisionedThroughput;
-  final Map<String, String> pulumiLabels;
+  final int? provisionedIops;
+  final int? provisionedThroughput;
+  final Map<String, String>? pulumiLabels;
   final String? region;
-  final List<String> replicaZones;
-  final String selfLink;
-  final int size;
-  final String snapshot;
-  final String sourceDisk;
-  final String sourceDiskId;
-  final List<GetRegionDiskSourceImageEncryptionKey> sourceImageEncryptionKeys;
-  final String sourceImageId;
-  final List<GetRegionDiskSourceSnapshotEncryptionKey> sourceSnapshotEncryptionKeys;
-  final String sourceSnapshotId;
-  final String type;
-  final List<String> users;
+  final List<String>? replicaZones;
+  final String? selfLink;
+  final int? size;
+  final String? snapshot;
+  final String? sourceDisk;
+  final String? sourceDiskId;
+  final List<GetRegionDiskSourceImageEncryptionKey>? sourceImageEncryptionKeys;
+  final String? sourceImageId;
+  final List<GetRegionDiskSourceSnapshotEncryptionKey>? sourceSnapshotEncryptionKeys;
+  final String? sourceSnapshotId;
+  final String? type;
+  final List<String>? users;
 
   /// Creates a new [GetRegionDiskResult].
-  /// [accessMode] Required.
-  /// [asyncPrimaryDisks] Required.
-  /// [createSnapshotBeforeDestroy] Required.
-  /// [createSnapshotBeforeDestroyPrefix] Required.
-  /// [creationTimestamp] Required.
-  /// [deletionPolicy] Required.
-  /// [description] Required.
-  /// [diskEncryptionKeys] Required.
-  /// [diskId] Required.
-  /// [effectiveLabels] Required.
-  /// [eraseWindowsVssSignature] Required.
-  /// [guestOsFeatures] Required.
+  /// [accessMode] Optional.
+  /// [asyncPrimaryDisks] Optional.
+  /// [createSnapshotBeforeDestroy] Optional.
+  /// [createSnapshotBeforeDestroyPrefix] Optional.
+  /// [creationTimestamp] Optional.
+  /// [deletionPolicy] Optional.
+  /// [description] Optional.
+  /// [diskEncryptionKeys] Optional.
+  /// [diskId] Optional.
+  /// [effectiveLabels] Optional.
+  /// [eraseWindowsVssSignature] Optional.
+  /// [guestOsFeatures] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [image] Required.
-  /// [interface] Required.
-  /// [labelFingerprint] Required.
-  /// [labels] Required.
-  /// [lastAttachTimestamp] Required.
-  /// [lastDetachTimestamp] Required.
-  /// [licenses] Required.
-  /// [name] Required.
-  /// [physicalBlockSizeBytes] Required.
+  /// [image] Optional.
+  /// [interface] Optional.
+  /// [labelFingerprint] Optional.
+  /// [labels] Optional.
+  /// [lastAttachTimestamp] Optional.
+  /// [lastDetachTimestamp] Optional.
+  /// [licenses] Optional.
+  /// [name] Optional.
+  /// [physicalBlockSizeBytes] Optional.
   /// [project] Optional.
-  /// [provisionedIops] Required.
-  /// [provisionedThroughput] Required.
-  /// [pulumiLabels] Required.
+  /// [provisionedIops] Optional.
+  /// [provisionedThroughput] Optional.
+  /// [pulumiLabels] Optional.
   /// [region] Optional.
-  /// [replicaZones] Required.
-  /// [selfLink] Required.
-  /// [size] Required.
-  /// [snapshot] Required.
-  /// [sourceDisk] Required.
-  /// [sourceDiskId] Required.
-  /// [sourceImageEncryptionKeys] Required.
-  /// [sourceImageId] Required.
-  /// [sourceSnapshotEncryptionKeys] Required.
-  /// [sourceSnapshotId] Required.
-  /// [type] Required.
-  /// [users] Required.
+  /// [replicaZones] Optional.
+  /// [selfLink] Optional.
+  /// [size] Optional.
+  /// [snapshot] Optional.
+  /// [sourceDisk] Optional.
+  /// [sourceDiskId] Optional.
+  /// [sourceImageEncryptionKeys] Optional.
+  /// [sourceImageId] Optional.
+  /// [sourceSnapshotEncryptionKeys] Optional.
+  /// [sourceSnapshotId] Optional.
+  /// [type] Optional.
+  /// [users] Optional.
   const GetRegionDiskResult({
-    required this.accessMode,
-    required this.asyncPrimaryDisks,
-    required this.createSnapshotBeforeDestroy,
-    required this.createSnapshotBeforeDestroyPrefix,
-    required this.creationTimestamp,
-    required this.deletionPolicy,
-    required this.description,
-    required this.diskEncryptionKeys,
-    required this.diskId,
-    required this.effectiveLabels,
-    required this.eraseWindowsVssSignature,
-    required this.guestOsFeatures,
-    required this.id,
-    required this.image,
-    required this.interface,
-    required this.labelFingerprint,
-    required this.labels,
-    required this.lastAttachTimestamp,
-    required this.lastDetachTimestamp,
-    required this.licenses,
-    required this.name,
-    required this.physicalBlockSizeBytes,
+    this.accessMode,
+    this.asyncPrimaryDisks,
+    this.createSnapshotBeforeDestroy,
+    this.createSnapshotBeforeDestroyPrefix,
+    this.creationTimestamp,
+    this.deletionPolicy,
+    this.description,
+    this.diskEncryptionKeys,
+    this.diskId,
+    this.effectiveLabels,
+    this.eraseWindowsVssSignature,
+    this.guestOsFeatures,
+    this.id,
+    this.image,
+    this.interface,
+    this.labelFingerprint,
+    this.labels,
+    this.lastAttachTimestamp,
+    this.lastDetachTimestamp,
+    this.licenses,
+    this.name,
+    this.physicalBlockSizeBytes,
     this.project,
-    required this.provisionedIops,
-    required this.provisionedThroughput,
-    required this.pulumiLabels,
+    this.provisionedIops,
+    this.provisionedThroughput,
+    this.pulumiLabels,
     this.region,
-    required this.replicaZones,
-    required this.selfLink,
-    required this.size,
-    required this.snapshot,
-    required this.sourceDisk,
-    required this.sourceDiskId,
-    required this.sourceImageEncryptionKeys,
-    required this.sourceImageId,
-    required this.sourceSnapshotEncryptionKeys,
-    required this.sourceSnapshotId,
-    required this.type,
-    required this.users,
+    this.replicaZones,
+    this.selfLink,
+    this.size,
+    this.snapshot,
+    this.sourceDisk,
+    this.sourceDiskId,
+    this.sourceImageEncryptionKeys,
+    this.sourceImageId,
+    this.sourceSnapshotEncryptionKeys,
+    this.sourceSnapshotId,
+    this.type,
+    this.users,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accessMode': accessMode,
-      'asyncPrimaryDisks': pulumi.Input.encodeList<GetRegionDiskAsyncPrimaryDisk, Map<String, dynamic>>(asyncPrimaryDisks, (value) => value.toMap()),
-      'createSnapshotBeforeDestroy': createSnapshotBeforeDestroy,
-      'createSnapshotBeforeDestroyPrefix': createSnapshotBeforeDestroyPrefix,
-      'creationTimestamp': creationTimestamp,
-      'deletionPolicy': deletionPolicy,
-      'description': description,
-      'diskEncryptionKeys': pulumi.Input.encodeList<GetRegionDiskDiskEncryptionKey, Map<String, dynamic>>(diskEncryptionKeys, (value) => value.toMap()),
-      'diskId': diskId,
-      'effectiveLabels': effectiveLabels,
-      'eraseWindowsVssSignature': eraseWindowsVssSignature,
-      'guestOsFeatures': pulumi.Input.encodeList<GetRegionDiskGuestOsFeature, Map<String, dynamic>>(guestOsFeatures, (value) => value.toMap()),
-      'id': id,
-      'image': image,
-      'interface': interface,
-      'labelFingerprint': labelFingerprint,
-      'labels': labels,
-      'lastAttachTimestamp': lastAttachTimestamp,
-      'lastDetachTimestamp': lastDetachTimestamp,
-      'licenses': licenses,
-      'name': name,
-      'physicalBlockSizeBytes': physicalBlockSizeBytes,
+      'accessMode': ?accessMode,
+      'asyncPrimaryDisks': ?(() { final guardedValue = asyncPrimaryDisks; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetRegionDiskAsyncPrimaryDisk, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'createSnapshotBeforeDestroy': ?createSnapshotBeforeDestroy,
+      'createSnapshotBeforeDestroyPrefix': ?createSnapshotBeforeDestroyPrefix,
+      'creationTimestamp': ?creationTimestamp,
+      'deletionPolicy': ?deletionPolicy,
+      'description': ?description,
+      'diskEncryptionKeys': ?(() { final guardedValue = diskEncryptionKeys; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetRegionDiskDiskEncryptionKey, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'diskId': ?diskId,
+      'effectiveLabels': ?effectiveLabels,
+      'eraseWindowsVssSignature': ?eraseWindowsVssSignature,
+      'guestOsFeatures': ?(() { final guardedValue = guestOsFeatures; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetRegionDiskGuestOsFeature, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'id': ?id,
+      'image': ?image,
+      'interface': ?interface,
+      'labelFingerprint': ?labelFingerprint,
+      'labels': ?labels,
+      'lastAttachTimestamp': ?lastAttachTimestamp,
+      'lastDetachTimestamp': ?lastDetachTimestamp,
+      'licenses': ?licenses,
+      'name': ?name,
+      'physicalBlockSizeBytes': ?physicalBlockSizeBytes,
       'project': ?project,
-      'provisionedIops': provisionedIops,
-      'provisionedThroughput': provisionedThroughput,
-      'pulumiLabels': pulumiLabels,
+      'provisionedIops': ?provisionedIops,
+      'provisionedThroughput': ?provisionedThroughput,
+      'pulumiLabels': ?pulumiLabels,
       'region': ?region,
-      'replicaZones': replicaZones,
-      'selfLink': selfLink,
-      'size': size,
-      'snapshot': snapshot,
-      'sourceDisk': sourceDisk,
-      'sourceDiskId': sourceDiskId,
-      'sourceImageEncryptionKeys': pulumi.Input.encodeList<GetRegionDiskSourceImageEncryptionKey, Map<String, dynamic>>(sourceImageEncryptionKeys, (value) => value.toMap()),
-      'sourceImageId': sourceImageId,
-      'sourceSnapshotEncryptionKeys': pulumi.Input.encodeList<GetRegionDiskSourceSnapshotEncryptionKey, Map<String, dynamic>>(sourceSnapshotEncryptionKeys, (value) => value.toMap()),
-      'sourceSnapshotId': sourceSnapshotId,
-      'type': type,
-      'users': users,
+      'replicaZones': ?replicaZones,
+      'selfLink': ?selfLink,
+      'size': ?size,
+      'snapshot': ?snapshot,
+      'sourceDisk': ?sourceDisk,
+      'sourceDiskId': ?sourceDiskId,
+      'sourceImageEncryptionKeys': ?(() { final guardedValue = sourceImageEncryptionKeys; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetRegionDiskSourceImageEncryptionKey, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'sourceImageId': ?sourceImageId,
+      'sourceSnapshotEncryptionKeys': ?(() { final guardedValue = sourceSnapshotEncryptionKeys; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetRegionDiskSourceSnapshotEncryptionKey, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'sourceSnapshotId': ?sourceSnapshotId,
+      'type': ?type,
+      'users': ?users,
     };
   }
 
   factory GetRegionDiskResult.fromMap(Map<String, dynamic> map) {
     return GetRegionDiskResult(
-      accessMode: map['accessMode'] as String,
-      asyncPrimaryDisks: pulumi.Input.decodeList<GetRegionDiskAsyncPrimaryDisk>(map['asyncPrimaryDisks']!, (value) => GetRegionDiskAsyncPrimaryDisk.fromMap((value as Map).cast<String, dynamic>())),
-      createSnapshotBeforeDestroy: map['createSnapshotBeforeDestroy'] as bool,
-      createSnapshotBeforeDestroyPrefix: map['createSnapshotBeforeDestroyPrefix'] as String,
-      creationTimestamp: map['creationTimestamp'] as String,
-      deletionPolicy: map['deletionPolicy'] as String,
-      description: map['description'] as String,
-      diskEncryptionKeys: pulumi.Input.decodeList<GetRegionDiskDiskEncryptionKey>(map['diskEncryptionKeys']!, (value) => GetRegionDiskDiskEncryptionKey.fromMap((value as Map).cast<String, dynamic>())),
-      diskId: map['diskId'] as String,
-      effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
-      eraseWindowsVssSignature: map['eraseWindowsVssSignature'] as bool,
-      guestOsFeatures: pulumi.Input.decodeList<GetRegionDiskGuestOsFeature>(map['guestOsFeatures']!, (value) => GetRegionDiskGuestOsFeature.fromMap((value as Map).cast<String, dynamic>())),
-      id: map['id'] as String,
-      image: map['image'] as String,
-      interface: map['interface'] as String,
-      labelFingerprint: map['labelFingerprint'] as String,
-      labels: (map['labels'] as Map).cast<String, String>(),
-      lastAttachTimestamp: map['lastAttachTimestamp'] as String,
-      lastDetachTimestamp: map['lastDetachTimestamp'] as String,
-      licenses: (map['licenses'] as List).cast<String>(),
-      name: map['name'] as String,
-      physicalBlockSizeBytes: map['physicalBlockSizeBytes'] as int,
+      accessMode: (() { final guardedValue = map['accessMode']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      asyncPrimaryDisks: (() { final guardedValue = map['asyncPrimaryDisks']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetRegionDiskAsyncPrimaryDisk>(guardedValue, (value) => GetRegionDiskAsyncPrimaryDisk.fromMap((value as Map).cast<String, dynamic>())); })(),
+      createSnapshotBeforeDestroy: (() { final guardedValue = map['createSnapshotBeforeDestroy']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      createSnapshotBeforeDestroyPrefix: (() { final guardedValue = map['createSnapshotBeforeDestroyPrefix']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      creationTimestamp: (() { final guardedValue = map['creationTimestamp']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      diskEncryptionKeys: (() { final guardedValue = map['diskEncryptionKeys']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetRegionDiskDiskEncryptionKey>(guardedValue, (value) => GetRegionDiskDiskEncryptionKey.fromMap((value as Map).cast<String, dynamic>())); })(),
+      diskId: (() { final guardedValue = map['diskId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      eraseWindowsVssSignature: (() { final guardedValue = map['eraseWindowsVssSignature']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      guestOsFeatures: (() { final guardedValue = map['guestOsFeatures']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetRegionDiskGuestOsFeature>(guardedValue, (value) => GetRegionDiskGuestOsFeature.fromMap((value as Map).cast<String, dynamic>())); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      image: (() { final guardedValue = map['image']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      interface: (() { final guardedValue = map['interface']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      labelFingerprint: (() { final guardedValue = map['labelFingerprint']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      lastAttachTimestamp: (() { final guardedValue = map['lastAttachTimestamp']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      lastDetachTimestamp: (() { final guardedValue = map['lastDetachTimestamp']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      licenses: (() { final guardedValue = map['licenses']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      physicalBlockSizeBytes: (() { final guardedValue = map['physicalBlockSizeBytes']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      provisionedIops: map['provisionedIops'] as int,
-      provisionedThroughput: map['provisionedThroughput'] as int,
-      pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
+      provisionedIops: (() { final guardedValue = map['provisionedIops']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      provisionedThroughput: (() { final guardedValue = map['provisionedThroughput']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      pulumiLabels: (() { final guardedValue = map['pulumiLabels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      replicaZones: (map['replicaZones'] as List).cast<String>(),
-      selfLink: map['selfLink'] as String,
-      size: map['size'] as int,
-      snapshot: map['snapshot'] as String,
-      sourceDisk: map['sourceDisk'] as String,
-      sourceDiskId: map['sourceDiskId'] as String,
-      sourceImageEncryptionKeys: pulumi.Input.decodeList<GetRegionDiskSourceImageEncryptionKey>(map['sourceImageEncryptionKeys']!, (value) => GetRegionDiskSourceImageEncryptionKey.fromMap((value as Map).cast<String, dynamic>())),
-      sourceImageId: map['sourceImageId'] as String,
-      sourceSnapshotEncryptionKeys: pulumi.Input.decodeList<GetRegionDiskSourceSnapshotEncryptionKey>(map['sourceSnapshotEncryptionKeys']!, (value) => GetRegionDiskSourceSnapshotEncryptionKey.fromMap((value as Map).cast<String, dynamic>())),
-      sourceSnapshotId: map['sourceSnapshotId'] as String,
-      type: map['type'] as String,
-      users: (map['users'] as List).cast<String>(),
+      replicaZones: (() { final guardedValue = map['replicaZones']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      selfLink: (() { final guardedValue = map['selfLink']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      size: (() { final guardedValue = map['size']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      snapshot: (() { final guardedValue = map['snapshot']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      sourceDisk: (() { final guardedValue = map['sourceDisk']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      sourceDiskId: (() { final guardedValue = map['sourceDiskId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      sourceImageEncryptionKeys: (() { final guardedValue = map['sourceImageEncryptionKeys']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetRegionDiskSourceImageEncryptionKey>(guardedValue, (value) => GetRegionDiskSourceImageEncryptionKey.fromMap((value as Map).cast<String, dynamic>())); })(),
+      sourceImageId: (() { final guardedValue = map['sourceImageId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      sourceSnapshotEncryptionKeys: (() { final guardedValue = map['sourceSnapshotEncryptionKeys']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetRegionDiskSourceSnapshotEncryptionKey>(guardedValue, (value) => GetRegionDiskSourceSnapshotEncryptionKey.fromMap((value as Map).cast<String, dynamic>())); })(),
+      sourceSnapshotId: (() { final guardedValue = map['sourceSnapshotId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      users: (() { final guardedValue = map['users']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
     );
   }
 }

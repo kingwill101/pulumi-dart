@@ -155,6 +155,17 @@ Future<GetAutokeyConfigResult> getAutokeyConfig(
   return GetAutokeyConfigResult.fromMap(result);
 }
 
+pulumi.Output<GetAutokeyConfigResult> getAutokeyConfigOutput(
+  GetAutokeyConfigArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:kms/getAutokeyConfig:getAutokeyConfig',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAutokeyConfigResult.fromMap);
+}
+
 /// Retrieves the current IAM policy data for a Google Cloud KMS crypto key.
 ///
 /// ## example
@@ -271,6 +282,17 @@ Future<GetCryptoKeyIamPolicyResult> getCryptoKeyIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetCryptoKeyIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetCryptoKeyIamPolicyResult> getCryptoKeyIamPolicyOutput(
+  GetCryptoKeyIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:kms/getCryptoKeyIamPolicy:getCryptoKeyIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCryptoKeyIamPolicyResult.fromMap);
 }
 
 /// Provides access to the latest Google Cloud Platform KMS CryptoKeyVersion in a CryptoKey. For more information see
@@ -462,6 +484,17 @@ Future<GetCryptoKeyLatestVersionResult> getCryptoKeyLatestVersion(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetCryptoKeyLatestVersionResult.fromMap(result);
+}
+
+pulumi.Output<GetCryptoKeyLatestVersionResult> getCryptoKeyLatestVersionOutput(
+  GetCryptoKeyLatestVersionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:kms/getCryptoKeyLatestVersion:getCryptoKeyLatestVersion',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCryptoKeyLatestVersionResult.fromMap);
 }
 
 /// Provides access to Google Cloud Platform KMS CryptoKeyVersions. For more information see
@@ -656,6 +689,17 @@ Future<GetCryptoKeyVersionsResult> getCryptoKeyVersions(
   return GetCryptoKeyVersionsResult.fromMap(result);
 }
 
+pulumi.Output<GetCryptoKeyVersionsResult> getCryptoKeyVersionsOutput(
+  GetCryptoKeyVersionsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:kms/getCryptoKeyVersions:getCryptoKeyVersions',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCryptoKeyVersionsResult.fromMap);
+}
+
 /// Provides access to all Google Cloud Platform KMS CryptoKeys in a given KeyRing. For more information see
 /// [the official documentation](https://cloud.google.com/kms/docs/object-hierarchy#key)
 /// and
@@ -676,6 +720,17 @@ Future<GetCryptoKeysResult> getCryptoKeys(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetCryptoKeysResult.fromMap(result);
+}
+
+pulumi.Output<GetCryptoKeysResult> getCryptoKeysOutput(
+  GetCryptoKeysArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:kms/getCryptoKeys:getCryptoKeys',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCryptoKeysResult.fromMap);
 }
 
 /// Retrieves the current IAM policy data for ekmconnection
@@ -809,6 +864,17 @@ Future<GetEkmConnectionIamPolicyResult> getEkmConnectionIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetEkmConnectionIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetEkmConnectionIamPolicyResult> getEkmConnectionIamPolicyOutput(
+  GetEkmConnectionIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:kms/getEkmConnectionIamPolicy:getEkmConnectionIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEkmConnectionIamPolicyResult.fromMap);
 }
 
 /// Provides access to a Google Cloud Platform KMS CryptoKey. For more information see
@@ -975,6 +1041,17 @@ Future<GetKMSCryptoKeyResult> getKMSCryptoKey(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetKMSCryptoKeyResult.fromMap(result);
+}
+
+pulumi.Output<GetKMSCryptoKeyResult> getKMSCryptoKeyOutput(
+  GetKMSCryptoKeyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:kms/getKMSCryptoKey:getKMSCryptoKey',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetKMSCryptoKeyResult.fromMap);
 }
 
 /// Provides access to a Google Cloud Platform KMS CryptoKeyVersion. For more information see
@@ -1170,6 +1247,17 @@ Future<GetKMSCryptoKeyVersionResult> getKMSCryptoKeyVersion(
   return GetKMSCryptoKeyVersionResult.fromMap(result);
 }
 
+pulumi.Output<GetKMSCryptoKeyVersionResult> getKMSCryptoKeyVersionOutput(
+  GetKMSCryptoKeyVersionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:kms/getKMSCryptoKeyVersion:getKMSCryptoKeyVersion',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetKMSCryptoKeyVersionResult.fromMap);
+}
+
 /// Provides access to Google Cloud Platform KMS KeyRing. For more information see
 /// [the official documentation](https://cloud.google.com/kms/docs/object-hierarchy#key_ring)
 /// and
@@ -1299,6 +1387,17 @@ Future<GetKMSKeyRingResult> getKMSKeyRing(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetKMSKeyRingResult.fromMap(result);
+}
+
+pulumi.Output<GetKMSKeyRingResult> getKMSKeyRingOutput(
+  GetKMSKeyRingArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:kms/getKMSKeyRing:getKMSKeyRing',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetKMSKeyRingResult.fromMap);
 }
 
 /// This data source allows you to use data encrypted with Google Cloud KMS
@@ -1753,6 +1852,17 @@ Future<GetKMSSecretResult> getKMSSecret(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetKMSSecretResult.fromMap(result);
+}
+
+pulumi.Output<GetKMSSecretResult> getKMSSecretOutput(
+  GetKMSSecretArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:kms/getKMSSecret:getKMSSecret',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetKMSSecretResult.fromMap);
 }
 
 /// This data source allows you to use data encrypted with a Google Cloud KMS asymmetric key
@@ -2368,6 +2478,17 @@ Future<GetKMSSecretAsymmetricResult> getKMSSecretAsymmetric(
   return GetKMSSecretAsymmetricResult.fromMap(result);
 }
 
+pulumi.Output<GetKMSSecretAsymmetricResult> getKMSSecretAsymmetricOutput(
+  GetKMSSecretAsymmetricArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:kms/getKMSSecretAsymmetric:getKMSSecretAsymmetric',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetKMSSecretAsymmetricResult.fromMap);
+}
+
 /// &gt; **Warning:** This data source is deprecated. Use the `gcp.kms.SecretCiphertext` **resource** instead.
 ///
 /// This data source allows you to encrypt data with Google Cloud KMS and use the
@@ -2822,6 +2943,17 @@ Future<GetKMSSecretCiphertextResult> getKMSSecretCiphertext(
   return GetKMSSecretCiphertextResult.fromMap(result);
 }
 
+pulumi.Output<GetKMSSecretCiphertextResult> getKMSSecretCiphertextOutput(
+  GetKMSSecretCiphertextArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:kms/getKMSSecretCiphertext:getKMSSecretCiphertext',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetKMSSecretCiphertextResult.fromMap);
+}
+
 /// Provides access to Google Cloud Platform KMS KeyHandle. A key handle is a Cloud KMS resource that helps you safely span the separation of duties to create new Cloud KMS keys for CMEK using Autokey.
 ///
 /// For more information see
@@ -2951,6 +3083,17 @@ Future<GetKeyHandleResult> getKeyHandle(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetKeyHandleResult.fromMap(result);
+}
+
+pulumi.Output<GetKeyHandleResult> getKeyHandleOutput(
+  GetKeyHandleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:kms/getKeyHandle:getKeyHandle',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetKeyHandleResult.fromMap);
 }
 
 /// Provides access to Google Cloud Platform KMS KeyHandle. A key handle is a Cloud KMS resource that helps you safely span the separation of duties to create new Cloud KMS keys for CMEK using Autokey.
@@ -3091,6 +3234,17 @@ Future<GetKeyHandlesResult> getKeyHandles(
   return GetKeyHandlesResult.fromMap(result);
 }
 
+pulumi.Output<GetKeyHandlesResult> getKeyHandlesOutput(
+  GetKeyHandlesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:kms/getKeyHandles:getKeyHandles',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetKeyHandlesResult.fromMap);
+}
+
 /// Retrieves the current IAM policy data for a Google Cloud KMS key ring.
 ///
 /// ## example
@@ -3209,6 +3363,17 @@ Future<GetKeyRingIamPolicyResult> getKeyRingIamPolicy(
   return GetKeyRingIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetKeyRingIamPolicyResult> getKeyRingIamPolicyOutput(
+  GetKeyRingIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:kms/getKeyRingIamPolicy:getKeyRingIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetKeyRingIamPolicyResult.fromMap);
+}
+
 /// Provides access to all Google Cloud Platform KMS CryptoKeyRings in a set location. For more information see
 /// [the official documentation](https://cloud.google.com/kms/docs/resource-hierarchy#key_rings)
 /// and
@@ -3228,4 +3393,15 @@ Future<GetKeyRingsResult> getKeyRings(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetKeyRingsResult.fromMap(result);
+}
+
+pulumi.Output<GetKeyRingsResult> getKeyRingsOutput(
+  GetKeyRingsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:kms/getKeyRings:getKeyRings',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetKeyRingsResult.fromMap);
 }

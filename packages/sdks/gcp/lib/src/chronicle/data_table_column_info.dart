@@ -12,13 +12,13 @@ class DataTableColumnInfo {
   /// CIDR
   /// NUMBER
   /// Possible values are: `STRING`, `REGEX`, `CIDR`, `NUMBER`.
-  final pulumi.Input<String>? columnType;
+  final pulumi.Input<String?>? columnType;
   /// Whether to include this column in the calculation of the row ID.
   /// If no columns have keyColumn = true, all columns will be included in the
   /// calculation of the row ID.
-  final pulumi.Input<bool>? keyColumn;
+  final pulumi.Input<bool?>? keyColumn;
   /// Entity proto field path that the column is mapped to
-  final pulumi.Input<String>? mappedColumnPath;
+  final pulumi.Input<String?>? mappedColumnPath;
   /// Original column name of the Data Table (present in the CSV header in case
   /// of creation of data tables using file uploads). It must satisfy the
   /// following requirements:
@@ -27,7 +27,7 @@ class DataTableColumnInfo {
   /// - Must be unique and has length &lt; 256
   final pulumi.Input<String> originalColumn;
   /// Whether the column is a repeated values column.
-  final pulumi.Input<bool>? repeatedValues;
+  final pulumi.Input<bool?>? repeatedValues;
 
   /// Creates a new [DataTableColumnInfo].
   /// [columnIndex] Column Index. 0,1,2...
@@ -58,7 +58,7 @@ class DataTableColumnInfo {
 
   factory DataTableColumnInfo.fromMap(Map<String, dynamic> map) {
     return DataTableColumnInfo(
-      columnIndex: pulumi.Input.fromValue(map['columnIndex'] as int),
+      columnIndex: pulumi.Input.fromValue((map['columnIndex'] as num).toInt()),
       columnType: (() { final guardedValue = map['columnType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       keyColumn: (() { final guardedValue = map['keyColumn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       mappedColumnPath: (() { final guardedValue = map['mappedColumnPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

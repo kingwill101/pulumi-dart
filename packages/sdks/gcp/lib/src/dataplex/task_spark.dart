@@ -5,22 +5,22 @@ import 'task_spark_infrastructure_spec.dart';
 
 class TaskSpark {
   /// Cloud Storage URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
-  final pulumi.Input<List<String>>? archiveUris;
+  final pulumi.Input<List<String>?>? archiveUris;
   /// Cloud Storage URIs of files to be placed in the working directory of each executor.
-  final pulumi.Input<List<String>>? fileUris;
+  final pulumi.Input<List<String>?>? fileUris;
   /// Infrastructure specification for the execution.
   /// Structure is documented below.
-  final pulumi.Input<TaskSparkInfrastructureSpec>? infrastructureSpec;
+  final pulumi.Input<TaskSparkInfrastructureSpec?>? infrastructureSpec;
   /// The name of the driver's main class. The jar file that contains the class must be in the default CLASSPATH or specified in jar_file_uris. The execution args are passed in as a sequence of named process arguments (--key=value).
-  final pulumi.Input<String>? mainClass;
+  final pulumi.Input<String?>? mainClass;
   /// The Cloud Storage URI of the jar file that contains the main class. The execution args are passed in as a sequence of named process arguments (--key=value).
-  final pulumi.Input<String>? mainJarFileUri;
+  final pulumi.Input<String?>? mainJarFileUri;
   /// The Gcloud Storage URI of the main Python file to use as the driver. Must be a .py file. The execution args are passed in as a sequence of named process arguments (--key=value).
-  final pulumi.Input<String>? pythonScriptFile;
+  final pulumi.Input<String?>? pythonScriptFile;
   /// The query text. The execution args are used to declare a set of script variables (set key='value';).
-  final pulumi.Input<String>? sqlScript;
+  final pulumi.Input<String?>? sqlScript;
   /// A reference to a query file. This can be the Cloud Storage URI of the query file or it can the path to a SqlScript Content. The execution args are used to declare a set of script variables (set key='value';).
-  final pulumi.Input<String>? sqlScriptFile;
+  final pulumi.Input<String?>? sqlScriptFile;
 
   /// Creates a new [TaskSpark].
   /// [archiveUris] Cloud Storage URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.

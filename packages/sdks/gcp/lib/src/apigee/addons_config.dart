@@ -822,7 +822,7 @@ class AddonsConfig extends pulumi.CustomResource {
           'gcp:apigee/addonsConfig:AddonsConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     addonsConfig = registerOutput<AddonsConfigAddonsConfig?>('addonsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AddonsConfigAddonsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -834,11 +834,12 @@ class AddonsConfig extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AddonsConfigState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AddonsConfig._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -852,6 +853,20 @@ class AddonsConfig extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    addonsConfig = registerOutput<AddonsConfigAddonsConfig?>('addonsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AddonsConfigAddonsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    org = registerOutput<String>('org');
+  }
+
+  /// Creates a typed reference to an existing [AddonsConfig] resource.
+  AddonsConfig.reference(String urn)
+    : super(
+        'gcp:apigee/addonsConfig:AddonsConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     addonsConfig = registerOutput<AddonsConfigAddonsConfig?>('addonsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AddonsConfigAddonsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     org = registerOutput<String>('org');

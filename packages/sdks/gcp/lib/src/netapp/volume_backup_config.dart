@@ -4,12 +4,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VolumeBackupConfig {
   /// Specify a single backup policy ID for scheduled backups. Format: `projects/{{projectId}}/locations/{{location}}/backupPolicies/{{backupPolicyName}}`
-  final pulumi.Input<List<String>>? backupPolicies;
+  final pulumi.Input<List<String>?>? backupPolicies;
   /// ID of the backup vault to use. A backup vault is reqired to create manual or scheduled backups.
   /// Format: `projects/{{projectId}}/locations/{{location}}/backupVaults/{{backupVaultName}}`
-  final pulumi.Input<String>? backupVault;
+  final pulumi.Input<String?>? backupVault;
   /// When set to true, scheduled backup is enabled on the volume. Omit if no backupPolicy is specified.
-  final pulumi.Input<bool>? scheduledBackupEnabled;
+  final pulumi.Input<bool?>? scheduledBackupEnabled;
 
   /// Creates a new [VolumeBackupConfig].
   /// [backupPolicies] Specify a single backup policy ID for scheduled backups. Format: `projects/{{projectId}}/locations/{{location}}/backupPolicies/{{backupPolicyName}}`

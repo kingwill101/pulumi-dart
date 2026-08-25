@@ -7,12 +7,12 @@ class PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetRegex
   final pulumi.Input<String> bucketName;
   /// A list of regular expressions matching file paths to exclude. All files in the bucket that match at
   /// least one of these regular expressions will be excluded from the scan.
-  final pulumi.Input<List<String>>? excludeRegexes;
+  final pulumi.Input<List<String>?>? excludeRegexes;
   /// A list of regular expressions matching file paths to include. All files in the bucket
   /// that match at least one of these regular expressions will be included in the set of files,
   /// except for those that also match an item in excludeRegex. Leaving this field empty will
   /// match all files by default (this is equivalent to including .* in the list)
-  final pulumi.Input<List<String>>? includeRegexes;
+  final pulumi.Input<List<String>?>? includeRegexes;
 
   /// Creates a new [PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetRegexFileSet].
   /// [bucketName] The name of a Cloud Storage bucket.

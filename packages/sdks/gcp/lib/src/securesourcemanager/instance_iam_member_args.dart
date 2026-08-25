@@ -8,11 +8,11 @@ import 'instance_iam_member_condition.dart';
 /// {@endtemplate}
 /// {@macro pulumi_securesourcemanager_instance_iam_member_instance_iam_member_args_doc}
 class InstanceIamMemberArgs {
-  final pulumi.Input<InstanceIamMemberCondition>? condition;
+  final pulumi.Input<InstanceIamMemberCondition?>? condition;
   final pulumi.Input<String> instanceId;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   final pulumi.Input<String> member;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> role;
 
   /// Creates a new [InstanceIamMemberArgs].

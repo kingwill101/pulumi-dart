@@ -7,10 +7,10 @@ class WorkforcePoolAccessRestrictions {
   /// Services allowed for web sign-in with the workforce pool.
   /// If not set by default there are no restrictions.
   /// Structure is documented below.
-  final pulumi.Input<List<WorkforcePoolAccessRestrictionsAllowedService>>? allowedServices;
+  final pulumi.Input<List<WorkforcePoolAccessRestrictionsAllowedService>?>? allowedServices;
   /// Disable programmatic sign-in by disabling token issue via the Security Token API endpoint.
   /// See [Security Token Service API](https://cloud.google.com/iam/docs/reference/sts/rest).
-  final pulumi.Input<bool>? disableProgrammaticSignin;
+  final pulumi.Input<bool?>? disableProgrammaticSignin;
 
   /// Creates a new [WorkforcePoolAccessRestrictions].
   /// [allowedServices] Services allowed for web sign-in with the workforce pool.

@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DataExchangeSharingEnvironmentConfig {
   /// Data Clean Room (DCR), used for privacy-safe and secured data sharing.
-  final pulumi.Input<Map<String, dynamic>>? dcrExchangeConfig;
+  final pulumi.Input<Map<String, dynamic>?>? dcrExchangeConfig;
   /// Default Analytics Hub data exchange, used for secured data sharing.
-  final pulumi.Input<Map<String, dynamic>>? defaultExchangeConfig;
+  final pulumi.Input<Map<String, dynamic>?>? defaultExchangeConfig;
 
   /// Creates a new [DataExchangeSharingEnvironmentConfig].
   /// [dcrExchangeConfig] Data Clean Room (DCR), used for privacy-safe and secured data sharing.

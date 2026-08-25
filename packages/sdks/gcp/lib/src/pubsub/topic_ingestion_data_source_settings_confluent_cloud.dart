@@ -6,7 +6,7 @@ class TopicIngestionDataSourceSettingsConfluentCloud {
   /// The Confluent Cloud bootstrap server. The format is url:port.
   final pulumi.Input<String> bootstrapServer;
   /// The Confluent Cloud cluster ID.
-  final pulumi.Input<String>? clusterId;
+  final pulumi.Input<String?>? clusterId;
   /// The GCP service account to be used for Federated Identity authentication
   /// with Confluent Cloud.
   final pulumi.Input<String> gcpServiceAccount;

@@ -10,7 +10,7 @@ class RegionUrlMapPathMatcherDefaultRouteActionRequestMirrorPolicy {
   /// (Optional, Beta)
   /// The percentage of requests to be mirrored to backendService.
   /// The value must be between 0.0 and 100.0 inclusive.
-  final pulumi.Input<double>? mirrorPercent;
+  final pulumi.Input<double?>? mirrorPercent;
 
   /// Creates a new [RegionUrlMapPathMatcherDefaultRouteActionRequestMirrorPolicy].
   /// [backendService] The full or partial URL to the RegionBackendService resource being mirrored to.
@@ -30,7 +30,7 @@ class RegionUrlMapPathMatcherDefaultRouteActionRequestMirrorPolicy {
   factory RegionUrlMapPathMatcherDefaultRouteActionRequestMirrorPolicy.fromMap(Map<String, dynamic> map) {
     return RegionUrlMapPathMatcherDefaultRouteActionRequestMirrorPolicy(
       backendService: pulumi.Input.fromValue(map['backendService'] as String),
-      mirrorPercent: (() { final guardedValue = map['mirrorPercent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      mirrorPercent: (() { final guardedValue = map['mirrorPercent']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

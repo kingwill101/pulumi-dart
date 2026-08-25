@@ -5,7 +5,7 @@ import 'node_pool_node_config_linux_node_config_custom_node_init_init_script.dar
 
 class NodePoolNodeConfigLinuxNodeConfigCustomNodeInit {
   /// The init script configuration.
-  final pulumi.Input<NodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScript>? initScript;
+  final pulumi.Input<NodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScript?>? initScript;
 
   /// Creates a new [NodePoolNodeConfigLinuxNodeConfigCustomNodeInit].
   /// [initScript] The init script configuration.

@@ -57,534 +57,534 @@ import 'get_cluster_workload_identity_config.dart';
 
 /// Result data returned by getCluster.
 class GetClusterResult {
-  final List<GetClusterAddonsConfig> addonsConfigs;
-  final bool allowNetAdmin;
-  final List<GetClusterAnonymousAuthenticationConfig> anonymousAuthenticationConfigs;
-  final List<GetClusterAuthenticatorGroupsConfig> authenticatorGroupsConfigs;
-  final List<GetClusterAutopilotClusterPolicyConfig> autopilotClusterPolicyConfigs;
-  final List<String> autopilotPrivilegedAdmissions;
-  final List<GetClusterBinaryAuthorization> binaryAuthorizations;
-  final List<GetClusterClusterAutoscaling> clusterAutoscalings;
-  final String clusterIpv4Cidr;
-  final List<GetClusterClusterTelemetry> clusterTelemetries;
-  final List<GetClusterConfidentialNode> confidentialNodes;
-  final List<GetClusterControlPlaneEndpointsConfig> controlPlaneEndpointsConfigs;
-  final List<GetClusterCostManagementConfig> costManagementConfigs;
-  final List<GetClusterDatabaseEncryption> databaseEncryptions;
-  final String datapathProvider;
-  final String dataplaneOptimizationMode;
-  final int defaultMaxPodsPerNode;
-  final List<GetClusterDefaultSnatStatus> defaultSnatStatuses;
-  final String deletionPolicy;
-  final bool deletionProtection;
-  final String description;
-  final String desiredEmulatedVersion;
-  final bool disableL4LbFirewallReconciliation;
-  final List<GetClusterDnsConfig> dnsConfigs;
-  final Map<String, String> effectiveLabels;
-  final String emulatedVersion;
-  final bool enableAutopilot;
-  final bool enableCiliumClusterwideNetworkPolicy;
-  final bool enableFqdnNetworkPolicy;
-  final bool enableIntranodeVisibility;
-  final List<GetClusterEnableK8sBetaApi> enableK8sBetaApis;
-  final bool enableKubernetesAlpha;
-  final bool enableL4IlbSubsetting;
-  final bool enableLegacyAbac;
-  final bool enableMultiNetworking;
-  final bool enableShieldedNodes;
-  final bool enableTpu;
-  final String endpoint;
-  final List<GetClusterEnterpriseConfig> enterpriseConfigs;
-  final List<GetClusterFleet> fleets;
-  final List<GetClusterGatewayApiConfig> gatewayApiConfigs;
-  final List<GetClusterGkeAutoUpgradeConfig> gkeAutoUpgradeConfigs;
+  final List<GetClusterAddonsConfig>? addonsConfigs;
+  final bool? allowNetAdmin;
+  final List<GetClusterAnonymousAuthenticationConfig>? anonymousAuthenticationConfigs;
+  final List<GetClusterAuthenticatorGroupsConfig>? authenticatorGroupsConfigs;
+  final List<GetClusterAutopilotClusterPolicyConfig>? autopilotClusterPolicyConfigs;
+  final List<String>? autopilotPrivilegedAdmissions;
+  final List<GetClusterBinaryAuthorization>? binaryAuthorizations;
+  final List<GetClusterClusterAutoscaling>? clusterAutoscalings;
+  final String? clusterIpv4Cidr;
+  final List<GetClusterClusterTelemetry>? clusterTelemetries;
+  final List<GetClusterConfidentialNode>? confidentialNodes;
+  final List<GetClusterControlPlaneEndpointsConfig>? controlPlaneEndpointsConfigs;
+  final List<GetClusterCostManagementConfig>? costManagementConfigs;
+  final List<GetClusterDatabaseEncryption>? databaseEncryptions;
+  final String? datapathProvider;
+  final String? dataplaneOptimizationMode;
+  final int? defaultMaxPodsPerNode;
+  final List<GetClusterDefaultSnatStatus>? defaultSnatStatuses;
+  final String? deletionPolicy;
+  final bool? deletionProtection;
+  final String? description;
+  final String? desiredEmulatedVersion;
+  final bool? disableL4LbFirewallReconciliation;
+  final List<GetClusterDnsConfig>? dnsConfigs;
+  final Map<String, String>? effectiveLabels;
+  final String? emulatedVersion;
+  final bool? enableAutopilot;
+  final bool? enableCiliumClusterwideNetworkPolicy;
+  final bool? enableFqdnNetworkPolicy;
+  final bool? enableIntranodeVisibility;
+  final List<GetClusterEnableK8sBetaApi>? enableK8sBetaApis;
+  final bool? enableKubernetesAlpha;
+  final bool? enableL4IlbSubsetting;
+  final bool? enableLegacyAbac;
+  final bool? enableMultiNetworking;
+  final bool? enableShieldedNodes;
+  final bool? enableTpu;
+  final String? endpoint;
+  final List<GetClusterEnterpriseConfig>? enterpriseConfigs;
+  final List<GetClusterFleet>? fleets;
+  final List<GetClusterGatewayApiConfig>? gatewayApiConfigs;
+  final List<GetClusterGkeAutoUpgradeConfig>? gkeAutoUpgradeConfigs;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final List<GetClusterIdentityServiceConfig> identityServiceConfigs;
-  final bool ignoreNodeCountChanges;
-  final String inTransitEncryptionConfig;
-  final int initialNodeCount;
-  final List<GetClusterIpAllocationPolicy> ipAllocationPolicies;
-  final String labelFingerprint;
+  final String? id;
+  final List<GetClusterIdentityServiceConfig>? identityServiceConfigs;
+  final bool? ignoreNodeCountChanges;
+  final String? inTransitEncryptionConfig;
+  final int? initialNodeCount;
+  final List<GetClusterIpAllocationPolicy>? ipAllocationPolicies;
+  final String? labelFingerprint;
   final String? location;
-  final List<GetClusterLoggingConfig> loggingConfigs;
-  final String loggingService;
-  final List<GetClusterMaintenancePolicy> maintenancePolicies;
-  final List<GetClusterManagedMachineLearningDiagnosticsConfig> managedMachineLearningDiagnosticsConfigs;
-  final List<GetClusterManagedOpentelemetryConfig> managedOpentelemetryConfigs;
-  final List<GetClusterMasterAuthorizedNetworksConfig> masterAuthorizedNetworksConfigs;
-  final List<GetClusterMasterAuth> masterAuths;
-  final String masterVersion;
-  final List<GetClusterMeshCertificate> meshCertificates;
-  final String minMasterVersion;
-  final List<GetClusterMonitoringConfig> monitoringConfigs;
-  final String monitoringService;
-  final String name;
-  final String network;
-  final List<GetClusterNetworkPerformanceConfig> networkPerformanceConfigs;
-  final List<GetClusterNetworkPolicy> networkPolicies;
-  final String networkingMode;
-  final List<GetClusterNodeConfig> nodeConfigs;
-  final List<GetClusterNodeCreationConfig> nodeCreationConfigs;
-  final List<String> nodeLocations;
-  final List<GetClusterNodePoolAutoConfig> nodePoolAutoConfigs;
-  final List<GetClusterNodePoolDefault> nodePoolDefaults;
-  final List<GetClusterNodePool> nodePools;
-  final String nodeVersion;
-  final List<GetClusterNotificationConfig> notificationConfigs;
-  final String operation;
-  final List<GetClusterPodAutoscaling> podAutoscalings;
-  final List<GetClusterPodSecurityPolicyConfig> podSecurityPolicyConfigs;
-  final List<GetClusterPrivateClusterConfig> privateClusterConfigs;
-  final String privateIpv6GoogleAccess;
+  final List<GetClusterLoggingConfig>? loggingConfigs;
+  final String? loggingService;
+  final List<GetClusterMaintenancePolicy>? maintenancePolicies;
+  final List<GetClusterManagedMachineLearningDiagnosticsConfig>? managedMachineLearningDiagnosticsConfigs;
+  final List<GetClusterManagedOpentelemetryConfig>? managedOpentelemetryConfigs;
+  final List<GetClusterMasterAuthorizedNetworksConfig>? masterAuthorizedNetworksConfigs;
+  final List<GetClusterMasterAuth>? masterAuths;
+  final String? masterVersion;
+  final List<GetClusterMeshCertificate>? meshCertificates;
+  final String? minMasterVersion;
+  final List<GetClusterMonitoringConfig>? monitoringConfigs;
+  final String? monitoringService;
+  final String? name;
+  final String? network;
+  final List<GetClusterNetworkPerformanceConfig>? networkPerformanceConfigs;
+  final List<GetClusterNetworkPolicy>? networkPolicies;
+  final String? networkingMode;
+  final List<GetClusterNodeConfig>? nodeConfigs;
+  final List<GetClusterNodeCreationConfig>? nodeCreationConfigs;
+  final List<String>? nodeLocations;
+  final List<GetClusterNodePoolAutoConfig>? nodePoolAutoConfigs;
+  final List<GetClusterNodePoolDefault>? nodePoolDefaults;
+  final List<GetClusterNodePool>? nodePools;
+  final String? nodeVersion;
+  final List<GetClusterNotificationConfig>? notificationConfigs;
+  final String? operation;
+  final List<GetClusterPodAutoscaling>? podAutoscalings;
+  final List<GetClusterPodSecurityPolicyConfig>? podSecurityPolicyConfigs;
+  final List<GetClusterPrivateClusterConfig>? privateClusterConfigs;
+  final String? privateIpv6GoogleAccess;
   final String? project;
-  final List<GetClusterProtectConfig> protectConfigs;
-  final Map<String, String> pulumiLabels;
-  final List<GetClusterRbacBindingConfig> rbacBindingConfigs;
-  final List<GetClusterReleaseChannel> releaseChannels;
-  final bool removeDefaultNodePool;
-  final Map<String, String> resourceLabels;
-  final List<GetClusterResourceUsageExportConfig> resourceUsageExportConfigs;
-  final List<GetClusterRollbackSafeUpgrade> rollbackSafeUpgrades;
-  final List<GetClusterSecretManagerConfig> secretManagerConfigs;
-  final List<GetClusterSecretSyncConfig> secretSyncConfigs;
-  final List<GetClusterSecurityPostureConfig> securityPostureConfigs;
-  final String selfLink;
-  final List<GetClusterServiceExternalIpsConfig> serviceExternalIpsConfigs;
-  final String servicesIpv4Cidr;
-  final bool skipNodePoolRefresh;
-  final String subnetwork;
-  final List<GetClusterTpuConfig> tpuConfigs;
-  final String tpuIpv4CidrBlock;
-  final List<GetClusterUserManagedKeysConfig> userManagedKeysConfigs;
-  final List<GetClusterVerticalPodAutoscaling> verticalPodAutoscalings;
-  final List<GetClusterWorkloadAltsConfig> workloadAltsConfigs;
-  final List<GetClusterWorkloadIdentityConfig> workloadIdentityConfigs;
+  final List<GetClusterProtectConfig>? protectConfigs;
+  final Map<String, String>? pulumiLabels;
+  final List<GetClusterRbacBindingConfig>? rbacBindingConfigs;
+  final List<GetClusterReleaseChannel>? releaseChannels;
+  final bool? removeDefaultNodePool;
+  final Map<String, String>? resourceLabels;
+  final List<GetClusterResourceUsageExportConfig>? resourceUsageExportConfigs;
+  final List<GetClusterRollbackSafeUpgrade>? rollbackSafeUpgrades;
+  final List<GetClusterSecretManagerConfig>? secretManagerConfigs;
+  final List<GetClusterSecretSyncConfig>? secretSyncConfigs;
+  final List<GetClusterSecurityPostureConfig>? securityPostureConfigs;
+  final String? selfLink;
+  final List<GetClusterServiceExternalIpsConfig>? serviceExternalIpsConfigs;
+  final String? servicesIpv4Cidr;
+  final bool? skipNodePoolRefresh;
+  final String? subnetwork;
+  final List<GetClusterTpuConfig>? tpuConfigs;
+  final String? tpuIpv4CidrBlock;
+  final List<GetClusterUserManagedKeysConfig>? userManagedKeysConfigs;
+  final List<GetClusterVerticalPodAutoscaling>? verticalPodAutoscalings;
+  final List<GetClusterWorkloadAltsConfig>? workloadAltsConfigs;
+  final List<GetClusterWorkloadIdentityConfig>? workloadIdentityConfigs;
 
   /// Creates a new [GetClusterResult].
-  /// [addonsConfigs] Required.
-  /// [allowNetAdmin] Required.
-  /// [anonymousAuthenticationConfigs] Required.
-  /// [authenticatorGroupsConfigs] Required.
-  /// [autopilotClusterPolicyConfigs] Required.
-  /// [autopilotPrivilegedAdmissions] Required.
-  /// [binaryAuthorizations] Required.
-  /// [clusterAutoscalings] Required.
-  /// [clusterIpv4Cidr] Required.
-  /// [clusterTelemetries] Required.
-  /// [confidentialNodes] Required.
-  /// [controlPlaneEndpointsConfigs] Required.
-  /// [costManagementConfigs] Required.
-  /// [databaseEncryptions] Required.
-  /// [datapathProvider] Required.
-  /// [dataplaneOptimizationMode] Required.
-  /// [defaultMaxPodsPerNode] Required.
-  /// [defaultSnatStatuses] Required.
-  /// [deletionPolicy] Required.
-  /// [deletionProtection] Required.
-  /// [description] Required.
-  /// [desiredEmulatedVersion] Required.
-  /// [disableL4LbFirewallReconciliation] Required.
-  /// [dnsConfigs] Required.
-  /// [effectiveLabels] Required.
-  /// [emulatedVersion] Required.
-  /// [enableAutopilot] Required.
-  /// [enableCiliumClusterwideNetworkPolicy] Required.
-  /// [enableFqdnNetworkPolicy] Required.
-  /// [enableIntranodeVisibility] Required.
-  /// [enableK8sBetaApis] Required.
-  /// [enableKubernetesAlpha] Required.
-  /// [enableL4IlbSubsetting] Required.
-  /// [enableLegacyAbac] Required.
-  /// [enableMultiNetworking] Required.
-  /// [enableShieldedNodes] Required.
-  /// [enableTpu] Required.
-  /// [endpoint] Required.
-  /// [enterpriseConfigs] Required.
-  /// [fleets] Required.
-  /// [gatewayApiConfigs] Required.
-  /// [gkeAutoUpgradeConfigs] Required.
+  /// [addonsConfigs] Optional.
+  /// [allowNetAdmin] Optional.
+  /// [anonymousAuthenticationConfigs] Optional.
+  /// [authenticatorGroupsConfigs] Optional.
+  /// [autopilotClusterPolicyConfigs] Optional.
+  /// [autopilotPrivilegedAdmissions] Optional.
+  /// [binaryAuthorizations] Optional.
+  /// [clusterAutoscalings] Optional.
+  /// [clusterIpv4Cidr] Optional.
+  /// [clusterTelemetries] Optional.
+  /// [confidentialNodes] Optional.
+  /// [controlPlaneEndpointsConfigs] Optional.
+  /// [costManagementConfigs] Optional.
+  /// [databaseEncryptions] Optional.
+  /// [datapathProvider] Optional.
+  /// [dataplaneOptimizationMode] Optional.
+  /// [defaultMaxPodsPerNode] Optional.
+  /// [defaultSnatStatuses] Optional.
+  /// [deletionPolicy] Optional.
+  /// [deletionProtection] Optional.
+  /// [description] Optional.
+  /// [desiredEmulatedVersion] Optional.
+  /// [disableL4LbFirewallReconciliation] Optional.
+  /// [dnsConfigs] Optional.
+  /// [effectiveLabels] Optional.
+  /// [emulatedVersion] Optional.
+  /// [enableAutopilot] Optional.
+  /// [enableCiliumClusterwideNetworkPolicy] Optional.
+  /// [enableFqdnNetworkPolicy] Optional.
+  /// [enableIntranodeVisibility] Optional.
+  /// [enableK8sBetaApis] Optional.
+  /// [enableKubernetesAlpha] Optional.
+  /// [enableL4IlbSubsetting] Optional.
+  /// [enableLegacyAbac] Optional.
+  /// [enableMultiNetworking] Optional.
+  /// [enableShieldedNodes] Optional.
+  /// [enableTpu] Optional.
+  /// [endpoint] Optional.
+  /// [enterpriseConfigs] Optional.
+  /// [fleets] Optional.
+  /// [gatewayApiConfigs] Optional.
+  /// [gkeAutoUpgradeConfigs] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [identityServiceConfigs] Required.
-  /// [ignoreNodeCountChanges] Required.
-  /// [inTransitEncryptionConfig] Required.
-  /// [initialNodeCount] Required.
-  /// [ipAllocationPolicies] Required.
-  /// [labelFingerprint] Required.
+  /// [identityServiceConfigs] Optional.
+  /// [ignoreNodeCountChanges] Optional.
+  /// [inTransitEncryptionConfig] Optional.
+  /// [initialNodeCount] Optional.
+  /// [ipAllocationPolicies] Optional.
+  /// [labelFingerprint] Optional.
   /// [location] Optional.
-  /// [loggingConfigs] Required.
-  /// [loggingService] Required.
-  /// [maintenancePolicies] Required.
-  /// [managedMachineLearningDiagnosticsConfigs] Required.
-  /// [managedOpentelemetryConfigs] Required.
-  /// [masterAuthorizedNetworksConfigs] Required.
-  /// [masterAuths] Required.
-  /// [masterVersion] Required.
-  /// [meshCertificates] Required.
-  /// [minMasterVersion] Required.
-  /// [monitoringConfigs] Required.
-  /// [monitoringService] Required.
-  /// [name] Required.
-  /// [network] Required.
-  /// [networkPerformanceConfigs] Required.
-  /// [networkPolicies] Required.
-  /// [networkingMode] Required.
-  /// [nodeConfigs] Required.
-  /// [nodeCreationConfigs] Required.
-  /// [nodeLocations] Required.
-  /// [nodePoolAutoConfigs] Required.
-  /// [nodePoolDefaults] Required.
-  /// [nodePools] Required.
-  /// [nodeVersion] Required.
-  /// [notificationConfigs] Required.
-  /// [operation] Required.
-  /// [podAutoscalings] Required.
-  /// [podSecurityPolicyConfigs] Required.
-  /// [privateClusterConfigs] Required.
-  /// [privateIpv6GoogleAccess] Required.
+  /// [loggingConfigs] Optional.
+  /// [loggingService] Optional.
+  /// [maintenancePolicies] Optional.
+  /// [managedMachineLearningDiagnosticsConfigs] Optional.
+  /// [managedOpentelemetryConfigs] Optional.
+  /// [masterAuthorizedNetworksConfigs] Optional.
+  /// [masterAuths] Optional.
+  /// [masterVersion] Optional.
+  /// [meshCertificates] Optional.
+  /// [minMasterVersion] Optional.
+  /// [monitoringConfigs] Optional.
+  /// [monitoringService] Optional.
+  /// [name] Optional.
+  /// [network] Optional.
+  /// [networkPerformanceConfigs] Optional.
+  /// [networkPolicies] Optional.
+  /// [networkingMode] Optional.
+  /// [nodeConfigs] Optional.
+  /// [nodeCreationConfigs] Optional.
+  /// [nodeLocations] Optional.
+  /// [nodePoolAutoConfigs] Optional.
+  /// [nodePoolDefaults] Optional.
+  /// [nodePools] Optional.
+  /// [nodeVersion] Optional.
+  /// [notificationConfigs] Optional.
+  /// [operation] Optional.
+  /// [podAutoscalings] Optional.
+  /// [podSecurityPolicyConfigs] Optional.
+  /// [privateClusterConfigs] Optional.
+  /// [privateIpv6GoogleAccess] Optional.
   /// [project] Optional.
-  /// [protectConfigs] Required.
-  /// [pulumiLabels] Required.
-  /// [rbacBindingConfigs] Required.
-  /// [releaseChannels] Required.
-  /// [removeDefaultNodePool] Required.
-  /// [resourceLabels] Required.
-  /// [resourceUsageExportConfigs] Required.
-  /// [rollbackSafeUpgrades] Required.
-  /// [secretManagerConfigs] Required.
-  /// [secretSyncConfigs] Required.
-  /// [securityPostureConfigs] Required.
-  /// [selfLink] Required.
-  /// [serviceExternalIpsConfigs] Required.
-  /// [servicesIpv4Cidr] Required.
-  /// [skipNodePoolRefresh] Required.
-  /// [subnetwork] Required.
-  /// [tpuConfigs] Required.
-  /// [tpuIpv4CidrBlock] Required.
-  /// [userManagedKeysConfigs] Required.
-  /// [verticalPodAutoscalings] Required.
-  /// [workloadAltsConfigs] Required.
-  /// [workloadIdentityConfigs] Required.
+  /// [protectConfigs] Optional.
+  /// [pulumiLabels] Optional.
+  /// [rbacBindingConfigs] Optional.
+  /// [releaseChannels] Optional.
+  /// [removeDefaultNodePool] Optional.
+  /// [resourceLabels] Optional.
+  /// [resourceUsageExportConfigs] Optional.
+  /// [rollbackSafeUpgrades] Optional.
+  /// [secretManagerConfigs] Optional.
+  /// [secretSyncConfigs] Optional.
+  /// [securityPostureConfigs] Optional.
+  /// [selfLink] Optional.
+  /// [serviceExternalIpsConfigs] Optional.
+  /// [servicesIpv4Cidr] Optional.
+  /// [skipNodePoolRefresh] Optional.
+  /// [subnetwork] Optional.
+  /// [tpuConfigs] Optional.
+  /// [tpuIpv4CidrBlock] Optional.
+  /// [userManagedKeysConfigs] Optional.
+  /// [verticalPodAutoscalings] Optional.
+  /// [workloadAltsConfigs] Optional.
+  /// [workloadIdentityConfigs] Optional.
   const GetClusterResult({
-    required this.addonsConfigs,
-    required this.allowNetAdmin,
-    required this.anonymousAuthenticationConfigs,
-    required this.authenticatorGroupsConfigs,
-    required this.autopilotClusterPolicyConfigs,
-    required this.autopilotPrivilegedAdmissions,
-    required this.binaryAuthorizations,
-    required this.clusterAutoscalings,
-    required this.clusterIpv4Cidr,
-    required this.clusterTelemetries,
-    required this.confidentialNodes,
-    required this.controlPlaneEndpointsConfigs,
-    required this.costManagementConfigs,
-    required this.databaseEncryptions,
-    required this.datapathProvider,
-    required this.dataplaneOptimizationMode,
-    required this.defaultMaxPodsPerNode,
-    required this.defaultSnatStatuses,
-    required this.deletionPolicy,
-    required this.deletionProtection,
-    required this.description,
-    required this.desiredEmulatedVersion,
-    required this.disableL4LbFirewallReconciliation,
-    required this.dnsConfigs,
-    required this.effectiveLabels,
-    required this.emulatedVersion,
-    required this.enableAutopilot,
-    required this.enableCiliumClusterwideNetworkPolicy,
-    required this.enableFqdnNetworkPolicy,
-    required this.enableIntranodeVisibility,
-    required this.enableK8sBetaApis,
-    required this.enableKubernetesAlpha,
-    required this.enableL4IlbSubsetting,
-    required this.enableLegacyAbac,
-    required this.enableMultiNetworking,
-    required this.enableShieldedNodes,
-    required this.enableTpu,
-    required this.endpoint,
-    required this.enterpriseConfigs,
-    required this.fleets,
-    required this.gatewayApiConfigs,
-    required this.gkeAutoUpgradeConfigs,
-    required this.id,
-    required this.identityServiceConfigs,
-    required this.ignoreNodeCountChanges,
-    required this.inTransitEncryptionConfig,
-    required this.initialNodeCount,
-    required this.ipAllocationPolicies,
-    required this.labelFingerprint,
+    this.addonsConfigs,
+    this.allowNetAdmin,
+    this.anonymousAuthenticationConfigs,
+    this.authenticatorGroupsConfigs,
+    this.autopilotClusterPolicyConfigs,
+    this.autopilotPrivilegedAdmissions,
+    this.binaryAuthorizations,
+    this.clusterAutoscalings,
+    this.clusterIpv4Cidr,
+    this.clusterTelemetries,
+    this.confidentialNodes,
+    this.controlPlaneEndpointsConfigs,
+    this.costManagementConfigs,
+    this.databaseEncryptions,
+    this.datapathProvider,
+    this.dataplaneOptimizationMode,
+    this.defaultMaxPodsPerNode,
+    this.defaultSnatStatuses,
+    this.deletionPolicy,
+    this.deletionProtection,
+    this.description,
+    this.desiredEmulatedVersion,
+    this.disableL4LbFirewallReconciliation,
+    this.dnsConfigs,
+    this.effectiveLabels,
+    this.emulatedVersion,
+    this.enableAutopilot,
+    this.enableCiliumClusterwideNetworkPolicy,
+    this.enableFqdnNetworkPolicy,
+    this.enableIntranodeVisibility,
+    this.enableK8sBetaApis,
+    this.enableKubernetesAlpha,
+    this.enableL4IlbSubsetting,
+    this.enableLegacyAbac,
+    this.enableMultiNetworking,
+    this.enableShieldedNodes,
+    this.enableTpu,
+    this.endpoint,
+    this.enterpriseConfigs,
+    this.fleets,
+    this.gatewayApiConfigs,
+    this.gkeAutoUpgradeConfigs,
+    this.id,
+    this.identityServiceConfigs,
+    this.ignoreNodeCountChanges,
+    this.inTransitEncryptionConfig,
+    this.initialNodeCount,
+    this.ipAllocationPolicies,
+    this.labelFingerprint,
     this.location,
-    required this.loggingConfigs,
-    required this.loggingService,
-    required this.maintenancePolicies,
-    required this.managedMachineLearningDiagnosticsConfigs,
-    required this.managedOpentelemetryConfigs,
-    required this.masterAuthorizedNetworksConfigs,
-    required this.masterAuths,
-    required this.masterVersion,
-    required this.meshCertificates,
-    required this.minMasterVersion,
-    required this.monitoringConfigs,
-    required this.monitoringService,
-    required this.name,
-    required this.network,
-    required this.networkPerformanceConfigs,
-    required this.networkPolicies,
-    required this.networkingMode,
-    required this.nodeConfigs,
-    required this.nodeCreationConfigs,
-    required this.nodeLocations,
-    required this.nodePoolAutoConfigs,
-    required this.nodePoolDefaults,
-    required this.nodePools,
-    required this.nodeVersion,
-    required this.notificationConfigs,
-    required this.operation,
-    required this.podAutoscalings,
-    required this.podSecurityPolicyConfigs,
-    required this.privateClusterConfigs,
-    required this.privateIpv6GoogleAccess,
+    this.loggingConfigs,
+    this.loggingService,
+    this.maintenancePolicies,
+    this.managedMachineLearningDiagnosticsConfigs,
+    this.managedOpentelemetryConfigs,
+    this.masterAuthorizedNetworksConfigs,
+    this.masterAuths,
+    this.masterVersion,
+    this.meshCertificates,
+    this.minMasterVersion,
+    this.monitoringConfigs,
+    this.monitoringService,
+    this.name,
+    this.network,
+    this.networkPerformanceConfigs,
+    this.networkPolicies,
+    this.networkingMode,
+    this.nodeConfigs,
+    this.nodeCreationConfigs,
+    this.nodeLocations,
+    this.nodePoolAutoConfigs,
+    this.nodePoolDefaults,
+    this.nodePools,
+    this.nodeVersion,
+    this.notificationConfigs,
+    this.operation,
+    this.podAutoscalings,
+    this.podSecurityPolicyConfigs,
+    this.privateClusterConfigs,
+    this.privateIpv6GoogleAccess,
     this.project,
-    required this.protectConfigs,
-    required this.pulumiLabels,
-    required this.rbacBindingConfigs,
-    required this.releaseChannels,
-    required this.removeDefaultNodePool,
-    required this.resourceLabels,
-    required this.resourceUsageExportConfigs,
-    required this.rollbackSafeUpgrades,
-    required this.secretManagerConfigs,
-    required this.secretSyncConfigs,
-    required this.securityPostureConfigs,
-    required this.selfLink,
-    required this.serviceExternalIpsConfigs,
-    required this.servicesIpv4Cidr,
-    required this.skipNodePoolRefresh,
-    required this.subnetwork,
-    required this.tpuConfigs,
-    required this.tpuIpv4CidrBlock,
-    required this.userManagedKeysConfigs,
-    required this.verticalPodAutoscalings,
-    required this.workloadAltsConfigs,
-    required this.workloadIdentityConfigs,
+    this.protectConfigs,
+    this.pulumiLabels,
+    this.rbacBindingConfigs,
+    this.releaseChannels,
+    this.removeDefaultNodePool,
+    this.resourceLabels,
+    this.resourceUsageExportConfigs,
+    this.rollbackSafeUpgrades,
+    this.secretManagerConfigs,
+    this.secretSyncConfigs,
+    this.securityPostureConfigs,
+    this.selfLink,
+    this.serviceExternalIpsConfigs,
+    this.servicesIpv4Cidr,
+    this.skipNodePoolRefresh,
+    this.subnetwork,
+    this.tpuConfigs,
+    this.tpuIpv4CidrBlock,
+    this.userManagedKeysConfigs,
+    this.verticalPodAutoscalings,
+    this.workloadAltsConfigs,
+    this.workloadIdentityConfigs,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'addonsConfigs': pulumi.Input.encodeList<GetClusterAddonsConfig, Map<String, dynamic>>(addonsConfigs, (value) => value.toMap()),
-      'allowNetAdmin': allowNetAdmin,
-      'anonymousAuthenticationConfigs': pulumi.Input.encodeList<GetClusterAnonymousAuthenticationConfig, Map<String, dynamic>>(anonymousAuthenticationConfigs, (value) => value.toMap()),
-      'authenticatorGroupsConfigs': pulumi.Input.encodeList<GetClusterAuthenticatorGroupsConfig, Map<String, dynamic>>(authenticatorGroupsConfigs, (value) => value.toMap()),
-      'autopilotClusterPolicyConfigs': pulumi.Input.encodeList<GetClusterAutopilotClusterPolicyConfig, Map<String, dynamic>>(autopilotClusterPolicyConfigs, (value) => value.toMap()),
-      'autopilotPrivilegedAdmissions': autopilotPrivilegedAdmissions,
-      'binaryAuthorizations': pulumi.Input.encodeList<GetClusterBinaryAuthorization, Map<String, dynamic>>(binaryAuthorizations, (value) => value.toMap()),
-      'clusterAutoscalings': pulumi.Input.encodeList<GetClusterClusterAutoscaling, Map<String, dynamic>>(clusterAutoscalings, (value) => value.toMap()),
-      'clusterIpv4Cidr': clusterIpv4Cidr,
-      'clusterTelemetries': pulumi.Input.encodeList<GetClusterClusterTelemetry, Map<String, dynamic>>(clusterTelemetries, (value) => value.toMap()),
-      'confidentialNodes': pulumi.Input.encodeList<GetClusterConfidentialNode, Map<String, dynamic>>(confidentialNodes, (value) => value.toMap()),
-      'controlPlaneEndpointsConfigs': pulumi.Input.encodeList<GetClusterControlPlaneEndpointsConfig, Map<String, dynamic>>(controlPlaneEndpointsConfigs, (value) => value.toMap()),
-      'costManagementConfigs': pulumi.Input.encodeList<GetClusterCostManagementConfig, Map<String, dynamic>>(costManagementConfigs, (value) => value.toMap()),
-      'databaseEncryptions': pulumi.Input.encodeList<GetClusterDatabaseEncryption, Map<String, dynamic>>(databaseEncryptions, (value) => value.toMap()),
-      'datapathProvider': datapathProvider,
-      'dataplaneOptimizationMode': dataplaneOptimizationMode,
-      'defaultMaxPodsPerNode': defaultMaxPodsPerNode,
-      'defaultSnatStatuses': pulumi.Input.encodeList<GetClusterDefaultSnatStatus, Map<String, dynamic>>(defaultSnatStatuses, (value) => value.toMap()),
-      'deletionPolicy': deletionPolicy,
-      'deletionProtection': deletionProtection,
-      'description': description,
-      'desiredEmulatedVersion': desiredEmulatedVersion,
-      'disableL4LbFirewallReconciliation': disableL4LbFirewallReconciliation,
-      'dnsConfigs': pulumi.Input.encodeList<GetClusterDnsConfig, Map<String, dynamic>>(dnsConfigs, (value) => value.toMap()),
-      'effectiveLabels': effectiveLabels,
-      'emulatedVersion': emulatedVersion,
-      'enableAutopilot': enableAutopilot,
-      'enableCiliumClusterwideNetworkPolicy': enableCiliumClusterwideNetworkPolicy,
-      'enableFqdnNetworkPolicy': enableFqdnNetworkPolicy,
-      'enableIntranodeVisibility': enableIntranodeVisibility,
-      'enableK8sBetaApis': pulumi.Input.encodeList<GetClusterEnableK8sBetaApi, Map<String, dynamic>>(enableK8sBetaApis, (value) => value.toMap()),
-      'enableKubernetesAlpha': enableKubernetesAlpha,
-      'enableL4IlbSubsetting': enableL4IlbSubsetting,
-      'enableLegacyAbac': enableLegacyAbac,
-      'enableMultiNetworking': enableMultiNetworking,
-      'enableShieldedNodes': enableShieldedNodes,
-      'enableTpu': enableTpu,
-      'endpoint': endpoint,
-      'enterpriseConfigs': pulumi.Input.encodeList<GetClusterEnterpriseConfig, Map<String, dynamic>>(enterpriseConfigs, (value) => value.toMap()),
-      'fleets': pulumi.Input.encodeList<GetClusterFleet, Map<String, dynamic>>(fleets, (value) => value.toMap()),
-      'gatewayApiConfigs': pulumi.Input.encodeList<GetClusterGatewayApiConfig, Map<String, dynamic>>(gatewayApiConfigs, (value) => value.toMap()),
-      'gkeAutoUpgradeConfigs': pulumi.Input.encodeList<GetClusterGkeAutoUpgradeConfig, Map<String, dynamic>>(gkeAutoUpgradeConfigs, (value) => value.toMap()),
-      'id': id,
-      'identityServiceConfigs': pulumi.Input.encodeList<GetClusterIdentityServiceConfig, Map<String, dynamic>>(identityServiceConfigs, (value) => value.toMap()),
-      'ignoreNodeCountChanges': ignoreNodeCountChanges,
-      'inTransitEncryptionConfig': inTransitEncryptionConfig,
-      'initialNodeCount': initialNodeCount,
-      'ipAllocationPolicies': pulumi.Input.encodeList<GetClusterIpAllocationPolicy, Map<String, dynamic>>(ipAllocationPolicies, (value) => value.toMap()),
-      'labelFingerprint': labelFingerprint,
+      'addonsConfigs': ?(() { final guardedValue = addonsConfigs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetClusterAddonsConfig, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'allowNetAdmin': ?allowNetAdmin,
+      'anonymousAuthenticationConfigs': ?(() { final guardedValue = anonymousAuthenticationConfigs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetClusterAnonymousAuthenticationConfig, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'authenticatorGroupsConfigs': ?(() { final guardedValue = authenticatorGroupsConfigs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetClusterAuthenticatorGroupsConfig, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'autopilotClusterPolicyConfigs': ?(() { final guardedValue = autopilotClusterPolicyConfigs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetClusterAutopilotClusterPolicyConfig, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'autopilotPrivilegedAdmissions': ?autopilotPrivilegedAdmissions,
+      'binaryAuthorizations': ?(() { final guardedValue = binaryAuthorizations; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetClusterBinaryAuthorization, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'clusterAutoscalings': ?(() { final guardedValue = clusterAutoscalings; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetClusterClusterAutoscaling, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'clusterIpv4Cidr': ?clusterIpv4Cidr,
+      'clusterTelemetries': ?(() { final guardedValue = clusterTelemetries; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetClusterClusterTelemetry, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'confidentialNodes': ?(() { final guardedValue = confidentialNodes; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetClusterConfidentialNode, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'controlPlaneEndpointsConfigs': ?(() { final guardedValue = controlPlaneEndpointsConfigs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetClusterControlPlaneEndpointsConfig, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'costManagementConfigs': ?(() { final guardedValue = costManagementConfigs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetClusterCostManagementConfig, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'databaseEncryptions': ?(() { final guardedValue = databaseEncryptions; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetClusterDatabaseEncryption, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'datapathProvider': ?datapathProvider,
+      'dataplaneOptimizationMode': ?dataplaneOptimizationMode,
+      'defaultMaxPodsPerNode': ?defaultMaxPodsPerNode,
+      'defaultSnatStatuses': ?(() { final guardedValue = defaultSnatStatuses; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetClusterDefaultSnatStatus, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'deletionPolicy': ?deletionPolicy,
+      'deletionProtection': ?deletionProtection,
+      'description': ?description,
+      'desiredEmulatedVersion': ?desiredEmulatedVersion,
+      'disableL4LbFirewallReconciliation': ?disableL4LbFirewallReconciliation,
+      'dnsConfigs': ?(() { final guardedValue = dnsConfigs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetClusterDnsConfig, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'effectiveLabels': ?effectiveLabels,
+      'emulatedVersion': ?emulatedVersion,
+      'enableAutopilot': ?enableAutopilot,
+      'enableCiliumClusterwideNetworkPolicy': ?enableCiliumClusterwideNetworkPolicy,
+      'enableFqdnNetworkPolicy': ?enableFqdnNetworkPolicy,
+      'enableIntranodeVisibility': ?enableIntranodeVisibility,
+      'enableK8sBetaApis': ?(() { final guardedValue = enableK8sBetaApis; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetClusterEnableK8sBetaApi, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'enableKubernetesAlpha': ?enableKubernetesAlpha,
+      'enableL4IlbSubsetting': ?enableL4IlbSubsetting,
+      'enableLegacyAbac': ?enableLegacyAbac,
+      'enableMultiNetworking': ?enableMultiNetworking,
+      'enableShieldedNodes': ?enableShieldedNodes,
+      'enableTpu': ?enableTpu,
+      'endpoint': ?endpoint,
+      'enterpriseConfigs': ?(() { final guardedValue = enterpriseConfigs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetClusterEnterpriseConfig, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'fleets': ?(() { final guardedValue = fleets; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetClusterFleet, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'gatewayApiConfigs': ?(() { final guardedValue = gatewayApiConfigs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetClusterGatewayApiConfig, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'gkeAutoUpgradeConfigs': ?(() { final guardedValue = gkeAutoUpgradeConfigs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetClusterGkeAutoUpgradeConfig, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'id': ?id,
+      'identityServiceConfigs': ?(() { final guardedValue = identityServiceConfigs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetClusterIdentityServiceConfig, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'ignoreNodeCountChanges': ?ignoreNodeCountChanges,
+      'inTransitEncryptionConfig': ?inTransitEncryptionConfig,
+      'initialNodeCount': ?initialNodeCount,
+      'ipAllocationPolicies': ?(() { final guardedValue = ipAllocationPolicies; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetClusterIpAllocationPolicy, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'labelFingerprint': ?labelFingerprint,
       'location': ?location,
-      'loggingConfigs': pulumi.Input.encodeList<GetClusterLoggingConfig, Map<String, dynamic>>(loggingConfigs, (value) => value.toMap()),
-      'loggingService': loggingService,
-      'maintenancePolicies': pulumi.Input.encodeList<GetClusterMaintenancePolicy, Map<String, dynamic>>(maintenancePolicies, (value) => value.toMap()),
-      'managedMachineLearningDiagnosticsConfigs': pulumi.Input.encodeList<GetClusterManagedMachineLearningDiagnosticsConfig, Map<String, dynamic>>(managedMachineLearningDiagnosticsConfigs, (value) => value.toMap()),
-      'managedOpentelemetryConfigs': pulumi.Input.encodeList<GetClusterManagedOpentelemetryConfig, Map<String, dynamic>>(managedOpentelemetryConfigs, (value) => value.toMap()),
-      'masterAuthorizedNetworksConfigs': pulumi.Input.encodeList<GetClusterMasterAuthorizedNetworksConfig, Map<String, dynamic>>(masterAuthorizedNetworksConfigs, (value) => value.toMap()),
-      'masterAuths': pulumi.Input.encodeList<GetClusterMasterAuth, Map<String, dynamic>>(masterAuths, (value) => value.toMap()),
-      'masterVersion': masterVersion,
-      'meshCertificates': pulumi.Input.encodeList<GetClusterMeshCertificate, Map<String, dynamic>>(meshCertificates, (value) => value.toMap()),
-      'minMasterVersion': minMasterVersion,
-      'monitoringConfigs': pulumi.Input.encodeList<GetClusterMonitoringConfig, Map<String, dynamic>>(monitoringConfigs, (value) => value.toMap()),
-      'monitoringService': monitoringService,
-      'name': name,
-      'network': network,
-      'networkPerformanceConfigs': pulumi.Input.encodeList<GetClusterNetworkPerformanceConfig, Map<String, dynamic>>(networkPerformanceConfigs, (value) => value.toMap()),
-      'networkPolicies': pulumi.Input.encodeList<GetClusterNetworkPolicy, Map<String, dynamic>>(networkPolicies, (value) => value.toMap()),
-      'networkingMode': networkingMode,
-      'nodeConfigs': pulumi.Input.encodeList<GetClusterNodeConfig, Map<String, dynamic>>(nodeConfigs, (value) => value.toMap()),
-      'nodeCreationConfigs': pulumi.Input.encodeList<GetClusterNodeCreationConfig, Map<String, dynamic>>(nodeCreationConfigs, (value) => value.toMap()),
-      'nodeLocations': nodeLocations,
-      'nodePoolAutoConfigs': pulumi.Input.encodeList<GetClusterNodePoolAutoConfig, Map<String, dynamic>>(nodePoolAutoConfigs, (value) => value.toMap()),
-      'nodePoolDefaults': pulumi.Input.encodeList<GetClusterNodePoolDefault, Map<String, dynamic>>(nodePoolDefaults, (value) => value.toMap()),
-      'nodePools': pulumi.Input.encodeList<GetClusterNodePool, Map<String, dynamic>>(nodePools, (value) => value.toMap()),
-      'nodeVersion': nodeVersion,
-      'notificationConfigs': pulumi.Input.encodeList<GetClusterNotificationConfig, Map<String, dynamic>>(notificationConfigs, (value) => value.toMap()),
-      'operation': operation,
-      'podAutoscalings': pulumi.Input.encodeList<GetClusterPodAutoscaling, Map<String, dynamic>>(podAutoscalings, (value) => value.toMap()),
-      'podSecurityPolicyConfigs': pulumi.Input.encodeList<GetClusterPodSecurityPolicyConfig, Map<String, dynamic>>(podSecurityPolicyConfigs, (value) => value.toMap()),
-      'privateClusterConfigs': pulumi.Input.encodeList<GetClusterPrivateClusterConfig, Map<String, dynamic>>(privateClusterConfigs, (value) => value.toMap()),
-      'privateIpv6GoogleAccess': privateIpv6GoogleAccess,
+      'loggingConfigs': ?(() { final guardedValue = loggingConfigs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetClusterLoggingConfig, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'loggingService': ?loggingService,
+      'maintenancePolicies': ?(() { final guardedValue = maintenancePolicies; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetClusterMaintenancePolicy, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'managedMachineLearningDiagnosticsConfigs': ?(() { final guardedValue = managedMachineLearningDiagnosticsConfigs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetClusterManagedMachineLearningDiagnosticsConfig, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'managedOpentelemetryConfigs': ?(() { final guardedValue = managedOpentelemetryConfigs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetClusterManagedOpentelemetryConfig, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'masterAuthorizedNetworksConfigs': ?(() { final guardedValue = masterAuthorizedNetworksConfigs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetClusterMasterAuthorizedNetworksConfig, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'masterAuths': ?(() { final guardedValue = masterAuths; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetClusterMasterAuth, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'masterVersion': ?masterVersion,
+      'meshCertificates': ?(() { final guardedValue = meshCertificates; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetClusterMeshCertificate, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'minMasterVersion': ?minMasterVersion,
+      'monitoringConfigs': ?(() { final guardedValue = monitoringConfigs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetClusterMonitoringConfig, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'monitoringService': ?monitoringService,
+      'name': ?name,
+      'network': ?network,
+      'networkPerformanceConfigs': ?(() { final guardedValue = networkPerformanceConfigs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetClusterNetworkPerformanceConfig, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'networkPolicies': ?(() { final guardedValue = networkPolicies; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetClusterNetworkPolicy, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'networkingMode': ?networkingMode,
+      'nodeConfigs': ?(() { final guardedValue = nodeConfigs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetClusterNodeConfig, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'nodeCreationConfigs': ?(() { final guardedValue = nodeCreationConfigs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetClusterNodeCreationConfig, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'nodeLocations': ?nodeLocations,
+      'nodePoolAutoConfigs': ?(() { final guardedValue = nodePoolAutoConfigs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetClusterNodePoolAutoConfig, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'nodePoolDefaults': ?(() { final guardedValue = nodePoolDefaults; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetClusterNodePoolDefault, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'nodePools': ?(() { final guardedValue = nodePools; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetClusterNodePool, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'nodeVersion': ?nodeVersion,
+      'notificationConfigs': ?(() { final guardedValue = notificationConfigs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetClusterNotificationConfig, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'operation': ?operation,
+      'podAutoscalings': ?(() { final guardedValue = podAutoscalings; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetClusterPodAutoscaling, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'podSecurityPolicyConfigs': ?(() { final guardedValue = podSecurityPolicyConfigs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetClusterPodSecurityPolicyConfig, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'privateClusterConfigs': ?(() { final guardedValue = privateClusterConfigs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetClusterPrivateClusterConfig, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'privateIpv6GoogleAccess': ?privateIpv6GoogleAccess,
       'project': ?project,
-      'protectConfigs': pulumi.Input.encodeList<GetClusterProtectConfig, Map<String, dynamic>>(protectConfigs, (value) => value.toMap()),
-      'pulumiLabels': pulumiLabels,
-      'rbacBindingConfigs': pulumi.Input.encodeList<GetClusterRbacBindingConfig, Map<String, dynamic>>(rbacBindingConfigs, (value) => value.toMap()),
-      'releaseChannels': pulumi.Input.encodeList<GetClusterReleaseChannel, Map<String, dynamic>>(releaseChannels, (value) => value.toMap()),
-      'removeDefaultNodePool': removeDefaultNodePool,
-      'resourceLabels': resourceLabels,
-      'resourceUsageExportConfigs': pulumi.Input.encodeList<GetClusterResourceUsageExportConfig, Map<String, dynamic>>(resourceUsageExportConfigs, (value) => value.toMap()),
-      'rollbackSafeUpgrades': pulumi.Input.encodeList<GetClusterRollbackSafeUpgrade, Map<String, dynamic>>(rollbackSafeUpgrades, (value) => value.toMap()),
-      'secretManagerConfigs': pulumi.Input.encodeList<GetClusterSecretManagerConfig, Map<String, dynamic>>(secretManagerConfigs, (value) => value.toMap()),
-      'secretSyncConfigs': pulumi.Input.encodeList<GetClusterSecretSyncConfig, Map<String, dynamic>>(secretSyncConfigs, (value) => value.toMap()),
-      'securityPostureConfigs': pulumi.Input.encodeList<GetClusterSecurityPostureConfig, Map<String, dynamic>>(securityPostureConfigs, (value) => value.toMap()),
-      'selfLink': selfLink,
-      'serviceExternalIpsConfigs': pulumi.Input.encodeList<GetClusterServiceExternalIpsConfig, Map<String, dynamic>>(serviceExternalIpsConfigs, (value) => value.toMap()),
-      'servicesIpv4Cidr': servicesIpv4Cidr,
-      'skipNodePoolRefresh': skipNodePoolRefresh,
-      'subnetwork': subnetwork,
-      'tpuConfigs': pulumi.Input.encodeList<GetClusterTpuConfig, Map<String, dynamic>>(tpuConfigs, (value) => value.toMap()),
-      'tpuIpv4CidrBlock': tpuIpv4CidrBlock,
-      'userManagedKeysConfigs': pulumi.Input.encodeList<GetClusterUserManagedKeysConfig, Map<String, dynamic>>(userManagedKeysConfigs, (value) => value.toMap()),
-      'verticalPodAutoscalings': pulumi.Input.encodeList<GetClusterVerticalPodAutoscaling, Map<String, dynamic>>(verticalPodAutoscalings, (value) => value.toMap()),
-      'workloadAltsConfigs': pulumi.Input.encodeList<GetClusterWorkloadAltsConfig, Map<String, dynamic>>(workloadAltsConfigs, (value) => value.toMap()),
-      'workloadIdentityConfigs': pulumi.Input.encodeList<GetClusterWorkloadIdentityConfig, Map<String, dynamic>>(workloadIdentityConfigs, (value) => value.toMap()),
+      'protectConfigs': ?(() { final guardedValue = protectConfigs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetClusterProtectConfig, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'pulumiLabels': ?pulumiLabels,
+      'rbacBindingConfigs': ?(() { final guardedValue = rbacBindingConfigs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetClusterRbacBindingConfig, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'releaseChannels': ?(() { final guardedValue = releaseChannels; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetClusterReleaseChannel, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'removeDefaultNodePool': ?removeDefaultNodePool,
+      'resourceLabels': ?resourceLabels,
+      'resourceUsageExportConfigs': ?(() { final guardedValue = resourceUsageExportConfigs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetClusterResourceUsageExportConfig, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'rollbackSafeUpgrades': ?(() { final guardedValue = rollbackSafeUpgrades; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetClusterRollbackSafeUpgrade, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'secretManagerConfigs': ?(() { final guardedValue = secretManagerConfigs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetClusterSecretManagerConfig, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'secretSyncConfigs': ?(() { final guardedValue = secretSyncConfigs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetClusterSecretSyncConfig, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'securityPostureConfigs': ?(() { final guardedValue = securityPostureConfigs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetClusterSecurityPostureConfig, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'selfLink': ?selfLink,
+      'serviceExternalIpsConfigs': ?(() { final guardedValue = serviceExternalIpsConfigs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetClusterServiceExternalIpsConfig, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'servicesIpv4Cidr': ?servicesIpv4Cidr,
+      'skipNodePoolRefresh': ?skipNodePoolRefresh,
+      'subnetwork': ?subnetwork,
+      'tpuConfigs': ?(() { final guardedValue = tpuConfigs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetClusterTpuConfig, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'tpuIpv4CidrBlock': ?tpuIpv4CidrBlock,
+      'userManagedKeysConfigs': ?(() { final guardedValue = userManagedKeysConfigs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetClusterUserManagedKeysConfig, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'verticalPodAutoscalings': ?(() { final guardedValue = verticalPodAutoscalings; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetClusterVerticalPodAutoscaling, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'workloadAltsConfigs': ?(() { final guardedValue = workloadAltsConfigs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetClusterWorkloadAltsConfig, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'workloadIdentityConfigs': ?(() { final guardedValue = workloadIdentityConfigs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetClusterWorkloadIdentityConfig, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
     };
   }
 
   factory GetClusterResult.fromMap(Map<String, dynamic> map) {
     return GetClusterResult(
-      addonsConfigs: pulumi.Input.decodeList<GetClusterAddonsConfig>(map['addonsConfigs']!, (value) => GetClusterAddonsConfig.fromMap((value as Map).cast<String, dynamic>())),
-      allowNetAdmin: map['allowNetAdmin'] as bool,
-      anonymousAuthenticationConfigs: pulumi.Input.decodeList<GetClusterAnonymousAuthenticationConfig>(map['anonymousAuthenticationConfigs']!, (value) => GetClusterAnonymousAuthenticationConfig.fromMap((value as Map).cast<String, dynamic>())),
-      authenticatorGroupsConfigs: pulumi.Input.decodeList<GetClusterAuthenticatorGroupsConfig>(map['authenticatorGroupsConfigs']!, (value) => GetClusterAuthenticatorGroupsConfig.fromMap((value as Map).cast<String, dynamic>())),
-      autopilotClusterPolicyConfigs: pulumi.Input.decodeList<GetClusterAutopilotClusterPolicyConfig>(map['autopilotClusterPolicyConfigs']!, (value) => GetClusterAutopilotClusterPolicyConfig.fromMap((value as Map).cast<String, dynamic>())),
-      autopilotPrivilegedAdmissions: (map['autopilotPrivilegedAdmissions'] as List).cast<String>(),
-      binaryAuthorizations: pulumi.Input.decodeList<GetClusterBinaryAuthorization>(map['binaryAuthorizations']!, (value) => GetClusterBinaryAuthorization.fromMap((value as Map).cast<String, dynamic>())),
-      clusterAutoscalings: pulumi.Input.decodeList<GetClusterClusterAutoscaling>(map['clusterAutoscalings']!, (value) => GetClusterClusterAutoscaling.fromMap((value as Map).cast<String, dynamic>())),
-      clusterIpv4Cidr: map['clusterIpv4Cidr'] as String,
-      clusterTelemetries: pulumi.Input.decodeList<GetClusterClusterTelemetry>(map['clusterTelemetries']!, (value) => GetClusterClusterTelemetry.fromMap((value as Map).cast<String, dynamic>())),
-      confidentialNodes: pulumi.Input.decodeList<GetClusterConfidentialNode>(map['confidentialNodes']!, (value) => GetClusterConfidentialNode.fromMap((value as Map).cast<String, dynamic>())),
-      controlPlaneEndpointsConfigs: pulumi.Input.decodeList<GetClusterControlPlaneEndpointsConfig>(map['controlPlaneEndpointsConfigs']!, (value) => GetClusterControlPlaneEndpointsConfig.fromMap((value as Map).cast<String, dynamic>())),
-      costManagementConfigs: pulumi.Input.decodeList<GetClusterCostManagementConfig>(map['costManagementConfigs']!, (value) => GetClusterCostManagementConfig.fromMap((value as Map).cast<String, dynamic>())),
-      databaseEncryptions: pulumi.Input.decodeList<GetClusterDatabaseEncryption>(map['databaseEncryptions']!, (value) => GetClusterDatabaseEncryption.fromMap((value as Map).cast<String, dynamic>())),
-      datapathProvider: map['datapathProvider'] as String,
-      dataplaneOptimizationMode: map['dataplaneOptimizationMode'] as String,
-      defaultMaxPodsPerNode: map['defaultMaxPodsPerNode'] as int,
-      defaultSnatStatuses: pulumi.Input.decodeList<GetClusterDefaultSnatStatus>(map['defaultSnatStatuses']!, (value) => GetClusterDefaultSnatStatus.fromMap((value as Map).cast<String, dynamic>())),
-      deletionPolicy: map['deletionPolicy'] as String,
-      deletionProtection: map['deletionProtection'] as bool,
-      description: map['description'] as String,
-      desiredEmulatedVersion: map['desiredEmulatedVersion'] as String,
-      disableL4LbFirewallReconciliation: map['disableL4LbFirewallReconciliation'] as bool,
-      dnsConfigs: pulumi.Input.decodeList<GetClusterDnsConfig>(map['dnsConfigs']!, (value) => GetClusterDnsConfig.fromMap((value as Map).cast<String, dynamic>())),
-      effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
-      emulatedVersion: map['emulatedVersion'] as String,
-      enableAutopilot: map['enableAutopilot'] as bool,
-      enableCiliumClusterwideNetworkPolicy: map['enableCiliumClusterwideNetworkPolicy'] as bool,
-      enableFqdnNetworkPolicy: map['enableFqdnNetworkPolicy'] as bool,
-      enableIntranodeVisibility: map['enableIntranodeVisibility'] as bool,
-      enableK8sBetaApis: pulumi.Input.decodeList<GetClusterEnableK8sBetaApi>(map['enableK8sBetaApis']!, (value) => GetClusterEnableK8sBetaApi.fromMap((value as Map).cast<String, dynamic>())),
-      enableKubernetesAlpha: map['enableKubernetesAlpha'] as bool,
-      enableL4IlbSubsetting: map['enableL4IlbSubsetting'] as bool,
-      enableLegacyAbac: map['enableLegacyAbac'] as bool,
-      enableMultiNetworking: map['enableMultiNetworking'] as bool,
-      enableShieldedNodes: map['enableShieldedNodes'] as bool,
-      enableTpu: map['enableTpu'] as bool,
-      endpoint: map['endpoint'] as String,
-      enterpriseConfigs: pulumi.Input.decodeList<GetClusterEnterpriseConfig>(map['enterpriseConfigs']!, (value) => GetClusterEnterpriseConfig.fromMap((value as Map).cast<String, dynamic>())),
-      fleets: pulumi.Input.decodeList<GetClusterFleet>(map['fleets']!, (value) => GetClusterFleet.fromMap((value as Map).cast<String, dynamic>())),
-      gatewayApiConfigs: pulumi.Input.decodeList<GetClusterGatewayApiConfig>(map['gatewayApiConfigs']!, (value) => GetClusterGatewayApiConfig.fromMap((value as Map).cast<String, dynamic>())),
-      gkeAutoUpgradeConfigs: pulumi.Input.decodeList<GetClusterGkeAutoUpgradeConfig>(map['gkeAutoUpgradeConfigs']!, (value) => GetClusterGkeAutoUpgradeConfig.fromMap((value as Map).cast<String, dynamic>())),
-      id: map['id'] as String,
-      identityServiceConfigs: pulumi.Input.decodeList<GetClusterIdentityServiceConfig>(map['identityServiceConfigs']!, (value) => GetClusterIdentityServiceConfig.fromMap((value as Map).cast<String, dynamic>())),
-      ignoreNodeCountChanges: map['ignoreNodeCountChanges'] as bool,
-      inTransitEncryptionConfig: map['inTransitEncryptionConfig'] as String,
-      initialNodeCount: map['initialNodeCount'] as int,
-      ipAllocationPolicies: pulumi.Input.decodeList<GetClusterIpAllocationPolicy>(map['ipAllocationPolicies']!, (value) => GetClusterIpAllocationPolicy.fromMap((value as Map).cast<String, dynamic>())),
-      labelFingerprint: map['labelFingerprint'] as String,
+      addonsConfigs: (() { final guardedValue = map['addonsConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetClusterAddonsConfig>(guardedValue, (value) => GetClusterAddonsConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
+      allowNetAdmin: (() { final guardedValue = map['allowNetAdmin']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      anonymousAuthenticationConfigs: (() { final guardedValue = map['anonymousAuthenticationConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetClusterAnonymousAuthenticationConfig>(guardedValue, (value) => GetClusterAnonymousAuthenticationConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
+      authenticatorGroupsConfigs: (() { final guardedValue = map['authenticatorGroupsConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetClusterAuthenticatorGroupsConfig>(guardedValue, (value) => GetClusterAuthenticatorGroupsConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
+      autopilotClusterPolicyConfigs: (() { final guardedValue = map['autopilotClusterPolicyConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetClusterAutopilotClusterPolicyConfig>(guardedValue, (value) => GetClusterAutopilotClusterPolicyConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
+      autopilotPrivilegedAdmissions: (() { final guardedValue = map['autopilotPrivilegedAdmissions']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      binaryAuthorizations: (() { final guardedValue = map['binaryAuthorizations']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetClusterBinaryAuthorization>(guardedValue, (value) => GetClusterBinaryAuthorization.fromMap((value as Map).cast<String, dynamic>())); })(),
+      clusterAutoscalings: (() { final guardedValue = map['clusterAutoscalings']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetClusterClusterAutoscaling>(guardedValue, (value) => GetClusterClusterAutoscaling.fromMap((value as Map).cast<String, dynamic>())); })(),
+      clusterIpv4Cidr: (() { final guardedValue = map['clusterIpv4Cidr']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      clusterTelemetries: (() { final guardedValue = map['clusterTelemetries']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetClusterClusterTelemetry>(guardedValue, (value) => GetClusterClusterTelemetry.fromMap((value as Map).cast<String, dynamic>())); })(),
+      confidentialNodes: (() { final guardedValue = map['confidentialNodes']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetClusterConfidentialNode>(guardedValue, (value) => GetClusterConfidentialNode.fromMap((value as Map).cast<String, dynamic>())); })(),
+      controlPlaneEndpointsConfigs: (() { final guardedValue = map['controlPlaneEndpointsConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetClusterControlPlaneEndpointsConfig>(guardedValue, (value) => GetClusterControlPlaneEndpointsConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
+      costManagementConfigs: (() { final guardedValue = map['costManagementConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetClusterCostManagementConfig>(guardedValue, (value) => GetClusterCostManagementConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
+      databaseEncryptions: (() { final guardedValue = map['databaseEncryptions']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetClusterDatabaseEncryption>(guardedValue, (value) => GetClusterDatabaseEncryption.fromMap((value as Map).cast<String, dynamic>())); })(),
+      datapathProvider: (() { final guardedValue = map['datapathProvider']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      dataplaneOptimizationMode: (() { final guardedValue = map['dataplaneOptimizationMode']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      defaultMaxPodsPerNode: (() { final guardedValue = map['defaultMaxPodsPerNode']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      defaultSnatStatuses: (() { final guardedValue = map['defaultSnatStatuses']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetClusterDefaultSnatStatus>(guardedValue, (value) => GetClusterDefaultSnatStatus.fromMap((value as Map).cast<String, dynamic>())); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      deletionProtection: (() { final guardedValue = map['deletionProtection']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      desiredEmulatedVersion: (() { final guardedValue = map['desiredEmulatedVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      disableL4LbFirewallReconciliation: (() { final guardedValue = map['disableL4LbFirewallReconciliation']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      dnsConfigs: (() { final guardedValue = map['dnsConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetClusterDnsConfig>(guardedValue, (value) => GetClusterDnsConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
+      effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      emulatedVersion: (() { final guardedValue = map['emulatedVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      enableAutopilot: (() { final guardedValue = map['enableAutopilot']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      enableCiliumClusterwideNetworkPolicy: (() { final guardedValue = map['enableCiliumClusterwideNetworkPolicy']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      enableFqdnNetworkPolicy: (() { final guardedValue = map['enableFqdnNetworkPolicy']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      enableIntranodeVisibility: (() { final guardedValue = map['enableIntranodeVisibility']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      enableK8sBetaApis: (() { final guardedValue = map['enableK8sBetaApis']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetClusterEnableK8sBetaApi>(guardedValue, (value) => GetClusterEnableK8sBetaApi.fromMap((value as Map).cast<String, dynamic>())); })(),
+      enableKubernetesAlpha: (() { final guardedValue = map['enableKubernetesAlpha']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      enableL4IlbSubsetting: (() { final guardedValue = map['enableL4IlbSubsetting']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      enableLegacyAbac: (() { final guardedValue = map['enableLegacyAbac']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      enableMultiNetworking: (() { final guardedValue = map['enableMultiNetworking']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      enableShieldedNodes: (() { final guardedValue = map['enableShieldedNodes']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      enableTpu: (() { final guardedValue = map['enableTpu']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      endpoint: (() { final guardedValue = map['endpoint']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      enterpriseConfigs: (() { final guardedValue = map['enterpriseConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetClusterEnterpriseConfig>(guardedValue, (value) => GetClusterEnterpriseConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
+      fleets: (() { final guardedValue = map['fleets']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetClusterFleet>(guardedValue, (value) => GetClusterFleet.fromMap((value as Map).cast<String, dynamic>())); })(),
+      gatewayApiConfigs: (() { final guardedValue = map['gatewayApiConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetClusterGatewayApiConfig>(guardedValue, (value) => GetClusterGatewayApiConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
+      gkeAutoUpgradeConfigs: (() { final guardedValue = map['gkeAutoUpgradeConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetClusterGkeAutoUpgradeConfig>(guardedValue, (value) => GetClusterGkeAutoUpgradeConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      identityServiceConfigs: (() { final guardedValue = map['identityServiceConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetClusterIdentityServiceConfig>(guardedValue, (value) => GetClusterIdentityServiceConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
+      ignoreNodeCountChanges: (() { final guardedValue = map['ignoreNodeCountChanges']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      inTransitEncryptionConfig: (() { final guardedValue = map['inTransitEncryptionConfig']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      initialNodeCount: (() { final guardedValue = map['initialNodeCount']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      ipAllocationPolicies: (() { final guardedValue = map['ipAllocationPolicies']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetClusterIpAllocationPolicy>(guardedValue, (value) => GetClusterIpAllocationPolicy.fromMap((value as Map).cast<String, dynamic>())); })(),
+      labelFingerprint: (() { final guardedValue = map['labelFingerprint']; if (guardedValue == null) return null; return guardedValue as String; })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      loggingConfigs: pulumi.Input.decodeList<GetClusterLoggingConfig>(map['loggingConfigs']!, (value) => GetClusterLoggingConfig.fromMap((value as Map).cast<String, dynamic>())),
-      loggingService: map['loggingService'] as String,
-      maintenancePolicies: pulumi.Input.decodeList<GetClusterMaintenancePolicy>(map['maintenancePolicies']!, (value) => GetClusterMaintenancePolicy.fromMap((value as Map).cast<String, dynamic>())),
-      managedMachineLearningDiagnosticsConfigs: pulumi.Input.decodeList<GetClusterManagedMachineLearningDiagnosticsConfig>(map['managedMachineLearningDiagnosticsConfigs']!, (value) => GetClusterManagedMachineLearningDiagnosticsConfig.fromMap((value as Map).cast<String, dynamic>())),
-      managedOpentelemetryConfigs: pulumi.Input.decodeList<GetClusterManagedOpentelemetryConfig>(map['managedOpentelemetryConfigs']!, (value) => GetClusterManagedOpentelemetryConfig.fromMap((value as Map).cast<String, dynamic>())),
-      masterAuthorizedNetworksConfigs: pulumi.Input.decodeList<GetClusterMasterAuthorizedNetworksConfig>(map['masterAuthorizedNetworksConfigs']!, (value) => GetClusterMasterAuthorizedNetworksConfig.fromMap((value as Map).cast<String, dynamic>())),
-      masterAuths: pulumi.Input.decodeList<GetClusterMasterAuth>(map['masterAuths']!, (value) => GetClusterMasterAuth.fromMap((value as Map).cast<String, dynamic>())),
-      masterVersion: map['masterVersion'] as String,
-      meshCertificates: pulumi.Input.decodeList<GetClusterMeshCertificate>(map['meshCertificates']!, (value) => GetClusterMeshCertificate.fromMap((value as Map).cast<String, dynamic>())),
-      minMasterVersion: map['minMasterVersion'] as String,
-      monitoringConfigs: pulumi.Input.decodeList<GetClusterMonitoringConfig>(map['monitoringConfigs']!, (value) => GetClusterMonitoringConfig.fromMap((value as Map).cast<String, dynamic>())),
-      monitoringService: map['monitoringService'] as String,
-      name: map['name'] as String,
-      network: map['network'] as String,
-      networkPerformanceConfigs: pulumi.Input.decodeList<GetClusterNetworkPerformanceConfig>(map['networkPerformanceConfigs']!, (value) => GetClusterNetworkPerformanceConfig.fromMap((value as Map).cast<String, dynamic>())),
-      networkPolicies: pulumi.Input.decodeList<GetClusterNetworkPolicy>(map['networkPolicies']!, (value) => GetClusterNetworkPolicy.fromMap((value as Map).cast<String, dynamic>())),
-      networkingMode: map['networkingMode'] as String,
-      nodeConfigs: pulumi.Input.decodeList<GetClusterNodeConfig>(map['nodeConfigs']!, (value) => GetClusterNodeConfig.fromMap((value as Map).cast<String, dynamic>())),
-      nodeCreationConfigs: pulumi.Input.decodeList<GetClusterNodeCreationConfig>(map['nodeCreationConfigs']!, (value) => GetClusterNodeCreationConfig.fromMap((value as Map).cast<String, dynamic>())),
-      nodeLocations: (map['nodeLocations'] as List).cast<String>(),
-      nodePoolAutoConfigs: pulumi.Input.decodeList<GetClusterNodePoolAutoConfig>(map['nodePoolAutoConfigs']!, (value) => GetClusterNodePoolAutoConfig.fromMap((value as Map).cast<String, dynamic>())),
-      nodePoolDefaults: pulumi.Input.decodeList<GetClusterNodePoolDefault>(map['nodePoolDefaults']!, (value) => GetClusterNodePoolDefault.fromMap((value as Map).cast<String, dynamic>())),
-      nodePools: pulumi.Input.decodeList<GetClusterNodePool>(map['nodePools']!, (value) => GetClusterNodePool.fromMap((value as Map).cast<String, dynamic>())),
-      nodeVersion: map['nodeVersion'] as String,
-      notificationConfigs: pulumi.Input.decodeList<GetClusterNotificationConfig>(map['notificationConfigs']!, (value) => GetClusterNotificationConfig.fromMap((value as Map).cast<String, dynamic>())),
-      operation: map['operation'] as String,
-      podAutoscalings: pulumi.Input.decodeList<GetClusterPodAutoscaling>(map['podAutoscalings']!, (value) => GetClusterPodAutoscaling.fromMap((value as Map).cast<String, dynamic>())),
-      podSecurityPolicyConfigs: pulumi.Input.decodeList<GetClusterPodSecurityPolicyConfig>(map['podSecurityPolicyConfigs']!, (value) => GetClusterPodSecurityPolicyConfig.fromMap((value as Map).cast<String, dynamic>())),
-      privateClusterConfigs: pulumi.Input.decodeList<GetClusterPrivateClusterConfig>(map['privateClusterConfigs']!, (value) => GetClusterPrivateClusterConfig.fromMap((value as Map).cast<String, dynamic>())),
-      privateIpv6GoogleAccess: map['privateIpv6GoogleAccess'] as String,
+      loggingConfigs: (() { final guardedValue = map['loggingConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetClusterLoggingConfig>(guardedValue, (value) => GetClusterLoggingConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
+      loggingService: (() { final guardedValue = map['loggingService']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      maintenancePolicies: (() { final guardedValue = map['maintenancePolicies']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetClusterMaintenancePolicy>(guardedValue, (value) => GetClusterMaintenancePolicy.fromMap((value as Map).cast<String, dynamic>())); })(),
+      managedMachineLearningDiagnosticsConfigs: (() { final guardedValue = map['managedMachineLearningDiagnosticsConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetClusterManagedMachineLearningDiagnosticsConfig>(guardedValue, (value) => GetClusterManagedMachineLearningDiagnosticsConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
+      managedOpentelemetryConfigs: (() { final guardedValue = map['managedOpentelemetryConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetClusterManagedOpentelemetryConfig>(guardedValue, (value) => GetClusterManagedOpentelemetryConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
+      masterAuthorizedNetworksConfigs: (() { final guardedValue = map['masterAuthorizedNetworksConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetClusterMasterAuthorizedNetworksConfig>(guardedValue, (value) => GetClusterMasterAuthorizedNetworksConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
+      masterAuths: (() { final guardedValue = map['masterAuths']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetClusterMasterAuth>(guardedValue, (value) => GetClusterMasterAuth.fromMap((value as Map).cast<String, dynamic>())); })(),
+      masterVersion: (() { final guardedValue = map['masterVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      meshCertificates: (() { final guardedValue = map['meshCertificates']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetClusterMeshCertificate>(guardedValue, (value) => GetClusterMeshCertificate.fromMap((value as Map).cast<String, dynamic>())); })(),
+      minMasterVersion: (() { final guardedValue = map['minMasterVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      monitoringConfigs: (() { final guardedValue = map['monitoringConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetClusterMonitoringConfig>(guardedValue, (value) => GetClusterMonitoringConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
+      monitoringService: (() { final guardedValue = map['monitoringService']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      network: (() { final guardedValue = map['network']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      networkPerformanceConfigs: (() { final guardedValue = map['networkPerformanceConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetClusterNetworkPerformanceConfig>(guardedValue, (value) => GetClusterNetworkPerformanceConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
+      networkPolicies: (() { final guardedValue = map['networkPolicies']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetClusterNetworkPolicy>(guardedValue, (value) => GetClusterNetworkPolicy.fromMap((value as Map).cast<String, dynamic>())); })(),
+      networkingMode: (() { final guardedValue = map['networkingMode']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      nodeConfigs: (() { final guardedValue = map['nodeConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetClusterNodeConfig>(guardedValue, (value) => GetClusterNodeConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
+      nodeCreationConfigs: (() { final guardedValue = map['nodeCreationConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetClusterNodeCreationConfig>(guardedValue, (value) => GetClusterNodeCreationConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
+      nodeLocations: (() { final guardedValue = map['nodeLocations']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      nodePoolAutoConfigs: (() { final guardedValue = map['nodePoolAutoConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetClusterNodePoolAutoConfig>(guardedValue, (value) => GetClusterNodePoolAutoConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
+      nodePoolDefaults: (() { final guardedValue = map['nodePoolDefaults']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetClusterNodePoolDefault>(guardedValue, (value) => GetClusterNodePoolDefault.fromMap((value as Map).cast<String, dynamic>())); })(),
+      nodePools: (() { final guardedValue = map['nodePools']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetClusterNodePool>(guardedValue, (value) => GetClusterNodePool.fromMap((value as Map).cast<String, dynamic>())); })(),
+      nodeVersion: (() { final guardedValue = map['nodeVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      notificationConfigs: (() { final guardedValue = map['notificationConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetClusterNotificationConfig>(guardedValue, (value) => GetClusterNotificationConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
+      operation: (() { final guardedValue = map['operation']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      podAutoscalings: (() { final guardedValue = map['podAutoscalings']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetClusterPodAutoscaling>(guardedValue, (value) => GetClusterPodAutoscaling.fromMap((value as Map).cast<String, dynamic>())); })(),
+      podSecurityPolicyConfigs: (() { final guardedValue = map['podSecurityPolicyConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetClusterPodSecurityPolicyConfig>(guardedValue, (value) => GetClusterPodSecurityPolicyConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
+      privateClusterConfigs: (() { final guardedValue = map['privateClusterConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetClusterPrivateClusterConfig>(guardedValue, (value) => GetClusterPrivateClusterConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
+      privateIpv6GoogleAccess: (() { final guardedValue = map['privateIpv6GoogleAccess']; if (guardedValue == null) return null; return guardedValue as String; })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      protectConfigs: pulumi.Input.decodeList<GetClusterProtectConfig>(map['protectConfigs']!, (value) => GetClusterProtectConfig.fromMap((value as Map).cast<String, dynamic>())),
-      pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
-      rbacBindingConfigs: pulumi.Input.decodeList<GetClusterRbacBindingConfig>(map['rbacBindingConfigs']!, (value) => GetClusterRbacBindingConfig.fromMap((value as Map).cast<String, dynamic>())),
-      releaseChannels: pulumi.Input.decodeList<GetClusterReleaseChannel>(map['releaseChannels']!, (value) => GetClusterReleaseChannel.fromMap((value as Map).cast<String, dynamic>())),
-      removeDefaultNodePool: map['removeDefaultNodePool'] as bool,
-      resourceLabels: (map['resourceLabels'] as Map).cast<String, String>(),
-      resourceUsageExportConfigs: pulumi.Input.decodeList<GetClusterResourceUsageExportConfig>(map['resourceUsageExportConfigs']!, (value) => GetClusterResourceUsageExportConfig.fromMap((value as Map).cast<String, dynamic>())),
-      rollbackSafeUpgrades: pulumi.Input.decodeList<GetClusterRollbackSafeUpgrade>(map['rollbackSafeUpgrades']!, (value) => GetClusterRollbackSafeUpgrade.fromMap((value as Map).cast<String, dynamic>())),
-      secretManagerConfigs: pulumi.Input.decodeList<GetClusterSecretManagerConfig>(map['secretManagerConfigs']!, (value) => GetClusterSecretManagerConfig.fromMap((value as Map).cast<String, dynamic>())),
-      secretSyncConfigs: pulumi.Input.decodeList<GetClusterSecretSyncConfig>(map['secretSyncConfigs']!, (value) => GetClusterSecretSyncConfig.fromMap((value as Map).cast<String, dynamic>())),
-      securityPostureConfigs: pulumi.Input.decodeList<GetClusterSecurityPostureConfig>(map['securityPostureConfigs']!, (value) => GetClusterSecurityPostureConfig.fromMap((value as Map).cast<String, dynamic>())),
-      selfLink: map['selfLink'] as String,
-      serviceExternalIpsConfigs: pulumi.Input.decodeList<GetClusterServiceExternalIpsConfig>(map['serviceExternalIpsConfigs']!, (value) => GetClusterServiceExternalIpsConfig.fromMap((value as Map).cast<String, dynamic>())),
-      servicesIpv4Cidr: map['servicesIpv4Cidr'] as String,
-      skipNodePoolRefresh: map['skipNodePoolRefresh'] as bool,
-      subnetwork: map['subnetwork'] as String,
-      tpuConfigs: pulumi.Input.decodeList<GetClusterTpuConfig>(map['tpuConfigs']!, (value) => GetClusterTpuConfig.fromMap((value as Map).cast<String, dynamic>())),
-      tpuIpv4CidrBlock: map['tpuIpv4CidrBlock'] as String,
-      userManagedKeysConfigs: pulumi.Input.decodeList<GetClusterUserManagedKeysConfig>(map['userManagedKeysConfigs']!, (value) => GetClusterUserManagedKeysConfig.fromMap((value as Map).cast<String, dynamic>())),
-      verticalPodAutoscalings: pulumi.Input.decodeList<GetClusterVerticalPodAutoscaling>(map['verticalPodAutoscalings']!, (value) => GetClusterVerticalPodAutoscaling.fromMap((value as Map).cast<String, dynamic>())),
-      workloadAltsConfigs: pulumi.Input.decodeList<GetClusterWorkloadAltsConfig>(map['workloadAltsConfigs']!, (value) => GetClusterWorkloadAltsConfig.fromMap((value as Map).cast<String, dynamic>())),
-      workloadIdentityConfigs: pulumi.Input.decodeList<GetClusterWorkloadIdentityConfig>(map['workloadIdentityConfigs']!, (value) => GetClusterWorkloadIdentityConfig.fromMap((value as Map).cast<String, dynamic>())),
+      protectConfigs: (() { final guardedValue = map['protectConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetClusterProtectConfig>(guardedValue, (value) => GetClusterProtectConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
+      pulumiLabels: (() { final guardedValue = map['pulumiLabels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      rbacBindingConfigs: (() { final guardedValue = map['rbacBindingConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetClusterRbacBindingConfig>(guardedValue, (value) => GetClusterRbacBindingConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
+      releaseChannels: (() { final guardedValue = map['releaseChannels']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetClusterReleaseChannel>(guardedValue, (value) => GetClusterReleaseChannel.fromMap((value as Map).cast<String, dynamic>())); })(),
+      removeDefaultNodePool: (() { final guardedValue = map['removeDefaultNodePool']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      resourceLabels: (() { final guardedValue = map['resourceLabels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      resourceUsageExportConfigs: (() { final guardedValue = map['resourceUsageExportConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetClusterResourceUsageExportConfig>(guardedValue, (value) => GetClusterResourceUsageExportConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
+      rollbackSafeUpgrades: (() { final guardedValue = map['rollbackSafeUpgrades']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetClusterRollbackSafeUpgrade>(guardedValue, (value) => GetClusterRollbackSafeUpgrade.fromMap((value as Map).cast<String, dynamic>())); })(),
+      secretManagerConfigs: (() { final guardedValue = map['secretManagerConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetClusterSecretManagerConfig>(guardedValue, (value) => GetClusterSecretManagerConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
+      secretSyncConfigs: (() { final guardedValue = map['secretSyncConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetClusterSecretSyncConfig>(guardedValue, (value) => GetClusterSecretSyncConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
+      securityPostureConfigs: (() { final guardedValue = map['securityPostureConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetClusterSecurityPostureConfig>(guardedValue, (value) => GetClusterSecurityPostureConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
+      selfLink: (() { final guardedValue = map['selfLink']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      serviceExternalIpsConfigs: (() { final guardedValue = map['serviceExternalIpsConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetClusterServiceExternalIpsConfig>(guardedValue, (value) => GetClusterServiceExternalIpsConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
+      servicesIpv4Cidr: (() { final guardedValue = map['servicesIpv4Cidr']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      skipNodePoolRefresh: (() { final guardedValue = map['skipNodePoolRefresh']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      subnetwork: (() { final guardedValue = map['subnetwork']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tpuConfigs: (() { final guardedValue = map['tpuConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetClusterTpuConfig>(guardedValue, (value) => GetClusterTpuConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
+      tpuIpv4CidrBlock: (() { final guardedValue = map['tpuIpv4CidrBlock']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      userManagedKeysConfigs: (() { final guardedValue = map['userManagedKeysConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetClusterUserManagedKeysConfig>(guardedValue, (value) => GetClusterUserManagedKeysConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
+      verticalPodAutoscalings: (() { final guardedValue = map['verticalPodAutoscalings']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetClusterVerticalPodAutoscaling>(guardedValue, (value) => GetClusterVerticalPodAutoscaling.fromMap((value as Map).cast<String, dynamic>())); })(),
+      workloadAltsConfigs: (() { final guardedValue = map['workloadAltsConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetClusterWorkloadAltsConfig>(guardedValue, (value) => GetClusterWorkloadAltsConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
+      workloadIdentityConfigs: (() { final guardedValue = map['workloadIdentityConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetClusterWorkloadIdentityConfig>(guardedValue, (value) => GetClusterWorkloadIdentityConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
     );
   }
 }

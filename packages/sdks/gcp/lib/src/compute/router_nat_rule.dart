@@ -6,9 +6,9 @@ import 'router_nat_rule_action.dart';
 class RouterNatRule {
   /// The action to be enforced for traffic that matches this rule.
   /// Structure is documented below.
-  final pulumi.Input<RouterNatRuleAction>? action;
+  final pulumi.Input<RouterNatRuleAction?>? action;
   /// An optional description of this rule.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// CEL expression that specifies the match condition that egress traffic from a VM is evaluated against.
   /// If it evaluates to true, the corresponding action is enforced.
   /// The following examples are valid match expressions for public NAT:
@@ -47,7 +47,7 @@ class RouterNatRule {
       action: (() { final guardedValue = map['action']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RouterNatRuleAction.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       match: pulumi.Input.fromValue(map['match'] as String),
-      ruleNumber: pulumi.Input.fromValue(map['ruleNumber'] as int),
+      ruleNumber: pulumi.Input.fromValue((map['ruleNumber'] as num).toInt()),
     );
   }
 }

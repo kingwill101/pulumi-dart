@@ -25,8 +25,8 @@ class GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyCpuThre
 
   factory GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyCpuThreshold.fromMap(Map<String, dynamic> map) {
     return GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyCpuThreshold(
-      scaleIn: pulumi.Input.fromValue(map['scaleIn'] as int),
-      scaleOut: pulumi.Input.fromValue(map['scaleOut'] as int),
+      scaleIn: pulumi.Input.fromValue((map['scaleIn'] as num).toInt()),
+      scaleOut: pulumi.Input.fromValue((map['scaleOut'] as num).toInt()),
     );
   }
 }

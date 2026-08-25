@@ -19,37 +19,37 @@ class DbSystemArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
-  final pulumi.Input<bool>? deletionProtection;
+  final pulumi.Input<bool?>? deletionProtection;
   /// The display name for the System db. The name does not have to
   /// be unique within your project.
   final pulumi.Input<String> displayName;
   /// The GCP Oracle zone where Oracle DbSystem is hosted.
   /// Example: us-east4-b-r2.
   /// If not specified, the system will pick a zone based on availability.
-  final pulumi.Input<String>? gcpOracleZone;
+  final pulumi.Input<String?>? gcpOracleZone;
   /// The labels or tags associated with the DbSystem.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final pulumi.Input<String> location;
   /// The name of the OdbNetwork associated with the DbSystem.
   /// Format: projects/{project}/locations/{location}/odbNetworks/{odb_network}
   /// It is optional but if specified, this should match the parent ODBNetwork of
   /// the OdbSubnet.
-  final pulumi.Input<String>? odbNetwork;
+  final pulumi.Input<String?>? odbNetwork;
   /// The name of the OdbSubnet associated with the DbSystem for IP
   /// allocation. Format:
   /// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
   final pulumi.Input<String> odbSubnet;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The properties of a DbSystem.
   /// Structure is documented below.
-  final pulumi.Input<DbSystemProperties>? properties;
+  final pulumi.Input<DbSystemProperties?>? properties;
 
   /// Creates a new [DbSystemArgs].
   /// [dbSystemId] The ID of the DbSystem to create. This value is

@@ -4,14 +4,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PatchDeploymentPatchConfigApt {
   /// List of packages to exclude from update. These packages will be excluded.
-  final pulumi.Input<List<String>>? excludes;
+  final pulumi.Input<List<String>?>? excludes;
   /// An exclusive list of packages to be updated. These are the only packages that will be updated.
   /// If these packages are not installed, they will be ignored. This field cannot be specified with
   /// any other patch configuration fields.
-  final pulumi.Input<List<String>>? exclusivePackages;
+  final pulumi.Input<List<String>?>? exclusivePackages;
   /// By changing the type to DIST, the patching is performed using apt-get dist-upgrade instead.
   /// Possible values are: `DIST`, `UPGRADE`.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [PatchDeploymentPatchConfigApt].
   /// [excludes] List of packages to exclude from update. These packages will be excluded.

@@ -362,7 +362,7 @@ class FolderSccBigQueryExport extends pulumi.CustomResource {
           'gcp:securitycenter/folderSccBigQueryExport:FolderSccBigQueryExport',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     bigQueryExportId = registerOutput<String>('bigQueryExportId');
     createTime = registerOutput<String>('createTime');
@@ -382,11 +382,12 @@ class FolderSccBigQueryExport extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FolderSccBigQueryExportState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return FolderSccBigQueryExport._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -400,6 +401,28 @@ class FolderSccBigQueryExport extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    bigQueryExportId = registerOutput<String>('bigQueryExportId');
+    createTime = registerOutput<String>('createTime');
+    dataset = registerOutput<String>('dataset');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String>('description');
+    filter = registerOutput<String>('filter');
+    folder = registerOutput<String>('folder');
+    mostRecentEditor = registerOutput<String>('mostRecentEditor');
+    this.name = registerOutput<String>('name');
+    principal = registerOutput<String>('principal');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [FolderSccBigQueryExport] resource.
+  FolderSccBigQueryExport.reference(String urn)
+    : super(
+        'gcp:securitycenter/folderSccBigQueryExport:FolderSccBigQueryExport',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     bigQueryExportId = registerOutput<String>('bigQueryExportId');
     createTime = registerOutput<String>('createTime');
     dataset = registerOutput<String>('dataset');

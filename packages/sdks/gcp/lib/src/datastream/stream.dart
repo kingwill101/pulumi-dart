@@ -2,6 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'stream_args.dart';
 import 'stream_backfill_all.dart';
 import 'stream_destination_config.dart';
+import 'stream_rule_set.dart';
 import 'stream_source_config.dart';
 import 'stream_state.dart';
 
@@ -10588,7 +10589,7 @@ class Stream extends pulumi.CustomResource {
   late final pulumi.Output<Map<String, String>> pulumiLabels;
   /// Rule sets to apply to the stream.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> ruleSets;
+  late final pulumi.Output<List<StreamRuleSet>?> ruleSets;
   /// Source connection profile configuration.
   /// Structure is documented below.
   late final pulumi.Output<StreamSourceConfig> sourceConfig;
@@ -10609,7 +10610,8 @@ class Stream extends pulumi.CustomResource {
           'gcp:datastream/stream:Stream',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     backfillAll = registerOutput<StreamBackfillAll?>('backfillAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StreamBackfillAll.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     backfillNone = registerOutput<Map<String, dynamic>?>('backfillNone');
@@ -10619,13 +10621,13 @@ class Stream extends pulumi.CustomResource {
     desiredState = registerOutput<String?>('desiredState');
     destinationConfig = registerOutput<StreamDestinationConfig>('destinationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StreamDestinationConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     displayName = registerOutput<String>('displayName');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    labels = registerOutput<Map<String, String>?>('labels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    ruleSets = registerOutput<List<Map<String, dynamic>>?>('ruleSets');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    ruleSets = registerOutput<List<StreamRuleSet>?>('ruleSets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<StreamRuleSet>(guardedValue, (value) => StreamRuleSet.fromMap((value as Map).cast<String, dynamic>())); });
     sourceConfig = registerOutput<StreamSourceConfig>('sourceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StreamSourceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     state = registerOutput<String>('state');
     streamId = registerOutput<String>('streamId');
@@ -10636,11 +10638,12 @@ class Stream extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     StreamState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Stream._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -10662,15 +10665,45 @@ class Stream extends pulumi.CustomResource {
     desiredState = registerOutput<String?>('desiredState');
     destinationConfig = registerOutput<StreamDestinationConfig>('destinationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StreamDestinationConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     displayName = registerOutput<String>('displayName');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    labels = registerOutput<Map<String, String>?>('labels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    ruleSets = registerOutput<List<Map<String, dynamic>>?>('ruleSets');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    ruleSets = registerOutput<List<StreamRuleSet>?>('ruleSets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<StreamRuleSet>(guardedValue, (value) => StreamRuleSet.fromMap((value as Map).cast<String, dynamic>())); });
     sourceConfig = registerOutput<StreamSourceConfig>('sourceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StreamSourceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.state = registerOutput<String>('state');
+    streamId = registerOutput<String>('streamId');
+  }
+
+  /// Creates a typed reference to an existing [Stream] resource.
+  Stream.reference(String urn)
+    : super(
+        'gcp:datastream/stream:Stream',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    backfillAll = registerOutput<StreamBackfillAll?>('backfillAll', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StreamBackfillAll.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    backfillNone = registerOutput<Map<String, dynamic>?>('backfillNone');
+    createWithoutValidation = registerOutput<bool?>('createWithoutValidation');
+    customerManagedEncryptionKey = registerOutput<String?>('customerManagedEncryptionKey');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    desiredState = registerOutput<String?>('desiredState');
+    destinationConfig = registerOutput<StreamDestinationConfig>('destinationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StreamDestinationConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    displayName = registerOutput<String>('displayName');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    ruleSets = registerOutput<List<StreamRuleSet>?>('ruleSets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<StreamRuleSet>(guardedValue, (value) => StreamRuleSet.fromMap((value as Map).cast<String, dynamic>())); });
+    sourceConfig = registerOutput<StreamSourceConfig>('sourceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StreamSourceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    state = registerOutput<String>('state');
     streamId = registerOutput<String>('streamId');
   }
 }

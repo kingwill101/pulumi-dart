@@ -3,16 +3,16 @@
 import 'package:pulumi_simple/index.dart' as module_index;
 import 'package:pulumi_simple/providers.dart' as module_providers;
 
-final index = const _IndexModuleNamespace();
-final providers = const _ProvidersModuleNamespace();
+final index = _IndexModuleNamespace();
+final providers = _ProvidersModuleNamespace();
 
 class _IndexModuleNamespace {
-  const _IndexModuleNamespace();
+  _IndexModuleNamespace();
   final ResourceArgs = module_index.ResourceArgs.new;
   final ResourceType = module_index.ResourceType.new;
 }
 
 class _ProvidersModuleNamespace {
-  const _ProvidersModuleNamespace();
+  _ProvidersModuleNamespace();
   final Simple = module_providers.ProviderProvider.new;
 }

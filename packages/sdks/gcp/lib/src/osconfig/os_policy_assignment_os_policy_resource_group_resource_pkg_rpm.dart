@@ -7,7 +7,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpm {
   /// Whether dependencies should also be installed. -
   /// install when false: `rpm --upgrade --replacepkgs package.rpm` - install when
   /// true: `yum -y install package.rpm` or `zypper -y install package.rpm`
-  final pulumi.Input<bool>? pullDeps;
+  final pulumi.Input<bool?>? pullDeps;
   /// An rpm package. Structure is
   /// documented below.
   final pulumi.Input<OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSource> source;

@@ -10,17 +10,17 @@ class SshPublicKeyState {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// An expiration time in microseconds since epoch.
-  final pulumi.Input<String>? expirationTimeUsec;
+  final pulumi.Input<String?>? expirationTimeUsec;
   /// The SHA-256 fingerprint of the SSH public key.
-  final pulumi.Input<String>? fingerprint;
+  final pulumi.Input<String?>? fingerprint;
   /// Public key text in SSH format, defined by RFC4253 section 6.6.
-  final pulumi.Input<String>? key;
+  final pulumi.Input<String?>? key;
   /// The project ID of the Google Cloud Platform project.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The user email.
-  final pulumi.Input<String>? user;
+  final pulumi.Input<String?>? user;
 
   /// Creates a new [SshPublicKeyState].
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

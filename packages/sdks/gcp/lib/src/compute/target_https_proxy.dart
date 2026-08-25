@@ -2830,9 +2830,9 @@ class TargetHttpsProxy extends pulumi.CustomResource {
           'gcp:compute/targetHttpsProxy:TargetHttpsProxy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
-    certificateManagerCertificates = registerOutput<List<String>?>('certificateManagerCertificates');
+    certificateManagerCertificates = registerOutput<List<String>?>('certificateManagerCertificates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     certificateMap = registerOutput<String?>('certificateMap');
     creationTimestamp = registerOutput<String>('creationTimestamp');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -2846,7 +2846,7 @@ class TargetHttpsProxy extends pulumi.CustomResource {
     quicOverride = registerOutput<String?>('quicOverride');
     selfLink = registerOutput<String>('selfLink');
     serverTlsPolicy = registerOutput<String?>('serverTlsPolicy');
-    sslCertificates = registerOutput<List<String>?>('sslCertificates');
+    sslCertificates = registerOutput<List<String>?>('sslCertificates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     sslPolicy = registerOutput<String?>('sslPolicy');
     tlsEarlyData = registerOutput<String>('tlsEarlyData');
     urlMap = registerOutput<String>('urlMap');
@@ -2857,11 +2857,12 @@ class TargetHttpsProxy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TargetHttpsProxyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return TargetHttpsProxy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -2875,7 +2876,7 @@ class TargetHttpsProxy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    certificateManagerCertificates = registerOutput<List<String>?>('certificateManagerCertificates');
+    certificateManagerCertificates = registerOutput<List<String>?>('certificateManagerCertificates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     certificateMap = registerOutput<String?>('certificateMap');
     creationTimestamp = registerOutput<String>('creationTimestamp');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -2889,7 +2890,36 @@ class TargetHttpsProxy extends pulumi.CustomResource {
     quicOverride = registerOutput<String?>('quicOverride');
     selfLink = registerOutput<String>('selfLink');
     serverTlsPolicy = registerOutput<String?>('serverTlsPolicy');
-    sslCertificates = registerOutput<List<String>?>('sslCertificates');
+    sslCertificates = registerOutput<List<String>?>('sslCertificates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    sslPolicy = registerOutput<String?>('sslPolicy');
+    tlsEarlyData = registerOutput<String>('tlsEarlyData');
+    urlMap = registerOutput<String>('urlMap');
+  }
+
+  /// Creates a typed reference to an existing [TargetHttpsProxy] resource.
+  TargetHttpsProxy.reference(String urn)
+    : super(
+        'gcp:compute/targetHttpsProxy:TargetHttpsProxy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    certificateManagerCertificates = registerOutput<List<String>?>('certificateManagerCertificates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    certificateMap = registerOutput<String?>('certificateMap');
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    fingerprint = registerOutput<String>('fingerprint');
+    httpKeepAliveTimeoutSec = registerOutput<int?>('httpKeepAliveTimeoutSec');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    proxyBind = registerOutput<bool>('proxyBind');
+    proxyId = registerOutput<int>('proxyId');
+    quicOverride = registerOutput<String?>('quicOverride');
+    selfLink = registerOutput<String>('selfLink');
+    serverTlsPolicy = registerOutput<String?>('serverTlsPolicy');
+    sslCertificates = registerOutput<List<String>?>('sslCertificates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     sslPolicy = registerOutput<String?>('sslPolicy');
     tlsEarlyData = registerOutput<String>('tlsEarlyData');
     urlMap = registerOutput<String>('urlMap');

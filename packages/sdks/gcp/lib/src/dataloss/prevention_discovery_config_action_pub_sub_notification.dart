@@ -6,15 +6,15 @@ import 'prevention_discovery_config_action_pub_sub_notification_pubsub_condition
 class PreventionDiscoveryConfigActionPubSubNotification {
   /// How much data to include in the pub/sub message.
   /// Possible values are: `TABLE_PROFILE`, `RESOURCE_NAME`.
-  final pulumi.Input<String>? detailOfMessage;
+  final pulumi.Input<String?>? detailOfMessage;
   /// The type of event that triggers a Pub/Sub. At most one PubSubNotification per EventType is permitted.
   /// Possible values are: `NEW_PROFILE`, `CHANGED_PROFILE`, `SCORE_INCREASED`, `ERROR_CHANGED`.
-  final pulumi.Input<String>? event;
+  final pulumi.Input<String?>? event;
   /// Conditions for triggering pubsub
   /// Structure is documented below.
-  final pulumi.Input<PreventionDiscoveryConfigActionPubSubNotificationPubsubCondition>? pubsubCondition;
+  final pulumi.Input<PreventionDiscoveryConfigActionPubSubNotificationPubsubCondition?>? pubsubCondition;
   /// Cloud Pub/Sub topic to send notifications to. Format is projects/{project}/topics/{topic}.
-  final pulumi.Input<String>? topic;
+  final pulumi.Input<String?>? topic;
 
   /// Creates a new [PreventionDiscoveryConfigActionPubSubNotification].
   /// [detailOfMessage] How much data to include in the pub/sub message.

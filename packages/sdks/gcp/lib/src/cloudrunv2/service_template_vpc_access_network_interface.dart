@@ -6,13 +6,13 @@ class ServiceTemplateVpcAccessNetworkInterface {
   /// The VPC network that the Cloud Run resource will be able to send traffic to. At least one of network or subnetwork must be specified. If both
   /// network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If network is not specified, it will be
   /// looked up from the subnetwork.
-  final pulumi.Input<String>? network;
+  final pulumi.Input<String?>? network;
   /// The VPC subnetwork that the Cloud Run resource will get IPs from. At least one of network or subnetwork must be specified. If both
   /// network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If subnetwork is not specified, the
   /// subnetwork with the same name with the network will be used.
-  final pulumi.Input<String>? subnetwork;
+  final pulumi.Input<String?>? subnetwork;
   /// Network tags applied to this Cloud Run service.
-  final pulumi.Input<List<String>>? tags;
+  final pulumi.Input<List<String>?>? tags;
 
   /// Creates a new [ServiceTemplateVpcAccessNetworkInterface].
   /// [network] The VPC network that the Cloud Run resource will be able to send traffic to. At least one of network or subnetwork must be specified. If both

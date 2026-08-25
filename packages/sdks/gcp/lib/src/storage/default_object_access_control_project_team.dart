@@ -4,10 +4,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DefaultObjectAccessControlProjectTeam {
   /// The project team associated with the entity
-  final pulumi.Input<String>? projectNumber;
+  final pulumi.Input<String?>? projectNumber;
   /// The team.
   /// Possible values are: `editors`, `owners`, `viewers`.
-  final pulumi.Input<String>? team;
+  final pulumi.Input<String?>? team;
 
   /// Creates a new [DefaultObjectAccessControlProjectTeam].
   /// [projectNumber] The project team associated with the entity

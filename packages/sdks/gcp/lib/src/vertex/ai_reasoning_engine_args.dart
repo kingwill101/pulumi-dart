@@ -14,7 +14,7 @@ class AiReasoningEngineArgs {
   /// (Optional, Beta)
   /// Optional. Configuration for how Agent Engine sub-resources should manage context.
   /// Structure is documented below.
-  final pulumi.Input<AiReasoningEngineContextSpec>? contextSpec;
+  final pulumi.Input<AiReasoningEngineContextSpec?>? contextSpec;
   /// Optional. The deletion policy for the reasoning engine.
   /// Setting this to FORCE allows the reasoning engine to be deleted regardless of child undeleted resources.
   ///
@@ -23,35 +23,35 @@ class AiReasoningEngineArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is permitted.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The description of the ReasoningEngine.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The display name of the ReasoningEngine.
   final pulumi.Input<String> displayName;
   /// Optional. Customer-managed encryption key spec for a ReasoningEngine.
   /// If set, this ReasoningEngine and all sub-resources of this ReasoningEngine
   /// will be secured by this key.
   /// Structure is documented below.
-  final pulumi.Input<AiReasoningEngineEncryptionSpec>? encryptionSpec;
+  final pulumi.Input<AiReasoningEngineEncryptionSpec?>? encryptionSpec;
   /// The labels associated with this ReasoningEngine. You can use these to
   /// organize and group your ReasoningEngines.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The region of the reasoning engine. eg us-central1
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Optional. Configurations of the ReasoningEngine.
   /// Structure is documented below.
-  final pulumi.Input<AiReasoningEngineSpec>? spec;
+  final pulumi.Input<AiReasoningEngineSpec?>? spec;
   /// (Optional, Beta)
   /// Optional. Traffic distribution configuration for the Reasoning Engine.
   /// &gt; **Note:** Because revision IDs do not exist before the resource is created, the best practice for initial deployment is to set `trafficSplitAlwaysLatest {}`. Once the resource is created, you can update the configuration to a manual split using newly generated revision IDs, short names (e.g. `rev-1`), or keywords such as `LATEST` and `PREVIOUS`.
   /// Structure is documented below.
-  final pulumi.Input<AiReasoningEngineTrafficConfig>? trafficConfig;
+  final pulumi.Input<AiReasoningEngineTrafficConfig?>? trafficConfig;
 
   /// Creates a new [AiReasoningEngineArgs].
   /// [contextSpec] (Optional, Beta)

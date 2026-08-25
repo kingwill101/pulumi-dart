@@ -12,7 +12,7 @@ class GetMeshIstioServiceArgs {
   final pulumi.Input<String> meshUid;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The name of the Istio service underlying this service.
   /// Corresponds to the destinationServiceName metric label in Istio metrics.
   ///

@@ -20,7 +20,7 @@ class ClusterMaintenancePolicyWeeklyMaintenanceWindow {
   /// The current window is fixed at 1 hour.
   /// A duration in seconds with up to nine fractional digits,
   /// terminated by 's'. Example: "3.5s".
-  final pulumi.Input<String>? duration;
+  final pulumi.Input<String?>? duration;
   /// Required. Start time of the window in UTC time.
   /// Structure is documented below.
   final pulumi.Input<ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTime> startTime;

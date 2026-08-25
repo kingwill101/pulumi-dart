@@ -5,14 +5,14 @@ import 'source_iam_member_condition.dart';
 
 /// Input properties used for looking up and filtering SourceIamMember resources.
 class SourceIamMemberState {
-  final pulumi.Input<SourceIamMemberCondition>? condition;
-  final pulumi.Input<String>? etag;
-  final pulumi.Input<String>? member;
+  final pulumi.Input<SourceIamMemberCondition?>? condition;
+  final pulumi.Input<String?>? etag;
+  final pulumi.Input<String?>? member;
   /// The organization whose Cloud Security Command Center the Source
   /// lives in.
-  final pulumi.Input<String>? organization;
-  final pulumi.Input<String>? role;
-  final pulumi.Input<String>? source;
+  final pulumi.Input<String?>? organization;
+  final pulumi.Input<String?>? role;
+  final pulumi.Input<String?>? source;
 
   /// Creates a new [SourceIamMemberState].
   /// [condition] Optional.

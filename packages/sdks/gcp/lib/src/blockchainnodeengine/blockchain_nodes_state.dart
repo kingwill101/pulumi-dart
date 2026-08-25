@@ -7,44 +7,44 @@ import 'blockchain_nodes_ethereum_details.dart';
 /// Input properties used for looking up and filtering BlockchainNodes resources.
 class BlockchainNodesState {
   /// ID of the requesting object.
-  final pulumi.Input<String>? blockchainNodeId;
+  final pulumi.Input<String?>? blockchainNodeId;
   /// User-provided key-value pairs
   /// Possible values are: `ETHEREUM`.
-  final pulumi.Input<String>? blockchainType;
+  final pulumi.Input<String?>? blockchainType;
   /// The connection information through which to interact with a blockchain node.
   /// Structure is documented below.
-  final pulumi.Input<List<BlockchainNodesConnectionInfo>>? connectionInfos;
+  final pulumi.Input<List<BlockchainNodesConnectionInfo>?>? connectionInfos;
   /// The timestamp at which the blockchain node was first created.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveLabels;
+  final pulumi.Input<Map<String, String>?>? effectiveLabels;
   /// User-provided key-value pairs
   /// Structure is documented below.
-  final pulumi.Input<BlockchainNodesEthereumDetails>? ethereumDetails;
+  final pulumi.Input<BlockchainNodesEthereumDetails?>? ethereumDetails;
   /// User-provided key-value pairs
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Location of Blockchain Node being created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The fully qualified name of the blockchain node. e.g. projects/my-project/locations/us-central1/blockchainNodes/my-node.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  final pulumi.Input<Map<String, String>>? pulumiLabels;
+  final pulumi.Input<Map<String, String>?>? pulumiLabels;
   /// The timestamp at which the blockchain node was last updated.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [BlockchainNodesState].
   /// [blockchainNodeId] ID of the requesting object.

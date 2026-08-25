@@ -38,7 +38,7 @@ class GetTableMaterializedView {
       allowNonIncrementalDefinition: pulumi.Input.fromValue(map['allowNonIncrementalDefinition'] as bool),
       enableRefresh: pulumi.Input.fromValue(map['enableRefresh'] as bool),
       query: pulumi.Input.fromValue(map['query'] as String),
-      refreshIntervalMs: pulumi.Input.fromValue(map['refreshIntervalMs'] as int),
+      refreshIntervalMs: pulumi.Input.fromValue((map['refreshIntervalMs'] as num).toInt()),
     );
   }
 }

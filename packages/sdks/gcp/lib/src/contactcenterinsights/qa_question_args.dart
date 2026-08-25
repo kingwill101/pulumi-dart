@@ -14,46 +14,46 @@ import 'qa_question_tuning_metadata.dart';
 class QaQuestionArgs {
   /// Short, descriptive string, used in the UI where it's not practical
   /// to display the full question body. E.g., "Greeting".
-  final pulumi.Input<String>? abbreviation;
+  final pulumi.Input<String?>? abbreviation;
   /// A list of valid answers to the question, which the LLM must choose from.
   /// Structure is documented below.
-  final pulumi.Input<List<QaQuestionAnswerChoice>>? answerChoices;
+  final pulumi.Input<List<QaQuestionAnswerChoice>?>? answerChoices;
   /// Instructions describing how to determine the answer.
-  final pulumi.Input<String>? answerInstructions;
+  final pulumi.Input<String?>? answerInstructions;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final pulumi.Input<String> location;
   /// A wrapper representing metrics calculated against a test-set on a LLM that
   /// was fine tuned for this question.
   /// Structure is documented below.
-  final pulumi.Input<QaQuestionMetrics>? metrics;
+  final pulumi.Input<QaQuestionMetrics?>? metrics;
   /// Defines the order of the question within its parent scorecard revision.
-  final pulumi.Input<int>? order;
+  final pulumi.Input<int?>? order;
   /// Configuration for a predefined question. This field will only be set if the
   /// Question Type is predefined.
   /// Structure is documented below.
-  final pulumi.Input<QaQuestionPredefinedQuestionConfig>? predefinedQuestionConfig;
+  final pulumi.Input<QaQuestionPredefinedQuestionConfig?>? predefinedQuestionConfig;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Options for configuring the data used to generate the QA question.
   /// Structure is documented below.
-  final pulumi.Input<QaQuestionQaQuestionDataOptions>? qaQuestionDataOptions;
+  final pulumi.Input<QaQuestionQaQuestionDataOptions?>? qaQuestionDataOptions;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final pulumi.Input<String> qaScorecard;
   /// Question text. E.g., "Did the agent greet the customer?"
-  final pulumi.Input<String>? questionBody;
+  final pulumi.Input<String?>? questionBody;
   /// The type of question.
   /// Possible values:
   /// CUSTOMIZABLE
   /// PREDEFINED
-  final pulumi.Input<String>? questionType;
+  final pulumi.Input<String?>? questionType;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final pulumi.Input<String> revision;
   /// Questions are tagged for categorization and scoring. Tags can either be:
@@ -64,11 +64,11 @@ class QaQuestionArgs {
   /// projects/{project}/locations/{location}/qaQuestionTags/{qa_question_tag}).
   /// Both default and custom tags are used to group questions and to influence
   /// the scoring of each question.
-  final pulumi.Input<List<String>>? tags;
+  final pulumi.Input<List<String>?>? tags;
   /// Metadata about the tuning operation for the question. Will only be set if a
   /// scorecard containing this question has been tuned.
   /// Structure is documented below.
-  final pulumi.Input<QaQuestionTuningMetadata>? tuningMetadata;
+  final pulumi.Input<QaQuestionTuningMetadata?>? tuningMetadata;
 
   /// Creates a new [QaQuestionArgs].
   /// [abbreviation] Short, descriptive string, used in the UI where it's not practical
@@ -135,7 +135,7 @@ class QaQuestionArgs {
       deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: pulumi.Input.fromValue(map['location'] as String),
       metrics: (() { final guardedValue = map['metrics']; if (guardedValue == null) return null; return pulumi.Input.fromValue(QaQuestionMetrics.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      order: (() { final guardedValue = map['order']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      order: (() { final guardedValue = map['order']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       predefinedQuestionConfig: (() { final guardedValue = map['predefinedQuestionConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(QaQuestionPredefinedQuestionConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       qaQuestionDataOptions: (() { final guardedValue = map['qaQuestionDataOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(QaQuestionQaQuestionDataOptions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

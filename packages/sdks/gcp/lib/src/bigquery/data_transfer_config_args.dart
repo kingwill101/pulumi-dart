@@ -16,7 +16,7 @@ class DataTransferConfigArgs {
   /// reingests data for [today-10, today-1], rather than ingesting data for
   /// just [today-1]. Only valid if the data source supports the feature.
   /// Set the value to 0 to use the default value.
-  final pulumi.Input<int>? dataRefreshWindowDays;
+  final pulumi.Input<int?>? dataRefreshWindowDays;
   /// The data source id. Cannot be changed once the transfer config is created.
   final pulumi.Input<String> dataSourceId;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -25,26 +25,26 @@ class DataTransferConfigArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The BigQuery target dataset id.
-  final pulumi.Input<String>? destinationDatasetId;
+  final pulumi.Input<String?>? destinationDatasetId;
   /// When set to true, no runs are scheduled for a given transfer.
-  final pulumi.Input<bool>? disabled;
+  final pulumi.Input<bool?>? disabled;
   /// The user specified display name for the transfer config.
   final pulumi.Input<String> displayName;
   /// Email notifications will be sent according to these preferences to the
   /// email address of the user who owns this transfer config.
   /// Structure is documented below.
-  final pulumi.Input<DataTransferConfigEmailPreferences>? emailPreferences;
+  final pulumi.Input<DataTransferConfigEmailPreferences?>? emailPreferences;
   /// Represents the encryption configuration for a transfer.
   /// Structure is documented below.
-  final pulumi.Input<DataTransferConfigEncryptionConfiguration>? encryptionConfiguration;
+  final pulumi.Input<DataTransferConfigEncryptionConfiguration?>? encryptionConfiguration;
   /// The geographic location where the transfer config should reside.
   /// Examples: US, EU, asia-northeast1. The default value is US.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Pub/Sub topic where notifications will be sent after transfer runs
   /// associated with this transfer config finish.
-  final pulumi.Input<String>? notificationPubsubTopic;
+  final pulumi.Input<String?>? notificationPubsubTopic;
   /// Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer'
   /// section for each data source. For example the parameters for Cloud Storage transfers are listed here:
   /// https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
@@ -52,7 +52,7 @@ class DataTransferConfigArgs {
   final pulumi.Input<Map<String, String>> params;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Data transfer schedule. If the data source does not support a custom
   /// schedule, this should be empty. If it is empty, the default value for
   /// the data source will be used. The specified times are in UTC. Examples
@@ -62,10 +62,10 @@ class DataTransferConfigArgs {
   /// https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format
   /// NOTE: The minimum interval time between recurring transfers depends
   /// on the data source; refer to the documentation for your data source.
-  final pulumi.Input<String>? schedule;
+  final pulumi.Input<String?>? schedule;
   /// Options customizing the data transfer schedule.
   /// Structure is documented below.
-  final pulumi.Input<DataTransferConfigScheduleOptions>? scheduleOptions;
+  final pulumi.Input<DataTransferConfigScheduleOptions?>? scheduleOptions;
   /// Different parameters are configured primarily using the the `params` field on this
   /// resource. This block contains the parameters which contain secrets or passwords so that they can be marked
   /// sensitive and hidden from plan output. The name of the field, eg: secret_access_key, will be the key
@@ -73,11 +73,11 @@ class DataTransferConfigArgs {
   /// Credentials may not be specified in both locations and will cause an error. Changing from one location
   /// to a different credential configuration in the config will require an apply to update state.
   /// Structure is documented below.
-  final pulumi.Input<DataTransferConfigSensitiveParams>? sensitiveParams;
+  final pulumi.Input<DataTransferConfigSensitiveParams?>? sensitiveParams;
   /// Service account email. If this field is set, transfer config will
   /// be created with this service account credentials. It requires that
   /// requesting user calling this API has permissions to act as this service account.
-  final pulumi.Input<String>? serviceAccountName;
+  final pulumi.Input<String?>? serviceAccountName;
 
   /// Creates a new [DataTransferConfigArgs].
   /// [dataRefreshWindowDays] The number of days to look back to automatically refresh the data.
@@ -138,7 +138,7 @@ class DataTransferConfigArgs {
 
   factory DataTransferConfigArgs.fromMap(Map<String, dynamic> map) {
     return DataTransferConfigArgs(
-      dataRefreshWindowDays: (() { final guardedValue = map['dataRefreshWindowDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      dataRefreshWindowDays: (() { final guardedValue = map['dataRefreshWindowDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       dataSourceId: pulumi.Input.fromValue(map['dataSourceId'] as String),
       deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       destinationDatasetId: (() { final guardedValue = map['destinationDatasetId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

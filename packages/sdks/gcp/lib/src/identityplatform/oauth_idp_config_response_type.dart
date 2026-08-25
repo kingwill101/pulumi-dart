@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class OauthIdpConfigResponseType {
   /// If true, authorization code is returned from IdP's authorization endpoint.
-  final pulumi.Input<bool>? code;
+  final pulumi.Input<bool?>? code;
   /// If true, ID token is returned from IdP's authorization endpoint.
-  final pulumi.Input<bool>? idToken;
+  final pulumi.Input<bool?>? idToken;
 
   /// Creates a new [OauthIdpConfigResponseType].
   /// [code] If true, authorization code is returned from IdP's authorization endpoint.

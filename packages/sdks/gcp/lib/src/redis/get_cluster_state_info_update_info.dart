@@ -25,8 +25,8 @@ class GetClusterStateInfoUpdateInfo {
 
   factory GetClusterStateInfoUpdateInfo.fromMap(Map<String, dynamic> map) {
     return GetClusterStateInfoUpdateInfo(
-      targetReplicaCount: pulumi.Input.fromValue(map['targetReplicaCount'] as int),
-      targetShardCount: pulumi.Input.fromValue(map['targetShardCount'] as int),
+      targetReplicaCount: pulumi.Input.fromValue((map['targetReplicaCount'] as num).toInt()),
+      targetShardCount: pulumi.Input.fromValue((map['targetShardCount'] as num).toInt()),
     );
   }
 }

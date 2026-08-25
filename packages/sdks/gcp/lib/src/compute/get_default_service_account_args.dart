@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_compute_get_default_service_account_get_default_service_account_args_doc}
 class GetDefaultServiceAccountArgs {
   /// The project ID. If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetDefaultServiceAccountArgs].
   /// [project] The project ID. If it is not provided, the provider project is used.

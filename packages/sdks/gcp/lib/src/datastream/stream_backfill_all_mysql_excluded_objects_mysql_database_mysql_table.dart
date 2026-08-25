@@ -6,7 +6,7 @@ import 'stream_backfill_all_mysql_excluded_objects_mysql_database_mysql_table_my
 class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTable {
   /// MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
   /// Structure is documented below.
-  final pulumi.Input<List<StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumn>>? mysqlColumns;
+  final pulumi.Input<List<StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumn>?>? mysqlColumns;
   /// Table name.
   final pulumi.Input<String> table;
 

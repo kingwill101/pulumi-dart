@@ -7,50 +7,50 @@ class GoldengateConnectionPropertiesPostgresqlConnectionProperties {
   /// An array of name-value pair attribute entries.
   /// Used as additional parameters in connection string.
   /// Structure is documented below.
-  final pulumi.Input<List<GoldengateConnectionPropertiesPostgresqlConnectionPropertiesAdditionalAttribute>>? additionalAttributes;
+  final pulumi.Input<List<GoldengateConnectionPropertiesPostgresqlConnectionPropertiesAdditionalAttribute>?>? additionalAttributes;
   /// The name of the database.
-  final pulumi.Input<String>? database;
+  final pulumi.Input<String?>? database;
   /// The OCID of the database system being referenced.
-  final pulumi.Input<String>? dbSystemId;
+  final pulumi.Input<String?>? dbSystemId;
   /// The name or address of a host.
-  final pulumi.Input<String>? host;
+  final pulumi.Input<String?>? host;
   /// Input only. The password Oracle Goldengate uses for PostgreSQL connection in plain
   /// text.
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// Input only. The resource name of a secret version in Secret Manager which contains
   /// the password Oracle Goldengate uses for PostgreSQL connection.
   /// Format: projects/{project}/secrets/{secret}/versions/{version}.
-  final pulumi.Input<String>? passwordSecretVersion;
+  final pulumi.Input<String?>? passwordSecretVersion;
   /// The port of an endpoint usually specified for a connection.
-  final pulumi.Input<int>? port;
+  final pulumi.Input<int?>? port;
   /// Security protocol for PostgreSQL.
   /// Possible values:
   /// PLAIN
   /// TLS
   /// MTLS
-  final pulumi.Input<String>? securityProtocol;
+  final pulumi.Input<String?>? securityProtocol;
   /// The certificate of the trusted certificate authorities
   /// (Trusted CA) for PostgreSQL.
-  final pulumi.Input<String>? sslCaFile;
+  final pulumi.Input<String?>? sslCaFile;
   /// The certificate of the PostgreSQL server.
-  final pulumi.Input<String>? sslCertFile;
+  final pulumi.Input<String?>? sslCertFile;
   /// The list of certificates revoked by the trusted
   /// certificate authorities (Trusted CA).
-  final pulumi.Input<String>? sslCrlFile;
+  final pulumi.Input<String?>? sslCrlFile;
   /// The private key of the PostgreSQL server.
-  final pulumi.Input<String>? sslKeyFile;
+  final pulumi.Input<String?>? sslKeyFile;
   /// SSL modes for PostgreSQL.
   /// Possible values:
   /// PREFER
   /// REQUIRE
   /// VERIFY_CA
   /// VERIFY_FULL
-  final pulumi.Input<String>? sslMode;
+  final pulumi.Input<String?>? sslMode;
   /// The technology type of PostgresqlConnection.
-  final pulumi.Input<String>? technologyType;
+  final pulumi.Input<String?>? technologyType;
   /// The username Oracle Goldengate uses to connect the associated system of
   /// the given technology.
-  final pulumi.Input<String>? username;
+  final pulumi.Input<String?>? username;
 
   /// Creates a new [GoldengateConnectionPropertiesPostgresqlConnectionProperties].
   /// [additionalAttributes] An array of name-value pair attribute entries.
@@ -114,7 +114,7 @@ class GoldengateConnectionPropertiesPostgresqlConnectionProperties {
       host: (() { final guardedValue = map['host']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       password: (() { final guardedValue = map['password']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       passwordSecretVersion: (() { final guardedValue = map['passwordSecretVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       securityProtocol: (() { final guardedValue = map['securityProtocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sslCaFile: (() { final guardedValue = map['sslCaFile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sslCertFile: (() { final guardedValue = map['sslCertFile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

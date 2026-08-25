@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'bi_reservation_args.dart';
+import 'bi_reservation_preferred_table.dart';
 import 'bi_reservation_state.dart';
 
 /// Represents a BI Reservation.
@@ -154,7 +155,7 @@ class BiReservation extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// Preferred tables to use BI capacity for.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> preferredTables;
+  late final pulumi.Output<List<BiReservationPreferredTable>?> preferredTables;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
@@ -176,12 +177,12 @@ class BiReservation extends pulumi.CustomResource {
           'gcp:bigquery/biReservation:BiReservation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    preferredTables = registerOutput<List<Map<String, dynamic>>?>('preferredTables');
+    preferredTables = registerOutput<List<BiReservationPreferredTable>?>('preferredTables', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BiReservationPreferredTable>(guardedValue, (value) => BiReservationPreferredTable.fromMap((value as Map).cast<String, dynamic>())); });
     project = registerOutput<String>('project');
     size = registerOutput<int?>('size');
     updateTime = registerOutput<String>('updateTime');
@@ -192,11 +193,12 @@ class BiReservation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     BiReservationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return BiReservation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -213,7 +215,25 @@ class BiReservation extends pulumi.CustomResource {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    preferredTables = registerOutput<List<Map<String, dynamic>>?>('preferredTables');
+    preferredTables = registerOutput<List<BiReservationPreferredTable>?>('preferredTables', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BiReservationPreferredTable>(guardedValue, (value) => BiReservationPreferredTable.fromMap((value as Map).cast<String, dynamic>())); });
+    project = registerOutput<String>('project');
+    size = registerOutput<int?>('size');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [BiReservation] resource.
+  BiReservation.reference(String urn)
+    : super(
+        'gcp:bigquery/biReservation:BiReservation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    preferredTables = registerOutput<List<BiReservationPreferredTable>?>('preferredTables', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BiReservationPreferredTable>(guardedValue, (value) => BiReservationPreferredTable.fromMap((value as Map).cast<String, dynamic>())); });
     project = registerOutput<String>('project');
     size = registerOutput<int?>('size');
     updateTime = registerOutput<String>('updateTime');

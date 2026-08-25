@@ -4,10 +4,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AddonsConfigAddonsConfigApiSecurityConfig {
   /// Flag that specifies whether the API security add-on is enabled.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// (Output)
   /// Time at which the API Security add-on expires in in milliseconds since epoch. If unspecified, the add-on will never expire.
-  final pulumi.Input<String>? expiresAt;
+  final pulumi.Input<String?>? expiresAt;
 
   /// Creates a new [AddonsConfigAddonsConfigApiSecurityConfig].
   /// [enabled] Flag that specifies whether the API security add-on is enabled.

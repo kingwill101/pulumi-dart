@@ -5,10 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IntentFollowupIntentInfo {
   /// The unique identifier of the followup intent.
   /// Format: projects/&lt;Project ID&gt;/agent/intents/&lt;Intent ID&gt;.
-  final pulumi.Input<String>? followupIntentName;
+  final pulumi.Input<String?>? followupIntentName;
   /// The unique identifier of the parent intent in the chain of followup intents.
   /// Format: projects/&lt;Project ID&gt;/agent/intents/&lt;Intent ID&gt;.
-  final pulumi.Input<String>? parentFollowupIntentName;
+  final pulumi.Input<String?>? parentFollowupIntentName;
 
   /// Creates a new [IntentFollowupIntentInfo].
   /// [followupIntentName] The unique identifier of the followup intent.

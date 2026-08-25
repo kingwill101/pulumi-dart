@@ -13,7 +13,7 @@ class LienArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// A stable, user-visible/meaningful string identifying the origin
   /// of the Lien, intended to be inspected programmatically. Maximum length of
   /// 200 characters.

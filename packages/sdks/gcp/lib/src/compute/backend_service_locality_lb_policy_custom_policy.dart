@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BackendServiceLocalityLbPolicyCustomPolicy {
   /// An optional, arbitrary JSON object with configuration data, understood
   /// by a locally installed custom policy implementation.
-  final pulumi.Input<String>? data;
+  final pulumi.Input<String?>? data;
   /// Identifies the custom policy.
   /// The value should match the type the custom implementation is registered
   /// with on the gRPC clients. It should follow protocol buffer

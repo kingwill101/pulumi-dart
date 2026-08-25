@@ -5,19 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering FolderSettings resources.
 class FolderSettingsState {
   /// If set to true, the _Default sink in newly created projects and folders will created in a disabled state. This can be used to automatically disable log storage if there is already an aggregated sink configured in the hierarchy. The _Default sink can be re-enabled manually if needed.
-  final pulumi.Input<bool>? disableDefaultSink;
+  final pulumi.Input<bool?>? disableDefaultSink;
   /// The folder for which to retrieve settings.
-  final pulumi.Input<String>? folder;
+  final pulumi.Input<String?>? folder;
   /// The resource name for the configured Cloud KMS key.
-  final pulumi.Input<String>? kmsKeyName;
+  final pulumi.Input<String?>? kmsKeyName;
   /// The service account that will be used by the Log Router to access your Cloud KMS key.
-  final pulumi.Input<String>? kmsServiceAccountId;
+  final pulumi.Input<String?>? kmsServiceAccountId;
   /// The service account for the given container. Sinks use this service account as their writerIdentity if no custom service account is provided.
-  final pulumi.Input<String>? loggingServiceAccountId;
+  final pulumi.Input<String?>? loggingServiceAccountId;
   /// The resource name of the settings.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The storage location that Cloud Logging will use to create new resources when a location is needed but not explicitly provided.
-  final pulumi.Input<String>? storageLocation;
+  final pulumi.Input<String?>? storageLocation;
 
   /// Creates a new [FolderSettingsState].
   /// [disableDefaultSink] If set to true, the _Default sink in newly created projects and folders will created in a disabled state. This can be used to automatically disable log storage if there is already an aggregated sink configured in the hierarchy. The _Default sink can be re-enabled manually if needed.

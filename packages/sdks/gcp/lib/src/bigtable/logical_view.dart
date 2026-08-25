@@ -363,7 +363,7 @@ class LogicalView extends pulumi.CustomResource {
           'gcp:bigtable/logicalView:LogicalView',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     deletionProtection = registerOutput<bool?>('deletionProtection');
@@ -379,11 +379,12 @@ class LogicalView extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LogicalViewState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LogicalView._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -397,6 +398,24 @@ class LogicalView extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    deletionProtection = registerOutput<bool?>('deletionProtection');
+    instance = registerOutput<String?>('instance');
+    logicalViewId = registerOutput<String>('logicalViewId');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    query = registerOutput<String>('query');
+  }
+
+  /// Creates a typed reference to an existing [LogicalView] resource.
+  LogicalView.reference(String urn)
+    : super(
+        'gcp:bigtable/logicalView:LogicalView',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     deletionProtection = registerOutput<bool?>('deletionProtection');
     instance = registerOutput<String?>('instance');

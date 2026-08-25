@@ -11,22 +11,22 @@ class DnsZoneState {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Description for the zone.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// ID of the dns zone.
-  final pulumi.Input<String>? dnsZoneId;
+  final pulumi.Input<String?>? dnsZoneId;
   /// Doamin for the zone.
-  final pulumi.Input<String>? domain;
+  final pulumi.Input<String?>? domain;
   /// Name of the Dns Zone in the following format:
   /// organizations/{organization}/dnsZones/{dnsZone}.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The Apigee Organization associated with the Apigee instance,
   /// in the format `organizations/{{org_name}}`.
-  final pulumi.Input<String>? orgId;
+  final pulumi.Input<String?>? orgId;
   /// Peering zone config
   /// Structure is documented below.
-  final pulumi.Input<DnsZonePeeringConfig>? peeringConfig;
+  final pulumi.Input<DnsZonePeeringConfig?>? peeringConfig;
 
   /// Creates a new [DnsZoneState].
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

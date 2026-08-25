@@ -7,11 +7,11 @@ import 'authz_policy_network_rule_from_source_principal.dart';
 class AuthzPolicyNetworkRuleFromSource {
   /// A list of IP addresses or IP address ranges to match against the source IP address of the request. Limited to 10 ipBlocks per Authorization Policy
   /// Structure is documented below.
-  final pulumi.Input<List<AuthzPolicyNetworkRuleFromSourceIpBlock>>? ipBlocks;
+  final pulumi.Input<List<AuthzPolicyNetworkRuleFromSourceIpBlock>?>? ipBlocks;
   /// A list of identities derived from the client's certificate. This field will not match on a request unless mutual TLS is enabled for the Forwarding rule or Gateway. Each identity is a string whose value is matched against the URI SAN, or DNS SAN or the subject field in the client's certificate. The match can be exact, prefix, suffix or a substring match. One of exact, prefix, suffix or contains must be specified.
   /// Limited to 5 principals.
   /// Structure is documented below.
-  final pulumi.Input<List<AuthzPolicyNetworkRuleFromSourcePrincipal>>? principals;
+  final pulumi.Input<List<AuthzPolicyNetworkRuleFromSourcePrincipal>?>? principals;
 
   /// Creates a new [AuthzPolicyNetworkRuleFromSource].
   /// [ipBlocks] A list of IP addresses or IP address ranges to match against the source IP address of the request. Limited to 10 ipBlocks per Authorization Policy

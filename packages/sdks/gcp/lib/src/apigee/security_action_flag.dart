@@ -8,7 +8,7 @@ class SecurityActionFlag {
   /// Limit 5 headers per SecurityAction.
   /// At least one is mandatory.
   /// Structure is documented below.
-  final pulumi.Input<List<SecurityActionFlagHeader>>? headers;
+  final pulumi.Input<List<SecurityActionFlagHeader>?>? headers;
 
   /// Creates a new [SecurityActionFlag].
   /// [headers] A list of HTTP headers to be sent to the target in case of a FLAG SecurityAction.

@@ -430,10 +430,10 @@ class SyncAuthorization extends pulumi.CustomResource {
           'gcp:apigee/syncAuthorization:SyncAuthorization',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     etag = registerOutput<String>('etag');
-    identities = registerOutput<List<String>>('identities');
+    identities = registerOutput<List<String>>('identities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
   }
 
@@ -442,11 +442,12 @@ class SyncAuthorization extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SyncAuthorizationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SyncAuthorization._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -461,7 +462,21 @@ class SyncAuthorization extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     etag = registerOutput<String>('etag');
-    identities = registerOutput<List<String>>('identities');
+    identities = registerOutput<List<String>>('identities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    this.name = registerOutput<String>('name');
+  }
+
+  /// Creates a typed reference to an existing [SyncAuthorization] resource.
+  SyncAuthorization.reference(String urn)
+    : super(
+        'gcp:apigee/syncAuthorization:SyncAuthorization',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    etag = registerOutput<String>('etag');
+    identities = registerOutput<List<String>>('identities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
   }
 }

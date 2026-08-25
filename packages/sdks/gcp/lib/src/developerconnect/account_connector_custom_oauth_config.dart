@@ -15,7 +15,7 @@ class AccountConnectorCustomOauthConfig {
   /// The host URI of the OAuth application.
   final pulumi.Input<String> hostUri;
   /// Disable PKCE for this OAuth config. PKCE is enabled by default.
-  final pulumi.Input<bool>? pkceDisabled;
+  final pulumi.Input<bool?>? pkceDisabled;
   /// The type of the SCM provider.
   /// Possible values:
   /// SCM_PROVIDER_UNKNOWN
@@ -27,13 +27,13 @@ class AccountConnectorCustomOauthConfig {
   final pulumi.Input<List<String>> scopes;
   /// (Output)
   /// SCM server version installed at the host URI.
-  final pulumi.Input<String>? serverVersion;
+  final pulumi.Input<String?>? serverVersion;
   /// ServiceDirectoryConfig represents Service Directory configuration for a
   /// connection.
   /// Structure is documented below.
-  final pulumi.Input<AccountConnectorCustomOauthConfigServiceDirectoryConfig>? serviceDirectoryConfig;
+  final pulumi.Input<AccountConnectorCustomOauthConfigServiceDirectoryConfig?>? serviceDirectoryConfig;
   /// SSL certificate to use for requests to a private service.
-  final pulumi.Input<String>? sslCaCertificate;
+  final pulumi.Input<String?>? sslCaCertificate;
   /// The OAuth2 token request URL.
   final pulumi.Input<String> tokenUri;
 

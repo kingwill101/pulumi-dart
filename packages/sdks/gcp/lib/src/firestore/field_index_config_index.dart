@@ -6,17 +6,17 @@ class FieldIndexConfigIndex {
   /// Indicates that this field supports operations on arrayValues. Only one of `order` and `arrayConfig` can
   /// be specified.
   /// Possible values are: `CONTAINS`.
-  final pulumi.Input<String>? arrayConfig;
+  final pulumi.Input<String?>? arrayConfig;
   /// Indicates that this field supports ordering by the specified order or comparing using =, &lt;, &lt;=, &gt;, &gt;=, !=.
   /// Only one of `order` and `arrayConfig` can be specified.
   /// Possible values are: `ASCENDING`, `DESCENDING`.
-  final pulumi.Input<String>? order;
+  final pulumi.Input<String?>? order;
   /// The scope at which a query is run. Collection scoped queries require you specify
   /// the collection at query time. Collection group scope allows queries across all
   /// collections with the same id.
   /// Default value is `COLLECTION`.
   /// Possible values are: `COLLECTION`, `COLLECTION_GROUP`.
-  final pulumi.Input<String>? queryScope;
+  final pulumi.Input<String?>? queryScope;
 
   /// Creates a new [FieldIndexConfigIndex].
   /// [arrayConfig] Indicates that this field supports operations on arrayValues. Only one of `order` and `arrayConfig` can

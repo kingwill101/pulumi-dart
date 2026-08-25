@@ -6,7 +6,7 @@ import 'service_perimeters_service_perimeter_status_vpc_accessible_services_allo
 class ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifier {
   /// Adds additional HTTP request headers.
   /// Structure is documented below.
-  final pulumi.Input<ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeader>? addRequestHeader;
+  final pulumi.Input<ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifierAddRequestHeader?>? addRequestHeader;
 
   /// Creates a new [ServicePerimetersServicePerimeterStatusVpcAccessibleServicesAllowedServicePatternModifier].
   /// [addRequestHeader] Adds additional HTTP request headers.

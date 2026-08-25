@@ -11,50 +11,50 @@ import 'cluster_tls_config.dart';
 class ClusterState {
   /// Capacity configuration at a per-broker level within the Kafka cluster. The config will be appled to each broker in the cluster.
   /// Structure is documented below.
-  final pulumi.Input<ClusterBrokerCapacityConfig>? brokerCapacityConfig;
+  final pulumi.Input<ClusterBrokerCapacityConfig?>? brokerCapacityConfig;
   /// A capacity configuration of a Kafka cluster.
   /// Structure is documented below.
-  final pulumi.Input<ClusterCapacityConfig>? capacityConfig;
+  final pulumi.Input<ClusterCapacityConfig?>? capacityConfig;
   /// The ID to use for the cluster, which will become the final component of the cluster's name. The ID must be 1-63 characters long, and match the regular expression `a-z?` to comply with RFC 1035. This value is structured like: `my-cluster-id`.
-  final pulumi.Input<String>? clusterId;
+  final pulumi.Input<String?>? clusterId;
   /// The time when the cluster was created.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveLabels;
+  final pulumi.Input<Map<String, String>?>? effectiveLabels;
   /// Configuration properties for a Kafka cluster deployed to Google Cloud Platform.
   /// Structure is documented below.
-  final pulumi.Input<ClusterGcpConfig>? gcpConfig;
+  final pulumi.Input<ClusterGcpConfig?>? gcpConfig;
   /// List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-), underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase characters, and numbers.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the cluster. Structured like: `projects/PROJECT_ID/locations/LOCATION/clusters/CLUSTER_ID`.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  final pulumi.Input<Map<String, String>>? pulumiLabels;
+  final pulumi.Input<Map<String, String>?>? pulumiLabels;
   /// Defines rebalancing behavior of a Kafka cluster.
   /// Structure is documented below.
-  final pulumi.Input<ClusterRebalanceConfig>? rebalanceConfig;
+  final pulumi.Input<ClusterRebalanceConfig?>? rebalanceConfig;
   /// The current state of the cluster. Possible values: `STATE_UNSPECIFIED`, `CREATING`, `ACTIVE`, `DELETING`.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// TLS configuration for the Kafka cluster. This is used to configure mTLS authentication. To clear our a TLS configuration that has been previously set, please explicitly add an empty `tlsConfig` block.
   /// Structure is documented below.
-  final pulumi.Input<ClusterTlsConfig>? tlsConfig;
+  final pulumi.Input<ClusterTlsConfig?>? tlsConfig;
   /// The time when the cluster was last updated.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [ClusterState].
   /// [brokerCapacityConfig] Capacity configuration at a per-broker level within the Kafka cluster. The config will be appled to each broker in the cluster.

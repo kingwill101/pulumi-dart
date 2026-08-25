@@ -15,159 +15,159 @@ import 'get_trigger_webhook_config.dart';
 
 /// Result data returned by getTrigger.
 class GetTriggerResult {
-  final List<GetTriggerApprovalConfig> approvalConfigs;
-  final List<GetTriggerBitbucketServerTriggerConfig> bitbucketServerTriggerConfigs;
-  final List<GetTriggerBuild> builds;
-  final String createTime;
-  final String deletionPolicy;
-  final String description;
-  final List<GetTriggerDeveloperConnectEventConfig> developerConnectEventConfigs;
-  final bool disabled;
-  final String filename;
-  final String filter;
-  final List<GetTriggerGitFileSource> gitFileSources;
-  final List<GetTriggerGithub> githubs;
+  final List<GetTriggerApprovalConfig>? approvalConfigs;
+  final List<GetTriggerBitbucketServerTriggerConfig>? bitbucketServerTriggerConfigs;
+  final List<GetTriggerBuild>? builds;
+  final String? createTime;
+  final String? deletionPolicy;
+  final String? description;
+  final List<GetTriggerDeveloperConnectEventConfig>? developerConnectEventConfigs;
+  final bool? disabled;
+  final String? filename;
+  final String? filter;
+  final List<GetTriggerGitFileSource>? gitFileSources;
+  final List<GetTriggerGithub>? githubs;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final List<String> ignoredFiles;
-  final String includeBuildLogs;
-  final List<String> includedFiles;
-  final String location;
-  final String name;
+  final String? id;
+  final List<String>? ignoredFiles;
+  final String? includeBuildLogs;
+  final List<String>? includedFiles;
+  final String? location;
+  final String? name;
   final String? project;
-  final List<GetTriggerPubsubConfig> pubsubConfigs;
-  final List<GetTriggerRepositoryEventConfig> repositoryEventConfigs;
-  final String serviceAccount;
-  final List<GetTriggerSourceToBuild> sourceToBuilds;
-  final Map<String, String> substitutions;
-  final List<String> tags;
-  final String triggerId;
-  final List<GetTriggerTriggerTemplate> triggerTemplates;
-  final List<GetTriggerWebhookConfig> webhookConfigs;
+  final List<GetTriggerPubsubConfig>? pubsubConfigs;
+  final List<GetTriggerRepositoryEventConfig>? repositoryEventConfigs;
+  final String? serviceAccount;
+  final List<GetTriggerSourceToBuild>? sourceToBuilds;
+  final Map<String, String>? substitutions;
+  final List<String>? tags;
+  final String? triggerId;
+  final List<GetTriggerTriggerTemplate>? triggerTemplates;
+  final List<GetTriggerWebhookConfig>? webhookConfigs;
 
   /// Creates a new [GetTriggerResult].
-  /// [approvalConfigs] Required.
-  /// [bitbucketServerTriggerConfigs] Required.
-  /// [builds] Required.
-  /// [createTime] Required.
-  /// [deletionPolicy] Required.
-  /// [description] Required.
-  /// [developerConnectEventConfigs] Required.
-  /// [disabled] Required.
-  /// [filename] Required.
-  /// [filter] Required.
-  /// [gitFileSources] Required.
-  /// [githubs] Required.
+  /// [approvalConfigs] Optional.
+  /// [bitbucketServerTriggerConfigs] Optional.
+  /// [builds] Optional.
+  /// [createTime] Optional.
+  /// [deletionPolicy] Optional.
+  /// [description] Optional.
+  /// [developerConnectEventConfigs] Optional.
+  /// [disabled] Optional.
+  /// [filename] Optional.
+  /// [filter] Optional.
+  /// [gitFileSources] Optional.
+  /// [githubs] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [ignoredFiles] Required.
-  /// [includeBuildLogs] Required.
-  /// [includedFiles] Required.
-  /// [location] Required.
-  /// [name] Required.
+  /// [ignoredFiles] Optional.
+  /// [includeBuildLogs] Optional.
+  /// [includedFiles] Optional.
+  /// [location] Optional.
+  /// [name] Optional.
   /// [project] Optional.
-  /// [pubsubConfigs] Required.
-  /// [repositoryEventConfigs] Required.
-  /// [serviceAccount] Required.
-  /// [sourceToBuilds] Required.
-  /// [substitutions] Required.
-  /// [tags] Required.
-  /// [triggerId] Required.
-  /// [triggerTemplates] Required.
-  /// [webhookConfigs] Required.
+  /// [pubsubConfigs] Optional.
+  /// [repositoryEventConfigs] Optional.
+  /// [serviceAccount] Optional.
+  /// [sourceToBuilds] Optional.
+  /// [substitutions] Optional.
+  /// [tags] Optional.
+  /// [triggerId] Optional.
+  /// [triggerTemplates] Optional.
+  /// [webhookConfigs] Optional.
   const GetTriggerResult({
-    required this.approvalConfigs,
-    required this.bitbucketServerTriggerConfigs,
-    required this.builds,
-    required this.createTime,
-    required this.deletionPolicy,
-    required this.description,
-    required this.developerConnectEventConfigs,
-    required this.disabled,
-    required this.filename,
-    required this.filter,
-    required this.gitFileSources,
-    required this.githubs,
-    required this.id,
-    required this.ignoredFiles,
-    required this.includeBuildLogs,
-    required this.includedFiles,
-    required this.location,
-    required this.name,
+    this.approvalConfigs,
+    this.bitbucketServerTriggerConfigs,
+    this.builds,
+    this.createTime,
+    this.deletionPolicy,
+    this.description,
+    this.developerConnectEventConfigs,
+    this.disabled,
+    this.filename,
+    this.filter,
+    this.gitFileSources,
+    this.githubs,
+    this.id,
+    this.ignoredFiles,
+    this.includeBuildLogs,
+    this.includedFiles,
+    this.location,
+    this.name,
     this.project,
-    required this.pubsubConfigs,
-    required this.repositoryEventConfigs,
-    required this.serviceAccount,
-    required this.sourceToBuilds,
-    required this.substitutions,
-    required this.tags,
-    required this.triggerId,
-    required this.triggerTemplates,
-    required this.webhookConfigs,
+    this.pubsubConfigs,
+    this.repositoryEventConfigs,
+    this.serviceAccount,
+    this.sourceToBuilds,
+    this.substitutions,
+    this.tags,
+    this.triggerId,
+    this.triggerTemplates,
+    this.webhookConfigs,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'approvalConfigs': pulumi.Input.encodeList<GetTriggerApprovalConfig, Map<String, dynamic>>(approvalConfigs, (value) => value.toMap()),
-      'bitbucketServerTriggerConfigs': pulumi.Input.encodeList<GetTriggerBitbucketServerTriggerConfig, Map<String, dynamic>>(bitbucketServerTriggerConfigs, (value) => value.toMap()),
-      'builds': pulumi.Input.encodeList<GetTriggerBuild, Map<String, dynamic>>(builds, (value) => value.toMap()),
-      'createTime': createTime,
-      'deletionPolicy': deletionPolicy,
-      'description': description,
-      'developerConnectEventConfigs': pulumi.Input.encodeList<GetTriggerDeveloperConnectEventConfig, Map<String, dynamic>>(developerConnectEventConfigs, (value) => value.toMap()),
-      'disabled': disabled,
-      'filename': filename,
-      'filter': filter,
-      'gitFileSources': pulumi.Input.encodeList<GetTriggerGitFileSource, Map<String, dynamic>>(gitFileSources, (value) => value.toMap()),
-      'githubs': pulumi.Input.encodeList<GetTriggerGithub, Map<String, dynamic>>(githubs, (value) => value.toMap()),
-      'id': id,
-      'ignoredFiles': ignoredFiles,
-      'includeBuildLogs': includeBuildLogs,
-      'includedFiles': includedFiles,
-      'location': location,
-      'name': name,
+      'approvalConfigs': ?(() { final guardedValue = approvalConfigs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetTriggerApprovalConfig, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'bitbucketServerTriggerConfigs': ?(() { final guardedValue = bitbucketServerTriggerConfigs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetTriggerBitbucketServerTriggerConfig, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'builds': ?(() { final guardedValue = builds; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetTriggerBuild, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'createTime': ?createTime,
+      'deletionPolicy': ?deletionPolicy,
+      'description': ?description,
+      'developerConnectEventConfigs': ?(() { final guardedValue = developerConnectEventConfigs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetTriggerDeveloperConnectEventConfig, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'disabled': ?disabled,
+      'filename': ?filename,
+      'filter': ?filter,
+      'gitFileSources': ?(() { final guardedValue = gitFileSources; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetTriggerGitFileSource, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'githubs': ?(() { final guardedValue = githubs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetTriggerGithub, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'id': ?id,
+      'ignoredFiles': ?ignoredFiles,
+      'includeBuildLogs': ?includeBuildLogs,
+      'includedFiles': ?includedFiles,
+      'location': ?location,
+      'name': ?name,
       'project': ?project,
-      'pubsubConfigs': pulumi.Input.encodeList<GetTriggerPubsubConfig, Map<String, dynamic>>(pubsubConfigs, (value) => value.toMap()),
-      'repositoryEventConfigs': pulumi.Input.encodeList<GetTriggerRepositoryEventConfig, Map<String, dynamic>>(repositoryEventConfigs, (value) => value.toMap()),
-      'serviceAccount': serviceAccount,
-      'sourceToBuilds': pulumi.Input.encodeList<GetTriggerSourceToBuild, Map<String, dynamic>>(sourceToBuilds, (value) => value.toMap()),
-      'substitutions': substitutions,
-      'tags': tags,
-      'triggerId': triggerId,
-      'triggerTemplates': pulumi.Input.encodeList<GetTriggerTriggerTemplate, Map<String, dynamic>>(triggerTemplates, (value) => value.toMap()),
-      'webhookConfigs': pulumi.Input.encodeList<GetTriggerWebhookConfig, Map<String, dynamic>>(webhookConfigs, (value) => value.toMap()),
+      'pubsubConfigs': ?(() { final guardedValue = pubsubConfigs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetTriggerPubsubConfig, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'repositoryEventConfigs': ?(() { final guardedValue = repositoryEventConfigs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetTriggerRepositoryEventConfig, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'serviceAccount': ?serviceAccount,
+      'sourceToBuilds': ?(() { final guardedValue = sourceToBuilds; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetTriggerSourceToBuild, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'substitutions': ?substitutions,
+      'tags': ?tags,
+      'triggerId': ?triggerId,
+      'triggerTemplates': ?(() { final guardedValue = triggerTemplates; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetTriggerTriggerTemplate, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'webhookConfigs': ?(() { final guardedValue = webhookConfigs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetTriggerWebhookConfig, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
     };
   }
 
   factory GetTriggerResult.fromMap(Map<String, dynamic> map) {
     return GetTriggerResult(
-      approvalConfigs: pulumi.Input.decodeList<GetTriggerApprovalConfig>(map['approvalConfigs']!, (value) => GetTriggerApprovalConfig.fromMap((value as Map).cast<String, dynamic>())),
-      bitbucketServerTriggerConfigs: pulumi.Input.decodeList<GetTriggerBitbucketServerTriggerConfig>(map['bitbucketServerTriggerConfigs']!, (value) => GetTriggerBitbucketServerTriggerConfig.fromMap((value as Map).cast<String, dynamic>())),
-      builds: pulumi.Input.decodeList<GetTriggerBuild>(map['builds']!, (value) => GetTriggerBuild.fromMap((value as Map).cast<String, dynamic>())),
-      createTime: map['createTime'] as String,
-      deletionPolicy: map['deletionPolicy'] as String,
-      description: map['description'] as String,
-      developerConnectEventConfigs: pulumi.Input.decodeList<GetTriggerDeveloperConnectEventConfig>(map['developerConnectEventConfigs']!, (value) => GetTriggerDeveloperConnectEventConfig.fromMap((value as Map).cast<String, dynamic>())),
-      disabled: map['disabled'] as bool,
-      filename: map['filename'] as String,
-      filter: map['filter'] as String,
-      gitFileSources: pulumi.Input.decodeList<GetTriggerGitFileSource>(map['gitFileSources']!, (value) => GetTriggerGitFileSource.fromMap((value as Map).cast<String, dynamic>())),
-      githubs: pulumi.Input.decodeList<GetTriggerGithub>(map['githubs']!, (value) => GetTriggerGithub.fromMap((value as Map).cast<String, dynamic>())),
-      id: map['id'] as String,
-      ignoredFiles: (map['ignoredFiles'] as List).cast<String>(),
-      includeBuildLogs: map['includeBuildLogs'] as String,
-      includedFiles: (map['includedFiles'] as List).cast<String>(),
-      location: map['location'] as String,
-      name: map['name'] as String,
+      approvalConfigs: (() { final guardedValue = map['approvalConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetTriggerApprovalConfig>(guardedValue, (value) => GetTriggerApprovalConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
+      bitbucketServerTriggerConfigs: (() { final guardedValue = map['bitbucketServerTriggerConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetTriggerBitbucketServerTriggerConfig>(guardedValue, (value) => GetTriggerBitbucketServerTriggerConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
+      builds: (() { final guardedValue = map['builds']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetTriggerBuild>(guardedValue, (value) => GetTriggerBuild.fromMap((value as Map).cast<String, dynamic>())); })(),
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      developerConnectEventConfigs: (() { final guardedValue = map['developerConnectEventConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetTriggerDeveloperConnectEventConfig>(guardedValue, (value) => GetTriggerDeveloperConnectEventConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
+      disabled: (() { final guardedValue = map['disabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      filename: (() { final guardedValue = map['filename']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      filter: (() { final guardedValue = map['filter']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      gitFileSources: (() { final guardedValue = map['gitFileSources']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetTriggerGitFileSource>(guardedValue, (value) => GetTriggerGitFileSource.fromMap((value as Map).cast<String, dynamic>())); })(),
+      githubs: (() { final guardedValue = map['githubs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetTriggerGithub>(guardedValue, (value) => GetTriggerGithub.fromMap((value as Map).cast<String, dynamic>())); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      ignoredFiles: (() { final guardedValue = map['ignoredFiles']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      includeBuildLogs: (() { final guardedValue = map['includeBuildLogs']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      includedFiles: (() { final guardedValue = map['includedFiles']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      pubsubConfigs: pulumi.Input.decodeList<GetTriggerPubsubConfig>(map['pubsubConfigs']!, (value) => GetTriggerPubsubConfig.fromMap((value as Map).cast<String, dynamic>())),
-      repositoryEventConfigs: pulumi.Input.decodeList<GetTriggerRepositoryEventConfig>(map['repositoryEventConfigs']!, (value) => GetTriggerRepositoryEventConfig.fromMap((value as Map).cast<String, dynamic>())),
-      serviceAccount: map['serviceAccount'] as String,
-      sourceToBuilds: pulumi.Input.decodeList<GetTriggerSourceToBuild>(map['sourceToBuilds']!, (value) => GetTriggerSourceToBuild.fromMap((value as Map).cast<String, dynamic>())),
-      substitutions: (map['substitutions'] as Map).cast<String, String>(),
-      tags: (map['tags'] as List).cast<String>(),
-      triggerId: map['triggerId'] as String,
-      triggerTemplates: pulumi.Input.decodeList<GetTriggerTriggerTemplate>(map['triggerTemplates']!, (value) => GetTriggerTriggerTemplate.fromMap((value as Map).cast<String, dynamic>())),
-      webhookConfigs: pulumi.Input.decodeList<GetTriggerWebhookConfig>(map['webhookConfigs']!, (value) => GetTriggerWebhookConfig.fromMap((value as Map).cast<String, dynamic>())),
+      pubsubConfigs: (() { final guardedValue = map['pubsubConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetTriggerPubsubConfig>(guardedValue, (value) => GetTriggerPubsubConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
+      repositoryEventConfigs: (() { final guardedValue = map['repositoryEventConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetTriggerRepositoryEventConfig>(guardedValue, (value) => GetTriggerRepositoryEventConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
+      serviceAccount: (() { final guardedValue = map['serviceAccount']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      sourceToBuilds: (() { final guardedValue = map['sourceToBuilds']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetTriggerSourceToBuild>(guardedValue, (value) => GetTriggerSourceToBuild.fromMap((value as Map).cast<String, dynamic>())); })(),
+      substitutions: (() { final guardedValue = map['substitutions']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      triggerId: (() { final guardedValue = map['triggerId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      triggerTemplates: (() { final guardedValue = map['triggerTemplates']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetTriggerTriggerTemplate>(guardedValue, (value) => GetTriggerTriggerTemplate.fromMap((value as Map).cast<String, dynamic>())); })(),
+      webhookConfigs: (() { final guardedValue = map['webhookConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetTriggerWebhookConfig>(guardedValue, (value) => GetTriggerWebhookConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
     );
   }
 }

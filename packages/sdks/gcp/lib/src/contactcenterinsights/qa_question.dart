@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'qa_question_answer_choice.dart';
 import 'qa_question_args.dart';
 import 'qa_question_metrics.dart';
 import 'qa_question_predefined_question_config.dart';
@@ -34,7 +35,7 @@ class QaQuestion extends pulumi.CustomResource {
   late final pulumi.Output<String?> abbreviation;
   /// A list of valid answers to the question, which the LLM must choose from.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> answerChoices;
+  late final pulumi.Output<List<QaQuestionAnswerChoice>?> answerChoices;
   /// Instructions describing how to determine the answer.
   late final pulumi.Output<String?> answerInstructions;
   /// The time at which this question was created.
@@ -107,10 +108,10 @@ class QaQuestion extends pulumi.CustomResource {
           'gcp:contactcenterinsights/qaQuestion:QaQuestion',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     abbreviation = registerOutput<String?>('abbreviation');
-    answerChoices = registerOutput<List<Map<String, dynamic>>?>('answerChoices');
+    answerChoices = registerOutput<List<QaQuestionAnswerChoice>?>('answerChoices', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<QaQuestionAnswerChoice>(guardedValue, (value) => QaQuestionAnswerChoice.fromMap((value as Map).cast<String, dynamic>())); });
     answerInstructions = registerOutput<String?>('answerInstructions');
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -125,7 +126,7 @@ class QaQuestion extends pulumi.CustomResource {
     questionBody = registerOutput<String?>('questionBody');
     questionType = registerOutput<String?>('questionType');
     revision = registerOutput<String>('revision');
-    tags = registerOutput<List<String>?>('tags');
+    tags = registerOutput<List<String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     tuningMetadata = registerOutput<QaQuestionTuningMetadata?>('tuningMetadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return QaQuestionTuningMetadata.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     updateTime = registerOutput<String>('updateTime');
   }
@@ -135,11 +136,12 @@ class QaQuestion extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     QaQuestionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return QaQuestion._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -154,7 +156,7 @@ class QaQuestion extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     abbreviation = registerOutput<String?>('abbreviation');
-    answerChoices = registerOutput<List<Map<String, dynamic>>?>('answerChoices');
+    answerChoices = registerOutput<List<QaQuestionAnswerChoice>?>('answerChoices', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<QaQuestionAnswerChoice>(guardedValue, (value) => QaQuestionAnswerChoice.fromMap((value as Map).cast<String, dynamic>())); });
     answerInstructions = registerOutput<String?>('answerInstructions');
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -169,7 +171,37 @@ class QaQuestion extends pulumi.CustomResource {
     questionBody = registerOutput<String?>('questionBody');
     questionType = registerOutput<String?>('questionType');
     revision = registerOutput<String>('revision');
-    tags = registerOutput<List<String>?>('tags');
+    tags = registerOutput<List<String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tuningMetadata = registerOutput<QaQuestionTuningMetadata?>('tuningMetadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return QaQuestionTuningMetadata.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [QaQuestion] resource.
+  QaQuestion.reference(String urn)
+    : super(
+        'gcp:contactcenterinsights/qaQuestion:QaQuestion',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    abbreviation = registerOutput<String?>('abbreviation');
+    answerChoices = registerOutput<List<QaQuestionAnswerChoice>?>('answerChoices', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<QaQuestionAnswerChoice>(guardedValue, (value) => QaQuestionAnswerChoice.fromMap((value as Map).cast<String, dynamic>())); });
+    answerInstructions = registerOutput<String?>('answerInstructions');
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    location = registerOutput<String>('location');
+    metrics = registerOutput<QaQuestionMetrics?>('metrics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return QaQuestionMetrics.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    order = registerOutput<int?>('order');
+    predefinedQuestionConfig = registerOutput<QaQuestionPredefinedQuestionConfig?>('predefinedQuestionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return QaQuestionPredefinedQuestionConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    project = registerOutput<String>('project');
+    qaQuestionDataOptions = registerOutput<QaQuestionQaQuestionDataOptions?>('qaQuestionDataOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return QaQuestionQaQuestionDataOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    qaScorecard = registerOutput<String>('qaScorecard');
+    questionBody = registerOutput<String?>('questionBody');
+    questionType = registerOutput<String?>('questionType');
+    revision = registerOutput<String>('revision');
+    tags = registerOutput<List<String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     tuningMetadata = registerOutput<QaQuestionTuningMetadata?>('tuningMetadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return QaQuestionTuningMetadata.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     updateTime = registerOutput<String>('updateTime');
   }

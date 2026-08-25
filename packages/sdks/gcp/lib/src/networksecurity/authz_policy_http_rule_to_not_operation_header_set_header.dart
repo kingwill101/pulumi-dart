@@ -5,10 +5,10 @@ import 'authz_policy_http_rule_to_not_operation_header_set_header_value.dart';
 
 class AuthzPolicyHttpRuleToNotOperationHeaderSetHeader {
   /// Specifies the name of the header in the request.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specifies how the header match will be performed.
   /// Structure is documented below.
-  final pulumi.Input<AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValue>? value;
+  final pulumi.Input<AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValue?>? value;
 
   /// Creates a new [AuthzPolicyHttpRuleToNotOperationHeaderSetHeader].
   /// [name] Specifies the name of the header in the request.

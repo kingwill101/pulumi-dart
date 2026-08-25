@@ -5,10 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TriggerSourceToBuild {
   /// The full resource name of the bitbucket server config.
   /// Format: projects/{project}/locations/{location}/bitbucketServerConfigs/{id}.
-  final pulumi.Input<String>? bitbucketServerConfig;
+  final pulumi.Input<String?>? bitbucketServerConfig;
   /// The full resource name of the github enterprise config.
   /// Format: projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}. projects/{project}/githubEnterpriseConfigs/{id}.
-  final pulumi.Input<String>? githubEnterpriseConfig;
+  final pulumi.Input<String?>? githubEnterpriseConfig;
   /// The branch or tag to use. Must start with "refs/" (required).
   final pulumi.Input<String> ref;
   /// The type of the repo, since it may not be explicit from the repo field (e.g from a URL).
@@ -17,9 +17,9 @@ class TriggerSourceToBuild {
   final pulumi.Input<String> repoType;
   /// The qualified resource name of the Repo API repository.
   /// Either uri or repository can be specified and is required.
-  final pulumi.Input<String>? repository;
+  final pulumi.Input<String?>? repository;
   /// The URI of the repo.
-  final pulumi.Input<String>? uri;
+  final pulumi.Input<String?>? uri;
 
   /// Creates a new [TriggerSourceToBuild].
   /// [bitbucketServerConfig] The full resource name of the bitbucket server config.

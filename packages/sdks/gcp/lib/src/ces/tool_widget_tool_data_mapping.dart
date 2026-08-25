@@ -6,21 +6,21 @@ import 'tool_widget_tool_data_mapping_python_function.dart';
 class ToolWidgetToolDataMapping {
   /// Optional. A map of widget input parameter fields to the corresponding output fields of the source tool.
   /// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
-  final pulumi.Input<Map<String, String>>? fieldMappings;
+  final pulumi.Input<Map<String, String>?>? fieldMappings;
   /// Optional. The mode of the data mapping.
   /// Possible values:
   /// MODE_UNSPECIFIED
   /// FIELD_MAPPING
   /// PYTHON_SCRIPT
   /// Possible values are: `MODE_UNSPECIFIED`, `FIELD_MAPPING`, `PYTHON_SCRIPT`.
-  final pulumi.Input<String>? mode;
+  final pulumi.Input<String?>? mode;
   /// Optional. Configuration for a Python function used to transform the source tool's
   /// output into the widget's input format.
   /// Structure is documented below.
-  final pulumi.Input<ToolWidgetToolDataMappingPythonFunction>? pythonFunction;
+  final pulumi.Input<ToolWidgetToolDataMappingPythonFunction?>? pythonFunction;
   /// Optional. The resource name of the tool that provides the data for the widget (e.g., a search tool or a custom function).
   /// Format: projects/{project}/locations/{location}/agents/{agent}/tools/{tool}
-  final pulumi.Input<String>? sourceToolName;
+  final pulumi.Input<String?>? sourceToolName;
 
   /// Creates a new [ToolWidgetToolDataMapping].
   /// [fieldMappings] Optional. A map of widget input parameter fields to the corresponding output fields of the source tool.

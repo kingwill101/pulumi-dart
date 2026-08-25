@@ -9,47 +9,47 @@ import 'extensions_instance_runtime_data.dart';
 class ExtensionsInstanceState {
   /// The current Config of the Extension Instance.
   /// Structure is documented below.
-  final pulumi.Input<ExtensionsInstanceConfig>? config;
+  final pulumi.Input<ExtensionsInstanceConfig?>? config;
   /// The time at which the Extension Instance was created.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// If this Instance has `state: ERRORED`, the error messages
   /// will be found here.
   /// Structure is documented below.
-  final pulumi.Input<List<ExtensionsInstanceErrorStatus>>? errorStatuses;
+  final pulumi.Input<List<ExtensionsInstanceErrorStatus>?>? errorStatuses;
   /// A weak etag that is computed by the server based on other configuration
   /// values and may be sent on update and delete requests to ensure the
   /// client has an up-to-date value before proceeding.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// The ID to use for the Extension Instance, which will become the final
   /// component of the instance's name.
-  final pulumi.Input<String>? instanceId;
+  final pulumi.Input<String?>? instanceId;
   /// The name of the last operation that acted on this Extension
   /// Instance
-  final pulumi.Input<String>? lastOperationName;
+  final pulumi.Input<String?>? lastOperationName;
   /// The type of the last operation that acted on the Extension Instance.
-  final pulumi.Input<String>? lastOperationType;
+  final pulumi.Input<String?>? lastOperationType;
   /// The fully-qualified resource name of the Extension Instance.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Data set by the extension instance at runtime.
   /// Structure is documented below.
-  final pulumi.Input<List<ExtensionsInstanceRuntimeData>>? runtimeDatas;
+  final pulumi.Input<List<ExtensionsInstanceRuntimeData>?>? runtimeDatas;
   /// The email of the service account to be used at runtime by compute resources
   /// created for the operation of the Extension instance.
-  final pulumi.Input<String>? serviceAccountEmail;
+  final pulumi.Input<String?>? serviceAccountEmail;
   /// The processing state of the extension instance.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// The time at which the Extension Instance was updated.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [ExtensionsInstanceState].
   /// [config] The current Config of the Extension Instance.

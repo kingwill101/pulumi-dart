@@ -20,7 +20,7 @@ class NodePoolNodeConfigEphemeralStorageConfig {
 
   factory NodePoolNodeConfigEphemeralStorageConfig.fromMap(Map<String, dynamic> map) {
     return NodePoolNodeConfigEphemeralStorageConfig(
-      localSsdCount: pulumi.Input.fromValue(map['localSsdCount'] as int),
+      localSsdCount: pulumi.Input.fromValue((map['localSsdCount'] as num).toInt()),
     );
   }
 }

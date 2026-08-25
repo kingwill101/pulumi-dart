@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'region_network_policy_args.dart';
+import 'region_network_policy_association.dart';
 import 'region_network_policy_state.dart';
 
 /// The Compute NetworkFirewallPolicy resource
@@ -142,7 +143,7 @@ import 'region_network_policy_state.dart';
 class RegionNetworkPolicy extends pulumi.CustomResource {
   /// [Output Only] A list of associations that belong to this network policy.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> associations;
+  late final pulumi.Output<List<RegionNetworkPolicyAssociation>> associations;
   /// Creation timestamp in RFC3339 text format.
   late final pulumi.Output<String> creationTimestamp;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -182,9 +183,9 @@ class RegionNetworkPolicy extends pulumi.CustomResource {
           'gcp:compute/regionNetworkPolicy:RegionNetworkPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
-    associations = registerOutput<List<Map<String, dynamic>>>('associations');
+    associations = registerOutput<List<RegionNetworkPolicyAssociation>>('associations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegionNetworkPolicyAssociation>(guardedValue, (value) => RegionNetworkPolicyAssociation.fromMap((value as Map).cast<String, dynamic>())); });
     creationTimestamp = registerOutput<String>('creationTimestamp');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
@@ -202,11 +203,12 @@ class RegionNetworkPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RegionNetworkPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RegionNetworkPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -220,7 +222,29 @@ class RegionNetworkPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    associations = registerOutput<List<Map<String, dynamic>>>('associations');
+    associations = registerOutput<List<RegionNetworkPolicyAssociation>>('associations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegionNetworkPolicyAssociation>(guardedValue, (value) => RegionNetworkPolicyAssociation.fromMap((value as Map).cast<String, dynamic>())); });
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+    regionNetworkPolicyId = registerOutput<String>('regionNetworkPolicyId');
+    ruleTupleCount = registerOutput<int>('ruleTupleCount');
+    selfLink = registerOutput<String>('selfLink');
+    selfLinkWithId = registerOutput<String>('selfLinkWithId');
+  }
+
+  /// Creates a typed reference to an existing [RegionNetworkPolicy] resource.
+  RegionNetworkPolicy.reference(String urn)
+    : super(
+        'gcp:compute/regionNetworkPolicy:RegionNetworkPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    associations = registerOutput<List<RegionNetworkPolicyAssociation>>('associations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegionNetworkPolicyAssociation>(guardedValue, (value) => RegionNetworkPolicyAssociation.fromMap((value as Map).cast<String, dynamic>())); });
     creationTimestamp = registerOutput<String>('creationTimestamp');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');

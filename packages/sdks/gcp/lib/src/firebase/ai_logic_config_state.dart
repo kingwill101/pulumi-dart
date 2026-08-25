@@ -13,29 +13,29 @@ class AiLogicConfigState {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Configuration for using the Gemini Developer API via Firebase AI Logic.
   /// When using the Gemini Developer API via Firebase AI Logic, a separate Gemini
   /// API key is stored in this configuration *on the server* so that you do
   /// **not** add your Gemini API key directly into your app's codebase.
   /// Structure is documented below.
-  final pulumi.Input<AiLogicConfigGenerativeLanguageConfig>? generativeLanguageConfig;
+  final pulumi.Input<AiLogicConfigGenerativeLanguageConfig?>? generativeLanguageConfig;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Identifier. The resource name of the config.
   /// Format: projects/{project}/locations/{location}/config
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Configuration for telemetry.
   /// Telemetry is the collection of metrics, logs, and traces recorded by the
   /// Firebase AI Logic backend.
   /// Structure is documented below.
-  final pulumi.Input<AiLogicConfigTelemetryConfig>? telemetryConfig;
+  final pulumi.Input<AiLogicConfigTelemetryConfig?>? telemetryConfig;
   /// Configuration for traffic filtering.
   /// Structure is documented below.
-  final pulumi.Input<AiLogicConfigTrafficFilter>? trafficFilter;
+  final pulumi.Input<AiLogicConfigTrafficFilter?>? trafficFilter;
 
   /// Creates a new [AiLogicConfigState].
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

@@ -1,0 +1,3 @@
+name: dart-simple-invoke-with-scalar-return-example
+runtime: dart
+main: example/main.dart

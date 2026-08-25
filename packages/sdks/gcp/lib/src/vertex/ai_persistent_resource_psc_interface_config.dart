@@ -10,14 +10,14 @@ class AiPersistentResourcePscInterfaceConfig {
   /// The user must grant the dns.peer role to the Vertex AI Service Agent
   /// on the target project.
   /// Structure is documented below.
-  final pulumi.Input<List<AiPersistentResourcePscInterfaceConfigDnsPeeringConfig>>? dnsPeeringConfigs;
+  final pulumi.Input<List<AiPersistentResourcePscInterfaceConfigDnsPeeringConfig>?>? dnsPeeringConfigs;
   /// The name of the Compute Engine
   /// [network
   /// attachment](https://cloud.google.com/vpc/docs/about-network-attachments) to
   /// attach to the resource within the region and user project.
   /// To specify this field, you must have already [created a network attachment](https://cloud.google.com/vpc/docs/create-manage-network-attachments#create-network-attachments).
   /// This field is only used for resources using PSC-I.
-  final pulumi.Input<String>? networkAttachment;
+  final pulumi.Input<String?>? networkAttachment;
 
   /// Creates a new [AiPersistentResourcePscInterfaceConfig].
   /// [dnsPeeringConfigs] DNS peering configurations. When specified, Vertex AI will

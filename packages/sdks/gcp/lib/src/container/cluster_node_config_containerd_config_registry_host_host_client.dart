@@ -8,7 +8,7 @@ class ClusterNodeConfigContainerdConfigRegistryHostHostClient {
   /// Configures the client certificate.
   final pulumi.Input<ClusterNodeConfigContainerdConfigRegistryHostHostClientCert> cert;
   /// Configures the client private key.
-  final pulumi.Input<ClusterNodeConfigContainerdConfigRegistryHostHostClientKey>? key;
+  final pulumi.Input<ClusterNodeConfigContainerdConfigRegistryHostHostClientKey?>? key;
 
   /// Creates a new [ClusterNodeConfigContainerdConfigRegistryHostHostClient].
   /// [cert] Configures the client certificate.

@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WorkloadAttributesDeveloperOwner {
   /// Contact's name.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Email address of the contacts.
   final pulumi.Input<String> email;
 

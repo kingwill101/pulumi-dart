@@ -7,56 +7,56 @@ import 'destination_state_timeline.dart';
 /// Input properties used for looking up and filtering Destination resources.
 class DestinationState {
   /// Time when the `Destination` resource was created.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// A description of this resource.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveLabels;
+  final pulumi.Input<Map<String, String>?>? effectiveLabels;
   /// The list of DestinationEndpoint resources configured for the IP prefix.
   /// Structure is documented below.
-  final pulumi.Input<List<DestinationEndpoint>>? endpoints;
+  final pulumi.Input<List<DestinationEndpoint>?>? endpoints;
   /// The etag is computed by the server, and might be sent with update and
   /// delete requests so that the client has an up-to-date value before
   /// proceeding.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// The IP prefix that represents your workload on another CSP.
-  final pulumi.Input<String>? ipPrefix;
+  final pulumi.Input<String?>? ipPrefix;
   /// User-defined labels.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The location of the destination.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The multicloud data transfer config of the destination.
-  final pulumi.Input<String>? multicloudDataTransferConfig;
+  final pulumi.Input<String?>? multicloudDataTransferConfig;
   /// The name of the destination.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  final pulumi.Input<Map<String, String>>? pulumiLabels;
+  final pulumi.Input<Map<String, String>?>? pulumiLabels;
   /// The timeline of the expected `Destination` states or the current rest
   /// state. If a state change is expected, the value is `ADDING`,
   /// `DELETING` or `SUSPENDING`, depending on the action specified.
   /// Structure is documented below.
-  final pulumi.Input<List<DestinationStateTimeline>>? stateTimelines;
+  final pulumi.Input<List<DestinationStateTimeline>?>? stateTimelines;
   /// The Google-generated unique ID for the `Destination` resource.
   /// This value is unique across all `Destination` resources.
   /// If a resource is deleted and another with the same name is
   /// created, the new resource is assigned a different and unique ID.
-  final pulumi.Input<String>? uid;
+  final pulumi.Input<String?>? uid;
   /// Time when the `Destination` resource was updated.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [DestinationState].
   /// [createTime] Time when the `Destination` resource was created.

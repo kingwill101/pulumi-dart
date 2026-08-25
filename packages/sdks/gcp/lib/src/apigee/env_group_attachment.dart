@@ -55,7 +55,7 @@ class EnvGroupAttachment extends pulumi.CustomResource {
           'gcp:apigee/envGroupAttachment:EnvGroupAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     envgroupId = registerOutput<String>('envgroupId');
@@ -68,11 +68,12 @@ class EnvGroupAttachment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EnvGroupAttachmentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return EnvGroupAttachment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -86,6 +87,21 @@ class EnvGroupAttachment extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    envgroupId = registerOutput<String>('envgroupId');
+    environment = registerOutput<String>('environment');
+    this.name = registerOutput<String>('name');
+  }
+
+  /// Creates a typed reference to an existing [EnvGroupAttachment] resource.
+  EnvGroupAttachment.reference(String urn)
+    : super(
+        'gcp:apigee/envGroupAttachment:EnvGroupAttachment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     envgroupId = registerOutput<String>('envgroupId');
     environment = registerOutput<String>('environment');

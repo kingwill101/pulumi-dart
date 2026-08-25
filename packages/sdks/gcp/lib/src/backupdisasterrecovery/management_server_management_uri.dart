@@ -5,10 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ManagementServerManagementUri {
   /// (Output)
   /// The management console api endpoint.
-  final pulumi.Input<String>? api;
+  final pulumi.Input<String?>? api;
   /// (Output)
   /// The management console webUi.
-  final pulumi.Input<String>? webUi;
+  final pulumi.Input<String?>? webUi;
 
   /// Creates a new [ManagementServerManagementUri].
   /// [api] (Output)

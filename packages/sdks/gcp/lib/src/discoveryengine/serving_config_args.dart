@@ -8,27 +8,27 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_discoveryengine_serving_config_serving_config_args_doc}
 class ServingConfigArgs {
   /// The resource IDs of the boost controls to be applied.
-  final pulumi.Input<List<String>>? boostControlIds;
+  final pulumi.Input<List<String>?>? boostControlIds;
   /// The collection ID. Currently only accepts "defaultCollection".
-  final pulumi.Input<String>? collectionId;
+  final pulumi.Input<String?>? collectionId;
   /// The ID of the engine associated with the serving config.
   final pulumi.Input<String> engineId;
   /// The resource IDs of the filter controls to be applied.
-  final pulumi.Input<List<String>>? filterControlIds;
+  final pulumi.Input<List<String>?>? filterControlIds;
   /// The geographic location where the data store should reside. The value can
   /// only be one of "global", "us" and "eu".
   final pulumi.Input<String> location;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The resource IDs of the promote controls to be applied.
-  final pulumi.Input<List<String>>? promoteControlIds;
+  final pulumi.Input<List<String>?>? promoteControlIds;
   /// The resource IDs of the redirect controls to be applied.
-  final pulumi.Input<List<String>>? redirectControlIds;
+  final pulumi.Input<List<String>?>? redirectControlIds;
   /// 'The unique ID of the serving config. Currently only accepts "defaultSearch".'
-  final pulumi.Input<String>? servingConfigId;
+  final pulumi.Input<String?>? servingConfigId;
   /// The resource IDs of the synonyms controls to be applied.
-  final pulumi.Input<List<String>>? synonymsControlIds;
+  final pulumi.Input<List<String>?>? synonymsControlIds;
 
   /// Creates a new [ServingConfigArgs].
   /// [boostControlIds] The resource IDs of the boost controls to be applied.

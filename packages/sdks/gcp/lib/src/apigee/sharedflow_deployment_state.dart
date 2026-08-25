@@ -12,17 +12,17 @@ class SharedflowDeploymentState {
   /// When set to "DELETE", deleting the resource is allowed.
   ///
   /// - - -
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The resource ID of the environment.
-  final pulumi.Input<String>? environment;
+  final pulumi.Input<String?>? environment;
   /// The Apigee Organization associated with the Sharedflow
-  final pulumi.Input<String>? orgId;
+  final pulumi.Input<String?>? orgId;
   /// Revision of the Sharedflow to be deployed.
-  final pulumi.Input<String>? revision;
+  final pulumi.Input<String?>? revision;
   /// The service account represents the identity of the deployed proxy, and determines what permissions it has. The format must be {ACCOUNT_ID}@{PROJECT}.iam.gserviceaccount.com.
-  final pulumi.Input<String>? serviceAccount;
+  final pulumi.Input<String?>? serviceAccount;
   /// Id of the Sharedflow to be deployed.
-  final pulumi.Input<String>? sharedflowId;
+  final pulumi.Input<String?>? sharedflowId;
 
   /// Creates a new [SharedflowDeploymentState].
   /// [deletionPolicy] (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".

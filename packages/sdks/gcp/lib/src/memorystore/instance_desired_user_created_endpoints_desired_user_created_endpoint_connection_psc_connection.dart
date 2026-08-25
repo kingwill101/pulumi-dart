@@ -9,7 +9,7 @@ class InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPsc
   /// CONNECTION_TYPE_DISCOVERY
   /// CONNECTION_TYPE_PRIMARY
   /// CONNECTION_TYPE_READER
-  final pulumi.Input<String>? connectionType;
+  final pulumi.Input<String?>? connectionType;
   /// The URI of the consumer side forwarding rule.
   /// Format:
   /// projects/{project}/regions/{region}/forwardingRules/{forwarding_rule}
@@ -20,7 +20,7 @@ class InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPsc
   /// projects/{project_id}/global/networks/{network_id}.
   final pulumi.Input<String> network;
   /// The consumer projectId where the forwarding rule is created from.
-  final pulumi.Input<String>? projectId;
+  final pulumi.Input<String?>? projectId;
   /// The PSC connection id of the forwarding rule connected to the
   /// service attachment.
   final pulumi.Input<String> pscConnectionId;
@@ -29,7 +29,7 @@ class InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPsc
   /// Possible values:
   /// ACTIVE
   /// NOT_FOUND
-  final pulumi.Input<String>? pscConnectionStatus;
+  final pulumi.Input<String?>? pscConnectionStatus;
   /// The service attachment which is the target of the PSC connection, in the form of projects/{project-id}/regions/{region}/serviceAttachments/{service-attachment-id}.
   final pulumi.Input<String> serviceAttachment;
 

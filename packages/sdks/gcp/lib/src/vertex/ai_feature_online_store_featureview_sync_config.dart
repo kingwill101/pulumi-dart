@@ -4,10 +4,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AiFeatureOnlineStoreFeatureviewSyncConfig {
   /// If true, syncs the FeatureView in a continuous manner to Online Store.
-  final pulumi.Input<bool>? continuous;
+  final pulumi.Input<bool?>? continuous;
   /// Cron schedule (https://en.wikipedia.org/wiki/Cron) to launch scheduled runs.
   /// To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or "TZ=${IANA_TIME_ZONE}".
-  final pulumi.Input<String>? cron;
+  final pulumi.Input<String?>? cron;
 
   /// Creates a new [AiFeatureOnlineStoreFeatureviewSyncConfig].
   /// [continuous] If true, syncs the FeatureView in a continuous manner to Online Store.

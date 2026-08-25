@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'storage_default_bucket_args.dart';
+import 'storage_default_bucket_bucket.dart';
 import 'storage_default_bucket_state.dart';
 
 /// A resource that manages the creation of the default Google Cloud Storage bucket
@@ -144,7 +145,7 @@ import 'storage_default_bucket_state.dart';
 class StorageDefaultBucket extends pulumi.CustomResource {
   /// The resource name of the underlying Google Cloud Storage bucket.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> buckets;
+  late final pulumi.Output<List<StorageDefaultBucketBucket>> buckets;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -174,9 +175,9 @@ class StorageDefaultBucket extends pulumi.CustomResource {
           'gcp:firebase/storageDefaultBucket:StorageDefaultBucket',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
-    buckets = registerOutput<List<Map<String, dynamic>>>('buckets');
+    buckets = registerOutput<List<StorageDefaultBucketBucket>>('buckets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<StorageDefaultBucketBucket>(guardedValue, (value) => StorageDefaultBucketBucket.fromMap((value as Map).cast<String, dynamic>())); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -188,11 +189,12 @@ class StorageDefaultBucket extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     StorageDefaultBucketState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return StorageDefaultBucket._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -206,7 +208,23 @@ class StorageDefaultBucket extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    buckets = registerOutput<List<Map<String, dynamic>>>('buckets');
+    buckets = registerOutput<List<StorageDefaultBucketBucket>>('buckets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<StorageDefaultBucketBucket>(guardedValue, (value) => StorageDefaultBucketBucket.fromMap((value as Map).cast<String, dynamic>())); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+  }
+
+  /// Creates a typed reference to an existing [StorageDefaultBucket] resource.
+  StorageDefaultBucket.reference(String urn)
+    : super(
+        'gcp:firebase/storageDefaultBucket:StorageDefaultBucket',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    buckets = registerOutput<List<StorageDefaultBucketBucket>>('buckets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<StorageDefaultBucketBucket>(guardedValue, (value) => StorageDefaultBucketBucket.fromMap((value as Map).cast<String, dynamic>())); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

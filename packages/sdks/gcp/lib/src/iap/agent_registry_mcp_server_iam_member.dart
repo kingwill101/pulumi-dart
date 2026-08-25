@@ -2158,7 +2158,7 @@ class AgentRegistryMcpServerIamMember extends pulumi.CustomResource {
           'gcp:iap/agentRegistryMcpServerIamMember:AgentRegistryMcpServerIamMember',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     condition = registerOutput<AgentRegistryMcpServerIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentRegistryMcpServerIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
@@ -2174,11 +2174,12 @@ class AgentRegistryMcpServerIamMember extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AgentRegistryMcpServerIamMemberState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AgentRegistryMcpServerIamMember._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -2192,6 +2193,24 @@ class AgentRegistryMcpServerIamMember extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    condition = registerOutput<AgentRegistryMcpServerIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentRegistryMcpServerIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    etag = registerOutput<String>('etag');
+    location = registerOutput<String>('location');
+    mcpServerId = registerOutput<String>('mcpServerId');
+    member = registerOutput<String>('member');
+    project = registerOutput<String>('project');
+    role = registerOutput<String>('role');
+  }
+
+  /// Creates a typed reference to an existing [AgentRegistryMcpServerIamMember] resource.
+  AgentRegistryMcpServerIamMember.reference(String urn)
+    : super(
+        'gcp:iap/agentRegistryMcpServerIamMember:AgentRegistryMcpServerIamMember',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     condition = registerOutput<AgentRegistryMcpServerIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentRegistryMcpServerIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');

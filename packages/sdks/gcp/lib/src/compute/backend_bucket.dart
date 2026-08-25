@@ -888,13 +888,13 @@ class BackendBucket extends pulumi.CustomResource {
           'gcp:compute/backendBucket:BackendBucket',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     bucketName = registerOutput<String>('bucketName');
     cdnPolicy = registerOutput<BackendBucketCdnPolicy>('cdnPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackendBucketCdnPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     compressionMode = registerOutput<String?>('compressionMode');
     creationTimestamp = registerOutput<String>('creationTimestamp');
-    customResponseHeaders = registerOutput<List<String>?>('customResponseHeaders');
+    customResponseHeaders = registerOutput<List<String>?>('customResponseHeaders', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     edgeSecurityPolicy = registerOutput<String?>('edgeSecurityPolicy');
@@ -911,11 +911,12 @@ class BackendBucket extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     BackendBucketState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return BackendBucket._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -933,7 +934,32 @@ class BackendBucket extends pulumi.CustomResource {
     cdnPolicy = registerOutput<BackendBucketCdnPolicy>('cdnPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackendBucketCdnPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     compressionMode = registerOutput<String?>('compressionMode');
     creationTimestamp = registerOutput<String>('creationTimestamp');
-    customResponseHeaders = registerOutput<List<String>?>('customResponseHeaders');
+    customResponseHeaders = registerOutput<List<String>?>('customResponseHeaders', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    edgeSecurityPolicy = registerOutput<String?>('edgeSecurityPolicy');
+    enableCdn = registerOutput<bool?>('enableCdn');
+    loadBalancingScheme = registerOutput<String?>('loadBalancingScheme');
+    this.name = registerOutput<String>('name');
+    params = registerOutput<BackendBucketParams?>('params', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackendBucketParams.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    project = registerOutput<String>('project');
+    selfLink = registerOutput<String>('selfLink');
+  }
+
+  /// Creates a typed reference to an existing [BackendBucket] resource.
+  BackendBucket.reference(String urn)
+    : super(
+        'gcp:compute/backendBucket:BackendBucket',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    bucketName = registerOutput<String>('bucketName');
+    cdnPolicy = registerOutput<BackendBucketCdnPolicy>('cdnPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackendBucketCdnPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    compressionMode = registerOutput<String?>('compressionMode');
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    customResponseHeaders = registerOutput<List<String>?>('customResponseHeaders', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     edgeSecurityPolicy = registerOutput<String?>('edgeSecurityPolicy');

@@ -15,28 +15,28 @@ class InstanceArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The name for the Instance.
   final pulumi.Input<String> instanceId;
   /// Customer-managed encryption key name, in the format projects/*/locations/*/keyRings/*/cryptoKeys/*.
-  final pulumi.Input<String>? kmsKey;
+  final pulumi.Input<String?>? kmsKey;
   /// Labels as key value pairs.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The location for the Instance.
   final pulumi.Input<String> location;
   /// Private settings for private instance.
   /// Structure is documented below.
-  final pulumi.Input<InstancePrivateConfig>? privateConfig;
+  final pulumi.Input<InstancePrivateConfig?>? privateConfig;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Configuration for Workforce Identity Federation to support third party identity provider.
   /// If unset, defaults to the Google OIDC IdP.
   /// Structure is documented below.
-  final pulumi.Input<InstanceWorkforceIdentityFederationConfig>? workforceIdentityFederationConfig;
+  final pulumi.Input<InstanceWorkforceIdentityFederationConfig?>? workforceIdentityFederationConfig;
 
   /// Creates a new [InstanceArgs].
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to PREVENT.

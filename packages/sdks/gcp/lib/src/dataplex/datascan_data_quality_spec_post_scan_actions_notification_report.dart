@@ -6,15 +6,15 @@ import 'datascan_data_quality_spec_post_scan_actions_notification_report_score_t
 
 class DatascanDataQualitySpecPostScanActionsNotificationReport {
   /// This trigger is triggered whenever a scan job run ends, regardless of the result.
-  final pulumi.Input<Map<String, dynamic>>? jobEndTrigger;
+  final pulumi.Input<Map<String, dynamic>?>? jobEndTrigger;
   /// This trigger is triggered when the scan job itself fails, regardless of the result.
-  final pulumi.Input<Map<String, dynamic>>? jobFailureTrigger;
+  final pulumi.Input<Map<String, dynamic>?>? jobFailureTrigger;
   /// The individuals or groups who are designated to receive notifications upon triggers.
   /// Structure is documented below.
   final pulumi.Input<DatascanDataQualitySpecPostScanActionsNotificationReportRecipients> recipients;
   /// This trigger is triggered when the DQ score in the job result is less than a specified input score.
   /// Structure is documented below.
-  final pulumi.Input<DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTrigger>? scoreThresholdTrigger;
+  final pulumi.Input<DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTrigger?>? scoreThresholdTrigger;
 
   /// Creates a new [DatascanDataQualitySpecPostScanActionsNotificationReport].
   /// [jobEndTrigger] This trigger is triggered whenever a scan job run ends, regardless of the result.

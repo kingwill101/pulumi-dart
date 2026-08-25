@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PreventionJobTriggerInspectJobActionDeidentifyTransformationConfig {
   /// If this template is specified, it will serve as the default de-identify template.
-  final pulumi.Input<String>? deidentifyTemplate;
+  final pulumi.Input<String?>? deidentifyTemplate;
   /// If this template is specified, it will serve as the de-identify template for images.
-  final pulumi.Input<String>? imageRedactTemplate;
+  final pulumi.Input<String?>? imageRedactTemplate;
   /// If this template is specified, it will serve as the de-identify template for structured content such as delimited files and tables.
-  final pulumi.Input<String>? structuredDeidentifyTemplate;
+  final pulumi.Input<String?>? structuredDeidentifyTemplate;
 
   /// Creates a new [PreventionJobTriggerInspectJobActionDeidentifyTransformationConfig].
   /// [deidentifyTemplate] If this template is specified, it will serve as the default de-identify template.

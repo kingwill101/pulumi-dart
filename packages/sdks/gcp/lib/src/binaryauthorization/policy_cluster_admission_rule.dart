@@ -19,7 +19,7 @@ class PolicyClusterAdmissionRule {
   /// request must be able to read the attestor resource.
   /// Note: this field must be non-empty when the evaluationMode field
   /// specifies REQUIRE_ATTESTATION, otherwise it must be empty.
-  final pulumi.Input<List<String>>? requireAttestationsBies;
+  final pulumi.Input<List<String>?>? requireAttestationsBies;
 
   /// Creates a new [PolicyClusterAdmissionRule].
   /// [cluster] The identifier for this object. Format specified above.

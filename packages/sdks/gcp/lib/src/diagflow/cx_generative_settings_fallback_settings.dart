@@ -6,9 +6,9 @@ import 'cx_generative_settings_fallback_settings_prompt_template.dart';
 class CxGenerativeSettingsFallbackSettings {
   /// Stored prompts that can be selected, for example default templates like "conservative" or "chatty", or user defined ones.
   /// Structure is documented below.
-  final pulumi.Input<List<CxGenerativeSettingsFallbackSettingsPromptTemplate>>? promptTemplates;
+  final pulumi.Input<List<CxGenerativeSettingsFallbackSettingsPromptTemplate>?>? promptTemplates;
   /// Display name of the selected prompt.
-  final pulumi.Input<String>? selectedPrompt;
+  final pulumi.Input<String?>? selectedPrompt;
 
   /// Creates a new [CxGenerativeSettingsFallbackSettings].
   /// [promptTemplates] Stored prompts that can be selected, for example default templates like "conservative" or "chatty", or user defined ones.

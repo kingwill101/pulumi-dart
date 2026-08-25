@@ -22,7 +22,7 @@ class EntryGcsFilesetSpec {
   ///
   ///
   /// &lt;a name="nestedGcsFilesetSpecSampleGcsFileSpecs"&gt;&lt;/a&gt;The `sampleGcsFileSpecs` block contains:
-  final pulumi.Input<List<EntryGcsFilesetSpecSampleGcsFileSpec>>? sampleGcsFileSpecs;
+  final pulumi.Input<List<EntryGcsFilesetSpecSampleGcsFileSpec>?>? sampleGcsFileSpecs;
 
   /// Creates a new [EntryGcsFilesetSpec].
   /// [filePatterns] Patterns to identify a set of files in Google Cloud Storage.

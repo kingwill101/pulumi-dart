@@ -10,41 +10,41 @@ import 'runtime_virtual_machine_virtual_machine_config_shielded_instance_config.
 class RuntimeVirtualMachineVirtualMachineConfig {
   /// The Compute Engine accelerator configuration for this runtime.
   /// Structure is documented below.
-  final pulumi.Input<RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfig>? acceleratorConfig;
+  final pulumi.Input<RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfig?>? acceleratorConfig;
   /// Use a list of container images to start the notebook instance.
   /// Structure is documented below.
-  final pulumi.Input<List<RuntimeVirtualMachineVirtualMachineConfigContainerImage>>? containerImages;
+  final pulumi.Input<List<RuntimeVirtualMachineVirtualMachineConfigContainerImage>?>? containerImages;
   /// Data disk option configuration settings.
   /// Structure is documented below.
   final pulumi.Input<RuntimeVirtualMachineVirtualMachineConfigDataDisk> dataDisk;
   /// Encryption settings for virtual machine data disk.
   /// Structure is documented below.
-  final pulumi.Input<RuntimeVirtualMachineVirtualMachineConfigEncryptionConfig>? encryptionConfig;
+  final pulumi.Input<RuntimeVirtualMachineVirtualMachineConfigEncryptionConfig?>? encryptionConfig;
   /// (Output)
   /// The Compute Engine guest attributes. (see [Project and instance
   /// guest attributes](https://cloud.google.com/compute/docs/
   /// storing-retrieving-metadata#guest_attributes)).
-  final pulumi.Input<Map<String, String>>? guestAttributes;
+  final pulumi.Input<Map<String, String>?>? guestAttributes;
   /// If true, runtime will only have internal IP addresses. By default,
   /// runtimes are not restricted to internal IP addresses, and will
   /// have ephemeral external IP addresses assigned to each vm. This
   /// `internalIpOnly` restriction can only be enabled for subnetwork
   /// enabled networks, and all dependencies must be configured to be
   /// accessible without external IP addresses.
-  final pulumi.Input<bool>? internalIpOnly;
+  final pulumi.Input<bool?>? internalIpOnly;
   /// The labels to associate with this runtime. Label **keys** must
   /// contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
   /// empty, but, if present, must contain 1 to 63 characters, and must
   /// conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No
   /// more than 32 labels can be associated with a cluster.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The Compute Engine machine type used for runtimes.
   final pulumi.Input<String> machineType;
   /// The Compute Engine metadata entries to add to virtual machine.
   /// (see [Project and instance metadata](https://cloud.google.com
   /// /compute/docs/storing-retrieving-metadata#project_and_instance
   /// _metadata)).
-  final pulumi.Input<Map<String, String>>? metadata;
+  final pulumi.Input<Map<String, String>?>? metadata;
   /// The Compute Engine network to be used for machine communications.
   /// Cannot be specified with subnetwork. If neither `network` nor
   /// `subnet` is specified, the "default" network of the project is
@@ -59,31 +59,31 @@ class RuntimeVirtualMachineVirtualMachineConfig {
   /// configuring Private Service Access.
   /// * Shared VPC (network & subnet are required). Requires
   /// configuring Private Service Access.
-  final pulumi.Input<String>? network;
+  final pulumi.Input<String?>? network;
   /// The type of vNIC to be used on this interface. This may be gVNIC
   /// or VirtioNet.
   /// Possible values are: `UNSPECIFIED_NIC_TYPE`, `VIRTIO_NET`, `GVNIC`.
-  final pulumi.Input<String>? nicType;
+  final pulumi.Input<String?>? nicType;
   /// Reserved IP Range name is used for VPC Peering. The
   /// subnetwork allocation will use the range *name* if it's assigned.
-  final pulumi.Input<String>? reservedIpRange;
+  final pulumi.Input<String?>? reservedIpRange;
   /// Shielded VM Instance configuration settings.
   /// Structure is documented below.
-  final pulumi.Input<RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfig>? shieldedInstanceConfig;
+  final pulumi.Input<RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfig?>? shieldedInstanceConfig;
   /// The Compute Engine subnetwork to be used for machine
   /// communications. Cannot be specified with network. A full URL or
   /// partial URI are valid. Examples:
   /// * `https://www.googleapis.com/compute/v1/projects/[projectId]/
   /// regions/us-east1/subnetworks/sub0`
   /// * `projects/[projectId]/regions/us-east1/subnetworks/sub0`
-  final pulumi.Input<String>? subnet;
+  final pulumi.Input<String?>? subnet;
   /// The Compute Engine tags to add to runtime (see [Tagging instances]
   /// (https://cloud.google.com/compute/docs/
   /// label-or-tag-resources#tags)).
-  final pulumi.Input<List<String>>? tags;
+  final pulumi.Input<List<String>?>? tags;
   /// (Output)
   /// The zone where the virtual machine is located.
-  final pulumi.Input<String>? zone;
+  final pulumi.Input<String?>? zone;
 
   /// Creates a new [RuntimeVirtualMachineVirtualMachineConfig].
   /// [acceleratorConfig] The Compute Engine accelerator configuration for this runtime.

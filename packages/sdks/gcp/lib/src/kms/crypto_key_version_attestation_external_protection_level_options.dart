@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CryptoKeyVersionAttestationExternalProtectionLevelOptions {
   /// The path to the external key material on the EKM when using EkmConnection e.g., "v0/my/key". Set this field instead of externalKeyUri when using an EkmConnection.
-  final pulumi.Input<String>? ekmConnectionKeyPath;
+  final pulumi.Input<String?>? ekmConnectionKeyPath;
   /// The URI for an external resource that this CryptoKeyVersion represents.
-  final pulumi.Input<String>? externalKeyUri;
+  final pulumi.Input<String?>? externalKeyUri;
 
   /// Creates a new [CryptoKeyVersionAttestationExternalProtectionLevelOptions].
   /// [ekmConnectionKeyPath] The path to the external key material on the EKM when using EkmConnection e.g., "v0/my/key". Set this field instead of externalKeyUri when using an EkmConnection.

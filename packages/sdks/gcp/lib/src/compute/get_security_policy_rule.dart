@@ -71,7 +71,7 @@ class GetSecurityPolicyRule {
       matches: pulumi.Input.fromValue(pulumi.Input.decodeList<GetSecurityPolicyRuleMatch>(map['matches']!, (value) => GetSecurityPolicyRuleMatch.fromMap((value as Map).cast<String, dynamic>()))),
       preconfiguredWafConfigs: pulumi.Input.fromValue(pulumi.Input.decodeList<GetSecurityPolicyRulePreconfiguredWafConfig>(map['preconfiguredWafConfigs']!, (value) => GetSecurityPolicyRulePreconfiguredWafConfig.fromMap((value as Map).cast<String, dynamic>()))),
       preview: pulumi.Input.fromValue(map['preview'] as bool),
-      priority: pulumi.Input.fromValue(map['priority'] as int),
+      priority: pulumi.Input.fromValue((map['priority'] as num).toInt()),
       rateLimitOptions: pulumi.Input.fromValue(pulumi.Input.decodeList<GetSecurityPolicyRuleRateLimitOption>(map['rateLimitOptions']!, (value) => GetSecurityPolicyRuleRateLimitOption.fromMap((value as Map).cast<String, dynamic>()))),
       redirectOptions: pulumi.Input.fromValue(pulumi.Input.decodeList<GetSecurityPolicyRuleRedirectOption>(map['redirectOptions']!, (value) => GetSecurityPolicyRuleRedirectOption.fromMap((value as Map).cast<String, dynamic>()))),
     );

@@ -13,9 +13,9 @@ class GetUserWorkloadsConfigMapArgs {
   final pulumi.Input<String> name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The location or Compute Engine region of the environment.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [GetUserWorkloadsConfigMapArgs].
   /// [environment] Environment where the ConfigMap is stored.

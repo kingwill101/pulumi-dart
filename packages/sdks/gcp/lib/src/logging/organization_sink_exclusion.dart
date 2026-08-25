@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class OrganizationSinkExclusion {
   /// A description of this exclusion.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// If set to True, then this exclusion is disabled and it does not exclude any log entries.
-  final pulumi.Input<bool>? disabled;
+  final pulumi.Input<bool?>? disabled;
   /// An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
   /// write a filter.
   final pulumi.Input<String> filter;

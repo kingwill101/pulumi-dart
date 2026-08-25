@@ -6,9 +6,9 @@ import 'feed_details_duo_auth_settings_authentication.dart';
 class FeedDetailsDuoAuthSettings {
   /// Info for username and secret based authentication.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsDuoAuthSettingsAuthentication>? authentication;
+  final pulumi.Input<FeedDetailsDuoAuthSettingsAuthentication?>? authentication;
   /// API Hostname.
-  final pulumi.Input<String>? hostname;
+  final pulumi.Input<String?>? hostname;
 
   /// Creates a new [FeedDetailsDuoAuthSettings].
   /// [authentication] Info for username and secret based authentication.

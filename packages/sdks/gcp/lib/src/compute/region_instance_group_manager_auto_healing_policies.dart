@@ -27,7 +27,7 @@ class RegionInstanceGroupManagerAutoHealingPolicies {
   factory RegionInstanceGroupManagerAutoHealingPolicies.fromMap(Map<String, dynamic> map) {
     return RegionInstanceGroupManagerAutoHealingPolicies(
       healthCheck: pulumi.Input.fromValue(map['healthCheck'] as String),
-      initialDelaySec: pulumi.Input.fromValue(map['initialDelaySec'] as int),
+      initialDelaySec: pulumi.Input.fromValue((map['initialDelaySec'] as num).toInt()),
     );
   }
 }

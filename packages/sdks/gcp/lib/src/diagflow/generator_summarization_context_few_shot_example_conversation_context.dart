@@ -6,7 +6,7 @@ import 'generator_summarization_context_few_shot_example_conversation_context_me
 class GeneratorSummarizationContextFewShotExampleConversationContext {
   /// Optional. List of message transcripts in the conversation.
   /// Structure is documented below.
-  final pulumi.Input<List<GeneratorSummarizationContextFewShotExampleConversationContextMessageEntry>>? messageEntries;
+  final pulumi.Input<List<GeneratorSummarizationContextFewShotExampleConversationContextMessageEntry>?>? messageEntries;
 
   /// Creates a new [GeneratorSummarizationContextFewShotExampleConversationContext].
   /// [messageEntries] Optional. List of message transcripts in the conversation.

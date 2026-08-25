@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'data_table_args.dart';
+import 'data_table_column_info.dart';
 import 'data_table_scope_info.dart';
 import 'data_table_state.dart';
 
@@ -653,7 +654,7 @@ class DataTable extends pulumi.CustomResource {
   late final pulumi.Output<int> approximateRowCount;
   /// Details of all the columns in the table
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> columnInfos;
+  late final pulumi.Output<List<DataTableColumnInfo>?> columnInfos;
   /// Table create time
   late final pulumi.Output<String> createTime;
   /// The ID to use for the data table. This is also the display name for
@@ -725,10 +726,10 @@ class DataTable extends pulumi.CustomResource {
           'gcp:chronicle/dataTable:DataTable',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     approximateRowCount = registerOutput<int>('approximateRowCount');
-    columnInfos = registerOutput<List<Map<String, dynamic>>?>('columnInfos');
+    columnInfos = registerOutput<List<DataTableColumnInfo>?>('columnInfos', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DataTableColumnInfo>(guardedValue, (value) => DataTableColumnInfo.fromMap((value as Map).cast<String, dynamic>())); });
     createTime = registerOutput<String>('createTime');
     dataTableId = registerOutput<String>('dataTableId');
     dataTableUuid = registerOutput<String>('dataTableUuid');
@@ -742,7 +743,7 @@ class DataTable extends pulumi.CustomResource {
     rowTimeToLive = registerOutput<String?>('rowTimeToLive');
     rowTimeToLiveUpdateTime = registerOutput<String>('rowTimeToLiveUpdateTime');
     ruleAssociationsCount = registerOutput<int>('ruleAssociationsCount');
-    rules = registerOutput<List<String>>('rules');
+    rules = registerOutput<List<String>>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     scopeInfo = registerOutput<DataTableScopeInfo?>('scopeInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataTableScopeInfo.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     updateSource = registerOutput<String>('updateSource');
     updateTime = registerOutput<String>('updateTime');
@@ -753,11 +754,12 @@ class DataTable extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DataTableState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DataTable._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -772,7 +774,7 @@ class DataTable extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     approximateRowCount = registerOutput<int>('approximateRowCount');
-    columnInfos = registerOutput<List<Map<String, dynamic>>?>('columnInfos');
+    columnInfos = registerOutput<List<DataTableColumnInfo>?>('columnInfos', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DataTableColumnInfo>(guardedValue, (value) => DataTableColumnInfo.fromMap((value as Map).cast<String, dynamic>())); });
     createTime = registerOutput<String>('createTime');
     dataTableId = registerOutput<String>('dataTableId');
     dataTableUuid = registerOutput<String>('dataTableUuid');
@@ -786,7 +788,37 @@ class DataTable extends pulumi.CustomResource {
     rowTimeToLive = registerOutput<String?>('rowTimeToLive');
     rowTimeToLiveUpdateTime = registerOutput<String>('rowTimeToLiveUpdateTime');
     ruleAssociationsCount = registerOutput<int>('ruleAssociationsCount');
-    rules = registerOutput<List<String>>('rules');
+    rules = registerOutput<List<String>>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    scopeInfo = registerOutput<DataTableScopeInfo?>('scopeInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataTableScopeInfo.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    updateSource = registerOutput<String>('updateSource');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [DataTable] resource.
+  DataTable.reference(String urn)
+    : super(
+        'gcp:chronicle/dataTable:DataTable',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    approximateRowCount = registerOutput<int>('approximateRowCount');
+    columnInfos = registerOutput<List<DataTableColumnInfo>?>('columnInfos', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DataTableColumnInfo>(guardedValue, (value) => DataTableColumnInfo.fromMap((value as Map).cast<String, dynamic>())); });
+    createTime = registerOutput<String>('createTime');
+    dataTableId = registerOutput<String>('dataTableId');
+    dataTableUuid = registerOutput<String>('dataTableUuid');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String>('description');
+    displayName = registerOutput<String>('displayName');
+    instance = registerOutput<String>('instance');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    rowTimeToLive = registerOutput<String?>('rowTimeToLive');
+    rowTimeToLiveUpdateTime = registerOutput<String>('rowTimeToLiveUpdateTime');
+    ruleAssociationsCount = registerOutput<int>('ruleAssociationsCount');
+    rules = registerOutput<List<String>>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     scopeInfo = registerOutput<DataTableScopeInfo?>('scopeInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataTableScopeInfo.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     updateSource = registerOutput<String>('updateSource');
     updateTime = registerOutput<String>('updateTime');

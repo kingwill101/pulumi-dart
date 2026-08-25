@@ -12,11 +12,11 @@ class AppCheckAppAttestConfigArgs {
   final pulumi.Input<String> appId;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Specifies the duration for which App Check tokens exchanged from App Attest artifacts will be valid.
   /// If unset, a default value of 1 hour is assumed. Must be between 30 minutes and 7 days, inclusive.
   /// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
-  final pulumi.Input<String>? tokenTtl;
+  final pulumi.Input<String?>? tokenTtl;
 
   /// Creates a new [AppCheckAppAttestConfigArgs].
   /// [appId] The ID of an

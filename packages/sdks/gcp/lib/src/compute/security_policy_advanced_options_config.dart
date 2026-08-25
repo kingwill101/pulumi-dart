@@ -6,20 +6,20 @@ import 'security_policy_advanced_options_config_json_custom_config.dart';
 class SecurityPolicyAdvancedOptionsConfig {
   /// Custom configuration to apply the JSON parsing. Only applicable when
   /// `jsonParsing` is set to `STANDARD`. Structure is documented below.
-  final pulumi.Input<SecurityPolicyAdvancedOptionsConfigJsonCustomConfig>? jsonCustomConfig;
+  final pulumi.Input<SecurityPolicyAdvancedOptionsConfigJsonCustomConfig?>? jsonCustomConfig;
   /// Whether or not to JSON parse the payload body. Defaults to `DISABLED`.
   /// * `DISABLED` - Don't parse JSON payloads in POST bodies.
   /// * `STANDARD` - Parse JSON payloads in POST bodies.
   /// * `STANDARD_WITH_GRAPHQL` - Parse JSON and GraphQL payloads in POST bodies.
-  final pulumi.Input<String>? jsonParsing;
+  final pulumi.Input<String?>? jsonParsing;
   /// Log level to use. Defaults to `NORMAL`.
   /// * `NORMAL` - Normal log level.
   /// * `VERBOSE` - Verbose log level.
-  final pulumi.Input<String>? logLevel;
+  final pulumi.Input<String?>? logLevel;
   /// The maximum request size chosen by the customer with Waf enabled. Values supported are "8KB", "16KB, "32KB", "48KB" and "64KB". Values are case insensitive.
-  final pulumi.Input<String>? requestBodyInspectionSize;
+  final pulumi.Input<String?>? requestBodyInspectionSize;
   /// An optional list of case-insensitive request header names to use for resolving the callers client IP address.
-  final pulumi.Input<List<String>>? userIpRequestHeaders;
+  final pulumi.Input<List<String>?>? userIpRequestHeaders;
 
   /// Creates a new [SecurityPolicyAdvancedOptionsConfig].
   /// [jsonCustomConfig] Custom configuration to apply the JSON parsing. Only applicable when

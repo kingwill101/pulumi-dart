@@ -9,7 +9,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExec {
   /// state. An exit code of 100 indicates "success", any other exit code
   /// indicates a failure running enforce. Structure is
   /// documented below.
-  final pulumi.Input<OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce>? enforce;
+  final pulumi.Input<OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce?>? enforce;
   /// What to run to validate this resource is in the
   /// desired state. An exit code of 100 indicates "in desired state", and exit
   /// code of 101 indicates "not in desired state". Any other exit code indicates

@@ -5,13 +5,13 @@ import 'metastore_service_scaling_config_autoscaling_config_limit_config.dart';
 
 class MetastoreServiceScalingConfigAutoscalingConfig {
   /// Defines whether autoscaling is enabled. The default value is false.
-  final pulumi.Input<bool>? autoscalingEnabled;
+  final pulumi.Input<bool?>? autoscalingEnabled;
   /// (Output)
   /// Output only. The scaling factor of a service with autoscaling enabled.
-  final pulumi.Input<double>? autoscalingFactor;
+  final pulumi.Input<double?>? autoscalingFactor;
   /// Represents the limit configuration of a metastore service.
   /// Structure is documented below.
-  final pulumi.Input<MetastoreServiceScalingConfigAutoscalingConfigLimitConfig>? limitConfig;
+  final pulumi.Input<MetastoreServiceScalingConfigAutoscalingConfigLimitConfig?>? limitConfig;
 
   /// Creates a new [MetastoreServiceScalingConfigAutoscalingConfig].
   /// [autoscalingEnabled] Defines whether autoscaling is enabled. The default value is false.
@@ -34,7 +34,7 @@ class MetastoreServiceScalingConfigAutoscalingConfig {
   factory MetastoreServiceScalingConfigAutoscalingConfig.fromMap(Map<String, dynamic> map) {
     return MetastoreServiceScalingConfigAutoscalingConfig(
       autoscalingEnabled: (() { final guardedValue = map['autoscalingEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      autoscalingFactor: (() { final guardedValue = map['autoscalingFactor']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      autoscalingFactor: (() { final guardedValue = map['autoscalingFactor']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       limitConfig: (() { final guardedValue = map['limitConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(MetastoreServiceScalingConfigAutoscalingConfigLimitConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

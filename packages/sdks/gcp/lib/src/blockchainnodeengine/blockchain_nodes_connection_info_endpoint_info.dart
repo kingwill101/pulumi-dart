@@ -5,10 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BlockchainNodesConnectionInfoEndpointInfo {
   /// (Output)
   /// The assigned URL for the node JSON-RPC API endpoint.
-  final pulumi.Input<String>? jsonRpcApiEndpoint;
+  final pulumi.Input<String?>? jsonRpcApiEndpoint;
   /// (Output)
   /// The assigned URL for the node WebSockets API endpoint.
-  final pulumi.Input<String>? websocketsApiEndpoint;
+  final pulumi.Input<String?>? websocketsApiEndpoint;
 
   /// Creates a new [BlockchainNodesConnectionInfoEndpointInfo].
   /// [jsonRpcApiEndpoint] (Output)

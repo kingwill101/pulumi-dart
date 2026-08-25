@@ -4,10 +4,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConnectionGithubConfigAuthorizerCredential {
   /// A SecretManager resource containing the OAuth token that authorizes the Cloud Build connection. Format: `projects/*/secrets/*/versions/*`.
-  final pulumi.Input<String>? oauthTokenSecretVersion;
+  final pulumi.Input<String?>? oauthTokenSecretVersion;
   /// (Output)
   /// Output only. The username associated to this token.
-  final pulumi.Input<String>? username;
+  final pulumi.Input<String?>? username;
 
   /// Creates a new [ConnectionGithubConfigAuthorizerCredential].
   /// [oauthTokenSecretVersion] A SecretManager resource containing the OAuth token that authorizes the Cloud Build connection. Format: `projects/*/secrets/*/versions/*`.

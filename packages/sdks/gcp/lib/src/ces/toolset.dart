@@ -4394,7 +4394,7 @@ class Toolset extends pulumi.CustomResource {
           'gcp:ces/toolset:Toolset',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     app = registerOutput<String>('app');
     createTime = registerOutput<String>('createTime');
@@ -4418,11 +4418,12 @@ class Toolset extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ToolsetState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Toolset._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -4436,6 +4437,32 @@ class Toolset extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    app = registerOutput<String>('app');
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String?>('displayName');
+    etag = registerOutput<String>('etag');
+    executionType = registerOutput<String?>('executionType');
+    location = registerOutput<String>('location');
+    mcpToolset = registerOutput<ToolsetMcpToolset?>('mcpToolset', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ToolsetMcpToolset.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    openApiToolset = registerOutput<ToolsetOpenApiToolset?>('openApiToolset', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ToolsetOpenApiToolset.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    project = registerOutput<String>('project');
+    toolFakeConfig = registerOutput<ToolsetToolFakeConfig?>('toolFakeConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ToolsetToolFakeConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    toolsetId = registerOutput<String>('toolsetId');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [Toolset] resource.
+  Toolset.reference(String urn)
+    : super(
+        'gcp:ces/toolset:Toolset',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     app = registerOutput<String>('app');
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');

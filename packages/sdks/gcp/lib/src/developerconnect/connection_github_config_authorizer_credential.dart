@@ -8,7 +8,7 @@ class ConnectionGithubConfigAuthorizerCredential {
   final pulumi.Input<String> oauthTokenSecretVersion;
   /// (Output)
   /// Output only. The username associated with this token.
-  final pulumi.Input<String>? username;
+  final pulumi.Input<String?>? username;
 
   /// Creates a new [ConnectionGithubConfigAuthorizerCredential].
   /// [oauthTokenSecretVersion] Required. A SecretManager resource containing the OAuth token that authorizes

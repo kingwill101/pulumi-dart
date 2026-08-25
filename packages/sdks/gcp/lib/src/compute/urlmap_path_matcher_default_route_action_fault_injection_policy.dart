@@ -7,10 +7,10 @@ import 'urlmap_path_matcher_default_route_action_fault_injection_policy_delay.da
 class URLMapPathMatcherDefaultRouteActionFaultInjectionPolicy {
   /// The specification for how client requests are aborted as part of fault injection.
   /// Structure is documented below.
-  final pulumi.Input<URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyAbort>? abort;
+  final pulumi.Input<URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyAbort?>? abort;
   /// The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
   /// Structure is documented below.
-  final pulumi.Input<URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelay>? delay;
+  final pulumi.Input<URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelay?>? delay;
 
   /// Creates a new [URLMapPathMatcherDefaultRouteActionFaultInjectionPolicy].
   /// [abort] The specification for how client requests are aborted as part of fault injection.

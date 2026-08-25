@@ -8,11 +8,11 @@ class RegionBackendServiceDynamicForwarding {
   /// (Optional, Beta)
   /// Dynamic Forwarding Proxy configuration.
   /// Structure is documented below.
-  final pulumi.Input<RegionBackendServiceDynamicForwardingForwardProxy>? forwardProxy;
+  final pulumi.Input<RegionBackendServiceDynamicForwardingForwardProxy?>? forwardProxy;
   /// (Optional, Beta)
   /// IP:PORT based dynamic forwarding configuration.
   /// Structure is documented below.
-  final pulumi.Input<RegionBackendServiceDynamicForwardingIpPortSelection>? ipPortSelection;
+  final pulumi.Input<RegionBackendServiceDynamicForwardingIpPortSelection?>? ipPortSelection;
 
   /// Creates a new [RegionBackendServiceDynamicForwarding].
   /// [forwardProxy] (Optional, Beta)

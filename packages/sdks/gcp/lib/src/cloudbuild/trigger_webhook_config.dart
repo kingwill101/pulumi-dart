@@ -8,7 +8,7 @@ class TriggerWebhookConfig {
   /// (Output)
   /// Potential issues with the underlying Pub/Sub subscription configuration.
   /// Only populated on get requests.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
 
   /// Creates a new [TriggerWebhookConfig].
   /// [secret] Resource name for the secret required as a URL parameter.

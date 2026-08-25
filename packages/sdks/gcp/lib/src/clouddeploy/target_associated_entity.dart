@@ -6,11 +6,11 @@ import 'target_associated_entity_gke_cluster.dart';
 
 class TargetAssociatedEntity {
   /// Optional. Information specifying Anthos clusters as associated entities.
-  final pulumi.Input<List<TargetAssociatedEntityAnthosCluster>>? anthosClusters;
+  final pulumi.Input<List<TargetAssociatedEntityAnthosCluster>?>? anthosClusters;
   /// The name for the key in the map for which this object is mapped to in the API
   final pulumi.Input<String> entityId;
   /// Optional. Information specifying GKE clusters as associated entities.
-  final pulumi.Input<List<TargetAssociatedEntityGkeCluster>>? gkeClusters;
+  final pulumi.Input<List<TargetAssociatedEntityGkeCluster>?>? gkeClusters;
 
   /// Creates a new [TargetAssociatedEntity].
   /// [anthosClusters] Optional. Information specifying Anthos clusters as associated entities.

@@ -8,69 +8,69 @@ import 'mirroring_endpoint_group_association_locations_detail.dart';
 class MirroringEndpointGroupAssociationState {
   /// The timestamp when the resource was created.
   /// See https://google.aip.dev/148#timestamps.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveLabels;
+  final pulumi.Input<Map<String, String>?>? effectiveLabels;
   /// Labels are key/value pairs that help to organize and filter resources.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The cloud location of the association, currently restricted to `global`.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The list of locations where the association is configured. This information
   /// is retrieved from the linked endpoint group.
   /// Structure is documented below.
-  final pulumi.Input<List<MirroringEndpointGroupAssociationLocation>>? locations;
+  final pulumi.Input<List<MirroringEndpointGroupAssociationLocation>?>? locations;
   /// (Deprecated)
   /// The list of locations where the association is present. This information
   /// is retrieved from the linked endpoint group, and not configured as part
   /// of the association itself.
   /// Structure is documented below.
-  final pulumi.Input<List<MirroringEndpointGroupAssociationLocationsDetail>>? locationsDetails;
+  final pulumi.Input<List<MirroringEndpointGroupAssociationLocationsDetail>?>? locationsDetails;
   /// The endpoint group that this association is connected to, for example:
   /// `projects/123456789/locations/global/mirroringEndpointGroups/my-eg`.
   /// See https://google.aip.dev/124.
-  final pulumi.Input<String>? mirroringEndpointGroup;
+  final pulumi.Input<String?>? mirroringEndpointGroup;
   /// The ID to use for the new association, which will become the final
   /// component of the endpoint group's resource name. If not provided, the
   /// server will generate a unique ID.
-  final pulumi.Input<String>? mirroringEndpointGroupAssociationId;
+  final pulumi.Input<String?>? mirroringEndpointGroupAssociationId;
   /// The resource name of this endpoint group association, for example:
   /// `projects/123456789/locations/global/mirroringEndpointGroupAssociations/my-eg-association`.
   /// See https://google.aip.dev/122 for more details.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The VPC network that is associated. for example:
   /// `projects/123456789/global/networks/my-network`.
   /// See https://google.aip.dev/124.
-  final pulumi.Input<String>? network;
+  final pulumi.Input<String?>? network;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  final pulumi.Input<Map<String, String>>? pulumiLabels;
+  final pulumi.Input<Map<String, String>?>? pulumiLabels;
   /// The current state of the resource does not match the user's intended state,
   /// and the system is working to reconcile them. This part of the normal
   /// operation (e.g. adding a new location to the target deployment group).
   /// See https://google.aip.dev/128.
-  final pulumi.Input<bool>? reconciling;
+  final pulumi.Input<bool?>? reconciling;
   /// (Output)
   /// The current state of the association in this location.
   /// Possible values:
   /// STATE_UNSPECIFIED
   /// ACTIVE
   /// OUT_OF_SYNC
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// The timestamp when the resource was most recently updated.
   /// See https://google.aip.dev/148#timestamps.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [MirroringEndpointGroupAssociationState].
   /// [createTime] The timestamp when the resource was created.

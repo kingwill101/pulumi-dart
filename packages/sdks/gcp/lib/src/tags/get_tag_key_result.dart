@@ -4,70 +4,70 @@
 /// Result data returned by getTagKey.
 class GetTagKeyResult {
   /// Regular expression constraint for dynamic tag values, follows RE2 syntax. If present, it implicitly allows dynamic values (constrained by the regex).
-  final String allowedValuesRegex;
+  final String? allowedValuesRegex;
   /// Creation time.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-  final String createTime;
-  final String description;
+  final String? createTime;
+  final String? description;
   /// an identifier for the resource with format `tagKeys/{{name}}`
-  final String id;
+  final String? id;
   /// The generated numeric id for the TagKey.
-  final String name;
+  final String? name;
   /// Namespaced name of the TagKey which is in the format `{parentNamespace}/{shortName}`.
-  final String namespacedName;
-  final String parent;
-  final String shortName;
+  final String? namespacedName;
+  final String? parent;
+  final String? shortName;
   /// Update time.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-  final String updateTime;
+  final String? updateTime;
 
   /// Creates a new [GetTagKeyResult].
   /// [allowedValuesRegex] Regular expression constraint for dynamic tag values, follows RE2 syntax. If present, it implicitly allows dynamic values (constrained by the regex).
   /// [createTime] Creation time.
-  /// [description] Required.
+  /// [description] Optional.
   /// [id] an identifier for the resource with format `tagKeys/{{name}}`
   /// [name] The generated numeric id for the TagKey.
   /// [namespacedName] Namespaced name of the TagKey which is in the format `{parentNamespace}/{shortName}`.
-  /// [parent] Required.
-  /// [shortName] Required.
+  /// [parent] Optional.
+  /// [shortName] Optional.
   /// [updateTime] Update time.
   const GetTagKeyResult({
-    required this.allowedValuesRegex,
-    required this.createTime,
-    required this.description,
-    required this.id,
-    required this.name,
-    required this.namespacedName,
-    required this.parent,
-    required this.shortName,
-    required this.updateTime,
+    this.allowedValuesRegex,
+    this.createTime,
+    this.description,
+    this.id,
+    this.name,
+    this.namespacedName,
+    this.parent,
+    this.shortName,
+    this.updateTime,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'allowedValuesRegex': allowedValuesRegex,
-      'createTime': createTime,
-      'description': description,
-      'id': id,
-      'name': name,
-      'namespacedName': namespacedName,
-      'parent': parent,
-      'shortName': shortName,
-      'updateTime': updateTime,
+      'allowedValuesRegex': ?allowedValuesRegex,
+      'createTime': ?createTime,
+      'description': ?description,
+      'id': ?id,
+      'name': ?name,
+      'namespacedName': ?namespacedName,
+      'parent': ?parent,
+      'shortName': ?shortName,
+      'updateTime': ?updateTime,
     };
   }
 
   factory GetTagKeyResult.fromMap(Map<String, dynamic> map) {
     return GetTagKeyResult(
-      allowedValuesRegex: map['allowedValuesRegex'] as String,
-      createTime: map['createTime'] as String,
-      description: map['description'] as String,
-      id: map['id'] as String,
-      name: map['name'] as String,
-      namespacedName: map['namespacedName'] as String,
-      parent: map['parent'] as String,
-      shortName: map['shortName'] as String,
-      updateTime: map['updateTime'] as String,
+      allowedValuesRegex: (() { final guardedValue = map['allowedValuesRegex']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      namespacedName: (() { final guardedValue = map['namespacedName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      parent: (() { final guardedValue = map['parent']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      shortName: (() { final guardedValue = map['shortName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

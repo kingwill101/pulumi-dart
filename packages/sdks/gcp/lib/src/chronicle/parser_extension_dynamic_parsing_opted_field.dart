@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ParserExtensionDynamicParsingOptedField {
   /// Path of the log field.
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? path;
   /// Sample value of the log field.
-  final pulumi.Input<String>? sampleValue;
+  final pulumi.Input<String?>? sampleValue;
 
   /// Creates a new [ParserExtensionDynamicParsingOptedField].
   /// [path] Path of the log field.

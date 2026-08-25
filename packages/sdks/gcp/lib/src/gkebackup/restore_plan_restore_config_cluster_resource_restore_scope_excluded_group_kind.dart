@@ -6,10 +6,10 @@ class RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKind {
   /// API Group string of a Kubernetes resource, e.g.
   /// "apiextensions.k8s.io", "storage.k8s.io", etc.
   /// Use empty string for core group.
-  final pulumi.Input<String>? resourceGroup;
+  final pulumi.Input<String?>? resourceGroup;
   /// Kind of a Kubernetes resource, e.g.
   /// "CustomResourceDefinition", "StorageClass", etc.
-  final pulumi.Input<String>? resourceKind;
+  final pulumi.Input<String?>? resourceKind;
 
   /// Creates a new [RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKind].
   /// [resourceGroup] API Group string of a Kubernetes resource, e.g.

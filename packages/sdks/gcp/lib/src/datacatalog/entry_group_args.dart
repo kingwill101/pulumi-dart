@@ -13,19 +13,19 @@ class EntryGroupArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Entry group description, which can consist of several sentences or paragraphs that describe entry group contents.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// A short name to identify the entry group, for example, "analytics data - jan 2011".
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The id of the entry group to create. The id must begin with a letter or underscore,
   /// contain only English letters, numbers and underscores, and be at most 64 characters.
   final pulumi.Input<String> entryGroupId;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// EntryGroup location region.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [EntryGroupArgs].
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

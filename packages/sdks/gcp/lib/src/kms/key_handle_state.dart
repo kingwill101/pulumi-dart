@@ -7,18 +7,18 @@ class KeyHandleState {
   /// A reference to a Cloud KMS CryptoKey that can be used for CMEK in the requested
   /// product/project/location, for example
   /// `projects/1/locations/us-east1/keyRings/foo/cryptoKeys/bar-ffffff`
-  final pulumi.Input<String>? kmsKey;
+  final pulumi.Input<String?>? kmsKey;
   /// The location for the KeyHandle.
   /// A full list of valid locations can be found by running `gcloud kms locations list`.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The resource name for the KeyHandle.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Selector of the resource type where we want to protect resources.
   /// For example, `storage.googleapis.com/Bucket`.
-  final pulumi.Input<String>? resourceTypeSelector;
+  final pulumi.Input<String?>? resourceTypeSelector;
 
   /// Creates a new [KeyHandleState].
   /// [kmsKey] A reference to a Cloud KMS CryptoKey that can be used for CMEK in the requested

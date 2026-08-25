@@ -7,6 +7,7 @@ import 'datascan_data_profile_spec.dart';
 import 'datascan_data_quality_spec.dart';
 import 'datascan_execution_identity.dart';
 import 'datascan_execution_spec.dart';
+import 'datascan_execution_status.dart';
 import 'datascan_state.dart';
 
 /// Represents a user-visible job which provides the insights for the related data source.
@@ -8364,7 +8365,7 @@ class Datascan extends pulumi.CustomResource {
   late final pulumi.Output<DatascanExecutionSpec> executionSpec;
   /// Status of the data scan execution.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> executionStatuses;
+  late final pulumi.Output<List<DatascanExecutionStatus>> executionStatuses;
   /// User-defined labels for the scan. A list of key-&gt;value pairs.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -8401,7 +8402,8 @@ class Datascan extends pulumi.CustomResource {
           'gcp:dataplex/datascan:Datascan',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');
     data = registerOutput<DatascanData>('data', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatascanData.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -8413,15 +8415,15 @@ class Datascan extends pulumi.CustomResource {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     executionIdentity = registerOutput<DatascanExecutionIdentity?>('executionIdentity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatascanExecutionIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     executionSpec = registerOutput<DatascanExecutionSpec>('executionSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatascanExecutionSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    executionStatuses = registerOutput<List<Map<String, dynamic>>>('executionStatuses');
-    labels = registerOutput<Map<String, String>?>('labels');
+    executionStatuses = registerOutput<List<DatascanExecutionStatus>>('executionStatuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DatascanExecutionStatus>(guardedValue, (value) => DatascanExecutionStatus.fromMap((value as Map).cast<String, dynamic>())); });
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     state = registerOutput<String>('state');
     type = registerOutput<String>('type');
     uid = registerOutput<String>('uid');
@@ -8433,11 +8435,12 @@ class Datascan extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DatascanState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Datascan._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -8461,16 +8464,51 @@ class Datascan extends pulumi.CustomResource {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     executionIdentity = registerOutput<DatascanExecutionIdentity?>('executionIdentity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatascanExecutionIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     executionSpec = registerOutput<DatascanExecutionSpec>('executionSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatascanExecutionSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    executionStatuses = registerOutput<List<Map<String, dynamic>>>('executionStatuses');
-    labels = registerOutput<Map<String, String>?>('labels');
+    executionStatuses = registerOutput<List<DatascanExecutionStatus>>('executionStatuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DatascanExecutionStatus>(guardedValue, (value) => DatascanExecutionStatus.fromMap((value as Map).cast<String, dynamic>())); });
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     this.state = registerOutput<String>('state');
+    type = registerOutput<String>('type');
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [Datascan] resource.
+  Datascan.reference(String urn)
+    : super(
+        'gcp:dataplex/datascan:Datascan',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    data = registerOutput<DatascanData>('data', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatascanData.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dataDiscoverySpec = registerOutput<DatascanDataDiscoverySpec?>('dataDiscoverySpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatascanDataDiscoverySpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dataDocumentationSpec = registerOutput<DatascanDataDocumentationSpec?>('dataDocumentationSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatascanDataDocumentationSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dataProfileSpec = registerOutput<DatascanDataProfileSpec?>('dataProfileSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatascanDataProfileSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dataQualitySpec = registerOutput<DatascanDataQualitySpec?>('dataQualitySpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatascanDataQualitySpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dataScanId = registerOutput<String>('dataScanId');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String?>('displayName');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    executionIdentity = registerOutput<DatascanExecutionIdentity?>('executionIdentity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatascanExecutionIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    executionSpec = registerOutput<DatascanExecutionSpec>('executionSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatascanExecutionSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    executionStatuses = registerOutput<List<DatascanExecutionStatus>>('executionStatuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DatascanExecutionStatus>(guardedValue, (value) => DatascanExecutionStatus.fromMap((value as Map).cast<String, dynamic>())); });
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    state = registerOutput<String>('state');
     type = registerOutput<String>('type');
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');

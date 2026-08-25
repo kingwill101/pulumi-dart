@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'metric_descriptor_args.dart';
+import 'metric_descriptor_label.dart';
 import 'metric_descriptor_metadata.dart';
 import 'metric_descriptor_state.dart';
 
@@ -503,7 +504,7 @@ class MetricDescriptor extends pulumi.CustomResource {
   late final pulumi.Output<String?> displayName;
   /// The set of labels that can be used to describe a specific instance of this metric type. In order to delete a label, the entire resource must be deleted, then created with the desired labels.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> labels;
+  late final pulumi.Output<List<MetricDescriptorLabel>?> labels;
   /// The launch stage of the metric definition.
   /// Possible values are: `LAUNCH_STAGE_UNSPECIFIED`, `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
   late final pulumi.Output<String?> launchStage;
@@ -556,16 +557,16 @@ class MetricDescriptor extends pulumi.CustomResource {
           'gcp:monitoring/metricDescriptor:MetricDescriptor',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
-    labels = registerOutput<List<Map<String, dynamic>>?>('labels');
+    labels = registerOutput<List<MetricDescriptorLabel>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MetricDescriptorLabel>(guardedValue, (value) => MetricDescriptorLabel.fromMap((value as Map).cast<String, dynamic>())); });
     launchStage = registerOutput<String?>('launchStage');
     metadata = registerOutput<MetricDescriptorMetadata?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MetricDescriptorMetadata.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     metricKind = registerOutput<String>('metricKind');
-    monitoredResourceTypes = registerOutput<List<String>>('monitoredResourceTypes');
+    monitoredResourceTypes = registerOutput<List<String>>('monitoredResourceTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     type = registerOutput<String>('type');
@@ -578,11 +579,12 @@ class MetricDescriptor extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     MetricDescriptorState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return MetricDescriptor._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -599,11 +601,35 @@ class MetricDescriptor extends pulumi.CustomResource {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
-    labels = registerOutput<List<Map<String, dynamic>>?>('labels');
+    labels = registerOutput<List<MetricDescriptorLabel>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MetricDescriptorLabel>(guardedValue, (value) => MetricDescriptorLabel.fromMap((value as Map).cast<String, dynamic>())); });
     launchStage = registerOutput<String?>('launchStage');
     metadata = registerOutput<MetricDescriptorMetadata?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MetricDescriptorMetadata.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     metricKind = registerOutput<String>('metricKind');
-    monitoredResourceTypes = registerOutput<List<String>>('monitoredResourceTypes');
+    monitoredResourceTypes = registerOutput<List<String>>('monitoredResourceTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    type = registerOutput<String>('type');
+    unit = registerOutput<String?>('unit');
+    valueType = registerOutput<String>('valueType');
+  }
+
+  /// Creates a typed reference to an existing [MetricDescriptor] resource.
+  MetricDescriptor.reference(String urn)
+    : super(
+        'gcp:monitoring/metricDescriptor:MetricDescriptor',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String?>('displayName');
+    labels = registerOutput<List<MetricDescriptorLabel>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MetricDescriptorLabel>(guardedValue, (value) => MetricDescriptorLabel.fromMap((value as Map).cast<String, dynamic>())); });
+    launchStage = registerOutput<String?>('launchStage');
+    metadata = registerOutput<MetricDescriptorMetadata?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MetricDescriptorMetadata.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    metricKind = registerOutput<String>('metricKind');
+    monitoredResourceTypes = registerOutput<List<String>>('monitoredResourceTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     type = registerOutput<String>('type');

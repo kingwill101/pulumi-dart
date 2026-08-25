@@ -5,19 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MulticastDomainActivationTrafficSpec {
   /// Aggregated egress Packet-Per-Second for all multicast groups in the domain
   /// in this zone.
-  final pulumi.Input<String>? aggrEgressPps;
+  final pulumi.Input<String?>? aggrEgressPps;
   /// Aggregated ingress Packet-Per-Second for all multicast groups in the domain
   /// in this zone. Default to (aggregated_egress_pps /
   /// max_per_group_subscribers) * 2.
-  final pulumi.Input<String>? aggrIngressPps;
+  final pulumi.Input<String?>? aggrIngressPps;
   /// Average packet size (Default to 512 bytes).
-  final pulumi.Input<int>? avgPacketSize;
+  final pulumi.Input<int?>? avgPacketSize;
   /// Maximum ingress Packet-Per-Second for a single multicast group in this
   /// zone. Default to aggregatedIngressPps / 2.
-  final pulumi.Input<String>? maxPerGroupIngressPps;
+  final pulumi.Input<String?>? maxPerGroupIngressPps;
   /// Maximum number of subscribers for a single multicast group in this zone.
   /// Default to max(50, aggregatedEgressPps / aggregated_ingress_pps).
-  final pulumi.Input<String>? maxPerGroupSubscribers;
+  final pulumi.Input<String?>? maxPerGroupSubscribers;
 
   /// Creates a new [MulticastDomainActivationTrafficSpec].
   /// [aggrEgressPps] Aggregated egress Packet-Per-Second for all multicast groups in the domain
@@ -47,7 +47,7 @@ class MulticastDomainActivationTrafficSpec {
     return MulticastDomainActivationTrafficSpec(
       aggrEgressPps: (() { final guardedValue = map['aggrEgressPps']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       aggrIngressPps: (() { final guardedValue = map['aggrIngressPps']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      avgPacketSize: (() { final guardedValue = map['avgPacketSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      avgPacketSize: (() { final guardedValue = map['avgPacketSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       maxPerGroupIngressPps: (() { final guardedValue = map['maxPerGroupIngressPps']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       maxPerGroupSubscribers: (() { final guardedValue = map['maxPerGroupSubscribers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

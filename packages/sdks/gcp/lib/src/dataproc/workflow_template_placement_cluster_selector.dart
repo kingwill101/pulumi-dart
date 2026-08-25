@@ -6,7 +6,7 @@ class WorkflowTemplatePlacementClusterSelector {
   /// Required. The cluster labels. Cluster must have all labels to match.
   final pulumi.Input<Map<String, String>> clusterLabels;
   /// The zone where workflow process executes. This parameter does not affect the selection of the cluster. If unspecified, the zone of the first cluster matching the selector is used.
-  final pulumi.Input<String>? zone;
+  final pulumi.Input<String?>? zone;
 
   /// Creates a new [WorkflowTemplatePlacementClusterSelector].
   /// [clusterLabels] Required. The cluster labels. Cluster must have all labels to match.

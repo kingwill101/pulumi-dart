@@ -7,12 +7,12 @@ class AppVersionSnapshotToolDataStoreToolEngineSourceDataStoreSource {
   /// (Output)
   /// A DataStore resource in Vertex AI Search.
   /// Structure is documented below.
-  final pulumi.Input<List<AppVersionSnapshotToolDataStoreToolEngineSourceDataStoreSourceDataStore>>? dataStores;
+  final pulumi.Input<List<AppVersionSnapshotToolDataStoreToolEngineSourceDataStoreSourceDataStore>?>? dataStores;
   /// (Output)
   /// Filter specification for the DataStore.
   /// See:
   /// https://cloud.google.com/generative-ai-app-builder/docs/filter-search-metadata
-  final pulumi.Input<String>? filter;
+  final pulumi.Input<String?>? filter;
 
   /// Creates a new [AppVersionSnapshotToolDataStoreToolEngineSourceDataStoreSource].
   /// [dataStores] (Output)

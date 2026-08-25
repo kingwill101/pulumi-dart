@@ -12,38 +12,38 @@ class BudgetState {
   /// billing account's spend, regardless of the thresholds defined
   /// using threshold rules.
   /// Structure is documented below.
-  final pulumi.Input<BudgetAllUpdatesRule>? allUpdatesRule;
+  final pulumi.Input<BudgetAllUpdatesRule?>? allUpdatesRule;
   /// The budgeted amount for each usage period.
   /// Structure is documented below.
-  final pulumi.Input<BudgetAmount>? amount;
+  final pulumi.Input<BudgetAmount?>? amount;
   /// ID of the billing account to set a budget on.
-  final pulumi.Input<String>? billingAccount;
+  final pulumi.Input<String?>? billingAccount;
   /// Filters that define which resources are used to compute the actual
   /// spend against the budget.
   /// Structure is documented below.
-  final pulumi.Input<BudgetBudgetFilter>? budgetFilter;
+  final pulumi.Input<BudgetBudgetFilter?>? budgetFilter;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// User data for display name in UI. Must be &lt;= 60 chars.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Resource name of the budget. The resource name
   /// implies the scope of a budget. Values are of the form
   /// billingAccounts/{billingAccountId}/budgets/{budgetId}.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ownership scope of the budget. The ownership scope and users'
   /// IAM permissions determine who has full access to the budget's data.
   /// Possible values are: `OWNERSHIP_SCOPE_UNSPECIFIED`, `ALL_USERS`, `BILLING_ACCOUNT`.
-  final pulumi.Input<String>? ownershipScope;
+  final pulumi.Input<String?>? ownershipScope;
   /// Rules that trigger alerts (notifications of thresholds being
   /// crossed) when spend exceeds the specified percentages of the
   /// budget.
   /// Structure is documented below.
-  final pulumi.Input<List<BudgetThresholdRule>>? thresholdRules;
+  final pulumi.Input<List<BudgetThresholdRule>?>? thresholdRules;
 
   /// Creates a new [BudgetState].
   /// [allUpdatesRule] Defines notifications that are sent on every update to the

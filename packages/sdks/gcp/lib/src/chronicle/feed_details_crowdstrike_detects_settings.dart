@@ -6,14 +6,14 @@ import 'feed_details_crowdstrike_detects_settings_authentication.dart';
 class FeedDetailsCrowdstrikeDetectsSettings {
   /// OAuth 2.0 client credentials grant. See https://tools.ietf.org/html/rfc6749.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsCrowdstrikeDetectsSettingsAuthentication>? authentication;
+  final pulumi.Input<FeedDetailsCrowdstrikeDetectsSettingsAuthentication?>? authentication;
   /// API Hostname.
-  final pulumi.Input<String>? hostname;
+  final pulumi.Input<String?>? hostname;
   /// Ingestion Type.
   /// Possible values:
   /// BRING_ONLY_NEW_DETECTIONS
   /// BRING_ALL_DETECTIONS
-  final pulumi.Input<String>? ingestionType;
+  final pulumi.Input<String?>? ingestionType;
 
   /// Creates a new [FeedDetailsCrowdstrikeDetectsSettings].
   /// [authentication] OAuth 2.0 client credentials grant. See https://tools.ietf.org/html/rfc6749.

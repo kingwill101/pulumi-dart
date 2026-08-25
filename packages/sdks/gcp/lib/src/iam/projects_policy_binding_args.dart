@@ -13,7 +13,7 @@ class ProjectsPolicyBindingArgs {
   ///
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
-  final pulumi.Input<Map<String, String>>? annotations;
+  final pulumi.Input<Map<String, String>?>? annotations;
   /// Represents a textual expression in the Common Expression Language
   /// (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of
   /// CEL are documented at https://github.com/google/cel-spec.
@@ -38,16 +38,16 @@ class ProjectsPolicyBindingArgs {
   /// determined by the service that evaluates it. See the service documentation for
   /// additional information.
   /// Structure is documented below.
-  final pulumi.Input<ProjectsPolicyBindingCondition>? condition;
+  final pulumi.Input<ProjectsPolicyBindingCondition?>? condition;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Optional. The description of the policy binding. Must be less than or equal to 63 characters.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The location of the Policy Binding
   final pulumi.Input<String> location;
   /// Required. Immutable. The resource name of the policy to be bound. The binding parent and policy must belong to the same Organization (or Project).
@@ -57,10 +57,10 @@ class ProjectsPolicyBindingArgs {
   /// Immutable. The kind of the policy to attach in this binding. This
   /// field must be one of the following:  - Left empty (will be automatically set
   /// to the policy kind) - The input policy kind   Possible values:  POLICY_KIND_UNSPECIFIED PRINCIPAL_ACCESS_BOUNDARY ACCESS
-  final pulumi.Input<String>? policyKind;
+  final pulumi.Input<String?>? policyKind;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Target is the full resource name of the resource to which the policy will be bound. Immutable once set.
   /// Structure is documented below.
   final pulumi.Input<ProjectsPolicyBindingTarget> target;

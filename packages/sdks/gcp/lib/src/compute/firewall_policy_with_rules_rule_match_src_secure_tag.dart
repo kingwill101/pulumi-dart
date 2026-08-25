@@ -5,14 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class FirewallPolicyWithRulesRuleMatchSrcSecureTag {
   /// Name of the secure tag, created with TagManager's TagValue API.
   /// @pattern tagValues/[0-9]+
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// (Output)
   /// [Output Only] State of the secure tag, either `EFFECTIVE` or
   /// `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted
   /// or its network is deleted.
   ///
   /// &lt;a name="nestedRuleMatchLayer4Config"&gt;&lt;/a&gt;The `layer4Config` block supports:
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
 
   /// Creates a new [FirewallPolicyWithRulesRuleMatchSrcSecureTag].
   /// [name] Name of the secure tag, created with TagManager's TagValue API.

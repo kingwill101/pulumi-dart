@@ -5,10 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ToolGoogleSearchToolPromptConfig {
   /// Optional. Defines the prompt used for the system instructions when interacting with the
   /// agent in chat conversations. If not set, default prompt will be used.
-  final pulumi.Input<String>? textPrompt;
+  final pulumi.Input<String?>? textPrompt;
   /// Optional. Defines the prompt used for the system instructions when interacting with the
   /// agent in voice conversations. If not set, default prompt will be used.
-  final pulumi.Input<String>? voicePrompt;
+  final pulumi.Input<String?>? voicePrompt;
 
   /// Creates a new [ToolGoogleSearchToolPromptConfig].
   /// [textPrompt] Optional. Defines the prompt used for the system instructions when interacting with the

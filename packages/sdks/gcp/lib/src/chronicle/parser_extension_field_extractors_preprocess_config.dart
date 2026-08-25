@@ -6,10 +6,10 @@ class ParserExtensionFieldExtractorsPreprocessConfig {
   /// GROK Regex to extract the structured part of the log.
   /// syntax documentation:
   /// www.elastic.co/guide/en/logstash/current/plugins-filters-grok.html
-  final pulumi.Input<String>? grokRegex;
+  final pulumi.Input<String?>? grokRegex;
   /// Target field name for the structured part of the log.
   /// This should match a SEMANTIC identifier from the grok expression.
-  final pulumi.Input<String>? target;
+  final pulumi.Input<String?>? target;
 
   /// Creates a new [ParserExtensionFieldExtractorsPreprocessConfig].
   /// [grokRegex] GROK Regex to extract the structured part of the log.

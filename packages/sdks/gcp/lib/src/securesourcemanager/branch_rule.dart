@@ -569,7 +569,7 @@ class BranchRule extends pulumi.CustomResource {
           'gcp:securesourcemanager/branchRule:BranchRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     allowStaleReviews = registerOutput<bool?>('allowStaleReviews');
     branchRuleId = registerOutput<String>('branchRuleId');
@@ -595,11 +595,12 @@ class BranchRule extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     BranchRuleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return BranchRule._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -613,6 +614,34 @@ class BranchRule extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    allowStaleReviews = registerOutput<bool?>('allowStaleReviews');
+    branchRuleId = registerOutput<String>('branchRuleId');
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    disabled = registerOutput<bool?>('disabled');
+    includePattern = registerOutput<String>('includePattern');
+    location = registerOutput<String>('location');
+    minimumApprovalsCount = registerOutput<int?>('minimumApprovalsCount');
+    minimumReviewsCount = registerOutput<int?>('minimumReviewsCount');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    repositoryId = registerOutput<String>('repositoryId');
+    requireCommentsResolved = registerOutput<bool?>('requireCommentsResolved');
+    requireLinearHistory = registerOutput<bool?>('requireLinearHistory');
+    requirePullRequest = registerOutput<bool?>('requirePullRequest');
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [BranchRule] resource.
+  BranchRule.reference(String urn)
+    : super(
+        'gcp:securesourcemanager/branchRule:BranchRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     allowStaleReviews = registerOutput<bool?>('allowStaleReviews');
     branchRuleId = registerOutput<String>('branchRuleId');
     createTime = registerOutput<String>('createTime');

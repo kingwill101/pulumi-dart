@@ -6,29 +6,29 @@ import 'get_supported_services_supported_service.dart';
 /// Result data returned by getSupportedServices.
 class GetSupportedServicesResult {
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// The list of VPC-SC supported services. Each service contains the following fields:
-  final List<GetSupportedServicesSupportedService> supportedServices;
+  final List<GetSupportedServicesSupportedService>? supportedServices;
 
   /// Creates a new [GetSupportedServicesResult].
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [supportedServices] The list of VPC-SC supported services. Each service contains the following fields:
   const GetSupportedServicesResult({
-    required this.id,
-    required this.supportedServices,
+    this.id,
+    this.supportedServices,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'id': id,
-      'supportedServices': pulumi.Input.encodeList<GetSupportedServicesSupportedService, Map<String, dynamic>>(supportedServices, (value) => value.toMap()),
+      'id': ?id,
+      'supportedServices': ?(() { final guardedValue = supportedServices; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetSupportedServicesSupportedService, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
     };
   }
 
   factory GetSupportedServicesResult.fromMap(Map<String, dynamic> map) {
     return GetSupportedServicesResult(
-      id: map['id'] as String,
-      supportedServices: pulumi.Input.decodeList<GetSupportedServicesSupportedService>(map['supportedServices']!, (value) => GetSupportedServicesSupportedService.fromMap((value as Map).cast<String, dynamic>())),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      supportedServices: (() { final guardedValue = map['supportedServices']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetSupportedServicesSupportedService>(guardedValue, (value) => GetSupportedServicesSupportedService.fromMap((value as Map).cast<String, dynamic>())); })(),
     );
   }
 }

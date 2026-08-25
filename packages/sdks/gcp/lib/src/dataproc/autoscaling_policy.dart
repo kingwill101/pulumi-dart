@@ -326,7 +326,7 @@ class AutoscalingPolicy extends pulumi.CustomResource {
           'gcp:dataproc/autoscalingPolicy:AutoscalingPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     basicAlgorithm = registerOutput<AutoscalingPolicyBasicAlgorithm?>('basicAlgorithm', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AutoscalingPolicyBasicAlgorithm.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -343,11 +343,12 @@ class AutoscalingPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AutoscalingPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AutoscalingPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -361,6 +362,25 @@ class AutoscalingPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    basicAlgorithm = registerOutput<AutoscalingPolicyBasicAlgorithm?>('basicAlgorithm', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AutoscalingPolicyBasicAlgorithm.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    policyId = registerOutput<String>('policyId');
+    project = registerOutput<String>('project');
+    secondaryWorkerConfig = registerOutput<AutoscalingPolicySecondaryWorkerConfig?>('secondaryWorkerConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AutoscalingPolicySecondaryWorkerConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    workerConfig = registerOutput<AutoscalingPolicyWorkerConfig?>('workerConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AutoscalingPolicyWorkerConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [AutoscalingPolicy] resource.
+  AutoscalingPolicy.reference(String urn)
+    : super(
+        'gcp:dataproc/autoscalingPolicy:AutoscalingPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     basicAlgorithm = registerOutput<AutoscalingPolicyBasicAlgorithm?>('basicAlgorithm', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AutoscalingPolicyBasicAlgorithm.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     location = registerOutput<String?>('location');

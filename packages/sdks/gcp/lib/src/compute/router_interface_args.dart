@@ -13,31 +13,31 @@ class RouterInterfaceArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The name or resource link to the
   /// VLAN interconnect for this interface. Changing this forces a new interface to
   /// be created. Only one of `vpnTunnel`, `interconnectAttachment` or `subnetwork` can be specified.
-  final pulumi.Input<String>? interconnectAttachment;
+  final pulumi.Input<String?>? interconnectAttachment;
   /// IP address and range of the interface. The IP range must be
   /// in the RFC3927 link-local IP space. Changing this forces a new interface to be created.
-  final pulumi.Input<String>? ipRange;
+  final pulumi.Input<String?>? ipRange;
   /// IP version of this interface. Can be either IPV4 or IPV6.
-  final pulumi.Input<String>? ipVersion;
+  final pulumi.Input<String?>? ipVersion;
   /// A unique name for the interface, required by GCE. Changing
   /// this forces a new interface to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The regional private internal IP address that is used
   /// to establish BGP sessions to a VM instance acting as a third-party Router Appliance. Changing this forces a new interface to be created.
-  final pulumi.Input<String>? privateIpAddress;
+  final pulumi.Input<String?>? privateIpAddress;
   /// The ID of the project in which this interface's routerbelongs.
   /// If it is not provided, the provider project is used. Changing this forces a new interface to be created.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The name of the interface that is redundant to
   /// this interface. Changing this forces a new interface to be created.
-  final pulumi.Input<String>? redundantInterface;
+  final pulumi.Input<String?>? redundantInterface;
   /// The region this interface's router sits in.
   /// If not specified, the project region will be used. Changing this forces a new interface to be created.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The name of the router this interface will be attached to.
   /// Changing this forces a new interface to be created.
   ///
@@ -47,11 +47,11 @@ class RouterInterfaceArgs {
   final pulumi.Input<String> router;
   /// The URI of the subnetwork resource that this interface
   /// belongs to, which must be in the same region as the Cloud Router. When you establish a BGP session to a VM instance using this interface, the VM instance must belong to the same subnetwork as the subnetwork specified here. Changing this forces a new interface to be created. Only one of `vpnTunnel`, `interconnectAttachment` or `subnetwork` can be specified.
-  final pulumi.Input<String>? subnetwork;
+  final pulumi.Input<String?>? subnetwork;
   /// The name or resource link to the VPN tunnel this
   /// interface will be linked to. Changing this forces a new interface to be created. Only
   /// one of `vpnTunnel`, `interconnectAttachment` or `subnetwork` can be specified.
-  final pulumi.Input<String>? vpnTunnel;
+  final pulumi.Input<String?>? vpnTunnel;
 
   /// Creates a new [RouterInterfaceArgs].
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".

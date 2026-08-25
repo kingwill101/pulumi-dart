@@ -7,46 +7,46 @@ import 'network_attachment_connection_endpoint.dart';
 class NetworkAttachmentState {
   /// An array of connections for all the producers connected to this network attachment.
   /// Structure is documented below.
-  final pulumi.Input<List<NetworkAttachmentConnectionEndpoint>>? connectionEndpoints;
+  final pulumi.Input<List<NetworkAttachmentConnectionEndpoint>?>? connectionEndpoints;
   /// The connection preference of service attachment. The value can be set to ACCEPT_AUTOMATIC. An ACCEPT_AUTOMATIC service attachment is one that always accepts the connection from consumer forwarding rules.
   /// Possible values are: `ACCEPT_AUTOMATIC`, `ACCEPT_MANUAL`, `INVALID`.
-  final pulumi.Input<String>? connectionPreference;
+  final pulumi.Input<String?>? connectionPreference;
   /// Creation timestamp in RFC3339 text format.
-  final pulumi.Input<String>? creationTimestamp;
+  final pulumi.Input<String?>? creationTimestamp;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// An optional description of this resource. Provide this property when you create the resource.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Fingerprint of this resource. A hash of the contents stored in this object. This
   /// field is used in optimistic locking. An up-to-date fingerprint must be provided in order to patch.
-  final pulumi.Input<String>? fingerprint;
+  final pulumi.Input<String?>? fingerprint;
   /// Type of the resource.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The URL of the network which the Network Attachment belongs to. Practically it is inferred by fetching the network of the first subnetwork associated.
   /// Because it is required that all the subnetworks must be from the same network, it is assured that the Network Attachment belongs to the same network as all the subnetworks.
-  final pulumi.Input<String>? network;
+  final pulumi.Input<String?>? network;
   /// Projects that are allowed to connect to this network attachment. The project can be specified using its id or number.
-  final pulumi.Input<List<String>>? producerAcceptLists;
+  final pulumi.Input<List<String>?>? producerAcceptLists;
   /// Projects that are not allowed to connect to this network attachment. The project can be specified using its id or number.
-  final pulumi.Input<List<String>>? producerRejectLists;
+  final pulumi.Input<List<String>?>? producerRejectLists;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// URL of the region where the network attachment resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Server-defined URL for the resource.
-  final pulumi.Input<String>? selfLink;
+  final pulumi.Input<String?>? selfLink;
   /// Server-defined URL for this resource's resource id.
-  final pulumi.Input<String>? selfLinkWithId;
+  final pulumi.Input<String?>? selfLinkWithId;
   /// An array of URLs where each entry is the URL of a subnet provided by the service consumer to use for endpoints in the producers that connect to this network attachment.
-  final pulumi.Input<List<String>>? subnetworks;
+  final pulumi.Input<List<String>?>? subnetworks;
 
   /// Creates a new [NetworkAttachmentState].
   /// [connectionEndpoints] An array of connections for all the producers connected to this network attachment.

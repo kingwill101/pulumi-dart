@@ -8,7 +8,7 @@ import 'environment_iam_binding_condition.dart';
 /// {@endtemplate}
 /// {@macro pulumi_apigee_environment_iam_binding_environment_iam_binding_args_doc}
 class EnvironmentIamBindingArgs {
-  final pulumi.Input<EnvironmentIamBindingCondition>? condition;
+  final pulumi.Input<EnvironmentIamBindingCondition?>? condition;
   /// Used to find the parent resource to bind the IAM policy to
   final pulumi.Input<String> envId;
   /// Identities that will be granted the privilege in `role`.

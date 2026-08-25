@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterNodeConfigLinuxNodeConfigSwapConfigBootDiskProfile {
   /// Specifies the size of the swap space in gibibytes (GiB).
-  final pulumi.Input<int>? swapSizeGib;
+  final pulumi.Input<int?>? swapSizeGib;
   /// Specifies the size of the swap space as a percentage of the boot disk size.
-  final pulumi.Input<int>? swapSizePercent;
+  final pulumi.Input<int?>? swapSizePercent;
 
   /// Creates a new [ClusterNodeConfigLinuxNodeConfigSwapConfigBootDiskProfile].
   /// [swapSizeGib] Specifies the size of the swap space in gibibytes (GiB).
@@ -25,8 +25,8 @@ class ClusterNodeConfigLinuxNodeConfigSwapConfigBootDiskProfile {
 
   factory ClusterNodeConfigLinuxNodeConfigSwapConfigBootDiskProfile.fromMap(Map<String, dynamic> map) {
     return ClusterNodeConfigLinuxNodeConfigSwapConfigBootDiskProfile(
-      swapSizeGib: (() { final guardedValue = map['swapSizeGib']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      swapSizePercent: (() { final guardedValue = map['swapSizePercent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      swapSizeGib: (() { final guardedValue = map['swapSizeGib']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      swapSizePercent: (() { final guardedValue = map['swapSizePercent']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

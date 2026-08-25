@@ -5,9 +5,9 @@ import 'delivery_pipeline_serial_pipeline_stage_strategy_standard_postdeploy_tas
 
 class DeliveryPipelineSerialPipelineStageStrategyStandardPostdeploy {
   /// Optional. A sequence of skaffold custom actions to invoke during execution of the postdeploy job.
-  final pulumi.Input<List<String>>? actions;
+  final pulumi.Input<List<String>?>? actions;
   /// Optional. The tasks that will run as a part of the postdeploy job. Only one of `actions` or `tasks` can be specified.
-  final pulumi.Input<List<DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTask>>? tasks;
+  final pulumi.Input<List<DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTask>?>? tasks;
 
   /// Creates a new [DeliveryPipelineSerialPipelineStageStrategyStandardPostdeploy].
   /// [actions] Optional. A sequence of skaffold custom actions to invoke during execution of the postdeploy job.

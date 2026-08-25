@@ -10,36 +10,36 @@ import 'prevention_inspect_template_inspect_config_rule_set.dart';
 class PreventionInspectTemplateInspectConfig {
   /// List of options defining data content to scan. If empty, text, images, and other content will be included.
   /// Each value may be one of: `CONTENT_TEXT`, `CONTENT_IMAGE`.
-  final pulumi.Input<List<String>>? contentOptions;
+  final pulumi.Input<List<String>?>? contentOptions;
   /// Custom info types to be used. See https://cloud.google.com/dlp/docs/creating-custom-infotypes to learn more.
   /// Structure is documented below.
-  final pulumi.Input<List<PreventionInspectTemplateInspectConfigCustomInfoType>>? customInfoTypes;
+  final pulumi.Input<List<PreventionInspectTemplateInspectConfigCustomInfoType>?>? customInfoTypes;
   /// When true, excludes type information of the findings.
-  final pulumi.Input<bool>? excludeInfoTypes;
+  final pulumi.Input<bool?>? excludeInfoTypes;
   /// When true, a contextual quote from the data that triggered a finding is included in the response.
-  final pulumi.Input<bool>? includeQuote;
+  final pulumi.Input<bool?>? includeQuote;
   /// Restricts what infoTypes to look for. The values must correspond to InfoType values returned by infoTypes.list
   /// or listed at https://cloud.google.com/dlp/docs/infotypes-reference.
   /// When no InfoTypes or CustomInfoTypes are specified in a request, the system may automatically choose what detectors to run.
   /// By default this may be all types, but may change over time as detectors are updated.
   /// Structure is documented below.
-  final pulumi.Input<List<PreventionInspectTemplateInspectConfigInfoType>>? infoTypes;
+  final pulumi.Input<List<PreventionInspectTemplateInspectConfigInfoType>?>? infoTypes;
   /// Configuration to control the number of findings returned.
   /// Structure is documented below.
-  final pulumi.Input<PreventionInspectTemplateInspectConfigLimits>? limits;
+  final pulumi.Input<PreventionInspectTemplateInspectConfigLimits?>? limits;
   /// Only returns findings equal or above this threshold. See https://cloud.google.com/dlp/docs/likelihood for more info
   /// Default value is `POSSIBLE`.
   /// Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
-  final pulumi.Input<String>? minLikelihood;
+  final pulumi.Input<String?>? minLikelihood;
   /// Minimum likelihood per infotype. For each infotype, a user can specify a minimum likelihood.
   /// The system only returns a finding if its likelihood is above this threshold. If this field
   /// is not set, the system uses the InspectConfig min_likelihood.
   /// Structure is documented below.
-  final pulumi.Input<List<PreventionInspectTemplateInspectConfigMinLikelihoodPerInfoType>>? minLikelihoodPerInfoTypes;
+  final pulumi.Input<List<PreventionInspectTemplateInspectConfigMinLikelihoodPerInfoType>?>? minLikelihoodPerInfoTypes;
   /// Set of rules to apply to the findings for this InspectConfig. Exclusion rules, contained in the set are executed in the end,
   /// other rules are executed in the order they are specified for each info type.
   /// Structure is documented below.
-  final pulumi.Input<List<PreventionInspectTemplateInspectConfigRuleSet>>? ruleSets;
+  final pulumi.Input<List<PreventionInspectTemplateInspectConfigRuleSet>?>? ruleSets;
 
   /// Creates a new [PreventionInspectTemplateInspectConfig].
   /// [contentOptions] List of options defining data content to scan. If empty, text, images, and other content will be included.

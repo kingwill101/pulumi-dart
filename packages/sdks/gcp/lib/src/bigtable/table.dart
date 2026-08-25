@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'table_args.dart';
 import 'table_automated_backup_policy.dart';
+import 'table_column_family.dart';
 import 'table_state.dart';
 
 /// Creates a Google Cloud Bigtable table inside an instance. For more information see
@@ -443,7 +444,7 @@ class Table extends pulumi.CustomResource {
   /// Duration to retain change stream data for the table. Set to 0 to disable. Must be between 1 and 7 days.
   late final pulumi.Output<String> changeStreamRetention;
   /// A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> columnFamilies;
+  late final pulumi.Output<List<TableColumnFamily>?> columnFamilies;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -486,18 +487,18 @@ class Table extends pulumi.CustomResource {
           'gcp:bigtable/table:Table',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     automatedBackupPolicy = registerOutput<TableAutomatedBackupPolicy>('automatedBackupPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TableAutomatedBackupPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     changeStreamRetention = registerOutput<String>('changeStreamRetention');
-    columnFamilies = registerOutput<List<Map<String, dynamic>>?>('columnFamilies');
+    columnFamilies = registerOutput<List<TableColumnFamily>?>('columnFamilies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TableColumnFamily>(guardedValue, (value) => TableColumnFamily.fromMap((value as Map).cast<String, dynamic>())); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     deletionProtection = registerOutput<String>('deletionProtection');
     instanceName = registerOutput<String>('instanceName');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     rowKeySchema = registerOutput<String?>('rowKeySchema');
-    splitKeys = registerOutput<List<String>?>('splitKeys');
+    splitKeys = registerOutput<List<String>?>('splitKeys', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [Table] resource's state with the given [name] and [id].
@@ -505,11 +506,12 @@ class Table extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TableState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Table._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -525,13 +527,34 @@ class Table extends pulumi.CustomResource {
         ) {
     automatedBackupPolicy = registerOutput<TableAutomatedBackupPolicy>('automatedBackupPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TableAutomatedBackupPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     changeStreamRetention = registerOutput<String>('changeStreamRetention');
-    columnFamilies = registerOutput<List<Map<String, dynamic>>?>('columnFamilies');
+    columnFamilies = registerOutput<List<TableColumnFamily>?>('columnFamilies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TableColumnFamily>(guardedValue, (value) => TableColumnFamily.fromMap((value as Map).cast<String, dynamic>())); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     deletionProtection = registerOutput<String>('deletionProtection');
     instanceName = registerOutput<String>('instanceName');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     rowKeySchema = registerOutput<String?>('rowKeySchema');
-    splitKeys = registerOutput<List<String>?>('splitKeys');
+    splitKeys = registerOutput<List<String>?>('splitKeys', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Table] resource.
+  Table.reference(String urn)
+    : super(
+        'gcp:bigtable/table:Table',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    automatedBackupPolicy = registerOutput<TableAutomatedBackupPolicy>('automatedBackupPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TableAutomatedBackupPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    changeStreamRetention = registerOutput<String>('changeStreamRetention');
+    columnFamilies = registerOutput<List<TableColumnFamily>?>('columnFamilies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TableColumnFamily>(guardedValue, (value) => TableColumnFamily.fromMap((value as Map).cast<String, dynamic>())); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    deletionProtection = registerOutput<String>('deletionProtection');
+    instanceName = registerOutput<String>('instanceName');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    rowKeySchema = registerOutput<String?>('rowKeySchema');
+    splitKeys = registerOutput<List<String>?>('splitKeys', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

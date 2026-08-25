@@ -21,25 +21,25 @@ class AgentArgs {
   /// are given in the list. If a callback returns an overridden response,
   /// execution stops and any remaining callbacks are skipped.
   /// Structure is documented below.
-  final pulumi.Input<List<AgentAfterAgentCallback>>? afterAgentCallbacks;
+  final pulumi.Input<List<AgentAfterAgentCallback>?>? afterAgentCallbacks;
   /// The callbacks to execute after the model is called. If there are multiple
   /// calls to the model, the callback will be executed multiple times.
   /// The provided callbacks are executed sequentially in the exact order they
   /// are given in the list. If a callback returns an overridden response,
   /// execution stops and any remaining callbacks are skipped.
   /// Structure is documented below.
-  final pulumi.Input<List<AgentAfterModelCallback>>? afterModelCallbacks;
+  final pulumi.Input<List<AgentAfterModelCallback>?>? afterModelCallbacks;
   /// The callbacks to execute after the tool is invoked. If there are multiple
   /// tool invocations, the callback will be executed multiple times.
   /// The provided callbacks are executed sequentially in the exact order they
   /// are given in the list. If a callback returns an overridden response,
   /// execution stops and any remaining callbacks are skipped.
   /// Structure is documented below.
-  final pulumi.Input<List<AgentAfterToolCallback>>? afterToolCallbacks;
+  final pulumi.Input<List<AgentAfterToolCallback>?>? afterToolCallbacks;
   /// The ID to use for the agent, which will become the final component of
   /// the agent's resource name. If not provided, a unique ID will be
   /// automatically assigned for the agent.
-  final pulumi.Input<String>? agentId;
+  final pulumi.Input<String?>? agentId;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final pulumi.Input<String> app;
   /// The callbacks to execute before the agent is called.
@@ -47,65 +47,65 @@ class AgentArgs {
   /// are given in the list. If a callback returns an overridden response,
   /// execution stops and any remaining callbacks are skipped.
   /// Structure is documented below.
-  final pulumi.Input<List<AgentBeforeAgentCallback>>? beforeAgentCallbacks;
+  final pulumi.Input<List<AgentBeforeAgentCallback>?>? beforeAgentCallbacks;
   /// The callbacks to execute before the model is called. If there are multiple
   /// calls to the model, the callback will be executed multiple times.
   /// The provided callbacks are executed sequentially in the exact order they
   /// are given in the list. If a callback returns an overridden response,
   /// execution stops and any remaining callbacks are skipped.
   /// Structure is documented below.
-  final pulumi.Input<List<AgentBeforeModelCallback>>? beforeModelCallbacks;
+  final pulumi.Input<List<AgentBeforeModelCallback>?>? beforeModelCallbacks;
   /// The callbacks to execute before the tool is invoked. If there are multiple
   /// tool invocations, the callback will be executed multiple times.
   /// The provided callbacks are executed sequentially in the exact order they
   /// are given in the list. If a callback returns an overridden response,
   /// execution stops and any remaining callbacks are skipped.
   /// Structure is documented below.
-  final pulumi.Input<List<AgentBeforeToolCallback>>? beforeToolCallbacks;
+  final pulumi.Input<List<AgentBeforeToolCallback>?>? beforeToolCallbacks;
   /// List of child agents in the agent tree.
   /// Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
-  final pulumi.Input<List<String>>? childAgents;
+  final pulumi.Input<List<String>?>? childAgents;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Human-readable description of the agent.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Display name of the agent.
   final pulumi.Input<String> displayName;
   /// List of guardrails for the agent.
   /// Format:
   /// `projects/{project}/locations/{location}/apps/{app}/guardrails/{guardrail}`
-  final pulumi.Input<List<String>>? guardrails;
+  final pulumi.Input<List<String>?>? guardrails;
   /// Instructions for the LLM model to guide the agent's behavior.
-  final pulumi.Input<String>? instruction;
+  final pulumi.Input<String?>? instruction;
   /// Default agent type. The agent uses instructions and callbacks specified in
   /// the agent to perform the task using a large language model.
-  final pulumi.Input<Map<String, dynamic>>? llmAgent;
+  final pulumi.Input<Map<String, dynamic>?>? llmAgent;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final pulumi.Input<String> location;
   /// Model settings contains various configurations for the LLM model.
   /// Structure is documented below.
-  final pulumi.Input<AgentModelSettings>? modelSettings;
+  final pulumi.Input<AgentModelSettings?>? modelSettings;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The agent which will transfer execution to an existing remote
   /// [Dialogflow](https://cloud.google.com/dialogflow/cx/docs/concept/console-conversational-agents)
   /// agent flow. The corresponding Dialogflow agent will process subsequent user
   /// queries until the session ends or flow ends and the control is transferred
   /// back to the parent CES agent.
   /// Structure is documented below.
-  final pulumi.Input<AgentRemoteDialogflowAgent>? remoteDialogflowAgent;
+  final pulumi.Input<AgentRemoteDialogflowAgent?>? remoteDialogflowAgent;
   /// List of available tools for the agent.
   /// Format: `projects/{project}/locations/{location}/apps/{app}/tools/{tool}`
-  final pulumi.Input<List<String>>? tools;
+  final pulumi.Input<List<String>?>? tools;
   /// List of toolsets for the agent.
   /// Structure is documented below.
-  final pulumi.Input<List<AgentToolset>>? toolsets;
+  final pulumi.Input<List<AgentToolset>?>? toolsets;
 
   /// Creates a new [AgentArgs].
   /// [afterAgentCallbacks] The callbacks to execute after the agent is called.

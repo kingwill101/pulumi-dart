@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GlobalVmExtensionPolicyInstanceSelectorLabelSelector {
   /// Labels as key value pairs.
-  final pulumi.Input<Map<String, String>>? inclusionLabels;
+  final pulumi.Input<Map<String, String>?>? inclusionLabels;
 
   /// Creates a new [GlobalVmExtensionPolicyInstanceSelectorLabelSelector].
   /// [inclusionLabels] Labels as key value pairs.

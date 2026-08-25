@@ -3,11 +3,11 @@
 import 'package:pulumi_config_grpc/index.dart' as module_index;
 import 'package:pulumi_config_grpc/providers.dart' as module_providers;
 
-final index = const _IndexModuleNamespace();
-final providers = const _ProvidersModuleNamespace();
+final index = _IndexModuleNamespace();
+final providers = _ProvidersModuleNamespace();
 
 class _IndexModuleNamespace {
-  const _IndexModuleNamespace();
+  _IndexModuleNamespace();
   final ConfigFetcher = module_index.ConfigFetcher.new;
   final Tbool1 = module_index.Tbool1.new;
   final Tbool1Args = module_index.Tbool1.new;
@@ -64,7 +64,7 @@ class _IndexModuleNamespace {
 }
 
 class _ProvidersModuleNamespace {
-  const _ProvidersModuleNamespace();
+  _ProvidersModuleNamespace();
   final ConfigGrpc = module_providers.ProviderProvider.new;
   final ConfigGrpcArgs = module_providers.ProviderArgs.new;
   final ProviderArgs = module_providers.ProviderArgs.new;

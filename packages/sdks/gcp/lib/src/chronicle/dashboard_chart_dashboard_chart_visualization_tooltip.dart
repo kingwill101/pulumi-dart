@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DashboardChartDashboardChartVisualizationTooltip {
   /// (Optional)
-  final pulumi.Input<bool>? show;
+  final pulumi.Input<bool?>? show;
   /// Possible values are: `TOOLTIP_TRIGGER_UNSPECIFIED`, `TOOLTIP_TRIGGER_NONE`, `TOOLTIP_TRIGGER_ITEM`, `TOOLTIP_TRIGGER_AXIS`.
-  final pulumi.Input<String>? tooltipTrigger;
+  final pulumi.Input<String?>? tooltipTrigger;
 
   /// Creates a new [DashboardChartDashboardChartVisualizationTooltip].
   /// [show] (Optional)

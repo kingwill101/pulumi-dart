@@ -11,23 +11,23 @@ import 'topic_ingestion_data_source_settings_platform_logs_settings.dart';
 class TopicIngestionDataSourceSettings {
   /// Settings for ingestion from Amazon Kinesis Data Streams.
   /// Structure is documented below.
-  final pulumi.Input<TopicIngestionDataSourceSettingsAwsKinesis>? awsKinesis;
+  final pulumi.Input<TopicIngestionDataSourceSettingsAwsKinesis?>? awsKinesis;
   /// Settings for ingestion from Amazon Managed Streaming for Apache Kafka.
   /// Structure is documented below.
-  final pulumi.Input<TopicIngestionDataSourceSettingsAwsMsk>? awsMsk;
+  final pulumi.Input<TopicIngestionDataSourceSettingsAwsMsk?>? awsMsk;
   /// Settings for ingestion from Azure Event Hubs.
   /// Structure is documented below.
-  final pulumi.Input<TopicIngestionDataSourceSettingsAzureEventHubs>? azureEventHubs;
+  final pulumi.Input<TopicIngestionDataSourceSettingsAzureEventHubs?>? azureEventHubs;
   /// Settings for ingestion from Cloud Storage.
   /// Structure is documented below.
-  final pulumi.Input<TopicIngestionDataSourceSettingsCloudStorage>? cloudStorage;
+  final pulumi.Input<TopicIngestionDataSourceSettingsCloudStorage?>? cloudStorage;
   /// Settings for ingestion from Confluent Cloud.
   /// Structure is documented below.
-  final pulumi.Input<TopicIngestionDataSourceSettingsConfluentCloud>? confluentCloud;
+  final pulumi.Input<TopicIngestionDataSourceSettingsConfluentCloud?>? confluentCloud;
   /// Settings for Platform Logs regarding ingestion to Pub/Sub. If unset,
   /// no Platform Logs will be generated.'
   /// Structure is documented below.
-  final pulumi.Input<TopicIngestionDataSourceSettingsPlatformLogsSettings>? platformLogsSettings;
+  final pulumi.Input<TopicIngestionDataSourceSettingsPlatformLogsSettings?>? platformLogsSettings;
 
   /// Creates a new [TopicIngestionDataSourceSettings].
   /// [awsKinesis] Settings for ingestion from Amazon Kinesis Data Streams.

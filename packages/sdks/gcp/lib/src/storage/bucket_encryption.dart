@@ -7,9 +7,9 @@ import 'bucket_encryption_google_managed_encryption_enforcement_config.dart';
 
 class BucketEncryption {
   /// If omitted, then new objects with CMEK encryption-type is allowed. If set, then new objects created in this bucket must comply with enforcement config. Changing this has no effect on existing objects; it applies to new objects only, Structure is documented below documented below.
-  final pulumi.Input<BucketEncryptionCustomerManagedEncryptionEnforcementConfig>? customerManagedEncryptionEnforcementConfig;
+  final pulumi.Input<BucketEncryptionCustomerManagedEncryptionEnforcementConfig?>? customerManagedEncryptionEnforcementConfig;
   /// If omitted, then new objects with CSEK encryption-type is allowed. If set, then new objects created in this bucket must comply with enforcement config. Changing this has no effect on existing objects; it applies to new objects only, Structure is documented below documented below.
-  final pulumi.Input<BucketEncryptionCustomerSuppliedEncryptionEnforcementConfig>? customerSuppliedEncryptionEnforcementConfig;
+  final pulumi.Input<BucketEncryptionCustomerSuppliedEncryptionEnforcementConfig?>? customerSuppliedEncryptionEnforcementConfig;
   /// The `id` of a Cloud KMS key that will be used to encrypt objects inserted into this bucket, if no encryption method is specified.
   /// You must pay attention to whether the crypto key is available in the location that this bucket is created in.
   /// See [the docs](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) for more details.
@@ -24,9 +24,9 @@ class BucketEncryption {
   /// This data source calls an API which creates the account if required, ensuring your provider applies cleanly and repeatedly irrespective of the
   /// state of the project.
   /// You should take care for race conditions when the same provider manages IAM policy on the Cloud KMS crypto key. See the data source page for more details.
-  final pulumi.Input<String>? defaultKmsKeyName;
+  final pulumi.Input<String?>? defaultKmsKeyName;
   /// If omitted, then new objects with GMEK encryption-type is allowed. If set, then new objects created in this bucket must comply with enforcement config. Changing this has no effect on existing objects; it applies to new objects only, Structure is documented below documented below.
-  final pulumi.Input<BucketEncryptionGoogleManagedEncryptionEnforcementConfig>? googleManagedEncryptionEnforcementConfig;
+  final pulumi.Input<BucketEncryptionGoogleManagedEncryptionEnforcementConfig?>? googleManagedEncryptionEnforcementConfig;
 
   /// Creates a new [BucketEncryption].
   /// [customerManagedEncryptionEnforcementConfig] If omitted, then new objects with CMEK encryption-type is allowed. If set, then new objects created in this bucket must comply with enforcement config. Changing this has no effect on existing objects; it applies to new objects only, Structure is documented below documented below.

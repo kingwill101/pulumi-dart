@@ -9,46 +9,46 @@ import 'security_policy_rule.dart';
 /// Input properties used for looking up and filtering SecurityPolicy resources.
 class SecurityPolicyState {
   /// Configuration for [Google Cloud Armor Adaptive Protection](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
-  final pulumi.Input<SecurityPolicyAdaptiveProtectionConfig>? adaptiveProtectionConfig;
+  final pulumi.Input<SecurityPolicyAdaptiveProtectionConfig?>? adaptiveProtectionConfig;
   /// [Advanced Configuration Options](https://cloud.google.com/armor/docs/security-policy-overview#json-parsing).
   /// Structure is documented below.
-  final pulumi.Input<SecurityPolicyAdvancedOptionsConfig>? advancedOptionsConfig;
+  final pulumi.Input<SecurityPolicyAdvancedOptionsConfig?>? advancedOptionsConfig;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// An optional description of this security policy. Max size is 2048.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveLabels;
+  final pulumi.Input<Map<String, String>?>? effectiveLabels;
   /// Fingerprint of this resource.
-  final pulumi.Input<String>? fingerprint;
+  final pulumi.Input<String?>? fingerprint;
   /// The unique fingerprint of the labels.
-  final pulumi.Input<String>? labelFingerprint;
+  final pulumi.Input<String?>? labelFingerprint;
   /// Labels to apply to this address. A list of key-&gt;value pairs.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The name of the security policy.
   ///
   /// - - -
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The project in which the resource belongs. If it
   /// is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The combination of labels configured directly on the resource and default labels configured on the provider.
-  final pulumi.Input<Map<String, String>>? pulumiLabels;
+  final pulumi.Input<Map<String, String>?>? pulumiLabels;
   /// [reCAPTCHA Configuration Options](https://cloud.google.com/armor/docs/configure-security-policies?hl=en#use_a_manual_challenge_to_distinguish_between_human_or_automated_clients). Structure is documented below.
-  final pulumi.Input<SecurityPolicyRecaptchaOptionsConfig>? recaptchaOptionsConfig;
+  final pulumi.Input<SecurityPolicyRecaptchaOptionsConfig?>? recaptchaOptionsConfig;
   /// The set of rules that belong to this policy. There must always be a default
   /// rule (rule with priority 2147483647 and match "\*"). If no rules are provided when creating a
   /// security policy, a default rule with action "allow" will be added. Structure is documented below.
-  final pulumi.Input<List<SecurityPolicyRule>>? rules;
+  final pulumi.Input<List<SecurityPolicyRule>?>? rules;
   /// The URI of the created resource.
-  final pulumi.Input<String>? selfLink;
+  final pulumi.Input<String?>? selfLink;
   /// The type indicates the intended use of the security policy. This field can be set only at resource creation time.
   /// * `CLOUD_ARMOR` - Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services.
   /// They filter requests before they hit the origin servers.
@@ -57,7 +57,7 @@ class SecurityPolicyState {
   /// They filter requests before the request is served from Google's cache.
   /// * `CLOUD_ARMOR_INTERNAL_SERVICE` - Cloud Armor internal service policies can be configured to filter HTTP requests targeting services
   /// managed by Traffic Director in a service mesh. They filter requests before the request is served from the application.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [SecurityPolicyState].
   /// [adaptiveProtectionConfig] Configuration for [Google Cloud Armor Adaptive Protection](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.

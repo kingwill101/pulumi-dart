@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DashboardChartDashboardChartVisualizationSeriesEncode {
   /// (Optional)
-  final pulumi.Input<String>? itemName;
+  final pulumi.Input<String?>? itemName;
   /// (Optional)
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
   /// (Optional)
-  final pulumi.Input<String>? x;
+  final pulumi.Input<String?>? x;
   /// (Optional)
-  final pulumi.Input<String>? y;
+  final pulumi.Input<String?>? y;
 
   /// Creates a new [DashboardChartDashboardChartVisualizationSeriesEncode].
   /// [itemName] (Optional)

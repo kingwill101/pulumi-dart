@@ -1,15 +1,30 @@
-// ignore_for_file: unused_import
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'package:pulumi_cloudflare/pulumi_cloudflare.dart' as provider;
 
-class ExampleStack extends pulumi.Stack {
-  ExampleStack() {
-    // Add resources from package:pulumi_cloudflare.
-    // Example:
-    // final resource = provider.YourResource("example");
+import 'package:pulumi_cloudflare/index.dart' as pulumi_cloudflare_index;
+
+class CloudflareStack extends pulumi.Stack {
+  late final List<pulumi.OutputProperty> _outputProperties;
+
+  CloudflareStack() {
+    final account = pulumi_cloudflare_index.Account(
+      'account',
+      args: pulumi_cloudflare_index.AccountArgs(
+        name: pulumi.Input.asInput('pulumi-dart-example'),
+      ),
+    );
+
+    _outputProperties = [
+      pulumi.OutputProperty(
+        'accountId',
+        pulumi.output(account.id).apply<Object?>((value) => value),
+      ),
+    ];
   }
+
+  @override
+  List<pulumi.OutputProperty> getOutputProperties() => _outputProperties;
 }
 
 Future<void> main() async {
-  await pulumi.Deployment.runOrThrow(() => ExampleStack());
+  await pulumi.Deployment.runOrThrow(() => CloudflareStack());
 }

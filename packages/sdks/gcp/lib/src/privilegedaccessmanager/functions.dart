@@ -139,3 +139,14 @@ Future<GetEntitlementResult> getEntitlement(
   );
   return GetEntitlementResult.fromMap(result);
 }
+
+pulumi.Output<GetEntitlementResult> getEntitlementOutput(
+  GetEntitlementArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:privilegedaccessmanager/getEntitlement:getEntitlement',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEntitlementResult.fromMap);
+}

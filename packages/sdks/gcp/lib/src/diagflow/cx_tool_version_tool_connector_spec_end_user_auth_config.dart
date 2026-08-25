@@ -7,13 +7,13 @@ import 'cx_tool_version_tool_connector_spec_end_user_auth_config_oauth2_jwt_bear
 class CxToolVersionToolConnectorSpecEndUserAuthConfig {
   /// Oauth 2.0 Authorization Code authentication. This field is part of a union field `endUserAuthConfig`. Only one of `oauth2AuthCodeConfig` or `oauth2JwtBearerConfig` may be set.
   /// Structure is documented below.
-  final pulumi.Input<CxToolVersionToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfig>? oauth2AuthCodeConfig;
+  final pulumi.Input<CxToolVersionToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfig?>? oauth2AuthCodeConfig;
   /// JWT Profile Oauth 2.0 Authorization Grant authentication.. This field is part of a union field `endUserAuthConfig`. Only one of `oauth2AuthCodeConfig` or `oauth2JwtBearerConfig` may be set.
   /// Structure is documented below.
   ///
   ///
   /// &lt;a name="nestedToolConnectorSpecEndUserAuthConfigOauth2AuthCodeConfig"&gt;&lt;/a&gt;The `oauth2AuthCodeConfig` block supports:
-  final pulumi.Input<CxToolVersionToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfig>? oauth2JwtBearerConfig;
+  final pulumi.Input<CxToolVersionToolConnectorSpecEndUserAuthConfigOauth2JwtBearerConfig?>? oauth2JwtBearerConfig;
 
   /// Creates a new [CxToolVersionToolConnectorSpecEndUserAuthConfig].
   /// [oauth2AuthCodeConfig] Oauth 2.0 Authorization Code authentication. This field is part of a union field `endUserAuthConfig`. Only one of `oauth2AuthCodeConfig` or `oauth2JwtBearerConfig` may be set.

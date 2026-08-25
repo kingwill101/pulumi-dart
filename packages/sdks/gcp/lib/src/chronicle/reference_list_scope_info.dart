@@ -6,7 +6,7 @@ import 'reference_list_scope_info_reference_list_scope.dart';
 class ReferenceListScopeInfo {
   /// ReferenceListScope specifies the list of scope names of the reference list.
   /// Structure is documented below.
-  final pulumi.Input<ReferenceListScopeInfoReferenceListScope>? referenceListScope;
+  final pulumi.Input<ReferenceListScopeInfoReferenceListScope?>? referenceListScope;
 
   /// Creates a new [ReferenceListScopeInfo].
   /// [referenceListScope] ReferenceListScope specifies the list of scope names of the reference list.

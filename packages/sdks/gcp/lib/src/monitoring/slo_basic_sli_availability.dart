@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SloBasicSliAvailability {
   /// Whether an availability SLI is enabled or not. Must be set to `true. Defaults to `true`.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
 
   /// Creates a new [SloBasicSliAvailability].
   /// [enabled] Whether an availability SLI is enabled or not. Must be set to `true. Defaults to `true`.

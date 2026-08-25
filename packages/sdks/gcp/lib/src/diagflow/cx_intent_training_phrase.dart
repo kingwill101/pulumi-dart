@@ -6,7 +6,7 @@ import 'cx_intent_training_phrase_part.dart';
 class CxIntentTrainingPhrase {
   /// (Output)
   /// The unique identifier of the training phrase.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The ordered list of training phrase parts. The parts are concatenated in order to form the training phrase.
   /// Note: The API does not automatically annotate training phrases like the Dialogflow Console does.
   /// Note: Do not forget to include whitespace at part boundaries, so the training phrase is well formatted when the parts are concatenated.
@@ -17,7 +17,7 @@ class CxIntentTrainingPhrase {
   /// Structure is documented below.
   final pulumi.Input<List<CxIntentTrainingPhrasePart>> parts;
   /// Indicates how many times this example was added to the intent.
-  final pulumi.Input<int>? repeatCount;
+  final pulumi.Input<int?>? repeatCount;
 
   /// Creates a new [CxIntentTrainingPhrase].
   /// [id] (Output)
@@ -41,7 +41,7 @@ class CxIntentTrainingPhrase {
     return CxIntentTrainingPhrase(
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       parts: pulumi.Input.fromValue(pulumi.Input.decodeList<CxIntentTrainingPhrasePart>(map['parts']!, (value) => CxIntentTrainingPhrasePart.fromMap((value as Map).cast<String, dynamic>()))),
-      repeatCount: (() { final guardedValue = map['repeatCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      repeatCount: (() { final guardedValue = map['repeatCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

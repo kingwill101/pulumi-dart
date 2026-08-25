@@ -6,9 +6,9 @@ import 'connection_eventing_config_registration_destination_config_destination.d
 class ConnectionEventingConfigRegistrationDestinationConfig {
   /// destinations for the connection
   /// Structure is documented below.
-  final pulumi.Input<List<ConnectionEventingConfigRegistrationDestinationConfigDestination>>? destinations;
+  final pulumi.Input<List<ConnectionEventingConfigRegistrationDestinationConfigDestination>?>? destinations;
   /// Key for the connection
-  final pulumi.Input<String>? key;
+  final pulumi.Input<String?>? key;
 
   /// Creates a new [ConnectionEventingConfigRegistrationDestinationConfig].
   /// [destinations] destinations for the connection

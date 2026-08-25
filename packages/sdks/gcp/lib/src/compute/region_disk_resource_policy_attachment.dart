@@ -493,7 +493,7 @@ class RegionDiskResourcePolicyAttachment extends pulumi.CustomResource {
           'gcp:compute/regionDiskResourcePolicyAttachment:RegionDiskResourcePolicyAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     disk = registerOutput<String>('disk');
@@ -507,11 +507,12 @@ class RegionDiskResourcePolicyAttachment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RegionDiskResourcePolicyAttachmentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RegionDiskResourcePolicyAttachment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -525,6 +526,22 @@ class RegionDiskResourcePolicyAttachment extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    disk = registerOutput<String>('disk');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [RegionDiskResourcePolicyAttachment] resource.
+  RegionDiskResourcePolicyAttachment.reference(String urn)
+    : super(
+        'gcp:compute/regionDiskResourcePolicyAttachment:RegionDiskResourcePolicyAttachment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     disk = registerOutput<String>('disk');
     this.name = registerOutput<String>('name');

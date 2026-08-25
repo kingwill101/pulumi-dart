@@ -5,30 +5,30 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering ServingConfig resources.
 class ServingConfigState {
   /// The resource IDs of the boost controls to be applied.
-  final pulumi.Input<List<String>>? boostControlIds;
+  final pulumi.Input<List<String>?>? boostControlIds;
   /// The collection ID. Currently only accepts "defaultCollection".
-  final pulumi.Input<String>? collectionId;
+  final pulumi.Input<String?>? collectionId;
   /// The ID of the engine associated with the serving config.
-  final pulumi.Input<String>? engineId;
+  final pulumi.Input<String?>? engineId;
   /// The resource IDs of the filter controls to be applied.
-  final pulumi.Input<List<String>>? filterControlIds;
+  final pulumi.Input<List<String>?>? filterControlIds;
   /// The geographic location where the data store should reside. The value can
   /// only be one of "global", "us" and "eu".
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The unique full resource name of the serving config. Values are of the format
   /// `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}/servingConfigs/{serving_config_id}`.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The resource IDs of the promote controls to be applied.
-  final pulumi.Input<List<String>>? promoteControlIds;
+  final pulumi.Input<List<String>?>? promoteControlIds;
   /// The resource IDs of the redirect controls to be applied.
-  final pulumi.Input<List<String>>? redirectControlIds;
+  final pulumi.Input<List<String>?>? redirectControlIds;
   /// 'The unique ID of the serving config. Currently only accepts "defaultSearch".'
-  final pulumi.Input<String>? servingConfigId;
+  final pulumi.Input<String?>? servingConfigId;
   /// The resource IDs of the synonyms controls to be applied.
-  final pulumi.Input<List<String>>? synonymsControlIds;
+  final pulumi.Input<List<String>?>? synonymsControlIds;
 
   /// Creates a new [ServingConfigState].
   /// [boostControlIds] The resource IDs of the boost controls to be applied.

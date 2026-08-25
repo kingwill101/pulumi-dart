@@ -6,9 +6,9 @@ import 'vmware_admin_cluster_platform_config_bundle_status.dart';
 class VmwareAdminClusterPlatformConfigBundle {
   /// ResourceStatus representing detailed cluster state.
   /// Structure is documented below.
-  final pulumi.Input<List<VmwareAdminClusterPlatformConfigBundleStatus>>? statuses;
+  final pulumi.Input<List<VmwareAdminClusterPlatformConfigBundleStatus>?>? statuses;
   /// The version of the bundle.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [VmwareAdminClusterPlatformConfigBundle].
   /// [statuses] ResourceStatus representing detailed cluster state.

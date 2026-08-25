@@ -530,7 +530,7 @@ class InstancePartition extends pulumi.CustomResource {
           'gcp:spanner/instancePartition:InstancePartition',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     autoscalingConfig = registerOutput<InstancePartitionAutoscalingConfig?>('autoscalingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstancePartitionAutoscalingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     config = registerOutput<String>('config');
@@ -549,11 +549,12 @@ class InstancePartition extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     InstancePartitionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return InstancePartition._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -577,5 +578,26 @@ class InstancePartition extends pulumi.CustomResource {
     processingUnits = registerOutput<int>('processingUnits');
     project = registerOutput<String>('project');
     this.state = registerOutput<String>('state');
+  }
+
+  /// Creates a typed reference to an existing [InstancePartition] resource.
+  InstancePartition.reference(String urn)
+    : super(
+        'gcp:spanner/instancePartition:InstancePartition',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    autoscalingConfig = registerOutput<InstancePartitionAutoscalingConfig?>('autoscalingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstancePartitionAutoscalingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    config = registerOutput<String>('config');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    displayName = registerOutput<String>('displayName');
+    instance = registerOutput<String>('instance');
+    this.name = registerOutput<String>('name');
+    nodeCount = registerOutput<int>('nodeCount');
+    processingUnits = registerOutput<int>('processingUnits');
+    project = registerOutput<String>('project');
+    state = registerOutput<String>('state');
   }
 }

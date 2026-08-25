@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'ai_metadata_store_args.dart';
 import 'ai_metadata_store_encryption_spec.dart';
+import 'ai_metadata_store_state.dart';
 import 'ai_metadata_store_vertex_state.dart';
 
 /// Instance of a metadata store. Contains a set of metadata that can be queried.
@@ -176,7 +177,7 @@ class AiMetadataStore extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// State information of the MetadataStore.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> states;
+  late final pulumi.Output<List<AiMetadataStoreState>> states;
   /// The timestamp of when the MetadataStore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
   late final pulumi.Output<String> updateTime;
 
@@ -192,7 +193,7 @@ class AiMetadataStore extends pulumi.CustomResource {
           'gcp:vertex/aiMetadataStore:AiMetadataStore',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -201,7 +202,7 @@ class AiMetadataStore extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     region = registerOutput<String>('region');
-    states = registerOutput<List<Map<String, dynamic>>>('states');
+    states = registerOutput<List<AiMetadataStoreState>>('states', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AiMetadataStoreState>(guardedValue, (value) => AiMetadataStoreState.fromMap((value as Map).cast<String, dynamic>())); });
     updateTime = registerOutput<String>('updateTime');
   }
 
@@ -210,11 +211,12 @@ class AiMetadataStore extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AiMetadataStoreVertexState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AiMetadataStore._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -235,7 +237,27 @@ class AiMetadataStore extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     region = registerOutput<String>('region');
-    states = registerOutput<List<Map<String, dynamic>>>('states');
+    states = registerOutput<List<AiMetadataStoreState>>('states', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AiMetadataStoreState>(guardedValue, (value) => AiMetadataStoreState.fromMap((value as Map).cast<String, dynamic>())); });
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [AiMetadataStore] resource.
+  AiMetadataStore.reference(String urn)
+    : super(
+        'gcp:vertex/aiMetadataStore:AiMetadataStore',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    encryptionSpec = registerOutput<AiMetadataStoreEncryptionSpec?>('encryptionSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiMetadataStoreEncryptionSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+    states = registerOutput<List<AiMetadataStoreState>>('states', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AiMetadataStoreState>(guardedValue, (value) => AiMetadataStoreState.fromMap((value as Map).cast<String, dynamic>())); });
     updateTime = registerOutput<String>('updateTime');
   }
 }

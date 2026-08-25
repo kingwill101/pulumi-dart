@@ -15,33 +15,33 @@ class QueryTemplateArgs {
   /// * `DELETE`: Deletes the QueryTemplate from BigQuery.
   /// * `DELETE_IF_DRAFTED`: Deletes the QueryTemplate only if it is in a `DRAFTED` state; otherwise, it abandons it.
   /// * `PREVENT`: Prevents deletion of the QueryTemplate.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Short description of the QueryTemplate. The description must not contain
   /// Unicode non-characters and C0 and C1 control codes except tabs,
   /// new lines, carriage returns, and page breaks.
   /// Default value is an empty string. Max length: 2000 bytes.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Human-readable display name of the QueryTemplate. The display name must
   /// contain only Unicode letters, numbers (0-9), underscores (_), dashes (-),
   /// spaces ( ), ampersands (&) and can't start or end with spaces. Default
   /// value is an empty string.
   final pulumi.Input<String> displayName;
   /// Documentation describing the QueryTemplate.
-  final pulumi.Input<String>? documentation;
+  final pulumi.Input<String?>? documentation;
   /// The name of the location this data exchange query template.
   final pulumi.Input<String> location;
   /// Email or URL of the primary point of contact of the QueryTemplate.
-  final pulumi.Input<String>? primaryContact;
+  final pulumi.Input<String?>? primaryContact;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Unique QueryTemplate ID.
   final pulumi.Input<String> queryTemplateId;
   /// The routine associated with the QueryTemplate.
   /// Structure is documented below.
-  final pulumi.Input<QueryTemplateRoutine>? routine;
+  final pulumi.Input<QueryTemplateRoutine?>? routine;
   /// If set to `true`, the QueryTemplate will be submitted for approval and cannot be updated afterwards. This is a one-time action.
-  final pulumi.Input<bool>? submit;
+  final pulumi.Input<bool?>? submit;
 
   /// Creates a new [QueryTemplateArgs].
   /// [dataExchangeId] The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.

@@ -917,7 +917,7 @@ class GatewaySecurityPolicy extends pulumi.CustomResource {
           'gcp:networksecurity/gatewaySecurityPolicy:GatewaySecurityPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -935,11 +935,12 @@ class GatewaySecurityPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     GatewaySecurityPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return GatewaySecurityPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -953,6 +954,26 @@ class GatewaySecurityPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    selfLink = registerOutput<String>('selfLink');
+    tlsInspectionPolicy = registerOutput<String?>('tlsInspectionPolicy');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [GatewaySecurityPolicy] resource.
+  GatewaySecurityPolicy.reference(String urn)
+    : super(
+        'gcp:networksecurity/gatewaySecurityPolicy:GatewaySecurityPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');

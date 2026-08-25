@@ -8,7 +8,7 @@ class AiScheduleCreateNotebookExecutionJobRequest {
   /// Structure is documented below.
   final pulumi.Input<AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJob> notebookExecutionJob;
   /// User specified ID for the NotebookExecutionJob.
-  final pulumi.Input<String>? notebookExecutionJobId;
+  final pulumi.Input<String?>? notebookExecutionJobId;
   /// The resource name of the Location to create the NotebookExecutionJob. Format: `projects/{project}/locations/{location}`
   final pulumi.Input<String> parent;
 

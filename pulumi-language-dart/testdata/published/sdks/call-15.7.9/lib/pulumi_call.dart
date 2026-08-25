@@ -3,11 +3,11 @@
 import 'package:pulumi_call/index.dart' as module_index;
 import 'package:pulumi_call/providers.dart' as module_providers;
 
-final index = const _IndexModuleNamespace();
-final providers = const _ProvidersModuleNamespace();
+final index = _IndexModuleNamespace();
+final providers = _ProvidersModuleNamespace();
 
 class _IndexModuleNamespace {
-  const _IndexModuleNamespace();
+  _IndexModuleNamespace();
   final Custom = module_index.Custom.new;
   final CustomArgs = module_index.CustomArgs.new;
   final CustomProviderValueResult = module_index.CustomProviderValueResult.new;
@@ -19,7 +19,7 @@ class _IndexModuleNamespace {
 }
 
 class _ProvidersModuleNamespace {
-  const _ProvidersModuleNamespace();
+  _ProvidersModuleNamespace();
   final Call = module_providers.ProviderProvider.new;
   final CallArgs = module_providers.ProviderArgs.new;
   final IdentityArgs = module_providers.IdentityArgs.new;

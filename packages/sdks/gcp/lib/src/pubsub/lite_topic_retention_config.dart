@@ -11,7 +11,7 @@ class LiteTopicRetentionConfig {
   /// long as the bytes retained for each partition is below perPartitionBytes. A
   /// duration in seconds with up to nine fractional digits, terminated by 's'.
   /// Example: "3.5s".
-  final pulumi.Input<String>? period;
+  final pulumi.Input<String?>? period;
 
   /// Creates a new [LiteTopicRetentionConfig].
   /// [perPartitionBytes] The provisioned storage, in bytes, per partition. If the number of bytes stored

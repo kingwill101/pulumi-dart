@@ -6,7 +6,7 @@ import 'workstation_config_host_gce_instance.dart';
 class WorkstationConfigHost {
   /// A runtime using a Compute Engine instance.
   /// Structure is documented below.
-  final pulumi.Input<WorkstationConfigHostGceInstance>? gceInstance;
+  final pulumi.Input<WorkstationConfigHostGceInstance?>? gceInstance;
 
   /// Creates a new [WorkstationConfigHost].
   /// [gceInstance] A runtime using a Compute Engine instance.

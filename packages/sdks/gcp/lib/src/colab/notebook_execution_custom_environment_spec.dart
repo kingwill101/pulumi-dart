@@ -9,16 +9,16 @@ import 'notebook_execution_custom_environment_spec_shielded_instance_config.dart
 class NotebookExecutionCustomEnvironmentSpec {
   /// 'The machine configuration of the runtime.'
   /// Structure is documented below.
-  final pulumi.Input<NotebookExecutionCustomEnvironmentSpecMachineSpec>? machineSpec;
+  final pulumi.Input<NotebookExecutionCustomEnvironmentSpecMachineSpec?>? machineSpec;
   /// The network configuration for the runtime.
   /// Structure is documented below.
-  final pulumi.Input<NotebookExecutionCustomEnvironmentSpecNetworkSpec>? networkSpec;
+  final pulumi.Input<NotebookExecutionCustomEnvironmentSpecNetworkSpec?>? networkSpec;
   /// The configuration for the data disk of the runtime.
   /// Structure is documented below.
-  final pulumi.Input<NotebookExecutionCustomEnvironmentSpecPersistentDiskSpec>? persistentDiskSpec;
+  final pulumi.Input<NotebookExecutionCustomEnvironmentSpecPersistentDiskSpec?>? persistentDiskSpec;
   /// Shielded VM configuration.
   /// Structure is documented below.
-  final pulumi.Input<NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfig>? shieldedInstanceConfig;
+  final pulumi.Input<NotebookExecutionCustomEnvironmentSpecShieldedInstanceConfig?>? shieldedInstanceConfig;
 
   /// Creates a new [NotebookExecutionCustomEnvironmentSpec].
   /// [machineSpec] 'The machine configuration of the runtime.'

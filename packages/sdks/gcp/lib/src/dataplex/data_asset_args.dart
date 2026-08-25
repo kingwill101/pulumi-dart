@@ -10,7 +10,7 @@ import 'data_asset_access_group_config.dart';
 class DataAssetArgs {
   /// Access groups configurations.
   /// Structure is documented below.
-  final pulumi.Input<List<DataAssetAccessGroupConfig>>? accessGroupConfigs;
+  final pulumi.Input<List<DataAssetAccessGroupConfig>?>? accessGroupConfigs;
   /// The ID of the data asset.
   final pulumi.Input<String> dataAssetId;
   /// The ID of the parent data product.
@@ -21,16 +21,16 @@ class DataAssetArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// User-defined labels.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The location for the data asset.
   final pulumi.Input<String> location;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Full resource name of the cloud resource.
   final pulumi.Input<String> resource;
 

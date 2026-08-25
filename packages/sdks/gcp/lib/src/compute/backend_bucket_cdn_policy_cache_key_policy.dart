@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BackendBucketCdnPolicyCacheKeyPolicy {
   /// Allows HTTP request headers (by name) to be used in the
   /// cache key.
-  final pulumi.Input<List<String>>? includeHttpHeaders;
+  final pulumi.Input<List<String>?>? includeHttpHeaders;
   /// Names of query string parameters to include in cache keys.
   /// Default parameters are always included. '&' and '=' will
   /// be percent encoded and not treated as delimiters.
-  final pulumi.Input<List<String>>? queryStringWhitelists;
+  final pulumi.Input<List<String>?>? queryStringWhitelists;
 
   /// Creates a new [BackendBucketCdnPolicyCacheKeyPolicy].
   /// [includeHttpHeaders] Allows HTTP request headers (by name) to be used in the

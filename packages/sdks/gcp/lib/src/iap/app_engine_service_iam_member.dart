@@ -2156,7 +2156,7 @@ class AppEngineServiceIamMember extends pulumi.CustomResource {
           'gcp:iap/appEngineServiceIamMember:AppEngineServiceIamMember',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     appId = registerOutput<String>('appId');
     condition = registerOutput<AppEngineServiceIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppEngineServiceIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -2172,11 +2172,12 @@ class AppEngineServiceIamMember extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AppEngineServiceIamMemberState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AppEngineServiceIamMember._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -2190,6 +2191,24 @@ class AppEngineServiceIamMember extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    appId = registerOutput<String>('appId');
+    condition = registerOutput<AppEngineServiceIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppEngineServiceIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    etag = registerOutput<String>('etag');
+    member = registerOutput<String>('member');
+    project = registerOutput<String>('project');
+    role = registerOutput<String>('role');
+    service = registerOutput<String>('service');
+  }
+
+  /// Creates a typed reference to an existing [AppEngineServiceIamMember] resource.
+  AppEngineServiceIamMember.reference(String urn)
+    : super(
+        'gcp:iap/appEngineServiceIamMember:AppEngineServiceIamMember',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     appId = registerOutput<String>('appId');
     condition = registerOutput<AppEngineServiceIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppEngineServiceIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');

@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'curation_args.dart';
 import 'curation_endpoint.dart';
+import 'curation_plugin_instance_action.dart';
 import 'curation_state.dart';
 
 /// Description
@@ -258,7 +259,7 @@ class Curation extends pulumi.CustomResource {
   /// Note: A particular curation could be used by multiple plugin instances or
   /// multiple actions in a plugin instance.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> pluginInstanceActions;
+  late final pulumi.Output<List<CurationPluginInstanceAction>> pluginInstanceActions;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
@@ -277,7 +278,7 @@ class Curation extends pulumi.CustomResource {
           'gcp:apihub/curation:Curation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     curationId = registerOutput<String>('curationId');
@@ -290,7 +291,7 @@ class Curation extends pulumi.CustomResource {
     lastExecutionState = registerOutput<String>('lastExecutionState');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    pluginInstanceActions = registerOutput<List<Map<String, dynamic>>>('pluginInstanceActions');
+    pluginInstanceActions = registerOutput<List<CurationPluginInstanceAction>>('pluginInstanceActions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CurationPluginInstanceAction>(guardedValue, (value) => CurationPluginInstanceAction.fromMap((value as Map).cast<String, dynamic>())); });
     project = registerOutput<String>('project');
     updateTime = registerOutput<String>('updateTime');
   }
@@ -300,11 +301,12 @@ class Curation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CurationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Curation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -329,7 +331,32 @@ class Curation extends pulumi.CustomResource {
     lastExecutionState = registerOutput<String>('lastExecutionState');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    pluginInstanceActions = registerOutput<List<Map<String, dynamic>>>('pluginInstanceActions');
+    pluginInstanceActions = registerOutput<List<CurationPluginInstanceAction>>('pluginInstanceActions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CurationPluginInstanceAction>(guardedValue, (value) => CurationPluginInstanceAction.fromMap((value as Map).cast<String, dynamic>())); });
+    project = registerOutput<String>('project');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [Curation] resource.
+  Curation.reference(String urn)
+    : super(
+        'gcp:apihub/curation:Curation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    curationId = registerOutput<String>('curationId');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    endpoint = registerOutput<CurationEndpoint>('endpoint', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CurationEndpoint.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    lastExecutionErrorCode = registerOutput<String>('lastExecutionErrorCode');
+    lastExecutionErrorMessage = registerOutput<String>('lastExecutionErrorMessage');
+    lastExecutionState = registerOutput<String>('lastExecutionState');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    pluginInstanceActions = registerOutput<List<CurationPluginInstanceAction>>('pluginInstanceActions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CurationPluginInstanceAction>(guardedValue, (value) => CurationPluginInstanceAction.fromMap((value as Map).cast<String, dynamic>())); });
     project = registerOutput<String>('project');
     updateTime = registerOutput<String>('updateTime');
   }

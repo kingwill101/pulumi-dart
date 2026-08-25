@@ -5,7 +5,7 @@ import 'prevention_job_trigger_inspect_job_storage_config_hybrid_options_table_o
 
 class PreventionJobTriggerInspectJobStorageConfigHybridOptions {
   /// A short description of where the data is coming from. Will be stored once in the job. 256 max length.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// To organize findings, these labels will be added to each finding.
   /// Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `a-z?`.
   /// Label values must be between 0 and 63 characters long and must conform to the regular expression `(a-z?)?`.
@@ -13,15 +13,15 @@ class PreventionJobTriggerInspectJobStorageConfigHybridOptions {
   /// Examples:
   /// * `"environment" : "production"`
   /// * `"pipeline" : "etl"`
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// These are labels that each inspection request must include within their 'finding_labels' map. Request
   /// may contain others, but any missing one of these will be rejected.
   /// Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `a-z?`.
   /// No more than 10 keys can be required.
-  final pulumi.Input<List<String>>? requiredFindingLabelKeys;
+  final pulumi.Input<List<String>?>? requiredFindingLabelKeys;
   /// If the container is a table, additional information to make findings meaningful such as the columns that are primary keys.
   /// Structure is documented below.
-  final pulumi.Input<PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptions>? tableOptions;
+  final pulumi.Input<PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptions?>? tableOptions;
 
   /// Creates a new [PreventionJobTriggerInspectJobStorageConfigHybridOptions].
   /// [description] A short description of where the data is coming from. Will be stored once in the job. 256 max length.

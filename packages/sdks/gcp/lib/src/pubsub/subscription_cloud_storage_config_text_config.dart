@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SubscriptionCloudStorageConfigTextConfig {
   /// (Output)
   /// Output only. Placeholder to allow the empty textConfig block.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
 
   /// Creates a new [SubscriptionCloudStorageConfigTextConfig].
   /// [state] (Output)

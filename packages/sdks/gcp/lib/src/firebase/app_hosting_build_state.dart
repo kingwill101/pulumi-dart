@@ -11,30 +11,30 @@ class AppHostingBuildState {
   /// preserved when modifying objects.
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
-  final pulumi.Input<Map<String, String>>? annotations;
+  final pulumi.Input<Map<String, String>?>? annotations;
   /// The ID of the Backend that this Build applies to
-  final pulumi.Input<String>? backend;
+  final pulumi.Input<String?>? backend;
   /// The user-specified ID of the build being created.
-  final pulumi.Input<String>? buildId;
+  final pulumi.Input<String?>? buildId;
   /// The location of the [Cloud Build
   /// logs](https://cloud.google.com/build/docs/view-build-results) for the build
   /// process.
-  final pulumi.Input<String>? buildLogsUri;
+  final pulumi.Input<String?>? buildLogsUri;
   /// Time at which the build was created.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Human-readable name. 63 character limit.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveAnnotations;
+  final pulumi.Input<Map<String, String>?>? effectiveAnnotations;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveLabels;
+  final pulumi.Input<Map<String, String>?>? effectiveLabels;
   /// The environment name of the backend when this build was created.
-  final pulumi.Input<String>? environment;
+  final pulumi.Input<String?>? environment;
   /// The source of the error for the build, if in a `FAILED` state.
   /// Possible values:
   /// CLOUD_BUILD
   /// CLOUD_RUN
-  final pulumi.Input<String>? errorSource;
+  final pulumi.Input<String?>? errorSource;
   /// The `Status` type defines a logical error model that is suitable for
   /// different programming environments, including REST APIs and RPC APIs. It is
   /// used by [gRPC](https://github.com/grpc). Each `Status` message contains
@@ -42,37 +42,37 @@ class AppHostingBuildState {
   /// You can find out more about this error model and how to work with it in the
   /// [API Design Guide](https://cloud.google.com/apis/design/errors).
   /// Structure is documented below.
-  final pulumi.Input<List<AppHostingBuildError>>? errors;
+  final pulumi.Input<List<AppHostingBuildError>?>? errors;
   /// Server-computed checksum based on other values; may be sent
   /// on update or delete to ensure operation is done on expected resource.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// The Artifact Registry
   /// [container
   /// image](https://cloud.google.com/artifact-registry/docs/reference/rest/v1/projects.locations.repositories.dockerImages)
   /// URI, used by the Cloud Run
   /// [`revision`](https://cloud.google.com/run/docs/reference/rest/v2/projects.locations.services.revisions)
   /// for this build.
-  final pulumi.Input<String>? image;
+  final pulumi.Input<String?>? image;
   /// Unstructured key value map that can be used to organize and categorize
   /// objects.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The location of the Backend that this Build applies to
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Identifier. The resource name of the build.
   /// Format:
   /// `projects/{project}/locations/{locationId}/backends/{backendId}/builds/{buildId}`.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  final pulumi.Input<Map<String, String>>? pulumiLabels;
+  final pulumi.Input<Map<String, String>?>? pulumiLabels;
   /// The source for the build.
   /// Structure is documented below.
-  final pulumi.Input<AppHostingBuildSource>? source;
+  final pulumi.Input<AppHostingBuildSource?>? source;
   /// The state of the build.
   /// Possible values:
   /// BUILDING
@@ -80,11 +80,11 @@ class AppHostingBuildState {
   /// DEPLOYING
   /// READY
   /// FAILED
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// System-assigned, unique identifier.
-  final pulumi.Input<String>? uid;
+  final pulumi.Input<String?>? uid;
   /// Time at which the build was last updated.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [AppHostingBuildState].
   /// [annotations] Unstructured key value map that may be set by external tools to

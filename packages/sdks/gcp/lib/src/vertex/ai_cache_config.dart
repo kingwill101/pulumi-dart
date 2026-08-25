@@ -160,7 +160,7 @@ class AiCacheConfig extends pulumi.CustomResource {
           'gcp:vertex/aiCacheConfig:AiCacheConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     disableCache = registerOutput<bool>('disableCache');
     this.name = registerOutput<String>('name');
@@ -172,11 +172,12 @@ class AiCacheConfig extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AiCacheConfigState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AiCacheConfig._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -190,6 +191,20 @@ class AiCacheConfig extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    disableCache = registerOutput<bool>('disableCache');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+  }
+
+  /// Creates a typed reference to an existing [AiCacheConfig] resource.
+  AiCacheConfig.reference(String urn)
+    : super(
+        'gcp:vertex/aiCacheConfig:AiCacheConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     disableCache = registerOutput<bool>('disableCache');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

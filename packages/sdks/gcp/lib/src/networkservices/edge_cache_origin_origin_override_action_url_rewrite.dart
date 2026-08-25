@@ -7,7 +7,7 @@ class EdgeCacheOriginOriginOverrideActionUrlRewrite {
   /// origin, the request's host header is replaced with
   /// contents of the hostRewrite.
   /// This value must be between 1 and 255 characters.
-  final pulumi.Input<String>? hostRewrite;
+  final pulumi.Input<String?>? hostRewrite;
 
   /// Creates a new [EdgeCacheOriginOriginOverrideActionUrlRewrite].
   /// [hostRewrite] Prior to forwarding the request to the selected

@@ -15,7 +15,7 @@ class RowAccessPolicyArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// A SQL boolean expression that represents the rows defined by this row
   /// access policy, similar to the boolean expression in a WHERE clause of a
   /// SELECT query on a table.
@@ -47,14 +47,14 @@ class RowAccessPolicyArgs {
   /// the internet, including authenticated and unauthenticated users. Because
   /// BigQuery requires authentication before a user can access the service,
   /// allUsers includes only authenticated users.
-  final pulumi.Input<List<String>>? grantees;
+  final pulumi.Input<List<String>?>? grantees;
   /// The ID of the row access policy. The ID must contain only
   /// letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum
   /// length is 256 characters.
   final pulumi.Input<String> policyId;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The ID of the table containing this row access policy.
   final pulumi.Input<String> tableId;
 

@@ -17,15 +17,15 @@ class AiPersistentResourceArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The display name of the PersistentResource.
   /// The name can be up to 128 characters long and can consist of any UTF-8
   /// characters.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Represents a customer-managed encryption key specification that can be
   /// applied to a Vertex AI resource.
   /// Structure is documented below.
-  final pulumi.Input<AiPersistentResourceEncryptionSpec>? encryptionSpec;
+  final pulumi.Input<AiPersistentResourceEncryptionSpec?>? encryptionSpec;
   /// The labels with user-defined metadata to organize PersistentResource.
   /// Label keys and values can be no longer than 64 characters
   /// (Unicode codepoints), can only contain lowercase letters, numeric
@@ -33,14 +33,14 @@ class AiPersistentResourceArgs {
   /// See https://goo.gl/xmQnxf for more information and examples of labels.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The location of the PersistentResource. eg us-central1
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The ID to use for the PersistentResource, which become the final component
   /// of the PersistentResource's resource name.
   /// The maximum length is 63 characters, and valid characters
   /// are `/^a-z?$/`.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The full name of the Compute Engine
   /// [network](https://www.terraform.io/compute/docs/networks-and-firewalls#networks) to peered with
   /// Vertex AI to host the persistent resources.
@@ -54,26 +54,26 @@ class AiPersistentResourceArgs {
   /// AI](https://cloud.google.com/vertex-ai/docs/general/vpc-peering).
   /// If this field is left unspecified, the resources aren't peered with any
   /// network.
-  final pulumi.Input<String>? network;
+  final pulumi.Input<String?>? network;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Configuration for PSC-I.
   /// Structure is documented below.
-  final pulumi.Input<AiPersistentResourcePscInterfaceConfig>? pscInterfaceConfig;
+  final pulumi.Input<AiPersistentResourcePscInterfaceConfig?>? pscInterfaceConfig;
   /// A list of names for the reserved IP ranges under the VPC network
   /// that can be used for this persistent resource.
   /// If set, we will deploy the persistent resource within the provided IP
   /// ranges. Otherwise, the persistent resource is deployed to any IP
   /// ranges under the provided VPC network.
   /// Example: ['vertex-ai-ip-range'].
-  final pulumi.Input<List<String>>? reservedIpRanges;
+  final pulumi.Input<List<String>?>? reservedIpRanges;
   /// The spec of the pools of different resources.
   /// Structure is documented below.
   final pulumi.Input<List<AiPersistentResourceResourcePool>> resourcePools;
   /// Configuration for the runtime on a PersistentResource instance.
   /// Structure is documented below.
-  final pulumi.Input<AiPersistentResourceResourceRuntimeSpec>? resourceRuntimeSpec;
+  final pulumi.Input<AiPersistentResourceResourceRuntimeSpec?>? resourceRuntimeSpec;
 
   /// Creates a new [AiPersistentResourceArgs].
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

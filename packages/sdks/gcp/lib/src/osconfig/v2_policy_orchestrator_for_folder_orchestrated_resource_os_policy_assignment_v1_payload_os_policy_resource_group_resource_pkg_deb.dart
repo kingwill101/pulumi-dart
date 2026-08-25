@@ -8,7 +8,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
   /// - install when false: `dpkg -i package`
   /// - install when true: `apt-get update && apt-get -y install
   /// package.deb`
-  final pulumi.Input<bool>? pullDeps;
+  final pulumi.Input<bool?>? pullDeps;
   /// A remote or local file.
   /// Structure is documented below.
   final pulumi.Input<V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSource> source;

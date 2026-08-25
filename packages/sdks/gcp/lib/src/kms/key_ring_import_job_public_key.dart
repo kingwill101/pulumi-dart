@@ -6,7 +6,7 @@ class KeyRingImportJobPublicKey {
   /// (Output)
   /// The public key, encoded in PEM format. For more information, see the RFC 7468 sections
   /// for General Considerations and Textual Encoding of Subject Public Key Info.
-  final pulumi.Input<String>? pem;
+  final pulumi.Input<String?>? pem;
 
   /// Creates a new [KeyRingImportJobPublicKey].
   /// [pem] (Output)

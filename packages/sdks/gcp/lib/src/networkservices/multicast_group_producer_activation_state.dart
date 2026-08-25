@@ -13,7 +13,7 @@ class MulticastGroupProducerActivationState {
   /// UPDATING
   /// UPDATE_FAILED
   /// INACTIVE
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
 
   /// Creates a new [MulticastGroupProducerActivationState].
   /// [state] (Output)

@@ -7,34 +7,34 @@ import 'function_build_config_source.dart';
 class FunctionBuildConfig {
   /// Security patches are applied automatically to the runtime without requiring
   /// the function to be redeployed.
-  final pulumi.Input<Map<String, dynamic>>? automaticUpdatePolicy;
+  final pulumi.Input<Map<String, dynamic>?>? automaticUpdatePolicy;
   /// (Output)
   /// The Cloud Build name of the latest successful
   /// deployment of the function.
-  final pulumi.Input<String>? build;
+  final pulumi.Input<String?>? build;
   /// User managed repository created in Artifact Registry optionally with a customer managed encryption key.
-  final pulumi.Input<String>? dockerRepository;
+  final pulumi.Input<String?>? dockerRepository;
   /// The name of the function (as defined in source code) that will be executed.
   /// Defaults to the resource name suffix, if not specified. For backward
   /// compatibility, if function with given name is not found, then the system
   /// will try to use function named "function". For Node.js this is name of a
   /// function exported by the module specified in source_location.
-  final pulumi.Input<String>? entryPoint;
+  final pulumi.Input<String?>? entryPoint;
   /// User-provided build-time environment variables for the function.
-  final pulumi.Input<Map<String, String>>? environmentVariables;
+  final pulumi.Input<Map<String, String>?>? environmentVariables;
   /// Security patches are only applied when a function is redeployed.
   /// Structure is documented below.
-  final pulumi.Input<FunctionBuildConfigOnDeployUpdatePolicy>? onDeployUpdatePolicy;
+  final pulumi.Input<FunctionBuildConfigOnDeployUpdatePolicy?>? onDeployUpdatePolicy;
   /// The runtime in which to run the function. Required when deploying a new
   /// function, optional when updating an existing function.
-  final pulumi.Input<String>? runtime;
+  final pulumi.Input<String?>? runtime;
   /// The fully-qualified name of the service account to be used for building the container.
-  final pulumi.Input<String>? serviceAccount;
+  final pulumi.Input<String?>? serviceAccount;
   /// The location of the function source code.
   /// Structure is documented below.
-  final pulumi.Input<FunctionBuildConfigSource>? source;
+  final pulumi.Input<FunctionBuildConfigSource?>? source;
   /// Name of the Cloud Build Custom Worker Pool that should be used to build the function.
-  final pulumi.Input<String>? workerPool;
+  final pulumi.Input<String?>? workerPool;
 
   /// Creates a new [FunctionBuildConfig].
   /// [automaticUpdatePolicy] Security patches are applied automatically to the runtime without requiring

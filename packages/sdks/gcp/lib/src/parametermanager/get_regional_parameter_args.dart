@@ -12,7 +12,7 @@ class GetRegionalParameterArgs {
   /// The name of the regional parameter.
   final pulumi.Input<String> parameterId;
   /// The ID of the project in which the resource belongs.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetRegionalParameterArgs].
   /// [location] The location of the regional parameter. eg us-central1

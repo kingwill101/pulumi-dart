@@ -981,7 +981,7 @@ class ConsentStoreIamMember extends pulumi.CustomResource {
           'gcp:healthcare/consentStoreIamMember:ConsentStoreIamMember',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     condition = registerOutput<ConsentStoreIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConsentStoreIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     consentStoreId = registerOutput<String>('consentStoreId');
@@ -996,11 +996,12 @@ class ConsentStoreIamMember extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ConsentStoreIamMemberState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ConsentStoreIamMember._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1014,6 +1015,23 @@ class ConsentStoreIamMember extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    condition = registerOutput<ConsentStoreIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConsentStoreIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    consentStoreId = registerOutput<String>('consentStoreId');
+    dataset = registerOutput<String>('dataset');
+    etag = registerOutput<String>('etag');
+    member = registerOutput<String>('member');
+    role = registerOutput<String>('role');
+  }
+
+  /// Creates a typed reference to an existing [ConsentStoreIamMember] resource.
+  ConsentStoreIamMember.reference(String urn)
+    : super(
+        'gcp:healthcare/consentStoreIamMember:ConsentStoreIamMember',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     condition = registerOutput<ConsentStoreIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConsentStoreIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     consentStoreId = registerOutput<String>('consentStoreId');
     dataset = registerOutput<String>('dataset');

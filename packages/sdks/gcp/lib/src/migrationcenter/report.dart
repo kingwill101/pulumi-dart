@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'report_args.dart';
 import 'report_state.dart';
+import 'report_summary.dart';
 
 /// Report represents an analytical assessment report summarizing infrastructure size, costs, and target suggestions.
 ///
@@ -346,7 +347,7 @@ class Report extends pulumi.CustomResource {
   /// Describes the Summary view of a Report, which contains aggregated values
   /// for all the groups and preference sets included in this Report.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> summaries;
+  late final pulumi.Output<List<ReportSummary>> summaries;
   /// Report type.
   /// Possible values:
   /// TOTAL_COST_OF_OWNERSHIP
@@ -366,7 +367,7 @@ class Report extends pulumi.CustomResource {
           'gcp:migrationcenter/report:Report',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -378,7 +379,7 @@ class Report extends pulumi.CustomResource {
     reportConfig = registerOutput<String>('reportConfig');
     reportId = registerOutput<String>('reportId');
     state = registerOutput<String>('state');
-    summaries = registerOutput<List<Map<String, dynamic>>>('summaries');
+    summaries = registerOutput<List<ReportSummary>>('summaries', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ReportSummary>(guardedValue, (value) => ReportSummary.fromMap((value as Map).cast<String, dynamic>())); });
     type = registerOutput<String?>('type');
     updateTime = registerOutput<String>('updateTime');
   }
@@ -388,11 +389,12 @@ class Report extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ReportState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Report._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -416,7 +418,31 @@ class Report extends pulumi.CustomResource {
     reportConfig = registerOutput<String>('reportConfig');
     reportId = registerOutput<String>('reportId');
     this.state = registerOutput<String>('state');
-    summaries = registerOutput<List<Map<String, dynamic>>>('summaries');
+    summaries = registerOutput<List<ReportSummary>>('summaries', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ReportSummary>(guardedValue, (value) => ReportSummary.fromMap((value as Map).cast<String, dynamic>())); });
+    type = registerOutput<String?>('type');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [Report] resource.
+  Report.reference(String urn)
+    : super(
+        'gcp:migrationcenter/report:Report',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String?>('displayName');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    reportConfig = registerOutput<String>('reportConfig');
+    reportId = registerOutput<String>('reportId');
+    state = registerOutput<String>('state');
+    summaries = registerOutput<List<ReportSummary>>('summaries', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ReportSummary>(guardedValue, (value) => ReportSummary.fromMap((value as Map).cast<String, dynamic>())); });
     type = registerOutput<String?>('type');
     updateTime = registerOutput<String>('updateTime');
   }

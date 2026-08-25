@@ -10,12 +10,12 @@ import 'security_settings_endpoint_control_policy.dart';
 class SecuritySettingsArgs {
   /// Optional. Endpoint control related settings.
   /// Structure is documented below.
-  final pulumi.Input<SecuritySettingsEndpointControlPolicy>? endpointControlPolicy;
+  final pulumi.Input<SecuritySettingsEndpointControlPolicy?>? endpointControlPolicy;
   /// The location of the security settings.
   final pulumi.Input<String> location;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [SecuritySettingsArgs].
   /// [endpointControlPolicy] Optional. Endpoint control related settings.

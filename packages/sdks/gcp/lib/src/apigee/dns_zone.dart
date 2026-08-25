@@ -317,7 +317,7 @@ class DnsZone extends pulumi.CustomResource {
           'gcp:apigee/dnsZone:DnsZone',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String>('description');
@@ -333,11 +333,12 @@ class DnsZone extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DnsZoneState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DnsZone._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -351,6 +352,24 @@ class DnsZone extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String>('description');
+    dnsZoneId = registerOutput<String>('dnsZoneId');
+    domain = registerOutput<String>('domain');
+    this.name = registerOutput<String>('name');
+    orgId = registerOutput<String>('orgId');
+    peeringConfig = registerOutput<DnsZonePeeringConfig>('peeringConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DnsZonePeeringConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [DnsZone] resource.
+  DnsZone.reference(String urn)
+    : super(
+        'gcp:apigee/dnsZone:DnsZone',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String>('description');
     dnsZoneId = registerOutput<String>('dnsZoneId');

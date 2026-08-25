@@ -8,7 +8,7 @@ class BareMetalAdminClusterStorageLvpShareConfig {
   /// Structure is documented below.
   final pulumi.Input<BareMetalAdminClusterStorageLvpShareConfigLvpConfig> lvpConfig;
   /// The number of subdirectories to create under path.
-  final pulumi.Input<int>? sharedPathPvCount;
+  final pulumi.Input<int?>? sharedPathPvCount;
 
   /// Creates a new [BareMetalAdminClusterStorageLvpShareConfig].
   /// [lvpConfig] Defines the machine path and storage class for the LVP Share.
@@ -28,7 +28,7 @@ class BareMetalAdminClusterStorageLvpShareConfig {
   factory BareMetalAdminClusterStorageLvpShareConfig.fromMap(Map<String, dynamic> map) {
     return BareMetalAdminClusterStorageLvpShareConfig(
       lvpConfig: pulumi.Input.fromValue(BareMetalAdminClusterStorageLvpShareConfigLvpConfig.fromMap((map['lvpConfig']! as Map).cast<String, dynamic>())),
-      sharedPathPvCount: (() { final guardedValue = map['sharedPathPvCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      sharedPathPvCount: (() { final guardedValue = map['sharedPathPvCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

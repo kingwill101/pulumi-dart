@@ -284,11 +284,11 @@ class OauthClient extends pulumi.CustomResource {
           'gcp:iam/oauthClient:OauthClient',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
-    allowedGrantTypes = registerOutput<List<String>>('allowedGrantTypes');
-    allowedRedirectUris = registerOutput<List<String>>('allowedRedirectUris');
-    allowedScopes = registerOutput<List<String>>('allowedScopes');
+    allowedGrantTypes = registerOutput<List<String>>('allowedGrantTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    allowedRedirectUris = registerOutput<List<String>>('allowedRedirectUris', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    allowedScopes = registerOutput<List<String>>('allowedScopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     clientId = registerOutput<String>('clientId');
     clientType = registerOutput<String?>('clientType');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -308,11 +308,12 @@ class OauthClient extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     OauthClientState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return OauthClient._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -326,9 +327,9 @@ class OauthClient extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    allowedGrantTypes = registerOutput<List<String>>('allowedGrantTypes');
-    allowedRedirectUris = registerOutput<List<String>>('allowedRedirectUris');
-    allowedScopes = registerOutput<List<String>>('allowedScopes');
+    allowedGrantTypes = registerOutput<List<String>>('allowedGrantTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    allowedRedirectUris = registerOutput<List<String>>('allowedRedirectUris', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    allowedScopes = registerOutput<List<String>>('allowedScopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     clientId = registerOutput<String>('clientId');
     clientType = registerOutput<String?>('clientType');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -341,5 +342,31 @@ class OauthClient extends pulumi.CustomResource {
     oauthClientId = registerOutput<String>('oauthClientId');
     project = registerOutput<String>('project');
     this.state = registerOutput<String>('state');
+  }
+
+  /// Creates a typed reference to an existing [OauthClient] resource.
+  OauthClient.reference(String urn)
+    : super(
+        'gcp:iam/oauthClient:OauthClient',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    allowedGrantTypes = registerOutput<List<String>>('allowedGrantTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    allowedRedirectUris = registerOutput<List<String>>('allowedRedirectUris', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    allowedScopes = registerOutput<List<String>>('allowedScopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    clientId = registerOutput<String>('clientId');
+    clientType = registerOutput<String?>('clientType');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    disabled = registerOutput<bool?>('disabled');
+    displayName = registerOutput<String?>('displayName');
+    expireTime = registerOutput<String>('expireTime');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    oauthClientId = registerOutput<String>('oauthClientId');
+    project = registerOutput<String>('project');
+    state = registerOutput<String>('state');
   }
 }

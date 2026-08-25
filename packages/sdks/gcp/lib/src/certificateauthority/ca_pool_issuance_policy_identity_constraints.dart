@@ -14,7 +14,7 @@ class CaPoolIssuancePolicyIdentityConstraints {
   /// certificate is signed. To see the full allowed syntax and some examples,
   /// see https://cloud.google.com/certificate-authority-service/docs/cel-guide
   /// Structure is documented below.
-  final pulumi.Input<CaPoolIssuancePolicyIdentityConstraintsCelExpression>? celExpression;
+  final pulumi.Input<CaPoolIssuancePolicyIdentityConstraintsCelExpression?>? celExpression;
 
   /// Creates a new [CaPoolIssuancePolicyIdentityConstraints].
   /// [allowSubjectAltNamesPassthrough] If this is set, the SubjectAltNames extension may be copied from a certificate request into the signed certificate.

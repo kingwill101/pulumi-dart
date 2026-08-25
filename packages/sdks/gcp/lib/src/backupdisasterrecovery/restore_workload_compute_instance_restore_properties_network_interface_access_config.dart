@@ -4,22 +4,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfig {
   /// (Optional)
-  final pulumi.Input<String>? externalIp;
+  final pulumi.Input<String?>? externalIp;
   /// (Optional)
-  final pulumi.Input<String>? externalIpv6;
+  final pulumi.Input<String?>? externalIpv6;
   /// (Optional)
-  final pulumi.Input<int>? externalIpv6PrefixLength;
+  final pulumi.Input<int?>? externalIpv6PrefixLength;
   /// Optional. The name of this access configuration.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Possible values are: `NETWORK_TIER_UNSPECIFIED`, `PREMIUM`, `STANDARD`.
-  final pulumi.Input<String>? networkTier;
+  final pulumi.Input<String?>? networkTier;
   /// (Optional)
-  final pulumi.Input<String>? publicPtrDomainName;
+  final pulumi.Input<String?>? publicPtrDomainName;
   /// (Optional)
-  final pulumi.Input<bool>? setPublicPtr;
+  final pulumi.Input<bool?>? setPublicPtr;
   /// Optional. The type of configuration.
   /// Possible values are: `ACCESS_TYPE_UNSPECIFIED`, `ONE_TO_ONE_NAT`, `DIRECT_IPV6`.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfig].
   /// [externalIp] (Optional)
@@ -58,7 +58,7 @@ class RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfi
     return RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfig(
       externalIp: (() { final guardedValue = map['externalIp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       externalIpv6: (() { final guardedValue = map['externalIpv6']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      externalIpv6PrefixLength: (() { final guardedValue = map['externalIpv6PrefixLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      externalIpv6PrefixLength: (() { final guardedValue = map['externalIpv6PrefixLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       networkTier: (() { final guardedValue = map['networkTier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       publicPtrDomainName: (() { final guardedValue = map['publicPtrDomainName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

@@ -9,7 +9,7 @@ class ReportSummaryAllAssetsStatSoftwareInstance {
   /// with the name being the x-axis label, and the value being the y-axis
   /// value.
   /// Structure is documented below.
-  final pulumi.Input<List<ReportSummaryAllAssetsStatSoftwareInstanceDataPoint>>? dataPoints;
+  final pulumi.Input<List<ReportSummaryAllAssetsStatSoftwareInstanceDataPoint>?>? dataPoints;
 
   /// Creates a new [ReportSummaryAllAssetsStatSoftwareInstance].
   /// [dataPoints] (Output)

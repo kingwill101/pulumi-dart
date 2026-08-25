@@ -6,9 +6,9 @@ import 'feed_details_okta_settings_authentication.dart';
 class FeedDetailsOktaSettings {
   /// HTTP header based authentication.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsOktaSettingsAuthentication>? authentication;
+  final pulumi.Input<FeedDetailsOktaSettingsAuthentication?>? authentication;
   /// API Hostname.
-  final pulumi.Input<String>? hostname;
+  final pulumi.Input<String?>? hostname;
 
   /// Creates a new [FeedDetailsOktaSettings].
   /// [authentication] HTTP header based authentication.

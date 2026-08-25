@@ -6,13 +6,13 @@ import 'feed_details_salesforce_settings_oauth_password_grant_auth.dart';
 
 class FeedDetailsSalesforceSettings {
   /// API hostname.
-  final pulumi.Input<String>? hostname;
+  final pulumi.Input<String?>? hostname;
   /// OAuth 2.0 JWT grant. See, https://tools.ietf.org/html/rfc7519
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsSalesforceSettingsOauthJwtCredentials>? oauthJwtCredentials;
+  final pulumi.Input<FeedDetailsSalesforceSettingsOauthJwtCredentials?>? oauthJwtCredentials;
   /// OAuth 2.0 password grant. See https://tools.ietf.org/html/rfc6749.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsSalesforceSettingsOauthPasswordGrantAuth>? oauthPasswordGrantAuth;
+  final pulumi.Input<FeedDetailsSalesforceSettingsOauthPasswordGrantAuth?>? oauthPasswordGrantAuth;
 
   /// Creates a new [FeedDetailsSalesforceSettings].
   /// [hostname] API hostname.

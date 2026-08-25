@@ -6,7 +6,7 @@ import 'trigger_transport_pubsub.dart';
 class TriggerTransport {
   /// The Pub/Sub topic and subscription used by Eventarc as delivery intermediary.
   /// Structure is documented below.
-  final pulumi.Input<TriggerTransportPubsub>? pubsub;
+  final pulumi.Input<TriggerTransportPubsub?>? pubsub;
 
   /// Creates a new [TriggerTransport].
   /// [pubsub] The Pub/Sub topic and subscription used by Eventarc as delivery intermediary.

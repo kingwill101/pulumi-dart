@@ -5,9 +5,9 @@ import 'prevention_discovery_config_target_other_cloud_target_filter_single_reso
 
 class PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResourceAmazonS3Bucket {
   /// The AWS account.
-  final pulumi.Input<PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResourceAmazonS3BucketAwsAccount>? awsAccount;
+  final pulumi.Input<PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResourceAmazonS3BucketAwsAccount?>? awsAccount;
   /// The bucket name.
-  final pulumi.Input<String>? bucketName;
+  final pulumi.Input<String?>? bucketName;
 
   /// Creates a new [PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResourceAmazonS3Bucket].
   /// [awsAccount] The AWS account.

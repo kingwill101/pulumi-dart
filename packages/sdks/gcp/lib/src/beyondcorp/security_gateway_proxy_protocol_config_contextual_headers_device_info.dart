@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfo {
   /// The output type of the delegated device info.
   /// Possible values are: `PROTOBUF`, `JSON`, `NONE`.
-  final pulumi.Input<String>? outputType;
+  final pulumi.Input<String?>? outputType;
 
   /// Creates a new [SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfo].
   /// [outputType] The output type of the delegated device info.

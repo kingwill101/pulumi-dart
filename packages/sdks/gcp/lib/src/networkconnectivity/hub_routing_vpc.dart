@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class HubRoutingVpc {
   /// The URI of the VPC network.
-  final pulumi.Input<String>? uri;
+  final pulumi.Input<String?>? uri;
 
   /// Creates a new [HubRoutingVpc].
   /// [uri] The URI of the VPC network.

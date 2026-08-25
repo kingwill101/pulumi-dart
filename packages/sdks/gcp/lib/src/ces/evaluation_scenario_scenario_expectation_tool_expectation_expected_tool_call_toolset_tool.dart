@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetTool {
   /// The tool ID to filter the tools to retrieve the schema for.
-  final pulumi.Input<String>? toolId;
+  final pulumi.Input<String?>? toolId;
   /// The resource name of the Toolset.
-  final pulumi.Input<String>? toolset;
+  final pulumi.Input<String?>? toolset;
 
   /// Creates a new [EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetTool].
   /// [toolId] The tool ID to filter the tools to retrieve the schema for.

@@ -6,11 +6,11 @@ import 'ai_reasoning_engine_traffic_config_traffic_split_manual.dart';
 class AiReasoningEngineTrafficConfig {
   /// Optional. Traffic distribution configuration, where all traffic is sent to the
   /// latest Runtime Revision.
-  final pulumi.Input<Map<String, dynamic>>? trafficSplitAlwaysLatest;
+  final pulumi.Input<Map<String, dynamic>?>? trafficSplitAlwaysLatest;
   /// Optional. Manual traffic distribution configuration, where the user specifies the
   /// Runtime Revision IDs and the percentage of traffic to send to each.
   /// Structure is documented below.
-  final pulumi.Input<AiReasoningEngineTrafficConfigTrafficSplitManual>? trafficSplitManual;
+  final pulumi.Input<AiReasoningEngineTrafficConfigTrafficSplitManual?>? trafficSplitManual;
 
   /// Creates a new [AiReasoningEngineTrafficConfig].
   /// [trafficSplitAlwaysLatest] Optional. Traffic distribution configuration, where all traffic is sent to the

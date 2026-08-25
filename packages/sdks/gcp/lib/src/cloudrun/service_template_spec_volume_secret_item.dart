@@ -10,7 +10,7 @@ class ServiceTemplateSpecVolumeSecretItem {
   /// not specified, the volume defaultMode will be used. This might be in
   /// conflict with other options that affect the file mode, like fsGroup, and
   /// the result can be other mode bits set.
-  final pulumi.Input<int>? mode;
+  final pulumi.Input<int?>? mode;
   /// The relative path of the file to map the key to.
   /// May not be an absolute path.
   /// May not contain the path element '..'.
@@ -38,7 +38,7 @@ class ServiceTemplateSpecVolumeSecretItem {
   factory ServiceTemplateSpecVolumeSecretItem.fromMap(Map<String, dynamic> map) {
     return ServiceTemplateSpecVolumeSecretItem(
       key: pulumi.Input.fromValue(map['key'] as String),
-      mode: (() { final guardedValue = map['mode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      mode: (() { final guardedValue = map['mode']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       path: pulumi.Input.fromValue(map['path'] as String),
     );
   }

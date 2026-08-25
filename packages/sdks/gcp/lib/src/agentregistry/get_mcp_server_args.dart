@@ -8,16 +8,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_agentregistry_get_mcp_server_get_mcp_server_args_doc}
 class GetMcpServerArgs {
   /// A filter string that identifies a unique MCP server. This or `mcpServerId` must be set.
-  final pulumi.Input<String>? filter;
+  final pulumi.Input<String?>? filter;
   /// The location of the resource.
   ///
   /// - - -
   final pulumi.Input<String> location;
   /// The unique identifier for the MCP Server. This or `filter` must be set.
-  final pulumi.Input<String>? mcpServerId;
+  final pulumi.Input<String?>? mcpServerId;
   /// The project in which the resource belongs. If it
   /// is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetMcpServerArgs].
   /// [filter] A filter string that identifies a unique MCP server. This or `mcpServerId` must be set.

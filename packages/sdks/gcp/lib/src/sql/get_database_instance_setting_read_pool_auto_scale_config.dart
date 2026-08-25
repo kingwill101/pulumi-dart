@@ -53,10 +53,10 @@ class GetDatabaseInstanceSettingReadPoolAutoScaleConfig {
     return GetDatabaseInstanceSettingReadPoolAutoScaleConfig(
       disableScaleIn: pulumi.Input.fromValue(map['disableScaleIn'] as bool),
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
-      maxNodeCount: pulumi.Input.fromValue(map['maxNodeCount'] as int),
-      minNodeCount: pulumi.Input.fromValue(map['minNodeCount'] as int),
-      scaleInCooldownSeconds: pulumi.Input.fromValue(map['scaleInCooldownSeconds'] as int),
-      scaleOutCooldownSeconds: pulumi.Input.fromValue(map['scaleOutCooldownSeconds'] as int),
+      maxNodeCount: pulumi.Input.fromValue((map['maxNodeCount'] as num).toInt()),
+      minNodeCount: pulumi.Input.fromValue((map['minNodeCount'] as num).toInt()),
+      scaleInCooldownSeconds: pulumi.Input.fromValue((map['scaleInCooldownSeconds'] as num).toInt()),
+      scaleOutCooldownSeconds: pulumi.Input.fromValue((map['scaleOutCooldownSeconds'] as num).toInt()),
       targetMetrics: pulumi.Input.fromValue(pulumi.Input.decodeList<GetDatabaseInstanceSettingReadPoolAutoScaleConfigTargetMetric>(map['targetMetrics']!, (value) => GetDatabaseInstanceSettingReadPoolAutoScaleConfigTargetMetric.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }

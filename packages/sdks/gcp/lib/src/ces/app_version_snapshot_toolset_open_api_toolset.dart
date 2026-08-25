@@ -9,22 +9,22 @@ class AppVersionSnapshotToolsetOpenApiToolset {
   /// (Output)
   /// Authentication information required for API calls.
   /// Structure is documented below.
-  final pulumi.Input<List<AppVersionSnapshotToolsetOpenApiToolsetApiAuthentication>>? apiAuthentications;
+  final pulumi.Input<List<AppVersionSnapshotToolsetOpenApiToolsetApiAuthentication>?>? apiAuthentications;
   /// (Output)
   /// If true, the agent will ignore unknown fields in the API response for all
   /// operations defined in the OpenAPI schema.
-  final pulumi.Input<bool>? ignoreUnknownFields;
+  final pulumi.Input<bool?>? ignoreUnknownFields;
   /// (Output)
   /// The OpenAPI schema of the toolset.
-  final pulumi.Input<String>? openApiSchema;
+  final pulumi.Input<String?>? openApiSchema;
   /// (Output)
   /// Configuration for tools using Service Directory.
   /// Structure is documented below.
-  final pulumi.Input<List<AppVersionSnapshotToolsetOpenApiToolsetServiceDirectoryConfig>>? serviceDirectoryConfigs;
+  final pulumi.Input<List<AppVersionSnapshotToolsetOpenApiToolsetServiceDirectoryConfig>?>? serviceDirectoryConfigs;
   /// (Output)
   /// The TLS configuration.
   /// Structure is documented below.
-  final pulumi.Input<List<AppVersionSnapshotToolsetOpenApiToolsetTlsConfig>>? tlsConfigs;
+  final pulumi.Input<List<AppVersionSnapshotToolsetOpenApiToolsetTlsConfig>?>? tlsConfigs;
   /// (Output)
   /// The server URL of the Open API schema.
   /// This field is only set in toolsets in the environment dependencies
@@ -32,7 +32,7 @@ class AppVersionSnapshotToolsetOpenApiToolset {
   /// During the import process, if this url is present in the environment dependencies
   /// and the schema has the $env_var placeholder,
   /// it will replace the placeholder in the schema.
-  final pulumi.Input<String>? url;
+  final pulumi.Input<String?>? url;
 
   /// Creates a new [AppVersionSnapshotToolsetOpenApiToolset].
   /// [apiAuthentications] (Output)

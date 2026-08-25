@@ -15,18 +15,18 @@ class ResponsePolicyArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The description of the response policy, such as `My new response policy`.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The list of Google Kubernetes Engine clusters that can see this zone.
   /// Structure is documented below.
-  final pulumi.Input<List<ResponsePolicyGkeCluster>>? gkeClusters;
+  final pulumi.Input<List<ResponsePolicyGkeCluster>?>? gkeClusters;
   /// The list of network names specifying networks to which this policy is applied.
   /// Structure is documented below.
-  final pulumi.Input<List<ResponsePolicyNetwork>>? networks;
+  final pulumi.Input<List<ResponsePolicyNetwork>?>? networks;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The user assigned name for this Response Policy, such as `myresponsepolicy`.
   final pulumi.Input<String> responsePolicyName;
 

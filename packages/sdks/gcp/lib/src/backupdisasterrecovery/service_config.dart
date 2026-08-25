@@ -146,7 +146,7 @@ class ServiceConfig extends pulumi.CustomResource {
           'gcp:backupdisasterrecovery/serviceConfig:ServiceConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     location = registerOutput<String>('location');
     project = registerOutput<String>('project');
@@ -158,11 +158,12 @@ class ServiceConfig extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ServiceConfigState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ServiceConfig._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -176,6 +177,20 @@ class ServiceConfig extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    location = registerOutput<String>('location');
+    project = registerOutput<String>('project');
+    resourceType = registerOutput<String>('resourceType');
+  }
+
+  /// Creates a typed reference to an existing [ServiceConfig] resource.
+  ServiceConfig.reference(String urn)
+    : super(
+        'gcp:backupdisasterrecovery/serviceConfig:ServiceConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     location = registerOutput<String>('location');
     project = registerOutput<String>('project');
     resourceType = registerOutput<String>('resourceType');

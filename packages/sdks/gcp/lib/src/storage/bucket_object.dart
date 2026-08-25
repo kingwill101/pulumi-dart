@@ -544,18 +544,19 @@ class BucketObject extends pulumi.CustomResource {
           'gcp:storage/bucketObject:BucketObject',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['content', 'customerEncryption'],
         ) {
     bucket = registerOutput<String>('bucket');
     cacheControl = registerOutput<String?>('cacheControl');
-    content = registerOutput<String>('content');
+    content = registerOutput<String>('content', isSecret: true);
     contentDisposition = registerOutput<String?>('contentDisposition');
     contentEncoding = registerOutput<String?>('contentEncoding');
     contentLanguage = registerOutput<String?>('contentLanguage');
     contentType = registerOutput<String>('contentType');
     contexts = registerOutput<BucketObjectContexts?>('contexts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketObjectContexts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     crc32c = registerOutput<String>('crc32c');
-    customerEncryption = registerOutput<BucketObjectCustomerEncryption?>('customerEncryption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketObjectCustomerEncryption.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    customerEncryption = registerOutput<BucketObjectCustomerEncryption?>('customerEncryption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketObjectCustomerEncryption.fromMap((guardedValue as Map).cast<String, dynamic>()); }, isSecret: true);
     deletionPolicy = registerOutput<String>('deletionPolicy');
     detectMd5hash = registerOutput<String?>('detectMd5hash');
     eventBasedHold = registerOutput<bool?>('eventBasedHold');
@@ -565,7 +566,7 @@ class BucketObject extends pulumi.CustomResource {
     md5hash = registerOutput<String>('md5hash');
     md5hexhash = registerOutput<String>('md5hexhash');
     mediaLink = registerOutput<String>('mediaLink');
-    metadata = registerOutput<Map<String, String>?>('metadata');
+    metadata = registerOutput<Map<String, String>?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     outputName = registerOutput<String>('outputName');
     retention = registerOutput<BucketObjectRetention?>('retention', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketObjectRetention.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -581,11 +582,12 @@ class BucketObject extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     BucketObjectState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return BucketObject._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -601,14 +603,14 @@ class BucketObject extends pulumi.CustomResource {
         ) {
     bucket = registerOutput<String>('bucket');
     cacheControl = registerOutput<String?>('cacheControl');
-    content = registerOutput<String>('content');
+    content = registerOutput<String>('content', isSecret: true);
     contentDisposition = registerOutput<String?>('contentDisposition');
     contentEncoding = registerOutput<String?>('contentEncoding');
     contentLanguage = registerOutput<String?>('contentLanguage');
     contentType = registerOutput<String>('contentType');
     contexts = registerOutput<BucketObjectContexts?>('contexts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketObjectContexts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     crc32c = registerOutput<String>('crc32c');
-    customerEncryption = registerOutput<BucketObjectCustomerEncryption?>('customerEncryption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketObjectCustomerEncryption.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    customerEncryption = registerOutput<BucketObjectCustomerEncryption?>('customerEncryption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketObjectCustomerEncryption.fromMap((guardedValue as Map).cast<String, dynamic>()); }, isSecret: true);
     deletionPolicy = registerOutput<String>('deletionPolicy');
     detectMd5hash = registerOutput<String?>('detectMd5hash');
     eventBasedHold = registerOutput<bool?>('eventBasedHold');
@@ -618,7 +620,47 @@ class BucketObject extends pulumi.CustomResource {
     md5hash = registerOutput<String>('md5hash');
     md5hexhash = registerOutput<String>('md5hexhash');
     mediaLink = registerOutput<String>('mediaLink');
-    metadata = registerOutput<Map<String, String>?>('metadata');
+    metadata = registerOutput<Map<String, String>?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    this.name = registerOutput<String>('name');
+    outputName = registerOutput<String>('outputName');
+    retention = registerOutput<BucketObjectRetention?>('retention', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketObjectRetention.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    selfLink = registerOutput<String>('selfLink');
+    source = registerOutput<dynamic>('source');
+    sourceMd5hash = registerOutput<String?>('sourceMd5hash');
+    storageClass = registerOutput<String>('storageClass');
+    temporaryHold = registerOutput<bool?>('temporaryHold');
+  }
+
+  /// Creates a typed reference to an existing [BucketObject] resource.
+  BucketObject.reference(String urn)
+    : super(
+        'gcp:storage/bucketObject:BucketObject',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['content', 'customerEncryption'],
+        isResourceReference: true,
+      ) {
+    bucket = registerOutput<String>('bucket');
+    cacheControl = registerOutput<String?>('cacheControl');
+    content = registerOutput<String>('content', isSecret: true);
+    contentDisposition = registerOutput<String?>('contentDisposition');
+    contentEncoding = registerOutput<String?>('contentEncoding');
+    contentLanguage = registerOutput<String?>('contentLanguage');
+    contentType = registerOutput<String>('contentType');
+    contexts = registerOutput<BucketObjectContexts?>('contexts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketObjectContexts.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    crc32c = registerOutput<String>('crc32c');
+    customerEncryption = registerOutput<BucketObjectCustomerEncryption?>('customerEncryption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketObjectCustomerEncryption.fromMap((guardedValue as Map).cast<String, dynamic>()); }, isSecret: true);
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    detectMd5hash = registerOutput<String?>('detectMd5hash');
+    eventBasedHold = registerOutput<bool?>('eventBasedHold');
+    forceEmptyContentType = registerOutput<bool?>('forceEmptyContentType');
+    generation = registerOutput<int>('generation');
+    kmsKeyName = registerOutput<String>('kmsKeyName');
+    md5hash = registerOutput<String>('md5hash');
+    md5hexhash = registerOutput<String>('md5hexhash');
+    mediaLink = registerOutput<String>('mediaLink');
+    metadata = registerOutput<Map<String, String>?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     outputName = registerOutput<String>('outputName');
     retention = registerOutput<BucketObjectRetention?>('retention', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketObjectRetention.fromMap((guardedValue as Map).cast<String, dynamic>()); });

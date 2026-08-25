@@ -14,7 +14,7 @@ class AttestorAttestationAuthorityNote {
   /// callers should not make any other assumptions about the service
   /// account email; future versions may use an email based on a
   /// different naming pattern.
-  final pulumi.Input<String>? delegationServiceAccountEmail;
+  final pulumi.Input<String?>? delegationServiceAccountEmail;
   /// The resource name of a ATTESTATION_AUTHORITY Note, created by the
   /// user. If the Note is in a different project from the Attestor, it
   /// should be specified in the format `projects/*/notes/*` (or the legacy
@@ -31,7 +31,7 @@ class AttestorAttestationAuthorityNote {
   /// If this field is empty, this attestor always returns that no valid
   /// attestations exist.
   /// Structure is documented below.
-  final pulumi.Input<List<AttestorAttestationAuthorityNotePublicKey>>? publicKeys;
+  final pulumi.Input<List<AttestorAttestationAuthorityNotePublicKey>?>? publicKeys;
 
   /// Creates a new [AttestorAttestationAuthorityNote].
   /// [delegationServiceAccountEmail] (Output)

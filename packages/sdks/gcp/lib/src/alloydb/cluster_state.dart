@@ -28,35 +28,35 @@ class ClusterState {
   ///
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
-  final pulumi.Input<Map<String, String>>? annotations;
+  final pulumi.Input<Map<String, String>?>? annotations;
   /// The automated backup policy for this cluster. AutomatedBackupPolicy is disabled by default.
   /// Structure is documented below.
-  final pulumi.Input<ClusterAutomatedBackupPolicy>? automatedBackupPolicy;
+  final pulumi.Input<ClusterAutomatedBackupPolicy?>? automatedBackupPolicy;
   /// Cluster created from backup.
   /// Structure is documented below.
-  final pulumi.Input<List<ClusterBackupSource>>? backupSources;
+  final pulumi.Input<List<ClusterBackupSource>?>? backupSources;
   /// Cluster created from a BackupDR backup.
   /// Structure is documented below.
-  final pulumi.Input<List<ClusterBackupdrBackupSource>>? backupdrBackupSources;
+  final pulumi.Input<List<ClusterBackupdrBackupSource>?>? backupdrBackupSources;
   /// The ID of the alloydb cluster.
-  final pulumi.Input<String>? clusterId;
+  final pulumi.Input<String?>? clusterId;
   /// The type of cluster. If not set, defaults to PRIMARY.
   /// Default value is `PRIMARY`.
   /// Possible values are: `PRIMARY`, `SECONDARY`.
-  final pulumi.Input<String>? clusterType;
+  final pulumi.Input<String?>? clusterType;
   /// The continuous backup config for this cluster.
   /// If no policy is provided then the default policy will be used. The default policy takes one backup a day and retains backups for 14 days.
   /// Structure is documented below.
-  final pulumi.Input<ClusterContinuousBackupConfig>? continuousBackupConfig;
+  final pulumi.Input<ClusterContinuousBackupConfig?>? continuousBackupConfig;
   /// ContinuousBackupInfo describes the continuous backup properties of a cluster.
   /// Structure is documented below.
-  final pulumi.Input<List<ClusterContinuousBackupInfo>>? continuousBackupInfos;
+  final pulumi.Input<List<ClusterContinuousBackupInfo>?>? continuousBackupInfos;
   /// The database engine major version. This is an optional field and it's populated at the Cluster creation time.
   /// Note: Changing this field to a higer version results in upgrading the AlloyDB cluster which is an irreversible change.
-  final pulumi.Input<String>? databaseVersion;
+  final pulumi.Input<String?>? databaseVersion;
   /// Configuration for Dataplex integration. This is an optional field. If not set, Dataplex integration will be enabled by default.
   /// Structure is documented below.
-  final pulumi.Input<ClusterDataplexConfig>? dataplexConfig;
+  final pulumi.Input<ClusterDataplexConfig?>? dataplexConfig;
   /// Policy to determine if the cluster should be deleted forcefully.
   /// Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
   /// Deleting a Secondary cluster with a secondary instance REQUIRES setting deletionPolicy = "FORCE" otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
@@ -68,89 +68,89 @@ class ClusterState {
   /// When set to "DELETE", the command will behave as if set to "DEFAULT".
   ///
   /// Possible values: DEFAULT, FORCE, PREVENT, ABANDON, DELETE
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Whether Terraform will be prevented from destroying the cluster.
   /// When the field is set to true or unset in Terraform state, a `pulumi up`
   /// or `terraform destroy` that would delete the cluster will fail.
   /// When the field is set to false, deleting the cluster is allowed.
-  final pulumi.Input<bool>? deletionProtection;
+  final pulumi.Input<bool?>? deletionProtection;
   /// User-settable and human-readable display name for the Cluster.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveAnnotations;
+  final pulumi.Input<Map<String, String>?>? effectiveAnnotations;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveLabels;
+  final pulumi.Input<Map<String, String>?>? effectiveLabels;
   /// EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
   /// Structure is documented below.
-  final pulumi.Input<ClusterEncryptionConfig>? encryptionConfig;
+  final pulumi.Input<ClusterEncryptionConfig?>? encryptionConfig;
   /// (Output)
   /// Output only. The encryption information for the WALs and backups required for ContinuousBackup.
   /// Structure is documented below.
-  final pulumi.Input<List<ClusterEncryptionInfo>>? encryptionInfos;
+  final pulumi.Input<List<ClusterEncryptionInfo>?>? encryptionInfos;
   /// For Resource freshness validation (https://google.aip.dev/154)
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// Initial user to setup during cluster creation. If unset for new Clusters, a postgres role with null password is created. You will need to create additional users or set the password in order to log in.
   /// Structure is documented below.
-  final pulumi.Input<ClusterInitialUser>? initialUser;
+  final pulumi.Input<ClusterInitialUser?>? initialUser;
   /// User-defined labels for the alloydb cluster.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The location where the alloydb cluster should reside.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// MaintenanceUpdatePolicy defines the policy for system updates.
   /// Structure is documented below.
-  final pulumi.Input<ClusterMaintenanceUpdatePolicy>? maintenanceUpdatePolicy;
+  final pulumi.Input<ClusterMaintenanceUpdatePolicy?>? maintenanceUpdatePolicy;
   /// Cluster created via DMS migration.
   /// Structure is documented below.
-  final pulumi.Input<List<ClusterMigrationSource>>? migrationSources;
+  final pulumi.Input<List<ClusterMigrationSource>?>? migrationSources;
   /// The name of the cluster resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Metadata related to network configuration.
   /// Structure is documented below.
-  final pulumi.Input<ClusterNetworkConfig>? networkConfig;
+  final pulumi.Input<ClusterNetworkConfig?>? networkConfig;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Configuration for Private Service Connect (PSC) for the cluster.
   /// Structure is documented below.
-  final pulumi.Input<ClusterPscConfig>? pscConfig;
+  final pulumi.Input<ClusterPscConfig?>? pscConfig;
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  final pulumi.Input<Map<String, String>>? pulumiLabels;
+  final pulumi.Input<Map<String, String>?>? pulumiLabels;
   /// Output only. Reconciling (https://google.aip.dev/128#reconciliation).
   /// Set to true if the current state of Cluster does not match the user's intended state, and the service is actively updating the resource to reconcile them.
   /// This can happen due to user-triggered updates or system actions like failover or maintenance.
-  final pulumi.Input<bool>? reconciling;
+  final pulumi.Input<bool?>? reconciling;
   /// The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source', 'restore_backupdr_backup_source' and 'restore_backupdr_pitr_source', they can't be set together.
   /// Structure is documented below.
-  final pulumi.Input<ClusterRestoreBackupSource>? restoreBackupSource;
+  final pulumi.Input<ClusterRestoreBackupSource?>? restoreBackupSource;
   /// The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source',  'restore_backup_source' and 'restore_backupdr_pitr_source', they can't be set together.
   /// Structure is documented below.
-  final pulumi.Input<ClusterRestoreBackupdrBackupSource>? restoreBackupdrBackupSource;
+  final pulumi.Input<ClusterRestoreBackupdrBackupSource?>? restoreBackupdrBackupSource;
   /// The BackupDR source used for point in time recovery. Conflicts with 'restore_backupdr_backup_source', 'restore_continuous_backup_source' and 'restore_backupdr_backup_source', they can't be set togeter.
   /// Structure is documented below.
-  final pulumi.Input<ClusterRestoreBackupdrPitrSource>? restoreBackupdrPitrSource;
+  final pulumi.Input<ClusterRestoreBackupdrPitrSource?>? restoreBackupdrPitrSource;
   /// The source when restoring via point in time recovery (PITR). Conflicts with 'restore_backup_source', 'restore_backupdr_backup_source' and 'restore_backupdr_pitr_source', they can't be set together.
   /// Structure is documented below.
-  final pulumi.Input<ClusterRestoreContinuousBackupSource>? restoreContinuousBackupSource;
+  final pulumi.Input<ClusterRestoreContinuousBackupSource?>? restoreContinuousBackupSource;
   /// Configuration of the secondary cluster for Cross Region Replication. This should be set if and only if the cluster is of type SECONDARY.
   /// Structure is documented below.
-  final pulumi.Input<ClusterSecondaryConfig>? secondaryConfig;
+  final pulumi.Input<ClusterSecondaryConfig?>? secondaryConfig;
   /// Set to true to skip awaiting on the major version upgrade of the cluster.
   /// Possible values: true, false
   /// Default value: "true"
-  final pulumi.Input<bool>? skipAwaitMajorVersionUpgrade;
+  final pulumi.Input<bool?>? skipAwaitMajorVersionUpgrade;
   /// Output only. The current serving state of the cluster.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// The subscrition type of cluster.
   /// Possible values are: `TRIAL`, `STANDARD`.
-  final pulumi.Input<String>? subscriptionType;
+  final pulumi.Input<String?>? subscriptionType;
   /// Contains information and all metadata related to TRIAL clusters.
   /// Structure is documented below.
-  final pulumi.Input<List<ClusterTrialMetadata>>? trialMetadatas;
+  final pulumi.Input<List<ClusterTrialMetadata>?>? trialMetadatas;
   /// The system-generated UID of the resource.
-  final pulumi.Input<String>? uid;
+  final pulumi.Input<String?>? uid;
 
   /// Creates a new [ClusterState].
   /// [annotations] Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels. https://google.aip.dev/128

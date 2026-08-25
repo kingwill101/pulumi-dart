@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AzureClusterControlPlaneRootVolume {
   /// Optional. The size of the disk, in GiBs. When unspecified, a default value is provided. See the specific reference in the parent resource.
-  final pulumi.Input<int>? sizeGib;
+  final pulumi.Input<int?>? sizeGib;
 
   /// Creates a new [AzureClusterControlPlaneRootVolume].
   /// [sizeGib] Optional. The size of the disk, in GiBs. When unspecified, a default value is provided. See the specific reference in the parent resource.
@@ -20,7 +20,7 @@ class AzureClusterControlPlaneRootVolume {
 
   factory AzureClusterControlPlaneRootVolume.fromMap(Map<String, dynamic> map) {
     return AzureClusterControlPlaneRootVolume(
-      sizeGib: (() { final guardedValue = map['sizeGib']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      sizeGib: (() { final guardedValue = map['sizeGib']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

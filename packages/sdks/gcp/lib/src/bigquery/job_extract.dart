@@ -7,26 +7,26 @@ import 'job_extract_source_table.dart';
 class JobExtract {
   /// The compression type to use for exported files. Possible values include GZIP, DEFLATE, SNAPPY, and NONE.
   /// The default value is NONE. DEFLATE and SNAPPY are only supported for Avro.
-  final pulumi.Input<String>? compression;
+  final pulumi.Input<String?>? compression;
   /// The exported file format. Possible values include CSV, NEWLINE_DELIMITED_JSON and AVRO for tables and SAVED_MODEL for models.
   /// The default value for tables is CSV. Tables with nested or repeated fields cannot be exported as CSV.
   /// The default value for models is SAVED_MODEL.
-  final pulumi.Input<String>? destinationFormat;
+  final pulumi.Input<String?>? destinationFormat;
   /// A list of fully-qualified Google Cloud Storage URIs where the extracted table should be written.
   final pulumi.Input<List<String>> destinationUris;
   /// When extracting data in CSV format, this defines the delimiter to use between fields in the exported data.
   /// Default is ','
-  final pulumi.Input<String>? fieldDelimiter;
+  final pulumi.Input<String?>? fieldDelimiter;
   /// Whether to print out a header row in the results. Default is true.
-  final pulumi.Input<bool>? printHeader;
+  final pulumi.Input<bool?>? printHeader;
   /// A reference to the model being exported.
   /// Structure is documented below.
-  final pulumi.Input<JobExtractSourceModel>? sourceModel;
+  final pulumi.Input<JobExtractSourceModel?>? sourceModel;
   /// A reference to the table being exported.
   /// Structure is documented below.
-  final pulumi.Input<JobExtractSourceTable>? sourceTable;
+  final pulumi.Input<JobExtractSourceTable?>? sourceTable;
   /// Whether to use logical types when extracting to AVRO format.
-  final pulumi.Input<bool>? useAvroLogicalTypes;
+  final pulumi.Input<bool?>? useAvroLogicalTypes;
 
   /// Creates a new [JobExtract].
   /// [compression] The compression type to use for exported files. Possible values include GZIP, DEFLATE, SNAPPY, and NONE.

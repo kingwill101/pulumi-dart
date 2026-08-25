@@ -28,7 +28,7 @@ class GetServiceTemplateSpecContainerReadinessProbeGrpc {
 
   factory GetServiceTemplateSpecContainerReadinessProbeGrpc.fromMap(Map<String, dynamic> map) {
     return GetServiceTemplateSpecContainerReadinessProbeGrpc(
-      port: pulumi.Input.fromValue(map['port'] as int),
+      port: pulumi.Input.fromValue((map['port'] as num).toInt()),
       service: pulumi.Input.fromValue(map['service'] as String),
     );
   }

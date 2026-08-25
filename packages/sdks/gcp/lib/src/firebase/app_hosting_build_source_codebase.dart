@@ -8,31 +8,31 @@ class AppHostingBuildSourceCodebase {
   /// Version control metadata for a user associated with a resolved codebase.
   /// Currently assumes a Git user.
   /// Structure is documented below.
-  final pulumi.Input<List<AppHostingBuildSourceCodebaseAuthor>>? authors;
+  final pulumi.Input<List<AppHostingBuildSourceCodebaseAuthor>?>? authors;
   /// The branch in the codebase to build from, using the latest commit.
-  final pulumi.Input<String>? branch;
+  final pulumi.Input<String?>? branch;
   /// The commit in the codebase to build from.
   ///
   ///
   /// &lt;a name="nestedSourceCodebaseAuthor"&gt;&lt;/a&gt;The `author` block contains:
-  final pulumi.Input<String>? commit;
+  final pulumi.Input<String?>? commit;
   /// (Output)
   /// The message of a codebase change.
-  final pulumi.Input<String>? commitMessage;
+  final pulumi.Input<String?>? commitMessage;
   /// (Output)
   /// The time the change was made.
-  final pulumi.Input<String>? commitTime;
+  final pulumi.Input<String?>? commitTime;
   /// (Output)
   /// The 'name' field in a Git user's git.config. Required by Git.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// (Output)
   /// The full SHA-1 hash of a Git commit, if available.
-  final pulumi.Input<String>? hash;
+  final pulumi.Input<String?>? hash;
   /// (Output)
   /// A URI linking to the codebase on an hosting provider's website. May
   /// not be valid if the commit has been rebased or force-pushed out of
   /// existence in the linked repository.
-  final pulumi.Input<String>? uri;
+  final pulumi.Input<String?>? uri;
 
   /// Creates a new [AppHostingBuildSourceCodebase].
   /// [authors] (Output)

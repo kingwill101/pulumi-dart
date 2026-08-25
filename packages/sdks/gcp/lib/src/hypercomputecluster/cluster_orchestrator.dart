@@ -7,7 +7,7 @@ class ClusterOrchestrator {
   /// When set in Orchestrator, indicates that the cluster should use
   /// [Slurm](https://slurm.schedmd.com/) as the orchestrator.
   /// Structure is documented below.
-  final pulumi.Input<ClusterOrchestratorSlurm>? slurm;
+  final pulumi.Input<ClusterOrchestratorSlurm?>? slurm;
 
   /// Creates a new [ClusterOrchestrator].
   /// [slurm] When set in Orchestrator, indicates that the cluster should use

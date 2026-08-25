@@ -13,12 +13,12 @@ class PolicyTagArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Description of this policy tag. It must: contain only unicode characters, tabs,
   /// newlines, carriage returns and page breaks; and be at most 2000 bytes long when
   /// encoded in UTF-8. If not set, defaults to an empty description.
   /// If not set, defaults to an empty description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// User defined name of this policy tag. It must: be unique within the parent
   /// taxonomy; contain only unicode letters, numbers, underscores, dashes and spaces;
   /// not start or end with spaces; and be at most 200 bytes long when encoded in UTF-8.
@@ -26,7 +26,7 @@ class PolicyTagArgs {
   /// Resource name of this policy tag's parent policy tag.
   /// If empty, it means this policy tag is a top level policy tag.
   /// If not set, defaults to an empty string.
-  final pulumi.Input<String>? parentPolicyTag;
+  final pulumi.Input<String?>? parentPolicyTag;
   /// Taxonomy the policy tag is associated with
   final pulumi.Input<String> taxonomy;
 

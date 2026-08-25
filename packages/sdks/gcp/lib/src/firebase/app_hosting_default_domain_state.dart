@@ -5,28 +5,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering AppHostingDefaultDomain resources.
 class AppHostingDefaultDomainState {
   /// The ID of the Backend that this Domain is associated with
-  final pulumi.Input<String>? backend;
+  final pulumi.Input<String?>? backend;
   /// Time at which the domain was created.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Whether the domain is disabled. Defaults to false.
-  final pulumi.Input<bool>? disabled;
+  final pulumi.Input<bool?>? disabled;
   /// Id of the domain. For default domain, it should be {{backend}}--{{project_id}}.{{location}}.hosted.app
-  final pulumi.Input<String>? domainId;
+  final pulumi.Input<String?>? domainId;
   /// Server-computed checksum based on other values; may be sent
   /// on update or delete to ensure operation is done on expected resource.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// The location of the Backend that this Domain is associated with
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Identifier. The resource name of the domain, e.g.
   /// `projects/{project}/locations/{locationId}/backends/{backendId}/domains/{domainId}`
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// System-assigned, unique identifier.
-  final pulumi.Input<String>? uid;
+  final pulumi.Input<String?>? uid;
   /// Time at which the domain was last updated.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [AppHostingDefaultDomainState].
   /// [backend] The ID of the Backend that this Domain is associated with

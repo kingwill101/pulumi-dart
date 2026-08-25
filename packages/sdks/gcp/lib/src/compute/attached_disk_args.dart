@@ -13,7 +13,7 @@ class AttachedDiskArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Specifies a unique device name of your choice that is
   /// reflected into the /dev/disk/by-id/google-* tree of a Linux operating
   /// system running within the instance. This name can be used to
@@ -23,7 +23,7 @@ class AttachedDiskArgs {
   /// If not specified, the server chooses a default device name to apply
   /// to this disk, in the form persistent-disks-x, where x is a number
   /// assigned by Google Compute Engine.
-  final pulumi.Input<String>? deviceName;
+  final pulumi.Input<String?>? deviceName;
   /// `name` or `selfLink` of the disk that will be attached.
   ///
   ///
@@ -43,7 +43,7 @@ class AttachedDiskArgs {
   /// Possible values:
   /// "SCSI"
   /// "NVME"
-  final pulumi.Input<String>? interface;
+  final pulumi.Input<String?>? interface;
   /// The mode in which to attach this disk, either READ_WRITE or
   /// READ_ONLY. If not specified, the default is to attach the disk in
   /// READ_WRITE mode.
@@ -51,13 +51,13 @@ class AttachedDiskArgs {
   /// Possible values:
   /// "READ_ONLY"
   /// "READ_WRITE"
-  final pulumi.Input<String>? mode;
+  final pulumi.Input<String?>? mode;
   /// The project that the referenced compute instance is a part of. If `instance` is referenced by its
   /// `selfLink` the project defined in the link will take precedence.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The zone that the referenced compute instance is located within. If `instance` is referenced by its
   /// `selfLink` the zone defined in the link will take precedence.
-  final pulumi.Input<String>? zone;
+  final pulumi.Input<String?>? zone;
 
   /// Creates a new [AttachedDiskArgs].
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".

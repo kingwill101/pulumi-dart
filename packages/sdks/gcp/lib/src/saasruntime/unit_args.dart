@@ -14,19 +14,19 @@ class UnitArgs {
   /// More info: https://kubernetes.io/docs/user-guide/annotations
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
-  final pulumi.Input<Map<String, String>>? annotations;
+  final pulumi.Input<Map<String, String>?>? annotations;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The labels on the resource, which can be used for categorization.
   /// similar to Kubernetes resource labels.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final pulumi.Input<String> location;
   /// Captures requested directives for performing future maintenance on the
@@ -34,25 +34,25 @@ class UnitArgs {
   /// of time and remain pinned to its current release as well as controls for
   /// postponing maintenance scheduled in future.
   /// Structure is documented below.
-  final pulumi.Input<UnitMaintenance>? maintenance;
+  final pulumi.Input<UnitMaintenance?>? maintenance;
   /// Indicates whether the Unit life cycle is controlled
   /// by the user or by the system.
   /// Immutable once created.
   /// Possible values:
   /// MANAGEMENT_MODE_USER
   /// MANAGEMENT_MODE_SYSTEM
-  final pulumi.Input<String>? managementMode;
+  final pulumi.Input<String?>? managementMode;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Reference to the Saas Tenant resource this unit belongs to. This for
   /// example informs the maintenance policies to use for scheduling future
   /// updates on a unit. (optional and immutable once created)
-  final pulumi.Input<String>? tenant;
+  final pulumi.Input<String?>? tenant;
   /// The ID value for the new unit.
   final pulumi.Input<String> unitId;
   /// Reference to the UnitKind this Unit belongs to. Immutable once set.
-  final pulumi.Input<String>? unitKind;
+  final pulumi.Input<String?>? unitKind;
 
   /// Creates a new [UnitArgs].
   /// [annotations] Annotations is an unstructured key-value map stored with a resource that

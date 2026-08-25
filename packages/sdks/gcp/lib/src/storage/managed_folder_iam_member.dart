@@ -2067,7 +2067,7 @@ class ManagedFolderIamMember extends pulumi.CustomResource {
           'gcp:storage/managedFolderIamMember:ManagedFolderIamMember',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     bucket = registerOutput<String>('bucket');
     condition = registerOutput<ManagedFolderIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedFolderIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -2082,11 +2082,12 @@ class ManagedFolderIamMember extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ManagedFolderIamMemberState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ManagedFolderIamMember._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -2100,6 +2101,23 @@ class ManagedFolderIamMember extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    bucket = registerOutput<String>('bucket');
+    condition = registerOutput<ManagedFolderIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedFolderIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    etag = registerOutput<String>('etag');
+    managedFolder = registerOutput<String>('managedFolder');
+    member = registerOutput<String>('member');
+    role = registerOutput<String>('role');
+  }
+
+  /// Creates a typed reference to an existing [ManagedFolderIamMember] resource.
+  ManagedFolderIamMember.reference(String urn)
+    : super(
+        'gcp:storage/managedFolderIamMember:ManagedFolderIamMember',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     bucket = registerOutput<String>('bucket');
     condition = registerOutput<ManagedFolderIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedFolderIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');

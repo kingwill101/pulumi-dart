@@ -320,14 +320,15 @@ class AppCheckDebugToken extends pulumi.CustomResource {
           'gcp:firebase/appCheckDebugToken:AppCheckDebugToken',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['token'],
         ) {
     appId = registerOutput<String>('appId');
     debugTokenId = registerOutput<String>('debugTokenId');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
     project = registerOutput<String>('project');
-    token = registerOutput<String>('token');
+    token = registerOutput<String>('token', isSecret: true);
   }
 
   /// Gets an existing [AppCheckDebugToken] resource's state with the given [name] and [id].
@@ -335,11 +336,12 @@ class AppCheckDebugToken extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AppCheckDebugTokenState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AppCheckDebugToken._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -358,6 +360,24 @@ class AppCheckDebugToken extends pulumi.CustomResource {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
     project = registerOutput<String>('project');
-    token = registerOutput<String>('token');
+    token = registerOutput<String>('token', isSecret: true);
+  }
+
+  /// Creates a typed reference to an existing [AppCheckDebugToken] resource.
+  AppCheckDebugToken.reference(String urn)
+    : super(
+        'gcp:firebase/appCheckDebugToken:AppCheckDebugToken',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['token'],
+        isResourceReference: true,
+      ) {
+    appId = registerOutput<String>('appId');
+    debugTokenId = registerOutput<String>('debugTokenId');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    displayName = registerOutput<String>('displayName');
+    project = registerOutput<String>('project');
+    token = registerOutput<String>('token', isSecret: true);
   }
 }

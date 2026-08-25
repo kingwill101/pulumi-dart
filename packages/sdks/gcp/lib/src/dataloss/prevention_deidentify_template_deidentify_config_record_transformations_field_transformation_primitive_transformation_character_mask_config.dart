@@ -6,17 +6,17 @@ import 'prevention_deidentify_template_deidentify_config_record_transformations_
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfig {
   /// Characters to skip when doing de-identification of a value. These will be left alone and skipped.
   /// Structure is documented below.
-  final pulumi.Input<List<PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore>>? charactersToIgnores;
+  final pulumi.Input<List<PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore>?>? charactersToIgnores;
   /// Character to use to mask the sensitive values—for example, * for an alphabetic string such as a name, or 0 for a numeric string
   /// such as ZIP code or credit card number. This string must have a length of 1. If not supplied, this value defaults to * for
   /// strings, and 0 for digits.
-  final pulumi.Input<String>? maskingCharacter;
+  final pulumi.Input<String?>? maskingCharacter;
   /// Number of characters to mask. If not set, all matching chars will be masked. Skipped characters do not count towards this tally.
   /// If numberToMask is negative, this denotes inverse masking. Cloud DLP masks all but a number of characters. For example, suppose you have the following values:
-  final pulumi.Input<int>? numberToMask;
+  final pulumi.Input<int?>? numberToMask;
   /// Mask characters in reverse order. For example, if maskingCharacter is 0, numberToMask is 14, and reverseOrder is `false`, then the
   /// input string `1234-5678-9012-3456` is masked as `00000000000000-3456`.
-  final pulumi.Input<bool>? reverseOrder;
+  final pulumi.Input<bool?>? reverseOrder;
 
   /// Creates a new [PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfig].
   /// [charactersToIgnores] Characters to skip when doing de-identification of a value. These will be left alone and skipped.
@@ -43,7 +43,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     return PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfig(
       charactersToIgnores: (() { final guardedValue = map['charactersToIgnores']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore>(guardedValue, (value) => PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore.fromMap((value as Map).cast<String, dynamic>()))); })(),
       maskingCharacter: (() { final guardedValue = map['maskingCharacter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      numberToMask: (() { final guardedValue = map['numberToMask']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      numberToMask: (() { final guardedValue = map['numberToMask']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       reverseOrder: (() { final guardedValue = map['reverseOrder']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }

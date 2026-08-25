@@ -935,7 +935,7 @@ class FirewallPolicyIamMember extends pulumi.CustomResource {
           'gcp:compute/firewallPolicyIamMember:FirewallPolicyIamMember',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     condition = registerOutput<FirewallPolicyIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FirewallPolicyIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
@@ -949,11 +949,12 @@ class FirewallPolicyIamMember extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FirewallPolicyIamMemberState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return FirewallPolicyIamMember._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -967,6 +968,22 @@ class FirewallPolicyIamMember extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    condition = registerOutput<FirewallPolicyIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FirewallPolicyIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    etag = registerOutput<String>('etag');
+    member = registerOutput<String>('member');
+    this.name = registerOutput<String>('name');
+    role = registerOutput<String>('role');
+  }
+
+  /// Creates a typed reference to an existing [FirewallPolicyIamMember] resource.
+  FirewallPolicyIamMember.reference(String urn)
+    : super(
+        'gcp:compute/firewallPolicyIamMember:FirewallPolicyIamMember',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     condition = registerOutput<FirewallPolicyIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FirewallPolicyIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
     member = registerOutput<String>('member');

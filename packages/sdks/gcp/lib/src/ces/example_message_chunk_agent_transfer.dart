@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ExampleMessageChunkAgentTransfer {
   /// (Output)
   /// Display name of the agent.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The agent to which the conversation is being transferred. The agent will
   /// handle the conversation from this point forward.
   /// Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`

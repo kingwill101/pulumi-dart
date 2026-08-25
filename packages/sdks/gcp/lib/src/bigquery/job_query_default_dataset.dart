@@ -7,7 +7,7 @@ class JobQueryDefaultDataset {
   /// or of the form `projects/{{project}}/datasets/{{dataset_id}}` if not.
   final pulumi.Input<String> datasetId;
   /// The ID of the project containing this table.
-  final pulumi.Input<String>? projectId;
+  final pulumi.Input<String?>? projectId;
 
   /// Creates a new [JobQueryDefaultDataset].
   /// [datasetId] The dataset. Can be specified `{{dataset_id}}` if `projectId` is also set,

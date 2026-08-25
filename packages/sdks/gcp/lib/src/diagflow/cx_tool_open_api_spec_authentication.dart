@@ -10,19 +10,19 @@ class CxToolOpenApiSpecAuthentication {
   /// Config for API key auth.
   /// This field is part of a union field `authConfig`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
   /// Structure is documented below.
-  final pulumi.Input<CxToolOpenApiSpecAuthenticationApiKeyConfig>? apiKeyConfig;
+  final pulumi.Input<CxToolOpenApiSpecAuthenticationApiKeyConfig?>? apiKeyConfig;
   /// Config for bearer token auth.
   /// This field is part of a union field `authConfig`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
   /// Structure is documented below.
-  final pulumi.Input<CxToolOpenApiSpecAuthenticationBearerTokenConfig>? bearerTokenConfig;
+  final pulumi.Input<CxToolOpenApiSpecAuthenticationBearerTokenConfig?>? bearerTokenConfig;
   /// Config for OAuth.
   /// This field is part of a union field `authConfig`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
   /// Structure is documented below.
-  final pulumi.Input<CxToolOpenApiSpecAuthenticationOauthConfig>? oauthConfig;
+  final pulumi.Input<CxToolOpenApiSpecAuthenticationOauthConfig?>? oauthConfig;
   /// Config for [Diglogflow service agent](https://cloud.google.com/iam/docs/service-agents#dialogflow-service-agent) auth.
   /// This field is part of a union field `authConfig`: Only one of `apiKeyConfig`, `oauthConfig`, `serviceAgentAuthConfig`, or `bearerTokenConfig` may be set.
   /// Structure is documented below.
-  final pulumi.Input<CxToolOpenApiSpecAuthenticationServiceAgentAuthConfig>? serviceAgentAuthConfig;
+  final pulumi.Input<CxToolOpenApiSpecAuthenticationServiceAgentAuthConfig?>? serviceAgentAuthConfig;
 
   /// Creates a new [CxToolOpenApiSpecAuthentication].
   /// [apiKeyConfig] Config for API key auth.

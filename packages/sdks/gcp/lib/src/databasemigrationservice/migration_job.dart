@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'migration_job_args.dart';
 import 'migration_job_dump_flags.dart';
+import 'migration_job_error.dart';
 import 'migration_job_objects_config.dart';
 import 'migration_job_performance_config.dart';
 import 'migration_job_postgres_homogeneous_config.dart';
@@ -3460,7 +3461,7 @@ class MigrationJob extends pulumi.CustomResource {
   late final pulumi.Output<Map<String, String>> effectiveLabels;
   /// Output only. The error details in case of state FAILED.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> errors;
+  late final pulumi.Output<List<MigrationJobError>> errors;
   /// The resource labels for migration job to use to annotate any related underlying resources such as Compute Engine VMs.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -3523,7 +3524,8 @@ class MigrationJob extends pulumi.CustomResource {
           'gcp:databasemigrationservice/migrationJob:MigrationJob',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -3533,9 +3535,9 @@ class MigrationJob extends pulumi.CustomResource {
     dumpFlags = registerOutput<MigrationJobDumpFlags?>('dumpFlags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MigrationJobDumpFlags.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     dumpPath = registerOutput<String?>('dumpPath');
     dumpType = registerOutput<String?>('dumpType');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    errors = registerOutput<List<Map<String, dynamic>>>('errors');
-    labels = registerOutput<Map<String, String>?>('labels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    errors = registerOutput<List<MigrationJobError>>('errors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MigrationJobError>(guardedValue, (value) => MigrationJobError.fromMap((value as Map).cast<String, dynamic>())); });
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String?>('location');
     migrationJobId = registerOutput<String>('migrationJobId');
     this.name = registerOutput<String>('name');
@@ -3544,7 +3546,7 @@ class MigrationJob extends pulumi.CustomResource {
     phase = registerOutput<String>('phase');
     postgresHomogeneousConfig = registerOutput<MigrationJobPostgresHomogeneousConfig?>('postgresHomogeneousConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MigrationJobPostgresHomogeneousConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     reverseSshConnectivity = registerOutput<MigrationJobReverseSshConnectivity?>('reverseSshConnectivity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MigrationJobReverseSshConnectivity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     source = registerOutput<String>('source');
     state = registerOutput<String>('state');
@@ -3559,11 +3561,12 @@ class MigrationJob extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     MigrationJobState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return MigrationJob._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -3585,9 +3588,9 @@ class MigrationJob extends pulumi.CustomResource {
     dumpFlags = registerOutput<MigrationJobDumpFlags?>('dumpFlags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MigrationJobDumpFlags.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     dumpPath = registerOutput<String?>('dumpPath');
     dumpType = registerOutput<String?>('dumpType');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    errors = registerOutput<List<Map<String, dynamic>>>('errors');
-    labels = registerOutput<Map<String, String>?>('labels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    errors = registerOutput<List<MigrationJobError>>('errors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MigrationJobError>(guardedValue, (value) => MigrationJobError.fromMap((value as Map).cast<String, dynamic>())); });
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String?>('location');
     migrationJobId = registerOutput<String>('migrationJobId');
     this.name = registerOutput<String>('name');
@@ -3596,10 +3599,49 @@ class MigrationJob extends pulumi.CustomResource {
     phase = registerOutput<String>('phase');
     postgresHomogeneousConfig = registerOutput<MigrationJobPostgresHomogeneousConfig?>('postgresHomogeneousConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MigrationJobPostgresHomogeneousConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     reverseSshConnectivity = registerOutput<MigrationJobReverseSshConnectivity?>('reverseSshConnectivity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MigrationJobReverseSshConnectivity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     source = registerOutput<String>('source');
     this.state = registerOutput<String>('state');
+    staticIpConnectivity = registerOutput<Map<String, dynamic>?>('staticIpConnectivity');
+    stopOnWarnings = registerOutput<bool?>('stopOnWarnings');
+    type = registerOutput<String>('type');
+    vpcPeeringConnectivity = registerOutput<MigrationJobVpcPeeringConnectivity?>('vpcPeeringConnectivity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MigrationJobVpcPeeringConnectivity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [MigrationJob] resource.
+  MigrationJob.reference(String urn)
+    : super(
+        'gcp:databasemigrationservice/migrationJob:MigrationJob',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    desiredState = registerOutput<String>('desiredState');
+    destination = registerOutput<String>('destination');
+    displayName = registerOutput<String?>('displayName');
+    dumpFlags = registerOutput<MigrationJobDumpFlags?>('dumpFlags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MigrationJobDumpFlags.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dumpPath = registerOutput<String?>('dumpPath');
+    dumpType = registerOutput<String?>('dumpType');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    errors = registerOutput<List<MigrationJobError>>('errors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MigrationJobError>(guardedValue, (value) => MigrationJobError.fromMap((value as Map).cast<String, dynamic>())); });
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String?>('location');
+    migrationJobId = registerOutput<String>('migrationJobId');
+    this.name = registerOutput<String>('name');
+    objectsConfig = registerOutput<MigrationJobObjectsConfig>('objectsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MigrationJobObjectsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    performanceConfig = registerOutput<MigrationJobPerformanceConfig?>('performanceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MigrationJobPerformanceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    phase = registerOutput<String>('phase');
+    postgresHomogeneousConfig = registerOutput<MigrationJobPostgresHomogeneousConfig?>('postgresHomogeneousConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MigrationJobPostgresHomogeneousConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    reverseSshConnectivity = registerOutput<MigrationJobReverseSshConnectivity?>('reverseSshConnectivity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MigrationJobReverseSshConnectivity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    source = registerOutput<String>('source');
+    state = registerOutput<String>('state');
     staticIpConnectivity = registerOutput<Map<String, dynamic>?>('staticIpConnectivity');
     stopOnWarnings = registerOutput<bool?>('stopOnWarnings');
     type = registerOutput<String>('type');

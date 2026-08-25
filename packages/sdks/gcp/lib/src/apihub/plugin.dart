@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'plugin_actions_config.dart';
 import 'plugin_args.dart';
 import 'plugin_config_template.dart';
 import 'plugin_documentation.dart';
@@ -611,7 +612,7 @@ import 'plugin_state.dart';
 class Plugin extends pulumi.CustomResource {
   /// The configuration of actions supported by the plugin.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> actionsConfigs;
+  late final pulumi.Output<List<PluginActionsConfig>?> actionsConfigs;
   /// ConfigTemplate represents the configuration template for a plugin.
   /// Structure is documented below.
   late final pulumi.Output<PluginConfigTemplate> configTemplate;
@@ -692,9 +693,9 @@ class Plugin extends pulumi.CustomResource {
           'gcp:apihub/plugin:Plugin',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
-    actionsConfigs = registerOutput<List<Map<String, dynamic>>?>('actionsConfigs');
+    actionsConfigs = registerOutput<List<PluginActionsConfig>?>('actionsConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PluginActionsConfig>(guardedValue, (value) => PluginActionsConfig.fromMap((value as Map).cast<String, dynamic>())); });
     configTemplate = registerOutput<PluginConfigTemplate>('configTemplate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PluginConfigTemplate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -717,11 +718,12 @@ class Plugin extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PluginState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Plugin._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -735,7 +737,7 @@ class Plugin extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    actionsConfigs = registerOutput<List<Map<String, dynamic>>?>('actionsConfigs');
+    actionsConfigs = registerOutput<List<PluginActionsConfig>?>('actionsConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PluginActionsConfig>(guardedValue, (value) => PluginActionsConfig.fromMap((value as Map).cast<String, dynamic>())); });
     configTemplate = registerOutput<PluginConfigTemplate>('configTemplate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PluginConfigTemplate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -750,6 +752,33 @@ class Plugin extends pulumi.CustomResource {
     pluginId = registerOutput<String>('pluginId');
     project = registerOutput<String>('project');
     this.state = registerOutput<String>('state');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [Plugin] resource.
+  Plugin.reference(String urn)
+    : super(
+        'gcp:apihub/plugin:Plugin',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    actionsConfigs = registerOutput<List<PluginActionsConfig>?>('actionsConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PluginActionsConfig>(guardedValue, (value) => PluginActionsConfig.fromMap((value as Map).cast<String, dynamic>())); });
+    configTemplate = registerOutput<PluginConfigTemplate>('configTemplate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PluginConfigTemplate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    documentation = registerOutput<PluginDocumentation?>('documentation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PluginDocumentation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    hostingService = registerOutput<PluginHostingService?>('hostingService', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PluginHostingService.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    ownershipType = registerOutput<String>('ownershipType');
+    pluginCategory = registerOutput<String?>('pluginCategory');
+    pluginId = registerOutput<String>('pluginId');
+    project = registerOutput<String>('project');
+    state = registerOutput<String>('state');
     updateTime = registerOutput<String>('updateTime');
   }
 }

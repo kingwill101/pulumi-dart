@@ -733,7 +733,7 @@ class BackupSchedule extends pulumi.CustomResource {
           'gcp:spanner/backupSchedule:BackupSchedule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     database = registerOutput<String>('database');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -752,11 +752,12 @@ class BackupSchedule extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     BackupScheduleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return BackupSchedule._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -770,6 +771,27 @@ class BackupSchedule extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    database = registerOutput<String>('database');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    encryptionConfig = registerOutput<BackupScheduleEncryptionConfig>('encryptionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackupScheduleEncryptionConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    fullBackupSpec = registerOutput<Map<String, dynamic>?>('fullBackupSpec');
+    incrementalBackupSpec = registerOutput<Map<String, dynamic>?>('incrementalBackupSpec');
+    instance = registerOutput<String>('instance');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    retentionDuration = registerOutput<String>('retentionDuration');
+    spec = registerOutput<BackupScheduleSpec?>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackupScheduleSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [BackupSchedule] resource.
+  BackupSchedule.reference(String urn)
+    : super(
+        'gcp:spanner/backupSchedule:BackupSchedule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     database = registerOutput<String>('database');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     encryptionConfig = registerOutput<BackupScheduleEncryptionConfig>('encryptionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackupScheduleEncryptionConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

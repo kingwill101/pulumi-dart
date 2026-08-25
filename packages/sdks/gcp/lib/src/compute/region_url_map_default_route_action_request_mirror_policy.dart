@@ -6,11 +6,11 @@ class RegionUrlMapDefaultRouteActionRequestMirrorPolicy {
   /// The full or partial URL to the RegionBackendService resource being mirrored to.
   /// The backend service configured for a mirroring policy must reference backends that are of the same type as the original backend service matched in the URL map.
   /// Serverless NEG backends are not currently supported as a mirrored backend service.
-  final pulumi.Input<String>? backendService;
+  final pulumi.Input<String?>? backendService;
   /// (Optional, Beta)
   /// The percentage of requests to be mirrored to backendService.
   /// The value must be between 0.0 and 100.0 inclusive.
-  final pulumi.Input<double>? mirrorPercent;
+  final pulumi.Input<double?>? mirrorPercent;
 
   /// Creates a new [RegionUrlMapDefaultRouteActionRequestMirrorPolicy].
   /// [backendService] The full or partial URL to the RegionBackendService resource being mirrored to.
@@ -30,7 +30,7 @@ class RegionUrlMapDefaultRouteActionRequestMirrorPolicy {
   factory RegionUrlMapDefaultRouteActionRequestMirrorPolicy.fromMap(Map<String, dynamic> map) {
     return RegionUrlMapDefaultRouteActionRequestMirrorPolicy(
       backendService: (() { final guardedValue = map['backendService']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      mirrorPercent: (() { final guardedValue = map['mirrorPercent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      mirrorPercent: (() { final guardedValue = map['mirrorPercent']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

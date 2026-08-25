@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DatascanDataDocumentationSpec {
   /// If set, the latest DataScan job result will be published to Knowledge Catalog.
-  final pulumi.Input<bool>? catalogPublishingEnabled;
+  final pulumi.Input<bool?>? catalogPublishingEnabled;
 
   /// Creates a new [DatascanDataDocumentationSpec].
   /// [catalogPublishingEnabled] If set, the latest DataScan job result will be published to Knowledge Catalog.

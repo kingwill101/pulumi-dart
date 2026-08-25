@@ -15,41 +15,41 @@ class VolumeReplicationArgs {
   /// replication. If you reversed the replication direction, this will be your former source volume!
   /// For production use, it is recommended to keep this parameter false to avoid accidental volume
   /// deletion. Handle with care. Default is false.
-  final pulumi.Input<bool>? deleteDestinationVolume;
+  final pulumi.Input<bool?>? deleteDestinationVolume;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// An description of this resource.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Destination volume parameters.
   /// Structure is documented below.
-  final pulumi.Input<VolumeReplicationDestinationVolumeParameters>? destinationVolumeParameters;
+  final pulumi.Input<VolumeReplicationDestinationVolumeParameters?>? destinationVolumeParameters;
   /// Only replications with mirror_state=MIRRORED can be stopped. A replication in mirror_state=TRANSFERRING
   /// currently receives an update and stopping the update might be undesirable. Set this parameter to true
   /// to stop anyway. All data transferred to the destination will be discarded and content of destination
   /// volume will remain at the state of the last successful update. Default is false.
-  final pulumi.Input<bool>? forceStopping;
+  final pulumi.Input<bool?>? forceStopping;
   /// Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Name of region for this resource. The resource needs to be created in the region of the destination volume.
   final pulumi.Input<String> location;
   /// The name of the replication. Needs to be unique per location.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Set to false to stop/break the mirror. Stopping the mirror makes the destination volume read-write
   /// and act independently from the source volume.
   /// Set to true to enable/resume the mirror. WARNING: Resuming a mirror overwrites any changes
   /// done to the destination volume with the content of the source volume.
-  final pulumi.Input<bool>? replicationEnabled;
+  final pulumi.Input<bool?>? replicationEnabled;
   /// Specifies the replication interval.
   /// Possible values are: `EVERY_10_MINUTES`, `HOURLY`, `DAILY`.
   final pulumi.Input<String> replicationSchedule;
@@ -58,7 +58,7 @@ class VolumeReplicationArgs {
   /// Replication resource state is independent of mirror_state. With enough data, it can take many hours
   /// for mirrorState to reach MIRRORED. If you want Terraform to wait for the mirror to finish on
   /// create/stop/resume operations, set this parameter to true. Default is false.
-  final pulumi.Input<bool>? waitForMirror;
+  final pulumi.Input<bool?>? waitForMirror;
 
   /// Creates a new [VolumeReplicationArgs].
   /// [deleteDestinationVolume] A destination volume is created as part of replication creation. The destination volume will not became

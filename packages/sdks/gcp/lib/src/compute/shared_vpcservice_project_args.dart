@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_compute_shared_vpcservice_project_shared_vpcservice_project_args_doc}
 class SharedVPCServiceProjectArgs {
   /// The deletion policy for the shared VPC service. Setting ABANDON allows the resource to be abandoned rather than deleted. Possible values are: "ABANDON".
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The ID of a host project to associate.
   final pulumi.Input<String> hostProject;
   /// The ID of the project that will serve as a Shared VPC service project.

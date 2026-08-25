@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstanceNodeConfig {
   /// (Output)
   /// Output only. Memory size in GB of the node.
-  final pulumi.Input<double>? sizeGb;
+  final pulumi.Input<double?>? sizeGb;
 
   /// Creates a new [InstanceNodeConfig].
   /// [sizeGb] (Output)
@@ -21,7 +21,7 @@ class InstanceNodeConfig {
 
   factory InstanceNodeConfig.fromMap(Map<String, dynamic> map) {
     return InstanceNodeConfig(
-      sizeGb: (() { final guardedValue = map['sizeGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      sizeGb: (() { final guardedValue = map['sizeGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

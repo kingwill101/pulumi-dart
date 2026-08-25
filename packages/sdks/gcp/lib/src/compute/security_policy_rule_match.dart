@@ -9,17 +9,17 @@ class SecurityPolicyRuleMatch {
   /// The configuration options available when specifying versionedExpr.
   /// This field must be specified if versionedExpr is specified and cannot be specified if versionedExpr is not specified.
   /// Structure is documented below.
-  final pulumi.Input<SecurityPolicyRuleMatchConfig>? config;
+  final pulumi.Input<SecurityPolicyRuleMatchConfig?>? config;
   /// User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
   /// Structure is documented below.
-  final pulumi.Input<SecurityPolicyRuleMatchExpr>? expr;
+  final pulumi.Input<SecurityPolicyRuleMatchExpr?>? expr;
   /// The configuration options available when specifying a user defined CEVAL expression (i.e., 'expr').
   /// Structure is documented below.
-  final pulumi.Input<SecurityPolicyRuleMatchExprOptions>? exprOptions;
+  final pulumi.Input<SecurityPolicyRuleMatchExprOptions?>? exprOptions;
   /// Preconfigured versioned expression. If this field is specified, config must also be specified.
   /// Available preconfigured expressions along with their requirements are: SRC_IPS_V1 - must specify the corresponding srcIpRange field in config.
   /// Possible values are: `SRC_IPS_V1`.
-  final pulumi.Input<String>? versionedExpr;
+  final pulumi.Input<String?>? versionedExpr;
 
   /// Creates a new [SecurityPolicyRuleMatch].
   /// [config] The configuration options available when specifying versionedExpr.

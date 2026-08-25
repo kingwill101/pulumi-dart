@@ -3,46 +3,46 @@
 
 /// Result data returned by getKMSSecretAsymmetric.
 class GetKMSSecretAsymmetricResult {
-  final String ciphertext;
+  final String? ciphertext;
   /// Contains the crc32 checksum of the provided ciphertext.
   final String? crc32;
-  final String cryptoKeyVersion;
+  final String? cryptoKeyVersion;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// Contains the result of decrypting the provided ciphertext.
-  final String plaintext;
+  final String? plaintext;
 
   /// Creates a new [GetKMSSecretAsymmetricResult].
-  /// [ciphertext] Required.
+  /// [ciphertext] Optional.
   /// [crc32] Contains the crc32 checksum of the provided ciphertext.
-  /// [cryptoKeyVersion] Required.
+  /// [cryptoKeyVersion] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [plaintext] Contains the result of decrypting the provided ciphertext.
   const GetKMSSecretAsymmetricResult({
-    required this.ciphertext,
+    this.ciphertext,
     this.crc32,
-    required this.cryptoKeyVersion,
-    required this.id,
-    required this.plaintext,
+    this.cryptoKeyVersion,
+    this.id,
+    this.plaintext,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'ciphertext': ciphertext,
+      'ciphertext': ?ciphertext,
       'crc32': ?crc32,
-      'cryptoKeyVersion': cryptoKeyVersion,
-      'id': id,
-      'plaintext': plaintext,
+      'cryptoKeyVersion': ?cryptoKeyVersion,
+      'id': ?id,
+      'plaintext': ?plaintext,
     };
   }
 
   factory GetKMSSecretAsymmetricResult.fromMap(Map<String, dynamic> map) {
     return GetKMSSecretAsymmetricResult(
-      ciphertext: map['ciphertext'] as String,
+      ciphertext: (() { final guardedValue = map['ciphertext']; if (guardedValue == null) return null; return guardedValue as String; })(),
       crc32: (() { final guardedValue = map['crc32']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      cryptoKeyVersion: map['cryptoKeyVersion'] as String,
-      id: map['id'] as String,
-      plaintext: map['plaintext'] as String,
+      cryptoKeyVersion: (() { final guardedValue = map['cryptoKeyVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      plaintext: (() { final guardedValue = map['plaintext']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

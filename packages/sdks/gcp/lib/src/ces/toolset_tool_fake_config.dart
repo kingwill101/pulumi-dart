@@ -6,9 +6,9 @@ import 'toolset_tool_fake_config_code_block.dart';
 class ToolsetToolFakeConfig {
   /// Code block which will be executed instead of a real tool call.
   /// Structure is documented below.
-  final pulumi.Input<ToolsetToolFakeConfigCodeBlock>? codeBlock;
+  final pulumi.Input<ToolsetToolFakeConfigCodeBlock?>? codeBlock;
   /// Whether the tool is using fake mode.
-  final pulumi.Input<bool>? enableFakeMode;
+  final pulumi.Input<bool?>? enableFakeMode;
 
   /// Creates a new [ToolsetToolFakeConfig].
   /// [codeBlock] Code block which will be executed instead of a real tool call.

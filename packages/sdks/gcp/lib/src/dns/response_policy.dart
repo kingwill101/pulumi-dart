@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'response_policy_args.dart';
+import 'response_policy_gke_cluster.dart';
+import 'response_policy_network.dart';
 import 'response_policy_state.dart';
 
 /// A Response Policy is a collection of selectors that apply to queries
@@ -608,10 +610,10 @@ class ResponsePolicy extends pulumi.CustomResource {
   late final pulumi.Output<String?> description;
   /// The list of Google Kubernetes Engine clusters that can see this zone.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> gkeClusters;
+  late final pulumi.Output<List<ResponsePolicyGkeCluster>?> gkeClusters;
   /// The list of network names specifying networks to which this policy is applied.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> networks;
+  late final pulumi.Output<List<ResponsePolicyNetwork>?> networks;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
@@ -630,12 +632,12 @@ class ResponsePolicy extends pulumi.CustomResource {
           'gcp:dns/responsePolicy:ResponsePolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    gkeClusters = registerOutput<List<Map<String, dynamic>>?>('gkeClusters');
-    networks = registerOutput<List<Map<String, dynamic>>?>('networks');
+    gkeClusters = registerOutput<List<ResponsePolicyGkeCluster>?>('gkeClusters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ResponsePolicyGkeCluster>(guardedValue, (value) => ResponsePolicyGkeCluster.fromMap((value as Map).cast<String, dynamic>())); });
+    networks = registerOutput<List<ResponsePolicyNetwork>?>('networks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ResponsePolicyNetwork>(guardedValue, (value) => ResponsePolicyNetwork.fromMap((value as Map).cast<String, dynamic>())); });
     project = registerOutput<String>('project');
     responsePolicyName = registerOutput<String>('responsePolicyName');
   }
@@ -645,11 +647,12 @@ class ResponsePolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ResponsePolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ResponsePolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -665,8 +668,25 @@ class ResponsePolicy extends pulumi.CustomResource {
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    gkeClusters = registerOutput<List<Map<String, dynamic>>?>('gkeClusters');
-    networks = registerOutput<List<Map<String, dynamic>>?>('networks');
+    gkeClusters = registerOutput<List<ResponsePolicyGkeCluster>?>('gkeClusters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ResponsePolicyGkeCluster>(guardedValue, (value) => ResponsePolicyGkeCluster.fromMap((value as Map).cast<String, dynamic>())); });
+    networks = registerOutput<List<ResponsePolicyNetwork>?>('networks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ResponsePolicyNetwork>(guardedValue, (value) => ResponsePolicyNetwork.fromMap((value as Map).cast<String, dynamic>())); });
+    project = registerOutput<String>('project');
+    responsePolicyName = registerOutput<String>('responsePolicyName');
+  }
+
+  /// Creates a typed reference to an existing [ResponsePolicy] resource.
+  ResponsePolicy.reference(String urn)
+    : super(
+        'gcp:dns/responsePolicy:ResponsePolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    gkeClusters = registerOutput<List<ResponsePolicyGkeCluster>?>('gkeClusters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ResponsePolicyGkeCluster>(guardedValue, (value) => ResponsePolicyGkeCluster.fromMap((value as Map).cast<String, dynamic>())); });
+    networks = registerOutput<List<ResponsePolicyNetwork>?>('networks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ResponsePolicyNetwork>(guardedValue, (value) => ResponsePolicyNetwork.fromMap((value as Map).cast<String, dynamic>())); });
     project = registerOutput<String>('project');
     responsePolicyName = registerOutput<String>('responsePolicyName');
   }

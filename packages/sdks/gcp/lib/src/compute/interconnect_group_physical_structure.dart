@@ -9,7 +9,7 @@ class InterconnectGroupPhysicalStructure {
   /// These are three-letter lowercase strings like "iad". A blocker like
   /// INCOMPATIBLE_METROS will specify the problematic metros in this
   /// field.
-  final pulumi.Input<List<InterconnectGroupPhysicalStructureMetro>>? metros;
+  final pulumi.Input<List<InterconnectGroupPhysicalStructureMetro>?>? metros;
 
   /// Creates a new [InterconnectGroupPhysicalStructure].
   /// [metros] (Output)

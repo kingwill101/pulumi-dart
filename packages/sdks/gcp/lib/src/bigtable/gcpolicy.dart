@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'gcpolicy_args.dart';
 import 'gcpolicy_max_age.dart';
+import 'gcpolicy_max_version.dart';
 import 'gcpolicy_state.dart';
 
 /// Creates a Google Cloud Bigtable GC Policy inside a family. For more information see
@@ -939,7 +940,7 @@ class GCPolicy extends pulumi.CustomResource {
   /// GC policy that applies to all cells older than the given age.
   late final pulumi.Output<GCPolicyMaxAge?> maxAge;
   /// GC policy that applies to all versions of a cell except for the most recent.
-  late final pulumi.Output<List<Map<String, dynamic>>?> maxVersions;
+  late final pulumi.Output<List<GCPolicyMaxVersion>?> maxVersions;
   /// If multiple policies are set, you should choose between `UNION` OR `INTERSECTION`.
   late final pulumi.Output<String?> mode;
   /// The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
@@ -959,7 +960,7 @@ class GCPolicy extends pulumi.CustomResource {
           'gcp:bigtable/gCPolicy:GCPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     columnFamily = registerOutput<String>('columnFamily');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -967,7 +968,7 @@ class GCPolicy extends pulumi.CustomResource {
     ignoreWarnings = registerOutput<bool?>('ignoreWarnings');
     instanceName = registerOutput<String>('instanceName');
     maxAge = registerOutput<GCPolicyMaxAge?>('maxAge', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GCPolicyMaxAge.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    maxVersions = registerOutput<List<Map<String, dynamic>>?>('maxVersions');
+    maxVersions = registerOutput<List<GCPolicyMaxVersion>?>('maxVersions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GCPolicyMaxVersion>(guardedValue, (value) => GCPolicyMaxVersion.fromMap((value as Map).cast<String, dynamic>())); });
     mode = registerOutput<String?>('mode');
     project = registerOutput<String>('project');
     table = registerOutput<String>('table');
@@ -978,11 +979,12 @@ class GCPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     GCPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return GCPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1002,7 +1004,28 @@ class GCPolicy extends pulumi.CustomResource {
     ignoreWarnings = registerOutput<bool?>('ignoreWarnings');
     instanceName = registerOutput<String>('instanceName');
     maxAge = registerOutput<GCPolicyMaxAge?>('maxAge', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GCPolicyMaxAge.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    maxVersions = registerOutput<List<Map<String, dynamic>>?>('maxVersions');
+    maxVersions = registerOutput<List<GCPolicyMaxVersion>?>('maxVersions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GCPolicyMaxVersion>(guardedValue, (value) => GCPolicyMaxVersion.fromMap((value as Map).cast<String, dynamic>())); });
+    mode = registerOutput<String?>('mode');
+    project = registerOutput<String>('project');
+    table = registerOutput<String>('table');
+  }
+
+  /// Creates a typed reference to an existing [GCPolicy] resource.
+  GCPolicy.reference(String urn)
+    : super(
+        'gcp:bigtable/gCPolicy:GCPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    columnFamily = registerOutput<String>('columnFamily');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    gcRules = registerOutput<String?>('gcRules');
+    ignoreWarnings = registerOutput<bool?>('ignoreWarnings');
+    instanceName = registerOutput<String>('instanceName');
+    maxAge = registerOutput<GCPolicyMaxAge?>('maxAge', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GCPolicyMaxAge.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    maxVersions = registerOutput<List<GCPolicyMaxVersion>?>('maxVersions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GCPolicyMaxVersion>(guardedValue, (value) => GCPolicyMaxVersion.fromMap((value as Map).cast<String, dynamic>())); });
     mode = registerOutput<String?>('mode');
     project = registerOutput<String>('project');
     table = registerOutput<String>('table');

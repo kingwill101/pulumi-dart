@@ -244,6 +244,17 @@ Future<GetTagKeyResult> getTagKey(
   return GetTagKeyResult.fromMap(result);
 }
 
+pulumi.Output<GetTagKeyResult> getTagKeyOutput(
+  GetTagKeyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:tags/getTagKey:getTagKey',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTagKeyResult.fromMap);
+}
+
 /// Retrieves the current IAM policy data for tagkey
 ///
 ///
@@ -361,6 +372,17 @@ Future<GetTagKeyIamPolicyResult> getTagKeyIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetTagKeyIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetTagKeyIamPolicyResult> getTagKeyIamPolicyOutput(
+  GetTagKeyIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:tags/getTagKeyIamPolicy:getTagKeyIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTagKeyIamPolicyResult.fromMap);
 }
 
 /// Get tag keys by org or project `parent`.
@@ -581,6 +603,17 @@ Future<GetTagKeysResult> getTagKeys(
   return GetTagKeysResult.fromMap(result);
 }
 
+pulumi.Output<GetTagKeysResult> getTagKeysOutput(
+  GetTagKeysArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:tags/getTagKeys:getTagKeys',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTagKeysResult.fromMap);
+}
+
 /// Get a tag value by `parent` key and `shortName`.
 ///
 /// ## Example Usage
@@ -706,6 +739,17 @@ Future<GetTagValueResult> getTagValue(
   return GetTagValueResult.fromMap(result);
 }
 
+pulumi.Output<GetTagValueResult> getTagValueOutput(
+  GetTagValueArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:tags/getTagValue:getTagValue',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTagValueResult.fromMap);
+}
+
 /// Retrieves the current IAM policy data for tagvalue
 ///
 ///
@@ -825,6 +869,17 @@ Future<GetTagValueIamPolicyResult> getTagValueIamPolicy(
   return GetTagValueIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetTagValueIamPolicyResult> getTagValueIamPolicyOutput(
+  GetTagValueIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:tags/getTagValueIamPolicy:getTagValueIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTagValueIamPolicyResult.fromMap);
+}
+
 /// Get tag values from a `parent` key.
 ///
 /// ## Example Usage
@@ -941,4 +996,15 @@ Future<GetTagValuesResult> getTagValues(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetTagValuesResult.fromMap(result);
+}
+
+pulumi.Output<GetTagValuesResult> getTagValuesOutput(
+  GetTagValuesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:tags/getTagValues:getTagValues',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTagValuesResult.fromMap);
 }

@@ -21,7 +21,7 @@ class ServiceTemplateContainerLivenessProbeTcpSocket {
 
   factory ServiceTemplateContainerLivenessProbeTcpSocket.fromMap(Map<String, dynamic> map) {
     return ServiceTemplateContainerLivenessProbeTcpSocket(
-      port: pulumi.Input.fromValue(map['port'] as int),
+      port: pulumi.Input.fromValue((map['port'] as num).toInt()),
     );
   }
 }

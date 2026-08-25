@@ -6,9 +6,9 @@ import 'service_template_spec_container_env_from_secret_ref_local_object_referen
 class ServiceTemplateSpecContainerEnvFromSecretRef {
   /// The Secret to select from.
   /// Structure is documented below.
-  final pulumi.Input<ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference>? localObjectReference;
+  final pulumi.Input<ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference?>? localObjectReference;
   /// Specify whether the Secret must be defined
-  final pulumi.Input<bool>? optional;
+  final pulumi.Input<bool?>? optional;
 
   /// Creates a new [ServiceTemplateSpecContainerEnvFromSecretRef].
   /// [localObjectReference] The Secret to select from.

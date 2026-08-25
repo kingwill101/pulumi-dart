@@ -7,54 +7,54 @@ import 'get_control_organization_intelligence_config_trial_config.dart';
 
 /// Result data returned by getControlOrganizationIntelligenceConfig.
 class GetControlOrganizationIntelligenceConfigResult {
-  final String editionConfig;
-  final List<GetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfig> effectiveIntelligenceConfigs;
-  final List<GetControlOrganizationIntelligenceConfigFilter> filters;
+  final String? editionConfig;
+  final List<GetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfig>? effectiveIntelligenceConfigs;
+  final List<GetControlOrganizationIntelligenceConfigFilter>? filters;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final String name;
-  final List<GetControlOrganizationIntelligenceConfigTrialConfig> trialConfigs;
-  final String updateTime;
+  final String? id;
+  final String? name;
+  final List<GetControlOrganizationIntelligenceConfigTrialConfig>? trialConfigs;
+  final String? updateTime;
 
   /// Creates a new [GetControlOrganizationIntelligenceConfigResult].
-  /// [editionConfig] Required.
-  /// [effectiveIntelligenceConfigs] Required.
-  /// [filters] Required.
+  /// [editionConfig] Optional.
+  /// [effectiveIntelligenceConfigs] Optional.
+  /// [filters] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [name] Required.
-  /// [trialConfigs] Required.
-  /// [updateTime] Required.
+  /// [name] Optional.
+  /// [trialConfigs] Optional.
+  /// [updateTime] Optional.
   const GetControlOrganizationIntelligenceConfigResult({
-    required this.editionConfig,
-    required this.effectiveIntelligenceConfigs,
-    required this.filters,
-    required this.id,
-    required this.name,
-    required this.trialConfigs,
-    required this.updateTime,
+    this.editionConfig,
+    this.effectiveIntelligenceConfigs,
+    this.filters,
+    this.id,
+    this.name,
+    this.trialConfigs,
+    this.updateTime,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'editionConfig': editionConfig,
-      'effectiveIntelligenceConfigs': pulumi.Input.encodeList<GetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfig, Map<String, dynamic>>(effectiveIntelligenceConfigs, (value) => value.toMap()),
-      'filters': pulumi.Input.encodeList<GetControlOrganizationIntelligenceConfigFilter, Map<String, dynamic>>(filters, (value) => value.toMap()),
-      'id': id,
-      'name': name,
-      'trialConfigs': pulumi.Input.encodeList<GetControlOrganizationIntelligenceConfigTrialConfig, Map<String, dynamic>>(trialConfigs, (value) => value.toMap()),
-      'updateTime': updateTime,
+      'editionConfig': ?editionConfig,
+      'effectiveIntelligenceConfigs': ?(() { final guardedValue = effectiveIntelligenceConfigs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfig, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'filters': ?(() { final guardedValue = filters; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetControlOrganizationIntelligenceConfigFilter, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'id': ?id,
+      'name': ?name,
+      'trialConfigs': ?(() { final guardedValue = trialConfigs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetControlOrganizationIntelligenceConfigTrialConfig, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'updateTime': ?updateTime,
     };
   }
 
   factory GetControlOrganizationIntelligenceConfigResult.fromMap(Map<String, dynamic> map) {
     return GetControlOrganizationIntelligenceConfigResult(
-      editionConfig: map['editionConfig'] as String,
-      effectiveIntelligenceConfigs: pulumi.Input.decodeList<GetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfig>(map['effectiveIntelligenceConfigs']!, (value) => GetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfig.fromMap((value as Map).cast<String, dynamic>())),
-      filters: pulumi.Input.decodeList<GetControlOrganizationIntelligenceConfigFilter>(map['filters']!, (value) => GetControlOrganizationIntelligenceConfigFilter.fromMap((value as Map).cast<String, dynamic>())),
-      id: map['id'] as String,
-      name: map['name'] as String,
-      trialConfigs: pulumi.Input.decodeList<GetControlOrganizationIntelligenceConfigTrialConfig>(map['trialConfigs']!, (value) => GetControlOrganizationIntelligenceConfigTrialConfig.fromMap((value as Map).cast<String, dynamic>())),
-      updateTime: map['updateTime'] as String,
+      editionConfig: (() { final guardedValue = map['editionConfig']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      effectiveIntelligenceConfigs: (() { final guardedValue = map['effectiveIntelligenceConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfig>(guardedValue, (value) => GetControlOrganizationIntelligenceConfigEffectiveIntelligenceConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
+      filters: (() { final guardedValue = map['filters']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetControlOrganizationIntelligenceConfigFilter>(guardedValue, (value) => GetControlOrganizationIntelligenceConfigFilter.fromMap((value as Map).cast<String, dynamic>())); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      trialConfigs: (() { final guardedValue = map['trialConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetControlOrganizationIntelligenceConfigTrialConfig>(guardedValue, (value) => GetControlOrganizationIntelligenceConfigTrialConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
+      updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

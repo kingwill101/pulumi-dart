@@ -33,7 +33,7 @@ class GetWorkerPoolTemplateContainerLivenessProbeHttpGet {
     return GetWorkerPoolTemplateContainerLivenessProbeHttpGet(
       httpHeaders: pulumi.Input.fromValue(pulumi.Input.decodeList<GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeader>(map['httpHeaders']!, (value) => GetWorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeader.fromMap((value as Map).cast<String, dynamic>()))),
       path: pulumi.Input.fromValue(map['path'] as String),
-      port: pulumi.Input.fromValue(map['port'] as int),
+      port: pulumi.Input.fromValue((map['port'] as num).toInt()),
     );
   }
 }

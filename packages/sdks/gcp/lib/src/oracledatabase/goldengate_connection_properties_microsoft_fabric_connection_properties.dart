@@ -4,16 +4,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GoldengateConnectionPropertiesMicrosoftFabricConnectionProperties {
   /// Azure client ID of the application.
-  final pulumi.Input<String>? clientId;
+  final pulumi.Input<String?>? clientId;
   /// Client secret associated with the client id.
-  final pulumi.Input<String>? clientSecret;
+  final pulumi.Input<String?>? clientSecret;
   /// Optional Microsoft Fabric service endpoint.
   /// Default value: https://onelake.dfs.fabric.microsoft.com
-  final pulumi.Input<String>? endpoint;
+  final pulumi.Input<String?>? endpoint;
   /// The technology type of MicrosoftFabricConnection.
-  final pulumi.Input<String>? technologyType;
+  final pulumi.Input<String?>? technologyType;
   /// Azure tenant ID of the application.
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
 
   /// Creates a new [GoldengateConnectionPropertiesMicrosoftFabricConnectionProperties].
   /// [clientId] Azure client ID of the application.

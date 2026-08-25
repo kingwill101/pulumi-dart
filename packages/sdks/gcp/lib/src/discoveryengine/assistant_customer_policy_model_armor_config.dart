@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AssistantCustomerPolicyModelArmorConfig {
   /// Defines the failure mode for Model Armor sanitization.
   /// The supported values: 'FAIL_OPEN', 'FAIL_CLOSED'.
-  final pulumi.Input<String>? failureMode;
+  final pulumi.Input<String?>? failureMode;
   /// The resource name of the Model Armor template for sanitizing assistant
   /// responses. Format:
   /// `projects/{project}/locations/{location}/templates/{template_id}`

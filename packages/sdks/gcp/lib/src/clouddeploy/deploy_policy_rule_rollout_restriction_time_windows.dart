@@ -7,12 +7,12 @@ import 'deploy_policy_rule_rollout_restriction_time_windows_weekly_window.dart';
 class DeployPolicyRuleRolloutRestrictionTimeWindows {
   /// One-time windows within which actions are restricted.
   /// Structure is documented below.
-  final pulumi.Input<List<DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindow>>? oneTimeWindows;
+  final pulumi.Input<List<DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindow>?>? oneTimeWindows;
   /// The time zone in IANA format IANA Time Zone Database (e.g. America/New_York).
   final pulumi.Input<String> timeZone;
   /// Recurring weekly windows within which actions are restricted.
   /// Structure is documented below.
-  final pulumi.Input<List<DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindow>>? weeklyWindows;
+  final pulumi.Input<List<DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindow>?>? weeklyWindows;
 
   /// Creates a new [DeployPolicyRuleRolloutRestrictionTimeWindows].
   /// [oneTimeWindows] One-time windows within which actions are restricted.

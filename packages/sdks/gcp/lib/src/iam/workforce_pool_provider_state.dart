@@ -13,7 +13,7 @@ class WorkforcePoolProviderState {
   /// provider should not be accepted.
   /// The expression must output a boolean representing whether to allow the federation.
   /// The following keywords may be referenced in the expressions:
-  final pulumi.Input<String>? attributeCondition;
+  final pulumi.Input<String?>? attributeCondition;
   /// Maps attributes from the authentication credentials issued by an external identity provider
   /// to Google Cloud attributes, such as `subject` and `segment`.
   /// Each key must be a string specifying the Google Cloud IAM attribute to map to.
@@ -56,23 +56,23 @@ class WorkforcePoolProviderState {
   /// ```
   /// An object containing a list of `"key": value` pairs.
   /// Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
-  final pulumi.Input<Map<String, String>>? attributeMapping;
+  final pulumi.Input<Map<String, String>?>? attributeMapping;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// A user-specified description of the provider. Cannot exceed 256 characters.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// If true, populates additional debug information in Cloud Audit Logs for this provider. Logged attribute mappings and values can be found in `sts.googleapis.com` data access logs. Default value is false.
-  final pulumi.Input<bool>? detailedAuditLogging;
+  final pulumi.Input<bool?>? detailedAuditLogging;
   /// Whether the provider is disabled. You cannot use a disabled provider to exchange tokens.
   /// However, existing tokens still grant access.
-  final pulumi.Input<bool>? disabled;
+  final pulumi.Input<bool?>? disabled;
   /// A user-specified display name for the provider. Cannot exceed 32 characters.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// (Optional, Deprecated)
   /// The configuration for OAuth 2.0 client used to get the extended group
   /// memberships for user identities. Only the `AZURE_AD_GROUPS_ID` attribute
@@ -87,28 +87,28 @@ class WorkforcePoolProviderState {
   /// Structure is documented below.
   ///
   /// &gt; **Warning:** `extendedAttributesOauth2Client` is deprecated. Use SCIM instead.
-  final pulumi.Input<WorkforcePoolProviderExtendedAttributesOauth2Client>? extendedAttributesOauth2Client;
+  final pulumi.Input<WorkforcePoolProviderExtendedAttributesOauth2Client?>? extendedAttributesOauth2Client;
   /// The configuration for OAuth 2.0 client used to get the additional user
   /// attributes. This should be used when users can't get the desired claims
   /// in authentication credentials. Currently this configuration is only
   /// supported with SAML and OIDC protocol.
   /// Structure is documented below.
-  final pulumi.Input<WorkforcePoolProviderExtraAttributesOauth2Client>? extraAttributesOauth2Client;
+  final pulumi.Input<WorkforcePoolProviderExtraAttributesOauth2Client?>? extraAttributesOauth2Client;
   /// The location for the resource.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Output only. The resource name of the provider.
   /// Format: `locations/{location}/workforcePools/{workforcePoolId}/providers/{providerId}`
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Represents an OpenId Connect 1.0 identity provider.
   /// Structure is documented below.
-  final pulumi.Input<WorkforcePoolProviderOidc>? oidc;
+  final pulumi.Input<WorkforcePoolProviderOidc?>? oidc;
   /// The ID for the provider, which becomes the final component of the resource name.
   /// This value must be 4-32 characters, and may contain the characters [a-z0-9-].
   /// The prefix `gcp-` is reserved for use by Google, and may not be specified.
-  final pulumi.Input<String>? providerId;
+  final pulumi.Input<String?>? providerId;
   /// Represents a SAML identity provider.
   /// Structure is documented below.
-  final pulumi.Input<WorkforcePoolProviderSaml>? saml;
+  final pulumi.Input<WorkforcePoolProviderSaml?>? saml;
   /// Agentspace only. Specifies whether the workforce identity pool
   /// provider uses SCIM-managed groups instead of the `google.groups`
   /// attribute mapping for authorization checks.
@@ -119,19 +119,19 @@ class WorkforcePoolProviderState {
   /// * ENABLED_FOR_GROUPS: Use SCIM-managed groups instead of the `google.groups`
   /// attribute mapping for authorization checks
   /// Possible values are: `SCIM_USAGE_UNSPECIFIED`, `ENABLED_FOR_GROUPS`.
-  final pulumi.Input<String>? scimUsage;
+  final pulumi.Input<String?>? scimUsage;
   /// The current state of the provider.
   /// * STATE_UNSPECIFIED: State unspecified.
   /// * ACTIVE: The provider is active and may be used to validate authentication credentials.
   /// * DELETED: The provider is soft-deleted. Soft-deleted providers are permanently
   /// deleted after approximately 30 days. You can restore a soft-deleted provider using
   /// [providers.undelete](https://cloud.google.com/iam/docs/reference/rest/v1/locations.workforcePools.providers/undelete#google.iam.admin.v1.WorkforcePools.UndeleteWorkforcePoolProvider).
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// The ID to use for the pool, which becomes the final component of the resource name.
   /// The IDs must be a globally unique string of 6 to 63 lowercase letters, digits, or hyphens.
   /// It must start with a letter, and cannot have a trailing hyphen.
   /// The prefix `gcp-` is reserved for use by Google, and may not be specified.
-  final pulumi.Input<String>? workforcePoolId;
+  final pulumi.Input<String?>? workforcePoolId;
 
   /// Creates a new [WorkforcePoolProviderState].
   /// [attributeCondition] A [Common Expression Language](https://github.com/google/cel-spec) expression, in

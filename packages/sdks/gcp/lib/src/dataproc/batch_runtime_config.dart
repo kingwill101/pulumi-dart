@@ -6,18 +6,18 @@ import 'batch_runtime_config_autotuning_config.dart';
 class BatchRuntimeConfig {
   /// Optional. Autotuning configuration of the workload.
   /// Structure is documented below.
-  final pulumi.Input<BatchRuntimeConfigAutotuningConfig>? autotuningConfig;
+  final pulumi.Input<BatchRuntimeConfigAutotuningConfig?>? autotuningConfig;
   /// Optional. Cohort identifier. Identifies families of the workloads having the same shape, e.g. daily ETL jobs.
-  final pulumi.Input<String>? cohort;
+  final pulumi.Input<String?>? cohort;
   /// Optional custom container image for the job runtime environment. If not specified, a default container image will be used.
-  final pulumi.Input<String>? containerImage;
+  final pulumi.Input<String?>? containerImage;
   /// (Output)
   /// A mapping of property names to values, which are used to configure workload execution.
-  final pulumi.Input<Map<String, String>>? effectiveProperties;
+  final pulumi.Input<Map<String, String>?>? effectiveProperties;
   /// A mapping of property names to values, which are used to configure workload execution.
-  final pulumi.Input<Map<String, String>>? properties;
+  final pulumi.Input<Map<String, String>?>? properties;
   /// Version of the batch runtime.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [BatchRuntimeConfig].
   /// [autotuningConfig] Optional. Autotuning configuration of the workload.

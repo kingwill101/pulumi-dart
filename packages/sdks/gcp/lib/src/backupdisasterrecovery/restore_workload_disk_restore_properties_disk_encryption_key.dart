@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RestoreWorkloadDiskRestorePropertiesDiskEncryptionKey {
   /// (Optional)
-  final pulumi.Input<String>? kmsKeyName;
+  final pulumi.Input<String?>? kmsKeyName;
   /// (Optional)
-  final pulumi.Input<String>? kmsKeyServiceAccount;
+  final pulumi.Input<String?>? kmsKeyServiceAccount;
   /// **Note**: This property is sensitive and will not be displayed in the plan.
-  final pulumi.Input<String>? rawKey;
+  final pulumi.Input<String?>? rawKey;
   /// **Note**: This property is sensitive and will not be displayed in the plan.
-  final pulumi.Input<String>? rsaEncryptedKey;
+  final pulumi.Input<String?>? rsaEncryptedKey;
 
   /// Creates a new [RestoreWorkloadDiskRestorePropertiesDiskEncryptionKey].
   /// [kmsKeyName] (Optional)

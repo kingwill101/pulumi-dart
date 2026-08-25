@@ -7,7 +7,7 @@ class PreventionInspectTemplateInspectConfigMinLikelihoodPerInfoType {
   /// Type of information the likeliness threshold applies to. Only one likelihood per infoType should be provided.
   /// If InfoTypeLikelihood does not have an info_type, the configuration fails.
   /// Structure is documented below.
-  final pulumi.Input<PreventionInspectTemplateInspectConfigMinLikelihoodPerInfoTypeInfoType>? infoType;
+  final pulumi.Input<PreventionInspectTemplateInspectConfigMinLikelihoodPerInfoTypeInfoType?>? infoType;
   /// Only returns findings equal or above this threshold. See https://cloud.google.com/dlp/docs/likelihood for more info.
   /// Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
   final pulumi.Input<String> minLikelihood;

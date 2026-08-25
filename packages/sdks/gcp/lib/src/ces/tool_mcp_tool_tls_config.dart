@@ -8,7 +8,7 @@ class ToolMcpToolTlsConfig {
   /// Specifies a list of allowed custom CA certificates for HTTPS
   /// verification.
   /// Structure is documented below.
-  final pulumi.Input<List<ToolMcpToolTlsConfigCaCert>>? caCerts;
+  final pulumi.Input<List<ToolMcpToolTlsConfigCaCert>?>? caCerts;
 
   /// Creates a new [ToolMcpToolTlsConfig].
   /// [caCerts] (Output)

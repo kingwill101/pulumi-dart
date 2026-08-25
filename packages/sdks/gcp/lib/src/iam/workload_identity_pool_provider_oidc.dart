@@ -14,7 +14,7 @@ class WorkloadIdentityPoolProviderOidc {
   /// //iam.googleapis.com/projects/<project-number>/locations/<location>/workloadIdentityPools/<pool-id>/providers/<provider-id>
   /// https://iam.googleapis.com/projects/<project-number>/locations/<location>/workloadIdentityPools/<pool-id>/providers/<provider-id>
   /// ```
-  final pulumi.Input<List<String>>? allowedAudiences;
+  final pulumi.Input<List<String>?>? allowedAudiences;
   /// The OIDC issuer URL.
   final pulumi.Input<String> issuerUri;
   /// OIDC JWKs in JSON String format. For details on definition of a
@@ -40,7 +40,7 @@ class WorkloadIdentityPoolProviderOidc {
   /// ]
   /// }
   /// ```
-  final pulumi.Input<String>? jwksJson;
+  final pulumi.Input<String?>? jwksJson;
 
   /// Creates a new [WorkloadIdentityPoolProviderOidc].
   /// [allowedAudiences] Acceptable values for the `aud` field (audience) in the OIDC token. Token exchange

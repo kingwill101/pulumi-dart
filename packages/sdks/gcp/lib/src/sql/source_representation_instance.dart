@@ -384,7 +384,8 @@ class SourceRepresentationInstance extends pulumi.CustomResource {
           'gcp:sql/sourceRepresentationInstance:SourceRepresentationInstance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['password'],
         ) {
     caCertificate = registerOutput<String?>('caCertificate');
     clientCertificate = registerOutput<String?>('clientCertificate');
@@ -394,7 +395,7 @@ class SourceRepresentationInstance extends pulumi.CustomResource {
     dumpFilePath = registerOutput<String?>('dumpFilePath');
     host = registerOutput<String>('host');
     this.name = registerOutput<String>('name');
-    password = registerOutput<String?>('password');
+    password = registerOutput<String?>('password', isSecret: true);
     port = registerOutput<int?>('port');
     project = registerOutput<String>('project');
     region = registerOutput<String>('region');
@@ -406,11 +407,12 @@ class SourceRepresentationInstance extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SourceRepresentationInstanceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SourceRepresentationInstance._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -432,7 +434,32 @@ class SourceRepresentationInstance extends pulumi.CustomResource {
     dumpFilePath = registerOutput<String?>('dumpFilePath');
     host = registerOutput<String>('host');
     this.name = registerOutput<String>('name');
-    password = registerOutput<String?>('password');
+    password = registerOutput<String?>('password', isSecret: true);
+    port = registerOutput<int?>('port');
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+    username = registerOutput<String?>('username');
+  }
+
+  /// Creates a typed reference to an existing [SourceRepresentationInstance] resource.
+  SourceRepresentationInstance.reference(String urn)
+    : super(
+        'gcp:sql/sourceRepresentationInstance:SourceRepresentationInstance',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['password'],
+        isResourceReference: true,
+      ) {
+    caCertificate = registerOutput<String?>('caCertificate');
+    clientCertificate = registerOutput<String?>('clientCertificate');
+    clientKey = registerOutput<String?>('clientKey');
+    databaseVersion = registerOutput<String>('databaseVersion');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    dumpFilePath = registerOutput<String?>('dumpFilePath');
+    host = registerOutput<String>('host');
+    this.name = registerOutput<String>('name');
+    password = registerOutput<String?>('password', isSecret: true);
     port = registerOutput<int?>('port');
     project = registerOutput<String>('project');
     region = registerOutput<String>('region');

@@ -9,32 +9,32 @@ import 'worker_pool_template_container_volume_mount.dart';
 
 class WorkerPoolTemplateContainer {
   /// Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references are not supported in Cloud Run.
-  final pulumi.Input<List<String>>? args;
+  final pulumi.Input<List<String>?>? args;
   /// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
-  final pulumi.Input<List<String>>? commands;
+  final pulumi.Input<List<String>?>? commands;
   /// Names of the containers that must start before this container.
-  final pulumi.Input<List<String>>? dependsOns;
+  final pulumi.Input<List<String>?>? dependsOns;
   /// List of environment variables to set in the container.
   /// Structure is documented below.
-  final pulumi.Input<List<WorkerPoolTemplateContainerEnv>>? envs;
+  final pulumi.Input<List<WorkerPoolTemplateContainerEnv>?>? envs;
   /// URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
   final pulumi.Input<String> image;
   /// Periodic probe of container liveness. Container will be restarted if the probe fails.
   /// Structure is documented below.
-  final pulumi.Input<WorkerPoolTemplateContainerLivenessProbe>? livenessProbe;
+  final pulumi.Input<WorkerPoolTemplateContainerLivenessProbe?>? livenessProbe;
   /// Name of the container specified as a DNS_LABEL.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
   /// Structure is documented below.
-  final pulumi.Input<WorkerPoolTemplateContainerResources>? resources;
+  final pulumi.Input<WorkerPoolTemplateContainerResources?>? resources;
   /// Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails.
   /// Structure is documented below.
-  final pulumi.Input<WorkerPoolTemplateContainerStartupProbe>? startupProbe;
+  final pulumi.Input<WorkerPoolTemplateContainerStartupProbe?>? startupProbe;
   /// Volume to mount into the container's filesystem.
   /// Structure is documented below.
-  final pulumi.Input<List<WorkerPoolTemplateContainerVolumeMount>>? volumeMounts;
+  final pulumi.Input<List<WorkerPoolTemplateContainerVolumeMount>?>? volumeMounts;
   /// Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
-  final pulumi.Input<String>? workingDir;
+  final pulumi.Input<String?>? workingDir;
 
   /// Creates a new [WorkerPoolTemplateContainer].
   /// [args] Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references are not supported in Cloud Run.

@@ -33,7 +33,7 @@ class GetInstanceScratchDisk {
     return GetInstanceScratchDisk(
       deviceName: pulumi.Input.fromValue(map['deviceName'] as String),
       interface: pulumi.Input.fromValue(map['interface'] as String),
-      size: pulumi.Input.fromValue(map['size'] as int),
+      size: pulumi.Input.fromValue((map['size'] as num).toInt()),
     );
   }
 }

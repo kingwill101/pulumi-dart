@@ -12,29 +12,29 @@ class QueueState {
   /// Overrides for task-level appEngineRouting. These settings apply only
   /// to App Engine tasks in this queue
   /// Structure is documented below.
-  final pulumi.Input<QueueAppEngineRoutingOverride>? appEngineRoutingOverride;
+  final pulumi.Input<QueueAppEngineRoutingOverride?>? appEngineRoutingOverride;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The desired state of the queue. Use this to pause and resume the queue.
   ///
   /// * RUNNING: The queue is running. Tasks can be dispatched.
   /// * PAUSED: The queue is paused. Tasks are not dispatched but can be added to the queue.
-  final pulumi.Input<String>? desiredState;
+  final pulumi.Input<String?>? desiredState;
   /// Modifies HTTP target for HTTP tasks.
   /// Structure is documented below.
-  final pulumi.Input<QueueHttpTarget>? httpTarget;
+  final pulumi.Input<QueueHttpTarget?>? httpTarget;
   /// The location of the queue
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The queue name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Rate limits for task dispatches.
   /// The queue's actual dispatch rate is the result of:
   /// * Number of tasks in the queue
@@ -43,15 +43,15 @@ class QueueState {
   /// Unavailable) responses from the worker, high error rates, or to
   /// smooth sudden large traffic spikes.
   /// Structure is documented below.
-  final pulumi.Input<QueueRateLimits>? rateLimits;
+  final pulumi.Input<QueueRateLimits?>? rateLimits;
   /// Settings that determine the retry behavior.
   /// Structure is documented below.
-  final pulumi.Input<QueueRetryConfig>? retryConfig;
+  final pulumi.Input<QueueRetryConfig?>? retryConfig;
   /// Configuration options for writing logs to Stackdriver Logging.
   /// Structure is documented below.
-  final pulumi.Input<QueueStackdriverLoggingConfig>? stackdriverLoggingConfig;
+  final pulumi.Input<QueueStackdriverLoggingConfig?>? stackdriverLoggingConfig;
   /// The current state of the queue.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
 
   /// Creates a new [QueueState].
   /// [appEngineRoutingOverride] Overrides for task-level appEngineRouting. These settings apply only

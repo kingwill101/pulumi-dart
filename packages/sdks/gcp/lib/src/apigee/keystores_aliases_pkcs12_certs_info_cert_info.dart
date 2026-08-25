@@ -5,38 +5,38 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class KeystoresAliasesPkcs12CertsInfoCertInfo {
   /// (Output)
   /// X.509 basic constraints extension.
-  final pulumi.Input<String>? basicConstraints;
+  final pulumi.Input<String?>? basicConstraints;
   /// (Output)
   /// X.509 notAfter validity period in milliseconds since epoch.
-  final pulumi.Input<String>? expiryDate;
+  final pulumi.Input<String?>? expiryDate;
   /// (Output)
   /// Flag that specifies whether the certificate is valid.
   /// Flag is set to Yes if the certificate is valid, No if expired, or Not yet if not yet valid.
-  final pulumi.Input<String>? isValid;
+  final pulumi.Input<String?>? isValid;
   /// (Output)
   /// X.509 issuer.
-  final pulumi.Input<String>? issuer;
+  final pulumi.Input<String?>? issuer;
   /// (Output)
   /// Public key component of the X.509 subject public key info.
-  final pulumi.Input<String>? publicKey;
+  final pulumi.Input<String?>? publicKey;
   /// (Output)
   /// X.509 serial number.
-  final pulumi.Input<String>? serialNumber;
+  final pulumi.Input<String?>? serialNumber;
   /// (Output)
   /// X.509 signatureAlgorithm.
-  final pulumi.Input<String>? sigAlgName;
+  final pulumi.Input<String?>? sigAlgName;
   /// (Output)
   /// X.509 subject.
-  final pulumi.Input<String>? subject;
+  final pulumi.Input<String?>? subject;
   /// (Output)
   /// X.509 subject alternative names (SANs) extension.
-  final pulumi.Input<List<String>>? subjectAlternativeNames;
+  final pulumi.Input<List<String>?>? subjectAlternativeNames;
   /// (Output)
   /// X.509 notBefore validity period in milliseconds since epoch.
-  final pulumi.Input<String>? validFrom;
+  final pulumi.Input<String?>? validFrom;
   /// (Output)
   /// X.509 version.
-  final pulumi.Input<int>? version;
+  final pulumi.Input<int?>? version;
 
   /// Creates a new [KeystoresAliasesPkcs12CertsInfoCertInfo].
   /// [basicConstraints] (Output)
@@ -92,7 +92,7 @@ class KeystoresAliasesPkcs12CertsInfoCertInfo {
       subject: (() { final guardedValue = map['subject']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       subjectAlternativeNames: (() { final guardedValue = map['subjectAlternativeNames']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       validFrom: (() { final guardedValue = map['validFrom']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

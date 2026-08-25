@@ -2,10 +2,10 @@
 
 import 'package:pulumi_myext/index.dart' as module_index;
 
-final index = const _IndexModuleNamespace();
+final index = _IndexModuleNamespace();
 
 class _IndexModuleNamespace {
-  const _IndexModuleNamespace();
+  _IndexModuleNamespace();
   final GreetArgs = module_index.GreetArgs.new;
   final GreetResult = module_index.GreetResult.new;
   final GreetResultArgs = module_index.GreetResult.new;

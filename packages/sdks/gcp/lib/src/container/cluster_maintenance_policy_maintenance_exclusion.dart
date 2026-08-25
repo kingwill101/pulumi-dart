@@ -4,10 +4,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cluster_maintenance_policy_maintenance_exclusion_exclusion_options.dart';
 
 class ClusterMaintenancePolicyMaintenanceExclusion {
-  final pulumi.Input<String>? endTime;
+  final pulumi.Input<String?>? endTime;
   final pulumi.Input<String> exclusionName;
   /// MaintenanceExclusionOptions provides maintenance exclusion related options.
-  final pulumi.Input<ClusterMaintenancePolicyMaintenanceExclusionExclusionOptions>? exclusionOptions;
+  final pulumi.Input<ClusterMaintenancePolicyMaintenanceExclusionExclusionOptions?>? exclusionOptions;
   final pulumi.Input<String> startTime;
 
   /// Creates a new [ClusterMaintenancePolicyMaintenanceExclusion].

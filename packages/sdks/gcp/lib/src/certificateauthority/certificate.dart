@@ -1,6 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'certificate_args.dart';
+import 'certificate_certificate_description.dart';
 import 'certificate_config.dart';
+import 'certificate_revocation_detail.dart';
 import 'certificate_state.dart';
 
 /// A Certificate corresponds to a signed X.509 certificate issued by a Certificate.
@@ -4647,7 +4649,7 @@ class Certificate extends pulumi.CustomResource {
   late final pulumi.Output<String?> certificateAuthority;
   /// Output only. Details regarding the revocation of this Certificate. This Certificate is considered revoked if and only if this field is present.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> certificateDescriptions;
+  late final pulumi.Output<List<CertificateCertificateDescription>> certificateDescriptions;
   /// The resource name for a CertificateTemplate used to issue this certificate,
   /// in the format `projects/*/locations/*/certificateTemplates/*`. If this is specified,
   /// the caller must have the necessary permission to use this template. If this is
@@ -4702,7 +4704,7 @@ class Certificate extends pulumi.CustomResource {
   /// Output only. Details regarding the revocation of this Certificate. This Certificate is
   /// considered revoked if and only if this field is present.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> revocationDetails;
+  late final pulumi.Output<List<CertificateRevocationDetail>> revocationDetails;
   /// Output only. The time at which this CertificateAuthority was updated.
   /// This is in RFC3339 text format.
   late final pulumi.Output<String> updateTime;
@@ -4719,27 +4721,28 @@ class Certificate extends pulumi.CustomResource {
           'gcp:certificateauthority/certificate:Certificate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     certificateAuthority = registerOutput<String?>('certificateAuthority');
-    certificateDescriptions = registerOutput<List<Map<String, dynamic>>>('certificateDescriptions');
+    certificateDescriptions = registerOutput<List<CertificateCertificateDescription>>('certificateDescriptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CertificateCertificateDescription>(guardedValue, (value) => CertificateCertificateDescription.fromMap((value as Map).cast<String, dynamic>())); });
     certificateTemplate = registerOutput<String?>('certificateTemplate');
     config = registerOutput<CertificateConfig?>('config', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CertificateConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     issuerCertificateAuthority = registerOutput<String>('issuerCertificateAuthority');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     lifetime = registerOutput<String?>('lifetime');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     pemCertificate = registerOutput<String>('pemCertificate');
-    pemCertificateChains = registerOutput<List<String>>('pemCertificateChains');
+    pemCertificateChains = registerOutput<List<String>>('pemCertificateChains', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     pemCsr = registerOutput<String?>('pemCsr');
     pool = registerOutput<String>('pool');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    revocationDetails = registerOutput<List<Map<String, dynamic>>>('revocationDetails');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    revocationDetails = registerOutput<List<CertificateRevocationDetail>>('revocationDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CertificateRevocationDetail>(guardedValue, (value) => CertificateRevocationDetail.fromMap((value as Map).cast<String, dynamic>())); });
     updateTime = registerOutput<String>('updateTime');
   }
 
@@ -4748,11 +4751,12 @@ class Certificate extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CertificateState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Certificate._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -4767,24 +4771,56 @@ class Certificate extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     certificateAuthority = registerOutput<String?>('certificateAuthority');
-    certificateDescriptions = registerOutput<List<Map<String, dynamic>>>('certificateDescriptions');
+    certificateDescriptions = registerOutput<List<CertificateCertificateDescription>>('certificateDescriptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CertificateCertificateDescription>(guardedValue, (value) => CertificateCertificateDescription.fromMap((value as Map).cast<String, dynamic>())); });
     certificateTemplate = registerOutput<String?>('certificateTemplate');
     config = registerOutput<CertificateConfig?>('config', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CertificateConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     issuerCertificateAuthority = registerOutput<String>('issuerCertificateAuthority');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     lifetime = registerOutput<String?>('lifetime');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     pemCertificate = registerOutput<String>('pemCertificate');
-    pemCertificateChains = registerOutput<List<String>>('pemCertificateChains');
+    pemCertificateChains = registerOutput<List<String>>('pemCertificateChains', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     pemCsr = registerOutput<String?>('pemCsr');
     pool = registerOutput<String>('pool');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    revocationDetails = registerOutput<List<Map<String, dynamic>>>('revocationDetails');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    revocationDetails = registerOutput<List<CertificateRevocationDetail>>('revocationDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CertificateRevocationDetail>(guardedValue, (value) => CertificateRevocationDetail.fromMap((value as Map).cast<String, dynamic>())); });
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [Certificate] resource.
+  Certificate.reference(String urn)
+    : super(
+        'gcp:certificateauthority/certificate:Certificate',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    certificateAuthority = registerOutput<String?>('certificateAuthority');
+    certificateDescriptions = registerOutput<List<CertificateCertificateDescription>>('certificateDescriptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CertificateCertificateDescription>(guardedValue, (value) => CertificateCertificateDescription.fromMap((value as Map).cast<String, dynamic>())); });
+    certificateTemplate = registerOutput<String?>('certificateTemplate');
+    config = registerOutput<CertificateConfig?>('config', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CertificateConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    issuerCertificateAuthority = registerOutput<String>('issuerCertificateAuthority');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    lifetime = registerOutput<String?>('lifetime');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    pemCertificate = registerOutput<String>('pemCertificate');
+    pemCertificateChains = registerOutput<List<String>>('pemCertificateChains', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    pemCsr = registerOutput<String?>('pemCsr');
+    pool = registerOutput<String>('pool');
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    revocationDetails = registerOutput<List<CertificateRevocationDetail>>('revocationDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CertificateRevocationDetail>(guardedValue, (value) => CertificateRevocationDetail.fromMap((value as Map).cast<String, dynamic>())); });
     updateTime = registerOutput<String>('updateTime');
   }
 }

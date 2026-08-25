@@ -6,13 +6,13 @@ import 'data_store_document_processing_config_default_parsing_config_ocr_parsing
 
 class DataStoreDocumentProcessingConfigDefaultParsingConfig {
   /// Configurations applied to digital parser.
-  final pulumi.Input<Map<String, dynamic>>? digitalParsingConfig;
+  final pulumi.Input<Map<String, dynamic>?>? digitalParsingConfig;
   /// Configurations applied to layout parser.
   /// Structure is documented below.
-  final pulumi.Input<DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfig>? layoutParsingConfig;
+  final pulumi.Input<DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfig?>? layoutParsingConfig;
   /// Configurations applied to OCR parser. Currently it only applies to PDFs.
   /// Structure is documented below.
-  final pulumi.Input<DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfig>? ocrParsingConfig;
+  final pulumi.Input<DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfig?>? ocrParsingConfig;
 
   /// Creates a new [DataStoreDocumentProcessingConfigDefaultParsingConfig].
   /// [digitalParsingConfig] Configurations applied to digital parser.

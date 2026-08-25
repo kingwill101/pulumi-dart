@@ -15,22 +15,22 @@ class ZoneVmExtensionPolicyArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// An optional description of this resource.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// A map of extension names (for example, "ops-agent") to their corresponding policy configurations.
   /// Structure is documented below.
   final pulumi.Input<List<ZoneVmExtensionPolicyExtensionPolicy>> extensionPolicies;
   /// Selectors to target VMs for this policy.
   /// Structure is documented below.
-  final pulumi.Input<List<ZoneVmExtensionPolicyInstanceSelector>>? instanceSelectors;
+  final pulumi.Input<List<ZoneVmExtensionPolicyInstanceSelector>?>? instanceSelectors;
   /// Name of the resource. Provided by the client when the resource is created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Priority of this policy.
-  final pulumi.Input<int>? priority;
+  final pulumi.Input<int?>? priority;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Name of the zone for this request.
   final pulumi.Input<String> zone;
 
@@ -74,7 +74,7 @@ class ZoneVmExtensionPolicyArgs {
       extensionPolicies: pulumi.Input.fromValue(pulumi.Input.decodeList<ZoneVmExtensionPolicyExtensionPolicy>(map['extensionPolicies']!, (value) => ZoneVmExtensionPolicyExtensionPolicy.fromMap((value as Map).cast<String, dynamic>()))),
       instanceSelectors: (() { final guardedValue = map['instanceSelectors']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ZoneVmExtensionPolicyInstanceSelector>(guardedValue, (value) => ZoneVmExtensionPolicyInstanceSelector.fromMap((value as Map).cast<String, dynamic>()))); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       zone: pulumi.Input.fromValue(map['zone'] as String),
     );

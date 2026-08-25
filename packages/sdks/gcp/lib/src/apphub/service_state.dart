@@ -8,48 +8,48 @@ import 'service_service_reference.dart';
 /// Input properties used for looking up and filtering Service resources.
 class ServiceState {
   /// Part of `parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
-  final pulumi.Input<String>? applicationId;
+  final pulumi.Input<String?>? applicationId;
   /// Consumer provided attributes.
   /// Structure is documented below.
-  final pulumi.Input<ServiceAttributes>? attributes;
+  final pulumi.Input<ServiceAttributes?>? attributes;
   /// Output only. Create time.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// User-defined description of a Service.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Immutable. The resource name of the original discovered service.
-  final pulumi.Input<String>? discoveredService;
+  final pulumi.Input<String?>? discoveredService;
   /// User-defined name for the Service.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Part of `parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Identifier. The resource name of a Service. Format:
   /// "projects/{host-project-id}/locations/{location}/applications/{application-id}/services/{service-id}"
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The Service identifier.
-  final pulumi.Input<String>? serviceId;
+  final pulumi.Input<String?>? serviceId;
   /// Properties of an underlying cloud resource that can comprise a Service.
   /// Structure is documented below.
-  final pulumi.Input<List<ServiceServiceProperty>>? serviceProperties;
+  final pulumi.Input<List<ServiceServiceProperty>?>? serviceProperties;
   /// Reference to an underlying networking resource that can comprise a Service.
   /// Structure is documented below.
-  final pulumi.Input<List<ServiceServiceReference>>? serviceReferences;
+  final pulumi.Input<List<ServiceServiceReference>?>? serviceReferences;
   /// Output only. Service state. Possible values: STATE_UNSPECIFIED CREATING ACTIVE DELETING DETACHED
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// Output only. A universally unique identifier (UUID) for the `Service` in the UUID4
   /// format.
-  final pulumi.Input<String>? uid;
+  final pulumi.Input<String?>? uid;
   /// Output only. Update time.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [ServiceState].
   /// [applicationId] Part of `parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}

@@ -26,10 +26,10 @@ class FolderAccessPolicyDetailsRule {
   /// combine them using boolean and logical operators. Other functions and
   /// operators are not supported.
   /// Structure is documented below.
-  final pulumi.Input<List<FolderAccessPolicyDetailsRuleCondition>>? conditions;
+  final pulumi.Input<List<FolderAccessPolicyDetailsRuleCondition>?>? conditions;
   /// Customer specified description of the rule. Must be less than or equal to
   /// 256 characters.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The effect of the rule.
   /// Possible values:
   /// DENY
@@ -40,7 +40,7 @@ class FolderAccessPolicyDetailsRule {
   /// are listed in the `principals`. For example, you could add a Google
   /// group to the `principals`, then exclude specific users who belong to
   /// that group.
-  final pulumi.Input<List<String>>? excludedPrincipals;
+  final pulumi.Input<List<String>?>? excludedPrincipals;
   /// Attributes that are used to determine whether this rule applies to a
   /// request.
   /// Structure is documented below.

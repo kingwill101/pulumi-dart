@@ -6,7 +6,7 @@ class InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptions {
   /// The destination bucket that stores the generated inventory reports.
   final pulumi.Input<String> bucket;
   /// The path within the destination bucket to store generated inventory reports.
-  final pulumi.Input<String>? destinationPath;
+  final pulumi.Input<String?>? destinationPath;
 
   /// Creates a new [InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptions].
   /// [bucket] The destination bucket that stores the generated inventory reports.

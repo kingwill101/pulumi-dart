@@ -9,31 +9,31 @@ class ToolOpenApiTool {
   /// (Output)
   /// Authentication information required for API calls.
   /// Structure is documented below.
-  final pulumi.Input<List<ToolOpenApiToolApiAuthentication>>? apiAuthentications;
+  final pulumi.Input<List<ToolOpenApiToolApiAuthentication>?>? apiAuthentications;
   /// (Output)
   /// The description of the system tool.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// (Output)
   /// If true, the agent will ignore unknown fields in the API response.
-  final pulumi.Input<bool>? ignoreUnknownFields;
+  final pulumi.Input<bool?>? ignoreUnknownFields;
   /// (Output)
   /// The name of the system tool.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// (Output)
   /// The OpenAPI schema in JSON or YAML format.
-  final pulumi.Input<String>? openApiSchema;
+  final pulumi.Input<String?>? openApiSchema;
   /// (Output)
   /// Configuration for tools using Service Directory.
   /// Structure is documented below.
-  final pulumi.Input<List<ToolOpenApiToolServiceDirectoryConfig>>? serviceDirectoryConfigs;
+  final pulumi.Input<List<ToolOpenApiToolServiceDirectoryConfig>?>? serviceDirectoryConfigs;
   /// (Output)
   /// The TLS configuration.
   /// Structure is documented below.
-  final pulumi.Input<List<ToolOpenApiToolTlsConfig>>? tlsConfigs;
+  final pulumi.Input<List<ToolOpenApiToolTlsConfig>?>? tlsConfigs;
   /// (Output)
   /// The URL where this interface is available. Must be a valid absolute
   /// HTTPS URL in production.
-  final pulumi.Input<String>? url;
+  final pulumi.Input<String?>? url;
 
   /// Creates a new [ToolOpenApiTool].
   /// [apiAuthentications] (Output)

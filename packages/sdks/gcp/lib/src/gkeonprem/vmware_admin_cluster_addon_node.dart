@@ -6,7 +6,7 @@ import 'vmware_admin_cluster_addon_node_auto_resize_config.dart';
 class VmwareAdminClusterAddonNode {
   /// Specifies auto resize config.
   /// Structure is documented below.
-  final pulumi.Input<VmwareAdminClusterAddonNodeAutoResizeConfig>? autoResizeConfig;
+  final pulumi.Input<VmwareAdminClusterAddonNodeAutoResizeConfig?>? autoResizeConfig;
 
   /// Creates a new [VmwareAdminClusterAddonNode].
   /// [autoResizeConfig] Specifies auto resize config.

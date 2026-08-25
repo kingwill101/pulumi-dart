@@ -8,13 +8,13 @@ class AppHostingBuildSource {
   /// A codebase source, representing the state of the codebase
   /// that the build will be created at.
   /// Structure is documented below.
-  final pulumi.Input<AppHostingBuildSourceCodebase>? codebase;
+  final pulumi.Input<AppHostingBuildSourceCodebase?>? codebase;
   /// The URI of an Artifact Registry
   /// [container
   /// image](https://cloud.google.com/artifact-registry/docs/reference/rest/v1/projects.locations.repositories.dockerImages)
   /// to use as the build source.
   /// Structure is documented below.
-  final pulumi.Input<AppHostingBuildSourceContainer>? container;
+  final pulumi.Input<AppHostingBuildSourceContainer?>? container;
 
   /// Creates a new [AppHostingBuildSource].
   /// [codebase] A codebase source, representing the state of the codebase

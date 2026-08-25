@@ -9,13 +9,13 @@ import 'vmware_cluster_network_config_static_ip_config.dart';
 class VMwareClusterNetworkConfig {
   /// Configuration for control plane V2 mode.
   /// Structure is documented below.
-  final pulumi.Input<VMwareClusterNetworkConfigControlPlaneV2Config>? controlPlaneV2Config;
+  final pulumi.Input<VMwareClusterNetworkConfigControlPlaneV2Config?>? controlPlaneV2Config;
   /// Configuration settings for a DHCP IP configuration.
   /// Structure is documented below.
-  final pulumi.Input<VMwareClusterNetworkConfigDhcpIpConfig>? dhcpIpConfig;
+  final pulumi.Input<VMwareClusterNetworkConfigDhcpIpConfig?>? dhcpIpConfig;
   /// Represents common network settings irrespective of the host's IP address.
   /// Structure is documented below.
-  final pulumi.Input<VMwareClusterNetworkConfigHostConfig>? hostConfig;
+  final pulumi.Input<VMwareClusterNetworkConfigHostConfig?>? hostConfig;
   /// All pods in the cluster are assigned an RFC1918 IPv4 address from these ranges.
   /// Only a single range is supported. This field cannot be changed after creation.
   final pulumi.Input<List<String>> podAddressCidrBlocks;
@@ -25,9 +25,9 @@ class VMwareClusterNetworkConfig {
   final pulumi.Input<List<String>> serviceAddressCidrBlocks;
   /// Configuration settings for a static IP configuration.
   /// Structure is documented below.
-  final pulumi.Input<VMwareClusterNetworkConfigStaticIpConfig>? staticIpConfig;
+  final pulumi.Input<VMwareClusterNetworkConfigStaticIpConfig?>? staticIpConfig;
   /// vcenter_network specifies vCenter network name. Inherited from the admin cluster.
-  final pulumi.Input<String>? vcenterNetwork;
+  final pulumi.Input<String?>? vcenterNetwork;
 
   /// Creates a new [VMwareClusterNetworkConfig].
   /// [controlPlaneV2Config] Configuration for control plane V2 mode.

@@ -6,7 +6,7 @@ import 'feed_details_recorded_future_ioc_settings_authentication.dart';
 class FeedDetailsRecordedFutureIocSettings {
   /// HTTP header based authentication.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsRecordedFutureIocSettingsAuthentication>? authentication;
+  final pulumi.Input<FeedDetailsRecordedFutureIocSettingsAuthentication?>? authentication;
 
   /// Creates a new [FeedDetailsRecordedFutureIocSettings].
   /// [authentication] HTTP header based authentication.

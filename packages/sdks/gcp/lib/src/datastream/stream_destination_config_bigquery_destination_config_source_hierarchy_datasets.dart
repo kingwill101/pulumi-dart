@@ -8,7 +8,7 @@ class StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasets {
   /// Structure is documented below.
   final pulumi.Input<StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplate> datasetTemplate;
   /// Optional. The project id of the BigQuery dataset. If not specified, the project will be inferred from the stream resource.
-  final pulumi.Input<String>? projectId;
+  final pulumi.Input<String?>? projectId;
 
   /// Creates a new [StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasets].
   /// [datasetTemplate] Dataset template used for dynamic dataset creation.

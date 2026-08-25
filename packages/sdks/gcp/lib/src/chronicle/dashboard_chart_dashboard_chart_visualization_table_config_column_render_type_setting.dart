@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DashboardChartDashboardChartVisualizationTableConfigColumnRenderTypeSetting {
   /// Possible values are: `RENDER_TYPE_UNSPECIFIED`, `RENDER_TYPE_TEXT`, `RENDER_TYPE_ICON`, `RENDER_TYPE_ICON_AND_TEXT`.
-  final pulumi.Input<String>? columnRenderType;
+  final pulumi.Input<String?>? columnRenderType;
   /// (Optional)
-  final pulumi.Input<String>? field;
+  final pulumi.Input<String?>? field;
 
   /// Creates a new [DashboardChartDashboardChartVisualizationTableConfigColumnRenderTypeSetting].
   /// [columnRenderType] Possible values are: `RENDER_TYPE_UNSPECIFIED`, `RENDER_TYPE_TEXT`, `RENDER_TYPE_ICON`, `RENDER_TYPE_ICON_AND_TEXT`.

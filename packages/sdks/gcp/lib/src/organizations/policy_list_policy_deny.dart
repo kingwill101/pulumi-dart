@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PolicyListPolicyDeny {
   /// The policy allows or denies all values.
-  final pulumi.Input<bool>? all;
+  final pulumi.Input<bool?>? all;
   /// The policy can define specific values that are allowed or denied.
-  final pulumi.Input<List<String>>? values;
+  final pulumi.Input<List<String>?>? values;
 
   /// Creates a new [PolicyListPolicyDeny].
   /// [all] The policy allows or denies all values.

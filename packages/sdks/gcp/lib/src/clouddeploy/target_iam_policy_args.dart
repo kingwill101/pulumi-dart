@@ -7,10 +7,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_clouddeploy_target_iam_policy_target_iam_policy_args_doc}
 class TargetIamPolicyArgs {
-  final pulumi.Input<String>? location;
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? location;
+  final pulumi.Input<String?>? name;
   final pulumi.Input<String> policyData;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [TargetIamPolicyArgs].
   /// [location] Optional.

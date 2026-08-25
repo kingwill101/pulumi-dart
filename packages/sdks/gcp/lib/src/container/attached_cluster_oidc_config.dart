@@ -6,7 +6,7 @@ class AttachedClusterOidcConfig {
   /// A JSON Web Token (JWT) issuer URI. `issuer` must start with `https://`
   final pulumi.Input<String> issuerUrl;
   /// OIDC verification keys in JWKS format (RFC 7517).
-  final pulumi.Input<String>? jwks;
+  final pulumi.Input<String?>? jwks;
 
   /// Creates a new [AttachedClusterOidcConfig].
   /// [issuerUrl] A JSON Web Token (JWT) issuer URI. `issuer` must start with `https://`

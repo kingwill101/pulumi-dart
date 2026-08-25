@@ -29,103 +29,103 @@ import 'node_pool_node_config_workload_metadata_config.dart';
 
 class NodePoolNodeConfig {
   /// Specifies options for controlling advanced machine features.
-  final pulumi.Input<NodePoolNodeConfigAdvancedMachineFeatures>? advancedMachineFeatures;
+  final pulumi.Input<NodePoolNodeConfigAdvancedMachineFeatures?>? advancedMachineFeatures;
   /// Boot disk configuration for node pools nodes.
-  final pulumi.Input<NodePoolNodeConfigBootDisk>? bootDisk;
+  final pulumi.Input<NodePoolNodeConfigBootDisk?>? bootDisk;
   /// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool.
-  final pulumi.Input<String>? bootDiskKmsKey;
+  final pulumi.Input<String?>? bootDiskKmsKey;
   /// Configuration for the confidential nodes feature, which makes nodes run on confidential VMs.
-  final pulumi.Input<NodePoolNodeConfigConfidentialNodes>? confidentialNodes;
+  final pulumi.Input<NodePoolNodeConfigConfidentialNodes?>? confidentialNodes;
   /// Parameters for containerd configuration.
-  final pulumi.Input<NodePoolNodeConfigContainerdConfig>? containerdConfig;
+  final pulumi.Input<NodePoolNodeConfigContainerdConfig?>? containerdConfig;
   /// Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB.
-  final pulumi.Input<int>? diskSizeGb;
+  final pulumi.Input<int?>? diskSizeGb;
   /// Type of the disk attached to each node. Such as pd-standard, pd-balanced or pd-ssd
-  final pulumi.Input<String>? diskType;
+  final pulumi.Input<String?>? diskType;
   /// List of kubernetes taints applied to each node.
-  final pulumi.Input<List<NodePoolNodeConfigEffectiveTaint>>? effectiveTaints;
+  final pulumi.Input<List<NodePoolNodeConfigEffectiveTaint>?>? effectiveTaints;
   /// If enabled boot disks are configured with confidential mode.
-  final pulumi.Input<bool>? enableConfidentialStorage;
+  final pulumi.Input<bool?>? enableConfidentialStorage;
   /// Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk.
-  final pulumi.Input<NodePoolNodeConfigEphemeralStorageConfig>? ephemeralStorageConfig;
+  final pulumi.Input<NodePoolNodeConfigEphemeralStorageConfig?>? ephemeralStorageConfig;
   /// Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk.
-  final pulumi.Input<NodePoolNodeConfigEphemeralStorageLocalSsdConfig>? ephemeralStorageLocalSsdConfig;
+  final pulumi.Input<NodePoolNodeConfigEphemeralStorageLocalSsdConfig?>? ephemeralStorageLocalSsdConfig;
   /// Enable or disable NCCL Fast Socket in the node pool.
-  final pulumi.Input<NodePoolNodeConfigFastSocket>? fastSocket;
+  final pulumi.Input<NodePoolNodeConfigFastSocket?>? fastSocket;
   /// Enables Flex Start provisioning model for the node pool
-  final pulumi.Input<bool>? flexStart;
+  final pulumi.Input<bool?>? flexStart;
   /// GCFS configuration for this node.
-  final pulumi.Input<NodePoolNodeConfigGcfsConfig>? gcfsConfig;
+  final pulumi.Input<NodePoolNodeConfigGcfsConfig?>? gcfsConfig;
   /// The type of GPUDirect strategy to enable on the node.
-  final pulumi.Input<String>? gpudirectStrategy;
+  final pulumi.Input<String?>? gpudirectStrategy;
   /// List of the type and count of accelerator cards attached to the instance.
-  final pulumi.Input<List<NodePoolNodeConfigGuestAccelerator>>? guestAccelerators;
+  final pulumi.Input<List<NodePoolNodeConfigGuestAccelerator>?>? guestAccelerators;
   /// Enable or disable gvnic in the node pool.
-  final pulumi.Input<NodePoolNodeConfigGvnic>? gvnic;
+  final pulumi.Input<NodePoolNodeConfigGvnic?>? gvnic;
   /// The maintenance policy for the hosts on which the GKE VMs run on.
-  final pulumi.Input<NodePoolNodeConfigHostMaintenancePolicy>? hostMaintenancePolicy;
+  final pulumi.Input<NodePoolNodeConfigHostMaintenancePolicy?>? hostMaintenancePolicy;
   /// The image type to use for this node. Note that for a given image type, the latest version of it will be used.
-  final pulumi.Input<String>? imageType;
+  final pulumi.Input<String?>? imageType;
   /// Node kubelet configs. Structure is documented below.
-  final pulumi.Input<NodePoolNodeConfigKubeletConfig>? kubeletConfig;
+  final pulumi.Input<NodePoolNodeConfigKubeletConfig?>? kubeletConfig;
   /// The map of Kubernetes labels (key/value pairs) to be applied to each node. These will added in addition to any default label(s) that Kubernetes may apply to the node.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Parameters that can be configured on Linux nodes.
-  final pulumi.Input<NodePoolNodeConfigLinuxNodeConfig>? linuxNodeConfig;
+  final pulumi.Input<NodePoolNodeConfigLinuxNodeConfig?>? linuxNodeConfig;
   /// Parameters for raw-block local NVMe SSDs.
-  final pulumi.Input<NodePoolNodeConfigLocalNvmeSsdBlockConfig>? localNvmeSsdBlockConfig;
+  final pulumi.Input<NodePoolNodeConfigLocalNvmeSsdBlockConfig?>? localNvmeSsdBlockConfig;
   /// The number of local SSD disks to be attached to the node.
-  final pulumi.Input<int>? localSsdCount;
+  final pulumi.Input<int?>? localSsdCount;
   /// LocalSsdEncryptionMode specified the method used for encrypting the local SSDs attached to the node.
-  final pulumi.Input<String>? localSsdEncryptionMode;
+  final pulumi.Input<String?>? localSsdEncryptionMode;
   /// Type of logging agent that is used as the default value for node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT.
-  final pulumi.Input<String>? loggingVariant;
+  final pulumi.Input<String?>? loggingVariant;
   /// The name of a Google Compute Engine machine type.
-  final pulumi.Input<String>? machineType;
+  final pulumi.Input<String?>? machineType;
   /// The runtime of each node in the node pool in seconds, terminated by 's'. Example: "3600s".
-  final pulumi.Input<String>? maxRunDuration;
+  final pulumi.Input<String?>? maxRunDuration;
   /// The metadata key/value pairs assigned to instances in the cluster.
-  final pulumi.Input<Map<String, String>>? metadata;
+  final pulumi.Input<Map<String, String>?>? metadata;
   /// Minimum CPU platform to be used by this instance. The instance may be scheduled on the specified or newer CPU platform.
-  final pulumi.Input<String>? minCpuPlatform;
+  final pulumi.Input<String?>? minCpuPlatform;
   /// Setting this field will assign instances of this pool to run on the specified node group. This is useful for running workloads on sole tenant nodes.
-  final pulumi.Input<String>? nodeGroup;
+  final pulumi.Input<String?>? nodeGroup;
   /// The node image configuration to use for this node pool.
-  final pulumi.Input<List<NodePoolNodeConfigNodeImageConfig>>? nodeImageConfigs;
+  final pulumi.Input<List<NodePoolNodeConfigNodeImageConfig>?>? nodeImageConfigs;
   /// The set of Google API scopes to be made available on all of the node VMs.
-  final pulumi.Input<List<String>>? oauthScopes;
+  final pulumi.Input<List<String>?>? oauthScopes;
   /// Whether the nodes are created as preemptible VM instances.
-  final pulumi.Input<bool>? preemptible;
+  final pulumi.Input<bool?>? preemptible;
   /// The reservation affinity configuration for the node pool.
-  final pulumi.Input<NodePoolNodeConfigReservationAffinity>? reservationAffinity;
+  final pulumi.Input<NodePoolNodeConfigReservationAffinity?>? reservationAffinity;
   /// The GCE resource labels (a map of key/value pairs) to be applied to the node pool.
-  final pulumi.Input<Map<String, String>>? resourceLabels;
+  final pulumi.Input<Map<String, String>?>? resourceLabels;
   /// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
-  final pulumi.Input<Map<String, String>>? resourceManagerTags;
+  final pulumi.Input<Map<String, String>?>? resourceManagerTags;
   /// Sandbox configuration for this node.
-  final pulumi.Input<NodePoolNodeConfigSandboxConfig>? sandboxConfig;
+  final pulumi.Input<NodePoolNodeConfigSandboxConfig?>? sandboxConfig;
   /// Secondary boot disks for preloading data or container images.
-  final pulumi.Input<List<NodePoolNodeConfigSecondaryBootDisk>>? secondaryBootDisks;
+  final pulumi.Input<List<NodePoolNodeConfigSecondaryBootDisk>?>? secondaryBootDisks;
   /// The Google Cloud Platform Service Account to be used by the node VMs.
-  final pulumi.Input<String>? serviceAccount;
+  final pulumi.Input<String?>? serviceAccount;
   /// Shielded Instance options.
-  final pulumi.Input<NodePoolNodeConfigShieldedInstanceConfig>? shieldedInstanceConfig;
+  final pulumi.Input<NodePoolNodeConfigShieldedInstanceConfig?>? shieldedInstanceConfig;
   /// Node affinity options for sole tenant node pools.
-  final pulumi.Input<NodePoolNodeConfigSoleTenantConfig>? soleTenantConfig;
+  final pulumi.Input<NodePoolNodeConfigSoleTenantConfig?>? soleTenantConfig;
   /// Whether the nodes are created as spot VM instances.
-  final pulumi.Input<bool>? spot;
+  final pulumi.Input<bool?>? spot;
   /// The list of Storage Pools where boot disks are provisioned.
-  final pulumi.Input<List<String>>? storagePools;
+  final pulumi.Input<List<String>?>? storagePools;
   /// The list of instance tags applied to all nodes.
-  final pulumi.Input<List<String>>? tags;
+  final pulumi.Input<List<String>?>? tags;
   /// Taint configuration for the node pool. Structure is documented below.
-  final pulumi.Input<NodePoolNodeConfigTaintConfig>? taintConfig;
+  final pulumi.Input<NodePoolNodeConfigTaintConfig?>? taintConfig;
   /// List of Kubernetes taints to be applied to each node.
-  final pulumi.Input<List<NodePoolNodeConfigTaint>>? taints;
+  final pulumi.Input<List<NodePoolNodeConfigTaint>?>? taints;
   /// Parameters that can be configured on Windows nodes.
-  final pulumi.Input<NodePoolNodeConfigWindowsNodeConfig>? windowsNodeConfig;
+  final pulumi.Input<NodePoolNodeConfigWindowsNodeConfig?>? windowsNodeConfig;
   /// The workload metadata configuration for this node.
-  final pulumi.Input<NodePoolNodeConfigWorkloadMetadataConfig>? workloadMetadataConfig;
+  final pulumi.Input<NodePoolNodeConfigWorkloadMetadataConfig?>? workloadMetadataConfig;
 
   /// Creates a new [NodePoolNodeConfig].
   /// [advancedMachineFeatures] Specifies options for controlling advanced machine features.
@@ -290,7 +290,7 @@ class NodePoolNodeConfig {
       bootDiskKmsKey: (() { final guardedValue = map['bootDiskKmsKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       confidentialNodes: (() { final guardedValue = map['confidentialNodes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NodePoolNodeConfigConfidentialNodes.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       containerdConfig: (() { final guardedValue = map['containerdConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NodePoolNodeConfigContainerdConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      diskSizeGb: (() { final guardedValue = map['diskSizeGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      diskSizeGb: (() { final guardedValue = map['diskSizeGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       diskType: (() { final guardedValue = map['diskType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       effectiveTaints: (() { final guardedValue = map['effectiveTaints']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<NodePoolNodeConfigEffectiveTaint>(guardedValue, (value) => NodePoolNodeConfigEffectiveTaint.fromMap((value as Map).cast<String, dynamic>()))); })(),
       enableConfidentialStorage: (() { final guardedValue = map['enableConfidentialStorage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
@@ -308,7 +308,7 @@ class NodePoolNodeConfig {
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       linuxNodeConfig: (() { final guardedValue = map['linuxNodeConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NodePoolNodeConfigLinuxNodeConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       localNvmeSsdBlockConfig: (() { final guardedValue = map['localNvmeSsdBlockConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NodePoolNodeConfigLocalNvmeSsdBlockConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      localSsdCount: (() { final guardedValue = map['localSsdCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      localSsdCount: (() { final guardedValue = map['localSsdCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       localSsdEncryptionMode: (() { final guardedValue = map['localSsdEncryptionMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       loggingVariant: (() { final guardedValue = map['loggingVariant']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       machineType: (() { final guardedValue = map['machineType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

@@ -6,19 +6,19 @@ class CertificateConfigSubjectConfigSubject {
   /// The common name of the distinguished name.
   final pulumi.Input<String> commonName;
   /// The country code of the subject.
-  final pulumi.Input<String>? countryCode;
+  final pulumi.Input<String?>? countryCode;
   /// The locality or city of the subject.
-  final pulumi.Input<String>? locality;
+  final pulumi.Input<String?>? locality;
   /// The organization of the subject.
-  final pulumi.Input<String>? organization;
+  final pulumi.Input<String?>? organization;
   /// The organizational unit of the subject.
-  final pulumi.Input<String>? organizationalUnit;
+  final pulumi.Input<String?>? organizationalUnit;
   /// The postal code of the subject.
-  final pulumi.Input<String>? postalCode;
+  final pulumi.Input<String?>? postalCode;
   /// The province, territory, or regional state of the subject.
-  final pulumi.Input<String>? province;
+  final pulumi.Input<String?>? province;
   /// The street address of the subject.
-  final pulumi.Input<String>? streetAddress;
+  final pulumi.Input<String?>? streetAddress;
 
   /// Creates a new [CertificateConfigSubjectConfigSubject].
   /// [commonName] The common name of the distinguished name.

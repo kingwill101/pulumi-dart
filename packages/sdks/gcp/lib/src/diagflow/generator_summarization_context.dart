@@ -7,14 +7,14 @@ import 'generator_summarization_context_summarization_section.dart';
 class GeneratorSummarizationContext {
   /// Optional. List of few shot examples.
   /// Structure is documented below.
-  final pulumi.Input<List<GeneratorSummarizationContextFewShotExample>>? fewShotExamples;
+  final pulumi.Input<List<GeneratorSummarizationContextFewShotExample>?>? fewShotExamples;
   /// Optional. The target language of the generated summary. The language code for conversation will be used if this field is empty. Supported 2.0 and later versions.
-  final pulumi.Input<String>? outputLanguageCode;
+  final pulumi.Input<String?>? outputLanguageCode;
   /// Optional. List of sections. Note it contains both predefined section sand customer defined sections.
   /// Structure is documented below.
-  final pulumi.Input<List<GeneratorSummarizationContextSummarizationSection>>? summarizationSections;
+  final pulumi.Input<List<GeneratorSummarizationContextSummarizationSection>?>? summarizationSections;
   /// Optional. Version of the feature. If not set, default to latest version. Current candidates are ["1.0"].
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [GeneratorSummarizationContext].
   /// [fewShotExamples] Optional. List of few shot examples.

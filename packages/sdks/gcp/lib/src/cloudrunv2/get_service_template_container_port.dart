@@ -25,7 +25,7 @@ class GetServiceTemplateContainerPort {
 
   factory GetServiceTemplateContainerPort.fromMap(Map<String, dynamic> map) {
     return GetServiceTemplateContainerPort(
-      containerPort: pulumi.Input.fromValue(map['containerPort'] as int),
+      containerPort: pulumi.Input.fromValue((map['containerPort'] as num).toInt()),
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }

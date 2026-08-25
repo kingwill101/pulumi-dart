@@ -934,7 +934,7 @@ class PolicyTagIamMember extends pulumi.CustomResource {
           'gcp:datacatalog/policyTagIamMember:PolicyTagIamMember',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     condition = registerOutput<PolicyTagIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyTagIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
@@ -948,11 +948,12 @@ class PolicyTagIamMember extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PolicyTagIamMemberState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return PolicyTagIamMember._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -966,6 +967,22 @@ class PolicyTagIamMember extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    condition = registerOutput<PolicyTagIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyTagIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    etag = registerOutput<String>('etag');
+    member = registerOutput<String>('member');
+    policyTag = registerOutput<String>('policyTag');
+    role = registerOutput<String>('role');
+  }
+
+  /// Creates a typed reference to an existing [PolicyTagIamMember] resource.
+  PolicyTagIamMember.reference(String urn)
+    : super(
+        'gcp:datacatalog/policyTagIamMember:PolicyTagIamMember',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     condition = registerOutput<PolicyTagIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyTagIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
     member = registerOutput<String>('member');

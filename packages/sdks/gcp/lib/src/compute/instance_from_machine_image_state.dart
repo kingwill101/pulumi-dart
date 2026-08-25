@@ -21,113 +21,113 @@ import 'instance_from_machine_image_workload_identity_config.dart';
 /// Input properties used for looking up and filtering InstanceFromMachineImage resources.
 class InstanceFromMachineImageState {
   /// Controls for advanced machine-related behavior features.
-  final pulumi.Input<InstanceFromMachineImageAdvancedMachineFeatures>? advancedMachineFeatures;
+  final pulumi.Input<InstanceFromMachineImageAdvancedMachineFeatures?>? advancedMachineFeatures;
   /// If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires stopping the instance without setting this field, the update will fail.
-  final pulumi.Input<bool>? allowStoppingForUpdate;
+  final pulumi.Input<bool?>? allowStoppingForUpdate;
   /// List of disks attached to the instance
-  final pulumi.Input<List<InstanceFromMachineImageAttachedDisk>>? attachedDisks;
+  final pulumi.Input<List<InstanceFromMachineImageAttachedDisk>?>? attachedDisks;
   /// The boot disk for the instance.
-  final pulumi.Input<List<InstanceFromMachineImageBootDisk>>? bootDisks;
+  final pulumi.Input<List<InstanceFromMachineImageBootDisk>?>? bootDisks;
   /// Whether sending and receiving of packets with non-matching source or destination IPs is allowed.
-  final pulumi.Input<bool>? canIpForward;
+  final pulumi.Input<bool?>? canIpForward;
   /// The Confidential VM config being used by the instance.  onHostMaintenance has to be set to TERMINATE or this will fail to create.
-  final pulumi.Input<InstanceFromMachineImageConfidentialInstanceConfig>? confidentialInstanceConfig;
+  final pulumi.Input<InstanceFromMachineImageConfidentialInstanceConfig?>? confidentialInstanceConfig;
   /// The CPU platform used by this instance.
-  final pulumi.Input<String>? cpuPlatform;
+  final pulumi.Input<String?>? cpuPlatform;
   /// Creation timestamp in RFC3339 text format.
-  final pulumi.Input<String>? creationTimestamp;
+  final pulumi.Input<String?>? creationTimestamp;
   /// Current status of the instance.
   /// This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED.
   /// For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
-  final pulumi.Input<String>? currentStatus;
+  final pulumi.Input<String?>? currentStatus;
   /// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
   /// When a 'terraform destroy' or 'terraform apply' would delete the instance,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Whether deletion protection is enabled on this instance.
-  final pulumi.Input<bool>? deletionProtection;
+  final pulumi.Input<bool?>? deletionProtection;
   /// A brief description of the resource.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Desired status of the instance. Either "RUNNING", "SUSPENDED" or "TERMINATED".
-  final pulumi.Input<String>? desiredStatus;
+  final pulumi.Input<String?>? desiredStatus;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveLabels;
+  final pulumi.Input<Map<String, String>?>? effectiveLabels;
   /// Whether the instance has virtual displays enabled.
-  final pulumi.Input<bool>? enableDisplay;
+  final pulumi.Input<bool?>? enableDisplay;
   /// Specifies whether the disks restored from source snapshots or source machine image should erase Windows specific VSS signature.
-  final pulumi.Input<bool>? eraseWindowsVssSignature;
+  final pulumi.Input<bool?>? eraseWindowsVssSignature;
   /// List of the type and count of accelerator cards attached to the instance.
-  final pulumi.Input<List<InstanceFromMachineImageGuestAccelerator>>? guestAccelerators;
+  final pulumi.Input<List<InstanceFromMachineImageGuestAccelerator>?>? guestAccelerators;
   /// A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? hostname;
+  final pulumi.Input<String?>? hostname;
   /// Encryption key used to provide data encryption on the given instance.
-  final pulumi.Input<InstanceFromMachineImageInstanceEncryptionKey>? instanceEncryptionKey;
+  final pulumi.Input<InstanceFromMachineImageInstanceEncryptionKey?>? instanceEncryptionKey;
   /// The server-assigned unique identifier of this instance.
-  final pulumi.Input<String>? instanceId;
+  final pulumi.Input<String?>? instanceId;
   /// Action to be taken when a customer's encryption key is revoked. Supports "STOP" and "NONE", with "NONE" being the default.
-  final pulumi.Input<String>? keyRevocationActionType;
+  final pulumi.Input<String?>? keyRevocationActionType;
   /// The unique fingerprint of the labels.
-  final pulumi.Input<String>? labelFingerprint;
+  final pulumi.Input<String?>? labelFingerprint;
   /// A set of key/value label pairs assigned to the instance.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field 'effective_labels' for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The machine type to create.
-  final pulumi.Input<String>? machineType;
+  final pulumi.Input<String?>? machineType;
   /// Metadata key/value pairs made available within the instance.
-  final pulumi.Input<Map<String, String>>? metadata;
+  final pulumi.Input<Map<String, String>?>? metadata;
   /// The unique fingerprint of the metadata.
-  final pulumi.Input<String>? metadataFingerprint;
+  final pulumi.Input<String?>? metadataFingerprint;
   /// Metadata startup scripts made available within the instance.
-  final pulumi.Input<String>? metadataStartupScript;
+  final pulumi.Input<String?>? metadataStartupScript;
   /// The minimum CPU platform specified for the VM instance.
-  final pulumi.Input<String>? minCpuPlatform;
+  final pulumi.Input<String?>? minCpuPlatform;
   /// A unique name for the resource, required by GCE.
   /// Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The networks attached to the instance.
-  final pulumi.Input<List<InstanceFromMachineImageNetworkInterface>>? networkInterfaces;
+  final pulumi.Input<List<InstanceFromMachineImageNetworkInterface>?>? networkInterfaces;
   /// Configures network performance settings for the instance. If not specified, the instance will be created with its default network performance configuration.
-  final pulumi.Input<InstanceFromMachineImageNetworkPerformanceConfig>? networkPerformanceConfig;
+  final pulumi.Input<InstanceFromMachineImageNetworkPerformanceConfig?>? networkPerformanceConfig;
   /// Stores additional params passed with the request, but not persisted as part of resource payload.
-  final pulumi.Input<InstanceFromMachineImageParams>? params;
+  final pulumi.Input<InstanceFromMachineImageParams?>? params;
   /// Partner Metadata Map made available within the instance.
-  final pulumi.Input<Map<String, String>>? partnerMetadata;
+  final pulumi.Input<Map<String, String>?>? partnerMetadata;
   /// The ID of the project in which the resource belongs. If selfLink is provided, this value is ignored. If neither selfLink nor project are provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The combination of labels configured directly on the resource and default labels configured on the provider.
-  final pulumi.Input<Map<String, String>>? pulumiLabels;
+  final pulumi.Input<Map<String, String>?>? pulumiLabels;
   /// Specifies the reservations that this instance can consume from.
-  final pulumi.Input<InstanceFromMachineImageReservationAffinity>? reservationAffinity;
+  final pulumi.Input<InstanceFromMachineImageReservationAffinity?>? reservationAffinity;
   /// A list of selfLinks of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
-  final pulumi.Input<String>? resourcePolicies;
+  final pulumi.Input<String?>? resourcePolicies;
   /// The scheduling strategy being used by the instance.
-  final pulumi.Input<InstanceFromMachineImageScheduling>? scheduling;
+  final pulumi.Input<InstanceFromMachineImageScheduling?>? scheduling;
   /// The scratch disks attached to the instance.
-  final pulumi.Input<List<InstanceFromMachineImageScratchDisk>>? scratchDisks;
+  final pulumi.Input<List<InstanceFromMachineImageScratchDisk>?>? scratchDisks;
   /// The URI of the created resource.
-  final pulumi.Input<String>? selfLink;
+  final pulumi.Input<String?>? selfLink;
   /// The service account to attach to the instance.
-  final pulumi.Input<InstanceFromMachineImageServiceAccount>? serviceAccount;
+  final pulumi.Input<InstanceFromMachineImageServiceAccount?>? serviceAccount;
   /// The shielded vm config being used by the instance.
-  final pulumi.Input<InstanceFromMachineImageShieldedInstanceConfig>? shieldedInstanceConfig;
+  final pulumi.Input<InstanceFromMachineImageShieldedInstanceConfig?>? shieldedInstanceConfig;
   /// Name or self link of a machine
   /// image to create the instance based on.
   ///
   /// - - -
-  final pulumi.Input<String>? sourceMachineImage;
+  final pulumi.Input<String?>? sourceMachineImage;
   /// Encryption key for the source machine image.
-  final pulumi.Input<InstanceFromMachineImageSourceMachineImageEncryptionKey>? sourceMachineImageEncryptionKey;
+  final pulumi.Input<InstanceFromMachineImageSourceMachineImageEncryptionKey?>? sourceMachineImageEncryptionKey;
   /// The list of tags attached to the instance.
-  final pulumi.Input<List<String>>? tags;
+  final pulumi.Input<List<String>?>? tags;
   /// The unique fingerprint of the tags.
-  final pulumi.Input<String>? tagsFingerprint;
+  final pulumi.Input<String?>? tagsFingerprint;
   /// Workload identity config.
-  final pulumi.Input<InstanceFromMachineImageWorkloadIdentityConfig>? workloadIdentityConfig;
+  final pulumi.Input<InstanceFromMachineImageWorkloadIdentityConfig?>? workloadIdentityConfig;
   /// The zone that the machine should be created in. If not
   /// set, the provider zone is used.
   ///
@@ -136,7 +136,7 @@ class InstanceFromMachineImageState {
   /// from `gcp.compute.Instance` are likewise exported here.
   ///
   /// &gt; **Warning:** *Due to API limitations, disk overrides are currently disabled. This includes the "bootDisk", "attachedDisk", and "scratchDisk" fields.
-  final pulumi.Input<String>? zone;
+  final pulumi.Input<String?>? zone;
 
   /// Creates a new [InstanceFromMachineImageState].
   /// [advancedMachineFeatures] Controls for advanced machine-related behavior features.

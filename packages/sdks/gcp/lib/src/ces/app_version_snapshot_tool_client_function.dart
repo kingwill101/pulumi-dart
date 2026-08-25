@@ -6,20 +6,20 @@ import 'app_version_snapshot_tool_client_function_response.dart';
 
 class AppVersionSnapshotToolClientFunction {
   /// The description of the app version.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// (Output)
   /// Identifier. The unique identifier of the toolset.
   /// Format:
   /// `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// (Output)
   /// Represents a select subset of an OpenAPI 3.0 schema object.
   /// Structure is documented below.
-  final pulumi.Input<List<AppVersionSnapshotToolClientFunctionParameter>>? parameters;
+  final pulumi.Input<List<AppVersionSnapshotToolClientFunctionParameter>?>? parameters;
   /// (Output)
   /// Represents a select subset of an OpenAPI 3.0 schema object.
   /// Structure is documented below.
-  final pulumi.Input<List<AppVersionSnapshotToolClientFunctionResponse>>? responses;
+  final pulumi.Input<List<AppVersionSnapshotToolClientFunctionResponse>?>? responses;
 
   /// Creates a new [AppVersionSnapshotToolClientFunction].
   /// [description] The description of the app version.

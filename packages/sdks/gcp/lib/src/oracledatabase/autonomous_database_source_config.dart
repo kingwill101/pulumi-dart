@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AutonomousDatabaseSourceConfig {
   /// This field specifies if the replication of automatic backups is enabled when creating a Data Guard.
-  final pulumi.Input<bool>? automaticBackupsReplicationEnabled;
+  final pulumi.Input<bool?>? automaticBackupsReplicationEnabled;
   /// The name of the primary Autonomous Database that is used to create a Peer Autonomous Database from a source.
-  final pulumi.Input<String>? autonomousDatabase;
+  final pulumi.Input<String?>? autonomousDatabase;
 
   /// Creates a new [AutonomousDatabaseSourceConfig].
   /// [automaticBackupsReplicationEnabled] This field specifies if the replication of automatic backups is enabled when creating a Data Guard.

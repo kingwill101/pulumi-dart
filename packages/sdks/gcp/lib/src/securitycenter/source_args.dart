@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_securitycenter_source_source_args_doc}
 class SourceArgs {
   /// The description of the source (max of 1024 characters).
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The source’s display name. A source’s display name must be unique
   /// amongst its siblings, for example, two sources with the same parent
   /// can't share the same display name. The display name must start and end

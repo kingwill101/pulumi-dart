@@ -5,23 +5,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering Boundary resources.
 class BoundaryState {
   /// Create time.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Optional. The resource name of the CRM node being attached to the
   /// boundary.
   /// Format: `projects/{project-number}`
-  final pulumi.Input<String>? crmNode;
+  final pulumi.Input<String?>? crmNode;
   /// The location for the Boundary resource. Must be global.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Identifier. The resource name of the boundary.
   /// Format: "projects/{project}/locations/{{location}}/boundary"
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Boundary type.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// Update time.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [BoundaryState].
   /// [createTime] Create time.

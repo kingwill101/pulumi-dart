@@ -6,10 +6,10 @@ import 'os_policy_assignment_os_policy_resource_group_resource_file_file.dart';
 class OsPolicyAssignmentOsPolicyResourceGroupResourceFile {
   /// A a file with this content. The size of the content
   /// is limited to 1024 characters.
-  final pulumi.Input<String>? content;
+  final pulumi.Input<String?>? content;
   /// A remote or local source. Structure is
   /// documented below.
-  final pulumi.Input<OsPolicyAssignmentOsPolicyResourceGroupResourceFileFile>? file;
+  final pulumi.Input<OsPolicyAssignmentOsPolicyResourceGroupResourceFileFile?>? file;
   /// The absolute path of the file within the VM.
   final pulumi.Input<String> path;
   /// Consists of three octal digits which represent, in
@@ -20,7 +20,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceFile {
   /// corresponds to the execute permission. Default behavior is 755. Below are
   /// some examples of permissions and their associated values: read, write, and
   /// execute: 7 read and execute: 5 read and write: 6 read only: 4
-  final pulumi.Input<String>? permissions;
+  final pulumi.Input<String?>? permissions;
   /// Desired state of the file. Possible values are:
   /// `DESIRED_STATE_UNSPECIFIED`, `PRESENT`, `ABSENT`, `CONTENTS_MATCH`.
   final pulumi.Input<String> state;

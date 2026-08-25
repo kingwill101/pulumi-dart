@@ -3,16 +3,16 @@
 import 'package:pulumi_reservednames/index.dart' as module_index;
 import 'package:pulumi_reservednames/providers.dart' as module_providers;
 
-final index = const _IndexModuleNamespace();
-final providers = const _ProvidersModuleNamespace();
+final index = _IndexModuleNamespace();
+final providers = _ProvidersModuleNamespace();
 
 class _IndexModuleNamespace {
-  const _IndexModuleNamespace();
+  _IndexModuleNamespace();
   final ElementType = module_index.ElementType.new;
   final ElementTypeArgs = module_index.ElementType.new;
 }
 
 class _ProvidersModuleNamespace {
-  const _ProvidersModuleNamespace();
+  _ProvidersModuleNamespace();
   final Reservednames = module_providers.ProviderProvider.new;
 }

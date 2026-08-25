@@ -7,7 +7,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDeb {
   /// Whether dependencies should also be installed. -
   /// install when false: `dpkg -i package` - install when true: `apt-get update
   /// && apt-get -y install package.deb`
-  final pulumi.Input<bool>? pullDeps;
+  final pulumi.Input<bool?>? pullDeps;
   /// A deb package. Structure is
   /// documented below.
   final pulumi.Input<OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSource> source;

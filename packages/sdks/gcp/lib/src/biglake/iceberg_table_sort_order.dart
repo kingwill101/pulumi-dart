@@ -8,7 +8,7 @@ class IcebergTableSortOrder {
   final pulumi.Input<List<IcebergTableSortOrderField>> fields;
   /// (Output)
   /// The unique identifier of the sort order.
-  final pulumi.Input<int>? orderId;
+  final pulumi.Input<int?>? orderId;
 
   /// Creates a new [IcebergTableSortOrder].
   /// [fields] Structure is documented below.
@@ -28,7 +28,7 @@ class IcebergTableSortOrder {
   factory IcebergTableSortOrder.fromMap(Map<String, dynamic> map) {
     return IcebergTableSortOrder(
       fields: pulumi.Input.fromValue(pulumi.Input.decodeList<IcebergTableSortOrderField>(map['fields']!, (value) => IcebergTableSortOrderField.fromMap((value as Map).cast<String, dynamic>()))),
-      orderId: (() { final guardedValue = map['orderId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      orderId: (() { final guardedValue = map['orderId']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

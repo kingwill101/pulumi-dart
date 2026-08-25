@@ -6,7 +6,7 @@ class NodePoolNodeConfigSecondaryBootDisk {
   /// Disk image to create the secondary boot disk from
   final pulumi.Input<String> diskImage;
   /// Mode for how the secondary boot disk is used.
-  final pulumi.Input<String>? mode;
+  final pulumi.Input<String?>? mode;
 
   /// Creates a new [NodePoolNodeConfigSecondaryBootDisk].
   /// [diskImage] Disk image to create the secondary boot disk from

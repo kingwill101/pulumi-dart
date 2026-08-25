@@ -6,21 +6,21 @@ import 'target_execution_config_private_pool.dart';
 
 class TargetExecutionConfig {
   /// Optional. Cloud Storage location in which to store execution outputs. This can either be a bucket ("gs://my-bucket") or a path within a bucket ("gs://my-bucket/my-dir"). If unspecified, a default bucket located in the same region will be used.
-  final pulumi.Input<String>? artifactStorage;
+  final pulumi.Input<String?>? artifactStorage;
   /// Optional. Use default Cloud Build pool.
-  final pulumi.Input<TargetExecutionConfigDefaultPool>? defaultPool;
+  final pulumi.Input<TargetExecutionConfigDefaultPool?>? defaultPool;
   /// Optional. Execution timeout for a Cloud Build Execution. This must be between 10m and 24h in seconds format. If unspecified, a default timeout of 1h is used.
-  final pulumi.Input<String>? executionTimeout;
+  final pulumi.Input<String?>? executionTimeout;
   /// Optional. Use private Cloud Build pool.
-  final pulumi.Input<TargetExecutionConfigPrivatePool>? privatePool;
+  final pulumi.Input<TargetExecutionConfigPrivatePool?>? privatePool;
   /// Optional. Google service account to use for execution. If unspecified, the project execution service account (-compute@developer.gserviceaccount.com) is used.
-  final pulumi.Input<String>? serviceAccount;
+  final pulumi.Input<String?>? serviceAccount;
   /// Required. Usages when this configuration should be applied.
   final pulumi.Input<List<String>> usages;
   /// Optional. If true, additional logging will be enabled when running builds in this execution environment.
-  final pulumi.Input<bool>? verbose;
+  final pulumi.Input<bool?>? verbose;
   /// Optional. The resource name of the `WorkerPool`, with the format `projects/{project}/locations/{location}/workerPools/{worker_pool}`. If this optional field is unspecified, the default Cloud Build pool will be used.
-  final pulumi.Input<String>? workerPool;
+  final pulumi.Input<String?>? workerPool;
 
   /// Creates a new [TargetExecutionConfig].
   /// [artifactStorage] Optional. Cloud Storage location in which to store execution outputs. This can either be a bucket ("gs://my-bucket") or a path within a bucket ("gs://my-bucket/my-dir"). If unspecified, a default bucket located in the same region will be used.

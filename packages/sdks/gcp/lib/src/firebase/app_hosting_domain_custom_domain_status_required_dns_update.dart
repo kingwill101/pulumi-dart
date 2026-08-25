@@ -7,19 +7,19 @@ import 'app_hosting_domain_custom_domain_status_required_dns_update_discovered.d
 class AppHostingDomainCustomDomainStatusRequiredDnsUpdate {
   /// (Output)
   /// The last time App Hosting checked your custom domain's DNS records.
-  final pulumi.Input<String>? checkTime;
+  final pulumi.Input<String?>? checkTime;
   /// (Output)
   /// The set of DNS records App Hosting needs in order to be able to serve
   /// secure content on the domain.
   /// Structure is documented below.
-  final pulumi.Input<List<AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesired>>? desireds;
+  final pulumi.Input<List<AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesired>?>? desireds;
   /// (Output)
   /// The set of DNS records App Hosting discovered when inspecting a domain.
   /// Structure is documented below.
-  final pulumi.Input<List<AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscovered>>? discovereds;
+  final pulumi.Input<List<AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscovered>?>? discovereds;
   /// (Output)
   /// The domain the record pertains to, e.g. `foo.bar.com.`.
-  final pulumi.Input<String>? domainName;
+  final pulumi.Input<String?>? domainName;
 
   /// Creates a new [AppHostingDomainCustomDomainStatusRequiredDnsUpdate].
   /// [checkTime] (Output)

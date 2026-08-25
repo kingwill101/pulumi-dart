@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PosturePolicySetPolicyComplianceStandard {
   /// Mapping of security controls for the policy.
-  final pulumi.Input<String>? control;
+  final pulumi.Input<String?>? control;
   /// Mapping of compliance standards for the policy.
-  final pulumi.Input<String>? standard;
+  final pulumi.Input<String?>? standard;
 
   /// Creates a new [PosturePolicySetPolicyComplianceStandard].
   /// [control] Mapping of security controls for the policy.

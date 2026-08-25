@@ -3,6 +3,7 @@ import 'application_args.dart';
 import 'application_feature_settings.dart';
 import 'application_iap.dart';
 import 'application_state.dart';
+import 'application_url_dispatch_rule.dart';
 
 /// Allows creation and management of an App Engine application.
 ///
@@ -218,7 +219,7 @@ class Application extends pulumi.CustomResource {
   /// A list of the SSL policy that will be applied. Each block has a `SSL_POLICY_UNSPECIFIED`, `DEFAULT`, and `MODERN` field.
   late final pulumi.Output<String> sslPolicy;
   /// A list of dispatch rule blocks. Each block has a `domain`, `path`, and `service` field.
-  late final pulumi.Output<List<Map<String, dynamic>>> urlDispatchRules;
+  late final pulumi.Output<List<ApplicationUrlDispatchRule>> urlDispatchRules;
 
   /// Creates a new [Application].
   /// [name] The Pulumi resource name.
@@ -232,7 +233,7 @@ class Application extends pulumi.CustomResource {
           'gcp:appengine/application:Application',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     appId = registerOutput<String>('appId');
     authDomain = registerOutput<String>('authDomain');
@@ -248,7 +249,7 @@ class Application extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     servingStatus = registerOutput<String>('servingStatus');
     sslPolicy = registerOutput<String>('sslPolicy');
-    urlDispatchRules = registerOutput<List<Map<String, dynamic>>>('urlDispatchRules');
+    urlDispatchRules = registerOutput<List<ApplicationUrlDispatchRule>>('urlDispatchRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationUrlDispatchRule>(guardedValue, (value) => ApplicationUrlDispatchRule.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [Application] resource's state with the given [name] and [id].
@@ -256,11 +257,12 @@ class Application extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ApplicationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Application._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -288,6 +290,32 @@ class Application extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     servingStatus = registerOutput<String>('servingStatus');
     sslPolicy = registerOutput<String>('sslPolicy');
-    urlDispatchRules = registerOutput<List<Map<String, dynamic>>>('urlDispatchRules');
+    urlDispatchRules = registerOutput<List<ApplicationUrlDispatchRule>>('urlDispatchRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationUrlDispatchRule>(guardedValue, (value) => ApplicationUrlDispatchRule.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [Application] resource.
+  Application.reference(String urn)
+    : super(
+        'gcp:appengine/application:Application',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    appId = registerOutput<String>('appId');
+    authDomain = registerOutput<String>('authDomain');
+    codeBucket = registerOutput<String>('codeBucket');
+    databaseType = registerOutput<String>('databaseType');
+    defaultBucket = registerOutput<String>('defaultBucket');
+    defaultHostname = registerOutput<String>('defaultHostname');
+    featureSettings = registerOutput<ApplicationFeatureSettings>('featureSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationFeatureSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    gcrDomain = registerOutput<String>('gcrDomain');
+    iap = registerOutput<ApplicationIap>('iap', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationIap.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    locationId = registerOutput<String>('locationId');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    servingStatus = registerOutput<String>('servingStatus');
+    sslPolicy = registerOutput<String>('sslPolicy');
+    urlDispatchRules = registerOutput<List<ApplicationUrlDispatchRule>>('urlDispatchRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationUrlDispatchRule>(guardedValue, (value) => ApplicationUrlDispatchRule.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

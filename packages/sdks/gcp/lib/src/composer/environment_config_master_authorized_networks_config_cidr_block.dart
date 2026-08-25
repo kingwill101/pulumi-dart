@@ -6,7 +6,7 @@ class EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock {
   /// cidr_block must be specified in CIDR notation.
   final pulumi.Input<String> cidrBlock;
   /// display_name is a field for users to identify CIDR blocks.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
 
   /// Creates a new [EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock].
   /// [cidrBlock] cidr_block must be specified in CIDR notation.

@@ -25,7 +25,7 @@ class AiReasoningEngineTrafficConfigTrafficSplitManualTarget {
 
   factory AiReasoningEngineTrafficConfigTrafficSplitManualTarget.fromMap(Map<String, dynamic> map) {
     return AiReasoningEngineTrafficConfigTrafficSplitManualTarget(
-      percent: pulumi.Input.fromValue(map['percent'] as int),
+      percent: pulumi.Input.fromValue((map['percent'] as num).toInt()),
       runtimeRevisionName: pulumi.Input.fromValue(map['runtimeRevisionName'] as String),
     );
   }

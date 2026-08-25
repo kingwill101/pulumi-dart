@@ -5,12 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AppHostingTrafficRolloutPolicy {
   /// Specifies a branch that triggers a new build to be started with this
   /// policy. If not set, no automatic rollouts will happen.
-  final pulumi.Input<String>? codebaseBranch;
+  final pulumi.Input<String?>? codebaseBranch;
   /// A flag that, if true, prevents rollouts from being created via this RolloutPolicy.
-  final pulumi.Input<bool>? disabled;
+  final pulumi.Input<bool?>? disabled;
   /// (Output)
   /// If disabled is set, the time at which the rollouts were disabled.
-  final pulumi.Input<String>? disabledTime;
+  final pulumi.Input<String?>? disabledTime;
 
   /// Creates a new [AppHostingTrafficRolloutPolicy].
   /// [codebaseBranch] Specifies a branch that triggers a new build to be started with this

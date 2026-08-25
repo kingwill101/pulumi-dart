@@ -26,7 +26,7 @@ class GetTableExternalDataConfigurationGoogleSheetsOption {
   factory GetTableExternalDataConfigurationGoogleSheetsOption.fromMap(Map<String, dynamic> map) {
     return GetTableExternalDataConfigurationGoogleSheetsOption(
       range: pulumi.Input.fromValue(map['range'] as String),
-      skipLeadingRows: pulumi.Input.fromValue(map['skipLeadingRows'] as int),
+      skipLeadingRows: pulumi.Input.fromValue((map['skipLeadingRows'] as num).toInt()),
     );
   }
 }

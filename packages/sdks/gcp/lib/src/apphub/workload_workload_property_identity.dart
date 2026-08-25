@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WorkloadWorkloadPropertyIdentity {
   /// (Output)
   /// The principal of the identity.
-  final pulumi.Input<String>? principal;
+  final pulumi.Input<String?>? principal;
 
   /// Creates a new [WorkloadWorkloadPropertyIdentity].
   /// [principal] (Output)

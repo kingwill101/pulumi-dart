@@ -5,10 +5,10 @@ import 'hosting_custom_domain_required_dns_update_desired_record.dart';
 
 class HostingCustomDomainRequiredDnsUpdateDesired {
   /// The domain name the record pertains to, e.g. `foo.bar.com.`.
-  final pulumi.Input<String>? domainName;
+  final pulumi.Input<String?>? domainName;
   /// Records on the domain
   /// Structure is documented below.
-  final pulumi.Input<List<HostingCustomDomainRequiredDnsUpdateDesiredRecord>>? records;
+  final pulumi.Input<List<HostingCustomDomainRequiredDnsUpdateDesiredRecord>?>? records;
 
   /// Creates a new [HostingCustomDomainRequiredDnsUpdateDesired].
   /// [domainName] The domain name the record pertains to, e.g. `foo.bar.com.`.

@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InsightsConfigTargetProjects {
   /// The project IDs. Format {project}.
-  final pulumi.Input<List<String>>? projectIds;
+  final pulumi.Input<List<String>?>? projectIds;
 
   /// Creates a new [InsightsConfigTargetProjects].
   /// [projectIds] The project IDs. Format {project}.

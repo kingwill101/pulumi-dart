@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DataProductAccessGroupPrincipal {
   /// Email of the Google Group.
-  final pulumi.Input<String>? googleGroup;
+  final pulumi.Input<String?>? googleGroup;
   /// Specifies the email of the producer service account.
-  final pulumi.Input<String>? serviceAccount;
+  final pulumi.Input<String?>? serviceAccount;
 
   /// Creates a new [DataProductAccessGroupPrincipal].
   /// [googleGroup] Email of the Google Group.

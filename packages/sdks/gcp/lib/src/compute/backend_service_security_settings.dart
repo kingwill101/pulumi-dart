@@ -10,15 +10,15 @@ class BackendServiceSecuritySettings {
   ///
   ///
   /// &lt;a name="nestedSecuritySettingsAwsV4Authentication"&gt;&lt;/a&gt;The `awsV4Authentication` block supports:
-  final pulumi.Input<BackendServiceSecuritySettingsAwsV4Authentication>? awsV4Authentication;
+  final pulumi.Input<BackendServiceSecuritySettingsAwsV4Authentication?>? awsV4Authentication;
   /// ClientTlsPolicy is a resource that specifies how a client should authenticate
   /// connections to backends of a service. This resource itself does not affect
   /// configuration unless it is attached to a backend service resource.
-  final pulumi.Input<String>? clientTlsPolicy;
+  final pulumi.Input<String?>? clientTlsPolicy;
   /// A list of alternate names to verify the subject identity in the certificate.
   /// If specified, the client will verify that the server certificate's subject
   /// alt name matches one of the specified values.
-  final pulumi.Input<List<String>>? subjectAltNames;
+  final pulumi.Input<List<String>?>? subjectAltNames;
 
   /// Creates a new [BackendServiceSecuritySettings].
   /// [awsV4Authentication] The configuration needed to generate a signature for access to private storage buckets that support AWS's Signature Version 4 for authentication.

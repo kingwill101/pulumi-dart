@@ -26,26 +26,26 @@ class RegionBackendServiceState {
   /// only until the end of the browser session (or equivalent). The
   /// maximum allowed value for TTL is one day.
   /// When the load balancing scheme is INTERNAL, this field is not used.
-  final pulumi.Input<int>? affinityCookieTtlSec;
+  final pulumi.Input<int?>? affinityCookieTtlSec;
   /// The set of backends that serve this RegionBackendService.
   /// Structure is documented below.
-  final pulumi.Input<List<RegionBackendServiceBackend>>? backends;
+  final pulumi.Input<List<RegionBackendServiceBackend>?>? backends;
   /// Cloud CDN configuration for this BackendService.
   /// Structure is documented below.
-  final pulumi.Input<RegionBackendServiceCdnPolicy>? cdnPolicy;
+  final pulumi.Input<RegionBackendServiceCdnPolicy?>? cdnPolicy;
   /// Settings controlling the volume of connections to a backend service. This field
   /// is applicable only when the `loadBalancingScheme` is set to INTERNAL_MANAGED
   /// and the `protocol` is set to HTTP, HTTPS, HTTP2 or H2C.
   /// Structure is documented below.
-  final pulumi.Input<RegionBackendServiceCircuitBreakers>? circuitBreakers;
+  final pulumi.Input<RegionBackendServiceCircuitBreakers?>? circuitBreakers;
   /// Time for which instance will be drained (not accept new
   /// connections, but still work to finish started).
-  final pulumi.Input<int>? connectionDrainingTimeoutSec;
+  final pulumi.Input<int?>? connectionDrainingTimeoutSec;
   /// Connection Tracking configuration for this BackendService.
   /// This is available only for Layer 4 Internal Load Balancing and
   /// Network Load Balancing.
   /// Structure is documented below.
-  final pulumi.Input<RegionBackendServiceConnectionTrackingPolicy>? connectionTrackingPolicy;
+  final pulumi.Input<RegionBackendServiceConnectionTrackingPolicy?>? connectionTrackingPolicy;
   /// Consistent Hash-based load balancing can be used to provide soft session
   /// affinity based on HTTP headers, cookies or other properties. This load balancing
   /// policy is applicable only for HTTP connections. The affinity to a particular
@@ -53,36 +53,36 @@ class RegionBackendServiceState {
   /// destination service. This field specifies parameters that control consistent
   /// hashing.
   /// This field only applies when all of the following are true -
-  final pulumi.Input<RegionBackendServiceConsistentHash>? consistentHash;
+  final pulumi.Input<RegionBackendServiceConsistentHash?>? consistentHash;
   /// Creation timestamp in RFC3339 text format.
-  final pulumi.Input<String>? creationTimestamp;
+  final pulumi.Input<String?>? creationTimestamp;
   /// List of custom metrics that are used for the WEIGHTED_ROUND_ROBIN locality_lb_policy.
   /// Structure is documented below.
-  final pulumi.Input<List<RegionBackendServiceCustomMetric>>? customMetrics;
+  final pulumi.Input<List<RegionBackendServiceCustomMetric>?>? customMetrics;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// An optional description of this resource.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// (Optional, Beta)
   /// Dynamic forwarding configuration. This field is used to configure the backend service with dynamic forwarding
   /// feature which together with Service Extension allows customized and complex routing logic.
   /// Structure is documented below.
-  final pulumi.Input<RegionBackendServiceDynamicForwarding>? dynamicForwarding;
+  final pulumi.Input<RegionBackendServiceDynamicForwarding?>? dynamicForwarding;
   /// If true, enable Cloud CDN for this RegionBackendService.
-  final pulumi.Input<bool>? enableCdn;
+  final pulumi.Input<bool?>? enableCdn;
   /// Policy for failovers.
   /// Structure is documented below.
-  final pulumi.Input<RegionBackendServiceFailoverPolicy>? failoverPolicy;
+  final pulumi.Input<RegionBackendServiceFailoverPolicy?>? failoverPolicy;
   /// Fingerprint of this resource. A hash of the contents stored in this
   /// object. This field is used in optimistic locking.
-  final pulumi.Input<String>? fingerprint;
+  final pulumi.Input<String?>? fingerprint;
   /// The unique identifier for the resource. This identifier is defined by the server.
-  final pulumi.Input<int>? generatedId;
+  final pulumi.Input<int?>? generatedId;
   /// Configures self-managed High Availability (HA) for External and Internal Protocol Forwarding.
   /// The backends of this regional backend service must only specify zonal network endpoint groups
   /// (NEGs) of type GCE_VM_IP. Note that haPolicy is not for load balancing, and therefore cannot
@@ -92,27 +92,27 @@ class RegionBackendServiceState {
   /// haPolicy can only be specified for External Passthrough Network Load Balancers and Internal
   /// Passthrough Network Load Balancers.
   /// Structure is documented below.
-  final pulumi.Input<RegionBackendServiceHaPolicy>? haPolicy;
+  final pulumi.Input<RegionBackendServiceHaPolicy?>? haPolicy;
   /// The set of URLs to HealthCheck resources for health checking
   /// this RegionBackendService. Currently at most one health
   /// check can be specified.
   /// A health check must be specified unless the backend service uses an internet
   /// or serverless NEG as a backend.
-  final pulumi.Input<String>? healthChecks;
+  final pulumi.Input<String?>? healthChecks;
   /// Settings for enabling Cloud Identity Aware Proxy.
   /// If OAuth client is not set, Google-managed OAuth client is used.
   /// Structure is documented below.
-  final pulumi.Input<RegionBackendServiceIap>? iap;
+  final pulumi.Input<RegionBackendServiceIap?>? iap;
   /// Specifies preference of traffic to the backend (from the proxy and from the client for proxyless gRPC).
   /// Possible values are: `IPV4_ONLY`, `PREFER_IPV6`, `IPV6_ONLY`.
-  final pulumi.Input<String>? ipAddressSelectionPolicy;
+  final pulumi.Input<String?>? ipAddressSelectionPolicy;
   /// Indicates what kind of load balancing this regional backend service
   /// will be used for. A backend service created for one type of load
   /// balancing cannot be used with the other(s). For more information, refer to
   /// [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
   /// Default value is `INTERNAL`.
   /// Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
-  final pulumi.Input<String>? loadBalancingScheme;
+  final pulumi.Input<String?>? loadBalancingScheme;
   /// The load balancing algorithm used within the scope of the locality.
   /// The possible values are:
   /// * `ROUND_ROBIN`: This is a simple policy in which each healthy backend
@@ -165,11 +165,11 @@ class RegionBackendServiceState {
   /// by a URL map that is bound to target gRPC proxy that has validateForProxyless
   /// field set to true.
   /// Possible values are: `ROUND_ROBIN`, `LEAST_REQUEST`, `RING_HASH`, `RANDOM`, `ORIGINAL_DESTINATION`, `MAGLEV`, `WEIGHTED_MAGLEV`, `WEIGHTED_ROUND_ROBIN`.
-  final pulumi.Input<String>? localityLbPolicy;
+  final pulumi.Input<String?>? localityLbPolicy;
   /// This field denotes the logging options for the load balancer traffic served by this backend service.
   /// If logging is enabled, logs will be exported to Stackdriver.
   /// Structure is documented below.
-  final pulumi.Input<RegionBackendServiceLogConfig>? logConfig;
+  final pulumi.Input<RegionBackendServiceLogConfig?>? logConfig;
   /// Name of the resource. Provided by the client when the resource is
   /// created. The name must be 1-63 characters long, and comply with
   /// RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -177,23 +177,23 @@ class RegionBackendServiceState {
   /// first character must be a lowercase letter, and all following
   /// characters must be a dash, lowercase letter, or digit, except the last
   /// character, which cannot be a dash.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The URL of the network to which this backend service belongs.
   /// This field must be set for Internal Passthrough Network Load Balancers when the haPolicy is enabled, and for External Passthrough Network Load Balancers when the haPolicy fastIpMove is enabled.
   /// This field can only be specified when the load balancing scheme is set to INTERNAL, or when the load balancing scheme is set to EXTERNAL and haPolicy fastIpMove is enabled.
   /// Changes to this field force recreation of the resource.
-  final pulumi.Input<String>? network;
+  final pulumi.Input<String?>? network;
   /// Configures traffic steering properties of internal passthrough Network Load Balancers.
   /// Structure is documented below.
-  final pulumi.Input<RegionBackendServiceNetworkPassThroughLbTrafficPolicy>? networkPassThroughLbTrafficPolicy;
+  final pulumi.Input<RegionBackendServiceNetworkPassThroughLbTrafficPolicy?>? networkPassThroughLbTrafficPolicy;
   /// Settings controlling eviction of unhealthy hosts from the load balancing pool.
   /// This field is applicable only when the `loadBalancingScheme` is set
   /// to INTERNAL_MANAGED and the `protocol` is set to HTTP, HTTPS, HTTP2 or H2C.
   /// Structure is documented below.
-  final pulumi.Input<RegionBackendServiceOutlierDetection>? outlierDetection;
+  final pulumi.Input<RegionBackendServiceOutlierDetection?>? outlierDetection;
   /// Additional params passed with the request, but not persisted as part of resource payload
   /// Structure is documented below.
-  final pulumi.Input<RegionBackendServiceParams>? params;
+  final pulumi.Input<RegionBackendServiceParams?>? params;
   /// A named port on a backend instance group representing the port for
   /// communication to the backend VMs in that group. Required when the
   /// loadBalancingScheme is EXTERNAL, EXTERNAL_MANAGED, INTERNAL_MANAGED, or INTERNAL_SELF_MANAGED
@@ -201,42 +201,42 @@ class RegionBackendServiceState {
   /// backend instance group. This parameter has no meaning if the backends are NEGs. API sets a
   /// default of "http" if not given.
   /// Must be omitted when the loadBalancingScheme is INTERNAL (Internal TCP/UDP Load Balancing).
-  final pulumi.Input<String>? portName;
+  final pulumi.Input<String?>? portName;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The protocol this BackendService uses to communicate with backends.
   /// The default is HTTP. Possible values are HTTP, HTTPS, HTTP2, H2C, TCP, SSL, UDP
   /// or GRPC. Refer to the documentation for the load balancers or for Traffic Director
   /// for more information.
   /// Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `UDP`, `GRPC`, `UNSPECIFIED`, `H2C`.
-  final pulumi.Input<String>? protocol;
+  final pulumi.Input<String?>? protocol;
   /// The Region in which the created backend service should reside.
   /// If it is not provided, the provider region is used.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The security policy associated with this backend service.
-  final pulumi.Input<String>? securityPolicy;
+  final pulumi.Input<String?>? securityPolicy;
   /// The URI of the created resource.
-  final pulumi.Input<String>? selfLink;
+  final pulumi.Input<String?>? selfLink;
   /// Type of session affinity to use. The default is NONE. Session affinity is
   /// not applicable if the protocol is UDP.
   /// Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `CLIENT_IP_NO_DESTINATION`, `STRONG_COOKIE_AFFINITY`.
-  final pulumi.Input<String>? sessionAffinity;
+  final pulumi.Input<String?>? sessionAffinity;
   /// Describes the HTTP cookie used for stateful session affinity. This field is applicable and required if the sessionAffinity is set to STRONG_COOKIE_AFFINITY.
   /// Structure is documented below.
-  final pulumi.Input<RegionBackendServiceStrongSessionAffinityCookie>? strongSessionAffinityCookie;
+  final pulumi.Input<RegionBackendServiceStrongSessionAffinityCookie?>? strongSessionAffinityCookie;
   /// (Optional, Beta)
   /// Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
   /// Structure is documented below.
-  final pulumi.Input<RegionBackendServiceSubsetting>? subsetting;
+  final pulumi.Input<RegionBackendServiceSubsetting?>? subsetting;
   /// The backend service timeout has a different meaning depending on the type of load balancer.
   /// For more information see, [Backend service settings](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices).
   /// The default is 30 seconds.
   /// The full range of timeout values allowed goes from 1 through 2,147,483,647 seconds.
-  final pulumi.Input<int>? timeoutSec;
+  final pulumi.Input<int?>? timeoutSec;
   /// Configuration for Backend Authenticated TLS and mTLS. May only be specified when the backend protocol is SSL, HTTPS or HTTP2.
   /// Structure is documented below.
-  final pulumi.Input<RegionBackendServiceTlsSettings>? tlsSettings;
+  final pulumi.Input<RegionBackendServiceTlsSettings?>? tlsSettings;
 
   /// Creates a new [RegionBackendServiceState].
   /// [affinityCookieTtlSec] Lifetime of cookies in seconds if sessionAffinity is
@@ -366,11 +366,11 @@ class RegionBackendServiceState {
 
   factory RegionBackendServiceState.fromMap(Map<String, dynamic> map) {
     return RegionBackendServiceState(
-      affinityCookieTtlSec: (() { final guardedValue = map['affinityCookieTtlSec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      affinityCookieTtlSec: (() { final guardedValue = map['affinityCookieTtlSec']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       backends: (() { final guardedValue = map['backends']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<RegionBackendServiceBackend>(guardedValue, (value) => RegionBackendServiceBackend.fromMap((value as Map).cast<String, dynamic>()))); })(),
       cdnPolicy: (() { final guardedValue = map['cdnPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RegionBackendServiceCdnPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       circuitBreakers: (() { final guardedValue = map['circuitBreakers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RegionBackendServiceCircuitBreakers.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      connectionDrainingTimeoutSec: (() { final guardedValue = map['connectionDrainingTimeoutSec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      connectionDrainingTimeoutSec: (() { final guardedValue = map['connectionDrainingTimeoutSec']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       connectionTrackingPolicy: (() { final guardedValue = map['connectionTrackingPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RegionBackendServiceConnectionTrackingPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       consistentHash: (() { final guardedValue = map['consistentHash']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RegionBackendServiceConsistentHash.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       creationTimestamp: (() { final guardedValue = map['creationTimestamp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -381,7 +381,7 @@ class RegionBackendServiceState {
       enableCdn: (() { final guardedValue = map['enableCdn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       failoverPolicy: (() { final guardedValue = map['failoverPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RegionBackendServiceFailoverPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       fingerprint: (() { final guardedValue = map['fingerprint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      generatedId: (() { final guardedValue = map['generatedId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      generatedId: (() { final guardedValue = map['generatedId']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       haPolicy: (() { final guardedValue = map['haPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RegionBackendServiceHaPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       healthChecks: (() { final guardedValue = map['healthChecks']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       iap: (() { final guardedValue = map['iap']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RegionBackendServiceIap.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -403,7 +403,7 @@ class RegionBackendServiceState {
       sessionAffinity: (() { final guardedValue = map['sessionAffinity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       strongSessionAffinityCookie: (() { final guardedValue = map['strongSessionAffinityCookie']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RegionBackendServiceStrongSessionAffinityCookie.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       subsetting: (() { final guardedValue = map['subsetting']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RegionBackendServiceSubsetting.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      timeoutSec: (() { final guardedValue = map['timeoutSec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      timeoutSec: (() { final guardedValue = map['timeoutSec']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       tlsSettings: (() { final guardedValue = map['tlsSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RegionBackendServiceTlsSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

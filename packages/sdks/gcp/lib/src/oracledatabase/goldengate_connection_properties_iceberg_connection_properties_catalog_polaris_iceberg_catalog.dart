@@ -6,7 +6,7 @@ class GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIce
   /// The Polaris client ID.
   final pulumi.Input<String> clientId;
   /// The Polaris client secret.
-  final pulumi.Input<String>? clientSecret;
+  final pulumi.Input<String?>? clientSecret;
   /// The catalog name within Polaris.
   final pulumi.Input<String> polarisCatalog;
   /// The Polaris principal role.

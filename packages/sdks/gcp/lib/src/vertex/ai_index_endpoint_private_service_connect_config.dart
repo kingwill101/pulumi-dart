@@ -7,10 +7,10 @@ class AiIndexEndpointPrivateServiceConnectConfig {
   /// If set to true, the IndexEndpoint is created without private service access.
   final pulumi.Input<bool> enablePrivateServiceConnect;
   /// A list of Projects from which the forwarding rule will target the service attachment.
-  final pulumi.Input<List<String>>? projectAllowlists;
+  final pulumi.Input<List<String>?>? projectAllowlists;
   /// List of projects and networks where the PSC endpoints will be created. This field is used by Online Inference(Prediction) only.
   /// Structure is documented below.
-  final pulumi.Input<List<AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfig>>? pscAutomationConfigs;
+  final pulumi.Input<List<AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfig>?>? pscAutomationConfigs;
 
   /// Creates a new [AiIndexEndpointPrivateServiceConnectConfig].
   /// [enablePrivateServiceConnect] If set to true, the IndexEndpoint is created without private service access.

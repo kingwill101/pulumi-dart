@@ -7,12 +7,12 @@ import 'job_template_config_elementary_stream_video_stream.dart';
 class JobTemplateConfigElementaryStream {
   /// Encoding of an audio stream.
   /// Structure is documented below.
-  final pulumi.Input<JobTemplateConfigElementaryStreamAudioStream>? audioStream;
+  final pulumi.Input<JobTemplateConfigElementaryStreamAudioStream?>? audioStream;
   /// A unique key for this atom.
-  final pulumi.Input<String>? key;
+  final pulumi.Input<String?>? key;
   /// Encoding of a video stream.
   /// Structure is documented below.
-  final pulumi.Input<JobTemplateConfigElementaryStreamVideoStream>? videoStream;
+  final pulumi.Input<JobTemplateConfigElementaryStreamVideoStream?>? videoStream;
 
   /// Creates a new [JobTemplateConfigElementaryStream].
   /// [audioStream] Encoding of an audio stream.

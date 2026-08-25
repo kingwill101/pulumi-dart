@@ -6,7 +6,7 @@ import 'stream_source_config_spanner_source_config_exclude_objects_schema_table_
 class StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTable {
   /// Spanner columns in the table. When unspecified as part of include/exclude objects, includes/excludes everything.
   /// Structure is documented below.
-  final pulumi.Input<List<StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumn>>? columns;
+  final pulumi.Input<List<StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumn>?>? columns;
   /// Table name.
   final pulumi.Input<String> table;
 

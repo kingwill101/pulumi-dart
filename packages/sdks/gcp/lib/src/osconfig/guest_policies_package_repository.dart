@@ -9,16 +9,16 @@ import 'guest_policies_package_repository_zypper.dart';
 class GuestPoliciesPackageRepository {
   /// An Apt Repository.
   /// Structure is documented below.
-  final pulumi.Input<GuestPoliciesPackageRepositoryApt>? apt;
+  final pulumi.Input<GuestPoliciesPackageRepositoryApt?>? apt;
   /// A Goo Repository.
   /// Structure is documented below.
-  final pulumi.Input<GuestPoliciesPackageRepositoryGoo>? goo;
+  final pulumi.Input<GuestPoliciesPackageRepositoryGoo?>? goo;
   /// A Yum Repository.
   /// Structure is documented below.
-  final pulumi.Input<GuestPoliciesPackageRepositoryYum>? yum;
+  final pulumi.Input<GuestPoliciesPackageRepositoryYum?>? yum;
   /// A Zypper Repository.
   /// Structure is documented below.
-  final pulumi.Input<GuestPoliciesPackageRepositoryZypper>? zypper;
+  final pulumi.Input<GuestPoliciesPackageRepositoryZypper?>? zypper;
 
   /// Creates a new [GuestPoliciesPackageRepository].
   /// [apt] An Apt Repository.

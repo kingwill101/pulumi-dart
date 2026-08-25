@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FeatureMembershipConfigmanagementPolicyControllerMonitoring {
   /// Specifies the list of backends Policy Controller will export to. Must be one of `CLOUD_MONITORING` or `PROMETHEUS`. Defaults to [`CLOUD_MONITORING`, `PROMETHEUS`]. Specifying an empty value `[]` disables metrics export.
-  final pulumi.Input<List<String>>? backends;
+  final pulumi.Input<List<String>?>? backends;
 
   /// Creates a new [FeatureMembershipConfigmanagementPolicyControllerMonitoring].
   /// [backends] Specifies the list of backends Policy Controller will export to. Must be one of `CLOUD_MONITORING` or `PROMETHEUS`. Defaults to [`CLOUD_MONITORING`, `PROMETHEUS`]. Specifying an empty value `[]` disables metrics export.

@@ -7,10 +7,10 @@ class RegistrationDnsSettingsGlueRecord {
   final pulumi.Input<String> hostName;
   /// List of IPv4 addresses corresponding to this host in the standard decimal format (e.g. 198.51.100.1).
   /// At least one of ipv4Address and ipv6Address must be set.
-  final pulumi.Input<List<String>>? ipv4Addresses;
+  final pulumi.Input<List<String>?>? ipv4Addresses;
   /// List of IPv4 addresses corresponding to this host in the standard decimal format (e.g. 198.51.100.1).
   /// At least one of ipv4Address and ipv6Address must be set.
-  final pulumi.Input<List<String>>? ipv6Addresses;
+  final pulumi.Input<List<String>?>? ipv6Addresses;
 
   /// Creates a new [RegistrationDnsSettingsGlueRecord].
   /// [hostName] Required. Domain name of the host in Punycode format.

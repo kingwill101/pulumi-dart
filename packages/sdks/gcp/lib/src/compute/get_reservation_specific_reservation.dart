@@ -42,9 +42,9 @@ class GetReservationSpecificReservation {
 
   factory GetReservationSpecificReservation.fromMap(Map<String, dynamic> map) {
     return GetReservationSpecificReservation(
-      assuredCount: pulumi.Input.fromValue(map['assuredCount'] as int),
-      count: pulumi.Input.fromValue(map['count'] as int),
-      inUseCount: pulumi.Input.fromValue(map['inUseCount'] as int),
+      assuredCount: pulumi.Input.fromValue((map['assuredCount'] as num).toInt()),
+      count: pulumi.Input.fromValue((map['count'] as num).toInt()),
+      inUseCount: pulumi.Input.fromValue((map['inUseCount'] as num).toInt()),
       instanceProperties: pulumi.Input.fromValue(pulumi.Input.decodeList<GetReservationSpecificReservationInstanceProperty>(map['instanceProperties']!, (value) => GetReservationSpecificReservationInstanceProperty.fromMap((value as Map).cast<String, dynamic>()))),
       sourceInstanceTemplate: pulumi.Input.fromValue(map['sourceInstanceTemplate'] as String),
     );

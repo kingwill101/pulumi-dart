@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BatchOperationsJobPutObjectHold {
   /// set/unset to update event based hold for objects.
-  final pulumi.Input<String>? eventBasedHold;
+  final pulumi.Input<String?>? eventBasedHold;
   /// set/unset to update temporary based hold for objects.
-  final pulumi.Input<String>? temporaryHold;
+  final pulumi.Input<String?>? temporaryHold;
 
   /// Creates a new [BatchOperationsJobPutObjectHold].
   /// [eventBasedHold] set/unset to update event based hold for objects.

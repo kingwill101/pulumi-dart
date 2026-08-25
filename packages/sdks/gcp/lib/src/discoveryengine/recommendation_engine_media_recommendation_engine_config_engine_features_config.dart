@@ -7,10 +7,10 @@ import 'recommendation_engine_media_recommendation_engine_config_engine_features
 class RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfig {
   /// Feature configurations that are required for creating a Most Popular engine.
   /// Structure is documented below.
-  final pulumi.Input<RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfig>? mostPopularConfig;
+  final pulumi.Input<RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfig?>? mostPopularConfig;
   /// Additional feature configurations for creating a `recommended-for-you` engine.
   /// Structure is documented below.
-  final pulumi.Input<RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfig>? recommendedForYouConfig;
+  final pulumi.Input<RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfig?>? recommendedForYouConfig;
 
   /// Creates a new [RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfig].
   /// [mostPopularConfig] Feature configurations that are required for creating a Most Popular engine.

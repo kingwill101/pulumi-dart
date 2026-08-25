@@ -10,19 +10,19 @@ import 'workload_attributes_operator_owner.dart';
 class WorkloadAttributes {
   /// Business team that ensures user needs are met and value is delivered
   /// Structure is documented below.
-  final pulumi.Input<List<WorkloadAttributesBusinessOwner>>? businessOwners;
+  final pulumi.Input<List<WorkloadAttributesBusinessOwner>?>? businessOwners;
   /// Criticality of the Application, Service, or Workload
   /// Structure is documented below.
-  final pulumi.Input<WorkloadAttributesCriticality>? criticality;
+  final pulumi.Input<WorkloadAttributesCriticality?>? criticality;
   /// Developer team that owns development and coding.
   /// Structure is documented below.
-  final pulumi.Input<List<WorkloadAttributesDeveloperOwner>>? developerOwners;
+  final pulumi.Input<List<WorkloadAttributesDeveloperOwner>?>? developerOwners;
   /// Environment of the Application, Service, or Workload
   /// Structure is documented below.
-  final pulumi.Input<WorkloadAttributesEnvironment>? environment;
+  final pulumi.Input<WorkloadAttributesEnvironment?>? environment;
   /// Operator team that ensures runtime and operations.
   /// Structure is documented below.
-  final pulumi.Input<List<WorkloadAttributesOperatorOwner>>? operatorOwners;
+  final pulumi.Input<List<WorkloadAttributesOperatorOwner>?>? operatorOwners;
 
   /// Creates a new [WorkloadAttributes].
   /// [businessOwners] Business team that ensures user needs are met and value is delivered

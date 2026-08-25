@@ -59,7 +59,7 @@ class GetBackendServiceLogConfig {
       optionalMode: pulumi.Input.fromValue(map['optionalMode'] as String),
       requestHeaders: pulumi.Input.fromValue(pulumi.Input.decodeList<GetBackendServiceLogConfigRequestHeader>(map['requestHeaders']!, (value) => GetBackendServiceLogConfigRequestHeader.fromMap((value as Map).cast<String, dynamic>()))),
       responseHeaders: pulumi.Input.fromValue(pulumi.Input.decodeList<GetBackendServiceLogConfigResponseHeader>(map['responseHeaders']!, (value) => GetBackendServiceLogConfigResponseHeader.fromMap((value as Map).cast<String, dynamic>()))),
-      sampleRate: pulumi.Input.fromValue(map['sampleRate'] as double),
+      sampleRate: pulumi.Input.fromValue((map['sampleRate'] as num).toDouble()),
     );
   }
 }

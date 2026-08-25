@@ -8,14 +8,14 @@ class AuthorityConfigX509ConfigCaOptions {
   /// Refers to the "path length constraint" in Basic Constraints extension. For a CA certificate, this value describes the depth of
   /// subordinate CA certificates that are allowed. If this value is less than 0, the request will fail. Setting the value to 0
   /// requires setting `zeroMaxIssuerPathLength = true`.
-  final pulumi.Input<int>? maxIssuerPathLength;
+  final pulumi.Input<int?>? maxIssuerPathLength;
   /// When true, the "CA" in Basic Constraints extension will be set to false.
   /// If both `isCa` and `nonCa` are unset, the extension will be omitted from the CA certificate.
-  final pulumi.Input<bool>? nonCa;
+  final pulumi.Input<bool?>? nonCa;
   /// When true, the "path length constraint" in Basic Constraints extension will be set to 0.
   /// If both `maxIssuerPathLength` and `zeroMaxIssuerPathLength` are unset,
   /// the max path length will be omitted from the CA certificate.
-  final pulumi.Input<bool>? zeroMaxIssuerPathLength;
+  final pulumi.Input<bool?>? zeroMaxIssuerPathLength;
 
   /// Creates a new [AuthorityConfigX509ConfigCaOptions].
   /// [isCa] When true, the "CA" in Basic Constraints extension will be set to true.
@@ -41,7 +41,7 @@ class AuthorityConfigX509ConfigCaOptions {
   factory AuthorityConfigX509ConfigCaOptions.fromMap(Map<String, dynamic> map) {
     return AuthorityConfigX509ConfigCaOptions(
       isCa: pulumi.Input.fromValue(map['isCa'] as bool),
-      maxIssuerPathLength: (() { final guardedValue = map['maxIssuerPathLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxIssuerPathLength: (() { final guardedValue = map['maxIssuerPathLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       nonCa: (() { final guardedValue = map['nonCa']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       zeroMaxIssuerPathLength: (() { final guardedValue = map['zeroMaxIssuerPathLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );

@@ -12,70 +12,70 @@ class PipelineState {
   /// User-defined annotations. See https://google.aip.dev/128#annotations.
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
-  final pulumi.Input<Map<String, String>>? annotations;
+  final pulumi.Input<Map<String, String>?>? annotations;
   /// The creation time.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
   /// to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and
   /// "2014-10-02T15:01:23.045123456Z".
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Resource name of a KMS crypto key (managed by the user) used to
   /// encrypt/decrypt the event data. If not set, an internal Google-owned key
   /// will be used to encrypt messages. It must match the pattern
   /// "projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}".
-  final pulumi.Input<String>? cryptoKeyName;
+  final pulumi.Input<String?>? cryptoKeyName;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// List of destinations to which messages will be forwarded. Currently,
   /// exactly one destination is supported per Pipeline.
   /// Structure is documented below.
-  final pulumi.Input<List<PipelineDestination>>? destinations;
+  final pulumi.Input<List<PipelineDestination>?>? destinations;
   /// Display name of resource.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveAnnotations;
+  final pulumi.Input<Map<String, String>?>? effectiveAnnotations;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveLabels;
+  final pulumi.Input<Map<String, String>?>? effectiveLabels;
   /// This checksum is computed by the server based on the value of
   /// other fields, and might be sent only on create requests to ensure that the
   /// client has an up-to-date value before proceeding.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// Represents the format of message data.
   /// Structure is documented below.
-  final pulumi.Input<PipelineInputPayloadFormat>? inputPayloadFormat;
+  final pulumi.Input<PipelineInputPayloadFormat?>? inputPayloadFormat;
   /// User labels attached to the Pipeline that can be used to group
   /// resources. An object containing a list of "key": value pairs. Example: {
   /// "name": "wrench", "mass": "1.3kg", "count": "3" }.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The configuration for Platform Telemetry logging for Eventarc Advanced
   /// resources.
   /// Structure is documented below.
-  final pulumi.Input<PipelineLoggingConfig>? loggingConfig;
+  final pulumi.Input<PipelineLoggingConfig?>? loggingConfig;
   /// List of mediation operations to be performed on the message. Currently,
   /// only one Transformation operation is allowed in each Pipeline.
   /// Structure is documented below.
-  final pulumi.Input<List<PipelineMediation>>? mediations;
+  final pulumi.Input<List<PipelineMediation>?>? mediations;
   /// The resource name of the Pipeline. Must be unique within the
   /// location of the project and must be in
   /// `projects/{project}/locations/{location}/pipelines/{pipeline}` format.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The user-provided ID to be assigned to the Pipeline. It should match the
   /// format `^a-z?$`.
-  final pulumi.Input<String>? pipelineId;
+  final pulumi.Input<String?>? pipelineId;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  final pulumi.Input<Map<String, String>>? pulumiLabels;
+  final pulumi.Input<Map<String, String>?>? pulumiLabels;
   /// The retry policy configuration for the Pipeline. The pipeline
   /// exponentially backs off in case the destination is non responsive or
   /// returns a retryable error code. The default semantics are as follows:
@@ -85,16 +85,16 @@ class PipelineState {
   /// Please note that if you set the minRetryDelay and maxRetryDelay fields
   /// to the same value this will make the duration between retries constant.
   /// Structure is documented below.
-  final pulumi.Input<PipelineRetryPolicy>? retryPolicy;
+  final pulumi.Input<PipelineRetryPolicy?>? retryPolicy;
   /// Server-assigned unique identifier for the Pipeline. The value
   /// is a UUID4 string and guaranteed to remain unchanged until the resource is
   /// deleted.
-  final pulumi.Input<String>? uid;
+  final pulumi.Input<String?>? uid;
   /// The last-modified time.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up
   /// to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and
   /// "2014-10-02T15:01:23.045123456Z".
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [PipelineState].
   /// [annotations] User-defined annotations. See https://google.aip.dev/128#annotations.

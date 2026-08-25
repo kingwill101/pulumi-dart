@@ -7,22 +7,22 @@ import 'future_reservation_status_specific_sku_properties.dart';
 class FutureReservationStatus {
   /// The current status of the requested amendment.
   /// Possible values are: .
-  final pulumi.Input<String>? amendmentStatus;
+  final pulumi.Input<String?>? amendmentStatus;
   /// Fully qualified urls of the automatically created reservations at startTime.
-  final pulumi.Input<List<String>>? autoCreatedReservations;
+  final pulumi.Input<List<String>?>? autoCreatedReservations;
   /// This count indicates the fulfilled capacity so far. This is set during "PROVISIONING" state. This count also includes capacity delivered as part of existing matching reservations.
-  final pulumi.Input<String>? fulfilledCount;
+  final pulumi.Input<String?>? fulfilledCount;
   /// This field represents the future reservation before an amendment was requested. If the amendment is declined, the Future Reservation will be reverted to the last known good state. The last known good state is not set when updating a future reservation whose Procurement Status is DRAFTING.
   /// Structure is documented below.
-  final pulumi.Input<FutureReservationStatusLastKnownGoodState>? lastKnownGoodState;
+  final pulumi.Input<FutureReservationStatusLastKnownGoodState?>? lastKnownGoodState;
   /// The lock time of the FutureReservation before an amendment was requested.
-  final pulumi.Input<String>? lockTime;
+  final pulumi.Input<String?>? lockTime;
   /// The status of the last known good state for the Future Reservation
   /// Possible values are: .
-  final pulumi.Input<String>? procurementStatus;
+  final pulumi.Input<String?>? procurementStatus;
   /// Future Reservation configuration to indicate instance properties and total count.
   /// Structure is documented below.
-  final pulumi.Input<FutureReservationStatusSpecificSkuProperties>? specificSkuProperties;
+  final pulumi.Input<FutureReservationStatusSpecificSkuProperties?>? specificSkuProperties;
 
   /// Creates a new [FutureReservationStatus].
   /// [amendmentStatus] The current status of the requested amendment.

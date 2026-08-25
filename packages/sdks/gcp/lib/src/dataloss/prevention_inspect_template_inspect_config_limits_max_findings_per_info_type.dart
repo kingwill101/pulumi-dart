@@ -8,7 +8,7 @@ class PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoType {
   /// not have an infoType, the DLP API applies the limit against all infoTypes that are found but not
   /// specified in another InfoTypeLimit.
   /// Structure is documented below.
-  final pulumi.Input<PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoType>? infoType;
+  final pulumi.Input<PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoType?>? infoType;
   /// Max findings limit for the given infoType.
   final pulumi.Input<int> maxFindings;
 
@@ -30,7 +30,7 @@ class PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoType {
   factory PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoType.fromMap(Map<String, dynamic> map) {
     return PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoType(
       infoType: (() { final guardedValue = map['infoType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoType.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      maxFindings: pulumi.Input.fromValue(map['maxFindings'] as int),
+      maxFindings: pulumi.Input.fromValue((map['maxFindings'] as num).toInt()),
     );
   }
 }

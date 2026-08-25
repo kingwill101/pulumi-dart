@@ -7,46 +7,46 @@ class GoldengateConnectionPropertiesRedisConnectionProperties {
   /// Possible values:
   /// NONE
   /// BASIC
-  final pulumi.Input<String>? authenticationType;
+  final pulumi.Input<String?>? authenticationType;
   /// The content of the KeyStore file.
-  final pulumi.Input<String>? keyStoreFile;
+  final pulumi.Input<String?>? keyStoreFile;
   /// Input only. The KeyStore password in plain text.
-  final pulumi.Input<String>? keyStorePassword;
+  final pulumi.Input<String?>? keyStorePassword;
   /// Input only. The resource name of a secret version in Secret Manager which contains
   /// the KeyStore password.
   /// Format: projects/{project}/secrets/{secret}/versions/{version}.
-  final pulumi.Input<String>? keyStorePasswordSecretVersion;
+  final pulumi.Input<String?>? keyStorePasswordSecretVersion;
   /// Input only. The password Oracle Goldengate uses for Redis connection in plain text.
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// Input only. The resource name of a secret version in Secret Manager which contains
   /// the password Oracle Goldengate uses for Redis connection.
   /// Format: projects/{project}/secrets/{secret}/versions/{version}.
-  final pulumi.Input<String>? passwordSecretVersion;
+  final pulumi.Input<String?>? passwordSecretVersion;
   /// The OCID of the Redis cluster.
-  final pulumi.Input<String>? redisClusterId;
+  final pulumi.Input<String?>? redisClusterId;
   /// Security protocol for Redis.
   /// Possible values:
   /// PLAIN
   /// TLS
   /// MTLS
-  final pulumi.Input<String>? securityProtocol;
+  final pulumi.Input<String?>? securityProtocol;
   /// Comma separated list of Redis server addresses, specified as host:port
   /// entries, where :port is optional. If port is not specified, it defaults
   /// to 6379. Example: "server1.example.com:6379,server2.example.com:6379"
-  final pulumi.Input<String>? servers;
+  final pulumi.Input<String?>? servers;
   /// The technology type of RedisConnection.
-  final pulumi.Input<String>? technologyType;
+  final pulumi.Input<String?>? technologyType;
   /// The content of the TrustStore file.
-  final pulumi.Input<String>? trustStoreFile;
+  final pulumi.Input<String?>? trustStoreFile;
   /// Input only. The TrustStore password in plain text.
-  final pulumi.Input<String>? trustStorePassword;
+  final pulumi.Input<String?>? trustStorePassword;
   /// Input only. The resource name of a secret version in Secret Manager which contains
   /// the TrustStore password.
   /// Format: projects/{project}/secrets/{secret}/versions/{version}.
-  final pulumi.Input<String>? trustStorePasswordSecretVersion;
+  final pulumi.Input<String?>? trustStorePasswordSecretVersion;
   /// The username Oracle Goldengate uses to connect the associated system of
   /// the given technology.
-  final pulumi.Input<String>? username;
+  final pulumi.Input<String?>? username;
 
   /// Creates a new [GoldengateConnectionPropertiesRedisConnectionProperties].
   /// [authenticationType] Authentication type for Redis.

@@ -489,7 +489,7 @@ class NetworkPolicy extends pulumi.CustomResource {
           'gcp:vmwareengine/networkPolicy:NetworkPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -511,11 +511,12 @@ class NetworkPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     NetworkPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return NetworkPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -529,6 +530,30 @@ class NetworkPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    edgeServicesCidr = registerOutput<String>('edgeServicesCidr');
+    externalIp = registerOutput<NetworkPolicyExternalIp>('externalIp', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkPolicyExternalIp.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    internetAccess = registerOutput<NetworkPolicyInternetAccess>('internetAccess', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkPolicyInternetAccess.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
+    vmwareEngineNetwork = registerOutput<String>('vmwareEngineNetwork');
+    vmwareEngineNetworkCanonical = registerOutput<String>('vmwareEngineNetworkCanonical');
+  }
+
+  /// Creates a typed reference to an existing [NetworkPolicy] resource.
+  NetworkPolicy.reference(String urn)
+    : super(
+        'gcp:vmwareengine/networkPolicy:NetworkPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');

@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'ekm_connection_args.dart';
+import 'ekm_connection_service_resolver.dart';
 import 'ekm_connection_state.dart';
 
 /// `Ekm Connections` are used to control the connection settings for an `EXTERNAL_VPC` CryptoKey.
@@ -233,7 +234,7 @@ class EkmConnection extends pulumi.CustomResource {
   late final pulumi.Output<String> project;
   /// A list of ServiceResolvers where the EKM can be reached. There should be one ServiceResolver per EKM replica. Currently, only a single ServiceResolver is supported
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> serviceResolvers;
+  late final pulumi.Output<List<EkmConnectionServiceResolver>> serviceResolvers;
 
   /// Creates a new [EkmConnection].
   /// [name] The Pulumi resource name.
@@ -247,7 +248,7 @@ class EkmConnection extends pulumi.CustomResource {
           'gcp:kms/ekmConnection:EkmConnection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     cryptoSpacePath = registerOutput<String>('cryptoSpacePath');
@@ -256,7 +257,7 @@ class EkmConnection extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    serviceResolvers = registerOutput<List<Map<String, dynamic>>>('serviceResolvers');
+    serviceResolvers = registerOutput<List<EkmConnectionServiceResolver>>('serviceResolvers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EkmConnectionServiceResolver>(guardedValue, (value) => EkmConnectionServiceResolver.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [EkmConnection] resource's state with the given [name] and [id].
@@ -264,11 +265,12 @@ class EkmConnection extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EkmConnectionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return EkmConnection._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -289,6 +291,25 @@ class EkmConnection extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    serviceResolvers = registerOutput<List<Map<String, dynamic>>>('serviceResolvers');
+    serviceResolvers = registerOutput<List<EkmConnectionServiceResolver>>('serviceResolvers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EkmConnectionServiceResolver>(guardedValue, (value) => EkmConnectionServiceResolver.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [EkmConnection] resource.
+  EkmConnection.reference(String urn)
+    : super(
+        'gcp:kms/ekmConnection:EkmConnection',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    cryptoSpacePath = registerOutput<String>('cryptoSpacePath');
+    etag = registerOutput<String>('etag');
+    keyManagementMode = registerOutput<String?>('keyManagementMode');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    serviceResolvers = registerOutput<List<EkmConnectionServiceResolver>>('serviceResolvers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EkmConnectionServiceResolver>(guardedValue, (value) => EkmConnectionServiceResolver.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

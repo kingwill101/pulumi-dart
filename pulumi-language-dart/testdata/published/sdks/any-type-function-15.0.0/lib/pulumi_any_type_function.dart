@@ -3,11 +3,11 @@
 import 'package:pulumi_any_type_function/index.dart' as module_index;
 import 'package:pulumi_any_type_function/providers.dart' as module_providers;
 
-final index = const _IndexModuleNamespace();
-final providers = const _ProvidersModuleNamespace();
+final index = _IndexModuleNamespace();
+final providers = _ProvidersModuleNamespace();
 
 class _IndexModuleNamespace {
-  const _IndexModuleNamespace();
+  _IndexModuleNamespace();
   final DynListToDynArgs = module_index.DynListToDynArgs.new;
   final DynListToDynResult = module_index.DynListToDynResult.new;
   final DynListToDynResultArgs = module_index.DynListToDynResult.new;
@@ -15,6 +15,6 @@ class _IndexModuleNamespace {
 }
 
 class _ProvidersModuleNamespace {
-  const _ProvidersModuleNamespace();
+  _ProvidersModuleNamespace();
   final AnyTypeFunction = module_providers.ProviderProvider.new;
 }

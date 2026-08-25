@@ -15,9 +15,9 @@ class SavedQueryArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// A description of the saved query.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The user-visible display name of the saved query.
   final pulumi.Input<String> displayName;
   /// The location of the resource see
@@ -25,12 +25,12 @@ class SavedQueryArgs {
   final pulumi.Input<String> location;
   /// The contents of the saved query.
   /// Structure is documented below.
-  final pulumi.Input<SavedQueryLoggingQuery>? loggingQuery;
+  final pulumi.Input<SavedQueryLoggingQuery?>? loggingQuery;
   /// The name of the saved query. For example: `my-saved-query`
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The contents of the saved query.
   /// Structure is documented below.
-  final pulumi.Input<SavedQueryOpsAnalyticsQuery>? opsAnalyticsQuery;
+  final pulumi.Input<SavedQueryOpsAnalyticsQuery?>? opsAnalyticsQuery;
   /// The parent of the resource.
   final pulumi.Input<String> parent;
   /// The visibility of the saved query.

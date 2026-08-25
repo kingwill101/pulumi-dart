@@ -8,7 +8,7 @@ class RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancer {
   /// The configured IP protocol of the load balancer. This value is case-sensitive. Possible values: ["tcp", "udp"]
   final pulumi.Input<String> ipProtocol;
   /// The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb", "regionalL7ilb", "globalL7ilb"]
-  final pulumi.Input<String>? loadBalancerType;
+  final pulumi.Input<String?>? loadBalancerType;
   /// The fully qualified url of the network in which the load balancer belongs. This should be formatted like `projects/{project}/global/networks/{network}` or `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`.
   final pulumi.Input<String> networkUrl;
   /// The configured port of the load balancer.
@@ -16,7 +16,7 @@ class RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancer {
   /// The ID of the project in which the load balancer belongs.
   final pulumi.Input<String> project;
   /// The region of the load balancer. Only needed for regional load balancers.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancer].
   /// [ipAddress] The frontend IP address of the load balancer.

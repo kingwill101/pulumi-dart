@@ -6,7 +6,7 @@ import 'lite_topic_partition_config_capacity.dart';
 class LiteTopicPartitionConfig {
   /// The capacity configuration.
   /// Structure is documented below.
-  final pulumi.Input<LiteTopicPartitionConfigCapacity>? capacity;
+  final pulumi.Input<LiteTopicPartitionConfigCapacity?>? capacity;
   /// The number of partitions in the topic. Must be at least 1.
   final pulumi.Input<int> count;
 
@@ -28,7 +28,7 @@ class LiteTopicPartitionConfig {
   factory LiteTopicPartitionConfig.fromMap(Map<String, dynamic> map) {
     return LiteTopicPartitionConfig(
       capacity: (() { final guardedValue = map['capacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LiteTopicPartitionConfigCapacity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      count: pulumi.Input.fromValue(map['count'] as int),
+      count: pulumi.Input.fromValue((map['count'] as num).toInt()),
     );
   }
 }

@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndDate {
   /// Day of a month. Must be from 1 to 31 and valid for the year and month.
-  final pulumi.Input<int>? day;
+  final pulumi.Input<int?>? day;
   /// Month of a year. Must be from 1 to 12.
-  final pulumi.Input<int>? month;
+  final pulumi.Input<int?>? month;
   /// Year of the date. Must be from 1 to 9999.
-  final pulumi.Input<int>? year;
+  final pulumi.Input<int?>? year;
 
   /// Creates a new [DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndDate].
   /// [day] Day of a month. Must be from 1 to 31 and valid for the year and month.
@@ -30,9 +30,9 @@ class DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndDate {
 
   factory DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndDate.fromMap(Map<String, dynamic> map) {
     return DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowEndDate(
-      day: (() { final guardedValue = map['day']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      month: (() { final guardedValue = map['month']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      year: (() { final guardedValue = map['year']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      day: (() { final guardedValue = map['day']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      month: (() { final guardedValue = map['month']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      year: (() { final guardedValue = map['year']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

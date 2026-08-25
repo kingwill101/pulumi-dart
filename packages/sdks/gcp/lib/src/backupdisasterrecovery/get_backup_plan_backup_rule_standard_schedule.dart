@@ -62,7 +62,7 @@ class GetBackupPlanBackupRuleStandardSchedule {
       backupWindows: pulumi.Input.fromValue(pulumi.Input.decodeList<GetBackupPlanBackupRuleStandardScheduleBackupWindow>(map['backupWindows']!, (value) => GetBackupPlanBackupRuleStandardScheduleBackupWindow.fromMap((value as Map).cast<String, dynamic>()))),
       daysOfMonths: pulumi.Input.fromValue((map['daysOfMonths'] as List).cast<int>()),
       daysOfWeeks: pulumi.Input.fromValue((map['daysOfWeeks'] as List).cast<String>()),
-      hourlyFrequency: pulumi.Input.fromValue(map['hourlyFrequency'] as int),
+      hourlyFrequency: pulumi.Input.fromValue((map['hourlyFrequency'] as num).toInt()),
       months: pulumi.Input.fromValue((map['months'] as List).cast<String>()),
       recurrenceType: pulumi.Input.fromValue(map['recurrenceType'] as String),
       timeZone: pulumi.Input.fromValue(map['timeZone'] as String),

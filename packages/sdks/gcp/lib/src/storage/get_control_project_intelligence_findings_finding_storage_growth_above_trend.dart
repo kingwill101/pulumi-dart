@@ -31,7 +31,7 @@ class GetControlProjectIntelligenceFindingsFindingStorageGrowthAboveTrend {
 
   factory GetControlProjectIntelligenceFindingsFindingStorageGrowthAboveTrend.fromMap(Map<String, dynamic> map) {
     return GetControlProjectIntelligenceFindingsFindingStorageGrowthAboveTrend(
-      percentageIncrease: pulumi.Input.fromValue(map['percentageIncrease'] as double),
+      percentageIncrease: pulumi.Input.fromValue((map['percentageIncrease'] as num).toDouble()),
       topBuckets: pulumi.Input.fromValue(pulumi.Input.decodeList<GetControlProjectIntelligenceFindingsFindingStorageGrowthAboveTrendTopBucket>(map['topBuckets']!, (value) => GetControlProjectIntelligenceFindingsFindingStorageGrowthAboveTrendTopBucket.fromMap((value as Map).cast<String, dynamic>()))),
       totalStorageGrowthBytes: pulumi.Input.fromValue(map['totalStorageGrowthBytes'] as String),
     );

@@ -6,14 +6,14 @@ class RegionBackendServiceIap {
   /// Whether the serving infrastructure will authenticate and authorize all incoming requests.
   final pulumi.Input<bool> enabled;
   /// OAuth2 Client ID for IAP
-  final pulumi.Input<String>? oauth2ClientId;
+  final pulumi.Input<String?>? oauth2ClientId;
   /// OAuth2 Client Secret for IAP
   /// **Note**: This property is sensitive and will not be displayed in the plan.
-  final pulumi.Input<String>? oauth2ClientSecret;
+  final pulumi.Input<String?>? oauth2ClientSecret;
   /// (Output)
   /// OAuth2 Client Secret SHA-256 for IAP
   /// **Note**: This property is sensitive and will not be displayed in the plan.
-  final pulumi.Input<String>? oauth2ClientSecretSha256;
+  final pulumi.Input<String?>? oauth2ClientSecretSha256;
 
   /// Creates a new [RegionBackendServiceIap].
   /// [enabled] Whether the serving infrastructure will authenticate and authorize all incoming requests.

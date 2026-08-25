@@ -8,17 +8,17 @@ class ListingSubscriptionDestinationDataset {
   /// Structure is documented below.
   final pulumi.Input<ListingSubscriptionDestinationDatasetDatasetReference> datasetReference;
   /// A user-friendly description of the dataset.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// A descriptive name for the dataset.
-  final pulumi.Input<String>? friendlyName;
+  final pulumi.Input<String?>? friendlyName;
   /// The labels associated with this dataset. You can use these to
   /// organize and group your datasets.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The geographic location where the dataset should reside.
   /// See https://cloud.google.com/bigquery/docs/locations for supported locations.
   final pulumi.Input<String> location;
   /// List of regions where the subscriber wants dataset replicas.
-  final pulumi.Input<List<String>>? replicaLocations;
+  final pulumi.Input<List<String>?>? replicaLocations;
 
   /// Creates a new [ListingSubscriptionDestinationDataset].
   /// [datasetReference] A reference that identifies the destination dataset.

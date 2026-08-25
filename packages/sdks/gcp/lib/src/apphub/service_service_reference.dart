@@ -6,7 +6,7 @@ class ServiceServiceReference {
   /// (Output)
   /// Output only. The underlying resource URI (For example, URI of Forwarding Rule, URL Map,
   /// and Backend Service).
-  final pulumi.Input<String>? uri;
+  final pulumi.Input<String?>? uri;
 
   /// Creates a new [ServiceServiceReference].
   /// [uri] (Output)

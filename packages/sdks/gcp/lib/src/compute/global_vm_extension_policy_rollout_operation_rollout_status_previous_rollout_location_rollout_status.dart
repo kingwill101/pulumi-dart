@@ -6,7 +6,7 @@ class GlobalVmExtensionPolicyRolloutOperationRolloutStatusPreviousRolloutLocatio
   /// The identifier for this object. Format specified above.
   final pulumi.Input<String> locationName;
   /// The state of the location rollout.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
 
   /// Creates a new [GlobalVmExtensionPolicyRolloutOperationRolloutStatusPreviousRolloutLocationRolloutStatus].
   /// [locationName] The identifier for this object. Format specified above.

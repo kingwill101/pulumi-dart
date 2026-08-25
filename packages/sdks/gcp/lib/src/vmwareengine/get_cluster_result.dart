@@ -7,79 +7,79 @@ import 'get_cluster_node_type_config.dart';
 
 /// Result data returned by getCluster.
 class GetClusterResult {
-  final List<GetClusterAutoscalingSetting> autoscalingSettings;
-  final String createTime;
-  final List<GetClusterDatastoreMountConfig> datastoreMountConfigs;
-  final String deletionPolicy;
+  final List<GetClusterAutoscalingSetting>? autoscalingSettings;
+  final String? createTime;
+  final List<GetClusterDatastoreMountConfig>? datastoreMountConfigs;
+  final String? deletionPolicy;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final bool management;
-  final String name;
-  final List<GetClusterNodeTypeConfig> nodeTypeConfigs;
-  final String parent;
-  final String state;
-  final String uid;
-  final String updateTime;
+  final String? id;
+  final bool? management;
+  final String? name;
+  final List<GetClusterNodeTypeConfig>? nodeTypeConfigs;
+  final String? parent;
+  final String? state;
+  final String? uid;
+  final String? updateTime;
 
   /// Creates a new [GetClusterResult].
-  /// [autoscalingSettings] Required.
-  /// [createTime] Required.
-  /// [datastoreMountConfigs] Required.
-  /// [deletionPolicy] Required.
+  /// [autoscalingSettings] Optional.
+  /// [createTime] Optional.
+  /// [datastoreMountConfigs] Optional.
+  /// [deletionPolicy] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [management] Required.
-  /// [name] Required.
-  /// [nodeTypeConfigs] Required.
-  /// [parent] Required.
-  /// [state] Required.
-  /// [uid] Required.
-  /// [updateTime] Required.
+  /// [management] Optional.
+  /// [name] Optional.
+  /// [nodeTypeConfigs] Optional.
+  /// [parent] Optional.
+  /// [state] Optional.
+  /// [uid] Optional.
+  /// [updateTime] Optional.
   const GetClusterResult({
-    required this.autoscalingSettings,
-    required this.createTime,
-    required this.datastoreMountConfigs,
-    required this.deletionPolicy,
-    required this.id,
-    required this.management,
-    required this.name,
-    required this.nodeTypeConfigs,
-    required this.parent,
-    required this.state,
-    required this.uid,
-    required this.updateTime,
+    this.autoscalingSettings,
+    this.createTime,
+    this.datastoreMountConfigs,
+    this.deletionPolicy,
+    this.id,
+    this.management,
+    this.name,
+    this.nodeTypeConfigs,
+    this.parent,
+    this.state,
+    this.uid,
+    this.updateTime,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'autoscalingSettings': pulumi.Input.encodeList<GetClusterAutoscalingSetting, Map<String, dynamic>>(autoscalingSettings, (value) => value.toMap()),
-      'createTime': createTime,
-      'datastoreMountConfigs': pulumi.Input.encodeList<GetClusterDatastoreMountConfig, Map<String, dynamic>>(datastoreMountConfigs, (value) => value.toMap()),
-      'deletionPolicy': deletionPolicy,
-      'id': id,
-      'management': management,
-      'name': name,
-      'nodeTypeConfigs': pulumi.Input.encodeList<GetClusterNodeTypeConfig, Map<String, dynamic>>(nodeTypeConfigs, (value) => value.toMap()),
-      'parent': parent,
-      'state': state,
-      'uid': uid,
-      'updateTime': updateTime,
+      'autoscalingSettings': ?(() { final guardedValue = autoscalingSettings; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetClusterAutoscalingSetting, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'createTime': ?createTime,
+      'datastoreMountConfigs': ?(() { final guardedValue = datastoreMountConfigs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetClusterDatastoreMountConfig, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'deletionPolicy': ?deletionPolicy,
+      'id': ?id,
+      'management': ?management,
+      'name': ?name,
+      'nodeTypeConfigs': ?(() { final guardedValue = nodeTypeConfigs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetClusterNodeTypeConfig, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'parent': ?parent,
+      'state': ?state,
+      'uid': ?uid,
+      'updateTime': ?updateTime,
     };
   }
 
   factory GetClusterResult.fromMap(Map<String, dynamic> map) {
     return GetClusterResult(
-      autoscalingSettings: pulumi.Input.decodeList<GetClusterAutoscalingSetting>(map['autoscalingSettings']!, (value) => GetClusterAutoscalingSetting.fromMap((value as Map).cast<String, dynamic>())),
-      createTime: map['createTime'] as String,
-      datastoreMountConfigs: pulumi.Input.decodeList<GetClusterDatastoreMountConfig>(map['datastoreMountConfigs']!, (value) => GetClusterDatastoreMountConfig.fromMap((value as Map).cast<String, dynamic>())),
-      deletionPolicy: map['deletionPolicy'] as String,
-      id: map['id'] as String,
-      management: map['management'] as bool,
-      name: map['name'] as String,
-      nodeTypeConfigs: pulumi.Input.decodeList<GetClusterNodeTypeConfig>(map['nodeTypeConfigs']!, (value) => GetClusterNodeTypeConfig.fromMap((value as Map).cast<String, dynamic>())),
-      parent: map['parent'] as String,
-      state: map['state'] as String,
-      uid: map['uid'] as String,
-      updateTime: map['updateTime'] as String,
+      autoscalingSettings: (() { final guardedValue = map['autoscalingSettings']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetClusterAutoscalingSetting>(guardedValue, (value) => GetClusterAutoscalingSetting.fromMap((value as Map).cast<String, dynamic>())); })(),
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      datastoreMountConfigs: (() { final guardedValue = map['datastoreMountConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetClusterDatastoreMountConfig>(guardedValue, (value) => GetClusterDatastoreMountConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      management: (() { final guardedValue = map['management']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      nodeTypeConfigs: (() { final guardedValue = map['nodeTypeConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetClusterNodeTypeConfig>(guardedValue, (value) => GetClusterNodeTypeConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
+      parent: (() { final guardedValue = map['parent']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      uid: (() { final guardedValue = map['uid']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

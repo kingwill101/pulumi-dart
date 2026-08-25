@@ -7,37 +7,37 @@ class InterconnectGroupConfiguredTopologyCapabilityIntendedCapabilityBlocker {
   /// The category of an unmet SLA requirement. The Intended
   /// SLA Blockers section below explains this field and how it relates to
   /// other fields in intendedCapabilityBlockers.
-  final pulumi.Input<String>? blockerType;
+  final pulumi.Input<String?>? blockerType;
   /// (Output)
   /// The url of Google Cloud public documentation explaining
   /// this requirement. This is set for every type of requirement.
-  final pulumi.Input<String>? documentationLink;
+  final pulumi.Input<String?>? documentationLink;
   /// (Output)
   /// A human-readable explanation of this requirement and
   /// why it's not met. This is set for every type of requirement.
-  final pulumi.Input<String>? explanation;
+  final pulumi.Input<String?>? explanation;
   /// (Output)
   /// Facilities used to explain this blocker in more detail.
   /// Like physicalStructure.metros.facilities.facility, this is a numeric
   /// string like "5467".
-  final pulumi.Input<List<String>>? facilities;
+  final pulumi.Input<List<String>?>? facilities;
   /// Interconnects in the InterconnectGroup. Keys are arbitrary user-specified
   /// strings. Users are encouraged, but not required, to use their preferred
   /// format for resource links as keys.
   /// Note that there are add-members and remove-members methods in gcloud.
   /// The size of this map is limited by an "Interconnects per group" quota.
   /// Structure is documented below.
-  final pulumi.Input<List<String>>? interconnects;
+  final pulumi.Input<List<String>?>? interconnects;
   /// (Output)
   /// Metros used to explain this blocker in more detail.
   /// These are three-letter lowercase strings like "iad". A blocker like
   /// INCOMPATIBLE_METROS will specify the problematic metros in this
   /// field.
-  final pulumi.Input<List<String>>? metros;
+  final pulumi.Input<List<String>?>? metros;
   /// (Output)
   /// Zones used to explain this blocker in more detail.
   /// Zone names are "zone1" and/or "zone2".
-  final pulumi.Input<List<String>>? zones;
+  final pulumi.Input<List<String>?>? zones;
 
   /// Creates a new [InterconnectGroupConfiguredTopologyCapabilityIntendedCapabilityBlocker].
   /// [blockerType] (Output)

@@ -172,11 +172,11 @@ class SourceIamBinding extends pulumi.CustomResource {
           'gcp:securitycenter/sourceIamBinding:SourceIamBinding',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     condition = registerOutput<SourceIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SourceIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
-    members = registerOutput<List<String>>('members');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     organization = registerOutput<String>('organization');
     role = registerOutput<String>('role');
     source = registerOutput<String>('source');
@@ -187,11 +187,12 @@ class SourceIamBinding extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SourceIamBindingState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SourceIamBinding._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -207,7 +208,24 @@ class SourceIamBinding extends pulumi.CustomResource {
         ) {
     condition = registerOutput<SourceIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SourceIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
-    members = registerOutput<List<String>>('members');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    organization = registerOutput<String>('organization');
+    role = registerOutput<String>('role');
+    source = registerOutput<String>('source');
+  }
+
+  /// Creates a typed reference to an existing [SourceIamBinding] resource.
+  SourceIamBinding.reference(String urn)
+    : super(
+        'gcp:securitycenter/sourceIamBinding:SourceIamBinding',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    condition = registerOutput<SourceIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SourceIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    etag = registerOutput<String>('etag');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     organization = registerOutput<String>('organization');
     role = registerOutput<String>('role');
     source = registerOutput<String>('source');

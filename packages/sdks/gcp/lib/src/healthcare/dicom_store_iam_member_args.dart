@@ -8,7 +8,7 @@ import 'dicom_store_iam_member_condition.dart';
 /// {@endtemplate}
 /// {@macro pulumi_healthcare_dicom_store_iam_member_dicom_store_iam_member_args_doc}
 class DicomStoreIamMemberArgs {
-  final pulumi.Input<DicomStoreIamMemberCondition>? condition;
+  final pulumi.Input<DicomStoreIamMemberCondition?>? condition;
   /// The DICOM store ID, in the form
   /// `{project_id}/{location_name}/{dataset_name}/{dicom_store_name}` or
   /// `{location_name}/{dataset_name}/{dicom_store_name}`. In the second form, the provider's

@@ -6,9 +6,9 @@ import 'feature_membership_policycontroller_policy_controller_hub_config_policy_
 
 class FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContent {
   /// map of bundle name to BundleInstallSpec. The bundle name maps to the `bundleName` key in the `policycontroller.gke.io/constraintData` annotation on a constraint.
-  final pulumi.Input<List<FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentBundle>>? bundles;
+  final pulumi.Input<List<FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentBundle>?>? bundles;
   /// Configures the installation of the Template Library. Structure is documented below.
-  final pulumi.Input<FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibrary>? templateLibrary;
+  final pulumi.Input<FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibrary?>? templateLibrary;
 
   /// Creates a new [FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContent].
   /// [bundles] map of bundle name to BundleInstallSpec. The bundle name maps to the `bundleName` key in the `policycontroller.gke.io/constraintData` annotation on a constraint.

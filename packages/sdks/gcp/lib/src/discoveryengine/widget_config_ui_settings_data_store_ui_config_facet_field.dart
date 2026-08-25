@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WidgetConfigUiSettingsDataStoreUiConfigFacetField {
   /// The field name that end users will see.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Registered field name. The format is `field.abc`.
   final pulumi.Input<String> field;
 

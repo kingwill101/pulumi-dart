@@ -8,7 +8,7 @@ class AppVersionSnapshotGuardrailActionRespondImmediately {
   /// The canned responses for the agent to choose from. The response is chosen
   /// randomly.
   /// Structure is documented below.
-  final pulumi.Input<List<AppVersionSnapshotGuardrailActionRespondImmediatelyResponse>>? responses;
+  final pulumi.Input<List<AppVersionSnapshotGuardrailActionRespondImmediatelyResponse>?>? responses;
 
   /// Creates a new [AppVersionSnapshotGuardrailActionRespondImmediately].
   /// [responses] (Output)

@@ -8,7 +8,7 @@ class IcebergTablePartitionSpec {
   final pulumi.Input<List<IcebergTablePartitionSpecField>> fields;
   /// (Output)
   /// The unique identifier of the partition spec.
-  final pulumi.Input<int>? specId;
+  final pulumi.Input<int?>? specId;
 
   /// Creates a new [IcebergTablePartitionSpec].
   /// [fields] Structure is documented below.
@@ -28,7 +28,7 @@ class IcebergTablePartitionSpec {
   factory IcebergTablePartitionSpec.fromMap(Map<String, dynamic> map) {
     return IcebergTablePartitionSpec(
       fields: pulumi.Input.fromValue(pulumi.Input.decodeList<IcebergTablePartitionSpecField>(map['fields']!, (value) => IcebergTablePartitionSpecField.fromMap((value as Map).cast<String, dynamic>()))),
-      specId: (() { final guardedValue = map['specId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      specId: (() { final guardedValue = map['specId']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

@@ -5,14 +5,14 @@ import 'feed_details_microsoft_graph_alert_settings_authentication.dart';
 
 class FeedDetailsMicrosoftGraphAlertSettings {
   /// API Auth Endpoint.
-  final pulumi.Input<String>? authEndpoint;
+  final pulumi.Input<String?>? authEndpoint;
   /// Microsoft OAuth 2.0 client credentials grant.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsMicrosoftGraphAlertSettingsAuthentication>? authentication;
+  final pulumi.Input<FeedDetailsMicrosoftGraphAlertSettingsAuthentication?>? authentication;
   /// API Hostname.
-  final pulumi.Input<String>? hostname;
+  final pulumi.Input<String?>? hostname;
   /// Tenant ID.
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
 
   /// Creates a new [FeedDetailsMicrosoftGraphAlertSettings].
   /// [authEndpoint] API Auth Endpoint.

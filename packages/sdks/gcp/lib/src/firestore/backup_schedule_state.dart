@@ -6,29 +6,29 @@ import 'backup_schedule_weekly_recurrence.dart';
 /// Input properties used for looking up and filtering BackupSchedule resources.
 class BackupScheduleState {
   /// For a schedule that runs daily.
-  final pulumi.Input<Map<String, dynamic>>? dailyRecurrence;
+  final pulumi.Input<Map<String, dynamic>?>? dailyRecurrence;
   /// The Firestore database id. Defaults to `"(default)"`.
-  final pulumi.Input<String>? database;
+  final pulumi.Input<String?>? database;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The unique backup schedule identifier across all locations and databases for the given project. Format:
   /// `projects/{{project}}/databases/{{database}}/backupSchedules/{{backupSchedule}}`
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// At what relative time in the future, compared to its creation time, the backup should be deleted, e.g. keep backups for 7 days.
   /// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
   /// You can set this to a value up to 14 weeks.
-  final pulumi.Input<String>? retention;
+  final pulumi.Input<String?>? retention;
   /// For a schedule that runs weekly on a specific day.
   /// Structure is documented below.
-  final pulumi.Input<BackupScheduleWeeklyRecurrence>? weeklyRecurrence;
+  final pulumi.Input<BackupScheduleWeeklyRecurrence?>? weeklyRecurrence;
 
   /// Creates a new [BackupScheduleState].
   /// [dailyRecurrence] For a schedule that runs daily.

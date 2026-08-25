@@ -6,10 +6,10 @@ import 'connection_configuration_authentication_username_password.dart';
 class ConnectionConfigurationAuthentication {
   /// (Output)
   /// Output only. The service account used for authenticating with the connector.
-  final pulumi.Input<String>? serviceAccount;
+  final pulumi.Input<String?>? serviceAccount;
   /// Username/password authentication configuration.
   /// Structure is documented below.
-  final pulumi.Input<ConnectionConfigurationAuthenticationUsernamePassword>? usernamePassword;
+  final pulumi.Input<ConnectionConfigurationAuthenticationUsernamePassword?>? usernamePassword;
 
   /// Creates a new [ConnectionConfigurationAuthentication].
   /// [serviceAccount] (Output)

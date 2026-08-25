@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ToolDataStoreToolModalityConfigSnippetsConfig {
   /// Whether snippets are enabled.
-  final pulumi.Input<bool>? enableSnippets;
+  final pulumi.Input<bool?>? enableSnippets;
 
   /// Creates a new [ToolDataStoreToolModalityConfigSnippetsConfig].
   /// [enableSnippets] Whether snippets are enabled.

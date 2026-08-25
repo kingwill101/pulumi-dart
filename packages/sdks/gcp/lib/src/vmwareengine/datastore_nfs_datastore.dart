@@ -7,10 +7,10 @@ import 'datastore_nfs_datastore_third_party_file_service.dart';
 class DatastoreNfsDatastore {
   /// Google service file service configuration
   /// Structure is documented below.
-  final pulumi.Input<DatastoreNfsDatastoreGoogleFileService>? googleFileService;
+  final pulumi.Input<DatastoreNfsDatastoreGoogleFileService?>? googleFileService;
   /// Third party file service configuration
   /// Structure is documented below.
-  final pulumi.Input<DatastoreNfsDatastoreThirdPartyFileService>? thirdPartyFileService;
+  final pulumi.Input<DatastoreNfsDatastoreThirdPartyFileService?>? thirdPartyFileService;
 
   /// Creates a new [DatastoreNfsDatastore].
   /// [googleFileService] Google service file service configuration

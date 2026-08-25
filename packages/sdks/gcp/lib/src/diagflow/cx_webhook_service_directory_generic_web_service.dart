@@ -17,48 +17,48 @@ class CxWebhookServiceDirectoryGenericWebService {
   /// -signkey example.com.key \
   /// -out example.com.crt \
   /// -extfile &lt;(printf "\nsubjectAltName='DNS:www.example.com'")
-  final pulumi.Input<List<String>>? allowedCaCerts;
+  final pulumi.Input<List<String>?>? allowedCaCerts;
   /// HTTP method for the flexible webhook calls. Standard webhook always uses
   /// POST.
   /// Possible values are: `POST`, `GET`, `HEAD`, `PUT`, `DELETE`, `PATCH`, `OPTIONS`.
-  final pulumi.Input<String>? httpMethod;
+  final pulumi.Input<String?>? httpMethod;
   /// Represents configuration of OAuth client credential flow for 3rd party
   /// API authentication.
   /// Structure is documented below.
-  final pulumi.Input<CxWebhookServiceDirectoryGenericWebServiceOauthConfig>? oauthConfig;
+  final pulumi.Input<CxWebhookServiceDirectoryGenericWebServiceOauthConfig?>? oauthConfig;
   /// Maps the values extracted from specific fields of the flexible webhook
   /// response into session parameters.
   /// - Key: session parameter name
   /// - Value: field path in the webhook response
-  final pulumi.Input<Map<String, String>>? parameterMapping;
+  final pulumi.Input<Map<String, String>?>? parameterMapping;
   /// Defines a custom JSON object as request body to send to flexible webhook.
-  final pulumi.Input<String>? requestBody;
+  final pulumi.Input<String?>? requestBody;
   /// The HTTP request headers to send together with webhook requests.
-  final pulumi.Input<Map<String, String>>? requestHeaders;
+  final pulumi.Input<Map<String, String>?>? requestHeaders;
   /// The SecretManager secret version resource storing the username:password
   /// pair for HTTP Basic authentication.
   /// Format: `projects/{project}/secrets/{secret}/versions/{version}`
-  final pulumi.Input<String>? secretVersionForUsernamePassword;
+  final pulumi.Input<String?>? secretVersionForUsernamePassword;
   /// The HTTP request headers to send together with webhook requests. Header
   /// values are stored in SecretManager secret versions.
   /// When the same header name is specified in both `requestHeaders` and
   /// `secretVersionsForRequestHeaders`, the value in
   /// `secretVersionsForRequestHeaders` will be used.
   /// Structure is documented below.
-  final pulumi.Input<List<CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeader>>? secretVersionsForRequestHeaders;
+  final pulumi.Input<List<CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeader>?>? secretVersionsForRequestHeaders;
   /// Configuration for authentication using a service account.
   /// Structure is documented below.
-  final pulumi.Input<CxWebhookServiceDirectoryGenericWebServiceServiceAccountAuthConfig>? serviceAccountAuthConfig;
+  final pulumi.Input<CxWebhookServiceDirectoryGenericWebServiceServiceAccountAuthConfig?>? serviceAccountAuthConfig;
   /// Indicate the auth token type generated from the [Diglogflow service
   /// agent](https://cloud.google.com/iam/docs/service-agents#dialogflow-service-agent).
   /// The generated token is sent in the Authorization header.
   /// Possible values are: `NONE`, `ID_TOKEN`, `ACCESS_TOKEN`.
-  final pulumi.Input<String>? serviceAgentAuth;
+  final pulumi.Input<String?>? serviceAgentAuth;
   /// The webhook URI for receiving POST requests. It must use https protocol.
   final pulumi.Input<String> uri;
   /// Type of the webhook.
   /// Possible values are: `STANDARD`, `FLEXIBLE`.
-  final pulumi.Input<String>? webhookType;
+  final pulumi.Input<String?>? webhookType;
 
   /// Creates a new [CxWebhookServiceDirectoryGenericWebService].
   /// [allowedCaCerts] Specifies a list of allowed custom CA certificates (in DER format) for

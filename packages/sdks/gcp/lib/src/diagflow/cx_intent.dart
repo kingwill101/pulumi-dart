@@ -1,6 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cx_intent_args.dart';
+import 'cx_intent_parameter.dart';
 import 'cx_intent_state.dart';
+import 'cx_intent_training_phrase.dart';
 
 /// An intent represents a user's intent to interact with a conversational agent.
 ///
@@ -488,7 +490,7 @@ class CxIntent extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// The collection of parameters associated with the intent.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> parameters;
+  late final pulumi.Output<List<CxIntentParameter>?> parameters;
   /// The agent to create an intent for.
   /// Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;.
   late final pulumi.Output<String?> parent;
@@ -501,7 +503,7 @@ class CxIntent extends pulumi.CustomResource {
   late final pulumi.Output<Map<String, String>> pulumiLabels;
   /// The collection of training phrases the agent is trained on to identify the intent.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> trainingPhrases;
+  late final pulumi.Output<List<CxIntentTrainingPhrase>?> trainingPhrases;
 
   /// Creates a new [CxIntent].
   /// [name] The Pulumi resource name.
@@ -515,23 +517,24 @@ class CxIntent extends pulumi.CustomResource {
           'gcp:diagflow/cxIntent:CxIntent',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     isDefaultNegativeIntent = registerOutput<bool?>('isDefaultNegativeIntent');
     isDefaultWelcomeIntent = registerOutput<bool?>('isDefaultWelcomeIntent');
     isFallback = registerOutput<bool?>('isFallback');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     languageCode = registerOutput<String?>('languageCode');
     this.name = registerOutput<String>('name');
-    parameters = registerOutput<List<Map<String, dynamic>>?>('parameters');
+    parameters = registerOutput<List<CxIntentParameter>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CxIntentParameter>(guardedValue, (value) => CxIntentParameter.fromMap((value as Map).cast<String, dynamic>())); });
     parent = registerOutput<String?>('parent');
     priority = registerOutput<int?>('priority');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    trainingPhrases = registerOutput<List<Map<String, dynamic>>?>('trainingPhrases');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    trainingPhrases = registerOutput<List<CxIntentTrainingPhrase>?>('trainingPhrases', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CxIntentTrainingPhrase>(guardedValue, (value) => CxIntentTrainingPhrase.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [CxIntent] resource's state with the given [name] and [id].
@@ -539,11 +542,12 @@ class CxIntent extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CxIntentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return CxIntent._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -560,17 +564,44 @@ class CxIntent extends pulumi.CustomResource {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     isDefaultNegativeIntent = registerOutput<bool?>('isDefaultNegativeIntent');
     isDefaultWelcomeIntent = registerOutput<bool?>('isDefaultWelcomeIntent');
     isFallback = registerOutput<bool?>('isFallback');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     languageCode = registerOutput<String?>('languageCode');
     this.name = registerOutput<String>('name');
-    parameters = registerOutput<List<Map<String, dynamic>>?>('parameters');
+    parameters = registerOutput<List<CxIntentParameter>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CxIntentParameter>(guardedValue, (value) => CxIntentParameter.fromMap((value as Map).cast<String, dynamic>())); });
     parent = registerOutput<String?>('parent');
     priority = registerOutput<int?>('priority');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    trainingPhrases = registerOutput<List<Map<String, dynamic>>?>('trainingPhrases');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    trainingPhrases = registerOutput<List<CxIntentTrainingPhrase>?>('trainingPhrases', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CxIntentTrainingPhrase>(guardedValue, (value) => CxIntentTrainingPhrase.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [CxIntent] resource.
+  CxIntent.reference(String urn)
+    : super(
+        'gcp:diagflow/cxIntent:CxIntent',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    isDefaultNegativeIntent = registerOutput<bool?>('isDefaultNegativeIntent');
+    isDefaultWelcomeIntent = registerOutput<bool?>('isDefaultWelcomeIntent');
+    isFallback = registerOutput<bool?>('isFallback');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    languageCode = registerOutput<String?>('languageCode');
+    this.name = registerOutput<String>('name');
+    parameters = registerOutput<List<CxIntentParameter>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CxIntentParameter>(guardedValue, (value) => CxIntentParameter.fromMap((value as Map).cast<String, dynamic>())); });
+    parent = registerOutput<String?>('parent');
+    priority = registerOutput<int?>('priority');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    trainingPhrases = registerOutput<List<CxIntentTrainingPhrase>?>('trainingPhrases', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CxIntentTrainingPhrase>(guardedValue, (value) => CxIntentTrainingPhrase.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

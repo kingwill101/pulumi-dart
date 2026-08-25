@@ -6,15 +6,15 @@ import 'tool_client_function_response.dart';
 
 class ToolClientFunction {
   /// The function description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The function name.
   final pulumi.Input<String> name;
   /// Represents a select subset of an OpenAPI 3.0 schema object.
   /// Structure is documented below.
-  final pulumi.Input<ToolClientFunctionParameters>? parameters;
+  final pulumi.Input<ToolClientFunctionParameters?>? parameters;
   /// Represents a select subset of an OpenAPI 3.0 schema object.
   /// Structure is documented below.
-  final pulumi.Input<ToolClientFunctionResponse>? response;
+  final pulumi.Input<ToolClientFunctionResponse?>? response;
 
   /// Creates a new [ToolClientFunction].
   /// [description] The function description.

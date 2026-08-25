@@ -2,6 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'schedule_args.dart';
 import 'schedule_create_notebook_execution_job_request.dart';
 import 'schedule_create_pipeline_job_request.dart';
+import 'schedule_last_scheduled_run_response.dart';
 import 'schedule_state.dart';
 
 /// 'Colab Enterprise Notebook Execution Schedules.'
@@ -3545,7 +3546,7 @@ class Schedule extends pulumi.CustomResource {
   late final pulumi.Output<String> lastResumeTime;
   /// Status of a scheduled run.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> lastScheduledRunResponses;
+  late final pulumi.Output<List<ScheduleLastScheduledRunResponse>> lastScheduledRunResponses;
   /// The location for the resource: https://cloud.google.com/colab/docs/locations
   late final pulumi.Output<String> location;
   /// Specifies the maximum number of active runs that can be executed concurrently for this Schedule. This limits the number of runs that can be in a non-terminal state at the same time. Currently, this field is only supported for requests of type CreatePipelineJobRequest.
@@ -3582,7 +3583,7 @@ class Schedule extends pulumi.CustomResource {
           'gcp:colab/schedule:Schedule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     allowQueueing = registerOutput<bool?>('allowQueueing');
     catchUp = registerOutput<bool>('catchUp');
@@ -3596,7 +3597,7 @@ class Schedule extends pulumi.CustomResource {
     endTime = registerOutput<String?>('endTime');
     lastPauseTime = registerOutput<String>('lastPauseTime');
     lastResumeTime = registerOutput<String>('lastResumeTime');
-    lastScheduledRunResponses = registerOutput<List<Map<String, dynamic>>>('lastScheduledRunResponses');
+    lastScheduledRunResponses = registerOutput<List<ScheduleLastScheduledRunResponse>>('lastScheduledRunResponses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ScheduleLastScheduledRunResponse>(guardedValue, (value) => ScheduleLastScheduledRunResponse.fromMap((value as Map).cast<String, dynamic>())); });
     location = registerOutput<String>('location');
     maxConcurrentActiveRunCount = registerOutput<String?>('maxConcurrentActiveRunCount');
     maxConcurrentRunCount = registerOutput<String>('maxConcurrentRunCount');
@@ -3615,11 +3616,12 @@ class Schedule extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ScheduleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Schedule._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -3645,7 +3647,7 @@ class Schedule extends pulumi.CustomResource {
     endTime = registerOutput<String?>('endTime');
     lastPauseTime = registerOutput<String>('lastPauseTime');
     lastResumeTime = registerOutput<String>('lastResumeTime');
-    lastScheduledRunResponses = registerOutput<List<Map<String, dynamic>>>('lastScheduledRunResponses');
+    lastScheduledRunResponses = registerOutput<List<ScheduleLastScheduledRunResponse>>('lastScheduledRunResponses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ScheduleLastScheduledRunResponse>(guardedValue, (value) => ScheduleLastScheduledRunResponse.fromMap((value as Map).cast<String, dynamic>())); });
     location = registerOutput<String>('location');
     maxConcurrentActiveRunCount = registerOutput<String?>('maxConcurrentActiveRunCount');
     maxConcurrentRunCount = registerOutput<String>('maxConcurrentRunCount');
@@ -3656,6 +3658,41 @@ class Schedule extends pulumi.CustomResource {
     startTime = registerOutput<String>('startTime');
     startedRunCount = registerOutput<String>('startedRunCount');
     this.state = registerOutput<String>('state');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [Schedule] resource.
+  Schedule.reference(String urn)
+    : super(
+        'gcp:colab/schedule:Schedule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    allowQueueing = registerOutput<bool?>('allowQueueing');
+    catchUp = registerOutput<bool>('catchUp');
+    createNotebookExecutionJobRequest = registerOutput<ScheduleCreateNotebookExecutionJobRequest?>('createNotebookExecutionJobRequest', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScheduleCreateNotebookExecutionJobRequest.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createPipelineJobRequest = registerOutput<ScheduleCreatePipelineJobRequest?>('createPipelineJobRequest', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScheduleCreatePipelineJobRequest.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createTime = registerOutput<String>('createTime');
+    cron = registerOutput<String>('cron');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    desiredState = registerOutput<String?>('desiredState');
+    displayName = registerOutput<String>('displayName');
+    endTime = registerOutput<String?>('endTime');
+    lastPauseTime = registerOutput<String>('lastPauseTime');
+    lastResumeTime = registerOutput<String>('lastResumeTime');
+    lastScheduledRunResponses = registerOutput<List<ScheduleLastScheduledRunResponse>>('lastScheduledRunResponses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ScheduleLastScheduledRunResponse>(guardedValue, (value) => ScheduleLastScheduledRunResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    location = registerOutput<String>('location');
+    maxConcurrentActiveRunCount = registerOutput<String?>('maxConcurrentActiveRunCount');
+    maxConcurrentRunCount = registerOutput<String>('maxConcurrentRunCount');
+    maxRunCount = registerOutput<String?>('maxRunCount');
+    this.name = registerOutput<String>('name');
+    nextRunTime = registerOutput<String>('nextRunTime');
+    project = registerOutput<String>('project');
+    startTime = registerOutput<String>('startTime');
+    startedRunCount = registerOutput<String>('startedRunCount');
+    state = registerOutput<String>('state');
     updateTime = registerOutput<String>('updateTime');
   }
 }

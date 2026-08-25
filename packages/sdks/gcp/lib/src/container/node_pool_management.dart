@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NodePoolManagement {
   /// Whether the nodes will be automatically repaired. Enabled by default.
-  final pulumi.Input<bool>? autoRepair;
+  final pulumi.Input<bool?>? autoRepair;
   /// Whether the nodes will be automatically upgraded. Enabled by default.
-  final pulumi.Input<bool>? autoUpgrade;
+  final pulumi.Input<bool?>? autoUpgrade;
 
   /// Creates a new [NodePoolManagement].
   /// [autoRepair] Whether the nodes will be automatically repaired. Enabled by default.

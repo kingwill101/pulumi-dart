@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'firewall_allow.dart';
 import 'firewall_args.dart';
+import 'firewall_deny.dart';
 import 'firewall_log_config.dart';
 import 'firewall_params.dart';
 import 'firewall_state.dart';
@@ -487,7 +489,7 @@ class Firewall extends pulumi.CustomResource {
   /// specifies a protocol and port-range tuple that describes a permitted
   /// connection.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> allows;
+  late final pulumi.Output<List<FirewallAllow>?> allows;
   /// Creation timestamp in RFC3339 text format.
   late final pulumi.Output<String> creationTimestamp;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -500,7 +502,7 @@ class Firewall extends pulumi.CustomResource {
   /// The list of DENY rules specified by this firewall. Each rule specifies
   /// a protocol and port-range tuple that describes a denied connection.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> denies;
+  late final pulumi.Output<List<FirewallDeny>?> denies;
   /// An optional description of this resource. Provide this property when
   /// you create the resource.
   late final pulumi.Output<String?> description;
@@ -609,14 +611,14 @@ class Firewall extends pulumi.CustomResource {
           'gcp:compute/firewall:Firewall',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
-    allows = registerOutput<List<Map<String, dynamic>>?>('allows');
+    allows = registerOutput<List<FirewallAllow>?>('allows', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FirewallAllow>(guardedValue, (value) => FirewallAllow.fromMap((value as Map).cast<String, dynamic>())); });
     creationTimestamp = registerOutput<String>('creationTimestamp');
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    denies = registerOutput<List<Map<String, dynamic>>?>('denies');
+    denies = registerOutput<List<FirewallDeny>?>('denies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FirewallDeny>(guardedValue, (value) => FirewallDeny.fromMap((value as Map).cast<String, dynamic>())); });
     description = registerOutput<String?>('description');
-    destinationRanges = registerOutput<List<String>>('destinationRanges');
+    destinationRanges = registerOutput<List<String>>('destinationRanges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     direction = registerOutput<String>('direction');
     disabled = registerOutput<bool?>('disabled');
     enableLogging = registerOutput<bool>('enableLogging');
@@ -627,11 +629,11 @@ class Firewall extends pulumi.CustomResource {
     priority = registerOutput<int?>('priority');
     project = registerOutput<String>('project');
     selfLink = registerOutput<String>('selfLink');
-    sourceRanges = registerOutput<List<String>?>('sourceRanges');
-    sourceServiceAccounts = registerOutput<List<String>?>('sourceServiceAccounts');
-    sourceTags = registerOutput<List<String>?>('sourceTags');
-    targetServiceAccounts = registerOutput<List<String>?>('targetServiceAccounts');
-    targetTags = registerOutput<List<String>?>('targetTags');
+    sourceRanges = registerOutput<List<String>?>('sourceRanges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    sourceServiceAccounts = registerOutput<List<String>?>('sourceServiceAccounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    sourceTags = registerOutput<List<String>?>('sourceTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    targetServiceAccounts = registerOutput<List<String>?>('targetServiceAccounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    targetTags = registerOutput<List<String>?>('targetTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [Firewall] resource's state with the given [name] and [id].
@@ -639,11 +641,12 @@ class Firewall extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FirewallState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Firewall._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -657,12 +660,12 @@ class Firewall extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    allows = registerOutput<List<Map<String, dynamic>>?>('allows');
+    allows = registerOutput<List<FirewallAllow>?>('allows', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FirewallAllow>(guardedValue, (value) => FirewallAllow.fromMap((value as Map).cast<String, dynamic>())); });
     creationTimestamp = registerOutput<String>('creationTimestamp');
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    denies = registerOutput<List<Map<String, dynamic>>?>('denies');
+    denies = registerOutput<List<FirewallDeny>?>('denies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FirewallDeny>(guardedValue, (value) => FirewallDeny.fromMap((value as Map).cast<String, dynamic>())); });
     description = registerOutput<String?>('description');
-    destinationRanges = registerOutput<List<String>>('destinationRanges');
+    destinationRanges = registerOutput<List<String>>('destinationRanges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     direction = registerOutput<String>('direction');
     disabled = registerOutput<bool?>('disabled');
     enableLogging = registerOutput<bool>('enableLogging');
@@ -673,10 +676,42 @@ class Firewall extends pulumi.CustomResource {
     priority = registerOutput<int?>('priority');
     project = registerOutput<String>('project');
     selfLink = registerOutput<String>('selfLink');
-    sourceRanges = registerOutput<List<String>?>('sourceRanges');
-    sourceServiceAccounts = registerOutput<List<String>?>('sourceServiceAccounts');
-    sourceTags = registerOutput<List<String>?>('sourceTags');
-    targetServiceAccounts = registerOutput<List<String>?>('targetServiceAccounts');
-    targetTags = registerOutput<List<String>?>('targetTags');
+    sourceRanges = registerOutput<List<String>?>('sourceRanges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    sourceServiceAccounts = registerOutput<List<String>?>('sourceServiceAccounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    sourceTags = registerOutput<List<String>?>('sourceTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    targetServiceAccounts = registerOutput<List<String>?>('targetServiceAccounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    targetTags = registerOutput<List<String>?>('targetTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Firewall] resource.
+  Firewall.reference(String urn)
+    : super(
+        'gcp:compute/firewall:Firewall',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    allows = registerOutput<List<FirewallAllow>?>('allows', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FirewallAllow>(guardedValue, (value) => FirewallAllow.fromMap((value as Map).cast<String, dynamic>())); });
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    denies = registerOutput<List<FirewallDeny>?>('denies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FirewallDeny>(guardedValue, (value) => FirewallDeny.fromMap((value as Map).cast<String, dynamic>())); });
+    description = registerOutput<String?>('description');
+    destinationRanges = registerOutput<List<String>>('destinationRanges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    direction = registerOutput<String>('direction');
+    disabled = registerOutput<bool?>('disabled');
+    enableLogging = registerOutput<bool>('enableLogging');
+    logConfig = registerOutput<FirewallLogConfig?>('logConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FirewallLogConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    network = registerOutput<String>('network');
+    params = registerOutput<FirewallParams?>('params', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FirewallParams.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    priority = registerOutput<int?>('priority');
+    project = registerOutput<String>('project');
+    selfLink = registerOutput<String>('selfLink');
+    sourceRanges = registerOutput<List<String>?>('sourceRanges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    sourceServiceAccounts = registerOutput<List<String>?>('sourceServiceAccounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    sourceTags = registerOutput<List<String>?>('sourceTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    targetServiceAccounts = registerOutput<List<String>?>('targetServiceAccounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    targetTags = registerOutput<List<String>?>('targetTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

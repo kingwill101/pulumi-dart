@@ -11,32 +11,32 @@ class RolloutSequenceState {
   /// Configuration for automatic upgrades.
   /// If not specified, the system applies default behavior.
   /// Structure is documented below.
-  final pulumi.Input<RolloutSequenceAutoUpgradeConfig>? autoUpgradeConfig;
+  final pulumi.Input<RolloutSequenceAutoUpgradeConfig?>? autoUpgradeConfig;
   /// The timestamp at which the Rollout Sequence was created.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// The timestamp at the Rollout Sequence was deleted.
-  final pulumi.Input<String>? deleteTime;
+  final pulumi.Input<String?>? deleteTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Human readable display name of the Rollout Sequence.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveLabels;
+  final pulumi.Input<Map<String, String>?>? effectiveLabels;
   /// etag of the Rollout Sequence.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// Selector for clusters to exclude from the Rollout Sequence.
   /// Structure is documented below.
-  final pulumi.Input<RolloutSequenceIgnoredClustersSelector>? ignoredClustersSelector;
+  final pulumi.Input<RolloutSequenceIgnoredClustersSelector?>? ignoredClustersSelector;
   /// Labels for this Rollout Sequence.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Minimum control plane version that the clusters in the sequence should be upgraded to.
   /// Setting this field will cause the creation of a rollout to the specified version.
   /// Any rollout of the same type already running on the first stage of the sequence will be cancelled to allow for the creation of the new rollout.
@@ -44,7 +44,7 @@ class RolloutSequenceState {
   /// Version aliases are supported, as described in the [cluster version docs](https://docs.cloud.google.com/kubernetes-engine/versioning#specifying_cluster_version).
   /// Note that the `latest` and `-` aliases are not supported for this field.
   /// Supported formats: `1.X`, `1.X.Y`, `1.X.Y-gke.N`.
-  final pulumi.Input<String>? minControlPlaneVersion;
+  final pulumi.Input<String?>? minControlPlaneVersion;
   /// Minimum node version that the clusters in the sequence should be upgraded to.
   /// Setting this field will cause the creation of a rollout to the specified version.
   /// Any rollout of the same type already running on the first stage of the sequence will be cancelled to allow for the creation of the new rollout.
@@ -52,31 +52,31 @@ class RolloutSequenceState {
   /// Version aliases are supported, as described in the [cluster version docs](https://docs.cloud.google.com/kubernetes-engine/versioning#specifying_cluster_version).
   /// Note that the `latest` and `-` aliases are not supported for this field.
   /// Supported formats: `1.X`, `1.X.Y`, `1.X.Y-gke.N`.
-  final pulumi.Input<String>? minNodeVersion;
+  final pulumi.Input<String?>? minNodeVersion;
   /// The full resource name of the RolloutSequence.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The operational state of the rollout sequence.
   /// Structure is documented below.
-  final pulumi.Input<List<RolloutSequenceOperationalState>>? operationalStates;
+  final pulumi.Input<List<RolloutSequenceOperationalState>?>? operationalStates;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  final pulumi.Input<Map<String, String>>? pulumiLabels;
+  final pulumi.Input<Map<String, String>?>? pulumiLabels;
   /// The user-provided identifier of the RolloutSequence.
-  final pulumi.Input<String>? rolloutSequenceId;
+  final pulumi.Input<String?>? rolloutSequenceId;
   /// Ordered list of stages that constitute this Rollout Sequence.
   /// Structure is documented below.
-  final pulumi.Input<List<RolloutSequenceStage>>? stages;
+  final pulumi.Input<List<RolloutSequenceStage>?>? stages;
   /// The current target control plane version.
-  final pulumi.Input<String>? targetControlPlaneVersion;
+  final pulumi.Input<String?>? targetControlPlaneVersion;
   /// The current target node version.
-  final pulumi.Input<String>? targetNodeVersion;
+  final pulumi.Input<String?>? targetNodeVersion;
   /// Google-generated UUID for this resource.
-  final pulumi.Input<String>? uid;
+  final pulumi.Input<String?>? uid;
   /// The timestamp at which the Rollout Sequence was last updated.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [RolloutSequenceState].
   /// [autoUpgradeConfig] Configuration for automatic upgrades.

@@ -8,9 +8,9 @@ class CustomTargetTypeCustomActions {
   final pulumi.Input<String> deployAction;
   /// List of Skaffold modules Cloud Deploy will include in the Skaffold Config as required before performing diagnose.
   /// Structure is documented below.
-  final pulumi.Input<List<CustomTargetTypeCustomActionsIncludeSkaffoldModule>>? includeSkaffoldModules;
+  final pulumi.Input<List<CustomTargetTypeCustomActionsIncludeSkaffoldModule>?>? includeSkaffoldModules;
   /// The Skaffold custom action responsible for render operations. If not provided then Cloud Deploy will perform the render operations via `skaffold render`.
-  final pulumi.Input<String>? renderAction;
+  final pulumi.Input<String?>? renderAction;
 
   /// Creates a new [CustomTargetTypeCustomActions].
   /// [deployAction] The Skaffold custom action responsible for deploy operations.

@@ -14,28 +14,28 @@ class HookArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Determines if the hook disabled or not.
   /// Set to true to stop sending traffic.
-  final pulumi.Input<bool>? disabled;
+  final pulumi.Input<bool?>? disabled;
   /// The events that trigger hook on.
   /// Each value may be one of: `PUSH`, `PULL_REQUEST`.
-  final pulumi.Input<List<String>>? events;
+  final pulumi.Input<List<String>?>? events;
   /// The ID for the Hook.
   final pulumi.Input<String> hookId;
   /// The location for the Repository.
   final pulumi.Input<String> location;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The trigger option for push events.
   /// Structure is documented below.
-  final pulumi.Input<HookPushOption>? pushOption;
+  final pulumi.Input<HookPushOption?>? pushOption;
   /// The ID for the Repository.
   final pulumi.Input<String> repositoryId;
   /// The sensitive query string to be appended to the target URI.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
-  final pulumi.Input<String>? sensitiveQueryString;
+  final pulumi.Input<String?>? sensitiveQueryString;
   /// The target URI to which the payloads will be delivered.
   final pulumi.Input<String> targetUri;
 

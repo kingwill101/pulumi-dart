@@ -4,15 +4,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GoldengateConnectionPropertiesAmazonS3ConnectionProperties {
   /// Access key ID to access the Amazon S3 bucket.
-  final pulumi.Input<String>? accessKeyId;
+  final pulumi.Input<String?>? accessKeyId;
   /// The Amazon Endpoint for S3.
-  final pulumi.Input<String>? endpoint;
+  final pulumi.Input<String?>? endpoint;
   /// The name of the AWS region where the bucket is created.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Secret access key to access the Amazon S3 bucket.
-  final pulumi.Input<String>? secretAccessKeySecret;
+  final pulumi.Input<String?>? secretAccessKeySecret;
   /// The technology type of AmazonS3Connection.
-  final pulumi.Input<String>? technologyType;
+  final pulumi.Input<String?>? technologyType;
 
   /// Creates a new [GoldengateConnectionPropertiesAmazonS3ConnectionProperties].
   /// [accessKeyId] Access key ID to access the Amazon S3 bucket.

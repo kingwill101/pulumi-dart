@@ -8,15 +8,15 @@ import 'dashboard_chart_dashboard_chart_visualization_google_maps_config_point_s
 class DashboardChartDashboardChartVisualizationGoogleMapsConfig {
   /// A nested object resource.
   /// Structure is documented below.
-  final pulumi.Input<DashboardChartDashboardChartVisualizationGoogleMapsConfigDataSettings>? dataSettings;
+  final pulumi.Input<DashboardChartDashboardChartVisualizationGoogleMapsConfigDataSettings?>? dataSettings;
   /// A nested object resource.
   /// Structure is documented below.
-  final pulumi.Input<DashboardChartDashboardChartVisualizationGoogleMapsConfigMapPosition>? mapPosition;
+  final pulumi.Input<DashboardChartDashboardChartVisualizationGoogleMapsConfigMapPosition?>? mapPosition;
   /// Possible values are: `PLOT_MODE_UNSPECIFIED`, `PLOT_MODE_POINTS`, `PLOT_MODE_HEATMAP`, `PLOT_MODE_BOTH`.
-  final pulumi.Input<String>? plotMode;
+  final pulumi.Input<String?>? plotMode;
   /// A nested object resource.
   /// Structure is documented below.
-  final pulumi.Input<DashboardChartDashboardChartVisualizationGoogleMapsConfigPointSettings>? pointSettings;
+  final pulumi.Input<DashboardChartDashboardChartVisualizationGoogleMapsConfigPointSettings?>? pointSettings;
 
   /// Creates a new [DashboardChartDashboardChartVisualizationGoogleMapsConfig].
   /// [dataSettings] A nested object resource.

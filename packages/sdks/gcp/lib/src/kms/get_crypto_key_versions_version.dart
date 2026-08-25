@@ -58,7 +58,7 @@ class GetCryptoKeyVersionsVersion {
       protectionLevel: pulumi.Input.fromValue(map['protectionLevel'] as String),
       publicKeys: pulumi.Input.fromValue(pulumi.Input.decodeList<GetCryptoKeyVersionsVersionPublicKey>(map['publicKeys']!, (value) => GetCryptoKeyVersionsVersionPublicKey.fromMap((value as Map).cast<String, dynamic>()))),
       state: pulumi.Input.fromValue(map['state'] as String),
-      version: pulumi.Input.fromValue(map['version'] as int),
+      version: pulumi.Input.fromValue((map['version'] as num).toInt()),
     );
   }
 }

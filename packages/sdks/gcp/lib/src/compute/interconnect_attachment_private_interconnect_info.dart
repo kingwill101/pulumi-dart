@@ -6,7 +6,7 @@ class InterconnectAttachmentPrivateInterconnectInfo {
   /// (Output)
   /// 802.1q encapsulation tag to be used for traffic between
   /// Google and the customer, going to and from this network and region.
-  final pulumi.Input<int>? tag8021q;
+  final pulumi.Input<int?>? tag8021q;
 
   /// Creates a new [InterconnectAttachmentPrivateInterconnectInfo].
   /// [tag8021q] (Output)
@@ -22,7 +22,7 @@ class InterconnectAttachmentPrivateInterconnectInfo {
 
   factory InterconnectAttachmentPrivateInterconnectInfo.fromMap(Map<String, dynamic> map) {
     return InterconnectAttachmentPrivateInterconnectInfo(
-      tag8021q: (() { final guardedValue = map['tag8021q']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      tag8021q: (() { final guardedValue = map['tag8021q']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

@@ -14,33 +14,33 @@ import 'http_route_rule_action_url_rewrite.dart';
 class HttpRouteRuleAction {
   /// The specification for allowing client side cross-origin requests.
   /// Structure is documented below.
-  final pulumi.Input<HttpRouteRuleActionCorsPolicy>? corsPolicy;
+  final pulumi.Input<HttpRouteRuleActionCorsPolicy?>? corsPolicy;
   /// The destination to which traffic should be forwarded.
   /// Structure is documented below.
-  final pulumi.Input<List<HttpRouteRuleActionDestination>>? destinations;
+  final pulumi.Input<List<HttpRouteRuleActionDestination>?>? destinations;
   /// The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
   /// Structure is documented below.
-  final pulumi.Input<HttpRouteRuleActionFaultInjectionPolicy>? faultInjectionPolicy;
+  final pulumi.Input<HttpRouteRuleActionFaultInjectionPolicy?>? faultInjectionPolicy;
   /// If set, the request is directed as configured by this field.
   /// Structure is documented below.
-  final pulumi.Input<HttpRouteRuleActionRedirect>? redirect;
+  final pulumi.Input<HttpRouteRuleActionRedirect?>? redirect;
   /// The specification for modifying the headers of a matching request prior to delivery of the request to the destination.
   /// Structure is documented below.
-  final pulumi.Input<HttpRouteRuleActionRequestHeaderModifier>? requestHeaderModifier;
+  final pulumi.Input<HttpRouteRuleActionRequestHeaderModifier?>? requestHeaderModifier;
   /// Specifies the policy on how requests intended for the routes destination are shadowed to a separate mirrored destination.
   /// Structure is documented below.
-  final pulumi.Input<HttpRouteRuleActionRequestMirrorPolicy>? requestMirrorPolicy;
+  final pulumi.Input<HttpRouteRuleActionRequestMirrorPolicy?>? requestMirrorPolicy;
   /// The specification for modifying the headers of a response prior to sending the response back to the client.
   /// Structure is documented below.
-  final pulumi.Input<HttpRouteRuleActionResponseHeaderModifier>? responseHeaderModifier;
+  final pulumi.Input<HttpRouteRuleActionResponseHeaderModifier?>? responseHeaderModifier;
   /// Specifies the retry policy associated with this route.
   /// Structure is documented below.
-  final pulumi.Input<HttpRouteRuleActionRetryPolicy>? retryPolicy;
+  final pulumi.Input<HttpRouteRuleActionRetryPolicy?>? retryPolicy;
   /// Specifies the timeout for selected route.
-  final pulumi.Input<String>? timeout;
+  final pulumi.Input<String?>? timeout;
   /// The specification for rewrite URL before forwarding requests to the destination.
   /// Structure is documented below.
-  final pulumi.Input<HttpRouteRuleActionUrlRewrite>? urlRewrite;
+  final pulumi.Input<HttpRouteRuleActionUrlRewrite?>? urlRewrite;
 
   /// Creates a new [HttpRouteRuleAction].
   /// [corsPolicy] The specification for allowing client side cross-origin requests.

@@ -7,10 +7,10 @@ import 'cx_test_case_test_case_conversation_turn_virtual_agent_output.dart';
 class CxTestCaseTestCaseConversationTurn {
   /// The user input.
   /// Structure is documented below.
-  final pulumi.Input<CxTestCaseTestCaseConversationTurnUserInput>? userInput;
+  final pulumi.Input<CxTestCaseTestCaseConversationTurnUserInput?>? userInput;
   /// The virtual agent output.
   /// Structure is documented below.
-  final pulumi.Input<CxTestCaseTestCaseConversationTurnVirtualAgentOutput>? virtualAgentOutput;
+  final pulumi.Input<CxTestCaseTestCaseConversationTurnVirtualAgentOutput?>? virtualAgentOutput;
 
   /// Creates a new [CxTestCaseTestCaseConversationTurn].
   /// [userInput] The user input.

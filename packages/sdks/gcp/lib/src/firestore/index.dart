@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'index_args.dart';
+import 'index_field.dart';
 import 'index_state.dart';
 
 /// Cloud Firestore indexes enable simple and complex queries against documents in a database.
@@ -3037,7 +3038,7 @@ class Index extends pulumi.CustomResource {
   /// index is not directional, the `__name__` will be ordered `"ASCENDING"` (unless explicitly
   /// specified otherwise).
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> fields;
+  late final pulumi.Output<List<IndexField>> fields;
   /// Optional. Whether the index is multikey. By default, the index is not multikey. For non-multikey indexes, none of the paths in the index definition reach or traverse an array, except via an explicit array index. For multikey indexes, at most one of the paths in the index definition reach or traverse an array, except via an explicit array index. Violations will result in errors. Note this field only applies to indexes with MONGODB_COMPATIBLE_API ApiScope.
   late final pulumi.Output<bool?> multikey;
   /// A server defined name for this index. Format:
@@ -3067,14 +3068,14 @@ class Index extends pulumi.CustomResource {
           'gcp:firestore/index:Index',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     apiScope = registerOutput<String?>('apiScope');
     collection = registerOutput<String>('collection');
     database = registerOutput<String?>('database');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     density = registerOutput<String>('density');
-    fields = registerOutput<List<Map<String, dynamic>>>('fields');
+    fields = registerOutput<List<IndexField>>('fields', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<IndexField>(guardedValue, (value) => IndexField.fromMap((value as Map).cast<String, dynamic>())); });
     multikey = registerOutput<bool?>('multikey');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
@@ -3088,11 +3089,12 @@ class Index extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     IndexState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Index._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -3111,7 +3113,30 @@ class Index extends pulumi.CustomResource {
     database = registerOutput<String?>('database');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     density = registerOutput<String>('density');
-    fields = registerOutput<List<Map<String, dynamic>>>('fields');
+    fields = registerOutput<List<IndexField>>('fields', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<IndexField>(guardedValue, (value) => IndexField.fromMap((value as Map).cast<String, dynamic>())); });
+    multikey = registerOutput<bool?>('multikey');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    queryScope = registerOutput<String?>('queryScope');
+    skipWait = registerOutput<bool?>('skipWait');
+    unique = registerOutput<bool>('unique');
+  }
+
+  /// Creates a typed reference to an existing [Index] resource.
+  Index.reference(String urn)
+    : super(
+        'gcp:firestore/index:Index',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    apiScope = registerOutput<String?>('apiScope');
+    collection = registerOutput<String>('collection');
+    database = registerOutput<String?>('database');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    density = registerOutput<String>('density');
+    fields = registerOutput<List<IndexField>>('fields', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<IndexField>(guardedValue, (value) => IndexField.fromMap((value as Map).cast<String, dynamic>())); });
     multikey = registerOutput<bool?>('multikey');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

@@ -33,7 +33,7 @@ class GetClusterDiscoveryEndpoint {
   factory GetClusterDiscoveryEndpoint.fromMap(Map<String, dynamic> map) {
     return GetClusterDiscoveryEndpoint(
       address: pulumi.Input.fromValue(map['address'] as String),
-      port: pulumi.Input.fromValue(map['port'] as int),
+      port: pulumi.Input.fromValue((map['port'] as num).toInt()),
       pscConfigs: pulumi.Input.fromValue(pulumi.Input.decodeList<GetClusterDiscoveryEndpointPscConfig>(map['pscConfigs']!, (value) => GetClusterDiscoveryEndpointPscConfig.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }

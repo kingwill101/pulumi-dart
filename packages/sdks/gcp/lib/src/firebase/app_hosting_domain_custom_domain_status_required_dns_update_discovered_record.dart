@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecord {
   /// (Output)
   /// The domain the record pertains to, e.g. `foo.bar.com.`.
-  final pulumi.Input<String>? domainName;
+  final pulumi.Input<String?>? domainName;
   /// (Output)
   /// The data of the record. The meaning of the value depends on record type:
   /// - A and AAAA: IP addresses for the domain.
@@ -14,11 +14,11 @@ class AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecord {
   /// uses TXT records to determine which Firebase projects have
   /// permission to act on the domain's behalf.
   /// - CAA: The record's flags, tag, and value, e.g. `0 issue "pki.goog"`.
-  final pulumi.Input<String>? rdata;
+  final pulumi.Input<String?>? rdata;
   /// (Output)
   /// An enum that indicates which state(s) this DNS record applies to. Populated
   /// for all records with an `ADD` or `REMOVE` required action.
-  final pulumi.Input<List<String>>? relevantStates;
+  final pulumi.Input<List<String>?>? relevantStates;
   /// (Output)
   /// An enum that indicates the a required action for this record. Populated
   /// when the record is part of a required change in a  `DnsUpdates`
@@ -27,7 +27,7 @@ class AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecord {
   /// NONE
   /// ADD
   /// REMOVE
-  final pulumi.Input<String>? requiredAction;
+  final pulumi.Input<String?>? requiredAction;
   /// (Output)
   /// The record's type, which determines what data the record contains.
   /// Possible values:
@@ -36,7 +36,7 @@ class AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecord {
   /// TXT
   /// AAAA
   /// CAA
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecord].
   /// [domainName] (Output)

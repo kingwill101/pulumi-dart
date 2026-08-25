@@ -15,23 +15,23 @@ class ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyP
   /// COMMITMENT_3_YEAR_MONTHLY_PAYMENTS
   /// COMMITMENT_1_YEAR_UPFRONT_PAYMENT
   /// COMMITMENT_3_YEAR_UPFRONT_PAYMENT
-  final pulumi.Input<String>? commitmentPlan;
+  final pulumi.Input<String?>? commitmentPlan;
   /// (Output)
   /// CPU overcommit ratio.
   /// Acceptable values are between 1.0 and 8.0, with 0.1 increment.
-  final pulumi.Input<double>? cpuOvercommitRatio;
+  final pulumi.Input<double?>? cpuOvercommitRatio;
   /// (Output)
   /// Sole Tenancy nodes maintenance policy.
   /// Possible values:
   /// HOST_MAINTENANCE_POLICY_DEFAULT
   /// HOST_MAINTENANCE_POLICY_RESTART_IN_PLACE
   /// HOST_MAINTENANCE_POLICY_MIGRATE_WITHIN_NODE_GROUP
-  final pulumi.Input<String>? hostMaintenancePolicy;
+  final pulumi.Input<String?>? hostMaintenancePolicy;
   /// (Output)
   /// A list of sole tenant node types.
   /// An empty list means that all possible node types will be considered.
   /// Structure is documented below.
-  final pulumi.Input<List<ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceNodeType>>? nodeTypes;
+  final pulumi.Input<List<ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceNodeType>?>? nodeTypes;
 
   /// Creates a new [ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreference].
   /// [commitmentPlan] (Output)
@@ -57,7 +57,7 @@ class ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyP
   factory ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreference.fromMap(Map<String, dynamic> map) {
     return ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreference(
       commitmentPlan: (() { final guardedValue = map['commitmentPlan']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      cpuOvercommitRatio: (() { final guardedValue = map['cpuOvercommitRatio']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      cpuOvercommitRatio: (() { final guardedValue = map['cpuOvercommitRatio']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       hostMaintenancePolicy: (() { final guardedValue = map['hostMaintenancePolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       nodeTypes: (() { final guardedValue = map['nodeTypes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceNodeType>(guardedValue, (value) => ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceSoleTenancyPreferenceNodeType.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );

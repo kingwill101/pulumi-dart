@@ -5,10 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BackupEncryptionInfo {
   /// (Output)
   /// Output only. Type of encryption.
-  final pulumi.Input<String>? encryptionType;
+  final pulumi.Input<String?>? encryptionType;
   /// (Output)
   /// Output only. Cloud KMS key versions that are being used to protect the database or the backup.
-  final pulumi.Input<List<String>>? kmsKeyVersions;
+  final pulumi.Input<List<String>?>? kmsKeyVersions;
 
   /// Creates a new [BackupEncryptionInfo].
   /// [encryptionType] (Output)

@@ -6,7 +6,7 @@ import 'custom_target_type_tasks_render_container.dart';
 class CustomTargetTypeTasksRender {
   /// This task is represented by a container that is executed in the Cloud Build execution environment.
   /// Structure is documented below.
-  final pulumi.Input<CustomTargetTypeTasksRenderContainer>? container;
+  final pulumi.Input<CustomTargetTypeTasksRenderContainer?>? container;
 
   /// Creates a new [CustomTargetTypeTasksRender].
   /// [container] This task is represented by a container that is executed in the Cloud Build execution environment.

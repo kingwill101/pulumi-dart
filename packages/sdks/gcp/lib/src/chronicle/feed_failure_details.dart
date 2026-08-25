@@ -6,18 +6,18 @@ class FeedFailureDetails {
   /// (Output)
   /// errorAction contains the user action prescribed for remediation of feed
   /// error.
-  final pulumi.Input<String>? errorAction;
+  final pulumi.Input<String?>? errorAction;
   /// (Output)
   /// errorCause contains the information regarding the failure cause.
-  final pulumi.Input<String>? errorCause;
+  final pulumi.Input<String?>? errorCause;
   /// (Output)
   /// errorCode contains the error code for the feed. The field is populated for
   /// the feeds with failed status.
-  final pulumi.Input<String>? errorCode;
+  final pulumi.Input<String?>? errorCode;
   /// (Output)
   /// httpErrorCode contains the HTTP error code for the feed failure.
   /// feed transfer failure may or may not result in http error code.
-  final pulumi.Input<int>? httpErrorCode;
+  final pulumi.Input<int?>? httpErrorCode;
 
   /// Creates a new [FeedFailureDetails].
   /// [errorAction] (Output)
@@ -45,7 +45,7 @@ class FeedFailureDetails {
       errorAction: (() { final guardedValue = map['errorAction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       errorCause: (() { final guardedValue = map['errorCause']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       errorCode: (() { final guardedValue = map['errorCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      httpErrorCode: (() { final guardedValue = map['httpErrorCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      httpErrorCode: (() { final guardedValue = map['httpErrorCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

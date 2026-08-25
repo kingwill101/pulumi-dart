@@ -431,7 +431,7 @@ class Owner extends pulumi.CustomResource {
           'gcp:siteverification/owner:Owner',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     email = registerOutput<String>('email');
@@ -443,11 +443,12 @@ class Owner extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     OwnerState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Owner._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -461,6 +462,20 @@ class Owner extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    email = registerOutput<String>('email');
+    webResourceId = registerOutput<String>('webResourceId');
+  }
+
+  /// Creates a typed reference to an existing [Owner] resource.
+  Owner.reference(String urn)
+    : super(
+        'gcp:siteverification/owner:Owner',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     email = registerOutput<String>('email');
     webResourceId = registerOutput<String>('webResourceId');

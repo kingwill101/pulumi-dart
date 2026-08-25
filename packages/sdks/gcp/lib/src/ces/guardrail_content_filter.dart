@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GuardrailContentFilter {
   /// List of banned phrases. Applies to both user inputs and agent responses.
-  final pulumi.Input<List<String>>? bannedContents;
+  final pulumi.Input<List<String>?>? bannedContents;
   /// List of banned phrases. Applies only to agent responses.
-  final pulumi.Input<List<String>>? bannedContentsInAgentResponses;
+  final pulumi.Input<List<String>?>? bannedContentsInAgentResponses;
   /// List of banned phrases. Applies only to user inputs.
-  final pulumi.Input<List<String>>? bannedContentsInUserInputs;
+  final pulumi.Input<List<String>?>? bannedContentsInUserInputs;
   /// If true, diacritics are ignored during matching.
-  final pulumi.Input<bool>? disregardDiacritics;
+  final pulumi.Input<bool?>? disregardDiacritics;
   /// Match type for the content filter.
   /// Possible values:
   /// SIMPLE_STRING_MATCH

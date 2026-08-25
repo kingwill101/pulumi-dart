@@ -17,7 +17,7 @@ class GetCryptoKeyLatestVersionArgs {
   /// * `"state:ENABLED"` will retrieve the latest cryptoKeyVersion that has the state "ENABLED".
   ///
   /// [See the documentation about using filters](https://cloud.google.com/kms/docs/sorting-and-filtering)
-  final pulumi.Input<String>? filter;
+  final pulumi.Input<String?>? filter;
 
   /// Creates a new [GetCryptoKeyLatestVersionArgs].
   /// [cryptoKey] The `id` of the Google Cloud Platform CryptoKey to which the key version belongs. This is also the `id` field of the

@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'ai_endpoint_args.dart';
+import 'ai_endpoint_deployed_model.dart';
 import 'ai_endpoint_encryption_spec.dart';
 import 'ai_endpoint_predict_request_response_logging_config.dart';
 import 'ai_endpoint_private_service_connect_config.dart';
@@ -1056,7 +1057,7 @@ class AiEndpoint extends pulumi.CustomResource {
   late final pulumi.Output<String> deletionPolicy;
   /// Output only. The models deployed in this Endpoint. To add or remove DeployedModels use EndpointService.DeployModel and EndpointService.UndeployModel respectively. Models can also be deployed and undeployed using the [Cloud Console](https://console.cloud.google.com/vertex-ai/).
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> deployedModels;
+  late final pulumi.Output<List<AiEndpointDeployedModel>> deployedModels;
   /// The description of the Endpoint.
   late final pulumi.Output<String?> description;
   /// Required. The display name of the Endpoint. The name can be up to 128 characters long and can consist of any UTF-8 characters.
@@ -1116,19 +1117,20 @@ class AiEndpoint extends pulumi.CustomResource {
           'gcp:vertex/aiEndpoint:AiEndpoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');
     dedicatedEndpointDns = registerOutput<String>('dedicatedEndpointDns');
     dedicatedEndpointEnabled = registerOutput<bool?>('dedicatedEndpointEnabled');
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    deployedModels = registerOutput<List<Map<String, dynamic>>>('deployedModels');
+    deployedModels = registerOutput<List<AiEndpointDeployedModel>>('deployedModels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AiEndpointDeployedModel>(guardedValue, (value) => AiEndpointDeployedModel.fromMap((value as Map).cast<String, dynamic>())); });
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     encryptionSpec = registerOutput<AiEndpointEncryptionSpec?>('encryptionSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiEndpointEncryptionSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     modelDeploymentMonitoringJob = registerOutput<String>('modelDeploymentMonitoringJob');
     this.name = registerOutput<String>('name');
@@ -1136,7 +1138,7 @@ class AiEndpoint extends pulumi.CustomResource {
     predictRequestResponseLoggingConfig = registerOutput<AiEndpointPredictRequestResponseLoggingConfig?>('predictRequestResponseLoggingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiEndpointPredictRequestResponseLoggingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     privateServiceConnectConfig = registerOutput<AiEndpointPrivateServiceConnectConfig?>('privateServiceConnectConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiEndpointPrivateServiceConnectConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     region = registerOutput<String?>('region');
     trafficSplit = registerOutput<String>('trafficSplit');
     updateTime = registerOutput<String>('updateTime');
@@ -1147,11 +1149,12 @@ class AiEndpoint extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AiEndpointState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AiEndpoint._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1169,13 +1172,13 @@ class AiEndpoint extends pulumi.CustomResource {
     dedicatedEndpointDns = registerOutput<String>('dedicatedEndpointDns');
     dedicatedEndpointEnabled = registerOutput<bool?>('dedicatedEndpointEnabled');
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    deployedModels = registerOutput<List<Map<String, dynamic>>>('deployedModels');
+    deployedModels = registerOutput<List<AiEndpointDeployedModel>>('deployedModels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AiEndpointDeployedModel>(guardedValue, (value) => AiEndpointDeployedModel.fromMap((value as Map).cast<String, dynamic>())); });
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     encryptionSpec = registerOutput<AiEndpointEncryptionSpec?>('encryptionSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiEndpointEncryptionSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     modelDeploymentMonitoringJob = registerOutput<String>('modelDeploymentMonitoringJob');
     this.name = registerOutput<String>('name');
@@ -1183,7 +1186,41 @@ class AiEndpoint extends pulumi.CustomResource {
     predictRequestResponseLoggingConfig = registerOutput<AiEndpointPredictRequestResponseLoggingConfig?>('predictRequestResponseLoggingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiEndpointPredictRequestResponseLoggingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     privateServiceConnectConfig = registerOutput<AiEndpointPrivateServiceConnectConfig?>('privateServiceConnectConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiEndpointPrivateServiceConnectConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    region = registerOutput<String?>('region');
+    trafficSplit = registerOutput<String>('trafficSplit');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [AiEndpoint] resource.
+  AiEndpoint.reference(String urn)
+    : super(
+        'gcp:vertex/aiEndpoint:AiEndpoint',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    dedicatedEndpointDns = registerOutput<String>('dedicatedEndpointDns');
+    dedicatedEndpointEnabled = registerOutput<bool?>('dedicatedEndpointEnabled');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    deployedModels = registerOutput<List<AiEndpointDeployedModel>>('deployedModels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AiEndpointDeployedModel>(guardedValue, (value) => AiEndpointDeployedModel.fromMap((value as Map).cast<String, dynamic>())); });
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    encryptionSpec = registerOutput<AiEndpointEncryptionSpec?>('encryptionSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiEndpointEncryptionSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    etag = registerOutput<String>('etag');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    modelDeploymentMonitoringJob = registerOutput<String>('modelDeploymentMonitoringJob');
+    this.name = registerOutput<String>('name');
+    network = registerOutput<String?>('network');
+    predictRequestResponseLoggingConfig = registerOutput<AiEndpointPredictRequestResponseLoggingConfig?>('predictRequestResponseLoggingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiEndpointPredictRequestResponseLoggingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    privateServiceConnectConfig = registerOutput<AiEndpointPrivateServiceConnectConfig?>('privateServiceConnectConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiEndpointPrivateServiceConnectConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     region = registerOutput<String?>('region');
     trafficSplit = registerOutput<String>('trafficSplit');
     updateTime = registerOutput<String>('updateTime');

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RolloutSequenceOperationalState {
   /// (Output)
   /// The state of the rollout sequence.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
 
   /// Creates a new [RolloutSequenceOperationalState].
   /// [state] (Output)

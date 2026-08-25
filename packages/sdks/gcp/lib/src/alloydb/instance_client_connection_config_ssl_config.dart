@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstanceClientConnectionConfigSslConfig {
   /// SSL mode. Specifies client-server SSL/TLS connection behavior.
   /// Possible values are: `ENCRYPTED_ONLY`, `ALLOW_UNENCRYPTED_AND_ENCRYPTED`.
-  final pulumi.Input<String>? sslMode;
+  final pulumi.Input<String?>? sslMode;
 
   /// Creates a new [InstanceClientConnectionConfigSslConfig].
   /// [sslMode] SSL mode. Specifies client-server SSL/TLS connection behavior.

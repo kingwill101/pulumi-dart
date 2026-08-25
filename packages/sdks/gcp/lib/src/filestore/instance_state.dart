@@ -11,74 +11,74 @@ import 'instance_performance_config.dart';
 /// Input properties used for looking up and filtering Instance resources.
 class InstanceState {
   /// Creation timestamp in RFC3339 text format.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Indicates whether the instance is protected against deletion.
-  final pulumi.Input<bool>? deletionProtectionEnabled;
+  final pulumi.Input<bool?>? deletionProtectionEnabled;
   /// The reason for enabling deletion protection.
-  final pulumi.Input<String>? deletionProtectionReason;
+  final pulumi.Input<String?>? deletionProtectionReason;
   /// A description of the instance.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The desiredReplicaState field controls the state of a replica. Terraform will attempt to make the actual state of the replica match the desired state.
-  final pulumi.Input<String>? desiredReplicaState;
+  final pulumi.Input<String?>? desiredReplicaState;
   /// Directory Services configuration.
   /// Should only be set if protocol is "NFS_V4_1".
   /// Structure is documented below.
-  final pulumi.Input<InstanceDirectoryServices>? directoryServices;
+  final pulumi.Input<InstanceDirectoryServices?>? directoryServices;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveLabels;
+  final pulumi.Input<Map<String, String>?>? effectiveLabels;
   /// Output only fields for replication configuration.
   /// Structure is documented below.
-  final pulumi.Input<List<InstanceEffectiveReplication>>? effectiveReplications;
+  final pulumi.Input<List<InstanceEffectiveReplication>?>? effectiveReplications;
   /// Server-specified ETag for the instance resource to prevent
   /// simultaneous updates from overwriting each other.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// File system shares on the instance. For this version, only a
   /// single file share is supported.
   /// Structure is documented below.
-  final pulumi.Input<InstanceFileShares>? fileShares;
+  final pulumi.Input<InstanceFileShares?>? fileShares;
   /// Replication configuration, once set, this cannot be updated.
   /// Additionally this should be specified on the replica instance only, indicating the active as the peerInstance
   /// Structure is documented below.
-  final pulumi.Input<InstanceInitialReplication>? initialReplication;
+  final pulumi.Input<InstanceInitialReplication?>? initialReplication;
   /// KMS key name used for data encryption.
-  final pulumi.Input<String>? kmsKeyName;
+  final pulumi.Input<String?>? kmsKeyName;
   /// Resource labels to represent user-provided metadata.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The resource name of the instance.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// VPC networks to which the instance is connected. For this version,
   /// only a single network is supported.
   /// Structure is documented below.
-  final pulumi.Input<List<InstanceNetwork>>? networks;
+  final pulumi.Input<List<InstanceNetwork>?>? networks;
   /// Performance configuration for the instance. If not provided,
   /// the default performance settings will be used.
   /// Structure is documented below.
-  final pulumi.Input<InstancePerformanceConfig>? performanceConfig;
+  final pulumi.Input<InstancePerformanceConfig?>? performanceConfig;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Either NFSv3, for using NFS version 3 as file sharing protocol,
   /// or NFSv4.1, for using NFS version 4.1 as file sharing protocol.
   /// NFSv4.1 can be used with HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE.
   /// The default is NFSv3.
   /// Default value is `NFS_V3`.
   /// Possible values are: `NFS_V3`, `NFS_V4_1`.
-  final pulumi.Input<String>? protocol;
+  final pulumi.Input<String?>? protocol;
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  final pulumi.Input<Map<String, String>>? pulumiLabels;
+  final pulumi.Input<Map<String, String>?>? pulumiLabels;
   /// A map of resource manager tags. Resource manager tag keys
   /// and values have the same definition as resource manager
   /// tags. Keys must be in the format tagKeys/{tag_key_id},
@@ -88,15 +88,15 @@ class InstanceState {
   /// at create time and modifying this field after creation
   /// will trigger recreation. To apply tags to an existing
   /// resource, see the `gcp.tags.TagValue` resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The service tier of the instance.
   /// Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE
-  final pulumi.Input<String>? tier;
+  final pulumi.Input<String?>? tier;
   /// (Optional, Deprecated)
   /// The name of the Filestore zone of the instance.
   ///
   /// &gt; **Warning:** `zone` is deprecated and will be removed in a future major release. Use `location` instead.
-  final pulumi.Input<String>? zone;
+  final pulumi.Input<String?>? zone;
 
   /// Creates a new [InstanceState].
   /// [createTime] Creation timestamp in RFC3339 text format.

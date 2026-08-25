@@ -6,7 +6,7 @@ import 'datascan_data_profile_spec_post_scan_actions_bigquery_export.dart';
 class DatascanDataProfileSpecPostScanActions {
   /// If set, results will be exported to the provided BigQuery table.
   /// Structure is documented below.
-  final pulumi.Input<DatascanDataProfileSpecPostScanActionsBigqueryExport>? bigqueryExport;
+  final pulumi.Input<DatascanDataProfileSpecPostScanActionsBigqueryExport?>? bigqueryExport;
 
   /// Creates a new [DatascanDataProfileSpecPostScanActions].
   /// [bigqueryExport] If set, results will be exported to the provided BigQuery table.

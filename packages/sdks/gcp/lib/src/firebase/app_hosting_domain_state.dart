@@ -7,46 +7,46 @@ import 'app_hosting_domain_serve.dart';
 /// Input properties used for looking up and filtering AppHostingDomain resources.
 class AppHostingDomainState {
   /// The ID of the Backend that this Domain is associated with
-  final pulumi.Input<String>? backend;
+  final pulumi.Input<String?>? backend;
   /// Time at which the domain was created.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// The status of a custom domain's linkage to the Backend.
   /// Structure is documented below.
-  final pulumi.Input<List<AppHostingDomainCustomDomainStatus>>? customDomainStatuses;
+  final pulumi.Input<List<AppHostingDomainCustomDomainStatus>?>? customDomainStatuses;
   /// Time at which the domain was deleted.
-  final pulumi.Input<String>? deleteTime;
+  final pulumi.Input<String?>? deleteTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Id of the domain to create.
   /// Must be a valid domain name, such as "foo.com"
-  final pulumi.Input<String>? domainId;
+  final pulumi.Input<String?>? domainId;
   /// Server-computed checksum based on other values; may be sent
   /// on update or delete to ensure operation is done on expected resource.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// The location of the Backend that this Domain is associated with
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Identifier. The resource name of the domain, e.g.
   /// `projects/{project}/locations/{locationId}/backends/{backendId}/domains/{domainId}`
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Time at which a soft-deleted domain will be purged, rendering in
   /// permanently deleted.
-  final pulumi.Input<String>? purgeTime;
+  final pulumi.Input<String?>? purgeTime;
   /// The serving behavior of the domain. If specified, the domain will
   /// serve content other than its Backend's live content.
   /// Structure is documented below.
-  final pulumi.Input<AppHostingDomainServe>? serve;
+  final pulumi.Input<AppHostingDomainServe?>? serve;
   /// System-assigned, unique identifier.
-  final pulumi.Input<String>? uid;
+  final pulumi.Input<String?>? uid;
   /// Time at which the domain was last updated.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [AppHostingDomainState].
   /// [backend] The ID of the Backend that this Domain is associated with

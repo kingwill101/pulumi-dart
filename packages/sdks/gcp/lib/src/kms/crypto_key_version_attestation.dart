@@ -7,16 +7,16 @@ import 'crypto_key_version_attestation_external_protection_level_options.dart';
 class CryptoKeyVersionAttestation {
   /// The certificate chains needed to validate the attestation
   /// Structure is documented below.
-  final pulumi.Input<CryptoKeyVersionAttestationCertChains>? certChains;
+  final pulumi.Input<CryptoKeyVersionAttestationCertChains?>? certChains;
   /// (Output)
   /// The attestation data provided by the HSM when the key operation was performed.
-  final pulumi.Input<String>? content;
+  final pulumi.Input<String?>? content;
   /// ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
   /// Structure is documented below.
-  final pulumi.Input<CryptoKeyVersionAttestationExternalProtectionLevelOptions>? externalProtectionLevelOptions;
+  final pulumi.Input<CryptoKeyVersionAttestationExternalProtectionLevelOptions?>? externalProtectionLevelOptions;
   /// (Output)
   /// The format of the attestation data.
-  final pulumi.Input<String>? format;
+  final pulumi.Input<String?>? format;
 
   /// Creates a new [CryptoKeyVersionAttestation].
   /// [certChains] The certificate chains needed to validate the attestation

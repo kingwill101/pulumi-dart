@@ -5,9 +5,9 @@ import 'dashboard_chart_dashboard_chart_visualization_visual_map_piece.dart';
 
 class DashboardChartDashboardChartVisualizationVisualMap {
   /// Structure is documented below.
-  final pulumi.Input<List<DashboardChartDashboardChartVisualizationVisualMapPiece>>? pieces;
+  final pulumi.Input<List<DashboardChartDashboardChartVisualizationVisualMapPiece>?>? pieces;
   /// Possible values are: `VISUAL_MAP_TYPE_UNSPECIFIED`, `CONTINUOUS`, `PIECEWISE`.
-  final pulumi.Input<String>? visualMapType;
+  final pulumi.Input<String?>? visualMapType;
 
   /// Creates a new [DashboardChartDashboardChartVisualizationVisualMap].
   /// [pieces] Structure is documented below.

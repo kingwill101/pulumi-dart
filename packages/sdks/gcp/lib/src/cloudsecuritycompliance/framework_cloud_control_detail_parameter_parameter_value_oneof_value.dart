@@ -5,10 +5,10 @@ import 'framework_cloud_control_detail_parameter_parameter_value_oneof_value_par
 
 class FrameworkCloudControlDetailParameterParameterValueOneofValue {
   /// The name of the parameter.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The value of the parameter.
   /// Structure is documented below.
-  final pulumi.Input<FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValue>? parameterValue;
+  final pulumi.Input<FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValue?>? parameterValue;
 
   /// Creates a new [FrameworkCloudControlDetailParameterParameterValueOneofValue].
   /// [name] The name of the parameter.

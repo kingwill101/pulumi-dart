@@ -9,23 +9,23 @@ import 'table_hive_options.dart';
 /// {@macro pulumi_biglake_table_table_args_doc}
 class TableArgs {
   /// The id of the parent database.
-  final pulumi.Input<String>? database;
+  final pulumi.Input<String?>? database;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Options of a Hive table.
   /// Structure is documented below.
-  final pulumi.Input<TableHiveOptions>? hiveOptions;
+  final pulumi.Input<TableHiveOptions?>? hiveOptions;
   /// Output only. The name of the Table. Format:
   /// projects/{project_id_or_number}/locations/{locationId}/catalogs/{catalogId}/databases/{databaseId}/tables/{tableId}
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The database type.
   /// Possible values are: `HIVE`.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [TableArgs].
   /// [database] The id of the parent database.

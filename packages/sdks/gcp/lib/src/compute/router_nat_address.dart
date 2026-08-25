@@ -71,11 +71,11 @@ class RouterNatAddress extends pulumi.CustomResource {
           'gcp:compute/routerNatAddress:RouterNatAddress',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    drainNatIps = registerOutput<List<String>?>('drainNatIps');
-    natIps = registerOutput<List<String>>('natIps');
+    drainNatIps = registerOutput<List<String>?>('drainNatIps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    natIps = registerOutput<List<String>>('natIps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     project = registerOutput<String>('project');
     region = registerOutput<String>('region');
     router = registerOutput<String>('router');
@@ -87,11 +87,12 @@ class RouterNatAddress extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RouterNatAddressState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RouterNatAddress._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -106,8 +107,26 @@ class RouterNatAddress extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    drainNatIps = registerOutput<List<String>?>('drainNatIps');
-    natIps = registerOutput<List<String>>('natIps');
+    drainNatIps = registerOutput<List<String>?>('drainNatIps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    natIps = registerOutput<List<String>>('natIps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+    router = registerOutput<String>('router');
+    routerNat = registerOutput<String>('routerNat');
+  }
+
+  /// Creates a typed reference to an existing [RouterNatAddress] resource.
+  RouterNatAddress.reference(String urn)
+    : super(
+        'gcp:compute/routerNatAddress:RouterNatAddress',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    drainNatIps = registerOutput<List<String>?>('drainNatIps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    natIps = registerOutput<List<String>>('natIps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     project = registerOutput<String>('project');
     region = registerOutput<String>('region');
     router = registerOutput<String>('router');

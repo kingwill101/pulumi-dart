@@ -3,51 +3,51 @@
 
 /// Result data returned by getClusterIamPolicy.
 class GetClusterIamPolicyResult {
-  final String cluster;
+  final String? cluster;
   /// (Computed) The etag of the IAM policy.
-  final String etag;
+  final String? etag;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// (Computed) The policy data
-  final String policyData;
-  final String project;
-  final String region;
+  final String? policyData;
+  final String? project;
+  final String? region;
 
   /// Creates a new [GetClusterIamPolicyResult].
-  /// [cluster] Required.
+  /// [cluster] Optional.
   /// [etag] (Computed) The etag of the IAM policy.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [policyData] (Computed) The policy data
-  /// [project] Required.
-  /// [region] Required.
+  /// [project] Optional.
+  /// [region] Optional.
   const GetClusterIamPolicyResult({
-    required this.cluster,
-    required this.etag,
-    required this.id,
-    required this.policyData,
-    required this.project,
-    required this.region,
+    this.cluster,
+    this.etag,
+    this.id,
+    this.policyData,
+    this.project,
+    this.region,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cluster': cluster,
-      'etag': etag,
-      'id': id,
-      'policyData': policyData,
-      'project': project,
-      'region': region,
+      'cluster': ?cluster,
+      'etag': ?etag,
+      'id': ?id,
+      'policyData': ?policyData,
+      'project': ?project,
+      'region': ?region,
     };
   }
 
   factory GetClusterIamPolicyResult.fromMap(Map<String, dynamic> map) {
     return GetClusterIamPolicyResult(
-      cluster: map['cluster'] as String,
-      etag: map['etag'] as String,
-      id: map['id'] as String,
-      policyData: map['policyData'] as String,
-      project: map['project'] as String,
-      region: map['region'] as String,
+      cluster: (() { final guardedValue = map['cluster']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      policyData: (() { final guardedValue = map['policyData']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

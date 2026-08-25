@@ -8,16 +8,16 @@ import 'cx_test_case_last_test_result_conversation_turn_user_input_input_text.da
 class CxTestCaseLastTestResultConversationTurnUserInputInput {
   /// The DTMF event to be handled.
   /// Structure is documented below.
-  final pulumi.Input<CxTestCaseLastTestResultConversationTurnUserInputInputDtmf>? dtmf;
+  final pulumi.Input<CxTestCaseLastTestResultConversationTurnUserInputInputDtmf?>? dtmf;
   /// The event to be triggered.
   /// Structure is documented below.
-  final pulumi.Input<CxTestCaseLastTestResultConversationTurnUserInputInputEvent>? event;
+  final pulumi.Input<CxTestCaseLastTestResultConversationTurnUserInputInputEvent?>? event;
   /// The language of the input. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes.
   /// Note that queries in the same session do not necessarily need to specify the same language.
-  final pulumi.Input<String>? languageCode;
+  final pulumi.Input<String?>? languageCode;
   /// The natural language text to be processed.
   /// Structure is documented below.
-  final pulumi.Input<CxTestCaseLastTestResultConversationTurnUserInputInputText>? text;
+  final pulumi.Input<CxTestCaseLastTestResultConversationTurnUserInputInputText?>? text;
 
   /// Creates a new [CxTestCaseLastTestResultConversationTurnUserInputInput].
   /// [dtmf] The DTMF event to be handled.

@@ -7,13 +7,13 @@ import 'service_perimeter_spec_egress_policy_egress_to.dart';
 class ServicePerimeterSpecEgressPolicy {
   /// Defines conditions on the source of a request causing this `EgressPolicy` to apply.
   /// Structure is documented below.
-  final pulumi.Input<ServicePerimeterSpecEgressPolicyEgressFrom>? egressFrom;
+  final pulumi.Input<ServicePerimeterSpecEgressPolicyEgressFrom?>? egressFrom;
   /// Defines the conditions on the `ApiOperation` and destination resources that
   /// cause this `EgressPolicy` to apply.
   /// Structure is documented below.
-  final pulumi.Input<ServicePerimeterSpecEgressPolicyEgressTo>? egressTo;
+  final pulumi.Input<ServicePerimeterSpecEgressPolicyEgressTo?>? egressTo;
   /// Human readable title. Must be unique within the perimeter. Does not affect behavior.
-  final pulumi.Input<String>? title;
+  final pulumi.Input<String?>? title;
 
   /// Creates a new [ServicePerimeterSpecEgressPolicy].
   /// [egressFrom] Defines conditions on the source of a request causing this `EgressPolicy` to apply.

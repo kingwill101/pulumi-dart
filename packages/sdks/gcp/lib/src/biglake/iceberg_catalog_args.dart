@@ -17,40 +17,40 @@ class IcebergCatalogArgs {
   final pulumi.Input<String> catalogType;
   /// The credential mode used for the catalog. CREDENTIAL_MODE_END_USER - End user credentials, default. The authenticating user must have access to the catalog resources and the corresponding Google Cloud Storage files. CREDENTIAL_MODE_VENDED_CREDENTIALS - Use credential vending. The authenticating user must have access to the catalog resources and the system will provide the caller with downscoped credentials to access the Google Cloud Storage files. All table operations in this mode would require `X-Iceberg-Access-Delegation` header with `vended-credentials` value included. System will generate a service account and the catalog administrator must grant the service account appropriate permissions.
   /// Possible values are: `CREDENTIAL_MODE_END_USER`, `CREDENTIAL_MODE_VENDED_CREDENTIALS`.
-  final pulumi.Input<String>? credentialMode;
+  final pulumi.Input<String?>? credentialMode;
   /// The default storage location for the catalog, e.g., `gs://my-bucket`.
   /// Output only when the catalog type is CATALOG_TYPE_GCS_BUCKET.
   /// Required when the catalog type is CATALOG_TYPE_BIGLAKE.
-  final pulumi.Input<String>? defaultLocation;
+  final pulumi.Input<String?>? defaultLocation;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// A user-provided description of the catalog. Maximum 1024 UTF-8 characters.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Options for a CATALOG_TYPE_FEDERATED catalog. Required when catalogType
   /// is CATALOG_TYPE_FEDERATED.
   /// Structure is documented below.
-  final pulumi.Input<IcebergCatalogFederatedCatalogOptions>? federatedCatalogOptions;
+  final pulumi.Input<IcebergCatalogFederatedCatalogOptions?>? federatedCatalogOptions;
   /// The name of the IcebergCatalog.
   /// For CATALOG_TYPE_GCS_BUCKET typed catalogs, the name needs to be the
   /// exact same value of the GCS bucket's name. For example, for a bucket:
   /// gs://bucket-name, the catalog name will be exactly "bucket-name".
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The primary location for mirroring the remote catalog metadata. It must be
   /// a BigLake-supported location, and it should be proximate to the remote
   /// catalog's location.
-  final pulumi.Input<String>? primaryLocation;
+  final pulumi.Input<String?>? primaryLocation;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Configuration for the additional GCS locations that are permitted for use
   /// by resources within this catalog.
   /// Structure is documented below.
-  final pulumi.Input<IcebergCatalogRestrictedLocationsConfig>? restrictedLocationsConfig;
+  final pulumi.Input<IcebergCatalogRestrictedLocationsConfig?>? restrictedLocationsConfig;
 
   /// Creates a new [IcebergCatalogArgs].
   /// [catalogType] The catalog type of the IcebergCatalog.

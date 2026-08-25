@@ -5,11 +5,11 @@ import 'management_organization_security_health_analytics_custom_module_custom_c
 
 class ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputProperty {
   /// Name of the property for the custom output.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The CEL expression for the custom output. A resource property can be specified
   /// to return the value of the property or a text string enclosed in quotation marks.
   /// Structure is documented below.
-  final pulumi.Input<ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputPropertyValueExpression>? valueExpression;
+  final pulumi.Input<ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputPropertyValueExpression?>? valueExpression;
 
   /// Creates a new [ManagementOrganizationSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputProperty].
   /// [name] Name of the property for the custom output.

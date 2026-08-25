@@ -10,7 +10,7 @@ class GetStoragePoolArgs {
   /// The name of the Storage Pool.
   final pulumi.Input<String> name;
   /// The project in which the Storage Pool exists. If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The zone where the Storage Pool resides.
   final pulumi.Input<String> zone;
 

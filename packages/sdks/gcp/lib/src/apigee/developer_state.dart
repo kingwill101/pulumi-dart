@@ -7,33 +7,33 @@ import 'developer_attribute.dart';
 class DeveloperState {
   /// Developer attributes (name/value pairs). The custom attribute limit is 18.
   /// Structure is documented below.
-  final pulumi.Input<List<DeveloperAttribute>>? attributes;
+  final pulumi.Input<List<DeveloperAttribute>?>? attributes;
   /// Time at which the developer was created in milliseconds since epoch.
-  final pulumi.Input<String>? createdAt;
+  final pulumi.Input<String?>? createdAt;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Email address of the developer. This value is used to uniquely identify the developer in Apigee hybrid. Note that the email address has to be in lowercase only..
-  final pulumi.Input<String>? email;
+  final pulumi.Input<String?>? email;
   /// First name of the developer.
-  final pulumi.Input<String>? firstName;
+  final pulumi.Input<String?>? firstName;
   /// Time at which the developer was last modified in milliseconds since epoch.
-  final pulumi.Input<String>? lastModifiedAt;
+  final pulumi.Input<String?>? lastModifiedAt;
   /// Last name of the developer.
-  final pulumi.Input<String>? lastName;
+  final pulumi.Input<String?>? lastName;
   /// The Apigee Organization associated with the Apigee instance,
   /// in the format `organizations/{{org_name}}`.
-  final pulumi.Input<String>? orgId;
+  final pulumi.Input<String?>? orgId;
   /// Name of the Apigee organization in which the developer resides.
-  final pulumi.Input<String>? organizatioName;
+  final pulumi.Input<String?>? organizatioName;
   /// Status of the developer. Valid values are active and inactive.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// User name of the developer. Not used by Apigee hybrid.
-  final pulumi.Input<String>? userName;
+  final pulumi.Input<String?>? userName;
 
   /// Creates a new [DeveloperState].
   /// [attributes] Developer attributes (name/value pairs). The custom attribute limit is 18.

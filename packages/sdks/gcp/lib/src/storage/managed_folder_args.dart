@@ -15,15 +15,15 @@ class ManagedFolderArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Allows the deletion of a managed folder even if contains
   /// objects. If a non-empty managed folder is deleted, any objects
   /// within the folder will remain in a simulated folder with the
   /// same name.
-  final pulumi.Input<bool>? forceDestroy;
+  final pulumi.Input<bool?>? forceDestroy;
   /// The name of the managed folder expressed as a path. Must include
   /// trailing '/'. For example, `example_dir/example_dir2/`.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [ManagedFolderArgs].
   /// [bucket] The name of the bucket that contains the managed folder.

@@ -12,62 +12,62 @@ class PrivateCloudState {
   /// Creation time of this resource.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
   /// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Time when the resource was scheduled for deletion.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
   /// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-  final pulumi.Input<String>? deleteTime;
+  final pulumi.Input<String?>? deleteTime;
   /// The number of hours to delay this request. You can set this value to an hour between 0 to 8, where setting it to 0 starts the deletion request immediately. If no value is set, a default value is set at the API Level.
-  final pulumi.Input<int>? deletionDelayHours;
+  final pulumi.Input<int?>? deletionDelayHours;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// User-provided description for this private cloud.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Time when the resource will be irreversibly deleted.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
   /// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-  final pulumi.Input<String>? expireTime;
+  final pulumi.Input<String?>? expireTime;
   /// Details about a HCX Cloud Manager appliance.
   /// Structure is documented below.
-  final pulumi.Input<List<PrivateCloudHcx>>? hcxes;
+  final pulumi.Input<List<PrivateCloudHcx>?>? hcxes;
   /// The location where the PrivateCloud should reside.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The management cluster for this private cloud. This used for creating and managing the default cluster.
   /// Structure is documented below.
-  final pulumi.Input<PrivateCloudManagementCluster>? managementCluster;
+  final pulumi.Input<PrivateCloudManagementCluster?>? managementCluster;
   /// The ID of the PrivateCloud.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Network configuration in the consumer project with which the peering has to be done.
   /// Structure is documented below.
-  final pulumi.Input<PrivateCloudNetworkConfig>? networkConfig;
+  final pulumi.Input<PrivateCloudNetworkConfig?>? networkConfig;
   /// Details about a NSX Manager appliance.
   /// Structure is documented below.
-  final pulumi.Input<List<PrivateCloudNsx>>? nsxes;
+  final pulumi.Input<List<PrivateCloudNsx>?>? nsxes;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// While set true, deletionDelayHours value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the deletionDelayHours field. It can be used both alone and together with deletion_delay_hours.
-  final pulumi.Input<bool>? sendDeletionDelayHoursIfZero;
+  final pulumi.Input<bool?>? sendDeletionDelayHoursIfZero;
   /// State of the appliance.
   /// Possible values are: `ACTIVE`, `CREATING`.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// Initial type of the private cloud.
   /// Possible values are: `STANDARD`, `TIME_LIMITED`, `STRETCHED`.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// System-generated unique identifier for the resource.
-  final pulumi.Input<String>? uid;
+  final pulumi.Input<String?>? uid;
   /// Last update time of this resource.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
   /// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
   /// Details about a vCenter Server management appliance.
   /// Structure is documented below.
-  final pulumi.Input<List<PrivateCloudVcenter>>? vcenters;
+  final pulumi.Input<List<PrivateCloudVcenter>?>? vcenters;
 
   /// Creates a new [PrivateCloudState].
   /// [createTime] Creation time of this resource.
@@ -139,7 +139,7 @@ class PrivateCloudState {
     return PrivateCloudState(
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deleteTime: (() { final guardedValue = map['deleteTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      deletionDelayHours: (() { final guardedValue = map['deletionDelayHours']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      deletionDelayHours: (() { final guardedValue = map['deletionDelayHours']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       expireTime: (() { final guardedValue = map['expireTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

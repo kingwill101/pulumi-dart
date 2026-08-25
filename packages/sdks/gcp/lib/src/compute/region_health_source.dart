@@ -382,7 +382,7 @@ class RegionHealthSource extends pulumi.CustomResource {
           'gcp:compute/regionHealthSource:RegionHealthSource',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     creationTimestamp = registerOutput<String>('creationTimestamp');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -402,11 +402,12 @@ class RegionHealthSource extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RegionHealthSourceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RegionHealthSource._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -420,6 +421,28 @@ class RegionHealthSource extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    fingerprint = registerOutput<String>('fingerprint');
+    healthAggregationPolicy = registerOutput<String?>('healthAggregationPolicy');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+    selfLinkWithId = registerOutput<String>('selfLinkWithId');
+    sourceType = registerOutput<String>('sourceType');
+    sources = registerOutput<String?>('sources');
+  }
+
+  /// Creates a typed reference to an existing [RegionHealthSource] resource.
+  RegionHealthSource.reference(String urn)
+    : super(
+        'gcp:compute/regionHealthSource:RegionHealthSource',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     creationTimestamp = registerOutput<String>('creationTimestamp');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');

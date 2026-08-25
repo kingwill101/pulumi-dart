@@ -5,12 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AiRagEngineConfigRagManagedDbConfig {
   /// Basic tier is a cost-effective and low compute tier suitable for the following cases: Experimenting with RagManagedDb, Small data size, Latency insensitive workload, Only using RAG Engine with external vector DBs.
   /// NOTE: This is the default tier if not explicitly chosen.
-  final pulumi.Input<Map<String, dynamic>>? basic;
+  final pulumi.Input<Map<String, dynamic>?>? basic;
   /// Scaled tier offers production grade performance along with autoscaling functionality. It is suitable for customers with large amounts of data or performance sensitive workloads.
-  final pulumi.Input<Map<String, dynamic>>? scaled;
+  final pulumi.Input<Map<String, dynamic>?>? scaled;
   /// Disables the RAG Engine service and deletes all your data held within this service. This will halt the billing of the service.
   /// NOTE: Once deleted the data cannot be recovered. To start using RAG Engine again, you will need to update the tier by calling the UpdateRagEngineConfig API.
-  final pulumi.Input<Map<String, dynamic>>? unprovisioned;
+  final pulumi.Input<Map<String, dynamic>?>? unprovisioned;
 
   /// Creates a new [AiRagEngineConfigRagManagedDbConfig].
   /// [basic] Basic tier is a cost-effective and low compute tier suitable for the following cases: Experimenting with RagManagedDb, Small data size, Latency insensitive workload, Only using RAG Engine with external vector DBs.

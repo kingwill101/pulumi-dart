@@ -26,8 +26,8 @@ class GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfig {
 
   factory GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfig.fromMap(Map<String, dynamic> map) {
     return GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfig(
-      leafNodeEmbeddingCount: pulumi.Input.fromValue(map['leafNodeEmbeddingCount'] as int),
-      leafNodesToSearchPercent: pulumi.Input.fromValue(map['leafNodesToSearchPercent'] as int),
+      leafNodeEmbeddingCount: pulumi.Input.fromValue((map['leafNodeEmbeddingCount'] as num).toInt()),
+      leafNodesToSearchPercent: pulumi.Input.fromValue((map['leafNodesToSearchPercent'] as num).toInt()),
     );
   }
 }

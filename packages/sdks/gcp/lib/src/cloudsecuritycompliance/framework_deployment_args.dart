@@ -21,9 +21,9 @@ class FrameworkDeploymentArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// User provided description of the Framework deployment
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// FrameworkReference contains the reference of a framework.
   /// Structure is documented below.
   final pulumi.Input<FrameworkDeploymentFramework> framework;
@@ -31,17 +31,17 @@ class FrameworkDeploymentArgs {
   /// This is optional and if not provided, a random UUID will be generated.
   final pulumi.Input<String> frameworkDeploymentId;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// (Optional, Deprecated)
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   ///
   /// &gt; **Warning:** Use `parent` instead.
-  final pulumi.Input<String>? organization;
+  final pulumi.Input<String?>? organization;
   /// The parent resource in which to create the resource.
   /// Must be in one of the following formats:
   /// * `projects/{{project}}`
   /// * `organizations/{{organization}}`
-  final pulumi.Input<String>? parent;
+  final pulumi.Input<String?>? parent;
   /// TargetResourceConfig contains either the name of the targetResource or
   /// contains the config to create a new target_resource.
   /// Structure is documented below.

@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class HostingVersionConfigRedirect {
   /// The user-supplied glob to match against the request URL path.
-  final pulumi.Input<String>? glob;
+  final pulumi.Input<String?>? glob;
   /// The value to put in the HTTP location header of the response.
   /// The location can contain capture group values from the pattern using a : prefix to identify
   /// the segment and an optional * to capture the rest of the URL. For example:
   final pulumi.Input<String> location;
   /// The user-supplied RE2 regular expression to match against the request URL path.
-  final pulumi.Input<String>? regex;
+  final pulumi.Input<String?>? regex;
   /// The status HTTP code to return in the response. It must be a valid 3xx status code.
   final pulumi.Input<int> statusCode;
 
@@ -40,7 +40,7 @@ class HostingVersionConfigRedirect {
       glob: (() { final guardedValue = map['glob']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: pulumi.Input.fromValue(map['location'] as String),
       regex: (() { final guardedValue = map['regex']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      statusCode: pulumi.Input.fromValue(map['statusCode'] as int),
+      statusCode: pulumi.Input.fromValue((map['statusCode'] as num).toInt()),
     );
   }
 }

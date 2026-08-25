@@ -2049,7 +2049,7 @@ class ManagedFolderIamPolicy extends pulumi.CustomResource {
           'gcp:storage/managedFolderIamPolicy:ManagedFolderIamPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     bucket = registerOutput<String>('bucket');
     etag = registerOutput<String>('etag');
@@ -2062,11 +2062,12 @@ class ManagedFolderIamPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ManagedFolderIamPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ManagedFolderIamPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -2080,6 +2081,21 @@ class ManagedFolderIamPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    bucket = registerOutput<String>('bucket');
+    etag = registerOutput<String>('etag');
+    managedFolder = registerOutput<String>('managedFolder');
+    policyData = registerOutput<String>('policyData');
+  }
+
+  /// Creates a typed reference to an existing [ManagedFolderIamPolicy] resource.
+  ManagedFolderIamPolicy.reference(String urn)
+    : super(
+        'gcp:storage/managedFolderIamPolicy:ManagedFolderIamPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     bucket = registerOutput<String>('bucket');
     etag = registerOutput<String>('etag');
     managedFolder = registerOutput<String>('managedFolder');

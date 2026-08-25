@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectField {
   /// Field name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectField].
   /// [name] Field name.

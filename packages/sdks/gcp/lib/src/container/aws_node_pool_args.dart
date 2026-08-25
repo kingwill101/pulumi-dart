@@ -17,7 +17,7 @@ class AwsNodePoolArgs {
   ///
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
-  final pulumi.Input<Map<String, String>>? annotations;
+  final pulumi.Input<Map<String, String>?>? annotations;
   /// Autoscaler configuration for this node pool.
   final pulumi.Input<AwsNodePoolAutoscaling> autoscaling;
   /// The awsCluster for the resource
@@ -30,23 +30,23 @@ class AwsNodePoolArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The kubelet configuration for the node pool.
-  final pulumi.Input<AwsNodePoolKubeletConfig>? kubeletConfig;
+  final pulumi.Input<AwsNodePoolKubeletConfig?>? kubeletConfig;
   /// The location for the resource
   final pulumi.Input<String> location;
   /// The Management configuration for this node pool.
-  final pulumi.Input<AwsNodePoolManagement>? management;
+  final pulumi.Input<AwsNodePoolManagement?>? management;
   /// The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
   final pulumi.Input<AwsNodePoolMaxPodsConstraint> maxPodsConstraint;
   /// The name of this resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The project for the resource
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The subnet where the node pool node run.
   final pulumi.Input<String> subnetId;
   /// Optional. Update settings control the speed and disruption of the node pool update.
-  final pulumi.Input<AwsNodePoolUpdateSettings>? updateSettings;
+  final pulumi.Input<AwsNodePoolUpdateSettings?>? updateSettings;
   /// The Kubernetes version to run on this node pool (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling GetAwsServerConfig.
   final pulumi.Input<String> version;
 

@@ -10,21 +10,21 @@ import 'project_sink_exclusion.dart';
 /// {@macro pulumi_logging_project_sink_project_sink_args_doc}
 class ProjectSinkArgs {
   /// Options that affect sinks exporting data to BigQuery. Structure documented below.
-  final pulumi.Input<ProjectSinkBigqueryOptions>? bigqueryOptions;
+  final pulumi.Input<ProjectSinkBigqueryOptions?>? bigqueryOptions;
   /// A user managed service account that will be used to write
   /// the log entries. The format must be `serviceAccount:some@email`. This field can only be specified if you are
   /// routing logs to a destination outside this sink's project. If not specified, a Logging service account
   /// will automatically be generated.
-  final pulumi.Input<String>? customWriterIdentity;
+  final pulumi.Input<String?>? customWriterIdentity;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// A description of this sink. The maximum length of the description is 8000 characters.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The destination of the sink (or, in other words, where logs are written to). Can be a Cloud Storage bucket, a PubSub topic, a BigQuery dataset, a Cloud Logging bucket, or a Google Cloud project. Examples:
   ///
   /// - `storage.googleapis.com/[GCS_BUCKET]`
@@ -36,25 +36,25 @@ class ProjectSinkArgs {
   /// The writer associated with the sink must have access to write to the above resource.
   final pulumi.Input<String> destination;
   /// If set to True, then this sink is disabled and it does not export any log entries.
-  final pulumi.Input<bool>? disabled;
+  final pulumi.Input<bool?>? disabled;
   /// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both `filter` and one of `exclusions.filter`, it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
-  final pulumi.Input<List<ProjectSinkExclusion>>? exclusions;
+  final pulumi.Input<List<ProjectSinkExclusion>?>? exclusions;
   /// The filter to apply when exporting logs. Only log entries that match the filter are exported.
   /// See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
   /// write a filter.
-  final pulumi.Input<String>? filter;
+  final pulumi.Input<String?>? filter;
   /// The name of the logging sink. Logging automatically creates two sinks: `_Required` and `_Default`.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project to create the sink in. If omitted, the project associated with the provider is
   /// used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Whether to use a service agent as the `writerIdentity` for this sink. If `false`,
   /// `writerIdentity` is `serviceAccount:cloud-logs@system.gserviceaccount.com` and the sink's destination must be in the
   /// same project as the sink. If `true` (the default), `writerIdentity` is a service agent shared by sinks with the same
   /// parent. You must set `uniqueWriterIdentity` to `true` to publish logs across projects or use `bigqueryOptions`.
   /// See the [`projects.sinks.create` API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/projects.sinks/create#query-parameters)
   /// for more information.
-  final pulumi.Input<bool>? uniqueWriterIdentity;
+  final pulumi.Input<bool?>? uniqueWriterIdentity;
 
   /// Creates a new [ProjectSinkArgs].
   /// [bigqueryOptions] Options that affect sinks exporting data to BigQuery. Structure documented below.

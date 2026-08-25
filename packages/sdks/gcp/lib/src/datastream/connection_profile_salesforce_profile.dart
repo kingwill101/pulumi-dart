@@ -9,10 +9,10 @@ class ConnectionProfileSalesforceProfile {
   final pulumi.Input<String> domain;
   /// OAuth credentials to use for Salesforce authentication.
   /// Structure is documented below.
-  final pulumi.Input<ConnectionProfileSalesforceProfileOauth2ClientCredentials>? oauth2ClientCredentials;
+  final pulumi.Input<ConnectionProfileSalesforceProfileOauth2ClientCredentials?>? oauth2ClientCredentials;
   /// User credentials to use for Salesforce authentication.
   /// Structure is documented below.
-  final pulumi.Input<ConnectionProfileSalesforceProfileUserCredentials>? userCredentials;
+  final pulumi.Input<ConnectionProfileSalesforceProfileUserCredentials?>? userCredentials;
 
   /// Creates a new [ConnectionProfileSalesforceProfile].
   /// [domain] Domain for the Salesforce Org.

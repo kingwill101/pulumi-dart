@@ -8,10 +8,10 @@ class StandardAppVersionDeployment {
   /// Manifest of the files stored in Google Cloud Storage that are included as part of this version.
   /// All files must be readable using the credentials supplied with this call.
   /// Structure is documented below.
-  final pulumi.Input<List<StandardAppVersionDeploymentFile>>? files;
+  final pulumi.Input<List<StandardAppVersionDeploymentFile>?>? files;
   /// Zip File
   /// Structure is documented below.
-  final pulumi.Input<StandardAppVersionDeploymentZip>? zip;
+  final pulumi.Input<StandardAppVersionDeploymentZip?>? zip;
 
   /// Creates a new [StandardAppVersionDeployment].
   /// [files] Manifest of the files stored in Google Cloud Storage that are included as part of this version.

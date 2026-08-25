@@ -116,6 +116,17 @@ Future<GetClusterResult> getCluster(
   return GetClusterResult.fromMap(result);
 }
 
+pulumi.Output<GetClusterResult> getClusterOutput(
+  GetClusterArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:alloydb/getCluster:getCluster',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetClusterResult.fromMap);
+}
+
 /// Use this data source to get information about the available instance. For more details refer the [API docs](https://cloud.google.com/alloydb/docs/reference/rest/v1/projects.locations.clusters.instances).
 ///
 /// ## Example Usage
@@ -224,6 +235,17 @@ Future<GetInstanceResult> getInstance(
   return GetInstanceResult.fromMap(result);
 }
 
+pulumi.Output<GetInstanceResult> getInstanceOutput(
+  GetInstanceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:alloydb/getInstance:getInstance',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInstanceResult.fromMap);
+}
+
 /// Use this data source to get information about the available locations. For more details refer the [API docs](https://cloud.google.com/alloydb/docs/reference/rest/v1/projects.locations).
 ///
 /// ## Example Usage
@@ -330,6 +352,17 @@ Future<GetLocationsResult> getLocations(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetLocationsResult.fromMap(result);
+}
+
+pulumi.Output<GetLocationsResult> getLocationsOutput(
+  GetLocationsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:alloydb/getLocations:getLocations',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLocationsResult.fromMap);
 }
 
 /// Use this data source to get information about the supported alloydb database flags in a location.
@@ -448,4 +481,15 @@ Future<GetSupportedDatabaseFlagsResult> getSupportedDatabaseFlags(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSupportedDatabaseFlagsResult.fromMap(result);
+}
+
+pulumi.Output<GetSupportedDatabaseFlagsResult> getSupportedDatabaseFlagsOutput(
+  GetSupportedDatabaseFlagsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:alloydb/getSupportedDatabaseFlags:getSupportedDatabaseFlags',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSupportedDatabaseFlagsResult.fromMap);
 }

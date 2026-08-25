@@ -3,11 +3,11 @@
 import 'package:pulumi_read/index.dart' as module_index;
 import 'package:pulumi_read/providers.dart' as module_providers;
 
-final index = const _IndexModuleNamespace();
-final providers = const _ProvidersModuleNamespace();
+final index = _IndexModuleNamespace();
+final providers = _ProvidersModuleNamespace();
 
 class _IndexModuleNamespace {
-  const _IndexModuleNamespace();
+  _IndexModuleNamespace();
   final ResourceArgs = module_index.ResourceArgs.new;
   final ResourceState = module_index.ResourceState.new;
   final ResourceStateArgs = module_index.ResourceState.new;
@@ -15,6 +15,6 @@ class _IndexModuleNamespace {
 }
 
 class _ProvidersModuleNamespace {
-  const _ProvidersModuleNamespace();
+  _ProvidersModuleNamespace();
   final Read = module_providers.ProviderProvider.new;
 }

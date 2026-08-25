@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class OrganizationAccessPolicyDetailsRuleCondition {
   /// Textual representation of an expression in Common Expression Language
   /// syntax.
-  final pulumi.Input<String>? expression;
+  final pulumi.Input<String?>? expression;
   /// The identifier for this object. Format specified above.
   final pulumi.Input<String> service;
 

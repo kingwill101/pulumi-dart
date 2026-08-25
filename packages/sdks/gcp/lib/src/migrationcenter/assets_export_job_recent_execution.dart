@@ -6,24 +6,24 @@ import 'assets_export_job_recent_execution_result.dart';
 class AssetsExportJobRecentExecution {
   /// (Output)
   /// Completion time of the export.
-  final pulumi.Input<String>? endTime;
+  final pulumi.Input<String?>? endTime;
   /// (Output)
   /// Globally unique identifier of the execution.
-  final pulumi.Input<String>? executionId;
+  final pulumi.Input<String?>? executionId;
   /// (Output)
   /// Expiration time for the export and artifacts.
-  final pulumi.Input<String>? expireTime;
+  final pulumi.Input<String?>? expireTime;
   /// (Output)
   /// Number of assets requested for export after resolving the requested
   /// filters.
-  final pulumi.Input<int>? requestedAssetCount;
+  final pulumi.Input<int?>? requestedAssetCount;
   /// (Output)
   /// Contains the result of the assets export.
   /// Structure is documented below.
-  final pulumi.Input<List<AssetsExportJobRecentExecutionResult>>? results;
+  final pulumi.Input<List<AssetsExportJobRecentExecutionResult>?>? results;
   /// (Output)
   /// Execution timestamp.
-  final pulumi.Input<String>? startTime;
+  final pulumi.Input<String?>? startTime;
 
   /// Creates a new [AssetsExportJobRecentExecution].
   /// [endTime] (Output)
@@ -57,7 +57,7 @@ class AssetsExportJobRecentExecution {
       endTime: (() { final guardedValue = map['endTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       executionId: (() { final guardedValue = map['executionId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       expireTime: (() { final guardedValue = map['expireTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      requestedAssetCount: (() { final guardedValue = map['requestedAssetCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      requestedAssetCount: (() { final guardedValue = map['requestedAssetCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       results: (() { final guardedValue = map['results']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AssetsExportJobRecentExecutionResult>(guardedValue, (value) => AssetsExportJobRecentExecutionResult.fromMap((value as Map).cast<String, dynamic>()))); })(),
       startTime: (() { final guardedValue = map['startTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

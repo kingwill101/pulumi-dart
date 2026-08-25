@@ -5,10 +5,10 @@ import 'stream_source_config_mongodb_source_config_exclude_objects_database_coll
 
 class StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollection {
   /// Collection name.
-  final pulumi.Input<String>? collection;
+  final pulumi.Input<String?>? collection;
   /// Fields in the collection.
   /// Structure is documented below.
-  final pulumi.Input<List<StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionField>>? fields;
+  final pulumi.Input<List<StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionField>?>? fields;
 
   /// Creates a new [StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollection].
   /// [collection] Collection name.

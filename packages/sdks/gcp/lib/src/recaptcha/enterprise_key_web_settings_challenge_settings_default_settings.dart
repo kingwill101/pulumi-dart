@@ -20,7 +20,7 @@ class EnterpriseKeyWebSettingsChallengeSettingsDefaultSettings {
 
   factory EnterpriseKeyWebSettingsChallengeSettingsDefaultSettings.fromMap(Map<String, dynamic> map) {
     return EnterpriseKeyWebSettingsChallengeSettingsDefaultSettings(
-      scoreThreshold: pulumi.Input.fromValue(map['scoreThreshold'] as double),
+      scoreThreshold: pulumi.Input.fromValue((map['scoreThreshold'] as num).toDouble()),
     );
   }
 }

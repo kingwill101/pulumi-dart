@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AgentToolset {
   /// The tools IDs to filter the toolset.
-  final pulumi.Input<List<String>>? toolIds;
+  final pulumi.Input<List<String>?>? toolIds;
   /// The resource name of the toolset.
   /// Format:
   /// `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`

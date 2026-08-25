@@ -698,7 +698,7 @@ class DatasetIamPolicy extends pulumi.CustomResource {
           'gcp:healthcare/datasetIamPolicy:DatasetIamPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     datasetId = registerOutput<String>('datasetId');
     etag = registerOutput<String>('etag');
@@ -710,11 +710,12 @@ class DatasetIamPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DatasetIamPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DatasetIamPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -728,6 +729,20 @@ class DatasetIamPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    datasetId = registerOutput<String>('datasetId');
+    etag = registerOutput<String>('etag');
+    policyData = registerOutput<String>('policyData');
+  }
+
+  /// Creates a typed reference to an existing [DatasetIamPolicy] resource.
+  DatasetIamPolicy.reference(String urn)
+    : super(
+        'gcp:healthcare/datasetIamPolicy:DatasetIamPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     datasetId = registerOutput<String>('datasetId');
     etag = registerOutput<String>('etag');
     policyData = registerOutput<String>('policyData');

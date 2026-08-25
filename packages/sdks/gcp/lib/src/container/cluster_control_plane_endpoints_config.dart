@@ -6,9 +6,9 @@ import 'cluster_control_plane_endpoints_config_ip_endpoints_config.dart';
 
 class ClusterControlPlaneEndpointsConfig {
   /// DNS endpoint configuration.
-  final pulumi.Input<ClusterControlPlaneEndpointsConfigDnsEndpointConfig>? dnsEndpointConfig;
+  final pulumi.Input<ClusterControlPlaneEndpointsConfigDnsEndpointConfig?>? dnsEndpointConfig;
   /// IP endpoint configuration.
-  final pulumi.Input<ClusterControlPlaneEndpointsConfigIpEndpointsConfig>? ipEndpointsConfig;
+  final pulumi.Input<ClusterControlPlaneEndpointsConfigIpEndpointsConfig?>? ipEndpointsConfig;
 
   /// Creates a new [ClusterControlPlaneEndpointsConfig].
   /// [dnsEndpointConfig] DNS endpoint configuration.

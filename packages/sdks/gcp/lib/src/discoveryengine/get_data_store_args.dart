@@ -8,13 +8,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_discoveryengine_get_data_store_get_data_store_args_doc}
 class GetDataStoreArgs {
   /// The unique id of the data store. Exactly one of `dataStoreId` or `displayName` must be provided.
-  final pulumi.Input<String>? dataStoreId;
+  final pulumi.Input<String?>? dataStoreId;
   /// The display name of the data store. Exactly one of `dataStoreId` or `displayName` must be provided. Returns an error if multiple data stores share the same display name.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The geographic location where the data store resides. The value can only be one of "global", "us" and "eu". Defaults to `global`.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetDataStoreArgs].
   /// [dataStoreId] The unique id of the data store. Exactly one of `dataStoreId` or `displayName` must be provided.

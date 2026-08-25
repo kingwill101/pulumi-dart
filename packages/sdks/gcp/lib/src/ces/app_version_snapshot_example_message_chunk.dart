@@ -11,26 +11,26 @@ class AppVersionSnapshotExampleMessageChunk {
   /// Represents an event indicating the transfer of a conversation to a different
   /// agent.
   /// Structure is documented below.
-  final pulumi.Input<List<AppVersionSnapshotExampleMessageChunkAgentTransfer>>? agentTransfers;
+  final pulumi.Input<List<AppVersionSnapshotExampleMessageChunkAgentTransfer>?>? agentTransfers;
   /// (Output)
   /// Represents an image input or output in the conversation.
   /// Structure is documented below.
-  final pulumi.Input<List<AppVersionSnapshotExampleMessageChunkImage>>? images;
+  final pulumi.Input<List<AppVersionSnapshotExampleMessageChunkImage>?>? images;
   /// (Output)
   /// Text for the agent to respond with.
-  final pulumi.Input<String>? text;
+  final pulumi.Input<String?>? text;
   /// (Output)
   /// Request for the client or the agent to execute the specified tool.
   /// Structure is documented below.
-  final pulumi.Input<List<AppVersionSnapshotExampleMessageChunkToolCall>>? toolCalls;
+  final pulumi.Input<List<AppVersionSnapshotExampleMessageChunkToolCall>?>? toolCalls;
   /// (Output)
   /// The execution result of a specific tool from the client or the agent.
   /// Structure is documented below.
-  final pulumi.Input<List<AppVersionSnapshotExampleMessageChunkToolResponse>>? toolResponses;
+  final pulumi.Input<List<AppVersionSnapshotExampleMessageChunkToolResponse>?>? toolResponses;
   /// (Output)
   /// A struct represents variables that were updated in the conversation,
   /// keyed by variable names.
-  final pulumi.Input<String>? updatedVariables;
+  final pulumi.Input<String?>? updatedVariables;
 
   /// Creates a new [AppVersionSnapshotExampleMessageChunk].
   /// [agentTransfers] (Output)

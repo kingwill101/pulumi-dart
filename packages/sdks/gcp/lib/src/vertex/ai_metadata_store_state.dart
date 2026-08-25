@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AiMetadataStoreState {
   /// (Output)
   /// The disk utilization of the MetadataStore in bytes.
-  final pulumi.Input<String>? diskUtilizationBytes;
+  final pulumi.Input<String?>? diskUtilizationBytes;
 
   /// Creates a new [AiMetadataStoreState].
   /// [diskUtilizationBytes] (Output)

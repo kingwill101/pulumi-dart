@@ -6,14 +6,14 @@ import 'config_mfa_provider_config.dart';
 class ConfigMfa {
   /// A list of usable second factors for this project.
   /// Each value may be one of: `PHONE_SMS`.
-  final pulumi.Input<List<String>>? enabledProviders;
+  final pulumi.Input<List<String>?>? enabledProviders;
   /// A list of usable second factors for this project along with their configurations.
   /// This field does not support phone based MFA, for that use the 'enabledProviders' field.
   /// Structure is documented below.
-  final pulumi.Input<List<ConfigMfaProviderConfig>>? providerConfigs;
+  final pulumi.Input<List<ConfigMfaProviderConfig>?>? providerConfigs;
   /// Whether MultiFactor Authentication has been enabled for this project.
   /// Possible values are: `DISABLED`, `ENABLED`, `MANDATORY`.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
 
   /// Creates a new [ConfigMfa].
   /// [enabledProviders] A list of usable second factors for this project.

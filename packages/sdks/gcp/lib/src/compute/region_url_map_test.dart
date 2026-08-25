@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RegionUrlMapTest {
   /// Description of this test case.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Host portion of the URL.
   final pulumi.Input<String> host;
   /// Path portion of the URL.

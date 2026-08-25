@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WorkflowTemplatePlacementManagedClusterConfigEncryptionConfig {
   /// The Cloud KMS key name to use for PD disk encryption for all instances in the cluster.
-  final pulumi.Input<String>? gcePdKmsKeyName;
+  final pulumi.Input<String?>? gcePdKmsKeyName;
 
   /// Creates a new [WorkflowTemplatePlacementManagedClusterConfigEncryptionConfig].
   /// [gcePdKmsKeyName] The Cloud KMS key name to use for PD disk encryption for all instances in the cluster.

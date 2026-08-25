@@ -5,11 +5,11 @@ import 'iceberg_catalog_federated_catalog_options_refresh_status_status.dart';
 
 class IcebergCatalogFederatedCatalogOptionsRefreshStatus {
   /// Output only. The end time of the most recent refresh.
-  final pulumi.Input<String>? endTime;
+  final pulumi.Input<String?>? endTime;
   /// Output only. The start time of the most recent refresh.
-  final pulumi.Input<String>? startTime;
+  final pulumi.Input<String?>? startTime;
   /// Output only. The error result of the last failed refresh, if any.
-  final pulumi.Input<List<IcebergCatalogFederatedCatalogOptionsRefreshStatusStatus>>? statuses;
+  final pulumi.Input<List<IcebergCatalogFederatedCatalogOptionsRefreshStatusStatus>?>? statuses;
 
   /// Creates a new [IcebergCatalogFederatedCatalogOptionsRefreshStatus].
   /// [endTime] Output only. The end time of the most recent refresh.

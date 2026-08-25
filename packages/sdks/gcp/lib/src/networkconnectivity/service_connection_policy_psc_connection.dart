@@ -6,28 +6,28 @@ import 'service_connection_policy_psc_connection_error_info.dart';
 
 class ServiceConnectionPolicyPscConnection {
   /// The resource reference of the consumer address.
-  final pulumi.Input<String>? consumerAddress;
+  final pulumi.Input<String?>? consumerAddress;
   /// The resource reference of the PSC Forwarding Rule within the consumer VPC.
-  final pulumi.Input<String>? consumerForwardingRule;
+  final pulumi.Input<String?>? consumerForwardingRule;
   /// The project where the PSC connection is created.
-  final pulumi.Input<String>? consumerTargetProject;
+  final pulumi.Input<String?>? consumerTargetProject;
   /// The most recent error during operating this connection.
   /// Structure is documented below.
-  final pulumi.Input<ServiceConnectionPolicyPscConnectionError>? error;
+  final pulumi.Input<ServiceConnectionPolicyPscConnectionError?>? error;
   /// The error info for the latest error during operating this connection.
   /// Structure is documented below.
-  final pulumi.Input<ServiceConnectionPolicyPscConnectionErrorInfo>? errorInfo;
+  final pulumi.Input<ServiceConnectionPolicyPscConnectionErrorInfo?>? errorInfo;
   /// The error type indicates whether the error is consumer facing, producer
   /// facing or system internal.
   /// Possible values are: `CONNECTION_ERROR_TYPE_UNSPECIFIED`, `ERROR_INTERNAL`, `ERROR_CONSUMER_SIDE`, `ERROR_PRODUCER_SIDE`.
-  final pulumi.Input<String>? errorType;
+  final pulumi.Input<String?>? errorType;
   /// The last Compute Engine operation to setup PSC connection.
-  final pulumi.Input<String>? gceOperation;
+  final pulumi.Input<String?>? gceOperation;
   /// The PSC connection id of the PSC forwarding rule.
-  final pulumi.Input<String>? pscConnectionId;
+  final pulumi.Input<String?>? pscConnectionId;
   /// The state of the PSC connection.
   /// Possible values are: `STATE_UNSPECIFIED`, `ACTIVE`, `CREATING`, `DELETING`, `FAILED`.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
 
   /// Creates a new [ServiceConnectionPolicyPscConnection].
   /// [consumerAddress] The resource reference of the consumer address.

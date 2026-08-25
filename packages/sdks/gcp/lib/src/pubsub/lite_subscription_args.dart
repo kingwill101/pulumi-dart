@@ -14,21 +14,21 @@ class LiteSubscriptionArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The settings for this subscription's message delivery.
   /// Structure is documented below.
-  final pulumi.Input<LiteSubscriptionDeliveryConfig>? deliveryConfig;
+  final pulumi.Input<LiteSubscriptionDeliveryConfig?>? deliveryConfig;
   /// Name of the subscription.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The region of the pubsub lite topic.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// A reference to a Topic resource.
   final pulumi.Input<String> topic;
   /// The zone of the pubsub lite topic.
-  final pulumi.Input<String>? zone;
+  final pulumi.Input<String?>? zone;
 
   /// Creates a new [LiteSubscriptionArgs].
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

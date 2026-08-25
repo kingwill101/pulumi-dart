@@ -7,7 +7,7 @@ class EnvironmentContainerImage {
   /// For example: gcr.io/{project_id}/{imageName}
   final pulumi.Input<String> repository;
   /// The tag of the container image. If not specified, this defaults to the latest tag.
-  final pulumi.Input<String>? tag;
+  final pulumi.Input<String?>? tag;
 
   /// Creates a new [EnvironmentContainerImage].
   /// [repository] The path to the container image repository.

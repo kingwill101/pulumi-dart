@@ -8,15 +8,15 @@ import 'per_instance_config_preserved_state_internal_ip.dart';
 class PerInstanceConfigPreservedState {
   /// Stateful disks for the instance.
   /// Structure is documented below.
-  final pulumi.Input<List<PerInstanceConfigPreservedStateDisk>>? disks;
+  final pulumi.Input<List<PerInstanceConfigPreservedStateDisk>?>? disks;
   /// Preserved external IPs defined for this instance. This map is keyed with the name of the network interface.
   /// Structure is documented below.
-  final pulumi.Input<List<PerInstanceConfigPreservedStateExternalIp>>? externalIps;
+  final pulumi.Input<List<PerInstanceConfigPreservedStateExternalIp>?>? externalIps;
   /// Preserved internal IPs defined for this instance. This map is keyed with the name of the network interface.
   /// Structure is documented below.
-  final pulumi.Input<List<PerInstanceConfigPreservedStateInternalIp>>? internalIps;
+  final pulumi.Input<List<PerInstanceConfigPreservedStateInternalIp>?>? internalIps;
   /// Preserved metadata defined for this instance. This is a list of key-&gt;value pairs.
-  final pulumi.Input<Map<String, String>>? metadata;
+  final pulumi.Input<Map<String, String>?>? metadata;
 
   /// Creates a new [PerInstanceConfigPreservedState].
   /// [disks] Stateful disks for the instance.

@@ -22,7 +22,7 @@ class WorkforcePoolProviderExtendedAttributesOauth2Client {
   /// The OIDC identity provider's issuer URI. Must be a valid URI using the 'https' scheme. Required to get the OIDC discovery document.
   final pulumi.Input<String> issuerUri;
   /// Represents the parameters to control which claims are fetched from an IdP.
-  final pulumi.Input<WorkforcePoolProviderExtendedAttributesOauth2ClientQueryParameters>? queryParameters;
+  final pulumi.Input<WorkforcePoolProviderExtendedAttributesOauth2ClientQueryParameters?>? queryParameters;
 
   /// Creates a new [WorkforcePoolProviderExtendedAttributesOauth2Client].
   /// [attributesType] Represents the IdP and type of claims that should be fetched.

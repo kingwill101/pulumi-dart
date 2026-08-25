@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AiPersistentResourceResourcePoolMachineSpec {
   /// The number of accelerators to attach to the machine.
-  final pulumi.Input<int>? acceleratorCount;
+  final pulumi.Input<int?>? acceleratorCount;
   /// The type of accelerator(s) that may be attached to the machine.
   /// Possible values:
   /// NVIDIA_TESLA_K80
@@ -25,13 +25,13 @@ class AiPersistentResourceResourcePoolMachineSpec {
   /// TPU_V3
   /// TPU_V4_POD
   /// TPU_V5_LITEPOD
-  final pulumi.Input<String>? acceleratorType;
+  final pulumi.Input<String?>? acceleratorType;
   /// The type of the machine.
   /// See the [list of machine types supported for
   /// prediction](https://cloud.google.com/vertex-ai/docs/predictions/configure-compute#machine-types)
   /// See the [list of machine types supported for custom
   /// training](https://cloud.google.com/vertex-ai/docs/training/configure-compute#machine-types).
-  final pulumi.Input<String>? machineType;
+  final pulumi.Input<String?>? machineType;
 
   /// Creates a new [AiPersistentResourceResourcePoolMachineSpec].
   /// [acceleratorCount] The number of accelerators to attach to the machine.
@@ -53,7 +53,7 @@ class AiPersistentResourceResourcePoolMachineSpec {
 
   factory AiPersistentResourceResourcePoolMachineSpec.fromMap(Map<String, dynamic> map) {
     return AiPersistentResourceResourcePoolMachineSpec(
-      acceleratorCount: (() { final guardedValue = map['acceleratorCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      acceleratorCount: (() { final guardedValue = map['acceleratorCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       acceleratorType: (() { final guardedValue = map['acceleratorType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       machineType: (() { final guardedValue = map['machineType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

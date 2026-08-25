@@ -5,12 +5,12 @@ import 'task_notebook_infrastructure_spec.dart';
 
 class TaskNotebook {
   /// Cloud Storage URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
-  final pulumi.Input<List<String>>? archiveUris;
+  final pulumi.Input<List<String>?>? archiveUris;
   /// Cloud Storage URIs of files to be placed in the working directory of each executor.
-  final pulumi.Input<List<String>>? fileUris;
+  final pulumi.Input<List<String>?>? fileUris;
   /// Infrastructure specification for the execution.
   /// Structure is documented below.
-  final pulumi.Input<TaskNotebookInfrastructureSpec>? infrastructureSpec;
+  final pulumi.Input<TaskNotebookInfrastructureSpec?>? infrastructureSpec;
   /// Path to input notebook. This can be the Cloud Storage URI of the notebook file or the path to a Notebook Content. The execution args are accessible as environment variables (TASK_key=value).
   final pulumi.Input<String> notebook;
 

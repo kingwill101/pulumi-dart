@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NodePoolNodeConfigEffectiveTaint {
   /// Effect for taint.
-  final pulumi.Input<String>? effect;
+  final pulumi.Input<String?>? effect;
   /// Key for taint.
-  final pulumi.Input<String>? key;
+  final pulumi.Input<String?>? key;
   /// Value for taint.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [NodePoolNodeConfigEffectiveTaint].
   /// [effect] Effect for taint.

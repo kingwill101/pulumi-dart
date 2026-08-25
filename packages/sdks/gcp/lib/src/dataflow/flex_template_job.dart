@@ -498,20 +498,21 @@ class FlexTemplateJob extends pulumi.CustomResource {
           'gcp:dataflow/flexTemplateJob:FlexTemplateJob',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
-    additionalExperiments = registerOutput<List<String>>('additionalExperiments');
-    additionalPipelineOptions = registerOutput<List<String>?>('additionalPipelineOptions');
+    additionalExperiments = registerOutput<List<String>>('additionalExperiments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    additionalPipelineOptions = registerOutput<List<String>?>('additionalPipelineOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     autoscalingAlgorithm = registerOutput<String>('autoscalingAlgorithm');
     containerSpecGcsPath = registerOutput<String>('containerSpecGcsPath');
     createIgnoreAlreadyExists = registerOutput<bool?>('createIgnoreAlreadyExists');
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     enableStreamingEngine = registerOutput<bool?>('enableStreamingEngine');
     ipConfiguration = registerOutput<String?>('ipConfiguration');
     jobId = registerOutput<String>('jobId');
     kmsKeyName = registerOutput<String>('kmsKeyName');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     launcherMachineType = registerOutput<String>('launcherMachineType');
     machineType = registerOutput<String>('machineType');
     maxWorkers = registerOutput<int>('maxWorkers');
@@ -519,9 +520,9 @@ class FlexTemplateJob extends pulumi.CustomResource {
     network = registerOutput<String>('network');
     numWorkers = registerOutput<int>('numWorkers');
     onDelete = registerOutput<String?>('onDelete');
-    parameters = registerOutput<Map<String, String>?>('parameters');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     region = registerOutput<String>('region');
     sdkContainerImage = registerOutput<String>('sdkContainerImage');
     serviceAccountEmail = registerOutput<String>('serviceAccountEmail');
@@ -530,7 +531,7 @@ class FlexTemplateJob extends pulumi.CustomResource {
     state = registerOutput<String>('state');
     subnetwork = registerOutput<String>('subnetwork');
     tempLocation = registerOutput<String>('tempLocation');
-    transformNameMapping = registerOutput<Map<String, String>?>('transformNameMapping');
+    transformNameMapping = registerOutput<Map<String, String>?>('transformNameMapping', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 
@@ -539,11 +540,12 @@ class FlexTemplateJob extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FlexTemplateJobState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return FlexTemplateJob._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -557,18 +559,18 @@ class FlexTemplateJob extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    additionalExperiments = registerOutput<List<String>>('additionalExperiments');
-    additionalPipelineOptions = registerOutput<List<String>?>('additionalPipelineOptions');
+    additionalExperiments = registerOutput<List<String>>('additionalExperiments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    additionalPipelineOptions = registerOutput<List<String>?>('additionalPipelineOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     autoscalingAlgorithm = registerOutput<String>('autoscalingAlgorithm');
     containerSpecGcsPath = registerOutput<String>('containerSpecGcsPath');
     createIgnoreAlreadyExists = registerOutput<bool?>('createIgnoreAlreadyExists');
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     enableStreamingEngine = registerOutput<bool?>('enableStreamingEngine');
     ipConfiguration = registerOutput<String?>('ipConfiguration');
     jobId = registerOutput<String>('jobId');
     kmsKeyName = registerOutput<String>('kmsKeyName');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     launcherMachineType = registerOutput<String>('launcherMachineType');
     machineType = registerOutput<String>('machineType');
     maxWorkers = registerOutput<int>('maxWorkers');
@@ -576,9 +578,9 @@ class FlexTemplateJob extends pulumi.CustomResource {
     network = registerOutput<String>('network');
     numWorkers = registerOutput<int>('numWorkers');
     onDelete = registerOutput<String?>('onDelete');
-    parameters = registerOutput<Map<String, String>?>('parameters');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     region = registerOutput<String>('region');
     sdkContainerImage = registerOutput<String>('sdkContainerImage');
     serviceAccountEmail = registerOutput<String>('serviceAccountEmail');
@@ -587,7 +589,51 @@ class FlexTemplateJob extends pulumi.CustomResource {
     this.state = registerOutput<String>('state');
     subnetwork = registerOutput<String>('subnetwork');
     tempLocation = registerOutput<String>('tempLocation');
-    transformNameMapping = registerOutput<Map<String, String>?>('transformNameMapping');
+    transformNameMapping = registerOutput<Map<String, String>?>('transformNameMapping', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [FlexTemplateJob] resource.
+  FlexTemplateJob.reference(String urn)
+    : super(
+        'gcp:dataflow/flexTemplateJob:FlexTemplateJob',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    additionalExperiments = registerOutput<List<String>>('additionalExperiments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    additionalPipelineOptions = registerOutput<List<String>?>('additionalPipelineOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    autoscalingAlgorithm = registerOutput<String>('autoscalingAlgorithm');
+    containerSpecGcsPath = registerOutput<String>('containerSpecGcsPath');
+    createIgnoreAlreadyExists = registerOutput<bool?>('createIgnoreAlreadyExists');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    enableStreamingEngine = registerOutput<bool?>('enableStreamingEngine');
+    ipConfiguration = registerOutput<String?>('ipConfiguration');
+    jobId = registerOutput<String>('jobId');
+    kmsKeyName = registerOutput<String>('kmsKeyName');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    launcherMachineType = registerOutput<String>('launcherMachineType');
+    machineType = registerOutput<String>('machineType');
+    maxWorkers = registerOutput<int>('maxWorkers');
+    this.name = registerOutput<String>('name');
+    network = registerOutput<String>('network');
+    numWorkers = registerOutput<int>('numWorkers');
+    onDelete = registerOutput<String?>('onDelete');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    region = registerOutput<String>('region');
+    sdkContainerImage = registerOutput<String>('sdkContainerImage');
+    serviceAccountEmail = registerOutput<String>('serviceAccountEmail');
+    skipWaitOnJobTermination = registerOutput<bool?>('skipWaitOnJobTermination');
+    stagingLocation = registerOutput<String>('stagingLocation');
+    state = registerOutput<String>('state');
+    subnetwork = registerOutput<String>('subnetwork');
+    tempLocation = registerOutput<String>('tempLocation');
+    transformNameMapping = registerOutput<Map<String, String>?>('transformNameMapping', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

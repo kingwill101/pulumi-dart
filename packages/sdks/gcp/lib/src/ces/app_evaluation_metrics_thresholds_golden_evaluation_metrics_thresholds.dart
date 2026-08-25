@@ -7,10 +7,10 @@ import 'app_evaluation_metrics_thresholds_golden_evaluation_metrics_thresholds_t
 class AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholds {
   /// Expectation level metrics thresholds.
   /// Structure is documented below.
-  final pulumi.Input<AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsExpectationLevelMetricsThresholds>? expectationLevelMetricsThresholds;
+  final pulumi.Input<AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsExpectationLevelMetricsThresholds?>? expectationLevelMetricsThresholds;
   /// Turn level metrics thresholds.
   /// Structure is documented below.
-  final pulumi.Input<AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholds>? turnLevelMetricsThresholds;
+  final pulumi.Input<AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholds?>? turnLevelMetricsThresholds;
 
   /// Creates a new [AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholds].
   /// [expectationLevelMetricsThresholds] Expectation level metrics thresholds.

@@ -347,7 +347,7 @@ class LiteTopic extends pulumi.CustomResource {
           'gcp:pubsub/liteTopic:LiteTopic',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     this.name = registerOutput<String>('name');
@@ -364,11 +364,12 @@ class LiteTopic extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LiteTopicState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LiteTopic._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -382,6 +383,25 @@ class LiteTopic extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    this.name = registerOutput<String>('name');
+    partitionConfig = registerOutput<LiteTopicPartitionConfig?>('partitionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LiteTopicPartitionConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    project = registerOutput<String>('project');
+    region = registerOutput<String?>('region');
+    reservationConfig = registerOutput<LiteTopicReservationConfig?>('reservationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LiteTopicReservationConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    retentionConfig = registerOutput<LiteTopicRetentionConfig?>('retentionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LiteTopicRetentionConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    zone = registerOutput<String?>('zone');
+  }
+
+  /// Creates a typed reference to an existing [LiteTopic] resource.
+  LiteTopic.reference(String urn)
+    : super(
+        'gcp:pubsub/liteTopic:LiteTopic',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     this.name = registerOutput<String>('name');
     partitionConfig = registerOutput<LiteTopicPartitionConfig?>('partitionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LiteTopicPartitionConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

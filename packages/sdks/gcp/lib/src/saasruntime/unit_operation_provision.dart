@@ -6,9 +6,9 @@ import 'unit_operation_provision_input_variable.dart';
 class UnitOperationProvision {
   /// Set of input variables. Maximum 100. (optional)
   /// Structure is documented below.
-  final pulumi.Input<List<UnitOperationProvisionInputVariable>>? inputVariables;
+  final pulumi.Input<List<UnitOperationProvisionInputVariable>?>? inputVariables;
   /// Reference to the Release object to use for the Unit. (optional).
-  final pulumi.Input<String>? release;
+  final pulumi.Input<String?>? release;
 
   /// Creates a new [UnitOperationProvision].
   /// [inputVariables] Set of input variables. Maximum 100. (optional)

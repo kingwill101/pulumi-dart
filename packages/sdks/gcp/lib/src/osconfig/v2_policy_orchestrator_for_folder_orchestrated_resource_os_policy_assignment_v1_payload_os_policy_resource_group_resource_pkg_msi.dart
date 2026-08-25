@@ -8,7 +8,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
   /// This should be in the format of Property=Setting.
   /// Appended to the defaults of `ACTION=INSTALL
   /// REBOOT=ReallySuppress`.
-  final pulumi.Input<List<String>>? properties;
+  final pulumi.Input<List<String>?>? properties;
   /// A remote or local file.
   /// Structure is documented below.
   final pulumi.Input<V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSource> source;

@@ -1165,33 +1165,34 @@ class Instance extends pulumi.CustomResource {
           'gcp:alloydb/instance:Instance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     activationPolicy = registerOutput<String>('activationPolicy');
-    annotations = registerOutput<Map<String, String>?>('annotations');
+    annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     availabilityType = registerOutput<String>('availabilityType');
     clientConnectionConfig = registerOutput<InstanceClientConnectionConfig>('clientConnectionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceClientConnectionConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     cluster = registerOutput<String>('cluster');
     connectionPoolConfig = registerOutput<InstanceConnectionPoolConfig?>('connectionPoolConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceConnectionPoolConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
-    databaseFlags = registerOutput<Map<String, String>>('databaseFlags');
+    databaseFlags = registerOutput<Map<String, String>>('databaseFlags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
-    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     gceZone = registerOutput<String?>('gceZone');
     instanceId = registerOutput<String>('instanceId');
     instanceType = registerOutput<String>('instanceType');
     ipAddress = registerOutput<String>('ipAddress');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     machineConfig = registerOutput<InstanceMachineConfig>('machineConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceMachineConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     networkConfig = registerOutput<InstanceNetworkConfig>('networkConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceNetworkConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     observabilityConfig = registerOutput<InstanceObservabilityConfig>('observabilityConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceObservabilityConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    outboundPublicIpAddresses = registerOutput<List<String>>('outboundPublicIpAddresses');
+    outboundPublicIpAddresses = registerOutput<List<String>>('outboundPublicIpAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     pscInstanceConfig = registerOutput<InstancePscInstanceConfig>('pscInstanceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstancePscInstanceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     publicIpAddress = registerOutput<String>('publicIpAddress');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     queryInsightsConfig = registerOutput<InstanceQueryInsightsConfig>('queryInsightsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceQueryInsightsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     readPoolConfig = registerOutput<InstanceReadPoolConfig?>('readPoolConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceReadPoolConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     reconciling = registerOutput<bool>('reconciling');
@@ -1205,11 +1206,12 @@ class Instance extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     InstanceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Instance._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1224,34 +1226,77 @@ class Instance extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     activationPolicy = registerOutput<String>('activationPolicy');
-    annotations = registerOutput<Map<String, String>?>('annotations');
+    annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     availabilityType = registerOutput<String>('availabilityType');
     clientConnectionConfig = registerOutput<InstanceClientConnectionConfig>('clientConnectionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceClientConnectionConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     cluster = registerOutput<String>('cluster');
     connectionPoolConfig = registerOutput<InstanceConnectionPoolConfig?>('connectionPoolConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceConnectionPoolConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
-    databaseFlags = registerOutput<Map<String, String>>('databaseFlags');
+    databaseFlags = registerOutput<Map<String, String>>('databaseFlags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
-    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     gceZone = registerOutput<String?>('gceZone');
     instanceId = registerOutput<String>('instanceId');
     instanceType = registerOutput<String>('instanceType');
     ipAddress = registerOutput<String>('ipAddress');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     machineConfig = registerOutput<InstanceMachineConfig>('machineConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceMachineConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     networkConfig = registerOutput<InstanceNetworkConfig>('networkConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceNetworkConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     observabilityConfig = registerOutput<InstanceObservabilityConfig>('observabilityConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceObservabilityConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    outboundPublicIpAddresses = registerOutput<List<String>>('outboundPublicIpAddresses');
+    outboundPublicIpAddresses = registerOutput<List<String>>('outboundPublicIpAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     pscInstanceConfig = registerOutput<InstancePscInstanceConfig>('pscInstanceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstancePscInstanceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     publicIpAddress = registerOutput<String>('publicIpAddress');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     queryInsightsConfig = registerOutput<InstanceQueryInsightsConfig>('queryInsightsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceQueryInsightsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     readPoolConfig = registerOutput<InstanceReadPoolConfig?>('readPoolConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceReadPoolConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     reconciling = registerOutput<bool>('reconciling');
     this.state = registerOutput<String>('state');
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [Instance] resource.
+  Instance.reference(String urn)
+    : super(
+        'gcp:alloydb/instance:Instance',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    activationPolicy = registerOutput<String>('activationPolicy');
+    annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    availabilityType = registerOutput<String>('availabilityType');
+    clientConnectionConfig = registerOutput<InstanceClientConnectionConfig>('clientConnectionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceClientConnectionConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    cluster = registerOutput<String>('cluster');
+    connectionPoolConfig = registerOutput<InstanceConnectionPoolConfig?>('connectionPoolConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceConnectionPoolConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createTime = registerOutput<String>('createTime');
+    databaseFlags = registerOutput<Map<String, String>>('databaseFlags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    displayName = registerOutput<String?>('displayName');
+    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    gceZone = registerOutput<String?>('gceZone');
+    instanceId = registerOutput<String>('instanceId');
+    instanceType = registerOutput<String>('instanceType');
+    ipAddress = registerOutput<String>('ipAddress');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    machineConfig = registerOutput<InstanceMachineConfig>('machineConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceMachineConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    networkConfig = registerOutput<InstanceNetworkConfig>('networkConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceNetworkConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    observabilityConfig = registerOutput<InstanceObservabilityConfig>('observabilityConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceObservabilityConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    outboundPublicIpAddresses = registerOutput<List<String>>('outboundPublicIpAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    pscInstanceConfig = registerOutput<InstancePscInstanceConfig>('pscInstanceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstancePscInstanceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    publicIpAddress = registerOutput<String>('publicIpAddress');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    queryInsightsConfig = registerOutput<InstanceQueryInsightsConfig>('queryInsightsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceQueryInsightsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    readPoolConfig = registerOutput<InstanceReadPoolConfig?>('readPoolConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceReadPoolConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    reconciling = registerOutput<bool>('reconciling');
+    state = registerOutput<String>('state');
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
   }

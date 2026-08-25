@@ -5,14 +5,14 @@ import 'search_engine_knowledge_graph_config_feature_config.dart';
 
 class SearchEngineKnowledgeGraphConfig {
   /// Specify entity types to support.
-  final pulumi.Input<List<String>>? cloudKnowledgeGraphTypes;
+  final pulumi.Input<List<String>?>? cloudKnowledgeGraphTypes;
   /// Whether to enable the Cloud Knowledge Graph for the engine.
-  final pulumi.Input<bool>? enableCloudKnowledgeGraph;
+  final pulumi.Input<bool?>? enableCloudKnowledgeGraph;
   /// Whether to enable the Private Knowledge Graph for the engine.
-  final pulumi.Input<bool>? enablePrivateKnowledgeGraph;
+  final pulumi.Input<bool?>? enablePrivateKnowledgeGraph;
   /// Feature config for the Knowledge Graph.
   /// Structure is documented below.
-  final pulumi.Input<SearchEngineKnowledgeGraphConfigFeatureConfig>? featureConfig;
+  final pulumi.Input<SearchEngineKnowledgeGraphConfigFeatureConfig?>? featureConfig;
 
   /// Creates a new [SearchEngineKnowledgeGraphConfig].
   /// [cloudKnowledgeGraphTypes] Specify entity types to support.

@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'backup_plan_args.dart';
+import 'backup_plan_backup_rule.dart';
 import 'backup_plan_compute_instance_backup_plan_properties.dart';
 import 'backup_plan_disk_backup_plan_properties.dart';
 import 'backup_plan_state.dart';
@@ -1155,7 +1156,7 @@ class BackupPlan extends pulumi.CustomResource {
   late final pulumi.Output<String> backupPlanId;
   /// The backup rules for this `BackupPlan`.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> backupRules;
+  late final pulumi.Output<List<BackupPlanBackupRule>?> backupRules;
   /// Backup vault where the backups gets stored using this Backup plan.
   late final pulumi.Output<String> backupVault;
   /// The Google Cloud Platform Service Account to be used by the BackupVault for taking backups.
@@ -1208,10 +1209,10 @@ class BackupPlan extends pulumi.CustomResource {
           'gcp:backupdisasterrecovery/backupPlan:BackupPlan',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     backupPlanId = registerOutput<String>('backupPlanId');
-    backupRules = registerOutput<List<Map<String, dynamic>>?>('backupRules');
+    backupRules = registerOutput<List<BackupPlanBackupRule>?>('backupRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BackupPlanBackupRule>(guardedValue, (value) => BackupPlanBackupRule.fromMap((value as Map).cast<String, dynamic>())); });
     backupVault = registerOutput<String>('backupVault');
     backupVaultServiceAccount = registerOutput<String>('backupVaultServiceAccount');
     computeInstanceBackupPlanProperties = registerOutput<BackupPlanComputeInstanceBackupPlanProperties?>('computeInstanceBackupPlanProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackupPlanComputeInstanceBackupPlanProperties.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -1225,7 +1226,7 @@ class BackupPlan extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     resourceType = registerOutput<String>('resourceType');
-    supportedResourceTypes = registerOutput<List<String>>('supportedResourceTypes');
+    supportedResourceTypes = registerOutput<List<String>>('supportedResourceTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     updateTime = registerOutput<String>('updateTime');
   }
 
@@ -1234,11 +1235,12 @@ class BackupPlan extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     BackupPlanState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return BackupPlan._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1253,7 +1255,7 @@ class BackupPlan extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     backupPlanId = registerOutput<String>('backupPlanId');
-    backupRules = registerOutput<List<Map<String, dynamic>>?>('backupRules');
+    backupRules = registerOutput<List<BackupPlanBackupRule>?>('backupRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BackupPlanBackupRule>(guardedValue, (value) => BackupPlanBackupRule.fromMap((value as Map).cast<String, dynamic>())); });
     backupVault = registerOutput<String>('backupVault');
     backupVaultServiceAccount = registerOutput<String>('backupVaultServiceAccount');
     computeInstanceBackupPlanProperties = registerOutput<BackupPlanComputeInstanceBackupPlanProperties?>('computeInstanceBackupPlanProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackupPlanComputeInstanceBackupPlanProperties.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -1267,7 +1269,35 @@ class BackupPlan extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     resourceType = registerOutput<String>('resourceType');
-    supportedResourceTypes = registerOutput<List<String>>('supportedResourceTypes');
+    supportedResourceTypes = registerOutput<List<String>>('supportedResourceTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [BackupPlan] resource.
+  BackupPlan.reference(String urn)
+    : super(
+        'gcp:backupdisasterrecovery/backupPlan:BackupPlan',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    backupPlanId = registerOutput<String>('backupPlanId');
+    backupRules = registerOutput<List<BackupPlanBackupRule>?>('backupRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BackupPlanBackupRule>(guardedValue, (value) => BackupPlanBackupRule.fromMap((value as Map).cast<String, dynamic>())); });
+    backupVault = registerOutput<String>('backupVault');
+    backupVaultServiceAccount = registerOutput<String>('backupVaultServiceAccount');
+    computeInstanceBackupPlanProperties = registerOutput<BackupPlanComputeInstanceBackupPlanProperties?>('computeInstanceBackupPlanProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackupPlanComputeInstanceBackupPlanProperties.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    diskBackupPlanProperties = registerOutput<BackupPlanDiskBackupPlanProperties?>('diskBackupPlanProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackupPlanDiskBackupPlanProperties.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    logRetentionDays = registerOutput<int?>('logRetentionDays');
+    maxCustomOnDemandRetentionDays = registerOutput<int?>('maxCustomOnDemandRetentionDays');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    resourceType = registerOutput<String>('resourceType');
+    supportedResourceTypes = registerOutput<List<String>>('supportedResourceTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     updateTime = registerOutput<String>('updateTime');
   }
 }

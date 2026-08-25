@@ -7,12 +7,12 @@ import 'feed_details_workspace_chrome_os_settings_authentication_rs_credentials.
 class FeedDetailsWorkspaceChromeOsSettingsAuthentication {
   /// Claims identifying a specific customer.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsWorkspaceChromeOsSettingsAuthenticationClaims>? claims;
+  final pulumi.Input<FeedDetailsWorkspaceChromeOsSettingsAuthenticationClaims?>? claims;
   /// RS credentials.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsWorkspaceChromeOsSettingsAuthenticationRsCredentials>? rsCredentials;
+  final pulumi.Input<FeedDetailsWorkspaceChromeOsSettingsAuthenticationRsCredentials?>? rsCredentials;
   /// Token endpoint to get the OAuth token from.
-  final pulumi.Input<String>? tokenEndpoint;
+  final pulumi.Input<String?>? tokenEndpoint;
 
   /// Creates a new [FeedDetailsWorkspaceChromeOsSettingsAuthentication].
   /// [claims] Claims identifying a specific customer.

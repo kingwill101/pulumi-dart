@@ -6,7 +6,7 @@ import 'pipeline_job_reconciliation_pipeline_job_merge_config.dart';
 class PipelineJobReconciliationPipelineJob {
   /// The harmonized FHIR store to write harmonized FHIR resources to,
   /// in the format of: project/{projectID}/locations/{locationID}/datasets/{datasetName}/fhirStores/{id}
-  final pulumi.Input<String>? fhirStoreDestination;
+  final pulumi.Input<String?>? fhirStoreDestination;
   /// Specifies the top level directory of the matching configs used
   /// in all mapping pipelines, which extract properties for resources
   /// to be matched on.

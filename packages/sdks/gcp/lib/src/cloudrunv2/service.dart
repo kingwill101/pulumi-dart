@@ -2,10 +2,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'service_args.dart';
 import 'service_binary_authorization.dart';
 import 'service_build_config.dart';
+import 'service_condition.dart';
 import 'service_multi_region_settings.dart';
 import 'service_scaling.dart';
 import 'service_state.dart';
 import 'service_template.dart';
+import 'service_terminal_condition.dart';
+import 'service_traffic.dart';
+import 'service_traffic_status.dart';
 
 /// Service acts as a top-level container that manages a set of configurations and revision templates which implement a network service. Service exists to provide a singular abstraction which can be access controlled, reasoned about, and which encapsulates software lifecycle decisions such as rollout policy and team resource ownership.
 ///
@@ -6358,7 +6362,7 @@ class Service extends pulumi.CustomResource {
   late final pulumi.Output<String?> clientVersion;
   /// The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the Service does not reach its Serving state. See comments in reconciling for additional information on reconciliation process in Cloud Run.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> conditions;
+  late final pulumi.Output<List<ServiceCondition>> conditions;
   /// The creation time.
   late final pulumi.Output<String> createTime;
   /// Email address of the authenticated creator.
@@ -6453,13 +6457,13 @@ class Service extends pulumi.CustomResource {
   late final pulumi.Output<ServiceTemplate> template;
   /// The Condition of this Service, containing its readiness status, and detailed error information in case it did not reach a serving state. See comments in reconciling for additional information on reconciliation process in Cloud Run.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> terminalConditions;
+  late final pulumi.Output<List<ServiceTerminalCondition>> terminalConditions;
   /// Detailed status information for corresponding traffic targets. See comments in reconciling for additional information on reconciliation process in Cloud Run.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> trafficStatuses;
+  late final pulumi.Output<List<ServiceTrafficStatus>> trafficStatuses;
   /// Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest Ready Revision.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> traffics;
+  late final pulumi.Output<List<ServiceTraffic>> traffics;
   /// Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
   late final pulumi.Output<String> uid;
   /// The last-modified time.
@@ -6482,31 +6486,32 @@ class Service extends pulumi.CustomResource {
           'gcp:cloudrunv2/service:Service',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
-    annotations = registerOutput<Map<String, String>?>('annotations');
+    annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     binaryAuthorization = registerOutput<ServiceBinaryAuthorization?>('binaryAuthorization', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceBinaryAuthorization.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     buildConfig = registerOutput<ServiceBuildConfig?>('buildConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceBuildConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     client = registerOutput<String?>('client');
     clientVersion = registerOutput<String?>('clientVersion');
-    conditions = registerOutput<List<Map<String, dynamic>>>('conditions');
+    conditions = registerOutput<List<ServiceCondition>>('conditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServiceCondition>(guardedValue, (value) => ServiceCondition.fromMap((value as Map).cast<String, dynamic>())); });
     createTime = registerOutput<String>('createTime');
     creator = registerOutput<String>('creator');
-    customAudiences = registerOutput<List<String>?>('customAudiences');
+    customAudiences = registerOutput<List<String>?>('customAudiences', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     defaultUriDisabled = registerOutput<bool?>('defaultUriDisabled');
     deleteTime = registerOutput<String>('deleteTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     deletionProtection = registerOutput<bool?>('deletionProtection');
     description = registerOutput<String?>('description');
-    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     etag = registerOutput<String>('etag');
     expireTime = registerOutput<String>('expireTime');
     generation = registerOutput<String>('generation');
     iapEnabled = registerOutput<bool?>('iapEnabled');
     ingress = registerOutput<String>('ingress');
     invokerIamDisabled = registerOutput<bool?>('invokerIamDisabled');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     lastModifier = registerOutput<String>('lastModifier');
     latestCreatedRevision = registerOutput<String>('latestCreatedRevision');
     latestReadyRevision = registerOutput<String>('latestReadyRevision');
@@ -6516,18 +6521,18 @@ class Service extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     observedGeneration = registerOutput<String>('observedGeneration');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     reconciling = registerOutput<bool>('reconciling');
     scaling = registerOutput<ServiceScaling>('scaling', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceScaling.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     template = registerOutput<ServiceTemplate>('template', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceTemplate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    terminalConditions = registerOutput<List<Map<String, dynamic>>>('terminalConditions');
-    trafficStatuses = registerOutput<List<Map<String, dynamic>>>('trafficStatuses');
-    traffics = registerOutput<List<Map<String, dynamic>>>('traffics');
+    terminalConditions = registerOutput<List<ServiceTerminalCondition>>('terminalConditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServiceTerminalCondition>(guardedValue, (value) => ServiceTerminalCondition.fromMap((value as Map).cast<String, dynamic>())); });
+    trafficStatuses = registerOutput<List<ServiceTrafficStatus>>('trafficStatuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServiceTrafficStatus>(guardedValue, (value) => ServiceTrafficStatus.fromMap((value as Map).cast<String, dynamic>())); });
+    traffics = registerOutput<List<ServiceTraffic>>('traffics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServiceTraffic>(guardedValue, (value) => ServiceTraffic.fromMap((value as Map).cast<String, dynamic>())); });
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
     uri = registerOutput<String>('uri');
-    urls = registerOutput<List<String>>('urls');
+    urls = registerOutput<List<String>>('urls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [Service] resource's state with the given [name] and [id].
@@ -6535,11 +6540,12 @@ class Service extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ServiceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Service._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -6553,29 +6559,29 @@ class Service extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    annotations = registerOutput<Map<String, String>?>('annotations');
+    annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     binaryAuthorization = registerOutput<ServiceBinaryAuthorization?>('binaryAuthorization', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceBinaryAuthorization.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     buildConfig = registerOutput<ServiceBuildConfig?>('buildConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceBuildConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     client = registerOutput<String?>('client');
     clientVersion = registerOutput<String?>('clientVersion');
-    conditions = registerOutput<List<Map<String, dynamic>>>('conditions');
+    conditions = registerOutput<List<ServiceCondition>>('conditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServiceCondition>(guardedValue, (value) => ServiceCondition.fromMap((value as Map).cast<String, dynamic>())); });
     createTime = registerOutput<String>('createTime');
     creator = registerOutput<String>('creator');
-    customAudiences = registerOutput<List<String>?>('customAudiences');
+    customAudiences = registerOutput<List<String>?>('customAudiences', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     defaultUriDisabled = registerOutput<bool?>('defaultUriDisabled');
     deleteTime = registerOutput<String>('deleteTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     deletionProtection = registerOutput<bool?>('deletionProtection');
     description = registerOutput<String?>('description');
-    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     etag = registerOutput<String>('etag');
     expireTime = registerOutput<String>('expireTime');
     generation = registerOutput<String>('generation');
     iapEnabled = registerOutput<bool?>('iapEnabled');
     ingress = registerOutput<String>('ingress');
     invokerIamDisabled = registerOutput<bool?>('invokerIamDisabled');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     lastModifier = registerOutput<String>('lastModifier');
     latestCreatedRevision = registerOutput<String>('latestCreatedRevision');
     latestReadyRevision = registerOutput<String>('latestReadyRevision');
@@ -6585,17 +6591,73 @@ class Service extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     observedGeneration = registerOutput<String>('observedGeneration');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     reconciling = registerOutput<bool>('reconciling');
     scaling = registerOutput<ServiceScaling>('scaling', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceScaling.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     template = registerOutput<ServiceTemplate>('template', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceTemplate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    terminalConditions = registerOutput<List<Map<String, dynamic>>>('terminalConditions');
-    trafficStatuses = registerOutput<List<Map<String, dynamic>>>('trafficStatuses');
-    traffics = registerOutput<List<Map<String, dynamic>>>('traffics');
+    terminalConditions = registerOutput<List<ServiceTerminalCondition>>('terminalConditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServiceTerminalCondition>(guardedValue, (value) => ServiceTerminalCondition.fromMap((value as Map).cast<String, dynamic>())); });
+    trafficStatuses = registerOutput<List<ServiceTrafficStatus>>('trafficStatuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServiceTrafficStatus>(guardedValue, (value) => ServiceTrafficStatus.fromMap((value as Map).cast<String, dynamic>())); });
+    traffics = registerOutput<List<ServiceTraffic>>('traffics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServiceTraffic>(guardedValue, (value) => ServiceTraffic.fromMap((value as Map).cast<String, dynamic>())); });
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
     uri = registerOutput<String>('uri');
-    urls = registerOutput<List<String>>('urls');
+    urls = registerOutput<List<String>>('urls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Service] resource.
+  Service.reference(String urn)
+    : super(
+        'gcp:cloudrunv2/service:Service',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    binaryAuthorization = registerOutput<ServiceBinaryAuthorization?>('binaryAuthorization', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceBinaryAuthorization.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    buildConfig = registerOutput<ServiceBuildConfig?>('buildConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceBuildConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    client = registerOutput<String?>('client');
+    clientVersion = registerOutput<String?>('clientVersion');
+    conditions = registerOutput<List<ServiceCondition>>('conditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServiceCondition>(guardedValue, (value) => ServiceCondition.fromMap((value as Map).cast<String, dynamic>())); });
+    createTime = registerOutput<String>('createTime');
+    creator = registerOutput<String>('creator');
+    customAudiences = registerOutput<List<String>?>('customAudiences', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    defaultUriDisabled = registerOutput<bool?>('defaultUriDisabled');
+    deleteTime = registerOutput<String>('deleteTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    deletionProtection = registerOutput<bool?>('deletionProtection');
+    description = registerOutput<String?>('description');
+    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    etag = registerOutput<String>('etag');
+    expireTime = registerOutput<String>('expireTime');
+    generation = registerOutput<String>('generation');
+    iapEnabled = registerOutput<bool?>('iapEnabled');
+    ingress = registerOutput<String>('ingress');
+    invokerIamDisabled = registerOutput<bool?>('invokerIamDisabled');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    lastModifier = registerOutput<String>('lastModifier');
+    latestCreatedRevision = registerOutput<String>('latestCreatedRevision');
+    latestReadyRevision = registerOutput<String>('latestReadyRevision');
+    launchStage = registerOutput<String>('launchStage');
+    location = registerOutput<String>('location');
+    multiRegionSettings = registerOutput<ServiceMultiRegionSettings?>('multiRegionSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceMultiRegionSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    observedGeneration = registerOutput<String>('observedGeneration');
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    reconciling = registerOutput<bool>('reconciling');
+    scaling = registerOutput<ServiceScaling>('scaling', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceScaling.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    template = registerOutput<ServiceTemplate>('template', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceTemplate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    terminalConditions = registerOutput<List<ServiceTerminalCondition>>('terminalConditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServiceTerminalCondition>(guardedValue, (value) => ServiceTerminalCondition.fromMap((value as Map).cast<String, dynamic>())); });
+    trafficStatuses = registerOutput<List<ServiceTrafficStatus>>('trafficStatuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServiceTrafficStatus>(guardedValue, (value) => ServiceTrafficStatus.fromMap((value as Map).cast<String, dynamic>())); });
+    traffics = registerOutput<List<ServiceTraffic>>('traffics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServiceTraffic>(guardedValue, (value) => ServiceTraffic.fromMap((value as Map).cast<String, dynamic>())); });
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
+    uri = registerOutput<String>('uri');
+    urls = registerOutput<List<String>>('urls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AgentGatewayAgentGatewayCard {
   /// (Output)
   /// mTLS Endpoint associated with this AgentGateway.
-  final pulumi.Input<String>? mtlsEndpoint;
+  final pulumi.Input<String?>? mtlsEndpoint;
   /// (Output)
   /// Root Certificates for Agents to validate this AgentGateway.
-  final pulumi.Input<List<String>>? rootCertificates;
+  final pulumi.Input<List<String>?>? rootCertificates;
   /// (Output)
   /// Service Account used by Service Extensions to operate.
-  final pulumi.Input<String>? serviceExtensionsServiceAccount;
+  final pulumi.Input<String?>? serviceExtensionsServiceAccount;
 
   /// Creates a new [AgentGatewayAgentGatewayCard].
   /// [mtlsEndpoint] (Output)

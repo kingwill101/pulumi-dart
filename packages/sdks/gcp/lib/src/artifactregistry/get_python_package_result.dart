@@ -4,70 +4,70 @@
 /// Result data returned by getPythonPackage.
 class GetPythonPackageResult {
   /// The time the package was created.
-  final String createTime;
+  final String? createTime;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final String location;
+  final String? id;
+  final String? location;
   /// The fully qualified name of the fetched package. Format:
   /// ```
   /// projects/{{project}}/locations/{{location}}/repositories/{{repository_id}}/pythonPackages/{{package}}:{{version}}
   /// ```
-  final String name;
-  final String packageName;
+  final String? name;
+  final String? packageName;
   final String? project;
-  final String repositoryId;
+  final String? repositoryId;
   /// The time the package was last updated.
-  final String updateTime;
+  final String? updateTime;
   /// The version of the Python package.
-  final String version;
+  final String? version;
 
   /// Creates a new [GetPythonPackageResult].
   /// [createTime] The time the package was created.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [location] Required.
+  /// [location] Optional.
   /// [name] The fully qualified name of the fetched package. Format:
-  /// [packageName] Required.
+  /// [packageName] Optional.
   /// [project] Optional.
-  /// [repositoryId] Required.
+  /// [repositoryId] Optional.
   /// [updateTime] The time the package was last updated.
   /// [version] The version of the Python package.
   const GetPythonPackageResult({
-    required this.createTime,
-    required this.id,
-    required this.location,
-    required this.name,
-    required this.packageName,
+    this.createTime,
+    this.id,
+    this.location,
+    this.name,
+    this.packageName,
     this.project,
-    required this.repositoryId,
-    required this.updateTime,
-    required this.version,
+    this.repositoryId,
+    this.updateTime,
+    this.version,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'createTime': createTime,
-      'id': id,
-      'location': location,
-      'name': name,
-      'packageName': packageName,
+      'createTime': ?createTime,
+      'id': ?id,
+      'location': ?location,
+      'name': ?name,
+      'packageName': ?packageName,
       'project': ?project,
-      'repositoryId': repositoryId,
-      'updateTime': updateTime,
-      'version': version,
+      'repositoryId': ?repositoryId,
+      'updateTime': ?updateTime,
+      'version': ?version,
     };
   }
 
   factory GetPythonPackageResult.fromMap(Map<String, dynamic> map) {
     return GetPythonPackageResult(
-      createTime: map['createTime'] as String,
-      id: map['id'] as String,
-      location: map['location'] as String,
-      name: map['name'] as String,
-      packageName: map['packageName'] as String,
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      packageName: (() { final guardedValue = map['packageName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      repositoryId: map['repositoryId'] as String,
-      updateTime: map['updateTime'] as String,
-      version: map['version'] as String,
+      repositoryId: (() { final guardedValue = map['repositoryId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

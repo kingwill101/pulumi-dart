@@ -751,7 +751,7 @@ class HostingRelease extends pulumi.CustomResource {
           'gcp:firebase/hostingRelease:HostingRelease',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     channelId = registerOutput<String?>('channelId');
     message = registerOutput<String?>('message');
@@ -767,11 +767,12 @@ class HostingRelease extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     HostingReleaseState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return HostingRelease._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -785,6 +786,24 @@ class HostingRelease extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    channelId = registerOutput<String?>('channelId');
+    message = registerOutput<String?>('message');
+    this.name = registerOutput<String>('name');
+    releaseId = registerOutput<String>('releaseId');
+    siteId = registerOutput<String>('siteId');
+    type = registerOutput<String>('type');
+    versionName = registerOutput<String?>('versionName');
+  }
+
+  /// Creates a typed reference to an existing [HostingRelease] resource.
+  HostingRelease.reference(String urn)
+    : super(
+        'gcp:firebase/hostingRelease:HostingRelease',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     channelId = registerOutput<String?>('channelId');
     message = registerOutput<String?>('message');
     this.name = registerOutput<String>('name');

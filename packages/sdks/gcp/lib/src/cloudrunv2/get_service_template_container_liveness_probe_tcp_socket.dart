@@ -22,7 +22,7 @@ class GetServiceTemplateContainerLivenessProbeTcpSocket {
 
   factory GetServiceTemplateContainerLivenessProbeTcpSocket.fromMap(Map<String, dynamic> map) {
     return GetServiceTemplateContainerLivenessProbeTcpSocket(
-      port: pulumi.Input.fromValue(map['port'] as int),
+      port: pulumi.Input.fromValue((map['port'] as num).toInt()),
     );
   }
 }

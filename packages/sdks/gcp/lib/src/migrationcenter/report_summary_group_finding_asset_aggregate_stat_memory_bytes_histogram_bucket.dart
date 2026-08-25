@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramBucket {
   /// (Output)
   /// Count of items in the bucket.
-  final pulumi.Input<String>? count;
+  final pulumi.Input<String?>? count;
   /// (Output)
   /// Lower bound - inclusive.
-  final pulumi.Input<String>? lowerBound;
+  final pulumi.Input<String?>? lowerBound;
   /// (Output)
   /// Upper bound - exclusive.
-  final pulumi.Input<String>? upperBound;
+  final pulumi.Input<String?>? upperBound;
 
   /// Creates a new [ReportSummaryGroupFindingAssetAggregateStatMemoryBytesHistogramBucket].
   /// [count] (Output)

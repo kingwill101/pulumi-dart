@@ -6,7 +6,7 @@ import 'instance_maintenance_policy_maintenance_window.dart';
 class InstanceMaintenancePolicy {
   /// The maintenance window of the instance.
   /// Structure is documented below.
-  final pulumi.Input<InstanceMaintenancePolicyMaintenanceWindow>? maintenanceWindow;
+  final pulumi.Input<InstanceMaintenancePolicyMaintenanceWindow?>? maintenanceWindow;
 
   /// Creates a new [InstanceMaintenancePolicy].
   /// [maintenanceWindow] The maintenance window of the instance.

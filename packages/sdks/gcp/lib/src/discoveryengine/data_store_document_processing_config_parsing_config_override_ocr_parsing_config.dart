@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfig {
   /// If true, will use native text instead of OCR text on pages containing native text.
-  final pulumi.Input<bool>? useNativeText;
+  final pulumi.Input<bool?>? useNativeText;
 
   /// Creates a new [DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfig].
   /// [useNativeText] If true, will use native text instead of OCR text on pages containing native text.

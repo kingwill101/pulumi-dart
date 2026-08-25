@@ -15,13 +15,13 @@ class PreventionJobTriggerInspectJobActionDeidentify {
   /// If empty, all supported files will be transformed. Supported types may be automatically added over time.
   /// If a file type is set in this field that isn't supported by the Deidentify action then the job will fail and will not be successfully created/started.
   /// Each value may be one of: `IMAGE`, `TEXT_FILE`, `CSV`, `TSV`.
-  final pulumi.Input<List<String>>? fileTypesToTransforms;
+  final pulumi.Input<List<String>?>? fileTypesToTransforms;
   /// User specified deidentify templates and configs for structured, unstructured, and image files.
   /// Structure is documented below.
-  final pulumi.Input<PreventionJobTriggerInspectJobActionDeidentifyTransformationConfig>? transformationConfig;
+  final pulumi.Input<PreventionJobTriggerInspectJobActionDeidentifyTransformationConfig?>? transformationConfig;
   /// Config for storing transformation details.
   /// Structure is documented below.
-  final pulumi.Input<PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfig>? transformationDetailsStorageConfig;
+  final pulumi.Input<PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfig?>? transformationDetailsStorageConfig;
 
   /// Creates a new [PreventionJobTriggerInspectJobActionDeidentify].
   /// [cloudStorageOutput] User settable Cloud Storage bucket and folders to store de-identified files.

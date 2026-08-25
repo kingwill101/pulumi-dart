@@ -21,22 +21,22 @@ class V2PolicyOrchestratorForFolderArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Freeform text describing the purpose of the resource.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The parent resource name in the form of `folders/{folder_id}/locations/global`.
   final pulumi.Input<String> folderId;
   /// Labels as key value pairs
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Represents a resource that is being orchestrated by the policy orchestrator.
   /// Structure is documented below.
   final pulumi.Input<V2PolicyOrchestratorForFolderOrchestratedResource> orchestratedResource;
   /// Defines a set of selectors which drive which resources are in scope of policy
   /// orchestration.
   /// Structure is documented below.
-  final pulumi.Input<V2PolicyOrchestratorForFolderOrchestrationScope>? orchestrationScope;
+  final pulumi.Input<V2PolicyOrchestratorForFolderOrchestrationScope?>? orchestrationScope;
   /// The logical identifier of the policy orchestrator, with the following
   /// restrictions:
   /// * Must contain only lowercase letters, numbers, and hyphens.
@@ -52,7 +52,7 @@ class V2PolicyOrchestratorForFolderArgs {
   /// Note: There might be more states added in the future. We use string here
   /// instead of an enum, to avoid the need of propagating new states to all the
   /// client code.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
 
   /// Creates a new [V2PolicyOrchestratorForFolderArgs].
   /// [action] Action to be done by the orchestrator in

@@ -407,7 +407,7 @@ class Binding extends pulumi.CustomResource {
           'gcp:agentregistry/binding:Binding',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     authProviderBinding = registerOutput<BindingAuthProviderBinding>('authProviderBinding', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BindingAuthProviderBinding.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     bindingId = registerOutput<String>('bindingId');
@@ -428,11 +428,12 @@ class Binding extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     BindingState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Binding._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -446,6 +447,29 @@ class Binding extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    authProviderBinding = registerOutput<BindingAuthProviderBinding>('authProviderBinding', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BindingAuthProviderBinding.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    bindingId = registerOutput<String>('bindingId');
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String?>('displayName');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    source = registerOutput<BindingSource>('source', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BindingSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    target = registerOutput<BindingTarget>('target', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BindingTarget.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [Binding] resource.
+  Binding.reference(String urn)
+    : super(
+        'gcp:agentregistry/binding:Binding',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     authProviderBinding = registerOutput<BindingAuthProviderBinding>('authProviderBinding', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BindingAuthProviderBinding.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     bindingId = registerOutput<String>('bindingId');
     createTime = registerOutput<String>('createTime');

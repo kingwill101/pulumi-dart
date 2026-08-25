@@ -7,15 +7,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_spanner_get_instance_get_instance_args_doc}
 class GetInstanceArgs {
-  final pulumi.Input<String>? config;
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? config;
+  final pulumi.Input<String?>? displayName;
   /// The name of the spanner instance.
   ///
   /// - - -
   final pulumi.Input<String> name;
   /// The project in which the resource belongs. If it
   /// is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetInstanceArgs].
   /// [config] Optional.

@@ -2158,7 +2158,7 @@ class WebRegionForwardingRuleServiceIamMember extends pulumi.CustomResource {
           'gcp:iap/webRegionForwardingRuleServiceIamMember:WebRegionForwardingRuleServiceIamMember',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     condition = registerOutput<WebRegionForwardingRuleServiceIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebRegionForwardingRuleServiceIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
@@ -2174,11 +2174,12 @@ class WebRegionForwardingRuleServiceIamMember extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     WebRegionForwardingRuleServiceIamMemberState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return WebRegionForwardingRuleServiceIamMember._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -2192,6 +2193,24 @@ class WebRegionForwardingRuleServiceIamMember extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    condition = registerOutput<WebRegionForwardingRuleServiceIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebRegionForwardingRuleServiceIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    etag = registerOutput<String>('etag');
+    forwardingRuleRegionServiceName = registerOutput<String>('forwardingRuleRegionServiceName');
+    member = registerOutput<String>('member');
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+    role = registerOutput<String>('role');
+  }
+
+  /// Creates a typed reference to an existing [WebRegionForwardingRuleServiceIamMember] resource.
+  WebRegionForwardingRuleServiceIamMember.reference(String urn)
+    : super(
+        'gcp:iap/webRegionForwardingRuleServiceIamMember:WebRegionForwardingRuleServiceIamMember',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     condition = registerOutput<WebRegionForwardingRuleServiceIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebRegionForwardingRuleServiceIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
     forwardingRuleRegionServiceName = registerOutput<String>('forwardingRuleRegionServiceName');

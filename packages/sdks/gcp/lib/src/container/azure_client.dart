@@ -195,7 +195,7 @@ class AzureClient extends pulumi.CustomResource {
           'gcp:container/azureClient:AzureClient',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     applicationId = registerOutput<String>('applicationId');
     certificate = registerOutput<String>('certificate');
@@ -213,11 +213,12 @@ class AzureClient extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AzureClientState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AzureClient._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -231,6 +232,26 @@ class AzureClient extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    applicationId = registerOutput<String>('applicationId');
+    certificate = registerOutput<String>('certificate');
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    tenantId = registerOutput<String>('tenantId');
+    uid = registerOutput<String>('uid');
+  }
+
+  /// Creates a typed reference to an existing [AzureClient] resource.
+  AzureClient.reference(String urn)
+    : super(
+        'gcp:container/azureClient:AzureClient',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     applicationId = registerOutput<String>('applicationId');
     certificate = registerOutput<String>('certificate');
     createTime = registerOutput<String>('createTime');

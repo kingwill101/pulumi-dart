@@ -12,7 +12,7 @@ class WorkloadIdentityPoolInlineTrustConfig {
   /// `additionalTrustBundles` map, those trust anchors will be *appended to* the Trust Bundle
   /// automatically derived from your `InlineCertificateIssuanceConfig`'s `caPools`.
   /// Structure is documented below.
-  final pulumi.Input<List<WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundle>>? additionalTrustBundles;
+  final pulumi.Input<List<WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundle>?>? additionalTrustBundles;
 
   /// Creates a new [WorkloadIdentityPoolInlineTrustConfig].
   /// [additionalTrustBundles] Maps specific trust domains (e.g., "example.com") to their corresponding `TrustStore`

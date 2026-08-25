@@ -8,20 +8,20 @@ class FeedDetailsTrellixHxAlertsSettingsAuthenticationTrellixIam {
   /// It has no default, specifically enforced min / max length or character set.
   /// It is assumed that the Client ID generated in Trellix IAM is internally
   /// consistent with Trellix IAM authentication requirements / validation.
-  final pulumi.Input<String>? clientId;
+  final pulumi.Input<String?>? clientId;
   /// Secret associated with the Client ID.
   /// This is the secret generated in Trellix IAM for the Client ID. It has no
   /// default, specifically enforced min / max length or character set. It is
   /// assumed that the secret generated in Trellix IAM is internally
   /// consistent with Trellix IAM authentication requirements / validation.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
-  final pulumi.Input<String>? clientSecret;
+  final pulumi.Input<String?>? clientSecret;
   /// OAUTH 2 scope to request for the authentication token.
   /// This is the OAUTH 2 scope to request for the authentication token. It has
   /// no default, specifically enforced min / max length or character set. It is
   /// assumed that the scope provided is internally consistent with Trellix IAM
   /// authentication requirements / validation.
-  final pulumi.Input<String>? scope;
+  final pulumi.Input<String?>? scope;
 
   /// Creates a new [FeedDetailsTrellixHxAlertsSettingsAuthenticationTrellixIam].
   /// [clientId] Client ID generated in Trellix IAM.

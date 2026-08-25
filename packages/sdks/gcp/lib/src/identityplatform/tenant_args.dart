@@ -9,28 +9,28 @@ import 'tenant_client.dart';
 /// {@macro pulumi_identityplatform_tenant_tenant_args_doc}
 class TenantArgs {
   /// Whether to allow email/password user authentication.
-  final pulumi.Input<bool>? allowPasswordSignup;
+  final pulumi.Input<bool?>? allowPasswordSignup;
   /// Options related to how clients making requests on behalf of a tenant should be configured.
   /// Structure is documented below.
-  final pulumi.Input<TenantClient>? client;
+  final pulumi.Input<TenantClient?>? client;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Whether authentication is disabled for the tenant. If true, the users under
   /// the disabled tenant are not allowed to sign-in. Admins of the disabled tenant
   /// are not able to manage its users.
-  final pulumi.Input<bool>? disableAuth;
+  final pulumi.Input<bool?>? disableAuth;
   /// Human friendly display name of the tenant.
   final pulumi.Input<String> displayName;
   /// Whether to enable email link user authentication.
-  final pulumi.Input<bool>? enableEmailLinkSignin;
+  final pulumi.Input<bool?>? enableEmailLinkSignin;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [TenantArgs].
   /// [allowPasswordSignup] Whether to allow email/password user authentication.

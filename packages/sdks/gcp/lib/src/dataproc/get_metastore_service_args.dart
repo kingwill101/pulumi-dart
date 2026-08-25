@@ -13,7 +13,7 @@ class GetMetastoreServiceArgs {
   final pulumi.Input<String> location;
   /// The project in which the resource belongs. If it
   /// is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The ID of the metastore service.
   final pulumi.Input<String> serviceId;
 

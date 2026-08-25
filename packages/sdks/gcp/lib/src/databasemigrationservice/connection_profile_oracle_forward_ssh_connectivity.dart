@@ -7,12 +7,12 @@ class ConnectionProfileOracleForwardSshConnectivity {
   final pulumi.Input<String> hostname;
   /// Input only. SSH password. Only one of `password` and `privateKey` can be configured.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// Port for the SSH tunnel, default value is 22.
   final pulumi.Input<int> port;
   /// Input only. SSH private key. Only one of `password` and `privateKey` can be configured.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
-  final pulumi.Input<String>? privateKey;
+  final pulumi.Input<String?>? privateKey;
   /// Required. Username for the SSH tunnel.
   final pulumi.Input<String> username;
 
@@ -44,7 +44,7 @@ class ConnectionProfileOracleForwardSshConnectivity {
     return ConnectionProfileOracleForwardSshConnectivity(
       hostname: pulumi.Input.fromValue(map['hostname'] as String),
       password: (() { final guardedValue = map['password']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      port: pulumi.Input.fromValue(map['port'] as int),
+      port: pulumi.Input.fromValue((map['port'] as num).toInt()),
       privateKey: (() { final guardedValue = map['privateKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       username: pulumi.Input.fromValue(map['username'] as String),
     );

@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BiReservationPreferredTable {
   /// The ID of the dataset in the above project.
-  final pulumi.Input<String>? datasetId;
+  final pulumi.Input<String?>? datasetId;
   /// The assigned project ID of the project.
-  final pulumi.Input<String>? projectId;
+  final pulumi.Input<String?>? projectId;
   /// The ID of the table in the above dataset.
-  final pulumi.Input<String>? tableId;
+  final pulumi.Input<String?>? tableId;
 
   /// Creates a new [BiReservationPreferredTable].
   /// [datasetId] The ID of the dataset in the above project.

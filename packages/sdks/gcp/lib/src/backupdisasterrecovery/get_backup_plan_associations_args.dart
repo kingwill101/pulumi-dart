@@ -11,10 +11,10 @@ class GetBackupPlanAssociationsArgs {
   final pulumi.Input<String> location;
   /// The project in which the resource belongs. If it
   /// is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The resource type of the workload. For example, sqladmin.googleapis.com/Instance or compute.googleapis.com/Instance. `resourceType` is deprecated and will be removed in a future major release.
   /// - - -
-  final pulumi.Input<String>? resourceType;
+  final pulumi.Input<String?>? resourceType;
 
   /// Creates a new [GetBackupPlanAssociationsArgs].
   /// [location] The location where the Backup Plan Association resources reside.

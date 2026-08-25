@@ -15,10 +15,10 @@ class GetInstanceArgs {
   final pulumi.Input<String> instanceId;
   /// (optional)
   /// The canonical id of the location.If it is not provided, the provider project is used. For example: us-east1.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// (optional)
   /// The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetInstanceArgs].
   /// [clusterId] The ID of the alloydb cluster that the instance belongs to.

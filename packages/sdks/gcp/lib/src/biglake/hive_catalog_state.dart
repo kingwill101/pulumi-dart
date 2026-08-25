@@ -6,32 +6,32 @@ import 'hive_catalog_replica.dart';
 /// Input properties used for looking up and filtering HiveCatalog resources.
 class HiveCatalogState {
   /// Output only. The creation time of the catalog.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Description of the Hive catalog.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Cloud Storage location path where the catalog data will be stored. Format: gs://bucket/path/to/catalog
-  final pulumi.Input<String>? locationUri;
+  final pulumi.Input<String?>? locationUri;
   /// Name of the Hive Catalog.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The primary location for mirroring the remote catalog metadata. It must be
   /// a BigLake-supported location, and it should be proximate to the remote
   /// catalog's location.
-  final pulumi.Input<String>? primaryLocation;
+  final pulumi.Input<String?>? primaryLocation;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Output only. The replicas for the catalog metadata.
   /// Structure is documented below.
-  final pulumi.Input<List<HiveCatalogReplica>>? replicas;
+  final pulumi.Input<List<HiveCatalogReplica>?>? replicas;
   /// Output only. The update time of the catalog.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [HiveCatalogState].
   /// [createTime] Output only. The creation time of the catalog.

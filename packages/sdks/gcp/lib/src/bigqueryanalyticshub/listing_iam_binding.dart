@@ -1072,14 +1072,14 @@ class ListingIamBinding extends pulumi.CustomResource {
           'gcp:bigqueryanalyticshub/listingIamBinding:ListingIamBinding',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     condition = registerOutput<ListingIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ListingIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     dataExchangeId = registerOutput<String>('dataExchangeId');
     etag = registerOutput<String>('etag');
     listingId = registerOutput<String>('listingId');
     location = registerOutput<String>('location');
-    members = registerOutput<List<String>>('members');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     project = registerOutput<String>('project');
     role = registerOutput<String>('role');
   }
@@ -1089,11 +1089,12 @@ class ListingIamBinding extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ListingIamBindingState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ListingIamBinding._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1112,7 +1113,26 @@ class ListingIamBinding extends pulumi.CustomResource {
     etag = registerOutput<String>('etag');
     listingId = registerOutput<String>('listingId');
     location = registerOutput<String>('location');
-    members = registerOutput<List<String>>('members');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    project = registerOutput<String>('project');
+    role = registerOutput<String>('role');
+  }
+
+  /// Creates a typed reference to an existing [ListingIamBinding] resource.
+  ListingIamBinding.reference(String urn)
+    : super(
+        'gcp:bigqueryanalyticshub/listingIamBinding:ListingIamBinding',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    condition = registerOutput<ListingIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ListingIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dataExchangeId = registerOutput<String>('dataExchangeId');
+    etag = registerOutput<String>('etag');
+    listingId = registerOutput<String>('listingId');
+    location = registerOutput<String>('location');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     project = registerOutput<String>('project');
     role = registerOutput<String>('role');
   }

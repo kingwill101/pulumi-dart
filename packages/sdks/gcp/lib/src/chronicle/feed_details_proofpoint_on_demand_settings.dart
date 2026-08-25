@@ -6,9 +6,9 @@ import 'feed_details_proofpoint_on_demand_settings_authentication.dart';
 class FeedDetailsProofpointOnDemandSettings {
   /// HTTP header based authentication.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsProofpointOnDemandSettingsAuthentication>? authentication;
+  final pulumi.Input<FeedDetailsProofpointOnDemandSettingsAuthentication?>? authentication;
   /// Cluster ID.
-  final pulumi.Input<String>? clusterId;
+  final pulumi.Input<String?>? clusterId;
 
   /// Creates a new [FeedDetailsProofpointOnDemandSettings].
   /// [authentication] HTTP header based authentication.

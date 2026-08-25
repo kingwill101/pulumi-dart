@@ -14,15 +14,15 @@ class AssetsExportJobRecentExecutionResult {
   /// You can find out more about this error model and how to work with it in the
   /// [API Design Guide](https://cloud.google.com/apis/design/errors).
   /// Structure is documented below.
-  final pulumi.Input<List<AssetsExportJobRecentExecutionResultError>>? errors;
+  final pulumi.Input<List<AssetsExportJobRecentExecutionResultError>?>? errors;
   /// (Output)
   /// Contains a list of output files.
   /// Structure is documented below.
-  final pulumi.Input<List<AssetsExportJobRecentExecutionResultOutputFile>>? outputFiles;
+  final pulumi.Input<List<AssetsExportJobRecentExecutionResultOutputFile>?>? outputFiles;
   /// (Output)
   /// List of signed URIs.
   /// Structure is documented below.
-  final pulumi.Input<List<AssetsExportJobRecentExecutionResultSignedUri>>? signedUris;
+  final pulumi.Input<List<AssetsExportJobRecentExecutionResultSignedUri>?>? signedUris;
 
   /// Creates a new [AssetsExportJobRecentExecutionResult].
   /// [errors] (Output)

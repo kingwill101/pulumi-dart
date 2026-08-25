@@ -5,34 +5,34 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering TraceScope resources.
 class TraceScopeState {
   /// The creation timestamp of the trace scope.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Describes this trace scope.
   /// The maximum length of the description is 8000 characters.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// GCP region the TraceScope is stored in. Only `global` is supported.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Identifier. The resource name of the trace scope.
   /// For example:
   /// projects/my-project/locations/global/traceScopes/my-trace-scope
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Names of the projects that are included in this trace scope.
   /// *  `projects/[PROJECT_ID]`
   /// A trace scope can include a maximum of 20 projects.
-  final pulumi.Input<List<String>>? resourceNames;
+  final pulumi.Input<List<String>?>? resourceNames;
   /// A client-assigned identifier for the trace scope.
-  final pulumi.Input<String>? traceScopeId;
+  final pulumi.Input<String?>? traceScopeId;
   /// The last update timestamp of the trace scope.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [TraceScopeState].
   /// [createTime] The creation timestamp of the trace scope.

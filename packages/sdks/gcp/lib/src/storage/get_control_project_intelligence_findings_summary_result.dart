@@ -7,11 +7,11 @@ import 'get_control_project_intelligence_findings_summary_finding_summary.dart';
 class GetControlProjectIntelligenceFindingsSummaryResult {
   final String? filter;
   /// The list of FindingSummary summaries. Structure is documented below.
-  final List<GetControlProjectIntelligenceFindingsSummaryFindingSummary> findingSummaries;
+  final List<GetControlProjectIntelligenceFindingsSummaryFindingSummary>? findingSummaries;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   final String? location;
-  final String project;
+  final String? project;
   final String? resourceScope;
 
   /// Creates a new [GetControlProjectIntelligenceFindingsSummaryResult].
@@ -19,24 +19,24 @@ class GetControlProjectIntelligenceFindingsSummaryResult {
   /// [findingSummaries] The list of FindingSummary summaries. Structure is documented below.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [location] Optional.
-  /// [project] Required.
+  /// [project] Optional.
   /// [resourceScope] Optional.
   const GetControlProjectIntelligenceFindingsSummaryResult({
     this.filter,
-    required this.findingSummaries,
-    required this.id,
+    this.findingSummaries,
+    this.id,
     this.location,
-    required this.project,
+    this.project,
     this.resourceScope,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'filter': ?filter,
-      'findingSummaries': pulumi.Input.encodeList<GetControlProjectIntelligenceFindingsSummaryFindingSummary, Map<String, dynamic>>(findingSummaries, (value) => value.toMap()),
-      'id': id,
+      'findingSummaries': ?(() { final guardedValue = findingSummaries; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetControlProjectIntelligenceFindingsSummaryFindingSummary, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'id': ?id,
       'location': ?location,
-      'project': project,
+      'project': ?project,
       'resourceScope': ?resourceScope,
     };
   }
@@ -44,10 +44,10 @@ class GetControlProjectIntelligenceFindingsSummaryResult {
   factory GetControlProjectIntelligenceFindingsSummaryResult.fromMap(Map<String, dynamic> map) {
     return GetControlProjectIntelligenceFindingsSummaryResult(
       filter: (() { final guardedValue = map['filter']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      findingSummaries: pulumi.Input.decodeList<GetControlProjectIntelligenceFindingsSummaryFindingSummary>(map['findingSummaries']!, (value) => GetControlProjectIntelligenceFindingsSummaryFindingSummary.fromMap((value as Map).cast<String, dynamic>())),
-      id: map['id'] as String,
+      findingSummaries: (() { final guardedValue = map['findingSummaries']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetControlProjectIntelligenceFindingsSummaryFindingSummary>(guardedValue, (value) => GetControlProjectIntelligenceFindingsSummaryFindingSummary.fromMap((value as Map).cast<String, dynamic>())); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      project: map['project'] as String,
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
       resourceScope: (() { final guardedValue = map['resourceScope']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }

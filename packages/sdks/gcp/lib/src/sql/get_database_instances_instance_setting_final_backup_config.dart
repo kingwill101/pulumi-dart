@@ -26,7 +26,7 @@ class GetDatabaseInstancesInstanceSettingFinalBackupConfig {
   factory GetDatabaseInstancesInstanceSettingFinalBackupConfig.fromMap(Map<String, dynamic> map) {
     return GetDatabaseInstancesInstanceSettingFinalBackupConfig(
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
-      retentionDays: pulumi.Input.fromValue(map['retentionDays'] as int),
+      retentionDays: pulumi.Input.fromValue((map['retentionDays'] as num).toInt()),
     );
   }
 }

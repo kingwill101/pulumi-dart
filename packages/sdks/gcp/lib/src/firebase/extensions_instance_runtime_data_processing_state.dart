@@ -7,9 +7,9 @@ class ExtensionsInstanceRuntimeDataProcessingState {
   /// processing in progress or it could list errors or failures.
   /// This information will be shown in the console on the detail page
   /// for the extension instance.
-  final pulumi.Input<String>? detailMessage;
+  final pulumi.Input<String?>? detailMessage;
   /// The processing state of the extension instance.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
 
   /// Creates a new [ExtensionsInstanceRuntimeDataProcessingState].
   /// [detailMessage] Details about the processing. e.g. This could include the type of

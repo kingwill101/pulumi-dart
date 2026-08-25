@@ -6,7 +6,7 @@ class ConnectionLockConfig {
   /// Indicates whether or not the connection is locked.
   final pulumi.Input<bool> locked;
   /// Describes why a connection is locked.
-  final pulumi.Input<String>? reason;
+  final pulumi.Input<String?>? reason;
 
   /// Creates a new [ConnectionLockConfig].
   /// [locked] Indicates whether or not the connection is locked.

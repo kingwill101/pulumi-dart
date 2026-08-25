@@ -6,11 +6,11 @@ import 'workload_workload_property_extended_metadata_value.dart';
 class WorkloadWorkloadPropertyExtendedMetadata {
   /// (Output)
   /// The key of the extended metadata.
-  final pulumi.Input<String>? key;
+  final pulumi.Input<String?>? key;
   /// (Output)
   /// The value of the extended metadata.
   /// Structure is documented below.
-  final pulumi.Input<List<WorkloadWorkloadPropertyExtendedMetadataValue>>? values;
+  final pulumi.Input<List<WorkloadWorkloadPropertyExtendedMetadataValue>?>? values;
 
   /// Creates a new [WorkloadWorkloadPropertyExtendedMetadata].
   /// [key] (Output)

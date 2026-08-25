@@ -6,7 +6,7 @@ class StandardAppVersionDeploymentFile {
   /// The identifier for this object. Format specified above.
   final pulumi.Input<String> name;
   /// SHA1 checksum of the file
-  final pulumi.Input<String>? sha1Sum;
+  final pulumi.Input<String?>? sha1Sum;
   /// Source URL
   final pulumi.Input<String> sourceUrl;
 

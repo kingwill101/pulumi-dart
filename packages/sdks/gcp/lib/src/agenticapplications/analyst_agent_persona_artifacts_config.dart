@@ -7,11 +7,11 @@ import 'analyst_agent_persona_artifacts_config_visualization_options.dart';
 
 class AnalystAgentPersonaArtifactsConfig {
   /// Options for document generation.
-  final pulumi.Input<AnalystAgentPersonaArtifactsConfigDocumentGenerationOptions>? documentGenerationOptions;
+  final pulumi.Input<AnalystAgentPersonaArtifactsConfigDocumentGenerationOptions?>? documentGenerationOptions;
   /// Options for slide generation.
-  final pulumi.Input<AnalystAgentPersonaArtifactsConfigSlideGenerationOptions>? slideGenerationOptions;
+  final pulumi.Input<AnalystAgentPersonaArtifactsConfigSlideGenerationOptions?>? slideGenerationOptions;
   /// Options for visualizations.
-  final pulumi.Input<AnalystAgentPersonaArtifactsConfigVisualizationOptions>? visualizationOptions;
+  final pulumi.Input<AnalystAgentPersonaArtifactsConfigVisualizationOptions?>? visualizationOptions;
 
   /// Creates a new [AnalystAgentPersonaArtifactsConfig].
   /// [documentGenerationOptions] Options for document generation.

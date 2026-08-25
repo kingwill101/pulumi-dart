@@ -7,7 +7,7 @@ import 'instance_maintenance_policy_weekly_maintenance_windows.dart';
 class InstanceMaintenancePolicy {
   /// The exclusion windows for the instance. Currently limited to 1 window.
   /// Structure is documented below.
-  final pulumi.Input<InstanceMaintenancePolicyMaintenanceExclusionWindow>? maintenanceExclusionWindow;
+  final pulumi.Input<InstanceMaintenancePolicyMaintenanceExclusionWindow?>? maintenanceExclusionWindow;
   /// The weekly maintenance windows for the instance. Currently limited to 1
   /// window.
   /// Structure is documented below.

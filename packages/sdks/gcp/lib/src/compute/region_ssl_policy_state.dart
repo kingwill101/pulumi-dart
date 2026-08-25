@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering RegionSslPolicy resources.
 class RegionSslPolicyState {
   /// Creation timestamp in RFC3339 text format.
-  final pulumi.Input<String>? creationTimestamp;
+  final pulumi.Input<String?>? creationTimestamp;
   /// A list of features enabled when the selected profile is CUSTOM. The
   /// method returns the set of features that can be specified in this
   /// list. This field must be empty if the profile is not CUSTOM.
@@ -13,27 +13,27 @@ class RegionSslPolicyState {
   /// for which ciphers are available to use. **Note**: this argument
   /// *must* be present when using the `CUSTOM` profile. This argument
   /// *must not* be present when using any other profile.
-  final pulumi.Input<List<String>>? customFeatures;
+  final pulumi.Input<List<String>?>? customFeatures;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// An optional description of this resource.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The list of features enabled in the SSL policy.
-  final pulumi.Input<List<String>>? enabledFeatures;
+  final pulumi.Input<List<String>?>? enabledFeatures;
   /// Fingerprint of this resource. A hash of the contents stored in this
   /// object. This field is used in optimistic locking.
-  final pulumi.Input<String>? fingerprint;
+  final pulumi.Input<String?>? fingerprint;
   /// The minimum version of SSL protocol that can be used by the clients
   /// to establish a connection with the load balancer. When set to
   /// `TLS_1_3`, the profile field must be set to `RESTRICTED`.
   /// Default value is `TLS_1_0`.
   /// Possible values are: `TLS_1_0`, `TLS_1_1`, `TLS_1_2`, `TLS_1_3`.
-  final pulumi.Input<String>? minTlsVersion;
+  final pulumi.Input<String?>? minTlsVersion;
   /// Name of the resource. Provided by the client when the resource is
   /// created. The name must be 1-63 characters long, and comply with
   /// RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -41,7 +41,7 @@ class RegionSslPolicyState {
   /// first character must be a lowercase letter, and all following
   /// characters must be a dash, lowercase letter, or digit, except the last
   /// character, which cannot be a dash.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// One of `DEFAULT`, `ENABLED`, or `DEFERRED`. Controls whether the load balancer negotiates
   /// X25519MLKEM768 key exchange when clients advertise support for it.
   /// When set to `DEFAULT`, or if no SSL Policy is attached to
@@ -52,7 +52,7 @@ class RegionSslPolicyState {
   /// disallows X25519MLKEM768 key exchange until October 2027, and allows
   /// it afterward.
   /// Possible values are: `DEFAULT`, `ENABLED`, `DEFERRED`.
-  final pulumi.Input<String>? postQuantumKeyExchange;
+  final pulumi.Input<String?>? postQuantumKeyExchange;
   /// Profile specifies the set of SSL features that can be used by the
   /// load balancer when negotiating SSL with clients. If using `CUSTOM`,
   /// the set of SSL features to enable must be specified in the
@@ -64,14 +64,14 @@ class RegionSslPolicyState {
   /// `TLS_1_2`.
   /// Default value is `COMPATIBLE`.
   /// Possible values are: `COMPATIBLE`, `MODERN`, `RESTRICTED`, `CUSTOM`, `FIPS_202205`.
-  final pulumi.Input<String>? profile;
+  final pulumi.Input<String?>? profile;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The region where the regional SSL policy resides.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The URI of the created resource.
-  final pulumi.Input<String>? selfLink;
+  final pulumi.Input<String?>? selfLink;
 
   /// Creates a new [RegionSslPolicyState].
   /// [creationTimestamp] Creation timestamp in RFC3339 text format.

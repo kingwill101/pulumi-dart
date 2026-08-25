@@ -5,16 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotifications {
   /// Notification mode for grant activated.
   /// Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
-  final pulumi.Input<String>? grantActivated;
+  final pulumi.Input<String?>? grantActivated;
   /// Notification mode for grant activation failed.
   /// Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
-  final pulumi.Input<String>? grantActivationFailed;
+  final pulumi.Input<String?>? grantActivationFailed;
   /// Notification mode for grant ended.
   /// Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
-  final pulumi.Input<String>? grantEnded;
+  final pulumi.Input<String?>? grantEnded;
   /// Notification mode for grant externally modified.
   /// Possible values are: `NOTIFICATION_MODE_UNSPECIFIED`, `ENABLED`, `DISABLED`.
-  final pulumi.Input<String>? grantExternallyModified;
+  final pulumi.Input<String?>? grantExternallyModified;
 
   /// Creates a new [SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotifications].
   /// [grantActivated] Notification mode for grant activated.

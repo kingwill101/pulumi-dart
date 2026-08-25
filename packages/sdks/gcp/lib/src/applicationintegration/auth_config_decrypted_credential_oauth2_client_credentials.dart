@@ -5,17 +5,17 @@ import 'auth_config_decrypted_credential_oauth2_client_credentials_token_params.
 
 class AuthConfigDecryptedCredentialOauth2ClientCredentials {
   /// The client's ID.
-  final pulumi.Input<String>? clientId;
+  final pulumi.Input<String?>? clientId;
   /// The client's secret.
-  final pulumi.Input<String>? clientSecret;
+  final pulumi.Input<String?>? clientSecret;
   /// Represent how to pass parameters to fetch access token Possible values: ["REQUEST_TYPE_UNSPECIFIED", "REQUEST_BODY", "QUERY_PARAMETERS", "ENCODED_HEADER"]
-  final pulumi.Input<String>? requestType;
+  final pulumi.Input<String?>? requestType;
   /// A space-delimited list of requested scope permissions.
-  final pulumi.Input<String>? scope;
+  final pulumi.Input<String?>? scope;
   /// The token endpoint is used by the client to obtain an access token by presenting its authorization grant or refresh token.
-  final pulumi.Input<String>? tokenEndpoint;
+  final pulumi.Input<String?>? tokenEndpoint;
   /// Token parameters for the auth request.
-  final pulumi.Input<AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParams>? tokenParams;
+  final pulumi.Input<AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParams?>? tokenParams;
 
   /// Creates a new [AuthConfigDecryptedCredentialOauth2ClientCredentials].
   /// [clientId] The client's ID.

@@ -5,16 +5,16 @@ import 'volume_replication_destination_volume_parameters_tiering_policy.dart';
 
 class VolumeReplicationDestinationVolumeParameters {
   /// Description for the destination volume.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Share name for destination volume. If not specified, name of source volume's share name will be used.
-  final pulumi.Input<String>? shareName;
+  final pulumi.Input<String?>? shareName;
   /// Name of an existing storage pool for the destination volume with format: `projects/{{project}}/locations/{{location}}/storagePools/{{poolId}}`
   final pulumi.Input<String> storagePool;
   /// Tiering policy for the volume.
   /// Structure is documented below.
-  final pulumi.Input<VolumeReplicationDestinationVolumeParametersTieringPolicy>? tieringPolicy;
+  final pulumi.Input<VolumeReplicationDestinationVolumeParametersTieringPolicy?>? tieringPolicy;
   /// Name for the destination volume to be created. If not specified, the name of the source volume will be used.
-  final pulumi.Input<String>? volumeId;
+  final pulumi.Input<String?>? volumeId;
 
   /// Creates a new [VolumeReplicationDestinationVolumeParameters].
   /// [description] Description for the destination volume.

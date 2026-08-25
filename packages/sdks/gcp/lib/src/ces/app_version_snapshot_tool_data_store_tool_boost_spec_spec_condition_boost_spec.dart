@@ -13,20 +13,20 @@ class AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpec {
   /// suggestions that are relevant might still be shown.
   /// Setting to 0.0 means no boost applied. The boosting condition is
   /// ignored.
-  final pulumi.Input<double>? boost;
+  final pulumi.Input<double?>? boost;
   /// (Output)
   /// Specification for custom ranking based on customer specified attribute
   /// value. It provides more controls for customized ranking than the simple
   /// (condition, boost) combination above.
   /// Structure is documented below.
-  final pulumi.Input<List<AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpec>>? boostControlSpecs;
+  final pulumi.Input<List<AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpec>?>? boostControlSpecs;
   /// (Output)
   /// An expression which specifies a boost condition. The syntax is the same
   /// as filter expression syntax. Currently, the only supported condition is
   /// a list of BCP-47 lang codes.
   /// Example: To boost suggestions in languages en or fr:
   /// (lang_code: ANY("en", "fr"))
-  final pulumi.Input<String>? condition;
+  final pulumi.Input<String?>? condition;
 
   /// Creates a new [AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpec].
   /// [boost] (Output)
@@ -48,7 +48,7 @@ class AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpec {
 
   factory AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpec.fromMap(Map<String, dynamic> map) {
     return AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpec(
-      boost: (() { final guardedValue = map['boost']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      boost: (() { final guardedValue = map['boost']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       boostControlSpecs: (() { final guardedValue = map['boostControlSpecs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpec>(guardedValue, (value) => AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpec.fromMap((value as Map).cast<String, dynamic>()))); })(),
       condition: (() { final guardedValue = map['condition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

@@ -5,17 +5,17 @@ import 'connection_profile_alloydb_settings_primary_instance_settings_machine_co
 
 class ConnectionProfileAlloydbSettingsPrimaryInstanceSettings {
   /// Database flags to pass to AlloyDB when DMS is creating the AlloyDB cluster and instances. See the AlloyDB documentation for how these can be used.
-  final pulumi.Input<Map<String, String>>? databaseFlags;
+  final pulumi.Input<Map<String, String>?>? databaseFlags;
   /// The database username.
   final pulumi.Input<String> id;
   /// Labels for the AlloyDB primary instance created by DMS.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Configuration for the machines that host the underlying database engine.
   /// Structure is documented below.
   final pulumi.Input<ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfig> machineConfig;
   /// (Output)
   /// Output only. The private IP address for the Instance. This is the connection endpoint for an end-user application.
-  final pulumi.Input<String>? privateIp;
+  final pulumi.Input<String?>? privateIp;
 
   /// Creates a new [ConnectionProfileAlloydbSettingsPrimaryInstanceSettings].
   /// [databaseFlags] Database flags to pass to AlloyDB when DMS is creating the AlloyDB cluster and instances. See the AlloyDB documentation for how these can be used.

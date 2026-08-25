@@ -6,7 +6,7 @@ class RulesetSourceFile {
   /// Textual Content.
   final pulumi.Input<String> content;
   /// Fingerprint (e.g. github sha) associated with the `File`.
-  final pulumi.Input<String>? fingerprint;
+  final pulumi.Input<String?>? fingerprint;
   /// File name.
   final pulumi.Input<String> name;
 

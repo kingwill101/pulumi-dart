@@ -12,20 +12,20 @@ class ClusterCrossClusterReplicationConfig {
   /// 1. `PRIMARY`: This cluster serves as the replication source for secondary clusters that are replicating from it. Any data written to it is automatically replicated to its secondary clusters. It allows both reads and writes.
   /// 1. `SECONDARY`: This cluster replicates data from the primary cluster. It allows only reads.
   /// Possible values are: `CLUSTER_ROLE_UNSPECIFIED`, `NONE`, `PRIMARY`, `SECONDARY`.
-  final pulumi.Input<String>? clusterRole;
+  final pulumi.Input<String?>? clusterRole;
   /// (Output)
   /// An output only view of all the member clusters participating in cross cluster replication. This field is populated for all the member clusters irrespective of their cluster role.
   /// Structure is documented below.
-  final pulumi.Input<List<ClusterCrossClusterReplicationConfigMembership>>? memberships;
+  final pulumi.Input<List<ClusterCrossClusterReplicationConfigMembership>?>? memberships;
   /// Details of the primary cluster that is used as the replication source for this secondary cluster. This is allowed to be set only for clusters whose cluster role is of type `SECONDARY`.
   /// Structure is documented below.
-  final pulumi.Input<ClusterCrossClusterReplicationConfigPrimaryCluster>? primaryCluster;
+  final pulumi.Input<ClusterCrossClusterReplicationConfigPrimaryCluster?>? primaryCluster;
   /// List of secondary clusters that are replicating from this primary cluster. This is allowed to be set only for clusters whose cluster role is of type `PRIMARY`.
   /// Structure is documented below.
-  final pulumi.Input<List<ClusterCrossClusterReplicationConfigSecondaryCluster>>? secondaryClusters;
+  final pulumi.Input<List<ClusterCrossClusterReplicationConfigSecondaryCluster>?>? secondaryClusters;
   /// (Output)
   /// The last time cross cluster replication config was updated.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [ClusterCrossClusterReplicationConfig].
   /// [clusterRole] The role of the cluster in cross cluster replication. Supported values are:

@@ -189,7 +189,7 @@ class PeeredDnsDomain extends pulumi.CustomResource {
           'gcp:servicenetworking/peeredDnsDomain:PeeredDnsDomain',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     dnsSuffix = registerOutput<String>('dnsSuffix');
@@ -205,11 +205,12 @@ class PeeredDnsDomain extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PeeredDnsDomainState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return PeeredDnsDomain._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -223,6 +224,24 @@ class PeeredDnsDomain extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    dnsSuffix = registerOutput<String>('dnsSuffix');
+    this.name = registerOutput<String>('name');
+    network = registerOutput<String>('network');
+    parent = registerOutput<String>('parent');
+    project = registerOutput<String>('project');
+    service = registerOutput<String?>('service');
+  }
+
+  /// Creates a typed reference to an existing [PeeredDnsDomain] resource.
+  PeeredDnsDomain.reference(String urn)
+    : super(
+        'gcp:servicenetworking/peeredDnsDomain:PeeredDnsDomain',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     dnsSuffix = registerOutput<String>('dnsSuffix');
     this.name = registerOutput<String>('name');

@@ -6,10 +6,10 @@ import 'region_backend_service_ha_policy_leader_network_endpoint.dart';
 class RegionBackendServiceHaPolicyLeader {
   /// A fully-qualified URL of the zonal Network Endpoint Group (NEG) that the leader is
   /// attached to.
-  final pulumi.Input<String>? backendGroup;
+  final pulumi.Input<String?>? backendGroup;
   /// The network endpoint within the leader.backendGroup that is designated as the leader.
   /// Structure is documented below.
-  final pulumi.Input<RegionBackendServiceHaPolicyLeaderNetworkEndpoint>? networkEndpoint;
+  final pulumi.Input<RegionBackendServiceHaPolicyLeaderNetworkEndpoint?>? networkEndpoint;
 
   /// Creates a new [RegionBackendServiceHaPolicyLeader].
   /// [backendGroup] A fully-qualified URL of the zonal Network Endpoint Group (NEG) that the leader is

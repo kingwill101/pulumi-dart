@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class UserSqlServerUserDetail {
   /// If the user has been disabled.
-  final pulumi.Input<bool>? disabled;
+  final pulumi.Input<bool?>? disabled;
   /// The server roles for this user in the database.
-  final pulumi.Input<List<String>>? serverRoles;
+  final pulumi.Input<List<String>?>? serverRoles;
 
   /// Creates a new [UserSqlServerUserDetail].
   /// [disabled] If the user has been disabled.

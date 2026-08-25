@@ -9,12 +9,12 @@ class ToolFileSearchTool {
   /// USER_OWNED
   /// FULLY_MANAGED
   /// Possible values are: `CORPUS_TYPE_UNSPECIFIED`, `USER_OWNED`, `FULLY_MANAGED`.
-  final pulumi.Input<String>? corpusType;
+  final pulumi.Input<String?>? corpusType;
   /// Optional. The tool description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Optional. The corpus where files are stored.
   /// Format: projects/{project}/locations/{location}/ragCorpora/{rag_corpus}
-  final pulumi.Input<String>? fileCorpus;
+  final pulumi.Input<String?>? fileCorpus;
   /// Required. The tool name.
   final pulumi.Input<String> name;
 

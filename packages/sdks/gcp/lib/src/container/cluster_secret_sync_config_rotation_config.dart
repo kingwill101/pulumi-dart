@@ -6,7 +6,7 @@ class ClusterSecretSyncConfigRotationConfig {
   /// Enable the roation in Sync as K8s secret feature for this cluster.
   final pulumi.Input<bool> enabled;
   /// The interval between two consecutive rotations. Default rotation interval is 2 minutes.
-  final pulumi.Input<String>? rotationInterval;
+  final pulumi.Input<String?>? rotationInterval;
 
   /// Creates a new [ClusterSecretSyncConfigRotationConfig].
   /// [enabled] Enable the roation in Sync as K8s secret feature for this cluster.

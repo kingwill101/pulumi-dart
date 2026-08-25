@@ -40,7 +40,7 @@ class GetInstanceConnectionPoolConfig {
     return GetInstanceConnectionPoolConfig(
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
       flags: pulumi.Input.fromValue((map['flags'] as Map).cast<String, String>()),
-      poolerCount: pulumi.Input.fromValue(map['poolerCount'] as int),
+      poolerCount: pulumi.Input.fromValue((map['poolerCount'] as num).toInt()),
     );
   }
 }

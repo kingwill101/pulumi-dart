@@ -7,33 +7,33 @@ import 'prevention_inspect_template_inspect_config.dart';
 class PreventionInspectTemplateState {
   /// Enables the use of [limited-availability built-in infoTypes](https://docs.cloud.google.com/sensitive-data-protection/docs/infotypes-reference#limited-availability-infotypes)
   /// in inspect_config. These infoTypes are supported only in specific regions and can cause scanning errors if used elsewhere.
-  final pulumi.Input<bool>? allowLimitedAvailabilityInfoTypes;
+  final pulumi.Input<bool?>? allowLimitedAvailabilityInfoTypes;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// A description of the inspect template.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// User set display name of the inspect template.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The core content of the template.
   /// Structure is documented below.
-  final pulumi.Input<PreventionInspectTemplateInspectConfig>? inspectConfig;
+  final pulumi.Input<PreventionInspectTemplateInspectConfig?>? inspectConfig;
   /// The resource name of the inspect template. Set by the server.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The parent of the inspect template in any of the following formats:
   /// * `projects/{{project}}`
   /// * `projects/{{project}}/locations/{{location}}`
   /// * `organizations/{{organization_id}}`
   /// * `organizations/{{organization_id}}/locations/{{location}}`
-  final pulumi.Input<String>? parent;
+  final pulumi.Input<String?>? parent;
   /// The template id can contain uppercase and lowercase letters, numbers, and hyphens;
   /// that is, it must match the regular expression: [a-zA-Z\d-_]+. The maximum length is
   /// 100 characters. Can be empty to allow the system to generate one.
-  final pulumi.Input<String>? templateId;
+  final pulumi.Input<String?>? templateId;
 
   /// Creates a new [PreventionInspectTemplateState].
   /// [allowLimitedAvailabilityInfoTypes] Enables the use of [limited-availability built-in infoTypes](https://docs.cloud.google.com/sensitive-data-protection/docs/infotypes-reference#limited-availability-infotypes)

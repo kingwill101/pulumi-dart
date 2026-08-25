@@ -7,10 +7,10 @@ import 'session_template_environment_config_peripherals_config.dart';
 class SessionTemplateEnvironmentConfig {
   /// Execution configuration for a workload.
   /// Structure is documented below.
-  final pulumi.Input<SessionTemplateEnvironmentConfigExecutionConfig>? executionConfig;
+  final pulumi.Input<SessionTemplateEnvironmentConfigExecutionConfig?>? executionConfig;
   /// Peripherals configuration that workload has access to.
   /// Structure is documented below.
-  final pulumi.Input<SessionTemplateEnvironmentConfigPeripheralsConfig>? peripheralsConfig;
+  final pulumi.Input<SessionTemplateEnvironmentConfigPeripheralsConfig?>? peripheralsConfig;
 
   /// Creates a new [SessionTemplateEnvironmentConfig].
   /// [executionConfig] Execution configuration for a workload.

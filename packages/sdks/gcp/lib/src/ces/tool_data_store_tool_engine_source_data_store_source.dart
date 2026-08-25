@@ -6,11 +6,11 @@ import 'tool_data_store_tool_engine_source_data_store_source_data_store.dart';
 class ToolDataStoreToolEngineSourceDataStoreSource {
   /// A DataStore resource in Vertex AI Search.
   /// Structure is documented below.
-  final pulumi.Input<ToolDataStoreToolEngineSourceDataStoreSourceDataStore>? dataStore;
+  final pulumi.Input<ToolDataStoreToolEngineSourceDataStoreSourceDataStore?>? dataStore;
   /// Filter specification for the DataStore.
   /// See:
   /// https://cloud.google.com/generative-ai-app-builder/docs/filter-search-metadata
-  final pulumi.Input<String>? filter;
+  final pulumi.Input<String?>? filter;
 
   /// Creates a new [ToolDataStoreToolEngineSourceDataStoreSource].
   /// [dataStore] A DataStore resource in Vertex AI Search.

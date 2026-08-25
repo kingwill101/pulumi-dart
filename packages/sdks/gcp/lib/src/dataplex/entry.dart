@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'entry_args.dart';
+import 'entry_aspect.dart';
 import 'entry_entry_source.dart';
 import 'entry_state.dart';
 
@@ -2486,7 +2487,7 @@ import 'entry_state.dart';
 class Entry extends pulumi.CustomResource {
   /// The aspects that are attached to the entry.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> aspects;
+  late final pulumi.Output<List<EntryAspect>?> aspects;
   /// The time when the Entry was created in Dataplex.
   late final pulumi.Output<String> createTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -2532,9 +2533,9 @@ class Entry extends pulumi.CustomResource {
           'gcp:dataplex/entry:Entry',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
-    aspects = registerOutput<List<Map<String, dynamic>>?>('aspects');
+    aspects = registerOutput<List<EntryAspect>?>('aspects', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EntryAspect>(guardedValue, (value) => EntryAspect.fromMap((value as Map).cast<String, dynamic>())); });
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     entryGroupId = registerOutput<String?>('entryGroupId');
@@ -2554,11 +2555,12 @@ class Entry extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EntryState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Entry._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -2572,7 +2574,31 @@ class Entry extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    aspects = registerOutput<List<Map<String, dynamic>>?>('aspects');
+    aspects = registerOutput<List<EntryAspect>?>('aspects', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EntryAspect>(guardedValue, (value) => EntryAspect.fromMap((value as Map).cast<String, dynamic>())); });
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    entryGroupId = registerOutput<String?>('entryGroupId');
+    entryId = registerOutput<String?>('entryId');
+    entrySource = registerOutput<EntryEntrySource>('entrySource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EntryEntrySource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    entryType = registerOutput<String>('entryType');
+    fullyQualifiedName = registerOutput<String?>('fullyQualifiedName');
+    location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    parentEntry = registerOutput<String?>('parentEntry');
+    project = registerOutput<String>('project');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [Entry] resource.
+  Entry.reference(String urn)
+    : super(
+        'gcp:dataplex/entry:Entry',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    aspects = registerOutput<List<EntryAspect>?>('aspects', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EntryAspect>(guardedValue, (value) => EntryAspect.fromMap((value as Map).cast<String, dynamic>())); });
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     entryGroupId = registerOutput<String?>('entryGroupId');

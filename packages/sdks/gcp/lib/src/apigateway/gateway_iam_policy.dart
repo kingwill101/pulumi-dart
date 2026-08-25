@@ -1016,7 +1016,7 @@ class GatewayIamPolicy extends pulumi.CustomResource {
           'gcp:apigateway/gatewayIamPolicy:GatewayIamPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     etag = registerOutput<String>('etag');
     gateway = registerOutput<String>('gateway');
@@ -1030,11 +1030,12 @@ class GatewayIamPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     GatewayIamPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return GatewayIamPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1048,6 +1049,22 @@ class GatewayIamPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    etag = registerOutput<String>('etag');
+    gateway = registerOutput<String>('gateway');
+    policyData = registerOutput<String>('policyData');
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [GatewayIamPolicy] resource.
+  GatewayIamPolicy.reference(String urn)
+    : super(
+        'gcp:apigateway/gatewayIamPolicy:GatewayIamPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     etag = registerOutput<String>('etag');
     gateway = registerOutput<String>('gateway');
     policyData = registerOutput<String>('policyData');

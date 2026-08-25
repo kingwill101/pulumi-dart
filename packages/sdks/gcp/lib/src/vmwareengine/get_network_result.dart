@@ -5,84 +5,84 @@ import 'get_network_vpc_network.dart';
 
 /// Result data returned by getNetwork.
 class GetNetworkResult {
-  final String createTime;
-  final String deletionPolicy;
-  final String description;
-  final String etag;
+  final String? createTime;
+  final String? deletionPolicy;
+  final String? description;
+  final String? etag;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final String location;
-  final String name;
+  final String? id;
+  final String? location;
+  final String? name;
   final String? project;
-  final String state;
-  final String type;
-  final String uid;
-  final String updateTime;
-  final List<GetNetworkVpcNetwork> vpcNetworks;
+  final String? state;
+  final String? type;
+  final String? uid;
+  final String? updateTime;
+  final List<GetNetworkVpcNetwork>? vpcNetworks;
 
   /// Creates a new [GetNetworkResult].
-  /// [createTime] Required.
-  /// [deletionPolicy] Required.
-  /// [description] Required.
-  /// [etag] Required.
+  /// [createTime] Optional.
+  /// [deletionPolicy] Optional.
+  /// [description] Optional.
+  /// [etag] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [location] Required.
-  /// [name] Required.
+  /// [location] Optional.
+  /// [name] Optional.
   /// [project] Optional.
-  /// [state] Required.
-  /// [type] Required.
-  /// [uid] Required.
-  /// [updateTime] Required.
-  /// [vpcNetworks] Required.
+  /// [state] Optional.
+  /// [type] Optional.
+  /// [uid] Optional.
+  /// [updateTime] Optional.
+  /// [vpcNetworks] Optional.
   const GetNetworkResult({
-    required this.createTime,
-    required this.deletionPolicy,
-    required this.description,
-    required this.etag,
-    required this.id,
-    required this.location,
-    required this.name,
+    this.createTime,
+    this.deletionPolicy,
+    this.description,
+    this.etag,
+    this.id,
+    this.location,
+    this.name,
     this.project,
-    required this.state,
-    required this.type,
-    required this.uid,
-    required this.updateTime,
-    required this.vpcNetworks,
+    this.state,
+    this.type,
+    this.uid,
+    this.updateTime,
+    this.vpcNetworks,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'createTime': createTime,
-      'deletionPolicy': deletionPolicy,
-      'description': description,
-      'etag': etag,
-      'id': id,
-      'location': location,
-      'name': name,
+      'createTime': ?createTime,
+      'deletionPolicy': ?deletionPolicy,
+      'description': ?description,
+      'etag': ?etag,
+      'id': ?id,
+      'location': ?location,
+      'name': ?name,
       'project': ?project,
-      'state': state,
-      'type': type,
-      'uid': uid,
-      'updateTime': updateTime,
-      'vpcNetworks': pulumi.Input.encodeList<GetNetworkVpcNetwork, Map<String, dynamic>>(vpcNetworks, (value) => value.toMap()),
+      'state': ?state,
+      'type': ?type,
+      'uid': ?uid,
+      'updateTime': ?updateTime,
+      'vpcNetworks': ?(() { final guardedValue = vpcNetworks; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetNetworkVpcNetwork, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
     };
   }
 
   factory GetNetworkResult.fromMap(Map<String, dynamic> map) {
     return GetNetworkResult(
-      createTime: map['createTime'] as String,
-      deletionPolicy: map['deletionPolicy'] as String,
-      description: map['description'] as String,
-      etag: map['etag'] as String,
-      id: map['id'] as String,
-      location: map['location'] as String,
-      name: map['name'] as String,
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      state: map['state'] as String,
-      type: map['type'] as String,
-      uid: map['uid'] as String,
-      updateTime: map['updateTime'] as String,
-      vpcNetworks: pulumi.Input.decodeList<GetNetworkVpcNetwork>(map['vpcNetworks']!, (value) => GetNetworkVpcNetwork.fromMap((value as Map).cast<String, dynamic>())),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      uid: (() { final guardedValue = map['uid']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      vpcNetworks: (() { final guardedValue = map['vpcNetworks']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetNetworkVpcNetwork>(guardedValue, (value) => GetNetworkVpcNetwork.fromMap((value as Map).cast<String, dynamic>())); })(),
     );
   }
 }

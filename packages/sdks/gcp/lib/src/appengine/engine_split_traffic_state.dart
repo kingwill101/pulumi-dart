@@ -6,15 +6,15 @@ import 'engine_split_traffic_split.dart';
 /// Input properties used for looking up and filtering EngineSplitTraffic resources.
 class EngineSplitTrafficState {
   /// If set to true traffic will be migrated to this version.
-  final pulumi.Input<bool>? migrateTraffic;
+  final pulumi.Input<bool?>? migrateTraffic;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The name of the service these settings apply to.
-  final pulumi.Input<String>? service;
+  final pulumi.Input<String?>? service;
   /// Mapping that defines fractional HTTP traffic diversion to different versions within the service.
   /// Structure is documented below.
-  final pulumi.Input<EngineSplitTrafficSplit>? split;
+  final pulumi.Input<EngineSplitTrafficSplit?>? split;
 
   /// Creates a new [EngineSplitTrafficState].
   /// [migrateTraffic] If set to true traffic will be migrated to this version.

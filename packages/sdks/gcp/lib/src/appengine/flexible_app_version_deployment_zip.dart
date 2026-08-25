@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FlexibleAppVersionDeploymentZip {
   /// files count
-  final pulumi.Input<int>? filesCount;
+  final pulumi.Input<int?>? filesCount;
   /// Source URL
   final pulumi.Input<String> sourceUrl;
 
@@ -25,7 +25,7 @@ class FlexibleAppVersionDeploymentZip {
 
   factory FlexibleAppVersionDeploymentZip.fromMap(Map<String, dynamic> map) {
     return FlexibleAppVersionDeploymentZip(
-      filesCount: (() { final guardedValue = map['filesCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      filesCount: (() { final guardedValue = map['filesCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       sourceUrl: pulumi.Input.fromValue(map['sourceUrl'] as String),
     );
   }

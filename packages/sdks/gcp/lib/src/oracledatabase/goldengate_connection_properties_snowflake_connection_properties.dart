@@ -7,26 +7,26 @@ class GoldengateConnectionPropertiesSnowflakeConnectionProperties {
   /// Possible values:
   /// BASIC
   /// KEY_PAIR
-  final pulumi.Input<String>? authenticationType;
+  final pulumi.Input<String?>? authenticationType;
   /// JDBC connection URL.
   /// e.g.:
   /// 'jdbc:snowflake://.snowflakecomputing.com/?warehouse=&db='
-  final pulumi.Input<String>? connectionUrl;
+  final pulumi.Input<String?>? connectionUrl;
   /// Input only. The password Oracle Goldengate uses to connect to Snowflake platform
   /// in plain text.
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// Input only. The resource name of a secret version in Secret Manager which contains
   /// the password Oracle Goldengate uses to connect to Snowflake platform.
   /// Format: projects/{project}/secrets/{secret}/versions/{version}.
-  final pulumi.Input<String>? passwordSecretVersion;
+  final pulumi.Input<String?>? passwordSecretVersion;
   /// The content of private key file in PEM format.
-  final pulumi.Input<String>? privateKeyFile;
+  final pulumi.Input<String?>? privateKeyFile;
   /// Password if the private key file is encrypted.
-  final pulumi.Input<String>? privateKeyPassphraseSecret;
+  final pulumi.Input<String?>? privateKeyPassphraseSecret;
   /// The technology type of SnowflakeConnection.
-  final pulumi.Input<String>? technologyType;
+  final pulumi.Input<String?>? technologyType;
   /// The username Oracle Goldengate uses to connect to Snowflake.
-  final pulumi.Input<String>? username;
+  final pulumi.Input<String?>? username;
 
   /// Creates a new [GoldengateConnectionPropertiesSnowflakeConnectionProperties].
   /// [authenticationType] Used authentication mechanism to access Snowflake.

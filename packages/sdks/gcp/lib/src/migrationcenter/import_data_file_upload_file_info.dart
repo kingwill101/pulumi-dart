@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ImportDataFileUploadFileInfo {
   /// (Output)
   /// The headers that were used to sign the URI.
-  final pulumi.Input<Map<String, String>>? headers;
+  final pulumi.Input<Map<String, String>?>? headers;
   /// (Output)
   /// Upload URI for the file.
-  final pulumi.Input<String>? signedUri;
+  final pulumi.Input<String?>? signedUri;
   /// (Output)
   /// Expiration time of the upload URI.
-  final pulumi.Input<String>? uriExpirationTime;
+  final pulumi.Input<String?>? uriExpirationTime;
 
   /// Creates a new [ImportDataFileUploadFileInfo].
   /// [headers] (Output)

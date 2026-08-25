@@ -18,31 +18,31 @@ class ToolsetArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The description of the toolset.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The display name of the toolset. Must be unique within the same app.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Possible values:
   /// SYNCHRONOUS
   /// ASYNCHRONOUS
-  final pulumi.Input<String>? executionType;
+  final pulumi.Input<String?>? executionType;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final pulumi.Input<String> location;
   /// A toolset that contains a list of tools that are offered by the MCP
   /// server.
   /// Structure is documented below.
-  final pulumi.Input<ToolsetMcpToolset>? mcpToolset;
+  final pulumi.Input<ToolsetMcpToolset?>? mcpToolset;
   /// A toolset that contains a list of tools that are defined by an OpenAPI
   /// schema.
   /// Structure is documented below.
-  final pulumi.Input<ToolsetOpenApiToolset>? openApiToolset;
+  final pulumi.Input<ToolsetOpenApiToolset?>? openApiToolset;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Configuration for tools behavior in fake mode.
   /// Structure is documented below.
-  final pulumi.Input<ToolsetToolFakeConfig>? toolFakeConfig;
+  final pulumi.Input<ToolsetToolFakeConfig?>? toolFakeConfig;
   /// The ID to use for the toolset, which will become the final component of
   /// the toolset's resource name. If not provided, a unique ID will be
   /// automatically assigned for the toolset.

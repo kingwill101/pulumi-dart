@@ -6,21 +6,21 @@ import 'rule_compilation_diagnostic_position.dart';
 class RuleCompilationDiagnostic {
   /// (Output)
   /// Output only. The diagnostic message.
-  final pulumi.Input<String>? message;
+  final pulumi.Input<String?>? message;
   /// CompilationPosition represents the location of a compilation diagnostic in
   /// rule text.
   /// Structure is documented below.
-  final pulumi.Input<RuleCompilationDiagnosticPosition>? position;
+  final pulumi.Input<RuleCompilationDiagnosticPosition?>? position;
   /// (Output)
   /// Output only. The severity of a rule's compilation diagnostic.
   /// Possible values:
   /// SEVERITY_UNSPECIFIED
   /// WARNING
   /// ERROR
-  final pulumi.Input<String>? severity;
+  final pulumi.Input<String?>? severity;
   /// (Output)
   /// Output only. Link to documentation that describes a diagnostic in more detail.
-  final pulumi.Input<String>? uri;
+  final pulumi.Input<String?>? uri;
 
   /// Creates a new [RuleCompilationDiagnostic].
   /// [message] (Output)

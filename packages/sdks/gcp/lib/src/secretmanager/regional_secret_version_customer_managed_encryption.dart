@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RegionalSecretVersionCustomerManagedEncryption {
   /// (Output)
   /// The resource name of the Cloud KMS CryptoKey used to encrypt secret payloads.
-  final pulumi.Input<String>? kmsKeyVersionName;
+  final pulumi.Input<String?>? kmsKeyVersionName;
 
   /// Creates a new [RegionalSecretVersionCustomerManagedEncryption].
   /// [kmsKeyVersionName] (Output)

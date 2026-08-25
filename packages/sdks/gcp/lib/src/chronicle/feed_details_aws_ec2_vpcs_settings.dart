@@ -5,7 +5,7 @@ import 'feed_details_aws_ec2_vpcs_settings_authentication.dart';
 
 class FeedDetailsAwsEc2VpcsSettings {
   /// Info for username and secret based authentication.
-  final pulumi.Input<FeedDetailsAwsEc2VpcsSettingsAuthentication>? authentication;
+  final pulumi.Input<FeedDetailsAwsEc2VpcsSettingsAuthentication?>? authentication;
 
   /// Creates a new [FeedDetailsAwsEc2VpcsSettings].
   /// [authentication] Info for username and secret based authentication.

@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopic {
   /// Managed topic enum (e.g. USER_PREFERENCES, EXPLICIT_INSTRUCTIONS).
-  final pulumi.Input<String>? managedTopicEnum;
+  final pulumi.Input<String?>? managedTopicEnum;
 
   /// Creates a new [AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicManagedMemoryTopic].
   /// [managedTopicEnum] Managed topic enum (e.g. USER_PREFERENCES, EXPLICIT_INSTRUCTIONS).

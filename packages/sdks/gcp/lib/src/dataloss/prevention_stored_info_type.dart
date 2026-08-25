@@ -846,7 +846,7 @@ class PreventionStoredInfoType extends pulumi.CustomResource {
           'gcp:dataloss/preventionStoredInfoType:PreventionStoredInfoType',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
@@ -864,11 +864,12 @@ class PreventionStoredInfoType extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PreventionStoredInfoTypeState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return PreventionStoredInfoType._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -882,6 +883,26 @@ class PreventionStoredInfoType extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    dictionary = registerOutput<PreventionStoredInfoTypeDictionary?>('dictionary', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PreventionStoredInfoTypeDictionary.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    displayName = registerOutput<String?>('displayName');
+    largeCustomDictionary = registerOutput<PreventionStoredInfoTypeLargeCustomDictionary?>('largeCustomDictionary', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PreventionStoredInfoTypeLargeCustomDictionary.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    parent = registerOutput<String>('parent');
+    regex = registerOutput<PreventionStoredInfoTypeRegex?>('regex', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PreventionStoredInfoTypeRegex.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    storedInfoTypeId = registerOutput<String>('storedInfoTypeId');
+  }
+
+  /// Creates a typed reference to an existing [PreventionStoredInfoType] resource.
+  PreventionStoredInfoType.reference(String urn)
+    : super(
+        'gcp:dataloss/preventionStoredInfoType:PreventionStoredInfoType',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     dictionary = registerOutput<PreventionStoredInfoTypeDictionary?>('dictionary', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PreventionStoredInfoTypeDictionary.fromMap((guardedValue as Map).cast<String, dynamic>()); });

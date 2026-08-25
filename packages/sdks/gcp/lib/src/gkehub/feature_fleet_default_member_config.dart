@@ -8,13 +8,13 @@ import 'feature_fleet_default_member_config_policycontroller.dart';
 class FeatureFleetDefaultMemberConfig {
   /// Config Management spec
   /// Structure is documented below.
-  final pulumi.Input<FeatureFleetDefaultMemberConfigConfigmanagement>? configmanagement;
+  final pulumi.Input<FeatureFleetDefaultMemberConfigConfigmanagement?>? configmanagement;
   /// Service Mesh spec
   /// Structure is documented below.
-  final pulumi.Input<FeatureFleetDefaultMemberConfigMesh>? mesh;
+  final pulumi.Input<FeatureFleetDefaultMemberConfigMesh?>? mesh;
   /// Policy Controller spec
   /// Structure is documented below.
-  final pulumi.Input<FeatureFleetDefaultMemberConfigPolicycontroller>? policycontroller;
+  final pulumi.Input<FeatureFleetDefaultMemberConfigPolicycontroller?>? policycontroller;
 
   /// Creates a new [FeatureFleetDefaultMemberConfig].
   /// [configmanagement] Config Management spec

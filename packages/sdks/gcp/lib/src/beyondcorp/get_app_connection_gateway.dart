@@ -38,7 +38,7 @@ class GetAppConnectionGateway {
   factory GetAppConnectionGateway.fromMap(Map<String, dynamic> map) {
     return GetAppConnectionGateway(
       appGateway: pulumi.Input.fromValue(map['appGateway'] as String),
-      ingressPort: pulumi.Input.fromValue(map['ingressPort'] as int),
+      ingressPort: pulumi.Input.fromValue((map['ingressPort'] as num).toInt()),
       type: pulumi.Input.fromValue(map['type'] as String),
       uri: pulumi.Input.fromValue(map['uri'] as String),
     );

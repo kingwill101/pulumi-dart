@@ -5,14 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ImportJobExecutionReportExecutionErrorFileValidationRowErrorError {
   /// (Output)
   /// The error information.
-  final pulumi.Input<String>? errorDetails;
+  final pulumi.Input<String?>? errorDetails;
   /// (Output)
   /// The severity of the error.
   /// Possible values:
   /// ERROR
   /// WARNING
   /// INFO
-  final pulumi.Input<String>? severity;
+  final pulumi.Input<String?>? severity;
 
   /// Creates a new [ImportJobExecutionReportExecutionErrorFileValidationRowErrorError].
   /// [errorDetails] (Output)

@@ -247,7 +247,7 @@ class ReservationAssignment extends pulumi.CustomResource {
           'gcp:bigquery/reservationAssignment:ReservationAssignment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     assignee = registerOutput<String>('assignee');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -265,11 +265,12 @@ class ReservationAssignment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ReservationAssignmentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ReservationAssignment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -292,5 +293,25 @@ class ReservationAssignment extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     reservation = registerOutput<String>('reservation');
     this.state = registerOutput<String>('state');
+  }
+
+  /// Creates a typed reference to an existing [ReservationAssignment] resource.
+  ReservationAssignment.reference(String urn)
+    : super(
+        'gcp:bigquery/reservationAssignment:ReservationAssignment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    assignee = registerOutput<String>('assignee');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    jobType = registerOutput<String>('jobType');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    principal = registerOutput<String?>('principal');
+    project = registerOutput<String>('project');
+    reservation = registerOutput<String>('reservation');
+    state = registerOutput<String>('state');
   }
 }

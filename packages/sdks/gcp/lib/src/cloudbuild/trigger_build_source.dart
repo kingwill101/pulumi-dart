@@ -7,10 +7,10 @@ import 'trigger_build_source_storage_source.dart';
 class TriggerBuildSource {
   /// Location of the source in a Google Cloud Source Repository.
   /// Structure is documented below.
-  final pulumi.Input<TriggerBuildSourceRepoSource>? repoSource;
+  final pulumi.Input<TriggerBuildSourceRepoSource?>? repoSource;
   /// Location of the source in an archive file in Google Cloud Storage.
   /// Structure is documented below.
-  final pulumi.Input<TriggerBuildSourceStorageSource>? storageSource;
+  final pulumi.Input<TriggerBuildSourceStorageSource?>? storageSource;
 
   /// Creates a new [TriggerBuildSource].
   /// [repoSource] Location of the source in a Google Cloud Source Repository.

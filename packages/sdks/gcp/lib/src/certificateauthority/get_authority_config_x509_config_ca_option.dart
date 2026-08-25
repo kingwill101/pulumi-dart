@@ -41,7 +41,7 @@ class GetAuthorityConfigX509ConfigCaOption {
   factory GetAuthorityConfigX509ConfigCaOption.fromMap(Map<String, dynamic> map) {
     return GetAuthorityConfigX509ConfigCaOption(
       isCa: pulumi.Input.fromValue(map['isCa'] as bool),
-      maxIssuerPathLength: pulumi.Input.fromValue(map['maxIssuerPathLength'] as int),
+      maxIssuerPathLength: pulumi.Input.fromValue((map['maxIssuerPathLength'] as num).toInt()),
       nonCa: pulumi.Input.fromValue(map['nonCa'] as bool),
       zeroMaxIssuerPathLength: pulumi.Input.fromValue(map['zeroMaxIssuerPathLength'] as bool),
     );

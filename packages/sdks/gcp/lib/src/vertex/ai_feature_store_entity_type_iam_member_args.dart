@@ -8,7 +8,7 @@ import 'ai_feature_store_entity_type_iam_member_condition.dart';
 /// {@endtemplate}
 /// {@macro pulumi_vertex_ai_feature_store_entity_type_iam_member_ai_feature_store_entity_type_iam_member_args_doc}
 class AiFeatureStoreEntityTypeIamMemberArgs {
-  final pulumi.Input<AiFeatureStoreEntityTypeIamMemberCondition>? condition;
+  final pulumi.Input<AiFeatureStoreEntityTypeIamMemberCondition?>? condition;
   /// Used to find the parent resource to bind the IAM policy to
   final pulumi.Input<String> entitytype;
   /// The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}. Used to find the parent resource to bind the IAM policy to

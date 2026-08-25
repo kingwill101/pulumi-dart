@@ -6,11 +6,11 @@ import 'rollout_plan_wave_orchestration_options_delay.dart';
 class RolloutPlanWaveOrchestrationOptions {
   /// Delays, if any, to be added between batches of projects.
   /// Structure is documented below.
-  final pulumi.Input<List<RolloutPlanWaveOrchestrationOptionsDelay>>? delays;
+  final pulumi.Input<List<RolloutPlanWaveOrchestrationOptionsDelay>?>? delays;
   /// Maximum number of locations to be orchestrated in parallel.
-  final pulumi.Input<int>? maxConcurrentLocations;
+  final pulumi.Input<int?>? maxConcurrentLocations;
   /// Maximum number of resources to be orchestrated per location in parallel.
-  final pulumi.Input<int>? maxConcurrentResourcesPerLocation;
+  final pulumi.Input<int?>? maxConcurrentResourcesPerLocation;
 
   /// Creates a new [RolloutPlanWaveOrchestrationOptions].
   /// [delays] Delays, if any, to be added between batches of projects.
@@ -33,8 +33,8 @@ class RolloutPlanWaveOrchestrationOptions {
   factory RolloutPlanWaveOrchestrationOptions.fromMap(Map<String, dynamic> map) {
     return RolloutPlanWaveOrchestrationOptions(
       delays: (() { final guardedValue = map['delays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<RolloutPlanWaveOrchestrationOptionsDelay>(guardedValue, (value) => RolloutPlanWaveOrchestrationOptionsDelay.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      maxConcurrentLocations: (() { final guardedValue = map['maxConcurrentLocations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      maxConcurrentResourcesPerLocation: (() { final guardedValue = map['maxConcurrentResourcesPerLocation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxConcurrentLocations: (() { final guardedValue = map['maxConcurrentLocations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxConcurrentResourcesPerLocation: (() { final guardedValue = map['maxConcurrentResourcesPerLocation']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

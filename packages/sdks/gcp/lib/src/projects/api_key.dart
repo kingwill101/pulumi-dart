@@ -1178,11 +1178,12 @@ class ApiKey extends pulumi.CustomResource {
           'gcp:projects/apiKey:ApiKey',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['keyString'],
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
-    keyString = registerOutput<String>('keyString');
+    keyString = registerOutput<String>('keyString', isSecret: true);
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     restrictions = registerOutput<ApiKeyRestrictions?>('restrictions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApiKeyRestrictions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -1195,11 +1196,12 @@ class ApiKey extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ApiKeyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ApiKey._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1215,7 +1217,27 @@ class ApiKey extends pulumi.CustomResource {
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
-    keyString = registerOutput<String>('keyString');
+    keyString = registerOutput<String>('keyString', isSecret: true);
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    restrictions = registerOutput<ApiKeyRestrictions?>('restrictions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApiKeyRestrictions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    serviceAccountEmail = registerOutput<String?>('serviceAccountEmail');
+    uid = registerOutput<String>('uid');
+  }
+
+  /// Creates a typed reference to an existing [ApiKey] resource.
+  ApiKey.reference(String urn)
+    : super(
+        'gcp:projects/apiKey:ApiKey',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['keyString'],
+        isResourceReference: true,
+      ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    displayName = registerOutput<String?>('displayName');
+    keyString = registerOutput<String>('keyString', isSecret: true);
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     restrictions = registerOutput<ApiKeyRestrictions?>('restrictions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApiKeyRestrictions.fromMap((guardedValue as Map).cast<String, dynamic>()); });

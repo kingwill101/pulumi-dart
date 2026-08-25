@@ -7,12 +7,12 @@ class RegionInstanceGroupManagerVersion {
   /// The full URL to an instance template from which all new instances of this version will be created.
   final pulumi.Input<String> instanceTemplate;
   /// Version name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
   ///
   /// &gt; Exactly one `version` you specify must not have a `targetSize` specified. During a rolling update, the instance group manager will fulfill the `targetSize`
   /// constraints of every other `version`, and any remaining instances will be provisioned with the version where `targetSize` is unset.
-  final pulumi.Input<RegionInstanceGroupManagerVersionTargetSize>? targetSize;
+  final pulumi.Input<RegionInstanceGroupManagerVersionTargetSize?>? targetSize;
 
   /// Creates a new [RegionInstanceGroupManagerVersion].
   /// [instanceTemplate] The full URL to an instance template from which all new instances of this version will be created.

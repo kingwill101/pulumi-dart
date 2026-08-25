@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'global_forwarding_rule_args.dart';
+import 'global_forwarding_rule_metadata_filter.dart';
 import 'global_forwarding_rule_service_directory_registrations.dart';
 import 'global_forwarding_rule_state.dart';
 
@@ -3431,7 +3432,7 @@ class GlobalForwardingRule extends pulumi.CustomResource {
   /// metadataFilters only applies to Loadbalancers that have their
   /// loadBalancingScheme set to INTERNAL_SELF_MANAGED.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> metadataFilters;
+  late final pulumi.Output<List<GlobalForwardingRuleMetadataFilter>?> metadataFilters;
   /// Name of the resource; provided by the client when the resource is created.
   /// The name must be 1-63 characters long, and comply with
   /// [RFC1035](https://www.ietf.org/rfc/rfc1035.txt).
@@ -3533,13 +3534,14 @@ class GlobalForwardingRule extends pulumi.CustomResource {
           'gcp:compute/globalForwardingRule:GlobalForwardingRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     allowPscGlobalAccess = registerOutput<bool?>('allowPscGlobalAccess');
     baseForwardingRule = registerOutput<String>('baseForwardingRule');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     externalManagedBackendBucketMigrationState = registerOutput<String?>('externalManagedBackendBucketMigrationState');
     externalManagedBackendBucketMigrationTestingPercentage = registerOutput<double?>('externalManagedBackendBucketMigrationTestingPercentage');
     forwardingRuleId = registerOutput<int>('forwardingRuleId');
@@ -3547,9 +3549,9 @@ class GlobalForwardingRule extends pulumi.CustomResource {
     ipProtocol = registerOutput<String>('ipProtocol');
     ipVersion = registerOutput<String?>('ipVersion');
     labelFingerprint = registerOutput<String>('labelFingerprint');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     loadBalancingScheme = registerOutput<String?>('loadBalancingScheme');
-    metadataFilters = registerOutput<List<Map<String, dynamic>>?>('metadataFilters');
+    metadataFilters = registerOutput<List<GlobalForwardingRuleMetadataFilter>?>('metadataFilters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GlobalForwardingRuleMetadataFilter>(guardedValue, (value) => GlobalForwardingRuleMetadataFilter.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     network = registerOutput<String>('network');
     networkTier = registerOutput<String>('networkTier');
@@ -3558,10 +3560,10 @@ class GlobalForwardingRule extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     pscConnectionId = registerOutput<String>('pscConnectionId');
     pscConnectionStatus = registerOutput<String>('pscConnectionStatus');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     selfLink = registerOutput<String>('selfLink');
     serviceDirectoryRegistrations = registerOutput<GlobalForwardingRuleServiceDirectoryRegistrations>('serviceDirectoryRegistrations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GlobalForwardingRuleServiceDirectoryRegistrations.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    sourceIpRanges = registerOutput<List<String>?>('sourceIpRanges');
+    sourceIpRanges = registerOutput<List<String>?>('sourceIpRanges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     subnetwork = registerOutput<String>('subnetwork');
     target = registerOutput<String>('target');
   }
@@ -3571,11 +3573,12 @@ class GlobalForwardingRule extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     GlobalForwardingRuleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return GlobalForwardingRule._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -3593,7 +3596,7 @@ class GlobalForwardingRule extends pulumi.CustomResource {
     baseForwardingRule = registerOutput<String>('baseForwardingRule');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     externalManagedBackendBucketMigrationState = registerOutput<String?>('externalManagedBackendBucketMigrationState');
     externalManagedBackendBucketMigrationTestingPercentage = registerOutput<double?>('externalManagedBackendBucketMigrationTestingPercentage');
     forwardingRuleId = registerOutput<int>('forwardingRuleId');
@@ -3601,9 +3604,9 @@ class GlobalForwardingRule extends pulumi.CustomResource {
     ipProtocol = registerOutput<String>('ipProtocol');
     ipVersion = registerOutput<String?>('ipVersion');
     labelFingerprint = registerOutput<String>('labelFingerprint');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     loadBalancingScheme = registerOutput<String?>('loadBalancingScheme');
-    metadataFilters = registerOutput<List<Map<String, dynamic>>?>('metadataFilters');
+    metadataFilters = registerOutput<List<GlobalForwardingRuleMetadataFilter>?>('metadataFilters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GlobalForwardingRuleMetadataFilter>(guardedValue, (value) => GlobalForwardingRuleMetadataFilter.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     network = registerOutput<String>('network');
     networkTier = registerOutput<String>('networkTier');
@@ -3612,10 +3615,51 @@ class GlobalForwardingRule extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     pscConnectionId = registerOutput<String>('pscConnectionId');
     pscConnectionStatus = registerOutput<String>('pscConnectionStatus');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     selfLink = registerOutput<String>('selfLink');
     serviceDirectoryRegistrations = registerOutput<GlobalForwardingRuleServiceDirectoryRegistrations>('serviceDirectoryRegistrations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GlobalForwardingRuleServiceDirectoryRegistrations.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    sourceIpRanges = registerOutput<List<String>?>('sourceIpRanges');
+    sourceIpRanges = registerOutput<List<String>?>('sourceIpRanges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    subnetwork = registerOutput<String>('subnetwork');
+    target = registerOutput<String>('target');
+  }
+
+  /// Creates a typed reference to an existing [GlobalForwardingRule] resource.
+  GlobalForwardingRule.reference(String urn)
+    : super(
+        'gcp:compute/globalForwardingRule:GlobalForwardingRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    allowPscGlobalAccess = registerOutput<bool?>('allowPscGlobalAccess');
+    baseForwardingRule = registerOutput<String>('baseForwardingRule');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    externalManagedBackendBucketMigrationState = registerOutput<String?>('externalManagedBackendBucketMigrationState');
+    externalManagedBackendBucketMigrationTestingPercentage = registerOutput<double?>('externalManagedBackendBucketMigrationTestingPercentage');
+    forwardingRuleId = registerOutput<int>('forwardingRuleId');
+    ipAddress = registerOutput<String>('ipAddress');
+    ipProtocol = registerOutput<String>('ipProtocol');
+    ipVersion = registerOutput<String?>('ipVersion');
+    labelFingerprint = registerOutput<String>('labelFingerprint');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    loadBalancingScheme = registerOutput<String?>('loadBalancingScheme');
+    metadataFilters = registerOutput<List<GlobalForwardingRuleMetadataFilter>?>('metadataFilters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GlobalForwardingRuleMetadataFilter>(guardedValue, (value) => GlobalForwardingRuleMetadataFilter.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    network = registerOutput<String>('network');
+    networkTier = registerOutput<String>('networkTier');
+    noAutomateDnsZone = registerOutput<bool?>('noAutomateDnsZone');
+    portRange = registerOutput<String?>('portRange');
+    project = registerOutput<String>('project');
+    pscConnectionId = registerOutput<String>('pscConnectionId');
+    pscConnectionStatus = registerOutput<String>('pscConnectionStatus');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    selfLink = registerOutput<String>('selfLink');
+    serviceDirectoryRegistrations = registerOutput<GlobalForwardingRuleServiceDirectoryRegistrations>('serviceDirectoryRegistrations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GlobalForwardingRuleServiceDirectoryRegistrations.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sourceIpRanges = registerOutput<List<String>?>('sourceIpRanges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     subnetwork = registerOutput<String>('subnetwork');
     target = registerOutput<String>('target');
   }

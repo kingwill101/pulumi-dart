@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexesPattern {
   /// if unset, this property matches all datasets
-  final pulumi.Input<String>? datasetIdRegex;
+  final pulumi.Input<String?>? datasetIdRegex;
   /// For organizations, if unset, will match all projects. Has no effect for data profile configurations created within a project.
-  final pulumi.Input<String>? projectIdRegex;
+  final pulumi.Input<String?>? projectIdRegex;
   /// if unset, this property matches all tables
-  final pulumi.Input<String>? tableIdRegex;
+  final pulumi.Input<String?>? tableIdRegex;
 
   /// Creates a new [PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexesPattern].
   /// [datasetIdRegex] if unset, this property matches all datasets

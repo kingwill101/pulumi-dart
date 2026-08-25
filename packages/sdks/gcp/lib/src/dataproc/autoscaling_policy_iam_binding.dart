@@ -1029,12 +1029,12 @@ class AutoscalingPolicyIamBinding extends pulumi.CustomResource {
           'gcp:dataproc/autoscalingPolicyIamBinding:AutoscalingPolicyIamBinding',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     condition = registerOutput<AutoscalingPolicyIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AutoscalingPolicyIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');
-    members = registerOutput<List<String>>('members');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     policyId = registerOutput<String>('policyId');
     project = registerOutput<String>('project');
     role = registerOutput<String>('role');
@@ -1045,11 +1045,12 @@ class AutoscalingPolicyIamBinding extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AutoscalingPolicyIamBindingState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AutoscalingPolicyIamBinding._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1066,7 +1067,25 @@ class AutoscalingPolicyIamBinding extends pulumi.CustomResource {
     condition = registerOutput<AutoscalingPolicyIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AutoscalingPolicyIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');
-    members = registerOutput<List<String>>('members');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    policyId = registerOutput<String>('policyId');
+    project = registerOutput<String>('project');
+    role = registerOutput<String>('role');
+  }
+
+  /// Creates a typed reference to an existing [AutoscalingPolicyIamBinding] resource.
+  AutoscalingPolicyIamBinding.reference(String urn)
+    : super(
+        'gcp:dataproc/autoscalingPolicyIamBinding:AutoscalingPolicyIamBinding',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    condition = registerOutput<AutoscalingPolicyIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AutoscalingPolicyIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    etag = registerOutput<String>('etag');
+    location = registerOutput<String>('location');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     policyId = registerOutput<String>('policyId');
     project = registerOutput<String>('project');
     role = registerOutput<String>('role');

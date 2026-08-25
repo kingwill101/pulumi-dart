@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VolumeCacheParametersCacheConfig {
   /// Optional. Flag indicating whether a CIFS change notification is enabled for the FlexCache volume.
-  final pulumi.Input<bool>? cifsChangeNotifyEnabled;
+  final pulumi.Input<bool?>? cifsChangeNotifyEnabled;
 
   /// Creates a new [VolumeCacheParametersCacheConfig].
   /// [cifsChangeNotifyEnabled] Optional. Flag indicating whether a CIFS change notification is enabled for the FlexCache volume.

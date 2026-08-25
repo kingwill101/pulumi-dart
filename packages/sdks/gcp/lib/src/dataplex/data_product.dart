@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'data_product_access_approval_config.dart';
+import 'data_product_access_group.dart';
 import 'data_product_args.dart';
 import 'data_product_state.dart';
 
@@ -597,7 +598,7 @@ class DataProduct extends pulumi.CustomResource {
   late final pulumi.Output<DataProductAccessApprovalConfig?> accessApprovalConfig;
   /// Custom user defined access groups at the data product level.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> accessGroups;
+  late final pulumi.Output<List<DataProductAccessGroup>?> accessGroups;
   /// Number of associated data assets.
   late final pulumi.Output<int> assetCount;
   /// Creation timestamp.
@@ -658,25 +659,26 @@ class DataProduct extends pulumi.CustomResource {
           'gcp:dataplex/dataProduct:DataProduct',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     accessApprovalConfig = registerOutput<DataProductAccessApprovalConfig?>('accessApprovalConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataProductAccessApprovalConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    accessGroups = registerOutput<List<Map<String, dynamic>>?>('accessGroups');
+    accessGroups = registerOutput<List<DataProductAccessGroup>?>('accessGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DataProductAccessGroup>(guardedValue, (value) => DataProductAccessGroup.fromMap((value as Map).cast<String, dynamic>())); });
     assetCount = registerOutput<int>('assetCount');
     createTime = registerOutput<String>('createTime');
     dataProductId = registerOutput<String>('dataProductId');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     etag = registerOutput<String>('etag');
     icon = registerOutput<String?>('icon');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    ownerEmails = registerOutput<List<String>>('ownerEmails');
+    ownerEmails = registerOutput<List<String>>('ownerEmails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
   }
@@ -686,11 +688,12 @@ class DataProduct extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DataProductState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DataProduct._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -705,22 +708,53 @@ class DataProduct extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     accessApprovalConfig = registerOutput<DataProductAccessApprovalConfig?>('accessApprovalConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataProductAccessApprovalConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    accessGroups = registerOutput<List<Map<String, dynamic>>?>('accessGroups');
+    accessGroups = registerOutput<List<DataProductAccessGroup>?>('accessGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DataProductAccessGroup>(guardedValue, (value) => DataProductAccessGroup.fromMap((value as Map).cast<String, dynamic>())); });
     assetCount = registerOutput<int>('assetCount');
     createTime = registerOutput<String>('createTime');
     dataProductId = registerOutput<String>('dataProductId');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     etag = registerOutput<String>('etag');
     icon = registerOutput<String?>('icon');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    ownerEmails = registerOutput<List<String>>('ownerEmails');
+    ownerEmails = registerOutput<List<String>>('ownerEmails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [DataProduct] resource.
+  DataProduct.reference(String urn)
+    : super(
+        'gcp:dataplex/dataProduct:DataProduct',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    accessApprovalConfig = registerOutput<DataProductAccessApprovalConfig?>('accessApprovalConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataProductAccessApprovalConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    accessGroups = registerOutput<List<DataProductAccessGroup>?>('accessGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DataProductAccessGroup>(guardedValue, (value) => DataProductAccessGroup.fromMap((value as Map).cast<String, dynamic>())); });
+    assetCount = registerOutput<int>('assetCount');
+    createTime = registerOutput<String>('createTime');
+    dataProductId = registerOutput<String>('dataProductId');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    etag = registerOutput<String>('etag');
+    icon = registerOutput<String?>('icon');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    ownerEmails = registerOutput<List<String>>('ownerEmails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
   }

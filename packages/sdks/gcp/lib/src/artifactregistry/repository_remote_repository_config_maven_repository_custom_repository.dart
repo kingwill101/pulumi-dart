@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepository {
   /// Specific uri to the registry, e.g. `"https://pypi.io"`
-  final pulumi.Input<String>? uri;
+  final pulumi.Input<String?>? uri;
 
   /// Creates a new [RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepository].
   /// [uri] Specific uri to the registry, e.g. `"https://pypi.io"`

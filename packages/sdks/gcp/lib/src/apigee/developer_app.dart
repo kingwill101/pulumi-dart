@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'developer_app_args.dart';
+import 'developer_app_attribute.dart';
+import 'developer_app_credential.dart';
 import 'developer_app_state.dart';
 
 /// Creates an app associated with a developer.
@@ -1113,7 +1115,7 @@ class DeveloperApp extends pulumi.CustomResource {
   late final pulumi.Output<String> appId;
   /// Developer attributes (name/value pairs). The custom attribute limit is 18.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> attributes;
+  late final pulumi.Output<List<DeveloperAppAttribute>?> attributes;
   /// Callback URL used by OAuth 2.0 authorization servers to communicate
   /// authorization codes back to developer apps.
   late final pulumi.Output<String> callbackUrl;
@@ -1138,7 +1140,7 @@ class DeveloperApp extends pulumi.CustomResource {
   /// Output only. Set of credentials for the developer app consisting of
   /// the consumer key/secret pairs associated with the API products.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> credentials;
+  late final pulumi.Output<List<DeveloperAppCredential>> credentials;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -1182,17 +1184,18 @@ class DeveloperApp extends pulumi.CustomResource {
           'gcp:apigee/developerApp:DeveloperApp',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['consumerSecret'],
         ) {
-    apiProducts = registerOutput<List<String>?>('apiProducts');
+    apiProducts = registerOutput<List<String>?>('apiProducts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     appFamily = registerOutput<String>('appFamily');
     appId = registerOutput<String>('appId');
-    attributes = registerOutput<List<Map<String, dynamic>>?>('attributes');
+    attributes = registerOutput<List<DeveloperAppAttribute>?>('attributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DeveloperAppAttribute>(guardedValue, (value) => DeveloperAppAttribute.fromMap((value as Map).cast<String, dynamic>())); });
     callbackUrl = registerOutput<String>('callbackUrl');
     consumerKey = registerOutput<String?>('consumerKey');
-    consumerSecret = registerOutput<String?>('consumerSecret');
+    consumerSecret = registerOutput<String?>('consumerSecret', isSecret: true);
     createdAt = registerOutput<String>('createdAt');
-    credentials = registerOutput<List<Map<String, dynamic>>>('credentials');
+    credentials = registerOutput<List<DeveloperAppCredential>>('credentials', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DeveloperAppCredential>(guardedValue, (value) => DeveloperAppCredential.fromMap((value as Map).cast<String, dynamic>())); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     developerEmail = registerOutput<String>('developerEmail');
     developerId = registerOutput<String>('developerId');
@@ -1200,7 +1203,7 @@ class DeveloperApp extends pulumi.CustomResource {
     lastModifiedAt = registerOutput<String>('lastModifiedAt');
     this.name = registerOutput<String>('name');
     orgId = registerOutput<String>('orgId');
-    scopes = registerOutput<List<String>?>('scopes');
+    scopes = registerOutput<List<String>?>('scopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     status = registerOutput<String>('status');
   }
 
@@ -1209,11 +1212,12 @@ class DeveloperApp extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DeveloperAppState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DeveloperApp._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1227,15 +1231,15 @@ class DeveloperApp extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    apiProducts = registerOutput<List<String>?>('apiProducts');
+    apiProducts = registerOutput<List<String>?>('apiProducts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     appFamily = registerOutput<String>('appFamily');
     appId = registerOutput<String>('appId');
-    attributes = registerOutput<List<Map<String, dynamic>>?>('attributes');
+    attributes = registerOutput<List<DeveloperAppAttribute>?>('attributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DeveloperAppAttribute>(guardedValue, (value) => DeveloperAppAttribute.fromMap((value as Map).cast<String, dynamic>())); });
     callbackUrl = registerOutput<String>('callbackUrl');
     consumerKey = registerOutput<String?>('consumerKey');
-    consumerSecret = registerOutput<String?>('consumerSecret');
+    consumerSecret = registerOutput<String?>('consumerSecret', isSecret: true);
     createdAt = registerOutput<String>('createdAt');
-    credentials = registerOutput<List<Map<String, dynamic>>>('credentials');
+    credentials = registerOutput<List<DeveloperAppCredential>>('credentials', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DeveloperAppCredential>(guardedValue, (value) => DeveloperAppCredential.fromMap((value as Map).cast<String, dynamic>())); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     developerEmail = registerOutput<String>('developerEmail');
     developerId = registerOutput<String>('developerId');
@@ -1243,7 +1247,37 @@ class DeveloperApp extends pulumi.CustomResource {
     lastModifiedAt = registerOutput<String>('lastModifiedAt');
     this.name = registerOutput<String>('name');
     orgId = registerOutput<String>('orgId');
-    scopes = registerOutput<List<String>?>('scopes');
+    scopes = registerOutput<List<String>?>('scopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    status = registerOutput<String>('status');
+  }
+
+  /// Creates a typed reference to an existing [DeveloperApp] resource.
+  DeveloperApp.reference(String urn)
+    : super(
+        'gcp:apigee/developerApp:DeveloperApp',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['consumerSecret'],
+        isResourceReference: true,
+      ) {
+    apiProducts = registerOutput<List<String>?>('apiProducts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    appFamily = registerOutput<String>('appFamily');
+    appId = registerOutput<String>('appId');
+    attributes = registerOutput<List<DeveloperAppAttribute>?>('attributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DeveloperAppAttribute>(guardedValue, (value) => DeveloperAppAttribute.fromMap((value as Map).cast<String, dynamic>())); });
+    callbackUrl = registerOutput<String>('callbackUrl');
+    consumerKey = registerOutput<String?>('consumerKey');
+    consumerSecret = registerOutput<String?>('consumerSecret', isSecret: true);
+    createdAt = registerOutput<String>('createdAt');
+    credentials = registerOutput<List<DeveloperAppCredential>>('credentials', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DeveloperAppCredential>(guardedValue, (value) => DeveloperAppCredential.fromMap((value as Map).cast<String, dynamic>())); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    developerEmail = registerOutput<String>('developerEmail');
+    developerId = registerOutput<String>('developerId');
+    keyExpiresIn = registerOutput<String?>('keyExpiresIn');
+    lastModifiedAt = registerOutput<String>('lastModifiedAt');
+    this.name = registerOutput<String>('name');
+    orgId = registerOutput<String>('orgId');
+    scopes = registerOutput<List<String>?>('scopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     status = registerOutput<String>('status');
   }
 }

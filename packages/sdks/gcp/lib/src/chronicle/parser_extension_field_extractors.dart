@@ -7,21 +7,21 @@ import 'parser_extension_field_extractors_preprocess_config.dart';
 class ParserExtensionFieldExtractors {
   /// Whether to append repeated fields or not.
   /// When false, repeated fields will be replaced.
-  final pulumi.Input<bool>? appendRepeatedFields;
+  final pulumi.Input<bool?>? appendRepeatedFields;
   /// List of FieldExtractors.
   /// Structure is documented below.
-  final pulumi.Input<List<ParserExtensionFieldExtractorsExtractor>>? extractors;
+  final pulumi.Input<List<ParserExtensionFieldExtractorsExtractor>?>? extractors;
   /// Possible values:
   /// JSON
   /// CSV
   /// XML
-  final pulumi.Input<String>? logFormat;
+  final pulumi.Input<String?>? logFormat;
   /// PreProcessConfig holds the GROK expression to extract the syslog header.
   /// Structure is documented below.
-  final pulumi.Input<ParserExtensionFieldExtractorsPreprocessConfig>? preprocessConfig;
+  final pulumi.Input<ParserExtensionFieldExtractorsPreprocessConfig?>? preprocessConfig;
   /// (Output)
   /// CBN snippet generated from field extractors.
-  final pulumi.Input<String>? transformedCbnSnippet;
+  final pulumi.Input<String?>? transformedCbnSnippet;
 
   /// Creates a new [ParserExtensionFieldExtractors].
   /// [appendRepeatedFields] Whether to append repeated fields or not.

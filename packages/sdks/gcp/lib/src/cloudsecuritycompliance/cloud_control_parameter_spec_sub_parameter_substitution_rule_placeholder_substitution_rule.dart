@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRule {
   /// Fully qualified proto attribute path (e.g., dot notation)
-  final pulumi.Input<String>? attribute;
+  final pulumi.Input<String?>? attribute;
 
   /// Creates a new [CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRule].
   /// [attribute] Fully qualified proto attribute path (e.g., dot notation)

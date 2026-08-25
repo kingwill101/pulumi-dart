@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'global_vm_extension_policy_args.dart';
+import 'global_vm_extension_policy_extension_policy.dart';
+import 'global_vm_extension_policy_instance_selector.dart';
 import 'global_vm_extension_policy_rollout_operation.dart';
 import 'global_vm_extension_policy_state.dart';
 
@@ -996,10 +998,10 @@ class GlobalVmExtensionPolicy extends pulumi.CustomResource {
   late final pulumi.Output<String?> description;
   /// Map from extension (eg: "cloudops") to its policy configuration.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> extensionPolicies;
+  late final pulumi.Output<List<GlobalVmExtensionPolicyExtensionPolicy>> extensionPolicies;
   /// Selector to target VMs for a policy.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> instanceSelectors;
+  late final pulumi.Output<List<GlobalVmExtensionPolicyInstanceSelector>?> instanceSelectors;
   /// Type of the resource.
   late final pulumi.Output<String> kind;
   /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long and match the regular expression '^a-z?$' to comply with RFC1035.
@@ -1031,13 +1033,13 @@ class GlobalVmExtensionPolicy extends pulumi.CustomResource {
           'gcp:compute/globalVmExtensionPolicy:GlobalVmExtensionPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     creationTimestamp = registerOutput<String>('creationTimestamp');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    extensionPolicies = registerOutput<List<Map<String, dynamic>>>('extensionPolicies');
-    instanceSelectors = registerOutput<List<Map<String, dynamic>>?>('instanceSelectors');
+    extensionPolicies = registerOutput<List<GlobalVmExtensionPolicyExtensionPolicy>>('extensionPolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GlobalVmExtensionPolicyExtensionPolicy>(guardedValue, (value) => GlobalVmExtensionPolicyExtensionPolicy.fromMap((value as Map).cast<String, dynamic>())); });
+    instanceSelectors = registerOutput<List<GlobalVmExtensionPolicyInstanceSelector>?>('instanceSelectors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GlobalVmExtensionPolicyInstanceSelector>(guardedValue, (value) => GlobalVmExtensionPolicyInstanceSelector.fromMap((value as Map).cast<String, dynamic>())); });
     kind = registerOutput<String>('kind');
     this.name = registerOutput<String>('name');
     priority = registerOutput<int>('priority');
@@ -1053,11 +1055,12 @@ class GlobalVmExtensionPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     GlobalVmExtensionPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return GlobalVmExtensionPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1074,8 +1077,32 @@ class GlobalVmExtensionPolicy extends pulumi.CustomResource {
     creationTimestamp = registerOutput<String>('creationTimestamp');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    extensionPolicies = registerOutput<List<Map<String, dynamic>>>('extensionPolicies');
-    instanceSelectors = registerOutput<List<Map<String, dynamic>>?>('instanceSelectors');
+    extensionPolicies = registerOutput<List<GlobalVmExtensionPolicyExtensionPolicy>>('extensionPolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GlobalVmExtensionPolicyExtensionPolicy>(guardedValue, (value) => GlobalVmExtensionPolicyExtensionPolicy.fromMap((value as Map).cast<String, dynamic>())); });
+    instanceSelectors = registerOutput<List<GlobalVmExtensionPolicyInstanceSelector>?>('instanceSelectors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GlobalVmExtensionPolicyInstanceSelector>(guardedValue, (value) => GlobalVmExtensionPolicyInstanceSelector.fromMap((value as Map).cast<String, dynamic>())); });
+    kind = registerOutput<String>('kind');
+    this.name = registerOutput<String>('name');
+    priority = registerOutput<int>('priority');
+    project = registerOutput<String>('project');
+    rolloutOperation = registerOutput<GlobalVmExtensionPolicyRolloutOperation>('rolloutOperation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GlobalVmExtensionPolicyRolloutOperation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    scopedResourceStatus = registerOutput<String>('scopedResourceStatus');
+    selfLink = registerOutput<String>('selfLink');
+    updateTimestamp = registerOutput<String>('updateTimestamp');
+  }
+
+  /// Creates a typed reference to an existing [GlobalVmExtensionPolicy] resource.
+  GlobalVmExtensionPolicy.reference(String urn)
+    : super(
+        'gcp:compute/globalVmExtensionPolicy:GlobalVmExtensionPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    extensionPolicies = registerOutput<List<GlobalVmExtensionPolicyExtensionPolicy>>('extensionPolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GlobalVmExtensionPolicyExtensionPolicy>(guardedValue, (value) => GlobalVmExtensionPolicyExtensionPolicy.fromMap((value as Map).cast<String, dynamic>())); });
+    instanceSelectors = registerOutput<List<GlobalVmExtensionPolicyInstanceSelector>?>('instanceSelectors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GlobalVmExtensionPolicyInstanceSelector>(guardedValue, (value) => GlobalVmExtensionPolicyInstanceSelector.fromMap((value as Map).cast<String, dynamic>())); });
     kind = registerOutput<String>('kind');
     this.name = registerOutput<String>('name');
     priority = registerOutput<int>('priority');

@@ -8,17 +8,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_sql_get_database_instances_get_database_instances_args_doc}
 class GetDatabaseInstancesArgs {
   /// To filter out the Cloud SQL instances which are of the specified database version.
-  final pulumi.Input<String>? databaseVersion;
+  final pulumi.Input<String?>? databaseVersion;
   /// The ID of the project in which the resources belong. If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// To filter out the Cloud SQL instances which are located in the specified region.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// To filter out the Cloud SQL instances based on the current serving state of the database instance. Supported values include `SQL_INSTANCE_STATE_UNSPECIFIED`, `RUNNABLE`, `SUSPENDED`, `PENDING_DELETE`, `PENDING_CREATE`, `MAINTENANCE`, `FAILED`.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// To filter out the Cloud SQL instances based on the tier(or machine type) of the database instances.
-  final pulumi.Input<String>? tier;
+  final pulumi.Input<String?>? tier;
   /// To filter out the Cloud SQL instances which are located in the specified zone. This zone refers to the Compute Engine zone that the instance is currently serving from.
-  final pulumi.Input<String>? zone;
+  final pulumi.Input<String?>? zone;
 
   /// Creates a new [GetDatabaseInstancesArgs].
   /// [databaseVersion] To filter out the Cloud SQL instances which are of the specified database version.

@@ -10,7 +10,7 @@ class GetStaticIpsArgs {
   /// The location to list Datastream IPs for. For example: `us-east1`.
   final pulumi.Input<String> location;
   /// Project from which to list static IP addresses. Defaults to project declared in the provider.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetStaticIpsArgs].
   /// [location] The location to list Datastream IPs for. For example: `us-east1`.

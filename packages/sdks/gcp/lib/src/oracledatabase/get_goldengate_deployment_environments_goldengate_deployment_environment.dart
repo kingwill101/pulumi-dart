@@ -72,15 +72,15 @@ class GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironment {
     return GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironment(
       autoScalingEnabled: pulumi.Input.fromValue(map['autoScalingEnabled'] as bool),
       category: pulumi.Input.fromValue(map['category'] as String),
-      defaultCpuCoreCount: pulumi.Input.fromValue(map['defaultCpuCoreCount'] as int),
+      defaultCpuCoreCount: pulumi.Input.fromValue((map['defaultCpuCoreCount'] as num).toInt()),
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
       environmentType: pulumi.Input.fromValue(map['environmentType'] as String),
-      maxCpuCoreCount: pulumi.Input.fromValue(map['maxCpuCoreCount'] as int),
-      memoryGbPerCpuCore: pulumi.Input.fromValue(map['memoryGbPerCpuCore'] as int),
-      minCpuCoreCount: pulumi.Input.fromValue(map['minCpuCoreCount'] as int),
+      maxCpuCoreCount: pulumi.Input.fromValue((map['maxCpuCoreCount'] as num).toInt()),
+      memoryGbPerCpuCore: pulumi.Input.fromValue((map['memoryGbPerCpuCore'] as num).toInt()),
+      minCpuCoreCount: pulumi.Input.fromValue((map['minCpuCoreCount'] as num).toInt()),
       name: pulumi.Input.fromValue(map['name'] as String),
-      networkBandwidthGbpsPerCpuCore: pulumi.Input.fromValue(map['networkBandwidthGbpsPerCpuCore'] as int),
-      storageUsageLimitGbPerCpuCore: pulumi.Input.fromValue(map['storageUsageLimitGbPerCpuCore'] as int),
+      networkBandwidthGbpsPerCpuCore: pulumi.Input.fromValue((map['networkBandwidthGbpsPerCpuCore'] as num).toInt()),
+      storageUsageLimitGbPerCpuCore: pulumi.Input.fromValue((map['storageUsageLimitGbPerCpuCore'] as num).toInt()),
     );
   }
 }

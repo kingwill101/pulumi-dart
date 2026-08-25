@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RuntimeTemplateEncryptionSpec {
   /// The Cloud KMS encryption key (customer-managed encryption key) used to protect the runtime.
-  final pulumi.Input<String>? kmsKeyName;
+  final pulumi.Input<String?>? kmsKeyName;
 
   /// Creates a new [RuntimeTemplateEncryptionSpec].
   /// [kmsKeyName] The Cloud KMS encryption key (customer-managed encryption key) used to protect the runtime.

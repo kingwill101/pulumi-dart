@@ -16,21 +16,21 @@ class OsPolicyAssignmentArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// OS policy assignment description. Length of the description is limited to 1024 characters.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Filter to select VMs. Structure is
   /// documented below.
   final pulumi.Input<OsPolicyAssignmentInstanceFilter> instanceFilter;
   /// The location for the resource
   final pulumi.Input<String> location;
   /// Resource name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// List of OS policies to be applied to the VMs.
   /// Structure is documented below.
   final pulumi.Input<List<OsPolicyAssignmentOsPolicy>> osPolicies;
   /// The project for the resource
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Rollout to deploy the OS policy assignment. A rollout
   /// is triggered in the following situations: 1) OSPolicyAssignment is created.
   /// 2) OSPolicyAssignment is updated and the update contains changes to one of
@@ -38,7 +38,7 @@ class OsPolicyAssignmentArgs {
   /// is deleted. Structure is documented below.
   final pulumi.Input<OsPolicyAssignmentRollout> rollout;
   /// Set to true to skip awaiting rollout during resource creation and update.
-  final pulumi.Input<bool>? skipAwaitRollout;
+  final pulumi.Input<bool?>? skipAwaitRollout;
 
   /// Creates a new [OsPolicyAssignmentArgs].
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".

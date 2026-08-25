@@ -36,9 +36,9 @@ class StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartition {
   factory StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartition.fromMap(Map<String, dynamic> map) {
     return StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartition(
       column: pulumi.Input.fromValue(map['column'] as String),
-      end: pulumi.Input.fromValue(map['end'] as int),
-      interval: pulumi.Input.fromValue(map['interval'] as int),
-      start: pulumi.Input.fromValue(map['start'] as int),
+      end: pulumi.Input.fromValue((map['end'] as num).toInt()),
+      interval: pulumi.Input.fromValue((map['interval'] as num).toInt()),
+      start: pulumi.Input.fromValue((map['start'] as num).toInt()),
     );
   }
 }

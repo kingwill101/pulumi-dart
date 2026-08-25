@@ -9,7 +9,7 @@ class PrivateCloudManagementCluster {
   /// Configuration of the autoscaling applied to this cluster
   /// Private cloud must have a minimum of 3 nodes to add autoscale settings
   /// Structure is documented below.
-  final pulumi.Input<PrivateCloudManagementClusterAutoscalingSettings>? autoscalingSettings;
+  final pulumi.Input<PrivateCloudManagementClusterAutoscalingSettings?>? autoscalingSettings;
   /// The user-provided identifier of the new Cluster. The identifier must meet the following requirements:
   /// * Only contains 1-63 alphanumeric characters and hyphens
   /// * Begins with an alphabetical character
@@ -20,10 +20,10 @@ class PrivateCloudManagementCluster {
   /// The map of cluster node types in this cluster,
   /// where the key is canonical identifier of the node type (corresponds to the NodeType).
   /// Structure is documented below.
-  final pulumi.Input<List<PrivateCloudManagementClusterNodeTypeConfig>>? nodeTypeConfigs;
+  final pulumi.Input<List<PrivateCloudManagementClusterNodeTypeConfig>?>? nodeTypeConfigs;
   /// The stretched cluster configuration for the private cloud.
   /// Structure is documented below.
-  final pulumi.Input<PrivateCloudManagementClusterStretchedClusterConfig>? stretchedClusterConfig;
+  final pulumi.Input<PrivateCloudManagementClusterStretchedClusterConfig?>? stretchedClusterConfig;
 
   /// Creates a new [PrivateCloudManagementCluster].
   /// [autoscalingSettings] Configuration of the autoscaling applied to this cluster

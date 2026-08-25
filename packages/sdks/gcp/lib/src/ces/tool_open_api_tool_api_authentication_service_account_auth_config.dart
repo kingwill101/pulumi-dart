@@ -11,7 +11,7 @@ class ToolOpenApiToolApiAuthenticationServiceAccountAuthConfig {
   /// `roles/iam.serviceAccountTokenCreator` role granted to the
   /// CES service agent
   /// `service-&lt;PROJECT-NUMBER&gt;@gcp-sa-ces.iam.gserviceaccount.com`.
-  final pulumi.Input<String>? serviceAccount;
+  final pulumi.Input<String?>? serviceAccount;
 
   /// Creates a new [ToolOpenApiToolApiAuthenticationServiceAccountAuthConfig].
   /// [serviceAccount] (Output)

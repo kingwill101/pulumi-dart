@@ -6,15 +6,15 @@ import 'certificate_map_gclb_target_ip_config.dart';
 class CertificateMapGclbTarget {
   /// An IP configuration where this Certificate Map is serving
   /// Structure is documented below.
-  final pulumi.Input<List<CertificateMapGclbTargetIpConfig>>? ipConfigs;
+  final pulumi.Input<List<CertificateMapGclbTargetIpConfig>?>? ipConfigs;
   /// Proxy name must be in the format projects/*/locations/*/targetHttpsProxies/*.
   /// This field is part of a union field `targetProxy`: Only one of `targetHttpsProxy` or
   /// `targetSslProxy` may be set.
-  final pulumi.Input<String>? targetHttpsProxy;
+  final pulumi.Input<String?>? targetHttpsProxy;
   /// Proxy name must be in the format projects/*/locations/*/targetSslProxies/*.
   /// This field is part of a union field `targetProxy`: Only one of `targetHttpsProxy` or
   /// `targetSslProxy` may be set.
-  final pulumi.Input<String>? targetSslProxy;
+  final pulumi.Input<String?>? targetSslProxy;
 
   /// Creates a new [CertificateMapGclbTarget].
   /// [ipConfigs] An IP configuration where this Certificate Map is serving

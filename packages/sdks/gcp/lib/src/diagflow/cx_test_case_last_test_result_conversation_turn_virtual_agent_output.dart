@@ -10,21 +10,21 @@ import 'cx_test_case_last_test_result_conversation_turn_virtual_agent_output_tri
 class CxTestCaseLastTestResultConversationTurnVirtualAgentOutput {
   /// The [Page](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.flows.pages#Page) on which the utterance was spoken.
   /// Structure is documented below.
-  final pulumi.Input<CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPage>? currentPage;
+  final pulumi.Input<CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPage?>? currentPage;
   /// The list of differences between the original run and the replay for this output, if any.
   /// Structure is documented below.
-  final pulumi.Input<List<CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifference>>? differences;
+  final pulumi.Input<List<CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifference>?>? differences;
   /// The session parameters available to the bot at this point.
-  final pulumi.Input<String>? sessionParameters;
+  final pulumi.Input<String?>? sessionParameters;
   /// Response error from the agent in the test result. If set, other output is empty.
   /// Structure is documented below.
-  final pulumi.Input<CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatus>? status;
+  final pulumi.Input<CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatus?>? status;
   /// The text responses from the agent for the turn.
   /// Structure is documented below.
-  final pulumi.Input<List<CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponse>>? textResponses;
+  final pulumi.Input<List<CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponse>?>? textResponses;
   /// The [Intent](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.intents#Intent) that triggered the response.
   /// Structure is documented below.
-  final pulumi.Input<CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntent>? triggeredIntent;
+  final pulumi.Input<CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntent?>? triggeredIntent;
 
   /// Creates a new [CxTestCaseLastTestResultConversationTurnVirtualAgentOutput].
   /// [currentPage] The [Page](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.flows.pages#Page) on which the utterance was spoken.

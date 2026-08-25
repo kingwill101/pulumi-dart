@@ -604,14 +604,14 @@ class RegionCompositeHealthCheck extends pulumi.CustomResource {
           'gcp:compute/regionCompositeHealthCheck:RegionCompositeHealthCheck',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     creationTimestamp = registerOutput<String>('creationTimestamp');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     fingerprint = registerOutput<String>('fingerprint');
     healthDestination = registerOutput<String>('healthDestination');
-    healthSources = registerOutput<List<String>?>('healthSources');
+    healthSources = registerOutput<List<String>?>('healthSources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     region = registerOutput<String>('region');
@@ -623,11 +623,12 @@ class RegionCompositeHealthCheck extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RegionCompositeHealthCheckState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RegionCompositeHealthCheck._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -646,7 +647,28 @@ class RegionCompositeHealthCheck extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     fingerprint = registerOutput<String>('fingerprint');
     healthDestination = registerOutput<String>('healthDestination');
-    healthSources = registerOutput<List<String>?>('healthSources');
+    healthSources = registerOutput<List<String>?>('healthSources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+    selfLinkWithId = registerOutput<String>('selfLinkWithId');
+  }
+
+  /// Creates a typed reference to an existing [RegionCompositeHealthCheck] resource.
+  RegionCompositeHealthCheck.reference(String urn)
+    : super(
+        'gcp:compute/regionCompositeHealthCheck:RegionCompositeHealthCheck',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    fingerprint = registerOutput<String>('fingerprint');
+    healthDestination = registerOutput<String>('healthDestination');
+    healthSources = registerOutput<List<String>?>('healthSources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     region = registerOutput<String>('region');

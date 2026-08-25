@@ -7,7 +7,7 @@ class BackendServiceDynamicForwarding {
   /// (Optional, Beta)
   /// IP:PORT based dynamic forwarding configuration.
   /// Structure is documented below.
-  final pulumi.Input<BackendServiceDynamicForwardingIpPortSelection>? ipPortSelection;
+  final pulumi.Input<BackendServiceDynamicForwardingIpPortSelection?>? ipPortSelection;
 
   /// Creates a new [BackendServiceDynamicForwarding].
   /// [ipPortSelection] (Optional, Beta)

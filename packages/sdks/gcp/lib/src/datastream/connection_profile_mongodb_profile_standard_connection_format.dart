@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConnectionProfileMongodbProfileStandardConnectionFormat {
   /// Specifies whether the client connects directly to the
   /// host[:port] in the connection URI.
-  final pulumi.Input<bool>? directConnection;
+  final pulumi.Input<bool?>? directConnection;
 
   /// Creates a new [ConnectionProfileMongodbProfileStandardConnectionFormat].
   /// [directConnection] Specifies whether the client connects directly to the

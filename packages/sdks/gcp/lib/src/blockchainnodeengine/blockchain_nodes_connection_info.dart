@@ -7,10 +7,10 @@ class BlockchainNodesConnectionInfo {
   /// (Output)
   /// The endpoint information through which to interact with a blockchain node.
   /// Structure is documented below.
-  final pulumi.Input<List<BlockchainNodesConnectionInfoEndpointInfo>>? endpointInfos;
+  final pulumi.Input<List<BlockchainNodesConnectionInfoEndpointInfo>?>? endpointInfos;
   /// (Output)
   /// A service attachment that exposes a node, and has the following format: projects/{project}/regions/{region}/serviceAttachments/{service_attachment_name}
-  final pulumi.Input<String>? serviceAttachment;
+  final pulumi.Input<String?>? serviceAttachment;
 
   /// Creates a new [BlockchainNodesConnectionInfo].
   /// [endpointInfos] (Output)

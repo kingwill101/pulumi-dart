@@ -5,86 +5,86 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering FlexTemplateJob resources.
 class FlexTemplateJobState {
   /// List of experiments that should be used by the job. An example value is `["enableStackdriverAgentMetrics"]`.
-  final pulumi.Input<List<String>>? additionalExperiments;
+  final pulumi.Input<List<String>?>? additionalExperiments;
   /// List of pipeline options that should be used by the job. An example value is `["numberOfWorkerHarnessThreads=20"]`.
-  final pulumi.Input<List<String>>? additionalPipelineOptions;
+  final pulumi.Input<List<String>?>? additionalPipelineOptions;
   /// The algorithm to use for autoscaling.
-  final pulumi.Input<String>? autoscalingAlgorithm;
+  final pulumi.Input<String?>? autoscalingAlgorithm;
   /// The GCS path to the Dataflow job Flex
   /// Template.
-  final pulumi.Input<String>? containerSpecGcsPath;
+  final pulumi.Input<String?>? containerSpecGcsPath;
   /// If true, if a 409 AlreadyExists error is returned on create, the provider will ignore it and adopt the existing resource.
   ///
   /// - - -
-  final pulumi.Input<bool>? createIgnoreAlreadyExists;
+  final pulumi.Input<bool?>? createIgnoreAlreadyExists;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveLabels;
+  final pulumi.Input<Map<String, String>?>? effectiveLabels;
   /// Immutable. Indicates if the job should use the streaming engine feature.
-  final pulumi.Input<bool>? enableStreamingEngine;
+  final pulumi.Input<bool?>? enableStreamingEngine;
   /// The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PRIVATE"`.
-  final pulumi.Input<String>? ipConfiguration;
+  final pulumi.Input<String?>? ipConfiguration;
   /// The unique ID of this job.
-  final pulumi.Input<String>? jobId;
+  final pulumi.Input<String?>? jobId;
   /// The name for the Cloud KMS key for the job. Key format is: `projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY`
-  final pulumi.Input<String>? kmsKeyName;
+  final pulumi.Input<String?>? kmsKeyName;
   /// User labels to be specified for the job. Keys and values
   /// should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions)
   /// page.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The machine type to use for launching the job. The default is n1-standard-1.
-  final pulumi.Input<String>? launcherMachineType;
+  final pulumi.Input<String?>? launcherMachineType;
   /// The machine type to use for the job.
-  final pulumi.Input<String>? machineType;
+  final pulumi.Input<String?>? machineType;
   /// Immutable. The maximum number of Google Compute Engine instances to be made available to your pipeline during execution, from 1 to 1000.
-  final pulumi.Input<int>? maxWorkers;
+  final pulumi.Input<int?>? maxWorkers;
   /// Immutable. A unique name for the resource, required by Dataflow.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The network to which VMs will be assigned. If it is not provided, "default" will be used.
-  final pulumi.Input<String>? network;
+  final pulumi.Input<String?>? network;
   /// Immutable. The initial number of Google Compute Engine instances for the job.
-  final pulumi.Input<int>? numWorkers;
+  final pulumi.Input<int?>? numWorkers;
   /// One of "drain" or "cancel". Specifies behavior of
   /// deletion during `pulumi destroy`.  See above note.
-  final pulumi.Input<String>? onDelete;
+  final pulumi.Input<String?>? onDelete;
   /// **Template specific** Key/Value pairs to be forwarded to the pipeline's options; keys are
   /// case-sensitive based on the language on which the pipeline is coded, mostly Java.
   /// **Note**: do not configure Dataflow options here in parameters.
-  final pulumi.Input<Map<String, String>>? parameters;
+  final pulumi.Input<Map<String, String>?>? parameters;
   /// The project in which the resource belongs. If it is not
   /// provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The combination of labels configured directly on the resource and default labels configured on the provider.
-  final pulumi.Input<Map<String, String>>? pulumiLabels;
+  final pulumi.Input<Map<String, String>?>? pulumiLabels;
   /// Immutable. The region in which the created job should run.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Docker registry location of container image to use for the 'worker harness. Default is the container for the version of the SDK. Note this field is only valid for portable pipelines.
-  final pulumi.Input<String>? sdkContainerImage;
+  final pulumi.Input<String?>? sdkContainerImage;
   /// Service account email to run the workers as. This should be just an email e.g. `myserviceaccount@myproject.iam.gserviceaccount.com`. Do not include any `serviceAccount:` or other prefix.
-  final pulumi.Input<String>? serviceAccountEmail;
+  final pulumi.Input<String?>? serviceAccountEmail;
   /// If set to `true`, terraform will
   /// treat `DRAINING` and `CANCELLING` as terminal states when deleting the resource,
   /// and will remove the resource from terraform state and move on.  See above note.
-  final pulumi.Input<bool>? skipWaitOnJobTermination;
+  final pulumi.Input<bool?>? skipWaitOnJobTermination;
   /// The Cloud Storage path to use for staging files. Must be a valid Cloud Storage URL, beginning with gs://.
-  final pulumi.Input<String>? stagingLocation;
+  final pulumi.Input<String?>? stagingLocation;
   /// The current state of the resource, selected from the [JobState enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobState)
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK".
-  final pulumi.Input<String>? subnetwork;
+  final pulumi.Input<String?>? subnetwork;
   /// The Cloud Storage path to use for temporary files. Must be a valid Cloud Storage URL, beginning with gs://.
-  final pulumi.Input<String>? tempLocation;
+  final pulumi.Input<String?>? tempLocation;
   /// Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job.Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job.
-  final pulumi.Input<Map<String, String>>? transformNameMapping;
+  final pulumi.Input<Map<String, String>?>? transformNameMapping;
   /// The type of this job, selected from the JobType enum.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [FlexTemplateJobState].
   /// [additionalExperiments] List of experiments that should be used by the job. An example value is `["enableStackdriverAgentMetrics"]`.
@@ -207,10 +207,10 @@ class FlexTemplateJobState {
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       launcherMachineType: (() { final guardedValue = map['launcherMachineType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       machineType: (() { final guardedValue = map['machineType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      maxWorkers: (() { final guardedValue = map['maxWorkers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxWorkers: (() { final guardedValue = map['maxWorkers']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       network: (() { final guardedValue = map['network']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      numWorkers: (() { final guardedValue = map['numWorkers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      numWorkers: (() { final guardedValue = map['numWorkers']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       onDelete: (() { final guardedValue = map['onDelete']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

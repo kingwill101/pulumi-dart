@@ -26,7 +26,7 @@ class GetBucketSoftDeletePolicy {
   factory GetBucketSoftDeletePolicy.fromMap(Map<String, dynamic> map) {
     return GetBucketSoftDeletePolicy(
       effectiveTime: pulumi.Input.fromValue(map['effectiveTime'] as String),
-      retentionDurationSeconds: pulumi.Input.fromValue(map['retentionDurationSeconds'] as int),
+      retentionDurationSeconds: pulumi.Input.fromValue((map['retentionDurationSeconds'] as num).toInt()),
     );
   }
 }

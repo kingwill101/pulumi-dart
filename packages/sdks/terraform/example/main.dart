@@ -1,15 +1,19 @@
-// ignore_for_file: unused_import
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'package:pulumi_terraform/pulumi_terraform.dart' as provider;
+import 'package:pulumi_terraform/state.dart' as terraform;
 
-class ExampleStack extends pulumi.Stack {
-  ExampleStack() {
-    // Add resources from package:pulumi_terraform.
-    // Example:
-    // final resource = provider.YourResource("example");
+class TerraformStack extends pulumi.Stack {
+  TerraformStack() {
+    final state = pulumi.output(
+      terraform.getLocalReference(
+        terraform.GetLocalReferenceArgs(path: 'terraform.tfstate'.input()),
+      ),
+    );
+    registerOutputs({
+      'message': state.apply((result) => result.outputs['message']),
+    });
   }
 }
 
 Future<void> main() async {
-  await pulumi.Deployment.runOrThrow(() => ExampleStack());
+  await pulumi.Deployment.runOrThrow(() => TerraformStack());
 }

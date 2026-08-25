@@ -10,13 +10,13 @@ import 'schedule_create_pipeline_job_request.dart';
 /// {@macro pulumi_colab_schedule_schedule_args_doc}
 class ScheduleArgs {
   /// Whether new scheduled runs can be queued when maxConcurrentRuns limit is reached. If set to true, new runs will be queued instead of skipped. Default to false.
-  final pulumi.Input<bool>? allowQueueing;
+  final pulumi.Input<bool?>? allowQueueing;
   /// Request for google_colab_notebook_execution.
   /// Structure is documented below.
-  final pulumi.Input<ScheduleCreateNotebookExecutionJobRequest>? createNotebookExecutionJobRequest;
+  final pulumi.Input<ScheduleCreateNotebookExecutionJobRequest?>? createNotebookExecutionJobRequest;
   /// Request message for PipelineService.CreatePipelineJob.
   /// Structure is documented below.
-  final pulumi.Input<ScheduleCreatePipelineJobRequest>? createPipelineJobRequest;
+  final pulumi.Input<ScheduleCreatePipelineJobRequest?>? createPipelineJobRequest;
   /// Cron schedule (https://en.wikipedia.org/wiki/Cron) to launch scheduled runs.
   final pulumi.Input<String> cron;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -25,26 +25,26 @@ class ScheduleArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Desired state of the Colab Schedule. Set this field to `ACTIVE` to start/resume the schedule, and `PAUSED` to pause the schedule.
-  final pulumi.Input<String>? desiredState;
+  final pulumi.Input<String?>? desiredState;
   /// Required. The display name of the Schedule.
   final pulumi.Input<String> displayName;
   /// Timestamp after which no new runs can be scheduled. If specified, the schedule will be completed when either endTime is reached or when scheduledRunCount &gt;= max_run_count. Must be in the RFC 3339 (https://www.ietf.org/rfc/rfc3339.txt) format.
-  final pulumi.Input<String>? endTime;
+  final pulumi.Input<String?>? endTime;
   /// The location for the resource: https://cloud.google.com/colab/docs/locations
   final pulumi.Input<String> location;
   /// Specifies the maximum number of active runs that can be executed concurrently for this Schedule. This limits the number of runs that can be in a non-terminal state at the same time. Currently, this field is only supported for requests of type CreatePipelineJobRequest.
-  final pulumi.Input<String>? maxConcurrentActiveRunCount;
+  final pulumi.Input<String?>? maxConcurrentActiveRunCount;
   /// Maximum number of runs that can be started concurrently for this Schedule. This is the limit for starting the scheduled requests and not the execution of the notebook execution jobs created by the requests.
   final pulumi.Input<String> maxConcurrentRunCount;
   /// Maximum run count of the schedule. If specified, The schedule will be completed when either startedRunCount &gt;= maxRunCount or when endTime is reached. If not specified, new runs will keep getting scheduled until this Schedule is paused or deleted. Already scheduled runs will be allowed to complete. Unset if not specified.
-  final pulumi.Input<String>? maxRunCount;
+  final pulumi.Input<String?>? maxRunCount;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The timestamp after which the first run can be scheduled. Defaults to the schedule creation time. Must be in the RFC 3339 (https://www.ietf.org/rfc/rfc3339.txt) format.
-  final pulumi.Input<String>? startTime;
+  final pulumi.Input<String?>? startTime;
 
   /// Creates a new [ScheduleArgs].
   /// [allowQueueing] Whether new scheduled runs can be queued when maxConcurrentRuns limit is reached. If set to true, new runs will be queued instead of skipped. Default to false.

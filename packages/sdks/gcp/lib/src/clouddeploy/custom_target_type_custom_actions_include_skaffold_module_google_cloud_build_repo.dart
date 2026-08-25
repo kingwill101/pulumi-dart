@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudBuildRepo {
   /// Relative path from the repository root to the Skaffold file.
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? path;
   /// Branch or tag to use when cloning the repository.
-  final pulumi.Input<String>? ref;
+  final pulumi.Input<String?>? ref;
   /// Cloud Build 2nd gen repository in the format of 'projects/&lt;project&gt;/locations/&lt;location&gt;/connections/&lt;connection&gt;/repositories/&lt;repository&gt;'.
   final pulumi.Input<String> repository;
 

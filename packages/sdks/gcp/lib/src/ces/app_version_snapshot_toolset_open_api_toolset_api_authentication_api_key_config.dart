@@ -9,17 +9,17 @@ class AppVersionSnapshotToolsetOpenApiToolsetApiAuthenticationApiKeyConfig {
   /// Note: You should grant `roles/secretmanager.secretAccessor` role to the CES
   /// service agent
   /// `service-@gcp-sa-ces.iam.gserviceaccount.com`.
-  final pulumi.Input<String>? apiKeySecretVersion;
+  final pulumi.Input<String?>? apiKeySecretVersion;
   /// (Output)
   /// The parameter name or the header name of the API key.
   /// E.g., If the API request is "https://example.com/act?X-Api-Key=", "X-Api-Key" would be the parameter name.
-  final pulumi.Input<String>? keyName;
+  final pulumi.Input<String?>? keyName;
   /// (Output)
   /// Key location in the request.
   /// Possible values:
   /// HEADER
   /// QUERY_STRING
-  final pulumi.Input<String>? requestLocation;
+  final pulumi.Input<String?>? requestLocation;
 
   /// Creates a new [AppVersionSnapshotToolsetOpenApiToolsetApiAuthenticationApiKeyConfig].
   /// [apiKeySecretVersion] (Output)

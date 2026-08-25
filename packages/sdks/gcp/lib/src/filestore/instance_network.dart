@@ -9,10 +9,10 @@ class InstanceNetwork {
   /// DIRECT_PEERING.
   /// Default value is `DIRECT_PEERING`.
   /// Possible values are: `DIRECT_PEERING`, `PRIVATE_SERVICE_ACCESS`, `PRIVATE_SERVICE_CONNECT`.
-  final pulumi.Input<String>? connectMode;
+  final pulumi.Input<String?>? connectMode;
   /// (Output)
   /// A list of IPv4 or IPv6 addresses.
-  final pulumi.Input<List<String>>? ipAddresses;
+  final pulumi.Input<List<String>?>? ipAddresses;
   /// IP versions for which the instance has
   /// IP addresses assigned.
   /// Each value may be one of: `ADDRESS_MODE_UNSPECIFIED`, `MODE_IPV4`, `MODE_IPV6`.
@@ -23,10 +23,10 @@ class InstanceNetwork {
   /// Private Service Connect configuration.
   /// Should only be set when connectMode is PRIVATE_SERVICE_CONNECT.
   /// Structure is documented below.
-  final pulumi.Input<InstanceNetworkPscConfig>? pscConfig;
+  final pulumi.Input<InstanceNetworkPscConfig?>? pscConfig;
   /// A /29 CIDR block that identifies the range of IP
   /// addresses reserved for this instance.
-  final pulumi.Input<String>? reservedIpRange;
+  final pulumi.Input<String?>? reservedIpRange;
 
   /// Creates a new [InstanceNetwork].
   /// [connectMode] The network connect mode of the Filestore instance.

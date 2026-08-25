@@ -12,7 +12,7 @@ class GetDatabasesArgs {
   /// The ID of the project in which the instance belongs.
   ///
   /// &gt; **Note** This datasource performs client-side sorting to provide consistent ordering of the databases.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetDatabasesArgs].
   /// [instance] The name of the Cloud SQL database instance in which the database belongs.

@@ -12,42 +12,42 @@ import 'instance_node_config.dart';
 class InstanceArgs {
   /// The full name of the GCE network to connect the instance to.  If not provided,
   /// 'default' will be used.
-  final pulumi.Input<String>? authorizedNetwork;
+  final pulumi.Input<String?>? authorizedNetwork;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Whether Terraform will be prevented from destroying the instance.
   /// When a `terraform destroy` or `pulumi up` would delete the instance,
   /// the command will fail if this field is not set to false in Terraform state.
   /// When the field is set to true or unset in Terraform state, a `pulumi up`
   /// or `terraform destroy` that would delete the instance will fail.
   /// When the field is set to false, deleting the instance is allowed.
-  final pulumi.Input<bool>? deletionProtection;
+  final pulumi.Input<bool?>? deletionProtection;
   /// A user-visible name for the instance.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Resource labels to represent user-provided metadata.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Maintenance policy for an instance.
   /// Structure is documented below.
-  final pulumi.Input<InstanceMaintenancePolicy>? maintenancePolicy;
+  final pulumi.Input<InstanceMaintenancePolicy?>? maintenancePolicy;
   /// User-specified parameters for this memcache instance.
   /// Structure is documented below.
-  final pulumi.Input<InstanceMemcacheParameters>? memcacheParameters;
+  final pulumi.Input<InstanceMemcacheParameters?>? memcacheParameters;
   /// The major version of Memcached software. If not provided, latest supported version will be used.
   /// Currently the latest supported major version is MEMCACHE_1_5. The minor version will be automatically
   /// determined by our system based on the latest supported minor version.
   /// Default value is `MEMCACHE_1_5`.
   /// Possible values are: `MEMCACHE_1_5`, `MEMCACHE_1_6_15`.
-  final pulumi.Input<String>? memcacheVersion;
+  final pulumi.Input<String?>? memcacheVersion;
   /// The resource name of the instance.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Configuration for memcache nodes.
   /// Structure is documented below.
   final pulumi.Input<InstanceNodeConfig> nodeConfig;
@@ -55,16 +55,16 @@ class InstanceArgs {
   final pulumi.Input<int> nodeCount;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The region of the Memcache instance. If it is not provided, the provider region is used.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Contains the name of allocated IP address ranges associated with
   /// the private service access connection for example, "test-default"
   /// associated with IP range 10.0.0.0/29.
-  final pulumi.Input<List<String>>? reservedIpRangeIds;
+  final pulumi.Input<List<String>?>? reservedIpRangeIds;
   /// Zones where memcache nodes should be provisioned.  If not
   /// provided, all zones will be used.
-  final pulumi.Input<List<String>>? zones;
+  final pulumi.Input<List<String>?>? zones;
 
   /// Creates a new [InstanceArgs].
   /// [authorizedNetwork] The full name of the GCE network to connect the instance to.  If not provided,
@@ -132,7 +132,7 @@ class InstanceArgs {
       memcacheVersion: (() { final guardedValue = map['memcacheVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       nodeConfig: pulumi.Input.fromValue(InstanceNodeConfig.fromMap((map['nodeConfig']! as Map).cast<String, dynamic>())),
-      nodeCount: pulumi.Input.fromValue(map['nodeCount'] as int),
+      nodeCount: pulumi.Input.fromValue((map['nodeCount'] as num).toInt()),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       reservedIpRangeIds: (() { final guardedValue = map['reservedIpRangeIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),

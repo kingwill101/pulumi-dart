@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServiceTemplateContainerBuildInfo {
   /// Entry point of the function when the image is a Cloud Run function.
-  final pulumi.Input<String>? functionTarget;
+  final pulumi.Input<String?>? functionTarget;
   /// Source code location of the image.
-  final pulumi.Input<String>? sourceLocation;
+  final pulumi.Input<String?>? sourceLocation;
 
   /// Creates a new [ServiceTemplateContainerBuildInfo].
   /// [functionTarget] Entry point of the function when the image is a Cloud Run function.

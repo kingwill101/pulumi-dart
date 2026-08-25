@@ -14,7 +14,7 @@ class TopicMessageStoragePolicy {
   /// guarantees for messages. That is, Pub/Sub will fail topics.publish
   /// operations on this topic and subscribe operations on any subscription
   /// attached to this topic in any region that is not in `allowedPersistenceRegions`.
-  final pulumi.Input<bool>? enforceInTransit;
+  final pulumi.Input<bool?>? enforceInTransit;
 
   /// Creates a new [TopicMessageStoragePolicy].
   /// [allowedPersistenceRegions] A list of IDs of GCP regions where messages that are published to

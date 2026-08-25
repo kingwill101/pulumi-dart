@@ -192,7 +192,7 @@ class TagKey extends pulumi.CustomResource {
           'gcp:tags/tagKey:TagKey',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     allowedValuesRegex = registerOutput<String?>('allowedValuesRegex');
     createTime = registerOutput<String>('createTime');
@@ -202,7 +202,7 @@ class TagKey extends pulumi.CustomResource {
     namespacedName = registerOutput<String>('namespacedName');
     parent = registerOutput<String>('parent');
     purpose = registerOutput<String?>('purpose');
-    purposeData = registerOutput<Map<String, String>?>('purposeData');
+    purposeData = registerOutput<Map<String, String>?>('purposeData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     shortName = registerOutput<String>('shortName');
     updateTime = registerOutput<String>('updateTime');
   }
@@ -212,11 +212,12 @@ class TagKey extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TagKeyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return TagKey._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -238,7 +239,29 @@ class TagKey extends pulumi.CustomResource {
     namespacedName = registerOutput<String>('namespacedName');
     parent = registerOutput<String>('parent');
     purpose = registerOutput<String?>('purpose');
-    purposeData = registerOutput<Map<String, String>?>('purposeData');
+    purposeData = registerOutput<Map<String, String>?>('purposeData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    shortName = registerOutput<String>('shortName');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [TagKey] resource.
+  TagKey.reference(String urn)
+    : super(
+        'gcp:tags/tagKey:TagKey',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    allowedValuesRegex = registerOutput<String?>('allowedValuesRegex');
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    namespacedName = registerOutput<String>('namespacedName');
+    parent = registerOutput<String>('parent');
+    purpose = registerOutput<String?>('purpose');
+    purposeData = registerOutput<Map<String, String>?>('purposeData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     shortName = registerOutput<String>('shortName');
     updateTime = registerOutput<String>('updateTime');
   }

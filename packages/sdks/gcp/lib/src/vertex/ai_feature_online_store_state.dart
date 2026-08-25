@@ -10,54 +10,54 @@ import 'ai_feature_online_store_encryption_spec.dart';
 class AiFeatureOnlineStoreState {
   /// Settings for Cloud Bigtable instance that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore.
   /// Structure is documented below.
-  final pulumi.Input<AiFeatureOnlineStoreBigtable>? bigtable;
+  final pulumi.Input<AiFeatureOnlineStoreBigtable?>? bigtable;
   /// The timestamp of when the feature online store was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// The dedicated serving endpoint for this FeatureOnlineStore, which is different from common vertex service endpoint. Only need to be set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
   /// Structure is documented below.
-  final pulumi.Input<AiFeatureOnlineStoreDedicatedServingEndpoint>? dedicatedServingEndpoint;
+  final pulumi.Input<AiFeatureOnlineStoreDedicatedServingEndpoint?>? dedicatedServingEndpoint;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveLabels;
+  final pulumi.Input<Map<String, String>?>? effectiveLabels;
   /// (Optional, Beta, Deprecated)
   /// The settings for embedding management in FeatureOnlineStore. Embedding management can only be set for BigTable. It is enabled by default for optimized storagetype.
   /// Structure is documented below.
   ///
   /// &gt; **Warning:** `embeddingManagement` is deprecated. This field is no longer needed anymore and embedding management is automatically enabled when specifying Optimized storage type
-  final pulumi.Input<AiFeatureOnlineStoreEmbeddingManagement>? embeddingManagement;
+  final pulumi.Input<AiFeatureOnlineStoreEmbeddingManagement?>? embeddingManagement;
   /// If set, both of the online and offline data storage will be secured by this key.
   /// Structure is documented below.
-  final pulumi.Input<AiFeatureOnlineStoreEncryptionSpec>? encryptionSpec;
+  final pulumi.Input<AiFeatureOnlineStoreEncryptionSpec?>? encryptionSpec;
   /// Used to perform consistent read-modify-write updates.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// If set to true, any FeatureViews and Features for this FeatureOnlineStore will also be deleted.
-  final pulumi.Input<bool>? forceDestroy;
+  final pulumi.Input<bool?>? forceDestroy;
   /// The labels with user-defined metadata to organize your feature online stores.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The resource name of the Feature Online Store. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore
-  final pulumi.Input<Map<String, dynamic>>? optimized;
+  final pulumi.Input<Map<String, dynamic>?>? optimized;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  final pulumi.Input<Map<String, String>>? pulumiLabels;
+  final pulumi.Input<Map<String, String>?>? pulumiLabels;
   /// The region of feature online store. eg us-central1
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The state of the Feature Online Store. See the possible states in [this link](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.featureOnlineStores#state).
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// The timestamp of when the feature online store was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [AiFeatureOnlineStoreState].
   /// [bigtable] Settings for Cloud Bigtable instance that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore.

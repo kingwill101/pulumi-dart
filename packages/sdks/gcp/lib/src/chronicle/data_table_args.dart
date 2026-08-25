@@ -11,7 +11,7 @@ import 'data_table_scope_info.dart';
 class DataTableArgs {
   /// Details of all the columns in the table
   /// Structure is documented below.
-  final pulumi.Input<List<DataTableColumnInfo>>? columnInfos;
+  final pulumi.Input<List<DataTableColumnInfo>?>? columnInfos;
   /// The ID to use for the data table. This is also the display name for
   /// the data table. It must satisfy the following requirements:
   /// - Starts with letter.
@@ -29,7 +29,7 @@ class DataTableArgs {
   /// When set to "DELETE", the command will behave as if set to "DEFAULT".
   ///
   /// Possible values: DEFAULT, FORCE, PREVENT, ABANDON, DELETE
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// A user-provided description of the data table.
   final pulumi.Input<String> description;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
@@ -38,12 +38,12 @@ class DataTableArgs {
   final pulumi.Input<String> location;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// User-provided TTL of the data table.
-  final pulumi.Input<String>? rowTimeToLive;
+  final pulumi.Input<String?>? rowTimeToLive;
   /// DataTableScopeInfo specifies the scope info of the data table.
   /// Structure is documented below.
-  final pulumi.Input<DataTableScopeInfo>? scopeInfo;
+  final pulumi.Input<DataTableScopeInfo?>? scopeInfo;
 
   /// Creates a new [DataTableArgs].
   /// [columnInfos] Details of all the columns in the table

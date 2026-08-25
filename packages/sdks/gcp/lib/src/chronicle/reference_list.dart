@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'reference_list_args.dart';
+import 'reference_list_entry.dart';
+import 'reference_list_scope_info.dart';
 import 'reference_list_state.dart';
 
 /// Reference lists are user-defined lists of values which users can use in multiple Rules.
@@ -325,7 +327,7 @@ class ReferenceList extends pulumi.CustomResource {
   /// exceed 6MB.
   /// This is returned only when the view is REFERENCE_LIST_VIEW_FULL.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> entries;
+  late final pulumi.Output<List<ReferenceListEntry>> entries;
   /// The unique identifier for the Chronicle instance, which is the same as the customer ID.
   late final pulumi.Output<String> instance;
   /// The location of the resource. This is the geographical region where the Chronicle instance resides, such as "us" or "europe-west2".
@@ -354,7 +356,7 @@ class ReferenceList extends pulumi.CustomResource {
   late final pulumi.Output<List<String>> rules;
   /// ScopeInfo specifies the scope info of the reference list.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> scopeInfos;
+  late final pulumi.Output<List<ReferenceListScopeInfo>?> scopeInfos;
   /// Possible values:
   /// REFERENCE_LIST_SYNTAX_TYPE_PLAIN_TEXT_STRING
   /// REFERENCE_LIST_SYNTAX_TYPE_REGEX
@@ -373,11 +375,11 @@ class ReferenceList extends pulumi.CustomResource {
           'gcp:chronicle/referenceList:ReferenceList',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     description = registerOutput<String>('description');
     displayName = registerOutput<String>('displayName');
-    entries = registerOutput<List<Map<String, dynamic>>>('entries');
+    entries = registerOutput<List<ReferenceListEntry>>('entries', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ReferenceListEntry>(guardedValue, (value) => ReferenceListEntry.fromMap((value as Map).cast<String, dynamic>())); });
     instance = registerOutput<String>('instance');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -385,8 +387,8 @@ class ReferenceList extends pulumi.CustomResource {
     referenceListId = registerOutput<String>('referenceListId');
     revisionCreateTime = registerOutput<String>('revisionCreateTime');
     ruleAssociationsCount = registerOutput<int>('ruleAssociationsCount');
-    rules = registerOutput<List<String>>('rules');
-    scopeInfos = registerOutput<List<Map<String, dynamic>>?>('scopeInfos');
+    rules = registerOutput<List<String>>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    scopeInfos = registerOutput<List<ReferenceListScopeInfo>?>('scopeInfos', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ReferenceListScopeInfo>(guardedValue, (value) => ReferenceListScopeInfo.fromMap((value as Map).cast<String, dynamic>())); });
     syntaxType = registerOutput<String>('syntaxType');
   }
 
@@ -395,11 +397,12 @@ class ReferenceList extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ReferenceListState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ReferenceList._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -415,7 +418,7 @@ class ReferenceList extends pulumi.CustomResource {
         ) {
     description = registerOutput<String>('description');
     displayName = registerOutput<String>('displayName');
-    entries = registerOutput<List<Map<String, dynamic>>>('entries');
+    entries = registerOutput<List<ReferenceListEntry>>('entries', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ReferenceListEntry>(guardedValue, (value) => ReferenceListEntry.fromMap((value as Map).cast<String, dynamic>())); });
     instance = registerOutput<String>('instance');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -423,8 +426,32 @@ class ReferenceList extends pulumi.CustomResource {
     referenceListId = registerOutput<String>('referenceListId');
     revisionCreateTime = registerOutput<String>('revisionCreateTime');
     ruleAssociationsCount = registerOutput<int>('ruleAssociationsCount');
-    rules = registerOutput<List<String>>('rules');
-    scopeInfos = registerOutput<List<Map<String, dynamic>>?>('scopeInfos');
+    rules = registerOutput<List<String>>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    scopeInfos = registerOutput<List<ReferenceListScopeInfo>?>('scopeInfos', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ReferenceListScopeInfo>(guardedValue, (value) => ReferenceListScopeInfo.fromMap((value as Map).cast<String, dynamic>())); });
+    syntaxType = registerOutput<String>('syntaxType');
+  }
+
+  /// Creates a typed reference to an existing [ReferenceList] resource.
+  ReferenceList.reference(String urn)
+    : super(
+        'gcp:chronicle/referenceList:ReferenceList',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    description = registerOutput<String>('description');
+    displayName = registerOutput<String>('displayName');
+    entries = registerOutput<List<ReferenceListEntry>>('entries', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ReferenceListEntry>(guardedValue, (value) => ReferenceListEntry.fromMap((value as Map).cast<String, dynamic>())); });
+    instance = registerOutput<String>('instance');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    referenceListId = registerOutput<String>('referenceListId');
+    revisionCreateTime = registerOutput<String>('revisionCreateTime');
+    ruleAssociationsCount = registerOutput<int>('ruleAssociationsCount');
+    rules = registerOutput<List<String>>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    scopeInfos = registerOutput<List<ReferenceListScopeInfo>?>('scopeInfos', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ReferenceListScopeInfo>(guardedValue, (value) => ReferenceListScopeInfo.fromMap((value as Map).cast<String, dynamic>())); });
     syntaxType = registerOutput<String>('syntaxType');
   }
 }

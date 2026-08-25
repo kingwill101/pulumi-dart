@@ -5,22 +5,22 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering TargetSSLProxy resources.
 class TargetSSLProxyState {
   /// A reference to the BackendService resource.
-  final pulumi.Input<String>? backendService;
+  final pulumi.Input<String?>? backendService;
   /// A reference to the CertificateMap resource uri that identifies a certificate map
   /// associated with the given target proxy. This field can only be set for global target proxies.
   /// Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificateMaps/{resourceName}`.
-  final pulumi.Input<String>? certificateMap;
+  final pulumi.Input<String?>? certificateMap;
   /// Creation timestamp in RFC3339 text format.
-  final pulumi.Input<String>? creationTimestamp;
+  final pulumi.Input<String?>? creationTimestamp;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// An optional description of this resource.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Name of the resource. Provided by the client when the resource is
   /// created. The name must be 1-63 characters long, and comply with
   /// RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -28,27 +28,27 @@ class TargetSSLProxyState {
   /// first character must be a lowercase letter, and all following
   /// characters must be a dash, lowercase letter, or digit, except the last
   /// character, which cannot be a dash.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Specifies the type of proxy header to append before sending data to
   /// the backend.
   /// Default value is `NONE`.
   /// Possible values are: `NONE`, `PROXY_V1`.
-  final pulumi.Input<String>? proxyHeader;
+  final pulumi.Input<String?>? proxyHeader;
   /// The unique identifier for the resource.
-  final pulumi.Input<int>? proxyId;
+  final pulumi.Input<int?>? proxyId;
   /// The URI of the created resource.
-  final pulumi.Input<String>? selfLink;
+  final pulumi.Input<String?>? selfLink;
   /// A list of SslCertificate resources that are used to authenticate
   /// connections between users and the load balancer. At least one
   /// SSL certificate must be specified.
-  final pulumi.Input<List<String>>? sslCertificates;
+  final pulumi.Input<List<String>?>? sslCertificates;
   /// A reference to the SslPolicy resource that will be associated with
   /// the TargetSslProxy resource. If not set, the TargetSslProxy
   /// resource will not have any SSL policy configured.
-  final pulumi.Input<String>? sslPolicy;
+  final pulumi.Input<String?>? sslPolicy;
 
   /// Creates a new [TargetSSLProxyState].
   /// [backendService] A reference to the BackendService resource.
@@ -105,7 +105,7 @@ class TargetSSLProxyState {
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       proxyHeader: (() { final guardedValue = map['proxyHeader']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      proxyId: (() { final guardedValue = map['proxyId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      proxyId: (() { final guardedValue = map['proxyId']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       selfLink: (() { final guardedValue = map['selfLink']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sslCertificates: (() { final guardedValue = map['sslCertificates']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       sslPolicy: (() { final guardedValue = map['sslPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

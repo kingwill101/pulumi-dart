@@ -1,10 +1,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'database_instance_args.dart';
 import 'database_instance_clone.dart';
+import 'database_instance_dns_name.dart';
+import 'database_instance_ip_address.dart';
 import 'database_instance_point_in_time_restore_context.dart';
 import 'database_instance_replica_configuration.dart';
 import 'database_instance_replication_cluster.dart';
 import 'database_instance_restore_backup_context.dart';
+import 'database_instance_server_ca_cert.dart';
 import 'database_instance_settings.dart';
 import 'database_instance_state.dart';
 
@@ -2473,7 +2476,7 @@ class DatabaseInstance extends pulumi.CustomResource {
   /// The DNS name of the instance. See [Connect to an instance using Private Service Connect](https://cloud.google.com/sql/docs/mysql/configure-private-service-connect#view-summary-information-cloud-sql-instances-psc-enabled) for more details.
   late final pulumi.Output<String> dnsName;
   /// The list of DNS names used by this instance. Different connection types for an instance may have different DNS names. DNS names can apply to an individual instance or a cluster of instances.
-  late final pulumi.Output<List<Map<String, dynamic>>> dnsNames;
+  late final pulumi.Output<List<DatabaseInstanceDnsName>> dnsNames;
   /// The full path to the encryption key used for the CMEK disk encryption.  Setting
   /// up disk encryption currently requires manual steps outside of this provider.
   /// The provided key must be in the same region as the SQL instance.  In order
@@ -2496,7 +2499,7 @@ class DatabaseInstance extends pulumi.CustomResource {
   late final pulumi.Output<bool?> includeReplicasForMajorVersionUpgrade;
   /// The type of the instance. See [API reference for SqlInstanceType](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/instances#SqlInstanceType) for supported values.
   late final pulumi.Output<String> instanceType;
-  late final pulumi.Output<List<Map<String, dynamic>>> ipAddresses;
+  late final pulumi.Output<List<DatabaseInstanceIpAddress>> ipAddresses;
   /// The current software version on the instance. This attribute can not be set during creation. Refer to `availableMaintenanceVersions` attribute to see what `maintenanceVersion` are available for upgrade. When this attribute gets updated, it will cause an instance restart. Setting a `maintenanceVersion` value that is older than the current one on the instance will be ignored.
   late final pulumi.Output<String> maintenanceVersion;
   /// The name of the existing instance that will
@@ -2552,7 +2555,7 @@ class DatabaseInstance extends pulumi.CustomResource {
   late final pulumi.Output<String?> rootPasswordWoVersion;
   /// The URI of the created resource.
   late final pulumi.Output<String> selfLink;
-  late final pulumi.Output<List<Map<String, dynamic>>> serverCaCerts;
+  late final pulumi.Output<List<DatabaseInstanceServerCaCert>> serverCaCerts;
   /// The service account email address assigned to the
   /// instance.
   late final pulumi.Output<String> serviceAccountEmailAddress;
@@ -2574,9 +2577,10 @@ class DatabaseInstance extends pulumi.CustomResource {
           'gcp:sql/databaseInstance:DatabaseInstance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['replicaConfiguration', 'rootPassword', 'rootPasswordWo', 'serverCaCerts'],
         ) {
-    availableMaintenanceVersions = registerOutput<List<String>>('availableMaintenanceVersions');
+    availableMaintenanceVersions = registerOutput<List<String>>('availableMaintenanceVersions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     backupdrBackup = registerOutput<String?>('backupdrBackup');
     clone = registerOutput<DatabaseInstanceClone?>('clone', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseInstanceClone.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     connectionName = registerOutput<String>('connectionName');
@@ -2584,14 +2588,14 @@ class DatabaseInstance extends pulumi.CustomResource {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     deletionProtection = registerOutput<bool?>('deletionProtection');
     dnsName = registerOutput<String>('dnsName');
-    dnsNames = registerOutput<List<Map<String, dynamic>>>('dnsNames');
+    dnsNames = registerOutput<List<DatabaseInstanceDnsName>>('dnsNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DatabaseInstanceDnsName>(guardedValue, (value) => DatabaseInstanceDnsName.fromMap((value as Map).cast<String, dynamic>())); });
     encryptionKeyName = registerOutput<String>('encryptionKeyName');
     enforceNewSqlNetworkArchitecture = registerOutput<bool>('enforceNewSqlNetworkArchitecture');
     finalBackupDescription = registerOutput<String?>('finalBackupDescription');
     firstIpAddress = registerOutput<String>('firstIpAddress');
     includeReplicasForMajorVersionUpgrade = registerOutput<bool?>('includeReplicasForMajorVersionUpgrade');
     instanceType = registerOutput<String>('instanceType');
-    ipAddresses = registerOutput<List<Map<String, dynamic>>>('ipAddresses');
+    ipAddresses = registerOutput<List<DatabaseInstanceIpAddress>>('ipAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DatabaseInstanceIpAddress>(guardedValue, (value) => DatabaseInstanceIpAddress.fromMap((value as Map).cast<String, dynamic>())); });
     maintenanceVersion = registerOutput<String>('maintenanceVersion');
     masterInstanceName = registerOutput<String>('masterInstanceName');
     this.name = registerOutput<String>('name');
@@ -2602,15 +2606,15 @@ class DatabaseInstance extends pulumi.CustomResource {
     pscServiceAttachmentLink = registerOutput<String>('pscServiceAttachmentLink');
     publicIpAddress = registerOutput<String>('publicIpAddress');
     region = registerOutput<String>('region');
-    replicaConfiguration = registerOutput<DatabaseInstanceReplicaConfiguration>('replicaConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseInstanceReplicaConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    replicaNames = registerOutput<List<String>>('replicaNames');
+    replicaConfiguration = registerOutput<DatabaseInstanceReplicaConfiguration>('replicaConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseInstanceReplicaConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); }, isSecret: true);
+    replicaNames = registerOutput<List<String>>('replicaNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     replicationCluster = registerOutput<DatabaseInstanceReplicationCluster>('replicationCluster', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseInstanceReplicationCluster.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     restoreBackupContext = registerOutput<DatabaseInstanceRestoreBackupContext?>('restoreBackupContext', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseInstanceRestoreBackupContext.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    rootPassword = registerOutput<String?>('rootPassword');
-    rootPasswordWo = registerOutput<String?>('rootPasswordWo');
+    rootPassword = registerOutput<String?>('rootPassword', isSecret: true);
+    rootPasswordWo = registerOutput<String?>('rootPasswordWo', isSecret: true);
     rootPasswordWoVersion = registerOutput<String?>('rootPasswordWoVersion');
     selfLink = registerOutput<String>('selfLink');
-    serverCaCerts = registerOutput<List<Map<String, dynamic>>>('serverCaCerts');
+    serverCaCerts = registerOutput<List<DatabaseInstanceServerCaCert>>('serverCaCerts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DatabaseInstanceServerCaCert>(guardedValue, (value) => DatabaseInstanceServerCaCert.fromMap((value as Map).cast<String, dynamic>())); }, isSecret: true);
     serviceAccountEmailAddress = registerOutput<String>('serviceAccountEmailAddress');
     settings = registerOutput<DatabaseInstanceSettings>('settings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseInstanceSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     switchTransactionLogsToCloudStorageEnabled = registerOutput<bool?>('switchTransactionLogsToCloudStorageEnabled');
@@ -2621,11 +2625,12 @@ class DatabaseInstance extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DatabaseInstanceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DatabaseInstance._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -2639,7 +2644,7 @@ class DatabaseInstance extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    availableMaintenanceVersions = registerOutput<List<String>>('availableMaintenanceVersions');
+    availableMaintenanceVersions = registerOutput<List<String>>('availableMaintenanceVersions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     backupdrBackup = registerOutput<String?>('backupdrBackup');
     clone = registerOutput<DatabaseInstanceClone?>('clone', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseInstanceClone.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     connectionName = registerOutput<String>('connectionName');
@@ -2647,14 +2652,14 @@ class DatabaseInstance extends pulumi.CustomResource {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     deletionProtection = registerOutput<bool?>('deletionProtection');
     dnsName = registerOutput<String>('dnsName');
-    dnsNames = registerOutput<List<Map<String, dynamic>>>('dnsNames');
+    dnsNames = registerOutput<List<DatabaseInstanceDnsName>>('dnsNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DatabaseInstanceDnsName>(guardedValue, (value) => DatabaseInstanceDnsName.fromMap((value as Map).cast<String, dynamic>())); });
     encryptionKeyName = registerOutput<String>('encryptionKeyName');
     enforceNewSqlNetworkArchitecture = registerOutput<bool>('enforceNewSqlNetworkArchitecture');
     finalBackupDescription = registerOutput<String?>('finalBackupDescription');
     firstIpAddress = registerOutput<String>('firstIpAddress');
     includeReplicasForMajorVersionUpgrade = registerOutput<bool?>('includeReplicasForMajorVersionUpgrade');
     instanceType = registerOutput<String>('instanceType');
-    ipAddresses = registerOutput<List<Map<String, dynamic>>>('ipAddresses');
+    ipAddresses = registerOutput<List<DatabaseInstanceIpAddress>>('ipAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DatabaseInstanceIpAddress>(guardedValue, (value) => DatabaseInstanceIpAddress.fromMap((value as Map).cast<String, dynamic>())); });
     maintenanceVersion = registerOutput<String>('maintenanceVersion');
     masterInstanceName = registerOutput<String>('masterInstanceName');
     this.name = registerOutput<String>('name');
@@ -2665,15 +2670,65 @@ class DatabaseInstance extends pulumi.CustomResource {
     pscServiceAttachmentLink = registerOutput<String>('pscServiceAttachmentLink');
     publicIpAddress = registerOutput<String>('publicIpAddress');
     region = registerOutput<String>('region');
-    replicaConfiguration = registerOutput<DatabaseInstanceReplicaConfiguration>('replicaConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseInstanceReplicaConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    replicaNames = registerOutput<List<String>>('replicaNames');
+    replicaConfiguration = registerOutput<DatabaseInstanceReplicaConfiguration>('replicaConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseInstanceReplicaConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); }, isSecret: true);
+    replicaNames = registerOutput<List<String>>('replicaNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     replicationCluster = registerOutput<DatabaseInstanceReplicationCluster>('replicationCluster', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseInstanceReplicationCluster.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     restoreBackupContext = registerOutput<DatabaseInstanceRestoreBackupContext?>('restoreBackupContext', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseInstanceRestoreBackupContext.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    rootPassword = registerOutput<String?>('rootPassword');
-    rootPasswordWo = registerOutput<String?>('rootPasswordWo');
+    rootPassword = registerOutput<String?>('rootPassword', isSecret: true);
+    rootPasswordWo = registerOutput<String?>('rootPasswordWo', isSecret: true);
     rootPasswordWoVersion = registerOutput<String?>('rootPasswordWoVersion');
     selfLink = registerOutput<String>('selfLink');
-    serverCaCerts = registerOutput<List<Map<String, dynamic>>>('serverCaCerts');
+    serverCaCerts = registerOutput<List<DatabaseInstanceServerCaCert>>('serverCaCerts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DatabaseInstanceServerCaCert>(guardedValue, (value) => DatabaseInstanceServerCaCert.fromMap((value as Map).cast<String, dynamic>())); }, isSecret: true);
+    serviceAccountEmailAddress = registerOutput<String>('serviceAccountEmailAddress');
+    settings = registerOutput<DatabaseInstanceSettings>('settings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseInstanceSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    switchTransactionLogsToCloudStorageEnabled = registerOutput<bool?>('switchTransactionLogsToCloudStorageEnabled');
+  }
+
+  /// Creates a typed reference to an existing [DatabaseInstance] resource.
+  DatabaseInstance.reference(String urn)
+    : super(
+        'gcp:sql/databaseInstance:DatabaseInstance',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['replicaConfiguration', 'rootPassword', 'rootPasswordWo', 'serverCaCerts'],
+        isResourceReference: true,
+      ) {
+    availableMaintenanceVersions = registerOutput<List<String>>('availableMaintenanceVersions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    backupdrBackup = registerOutput<String?>('backupdrBackup');
+    clone = registerOutput<DatabaseInstanceClone?>('clone', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseInstanceClone.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    connectionName = registerOutput<String>('connectionName');
+    databaseVersion = registerOutput<String>('databaseVersion');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    deletionProtection = registerOutput<bool?>('deletionProtection');
+    dnsName = registerOutput<String>('dnsName');
+    dnsNames = registerOutput<List<DatabaseInstanceDnsName>>('dnsNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DatabaseInstanceDnsName>(guardedValue, (value) => DatabaseInstanceDnsName.fromMap((value as Map).cast<String, dynamic>())); });
+    encryptionKeyName = registerOutput<String>('encryptionKeyName');
+    enforceNewSqlNetworkArchitecture = registerOutput<bool>('enforceNewSqlNetworkArchitecture');
+    finalBackupDescription = registerOutput<String?>('finalBackupDescription');
+    firstIpAddress = registerOutput<String>('firstIpAddress');
+    includeReplicasForMajorVersionUpgrade = registerOutput<bool?>('includeReplicasForMajorVersionUpgrade');
+    instanceType = registerOutput<String>('instanceType');
+    ipAddresses = registerOutput<List<DatabaseInstanceIpAddress>>('ipAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DatabaseInstanceIpAddress>(guardedValue, (value) => DatabaseInstanceIpAddress.fromMap((value as Map).cast<String, dynamic>())); });
+    maintenanceVersion = registerOutput<String>('maintenanceVersion');
+    masterInstanceName = registerOutput<String>('masterInstanceName');
+    this.name = registerOutput<String>('name');
+    nodeCount = registerOutput<int>('nodeCount');
+    pointInTimeRestoreContext = registerOutput<DatabaseInstancePointInTimeRestoreContext?>('pointInTimeRestoreContext', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseInstancePointInTimeRestoreContext.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    privateIpAddress = registerOutput<String>('privateIpAddress');
+    project = registerOutput<String>('project');
+    pscServiceAttachmentLink = registerOutput<String>('pscServiceAttachmentLink');
+    publicIpAddress = registerOutput<String>('publicIpAddress');
+    region = registerOutput<String>('region');
+    replicaConfiguration = registerOutput<DatabaseInstanceReplicaConfiguration>('replicaConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseInstanceReplicaConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); }, isSecret: true);
+    replicaNames = registerOutput<List<String>>('replicaNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    replicationCluster = registerOutput<DatabaseInstanceReplicationCluster>('replicationCluster', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseInstanceReplicationCluster.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    restoreBackupContext = registerOutput<DatabaseInstanceRestoreBackupContext?>('restoreBackupContext', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseInstanceRestoreBackupContext.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    rootPassword = registerOutput<String?>('rootPassword', isSecret: true);
+    rootPasswordWo = registerOutput<String?>('rootPasswordWo', isSecret: true);
+    rootPasswordWoVersion = registerOutput<String?>('rootPasswordWoVersion');
+    selfLink = registerOutput<String>('selfLink');
+    serverCaCerts = registerOutput<List<DatabaseInstanceServerCaCert>>('serverCaCerts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DatabaseInstanceServerCaCert>(guardedValue, (value) => DatabaseInstanceServerCaCert.fromMap((value as Map).cast<String, dynamic>())); }, isSecret: true);
     serviceAccountEmailAddress = registerOutput<String>('serviceAccountEmailAddress');
     settings = registerOutput<DatabaseInstanceSettings>('settings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseInstanceSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     switchTransactionLogsToCloudStorageEnabled = registerOutput<bool?>('switchTransactionLogsToCloudStorageEnabled');

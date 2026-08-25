@@ -7,7 +7,7 @@ class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessagePlayAudio {
   /// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
   ///
   /// &lt;a name="nestedKnowledgeConnectorSettingsTriggerFulfillmentMessagesMixedAudio"&gt;&lt;/a&gt;The `mixedAudio` block contains:
-  final pulumi.Input<bool>? allowPlaybackInterruption;
+  final pulumi.Input<bool?>? allowPlaybackInterruption;
   /// URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
   final pulumi.Input<String> audioUri;
 

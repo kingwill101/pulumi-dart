@@ -6,7 +6,7 @@ import 'feed_details_imperva_waf_settings_authentication.dart';
 class FeedDetailsImpervaWafSettings {
   /// HTTP header based authentication.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsImpervaWafSettingsAuthentication>? authentication;
+  final pulumi.Input<FeedDetailsImpervaWafSettingsAuthentication?>? authentication;
 
   /// Creates a new [FeedDetailsImpervaWafSettings].
   /// [authentication] HTTP header based authentication.

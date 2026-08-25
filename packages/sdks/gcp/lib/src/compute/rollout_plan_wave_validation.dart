@@ -6,7 +6,7 @@ import 'rollout_plan_wave_validation_time_based_validation_metadata.dart';
 class RolloutPlanWaveValidation {
   /// Metadata required if type = "time".
   /// Structure is documented below.
-  final pulumi.Input<RolloutPlanWaveValidationTimeBasedValidationMetadata>? timeBasedValidationMetadata;
+  final pulumi.Input<RolloutPlanWaveValidationTimeBasedValidationMetadata?>? timeBasedValidationMetadata;
   /// The type of the validation. Possible values:
   /// "manual": The system waits for an end-user approval API before progressing to the next wave.
   /// "time": The system waits for a user specified duration before progressing to the next wave.

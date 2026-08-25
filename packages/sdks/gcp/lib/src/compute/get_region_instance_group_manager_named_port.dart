@@ -26,7 +26,7 @@ class GetRegionInstanceGroupManagerNamedPort {
   factory GetRegionInstanceGroupManagerNamedPort.fromMap(Map<String, dynamic> map) {
     return GetRegionInstanceGroupManagerNamedPort(
       name: pulumi.Input.fromValue(map['name'] as String),
-      port: pulumi.Input.fromValue(map['port'] as int),
+      port: pulumi.Input.fromValue((map['port'] as num).toInt()),
     );
   }
 }

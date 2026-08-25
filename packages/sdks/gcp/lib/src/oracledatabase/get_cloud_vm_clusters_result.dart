@@ -5,38 +5,38 @@ import 'get_cloud_vm_clusters_cloud_vm_cluster.dart';
 
 /// Result data returned by getCloudVmClusters.
 class GetCloudVmClustersResult {
-  final List<GetCloudVmClustersCloudVmCluster> cloudVmClusters;
+  final List<GetCloudVmClustersCloudVmCluster>? cloudVmClusters;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final String location;
+  final String? id;
+  final String? location;
   final String? project;
 
   /// Creates a new [GetCloudVmClustersResult].
-  /// [cloudVmClusters] Required.
+  /// [cloudVmClusters] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [location] Required.
+  /// [location] Optional.
   /// [project] Optional.
   const GetCloudVmClustersResult({
-    required this.cloudVmClusters,
-    required this.id,
-    required this.location,
+    this.cloudVmClusters,
+    this.id,
+    this.location,
     this.project,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cloudVmClusters': pulumi.Input.encodeList<GetCloudVmClustersCloudVmCluster, Map<String, dynamic>>(cloudVmClusters, (value) => value.toMap()),
-      'id': id,
-      'location': location,
+      'cloudVmClusters': ?(() { final guardedValue = cloudVmClusters; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetCloudVmClustersCloudVmCluster, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'id': ?id,
+      'location': ?location,
       'project': ?project,
     };
   }
 
   factory GetCloudVmClustersResult.fromMap(Map<String, dynamic> map) {
     return GetCloudVmClustersResult(
-      cloudVmClusters: pulumi.Input.decodeList<GetCloudVmClustersCloudVmCluster>(map['cloudVmClusters']!, (value) => GetCloudVmClustersCloudVmCluster.fromMap((value as Map).cast<String, dynamic>())),
-      id: map['id'] as String,
-      location: map['location'] as String,
+      cloudVmClusters: (() { final guardedValue = map['cloudVmClusters']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetCloudVmClustersCloudVmCluster>(guardedValue, (value) => GetCloudVmClustersCloudVmCluster.fromMap((value as Map).cast<String, dynamic>())); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }

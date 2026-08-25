@@ -14,7 +14,7 @@ class GetDocumentArgs {
   /// The id of the document to get.
   final pulumi.Input<String> documentId;
   /// The project in which the database resides.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetDocumentArgs].
   /// [collection] The name of the collection of documents.

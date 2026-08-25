@@ -6,13 +6,13 @@ import 'feed_details_netskope_alert_settings_authentication.dart';
 class FeedDetailsNetskopeAlertSettings {
   /// HTTP header based authentication.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsNetskopeAlertSettingsAuthentication>? authentication;
+  final pulumi.Input<FeedDetailsNetskopeAlertSettingsAuthentication?>? authentication;
   /// Content type.
-  final pulumi.Input<String>? contentType;
+  final pulumi.Input<String?>? contentType;
   /// Feedname.
-  final pulumi.Input<String>? feedname;
+  final pulumi.Input<String?>? feedname;
   /// API Hostname.
-  final pulumi.Input<String>? hostname;
+  final pulumi.Input<String?>? hostname;
 
   /// Creates a new [FeedDetailsNetskopeAlertSettings].
   /// [authentication] HTTP header based authentication.

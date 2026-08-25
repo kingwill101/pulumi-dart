@@ -6,6 +6,7 @@ import 'flexible_app_version_deployment.dart';
 import 'flexible_app_version_endpoints_api_service.dart';
 import 'flexible_app_version_entrypoint.dart';
 import 'flexible_app_version_flexible_runtime_settings.dart';
+import 'flexible_app_version_handler.dart';
 import 'flexible_app_version_liveness_check.dart';
 import 'flexible_app_version_manual_scaling.dart';
 import 'flexible_app_version_network.dart';
@@ -923,7 +924,7 @@ class FlexibleAppVersion extends pulumi.CustomResource {
   /// An ordered list of URL-matching patterns that should be applied to incoming requests.
   /// The first matching URL handles the request and other request handlers are not attempted.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> handlers;
+  late final pulumi.Output<List<FlexibleAppVersionHandler>> handlers;
   /// A list of the types of messages that this application is able to receive.
   /// Each value may be one of: `INBOUND_SERVICE_MAIL`, `INBOUND_SERVICE_MAIL_BOUNCE`, `INBOUND_SERVICE_XMPP_ERROR`, `INBOUND_SERVICE_XMPP_MESSAGE`, `INBOUND_SERVICE_XMPP_SUBSCRIBE`, `INBOUND_SERVICE_XMPP_PRESENCE`, `INBOUND_SERVICE_CHANNEL_PRESENCE`, `INBOUND_SERVICE_WARMUP`.
   late final pulumi.Output<List<String>?> inboundServices;
@@ -994,21 +995,21 @@ class FlexibleAppVersion extends pulumi.CustomResource {
           'gcp:appengine/flexibleAppVersion:FlexibleAppVersion',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     apiConfig = registerOutput<FlexibleAppVersionApiConfig?>('apiConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FlexibleAppVersionApiConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     automaticScaling = registerOutput<FlexibleAppVersionAutomaticScaling?>('automaticScaling', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FlexibleAppVersionAutomaticScaling.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    betaSettings = registerOutput<Map<String, String>?>('betaSettings');
+    betaSettings = registerOutput<Map<String, String>?>('betaSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     defaultExpiration = registerOutput<String?>('defaultExpiration');
     deleteServiceOnDestroy = registerOutput<bool?>('deleteServiceOnDestroy');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     deployment = registerOutput<FlexibleAppVersionDeployment?>('deployment', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FlexibleAppVersionDeployment.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     endpointsApiService = registerOutput<FlexibleAppVersionEndpointsApiService?>('endpointsApiService', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FlexibleAppVersionEndpointsApiService.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     entrypoint = registerOutput<FlexibleAppVersionEntrypoint?>('entrypoint', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FlexibleAppVersionEntrypoint.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    envVariables = registerOutput<Map<String, String>?>('envVariables');
+    envVariables = registerOutput<Map<String, String>?>('envVariables', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     flexibleRuntimeSettings = registerOutput<FlexibleAppVersionFlexibleRuntimeSettings?>('flexibleRuntimeSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FlexibleAppVersionFlexibleRuntimeSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    handlers = registerOutput<List<Map<String, dynamic>>>('handlers');
-    inboundServices = registerOutput<List<String>?>('inboundServices');
+    handlers = registerOutput<List<FlexibleAppVersionHandler>>('handlers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FlexibleAppVersionHandler>(guardedValue, (value) => FlexibleAppVersionHandler.fromMap((value as Map).cast<String, dynamic>())); });
+    inboundServices = registerOutput<List<String>?>('inboundServices', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     instanceClass = registerOutput<String?>('instanceClass');
     livenessCheck = registerOutput<FlexibleAppVersionLivenessCheck>('livenessCheck', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FlexibleAppVersionLivenessCheck.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     manualScaling = registerOutput<FlexibleAppVersionManualScaling?>('manualScaling', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FlexibleAppVersionManualScaling.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -1035,11 +1036,12 @@ class FlexibleAppVersion extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FlexibleAppVersionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return FlexibleAppVersion._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1055,17 +1057,60 @@ class FlexibleAppVersion extends pulumi.CustomResource {
         ) {
     apiConfig = registerOutput<FlexibleAppVersionApiConfig?>('apiConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FlexibleAppVersionApiConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     automaticScaling = registerOutput<FlexibleAppVersionAutomaticScaling?>('automaticScaling', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FlexibleAppVersionAutomaticScaling.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    betaSettings = registerOutput<Map<String, String>?>('betaSettings');
+    betaSettings = registerOutput<Map<String, String>?>('betaSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     defaultExpiration = registerOutput<String?>('defaultExpiration');
     deleteServiceOnDestroy = registerOutput<bool?>('deleteServiceOnDestroy');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     deployment = registerOutput<FlexibleAppVersionDeployment?>('deployment', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FlexibleAppVersionDeployment.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     endpointsApiService = registerOutput<FlexibleAppVersionEndpointsApiService?>('endpointsApiService', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FlexibleAppVersionEndpointsApiService.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     entrypoint = registerOutput<FlexibleAppVersionEntrypoint?>('entrypoint', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FlexibleAppVersionEntrypoint.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    envVariables = registerOutput<Map<String, String>?>('envVariables');
+    envVariables = registerOutput<Map<String, String>?>('envVariables', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     flexibleRuntimeSettings = registerOutput<FlexibleAppVersionFlexibleRuntimeSettings?>('flexibleRuntimeSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FlexibleAppVersionFlexibleRuntimeSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    handlers = registerOutput<List<Map<String, dynamic>>>('handlers');
-    inboundServices = registerOutput<List<String>?>('inboundServices');
+    handlers = registerOutput<List<FlexibleAppVersionHandler>>('handlers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FlexibleAppVersionHandler>(guardedValue, (value) => FlexibleAppVersionHandler.fromMap((value as Map).cast<String, dynamic>())); });
+    inboundServices = registerOutput<List<String>?>('inboundServices', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    instanceClass = registerOutput<String?>('instanceClass');
+    livenessCheck = registerOutput<FlexibleAppVersionLivenessCheck>('livenessCheck', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FlexibleAppVersionLivenessCheck.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    manualScaling = registerOutput<FlexibleAppVersionManualScaling?>('manualScaling', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FlexibleAppVersionManualScaling.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    network = registerOutput<FlexibleAppVersionNetwork?>('network', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FlexibleAppVersionNetwork.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    nobuildFilesRegex = registerOutput<String?>('nobuildFilesRegex');
+    noopOnDestroy = registerOutput<bool?>('noopOnDestroy');
+    project = registerOutput<String>('project');
+    readinessCheck = registerOutput<FlexibleAppVersionReadinessCheck>('readinessCheck', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FlexibleAppVersionReadinessCheck.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    resources = registerOutput<FlexibleAppVersionResources?>('resources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FlexibleAppVersionResources.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    runtime = registerOutput<String>('runtime');
+    runtimeApiVersion = registerOutput<String>('runtimeApiVersion');
+    runtimeChannel = registerOutput<String?>('runtimeChannel');
+    runtimeMainExecutablePath = registerOutput<String?>('runtimeMainExecutablePath');
+    service = registerOutput<String>('service');
+    serviceAccount = registerOutput<String>('serviceAccount');
+    servingStatus = registerOutput<String?>('servingStatus');
+    versionId = registerOutput<String?>('versionId');
+    vpcAccessConnector = registerOutput<FlexibleAppVersionVpcAccessConnector?>('vpcAccessConnector', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FlexibleAppVersionVpcAccessConnector.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [FlexibleAppVersion] resource.
+  FlexibleAppVersion.reference(String urn)
+    : super(
+        'gcp:appengine/flexibleAppVersion:FlexibleAppVersion',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    apiConfig = registerOutput<FlexibleAppVersionApiConfig?>('apiConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FlexibleAppVersionApiConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    automaticScaling = registerOutput<FlexibleAppVersionAutomaticScaling?>('automaticScaling', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FlexibleAppVersionAutomaticScaling.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    betaSettings = registerOutput<Map<String, String>?>('betaSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    defaultExpiration = registerOutput<String?>('defaultExpiration');
+    deleteServiceOnDestroy = registerOutput<bool?>('deleteServiceOnDestroy');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    deployment = registerOutput<FlexibleAppVersionDeployment?>('deployment', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FlexibleAppVersionDeployment.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    endpointsApiService = registerOutput<FlexibleAppVersionEndpointsApiService?>('endpointsApiService', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FlexibleAppVersionEndpointsApiService.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    entrypoint = registerOutput<FlexibleAppVersionEntrypoint?>('entrypoint', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FlexibleAppVersionEntrypoint.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    envVariables = registerOutput<Map<String, String>?>('envVariables', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    flexibleRuntimeSettings = registerOutput<FlexibleAppVersionFlexibleRuntimeSettings?>('flexibleRuntimeSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FlexibleAppVersionFlexibleRuntimeSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    handlers = registerOutput<List<FlexibleAppVersionHandler>>('handlers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FlexibleAppVersionHandler>(guardedValue, (value) => FlexibleAppVersionHandler.fromMap((value as Map).cast<String, dynamic>())); });
+    inboundServices = registerOutput<List<String>?>('inboundServices', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     instanceClass = registerOutput<String?>('instanceClass');
     livenessCheck = registerOutput<FlexibleAppVersionLivenessCheck>('livenessCheck', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FlexibleAppVersionLivenessCheck.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     manualScaling = registerOutput<FlexibleAppVersionManualScaling?>('manualScaling', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FlexibleAppVersionManualScaling.fromMap((guardedValue as Map).cast<String, dynamic>()); });

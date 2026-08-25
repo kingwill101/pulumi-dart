@@ -5,12 +5,12 @@ import 'feed_details_workspace_activity_settings_authentication.dart';
 
 class FeedDetailsWorkspaceActivitySettings {
   /// Applications.
-  final pulumi.Input<List<String>>? applications;
+  final pulumi.Input<List<String>?>? applications;
   /// OAuth 2.0 JWT grant. See, https://tools.ietf.org/html/rfc7519
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsWorkspaceActivitySettingsAuthentication>? authentication;
+  final pulumi.Input<FeedDetailsWorkspaceActivitySettingsAuthentication?>? authentication;
   /// Customer ID.
-  final pulumi.Input<String>? workspaceCustomerId;
+  final pulumi.Input<String?>? workspaceCustomerId;
 
   /// Creates a new [FeedDetailsWorkspaceActivitySettings].
   /// [applications] Applications.

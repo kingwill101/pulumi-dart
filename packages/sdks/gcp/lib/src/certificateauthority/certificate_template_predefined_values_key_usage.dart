@@ -8,13 +8,13 @@ import 'certificate_template_predefined_values_key_usage_unknown_extended_key_us
 class CertificateTemplatePredefinedValuesKeyUsage {
   /// Describes high-level ways in which a key may be used.
   /// Structure is documented below.
-  final pulumi.Input<CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsage>? baseKeyUsage;
+  final pulumi.Input<CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsage?>? baseKeyUsage;
   /// Detailed scenarios in which a key may be used.
   /// Structure is documented below.
-  final pulumi.Input<CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsage>? extendedKeyUsage;
+  final pulumi.Input<CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsage?>? extendedKeyUsage;
   /// Used to describe extended key usages that are not listed in the KeyUsage.ExtendedKeyUsageOptions message.
   /// Structure is documented below.
-  final pulumi.Input<List<CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsage>>? unknownExtendedKeyUsages;
+  final pulumi.Input<List<CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsage>?>? unknownExtendedKeyUsages;
 
   /// Creates a new [CertificateTemplatePredefinedValuesKeyUsage].
   /// [baseKeyUsage] Describes high-level ways in which a key may be used.

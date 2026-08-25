@@ -404,7 +404,7 @@ class WorkforcePool extends pulumi.CustomResource {
           'gcp:iam/workforcePool:WorkforcePool',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     accessRestrictions = registerOutput<WorkforcePoolAccessRestrictions?>('accessRestrictions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkforcePoolAccessRestrictions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -424,11 +424,12 @@ class WorkforcePool extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     WorkforcePoolState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return WorkforcePool._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -452,6 +453,28 @@ class WorkforcePool extends pulumi.CustomResource {
     parent = registerOutput<String>('parent');
     sessionDuration = registerOutput<String?>('sessionDuration');
     this.state = registerOutput<String>('state');
+    workforcePoolId = registerOutput<String>('workforcePoolId');
+  }
+
+  /// Creates a typed reference to an existing [WorkforcePool] resource.
+  WorkforcePool.reference(String urn)
+    : super(
+        'gcp:iam/workforcePool:WorkforcePool',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    accessRestrictions = registerOutput<WorkforcePoolAccessRestrictions?>('accessRestrictions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkforcePoolAccessRestrictions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    disabled = registerOutput<bool?>('disabled');
+    displayName = registerOutput<String?>('displayName');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    parent = registerOutput<String>('parent');
+    sessionDuration = registerOutput<String?>('sessionDuration');
+    state = registerOutput<String>('state');
     workforcePoolId = registerOutput<String>('workforcePoolId');
   }
 }

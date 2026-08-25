@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class HiveTableStorageDescriptorColumn {
   /// Comment of the field.
-  final pulumi.Input<String>? comment;
+  final pulumi.Input<String?>? comment;
   /// Name of the field.
   final pulumi.Input<String> name;
   /// Type of the field.

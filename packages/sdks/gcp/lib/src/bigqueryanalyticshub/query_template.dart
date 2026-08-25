@@ -365,7 +365,7 @@ class QueryTemplate extends pulumi.CustomResource {
           'gcp:bigqueryanalyticshub/queryTemplate:QueryTemplate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     dataExchangeId = registerOutput<String>('dataExchangeId');
@@ -389,11 +389,12 @@ class QueryTemplate extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     QueryTemplateState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return QueryTemplate._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -420,6 +421,32 @@ class QueryTemplate extends pulumi.CustomResource {
     queryTemplateId = registerOutput<String>('queryTemplateId');
     routine = registerOutput<QueryTemplateRoutine?>('routine', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return QueryTemplateRoutine.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.state = registerOutput<String>('state');
+    submit = registerOutput<bool?>('submit');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [QueryTemplate] resource.
+  QueryTemplate.reference(String urn)
+    : super(
+        'gcp:bigqueryanalyticshub/queryTemplate:QueryTemplate',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    dataExchangeId = registerOutput<String>('dataExchangeId');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    documentation = registerOutput<String?>('documentation');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    primaryContact = registerOutput<String?>('primaryContact');
+    project = registerOutput<String>('project');
+    queryTemplateId = registerOutput<String>('queryTemplateId');
+    routine = registerOutput<QueryTemplateRoutine?>('routine', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return QueryTemplateRoutine.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    state = registerOutput<String>('state');
     submit = registerOutput<bool?>('submit');
     updateTime = registerOutput<String>('updateTime');
   }

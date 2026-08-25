@@ -130,6 +130,17 @@ Future<GetAppConnectionResult> getAppConnection(
   return GetAppConnectionResult.fromMap(result);
 }
 
+pulumi.Output<GetAppConnectionResult> getAppConnectionOutput(
+  GetAppConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:beyondcorp/getAppConnection:getAppConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAppConnectionResult.fromMap);
+}
+
 /// Get information about a Google BeyondCorp App Connector.
 ///
 /// ## Example Usage
@@ -246,6 +257,17 @@ Future<GetAppConnectorResult> getAppConnector(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetAppConnectorResult.fromMap(result);
+}
+
+pulumi.Output<GetAppConnectorResult> getAppConnectorOutput(
+  GetAppConnectorArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:beyondcorp/getAppConnector:getAppConnector',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAppConnectorResult.fromMap);
 }
 
 /// Get information about a Google BeyondCorp App Gateway.
@@ -366,6 +388,17 @@ Future<GetAppGatewayResult> getAppGateway(
   return GetAppGatewayResult.fromMap(result);
 }
 
+pulumi.Output<GetAppGatewayResult> getAppGatewayOutput(
+  GetAppGatewayArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:beyondcorp/getAppGateway:getAppGateway',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAppGatewayResult.fromMap);
+}
+
 /// Get information about a Google BeyondCorp Security Gateway.
 ///
 /// ## Example Usage
@@ -482,6 +515,17 @@ Future<GetSecurityGatewayResult> getSecurityGateway(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSecurityGatewayResult.fromMap(result);
+}
+
+pulumi.Output<GetSecurityGatewayResult> getSecurityGatewayOutput(
+  GetSecurityGatewayArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:beyondcorp/getSecurityGateway:getSecurityGateway',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSecurityGatewayResult.fromMap);
 }
 
 /// Retrieves the current IAM policy data for securitygatewayapplication
@@ -617,6 +661,17 @@ Future<GetSecurityGatewayApplicationIamPolicyResult> getSecurityGatewayApplicati
   return GetSecurityGatewayApplicationIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetSecurityGatewayApplicationIamPolicyResult> getSecurityGatewayApplicationIamPolicyOutput(
+  GetSecurityGatewayApplicationIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:beyondcorp/getSecurityGatewayApplicationIamPolicy:getSecurityGatewayApplicationIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSecurityGatewayApplicationIamPolicyResult.fromMap);
+}
+
 /// Retrieves the current IAM policy data for securitygateway
 ///
 ///
@@ -748,4 +803,15 @@ Future<GetSecurityGatewayIamPolicyResult> getSecurityGatewayIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSecurityGatewayIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetSecurityGatewayIamPolicyResult> getSecurityGatewayIamPolicyOutput(
+  GetSecurityGatewayIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:beyondcorp/getSecurityGatewayIamPolicy:getSecurityGatewayIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSecurityGatewayIamPolicyResult.fromMap);
 }

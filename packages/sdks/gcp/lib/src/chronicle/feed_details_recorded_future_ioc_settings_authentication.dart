@@ -6,7 +6,7 @@ import 'feed_details_recorded_future_ioc_settings_authentication_header_key_valu
 class FeedDetailsRecordedFutureIocSettingsAuthentication {
   /// Header key-value pairs.
   /// Structure is documented below.
-  final pulumi.Input<List<FeedDetailsRecordedFutureIocSettingsAuthenticationHeaderKeyValue>>? headerKeyValues;
+  final pulumi.Input<List<FeedDetailsRecordedFutureIocSettingsAuthenticationHeaderKeyValue>?>? headerKeyValues;
 
   /// Creates a new [FeedDetailsRecordedFutureIocSettingsAuthentication].
   /// [headerKeyValues] Header key-value pairs.

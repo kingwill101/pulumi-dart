@@ -21,11 +21,11 @@ class InstanceState {
   /// etc.). Please refer to the API documentation for more details.
   /// Possible values are: `ACTIVATION_POLICY_UNSPECIFIED`, `ALWAYS`, `NEVER`.'
   /// Possible values are: `ACTIVATION_POLICY_UNSPECIFIED`, `ALWAYS`, `NEVER`.
-  final pulumi.Input<String>? activationPolicy;
+  final pulumi.Input<String?>? activationPolicy;
   /// Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels.
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
-  final pulumi.Input<Map<String, String>>? annotations;
+  final pulumi.Input<Map<String, String>?>? annotations;
   /// 'Availability type of an Instance. Defaults to REGIONAL for both primary and read instances.
   /// Note that primary and read instances can have different availability types.
   /// Primary instances can be either ZONAL or REGIONAL. Read Pool instances can also be either ZONAL or REGIONAL.
@@ -33,37 +33,37 @@ class InstanceState {
   /// can have regional availability (nodes are present in 2 or more zones in a region).
   /// Possible values are: `AVAILABILITY_TYPE_UNSPECIFIED`, `ZONAL`, `REGIONAL`.'
   /// Possible values are: `AVAILABILITY_TYPE_UNSPECIFIED`, `ZONAL`, `REGIONAL`.
-  final pulumi.Input<String>? availabilityType;
+  final pulumi.Input<String?>? availabilityType;
   /// Client connection specific configurations.
   /// Structure is documented below.
-  final pulumi.Input<InstanceClientConnectionConfig>? clientConnectionConfig;
+  final pulumi.Input<InstanceClientConnectionConfig?>? clientConnectionConfig;
   /// Identifies the alloydb cluster. Must be in the format
   /// 'projects/{project}/locations/{location}/clusters/{cluster_id}'
-  final pulumi.Input<String>? cluster;
+  final pulumi.Input<String?>? cluster;
   /// Configuration for Managed Connection Pool.
   /// Structure is documented below.
-  final pulumi.Input<InstanceConnectionPoolConfig>? connectionPoolConfig;
+  final pulumi.Input<InstanceConnectionPoolConfig?>? connectionPoolConfig;
   /// Time the Instance was created in UTC.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Database flags. Set at instance level. * They are copied from primary instance on read instance creation. * Read instances can set new or override existing flags that are relevant for reads, e.g. for enabling columnar cache on a read instance. Flags set on read instance may or may not be present on primary.
-  final pulumi.Input<Map<String, String>>? databaseFlags;
+  final pulumi.Input<Map<String, String>?>? databaseFlags;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// User-settable and human-readable display name for the Instance.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveAnnotations;
+  final pulumi.Input<Map<String, String>?>? effectiveAnnotations;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveLabels;
+  final pulumi.Input<Map<String, String>?>? effectiveLabels;
   /// The Compute Engine zone that the instance should serve from, per https://cloud.google.com/compute/docs/regions-zones This can ONLY be specified for ZONAL instances. If present for a REGIONAL instance, an error will be thrown. If this is absent for a ZONAL instance, instance is created in a random zone with available capacity.
-  final pulumi.Input<String>? gceZone;
+  final pulumi.Input<String?>? gceZone;
   /// The ID of the alloydb instance.
-  final pulumi.Input<String>? instanceId;
+  final pulumi.Input<String?>? instanceId;
   /// The type of the instance.
   /// If the instance type is READ_POOL, provide the associated PRIMARY/SECONDARY instance in the `dependsOn` meta-data attribute.
   /// If the instance type is SECONDARY, point to the clusterType of the associated secondary cluster instead of mentioning SECONDARY.
@@ -72,53 +72,53 @@ class InstanceState {
   /// Use deletionPolicy = "FORCE" in the associated secondary cluster and delete the cluster forcefully to delete the secondary cluster as well its associated secondary instance.
   /// Users can undo the delete secondary instance action by importing the deleted secondary instance by calling terraform import.
   /// Possible values are: `PRIMARY`, `READ_POOL`, `SECONDARY`.
-  final pulumi.Input<String>? instanceType;
+  final pulumi.Input<String?>? instanceType;
   /// The IP address for the Instance. This is the connection endpoint for an end-user application.
-  final pulumi.Input<String>? ipAddress;
+  final pulumi.Input<String?>? ipAddress;
   /// User-defined labels for the alloydb instance.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Configurations for the machines that host the underlying database engine.
   /// Structure is documented below.
-  final pulumi.Input<InstanceMachineConfig>? machineConfig;
+  final pulumi.Input<InstanceMachineConfig?>? machineConfig;
   /// The name of the instance resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Instance level network configuration.
   /// Structure is documented below.
-  final pulumi.Input<InstanceNetworkConfig>? networkConfig;
+  final pulumi.Input<InstanceNetworkConfig?>? networkConfig;
   /// (Optional, Beta)
   /// Configuration for enhanced query insights.
   /// Structure is documented below.
-  final pulumi.Input<InstanceObservabilityConfig>? observabilityConfig;
+  final pulumi.Input<InstanceObservabilityConfig?>? observabilityConfig;
   /// The outbound public IP addresses for the instance. This is available ONLY when
   /// networkConfig.enableOutboundPublicIp is set to true. These IP addresses are used
   /// for outbound connections.
-  final pulumi.Input<List<String>>? outboundPublicIpAddresses;
+  final pulumi.Input<List<String>?>? outboundPublicIpAddresses;
   /// Configuration for Private Service Connect (PSC) for the instance.
   /// Structure is documented below.
-  final pulumi.Input<InstancePscInstanceConfig>? pscInstanceConfig;
+  final pulumi.Input<InstancePscInstanceConfig?>? pscInstanceConfig;
   /// The public IP addresses for the Instance. This is available ONLY when
   /// networkConfig.enablePublicIp is set to true. This is the connection
   /// endpoint for an end-user application.
-  final pulumi.Input<String>? publicIpAddress;
+  final pulumi.Input<String?>? publicIpAddress;
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  final pulumi.Input<Map<String, String>>? pulumiLabels;
+  final pulumi.Input<Map<String, String>?>? pulumiLabels;
   /// Configuration for query insights.
   /// Structure is documented below.
-  final pulumi.Input<InstanceQueryInsightsConfig>? queryInsightsConfig;
+  final pulumi.Input<InstanceQueryInsightsConfig?>? queryInsightsConfig;
   /// Read pool specific config. If the instance type is READ_POOL, this configuration must be provided.
   /// Structure is documented below.
-  final pulumi.Input<InstanceReadPoolConfig>? readPoolConfig;
+  final pulumi.Input<InstanceReadPoolConfig?>? readPoolConfig;
   /// Set to true if the current state of Instance does not match the user's intended state, and the service is actively updating the resource to reconcile them. This can happen due to user-triggered updates or system actions like failover or maintenance.
-  final pulumi.Input<bool>? reconciling;
+  final pulumi.Input<bool?>? reconciling;
   /// The current state of the alloydb instance.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// The system-generated UID of the resource.
-  final pulumi.Input<String>? uid;
+  final pulumi.Input<String?>? uid;
   /// Time the Instance was updated in UTC.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [InstanceState].
   /// [activationPolicy] 'Specifies whether an instance needs to spin up. Once the instance is

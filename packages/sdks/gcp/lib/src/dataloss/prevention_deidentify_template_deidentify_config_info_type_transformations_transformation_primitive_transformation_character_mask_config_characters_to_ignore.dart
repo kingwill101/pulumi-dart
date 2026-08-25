@@ -4,10 +4,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore {
   /// Characters to not transform when masking. Only one of this or `commonCharactersToIgnore` must be specified.
-  final pulumi.Input<String>? charactersToSkip;
+  final pulumi.Input<String?>? charactersToSkip;
   /// Common characters to not transform when masking. Useful to avoid removing punctuation. Only one of this or `charactersToSkip` must be specified.
   /// Possible values are: `NUMERIC`, `ALPHA_UPPER_CASE`, `ALPHA_LOWER_CASE`, `PUNCTUATION`, `WHITESPACE`.
-  final pulumi.Input<String>? commonCharactersToIgnore;
+  final pulumi.Input<String?>? commonCharactersToIgnore;
 
   /// Creates a new [PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore].
   /// [charactersToSkip] Characters to not transform when masking. Only one of this or `commonCharactersToIgnore` must be specified.

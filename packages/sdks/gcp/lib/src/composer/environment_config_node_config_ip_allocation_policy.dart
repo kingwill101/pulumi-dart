@@ -4,15 +4,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EnvironmentConfigNodeConfigIpAllocationPolicy {
   /// The IP address range used to allocate IP addresses to pods in the cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when useIpAliases is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. /14) to have GKE choose a range with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) from the RFC-1918 private networks (e.g. 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) to pick a specific range to use. Specify either clusterSecondaryRangeName or clusterIpv4CidrBlock but not both.
-  final pulumi.Input<String>? clusterIpv4CidrBlock;
+  final pulumi.Input<String?>? clusterIpv4CidrBlock;
   /// The name of the cluster's secondary range used to allocate IP addresses to pods. Specify either clusterSecondaryRangeName or clusterIpv4CidrBlock but not both. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when useIpAliases is true.
-  final pulumi.Input<String>? clusterSecondaryRangeName;
+  final pulumi.Input<String?>? clusterSecondaryRangeName;
   /// The IP address range used to allocate IP addresses in this cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when useIpAliases is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. /14) to have GKE choose a range with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) from the RFC-1918 private networks (e.g. 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) to pick a specific range to use. Specify either servicesSecondaryRangeName or servicesIpv4CidrBlock but not both.
-  final pulumi.Input<String>? servicesIpv4CidrBlock;
+  final pulumi.Input<String?>? servicesIpv4CidrBlock;
   /// The name of the services' secondary range used to allocate IP addresses to the cluster. Specify either servicesSecondaryRangeName or servicesIpv4CidrBlock but not both. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when useIpAliases is true.
-  final pulumi.Input<String>? servicesSecondaryRangeName;
+  final pulumi.Input<String?>? servicesSecondaryRangeName;
   /// Whether or not to enable Alias IPs in the GKE cluster. If true, a VPC-native cluster is created. Defaults to true if the ipAllocationPolicy block is present in config. This field is only supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. Environments in newer versions always use VPC-native GKE clusters.
-  final pulumi.Input<bool>? useIpAliases;
+  final pulumi.Input<bool?>? useIpAliases;
 
   /// Creates a new [EnvironmentConfigNodeConfigIpAllocationPolicy].
   /// [clusterIpv4CidrBlock] The IP address range used to allocate IP addresses to pods in the cluster. For Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*, this field is applicable only when useIpAliases is true. Set to blank to have GKE choose a range with the default size. Set to /netmask (e.g. /14) to have GKE choose a range with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) from the RFC-1918 private networks (e.g. 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) to pick a specific range to use. Specify either clusterSecondaryRangeName or clusterIpv4CidrBlock but not both.

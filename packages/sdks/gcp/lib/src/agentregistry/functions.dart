@@ -131,6 +131,17 @@ Future<GetAgentResult> getAgent(
   return GetAgentResult.fromMap(result);
 }
 
+pulumi.Output<GetAgentResult> getAgentOutput(
+  GetAgentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:agentregistry/getAgent:getAgent',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAgentResult.fromMap);
+}
+
 /// Get information about an Agent Registry Endpoint.
 ///
 /// ## Example Usage
@@ -256,6 +267,17 @@ Future<GetEndpointResult> getEndpoint(
   return GetEndpointResult.fromMap(result);
 }
 
+pulumi.Output<GetEndpointResult> getEndpointOutput(
+  GetEndpointArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:agentregistry/getEndpoint:getEndpoint',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEndpointResult.fromMap);
+}
+
 /// Get information about an Agent Registry MCP Server.
 ///
 /// ## Example Usage
@@ -379,4 +401,15 @@ Future<GetMcpServerResult> getMcpServer(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetMcpServerResult.fromMap(result);
+}
+
+pulumi.Output<GetMcpServerResult> getMcpServerOutput(
+  GetMcpServerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:agentregistry/getMcpServer:getMcpServer',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMcpServerResult.fromMap);
 }

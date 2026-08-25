@@ -17,40 +17,40 @@ class AuthzPolicyState {
   /// 3. If there are no ALLOW policies for the resource or if any of the ALLOW policies match the request, the request is allowed.
   /// 4. Else the request is denied by default if none of the configured AuthzPolicies with ALLOW action match the request.
   /// Possible values are: `ALLOW`, `DENY`, `CUSTOM`.
-  final pulumi.Input<String>? action;
+  final pulumi.Input<String?>? action;
   /// The timestamp when the resource was created.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Required if the action is CUSTOM. Allows delegating authorization decisions to Cloud IAP or to Service Extensions. One of cloudIap or authzExtension must be specified.
   /// Structure is documented below.
-  final pulumi.Input<AuthzPolicyCustomProvider>? customProvider;
+  final pulumi.Input<AuthzPolicyCustomProvider?>? customProvider;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// A human-readable description of the resource.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveLabels;
+  final pulumi.Input<Map<String, String>?>? effectiveLabels;
   /// A list of authorization HTTP rules to match against the incoming request.A policy match occurs when at least one HTTP rule matches the request or when no HTTP rules are specified in the policy. At least one HTTP Rule is required for Allow or Deny Action.
   /// Limited to 5 rules.
   /// Structure is documented below.
-  final pulumi.Input<List<AuthzPolicyHttpRule>>? httpRules;
+  final pulumi.Input<List<AuthzPolicyHttpRule>?>? httpRules;
   /// Set of labels associated with the AuthzExtension resource.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The location of the resource.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Identifier. Name of the AuthzPolicy resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A list of authorization HTTP rules to match against the incoming request.A policy match occurs when at least one HTTP rule matches the request or when no HTTP rules are specified in the policy. At least one HTTP Rule is required for Allow or Deny Action.
   /// Limited to 5 rules.
   /// Structure is documented below.
-  final pulumi.Input<List<AuthzPolicyNetworkRule>>? networkRules;
+  final pulumi.Input<List<AuthzPolicyNetworkRule>?>? networkRules;
   /// Defines the type of authorization being performed. `REQUEST_AUTHZ` applies to request authorization. CUSTOM
   /// authorization policies with Authz extensions will be allowed with extAuthz or extProc protocols. Extensions are
   /// invoked only once when the request headers arrive. `CONTENT_AUTHZ` applies to content security, sanitization, etc.
@@ -58,18 +58,18 @@ class AuthzPolicyState {
   /// protocol and be capable of receiving all extProc events (REQUEST_HEADERS, REQUEST_BODY, REQUEST_TRAILERS,
   /// RESPONSE_HEADERS, RESPONSE_BODY, RESPONSE_TRAILERS) with FULL_DUPLEX_STREAMED body send mode.
   /// Possible values are: `REQUEST_AUTHZ`, `CONTENT_AUTHZ`.
-  final pulumi.Input<String>? policyProfile;
+  final pulumi.Input<String?>? policyProfile;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  final pulumi.Input<Map<String, String>>? pulumiLabels;
+  final pulumi.Input<Map<String, String>?>? pulumiLabels;
   /// Specifies the set of resources to which this policy should be applied to.
   /// Structure is documented below.
-  final pulumi.Input<AuthzPolicyTarget>? target;
+  final pulumi.Input<AuthzPolicyTarget?>? target;
   /// The timestamp when the resource was updated.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [AuthzPolicyState].
   /// [action] When the action is CUSTOM, customProvider must be specified.

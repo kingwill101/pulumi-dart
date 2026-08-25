@@ -10,6 +10,7 @@ import 'app_logging_settings.dart';
 import 'app_model_settings.dart';
 import 'app_state.dart';
 import 'app_time_zone_settings.dart';
+import 'app_variable_declaration.dart';
 
 /// Customer Engagement Suite App
 ///
@@ -2662,7 +2663,7 @@ class App extends pulumi.CustomResource {
   late final pulumi.Output<String> updateTime;
   /// The declarations of the variables.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> variableDeclarations;
+  late final pulumi.Output<List<AppVariableDeclaration>?> variableDeclarations;
 
   /// Creates a new [App].
   /// [name] The Pulumi resource name.
@@ -2676,7 +2677,7 @@ class App extends pulumi.CustomResource {
           'gcp:ces/app:App',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     appId = registerOutput<String>('appId');
     audioProcessingConfig = registerOutput<AppAudioProcessingConfig?>('audioProcessingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppAudioProcessingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -2691,11 +2692,11 @@ class App extends pulumi.CustomResource {
     etag = registerOutput<String>('etag');
     evaluationMetricsThresholds = registerOutput<AppEvaluationMetricsThresholds?>('evaluationMetricsThresholds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppEvaluationMetricsThresholds.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     globalInstruction = registerOutput<String?>('globalInstruction');
-    guardrails = registerOutput<List<String>?>('guardrails');
+    guardrails = registerOutput<List<String>?>('guardrails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     languageSettings = registerOutput<AppLanguageSettings?>('languageSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppLanguageSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     loggingSettings = registerOutput<AppLoggingSettings>('loggingSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppLoggingSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    metadata = registerOutput<Map<String, String>?>('metadata');
+    metadata = registerOutput<Map<String, String>?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     modelSettings = registerOutput<AppModelSettings?>('modelSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppModelSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     pinned = registerOutput<bool?>('pinned');
@@ -2704,7 +2705,7 @@ class App extends pulumi.CustomResource {
     timeZoneSettings = registerOutput<AppTimeZoneSettings?>('timeZoneSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppTimeZoneSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     toolExecutionMode = registerOutput<String?>('toolExecutionMode');
     updateTime = registerOutput<String>('updateTime');
-    variableDeclarations = registerOutput<List<Map<String, dynamic>>?>('variableDeclarations');
+    variableDeclarations = registerOutput<List<AppVariableDeclaration>?>('variableDeclarations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AppVariableDeclaration>(guardedValue, (value) => AppVariableDeclaration.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [App] resource's state with the given [name] and [id].
@@ -2712,11 +2713,12 @@ class App extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AppState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return App._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -2743,11 +2745,11 @@ class App extends pulumi.CustomResource {
     etag = registerOutput<String>('etag');
     evaluationMetricsThresholds = registerOutput<AppEvaluationMetricsThresholds?>('evaluationMetricsThresholds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppEvaluationMetricsThresholds.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     globalInstruction = registerOutput<String?>('globalInstruction');
-    guardrails = registerOutput<List<String>?>('guardrails');
+    guardrails = registerOutput<List<String>?>('guardrails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     languageSettings = registerOutput<AppLanguageSettings?>('languageSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppLanguageSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     loggingSettings = registerOutput<AppLoggingSettings>('loggingSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppLoggingSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    metadata = registerOutput<Map<String, String>?>('metadata');
+    metadata = registerOutput<Map<String, String>?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     modelSettings = registerOutput<AppModelSettings?>('modelSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppModelSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     pinned = registerOutput<bool?>('pinned');
@@ -2756,6 +2758,44 @@ class App extends pulumi.CustomResource {
     timeZoneSettings = registerOutput<AppTimeZoneSettings?>('timeZoneSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppTimeZoneSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     toolExecutionMode = registerOutput<String?>('toolExecutionMode');
     updateTime = registerOutput<String>('updateTime');
-    variableDeclarations = registerOutput<List<Map<String, dynamic>>?>('variableDeclarations');
+    variableDeclarations = registerOutput<List<AppVariableDeclaration>?>('variableDeclarations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AppVariableDeclaration>(guardedValue, (value) => AppVariableDeclaration.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [App] resource.
+  App.reference(String urn)
+    : super(
+        'gcp:ces/app:App',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    appId = registerOutput<String>('appId');
+    audioProcessingConfig = registerOutput<AppAudioProcessingConfig?>('audioProcessingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppAudioProcessingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    clientCertificateSettings = registerOutput<AppClientCertificateSettings?>('clientCertificateSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppClientCertificateSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createTime = registerOutput<String>('createTime');
+    dataStoreSettings = registerOutput<AppDataStoreSettings?>('dataStoreSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppDataStoreSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    defaultChannelProfile = registerOutput<AppDefaultChannelProfile?>('defaultChannelProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppDefaultChannelProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    deploymentCount = registerOutput<int>('deploymentCount');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    etag = registerOutput<String>('etag');
+    evaluationMetricsThresholds = registerOutput<AppEvaluationMetricsThresholds?>('evaluationMetricsThresholds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppEvaluationMetricsThresholds.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    globalInstruction = registerOutput<String?>('globalInstruction');
+    guardrails = registerOutput<List<String>?>('guardrails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    languageSettings = registerOutput<AppLanguageSettings?>('languageSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppLanguageSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    loggingSettings = registerOutput<AppLoggingSettings>('loggingSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppLoggingSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    metadata = registerOutput<Map<String, String>?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    modelSettings = registerOutput<AppModelSettings?>('modelSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppModelSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    pinned = registerOutput<bool?>('pinned');
+    project = registerOutput<String>('project');
+    rootAgent = registerOutput<String?>('rootAgent');
+    timeZoneSettings = registerOutput<AppTimeZoneSettings?>('timeZoneSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppTimeZoneSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    toolExecutionMode = registerOutput<String?>('toolExecutionMode');
+    updateTime = registerOutput<String>('updateTime');
+    variableDeclarations = registerOutput<List<AppVariableDeclaration>?>('variableDeclarations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AppVariableDeclaration>(guardedValue, (value) => AppVariableDeclaration.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

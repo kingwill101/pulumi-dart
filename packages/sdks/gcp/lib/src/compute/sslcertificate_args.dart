@@ -18,9 +18,9 @@ class SSLCertificateArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// An optional description of this resource.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Name of the resource. Provided by the client when the resource is
   /// created. The name must be 1-63 characters long, and comply with
   /// RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -29,7 +29,7 @@ class SSLCertificateArgs {
   /// characters must be a dash, lowercase letter, or digit, except the last
   /// character, which cannot be a dash.
   /// These are in the same namespace as the managed SSL certificates.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Creates a unique name beginning with the
   /// specified prefix. Conflicts with `name`. Max length is 54 characters.
   /// Prefixes with lengths longer than 37 characters will use a shortened
@@ -38,22 +38,22 @@ class SSLCertificateArgs {
   /// `namePrefix` + YYYYmmddHHSSssss + 8 digit incremental counter
   /// Resulting name for a `namePrefix` 38 - 54 characters:
   /// `namePrefix` + YYmmdd + 3 digit incremental counter
-  final pulumi.Input<String>? namePrefix;
+  final pulumi.Input<String?>? namePrefix;
   /// The write-only private key in PEM format.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
-  final pulumi.Input<String>? privateKey;
+  final pulumi.Input<String?>? privateKey;
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
   /// (Optional, Write-Only)
   /// The write-only private key in PEM format.
   /// **Note**: This property is write-only and will not be read from the API.
   ///
   /// &gt; **Note:** One of `privateKey` or `privateKeyWo` can only be set.
-  final pulumi.Input<String>? privateKeyWo;
+  final pulumi.Input<String?>? privateKeyWo;
   /// Triggers update of `privateKeyWo` write-only. Increment this value when an update to `privateKeyWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
-  final pulumi.Input<String>? privateKeyWoVersion;
+  final pulumi.Input<String?>? privateKeyWoVersion;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [SSLCertificateArgs].
   /// [certificate] The certificate in PEM format.

@@ -6,19 +6,19 @@ import 'widget_config_ui_settings_data_store_ui_config_fields_ui_components_map.
 
 class WidgetConfigUiSettingsDataStoreUiConfig {
   /// Structure is documented below.
-  final pulumi.Input<List<WidgetConfigUiSettingsDataStoreUiConfigFacetField>>? facetFields;
+  final pulumi.Input<List<WidgetConfigUiSettingsDataStoreUiConfigFacetField>?>? facetFields;
   /// 'The key is the UI component. Currently supported `title`, `thumbnail`,
   /// `url`, `custom1`, `custom2`, `custom3`. The value is the name of
   /// the field along with its device visibility. The 3 custom fields are optional
   /// and can be added or removed.
   /// `title`, `thumbnail`, `url` are required UI components that cannot be removed.
   /// Structure is documented below.
-  final pulumi.Input<List<WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMap>>? fieldsUiComponentsMaps;
+  final pulumi.Input<List<WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMap>?>? fieldsUiComponentsMaps;
   /// The name of the data store. It should be data store resource name. Format:
   /// `projects/{project}/locations/{location}/collections/{collectionId}/dataStores/{dataStoreId}`.
   /// For APIs under `WidgetService`, such as [WidgetService.LookUpWidgetConfig][],
   /// the project number and location part is erased in this field.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [WidgetConfigUiSettingsDataStoreUiConfig].
   /// [facetFields] Structure is documented below.

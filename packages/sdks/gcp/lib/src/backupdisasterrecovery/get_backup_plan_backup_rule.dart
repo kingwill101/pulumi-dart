@@ -31,7 +31,7 @@ class GetBackupPlanBackupRule {
 
   factory GetBackupPlanBackupRule.fromMap(Map<String, dynamic> map) {
     return GetBackupPlanBackupRule(
-      backupRetentionDays: pulumi.Input.fromValue(map['backupRetentionDays'] as int),
+      backupRetentionDays: pulumi.Input.fromValue((map['backupRetentionDays'] as num).toInt()),
       ruleId: pulumi.Input.fromValue(map['ruleId'] as String),
       standardSchedules: pulumi.Input.fromValue(pulumi.Input.decodeList<GetBackupPlanBackupRuleStandardSchedule>(map['standardSchedules']!, (value) => GetBackupPlanBackupRuleStandardSchedule.fromMap((value as Map).cast<String, dynamic>()))),
     );

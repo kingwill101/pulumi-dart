@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class HttpRouteRuleActionRequestHeaderModifier {
   /// Add the headers with given map where key is the name of the header, value is the value of the header.
-  final pulumi.Input<Map<String, String>>? add;
+  final pulumi.Input<Map<String, String>?>? add;
   /// Remove headers (matching by header names) specified in the list.
-  final pulumi.Input<List<String>>? removes;
+  final pulumi.Input<List<String>?>? removes;
   /// Completely overwrite/replace the headers with given map where key is the name of the header, value is the value of the header.
-  final pulumi.Input<Map<String, String>>? set;
+  final pulumi.Input<Map<String, String>?>? set;
 
   /// Creates a new [HttpRouteRuleActionRequestHeaderModifier].
   /// [add] Add the headers with given map where key is the name of the header, value is the value of the header.

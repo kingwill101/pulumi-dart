@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleValues {
   /// List of values allowed at this resource.
-  final pulumi.Input<List<String>>? allowedValues;
+  final pulumi.Input<List<String>?>? allowedValues;
   /// List of values denied at this resource.
-  final pulumi.Input<List<String>>? deniedValues;
+  final pulumi.Input<List<String>?>? deniedValues;
 
   /// Creates a new [PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleValues].
   /// [allowedValues] List of values allowed at this resource.

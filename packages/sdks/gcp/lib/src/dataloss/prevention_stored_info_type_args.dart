@@ -16,17 +16,17 @@ class PreventionStoredInfoTypeArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// A description of the info type.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Dictionary which defines the rule.
   /// Structure is documented below.
-  final pulumi.Input<PreventionStoredInfoTypeDictionary>? dictionary;
+  final pulumi.Input<PreventionStoredInfoTypeDictionary?>? dictionary;
   /// User set display name of the info type.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Dictionary which defines the rule.
   /// Structure is documented below.
-  final pulumi.Input<PreventionStoredInfoTypeLargeCustomDictionary>? largeCustomDictionary;
+  final pulumi.Input<PreventionStoredInfoTypeLargeCustomDictionary?>? largeCustomDictionary;
   /// The parent of the info type in any of the following formats:
   /// * `projects/{{project}}`
   /// * `projects/{{project}}/locations/{{location}}`
@@ -35,11 +35,11 @@ class PreventionStoredInfoTypeArgs {
   final pulumi.Input<String> parent;
   /// Regular expression which defines the rule.
   /// Structure is documented below.
-  final pulumi.Input<PreventionStoredInfoTypeRegex>? regex;
+  final pulumi.Input<PreventionStoredInfoTypeRegex?>? regex;
   /// The storedInfoType ID can contain uppercase and lowercase letters, numbers, and hyphens;
   /// that is, it must match the regular expression: [a-zA-Z\d-_]+. The maximum length is 100
   /// characters. Can be empty to allow the system to generate one.
-  final pulumi.Input<String>? storedInfoTypeId;
+  final pulumi.Input<String?>? storedInfoTypeId;
 
   /// Creates a new [PreventionStoredInfoTypeArgs].
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

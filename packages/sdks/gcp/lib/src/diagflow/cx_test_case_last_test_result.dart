@@ -6,19 +6,19 @@ import 'cx_test_case_last_test_result_conversation_turn.dart';
 class CxTestCaseLastTestResult {
   /// The conversation turns uttered during the test case replay in chronological order.
   /// Structure is documented below.
-  final pulumi.Input<List<CxTestCaseLastTestResultConversationTurn>>? conversationTurns;
+  final pulumi.Input<List<CxTestCaseLastTestResultConversationTurn>?>? conversationTurns;
   /// Environment where the test was run. If not set, it indicates the draft environment.
-  final pulumi.Input<String>? environment;
+  final pulumi.Input<String?>? environment;
   /// The unique identifier of the page.
   /// Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/flows/&lt;Flow ID&gt;/pages/&lt;Page ID&gt;.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Whether the test case passed in the agent environment.
   /// * PASSED: The test passed.
   /// * FAILED: The test did not pass.
   /// Possible values are: `PASSED`, `FAILED`.
-  final pulumi.Input<String>? testResult;
+  final pulumi.Input<String?>? testResult;
   /// The time that the test was run. A timestamp in RFC3339 text format.
-  final pulumi.Input<String>? testTime;
+  final pulumi.Input<String?>? testTime;
 
   /// Creates a new [CxTestCaseLastTestResult].
   /// [conversationTurns] The conversation turns uttered during the test case replay in chronological order.

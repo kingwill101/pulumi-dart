@@ -7,25 +7,25 @@ import 'certificate_certificate_description_subject_description_subject_alt_name
 class CertificateCertificateDescriptionSubjectDescription {
   /// (Output)
   /// The serial number encoded in lowercase hexadecimal.
-  final pulumi.Input<String>? hexSerialNumber;
+  final pulumi.Input<String?>? hexSerialNumber;
   /// The desired lifetime of the CA certificate. Used to create the "notBeforeTime" and
   /// "notAfterTime" fields inside an X.509 certificate. A duration in seconds with up to nine
   /// fractional digits, terminated by 's'. Example: "3.5s".
-  final pulumi.Input<String>? lifetime;
+  final pulumi.Input<String?>? lifetime;
   /// (Output)
   /// The time at which the certificate expires.
-  final pulumi.Input<String>? notAfterTime;
+  final pulumi.Input<String?>? notAfterTime;
   /// (Output)
   /// The time at which the certificate becomes valid.
-  final pulumi.Input<String>? notBeforeTime;
+  final pulumi.Input<String?>? notBeforeTime;
   /// (Output)
   /// The subject alternative name fields.
   /// Structure is documented below.
-  final pulumi.Input<List<CertificateCertificateDescriptionSubjectDescriptionSubjectAltName>>? subjectAltNames;
+  final pulumi.Input<List<CertificateCertificateDescriptionSubjectDescriptionSubjectAltName>?>? subjectAltNames;
   /// (Output)
   /// Contains distinguished name fields such as the location and organization.
   /// Structure is documented below.
-  final pulumi.Input<List<CertificateCertificateDescriptionSubjectDescriptionSubject>>? subjects;
+  final pulumi.Input<List<CertificateCertificateDescriptionSubjectDescriptionSubject>?>? subjects;
 
   /// Creates a new [CertificateCertificateDescriptionSubjectDescription].
   /// [hexSerialNumber] (Output)

@@ -6,7 +6,7 @@ class ReferenceListScopeInfoReferenceListScope {
   /// Optional. The list of scope names of the reference list. The scope names should be
   /// full resource names and should be of the format:
   /// "projects/{project}/locations/{location}/instances/{instance}/dataAccessScopes/{scope_name}".
-  final pulumi.Input<List<String>>? scopeNames;
+  final pulumi.Input<List<String>?>? scopeNames;
 
   /// Creates a new [ReferenceListScopeInfoReferenceListScope].
   /// [scopeNames] Optional. The list of scope names of the reference list. The scope names should be

@@ -8,7 +8,7 @@ class SecurityScanConfigSchedule {
   /// A timestamp indicates when the next run will be scheduled. The value is refreshed
   /// by the server after each run. If unspecified, it will default to current server time,
   /// which means the scan will be scheduled to start immediately.
-  final pulumi.Input<String>? scheduleTime;
+  final pulumi.Input<String?>? scheduleTime;
 
   /// Creates a new [SecurityScanConfigSchedule].
   /// [intervalDurationDays] The duration of time between executions in days
@@ -27,7 +27,7 @@ class SecurityScanConfigSchedule {
 
   factory SecurityScanConfigSchedule.fromMap(Map<String, dynamic> map) {
     return SecurityScanConfigSchedule(
-      intervalDurationDays: pulumi.Input.fromValue(map['intervalDurationDays'] as int),
+      intervalDurationDays: pulumi.Input.fromValue((map['intervalDurationDays'] as num).toInt()),
       scheduleTime: (() { final guardedValue = map['scheduleTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

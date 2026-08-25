@@ -55,7 +55,7 @@ class GetDataSourceReferencesDataSourceReference {
   factory GetDataSourceReferencesDataSourceReference.fromMap(Map<String, dynamic> map) {
     return GetDataSourceReferencesDataSourceReference(
       backupConfigState: pulumi.Input.fromValue(map['backupConfigState'] as String),
-      backupCount: pulumi.Input.fromValue(map['backupCount'] as int),
+      backupCount: pulumi.Input.fromValue((map['backupCount'] as num).toInt()),
       dataSource: pulumi.Input.fromValue(map['dataSource'] as String),
       gcpResourceName: pulumi.Input.fromValue(map['gcpResourceName'] as String),
       lastBackupState: pulumi.Input.fromValue(map['lastBackupState'] as String),

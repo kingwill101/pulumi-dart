@@ -6,7 +6,7 @@ class MessageBusLoggingConfig {
   /// Optional. The minimum severity of logs that will be sent to Stackdriver/Platform
   /// Telemetry. Logs at severitiy ≥ this value will be sent, unless it is NONE.
   /// Possible values are: `NONE`, `DEBUG`, `INFO`, `NOTICE`, `WARNING`, `ERROR`, `CRITICAL`, `ALERT`, `EMERGENCY`.
-  final pulumi.Input<String>? logSeverity;
+  final pulumi.Input<String?>? logSeverity;
 
   /// Creates a new [MessageBusLoggingConfig].
   /// [logSeverity] Optional. The minimum severity of logs that will be sent to Stackdriver/Platform

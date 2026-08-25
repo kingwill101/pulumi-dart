@@ -6,21 +6,21 @@ import 'service_template_sandboxes_template_volume_mount.dart';
 
 class ServiceTemplateSandboxesTemplate {
   /// Arguments to the entrypoint. The docker image's CMD is used if this is not provided.
-  final pulumi.Input<List<String>>? args;
+  final pulumi.Input<List<String>?>? args;
   /// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided.
-  final pulumi.Input<List<String>>? commands;
+  final pulumi.Input<List<String>?>? commands;
   /// List of environment variables to set in the sandbox.
   /// Structure is documented below.
-  final pulumi.Input<List<ServiceTemplateSandboxesTemplateEnv>>? envs;
+  final pulumi.Input<List<ServiceTemplateSandboxesTemplateEnv>?>? envs;
   /// Name of the container image in Dockerhub or Artifact Registry. If the host is not provided, Dockerhub is assumed.
   final pulumi.Input<String> image;
   /// Name of the sandbox specified as a DNS_LABEL (RFC 1123).
   final pulumi.Input<String> name;
   /// Volume to mount into the container's filesystem.
   /// Structure is documented below.
-  final pulumi.Input<List<ServiceTemplateSandboxesTemplateVolumeMount>>? volumeMounts;
+  final pulumi.Input<List<ServiceTemplateSandboxesTemplateVolumeMount>?>? volumeMounts;
   /// Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
-  final pulumi.Input<String>? workingDir;
+  final pulumi.Input<String?>? workingDir;
 
   /// Creates a new [ServiceTemplateSandboxesTemplate].
   /// [args] Arguments to the entrypoint. The docker image's CMD is used if this is not provided.

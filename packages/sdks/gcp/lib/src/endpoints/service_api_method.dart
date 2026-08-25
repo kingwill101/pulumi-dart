@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServiceApiMethod {
   /// The simple name of the endpoint as described in the config.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The type URL for the request to this API.
-  final pulumi.Input<String>? requestType;
+  final pulumi.Input<String?>? requestType;
   /// The type URL for the response from this API.
-  final pulumi.Input<String>? responseType;
+  final pulumi.Input<String?>? responseType;
   /// `SYNTAX_PROTO2` or `SYNTAX_PROTO3`.
-  final pulumi.Input<String>? syntax;
+  final pulumi.Input<String?>? syntax;
 
   /// Creates a new [ServiceApiMethod].
   /// [name] The simple name of the endpoint as described in the config.

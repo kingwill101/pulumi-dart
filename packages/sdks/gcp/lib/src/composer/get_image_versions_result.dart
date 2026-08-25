@@ -6,39 +6,39 @@ import 'get_image_versions_image_version.dart';
 /// Result data returned by getImageVersions.
 class GetImageVersionsResult {
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// A list of composer image versions available in the given project and location. Each `imageVersion` contains:
-  final List<GetImageVersionsImageVersion> imageVersions;
-  final String project;
-  final String region;
+  final List<GetImageVersionsImageVersion>? imageVersions;
+  final String? project;
+  final String? region;
 
   /// Creates a new [GetImageVersionsResult].
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [imageVersions] A list of composer image versions available in the given project and location. Each `imageVersion` contains:
-  /// [project] Required.
-  /// [region] Required.
+  /// [project] Optional.
+  /// [region] Optional.
   const GetImageVersionsResult({
-    required this.id,
-    required this.imageVersions,
-    required this.project,
-    required this.region,
+    this.id,
+    this.imageVersions,
+    this.project,
+    this.region,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'id': id,
-      'imageVersions': pulumi.Input.encodeList<GetImageVersionsImageVersion, Map<String, dynamic>>(imageVersions, (value) => value.toMap()),
-      'project': project,
-      'region': region,
+      'id': ?id,
+      'imageVersions': ?(() { final guardedValue = imageVersions; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetImageVersionsImageVersion, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'project': ?project,
+      'region': ?region,
     };
   }
 
   factory GetImageVersionsResult.fromMap(Map<String, dynamic> map) {
     return GetImageVersionsResult(
-      id: map['id'] as String,
-      imageVersions: pulumi.Input.decodeList<GetImageVersionsImageVersion>(map['imageVersions']!, (value) => GetImageVersionsImageVersion.fromMap((value as Map).cast<String, dynamic>())),
-      project: map['project'] as String,
-      region: map['region'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      imageVersions: (() { final guardedValue = map['imageVersions']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetImageVersionsImageVersion>(guardedValue, (value) => GetImageVersionsImageVersion.fromMap((value as Map).cast<String, dynamic>())); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

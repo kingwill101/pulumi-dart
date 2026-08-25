@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NodePoolNodeConfigKubeletConfigCrashLoopBackOff {
   /// The maximum duration the backoff delay can accrue to for container restarts.
-  final pulumi.Input<String>? maxContainerRestartPeriod;
+  final pulumi.Input<String?>? maxContainerRestartPeriod;
 
   /// Creates a new [NodePoolNodeConfigKubeletConfigCrashLoopBackOff].
   /// [maxContainerRestartPeriod] The maximum duration the backoff delay can accrue to for container restarts.

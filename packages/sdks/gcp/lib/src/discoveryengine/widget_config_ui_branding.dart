@@ -6,7 +6,7 @@ import 'widget_config_ui_branding_logo.dart';
 class WidgetConfigUiBranding {
   /// Logo image.
   /// Structure is documented below.
-  final pulumi.Input<WidgetConfigUiBrandingLogo>? logo;
+  final pulumi.Input<WidgetConfigUiBrandingLogo?>? logo;
 
   /// Creates a new [WidgetConfigUiBranding].
   /// [logo] Logo image.

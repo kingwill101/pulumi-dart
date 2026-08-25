@@ -13,38 +13,38 @@ import 'config_sms_region_config.dart';
 /// Input properties used for looking up and filtering Config resources.
 class ConfigState {
   /// List of domains authorized for OAuth redirects.
-  final pulumi.Input<List<String>>? authorizedDomains;
+  final pulumi.Input<List<String>?>? authorizedDomains;
   /// Whether anonymous users will be auto-deleted after a period of 30 days
-  final pulumi.Input<bool>? autodeleteAnonymousUsers;
+  final pulumi.Input<bool?>? autodeleteAnonymousUsers;
   /// Configuration related to blocking functions.
   /// Structure is documented below.
-  final pulumi.Input<ConfigBlockingFunctions>? blockingFunctions;
+  final pulumi.Input<ConfigBlockingFunctions?>? blockingFunctions;
   /// Options related to how clients making requests on behalf of a project should be configured.
   /// Structure is documented below.
-  final pulumi.Input<ConfigClient>? client;
+  final pulumi.Input<ConfigClient?>? client;
   /// Options related to how clients making requests on behalf of a project should be configured.
   /// Structure is documented below.
-  final pulumi.Input<ConfigMfa>? mfa;
+  final pulumi.Input<ConfigMfa?>? mfa;
   /// Configuration related to monitoring project activity.
   /// Structure is documented below.
-  final pulumi.Input<ConfigMonitoring>? monitoring;
+  final pulumi.Input<ConfigMonitoring?>? monitoring;
   /// Configuration related to multi-tenant functionality.
   /// Structure is documented below.
-  final pulumi.Input<ConfigMultiTenant>? multiTenant;
+  final pulumi.Input<ConfigMultiTenant?>? multiTenant;
   /// The name of the Config resource
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Configuration related to quotas.
   /// Structure is documented below.
-  final pulumi.Input<ConfigQuota>? quota;
+  final pulumi.Input<ConfigQuota?>? quota;
   /// Configuration related to local sign in methods.
   /// Structure is documented below.
-  final pulumi.Input<ConfigSignIn>? signIn;
+  final pulumi.Input<ConfigSignIn?>? signIn;
   /// Configures the regions where users are allowed to send verification SMS for the project or tenant. This is based on the calling code of the destination phone number.
   /// Structure is documented below.
-  final pulumi.Input<ConfigSmsRegionConfig>? smsRegionConfig;
+  final pulumi.Input<ConfigSmsRegionConfig?>? smsRegionConfig;
 
   /// Creates a new [ConfigState].
   /// [authorizedDomains] List of domains authorized for OAuth redirects.

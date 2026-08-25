@@ -11,29 +11,29 @@ import 'vpntunnel_params.dart';
 class VPNTunnelArgs {
   /// User specified list of ciphers to use for the phase 1 and phase 2 of the IKE protocol.
   /// Structure is documented below.
-  final pulumi.Input<VPNTunnelCipherSuite>? cipherSuite;
+  final pulumi.Input<VPNTunnelCipherSuite?>? cipherSuite;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// An optional description of this resource.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// IKE protocol version to use when establishing the VPN tunnel with
   /// peer VPN gateway.
   /// Acceptable IKE versions are 1 or 2. Default version is 2.
-  final pulumi.Input<int>? ikeVersion;
+  final pulumi.Input<int?>? ikeVersion;
   /// Labels to apply to this VpnTunnel.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Local traffic selector to use when establishing the VPN tunnel with
   /// peer VPN gateway. The value should be a CIDR formatted string,
   /// for example `192.168.0.0/16`. The ranges should be disjoint.
   /// Only IPv4 is supported.
-  final pulumi.Input<List<String>>? localTrafficSelectors;
+  final pulumi.Input<List<String>?>? localTrafficSelectors;
   /// Name of the resource. The name must be 1-63 characters long, and
   /// comply with RFC1035. Specifically, the name must be 1-63
   /// characters long and match the regular expression
@@ -41,37 +41,37 @@ class VPNTunnelArgs {
   /// must be a lowercase letter, and all following characters must
   /// be a dash, lowercase letter, or digit,
   /// except the last character, which cannot be a dash.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Additional params passed with the request, but not persisted as part of resource payload
   /// Structure is documented below.
-  final pulumi.Input<VPNTunnelParams>? params;
+  final pulumi.Input<VPNTunnelParams?>? params;
   /// URL of the peer side external VPN gateway to which this VPN tunnel is connected.
-  final pulumi.Input<String>? peerExternalGateway;
+  final pulumi.Input<String?>? peerExternalGateway;
   /// The interface ID of the external VPN gateway to which this VPN tunnel is connected.
-  final pulumi.Input<int>? peerExternalGatewayInterface;
+  final pulumi.Input<int?>? peerExternalGatewayInterface;
   /// URL of the peer side HA GCP VPN gateway to which this VPN tunnel is connected.
   /// If provided, the VPN tunnel will automatically use the same vpnGatewayInterface
   /// ID in the peer GCP VPN gateway.
   /// This field must reference a `gcp.compute.HaVpnGateway` resource.
-  final pulumi.Input<String>? peerGcpGateway;
+  final pulumi.Input<String?>? peerGcpGateway;
   /// IP address of the peer VPN gateway. Only IPv4 is supported.
-  final pulumi.Input<String>? peerIp;
+  final pulumi.Input<String?>? peerIp;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The region where the tunnel is located. If unset, is set to the region of `targetVpnGateway`.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Remote traffic selector to use when establishing the VPN tunnel with
   /// peer VPN gateway. The value should be a CIDR formatted string,
   /// for example `192.168.0.0/16`. The ranges should be disjoint.
   /// Only IPv4 is supported.
-  final pulumi.Input<List<String>>? remoteTrafficSelectors;
+  final pulumi.Input<List<String>?>? remoteTrafficSelectors;
   /// URL of router resource to be used for dynamic routing.
-  final pulumi.Input<String>? router;
+  final pulumi.Input<String?>? router;
   /// Shared secret used to set the secure session between the Cloud VPN
   /// gateway and the peer VPN gateway.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
-  final pulumi.Input<String>? sharedSecret;
+  final pulumi.Input<String?>? sharedSecret;
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
   /// (Optional, Write-Only)
   /// Shared secret used to set the secure session between the Cloud VPN
@@ -79,18 +79,18 @@ class VPNTunnelArgs {
   /// **Note**: This property is write-only and will not be read from the API.
   ///
   /// &gt; **Note:** One of `sharedSecret` or `sharedSecretWo` can only be set.
-  final pulumi.Input<String>? sharedSecretWo;
+  final pulumi.Input<String?>? sharedSecretWo;
   /// Triggers update of `sharedSecretWo` write-only. Increment this value when an update to `sharedSecretWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
-  final pulumi.Input<String>? sharedSecretWoVersion;
+  final pulumi.Input<String?>? sharedSecretWoVersion;
   /// URL of the Target VPN gateway with which this VPN tunnel is
   /// associated.
-  final pulumi.Input<String>? targetVpnGateway;
+  final pulumi.Input<String?>? targetVpnGateway;
   /// URL of the VPN gateway with which this VPN tunnel is associated.
   /// This must be used if a High Availability VPN gateway resource is created.
   /// This field must reference a `gcp.compute.HaVpnGateway` resource.
-  final pulumi.Input<String>? vpnGateway;
+  final pulumi.Input<String?>? vpnGateway;
   /// The interface ID of the VPN gateway with which this VPN tunnel is associated.
-  final pulumi.Input<int>? vpnGatewayInterface;
+  final pulumi.Input<int?>? vpnGatewayInterface;
 
   /// Creates a new [VPNTunnelArgs].
   /// [cipherSuite] User specified list of ciphers to use for the phase 1 and phase 2 of the IKE protocol.
@@ -172,13 +172,13 @@ class VPNTunnelArgs {
       cipherSuite: (() { final guardedValue = map['cipherSuite']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VPNTunnelCipherSuite.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      ikeVersion: (() { final guardedValue = map['ikeVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      ikeVersion: (() { final guardedValue = map['ikeVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       localTrafficSelectors: (() { final guardedValue = map['localTrafficSelectors']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       params: (() { final guardedValue = map['params']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VPNTunnelParams.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       peerExternalGateway: (() { final guardedValue = map['peerExternalGateway']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      peerExternalGatewayInterface: (() { final guardedValue = map['peerExternalGatewayInterface']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      peerExternalGatewayInterface: (() { final guardedValue = map['peerExternalGatewayInterface']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       peerGcpGateway: (() { final guardedValue = map['peerGcpGateway']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       peerIp: (() { final guardedValue = map['peerIp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -190,7 +190,7 @@ class VPNTunnelArgs {
       sharedSecretWoVersion: (() { final guardedValue = map['sharedSecretWoVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       targetVpnGateway: (() { final guardedValue = map['targetVpnGateway']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       vpnGateway: (() { final guardedValue = map['vpnGateway']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      vpnGatewayInterface: (() { final guardedValue = map['vpnGatewayInterface']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      vpnGatewayInterface: (() { final guardedValue = map['vpnGatewayInterface']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

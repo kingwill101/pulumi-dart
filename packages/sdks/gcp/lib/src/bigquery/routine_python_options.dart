@@ -10,7 +10,7 @@ class RoutinePythonOptions {
   /// Example: ["pandas&gt;=2.1", "google-cloud-translate==3.11"]. For more
   /// information, see [Use third-party
   /// packages](https://cloud.google.com/bigquery/docs/user-defined-functions-python#third-party-packages).
-  final pulumi.Input<List<String>>? packages;
+  final pulumi.Input<List<String>?>? packages;
 
   /// Creates a new [RoutinePythonOptions].
   /// [entryPoint] The name of the function defined in Python code as the entry point when the

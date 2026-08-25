@@ -5,7 +5,7 @@ import 'ai_endpoint_with_model_garden_deployment_deploy_config_dedicated_resourc
 
 class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpec {
   /// The number of accelerators to attach to the machine.
-  final pulumi.Input<int>? acceleratorCount;
+  final pulumi.Input<int?>? acceleratorCount;
   /// Possible values:
   /// ACCELERATOR_TYPE_UNSPECIFIED
   /// NVIDIA_TESLA_K80
@@ -24,7 +24,7 @@ class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSp
   /// TPU_V3
   /// TPU_V4_POD
   /// TPU_V5_LITEPOD
-  final pulumi.Input<String>? acceleratorType;
+  final pulumi.Input<String?>? acceleratorType;
   /// The type of the machine.
   /// See the [list of machine types supported for
   /// prediction](https://cloud.google.com/vertex-ai/docs/predictions/configure-compute#machine-types)
@@ -33,17 +33,17 @@ class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSp
   /// For DeployedModel this field is optional, and the default
   /// value is `n1-standard-2`. For BatchPredictionJob or as part of
   /// WorkerPoolSpec this field is required.
-  final pulumi.Input<String>? machineType;
+  final pulumi.Input<String?>? machineType;
   /// The number of nodes per replica for multihost GPU deployments.
-  final pulumi.Input<int>? multihostGpuNodeCount;
+  final pulumi.Input<int?>? multihostGpuNodeCount;
   /// A ReservationAffinity can be used to configure a Vertex AI resource (e.g., a
   /// DeployedModel) to draw its Compute Engine resources from a Shared
   /// Reservation, or exclusively from on-demand capacity.
   /// Structure is documented below.
-  final pulumi.Input<AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinity>? reservationAffinity;
+  final pulumi.Input<AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinity?>? reservationAffinity;
   /// The topology of the TPUs. Corresponds to the TPU topologies available from
   /// GKE. (Example: tpu_topology: "2x2x1").
-  final pulumi.Input<String>? tpuTopology;
+  final pulumi.Input<String?>? tpuTopology;
 
   /// Creates a new [AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpec].
   /// [acceleratorCount] The number of accelerators to attach to the machine.
@@ -74,10 +74,10 @@ class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSp
 
   factory AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpec.fromMap(Map<String, dynamic> map) {
     return AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpec(
-      acceleratorCount: (() { final guardedValue = map['acceleratorCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      acceleratorCount: (() { final guardedValue = map['acceleratorCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       acceleratorType: (() { final guardedValue = map['acceleratorType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       machineType: (() { final guardedValue = map['machineType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      multihostGpuNodeCount: (() { final guardedValue = map['multihostGpuNodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      multihostGpuNodeCount: (() { final guardedValue = map['multihostGpuNodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       reservationAffinity: (() { final guardedValue = map['reservationAffinity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       tpuTopology: (() { final guardedValue = map['tpuTopology']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

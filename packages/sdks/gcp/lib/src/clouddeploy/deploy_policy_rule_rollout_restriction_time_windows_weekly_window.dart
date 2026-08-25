@@ -7,13 +7,13 @@ import 'deploy_policy_rule_rollout_restriction_time_windows_weekly_window_start_
 class DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindow {
   /// Days of week. If left empty, all days of the week will be included.
   /// Each value may be one of: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
-  final pulumi.Input<List<String>>? daysOfWeeks;
+  final pulumi.Input<List<String>?>? daysOfWeeks;
   /// End time (exclusive). Use 24:00 to indicate midnight. If you specify endTime you must also specify startTime. If left empty, this will block for the entire day for the days specified in daysOfWeek.
   /// Structure is documented below.
-  final pulumi.Input<DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTime>? endTime;
+  final pulumi.Input<DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTime?>? endTime;
   /// Start time (inclusive). Use 00:00 for the beginning of the day. If you specify startTime you must also specify endTime. If left empty, this will block for the entire day for the days specified in daysOfWeek.
   /// Structure is documented below.
-  final pulumi.Input<DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTime>? startTime;
+  final pulumi.Input<DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTime?>? startTime;
 
   /// Creates a new [DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindow].
   /// [daysOfWeeks] Days of week. If left empty, all days of the week will be included.

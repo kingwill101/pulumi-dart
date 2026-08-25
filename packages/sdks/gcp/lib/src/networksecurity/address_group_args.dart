@@ -15,28 +15,28 @@ class AddressGroupArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Free-text description of the resource.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// List of items.
-  final pulumi.Input<List<String>>? items;
+  final pulumi.Input<List<String>?>? items;
   /// Set of label tags associated with the AddressGroup resource.
   /// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The location of the gateway security policy.
   /// The default value is `global`.
   final pulumi.Input<String> location;
   /// Name of the AddressGroup resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the parent this address group belongs to. Format: organizations/{organization_id} or projects/{project_id}.
-  final pulumi.Input<String>? parent;
+  final pulumi.Input<String?>? parent;
   /// (Optional, Beta)
   /// List of supported purposes of the Address Group.
   /// Each value may be one of: `DEFAULT`, `CLOUD_ARMOR`.
-  final pulumi.Input<List<String>>? purposes;
+  final pulumi.Input<List<String>?>? purposes;
   /// The type of the Address Group. Possible values are "IPV4" or "IPV6".
   /// Possible values are: `IPV4`, `IPV6`.
   final pulumi.Input<String> type;
@@ -82,7 +82,7 @@ class AddressGroupArgs {
 
   factory AddressGroupArgs.fromMap(Map<String, dynamic> map) {
     return AddressGroupArgs(
-      capacity: pulumi.Input.fromValue(map['capacity'] as int),
+      capacity: pulumi.Input.fromValue((map['capacity'] as num).toInt()),
       deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       items: (() { final guardedValue = map['items']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),

@@ -9,30 +9,30 @@ import 'ca_pool_issuance_policy_identity_constraints.dart';
 class CaPoolIssuancePolicy {
   /// IssuanceModes specifies the allowed ways in which Certificates may be requested from this CaPool.
   /// Structure is documented below.
-  final pulumi.Input<CaPoolIssuancePolicyAllowedIssuanceModes>? allowedIssuanceModes;
+  final pulumi.Input<CaPoolIssuancePolicyAllowedIssuanceModes?>? allowedIssuanceModes;
   /// If any AllowedKeyType is specified, then the certificate request's public key must match one of the key types listed here.
   /// Otherwise, any key may be used. You can specify only one key type of those listed here.
   /// Structure is documented below.
-  final pulumi.Input<List<CaPoolIssuancePolicyAllowedKeyType>>? allowedKeyTypes;
+  final pulumi.Input<List<CaPoolIssuancePolicyAllowedKeyType>?>? allowedKeyTypes;
   /// The duration to backdate all certificates issued from this CaPool. If not set, the
   /// certificates will be issued with a notBeforeTime of the issuance time (i.e. the current
   /// time). If set, the certificates will be issued with a notBeforeTime of the issuance
   /// time minus the backdate_duration. The notAfterTime will be adjusted to preserve the
   /// requested lifetime. The backdateDuration must be less than or equal to 48 hours.
-  final pulumi.Input<String>? backdateDuration;
+  final pulumi.Input<String?>? backdateDuration;
   /// A set of X.509 values that will be applied to all certificates issued through this CaPool. If a certificate request
   /// includes conflicting values for the same properties, they will be overwritten by the values defined here. If a certificate
   /// request uses a CertificateTemplate that defines conflicting predefinedValues for the same properties, the certificate
   /// issuance request will fail.
   /// Structure is documented below.
-  final pulumi.Input<CaPoolIssuancePolicyBaselineValues>? baselineValues;
+  final pulumi.Input<CaPoolIssuancePolicyBaselineValues?>? baselineValues;
   /// Describes constraints on identities that may appear in Certificates issued through this CaPool.
   /// If this is omitted, then this CaPool will not add restrictions on a certificate's identity.
   /// Structure is documented below.
-  final pulumi.Input<CaPoolIssuancePolicyIdentityConstraints>? identityConstraints;
+  final pulumi.Input<CaPoolIssuancePolicyIdentityConstraints?>? identityConstraints;
   /// The maximum lifetime allowed for issued Certificates. Note that if the issuing CertificateAuthority
   /// expires before a Certificate's requested maximumLifetime, the effective lifetime will be explicitly truncated to match it.
-  final pulumi.Input<String>? maximumLifetime;
+  final pulumi.Input<String?>? maximumLifetime;
 
   /// Creates a new [CaPoolIssuancePolicy].
   /// [allowedIssuanceModes] IssuanceModes specifies the allowed ways in which Certificates may be requested from this CaPool.

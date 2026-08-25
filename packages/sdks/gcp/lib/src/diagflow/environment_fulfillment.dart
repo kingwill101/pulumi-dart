@@ -6,17 +6,17 @@ import 'environment_fulfillment_generic_web_service.dart';
 
 class EnvironmentFulfillment {
   /// The human-readable name of the fulfillment, unique within the agent.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The field defines whether the fulfillment is enabled for certain features.
   /// Structure is documented below.
-  final pulumi.Input<List<EnvironmentFulfillmentFeature>>? features;
+  final pulumi.Input<List<EnvironmentFulfillmentFeature>?>? features;
   /// Represents configuration for a generic web service.
   /// Structure is documented below.
-  final pulumi.Input<EnvironmentFulfillmentGenericWebService>? genericWebService;
+  final pulumi.Input<EnvironmentFulfillmentGenericWebService?>? genericWebService;
   /// The unique identifier of the fulfillment. Supports the following formats:
   /// - projects/&lt;Project ID&gt;/agent/fulfillment
   /// - projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agent/fulfillment
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [EnvironmentFulfillment].
   /// [displayName] The human-readable name of the fulfillment, unique within the agent.

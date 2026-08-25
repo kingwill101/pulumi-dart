@@ -6,10 +6,10 @@ class ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig {
   /// The name or selfLink of the Google Compute Engine
   /// network to which the cluster is connected. For Shared VPC, set this to the self link of the
   /// shared network.
-  final pulumi.Input<String>? network;
+  final pulumi.Input<String?>? network;
   /// The name or selfLink of the Google Compute Engine
   /// subnetwork in which the cluster's instances are launched.
-  final pulumi.Input<String>? subnetwork;
+  final pulumi.Input<String?>? subnetwork;
 
   /// Creates a new [ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig].
   /// [network] The name or selfLink of the Google Compute Engine

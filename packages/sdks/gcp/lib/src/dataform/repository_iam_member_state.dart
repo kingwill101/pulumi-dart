@@ -5,13 +5,13 @@ import 'repository_iam_member_condition.dart';
 
 /// Input properties used for looking up and filtering RepositoryIamMember resources.
 class RepositoryIamMemberState {
-  final pulumi.Input<RepositoryIamMemberCondition>? condition;
-  final pulumi.Input<String>? etag;
-  final pulumi.Input<String>? member;
-  final pulumi.Input<String>? project;
-  final pulumi.Input<String>? region;
-  final pulumi.Input<String>? repository;
-  final pulumi.Input<String>? role;
+  final pulumi.Input<RepositoryIamMemberCondition?>? condition;
+  final pulumi.Input<String?>? etag;
+  final pulumi.Input<String?>? member;
+  final pulumi.Input<String?>? project;
+  final pulumi.Input<String?>? region;
+  final pulumi.Input<String?>? repository;
+  final pulumi.Input<String?>? role;
 
   /// Creates a new [RepositoryIamMemberState].
   /// [condition] Optional.

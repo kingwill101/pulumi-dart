@@ -213,7 +213,7 @@ class CapacityCommitment extends pulumi.CustomResource {
           'gcp:bigquery/capacityCommitment:CapacityCommitment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     capacityCommitmentId = registerOutput<String?>('capacityCommitmentId');
     commitmentEndTime = registerOutput<String>('commitmentEndTime');
@@ -235,11 +235,12 @@ class CapacityCommitment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CapacityCommitmentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return CapacityCommitment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -266,5 +267,29 @@ class CapacityCommitment extends pulumi.CustomResource {
     renewalPlan = registerOutput<String?>('renewalPlan');
     slotCount = registerOutput<int>('slotCount');
     this.state = registerOutput<String>('state');
+  }
+
+  /// Creates a typed reference to an existing [CapacityCommitment] resource.
+  CapacityCommitment.reference(String urn)
+    : super(
+        'gcp:bigquery/capacityCommitment:CapacityCommitment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    capacityCommitmentId = registerOutput<String?>('capacityCommitmentId');
+    commitmentEndTime = registerOutput<String>('commitmentEndTime');
+    commitmentStartTime = registerOutput<String>('commitmentStartTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    edition = registerOutput<String?>('edition');
+    enforceSingleAdminProjectPerOrg = registerOutput<String?>('enforceSingleAdminProjectPerOrg');
+    location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    plan = registerOutput<String>('plan');
+    project = registerOutput<String>('project');
+    renewalPlan = registerOutput<String?>('renewalPlan');
+    slotCount = registerOutput<int>('slotCount');
+    state = registerOutput<String>('state');
   }
 }

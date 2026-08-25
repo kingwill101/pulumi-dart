@@ -7,42 +7,42 @@ import 'acl_acl_entry.dart';
 class AclState {
   /// The acl entries that apply to the resource pattern. The maximum number of allowed entries is 100.
   /// Structure is documented below.
-  final pulumi.Input<List<AclAclEntry>>? aclEntries;
+  final pulumi.Input<List<AclAclEntry>?>? aclEntries;
   /// The ID to use for the acl, which will become the final component of the acl's name. The structure of `aclId` defines the Resource Pattern (resource_type, resource_name, pattern_type) of the acl. `aclId` is structured like one of the following:
   /// For acls on the cluster: `cluster`
   /// For acls on a single resource within the cluster: `topic/{resource_name}` `consumerGroup/{resource_name}` `transactionalId/{resource_name}`
   /// For acls on all resources that match a prefix: `topicPrefixed/{resource_name}` `consumerGroupPrefixed/{resource_name}` `transactionalIdPrefixed/{resource_name}`
   /// For acls on all resources of a given type (i.e. the wildcard literal '*''): `allTopics` (represents `topic/*`) `allConsumerGroups` (represents `consumerGroup/*`) `allTransactionalIds` (represents `transactionalId/*`).
-  final pulumi.Input<String>? aclId;
+  final pulumi.Input<String?>? aclId;
   /// The cluster name.
-  final pulumi.Input<String>? cluster;
+  final pulumi.Input<String?>? cluster;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// `etag` is used for concurrency control. An `etag` is returned in the
   /// response to `GetAcl` and `CreateAcl`. Callers are required to put that etag
   /// in the request to `UpdateAcl` to ensure that their change will be applied
   /// to the same version of the acl that exists in the Kafka Cluster.
   /// A terminal 'T' character in the etag indicates that the AclEntries were
   /// truncated due to repeated field limits.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the acl. The `ACL_ID` segment is used when connecting directly to the cluster. Must be in the format `projects/PROJECT_ID/locations/LOCATION/clusters/CLUSTER_ID/acls/ACL_ID`.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The acl pattern type derived from the name. One of: LITERAL, PREFIXED.
-  final pulumi.Input<String>? patternType;
+  final pulumi.Input<String?>? patternType;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The acl resource name derived from the name. For cluster resource_type, this is always "kafka-cluster". Can be the wildcard literal "*".
-  final pulumi.Input<String>? resourceName;
+  final pulumi.Input<String?>? resourceName;
   /// The acl resource type derived from the name. One of: CLUSTER, TOPIC, GROUP, TRANSACTIONAL_ID.
-  final pulumi.Input<String>? resourceType;
+  final pulumi.Input<String?>? resourceType;
 
   /// Creates a new [AclState].
   /// [aclEntries] The acl entries that apply to the resource pattern. The maximum number of allowed entries is 100.

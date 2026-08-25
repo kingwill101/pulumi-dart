@@ -15,12 +15,12 @@ class CloudExadataInfrastructureExascaleConfigArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// (Required)
   final pulumi.Input<String> location;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The total storage to be allocated to Exascale in GBs.
   final pulumi.Input<int> totalStorageSizeGb;
 
@@ -54,7 +54,7 @@ class CloudExadataInfrastructureExascaleConfigArgs {
       deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: pulumi.Input.fromValue(map['location'] as String),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      totalStorageSizeGb: pulumi.Input.fromValue(map['totalStorageSizeGb'] as int),
+      totalStorageSizeGb: pulumi.Input.fromValue((map['totalStorageSizeGb'] as num).toInt()),
     );
   }
 }

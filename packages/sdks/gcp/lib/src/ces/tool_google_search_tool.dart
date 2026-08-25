@@ -7,13 +7,13 @@ class ToolGoogleSearchTool {
   /// Content will be fetched directly from these URLs for context and grounding.
   /// More details: https://cloud.google.com/vertex-ai/generative-ai/docs/url-context.
   /// Example: "https://example.com/path.html". A maximum of 20 URLs are allowed.
-  final pulumi.Input<List<String>>? contextUrls;
+  final pulumi.Input<List<String>?>? contextUrls;
   /// Description of the tool's purpose.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// List of domains to be excluded from the search results.
   /// Example: "example.com".
   /// A maximum of 2000 domains can be excluded.
-  final pulumi.Input<List<String>>? excludeDomains;
+  final pulumi.Input<List<String>?>? excludeDomains;
   /// The name of the tool.
   final pulumi.Input<String> name;
   /// Specifies domain names to guide the search.
@@ -23,11 +23,11 @@ class ToolGoogleSearchTool {
   /// not be exclusively reflected in the final search results.
   /// Example: "example.com", "another.site".
   /// A maximum of 20 domains can be specified.
-  final pulumi.Input<List<String>>? preferredDomains;
+  final pulumi.Input<List<String>?>? preferredDomains;
   /// Optional. Prompt instructions passed to planner on how the search results should be
   /// processed for text and voice.
   /// Structure is documented below.
-  final pulumi.Input<ToolGoogleSearchToolPromptConfig>? promptConfig;
+  final pulumi.Input<ToolGoogleSearchToolPromptConfig?>? promptConfig;
 
   /// Creates a new [ToolGoogleSearchTool].
   /// [contextUrls] Content will be fetched directly from these URLs for context and grounding.

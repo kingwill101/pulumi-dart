@@ -8,10 +8,10 @@ import 'repository_iam_member_condition.dart';
 /// {@endtemplate}
 /// {@macro pulumi_dataform_repository_iam_member_repository_iam_member_args_doc}
 class RepositoryIamMemberArgs {
-  final pulumi.Input<RepositoryIamMemberCondition>? condition;
+  final pulumi.Input<RepositoryIamMemberCondition?>? condition;
   final pulumi.Input<String> member;
-  final pulumi.Input<String>? project;
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? project;
+  final pulumi.Input<String?>? region;
   final pulumi.Input<String> repository;
   final pulumi.Input<String> role;
 

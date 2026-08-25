@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ZoneVmExtensionPolicyInstanceSelectorLabelSelector {
   /// A map of key-value pairs representing VM labels.
-  final pulumi.Input<Map<String, String>>? inclusionLabels;
+  final pulumi.Input<Map<String, String>?>? inclusionLabels;
 
   /// Creates a new [ZoneVmExtensionPolicyInstanceSelectorLabelSelector].
   /// [inclusionLabels] A map of key-value pairs representing VM labels.

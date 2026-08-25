@@ -1071,14 +1071,14 @@ class ZoneIamBinding extends pulumi.CustomResource {
           'gcp:dataplex/zoneIamBinding:ZoneIamBinding',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     condition = registerOutput<ZoneIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ZoneIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     dataplexZone = registerOutput<String>('dataplexZone');
     etag = registerOutput<String>('etag');
     lake = registerOutput<String>('lake');
     location = registerOutput<String>('location');
-    members = registerOutput<List<String>>('members');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     project = registerOutput<String>('project');
     role = registerOutput<String>('role');
   }
@@ -1088,11 +1088,12 @@ class ZoneIamBinding extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ZoneIamBindingState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ZoneIamBinding._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1111,7 +1112,26 @@ class ZoneIamBinding extends pulumi.CustomResource {
     etag = registerOutput<String>('etag');
     lake = registerOutput<String>('lake');
     location = registerOutput<String>('location');
-    members = registerOutput<List<String>>('members');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    project = registerOutput<String>('project');
+    role = registerOutput<String>('role');
+  }
+
+  /// Creates a typed reference to an existing [ZoneIamBinding] resource.
+  ZoneIamBinding.reference(String urn)
+    : super(
+        'gcp:dataplex/zoneIamBinding:ZoneIamBinding',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    condition = registerOutput<ZoneIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ZoneIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dataplexZone = registerOutput<String>('dataplexZone');
+    etag = registerOutput<String>('etag');
+    lake = registerOutput<String>('lake');
+    location = registerOutput<String>('location');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     project = registerOutput<String>('project');
     role = registerOutput<String>('role');
   }

@@ -7,7 +7,7 @@ class ServiceState {
   /// Beta
   /// If `true`, the usage of the service to be disabled will be checked and an error
   /// will be returned if the service to be disabled has usage in last 30 days.
-  final pulumi.Input<bool>? checkIfServiceHasUsageOnDestroy;
+  final pulumi.Input<bool?>? checkIfServiceHasUsageOnDestroy;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -16,22 +16,22 @@ class ServiceState {
   /// When set to "DELETE", deleting the resource is allowed.
   /// If `disableOnDestroy` is set to `false`, the service will still be enabled when the
   /// Terraform resource is destroyed even if the `deletionPolicy` field is set to "DELETE".
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// If `true`, services that are enabled
   /// and which depend on this service should also be disabled when this service is
   /// destroyed. If `false` or unset, an error will be generated if any enabled
   /// services depend on this service when destroying it.
-  final pulumi.Input<bool>? disableDependentServices;
+  final pulumi.Input<bool?>? disableDependentServices;
   /// If `true`, disable the service when the
   /// Terraform resource is destroyed. If `false` or unset, the service will be left enabled when
   /// the Terraform resource is destroyed. It should generally only
   /// be `true` in configurations that manage the `gcp.organizations.Project` resource itself.
-  final pulumi.Input<bool>? disableOnDestroy;
+  final pulumi.Input<bool?>? disableOnDestroy;
   /// The project ID. If not provided, the provider project
   /// is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The service to enable.
-  final pulumi.Input<String>? service;
+  final pulumi.Input<String?>? service;
 
   /// Creates a new [ServiceState].
   /// [checkIfServiceHasUsageOnDestroy] Beta

@@ -7,7 +7,7 @@ class SecurityProfileCustomMirroringProfile {
   /// This field is used for Packet Broker mirroring endpoint groups to specify
   /// the deployment groups that the packet should be mirrored to by the broker.
   /// Format: projects/{project_id}/locations/global/mirroringDeploymentGroups/{deployment_group_id}
-  final pulumi.Input<List<String>>? mirroringDeploymentGroups;
+  final pulumi.Input<List<String>?>? mirroringDeploymentGroups;
   /// The target Mirroring Endpoint Group.
   /// When a mirroring rule with this security profile attached matches a packet,
   /// a replica will be mirrored to the location-local target in this group.
@@ -18,7 +18,7 @@ class SecurityProfileCustomMirroringProfile {
   /// Possible values:
   /// DIRECT
   /// BROKER
-  final pulumi.Input<String>? mirroringEndpointGroupType;
+  final pulumi.Input<String?>? mirroringEndpointGroupType;
 
   /// Creates a new [SecurityProfileCustomMirroringProfile].
   /// [mirroringDeploymentGroups] The target downstream Mirroring Deployment Groups.

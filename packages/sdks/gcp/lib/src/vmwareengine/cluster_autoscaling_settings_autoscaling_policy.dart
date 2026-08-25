@@ -10,10 +10,10 @@ class ClusterAutoscalingSettingsAutoscalingPolicy {
   final pulumi.Input<String> autoscalePolicyId;
   /// Utilization thresholds pertaining to amount of consumed memory.
   /// Structure is documented below.
-  final pulumi.Input<ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholds>? consumedMemoryThresholds;
+  final pulumi.Input<ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholds?>? consumedMemoryThresholds;
   /// Utilization thresholds pertaining to CPU utilization.
   /// Structure is documented below.
-  final pulumi.Input<ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholds>? cpuThresholds;
+  final pulumi.Input<ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholds?>? cpuThresholds;
   /// The canonical identifier of the node type to add or remove.
   final pulumi.Input<String> nodeTypeId;
   /// Number of nodes to add to a cluster during a scale-out operation.
@@ -21,7 +21,7 @@ class ClusterAutoscalingSettingsAutoscalingPolicy {
   final pulumi.Input<int> scaleOutSize;
   /// Utilization thresholds pertaining to amount of consumed storage.
   /// Structure is documented below.
-  final pulumi.Input<ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholds>? storageThresholds;
+  final pulumi.Input<ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholds?>? storageThresholds;
 
   /// Creates a new [ClusterAutoscalingSettingsAutoscalingPolicy].
   /// [autoscalePolicyId] The identifier for this object. Format specified above.
@@ -56,7 +56,7 @@ class ClusterAutoscalingSettingsAutoscalingPolicy {
       consumedMemoryThresholds: (() { final guardedValue = map['consumedMemoryThresholds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholds.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       cpuThresholds: (() { final guardedValue = map['cpuThresholds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholds.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       nodeTypeId: pulumi.Input.fromValue(map['nodeTypeId'] as String),
-      scaleOutSize: pulumi.Input.fromValue(map['scaleOutSize'] as int),
+      scaleOutSize: pulumi.Input.fromValue((map['scaleOutSize'] as num).toInt()),
       storageThresholds: (() { final guardedValue = map['storageThresholds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholds.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

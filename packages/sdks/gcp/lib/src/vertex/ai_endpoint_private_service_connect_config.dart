@@ -8,12 +8,12 @@ class AiEndpointPrivateServiceConnectConfig {
   final pulumi.Input<bool> enablePrivateServiceConnect;
   /// (Optional, Beta)
   /// If set to true, enable secure private service connect with IAM authorization. Otherwise, private service connect will be done without authorization. Note latency will be slightly increased if authorization is enabled.
-  final pulumi.Input<bool>? enableSecurePrivateServiceConnect;
+  final pulumi.Input<bool?>? enableSecurePrivateServiceConnect;
   /// A list of Projects from which the forwarding rule will target the service attachment.
-  final pulumi.Input<List<String>>? projectAllowlists;
+  final pulumi.Input<List<String>?>? projectAllowlists;
   /// List of projects and networks where the PSC endpoints will be created. This field is used by Online Inference(Prediction) only.
   /// Structure is documented below.
-  final pulumi.Input<List<AiEndpointPrivateServiceConnectConfigPscAutomationConfig>>? pscAutomationConfigs;
+  final pulumi.Input<List<AiEndpointPrivateServiceConnectConfigPscAutomationConfig>?>? pscAutomationConfigs;
 
   /// Creates a new [AiEndpointPrivateServiceConnectConfig].
   /// [enablePrivateServiceConnect] Required. If true, expose the IndexEndpoint via private service connect.

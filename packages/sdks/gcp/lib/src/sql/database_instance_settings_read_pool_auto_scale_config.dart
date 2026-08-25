@@ -5,19 +5,19 @@ import 'database_instance_settings_read_pool_auto_scale_config_target_metric.dar
 
 class DatabaseInstanceSettingsReadPoolAutoScaleConfig {
   /// True if auto scale in is disabled.
-  final pulumi.Input<bool>? disableScaleIn;
+  final pulumi.Input<bool?>? disableScaleIn;
   /// True if Read Pool Auto Scale is enabled.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// Maximum number of nodes in the read pool. If set to lower than current node count, node count will be updated.
-  final pulumi.Input<int>? maxNodeCount;
+  final pulumi.Input<int?>? maxNodeCount;
   /// Minimum number of nodes in the read pool. If set to higher than current node count, node count will be updated.
-  final pulumi.Input<int>? minNodeCount;
+  final pulumi.Input<int?>? minNodeCount;
   /// The cooldown period for scale in operations.
-  final pulumi.Input<int>? scaleInCooldownSeconds;
+  final pulumi.Input<int?>? scaleInCooldownSeconds;
   /// The cooldown period for scale out operations.
-  final pulumi.Input<int>? scaleOutCooldownSeconds;
+  final pulumi.Input<int?>? scaleOutCooldownSeconds;
   /// Target metrics for Read Pool Auto Scale. Must specify `target_metrics.metric` and `target_metrics.target_value` in subblock.
-  final pulumi.Input<List<DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetric>>? targetMetrics;
+  final pulumi.Input<List<DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetric>?>? targetMetrics;
 
   /// Creates a new [DatabaseInstanceSettingsReadPoolAutoScaleConfig].
   /// [disableScaleIn] True if auto scale in is disabled.
@@ -53,10 +53,10 @@ class DatabaseInstanceSettingsReadPoolAutoScaleConfig {
     return DatabaseInstanceSettingsReadPoolAutoScaleConfig(
       disableScaleIn: (() { final guardedValue = map['disableScaleIn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      maxNodeCount: (() { final guardedValue = map['maxNodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      minNodeCount: (() { final guardedValue = map['minNodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      scaleInCooldownSeconds: (() { final guardedValue = map['scaleInCooldownSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      scaleOutCooldownSeconds: (() { final guardedValue = map['scaleOutCooldownSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxNodeCount: (() { final guardedValue = map['maxNodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      minNodeCount: (() { final guardedValue = map['minNodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      scaleInCooldownSeconds: (() { final guardedValue = map['scaleInCooldownSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      scaleOutCooldownSeconds: (() { final guardedValue = map['scaleOutCooldownSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       targetMetrics: (() { final guardedValue = map['targetMetrics']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetric>(guardedValue, (value) => DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetric.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }

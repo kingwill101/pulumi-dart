@@ -8,15 +8,15 @@ import 'security_profile_threat_prevention_profile_threat_override.dart';
 class SecurityProfileThreatPreventionProfile {
   /// Defines what action to take for antivirus threats per protocol.
   /// Structure is documented below.
-  final pulumi.Input<List<SecurityProfileThreatPreventionProfileAntivirusOverride>>? antivirusOverrides;
+  final pulumi.Input<List<SecurityProfileThreatPreventionProfileAntivirusOverride>?>? antivirusOverrides;
   /// The configuration for overriding threats actions by severity match.
   /// Structure is documented below.
-  final pulumi.Input<List<SecurityProfileThreatPreventionProfileSeverityOverride>>? severityOverrides;
+  final pulumi.Input<List<SecurityProfileThreatPreventionProfileSeverityOverride>?>? severityOverrides;
   /// The configuration for overriding threats actions by threat id match.
   /// If a threat is matched both by configuration provided in severity overrides
   /// and threat overrides, the threat overrides action is applied.
   /// Structure is documented below.
-  final pulumi.Input<List<SecurityProfileThreatPreventionProfileThreatOverride>>? threatOverrides;
+  final pulumi.Input<List<SecurityProfileThreatPreventionProfileThreatOverride>?>? threatOverrides;
 
   /// Creates a new [SecurityProfileThreatPreventionProfile].
   /// [antivirusOverrides] Defines what action to take for antivirus threats per protocol.

@@ -20,6 +20,17 @@ Future<GetAddressGroupIamPolicyResult> getAddressGroupIamPolicy(
   return GetAddressGroupIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetAddressGroupIamPolicyResult> getAddressGroupIamPolicyOutput(
+  GetAddressGroupIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:networksecurity/getAddressGroupIamPolicy:getAddressGroupIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAddressGroupIamPolicyResult.fromMap);
+}
+
 /// AddressGroups are used to group IP addresses together for use in firewall policies. This data source allows you to list address groups in a project or organization and location.
 ///
 /// To get more information about Address Groups, see:
@@ -261,4 +272,15 @@ Future<GetAddressGroupsResult> getAddressGroups(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetAddressGroupsResult.fromMap(result);
+}
+
+pulumi.Output<GetAddressGroupsResult> getAddressGroupsOutput(
+  GetAddressGroupsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:networksecurity/getAddressGroups:getAddressGroups',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAddressGroupsResult.fromMap);
 }

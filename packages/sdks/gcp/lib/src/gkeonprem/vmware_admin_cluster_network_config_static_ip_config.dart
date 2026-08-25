@@ -6,7 +6,7 @@ import 'vmware_admin_cluster_network_config_static_ip_config_ip_block.dart';
 class VmwareAdminClusterNetworkConfigStaticIpConfig {
   /// Represents the configuration values for static IP allocation to nodes.
   /// Structure is documented below.
-  final pulumi.Input<List<VmwareAdminClusterNetworkConfigStaticIpConfigIpBlock>>? ipBlocks;
+  final pulumi.Input<List<VmwareAdminClusterNetworkConfigStaticIpConfigIpBlock>?>? ipBlocks;
 
   /// Creates a new [VmwareAdminClusterNetworkConfigStaticIpConfig].
   /// [ipBlocks] Represents the configuration values for static IP allocation to nodes.

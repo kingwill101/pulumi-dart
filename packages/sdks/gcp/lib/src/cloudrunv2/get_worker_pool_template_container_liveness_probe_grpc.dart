@@ -25,7 +25,7 @@ class GetWorkerPoolTemplateContainerLivenessProbeGrpc {
 
   factory GetWorkerPoolTemplateContainerLivenessProbeGrpc.fromMap(Map<String, dynamic> map) {
     return GetWorkerPoolTemplateContainerLivenessProbeGrpc(
-      port: pulumi.Input.fromValue(map['port'] as int),
+      port: pulumi.Input.fromValue((map['port'] as num).toInt()),
       service: pulumi.Input.fromValue(map['service'] as String),
     );
   }

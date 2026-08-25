@@ -13,9 +13,9 @@ class AiTensorboardRunArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Description of this TensorboardRun.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// User provided name of this TensorboardRun.
   /// This value must be unique among all TensorboardRuns
   /// belonging to the same parent TensorboardExperiment.
@@ -39,12 +39,12 @@ class AiTensorboardRunArgs {
   /// and are immutable.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The location of the Tensorboard Run. eg us-central1
   final pulumi.Input<String> location;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The Tensorboard instance.
   final pulumi.Input<String> tensorboard;
   /// The ID to use for the Tensorboard run, which becomes the final

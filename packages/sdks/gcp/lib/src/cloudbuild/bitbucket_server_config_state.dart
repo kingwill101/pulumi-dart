@@ -8,43 +8,43 @@ import 'bitbucket_server_config_secrets.dart';
 class BitbucketServerConfigState {
   /// Immutable. API Key that will be attached to webhook. Once this field has been set, it cannot be changed.
   /// Changing this field will result in deleting/ recreating the resource.
-  final pulumi.Input<String>? apiKey;
+  final pulumi.Input<String?>? apiKey;
   /// The ID to use for the BitbucketServerConfig, which will become the final component of the BitbucketServerConfig's resource name.
-  final pulumi.Input<String>? configId;
+  final pulumi.Input<String?>? configId;
   /// Connected Bitbucket Server repositories for this config.
   /// Structure is documented below.
-  final pulumi.Input<List<BitbucketServerConfigConnectedRepository>>? connectedRepositories;
+  final pulumi.Input<List<BitbucketServerConfigConnectedRepository>?>? connectedRepositories;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Immutable. The URI of the Bitbucket Server host. Once this field has been set, it cannot be changed.
   /// If you need to change it, please create another BitbucketServerConfig.
-  final pulumi.Input<String>? hostUri;
+  final pulumi.Input<String?>? hostUri;
   /// The location of this bitbucket server config.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The resource name for the config.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The network to be used when reaching out to the Bitbucket Server instance. The VPC network must be enabled for private service connection.
   /// This should be set if the Bitbucket Server instance is hosted on-premises and not reachable by public internet. If this field is left empty,
   /// no network peering will occur and calls to the Bitbucket Server instance will be made over the public internet. Must be in the format
   /// projects/{project}/global/networks/{network}, where {project} is a project number or id and {network} is the name of a VPC network in the project.
-  final pulumi.Input<String>? peeredNetwork;
+  final pulumi.Input<String?>? peeredNetwork;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Secret Manager secrets needed by the config.
   /// Structure is documented below.
-  final pulumi.Input<BitbucketServerConfigSecrets>? secrets;
+  final pulumi.Input<BitbucketServerConfigSecrets?>? secrets;
   /// SSL certificate to use for requests to Bitbucket Server. The format should be PEM format but the extension can be one of .pem, .cer, or .crt.
-  final pulumi.Input<String>? sslCa;
+  final pulumi.Input<String?>? sslCa;
   /// Username of the account Cloud Build will use on Bitbucket Server.
-  final pulumi.Input<String>? username;
+  final pulumi.Input<String?>? username;
   /// Output only. UUID included in webhook requests. The UUID is used to look up the corresponding config.
-  final pulumi.Input<String>? webhookKey;
+  final pulumi.Input<String?>? webhookKey;
 
   /// Creates a new [BitbucketServerConfigState].
   /// [apiKey] Immutable. API Key that will be attached to webhook. Once this field has been set, it cannot be changed.

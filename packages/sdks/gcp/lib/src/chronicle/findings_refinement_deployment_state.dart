@@ -8,28 +8,28 @@ class FindingsRefinementDeploymentState {
   /// The archive state of the findings refinement deployment.
   /// Cannot be set to true unless enabled is set to false.
   /// If currently set to true, enabled cannot be updated to true.
-  final pulumi.Input<bool>? archived;
+  final pulumi.Input<bool?>? archived;
   /// Describes the detectors a detection exclusion is applied to.
   /// Structure is documented below.
-  final pulumi.Input<FindingsRefinementDeploymentDetectionExclusionApplication>? detectionExclusionApplication;
+  final pulumi.Input<FindingsRefinementDeploymentDetectionExclusionApplication?>? detectionExclusionApplication;
   /// Whether the findings refinement is currently deployed continuously against
   /// incoming findings.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-  final pulumi.Input<String>? findingsRefinement;
+  final pulumi.Input<String?>? findingsRefinement;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-  final pulumi.Input<String>? instance;
+  final pulumi.Input<String?>? instance;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The resource name of the findings refinement deployment.
   /// Format:
   /// projects/{project}/locations/{location}/instances/{instance}/findingsRefinements/{findings_refinement}/deployment
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The timestamp when the findings refinement deployment was last updated.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [FindingsRefinementDeploymentState].
   /// [archived] The archive state of the findings refinement deployment.

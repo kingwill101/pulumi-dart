@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopic {
   /// Description of custom memory topic.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Label of custom memory topic.
-  final pulumi.Input<String>? label;
+  final pulumi.Input<String?>? label;
 
   /// Creates a new [AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopic].
   /// [description] Description of custom memory topic.

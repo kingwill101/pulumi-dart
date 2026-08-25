@@ -1758,27 +1758,28 @@ class Gateway extends pulumi.CustomResource {
           'gcp:networkservices/gateway:Gateway',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
-    addresses = registerOutput<List<String>>('addresses');
+    addresses = registerOutput<List<String>>('addresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     allPorts = registerOutput<bool?>('allPorts');
     allowGlobalAccess = registerOutput<bool?>('allowGlobalAccess');
-    certificateUrls = registerOutput<List<String>?>('certificateUrls');
+    certificateUrls = registerOutput<List<String>?>('certificateUrls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     createTime = registerOutput<String>('createTime');
     deleteSwgAutogenRouterOnDestroy = registerOutput<bool?>('deleteSwgAutogenRouterOnDestroy');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     envoyHeaders = registerOutput<String?>('envoyHeaders');
     gatewaySecurityPolicy = registerOutput<String?>('gatewaySecurityPolicy');
     ipVersion = registerOutput<String?>('ipVersion');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
     network = registerOutput<String?>('network');
-    ports = registerOutput<List<int>?>('ports');
+    ports = registerOutput<List<int>?>('ports', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<int>(); });
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     routingMode = registerOutput<String?>('routingMode');
     scope = registerOutput<String?>('scope');
     selfLink = registerOutput<String>('selfLink');
@@ -1793,11 +1794,12 @@ class Gateway extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     GatewayState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Gateway._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1811,25 +1813,63 @@ class Gateway extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    addresses = registerOutput<List<String>>('addresses');
+    addresses = registerOutput<List<String>>('addresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     allPorts = registerOutput<bool?>('allPorts');
     allowGlobalAccess = registerOutput<bool?>('allowGlobalAccess');
-    certificateUrls = registerOutput<List<String>?>('certificateUrls');
+    certificateUrls = registerOutput<List<String>?>('certificateUrls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     createTime = registerOutput<String>('createTime');
     deleteSwgAutogenRouterOnDestroy = registerOutput<bool?>('deleteSwgAutogenRouterOnDestroy');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     envoyHeaders = registerOutput<String?>('envoyHeaders');
     gatewaySecurityPolicy = registerOutput<String?>('gatewaySecurityPolicy');
     ipVersion = registerOutput<String?>('ipVersion');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
     network = registerOutput<String?>('network');
-    ports = registerOutput<List<int>?>('ports');
+    ports = registerOutput<List<int>?>('ports', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<int>(); });
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    routingMode = registerOutput<String?>('routingMode');
+    scope = registerOutput<String?>('scope');
+    selfLink = registerOutput<String>('selfLink');
+    serverTlsPolicy = registerOutput<String?>('serverTlsPolicy');
+    subnetwork = registerOutput<String?>('subnetwork');
+    type = registerOutput<String>('type');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [Gateway] resource.
+  Gateway.reference(String urn)
+    : super(
+        'gcp:networkservices/gateway:Gateway',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    addresses = registerOutput<List<String>>('addresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    allPorts = registerOutput<bool?>('allPorts');
+    allowGlobalAccess = registerOutput<bool?>('allowGlobalAccess');
+    certificateUrls = registerOutput<List<String>?>('certificateUrls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    createTime = registerOutput<String>('createTime');
+    deleteSwgAutogenRouterOnDestroy = registerOutput<bool?>('deleteSwgAutogenRouterOnDestroy');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    envoyHeaders = registerOutput<String?>('envoyHeaders');
+    gatewaySecurityPolicy = registerOutput<String?>('gatewaySecurityPolicy');
+    ipVersion = registerOutput<String?>('ipVersion');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    network = registerOutput<String?>('network');
+    ports = registerOutput<List<int>?>('ports', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<int>(); });
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     routingMode = registerOutput<String?>('routingMode');
     scope = registerOutput<String?>('scope');
     selfLink = registerOutput<String>('selfLink');

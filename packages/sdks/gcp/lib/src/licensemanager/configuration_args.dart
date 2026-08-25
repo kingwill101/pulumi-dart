@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_licensemanager_configuration_configuration_args_doc}
 class ConfigurationArgs {
   /// Whether the configuration is active. We suggest you deactivate a configuration instead of deleting it, and allow License Manager to manage deletion of the configuration.
-  final pulumi.Input<bool>? active;
+  final pulumi.Input<bool?>? active;
   /// Id of the object.
   final pulumi.Input<String> configurationId;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -17,11 +17,11 @@ class ConfigurationArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Labels as key value pairs
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Number of units to bill for. When licensing a product that is billed per-user, this means number of users. When licensing a product that is billed per-pack (e.g. SQL Server), this means the number of packs.
   final pulumi.Input<int> licenseCount;
   /// The region where the configuration should be created. This region must be the same where the licensed software will run.
@@ -30,7 +30,7 @@ class ConfigurationArgs {
   final pulumi.Input<String> product;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [ConfigurationArgs].
   /// [active] Whether the configuration is active. We suggest you deactivate a configuration instead of deleting it, and allow License Manager to manage deletion of the configuration.
@@ -71,7 +71,7 @@ class ConfigurationArgs {
       configurationId: pulumi.Input.fromValue(map['configurationId'] as String),
       deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-      licenseCount: pulumi.Input.fromValue(map['licenseCount'] as int),
+      licenseCount: pulumi.Input.fromValue((map['licenseCount'] as num).toInt()),
       location: pulumi.Input.fromValue(map['location'] as String),
       product: pulumi.Input.fromValue(map['product'] as String),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

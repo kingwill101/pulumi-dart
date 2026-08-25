@@ -6,7 +6,7 @@ import 'attached_cluster_logging_config_component_config.dart';
 class AttachedClusterLoggingConfig {
   /// The configuration of the logging components
   /// Structure is documented below.
-  final pulumi.Input<AttachedClusterLoggingConfigComponentConfig>? componentConfig;
+  final pulumi.Input<AttachedClusterLoggingConfigComponentConfig?>? componentConfig;
 
   /// Creates a new [AttachedClusterLoggingConfig].
   /// [componentConfig] The configuration of the logging components

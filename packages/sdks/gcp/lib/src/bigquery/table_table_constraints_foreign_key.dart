@@ -9,7 +9,7 @@ class TableTableConstraintsForeignKey {
   /// Structure is documented below.
   final pulumi.Input<TableTableConstraintsForeignKeyColumnReferences> columnReferences;
   /// Set only if the foreign key constraint is named.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The table that holds the primary key
   /// and is referenced by this foreign key.
   /// Structure is documented below.

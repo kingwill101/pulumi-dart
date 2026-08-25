@@ -5,6 +5,7 @@ import 'insights_dataset_config_exclude_cloud_storage_locations.dart';
 import 'insights_dataset_config_identity.dart';
 import 'insights_dataset_config_include_cloud_storage_buckets.dart';
 import 'insights_dataset_config_include_cloud_storage_locations.dart';
+import 'insights_dataset_config_link.dart';
 import 'insights_dataset_config_source_folders.dart';
 import 'insights_dataset_config_source_projects.dart';
 import 'insights_dataset_config_state.dart';
@@ -628,7 +629,7 @@ class InsightsDatasetConfig extends pulumi.CustomResource {
   late final pulumi.Output<bool?> linkDataset;
   /// Details of the linked DatasetConfig.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> links;
+  late final pulumi.Output<List<InsightsDatasetConfigLink>> links;
   /// The location of the DatasetConfig.
   late final pulumi.Output<String> location;
   /// The full canonical resource name of the DatasetConfig (e.g., projects/P/locations/L/datasetConfigs/ID).
@@ -666,7 +667,7 @@ class InsightsDatasetConfig extends pulumi.CustomResource {
           'gcp:storage/insightsDatasetConfig:InsightsDatasetConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     activityDataRetentionPeriodDays = registerOutput<int>('activityDataRetentionPeriodDays');
     createTime = registerOutput<String>('createTime');
@@ -681,7 +682,7 @@ class InsightsDatasetConfig extends pulumi.CustomResource {
     includeCloudStorageLocations = registerOutput<InsightsDatasetConfigIncludeCloudStorageLocations?>('includeCloudStorageLocations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InsightsDatasetConfigIncludeCloudStorageLocations.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     includeNewlyCreatedBuckets = registerOutput<bool?>('includeNewlyCreatedBuckets');
     linkDataset = registerOutput<bool?>('linkDataset');
-    links = registerOutput<List<Map<String, dynamic>>>('links');
+    links = registerOutput<List<InsightsDatasetConfigLink>>('links', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InsightsDatasetConfigLink>(guardedValue, (value) => InsightsDatasetConfigLink.fromMap((value as Map).cast<String, dynamic>())); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     organizationNumber = registerOutput<String>('organizationNumber');
@@ -699,11 +700,12 @@ class InsightsDatasetConfig extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     InsightsDatasetConfigState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return InsightsDatasetConfig._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -730,7 +732,42 @@ class InsightsDatasetConfig extends pulumi.CustomResource {
     includeCloudStorageLocations = registerOutput<InsightsDatasetConfigIncludeCloudStorageLocations?>('includeCloudStorageLocations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InsightsDatasetConfigIncludeCloudStorageLocations.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     includeNewlyCreatedBuckets = registerOutput<bool?>('includeNewlyCreatedBuckets');
     linkDataset = registerOutput<bool?>('linkDataset');
-    links = registerOutput<List<Map<String, dynamic>>>('links');
+    links = registerOutput<List<InsightsDatasetConfigLink>>('links', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InsightsDatasetConfigLink>(guardedValue, (value) => InsightsDatasetConfigLink.fromMap((value as Map).cast<String, dynamic>())); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    organizationNumber = registerOutput<String>('organizationNumber');
+    organizationScope = registerOutput<bool?>('organizationScope');
+    project = registerOutput<String>('project');
+    retentionPeriodDays = registerOutput<int>('retentionPeriodDays');
+    sourceFolders = registerOutput<InsightsDatasetConfigSourceFolders?>('sourceFolders', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InsightsDatasetConfigSourceFolders.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sourceProjects = registerOutput<InsightsDatasetConfigSourceProjects?>('sourceProjects', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InsightsDatasetConfigSourceProjects.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [InsightsDatasetConfig] resource.
+  InsightsDatasetConfig.reference(String urn)
+    : super(
+        'gcp:storage/insightsDatasetConfig:InsightsDatasetConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    activityDataRetentionPeriodDays = registerOutput<int>('activityDataRetentionPeriodDays');
+    createTime = registerOutput<String>('createTime');
+    datasetConfigId = registerOutput<String>('datasetConfigId');
+    datasetConfigState = registerOutput<String>('datasetConfigState');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    excludeCloudStorageBuckets = registerOutput<InsightsDatasetConfigExcludeCloudStorageBuckets?>('excludeCloudStorageBuckets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InsightsDatasetConfigExcludeCloudStorageBuckets.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    excludeCloudStorageLocations = registerOutput<InsightsDatasetConfigExcludeCloudStorageLocations?>('excludeCloudStorageLocations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InsightsDatasetConfigExcludeCloudStorageLocations.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    identity = registerOutput<InsightsDatasetConfigIdentity>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InsightsDatasetConfigIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    includeCloudStorageBuckets = registerOutput<InsightsDatasetConfigIncludeCloudStorageBuckets?>('includeCloudStorageBuckets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InsightsDatasetConfigIncludeCloudStorageBuckets.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    includeCloudStorageLocations = registerOutput<InsightsDatasetConfigIncludeCloudStorageLocations?>('includeCloudStorageLocations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InsightsDatasetConfigIncludeCloudStorageLocations.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    includeNewlyCreatedBuckets = registerOutput<bool?>('includeNewlyCreatedBuckets');
+    linkDataset = registerOutput<bool?>('linkDataset');
+    links = registerOutput<List<InsightsDatasetConfigLink>>('links', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InsightsDatasetConfigLink>(guardedValue, (value) => InsightsDatasetConfigLink.fromMap((value as Map).cast<String, dynamic>())); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     organizationNumber = registerOutput<String>('organizationNumber');

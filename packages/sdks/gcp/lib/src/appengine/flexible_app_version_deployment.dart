@@ -9,17 +9,17 @@ import 'flexible_app_version_deployment_zip.dart';
 class FlexibleAppVersionDeployment {
   /// Options for the build operations performed as a part of the version deployment. Only applicable when creating a version using source code directly.
   /// Structure is documented below.
-  final pulumi.Input<FlexibleAppVersionDeploymentCloudBuildOptions>? cloudBuildOptions;
+  final pulumi.Input<FlexibleAppVersionDeploymentCloudBuildOptions?>? cloudBuildOptions;
   /// The Docker image for the container that runs the version.
   /// Structure is documented below.
-  final pulumi.Input<FlexibleAppVersionDeploymentContainer>? container;
+  final pulumi.Input<FlexibleAppVersionDeploymentContainer?>? container;
   /// Manifest of the files stored in Google Cloud Storage that are included as part of this version.
   /// All files must be readable using the credentials supplied with this call.
   /// Structure is documented below.
-  final pulumi.Input<List<FlexibleAppVersionDeploymentFile>>? files;
+  final pulumi.Input<List<FlexibleAppVersionDeploymentFile>?>? files;
   /// Zip File
   /// Structure is documented below.
-  final pulumi.Input<FlexibleAppVersionDeploymentZip>? zip;
+  final pulumi.Input<FlexibleAppVersionDeploymentZip?>? zip;
 
   /// Creates a new [FlexibleAppVersionDeployment].
   /// [cloudBuildOptions] Options for the build operations performed as a part of the version deployment. Only applicable when creating a version using source code directly.

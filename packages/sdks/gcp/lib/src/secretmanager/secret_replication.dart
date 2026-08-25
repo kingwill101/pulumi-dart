@@ -7,10 +7,10 @@ import 'secret_replication_user_managed.dart';
 class SecretReplication {
   /// The Secret will automatically be replicated without any restrictions.
   /// Structure is documented below.
-  final pulumi.Input<SecretReplicationAuto>? auto;
+  final pulumi.Input<SecretReplicationAuto?>? auto;
   /// The Secret will be replicated to the regions specified by the user.
   /// Structure is documented below.
-  final pulumi.Input<SecretReplicationUserManaged>? userManaged;
+  final pulumi.Input<SecretReplicationUserManaged?>? userManaged;
 
   /// Creates a new [SecretReplication].
   /// [auto] The Secret will automatically be replicated without any restrictions.

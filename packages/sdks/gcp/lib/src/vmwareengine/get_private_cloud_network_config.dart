@@ -50,7 +50,7 @@ class GetPrivateCloudNetworkConfig {
     return GetPrivateCloudNetworkConfig(
       dnsServerIp: pulumi.Input.fromValue(map['dnsServerIp'] as String),
       managementCidr: pulumi.Input.fromValue(map['managementCidr'] as String),
-      managementIpAddressLayoutVersion: pulumi.Input.fromValue(map['managementIpAddressLayoutVersion'] as int),
+      managementIpAddressLayoutVersion: pulumi.Input.fromValue((map['managementIpAddressLayoutVersion'] as num).toInt()),
       vmwareEngineNetwork: pulumi.Input.fromValue(map['vmwareEngineNetwork'] as String),
       vmwareEngineNetworkCanonical: pulumi.Input.fromValue(map['vmwareEngineNetworkCanonical'] as String),
     );

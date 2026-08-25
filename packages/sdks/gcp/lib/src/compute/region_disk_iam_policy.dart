@@ -1011,7 +1011,7 @@ class RegionDiskIamPolicy extends pulumi.CustomResource {
           'gcp:compute/regionDiskIamPolicy:RegionDiskIamPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     etag = registerOutput<String>('etag');
     this.name = registerOutput<String>('name');
@@ -1025,11 +1025,12 @@ class RegionDiskIamPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RegionDiskIamPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RegionDiskIamPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1043,6 +1044,22 @@ class RegionDiskIamPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    etag = registerOutput<String>('etag');
+    this.name = registerOutput<String>('name');
+    policyData = registerOutput<String>('policyData');
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [RegionDiskIamPolicy] resource.
+  RegionDiskIamPolicy.reference(String urn)
+    : super(
+        'gcp:compute/regionDiskIamPolicy:RegionDiskIamPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     etag = registerOutput<String>('etag');
     this.name = registerOutput<String>('name');
     policyData = registerOutput<String>('policyData');

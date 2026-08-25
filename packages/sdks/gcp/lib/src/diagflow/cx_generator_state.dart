@@ -14,31 +14,31 @@ class CxGeneratorState {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The human-readable name of the generator, unique within the agent.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The language to create generators for the following fields:
   /// * Generator.prompt_text.text
   /// If not specified, the agent's default language is used.
-  final pulumi.Input<String>? languageCode;
+  final pulumi.Input<String?>? languageCode;
   /// The LLM model settings.
   /// Structure is documented below.
-  final pulumi.Input<CxGeneratorLlmModelSettings>? llmModelSettings;
+  final pulumi.Input<CxGeneratorLlmModelSettings?>? llmModelSettings;
   /// Parameters passed to the LLM to configure its behavior.
   /// Structure is documented below.
-  final pulumi.Input<CxGeneratorModelParameter>? modelParameter;
+  final pulumi.Input<CxGeneratorModelParameter?>? modelParameter;
   /// The unique identifier of the Generator.
   /// Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/generators/&lt;Generator ID&gt;.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The agent to create a Generator for.
   /// Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;.
-  final pulumi.Input<String>? parent;
+  final pulumi.Input<String?>? parent;
   /// List of custom placeholders in the prompt text.
   /// Structure is documented below.
-  final pulumi.Input<List<CxGeneratorPlaceholder>>? placeholders;
+  final pulumi.Input<List<CxGeneratorPlaceholder>?>? placeholders;
   /// Prompt for the LLM model.
   /// Structure is documented below.
-  final pulumi.Input<CxGeneratorPromptText>? promptText;
+  final pulumi.Input<CxGeneratorPromptText?>? promptText;
 
   /// Creates a new [CxGeneratorState].
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

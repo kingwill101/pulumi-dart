@@ -8,23 +8,23 @@ import 'ai_persistent_resource_resource_pool_machine_spec.dart';
 class AiPersistentResourceResourcePool {
   /// The min/max number of replicas allowed if enabling autoscaling
   /// Structure is documented below.
-  final pulumi.Input<AiPersistentResourceResourcePoolAutoscalingSpec>? autoscalingSpec;
+  final pulumi.Input<AiPersistentResourceResourcePoolAutoscalingSpec?>? autoscalingSpec;
   /// Represents the spec of disk options.
   /// Structure is documented below.
-  final pulumi.Input<AiPersistentResourceResourcePoolDiskSpec>? diskSpec;
+  final pulumi.Input<AiPersistentResourceResourcePoolDiskSpec?>? diskSpec;
   /// The unique ID in a PersistentResource for referring to this resource pool.
   /// User can specify it if necessary. Otherwise, it's generated
   /// automatically.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Specification of a single machine.
   /// Structure is documented below.
   final pulumi.Input<AiPersistentResourceResourcePoolMachineSpec> machineSpec;
   /// The total number of machines to use for this resource pool.
-  final pulumi.Input<String>? replicaCount;
+  final pulumi.Input<String?>? replicaCount;
   /// (Output)
   /// The number of machines currently in use by training jobs for this resource
   /// pool. Will replace idle_replica_count.
-  final pulumi.Input<String>? usedReplicaCount;
+  final pulumi.Input<String?>? usedReplicaCount;
 
   /// Creates a new [AiPersistentResourceResourcePool].
   /// [autoscalingSpec] The min/max number of replicas allowed if enabling autoscaling

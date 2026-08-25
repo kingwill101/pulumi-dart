@@ -4,15 +4,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FeedDetailsSalesforceSettingsOauthPasswordGrantAuth {
   /// Client ID.
-  final pulumi.Input<String>? clientId;
+  final pulumi.Input<String?>? clientId;
   /// Client secret.
-  final pulumi.Input<String>? clientSecret;
+  final pulumi.Input<String?>? clientSecret;
   /// Password.
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// Token endpoint to get the OAuth token from.
-  final pulumi.Input<String>? tokenEndpoint;
+  final pulumi.Input<String?>? tokenEndpoint;
   /// Username.
-  final pulumi.Input<String>? user;
+  final pulumi.Input<String?>? user;
 
   /// Creates a new [FeedDetailsSalesforceSettingsOauthPasswordGrantAuth].
   /// [clientId] Client ID.

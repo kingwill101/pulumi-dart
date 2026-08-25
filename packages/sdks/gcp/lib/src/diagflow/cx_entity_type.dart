@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cx_entity_type_args.dart';
+import 'cx_entity_type_entity.dart';
+import 'cx_entity_type_excluded_phrase.dart';
 import 'cx_entity_type_state.dart';
 
 /// Entities are extracted from user input and represent parameters that are meaningful to your application.
@@ -403,11 +405,11 @@ class CxEntityType extends pulumi.CustomResource {
   late final pulumi.Output<bool?> enableFuzzyExtraction;
   /// The collection of entity entries associated with the entity type.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> entities;
+  late final pulumi.Output<List<CxEntityTypeEntity>> entities;
   /// Collection of exceptional words and phrases that shouldn't be matched. For example, if you have a size entity type with entry giant(an adjective), you might consider adding giants(a noun) as an exclusion.
   /// If the kind of entity type is KIND_MAP, then the phrases specified by entities and excluded phrases should be mutually exclusive.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> excludedPhrases;
+  late final pulumi.Output<List<CxEntityTypeExcludedPhrase>?> excludedPhrases;
   /// Indicates whether the entity type can be automatically expanded.
   /// * KIND_MAP: Map entity types allow mapping of a group of synonyms to a canonical value.
   /// * KIND_LIST: List entity types contain a set of entries that do not map to canonical values. However, list entity types can contain references to other entity types (with or without aliases).
@@ -441,14 +443,14 @@ class CxEntityType extends pulumi.CustomResource {
           'gcp:diagflow/cxEntityType:CxEntityType',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     autoExpansionMode = registerOutput<String?>('autoExpansionMode');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
     enableFuzzyExtraction = registerOutput<bool?>('enableFuzzyExtraction');
-    entities = registerOutput<List<Map<String, dynamic>>>('entities');
-    excludedPhrases = registerOutput<List<Map<String, dynamic>>?>('excludedPhrases');
+    entities = registerOutput<List<CxEntityTypeEntity>>('entities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CxEntityTypeEntity>(guardedValue, (value) => CxEntityTypeEntity.fromMap((value as Map).cast<String, dynamic>())); });
+    excludedPhrases = registerOutput<List<CxEntityTypeExcludedPhrase>?>('excludedPhrases', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CxEntityTypeExcludedPhrase>(guardedValue, (value) => CxEntityTypeExcludedPhrase.fromMap((value as Map).cast<String, dynamic>())); });
     kind = registerOutput<String>('kind');
     languageCode = registerOutput<String?>('languageCode');
     this.name = registerOutput<String>('name');
@@ -461,11 +463,12 @@ class CxEntityType extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CxEntityTypeState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return CxEntityType._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -483,8 +486,30 @@ class CxEntityType extends pulumi.CustomResource {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
     enableFuzzyExtraction = registerOutput<bool?>('enableFuzzyExtraction');
-    entities = registerOutput<List<Map<String, dynamic>>>('entities');
-    excludedPhrases = registerOutput<List<Map<String, dynamic>>?>('excludedPhrases');
+    entities = registerOutput<List<CxEntityTypeEntity>>('entities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CxEntityTypeEntity>(guardedValue, (value) => CxEntityTypeEntity.fromMap((value as Map).cast<String, dynamic>())); });
+    excludedPhrases = registerOutput<List<CxEntityTypeExcludedPhrase>?>('excludedPhrases', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CxEntityTypeExcludedPhrase>(guardedValue, (value) => CxEntityTypeExcludedPhrase.fromMap((value as Map).cast<String, dynamic>())); });
+    kind = registerOutput<String>('kind');
+    languageCode = registerOutput<String?>('languageCode');
+    this.name = registerOutput<String>('name');
+    parent = registerOutput<String?>('parent');
+    redact = registerOutput<bool?>('redact');
+  }
+
+  /// Creates a typed reference to an existing [CxEntityType] resource.
+  CxEntityType.reference(String urn)
+    : super(
+        'gcp:diagflow/cxEntityType:CxEntityType',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    autoExpansionMode = registerOutput<String?>('autoExpansionMode');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    displayName = registerOutput<String>('displayName');
+    enableFuzzyExtraction = registerOutput<bool?>('enableFuzzyExtraction');
+    entities = registerOutput<List<CxEntityTypeEntity>>('entities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CxEntityTypeEntity>(guardedValue, (value) => CxEntityTypeEntity.fromMap((value as Map).cast<String, dynamic>())); });
+    excludedPhrases = registerOutput<List<CxEntityTypeExcludedPhrase>?>('excludedPhrases', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CxEntityTypeExcludedPhrase>(guardedValue, (value) => CxEntityTypeExcludedPhrase.fromMap((value as Map).cast<String, dynamic>())); });
     kind = registerOutput<String>('kind');
     languageCode = registerOutput<String?>('languageCode');
     this.name = registerOutput<String>('name');

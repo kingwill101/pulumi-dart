@@ -7,48 +7,48 @@ import 'get_packages_package.dart';
 class GetPackagesResult {
   final String? filter;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final String location;
+  final String? id;
+  final String? location;
   /// A list of all retrieved Artifact Registry packages. Structure is defined below.
-  final List<GetPackagesPackage> packages;
+  final List<GetPackagesPackage>? packages;
   final String? project;
-  final String repositoryId;
+  final String? repositoryId;
 
   /// Creates a new [GetPackagesResult].
   /// [filter] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [location] Required.
+  /// [location] Optional.
   /// [packages] A list of all retrieved Artifact Registry packages. Structure is defined below.
   /// [project] Optional.
-  /// [repositoryId] Required.
+  /// [repositoryId] Optional.
   const GetPackagesResult({
     this.filter,
-    required this.id,
-    required this.location,
-    required this.packages,
+    this.id,
+    this.location,
+    this.packages,
     this.project,
-    required this.repositoryId,
+    this.repositoryId,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'filter': ?filter,
-      'id': id,
-      'location': location,
-      'packages': pulumi.Input.encodeList<GetPackagesPackage, Map<String, dynamic>>(packages, (value) => value.toMap()),
+      'id': ?id,
+      'location': ?location,
+      'packages': ?(() { final guardedValue = packages; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetPackagesPackage, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'project': ?project,
-      'repositoryId': repositoryId,
+      'repositoryId': ?repositoryId,
     };
   }
 
   factory GetPackagesResult.fromMap(Map<String, dynamic> map) {
     return GetPackagesResult(
       filter: (() { final guardedValue = map['filter']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
-      location: map['location'] as String,
-      packages: pulumi.Input.decodeList<GetPackagesPackage>(map['packages']!, (value) => GetPackagesPackage.fromMap((value as Map).cast<String, dynamic>())),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      packages: (() { final guardedValue = map['packages']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetPackagesPackage>(guardedValue, (value) => GetPackagesPackage.fromMap((value as Map).cast<String, dynamic>())); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      repositoryId: map['repositoryId'] as String,
+      repositoryId: (() { final guardedValue = map['repositoryId']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

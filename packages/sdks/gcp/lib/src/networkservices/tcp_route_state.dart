@@ -6,45 +6,45 @@ import 'tcp_route_rule.dart';
 /// Input properties used for looking up and filtering TcpRoute resources.
 class TcpRouteState {
   /// Time the TcpRoute was created in UTC.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// A free-text description of the resource. Max length 1024 characters.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveLabels;
+  final pulumi.Input<Map<String, String>?>? effectiveLabels;
   /// Gateways defines a list of gateways this TcpRoute is attached to, as one of the routing rules to route the requests served by the gateway.
   /// Each gateway reference should match the pattern: projects/*/locations/global/gateways/&lt;gateway_name&gt;
-  final pulumi.Input<List<String>>? gateways;
+  final pulumi.Input<List<String>?>? gateways;
   /// Set of label tags associated with the TcpRoute resource.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Meshes defines a list of meshes this TcpRoute is attached to, as one of the routing rules to route the requests served by the mesh.
   /// Each mesh reference should match the pattern: projects/*/locations/global/meshes/&lt;mesh_name&gt;
   /// The attached Mesh should be of a type SIDECAR
-  final pulumi.Input<List<String>>? meshes;
+  final pulumi.Input<List<String>?>? meshes;
   /// Name of the TcpRoute resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  final pulumi.Input<Map<String, String>>? pulumiLabels;
+  final pulumi.Input<Map<String, String>?>? pulumiLabels;
   /// Rules that define how traffic is routed and handled. At least one RouteRule must be supplied.
   /// If there are multiple rules then the action taken will be the first rule to match.
   /// Structure is documented below.
-  final pulumi.Input<List<TcpRouteRule>>? rules;
+  final pulumi.Input<List<TcpRouteRule>?>? rules;
   /// Server-defined URL of this resource.
-  final pulumi.Input<String>? selfLink;
+  final pulumi.Input<String?>? selfLink;
   /// Time the TcpRoute was updated in UTC.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [TcpRouteState].
   /// [createTime] Time the TcpRoute was created in UTC.

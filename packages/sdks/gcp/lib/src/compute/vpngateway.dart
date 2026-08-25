@@ -1170,7 +1170,7 @@ class VPNGateway extends pulumi.CustomResource {
           'gcp:compute/vPNGateway:VPNGateway',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     creationTimestamp = registerOutput<String>('creationTimestamp');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -1189,11 +1189,12 @@ class VPNGateway extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VPNGatewayState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VPNGateway._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1207,6 +1208,27 @@ class VPNGateway extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    gatewayId = registerOutput<int>('gatewayId');
+    this.name = registerOutput<String>('name');
+    network = registerOutput<String>('network');
+    params = registerOutput<VPNGatewayParams?>('params', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VPNGatewayParams.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+    selfLink = registerOutput<String>('selfLink');
+  }
+
+  /// Creates a typed reference to an existing [VPNGateway] resource.
+  VPNGateway.reference(String urn)
+    : super(
+        'gcp:compute/vPNGateway:VPNGateway',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     creationTimestamp = registerOutput<String>('creationTimestamp');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');

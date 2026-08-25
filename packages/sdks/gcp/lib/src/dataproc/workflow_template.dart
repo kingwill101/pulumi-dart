@@ -1,6 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'workflow_template_args.dart';
 import 'workflow_template_encryption_config.dart';
+import 'workflow_template_job.dart';
+import 'workflow_template_parameter.dart';
 import 'workflow_template_placement.dart';
 import 'workflow_template_state.dart';
 
@@ -1037,7 +1039,7 @@ class WorkflowTemplate extends pulumi.CustomResource {
   /// Encryption settings for encrypting workflow template job arguments. Structure is documented below
   late final pulumi.Output<WorkflowTemplateEncryptionConfig?> encryptionConfig;
   /// (Required) The Directed Acyclic Graph of Jobs to submit. Structure is documented below
-  late final pulumi.Output<List<Map<String, dynamic>>> jobs;
+  late final pulumi.Output<List<WorkflowTemplateJob>> jobs;
   /// Optional. The labels to associate with this template. These labels will be propagated to all jobs and clusters created by the workflow instance. Label **keys** must contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be empty, but, if present, must contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a template.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -1048,7 +1050,7 @@ class WorkflowTemplate extends pulumi.CustomResource {
   /// (Required) The resource name of the workflow template, as described in https://docs.cloud.google.com/apis/design/resource_names. * For `projects.regions.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}` * For `projects.locations.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
   late final pulumi.Output<String> name;
   /// Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
-  late final pulumi.Output<List<Map<String, dynamic>>?> parameters;
+  late final pulumi.Output<List<WorkflowTemplateParameter>?> parameters;
   /// (Required) WorkflowTemplate scheduling information.
   late final pulumi.Output<WorkflowTemplatePlacement> placement;
   /// The project for the resource
@@ -1072,21 +1074,22 @@ class WorkflowTemplate extends pulumi.CustomResource {
           'gcp:dataproc/workflowTemplate:WorkflowTemplate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');
     dagTimeout = registerOutput<String?>('dagTimeout');
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     encryptionConfig = registerOutput<WorkflowTemplateEncryptionConfig?>('encryptionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkflowTemplateEncryptionConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    jobs = registerOutput<List<Map<String, dynamic>>>('jobs');
-    labels = registerOutput<Map<String, String>?>('labels');
+    jobs = registerOutput<List<WorkflowTemplateJob>>('jobs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkflowTemplateJob>(guardedValue, (value) => WorkflowTemplateJob.fromMap((value as Map).cast<String, dynamic>())); });
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    parameters = registerOutput<List<Map<String, dynamic>>?>('parameters');
+    parameters = registerOutput<List<WorkflowTemplateParameter>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkflowTemplateParameter>(guardedValue, (value) => WorkflowTemplateParameter.fromMap((value as Map).cast<String, dynamic>())); });
     placement = registerOutput<WorkflowTemplatePlacement>('placement', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkflowTemplatePlacement.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     updateTime = registerOutput<String>('updateTime');
     version = registerOutput<int>('version');
   }
@@ -1096,11 +1099,12 @@ class WorkflowTemplate extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     WorkflowTemplateState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return WorkflowTemplate._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1117,16 +1121,43 @@ class WorkflowTemplate extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     dagTimeout = registerOutput<String?>('dagTimeout');
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     encryptionConfig = registerOutput<WorkflowTemplateEncryptionConfig?>('encryptionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkflowTemplateEncryptionConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    jobs = registerOutput<List<Map<String, dynamic>>>('jobs');
-    labels = registerOutput<Map<String, String>?>('labels');
+    jobs = registerOutput<List<WorkflowTemplateJob>>('jobs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkflowTemplateJob>(guardedValue, (value) => WorkflowTemplateJob.fromMap((value as Map).cast<String, dynamic>())); });
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    parameters = registerOutput<List<Map<String, dynamic>>?>('parameters');
+    parameters = registerOutput<List<WorkflowTemplateParameter>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkflowTemplateParameter>(guardedValue, (value) => WorkflowTemplateParameter.fromMap((value as Map).cast<String, dynamic>())); });
     placement = registerOutput<WorkflowTemplatePlacement>('placement', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkflowTemplatePlacement.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    updateTime = registerOutput<String>('updateTime');
+    version = registerOutput<int>('version');
+  }
+
+  /// Creates a typed reference to an existing [WorkflowTemplate] resource.
+  WorkflowTemplate.reference(String urn)
+    : super(
+        'gcp:dataproc/workflowTemplate:WorkflowTemplate',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    dagTimeout = registerOutput<String?>('dagTimeout');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    encryptionConfig = registerOutput<WorkflowTemplateEncryptionConfig?>('encryptionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkflowTemplateEncryptionConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    jobs = registerOutput<List<WorkflowTemplateJob>>('jobs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkflowTemplateJob>(guardedValue, (value) => WorkflowTemplateJob.fromMap((value as Map).cast<String, dynamic>())); });
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    parameters = registerOutput<List<WorkflowTemplateParameter>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkflowTemplateParameter>(guardedValue, (value) => WorkflowTemplateParameter.fromMap((value as Map).cast<String, dynamic>())); });
+    placement = registerOutput<WorkflowTemplatePlacement>('placement', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkflowTemplatePlacement.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     updateTime = registerOutput<String>('updateTime');
     version = registerOutput<int>('version');
   }

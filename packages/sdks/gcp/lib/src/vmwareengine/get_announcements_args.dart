@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_vmwareengine_get_announcements_get_announcements_args_doc}
 class GetAnnouncementsArgs {
   /// The resource name of the specific Announcement to retrieve. If provided, the `announcements` list will contain only this announcement.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The resource name of the region for which announcements will be listed. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: projects/my-project/locations/us-west1-a
   final pulumi.Input<String> parent;
 

@@ -967,7 +967,7 @@ class AiFeatureStoreEntityTypeIamPolicy extends pulumi.CustomResource {
           'gcp:vertex/aiFeatureStoreEntityTypeIamPolicy:AiFeatureStoreEntityTypeIamPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     entitytype = registerOutput<String>('entitytype');
     etag = registerOutput<String>('etag');
@@ -980,11 +980,12 @@ class AiFeatureStoreEntityTypeIamPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AiFeatureStoreEntityTypeIamPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AiFeatureStoreEntityTypeIamPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -998,6 +999,21 @@ class AiFeatureStoreEntityTypeIamPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    entitytype = registerOutput<String>('entitytype');
+    etag = registerOutput<String>('etag');
+    featurestore = registerOutput<String>('featurestore');
+    policyData = registerOutput<String>('policyData');
+  }
+
+  /// Creates a typed reference to an existing [AiFeatureStoreEntityTypeIamPolicy] resource.
+  AiFeatureStoreEntityTypeIamPolicy.reference(String urn)
+    : super(
+        'gcp:vertex/aiFeatureStoreEntityTypeIamPolicy:AiFeatureStoreEntityTypeIamPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     entitytype = registerOutput<String>('entitytype');
     etag = registerOutput<String>('etag');
     featurestore = registerOutput<String>('featurestore');

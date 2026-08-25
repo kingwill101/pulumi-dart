@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSource {
   /// The base64-encoded contents of the input notebook file.
-  final pulumi.Input<String>? content;
+  final pulumi.Input<String?>? content;
 
   /// Creates a new [AiScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDirectNotebookSource].
   /// [content] The base64-encoded contents of the input notebook file.

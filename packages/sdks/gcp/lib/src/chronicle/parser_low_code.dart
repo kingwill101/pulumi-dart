@@ -6,9 +6,9 @@ import 'parser_low_code_field_extractors.dart';
 class ParserLowCode {
   /// A representation of a parser extension as a set of field extractors.
   /// Structure is documented below.
-  final pulumi.Input<ParserLowCodeFieldExtractors>? fieldExtractors;
+  final pulumi.Input<ParserLowCodeFieldExtractors?>? fieldExtractors;
   /// The log used to create this low code parser in the UI.
-  final pulumi.Input<String>? log;
+  final pulumi.Input<String?>? log;
 
   /// Creates a new [ParserLowCode].
   /// [fieldExtractors] A representation of a parser extension as a set of field extractors.

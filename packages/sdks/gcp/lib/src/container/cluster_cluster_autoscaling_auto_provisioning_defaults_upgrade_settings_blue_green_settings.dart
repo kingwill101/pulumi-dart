@@ -5,9 +5,9 @@ import 'cluster_cluster_autoscaling_auto_provisioning_defaults_upgrade_settings_
 
 class ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettings {
   /// Time needed after draining entire blue pool. After this period, blue pool will be cleaned up. A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
-  final pulumi.Input<String>? nodePoolSoakDuration;
+  final pulumi.Input<String?>? nodePoolSoakDuration;
   /// Standard policy for the blue-green upgrade. To be specified when strategy is set to BLUE_GREEN. Structure is documented below.
-  final pulumi.Input<ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy>? standardRolloutPolicy;
+  final pulumi.Input<ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy?>? standardRolloutPolicy;
 
   /// Creates a new [ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettings].
   /// [nodePoolSoakDuration] Time needed after draining entire blue pool. After this period, blue pool will be cleaned up. A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".

@@ -9,219 +9,219 @@ import 'get_instance_server_ca_cert.dart';
 
 /// Result data returned by getInstance.
 class GetInstanceResult {
-  final String alternativeLocationId;
-  final bool authEnabled;
-  final String authString;
-  final String authorizedNetwork;
-  final String connectMode;
-  final String createTime;
-  final String currentLocationId;
-  final String customerManagedKey;
-  final String deletionPolicy;
-  final bool deletionProtection;
-  final String displayName;
-  final Map<String, String> effectiveLabels;
-  final String effectiveReservedIpRange;
-  final String host;
+  final String? alternativeLocationId;
+  final bool? authEnabled;
+  final String? authString;
+  final String? authorizedNetwork;
+  final String? connectMode;
+  final String? createTime;
+  final String? currentLocationId;
+  final String? customerManagedKey;
+  final String? deletionPolicy;
+  final bool? deletionProtection;
+  final String? displayName;
+  final Map<String, String>? effectiveLabels;
+  final String? effectiveReservedIpRange;
+  final String? host;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final Map<String, String> labels;
-  final String locationId;
-  final List<GetInstanceMaintenancePolicy> maintenancePolicies;
-  final List<GetInstanceMaintenanceSchedule> maintenanceSchedules;
-  final String maintenanceVersion;
-  final int memorySizeGb;
-  final String name;
-  final List<GetInstanceNode> nodes;
-  final List<GetInstancePersistenceConfig> persistenceConfigs;
-  final String persistenceIamIdentity;
-  final int port;
+  final String? id;
+  final Map<String, String>? labels;
+  final String? locationId;
+  final List<GetInstanceMaintenancePolicy>? maintenancePolicies;
+  final List<GetInstanceMaintenanceSchedule>? maintenanceSchedules;
+  final String? maintenanceVersion;
+  final int? memorySizeGb;
+  final String? name;
+  final List<GetInstanceNode>? nodes;
+  final List<GetInstancePersistenceConfig>? persistenceConfigs;
+  final String? persistenceIamIdentity;
+  final int? port;
   final String? project;
-  final Map<String, String> pulumiLabels;
-  final String readEndpoint;
-  final int readEndpointPort;
-  final String readReplicasMode;
-  final Map<String, String> redisConfigs;
-  final String redisVersion;
+  final Map<String, String>? pulumiLabels;
+  final String? readEndpoint;
+  final int? readEndpointPort;
+  final String? readReplicasMode;
+  final Map<String, String>? redisConfigs;
+  final String? redisVersion;
   final String? region;
-  final int replicaCount;
-  final String reservedIpRange;
-  final String secondaryIpRange;
-  final List<GetInstanceServerCaCert> serverCaCerts;
-  final String tier;
-  final String transitEncryptionMode;
+  final int? replicaCount;
+  final String? reservedIpRange;
+  final String? secondaryIpRange;
+  final List<GetInstanceServerCaCert>? serverCaCerts;
+  final String? tier;
+  final String? transitEncryptionMode;
 
   /// Creates a new [GetInstanceResult].
-  /// [alternativeLocationId] Required.
-  /// [authEnabled] Required.
-  /// [authString] Required.
-  /// [authorizedNetwork] Required.
-  /// [connectMode] Required.
-  /// [createTime] Required.
-  /// [currentLocationId] Required.
-  /// [customerManagedKey] Required.
-  /// [deletionPolicy] Required.
-  /// [deletionProtection] Required.
-  /// [displayName] Required.
-  /// [effectiveLabels] Required.
-  /// [effectiveReservedIpRange] Required.
-  /// [host] Required.
+  /// [alternativeLocationId] Optional.
+  /// [authEnabled] Optional.
+  /// [authString] Optional.
+  /// [authorizedNetwork] Optional.
+  /// [connectMode] Optional.
+  /// [createTime] Optional.
+  /// [currentLocationId] Optional.
+  /// [customerManagedKey] Optional.
+  /// [deletionPolicy] Optional.
+  /// [deletionProtection] Optional.
+  /// [displayName] Optional.
+  /// [effectiveLabels] Optional.
+  /// [effectiveReservedIpRange] Optional.
+  /// [host] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [labels] Required.
-  /// [locationId] Required.
-  /// [maintenancePolicies] Required.
-  /// [maintenanceSchedules] Required.
-  /// [maintenanceVersion] Required.
-  /// [memorySizeGb] Required.
-  /// [name] Required.
-  /// [nodes] Required.
-  /// [persistenceConfigs] Required.
-  /// [persistenceIamIdentity] Required.
-  /// [port] Required.
+  /// [labels] Optional.
+  /// [locationId] Optional.
+  /// [maintenancePolicies] Optional.
+  /// [maintenanceSchedules] Optional.
+  /// [maintenanceVersion] Optional.
+  /// [memorySizeGb] Optional.
+  /// [name] Optional.
+  /// [nodes] Optional.
+  /// [persistenceConfigs] Optional.
+  /// [persistenceIamIdentity] Optional.
+  /// [port] Optional.
   /// [project] Optional.
-  /// [pulumiLabels] Required.
-  /// [readEndpoint] Required.
-  /// [readEndpointPort] Required.
-  /// [readReplicasMode] Required.
-  /// [redisConfigs] Required.
-  /// [redisVersion] Required.
+  /// [pulumiLabels] Optional.
+  /// [readEndpoint] Optional.
+  /// [readEndpointPort] Optional.
+  /// [readReplicasMode] Optional.
+  /// [redisConfigs] Optional.
+  /// [redisVersion] Optional.
   /// [region] Optional.
-  /// [replicaCount] Required.
-  /// [reservedIpRange] Required.
-  /// [secondaryIpRange] Required.
-  /// [serverCaCerts] Required.
-  /// [tier] Required.
-  /// [transitEncryptionMode] Required.
+  /// [replicaCount] Optional.
+  /// [reservedIpRange] Optional.
+  /// [secondaryIpRange] Optional.
+  /// [serverCaCerts] Optional.
+  /// [tier] Optional.
+  /// [transitEncryptionMode] Optional.
   const GetInstanceResult({
-    required this.alternativeLocationId,
-    required this.authEnabled,
-    required this.authString,
-    required this.authorizedNetwork,
-    required this.connectMode,
-    required this.createTime,
-    required this.currentLocationId,
-    required this.customerManagedKey,
-    required this.deletionPolicy,
-    required this.deletionProtection,
-    required this.displayName,
-    required this.effectiveLabels,
-    required this.effectiveReservedIpRange,
-    required this.host,
-    required this.id,
-    required this.labels,
-    required this.locationId,
-    required this.maintenancePolicies,
-    required this.maintenanceSchedules,
-    required this.maintenanceVersion,
-    required this.memorySizeGb,
-    required this.name,
-    required this.nodes,
-    required this.persistenceConfigs,
-    required this.persistenceIamIdentity,
-    required this.port,
+    this.alternativeLocationId,
+    this.authEnabled,
+    this.authString,
+    this.authorizedNetwork,
+    this.connectMode,
+    this.createTime,
+    this.currentLocationId,
+    this.customerManagedKey,
+    this.deletionPolicy,
+    this.deletionProtection,
+    this.displayName,
+    this.effectiveLabels,
+    this.effectiveReservedIpRange,
+    this.host,
+    this.id,
+    this.labels,
+    this.locationId,
+    this.maintenancePolicies,
+    this.maintenanceSchedules,
+    this.maintenanceVersion,
+    this.memorySizeGb,
+    this.name,
+    this.nodes,
+    this.persistenceConfigs,
+    this.persistenceIamIdentity,
+    this.port,
     this.project,
-    required this.pulumiLabels,
-    required this.readEndpoint,
-    required this.readEndpointPort,
-    required this.readReplicasMode,
-    required this.redisConfigs,
-    required this.redisVersion,
+    this.pulumiLabels,
+    this.readEndpoint,
+    this.readEndpointPort,
+    this.readReplicasMode,
+    this.redisConfigs,
+    this.redisVersion,
     this.region,
-    required this.replicaCount,
-    required this.reservedIpRange,
-    required this.secondaryIpRange,
-    required this.serverCaCerts,
-    required this.tier,
-    required this.transitEncryptionMode,
+    this.replicaCount,
+    this.reservedIpRange,
+    this.secondaryIpRange,
+    this.serverCaCerts,
+    this.tier,
+    this.transitEncryptionMode,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'alternativeLocationId': alternativeLocationId,
-      'authEnabled': authEnabled,
-      'authString': authString,
-      'authorizedNetwork': authorizedNetwork,
-      'connectMode': connectMode,
-      'createTime': createTime,
-      'currentLocationId': currentLocationId,
-      'customerManagedKey': customerManagedKey,
-      'deletionPolicy': deletionPolicy,
-      'deletionProtection': deletionProtection,
-      'displayName': displayName,
-      'effectiveLabels': effectiveLabels,
-      'effectiveReservedIpRange': effectiveReservedIpRange,
-      'host': host,
-      'id': id,
-      'labels': labels,
-      'locationId': locationId,
-      'maintenancePolicies': pulumi.Input.encodeList<GetInstanceMaintenancePolicy, Map<String, dynamic>>(maintenancePolicies, (value) => value.toMap()),
-      'maintenanceSchedules': pulumi.Input.encodeList<GetInstanceMaintenanceSchedule, Map<String, dynamic>>(maintenanceSchedules, (value) => value.toMap()),
-      'maintenanceVersion': maintenanceVersion,
-      'memorySizeGb': memorySizeGb,
-      'name': name,
-      'nodes': pulumi.Input.encodeList<GetInstanceNode, Map<String, dynamic>>(nodes, (value) => value.toMap()),
-      'persistenceConfigs': pulumi.Input.encodeList<GetInstancePersistenceConfig, Map<String, dynamic>>(persistenceConfigs, (value) => value.toMap()),
-      'persistenceIamIdentity': persistenceIamIdentity,
-      'port': port,
+      'alternativeLocationId': ?alternativeLocationId,
+      'authEnabled': ?authEnabled,
+      'authString': ?authString,
+      'authorizedNetwork': ?authorizedNetwork,
+      'connectMode': ?connectMode,
+      'createTime': ?createTime,
+      'currentLocationId': ?currentLocationId,
+      'customerManagedKey': ?customerManagedKey,
+      'deletionPolicy': ?deletionPolicy,
+      'deletionProtection': ?deletionProtection,
+      'displayName': ?displayName,
+      'effectiveLabels': ?effectiveLabels,
+      'effectiveReservedIpRange': ?effectiveReservedIpRange,
+      'host': ?host,
+      'id': ?id,
+      'labels': ?labels,
+      'locationId': ?locationId,
+      'maintenancePolicies': ?(() { final guardedValue = maintenancePolicies; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetInstanceMaintenancePolicy, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'maintenanceSchedules': ?(() { final guardedValue = maintenanceSchedules; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetInstanceMaintenanceSchedule, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'maintenanceVersion': ?maintenanceVersion,
+      'memorySizeGb': ?memorySizeGb,
+      'name': ?name,
+      'nodes': ?(() { final guardedValue = nodes; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetInstanceNode, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'persistenceConfigs': ?(() { final guardedValue = persistenceConfigs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetInstancePersistenceConfig, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'persistenceIamIdentity': ?persistenceIamIdentity,
+      'port': ?port,
       'project': ?project,
-      'pulumiLabels': pulumiLabels,
-      'readEndpoint': readEndpoint,
-      'readEndpointPort': readEndpointPort,
-      'readReplicasMode': readReplicasMode,
-      'redisConfigs': redisConfigs,
-      'redisVersion': redisVersion,
+      'pulumiLabels': ?pulumiLabels,
+      'readEndpoint': ?readEndpoint,
+      'readEndpointPort': ?readEndpointPort,
+      'readReplicasMode': ?readReplicasMode,
+      'redisConfigs': ?redisConfigs,
+      'redisVersion': ?redisVersion,
       'region': ?region,
-      'replicaCount': replicaCount,
-      'reservedIpRange': reservedIpRange,
-      'secondaryIpRange': secondaryIpRange,
-      'serverCaCerts': pulumi.Input.encodeList<GetInstanceServerCaCert, Map<String, dynamic>>(serverCaCerts, (value) => value.toMap()),
-      'tier': tier,
-      'transitEncryptionMode': transitEncryptionMode,
+      'replicaCount': ?replicaCount,
+      'reservedIpRange': ?reservedIpRange,
+      'secondaryIpRange': ?secondaryIpRange,
+      'serverCaCerts': ?(() { final guardedValue = serverCaCerts; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetInstanceServerCaCert, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'tier': ?tier,
+      'transitEncryptionMode': ?transitEncryptionMode,
     };
   }
 
   factory GetInstanceResult.fromMap(Map<String, dynamic> map) {
     return GetInstanceResult(
-      alternativeLocationId: map['alternativeLocationId'] as String,
-      authEnabled: map['authEnabled'] as bool,
-      authString: map['authString'] as String,
-      authorizedNetwork: map['authorizedNetwork'] as String,
-      connectMode: map['connectMode'] as String,
-      createTime: map['createTime'] as String,
-      currentLocationId: map['currentLocationId'] as String,
-      customerManagedKey: map['customerManagedKey'] as String,
-      deletionPolicy: map['deletionPolicy'] as String,
-      deletionProtection: map['deletionProtection'] as bool,
-      displayName: map['displayName'] as String,
-      effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
-      effectiveReservedIpRange: map['effectiveReservedIpRange'] as String,
-      host: map['host'] as String,
-      id: map['id'] as String,
-      labels: (map['labels'] as Map).cast<String, String>(),
-      locationId: map['locationId'] as String,
-      maintenancePolicies: pulumi.Input.decodeList<GetInstanceMaintenancePolicy>(map['maintenancePolicies']!, (value) => GetInstanceMaintenancePolicy.fromMap((value as Map).cast<String, dynamic>())),
-      maintenanceSchedules: pulumi.Input.decodeList<GetInstanceMaintenanceSchedule>(map['maintenanceSchedules']!, (value) => GetInstanceMaintenanceSchedule.fromMap((value as Map).cast<String, dynamic>())),
-      maintenanceVersion: map['maintenanceVersion'] as String,
-      memorySizeGb: map['memorySizeGb'] as int,
-      name: map['name'] as String,
-      nodes: pulumi.Input.decodeList<GetInstanceNode>(map['nodes']!, (value) => GetInstanceNode.fromMap((value as Map).cast<String, dynamic>())),
-      persistenceConfigs: pulumi.Input.decodeList<GetInstancePersistenceConfig>(map['persistenceConfigs']!, (value) => GetInstancePersistenceConfig.fromMap((value as Map).cast<String, dynamic>())),
-      persistenceIamIdentity: map['persistenceIamIdentity'] as String,
-      port: map['port'] as int,
+      alternativeLocationId: (() { final guardedValue = map['alternativeLocationId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      authEnabled: (() { final guardedValue = map['authEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      authString: (() { final guardedValue = map['authString']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      authorizedNetwork: (() { final guardedValue = map['authorizedNetwork']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      connectMode: (() { final guardedValue = map['connectMode']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      currentLocationId: (() { final guardedValue = map['currentLocationId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      customerManagedKey: (() { final guardedValue = map['customerManagedKey']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      deletionProtection: (() { final guardedValue = map['deletionProtection']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      effectiveReservedIpRange: (() { final guardedValue = map['effectiveReservedIpRange']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      host: (() { final guardedValue = map['host']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      locationId: (() { final guardedValue = map['locationId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      maintenancePolicies: (() { final guardedValue = map['maintenancePolicies']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetInstanceMaintenancePolicy>(guardedValue, (value) => GetInstanceMaintenancePolicy.fromMap((value as Map).cast<String, dynamic>())); })(),
+      maintenanceSchedules: (() { final guardedValue = map['maintenanceSchedules']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetInstanceMaintenanceSchedule>(guardedValue, (value) => GetInstanceMaintenanceSchedule.fromMap((value as Map).cast<String, dynamic>())); })(),
+      maintenanceVersion: (() { final guardedValue = map['maintenanceVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      memorySizeGb: (() { final guardedValue = map['memorySizeGb']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      nodes: (() { final guardedValue = map['nodes']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetInstanceNode>(guardedValue, (value) => GetInstanceNode.fromMap((value as Map).cast<String, dynamic>())); })(),
+      persistenceConfigs: (() { final guardedValue = map['persistenceConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetInstancePersistenceConfig>(guardedValue, (value) => GetInstancePersistenceConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
+      persistenceIamIdentity: (() { final guardedValue = map['persistenceIamIdentity']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
-      readEndpoint: map['readEndpoint'] as String,
-      readEndpointPort: map['readEndpointPort'] as int,
-      readReplicasMode: map['readReplicasMode'] as String,
-      redisConfigs: (map['redisConfigs'] as Map).cast<String, String>(),
-      redisVersion: map['redisVersion'] as String,
+      pulumiLabels: (() { final guardedValue = map['pulumiLabels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      readEndpoint: (() { final guardedValue = map['readEndpoint']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      readEndpointPort: (() { final guardedValue = map['readEndpointPort']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      readReplicasMode: (() { final guardedValue = map['readReplicasMode']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      redisConfigs: (() { final guardedValue = map['redisConfigs']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      redisVersion: (() { final guardedValue = map['redisVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      replicaCount: map['replicaCount'] as int,
-      reservedIpRange: map['reservedIpRange'] as String,
-      secondaryIpRange: map['secondaryIpRange'] as String,
-      serverCaCerts: pulumi.Input.decodeList<GetInstanceServerCaCert>(map['serverCaCerts']!, (value) => GetInstanceServerCaCert.fromMap((value as Map).cast<String, dynamic>())),
-      tier: map['tier'] as String,
-      transitEncryptionMode: map['transitEncryptionMode'] as String,
+      replicaCount: (() { final guardedValue = map['replicaCount']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      reservedIpRange: (() { final guardedValue = map['reservedIpRange']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      secondaryIpRange: (() { final guardedValue = map['secondaryIpRange']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      serverCaCerts: (() { final guardedValue = map['serverCaCerts']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetInstanceServerCaCert>(guardedValue, (value) => GetInstanceServerCaCert.fromMap((value as Map).cast<String, dynamic>())); })(),
+      tier: (() { final guardedValue = map['tier']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      transitEncryptionMode: (() { final guardedValue = map['transitEncryptionMode']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

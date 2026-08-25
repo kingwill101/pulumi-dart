@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'entry_link_args.dart';
+import 'entry_link_aspect.dart';
+import 'entry_link_entry_reference.dart';
 import 'entry_link_state.dart';
 
 /// EntryLink represents a link between two Entries.
@@ -998,7 +1000,7 @@ import 'entry_link_state.dart';
 class EntryLink extends pulumi.CustomResource {
   /// The Aspects attached to the Entry Link.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> aspects;
+  late final pulumi.Output<List<EntryLinkAspect>?> aspects;
   /// The time when the Entry Link was created.
   late final pulumi.Output<String> createTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -1017,7 +1019,7 @@ class EntryLink extends pulumi.CustomResource {
   late final pulumi.Output<String> entryLinkType;
   /// Specifies the Entries referenced in the Entry Link. There should be exactly two entry references.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> entryReferences;
+  late final pulumi.Output<List<EntryLinkEntryReference>> entryReferences;
   /// The location for the entry.
   late final pulumi.Output<String> location;
   /// The relative resource name of the Entry Link, of the form:
@@ -1041,15 +1043,15 @@ class EntryLink extends pulumi.CustomResource {
           'gcp:dataplex/entryLink:EntryLink',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
-    aspects = registerOutput<List<Map<String, dynamic>>?>('aspects');
+    aspects = registerOutput<List<EntryLinkAspect>?>('aspects', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EntryLinkAspect>(guardedValue, (value) => EntryLinkAspect.fromMap((value as Map).cast<String, dynamic>())); });
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     entryGroupId = registerOutput<String>('entryGroupId');
     entryLinkId = registerOutput<String>('entryLinkId');
     entryLinkType = registerOutput<String>('entryLinkType');
-    entryReferences = registerOutput<List<Map<String, dynamic>>>('entryReferences');
+    entryReferences = registerOutput<List<EntryLinkEntryReference>>('entryReferences', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EntryLinkEntryReference>(guardedValue, (value) => EntryLinkEntryReference.fromMap((value as Map).cast<String, dynamic>())); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
@@ -1061,11 +1063,12 @@ class EntryLink extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EntryLinkState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return EntryLink._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1079,13 +1082,35 @@ class EntryLink extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    aspects = registerOutput<List<Map<String, dynamic>>?>('aspects');
+    aspects = registerOutput<List<EntryLinkAspect>?>('aspects', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EntryLinkAspect>(guardedValue, (value) => EntryLinkAspect.fromMap((value as Map).cast<String, dynamic>())); });
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     entryGroupId = registerOutput<String>('entryGroupId');
     entryLinkId = registerOutput<String>('entryLinkId');
     entryLinkType = registerOutput<String>('entryLinkType');
-    entryReferences = registerOutput<List<Map<String, dynamic>>>('entryReferences');
+    entryReferences = registerOutput<List<EntryLinkEntryReference>>('entryReferences', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EntryLinkEntryReference>(guardedValue, (value) => EntryLinkEntryReference.fromMap((value as Map).cast<String, dynamic>())); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [EntryLink] resource.
+  EntryLink.reference(String urn)
+    : super(
+        'gcp:dataplex/entryLink:EntryLink',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    aspects = registerOutput<List<EntryLinkAspect>?>('aspects', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EntryLinkAspect>(guardedValue, (value) => EntryLinkAspect.fromMap((value as Map).cast<String, dynamic>())); });
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    entryGroupId = registerOutput<String>('entryGroupId');
+    entryLinkId = registerOutput<String>('entryLinkId');
+    entryLinkType = registerOutput<String>('entryLinkType');
+    entryReferences = registerOutput<List<EntryLinkEntryReference>>('entryReferences', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EntryLinkEntryReference>(guardedValue, (value) => EntryLinkEntryReference.fromMap((value as Map).cast<String, dynamic>())); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

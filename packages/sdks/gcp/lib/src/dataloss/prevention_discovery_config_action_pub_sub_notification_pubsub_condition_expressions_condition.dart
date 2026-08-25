@@ -5,10 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressionsCondition {
   /// The minimum data risk score that triggers the condition.
   /// Possible values are: `HIGH`, `MEDIUM_OR_HIGH`.
-  final pulumi.Input<String>? minimumRiskScore;
+  final pulumi.Input<String?>? minimumRiskScore;
   /// The minimum sensitivity level that triggers the condition.
   /// Possible values are: `HIGH`, `MEDIUM_OR_HIGH`.
-  final pulumi.Input<String>? minimumSensitivityScore;
+  final pulumi.Input<String?>? minimumSensitivityScore;
 
   /// Creates a new [PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressionsCondition].
   /// [minimumRiskScore] The minimum data risk score that triggers the condition.

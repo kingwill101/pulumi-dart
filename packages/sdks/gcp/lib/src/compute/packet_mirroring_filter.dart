@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PacketMirroringFilter {
   /// IP CIDR ranges that apply as a filter on the source (ingress) or
   /// destination (egress) IP in the IP header. Only IPv4 is supported.
-  final pulumi.Input<List<String>>? cidrRanges;
+  final pulumi.Input<List<String>?>? cidrRanges;
   /// Direction of traffic to mirror.
   /// Default value is `BOTH`.
   /// Possible values are: `INGRESS`, `EGRESS`, `BOTH`.
-  final pulumi.Input<String>? direction;
+  final pulumi.Input<String?>? direction;
   /// Possible IP protocols including tcp, udp, icmp and esp
-  final pulumi.Input<List<String>>? ipProtocols;
+  final pulumi.Input<List<String>?>? ipProtocols;
 
   /// Creates a new [PacketMirroringFilter].
   /// [cidrRanges] IP CIDR ranges that apply as a filter on the source (ingress) or

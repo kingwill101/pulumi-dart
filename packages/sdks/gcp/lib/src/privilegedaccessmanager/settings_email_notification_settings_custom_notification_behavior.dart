@@ -8,13 +8,13 @@ import 'settings_email_notification_settings_custom_notification_behavior_reques
 class SettingsEmailNotificationSettingsCustomNotificationBehavior {
   /// Email notifications specific to Requesters.
   /// Structure is documented below.
-  final pulumi.Input<SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotifications>? adminNotifications;
+  final pulumi.Input<SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotifications?>? adminNotifications;
   /// Email notifications specific to Approvers.
   /// Structure is documented below.
-  final pulumi.Input<SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotifications>? approverNotifications;
+  final pulumi.Input<SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotifications?>? approverNotifications;
   /// Email notifications specific to Requesters.
   /// Structure is documented below.
-  final pulumi.Input<SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotifications>? requesterNotifications;
+  final pulumi.Input<SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotifications?>? requesterNotifications;
 
   /// Creates a new [SettingsEmailNotificationSettingsCustomNotificationBehavior].
   /// [adminNotifications] Email notifications specific to Requesters.

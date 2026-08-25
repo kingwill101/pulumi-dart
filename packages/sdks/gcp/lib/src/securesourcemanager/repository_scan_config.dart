@@ -6,7 +6,7 @@ import 'repository_scan_config_secret_scan_config.dart';
 class RepositoryScanConfig {
   /// Configuration for secret scanning.
   /// Structure is documented below.
-  final pulumi.Input<RepositoryScanConfigSecretScanConfig>? secretScanConfig;
+  final pulumi.Input<RepositoryScanConfigSecretScanConfig?>? secretScanConfig;
 
   /// Creates a new [RepositoryScanConfig].
   /// [secretScanConfig] Configuration for secret scanning.

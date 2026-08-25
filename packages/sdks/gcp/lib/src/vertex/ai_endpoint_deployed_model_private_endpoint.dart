@@ -5,16 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AiEndpointDeployedModelPrivateEndpoint {
   /// (Output)
   /// Output only. Http(s) path to send explain requests.
-  final pulumi.Input<String>? explainHttpUri;
+  final pulumi.Input<String?>? explainHttpUri;
   /// (Output)
   /// Output only. Http(s) path to send health check requests.
-  final pulumi.Input<String>? healthHttpUri;
+  final pulumi.Input<String?>? healthHttpUri;
   /// (Output)
   /// Output only. Http(s) path to send prediction requests.
-  final pulumi.Input<String>? predictHttpUri;
+  final pulumi.Input<String?>? predictHttpUri;
   /// (Output)
   /// Output only. The name of the service attachment resource. Populated if private service connect is enabled.
-  final pulumi.Input<String>? serviceAttachment;
+  final pulumi.Input<String?>? serviceAttachment;
 
   /// Creates a new [AiEndpointDeployedModelPrivateEndpoint].
   /// [explainHttpUri] (Output)

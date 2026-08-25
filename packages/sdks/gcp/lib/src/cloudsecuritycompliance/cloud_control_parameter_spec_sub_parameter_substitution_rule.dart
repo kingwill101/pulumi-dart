@@ -7,10 +7,10 @@ import 'cloud_control_parameter_spec_sub_parameter_substitution_rule_placeholder
 class CloudControlParameterSpecSubParameterSubstitutionRule {
   /// Attribute at the given path is substituted entirely.
   /// Structure is documented below.
-  final pulumi.Input<CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRule>? attributeSubstitutionRule;
+  final pulumi.Input<CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRule?>? attributeSubstitutionRule;
   /// Placeholder is substituted in the rendered string.
   /// Structure is documented below.
-  final pulumi.Input<CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRule>? placeholderSubstitutionRule;
+  final pulumi.Input<CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRule?>? placeholderSubstitutionRule;
 
   /// Creates a new [CloudControlParameterSpecSubParameterSubstitutionRule].
   /// [attributeSubstitutionRule] Attribute at the given path is substituted entirely.

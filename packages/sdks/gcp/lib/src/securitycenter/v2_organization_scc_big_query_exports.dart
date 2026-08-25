@@ -336,7 +336,7 @@ class V2OrganizationSccBigQueryExports extends pulumi.CustomResource {
           'gcp:securitycenter/v2OrganizationSccBigQueryExports:V2OrganizationSccBigQueryExports',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     bigQueryExportId = registerOutput<String>('bigQueryExportId');
     createTime = registerOutput<String>('createTime');
@@ -357,11 +357,12 @@ class V2OrganizationSccBigQueryExports extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     V2OrganizationSccBigQueryExportsState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return V2OrganizationSccBigQueryExports._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -375,6 +376,29 @@ class V2OrganizationSccBigQueryExports extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    bigQueryExportId = registerOutput<String>('bigQueryExportId');
+    createTime = registerOutput<String>('createTime');
+    dataset = registerOutput<String?>('dataset');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    filter = registerOutput<String?>('filter');
+    location = registerOutput<String?>('location');
+    mostRecentEditor = registerOutput<String>('mostRecentEditor');
+    this.name = registerOutput<String>('name');
+    organization = registerOutput<String>('organization');
+    principal = registerOutput<String>('principal');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [V2OrganizationSccBigQueryExports] resource.
+  V2OrganizationSccBigQueryExports.reference(String urn)
+    : super(
+        'gcp:securitycenter/v2OrganizationSccBigQueryExports:V2OrganizationSccBigQueryExports',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     bigQueryExportId = registerOutput<String>('bigQueryExportId');
     createTime = registerOutput<String>('createTime');
     dataset = registerOutput<String?>('dataset');

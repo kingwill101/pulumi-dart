@@ -25,8 +25,8 @@ class GetInstanceGroupManagerVersionTargetSize {
 
   factory GetInstanceGroupManagerVersionTargetSize.fromMap(Map<String, dynamic> map) {
     return GetInstanceGroupManagerVersionTargetSize(
-      fixed: pulumi.Input.fromValue(map['fixed'] as int),
-      percent: pulumi.Input.fromValue(map['percent'] as int),
+      fixed: pulumi.Input.fromValue((map['fixed'] as num).toInt()),
+      percent: pulumi.Input.fromValue((map['percent'] as num).toInt()),
     );
   }
 }

@@ -424,7 +424,7 @@ class AiLogicPromptTemplateLock extends pulumi.CustomResource {
           'gcp:firebase/aiLogicPromptTemplateLock:AiLogicPromptTemplateLock',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     location = registerOutput<String>('location');
@@ -440,11 +440,12 @@ class AiLogicPromptTemplateLock extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AiLogicPromptTemplateLockState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AiLogicPromptTemplateLock._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -458,6 +459,24 @@ class AiLogicPromptTemplateLock extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    location = registerOutput<String>('location');
+    locked = registerOutput<bool>('locked');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    regionalPropagationDisabled = registerOutput<bool?>('regionalPropagationDisabled');
+    templateId = registerOutput<String>('templateId');
+  }
+
+  /// Creates a typed reference to an existing [AiLogicPromptTemplateLock] resource.
+  AiLogicPromptTemplateLock.reference(String urn)
+    : super(
+        'gcp:firebase/aiLogicPromptTemplateLock:AiLogicPromptTemplateLock',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     location = registerOutput<String>('location');
     locked = registerOutput<bool>('locked');

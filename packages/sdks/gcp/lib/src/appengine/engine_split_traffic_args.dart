@@ -9,10 +9,10 @@ import 'engine_split_traffic_split.dart';
 /// {@macro pulumi_appengine_engine_split_traffic_engine_split_traffic_args_doc}
 class EngineSplitTrafficArgs {
   /// If set to true traffic will be migrated to this version.
-  final pulumi.Input<bool>? migrateTraffic;
+  final pulumi.Input<bool?>? migrateTraffic;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The name of the service these settings apply to.
   final pulumi.Input<String> service;
   /// Mapping that defines fractional HTTP traffic diversion to different versions within the service.

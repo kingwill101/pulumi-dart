@@ -5,19 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstanceServerCaCert {
   /// (Output)
   /// The certificate data in PEM format.
-  final pulumi.Input<String>? cert;
+  final pulumi.Input<String?>? cert;
   /// (Output)
   /// The time when the certificate was created.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// (Output)
   /// The time when the certificate expires.
-  final pulumi.Input<String>? expireTime;
+  final pulumi.Input<String?>? expireTime;
   /// (Output)
   /// Serial number, as extracted from the certificate.
-  final pulumi.Input<String>? serialNumber;
+  final pulumi.Input<String?>? serialNumber;
   /// (Output)
   /// Sha1 Fingerprint of the certificate.
-  final pulumi.Input<String>? sha1Fingerprint;
+  final pulumi.Input<String?>? sha1Fingerprint;
 
   /// Creates a new [InstanceServerCaCert].
   /// [cert] (Output)

@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'backup_plan_association_args.dart';
+import 'backup_plan_association_rules_config_info.dart';
 import 'backup_plan_association_state.dart';
 
 /// A Backup and DR BackupPlanAssociation.
@@ -1083,7 +1084,7 @@ class BackupPlanAssociation extends pulumi.CustomResource {
   late final pulumi.Output<String> resourceType;
   /// Message for rules config info
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> rulesConfigInfos;
+  late final pulumi.Output<List<BackupPlanAssociationRulesConfigInfo>> rulesConfigInfos;
   /// The time when the instance was updated.
   late final pulumi.Output<String> updateTime;
 
@@ -1099,7 +1100,7 @@ class BackupPlanAssociation extends pulumi.CustomResource {
           'gcp:backupdisasterrecovery/backupPlanAssociation:BackupPlanAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     backupPlan = registerOutput<String>('backupPlan');
     backupPlanAssociationId = registerOutput<String>('backupPlanAssociationId');
@@ -1111,7 +1112,7 @@ class BackupPlanAssociation extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     resource = registerOutput<String>('resource');
     resourceType = registerOutput<String>('resourceType');
-    rulesConfigInfos = registerOutput<List<Map<String, dynamic>>>('rulesConfigInfos');
+    rulesConfigInfos = registerOutput<List<BackupPlanAssociationRulesConfigInfo>>('rulesConfigInfos', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BackupPlanAssociationRulesConfigInfo>(guardedValue, (value) => BackupPlanAssociationRulesConfigInfo.fromMap((value as Map).cast<String, dynamic>())); });
     updateTime = registerOutput<String>('updateTime');
   }
 
@@ -1120,11 +1121,12 @@ class BackupPlanAssociation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     BackupPlanAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return BackupPlanAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1148,7 +1150,30 @@ class BackupPlanAssociation extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     resource = registerOutput<String>('resource');
     resourceType = registerOutput<String>('resourceType');
-    rulesConfigInfos = registerOutput<List<Map<String, dynamic>>>('rulesConfigInfos');
+    rulesConfigInfos = registerOutput<List<BackupPlanAssociationRulesConfigInfo>>('rulesConfigInfos', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BackupPlanAssociationRulesConfigInfo>(guardedValue, (value) => BackupPlanAssociationRulesConfigInfo.fromMap((value as Map).cast<String, dynamic>())); });
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [BackupPlanAssociation] resource.
+  BackupPlanAssociation.reference(String urn)
+    : super(
+        'gcp:backupdisasterrecovery/backupPlanAssociation:BackupPlanAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    backupPlan = registerOutput<String>('backupPlan');
+    backupPlanAssociationId = registerOutput<String>('backupPlanAssociationId');
+    createTime = registerOutput<String>('createTime');
+    dataSource = registerOutput<String>('dataSource');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    resource = registerOutput<String>('resource');
+    resourceType = registerOutput<String>('resourceType');
+    rulesConfigInfos = registerOutput<List<BackupPlanAssociationRulesConfigInfo>>('rulesConfigInfos', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BackupPlanAssociationRulesConfigInfo>(guardedValue, (value) => BackupPlanAssociationRulesConfigInfo.fromMap((value as Map).cast<String, dynamic>())); });
     updateTime = registerOutput<String>('updateTime');
   }
 }

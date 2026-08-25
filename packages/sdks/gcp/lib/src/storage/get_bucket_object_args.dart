@@ -8,9 +8,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_storage_get_bucket_object_get_bucket_object_args_doc}
 class GetBucketObjectArgs {
   /// The name of the containing bucket.
-  final pulumi.Input<String>? bucket;
+  final pulumi.Input<String?>? bucket;
   /// The name of the object.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [GetBucketObjectArgs].
   /// [bucket] The name of the containing bucket.

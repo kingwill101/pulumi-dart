@@ -4,17 +4,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NodePoolNodeConfigKubeletConfigEvictionMinimumReclaim {
   /// Defines percentage of minimum reclaim for imagefs.available.
-  final pulumi.Input<String>? imagefsAvailable;
+  final pulumi.Input<String?>? imagefsAvailable;
   /// Defines percentage of minimum reclaim for imagefs.inodesFree.
-  final pulumi.Input<String>? imagefsInodesFree;
+  final pulumi.Input<String?>? imagefsInodesFree;
   /// Defines percentage of minimum reclaim for memory.available.
-  final pulumi.Input<String>? memoryAvailable;
+  final pulumi.Input<String?>? memoryAvailable;
   /// Defines percentage of minimum reclaim for nodefs.available.
-  final pulumi.Input<String>? nodefsAvailable;
+  final pulumi.Input<String?>? nodefsAvailable;
   /// Defines percentage of minimum reclaim for nodefs.inodesFree.
-  final pulumi.Input<String>? nodefsInodesFree;
+  final pulumi.Input<String?>? nodefsInodesFree;
   /// Defines percentage of minimum reclaim for pid.available.
-  final pulumi.Input<String>? pidAvailable;
+  final pulumi.Input<String?>? pidAvailable;
 
   /// Creates a new [NodePoolNodeConfigKubeletConfigEvictionMinimumReclaim].
   /// [imagefsAvailable] Defines percentage of minimum reclaim for imagefs.available.

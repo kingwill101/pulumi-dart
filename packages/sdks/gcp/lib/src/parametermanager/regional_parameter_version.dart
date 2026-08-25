@@ -970,7 +970,8 @@ class RegionalParameterVersion extends pulumi.CustomResource {
           'gcp:parametermanager/regionalParameterVersion:RegionalParameterVersion',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['parameterData'],
         ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -979,7 +980,7 @@ class RegionalParameterVersion extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     parameter = registerOutput<String>('parameter');
-    parameterData = registerOutput<String>('parameterData');
+    parameterData = registerOutput<String>('parameterData', isSecret: true);
     parameterVersionId = registerOutput<String>('parameterVersionId');
     updateTime = registerOutput<String>('updateTime');
   }
@@ -989,11 +990,12 @@ class RegionalParameterVersion extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RegionalParameterVersionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RegionalParameterVersion._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1014,7 +1016,29 @@ class RegionalParameterVersion extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     parameter = registerOutput<String>('parameter');
-    parameterData = registerOutput<String>('parameterData');
+    parameterData = registerOutput<String>('parameterData', isSecret: true);
+    parameterVersionId = registerOutput<String>('parameterVersionId');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [RegionalParameterVersion] resource.
+  RegionalParameterVersion.reference(String urn)
+    : super(
+        'gcp:parametermanager/regionalParameterVersion:RegionalParameterVersion',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['parameterData'],
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    disabled = registerOutput<bool?>('disabled');
+    kmsKeyVersion = registerOutput<String>('kmsKeyVersion');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    parameter = registerOutput<String>('parameter');
+    parameterData = registerOutput<String>('parameterData', isSecret: true);
     parameterVersionId = registerOutput<String>('parameterVersionId');
     updateTime = registerOutput<String>('updateTime');
   }

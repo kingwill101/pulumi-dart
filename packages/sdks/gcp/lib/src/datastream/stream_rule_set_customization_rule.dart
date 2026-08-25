@@ -7,10 +7,10 @@ import 'stream_rule_set_customization_rule_bigquery_partitioning.dart';
 class StreamRuleSetCustomizationRule {
   /// BigQuery clustering rule.
   /// Structure is documented below.
-  final pulumi.Input<StreamRuleSetCustomizationRuleBigqueryClustering>? bigqueryClustering;
+  final pulumi.Input<StreamRuleSetCustomizationRuleBigqueryClustering?>? bigqueryClustering;
   /// BigQuery partitioning rule.
   /// Structure is documented below.
-  final pulumi.Input<StreamRuleSetCustomizationRuleBigqueryPartitioning>? bigqueryPartitioning;
+  final pulumi.Input<StreamRuleSetCustomizationRuleBigqueryPartitioning?>? bigqueryPartitioning;
 
   /// Creates a new [StreamRuleSetCustomizationRule].
   /// [bigqueryClustering] BigQuery clustering rule.

@@ -6,11 +6,11 @@ class ConnectionAuthConfigOauth2JwtBearerJwtClaims {
   /// Value for the "aud" claim.
   ///
   /// &lt;a name="nestedAuthConfigOauth2ClientCredentials"&gt;&lt;/a&gt;The `oauth2ClientCredentials` block supports:
-  final pulumi.Input<String>? audience;
+  final pulumi.Input<String?>? audience;
   /// Value for the "iss" claim.
-  final pulumi.Input<String>? issuer;
+  final pulumi.Input<String?>? issuer;
   /// Value for the "sub" claim.
-  final pulumi.Input<String>? subject;
+  final pulumi.Input<String?>? subject;
 
   /// Creates a new [ConnectionAuthConfigOauth2JwtBearerJwtClaims].
   /// [audience] Value for the "aud" claim.

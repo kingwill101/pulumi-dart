@@ -8,10 +8,10 @@ class EntryLinkEntryReference {
   final pulumi.Input<String> name;
   /// The path in the Entry that is referenced in the Entry Link.
   /// Empty path denotes that the Entry itself is referenced in the Entry Link.
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? path;
   /// The reference type of the Entry.
   /// Possible values are: `SOURCE`, `TARGET`.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [EntryLinkEntryReference].
   /// [name] The relative resource name of the referenced Entry, of the form:

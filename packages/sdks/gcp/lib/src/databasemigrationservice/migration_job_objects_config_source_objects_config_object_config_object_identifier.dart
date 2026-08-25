@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifier {
   /// The database name. Required only if the object uses
   /// a database name as part of its unique identifier.
-  final pulumi.Input<String>? database;
+  final pulumi.Input<String?>? database;
   /// The schema name. Required only if the object uses
   /// a schema name as part of its unique identifier.
-  final pulumi.Input<String>? schema;
+  final pulumi.Input<String?>? schema;
   /// The table name. Required only if the object is a level
   /// below database or schema.
-  final pulumi.Input<String>? table;
+  final pulumi.Input<String?>? table;
   /// The category of the migration job object: `DATABASE`,
   /// `SCHEMA`, or `TABLE`.
   /// Possible values are: `DATABASE`, `SCHEMA`, `TABLE`.

@@ -10,44 +10,44 @@ class BackupChannelState {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// User specified descriptive string for this BackupChannel.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The project where Backups are allowed to be stored.
   /// The format is `projects/{project}`.
   /// {project} can be project number or project id.
-  final pulumi.Input<String>? destinationProject;
+  final pulumi.Input<String?>? destinationProject;
   /// The projectId where Backups are allowed to be stored.
   /// Example Project ID: "my-project-id".
-  final pulumi.Input<String>? destinationProjectId;
+  final pulumi.Input<String?>? destinationProjectId;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveLabels;
+  final pulumi.Input<Map<String, String>?>? effectiveLabels;
   /// etag is used for optimistic concurrency control as a way to help prevent simultaneous
   /// updates of a backup channel from overwriting each other. It is strongly suggested that
   /// systems make use of the 'etag' in the read-modify-write cycle to perform BackupChannel updates
   /// in order to avoid race conditions: An etag is returned in the response to backupChannels.get,
   /// and systems are expected to put that etag in the request to backupChannels.patch or
   /// backupChannels.delete to ensure that their change will be applied to the same version of the resource.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// Description: A set of custom labels supplied by the user.
   /// A list of key-&gt;value pairs.
   /// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The region of the Backup Channel.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The full name of the BackupChannel Resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  final pulumi.Input<Map<String, String>>? pulumiLabels;
+  final pulumi.Input<Map<String, String>?>? pulumiLabels;
   /// Server generated, unique identifier of UUID format.
-  final pulumi.Input<String>? uid;
+  final pulumi.Input<String?>? uid;
 
   /// Creates a new [BackupChannelState].
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstancePartitionAutoscalingConfigAutoscalingLimits {
   /// Specifies maximum number of nodes allocated to the instance partition. If set, this number
   /// should be greater than or equal to min_nodes.
-  final pulumi.Input<int>? maxNodes;
+  final pulumi.Input<int?>? maxNodes;
   /// Specifies maximum number of processing units allocated to the instance partition.
   /// If set, this number should be multiples of 1000 and be greater than or equal to
   /// min_processing_units.
-  final pulumi.Input<int>? maxProcessingUnits;
+  final pulumi.Input<int?>? maxProcessingUnits;
   /// Specifies number of nodes allocated to the instance partition. If set, this number
   /// should be greater than or equal to 1.
-  final pulumi.Input<int>? minNodes;
+  final pulumi.Input<int?>? minNodes;
   /// Specifies minimum number of processing units allocated to the instance partition.
   /// If set, this number should be multiples of 1000.
-  final pulumi.Input<int>? minProcessingUnits;
+  final pulumi.Input<int?>? minProcessingUnits;
 
   /// Creates a new [InstancePartitionAutoscalingConfigAutoscalingLimits].
   /// [maxNodes] Specifies maximum number of nodes allocated to the instance partition. If set, this number
@@ -40,10 +40,10 @@ class InstancePartitionAutoscalingConfigAutoscalingLimits {
 
   factory InstancePartitionAutoscalingConfigAutoscalingLimits.fromMap(Map<String, dynamic> map) {
     return InstancePartitionAutoscalingConfigAutoscalingLimits(
-      maxNodes: (() { final guardedValue = map['maxNodes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      maxProcessingUnits: (() { final guardedValue = map['maxProcessingUnits']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      minNodes: (() { final guardedValue = map['minNodes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      minProcessingUnits: (() { final guardedValue = map['minProcessingUnits']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxNodes: (() { final guardedValue = map['maxNodes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxProcessingUnits: (() { final guardedValue = map['maxProcessingUnits']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      minNodes: (() { final guardedValue = map['minNodes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      minProcessingUnits: (() { final guardedValue = map['minProcessingUnits']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

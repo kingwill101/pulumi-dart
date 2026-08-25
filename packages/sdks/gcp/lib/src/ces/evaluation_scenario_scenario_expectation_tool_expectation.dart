@@ -7,10 +7,10 @@ import 'evaluation_scenario_scenario_expectation_tool_expectation_mock_tool_resp
 class EvaluationScenarioScenarioExpectationToolExpectation {
   /// Expected tool call.
   /// Structure is documented below.
-  final pulumi.Input<EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCall>? expectedToolCall;
+  final pulumi.Input<EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCall?>? expectedToolCall;
   /// Mock tool response.
   /// Structure is documented below.
-  final pulumi.Input<EvaluationScenarioScenarioExpectationToolExpectationMockToolResponse>? mockToolResponse;
+  final pulumi.Input<EvaluationScenarioScenarioExpectationToolExpectationMockToolResponse?>? mockToolResponse;
 
   /// Creates a new [EvaluationScenarioScenarioExpectationToolExpectation].
   /// [expectedToolCall] Expected tool call.

@@ -5,28 +5,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenance {
   /// (Output)
   /// Indicates if the maintenance can be customer triggered.
-  final pulumi.Input<bool>? canReschedule;
+  final pulumi.Input<bool?>? canReschedule;
   /// (Output)
   /// The latest time for the planned maintenance window to start. This timestamp value is in RFC3339 text format.
-  final pulumi.Input<String>? latestWindowStartTime;
+  final pulumi.Input<String?>? latestWindowStartTime;
   /// (Output)
   /// Indicates whether the UpcomingMaintenance will be triggered on VM shutdown.
-  final pulumi.Input<bool>? maintenanceOnShutdown;
+  final pulumi.Input<bool?>? maintenanceOnShutdown;
   /// (Output)
   /// The reasons for the maintenance. Only valid for vms.
-  final pulumi.Input<List<String>>? maintenanceReasons;
+  final pulumi.Input<List<String>?>? maintenanceReasons;
   /// (Output)
   /// Status of the maintenance.
-  final pulumi.Input<String>? maintenanceStatus;
+  final pulumi.Input<String?>? maintenanceStatus;
   /// (Output)
   /// Defines the type of maintenance.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// (Output)
   /// The time by which the maintenance disruption will be completed. This timestamp value is in RFC3339 text format.
-  final pulumi.Input<String>? windowEndTime;
+  final pulumi.Input<String?>? windowEndTime;
   /// (Output)
   /// The current start time of the maintenance window. This timestamp value is in RFC3339 text format.
-  final pulumi.Input<String>? windowStartTime;
+  final pulumi.Input<String?>? windowStartTime;
 
   /// Creates a new [ReservationResourceStatusReservationMaintenanceUpcomingGroupMaintenance].
   /// [canReschedule] (Output)

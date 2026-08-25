@@ -182,7 +182,7 @@ class Tenant extends pulumi.CustomResource {
           'gcp:identityplatform/tenant:Tenant',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     allowPasswordSignup = registerOutput<bool?>('allowPasswordSignup');
     client = registerOutput<TenantClient?>('client', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TenantClient.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -199,11 +199,12 @@ class Tenant extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TenantState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Tenant._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -217,6 +218,25 @@ class Tenant extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    allowPasswordSignup = registerOutput<bool?>('allowPasswordSignup');
+    client = registerOutput<TenantClient?>('client', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TenantClient.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    disableAuth = registerOutput<bool?>('disableAuth');
+    displayName = registerOutput<String>('displayName');
+    enableEmailLinkSignin = registerOutput<bool?>('enableEmailLinkSignin');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+  }
+
+  /// Creates a typed reference to an existing [Tenant] resource.
+  Tenant.reference(String urn)
+    : super(
+        'gcp:identityplatform/tenant:Tenant',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     allowPasswordSignup = registerOutput<bool?>('allowPasswordSignup');
     client = registerOutput<TenantClient?>('client', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TenantClient.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deletionPolicy = registerOutput<String>('deletionPolicy');

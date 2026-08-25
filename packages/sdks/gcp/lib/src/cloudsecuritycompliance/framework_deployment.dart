@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'framework_deployment_args.dart';
+import 'framework_deployment_cloud_control_deployment_reference.dart';
+import 'framework_deployment_cloud_control_metadata.dart';
 import 'framework_deployment_framework.dart';
 import 'framework_deployment_state.dart';
 import 'framework_deployment_target_resource_config.dart';
@@ -3894,12 +3896,12 @@ class FrameworkDeployment extends pulumi.CustomResource {
   /// "organizations/{organization}/locations/{location}/cloudControlDeployments/cc-deployment-2"
   /// }
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> cloudControlDeploymentReferences;
+  late final pulumi.Output<List<FrameworkDeploymentCloudControlDeploymentReference>> cloudControlDeploymentReferences;
   /// Deployment mode and parameters for each of the Cloud Controls in
   /// the framework. Every Cloud Control in the framework must have a
   /// CloudControlMetadata.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> cloudControlMetadatas;
+  late final pulumi.Output<List<FrameworkDeploymentCloudControlMetadata>> cloudControlMetadatas;
   /// The resource on which the Framework is deployed based on the provided
   /// TargetResourceConfig in the following format:
   /// organizations/{organization}, folders/{folder} or projects/{project}
@@ -3973,10 +3975,10 @@ class FrameworkDeployment extends pulumi.CustomResource {
           'gcp:cloudsecuritycompliance/frameworkDeployment:FrameworkDeployment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
-    cloudControlDeploymentReferences = registerOutput<List<Map<String, dynamic>>>('cloudControlDeploymentReferences');
-    cloudControlMetadatas = registerOutput<List<Map<String, dynamic>>>('cloudControlMetadatas');
+    cloudControlDeploymentReferences = registerOutput<List<FrameworkDeploymentCloudControlDeploymentReference>>('cloudControlDeploymentReferences', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FrameworkDeploymentCloudControlDeploymentReference>(guardedValue, (value) => FrameworkDeploymentCloudControlDeploymentReference.fromMap((value as Map).cast<String, dynamic>())); });
+    cloudControlMetadatas = registerOutput<List<FrameworkDeploymentCloudControlMetadata>>('cloudControlMetadatas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FrameworkDeploymentCloudControlMetadata>(guardedValue, (value) => FrameworkDeploymentCloudControlMetadata.fromMap((value as Map).cast<String, dynamic>())); });
     computedTargetResource = registerOutput<String>('computedTargetResource');
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -3999,11 +4001,12 @@ class FrameworkDeployment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FrameworkDeploymentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return FrameworkDeployment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -4017,8 +4020,36 @@ class FrameworkDeployment extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    cloudControlDeploymentReferences = registerOutput<List<Map<String, dynamic>>>('cloudControlDeploymentReferences');
-    cloudControlMetadatas = registerOutput<List<Map<String, dynamic>>>('cloudControlMetadatas');
+    cloudControlDeploymentReferences = registerOutput<List<FrameworkDeploymentCloudControlDeploymentReference>>('cloudControlDeploymentReferences', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FrameworkDeploymentCloudControlDeploymentReference>(guardedValue, (value) => FrameworkDeploymentCloudControlDeploymentReference.fromMap((value as Map).cast<String, dynamic>())); });
+    cloudControlMetadatas = registerOutput<List<FrameworkDeploymentCloudControlMetadata>>('cloudControlMetadatas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FrameworkDeploymentCloudControlMetadata>(guardedValue, (value) => FrameworkDeploymentCloudControlMetadata.fromMap((value as Map).cast<String, dynamic>())); });
+    computedTargetResource = registerOutput<String>('computedTargetResource');
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    deploymentState = registerOutput<String>('deploymentState');
+    description = registerOutput<String?>('description');
+    etag = registerOutput<String>('etag');
+    framework = registerOutput<FrameworkDeploymentFramework>('framework', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FrameworkDeploymentFramework.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    frameworkDeploymentId = registerOutput<String>('frameworkDeploymentId');
+    location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    organization = registerOutput<String>('organization');
+    parent = registerOutput<String>('parent');
+    targetResourceConfig = registerOutput<FrameworkDeploymentTargetResourceConfig>('targetResourceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FrameworkDeploymentTargetResourceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    targetResourceDisplayName = registerOutput<String>('targetResourceDisplayName');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [FrameworkDeployment] resource.
+  FrameworkDeployment.reference(String urn)
+    : super(
+        'gcp:cloudsecuritycompliance/frameworkDeployment:FrameworkDeployment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    cloudControlDeploymentReferences = registerOutput<List<FrameworkDeploymentCloudControlDeploymentReference>>('cloudControlDeploymentReferences', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FrameworkDeploymentCloudControlDeploymentReference>(guardedValue, (value) => FrameworkDeploymentCloudControlDeploymentReference.fromMap((value as Map).cast<String, dynamic>())); });
+    cloudControlMetadatas = registerOutput<List<FrameworkDeploymentCloudControlMetadata>>('cloudControlMetadatas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FrameworkDeploymentCloudControlMetadata>(guardedValue, (value) => FrameworkDeploymentCloudControlMetadata.fromMap((value as Map).cast<String, dynamic>())); });
     computedTargetResource = registerOutput<String>('computedTargetResource');
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');

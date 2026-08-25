@@ -6,7 +6,7 @@ class ListingDataProvider {
   /// Name of the data provider.
   final pulumi.Input<String> name;
   /// Email or URL of the data provider.
-  final pulumi.Input<String>? primaryContact;
+  final pulumi.Input<String?>? primaryContact;
 
   /// Creates a new [ListingDataProvider].
   /// [name] Name of the data provider.

@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BackendServiceTlsSettingsSubjectAltName {
   /// The SAN specified as a DNS Name.
-  final pulumi.Input<String>? dnsName;
+  final pulumi.Input<String?>? dnsName;
   /// The SAN specified as a URI.
-  final pulumi.Input<String>? uniformResourceIdentifier;
+  final pulumi.Input<String?>? uniformResourceIdentifier;
 
   /// Creates a new [BackendServiceTlsSettingsSubjectAltName].
   /// [dnsName] The SAN specified as a DNS Name.

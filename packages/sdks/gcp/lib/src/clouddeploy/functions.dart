@@ -139,6 +139,17 @@ Future<GetCustomTargetTypeIamPolicyResult> getCustomTargetTypeIamPolicy(
   return GetCustomTargetTypeIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetCustomTargetTypeIamPolicyResult> getCustomTargetTypeIamPolicyOutput(
+  GetCustomTargetTypeIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:clouddeploy/getCustomTargetTypeIamPolicy:getCustomTargetTypeIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCustomTargetTypeIamPolicyResult.fromMap);
+}
+
 /// Retrieves the current IAM policy data for deliverypipeline
 ///
 ///
@@ -272,6 +283,17 @@ Future<GetDeliveryPipelineIamPolicyResult> getDeliveryPipelineIamPolicy(
   return GetDeliveryPipelineIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetDeliveryPipelineIamPolicyResult> getDeliveryPipelineIamPolicyOutput(
+  GetDeliveryPipelineIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:clouddeploy/getDeliveryPipelineIamPolicy:getDeliveryPipelineIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDeliveryPipelineIamPolicyResult.fromMap);
+}
+
 /// Retrieves the current IAM policy data for target
 ///
 ///
@@ -403,4 +425,15 @@ Future<GetTargetIamPolicyResult> getTargetIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetTargetIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetTargetIamPolicyResult> getTargetIamPolicyOutput(
+  GetTargetIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:clouddeploy/getTargetIamPolicy:getTargetIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTargetIamPolicyResult.fromMap);
 }

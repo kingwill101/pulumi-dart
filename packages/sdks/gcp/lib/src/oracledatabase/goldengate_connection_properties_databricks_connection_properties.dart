@@ -7,26 +7,26 @@ class GoldengateConnectionPropertiesDatabricksConnectionProperties {
   /// Possible values:
   /// PERSONAL_ACCESS_TOKEN
   /// OAUTH_M2M
-  final pulumi.Input<String>? authenticationType;
+  final pulumi.Input<String?>? authenticationType;
   /// OAuth client id, only applicable for authenticationType == OAUTH_M2M
-  final pulumi.Input<String>? clientId;
+  final pulumi.Input<String?>? clientId;
   /// OAuth client secret, only applicable for authenticationType == OAUTH_M2M
-  final pulumi.Input<String>? clientSecret;
+  final pulumi.Input<String?>? clientSecret;
   /// Connection URL.
   /// e.g.:
   /// 'jdbc:databricks://adb-33934.4.azuredatabricks.net:443/default;transportMode=http;ssl=1;httpPath=sql/protocolv1/o/3393########44/0##3-7-hlrb'
-  final pulumi.Input<String>? connectionUrl;
+  final pulumi.Input<String?>? connectionUrl;
   /// Input only. The password Oracle Goldengate uses for Db2 connection in plain text.
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// Input only. The resource name of a secret version in Secret Manager which contains
   /// the password Oracle Goldengate uses for Db2 connection.
   /// Format: projects/{project}/secrets/{secret}/versions/{version}.
-  final pulumi.Input<String>? passwordSecretVersion;
+  final pulumi.Input<String?>? passwordSecretVersion;
   /// External storage credential name to access files on object
   /// storage such as ADLS Gen2, S3 or Cloud Storage.
-  final pulumi.Input<String>? storageCredential;
+  final pulumi.Input<String?>? storageCredential;
   /// The technology type of Db2Connection.
-  final pulumi.Input<String>? technologyType;
+  final pulumi.Input<String?>? technologyType;
 
   /// Creates a new [GoldengateConnectionPropertiesDatabricksConnectionProperties].
   /// [authenticationType] Authentication type for Databricks.

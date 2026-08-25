@@ -130,12 +130,18 @@ void main() {
     expect(result.reports.single['local_version_source'], 'package');
   });
 
+  test('schema comparison ignores provider package build metadata', () {
+    expect(comparableProviderVersion('1.3.0+1'), '1.3.0');
+  });
+
   test('package updater rejects same-version content changes by default', () {
     final updater = PackageUpdater();
     const plan = PackageUpdatePlan(
       provider: 'aws',
       localVersion: '7.43.0',
+      localPackageVersion: '7.43.0+1',
       upstreamVersion: '7.43.0',
+      targetPackageVersion: '7.43.0+1',
       schemaUrl: 'https://example.test/schema.json',
       schemaSource: 'github_release_asset',
       schemaPath: '/tmp/aws.schema.json',
@@ -155,7 +161,9 @@ void main() {
     const plan = PackageUpdatePlan(
       provider: 'aws',
       localVersion: '7.43.0',
+      localPackageVersion: '7.43.0+1',
       upstreamVersion: '7.42.0',
+      targetPackageVersion: '7.42.0+1',
       schemaUrl: 'https://example.test/schema.json',
       schemaSource: 'github_release_asset',
       schemaPath: '/tmp/aws.schema.json',
@@ -169,4 +177,11 @@ void main() {
       throwsA(isA<StateError>()),
     );
   });
+
+  test(
+    'provider package versions retain the upstream version with build 1',
+    () {
+      expect(providerPackageVersion('9.35.1'), '9.35.1+1');
+    },
+  );
 }

@@ -6,7 +6,7 @@ class FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentBun
   /// The name of the bundle.
   final pulumi.Input<String> bundleName;
   /// The set of namespaces to be exempted from the bundle.
-  final pulumi.Input<List<String>>? exemptedNamespaces;
+  final pulumi.Input<List<String>?>? exemptedNamespaces;
 
   /// Creates a new [FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentBundle].
   /// [bundleName] The name of the bundle.

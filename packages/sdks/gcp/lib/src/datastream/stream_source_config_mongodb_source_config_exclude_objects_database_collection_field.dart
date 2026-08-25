@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionField {
   /// Field name.
-  final pulumi.Input<String>? field;
+  final pulumi.Input<String?>? field;
 
   /// Creates a new [StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionField].
   /// [field] Field name.

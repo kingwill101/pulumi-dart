@@ -5,14 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClusterNodeConfigBootDisk {
   /// Type of the disk attached to each node
   /// (e.g. 'pd-standard', 'pd-balanced', 'pd-ssd', or 'hyperdisk-balanced'). Defaults to `hyperdisk-balanced` if `hyperdisk-balanced` is supported and `pd-balanced` is not supported for the machine type; otherwise defaults to `pd-balanced`. This is being migrated from `node_config.disk_type`, and must match if specified in both places. Prefer using this field.
-  final pulumi.Input<String>? diskType;
+  final pulumi.Input<String?>? diskType;
   /// Configure disk IOPs. This is only valid if the `diskType` is 'hyperdisk-balanced'. See [performance limit documention](https://cloud.google.com/compute/docs/disks/hyperdisk-perf-limits) for more information about valid values.
-  final pulumi.Input<int>? provisionedIops;
+  final pulumi.Input<int?>? provisionedIops;
   /// Configure disk throughput. This is only valid if the `diskType` is 'hyperdisk-balanced'. See [performance limit documention](https://cloud.google.com/compute/docs/disks/hyperdisk-perf-limits) for more information about valid values.
-  final pulumi.Input<int>? provisionedThroughput;
+  final pulumi.Input<int?>? provisionedThroughput;
   /// Size of the disk attached to each node, specified
   /// in GB. The smallest allowed disk size is 10GB. Defaults to 100GB. This is being migrated from `node_config.disk_size_gb`, and must match if specified in both places. Prefer using this field.
-  final pulumi.Input<int>? sizeGb;
+  final pulumi.Input<int?>? sizeGb;
 
   /// Creates a new [ClusterNodeConfigBootDisk].
   /// [diskType] Type of the disk attached to each node
@@ -38,9 +38,9 @@ class ClusterNodeConfigBootDisk {
   factory ClusterNodeConfigBootDisk.fromMap(Map<String, dynamic> map) {
     return ClusterNodeConfigBootDisk(
       diskType: (() { final guardedValue = map['diskType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      provisionedIops: (() { final guardedValue = map['provisionedIops']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      provisionedThroughput: (() { final guardedValue = map['provisionedThroughput']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      sizeGb: (() { final guardedValue = map['sizeGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      provisionedIops: (() { final guardedValue = map['provisionedIops']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      provisionedThroughput: (() { final guardedValue = map['provisionedThroughput']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      sizeGb: (() { final guardedValue = map['sizeGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

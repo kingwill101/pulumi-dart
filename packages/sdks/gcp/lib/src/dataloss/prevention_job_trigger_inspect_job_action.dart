@@ -8,26 +8,26 @@ import 'prevention_job_trigger_inspect_job_action_save_findings.dart';
 class PreventionJobTriggerInspectJobAction {
   /// Create a de-identified copy of the requested table or files.
   /// Structure is documented below.
-  final pulumi.Input<PreventionJobTriggerInspectJobActionDeidentify>? deidentify;
+  final pulumi.Input<PreventionJobTriggerInspectJobActionDeidentify?>? deidentify;
   /// Sends an email when the job completes. The email goes to IAM project owners and technical Essential Contacts.
-  final pulumi.Input<Map<String, dynamic>>? jobNotificationEmails;
+  final pulumi.Input<Map<String, dynamic>?>? jobNotificationEmails;
   /// Publish a message into a given Pub/Sub topic when the job completes.
   /// Structure is documented below.
-  final pulumi.Input<PreventionJobTriggerInspectJobActionPubSub>? pubSub;
+  final pulumi.Input<PreventionJobTriggerInspectJobActionPubSub?>? pubSub;
   /// (Optional, Deprecated)
   /// Publish findings of a DlpJob to Data Catalog.
   ///
   /// &gt; **Warning:** `publishFindingsToCloudDataCatalog` is deprecated and will be removed in a future major release. To publish findings to Dataplex Catalog, use `publishFindingsToDataplexCatalog` instead.
-  final pulumi.Input<Map<String, dynamic>>? publishFindingsToCloudDataCatalog;
+  final pulumi.Input<Map<String, dynamic>?>? publishFindingsToCloudDataCatalog;
   /// Publish findings of a DlpJob as an aspect to Dataplex Universal Catalog.
-  final pulumi.Input<Map<String, dynamic>>? publishFindingsToDataplexCatalog;
+  final pulumi.Input<Map<String, dynamic>?>? publishFindingsToDataplexCatalog;
   /// Publish the result summary of a DlpJob to the Cloud Security Command Center.
-  final pulumi.Input<Map<String, dynamic>>? publishSummaryToCscc;
+  final pulumi.Input<Map<String, dynamic>?>? publishSummaryToCscc;
   /// Enable Stackdriver metric dlp.googleapis.com/findingCount.
-  final pulumi.Input<Map<String, dynamic>>? publishToStackdriver;
+  final pulumi.Input<Map<String, dynamic>?>? publishToStackdriver;
   /// If set, the detailed findings will be persisted to the specified OutputStorageConfig. Only a single instance of this action can be specified. Compatible with: Inspect, Risk
   /// Structure is documented below.
-  final pulumi.Input<PreventionJobTriggerInspectJobActionSaveFindings>? saveFindings;
+  final pulumi.Input<PreventionJobTriggerInspectJobActionSaveFindings?>? saveFindings;
 
   /// Creates a new [PreventionJobTriggerInspectJobAction].
   /// [deidentify] Create a de-identified copy of the requested table or files.

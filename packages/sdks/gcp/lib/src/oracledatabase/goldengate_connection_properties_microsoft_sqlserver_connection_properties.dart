@@ -7,37 +7,37 @@ class GoldengateConnectionPropertiesMicrosoftSqlserverConnectionProperties {
   /// An array of name-value pair attribute entries.
   /// Used as additional parameters in connection string.
   /// Structure is documented below.
-  final pulumi.Input<List<GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesAdditionalAttribute>>? additionalAttributes;
+  final pulumi.Input<List<GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesAdditionalAttribute>?>? additionalAttributes;
   /// The name of the database.
-  final pulumi.Input<String>? database;
+  final pulumi.Input<String?>? database;
   /// The name or address of a host.
-  final pulumi.Input<String>? host;
+  final pulumi.Input<String?>? host;
   /// Input only. The password Oracle Goldengate uses for Microsoft SQL Server connection
   /// in plain text.
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// Input only. The resource name of a secret version in Secret Manager which contains
   /// the password Oracle Goldengate uses for Microsoft SQL Server
   /// connection.
   /// Format: projects/{project}/secrets/{secret}/versions/{version}.
-  final pulumi.Input<String>? passwordSecretVersion;
+  final pulumi.Input<String?>? passwordSecretVersion;
   /// The port of an endpoint usually specified for a connection.
-  final pulumi.Input<int>? port;
+  final pulumi.Input<int?>? port;
   /// Security Type for Microsoft SQL Server.
   /// Possible values:
   /// PLAIN
   /// TLS
-  final pulumi.Input<String>? securityProtocol;
+  final pulumi.Input<String?>? securityProtocol;
   /// If set to true, the driver validates the certificate that is sent by the
   /// database server.
-  final pulumi.Input<bool>? serverCertificateValidationRequired;
+  final pulumi.Input<bool?>? serverCertificateValidationRequired;
   /// Database Certificate - The content of a .pem or .crt file
   /// containing the server public key (for 1-way SSL).
-  final pulumi.Input<String>? sslCaFile;
+  final pulumi.Input<String?>? sslCaFile;
   /// The technology type of MicrosoftSqlserverConnection.
-  final pulumi.Input<String>? technologyType;
+  final pulumi.Input<String?>? technologyType;
   /// The username Oracle Goldengate uses to connect to the Microsoft SQL
   /// Server.
-  final pulumi.Input<String>? username;
+  final pulumi.Input<String?>? username;
 
   /// Creates a new [GoldengateConnectionPropertiesMicrosoftSqlserverConnectionProperties].
   /// [additionalAttributes] An array of name-value pair attribute entries.
@@ -88,7 +88,7 @@ class GoldengateConnectionPropertiesMicrosoftSqlserverConnectionProperties {
       host: (() { final guardedValue = map['host']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       password: (() { final guardedValue = map['password']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       passwordSecretVersion: (() { final guardedValue = map['passwordSecretVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       securityProtocol: (() { final guardedValue = map['securityProtocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       serverCertificateValidationRequired: (() { final guardedValue = map['serverCertificateValidationRequired']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       sslCaFile: (() { final guardedValue = map['sslCaFile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

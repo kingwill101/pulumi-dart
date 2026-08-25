@@ -12,7 +12,7 @@ class GetRecordSetArgs {
   /// The DNS name for the resource.
   final pulumi.Input<String> name;
   /// The ID of the project for the Google Cloud.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The RRSet type. [See this table for supported types](https://cloud.google.com/dns/docs/records#record_type).
   final pulumi.Input<String> type;
 

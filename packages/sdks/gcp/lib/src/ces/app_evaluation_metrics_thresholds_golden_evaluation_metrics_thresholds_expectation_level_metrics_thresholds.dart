@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsExpectationLevelMetricsThresholds {
   /// The success threshold for individual tool invocation parameter
   /// correctness. Must be a float between 0 and 1. Default is 1.0.
-  final pulumi.Input<double>? toolInvocationParameterCorrectnessThreshold;
+  final pulumi.Input<double?>? toolInvocationParameterCorrectnessThreshold;
 
   /// Creates a new [AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsExpectationLevelMetricsThresholds].
   /// [toolInvocationParameterCorrectnessThreshold] The success threshold for individual tool invocation parameter
@@ -21,7 +21,7 @@ class AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsExpectation
 
   factory AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsExpectationLevelMetricsThresholds.fromMap(Map<String, dynamic> map) {
     return AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsExpectationLevelMetricsThresholds(
-      toolInvocationParameterCorrectnessThreshold: (() { final guardedValue = map['toolInvocationParameterCorrectnessThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      toolInvocationParameterCorrectnessThreshold: (() { final guardedValue = map['toolInvocationParameterCorrectnessThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

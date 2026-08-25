@@ -4,10 +4,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class UptimeCheckConfigResourceGroup {
   /// The group of resources being monitored. Should be the `name` of a group
-  final pulumi.Input<String>? groupId;
+  final pulumi.Input<String?>? groupId;
   /// The resource type of the group members.
   /// Possible values are: `RESOURCE_TYPE_UNSPECIFIED`, `INSTANCE`, `AWS_ELB_LOAD_BALANCER`.
-  final pulumi.Input<String>? resourceType;
+  final pulumi.Input<String?>? resourceType;
 
   /// Creates a new [UptimeCheckConfigResourceGroup].
   /// [groupId] The group of resources being monitored. Should be the `name` of a group

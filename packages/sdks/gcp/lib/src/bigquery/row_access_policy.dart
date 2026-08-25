@@ -357,13 +357,13 @@ class RowAccessPolicy extends pulumi.CustomResource {
           'gcp:bigquery/rowAccessPolicy:RowAccessPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     creationTime = registerOutput<String>('creationTime');
     datasetId = registerOutput<String>('datasetId');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     filterPredicate = registerOutput<String>('filterPredicate');
-    grantees = registerOutput<List<String>?>('grantees');
+    grantees = registerOutput<List<String>?>('grantees', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     lastModifiedTime = registerOutput<String>('lastModifiedTime');
     policyId = registerOutput<String>('policyId');
     project = registerOutput<String>('project');
@@ -375,11 +375,12 @@ class RowAccessPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RowAccessPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RowAccessPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -397,7 +398,27 @@ class RowAccessPolicy extends pulumi.CustomResource {
     datasetId = registerOutput<String>('datasetId');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     filterPredicate = registerOutput<String>('filterPredicate');
-    grantees = registerOutput<List<String>?>('grantees');
+    grantees = registerOutput<List<String>?>('grantees', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    lastModifiedTime = registerOutput<String>('lastModifiedTime');
+    policyId = registerOutput<String>('policyId');
+    project = registerOutput<String>('project');
+    tableId = registerOutput<String>('tableId');
+  }
+
+  /// Creates a typed reference to an existing [RowAccessPolicy] resource.
+  RowAccessPolicy.reference(String urn)
+    : super(
+        'gcp:bigquery/rowAccessPolicy:RowAccessPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    creationTime = registerOutput<String>('creationTime');
+    datasetId = registerOutput<String>('datasetId');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    filterPredicate = registerOutput<String>('filterPredicate');
+    grantees = registerOutput<List<String>?>('grantees', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     lastModifiedTime = registerOutput<String>('lastModifiedTime');
     policyId = registerOutput<String>('policyId');
     project = registerOutput<String>('project');

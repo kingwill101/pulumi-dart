@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApiProductOperationGroupOperationConfigOperation {
   /// Methods refers to the REST verbs, when none specified, all verb types are allowed.
-  final pulumi.Input<List<String>>? methods;
+  final pulumi.Input<List<String>?>? methods;
   /// Required. REST resource path associated with the API proxy or remote service.
-  final pulumi.Input<String>? resource;
+  final pulumi.Input<String?>? resource;
 
   /// Creates a new [ApiProductOperationGroupOperationConfigOperation].
   /// [methods] Methods refers to the REST verbs, when none specified, all verb types are allowed.

@@ -7,7 +7,7 @@ class WireGroupWireGroupProperties {
   /// WIRE: a single pseudowire over two Interconnect connections   with no redundancy.
   /// REDUNDANT: two pseudowires over four Interconnect connections, with two connections in one metro and two connections in another metro.
   /// BOX_AND_CROSS: four pseudowires over four Interconnect connections, with two connections in one metro and two connections in another metro.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [WireGroupWireGroupProperties].
   /// [type] Type of wire group (enum).

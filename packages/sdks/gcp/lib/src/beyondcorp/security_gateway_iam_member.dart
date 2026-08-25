@@ -2158,7 +2158,7 @@ class SecurityGatewayIamMember extends pulumi.CustomResource {
           'gcp:beyondcorp/securityGatewayIamMember:SecurityGatewayIamMember',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     condition = registerOutput<SecurityGatewayIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityGatewayIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
@@ -2174,11 +2174,12 @@ class SecurityGatewayIamMember extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SecurityGatewayIamMemberState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SecurityGatewayIamMember._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -2192,6 +2193,24 @@ class SecurityGatewayIamMember extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    condition = registerOutput<SecurityGatewayIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityGatewayIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    etag = registerOutput<String>('etag');
+    location = registerOutput<String>('location');
+    member = registerOutput<String>('member');
+    project = registerOutput<String>('project');
+    role = registerOutput<String>('role');
+    securityGatewayId = registerOutput<String>('securityGatewayId');
+  }
+
+  /// Creates a typed reference to an existing [SecurityGatewayIamMember] resource.
+  SecurityGatewayIamMember.reference(String urn)
+    : super(
+        'gcp:beyondcorp/securityGatewayIamMember:SecurityGatewayIamMember',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     condition = registerOutput<SecurityGatewayIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityGatewayIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');

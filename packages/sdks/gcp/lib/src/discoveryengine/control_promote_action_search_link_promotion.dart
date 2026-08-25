@@ -4,17 +4,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ControlPromoteActionSearchLinkPromotion {
   /// The description of the promoted link.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The document to promote.
-  final pulumi.Input<String>? document;
+  final pulumi.Input<String?>? document;
   /// Return promotions for basic site search.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// The image URI of the promoted link.
-  final pulumi.Input<String>? imageUri;
+  final pulumi.Input<String?>? imageUri;
   /// The title of the promoted link.
   final pulumi.Input<String> title;
   /// The URI to promote.
-  final pulumi.Input<String>? uri;
+  final pulumi.Input<String?>? uri;
 
   /// Creates a new [ControlPromoteActionSearchLinkPromotion].
   /// [description] The description of the promoted link.

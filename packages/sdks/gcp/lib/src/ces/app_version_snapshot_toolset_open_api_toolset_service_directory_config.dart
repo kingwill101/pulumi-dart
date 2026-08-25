@@ -10,7 +10,7 @@ class AppVersionSnapshotToolsetOpenApiToolsetServiceDirectoryConfig {
   /// `projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}`.
   /// Location of the service directory must be the same as the location of the
   /// app.
-  final pulumi.Input<String>? service;
+  final pulumi.Input<String?>? service;
 
   /// Creates a new [AppVersionSnapshotToolsetOpenApiToolsetServiceDirectoryConfig].
   /// [service] (Output)

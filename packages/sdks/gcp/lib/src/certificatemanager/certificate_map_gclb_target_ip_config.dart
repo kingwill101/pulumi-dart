@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CertificateMapGclbTargetIpConfig {
   /// An external IP address
-  final pulumi.Input<String>? ipAddress;
+  final pulumi.Input<String?>? ipAddress;
   /// A list of ports
-  final pulumi.Input<List<int>>? ports;
+  final pulumi.Input<List<int>?>? ports;
 
   /// Creates a new [CertificateMapGclbTargetIpConfig].
   /// [ipAddress] An external IP address

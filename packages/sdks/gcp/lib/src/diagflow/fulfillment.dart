@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'fulfillment_args.dart';
+import 'fulfillment_feature.dart';
 import 'fulfillment_generic_web_service.dart';
 import 'fulfillment_state.dart';
 
@@ -269,7 +270,7 @@ class Fulfillment extends pulumi.CustomResource {
   late final pulumi.Output<bool?> enabled;
   /// The field defines whether the fulfillment is enabled for certain features.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> features;
+  late final pulumi.Output<List<FulfillmentFeature>?> features;
   /// Represents configuration for a generic web service. Dialogflow supports two mechanisms for authentications: - Basic authentication with username and password. - Authentication with additional authentication headers.
   /// Structure is documented below.
   late final pulumi.Output<FulfillmentGenericWebService?> genericWebService;
@@ -292,12 +293,12 @@ class Fulfillment extends pulumi.CustomResource {
           'gcp:diagflow/fulfillment:Fulfillment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
     enabled = registerOutput<bool?>('enabled');
-    features = registerOutput<List<Map<String, dynamic>>?>('features');
+    features = registerOutput<List<FulfillmentFeature>?>('features', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FulfillmentFeature>(guardedValue, (value) => FulfillmentFeature.fromMap((value as Map).cast<String, dynamic>())); });
     genericWebService = registerOutput<FulfillmentGenericWebService?>('genericWebService', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FulfillmentGenericWebService.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
@@ -308,11 +309,12 @@ class Fulfillment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FulfillmentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Fulfillment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -329,7 +331,25 @@ class Fulfillment extends pulumi.CustomResource {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
     enabled = registerOutput<bool?>('enabled');
-    features = registerOutput<List<Map<String, dynamic>>?>('features');
+    features = registerOutput<List<FulfillmentFeature>?>('features', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FulfillmentFeature>(guardedValue, (value) => FulfillmentFeature.fromMap((value as Map).cast<String, dynamic>())); });
+    genericWebService = registerOutput<FulfillmentGenericWebService?>('genericWebService', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FulfillmentGenericWebService.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+  }
+
+  /// Creates a typed reference to an existing [Fulfillment] resource.
+  Fulfillment.reference(String urn)
+    : super(
+        'gcp:diagflow/fulfillment:Fulfillment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    displayName = registerOutput<String>('displayName');
+    enabled = registerOutput<bool?>('enabled');
+    features = registerOutput<List<FulfillmentFeature>?>('features', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FulfillmentFeature>(guardedValue, (value) => FulfillmentFeature.fromMap((value as Map).cast<String, dynamic>())); });
     genericWebService = registerOutput<FulfillmentGenericWebService?>('genericWebService', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FulfillmentGenericWebService.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

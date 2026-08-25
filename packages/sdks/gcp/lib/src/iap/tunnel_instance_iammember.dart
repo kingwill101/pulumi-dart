@@ -2159,7 +2159,7 @@ class TunnelInstanceIAMMember extends pulumi.CustomResource {
           'gcp:iap/tunnelInstanceIAMMember:TunnelInstanceIAMMember',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     condition = registerOutput<TunnelInstanceIAMMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TunnelInstanceIAMMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
@@ -2175,11 +2175,12 @@ class TunnelInstanceIAMMember extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TunnelInstanceIAMMemberState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return TunnelInstanceIAMMember._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -2193,6 +2194,24 @@ class TunnelInstanceIAMMember extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    condition = registerOutput<TunnelInstanceIAMMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TunnelInstanceIAMMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    etag = registerOutput<String>('etag');
+    instance = registerOutput<String>('instance');
+    member = registerOutput<String>('member');
+    project = registerOutput<String>('project');
+    role = registerOutput<String>('role');
+    zone = registerOutput<String>('zone');
+  }
+
+  /// Creates a typed reference to an existing [TunnelInstanceIAMMember] resource.
+  TunnelInstanceIAMMember.reference(String urn)
+    : super(
+        'gcp:iap/tunnelInstanceIAMMember:TunnelInstanceIAMMember',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     condition = registerOutput<TunnelInstanceIAMMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TunnelInstanceIAMMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
     instance = registerOutput<String>('instance');

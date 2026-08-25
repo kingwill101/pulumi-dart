@@ -10,13 +10,13 @@ class GetDataSourcesArgs {
   /// The ID of the Backup Vault in which the Data Source belongs.
   final pulumi.Input<String> backupVaultId;
   /// An expression to filter the results. For example, data_source_gcp_resource.type="compute.googleapis.com/Instance"
-  final pulumi.Input<String>? filter;
+  final pulumi.Input<String?>? filter;
   /// The location in which the Data Source belongs.
   final pulumi.Input<String> location;
   /// An expression to order the results. For example, createTime desc
-  final pulumi.Input<String>? orderBy;
+  final pulumi.Input<String?>? orderBy;
   /// The Google Cloud Project in which the Data Source belongs.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetDataSourcesArgs].
   /// [backupVaultId] The ID of the Backup Vault in which the Data Source belongs.

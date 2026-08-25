@@ -6,7 +6,7 @@ import 'uptime_check_config_tcp_check_ping_config.dart';
 class UptimeCheckConfigTcpCheck {
   /// Contains information needed to add pings to a TCP check.
   /// Structure is documented below.
-  final pulumi.Input<UptimeCheckConfigTcpCheckPingConfig>? pingConfig;
+  final pulumi.Input<UptimeCheckConfigTcpCheckPingConfig?>? pingConfig;
   /// The port to the page to run the check against. Will be combined with host (specified within the `monitoredResource`) to construct the full URL.
   final pulumi.Input<int> port;
 
@@ -28,7 +28,7 @@ class UptimeCheckConfigTcpCheck {
   factory UptimeCheckConfigTcpCheck.fromMap(Map<String, dynamic> map) {
     return UptimeCheckConfigTcpCheck(
       pingConfig: (() { final guardedValue = map['pingConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(UptimeCheckConfigTcpCheckPingConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      port: pulumi.Input.fromValue(map['port'] as int),
+      port: pulumi.Input.fromValue((map['port'] as num).toInt()),
     );
   }
 }

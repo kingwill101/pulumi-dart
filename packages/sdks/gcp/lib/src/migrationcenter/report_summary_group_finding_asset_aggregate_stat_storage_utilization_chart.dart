@@ -5,10 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ReportSummaryGroupFindingAssetAggregateStatStorageUtilizationChart {
   /// (Output)
   /// Aggregate value which falls into the "Free" bucket.
-  final pulumi.Input<String>? free;
+  final pulumi.Input<String?>? free;
   /// (Output)
   /// Aggregate value which falls into the "Used" bucket.
-  final pulumi.Input<String>? used;
+  final pulumi.Input<String?>? used;
 
   /// Creates a new [ReportSummaryGroupFindingAssetAggregateStatStorageUtilizationChart].
   /// [free] (Output)

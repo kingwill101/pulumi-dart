@@ -5,43 +5,43 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering QaScorecard resources.
 class QaScorecardState {
   /// The time at which this scorecard was created.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// A text description explaining the intent of the scorecard.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The user-specified display name of the scorecard.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Whether the scorecard is the default one for the project.
   /// A default scorecard cannot be deleted and will always appear first in
   /// scorecard selector.
-  final pulumi.Input<bool>? isDefault;
+  final pulumi.Input<bool?>? isDefault;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Identifier. The scorecard name.
   /// Format:
   /// projects/{project}/locations/{location}/qaScorecards/{qa_scorecard}
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// A unique ID for the new QaScorecard. This ID will become the final
   /// component of the QaScorecard's resource name. If no ID is specified, a
   /// server-generated ID will be used.
   /// This value should be 4-64 characters and must match the regular
   /// expression `^[a-z0-9-]{4,64}$`. Valid characters are `a-z-`.
-  final pulumi.Input<String>? qaScorecardId;
+  final pulumi.Input<String?>? qaScorecardId;
   /// Possible values:
   /// QA_SCORECARD_SOURCE_CUSTOMER_DEFINED
   /// QA_SCORECARD_SOURCE_DISCOVERY_ENGINE
-  final pulumi.Input<String>? source;
+  final pulumi.Input<String?>? source;
   /// The most recent time at which the scorecard was updated.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [QaScorecardState].
   /// [createTime] The time at which this scorecard was created.

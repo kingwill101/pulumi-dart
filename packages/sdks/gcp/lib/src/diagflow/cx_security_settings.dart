@@ -711,7 +711,7 @@ class CxSecuritySettings extends pulumi.CustomResource {
           'gcp:diagflow/cxSecuritySettings:CxSecuritySettings',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     audioExportSettings = registerOutput<CxSecuritySettingsAudioExportSettings?>('audioExportSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxSecuritySettingsAudioExportSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deidentifyTemplate = registerOutput<String?>('deidentifyTemplate');
@@ -722,7 +722,7 @@ class CxSecuritySettings extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    purgeDataTypes = registerOutput<List<String>?>('purgeDataTypes');
+    purgeDataTypes = registerOutput<List<String>?>('purgeDataTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     redactionScope = registerOutput<String?>('redactionScope');
     redactionStrategy = registerOutput<String?>('redactionStrategy');
     retentionStrategy = registerOutput<String?>('retentionStrategy');
@@ -734,11 +734,12 @@ class CxSecuritySettings extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CxSecuritySettingsState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return CxSecuritySettings._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -761,7 +762,32 @@ class CxSecuritySettings extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    purgeDataTypes = registerOutput<List<String>?>('purgeDataTypes');
+    purgeDataTypes = registerOutput<List<String>?>('purgeDataTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    redactionScope = registerOutput<String?>('redactionScope');
+    redactionStrategy = registerOutput<String?>('redactionStrategy');
+    retentionStrategy = registerOutput<String?>('retentionStrategy');
+    retentionWindowDays = registerOutput<int?>('retentionWindowDays');
+  }
+
+  /// Creates a typed reference to an existing [CxSecuritySettings] resource.
+  CxSecuritySettings.reference(String urn)
+    : super(
+        'gcp:diagflow/cxSecuritySettings:CxSecuritySettings',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    audioExportSettings = registerOutput<CxSecuritySettingsAudioExportSettings?>('audioExportSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxSecuritySettingsAudioExportSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deidentifyTemplate = registerOutput<String?>('deidentifyTemplate');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    displayName = registerOutput<String>('displayName');
+    insightsExportSettings = registerOutput<CxSecuritySettingsInsightsExportSettings?>('insightsExportSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxSecuritySettingsInsightsExportSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    inspectTemplate = registerOutput<String?>('inspectTemplate');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    purgeDataTypes = registerOutput<List<String>?>('purgeDataTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     redactionScope = registerOutput<String?>('redactionScope');
     redactionStrategy = registerOutput<String?>('redactionStrategy');
     retentionStrategy = registerOutput<String?>('retentionStrategy');

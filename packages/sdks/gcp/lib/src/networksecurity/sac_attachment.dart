@@ -231,18 +231,19 @@ class SacAttachment extends pulumi.CustomResource {
           'gcp:networksecurity/sacAttachment:SacAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     country = registerOutput<String?>('country');
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    labels = registerOutput<Map<String, String>?>('labels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     nccGateway = registerOutput<String>('nccGateway');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     sacRealm = registerOutput<String>('sacRealm');
     state = registerOutput<String>('state');
     symantecOptions = registerOutput<SacAttachmentSymantecOptions?>('symantecOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SacAttachmentSymantecOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -255,11 +256,12 @@ class SacAttachment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SacAttachmentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SacAttachment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -276,15 +278,42 @@ class SacAttachment extends pulumi.CustomResource {
     country = registerOutput<String?>('country');
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    labels = registerOutput<Map<String, String>?>('labels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     nccGateway = registerOutput<String>('nccGateway');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     sacRealm = registerOutput<String>('sacRealm');
     this.state = registerOutput<String>('state');
+    symantecOptions = registerOutput<SacAttachmentSymantecOptions?>('symantecOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SacAttachmentSymantecOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    timeZone = registerOutput<String?>('timeZone');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [SacAttachment] resource.
+  SacAttachment.reference(String urn)
+    : super(
+        'gcp:networksecurity/sacAttachment:SacAttachment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    country = registerOutput<String?>('country');
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    nccGateway = registerOutput<String>('nccGateway');
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    sacRealm = registerOutput<String>('sacRealm');
+    state = registerOutput<String>('state');
     symantecOptions = registerOutput<SacAttachmentSymantecOptions?>('symantecOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SacAttachmentSymantecOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     timeZone = registerOutput<String?>('timeZone');
     updateTime = registerOutput<String>('updateTime');

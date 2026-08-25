@@ -21,7 +21,7 @@ class ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTime {
 
   factory ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTime.fromMap(Map<String, dynamic> map) {
     return ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTime(
-      hours: pulumi.Input.fromValue(map['hours'] as int),
+      hours: pulumi.Input.fromValue((map['hours'] as num).toInt()),
     );
   }
 }

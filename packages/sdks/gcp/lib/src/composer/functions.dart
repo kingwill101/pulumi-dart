@@ -175,6 +175,17 @@ Future<GetEnvironmentResult> getEnvironment(
   return GetEnvironmentResult.fromMap(result);
 }
 
+pulumi.Output<GetEnvironmentResult> getEnvironmentOutput(
+  GetEnvironmentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:composer/getEnvironment:getEnvironment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEnvironmentResult.fromMap);
+}
+
 /// Provides access to available Managed Airflow versions in a region for a given project.
 ///
 /// To get more information about Managed Airflow image versions, see:
@@ -362,6 +373,17 @@ Future<GetImageVersionsResult> getImageVersions(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetImageVersionsResult.fromMap(result);
+}
+
+pulumi.Output<GetImageVersionsResult> getImageVersionsOutput(
+  GetImageVersionsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:composer/getImageVersions:getImageVersions',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetImageVersionsResult.fromMap);
 }
 
 /// Provides access to Kubernetes ConfigMap configuration for a given project, region and Managed Airflow Environment.
@@ -637,6 +659,17 @@ Future<GetUserWorkloadsConfigMapResult> getUserWorkloadsConfigMap(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetUserWorkloadsConfigMapResult.fromMap(result);
+}
+
+pulumi.Output<GetUserWorkloadsConfigMapResult> getUserWorkloadsConfigMapOutput(
+  GetUserWorkloadsConfigMapArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:composer/getUserWorkloadsConfigMap:getUserWorkloadsConfigMap',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetUserWorkloadsConfigMapResult.fromMap);
 }
 
 /// Provides access to Kubernetes Secret configuration for a given project, region
@@ -958,4 +991,15 @@ Future<GetUserWorkloadsSecretResult> getUserWorkloadsSecret(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetUserWorkloadsSecretResult.fromMap(result);
+}
+
+pulumi.Output<GetUserWorkloadsSecretResult> getUserWorkloadsSecretOutput(
+  GetUserWorkloadsSecretArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:composer/getUserWorkloadsSecret:getUserWorkloadsSecret',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetUserWorkloadsSecretResult.fromMap);
 }

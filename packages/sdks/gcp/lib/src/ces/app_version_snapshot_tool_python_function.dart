@@ -4,15 +4,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AppVersionSnapshotToolPythonFunction {
   /// The description of the app version.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// (Output)
   /// Identifier. The unique identifier of the toolset.
   /// Format:
   /// `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// (Output)
   /// The Python code to execute for the tool.
-  final pulumi.Input<String>? pythonCode;
+  final pulumi.Input<String?>? pythonCode;
 
   /// Creates a new [AppVersionSnapshotToolPythonFunction].
   /// [description] The description of the app version.

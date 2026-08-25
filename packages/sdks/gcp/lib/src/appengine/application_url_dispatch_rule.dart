@@ -3,9 +3,9 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApplicationUrlDispatchRule {
-  final pulumi.Input<String>? domain;
-  final pulumi.Input<String>? path;
-  final pulumi.Input<String>? service;
+  final pulumi.Input<String?>? domain;
+  final pulumi.Input<String?>? path;
+  final pulumi.Input<String?>? service;
 
   /// Creates a new [ApplicationUrlDispatchRule].
   /// [domain] Optional.

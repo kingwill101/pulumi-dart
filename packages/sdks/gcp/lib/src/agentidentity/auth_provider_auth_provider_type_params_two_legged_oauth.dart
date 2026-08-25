@@ -4,21 +4,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AuthProviderAuthProviderTypeParamsTwoLeggedOauth {
   /// The client ID of the OAuth client.
-  final pulumi.Input<String>? clientId;
+  final pulumi.Input<String?>? clientId;
   /// Input only. The client secret of the OAuth client.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
-  final pulumi.Input<String>? clientSecret;
+  final pulumi.Input<String?>? clientSecret;
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
   /// (Optional, Write-Only)
   /// Input only. The client secret of the OAuth client.
   /// **Note**: This property is write-only and will not be read from the API.
   ///
   /// &gt; **Note:** One of `clientSecret` or `clientSecretWo` can only be set.
-  final pulumi.Input<String>? clientSecretWo;
+  final pulumi.Input<String?>? clientSecretWo;
   /// Triggers update of `clientSecretWo` write-only. Increment this value when an update to `clientSecretWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
-  final pulumi.Input<String>? clientSecretWoVersion;
+  final pulumi.Input<String?>? clientSecretWoVersion;
   /// The token endpoint of the OAuth client.
-  final pulumi.Input<String>? tokenUrl;
+  final pulumi.Input<String?>? tokenUrl;
 
   /// Creates a new [AuthProviderAuthProviderTypeParamsTwoLeggedOauth].
   /// [clientId] The client ID of the OAuth client.

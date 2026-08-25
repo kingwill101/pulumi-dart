@@ -4,21 +4,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfig {
   /// If true, the processed document will be made available for the GetProcessedDocument API.
-  final pulumi.Input<bool>? enableGetProcessedDocument;
+  final pulumi.Input<bool?>? enableGetProcessedDocument;
   /// If true, the LLM based annotation is added to the image during parsing.
-  final pulumi.Input<bool>? enableImageAnnotation;
+  final pulumi.Input<bool?>? enableImageAnnotation;
   /// If true, the pdf layout will be refined using an LLM.
-  final pulumi.Input<bool>? enableLlmLayoutParsing;
+  final pulumi.Input<bool?>? enableLlmLayoutParsing;
   /// If true, the LLM based annotation is added to the table during parsing.
-  final pulumi.Input<bool>? enableTableAnnotation;
+  final pulumi.Input<bool?>? enableTableAnnotation;
   /// List of HTML classes to exclude from the parsed content.
-  final pulumi.Input<List<String>>? excludeHtmlClasses;
+  final pulumi.Input<List<String>?>? excludeHtmlClasses;
   /// List of HTML elements to exclude from the parsed content.
-  final pulumi.Input<List<String>>? excludeHtmlElements;
+  final pulumi.Input<List<String>?>? excludeHtmlElements;
   /// List of HTML ids to exclude from the parsed content.
-  final pulumi.Input<List<String>>? excludeHtmlIds;
+  final pulumi.Input<List<String>?>? excludeHtmlIds;
   /// Contains the required structure types to extract from the document. Supported values: `shareholder-structure`.
-  final pulumi.Input<List<String>>? structuredContentTypes;
+  final pulumi.Input<List<String>?>? structuredContentTypes;
 
   /// Creates a new [DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfig].
   /// [enableGetProcessedDocument] If true, the processed document will be made available for the GetProcessedDocument API.

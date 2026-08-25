@@ -8,35 +8,35 @@ import 'group_membership_role.dart';
 /// Input properties used for looking up and filtering GroupMembership resources.
 class GroupMembershipState {
   /// If set to true, skip group member creation if a membership with the same name already exists. Defaults to false.
-  final pulumi.Input<bool>? createIgnoreAlreadyExists;
+  final pulumi.Input<bool?>? createIgnoreAlreadyExists;
   /// The time when the Membership was created.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The name of the Group to create this membership in.
-  final pulumi.Input<String>? group;
+  final pulumi.Input<String?>? group;
   /// (Optional, Beta)
   /// EntityKey of the member.
   /// Structure is documented below.
-  final pulumi.Input<GroupMembershipMemberKey>? memberKey;
+  final pulumi.Input<GroupMembershipMemberKey?>? memberKey;
   /// The resource name of the Membership, of the form groups/{group_id}/memberships/{membership_id}.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// EntityKey of the member.
   /// Structure is documented below.
-  final pulumi.Input<GroupMembershipPreferredMemberKey>? preferredMemberKey;
+  final pulumi.Input<GroupMembershipPreferredMemberKey?>? preferredMemberKey;
   /// The MembershipRoles that apply to the Membership.
   /// Must not contain duplicate MembershipRoles with the same name.
   /// Structure is documented below.
-  final pulumi.Input<List<GroupMembershipRole>>? roles;
+  final pulumi.Input<List<GroupMembershipRole>?>? roles;
   /// The type of the membership.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// The time when the Membership was last updated.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [GroupMembershipState].
   /// [createIgnoreAlreadyExists] If set to true, skip group member creation if a membership with the same name already exists. Defaults to false.

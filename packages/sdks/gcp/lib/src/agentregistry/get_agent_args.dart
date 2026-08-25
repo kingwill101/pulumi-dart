@@ -8,16 +8,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_agentregistry_get_agent_get_agent_args_doc}
 class GetAgentArgs {
   /// The unique identifier for the Agent. This or `filter` must be set.
-  final pulumi.Input<String>? agentId;
+  final pulumi.Input<String?>? agentId;
   /// A filter string that identifies a unique Agent. This or `agentId` must be set.
-  final pulumi.Input<String>? filter;
+  final pulumi.Input<String?>? filter;
   /// The location of the resource.
   ///
   /// - - -
   final pulumi.Input<String> location;
   /// The project in which the resource belongs. If it
   /// is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetAgentArgs].
   /// [agentId] The unique identifier for the Agent. This or `filter` must be set.

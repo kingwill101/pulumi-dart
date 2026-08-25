@@ -12,7 +12,7 @@ class LinkedDatasetArgs {
   /// with it, in the same project as the LogBucket it's linked to. This dataset will also have BigQuery
   /// Views corresponding to the LogViews in the bucket.
   /// Structure is documented below.
-  final pulumi.Input<List<LinkedDatasetBigqueryDataset>>? bigqueryDatasets;
+  final pulumi.Input<List<LinkedDatasetBigqueryDataset>?>? bigqueryDatasets;
   /// The bucket to which the linked dataset is attached.
   final pulumi.Input<String> bucket;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -21,15 +21,15 @@ class LinkedDatasetArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Describes this link. The maximum length of the description is 8000 characters.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The id of the linked dataset.
   final pulumi.Input<String> linkId;
   /// The location of the linked dataset.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The parent of the linked dataset.
-  final pulumi.Input<String>? parent;
+  final pulumi.Input<String?>? parent;
 
   /// Creates a new [LinkedDatasetArgs].
   /// [bigqueryDatasets] The information of a BigQuery Dataset. When a link is created, a BigQuery dataset is created along

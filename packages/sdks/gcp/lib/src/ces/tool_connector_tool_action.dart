@@ -6,17 +6,17 @@ import 'tool_connector_tool_action_entity_operation.dart';
 class ToolConnectorToolAction {
   /// (Output)
   /// ID of a Connection action for the tool to use.
-  final pulumi.Input<String>? connectionActionId;
+  final pulumi.Input<String?>? connectionActionId;
   /// (Output)
   /// Entity operation configuration for the tool to use.
   /// Structure is documented below.
-  final pulumi.Input<List<ToolConnectorToolActionEntityOperation>>? entityOperations;
+  final pulumi.Input<List<ToolConnectorToolActionEntityOperation>?>? entityOperations;
   /// (Output)
   /// Entity fields to use as inputs for the operation.
-  final pulumi.Input<List<String>>? inputFields;
+  final pulumi.Input<List<String>?>? inputFields;
   /// (Output)
   /// Entity fields to return from the operation.
-  final pulumi.Input<List<String>>? outputFields;
+  final pulumi.Input<List<String>?>? outputFields;
 
   /// Creates a new [ToolConnectorToolAction].
   /// [connectionActionId] (Output)

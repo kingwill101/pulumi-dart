@@ -219,7 +219,7 @@ class CustomList extends pulumi.CustomResource {
           'gcp:chronicle/customList:CustomList',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     category = registerOutput<String>('category');
     customListId = registerOutput<String>('customListId');
@@ -237,11 +237,12 @@ class CustomList extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CustomListState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return CustomList._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -255,6 +256,26 @@ class CustomList extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    category = registerOutput<String>('category');
+    customListId = registerOutput<String>('customListId');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    entityIdentifier = registerOutput<String>('entityIdentifier');
+    environments = registerOutput<String>('environments');
+    instance = registerOutput<String>('instance');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+  }
+
+  /// Creates a typed reference to an existing [CustomList] resource.
+  CustomList.reference(String urn)
+    : super(
+        'gcp:chronicle/customList:CustomList',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     category = registerOutput<String>('category');
     customListId = registerOutput<String>('customListId');
     deletionPolicy = registerOutput<String>('deletionPolicy');

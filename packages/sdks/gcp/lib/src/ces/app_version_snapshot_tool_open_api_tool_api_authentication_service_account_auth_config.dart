@@ -11,7 +11,7 @@ class AppVersionSnapshotToolOpenApiToolApiAuthenticationServiceAccountAuthConfig
   /// `roles/iam.serviceAccountTokenCreator` role granted to the
   /// CES service agent
   /// `service-@gcp-sa-ces.iam.gserviceaccount.com`.
-  final pulumi.Input<String>? serviceAccount;
+  final pulumi.Input<String?>? serviceAccount;
 
   /// Creates a new [AppVersionSnapshotToolOpenApiToolApiAuthenticationServiceAccountAuthConfig].
   /// [serviceAccount] (Output)

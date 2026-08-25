@@ -5,7 +5,7 @@ import 'cluster_node_pool_node_config_linux_node_config_custom_node_init_init_sc
 
 class ClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInit {
   /// The init script configuration. Structure is documented below.
-  final pulumi.Input<ClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScript>? initScript;
+  final pulumi.Input<ClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInitInitScript?>? initScript;
 
   /// Creates a new [ClusterNodePoolNodeConfigLinuxNodeConfigCustomNodeInit].
   /// [initScript] The init script configuration. Structure is documented below.

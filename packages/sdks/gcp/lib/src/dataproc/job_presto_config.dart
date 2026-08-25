@@ -5,23 +5,23 @@ import 'job_presto_config_logging_config.dart';
 
 class JobPrestoConfig {
   /// Presto client tags to attach to this query.
-  final pulumi.Input<List<String>>? clientTags;
+  final pulumi.Input<List<String>?>? clientTags;
   /// Whether to continue executing queries if a query fails. Setting to true can be useful when executing independent parallel queries. Defaults to false.
-  final pulumi.Input<bool>? continueOnFailure;
+  final pulumi.Input<bool?>? continueOnFailure;
   /// The runtime logging config of the job
-  final pulumi.Input<JobPrestoConfigLoggingConfig>? loggingConfig;
+  final pulumi.Input<JobPrestoConfigLoggingConfig?>? loggingConfig;
   /// The format in which query output will be displayed. See the Presto documentation for supported output formats.
   ///
   /// * `logging_config.driver_log_levels`- (Required) The per-package log levels for the driver. This may include 'root' package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
-  final pulumi.Input<String>? outputFormat;
+  final pulumi.Input<String?>? outputFormat;
   /// A mapping of property names to values. Used to set Presto session properties Equivalent to using the --session flag in the Presto CLI.
-  final pulumi.Input<Map<String, String>>? properties;
+  final pulumi.Input<Map<String, String>?>? properties;
   /// The HCFS URI of the script that contains SQL queries.
   /// Conflicts with `queryList`
-  final pulumi.Input<String>? queryFileUri;
+  final pulumi.Input<String?>? queryFileUri;
   /// The list of SQL queries or statements to execute as part of the job.
   /// Conflicts with `queryFileUri`
-  final pulumi.Input<List<String>>? queryLists;
+  final pulumi.Input<List<String>?>? queryLists;
 
   /// Creates a new [JobPrestoConfig].
   /// [clientTags] Presto client tags to attach to this query.

@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BatchStateHistory {
   /// (Output)
   /// The state of the batch at this point in history. For possible values, see the [API documentation](https://cloud.google.com/dataproc-serverless/docs/reference/rest/v1/projects.locations.batches#State).
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// (Output)
   /// Details about the state at this point in history.
-  final pulumi.Input<String>? stateMessage;
+  final pulumi.Input<String?>? stateMessage;
   /// (Output)
   /// The time when the batch entered the historical state.
-  final pulumi.Input<String>? stateStartTime;
+  final pulumi.Input<String?>? stateStartTime;
 
   /// Creates a new [BatchStateHistory].
   /// [state] (Output)

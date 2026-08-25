@@ -5,12 +5,12 @@ import 'tool_data_store_tool_modality_config_summarization_config_model_settings
 
 class ToolDataStoreToolModalityConfigSummarizationConfig {
   /// Whether summarization is disabled.
-  final pulumi.Input<bool>? disabled;
+  final pulumi.Input<bool?>? disabled;
   /// Model settings contains various configurations for the LLM model.
   /// Structure is documented below.
-  final pulumi.Input<ToolDataStoreToolModalityConfigSummarizationConfigModelSettings>? modelSettings;
+  final pulumi.Input<ToolDataStoreToolModalityConfigSummarizationConfigModelSettings?>? modelSettings;
   /// The prompt definition. If not set, default prompt will be used.
-  final pulumi.Input<String>? prompt;
+  final pulumi.Input<String?>? prompt;
 
   /// Creates a new [ToolDataStoreToolModalityConfigSummarizationConfig].
   /// [disabled] Whether summarization is disabled.

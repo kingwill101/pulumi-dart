@@ -6,10 +6,10 @@ class KeyRingImportJobAttestation {
   /// (Output)
   /// The attestation data provided by the HSM when the key operation was performed.
   /// A base64-encoded string.
-  final pulumi.Input<String>? content;
+  final pulumi.Input<String?>? content;
   /// (Output)
   /// The format of the attestation data.
-  final pulumi.Input<String>? format;
+  final pulumi.Input<String?>? format;
 
   /// Creates a new [KeyRingImportJobAttestation].
   /// [content] (Output)

@@ -7,7 +7,7 @@ import 'restore_plan_restore_config_transformation_rule_resource_filter.dart';
 class RestorePlanRestoreConfigTransformationRule {
   /// The description is a user specified string description
   /// of the transformation rule.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// A list of transformation rule actions to take against candidate
   /// resources. Actions are executed in order defined - this order
   /// matters, as they could potentially interfere with each other and
@@ -19,7 +19,7 @@ class RestorePlanRestoreConfigTransformationRule {
   /// supplied transformation rule actions, and this will ensure that only
   /// specific resources are affected by transformation rule actions.
   /// Structure is documented below.
-  final pulumi.Input<RestorePlanRestoreConfigTransformationRuleResourceFilter>? resourceFilter;
+  final pulumi.Input<RestorePlanRestoreConfigTransformationRuleResourceFilter?>? resourceFilter;
 
   /// Creates a new [RestorePlanRestoreConfigTransformationRule].
   /// [description] The description is a user specified string description

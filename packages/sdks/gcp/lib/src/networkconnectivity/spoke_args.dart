@@ -19,42 +19,42 @@ class SpokeArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// An optional description of the spoke.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// This is a gateway that can apply specialized processing to traffic going through it.
   /// Structure is documented below.
-  final pulumi.Input<SpokeGateway>? gateway;
+  final pulumi.Input<SpokeGateway?>? gateway;
   /// The name of the group that this spoke is associated with.
-  final pulumi.Input<String>? group;
+  final pulumi.Input<String?>? group;
   /// Immutable. The URI of the hub that this spoke is attached to.
   final pulumi.Input<String> hub;
   /// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://docs.cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of advertising the same prefixes.
   /// Structure is documented below.
-  final pulumi.Input<SpokeLinkedInterconnectAttachments>? linkedInterconnectAttachments;
+  final pulumi.Input<SpokeLinkedInterconnectAttachments?>? linkedInterconnectAttachments;
   /// Producer VPC network that is associated with the spoke.
   /// Structure is documented below.
-  final pulumi.Input<SpokeLinkedProducerVpcNetwork>? linkedProducerVpcNetwork;
+  final pulumi.Input<SpokeLinkedProducerVpcNetwork?>? linkedProducerVpcNetwork;
   /// The URIs of linked Router appliance resources
   /// Structure is documented below.
-  final pulumi.Input<SpokeLinkedRouterApplianceInstances>? linkedRouterApplianceInstances;
+  final pulumi.Input<SpokeLinkedRouterApplianceInstances?>? linkedRouterApplianceInstances;
   /// VPC network that is associated with the spoke.
   /// Structure is documented below.
-  final pulumi.Input<SpokeLinkedVpcNetwork>? linkedVpcNetwork;
+  final pulumi.Input<SpokeLinkedVpcNetwork?>? linkedVpcNetwork;
   /// The URIs of linked VPN tunnel resources
   /// Structure is documented below.
-  final pulumi.Input<SpokeLinkedVpnTunnels>? linkedVpnTunnels;
+  final pulumi.Input<SpokeLinkedVpnTunnels?>? linkedVpnTunnels;
   /// The location for the resource
   final pulumi.Input<String> location;
   /// Immutable. The name of the spoke. Spoke names must be unique.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [SpokeArgs].
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

@@ -7,7 +7,7 @@ class ResizeRequestStatusError {
   /// (Output)
   /// The array of errors encountered while processing this operation.
   /// Structure is documented below.
-  final pulumi.Input<List<ResizeRequestStatusErrorError>>? errors;
+  final pulumi.Input<List<ResizeRequestStatusErrorError>?>? errors;
 
   /// Creates a new [ResizeRequestStatusError].
   /// [errors] (Output)

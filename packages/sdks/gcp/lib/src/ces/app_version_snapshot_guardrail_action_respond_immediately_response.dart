@@ -5,10 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AppVersionSnapshotGuardrailActionRespondImmediatelyResponse {
   /// (Output)
   /// Whether summarization is disabled.
-  final pulumi.Input<bool>? disabled;
+  final pulumi.Input<bool?>? disabled;
   /// (Output)
   /// Text for the agent to respond with.
-  final pulumi.Input<String>? text;
+  final pulumi.Input<String?>? text;
 
   /// Creates a new [AppVersionSnapshotGuardrailActionRespondImmediatelyResponse].
   /// [disabled] (Output)

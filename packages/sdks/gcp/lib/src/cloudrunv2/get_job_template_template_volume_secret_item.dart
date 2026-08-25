@@ -30,7 +30,7 @@ class GetJobTemplateTemplateVolumeSecretItem {
 
   factory GetJobTemplateTemplateVolumeSecretItem.fromMap(Map<String, dynamic> map) {
     return GetJobTemplateTemplateVolumeSecretItem(
-      mode: pulumi.Input.fromValue(map['mode'] as int),
+      mode: pulumi.Input.fromValue((map['mode'] as num).toInt()),
       path: pulumi.Input.fromValue(map['path'] as String),
       version: pulumi.Input.fromValue(map['version'] as String),
     );

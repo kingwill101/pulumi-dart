@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSource {
   /// The schema name in the source.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The Doc AI processor type name.
-  final pulumi.Input<String>? processorType;
+  final pulumi.Input<String?>? processorType;
 
   /// Creates a new [DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSource].
   /// [name] The schema name in the source.

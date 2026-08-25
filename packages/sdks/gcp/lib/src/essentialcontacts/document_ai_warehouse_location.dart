@@ -210,7 +210,7 @@ class DocumentAiWarehouseLocation extends pulumi.CustomResource {
           'gcp:essentialcontacts/documentAiWarehouseLocation:DocumentAiWarehouseLocation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     accessControlMode = registerOutput<String>('accessControlMode');
     databaseType = registerOutput<String>('databaseType');
@@ -225,11 +225,12 @@ class DocumentAiWarehouseLocation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DocumentAiWarehouseLocationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DocumentAiWarehouseLocation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -243,6 +244,23 @@ class DocumentAiWarehouseLocation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    accessControlMode = registerOutput<String>('accessControlMode');
+    databaseType = registerOutput<String>('databaseType');
+    documentCreatorDefaultRole = registerOutput<String?>('documentCreatorDefaultRole');
+    kmsKey = registerOutput<String?>('kmsKey');
+    location = registerOutput<String>('location');
+    projectNumber = registerOutput<String>('projectNumber');
+  }
+
+  /// Creates a typed reference to an existing [DocumentAiWarehouseLocation] resource.
+  DocumentAiWarehouseLocation.reference(String urn)
+    : super(
+        'gcp:essentialcontacts/documentAiWarehouseLocation:DocumentAiWarehouseLocation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     accessControlMode = registerOutput<String>('accessControlMode');
     databaseType = registerOutput<String>('databaseType');
     documentCreatorDefaultRole = registerOutput<String?>('documentCreatorDefaultRole');

@@ -6,31 +6,31 @@ import 'volume_cache_parameters_cache_config.dart';
 class VolumeCacheParameters {
   /// Optional. Configuration of the cache volume.
   /// Structure is documented below.
-  final pulumi.Input<VolumeCacheParametersCacheConfig>? cacheConfig;
+  final pulumi.Input<VolumeCacheParametersCacheConfig?>? cacheConfig;
   /// (Output)
   /// State of the cache volume indicating the peering status.
-  final pulumi.Input<String>? cacheState;
+  final pulumi.Input<String?>? cacheState;
   /// (Output)
   /// Copy-paste-able commands to be used on user's ONTAP to accept peering requests.
-  final pulumi.Input<String>? command;
+  final pulumi.Input<String?>? command;
   /// Optional. Field indicating whether cache volume as global file lock enabled.
-  final pulumi.Input<bool>? enableGlobalFileLock;
+  final pulumi.Input<bool?>? enableGlobalFileLock;
   /// (Output)
   /// Temporary passphrase generated to accept cluster peering command.
-  final pulumi.Input<String>? passphrase;
+  final pulumi.Input<String?>? passphrase;
   /// Required. Name of the origin volume's ONTAP cluster.
-  final pulumi.Input<String>? peerClusterName;
+  final pulumi.Input<String?>? peerClusterName;
   /// Required. List of IC LIF addresses of the origin volume's ONTAP cluster.
-  final pulumi.Input<List<String>>? peerIpAddresses;
+  final pulumi.Input<List<String>?>? peerIpAddresses;
   /// Required. Name of the origin volume's SVM.
-  final pulumi.Input<String>? peerSvmName;
+  final pulumi.Input<String?>? peerSvmName;
   /// Required. Name of the origin volume for the cache volume.
-  final pulumi.Input<String>? peerVolumeName;
+  final pulumi.Input<String?>? peerVolumeName;
   /// Optional. Expiration time for the peering command to be executed on user's ONTAP. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
-  final pulumi.Input<String>? peeringCommandExpiryTime;
+  final pulumi.Input<String?>? peeringCommandExpiryTime;
   /// (Output)
   /// Detailed description of the current cache state.
-  final pulumi.Input<String>? stateDetails;
+  final pulumi.Input<String?>? stateDetails;
 
   /// Creates a new [VolumeCacheParameters].
   /// [cacheConfig] Optional. Configuration of the cache volume.

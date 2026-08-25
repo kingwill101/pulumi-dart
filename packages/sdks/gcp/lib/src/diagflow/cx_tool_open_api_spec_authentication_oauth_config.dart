@@ -7,16 +7,16 @@ class CxToolOpenApiSpecAuthenticationOauthConfig {
   final pulumi.Input<String> clientId;
   /// Optional. The client secret from the OAuth provider. If the `secretVersionForClientSecret` field is set, this field will be ignored.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
-  final pulumi.Input<String>? clientSecret;
+  final pulumi.Input<String?>? clientSecret;
   /// OAuth grant types.
   /// See [OauthGrantType](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.tools#oauthgranttype) for valid values
   final pulumi.Input<String> oauthGrantType;
   /// Optional. The OAuth scopes to grant.
-  final pulumi.Input<List<String>>? scopes;
+  final pulumi.Input<List<String>?>? scopes;
   /// Optional. The name of the SecretManager secret version resource storing the client secret.
   /// If this field is set, the clientSecret field will be ignored.
   /// Format: projects/{project}/secrets/{secret}/versions/{version}
-  final pulumi.Input<String>? secretVersionForClientSecret;
+  final pulumi.Input<String?>? secretVersionForClientSecret;
   /// The token endpoint in the OAuth provider to exchange for an access token.
   final pulumi.Input<String> tokenEndpoint;
 

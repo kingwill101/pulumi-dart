@@ -3,16 +3,16 @@
 import 'package:pulumi_conformance_component/index.dart' as module_index;
 import 'package:pulumi_conformance_component/providers.dart' as module_providers;
 
-final index = const _IndexModuleNamespace();
-final providers = const _ProvidersModuleNamespace();
+final index = _IndexModuleNamespace();
+final providers = _ProvidersModuleNamespace();
 
 class _IndexModuleNamespace {
-  const _IndexModuleNamespace();
+  _IndexModuleNamespace();
   final Simple = module_index.Simple.new;
   final SimpleArgs = module_index.SimpleArgs.new;
 }
 
 class _ProvidersModuleNamespace {
-  const _ProvidersModuleNamespace();
+  _ProvidersModuleNamespace();
   final ConformanceComponent = module_providers.ProviderProvider.new;
 }

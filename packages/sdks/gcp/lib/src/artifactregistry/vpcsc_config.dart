@@ -173,7 +173,7 @@ class VpcscConfig extends pulumi.CustomResource {
           'gcp:artifactregistry/vpcscConfig:VpcscConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -186,11 +186,12 @@ class VpcscConfig extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VpcscConfigState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VpcscConfig._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -204,6 +205,21 @@ class VpcscConfig extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    vpcscPolicy = registerOutput<String?>('vpcscPolicy');
+  }
+
+  /// Creates a typed reference to an existing [VpcscConfig] resource.
+  VpcscConfig.reference(String urn)
+    : super(
+        'gcp:artifactregistry/vpcscConfig:VpcscConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

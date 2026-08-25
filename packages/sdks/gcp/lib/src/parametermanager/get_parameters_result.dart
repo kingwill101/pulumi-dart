@@ -7,11 +7,11 @@ import 'get_parameters_parameter.dart';
 class GetParametersResult {
   final String? filter;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// A list of parameters matching the filter. Structure is defined below.
-  final List<GetParametersParameter> parameters;
+  final List<GetParametersParameter>? parameters;
   /// The ID of the project in which the resource belongs.
-  final String project;
+  final String? project;
 
   /// Creates a new [GetParametersResult].
   /// [filter] Optional.
@@ -20,26 +20,26 @@ class GetParametersResult {
   /// [project] The ID of the project in which the resource belongs.
   const GetParametersResult({
     this.filter,
-    required this.id,
-    required this.parameters,
-    required this.project,
+    this.id,
+    this.parameters,
+    this.project,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'filter': ?filter,
-      'id': id,
-      'parameters': pulumi.Input.encodeList<GetParametersParameter, Map<String, dynamic>>(parameters, (value) => value.toMap()),
-      'project': project,
+      'id': ?id,
+      'parameters': ?(() { final guardedValue = parameters; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetParametersParameter, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'project': ?project,
     };
   }
 
   factory GetParametersResult.fromMap(Map<String, dynamic> map) {
     return GetParametersResult(
       filter: (() { final guardedValue = map['filter']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
-      parameters: pulumi.Input.decodeList<GetParametersParameter>(map['parameters']!, (value) => GetParametersParameter.fromMap((value as Map).cast<String, dynamic>())),
-      project: map['project'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetParametersParameter>(guardedValue, (value) => GetParametersParameter.fromMap((value as Map).cast<String, dynamic>())); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

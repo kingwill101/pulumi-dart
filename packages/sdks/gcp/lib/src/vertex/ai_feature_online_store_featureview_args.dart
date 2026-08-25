@@ -13,38 +13,38 @@ import 'ai_feature_online_store_featureview_vector_search_config.dart';
 class AiFeatureOnlineStoreFeatureviewArgs {
   /// Configures how data is supposed to be extracted from a BigQuery source to be loaded onto the FeatureOnlineStore.
   /// Structure is documented below.
-  final pulumi.Input<AiFeatureOnlineStoreFeatureviewBigQuerySource>? bigQuerySource;
+  final pulumi.Input<AiFeatureOnlineStoreFeatureviewBigQuerySource?>? bigQuerySource;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The name of the FeatureOnlineStore to use for the featureview.
   final pulumi.Input<String> featureOnlineStore;
   /// Configures the features from a Feature Registry source that need to be loaded onto the FeatureOnlineStore.
   /// Structure is documented below.
-  final pulumi.Input<AiFeatureOnlineStoreFeatureviewFeatureRegistrySource>? featureRegistrySource;
+  final pulumi.Input<AiFeatureOnlineStoreFeatureviewFeatureRegistrySource?>? featureRegistrySource;
   /// A set of key/value label pairs to assign to this FeatureView.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Name of the FeatureView. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The region for the resource. It should be the same as the featureonlinestore region.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Configures when data is to be synced/updated for this FeatureView. At the end of the sync the latest featureValues for each entityId of this FeatureView are made ready for online serving.
   /// Structure is documented below.
-  final pulumi.Input<AiFeatureOnlineStoreFeatureviewSyncConfig>? syncConfig;
+  final pulumi.Input<AiFeatureOnlineStoreFeatureviewSyncConfig?>? syncConfig;
   /// (Optional, Beta)
   /// Configuration for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
   /// Structure is documented below.
-  final pulumi.Input<AiFeatureOnlineStoreFeatureviewVectorSearchConfig>? vectorSearchConfig;
+  final pulumi.Input<AiFeatureOnlineStoreFeatureviewVectorSearchConfig?>? vectorSearchConfig;
 
   /// Creates a new [AiFeatureOnlineStoreFeatureviewArgs].
   /// [bigQuerySource] Configures how data is supposed to be extracted from a BigQuery source to be loaded onto the FeatureOnlineStore.

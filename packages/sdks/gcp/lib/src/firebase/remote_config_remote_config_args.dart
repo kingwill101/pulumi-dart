@@ -13,7 +13,7 @@ class RemoteConfigRemoteConfigArgs {
   /// A list of conditions in descending order by priority.
   /// The values of the condition names must be unique.
   /// Structure is documented below.
-  final pulumi.Input<List<RemoteConfigRemoteConfigCondition>>? conditions;
+  final pulumi.Input<List<RemoteConfigRemoteConfigCondition>?>? conditions;
   /// Map of parameter group names to their descriptions and grouped parameters.
   /// A group's name is mutable but must be unique among groups in the config.
   /// The name is limited to 256 characters and intended to be human-readable.
@@ -25,14 +25,14 @@ class RemoteConfigRemoteConfigArgs {
   /// `description` "New mobile search view" and contain parameters for the new
   /// search's layout and font.
   /// Structure is documented below.
-  final pulumi.Input<List<RemoteConfigRemoteConfigParameterGroup>>? parameterGroups;
+  final pulumi.Input<List<RemoteConfigRemoteConfigParameterGroup>?>? parameterGroups;
   /// Map of parameter keys to their optional default values and optional
   /// conditional values.
   /// Structure is documented below.
-  final pulumi.Input<List<RemoteConfigRemoteConfigParameter>>? parameters;
+  final pulumi.Input<List<RemoteConfigRemoteConfigParameter>?>? parameters;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [RemoteConfigRemoteConfigArgs].
   /// [conditions] A list of conditions in descending order by priority.

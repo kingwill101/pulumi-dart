@@ -11,29 +11,29 @@ class WorkforcePoolProviderKeyState {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The time after which the key will be permanently deleted and cannot be recovered.
   /// Note that the key may get purged before this time if the total limit of keys per provider is exceeded.
-  final pulumi.Input<String>? expireTime;
+  final pulumi.Input<String?>? expireTime;
   /// Immutable. Public half of the asymmetric key.
   /// Structure is documented below.
-  final pulumi.Input<WorkforcePoolProviderKeyKeyData>? keyData;
+  final pulumi.Input<WorkforcePoolProviderKeyKeyData?>? keyData;
   /// The ID to use for the key, which becomes the final component of the resource name. This value must be 4-32 characters, and may contain the characters [a-z0-9-].
-  final pulumi.Input<String>? keyId;
+  final pulumi.Input<String?>? keyId;
   /// The location for the resource.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Identifier. The resource name of the key.
   /// Format: `locations/{location}/workforcePools/{workforcePoolId}/providers/{providerId}/keys/{keyId}`
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the provider.
-  final pulumi.Input<String>? providerId;
+  final pulumi.Input<String?>? providerId;
   /// The state of the key.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// The purpose of the key.
   /// Possible values are: `ENCRYPTION`.
-  final pulumi.Input<String>? use;
+  final pulumi.Input<String?>? use;
   /// The ID of the workforce pool.
-  final pulumi.Input<String>? workforcePoolId;
+  final pulumi.Input<String?>? workforcePoolId;
 
   /// Creates a new [WorkforcePoolProviderKeyState].
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

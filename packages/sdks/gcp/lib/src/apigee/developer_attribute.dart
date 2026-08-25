@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DeveloperAttribute {
   /// Key of the attribute
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Value of the attribute
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [DeveloperAttribute].
   /// [name] Key of the attribute

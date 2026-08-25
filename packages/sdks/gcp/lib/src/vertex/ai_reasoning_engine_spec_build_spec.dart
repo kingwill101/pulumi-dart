@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AiReasoningEngineSpecBuildSpec {
   /// Optional. The resource name of the Cloud Build WorkerPool to use for the build.
-  final pulumi.Input<String>? workerPool;
+  final pulumi.Input<String?>? workerPool;
 
   /// Creates a new [AiReasoningEngineSpecBuildSpec].
   /// [workerPool] Optional. The resource name of the Cloud Build WorkerPool to use for the build.

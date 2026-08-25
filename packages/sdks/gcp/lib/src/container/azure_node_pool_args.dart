@@ -15,11 +15,11 @@ class AzureNodePoolArgs {
   ///
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
-  final pulumi.Input<Map<String, String>>? annotations;
+  final pulumi.Input<Map<String, String>?>? annotations;
   /// Autoscaler configuration for this node pool.
   final pulumi.Input<AzureNodePoolAutoscaling> autoscaling;
   /// Optional. The Azure availability zone of the nodes in this nodepool. When unspecified, it defaults to `1`.
-  final pulumi.Input<String>? azureAvailabilityZone;
+  final pulumi.Input<String?>? azureAvailabilityZone;
   /// The azureCluster for the resource
   final pulumi.Input<String> cluster;
   /// The node configuration of the node pool.
@@ -30,17 +30,17 @@ class AzureNodePoolArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The location for the resource
   final pulumi.Input<String> location;
   /// The Management configuration for this node pool.
-  final pulumi.Input<AzureNodePoolManagement>? management;
+  final pulumi.Input<AzureNodePoolManagement?>? management;
   /// The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
   final pulumi.Input<AzureNodePoolMaxPodsConstraint> maxPodsConstraint;
   /// The name of this resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The project for the resource
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The ARM ID of the subnet where the node pool VMs run. Make sure it's a subnet under the virtual network in the cluster configuration.
   final pulumi.Input<String> subnetId;
   /// The Kubernetes version (e.g. `1.19.10-gke.1000`) running on this node pool.

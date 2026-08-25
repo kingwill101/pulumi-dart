@@ -76,13 +76,13 @@ class GetRegionBackendServiceCdnPolicy {
     return GetRegionBackendServiceCdnPolicy(
       cacheKeyPolicies: pulumi.Input.fromValue(pulumi.Input.decodeList<GetRegionBackendServiceCdnPolicyCacheKeyPolicy>(map['cacheKeyPolicies']!, (value) => GetRegionBackendServiceCdnPolicyCacheKeyPolicy.fromMap((value as Map).cast<String, dynamic>()))),
       cacheMode: pulumi.Input.fromValue(map['cacheMode'] as String),
-      clientTtl: pulumi.Input.fromValue(map['clientTtl'] as int),
-      defaultTtl: pulumi.Input.fromValue(map['defaultTtl'] as int),
-      maxTtl: pulumi.Input.fromValue(map['maxTtl'] as int),
+      clientTtl: pulumi.Input.fromValue((map['clientTtl'] as num).toInt()),
+      defaultTtl: pulumi.Input.fromValue((map['defaultTtl'] as num).toInt()),
+      maxTtl: pulumi.Input.fromValue((map['maxTtl'] as num).toInt()),
       negativeCaching: pulumi.Input.fromValue(map['negativeCaching'] as bool),
       negativeCachingPolicies: pulumi.Input.fromValue(pulumi.Input.decodeList<GetRegionBackendServiceCdnPolicyNegativeCachingPolicy>(map['negativeCachingPolicies']!, (value) => GetRegionBackendServiceCdnPolicyNegativeCachingPolicy.fromMap((value as Map).cast<String, dynamic>()))),
-      serveWhileStale: pulumi.Input.fromValue(map['serveWhileStale'] as int),
-      signedUrlCacheMaxAgeSec: pulumi.Input.fromValue(map['signedUrlCacheMaxAgeSec'] as int),
+      serveWhileStale: pulumi.Input.fromValue((map['serveWhileStale'] as num).toInt()),
+      signedUrlCacheMaxAgeSec: pulumi.Input.fromValue((map['signedUrlCacheMaxAgeSec'] as num).toInt()),
     );
   }
 }

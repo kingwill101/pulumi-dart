@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class JobAppEngineHttpTargetAppEngineRouting {
   /// App instance.
   /// By default, the job is sent to an instance which is available when the job is attempted.
-  final pulumi.Input<String>? instance;
+  final pulumi.Input<String?>? instance;
   /// App service.
   /// By default, the job is sent to the service which is the default service when the job is attempted.
-  final pulumi.Input<String>? service;
+  final pulumi.Input<String?>? service;
   /// App version.
   /// By default, the job is sent to the version which is the default version when the job is attempted.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [JobAppEngineHttpTargetAppEngineRouting].
   /// [instance] App instance.

@@ -896,7 +896,7 @@ class Datastore extends pulumi.CustomResource {
           'gcp:apigee/datastore:Datastore',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     datastoreConfig = registerOutput<DatastoreDatastoreConfig>('datastoreConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatastoreDatastoreConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -915,11 +915,12 @@ class Datastore extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DatastoreState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Datastore._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -933,6 +934,27 @@ class Datastore extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    createTime = registerOutput<String>('createTime');
+    datastoreConfig = registerOutput<DatastoreDatastoreConfig>('datastoreConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatastoreDatastoreConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    displayName = registerOutput<String>('displayName');
+    lastUpdateTime = registerOutput<String>('lastUpdateTime');
+    this.name = registerOutput<String>('name');
+    org = registerOutput<String>('org');
+    orgId = registerOutput<String>('orgId');
+    self = registerOutput<String>('self');
+    targetType = registerOutput<String>('targetType');
+  }
+
+  /// Creates a typed reference to an existing [Datastore] resource.
+  Datastore.reference(String urn)
+    : super(
+        'gcp:apigee/datastore:Datastore',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     createTime = registerOutput<String>('createTime');
     datastoreConfig = registerOutput<DatastoreDatastoreConfig>('datastoreConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatastoreDatastoreConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deletionPolicy = registerOutput<String>('deletionPolicy');

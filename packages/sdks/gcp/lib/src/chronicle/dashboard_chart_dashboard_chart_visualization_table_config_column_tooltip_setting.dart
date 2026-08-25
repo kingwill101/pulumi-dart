@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DashboardChartDashboardChartVisualizationTableConfigColumnTooltipSetting {
   /// (Optional)
-  final pulumi.Input<String>? cellTooltipText;
+  final pulumi.Input<String?>? cellTooltipText;
   /// (Required)
   final pulumi.Input<String> field;
   /// (Optional)
-  final pulumi.Input<String>? headerTooltipText;
+  final pulumi.Input<String?>? headerTooltipText;
 
   /// Creates a new [DashboardChartDashboardChartVisualizationTableConfigColumnTooltipSetting].
   /// [cellTooltipText] (Optional)

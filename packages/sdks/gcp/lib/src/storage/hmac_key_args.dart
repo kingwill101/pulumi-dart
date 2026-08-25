@@ -13,16 +13,16 @@ class HmacKeyArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The email address of the key's associated service account.
   final pulumi.Input<String> serviceAccountEmail;
   /// The state of the key. Can be set to one of ACTIVE, INACTIVE.
   /// Default value is `ACTIVE`.
   /// Possible values are: `ACTIVE`, `INACTIVE`.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
 
   /// Creates a new [HmacKeyArgs].
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

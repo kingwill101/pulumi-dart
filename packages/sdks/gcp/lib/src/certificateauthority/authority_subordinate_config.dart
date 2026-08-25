@@ -8,11 +8,11 @@ class AuthoritySubordinateConfig {
   /// subordinate CertificateAuthority. This field is used for information
   /// and usability purposes only. The resource name is in the format
   /// `projects/*/locations/*/caPools/*/certificateAuthorities/*`.
-  final pulumi.Input<String>? certificateAuthority;
+  final pulumi.Input<String?>? certificateAuthority;
   /// Contains the PEM certificate chain for the issuers of this CertificateAuthority,
   /// but not pem certificate for this CA itself.
   /// Structure is documented below.
-  final pulumi.Input<AuthoritySubordinateConfigPemIssuerChain>? pemIssuerChain;
+  final pulumi.Input<AuthoritySubordinateConfigPemIssuerChain?>? pemIssuerChain;
 
   /// Creates a new [AuthoritySubordinateConfig].
   /// [certificateAuthority] This can refer to a CertificateAuthority that was used to create a

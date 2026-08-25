@@ -15,15 +15,15 @@ class BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig {
   /// - http://kubernetes.io/v1.1/docs/user-guide/labels.html
   /// An object containing a list of "key": value pairs.
   /// For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The list of machine addresses in the Bare Metal Node Pool.
   /// Structure is documented below.
-  final pulumi.Input<List<BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfig>>? nodeConfigs;
+  final pulumi.Input<List<BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfig>?>? nodeConfigs;
   /// Specifies the nodes operating system (default: LINUX).
-  final pulumi.Input<String>? operatingSystem;
+  final pulumi.Input<String?>? operatingSystem;
   /// The initial taints assigned to nodes of this node pool.
   /// Structure is documented below.
-  final pulumi.Input<List<BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaint>>? taints;
+  final pulumi.Input<List<BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaint>?>? taints;
 
   /// Creates a new [BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig].
   /// [labels] The map of Kubernetes labels (key/value pairs) to be applied to

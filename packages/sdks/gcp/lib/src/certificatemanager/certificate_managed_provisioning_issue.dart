@@ -6,9 +6,9 @@ class CertificateManagedProvisioningIssue {
   /// Human readable explanation about the issue. Provided to help address
   /// the configuration issues.
   /// Not guaranteed to be stable. For programmatic access use 'reason' field.
-  final pulumi.Input<String>? details;
+  final pulumi.Input<String?>? details;
   /// Reason for provisioning failures.
-  final pulumi.Input<String>? reason;
+  final pulumi.Input<String?>? reason;
 
   /// Creates a new [CertificateManagedProvisioningIssue].
   /// [details] Human readable explanation about the issue. Provided to help address

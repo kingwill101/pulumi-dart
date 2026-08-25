@@ -8,16 +8,16 @@ class ReservationReplicationStatus {
   /// The last error encountered while trying to replicate changes from the primary to the
   /// secondary. This field is only available if the replication has not succeeded since.
   /// Structure is documented below.
-  final pulumi.Input<List<ReservationReplicationStatusError>>? errors;
+  final pulumi.Input<List<ReservationReplicationStatusError>?>? errors;
   /// (Output)
   /// The time at which the last error was encountered while trying to replicate changes from
   /// the primary to the secondary. This field is only available if the replication has not
   /// succeeded since.
-  final pulumi.Input<String>? lastErrorTime;
+  final pulumi.Input<String?>? lastErrorTime;
   /// (Output)
   /// A timestamp corresponding to the last change on the primary that was successfully
   /// replicated to the secondary.
-  final pulumi.Input<String>? lastReplicationTime;
+  final pulumi.Input<String?>? lastReplicationTime;
 
   /// Creates a new [ReservationReplicationStatus].
   /// [errors] (Output)

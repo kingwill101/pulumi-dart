@@ -21,7 +21,7 @@ class AlertPolicyConditionConditionThreshold {
   /// ListTimeSeries method when debugging this
   /// field.
   /// Structure is documented below.
-  final pulumi.Input<List<AlertPolicyConditionConditionThresholdAggregation>>? aggregations;
+  final pulumi.Input<List<AlertPolicyConditionConditionThresholdAggregation>?>? aggregations;
   /// The comparison to apply between the time series
   /// (indicated by filter and aggregation) and the threshold
   /// (indicated by threshold_value). The comparison is
@@ -53,7 +53,7 @@ class AlertPolicyConditionConditionThreshold {
   /// is advisable to use the ListTimeSeries
   /// method when debugging this field.
   /// Structure is documented below.
-  final pulumi.Input<List<AlertPolicyConditionConditionThresholdDenominatorAggregation>>? denominatorAggregations;
+  final pulumi.Input<List<AlertPolicyConditionConditionThresholdDenominatorAggregation>?>? denominatorAggregations;
   /// A filter that identifies a time series that
   /// should be used as the denominator of a ratio
   /// that will be compared with the threshold. If
@@ -69,7 +69,7 @@ class AlertPolicyConditionConditionThreshold {
   /// resource labels, and metric labels. This
   /// field may not exceed 2048 Unicode characters
   /// in length.
-  final pulumi.Input<String>? denominatorFilter;
+  final pulumi.Input<String?>? denominatorFilter;
   /// The amount of time that a time series must
   /// violate the threshold to be considered
   /// failing. Currently, only values that are a
@@ -90,7 +90,7 @@ class AlertPolicyConditionConditionThreshold {
   /// metric-threshold conditions are evaluated when
   /// data stops arriving.
   /// Possible values are: `EVALUATION_MISSING_DATA_INACTIVE`, `EVALUATION_MISSING_DATA_ACTIVE`, `EVALUATION_MISSING_DATA_NO_OP`.
-  final pulumi.Input<String>? evaluationMissingData;
+  final pulumi.Input<String?>? evaluationMissingData;
   /// A filter that identifies which time series
   /// should be compared with the threshold.The
   /// filter is similar to the one that is
@@ -103,7 +103,7 @@ class AlertPolicyConditionConditionThreshold {
   /// resource labels, and metric labels. This
   /// field may not exceed 2048 Unicode characters
   /// in length.
-  final pulumi.Input<String>? filter;
+  final pulumi.Input<String?>? filter;
   /// When this field is present, the `MetricThreshold`
   /// condition forecasts whether the time series is
   /// predicted to violate the threshold within the
@@ -111,10 +111,10 @@ class AlertPolicyConditionConditionThreshold {
   /// `MetricThreshold` tests the current value of the
   /// timeseries against the threshold.
   /// Structure is documented below.
-  final pulumi.Input<AlertPolicyConditionConditionThresholdForecastOptions>? forecastOptions;
+  final pulumi.Input<AlertPolicyConditionConditionThresholdForecastOptions?>? forecastOptions;
   /// A value against which to compare the time
   /// series.
-  final pulumi.Input<double>? thresholdValue;
+  final pulumi.Input<double?>? thresholdValue;
   /// The number/percent of time series for which
   /// the comparison must hold in order for the
   /// condition to trigger. If unspecified, then
@@ -124,7 +124,7 @@ class AlertPolicyConditionConditionThreshold {
   /// or by the ratio, if denominatorFilter and
   /// denominatorAggregations are specified.
   /// Structure is documented below.
-  final pulumi.Input<AlertPolicyConditionConditionThresholdTrigger>? trigger;
+  final pulumi.Input<AlertPolicyConditionConditionThresholdTrigger?>? trigger;
 
   /// Creates a new [AlertPolicyConditionConditionThreshold].
   /// [aggregations] Specifies the alignment of data points in
@@ -175,7 +175,7 @@ class AlertPolicyConditionConditionThreshold {
       evaluationMissingData: (() { final guardedValue = map['evaluationMissingData']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       filter: (() { final guardedValue = map['filter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       forecastOptions: (() { final guardedValue = map['forecastOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AlertPolicyConditionConditionThresholdForecastOptions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      thresholdValue: (() { final guardedValue = map['thresholdValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      thresholdValue: (() { final guardedValue = map['thresholdValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       trigger: (() { final guardedValue = map['trigger']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AlertPolicyConditionConditionThresholdTrigger.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

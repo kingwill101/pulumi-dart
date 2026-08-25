@@ -6,27 +6,27 @@ class ConnectionProfileMysqlProfileSslConfig {
   /// PEM-encoded certificate of the CA that signed the source database
   /// server's certificate.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
-  final pulumi.Input<String>? caCertificate;
+  final pulumi.Input<String?>? caCertificate;
   /// (Output)
   /// Indicates whether the clientKey field is set.
-  final pulumi.Input<bool>? caCertificateSet;
+  final pulumi.Input<bool?>? caCertificateSet;
   /// PEM-encoded certificate that will be used by the replica to
   /// authenticate against the source database server. If this field
   /// is used then the 'clientKey' and the 'caCertificate' fields are
   /// mandatory.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
-  final pulumi.Input<String>? clientCertificate;
+  final pulumi.Input<String?>? clientCertificate;
   /// (Output)
   /// Indicates whether the clientCertificate field is set.
-  final pulumi.Input<bool>? clientCertificateSet;
+  final pulumi.Input<bool?>? clientCertificateSet;
   /// PEM-encoded private key associated with the Client Certificate.
   /// If this field is used then the 'client_certificate' and the
   /// 'ca_certificate' fields are mandatory.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
-  final pulumi.Input<String>? clientKey;
+  final pulumi.Input<String?>? clientKey;
   /// (Output)
   /// Indicates whether the clientKey field is set.
-  final pulumi.Input<bool>? clientKeySet;
+  final pulumi.Input<bool?>? clientKeySet;
 
   /// Creates a new [ConnectionProfileMysqlProfileSslConfig].
   /// [caCertificate] PEM-encoded certificate of the CA that signed the source database

@@ -14,29 +14,29 @@ class TlsRouteArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// A free-text description of the resource. Max length 1024 characters.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Gateways defines a list of gateways this TlsRoute is attached to, as one of the routing rules to route the requests served by the gateway.
   /// Each gateway reference should match the pattern: projects/*/locations/*/gateways/&lt;gateway_name&gt;
-  final pulumi.Input<List<String>>? gateways;
+  final pulumi.Input<List<String>?>? gateways;
   /// Location (region) of the TLS Route.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Meshes defines a list of meshes this TlsRoute is attached to, as one of the routing rules to route the requests served by the mesh.
   /// Each mesh reference should match the pattern: projects/*/locations/*/meshes/&lt;mesh_name&gt;
   /// The attached Mesh should be of a type SIDECAR
-  final pulumi.Input<List<String>>? meshes;
+  final pulumi.Input<List<String>?>? meshes;
   /// Name of the TlsRoute resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Rules that define how traffic is routed and handled.
   /// Structure is documented below.
   final pulumi.Input<List<TlsRouteRule>> rules;
   /// TargetProxies defines a list of target proxies this TlsRoute is attached to, as one of the routing rules to route the requests served by the load balancer.
   /// Each target proxy reference should match the pattern: projects/*/locations/global/targetTcpProxies/&lt;target_tcp_proxy_name&gt;
-  final pulumi.Input<List<String>>? targetProxies;
+  final pulumi.Input<List<String>?>? targetProxies;
 
   /// Creates a new [TlsRouteArgs].
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

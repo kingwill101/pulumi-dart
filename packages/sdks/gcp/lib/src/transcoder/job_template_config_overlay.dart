@@ -7,10 +7,10 @@ import 'job_template_config_overlay_image.dart';
 class JobTemplateConfigOverlay {
   /// List of animations. The list should be chronological, without any time overlap.
   /// Structure is documented below.
-  final pulumi.Input<List<JobTemplateConfigOverlayAnimation>>? animations;
+  final pulumi.Input<List<JobTemplateConfigOverlayAnimation>?>? animations;
   /// Image overlay.
   /// Structure is documented below.
-  final pulumi.Input<JobTemplateConfigOverlayImage>? image;
+  final pulumi.Input<JobTemplateConfigOverlayImage?>? image;
 
   /// Creates a new [JobTemplateConfigOverlay].
   /// [animations] List of animations. The list should be chronological, without any time overlap.

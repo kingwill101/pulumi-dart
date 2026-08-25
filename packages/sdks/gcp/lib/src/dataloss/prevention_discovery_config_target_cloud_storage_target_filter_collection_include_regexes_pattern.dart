@@ -6,7 +6,7 @@ import 'prevention_discovery_config_target_cloud_storage_target_filter_collectio
 class PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesPattern {
   /// Regex for Cloud Storage.
   /// Structure is documented below.
-  final pulumi.Input<PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesPatternCloudStorageRegex>? cloudStorageRegex;
+  final pulumi.Input<PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesPatternCloudStorageRegex?>? cloudStorageRegex;
 
   /// Creates a new [PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesPattern].
   /// [cloudStorageRegex] Regex for Cloud Storage.

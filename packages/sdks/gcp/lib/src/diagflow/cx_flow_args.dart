@@ -15,16 +15,16 @@ class CxFlowArgs {
   /// Hierarchical advanced settings for this flow. The settings exposed at the lower level overrides the settings exposed at the higher level.
   /// Hierarchy: Agent-&gt;Flow-&gt;Page-&gt;Fulfillment/Parameter.
   /// Structure is documented below.
-  final pulumi.Input<CxFlowAdvancedSettings>? advancedSettings;
+  final pulumi.Input<CxFlowAdvancedSettings?>? advancedSettings;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The description of the flow. The maximum length is 500 characters. If exceeded, the request is rejected.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The human-readable name of the flow.
   final pulumi.Input<String> displayName;
   /// A flow's event handlers serve two purposes:
@@ -32,33 +32,33 @@ class CxFlowArgs {
   /// They are inherited by every page's [event handlers][Page.event_handlers], which can be used to handle common events regardless of the current page. Event handlers defined in the page have higher priority than those defined in the flow.
   /// Unlike transitionRoutes, these handlers are evaluated on a first-match basis. The first one that matches the event get executed, with the rest being ignored.
   /// Structure is documented below.
-  final pulumi.Input<List<CxFlowEventHandler>>? eventHandlers;
+  final pulumi.Input<List<CxFlowEventHandler>?>? eventHandlers;
   /// Marks this as the [Default Start Flow](https://cloud.google.com/dialogflow/cx/docs/concept/flow#start) for an agent. When you create an agent, the Default Start Flow is created automatically.
   /// The Default Start Flow cannot be deleted; deleting the `gcp.diagflow.CxFlow` resource does nothing to the underlying GCP resources.
   ///
   /// &gt; Avoid having multiple `gcp.diagflow.CxFlow` resources linked to the same agent with `isDefaultStartFlow = true` because they will compete to control a single Default Start Flow resource in GCP.
-  final pulumi.Input<bool>? isDefaultStartFlow;
+  final pulumi.Input<bool?>? isDefaultStartFlow;
   /// Knowledge connector configuration.
   /// Structure is documented below.
-  final pulumi.Input<CxFlowKnowledgeConnectorSettings>? knowledgeConnectorSettings;
+  final pulumi.Input<CxFlowKnowledgeConnectorSettings?>? knowledgeConnectorSettings;
   /// The language of the following fields in flow:
   /// Flow.event_handlers.trigger_fulfillment.messages
   /// Flow.event_handlers.trigger_fulfillment.conditional_cases
   /// Flow.transition_routes.trigger_fulfillment.messages
   /// Flow.transition_routes.trigger_fulfillment.conditional_cases
   /// If not specified, the agent's default language is used. Many languages are supported. Note: languages must be enabled in the agent before they can be used.
-  final pulumi.Input<String>? languageCode;
+  final pulumi.Input<String?>? languageCode;
   /// NLU related settings of the flow.
   /// Structure is documented below.
-  final pulumi.Input<CxFlowNluSettings>? nluSettings;
+  final pulumi.Input<CxFlowNluSettings?>? nluSettings;
   /// The agent to create a flow for.
   /// Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;.
-  final pulumi.Input<String>? parent;
+  final pulumi.Input<String?>? parent;
   /// A flow's transition route group serve two purposes:
   /// They are responsible for matching the user's first utterances in the flow.
   /// They are inherited by every page's [transition route groups][Page.transition_route_groups]. Transition route groups defined in the page have higher priority than those defined in the flow.
   /// Format:projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/flows/&lt;Flow ID&gt;/transitionRouteGroups/&lt;TransitionRouteGroup ID&gt;.
-  final pulumi.Input<List<String>>? transitionRouteGroups;
+  final pulumi.Input<List<String>?>? transitionRouteGroups;
   /// A flow's transition routes serve two purposes:
   /// They are responsible for matching the user's first utterances in the flow.
   /// They are inherited by every page's [transition routes][Page.transition_routes] and can support use cases such as the user saying "help" or "can I talk to a human?", which can be handled in a common way regardless of the current page. Transition routes defined in the page have higher priority than those defined in the flow.
@@ -67,7 +67,7 @@ class CxFlowArgs {
   /// TransitionRoutes with only condition specified.
   /// TransitionRoutes with intent specified are inherited by pages in the flow.
   /// Structure is documented below.
-  final pulumi.Input<List<CxFlowTransitionRoute>>? transitionRoutes;
+  final pulumi.Input<List<CxFlowTransitionRoute>?>? transitionRoutes;
 
   /// Creates a new [CxFlowArgs].
   /// [advancedSettings] Hierarchical advanced settings for this flow. The settings exposed at the lower level overrides the settings exposed at the higher level.

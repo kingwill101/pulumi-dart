@@ -217,23 +217,24 @@ class OrganizationVpcFlowLogsConfig extends pulumi.CustomResource {
           'gcp:networkmanagement/organizationVpcFlowLogsConfig:OrganizationVpcFlowLogsConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     aggregationInterval = registerOutput<String>('aggregationInterval');
     createTime = registerOutput<String>('createTime');
     crossProjectMetadata = registerOutput<String>('crossProjectMetadata');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     filterExpr = registerOutput<String?>('filterExpr');
     flowSampling = registerOutput<double>('flowSampling');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     metadata = registerOutput<String>('metadata');
-    metadataFields = registerOutput<List<String>?>('metadataFields');
+    metadataFields = registerOutput<List<String>?>('metadataFields', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     organization = registerOutput<String>('organization');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     state = registerOutput<String>('state');
     updateTime = registerOutput<String>('updateTime');
     vpcFlowLogsConfigId = registerOutput<String>('vpcFlowLogsConfigId');
@@ -244,11 +245,12 @@ class OrganizationVpcFlowLogsConfig extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     OrganizationVpcFlowLogsConfigState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return OrganizationVpcFlowLogsConfig._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -267,17 +269,47 @@ class OrganizationVpcFlowLogsConfig extends pulumi.CustomResource {
     crossProjectMetadata = registerOutput<String>('crossProjectMetadata');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     filterExpr = registerOutput<String?>('filterExpr');
     flowSampling = registerOutput<double>('flowSampling');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     metadata = registerOutput<String>('metadata');
-    metadataFields = registerOutput<List<String>?>('metadataFields');
+    metadataFields = registerOutput<List<String>?>('metadataFields', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     organization = registerOutput<String>('organization');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     this.state = registerOutput<String>('state');
+    updateTime = registerOutput<String>('updateTime');
+    vpcFlowLogsConfigId = registerOutput<String>('vpcFlowLogsConfigId');
+  }
+
+  /// Creates a typed reference to an existing [OrganizationVpcFlowLogsConfig] resource.
+  OrganizationVpcFlowLogsConfig.reference(String urn)
+    : super(
+        'gcp:networkmanagement/organizationVpcFlowLogsConfig:OrganizationVpcFlowLogsConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    aggregationInterval = registerOutput<String>('aggregationInterval');
+    createTime = registerOutput<String>('createTime');
+    crossProjectMetadata = registerOutput<String>('crossProjectMetadata');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    filterExpr = registerOutput<String?>('filterExpr');
+    flowSampling = registerOutput<double>('flowSampling');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    metadata = registerOutput<String>('metadata');
+    metadataFields = registerOutput<List<String>?>('metadataFields', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    this.name = registerOutput<String>('name');
+    organization = registerOutput<String>('organization');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    state = registerOutput<String>('state');
     updateTime = registerOutput<String>('updateTime');
     vpcFlowLogsConfigId = registerOutput<String>('vpcFlowLogsConfigId');
   }

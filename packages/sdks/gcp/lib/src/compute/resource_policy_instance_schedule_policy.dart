@@ -6,18 +6,18 @@ import 'resource_policy_instance_schedule_policy_vm_stop_schedule.dart';
 
 class ResourcePolicyInstanceSchedulePolicy {
   /// The expiration time of the schedule. The timestamp is an RFC3339 string.
-  final pulumi.Input<String>? expirationTime;
+  final pulumi.Input<String?>? expirationTime;
   /// The start time of the schedule. The timestamp is an RFC3339 string.
-  final pulumi.Input<String>? startTime;
+  final pulumi.Input<String?>? startTime;
   /// Specifies the time zone to be used in interpreting the schedule. The value of this field must be a time zone name
   /// from the tz database: http://en.wikipedia.org/wiki/Tz_database.
   final pulumi.Input<String> timeZone;
   /// Specifies the schedule for starting instances.
   /// Structure is documented below.
-  final pulumi.Input<ResourcePolicyInstanceSchedulePolicyVmStartSchedule>? vmStartSchedule;
+  final pulumi.Input<ResourcePolicyInstanceSchedulePolicyVmStartSchedule?>? vmStartSchedule;
   /// Specifies the schedule for stopping instances.
   /// Structure is documented below.
-  final pulumi.Input<ResourcePolicyInstanceSchedulePolicyVmStopSchedule>? vmStopSchedule;
+  final pulumi.Input<ResourcePolicyInstanceSchedulePolicyVmStopSchedule?>? vmStopSchedule;
 
   /// Creates a new [ResourcePolicyInstanceSchedulePolicy].
   /// [expirationTime] The expiration time of the schedule. The timestamp is an RFC3339 string.

@@ -20,7 +20,7 @@ class GetClusterAutomatedBackupPolicyQuantityBasedRetention {
 
   factory GetClusterAutomatedBackupPolicyQuantityBasedRetention.fromMap(Map<String, dynamic> map) {
     return GetClusterAutomatedBackupPolicyQuantityBasedRetention(
-      count: pulumi.Input.fromValue(map['count'] as int),
+      count: pulumi.Input.fromValue((map['count'] as num).toInt()),
     );
   }
 }

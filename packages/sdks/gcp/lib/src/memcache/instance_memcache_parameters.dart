@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstanceMemcacheParameters {
   /// (Output)
   /// This is a unique ID associated with this set of parameters.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// User-defined set of parameters to use in the memcache process.
-  final pulumi.Input<Map<String, String>>? params;
+  final pulumi.Input<Map<String, String>?>? params;
 
   /// Creates a new [InstanceMemcacheParameters].
   /// [id] (Output)

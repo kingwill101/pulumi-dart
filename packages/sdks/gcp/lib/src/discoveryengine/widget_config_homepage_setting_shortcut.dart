@@ -5,12 +5,12 @@ import 'widget_config_homepage_setting_shortcut_icon.dart';
 
 class WidgetConfigHomepageSettingShortcut {
   /// Destination URL of shortcut.
-  final pulumi.Input<String>? destinationUri;
+  final pulumi.Input<String?>? destinationUri;
   /// Icon URL of shortcut.
   /// Structure is documented below.
-  final pulumi.Input<WidgetConfigHomepageSettingShortcutIcon>? icon;
+  final pulumi.Input<WidgetConfigHomepageSettingShortcutIcon?>? icon;
   /// Title of the shortcut.
-  final pulumi.Input<String>? title;
+  final pulumi.Input<String?>? title;
 
   /// Creates a new [WidgetConfigHomepageSettingShortcut].
   /// [destinationUri] Destination URL of shortcut.

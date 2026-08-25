@@ -13,7 +13,7 @@ class RegionBackendServiceSubsetting {
   /// If you do not provide this value, Cloud Load Balancing will calculate it dynamically to optimize the number
   /// of proxies/clients visible to each backend and vice versa.
   /// Must be greater than 0. If subsetSize is larger than the number of backends/endpoints, then subsetting is disabled.
-  final pulumi.Input<int>? subsetSize;
+  final pulumi.Input<int?>? subsetSize;
 
   /// Creates a new [RegionBackendServiceSubsetting].
   /// [policy] The algorithm used for subsetting.
@@ -33,7 +33,7 @@ class RegionBackendServiceSubsetting {
   factory RegionBackendServiceSubsetting.fromMap(Map<String, dynamic> map) {
     return RegionBackendServiceSubsetting(
       policy: pulumi.Input.fromValue(map['policy'] as String),
-      subsetSize: (() { final guardedValue = map['subsetSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      subsetSize: (() { final guardedValue = map['subsetSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

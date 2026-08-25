@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'hive_table_args.dart';
+import 'hive_table_partition_key.dart';
 import 'hive_table_state.dart';
 import 'hive_table_storage_descriptor.dart';
 
@@ -705,7 +706,7 @@ class HiveTable extends pulumi.CustomResource {
   late final pulumi.Output<Map<String, String>?> parameters;
   /// Partition keys of the table.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> partitionKeys;
+  late final pulumi.Output<List<HiveTablePartitionKey>?> partitionKeys;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
@@ -733,7 +734,7 @@ class HiveTable extends pulumi.CustomResource {
           'gcp:biglake/hiveTable:HiveTable',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     catalog = registerOutput<String>('catalog');
     createTime = registerOutput<String>('createTime');
@@ -742,8 +743,8 @@ class HiveTable extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     lastAccessTime = registerOutput<String>('lastAccessTime');
     this.name = registerOutput<String>('name');
-    parameters = registerOutput<Map<String, String>?>('parameters');
-    partitionKeys = registerOutput<List<Map<String, dynamic>>?>('partitionKeys');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    partitionKeys = registerOutput<List<HiveTablePartitionKey>?>('partitionKeys', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<HiveTablePartitionKey>(guardedValue, (value) => HiveTablePartitionKey.fromMap((value as Map).cast<String, dynamic>())); });
     project = registerOutput<String>('project');
     storageDescriptor = registerOutput<HiveTableStorageDescriptor>('storageDescriptor', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HiveTableStorageDescriptor.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tableType = registerOutput<String>('tableType');
@@ -757,11 +758,12 @@ class HiveTable extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     HiveTableState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return HiveTable._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -782,8 +784,34 @@ class HiveTable extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     lastAccessTime = registerOutput<String>('lastAccessTime');
     this.name = registerOutput<String>('name');
-    parameters = registerOutput<Map<String, String>?>('parameters');
-    partitionKeys = registerOutput<List<Map<String, dynamic>>?>('partitionKeys');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    partitionKeys = registerOutput<List<HiveTablePartitionKey>?>('partitionKeys', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<HiveTablePartitionKey>(guardedValue, (value) => HiveTablePartitionKey.fromMap((value as Map).cast<String, dynamic>())); });
+    project = registerOutput<String>('project');
+    storageDescriptor = registerOutput<HiveTableStorageDescriptor>('storageDescriptor', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HiveTableStorageDescriptor.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tableType = registerOutput<String>('tableType');
+    updateTime = registerOutput<String>('updateTime');
+    viewExpandedText = registerOutput<String?>('viewExpandedText');
+    viewOriginalText = registerOutput<String?>('viewOriginalText');
+  }
+
+  /// Creates a typed reference to an existing [HiveTable] resource.
+  HiveTable.reference(String urn)
+    : super(
+        'gcp:biglake/hiveTable:HiveTable',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    catalog = registerOutput<String>('catalog');
+    createTime = registerOutput<String>('createTime');
+    database = registerOutput<String>('database');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    lastAccessTime = registerOutput<String>('lastAccessTime');
+    this.name = registerOutput<String>('name');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    partitionKeys = registerOutput<List<HiveTablePartitionKey>?>('partitionKeys', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<HiveTablePartitionKey>(guardedValue, (value) => HiveTablePartitionKey.fromMap((value as Map).cast<String, dynamic>())); });
     project = registerOutput<String>('project');
     storageDescriptor = registerOutput<HiveTableStorageDescriptor>('storageDescriptor', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HiveTableStorageDescriptor.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tableType = registerOutput<String>('tableType');

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TargetSiteFailureReasonQuotaFailure {
   /// This number is an estimation on how much total quota this project
   /// needs to successfully complete indexing.
-  final pulumi.Input<int>? totalRequiredQuota;
+  final pulumi.Input<int?>? totalRequiredQuota;
 
   /// Creates a new [TargetSiteFailureReasonQuotaFailure].
   /// [totalRequiredQuota] This number is an estimation on how much total quota this project
@@ -21,7 +21,7 @@ class TargetSiteFailureReasonQuotaFailure {
 
   factory TargetSiteFailureReasonQuotaFailure.fromMap(Map<String, dynamic> map) {
     return TargetSiteFailureReasonQuotaFailure(
-      totalRequiredQuota: (() { final guardedValue = map['totalRequiredQuota']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      totalRequiredQuota: (() { final guardedValue = map['totalRequiredQuota']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

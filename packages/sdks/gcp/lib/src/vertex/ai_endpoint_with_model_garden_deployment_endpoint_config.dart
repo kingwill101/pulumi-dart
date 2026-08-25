@@ -10,13 +10,13 @@ class AiEndpointWithModelGardenDeploymentEndpointConfig {
   /// performance and reliability. Note: Once you enabled dedicated endpoint,
   /// you won't be able to send request to the shared DNS
   /// {region}-aiplatform.googleapis.com. The limitations will be removed soon.
-  final pulumi.Input<bool>? dedicatedEndpointEnabled;
+  final pulumi.Input<bool?>? dedicatedEndpointEnabled;
   /// The user-specified display name of the endpoint. If not set, a
   /// default name will be used.
-  final pulumi.Input<String>? endpointDisplayName;
+  final pulumi.Input<String?>? endpointDisplayName;
   /// The configuration for Private Service Connect (PSC).
   /// Structure is documented below.
-  final pulumi.Input<AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfig>? privateServiceConnectConfig;
+  final pulumi.Input<AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfig?>? privateServiceConnectConfig;
 
   /// Creates a new [AiEndpointWithModelGardenDeploymentEndpointConfig].
   /// [dedicatedEndpointEnabled] If true, the endpoint will be exposed through a dedicated

@@ -14,26 +14,26 @@ class RegionNetworkFirewallPolicyWithRulesArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// An optional description of this resource.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// User-provided name of the Network firewall policy.
   /// The name should be unique in the project in which the firewall policy is created.
   /// The name must be 1-63 characters long, and comply with RFC1035. Specifically,
   /// the name must be 1-63 characters long and match the regular expression a-z?
   /// which means the first character must be a lowercase letter, and all following characters must be a dash,
   /// lowercase letter, or digit, except the last character, which cannot be a dash.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Policy type is used to determine which resources (networks) the policy can be associated with.
   /// A policy can be associated with a network only if the network has the matching policyType in its network profile.
   /// Different policy types may support some of the Firewall Rules features.
   /// Possible values are: `VPC_POLICY`, `RDMA_ROCE_POLICY`, `RDMA_FALCON_POLICY`, `ULL_POLICY`.
-  final pulumi.Input<String>? policyType;
+  final pulumi.Input<String?>? policyType;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The region of this resource.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// A list of firewall policy rules.
   /// Structure is documented below.
   final pulumi.Input<List<RegionNetworkFirewallPolicyWithRulesRule>> rules;

@@ -6,7 +6,7 @@ import 'feed_details_okta_settings_authentication_header_key_value.dart';
 class FeedDetailsOktaSettingsAuthentication {
   /// Header key-value pairs.
   /// Structure is documented below.
-  final pulumi.Input<List<FeedDetailsOktaSettingsAuthenticationHeaderKeyValue>>? headerKeyValues;
+  final pulumi.Input<List<FeedDetailsOktaSettingsAuthenticationHeaderKeyValue>?>? headerKeyValues;
 
   /// Creates a new [FeedDetailsOktaSettingsAuthentication].
   /// [headerKeyValues] Header key-value pairs.

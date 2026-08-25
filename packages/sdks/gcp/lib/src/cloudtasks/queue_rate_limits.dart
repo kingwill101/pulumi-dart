@@ -9,15 +9,15 @@ class QueueRateLimits {
   /// in the queue and the rate is high. This field allows the queue to have a high
   /// rate so processing starts shortly after a task is enqueued, but still limits
   /// resource usage when many tasks are enqueued in a short period of time.
-  final pulumi.Input<int>? maxBurstSize;
+  final pulumi.Input<int?>? maxBurstSize;
   /// The maximum number of concurrent tasks that Cloud Tasks allows to
   /// be dispatched for this queue. After this threshold has been
   /// reached, Cloud Tasks stops dispatching tasks until the number of
   /// concurrent requests decreases.
-  final pulumi.Input<int>? maxConcurrentDispatches;
+  final pulumi.Input<int?>? maxConcurrentDispatches;
   /// The maximum rate at which tasks are dispatched from this queue.
   /// If unspecified when the queue is created, Cloud Tasks will pick the default.
-  final pulumi.Input<double>? maxDispatchesPerSecond;
+  final pulumi.Input<double?>? maxDispatchesPerSecond;
 
   /// Creates a new [QueueRateLimits].
   /// [maxBurstSize] (Output)
@@ -39,9 +39,9 @@ class QueueRateLimits {
 
   factory QueueRateLimits.fromMap(Map<String, dynamic> map) {
     return QueueRateLimits(
-      maxBurstSize: (() { final guardedValue = map['maxBurstSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      maxConcurrentDispatches: (() { final guardedValue = map['maxConcurrentDispatches']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      maxDispatchesPerSecond: (() { final guardedValue = map['maxDispatchesPerSecond']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      maxBurstSize: (() { final guardedValue = map['maxBurstSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxConcurrentDispatches: (() { final guardedValue = map['maxConcurrentDispatches']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxDispatchesPerSecond: (() { final guardedValue = map['maxDispatchesPerSecond']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

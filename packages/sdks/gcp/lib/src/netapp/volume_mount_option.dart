@@ -5,21 +5,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VolumeMountOption {
   /// (Output)
   /// Export path of the volume.
-  final pulumi.Input<String>? export;
+  final pulumi.Input<String?>? export;
   /// (Output)
   /// Full export path of the volume.
   /// Format for NFS volumes: `&lt;export_ip&gt;:/&lt;shareName&gt;`
   /// Format for SMB volumes: `\\\\netbios_prefix-four_random_hex_letters.domain_name\\shareName`
-  final pulumi.Input<String>? exportFull;
+  final pulumi.Input<String?>? exportFull;
   /// (Output)
   /// Human-readable mount instructions.
-  final pulumi.Input<String>? instructions;
+  final pulumi.Input<String?>? instructions;
   /// (Output)
   /// IP Address.
-  final pulumi.Input<String>? ipAddress;
+  final pulumi.Input<String?>? ipAddress;
   /// (Output)
   /// Protocol to mount with.
-  final pulumi.Input<String>? protocol;
+  final pulumi.Input<String?>? protocol;
 
   /// Creates a new [VolumeMountOption].
   /// [export] (Output)

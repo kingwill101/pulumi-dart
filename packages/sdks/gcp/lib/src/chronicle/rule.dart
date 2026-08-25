@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'rule_args.dart';
+import 'rule_compilation_diagnostic.dart';
+import 'rule_severity.dart';
 import 'rule_state.dart';
 
 /// The Rule resource represents a user-created rule.
@@ -503,7 +505,7 @@ class Rule extends pulumi.CustomResource {
   /// such as compilation errors and compilation warnings.
   /// Populated in FULL view.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> compilationDiagnostics;
+  late final pulumi.Output<List<RuleCompilationDiagnostic>> compilationDiagnostics;
   /// Output only. The current compilation state of the rule.
   /// Populated in FULL view.
   /// Possible values:
@@ -585,7 +587,7 @@ class Rule extends pulumi.CustomResource {
   /// SEVERITY_UNSPECIFIED
   /// WARNING
   /// ERROR
-  late final pulumi.Output<List<Map<String, dynamic>>> severities;
+  late final pulumi.Output<List<RuleSeverity>> severities;
   /// The YARA-L content of the rule.
   /// Populated in FULL view.
   late final pulumi.Output<String?> text;
@@ -607,29 +609,29 @@ class Rule extends pulumi.CustomResource {
           'gcp:chronicle/rule:Rule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
-    allowedRunFrequencies = registerOutput<List<String>>('allowedRunFrequencies');
+    allowedRunFrequencies = registerOutput<List<String>>('allowedRunFrequencies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     author = registerOutput<String>('author');
-    compilationDiagnostics = registerOutput<List<Map<String, dynamic>>>('compilationDiagnostics');
+    compilationDiagnostics = registerOutput<List<RuleCompilationDiagnostic>>('compilationDiagnostics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RuleCompilationDiagnostic>(guardedValue, (value) => RuleCompilationDiagnostic.fromMap((value as Map).cast<String, dynamic>())); });
     compilationState = registerOutput<String>('compilationState');
     createTime = registerOutput<String>('createTime');
-    dataTables = registerOutput<List<String>>('dataTables');
+    dataTables = registerOutput<List<String>>('dataTables', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
     etag = registerOutput<String>('etag');
     instance = registerOutput<String>('instance');
     location = registerOutput<String>('location');
-    metadata = registerOutput<Map<String, String>>('metadata');
+    metadata = registerOutput<Map<String, String>>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     nearRealTimeLiveRuleEligible = registerOutput<bool>('nearRealTimeLiveRuleEligible');
     project = registerOutput<String>('project');
-    referenceLists = registerOutput<List<String>>('referenceLists');
+    referenceLists = registerOutput<List<String>>('referenceLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     revisionCreateTime = registerOutput<String>('revisionCreateTime');
     revisionId = registerOutput<String>('revisionId');
     ruleId = registerOutput<String>('ruleId');
     scope = registerOutput<String?>('scope');
-    severities = registerOutput<List<Map<String, dynamic>>>('severities');
+    severities = registerOutput<List<RuleSeverity>>('severities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RuleSeverity>(guardedValue, (value) => RuleSeverity.fromMap((value as Map).cast<String, dynamic>())); });
     text = registerOutput<String?>('text');
     type = registerOutput<String>('type');
   }
@@ -639,11 +641,12 @@ class Rule extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RuleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Rule._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -657,27 +660,61 @@ class Rule extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    allowedRunFrequencies = registerOutput<List<String>>('allowedRunFrequencies');
+    allowedRunFrequencies = registerOutput<List<String>>('allowedRunFrequencies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     author = registerOutput<String>('author');
-    compilationDiagnostics = registerOutput<List<Map<String, dynamic>>>('compilationDiagnostics');
+    compilationDiagnostics = registerOutput<List<RuleCompilationDiagnostic>>('compilationDiagnostics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RuleCompilationDiagnostic>(guardedValue, (value) => RuleCompilationDiagnostic.fromMap((value as Map).cast<String, dynamic>())); });
     compilationState = registerOutput<String>('compilationState');
     createTime = registerOutput<String>('createTime');
-    dataTables = registerOutput<List<String>>('dataTables');
+    dataTables = registerOutput<List<String>>('dataTables', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
     etag = registerOutput<String>('etag');
     instance = registerOutput<String>('instance');
     location = registerOutput<String>('location');
-    metadata = registerOutput<Map<String, String>>('metadata');
+    metadata = registerOutput<Map<String, String>>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     nearRealTimeLiveRuleEligible = registerOutput<bool>('nearRealTimeLiveRuleEligible');
     project = registerOutput<String>('project');
-    referenceLists = registerOutput<List<String>>('referenceLists');
+    referenceLists = registerOutput<List<String>>('referenceLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     revisionCreateTime = registerOutput<String>('revisionCreateTime');
     revisionId = registerOutput<String>('revisionId');
     ruleId = registerOutput<String>('ruleId');
     scope = registerOutput<String?>('scope');
-    severities = registerOutput<List<Map<String, dynamic>>>('severities');
+    severities = registerOutput<List<RuleSeverity>>('severities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RuleSeverity>(guardedValue, (value) => RuleSeverity.fromMap((value as Map).cast<String, dynamic>())); });
+    text = registerOutput<String?>('text');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [Rule] resource.
+  Rule.reference(String urn)
+    : super(
+        'gcp:chronicle/rule:Rule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    allowedRunFrequencies = registerOutput<List<String>>('allowedRunFrequencies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    author = registerOutput<String>('author');
+    compilationDiagnostics = registerOutput<List<RuleCompilationDiagnostic>>('compilationDiagnostics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RuleCompilationDiagnostic>(guardedValue, (value) => RuleCompilationDiagnostic.fromMap((value as Map).cast<String, dynamic>())); });
+    compilationState = registerOutput<String>('compilationState');
+    createTime = registerOutput<String>('createTime');
+    dataTables = registerOutput<List<String>>('dataTables', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    displayName = registerOutput<String>('displayName');
+    etag = registerOutput<String>('etag');
+    instance = registerOutput<String>('instance');
+    location = registerOutput<String>('location');
+    metadata = registerOutput<Map<String, String>>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    this.name = registerOutput<String>('name');
+    nearRealTimeLiveRuleEligible = registerOutput<bool>('nearRealTimeLiveRuleEligible');
+    project = registerOutput<String>('project');
+    referenceLists = registerOutput<List<String>>('referenceLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    revisionCreateTime = registerOutput<String>('revisionCreateTime');
+    revisionId = registerOutput<String>('revisionId');
+    ruleId = registerOutput<String>('ruleId');
+    scope = registerOutput<String?>('scope');
+    severities = registerOutput<List<RuleSeverity>>('severities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RuleSeverity>(guardedValue, (value) => RuleSeverity.fromMap((value as Map).cast<String, dynamic>())); });
     text = registerOutput<String?>('text');
     type = registerOutput<String>('type');
   }

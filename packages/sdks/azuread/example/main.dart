@@ -1,15 +1,30 @@
-// ignore_for_file: unused_import
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'package:pulumi_azuread/pulumi_azuread.dart' as provider;
 
-class ExampleStack extends pulumi.Stack {
-  ExampleStack() {
-    // Add resources from package:pulumi_azuread.
-    // Example:
-    // final resource = provider.YourResource("example");
+import 'package:pulumi_azuread/index.dart' as pulumi_azuread_index;
+
+class AzureadStack extends pulumi.Stack {
+  late final List<pulumi.OutputProperty> _outputProperties;
+
+  AzureadStack() {
+    final application = pulumi_azuread_index.Application(
+      'application',
+      args: pulumi_azuread_index.ApplicationArgs(
+        displayName: pulumi.Input.asInput('pulumi-dart-example'),
+      ),
+    );
+
+    _outputProperties = [
+      pulumi.OutputProperty(
+        'clientId',
+        pulumi.output(application.clientId).apply<Object?>((value) => value),
+      ),
+    ];
   }
+
+  @override
+  List<pulumi.OutputProperty> getOutputProperties() => _outputProperties;
 }
 
 Future<void> main() async {
-  await pulumi.Deployment.runOrThrow(() => ExampleStack());
+  await pulumi.Deployment.runOrThrow(() => AzureadStack());
 }

@@ -356,7 +356,7 @@ class AccessPolicy extends pulumi.CustomResource {
           'gcp:accesscontextmanager/accessPolicy:AccessPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -372,11 +372,12 @@ class AccessPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AccessPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AccessPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -390,6 +391,24 @@ class AccessPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    this.name = registerOutput<String>('name');
+    parent = registerOutput<String>('parent');
+    scopes = registerOutput<String?>('scopes');
+    title = registerOutput<String>('title');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [AccessPolicy] resource.
+  AccessPolicy.reference(String urn)
+    : super(
+        'gcp:accesscontextmanager/accessPolicy:AccessPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     this.name = registerOutput<String>('name');

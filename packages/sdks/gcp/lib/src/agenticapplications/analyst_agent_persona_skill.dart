@@ -7,9 +7,9 @@ class AnalystAgentPersonaSkill {
   /// The markdown text content of the skill.
   final pulumi.Input<String> content;
   /// The description of the skill.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// References for the skill.
-  final pulumi.Input<List<AnalystAgentPersonaSkillReference>>? references;
+  final pulumi.Input<List<AnalystAgentPersonaSkillReference>?>? references;
   /// The identifier of the skill. Use a descriptive string that reflects the
   /// skill's function.
   final pulumi.Input<String> skillId;

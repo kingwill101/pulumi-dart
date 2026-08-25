@@ -12,14 +12,14 @@ import 'runtime_virtual_machine.dart';
 class RuntimeArgs {
   /// The config settings for accessing runtime.
   /// Structure is documented below.
-  final pulumi.Input<RuntimeAccessConfig>? accessConfig;
+  final pulumi.Input<RuntimeAccessConfig?>? accessConfig;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The labels to associate with this runtime. Label **keys** must
   /// contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
   /// empty, but, if present, must contain 1 to 63 characters, and must
@@ -28,20 +28,20 @@ class RuntimeArgs {
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// A reference to the zone where the machine resides.
   final pulumi.Input<String> location;
   /// The name specified for the Notebook runtime.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The config settings for software inside the runtime.
   /// Structure is documented below.
-  final pulumi.Input<RuntimeSoftwareConfig>? softwareConfig;
+  final pulumi.Input<RuntimeSoftwareConfig?>? softwareConfig;
   /// Use a Compute Engine VM image to start the managed notebook instance.
   /// Structure is documented below.
-  final pulumi.Input<RuntimeVirtualMachine>? virtualMachine;
+  final pulumi.Input<RuntimeVirtualMachine?>? virtualMachine;
 
   /// Creates a new [RuntimeArgs].
   /// [accessConfig] The config settings for accessing runtime.

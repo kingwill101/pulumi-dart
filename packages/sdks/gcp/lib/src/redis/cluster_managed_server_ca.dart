@@ -7,7 +7,7 @@ class ClusterManagedServerCa {
   /// (Output)
   /// The PEM encoded CA certificate chains for redis managed server authentication
   /// Structure is documented below.
-  final pulumi.Input<List<ClusterManagedServerCaCaCert>>? caCerts;
+  final pulumi.Input<List<ClusterManagedServerCaCaCert>?>? caCerts;
 
   /// Creates a new [ClusterManagedServerCa].
   /// [caCerts] (Output)

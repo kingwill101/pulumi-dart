@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'app_version_args.dart';
+import 'app_version_snapshot.dart';
 import 'app_version_state.dart';
 
 /// Description
@@ -261,7 +262,7 @@ class AppVersion extends pulumi.CustomResource {
   late final pulumi.Output<String> project;
   /// A snapshot of the app.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> snapshots;
+  late final pulumi.Output<List<AppVersionSnapshot>> snapshots;
 
   /// Creates a new [AppVersion].
   /// [name] The Pulumi resource name.
@@ -275,7 +276,7 @@ class AppVersion extends pulumi.CustomResource {
           'gcp:ces/appVersion:AppVersion',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     app = registerOutput<String>('app');
     appVersionId = registerOutput<String>('appVersionId');
@@ -288,7 +289,7 @@ class AppVersion extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    snapshots = registerOutput<List<Map<String, dynamic>>>('snapshots');
+    snapshots = registerOutput<List<AppVersionSnapshot>>('snapshots', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AppVersionSnapshot>(guardedValue, (value) => AppVersionSnapshot.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [AppVersion] resource's state with the given [name] and [id].
@@ -296,11 +297,12 @@ class AppVersion extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AppVersionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AppVersion._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -325,6 +327,29 @@ class AppVersion extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    snapshots = registerOutput<List<Map<String, dynamic>>>('snapshots');
+    snapshots = registerOutput<List<AppVersionSnapshot>>('snapshots', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AppVersionSnapshot>(guardedValue, (value) => AppVersionSnapshot.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [AppVersion] resource.
+  AppVersion.reference(String urn)
+    : super(
+        'gcp:ces/appVersion:AppVersion',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    app = registerOutput<String>('app');
+    appVersionId = registerOutput<String>('appVersionId');
+    createTime = registerOutput<String>('createTime');
+    creator = registerOutput<String>('creator');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String?>('displayName');
+    etag = registerOutput<String>('etag');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    snapshots = registerOutput<List<AppVersionSnapshot>>('snapshots', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AppVersionSnapshot>(guardedValue, (value) => AppVersionSnapshot.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

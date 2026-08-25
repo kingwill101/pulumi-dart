@@ -6,14 +6,14 @@ import 'report_summary_group_finding_preference_set_finding_sole_tenant_finding_
 class ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFinding {
   /// (Output)
   /// Count of assets allocated to these nodes
-  final pulumi.Input<String>? allocatedAssetCount;
+  final pulumi.Input<String?>? allocatedAssetCount;
   /// (Output)
   /// Set of regions in which the assets were allocated
-  final pulumi.Input<List<String>>? allocatedRegions;
+  final pulumi.Input<List<String>?>? allocatedRegions;
   /// (Output)
   /// Set of per-nodetype allocation records
   /// Structure is documented below.
-  final pulumi.Input<List<ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocation>>? nodeAllocations;
+  final pulumi.Input<List<ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFindingNodeAllocation>?>? nodeAllocations;
 
   /// Creates a new [ReportSummaryGroupFindingPreferenceSetFindingSoleTenantFinding].
   /// [allocatedAssetCount] (Output)

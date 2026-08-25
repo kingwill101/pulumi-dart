@@ -6,9 +6,9 @@ import 'evaluation_scenario_user_fact.dart';
 
 class EvaluationScenario {
   /// Evaluation expectations.
-  final pulumi.Input<List<String>>? evaluationExpectations;
+  final pulumi.Input<List<String>?>? evaluationExpectations;
   /// Max turns.
-  final pulumi.Input<int>? maxTurns;
+  final pulumi.Input<int?>? maxTurns;
   /// Rubrics.
   final pulumi.Input<List<String>> rubrics;
   /// Scenario expectations.
@@ -17,14 +17,14 @@ class EvaluationScenario {
   /// The task to evaluate.
   final pulumi.Input<String> task;
   /// Task completion behavior.
-  final pulumi.Input<String>? taskCompletionBehavior;
+  final pulumi.Input<String?>? taskCompletionBehavior;
   /// Facts about the user as a key value pair.
   /// Structure is documented below.
-  final pulumi.Input<List<EvaluationScenarioUserFact>>? userFacts;
+  final pulumi.Input<List<EvaluationScenarioUserFact>?>? userFacts;
   /// User goal behavior.
-  final pulumi.Input<String>? userGoalBehavior;
+  final pulumi.Input<String?>? userGoalBehavior;
   /// Variables / Session Parameters as context for the session, keyed by variable names. Members of this struct will override any default values set by the system.
-  final pulumi.Input<Map<String, String>>? variableOverrides;
+  final pulumi.Input<Map<String, String>?>? variableOverrides;
 
   /// Creates a new [EvaluationScenario].
   /// [evaluationExpectations] Evaluation expectations.
@@ -65,7 +65,7 @@ class EvaluationScenario {
   factory EvaluationScenario.fromMap(Map<String, dynamic> map) {
     return EvaluationScenario(
       evaluationExpectations: (() { final guardedValue = map['evaluationExpectations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      maxTurns: (() { final guardedValue = map['maxTurns']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxTurns: (() { final guardedValue = map['maxTurns']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       rubrics: pulumi.Input.fromValue((map['rubrics'] as List).cast<String>()),
       scenarioExpectations: pulumi.Input.fromValue(pulumi.Input.decodeList<EvaluationScenarioScenarioExpectation>(map['scenarioExpectations']!, (value) => EvaluationScenarioScenarioExpectation.fromMap((value as Map).cast<String, dynamic>()))),
       task: pulumi.Input.fromValue(map['task'] as String),

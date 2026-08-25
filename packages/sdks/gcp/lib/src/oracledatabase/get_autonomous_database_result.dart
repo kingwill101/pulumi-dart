@@ -6,134 +6,134 @@ import 'get_autonomous_database_source_config.dart';
 
 /// Result data returned by getAutonomousDatabase.
 class GetAutonomousDatabaseResult {
-  final String adminPassword;
-  final String autonomousDatabaseId;
-  final String cidr;
-  final String createTime;
-  final String database;
-  final String deletionPolicy;
-  final bool deletionProtection;
-  final List<String> disasterRecoverySupportedLocations;
-  final String displayName;
-  final Map<String, String> effectiveLabels;
-  final String entitlementId;
+  final String? adminPassword;
+  final String? autonomousDatabaseId;
+  final String? cidr;
+  final String? createTime;
+  final String? database;
+  final String? deletionPolicy;
+  final bool? deletionProtection;
+  final List<String>? disasterRecoverySupportedLocations;
+  final String? displayName;
+  final Map<String, String>? effectiveLabels;
+  final String? entitlementId;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final Map<String, String> labels;
-  final String location;
-  final String name;
-  final String network;
-  final String odbNetwork;
-  final String odbSubnet;
-  final List<String> peerAutonomousDatabases;
+  final String? id;
+  final Map<String, String>? labels;
+  final String? location;
+  final String? name;
+  final String? network;
+  final String? odbNetwork;
+  final String? odbSubnet;
+  final List<String>? peerAutonomousDatabases;
   final String? project;
-  final List<GetAutonomousDatabaseProperty> properties;
-  final Map<String, String> pulumiLabels;
-  final List<GetAutonomousDatabaseSourceConfig> sourceConfigs;
+  final List<GetAutonomousDatabaseProperty>? properties;
+  final Map<String, String>? pulumiLabels;
+  final List<GetAutonomousDatabaseSourceConfig>? sourceConfigs;
 
   /// Creates a new [GetAutonomousDatabaseResult].
-  /// [adminPassword] Required.
-  /// [autonomousDatabaseId] Required.
-  /// [cidr] Required.
-  /// [createTime] Required.
-  /// [database] Required.
-  /// [deletionPolicy] Required.
-  /// [deletionProtection] Required.
-  /// [disasterRecoverySupportedLocations] Required.
-  /// [displayName] Required.
-  /// [effectiveLabels] Required.
-  /// [entitlementId] Required.
+  /// [adminPassword] Optional.
+  /// [autonomousDatabaseId] Optional.
+  /// [cidr] Optional.
+  /// [createTime] Optional.
+  /// [database] Optional.
+  /// [deletionPolicy] Optional.
+  /// [deletionProtection] Optional.
+  /// [disasterRecoverySupportedLocations] Optional.
+  /// [displayName] Optional.
+  /// [effectiveLabels] Optional.
+  /// [entitlementId] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [labels] Required.
-  /// [location] Required.
-  /// [name] Required.
-  /// [network] Required.
-  /// [odbNetwork] Required.
-  /// [odbSubnet] Required.
-  /// [peerAutonomousDatabases] Required.
+  /// [labels] Optional.
+  /// [location] Optional.
+  /// [name] Optional.
+  /// [network] Optional.
+  /// [odbNetwork] Optional.
+  /// [odbSubnet] Optional.
+  /// [peerAutonomousDatabases] Optional.
   /// [project] Optional.
-  /// [properties] Required.
-  /// [pulumiLabels] Required.
-  /// [sourceConfigs] Required.
+  /// [properties] Optional.
+  /// [pulumiLabels] Optional.
+  /// [sourceConfigs] Optional.
   const GetAutonomousDatabaseResult({
-    required this.adminPassword,
-    required this.autonomousDatabaseId,
-    required this.cidr,
-    required this.createTime,
-    required this.database,
-    required this.deletionPolicy,
-    required this.deletionProtection,
-    required this.disasterRecoverySupportedLocations,
-    required this.displayName,
-    required this.effectiveLabels,
-    required this.entitlementId,
-    required this.id,
-    required this.labels,
-    required this.location,
-    required this.name,
-    required this.network,
-    required this.odbNetwork,
-    required this.odbSubnet,
-    required this.peerAutonomousDatabases,
+    this.adminPassword,
+    this.autonomousDatabaseId,
+    this.cidr,
+    this.createTime,
+    this.database,
+    this.deletionPolicy,
+    this.deletionProtection,
+    this.disasterRecoverySupportedLocations,
+    this.displayName,
+    this.effectiveLabels,
+    this.entitlementId,
+    this.id,
+    this.labels,
+    this.location,
+    this.name,
+    this.network,
+    this.odbNetwork,
+    this.odbSubnet,
+    this.peerAutonomousDatabases,
     this.project,
-    required this.properties,
-    required this.pulumiLabels,
-    required this.sourceConfigs,
+    this.properties,
+    this.pulumiLabels,
+    this.sourceConfigs,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'adminPassword': adminPassword,
-      'autonomousDatabaseId': autonomousDatabaseId,
-      'cidr': cidr,
-      'createTime': createTime,
-      'database': database,
-      'deletionPolicy': deletionPolicy,
-      'deletionProtection': deletionProtection,
-      'disasterRecoverySupportedLocations': disasterRecoverySupportedLocations,
-      'displayName': displayName,
-      'effectiveLabels': effectiveLabels,
-      'entitlementId': entitlementId,
-      'id': id,
-      'labels': labels,
-      'location': location,
-      'name': name,
-      'network': network,
-      'odbNetwork': odbNetwork,
-      'odbSubnet': odbSubnet,
-      'peerAutonomousDatabases': peerAutonomousDatabases,
+      'adminPassword': ?adminPassword,
+      'autonomousDatabaseId': ?autonomousDatabaseId,
+      'cidr': ?cidr,
+      'createTime': ?createTime,
+      'database': ?database,
+      'deletionPolicy': ?deletionPolicy,
+      'deletionProtection': ?deletionProtection,
+      'disasterRecoverySupportedLocations': ?disasterRecoverySupportedLocations,
+      'displayName': ?displayName,
+      'effectiveLabels': ?effectiveLabels,
+      'entitlementId': ?entitlementId,
+      'id': ?id,
+      'labels': ?labels,
+      'location': ?location,
+      'name': ?name,
+      'network': ?network,
+      'odbNetwork': ?odbNetwork,
+      'odbSubnet': ?odbSubnet,
+      'peerAutonomousDatabases': ?peerAutonomousDatabases,
       'project': ?project,
-      'properties': pulumi.Input.encodeList<GetAutonomousDatabaseProperty, Map<String, dynamic>>(properties, (value) => value.toMap()),
-      'pulumiLabels': pulumiLabels,
-      'sourceConfigs': pulumi.Input.encodeList<GetAutonomousDatabaseSourceConfig, Map<String, dynamic>>(sourceConfigs, (value) => value.toMap()),
+      'properties': ?(() { final guardedValue = properties; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetAutonomousDatabaseProperty, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'pulumiLabels': ?pulumiLabels,
+      'sourceConfigs': ?(() { final guardedValue = sourceConfigs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetAutonomousDatabaseSourceConfig, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
     };
   }
 
   factory GetAutonomousDatabaseResult.fromMap(Map<String, dynamic> map) {
     return GetAutonomousDatabaseResult(
-      adminPassword: map['adminPassword'] as String,
-      autonomousDatabaseId: map['autonomousDatabaseId'] as String,
-      cidr: map['cidr'] as String,
-      createTime: map['createTime'] as String,
-      database: map['database'] as String,
-      deletionPolicy: map['deletionPolicy'] as String,
-      deletionProtection: map['deletionProtection'] as bool,
-      disasterRecoverySupportedLocations: (map['disasterRecoverySupportedLocations'] as List).cast<String>(),
-      displayName: map['displayName'] as String,
-      effectiveLabels: (map['effectiveLabels'] as Map).cast<String, String>(),
-      entitlementId: map['entitlementId'] as String,
-      id: map['id'] as String,
-      labels: (map['labels'] as Map).cast<String, String>(),
-      location: map['location'] as String,
-      name: map['name'] as String,
-      network: map['network'] as String,
-      odbNetwork: map['odbNetwork'] as String,
-      odbSubnet: map['odbSubnet'] as String,
-      peerAutonomousDatabases: (map['peerAutonomousDatabases'] as List).cast<String>(),
+      adminPassword: (() { final guardedValue = map['adminPassword']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      autonomousDatabaseId: (() { final guardedValue = map['autonomousDatabaseId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      cidr: (() { final guardedValue = map['cidr']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      database: (() { final guardedValue = map['database']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      deletionProtection: (() { final guardedValue = map['deletionProtection']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      disasterRecoverySupportedLocations: (() { final guardedValue = map['disasterRecoverySupportedLocations']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      entitlementId: (() { final guardedValue = map['entitlementId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      network: (() { final guardedValue = map['network']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      odbNetwork: (() { final guardedValue = map['odbNetwork']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      odbSubnet: (() { final guardedValue = map['odbSubnet']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      peerAutonomousDatabases: (() { final guardedValue = map['peerAutonomousDatabases']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      properties: pulumi.Input.decodeList<GetAutonomousDatabaseProperty>(map['properties']!, (value) => GetAutonomousDatabaseProperty.fromMap((value as Map).cast<String, dynamic>())),
-      pulumiLabels: (map['pulumiLabels'] as Map).cast<String, String>(),
-      sourceConfigs: pulumi.Input.decodeList<GetAutonomousDatabaseSourceConfig>(map['sourceConfigs']!, (value) => GetAutonomousDatabaseSourceConfig.fromMap((value as Map).cast<String, dynamic>())),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetAutonomousDatabaseProperty>(guardedValue, (value) => GetAutonomousDatabaseProperty.fromMap((value as Map).cast<String, dynamic>())); })(),
+      pulumiLabels: (() { final guardedValue = map['pulumiLabels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      sourceConfigs: (() { final guardedValue = map['sourceConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetAutonomousDatabaseSourceConfig>(guardedValue, (value) => GetAutonomousDatabaseSourceConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
     );
   }
 }

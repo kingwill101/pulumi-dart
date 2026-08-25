@@ -16,37 +16,37 @@ import 'dashboard_chart_dashboard_chart_visualization_yaxis.dart';
 class DashboardChartDashboardChartVisualization {
   /// Button config if tileType is TILE_TYPE_BUTTON.
   /// Structure is documented below.
-  final pulumi.Input<DashboardChartDashboardChartVisualizationButton>? button;
+  final pulumi.Input<DashboardChartDashboardChartVisualizationButton?>? button;
   /// Structure is documented below.
-  final pulumi.Input<List<DashboardChartDashboardChartVisualizationColumnDef>>? columnDefs;
+  final pulumi.Input<List<DashboardChartDashboardChartVisualizationColumnDef>?>? columnDefs;
   /// A nested object resource.
   /// Structure is documented below.
-  final pulumi.Input<DashboardChartDashboardChartVisualizationGoogleMapsConfig>? googleMapsConfig;
+  final pulumi.Input<DashboardChartDashboardChartVisualizationGoogleMapsConfig?>? googleMapsConfig;
   /// (Optional)
-  final pulumi.Input<String>? groupingType;
+  final pulumi.Input<String?>? groupingType;
   /// Structure is documented below.
-  final pulumi.Input<List<DashboardChartDashboardChartVisualizationLegend>>? legends;
+  final pulumi.Input<List<DashboardChartDashboardChartVisualizationLegend>?>? legends;
   /// Markdown config if tileType is TILE_TYPE_MARKDOWN.
   /// Structure is documented below.
-  final pulumi.Input<DashboardChartDashboardChartVisualizationMarkdown>? markdown;
+  final pulumi.Input<DashboardChartDashboardChartVisualizationMarkdown?>? markdown;
   /// Structure is documented below.
-  final pulumi.Input<List<DashboardChartDashboardChartVisualizationSeries>>? series;
+  final pulumi.Input<List<DashboardChartDashboardChartVisualizationSeries>?>? series;
   /// (Optional)
-  final pulumi.Input<List<String>>? seriesColumns;
+  final pulumi.Input<List<String>?>? seriesColumns;
   /// A nested object resource.
   /// Structure is documented below.
-  final pulumi.Input<DashboardChartDashboardChartVisualizationTableConfig>? tableConfig;
+  final pulumi.Input<DashboardChartDashboardChartVisualizationTableConfig?>? tableConfig;
   /// (Optional)
-  final pulumi.Input<bool>? thresholdColoringEnabled;
+  final pulumi.Input<bool?>? thresholdColoringEnabled;
   /// A nested object resource.
   /// Structure is documented below.
-  final pulumi.Input<DashboardChartDashboardChartVisualizationTooltip>? tooltip;
+  final pulumi.Input<DashboardChartDashboardChartVisualizationTooltip?>? tooltip;
   /// Structure is documented below.
-  final pulumi.Input<List<DashboardChartDashboardChartVisualizationVisualMap>>? visualMaps;
+  final pulumi.Input<List<DashboardChartDashboardChartVisualizationVisualMap>?>? visualMaps;
   /// Structure is documented below.
-  final pulumi.Input<List<DashboardChartDashboardChartVisualizationXAxis>>? xAxes;
+  final pulumi.Input<List<DashboardChartDashboardChartVisualizationXAxis>?>? xAxes;
   /// Structure is documented below.
-  final pulumi.Input<List<DashboardChartDashboardChartVisualizationYAxis>>? yAxes;
+  final pulumi.Input<List<DashboardChartDashboardChartVisualizationYAxis>?>? yAxes;
 
   /// Creates a new [DashboardChartDashboardChartVisualization].
   /// [button] Button config if tileType is TILE_TYPE_BUTTON.

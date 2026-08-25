@@ -141,6 +141,17 @@ Future<GetBackupRunResult> getBackupRun(
   return GetBackupRunResult.fromMap(result);
 }
 
+pulumi.Output<GetBackupRunResult> getBackupRunOutput(
+  GetBackupRunArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:sql/getBackupRun:getBackupRun',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBackupRunResult.fromMap);
+}
+
 /// Get all of the trusted Certificate Authorities (CAs) for the specified SQL database instance. For more information see the
 /// [official documentation](https://cloud.google.com/sql/)
 /// and
@@ -158,6 +169,17 @@ Future<GetCaCertsResult> getCaCerts(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetCaCertsResult.fromMap(result);
+}
+
+pulumi.Output<GetCaCertsResult> getCaCertsOutput(
+  GetCaCertsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:sql/getCaCerts:getCaCerts',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCaCertsResult.fromMap);
 }
 
 /// Use this data source to get information about a database in a Cloud SQL instance.
@@ -285,6 +307,17 @@ Future<GetDatabaseResult> getDatabase(
   return GetDatabaseResult.fromMap(result);
 }
 
+pulumi.Output<GetDatabaseResult> getDatabaseOutput(
+  GetDatabaseArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:sql/getDatabase:getDatabase',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDatabaseResult.fromMap);
+}
+
 /// Use this data source to get information about a Cloud SQL instance.
 ///
 /// ## Example Usage
@@ -401,6 +434,17 @@ Future<GetDatabaseInstanceResult> getDatabaseInstance(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDatabaseInstanceResult.fromMap(result);
+}
+
+pulumi.Output<GetDatabaseInstanceResult> getDatabaseInstanceOutput(
+  GetDatabaseInstanceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:sql/getDatabaseInstance:getDatabaseInstance',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDatabaseInstanceResult.fromMap);
 }
 
 /// Get Latest Recovery Time for a given instance. For more information see the
@@ -539,6 +583,17 @@ Future<GetDatabaseInstanceLatestRecoveryTimeResult> getDatabaseInstanceLatestRec
   return GetDatabaseInstanceLatestRecoveryTimeResult.fromMap(result);
 }
 
+pulumi.Output<GetDatabaseInstanceLatestRecoveryTimeResult> getDatabaseInstanceLatestRecoveryTimeOutput(
+  GetDatabaseInstanceLatestRecoveryTimeArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:sql/getDatabaseInstanceLatestRecoveryTime:getDatabaseInstanceLatestRecoveryTime',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDatabaseInstanceLatestRecoveryTimeResult.fromMap);
+}
+
 /// Use this data source to get information about a list of Cloud SQL instances in a project. You can also apply some filters over this list to get a more filtered list of Cloud SQL instances.
 ///
 /// ## Example Usage
@@ -655,6 +710,17 @@ Future<GetDatabaseInstancesResult> getDatabaseInstances(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDatabaseInstancesResult.fromMap(result);
+}
+
+pulumi.Output<GetDatabaseInstancesResult> getDatabaseInstancesOutput(
+  GetDatabaseInstancesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:sql/getDatabaseInstances:getDatabaseInstances',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDatabaseInstancesResult.fromMap);
 }
 
 /// Use this data source to get information about a list of databases in a Cloud SQL instance.
@@ -774,6 +840,17 @@ Future<GetDatabasesResult> getDatabases(
   return GetDatabasesResult.fromMap(result);
 }
 
+pulumi.Output<GetDatabasesResult> getDatabasesOutput(
+  GetDatabasesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:sql/getDatabases:getDatabases',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDatabasesResult.fromMap);
+}
+
 /// Get all available machine types (tiers) for a project, for example, db-custom-1-3840. For more information see the
 /// [official documentation](https://cloud.google.com/sql/)
 /// and
@@ -858,4 +935,15 @@ Future<GetTiersResult> getTiers(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetTiersResult.fromMap(result);
+}
+
+pulumi.Output<GetTiersResult> getTiersOutput(
+  GetTiersArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:sql/getTiers:getTiers',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTiersResult.fromMap);
 }

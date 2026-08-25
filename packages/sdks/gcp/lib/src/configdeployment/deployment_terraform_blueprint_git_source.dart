@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DeploymentTerraformBlueprintGitSource {
   /// Subdirectory within the repo.
-  final pulumi.Input<String>? directory;
+  final pulumi.Input<String?>? directory;
   /// Git reference (branch or tag).
-  final pulumi.Input<String>? ref;
+  final pulumi.Input<String?>? ref;
   /// Repository URL.
   final pulumi.Input<String> repo;
 

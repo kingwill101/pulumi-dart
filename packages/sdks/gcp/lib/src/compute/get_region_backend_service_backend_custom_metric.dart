@@ -33,7 +33,7 @@ class GetRegionBackendServiceBackendCustomMetric {
   factory GetRegionBackendServiceBackendCustomMetric.fromMap(Map<String, dynamic> map) {
     return GetRegionBackendServiceBackendCustomMetric(
       dryRun: pulumi.Input.fromValue(map['dryRun'] as bool),
-      maxUtilization: pulumi.Input.fromValue(map['maxUtilization'] as double),
+      maxUtilization: pulumi.Input.fromValue((map['maxUtilization'] as num).toDouble()),
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }

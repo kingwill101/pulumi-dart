@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceFromMachineImageWorkloadIdentityConfig {
   /// Identity SPIFFE id.
-  final pulumi.Input<String>? identity;
+  final pulumi.Input<String?>? identity;
   /// Specifies whether identity certificates are enabled.
-  final pulumi.Input<bool>? identityCertificateEnabled;
+  final pulumi.Input<bool?>? identityCertificateEnabled;
 
   /// Creates a new [InstanceFromMachineImageWorkloadIdentityConfig].
   /// [identity] Identity SPIFFE id.

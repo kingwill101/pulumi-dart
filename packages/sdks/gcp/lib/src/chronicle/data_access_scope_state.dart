@@ -14,7 +14,7 @@ class DataAccessScopeState {
   /// A customer with scope with denied labels A and B and allowAll will be able
   /// to see all data except data labeled with A and data labeled with B and data
   /// with labels A and B.
-  final pulumi.Input<bool>? allowAll;
+  final pulumi.Input<bool?>? allowAll;
   /// The allowed labels for the scope. There has to be at
   /// least one label allowed for the scope to be valid.
   /// The logical operator for evaluation of the allowed labels is OR.
@@ -22,48 +22,48 @@ class DataAccessScopeState {
   /// E.g.: A customer with scope with allowed labels A and B will be able
   /// to see data with labeled with A or B or (A and B).
   /// Structure is documented below.
-  final pulumi.Input<List<DataAccessScopeAllowedDataAccessLabel>>? allowedDataAccessLabels;
+  final pulumi.Input<List<DataAccessScopeAllowedDataAccessLabel>?>? allowedDataAccessLabels;
   /// Output only. The user who created the data access scope.
-  final pulumi.Input<String>? author;
+  final pulumi.Input<String?>? author;
   /// Output only. The time at which the data access scope was created.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Required. The user provided scope id which will become the last part of the name
   /// of the scope resource.
   /// Needs to be compliant with https://google.aip.dev/122
-  final pulumi.Input<String>? dataAccessScopeId;
+  final pulumi.Input<String?>? dataAccessScopeId;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Optional. The denied labels for the scope.
   /// The logical operator for evaluation of the denied labels is AND.
   /// E.g.: A customer with scope with denied labels A and B won't be able
   /// to see data labeled with A and data labeled with B
   /// and data with labels A and B.
   /// Structure is documented below.
-  final pulumi.Input<List<DataAccessScopeDeniedDataAccessLabel>>? deniedDataAccessLabels;
+  final pulumi.Input<List<DataAccessScopeDeniedDataAccessLabel>?>? deniedDataAccessLabels;
   /// Optional. A description of the data access scope for a human reader.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Output only. The name to be used for display to customers of the data access scope.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The unique identifier for the Chronicle instance, which is the same as the customer ID.
-  final pulumi.Input<String>? instance;
+  final pulumi.Input<String?>? instance;
   /// Output only. The user who last updated the data access scope.
-  final pulumi.Input<String>? lastEditor;
+  final pulumi.Input<String?>? lastEditor;
   /// The location of the resource. This is the geographical region where the Chronicle instance resides, such as "us" or "europe-west2".
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The unique full name of the data access scope. This unique identifier is generated using values provided for the URL parameters.
   /// Format:
   /// projects/{project}/locations/{location}/instances/{instance}/dataAccessScopes/{data_access_scope_id}
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Output only. The time at which the data access scope was last updated.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [DataAccessScopeState].
   /// [allowAll] Optional. Whether or not the scope allows all labels, allowAll and

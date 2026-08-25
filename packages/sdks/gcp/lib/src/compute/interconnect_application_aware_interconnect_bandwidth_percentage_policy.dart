@@ -8,7 +8,7 @@ class InterconnectApplicationAwareInterconnectBandwidthPercentagePolicy {
   /// Specify bandwidth percentages for various traffic classes for queuing
   /// type Bandwidth Percent.
   /// Structure is documented below.
-  final pulumi.Input<List<InterconnectApplicationAwareInterconnectBandwidthPercentagePolicyBandwidthPercentage>>? bandwidthPercentages;
+  final pulumi.Input<List<InterconnectApplicationAwareInterconnectBandwidthPercentagePolicyBandwidthPercentage>?>? bandwidthPercentages;
 
   /// Creates a new [InterconnectApplicationAwareInterconnectBandwidthPercentagePolicy].
   /// [bandwidthPercentages] (Optional, Beta)

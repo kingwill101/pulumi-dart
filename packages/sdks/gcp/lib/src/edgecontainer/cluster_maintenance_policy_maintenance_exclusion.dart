@@ -5,10 +5,10 @@ import 'cluster_maintenance_policy_maintenance_exclusion_window.dart';
 
 class ClusterMaintenancePolicyMaintenanceExclusion {
   /// A unique (per cluster) id for the window.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Represents an arbitrary window of time.
   /// Structure is documented below.
-  final pulumi.Input<ClusterMaintenancePolicyMaintenanceExclusionWindow>? window;
+  final pulumi.Input<ClusterMaintenancePolicyMaintenanceExclusionWindow?>? window;
 
   /// Creates a new [ClusterMaintenancePolicyMaintenanceExclusion].
   /// [id] A unique (per cluster) id for the window.

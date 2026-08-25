@@ -8,13 +8,13 @@ import 'guardrail_action_transfer_agent.dart';
 class GuardrailAction {
   /// The agent will immediately respond with a generative answer.
   /// Structure is documented below.
-  final pulumi.Input<GuardrailActionGenerativeAnswer>? generativeAnswer;
+  final pulumi.Input<GuardrailActionGenerativeAnswer?>? generativeAnswer;
   /// The agent will immediately respond with a preconfigured response.
   /// Structure is documented below.
-  final pulumi.Input<GuardrailActionRespondImmediately>? respondImmediately;
+  final pulumi.Input<GuardrailActionRespondImmediately?>? respondImmediately;
   /// The agent will transfer the conversation to a different agent.
   /// Structure is documented below.
-  final pulumi.Input<GuardrailActionTransferAgent>? transferAgent;
+  final pulumi.Input<GuardrailActionTransferAgent?>? transferAgent;
 
   /// Creates a new [GuardrailAction].
   /// [generativeAnswer] The agent will immediately respond with a generative answer.

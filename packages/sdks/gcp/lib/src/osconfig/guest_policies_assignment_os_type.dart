@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GuestPoliciesAssignmentOsType {
   /// Targets VM instances with OS Inventory enabled and having the following OS architecture.
-  final pulumi.Input<String>? osArchitecture;
+  final pulumi.Input<String?>? osArchitecture;
   /// Targets VM instances with OS Inventory enabled and having the following OS short name, for example "debian" or "windows".
-  final pulumi.Input<String>? osShortName;
+  final pulumi.Input<String?>? osShortName;
   /// Targets VM instances with OS Inventory enabled and having the following following OS version.
-  final pulumi.Input<String>? osVersion;
+  final pulumi.Input<String?>? osVersion;
 
   /// Creates a new [GuestPoliciesAssignmentOsType].
   /// [osArchitecture] Targets VM instances with OS Inventory enabled and having the following OS architecture.

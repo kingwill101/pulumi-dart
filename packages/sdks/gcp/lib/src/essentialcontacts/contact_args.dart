@@ -13,7 +13,7 @@ class ContactArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The email address to send notifications to. This does not need to be a Google account.
   final pulumi.Input<String> email;
   /// The preferred language for notifications, as a ISO 639-1 language code. See Supported languages for a list of supported languages.

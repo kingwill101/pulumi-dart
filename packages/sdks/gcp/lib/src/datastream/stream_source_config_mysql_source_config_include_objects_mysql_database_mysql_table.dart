@@ -6,7 +6,7 @@ import 'stream_source_config_mysql_source_config_include_objects_mysql_database_
 class StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTable {
   /// MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
   /// Structure is documented below.
-  final pulumi.Input<List<StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumn>>? mysqlColumns;
+  final pulumi.Input<List<StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumn>?>? mysqlColumns;
   /// Table name.
   final pulumi.Input<String> table;
 

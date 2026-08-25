@@ -4,14 +4,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SessionTemplateRuntimeConfig {
   /// Optional custom container image for the job runtime environment. If not specified, a default container image will be used.
-  final pulumi.Input<String>? containerImage;
+  final pulumi.Input<String?>? containerImage;
   /// (Output)
   /// A mapping of property names to values, which are used to configure workload execution.
-  final pulumi.Input<Map<String, String>>? effectiveProperties;
+  final pulumi.Input<Map<String, String>?>? effectiveProperties;
   /// A mapping of property names to values, which are used to configure workload execution.
-  final pulumi.Input<Map<String, String>>? properties;
+  final pulumi.Input<Map<String, String>?>? properties;
   /// Version of the session runtime.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [SessionTemplateRuntimeConfig].
   /// [containerImage] Optional custom container image for the job runtime environment. If not specified, a default container image will be used.

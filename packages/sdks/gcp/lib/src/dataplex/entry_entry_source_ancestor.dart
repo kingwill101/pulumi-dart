@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EntryEntrySourceAncestor {
   /// The name of the ancestor resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The type of the ancestor resource.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [EntryEntrySourceAncestor].
   /// [name] The name of the ancestor resource.

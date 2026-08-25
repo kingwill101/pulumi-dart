@@ -7,24 +7,24 @@ class RegionBackendServiceCircuitBreakers {
   /// (Optional, Beta)
   /// The timeout for new network connections to hosts.
   /// Structure is documented below.
-  final pulumi.Input<RegionBackendServiceCircuitBreakersConnectTimeout>? connectTimeout;
+  final pulumi.Input<RegionBackendServiceCircuitBreakersConnectTimeout?>? connectTimeout;
   /// The maximum number of connections to the backend cluster.
   /// Defaults to 1024.
-  final pulumi.Input<int>? maxConnections;
+  final pulumi.Input<int?>? maxConnections;
   /// The maximum number of pending requests to the backend cluster.
   /// Defaults to 1024.
-  final pulumi.Input<int>? maxPendingRequests;
+  final pulumi.Input<int?>? maxPendingRequests;
   /// The maximum number of parallel requests to the backend cluster.
   /// Defaults to 1024.
-  final pulumi.Input<int>? maxRequests;
+  final pulumi.Input<int?>? maxRequests;
   /// Maximum requests for a single backend connection. This parameter
   /// is respected by both the HTTP/1.1 and HTTP/2 implementations. If
   /// not specified, there is no limit. Setting this parameter to 1
   /// will effectively disable keep alive.
-  final pulumi.Input<int>? maxRequestsPerConnection;
+  final pulumi.Input<int?>? maxRequestsPerConnection;
   /// The maximum number of parallel retries to the backend cluster.
   /// Defaults to 3.
-  final pulumi.Input<int>? maxRetries;
+  final pulumi.Input<int?>? maxRetries;
 
   /// Creates a new [RegionBackendServiceCircuitBreakers].
   /// [connectTimeout] (Optional, Beta)
@@ -56,11 +56,11 @@ class RegionBackendServiceCircuitBreakers {
   factory RegionBackendServiceCircuitBreakers.fromMap(Map<String, dynamic> map) {
     return RegionBackendServiceCircuitBreakers(
       connectTimeout: (() { final guardedValue = map['connectTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RegionBackendServiceCircuitBreakersConnectTimeout.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      maxConnections: (() { final guardedValue = map['maxConnections']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      maxPendingRequests: (() { final guardedValue = map['maxPendingRequests']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      maxRequests: (() { final guardedValue = map['maxRequests']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      maxRequestsPerConnection: (() { final guardedValue = map['maxRequestsPerConnection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      maxRetries: (() { final guardedValue = map['maxRetries']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxConnections: (() { final guardedValue = map['maxConnections']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxPendingRequests: (() { final guardedValue = map['maxPendingRequests']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxRequests: (() { final guardedValue = map['maxRequests']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxRequestsPerConnection: (() { final guardedValue = map['maxRequestsPerConnection']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxRetries: (() { final guardedValue = map['maxRetries']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

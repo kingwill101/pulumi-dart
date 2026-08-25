@@ -7,17 +7,17 @@ import 'connectivity_test_source.dart';
 /// Input properties used for looking up and filtering ConnectivityTest resources.
 class ConnectivityTestState {
   /// Whether the analysis should skip firewall checking. Default value is false.
-  final pulumi.Input<bool>? bypassFirewallChecks;
+  final pulumi.Input<bool?>? bypassFirewallChecks;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The user-supplied description of the Connectivity Test.
   /// Maximum of 512 characters.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Required. Destination specification of the Connectivity Test.
   /// You can use a combination of destination IP address, URI of a supported
   /// endpoint, project ID, or VPC network to identify the destination location.
@@ -25,31 +25,31 @@ class ConnectivityTestState {
   /// ambiguous. However, the test result might include endpoints or use a
   /// destination that you don't intend to test.
   /// Structure is documented below.
-  final pulumi.Input<ConnectivityTestDestination>? destination;
+  final pulumi.Input<ConnectivityTestDestination?>? destination;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveLabels;
+  final pulumi.Input<Map<String, String>?>? effectiveLabels;
   /// Resource labels to represent user-provided metadata.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Unique name for the connectivity test.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// IP Protocol of the test. When not provided, "TCP" is assumed.
-  final pulumi.Input<String>? protocol;
+  final pulumi.Input<String?>? protocol;
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  final pulumi.Input<Map<String, String>>? pulumiLabels;
+  final pulumi.Input<Map<String, String>?>? pulumiLabels;
   /// Other projects that may be relevant for reachability analysis.
   /// This is applicable to scenarios where a test can cross project
   /// boundaries.
-  final pulumi.Input<List<String>>? relatedProjects;
+  final pulumi.Input<List<String>?>? relatedProjects;
   /// Whether run analysis for the return path from destination to source.
   /// Default value is false.
-  final pulumi.Input<bool>? roundTrip;
+  final pulumi.Input<bool?>? roundTrip;
   /// Required. Source specification of the Connectivity Test.
   /// You can use a combination of source IP address, URI of a supported
   /// endpoint, project ID, or VPC network to identify the source location.
@@ -57,7 +57,7 @@ class ConnectivityTestState {
   /// ambiguous. However, the test result might include endpoints or use a source
   /// that you don't intend to test.
   /// Structure is documented below.
-  final pulumi.Input<ConnectivityTestSource>? source;
+  final pulumi.Input<ConnectivityTestSource?>? source;
 
   /// Creates a new [ConnectivityTestState].
   /// [bypassFirewallChecks] Whether the analysis should skip firewall checking. Default value is false.

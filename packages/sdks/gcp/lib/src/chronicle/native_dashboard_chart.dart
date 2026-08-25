@@ -6,11 +6,11 @@ import 'native_dashboard_chart_chart_layout.dart';
 class NativeDashboardChart {
   /// The visual layout parameters of this chart within the dashboard.
   /// Structure is documented below.
-  final pulumi.Input<NativeDashboardChartChartLayout>? chartLayout;
+  final pulumi.Input<NativeDashboardChartChartLayout?>? chartLayout;
   /// The resource name of the associated DashboardChart.
-  final pulumi.Input<String>? dashboardChart;
+  final pulumi.Input<String?>? dashboardChart;
   /// List of dashboard filter IDs applied to this chart.
-  final pulumi.Input<List<String>>? filtersIds;
+  final pulumi.Input<List<String>?>? filtersIds;
 
   /// Creates a new [NativeDashboardChart].
   /// [chartLayout] The visual layout parameters of this chart within the dashboard.

@@ -5,43 +5,43 @@ import 'get_data_source_references_data_source_reference.dart';
 
 /// Result data returned by getDataSourceReferences.
 class GetDataSourceReferencesResult {
-  final List<GetDataSourceReferencesDataSourceReference> dataSourceReferences;
+  final List<GetDataSourceReferencesDataSourceReference>? dataSourceReferences;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final String location;
-  final String project;
+  final String? id;
+  final String? location;
+  final String? project;
   final String? resourceType;
 
   /// Creates a new [GetDataSourceReferencesResult].
-  /// [dataSourceReferences] Required.
+  /// [dataSourceReferences] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [location] Required.
-  /// [project] Required.
+  /// [location] Optional.
+  /// [project] Optional.
   /// [resourceType] Optional.
   const GetDataSourceReferencesResult({
-    required this.dataSourceReferences,
-    required this.id,
-    required this.location,
-    required this.project,
+    this.dataSourceReferences,
+    this.id,
+    this.location,
+    this.project,
     this.resourceType,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dataSourceReferences': pulumi.Input.encodeList<GetDataSourceReferencesDataSourceReference, Map<String, dynamic>>(dataSourceReferences, (value) => value.toMap()),
-      'id': id,
-      'location': location,
-      'project': project,
+      'dataSourceReferences': ?(() { final guardedValue = dataSourceReferences; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetDataSourceReferencesDataSourceReference, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'id': ?id,
+      'location': ?location,
+      'project': ?project,
       'resourceType': ?resourceType,
     };
   }
 
   factory GetDataSourceReferencesResult.fromMap(Map<String, dynamic> map) {
     return GetDataSourceReferencesResult(
-      dataSourceReferences: pulumi.Input.decodeList<GetDataSourceReferencesDataSourceReference>(map['dataSourceReferences']!, (value) => GetDataSourceReferencesDataSourceReference.fromMap((value as Map).cast<String, dynamic>())),
-      id: map['id'] as String,
-      location: map['location'] as String,
-      project: map['project'] as String,
+      dataSourceReferences: (() { final guardedValue = map['dataSourceReferences']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetDataSourceReferencesDataSourceReference>(guardedValue, (value) => GetDataSourceReferencesDataSourceReference.fromMap((value as Map).cast<String, dynamic>())); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
       resourceType: (() { final guardedValue = map['resourceType']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }

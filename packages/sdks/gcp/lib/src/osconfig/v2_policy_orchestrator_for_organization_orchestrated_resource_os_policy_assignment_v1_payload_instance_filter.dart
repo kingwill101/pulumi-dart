@@ -8,22 +8,22 @@ import 'v2_policy_orchestrator_for_organization_orchestrated_resource_os_policy_
 class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilter {
   /// Target all VMs in the project. If true, no other criteria is
   /// permitted.
-  final pulumi.Input<bool>? all;
+  final pulumi.Input<bool?>? all;
   /// List of label sets used for VM exclusion.
   /// If the list has more than one label set, the VM is excluded if any
   /// of the label sets are applicable for the VM.
   /// Structure is documented below.
-  final pulumi.Input<List<V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabel>>? exclusionLabels;
+  final pulumi.Input<List<V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabel>?>? exclusionLabels;
   /// List of label sets used for VM inclusion.
   /// If the list has more than one `LabelSet`, the VM is included if any
   /// of the label sets are applicable for the VM.
   /// Structure is documented below.
-  final pulumi.Input<List<V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabel>>? inclusionLabels;
+  final pulumi.Input<List<V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabel>?>? inclusionLabels;
   /// List of inventories to select VMs.
   /// A VM is selected if its inventory data matches at least one of the
   /// following inventories.
   /// Structure is documented below.
-  final pulumi.Input<List<V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventory>>? inventories;
+  final pulumi.Input<List<V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventory>?>? inventories;
 
   /// Creates a new [V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilter].
   /// [all] Target all VMs in the project. If true, no other criteria is

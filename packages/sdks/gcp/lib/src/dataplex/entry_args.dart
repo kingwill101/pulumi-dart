@@ -11,33 +11,33 @@ import 'entry_entry_source.dart';
 class EntryArgs {
   /// The aspects that are attached to the entry.
   /// Structure is documented below.
-  final pulumi.Input<List<EntryAspect>>? aspects;
+  final pulumi.Input<List<EntryAspect>?>? aspects;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The entry group id of the entry group the entry will be created in.
-  final pulumi.Input<String>? entryGroupId;
+  final pulumi.Input<String?>? entryGroupId;
   /// The entry id of the entry.
-  final pulumi.Input<String>? entryId;
+  final pulumi.Input<String?>? entryId;
   /// A nested object resource.
   /// Structure is documented below.
-  final pulumi.Input<EntryEntrySource>? entrySource;
+  final pulumi.Input<EntryEntrySource?>? entrySource;
   /// The relative resource name of the entry type that was used to create this entry, in the format projects/{project_number}/locations/{locationId}/entryTypes/{entryTypeId}.
   final pulumi.Input<String> entryType;
   /// A name for the entry that can be referenced by an external system. For more information, see https://cloud.google.com/dataplex/docs/fully-qualified-names.
   /// The maximum size of the field is 4000 characters.
-  final pulumi.Input<String>? fullyQualifiedName;
+  final pulumi.Input<String?>? fullyQualifiedName;
   /// The location where entry will be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The resource name of the parent entry, in the format projects/{project_number}/locations/{locationId}/entryGroups/{entryGroupId}/entries/{entryId}.
-  final pulumi.Input<String>? parentEntry;
+  final pulumi.Input<String?>? parentEntry;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [EntryArgs].
   /// [aspects] The aspects that are attached to the entry.

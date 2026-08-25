@@ -5,11 +5,11 @@ import 'feature_membership_configmanagement_config_sync_deployment_override_cont
 
 class FeatureMembershipConfigmanagementConfigSyncDeploymentOverride {
   /// The override configurations for the containers in the Deployment. Structure is documented below.
-  final pulumi.Input<List<FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainer>>? containers;
+  final pulumi.Input<List<FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainer>?>? containers;
   /// The name of the Deployment.
-  final pulumi.Input<String>? deploymentName;
+  final pulumi.Input<String?>? deploymentName;
   /// The namespace of the Deployment.
-  final pulumi.Input<String>? deploymentNamespace;
+  final pulumi.Input<String?>? deploymentNamespace;
 
   /// Creates a new [FeatureMembershipConfigmanagementConfigSyncDeploymentOverride].
   /// [containers] The override configurations for the containers in the Deployment. Structure is documented below.

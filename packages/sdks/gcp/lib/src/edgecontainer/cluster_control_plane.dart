@@ -7,10 +7,10 @@ import 'cluster_control_plane_remote.dart';
 class ClusterControlPlane {
   /// Local control plane configuration.
   /// Structure is documented below.
-  final pulumi.Input<ClusterControlPlaneLocal>? local;
+  final pulumi.Input<ClusterControlPlaneLocal?>? local;
   /// Remote control plane configuration.
   /// Structure is documented below.
-  final pulumi.Input<ClusterControlPlaneRemote>? remote;
+  final pulumi.Input<ClusterControlPlaneRemote?>? remote;
 
   /// Creates a new [ClusterControlPlane].
   /// [local] Local control plane configuration.

@@ -11,14 +11,14 @@ class GetNetworkArgs {
   ///
   ///
   /// - - -
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A full or partial URL of the network profile to apply to this network.
-  final pulumi.Input<String>? networkProfile;
+  final pulumi.Input<String?>? networkProfile;
   /// The ID of the project in which the resource belongs. If it
   /// is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The URI of the resource.
-  final pulumi.Input<String>? selfLink;
+  final pulumi.Input<String?>? selfLink;
 
   /// Creates a new [GetNetworkArgs].
   /// [name] The name of the network.

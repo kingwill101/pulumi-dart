@@ -10,16 +10,16 @@ class AppVersionSnapshotAppAudioProcessingConfig {
   /// Configuration for the ambient sound to be played with the synthesized agent
   /// response, to enhance the naturalness of the conversation.
   /// Structure is documented below.
-  final pulumi.Input<List<AppVersionSnapshotAppAudioProcessingConfigAmbientSoundConfig>>? ambientSoundConfigs;
+  final pulumi.Input<List<AppVersionSnapshotAppAudioProcessingConfigAmbientSoundConfig>?>? ambientSoundConfigs;
   /// (Output)
   /// Configuration for how the user barge-in activities should be handled.
   /// Structure is documented below.
-  final pulumi.Input<List<AppVersionSnapshotAppAudioProcessingConfigBargeInConfig>>? bargeInConfigs;
+  final pulumi.Input<List<AppVersionSnapshotAppAudioProcessingConfigBargeInConfig>?>? bargeInConfigs;
   /// (Output)
   /// The duration of user inactivity (no speech or interaction) before the agent
   /// prompts the user for reengagement. If not set, the agent will not prompt
   /// the user for reengagement.
-  final pulumi.Input<String>? inactivityTimeout;
+  final pulumi.Input<String?>? inactivityTimeout;
   /// (Output)
   /// Configuration of how the agent response should be synthesized, mapping from
   /// the language code to SynthesizeSpeechConfig.
@@ -29,7 +29,7 @@ class AppVersionSnapshotAppAudioProcessingConfig {
   /// then "en" configuration will be used.
   /// Note: Language code is case-insensitive.
   /// Structure is documented below.
-  final pulumi.Input<List<AppVersionSnapshotAppAudioProcessingConfigSynthesizeSpeechConfig>>? synthesizeSpeechConfigs;
+  final pulumi.Input<List<AppVersionSnapshotAppAudioProcessingConfigSynthesizeSpeechConfig>?>? synthesizeSpeechConfigs;
 
   /// Creates a new [AppVersionSnapshotAppAudioProcessingConfig].
   /// [ambientSoundConfigs] (Output)

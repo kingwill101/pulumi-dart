@@ -8,18 +8,18 @@ class ImportJobExecutionReportExecutionErrorFileValidation {
   /// (Output)
   /// List of file level errors.
   /// Structure is documented below.
-  final pulumi.Input<List<ImportJobExecutionReportExecutionErrorFileValidationFileError>>? fileErrors;
+  final pulumi.Input<List<ImportJobExecutionReportExecutionErrorFileValidationFileError>?>? fileErrors;
   /// (Output)
   /// The name of the file.
-  final pulumi.Input<String>? fileName;
+  final pulumi.Input<String?>? fileName;
   /// (Output)
   /// Flag indicating that processing was aborted due to maximum number of
   /// errors.
-  final pulumi.Input<bool>? partialReport;
+  final pulumi.Input<bool?>? partialReport;
   /// (Output)
   /// Partial list of rows that encountered validation error.
   /// Structure is documented below.
-  final pulumi.Input<List<ImportJobExecutionReportExecutionErrorFileValidationRowError>>? rowErrors;
+  final pulumi.Input<List<ImportJobExecutionReportExecutionErrorFileValidationRowError>?>? rowErrors;
 
   /// Creates a new [ImportJobExecutionReportExecutionErrorFileValidation].
   /// [fileErrors] (Output)

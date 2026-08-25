@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'user_args.dart';
 import 'user_password_policy.dart';
+import 'user_sql_server_user_detail.dart';
 import 'user_state.dart';
 
 /// Creates a new Google SQL User on a Google SQL User Instance. For more information, see the [official documentation](https://cloud.google.com/sql/), or the [JSON API](https://cloud.google.com/sql/docs/admin-api/v1beta4/users).
@@ -1098,7 +1099,7 @@ class User extends pulumi.CustomResource {
   /// The ID of the project in which the resource belongs. If it
   /// is not provided, the provider project is used.
   late final pulumi.Output<String> project;
-  late final pulumi.Output<List<Map<String, dynamic>>> sqlServerUserDetails;
+  late final pulumi.Output<List<UserSqlServerUserDetail>> sqlServerUserDetails;
   /// The user type. It determines the method to authenticate the
   /// user during login. The default is the database's built-in user type. Flags
   /// include "BUILT_IN", "CLOUD_IAM_USER", "CLOUD_IAM_SERVICE_ACCOUNT", "CLOUD_IAM_GROUP",
@@ -1119,20 +1120,21 @@ class User extends pulumi.CustomResource {
           'gcp:sql/user:User',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['password', 'passwordWo'],
         ) {
-    databaseRoles = registerOutput<List<String>?>('databaseRoles');
+    databaseRoles = registerOutput<List<String>?>('databaseRoles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     host = registerOutput<String>('host');
     iamEmail = registerOutput<String>('iamEmail');
     instance = registerOutput<String>('instance');
     this.name = registerOutput<String>('name');
-    password = registerOutput<String?>('password');
+    password = registerOutput<String?>('password', isSecret: true);
     passwordPolicy = registerOutput<UserPasswordPolicy?>('passwordPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserPasswordPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    passwordWo = registerOutput<String?>('passwordWo');
+    passwordWo = registerOutput<String?>('passwordWo', isSecret: true);
     passwordWoVersion = registerOutput<int?>('passwordWoVersion');
     project = registerOutput<String>('project');
-    sqlServerUserDetails = registerOutput<List<Map<String, dynamic>>>('sqlServerUserDetails');
+    sqlServerUserDetails = registerOutput<List<UserSqlServerUserDetail>>('sqlServerUserDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<UserSqlServerUserDetail>(guardedValue, (value) => UserSqlServerUserDetail.fromMap((value as Map).cast<String, dynamic>())); });
     type = registerOutput<String?>('type');
   }
 
@@ -1141,11 +1143,12 @@ class User extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     UserState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return User._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1159,18 +1162,43 @@ class User extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    databaseRoles = registerOutput<List<String>?>('databaseRoles');
+    databaseRoles = registerOutput<List<String>?>('databaseRoles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     host = registerOutput<String>('host');
     iamEmail = registerOutput<String>('iamEmail');
     instance = registerOutput<String>('instance');
     this.name = registerOutput<String>('name');
-    password = registerOutput<String?>('password');
+    password = registerOutput<String?>('password', isSecret: true);
     passwordPolicy = registerOutput<UserPasswordPolicy?>('passwordPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserPasswordPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    passwordWo = registerOutput<String?>('passwordWo');
+    passwordWo = registerOutput<String?>('passwordWo', isSecret: true);
     passwordWoVersion = registerOutput<int?>('passwordWoVersion');
     project = registerOutput<String>('project');
-    sqlServerUserDetails = registerOutput<List<Map<String, dynamic>>>('sqlServerUserDetails');
+    sqlServerUserDetails = registerOutput<List<UserSqlServerUserDetail>>('sqlServerUserDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<UserSqlServerUserDetail>(guardedValue, (value) => UserSqlServerUserDetail.fromMap((value as Map).cast<String, dynamic>())); });
+    type = registerOutput<String?>('type');
+  }
+
+  /// Creates a typed reference to an existing [User] resource.
+  User.reference(String urn)
+    : super(
+        'gcp:sql/user:User',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['password', 'passwordWo'],
+        isResourceReference: true,
+      ) {
+    databaseRoles = registerOutput<List<String>?>('databaseRoles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    host = registerOutput<String>('host');
+    iamEmail = registerOutput<String>('iamEmail');
+    instance = registerOutput<String>('instance');
+    this.name = registerOutput<String>('name');
+    password = registerOutput<String?>('password', isSecret: true);
+    passwordPolicy = registerOutput<UserPasswordPolicy?>('passwordPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserPasswordPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    passwordWo = registerOutput<String?>('passwordWo', isSecret: true);
+    passwordWoVersion = registerOutput<int?>('passwordWoVersion');
+    project = registerOutput<String>('project');
+    sqlServerUserDetails = registerOutput<List<UserSqlServerUserDetail>>('sqlServerUserDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<UserSqlServerUserDetail>(guardedValue, (value) => UserSqlServerUserDetail.fromMap((value as Map).cast<String, dynamic>())); });
     type = registerOutput<String?>('type');
   }
 }

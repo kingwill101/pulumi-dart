@@ -11,23 +11,23 @@ import 'metric_metric_descriptor.dart';
 class MetricArgs {
   /// The resource name of the Log Bucket that owns the Log Metric. Only Log Buckets in projects
   /// are supported. The bucket has to be in the same project as the metric.
-  final pulumi.Input<String>? bucketName;
+  final pulumi.Input<String?>? bucketName;
   /// The bucketOptions are required when the logs-based metric is using a DISTRIBUTION value type and it
   /// describes the bucket boundaries used to create a histogram of the extracted values.
   /// Structure is documented below.
-  final pulumi.Input<MetricBucketOptions>? bucketOptions;
+  final pulumi.Input<MetricBucketOptions?>? bucketOptions;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// A description of this metric, which is used in documentation. The maximum length of the
   /// description is 8000 characters.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// If set to True, then this metric is disabled and it does not generate any points.
-  final pulumi.Input<bool>? disabled;
+  final pulumi.Input<bool?>? disabled;
   /// An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-filters) which
   /// is used to match log entries.
   final pulumi.Input<String> filter;
@@ -35,22 +35,22 @@ class MetricArgs {
   /// entry field and assign as the label value. Each label key specified in the LabelDescriptor must
   /// have an associated extractor expression in this map. The syntax of the extractor expression is
   /// the same as for the valueExtractor field.
-  final pulumi.Input<Map<String, String>>? labelExtractors;
+  final pulumi.Input<Map<String, String>?>? labelExtractors;
   /// The optional metric descriptor associated with the logs-based metric.
   /// If unspecified, it uses a default metric descriptor with a DELTA metric kind,
   /// INT64 value type, with no labels and a unit of "1". Such a metric counts the
   /// number of log entries matching the filter expression.
   /// Structure is documented below.
-  final pulumi.Input<MetricMetricDescriptor>? metricDescriptor;
+  final pulumi.Input<MetricMetricDescriptor?>? metricDescriptor;
   /// The client-assigned metric identifier. Examples - "errorCount", "nginx/requests".
   /// Metric identifiers are limited to 100 characters and can include only the following
   /// characters A-Z, a-z, 0-9, and the special characters _-.,+!*',()%/. The forward-slash
   /// character (/) denotes a hierarchy of name pieces, and it cannot be the first character
   /// of the name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// A valueExtractor is required when using a distribution logs-based metric to extract the values to
   /// record from a log entry. Two functions are supported for value extraction - EXTRACT(field) or
   /// REGEXP_EXTRACT(field, regex). The argument are 1. field - The name of the log entry field from which
@@ -58,7 +58,7 @@ class MetricArgs {
   /// (https://github.com/google/re2/wiki/Syntax) with a single capture group to extract data from the specified
   /// log entry field. The value of the field is converted to a string before applying the regex. It is an
   /// error to specify a regex that does not include exactly one capture group.
-  final pulumi.Input<String>? valueExtractor;
+  final pulumi.Input<String?>? valueExtractor;
 
   /// Creates a new [MetricArgs].
   /// [bucketName] The resource name of the Log Bucket that owns the Log Metric. Only Log Buckets in projects

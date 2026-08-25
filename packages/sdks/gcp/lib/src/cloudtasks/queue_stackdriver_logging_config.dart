@@ -22,7 +22,7 @@ class QueueStackdriverLoggingConfig {
 
   factory QueueStackdriverLoggingConfig.fromMap(Map<String, dynamic> map) {
     return QueueStackdriverLoggingConfig(
-      samplingRatio: pulumi.Input.fromValue(map['samplingRatio'] as double),
+      samplingRatio: pulumi.Input.fromValue((map['samplingRatio'] as num).toDouble()),
     );
   }
 }

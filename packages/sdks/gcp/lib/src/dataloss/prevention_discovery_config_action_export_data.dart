@@ -9,10 +9,10 @@ class PreventionDiscoveryConfigActionExportData {
   /// The system will create a new dataset and table for you if none are are provided. The dataset will be named `sensitiveDataProtectionDiscovery`
   /// and table will be named `discoveryProfiles`. This table will be placed in the same project as the container project running the scan.
   /// Structure is documented below.
-  final pulumi.Input<PreventionDiscoveryConfigActionExportDataProfileTable>? profileTable;
+  final pulumi.Input<PreventionDiscoveryConfigActionExportDataProfileTable?>? profileTable;
   /// Store sample findings in an existing table or a new table in an existing dataset. Each re-generation will result in a new row in BigQuery
   /// Structure is documented below.
-  final pulumi.Input<PreventionDiscoveryConfigActionExportDataSampleFindingsTable>? sampleFindingsTable;
+  final pulumi.Input<PreventionDiscoveryConfigActionExportDataSampleFindingsTable?>? sampleFindingsTable;
 
   /// Creates a new [PreventionDiscoveryConfigActionExportData].
   /// [profileTable] Store all table and column profiles in an existing table or a new table in an existing dataset. Each re-generation will result in a new row in BigQuery.

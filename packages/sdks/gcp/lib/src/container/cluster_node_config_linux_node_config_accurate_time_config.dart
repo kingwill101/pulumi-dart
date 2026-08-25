@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterNodeConfigLinuxNodeConfigAccurateTimeConfig {
   /// Whether to enable accurate time synchronization with PTP-KVM.
-  final pulumi.Input<bool>? enablePtpKvmTimeSync;
+  final pulumi.Input<bool?>? enablePtpKvmTimeSync;
 
   /// Creates a new [ClusterNodeConfigLinuxNodeConfigAccurateTimeConfig].
   /// [enablePtpKvmTimeSync] Whether to enable accurate time synchronization with PTP-KVM.

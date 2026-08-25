@@ -9,15 +9,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetSecretVersionAccessArgs {
   /// If set to 'true', the secret data is
   /// expected to be base64-encoded string.
-  final pulumi.Input<bool>? isSecretDataBase64;
+  final pulumi.Input<bool?>? isSecretDataBase64;
   /// The project to get the secret version for. If it
   /// is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The secret to get the secret version for.
   final pulumi.Input<String> secret;
   /// The version of the secret to get. If it
   /// is not provided, the latest version is retrieved.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [GetSecretVersionAccessArgs].
   /// [isSecretDataBase64] If set to 'true', the secret data is

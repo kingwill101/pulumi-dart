@@ -12,7 +12,7 @@ class AuthzPolicyHttpRuleToOperationMcpMethod {
   final pulumi.Input<String> name;
   /// MCP method parameters to match against.
   /// Structure is documented below.
-  final pulumi.Input<List<AuthzPolicyHttpRuleToOperationMcpMethodParam>>? params;
+  final pulumi.Input<List<AuthzPolicyHttpRuleToOperationMcpMethodParam>?>? params;
 
   /// Creates a new [AuthzPolicyHttpRuleToOperationMcpMethod].
   /// [name] The MCP method to match against. Allowed values are as follows:

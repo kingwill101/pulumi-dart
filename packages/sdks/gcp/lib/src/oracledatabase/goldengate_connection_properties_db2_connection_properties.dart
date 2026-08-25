@@ -6,37 +6,37 @@ import 'goldengate_connection_properties_db2_connection_properties_additional_at
 class GoldengateConnectionPropertiesDb2ConnectionProperties {
   /// An array of name-value pair attribute entries.
   /// Used as additional parameters in connection string.
-  final pulumi.Input<List<GoldengateConnectionPropertiesDb2ConnectionPropertiesAdditionalAttribute>>? additionalAttributes;
+  final pulumi.Input<List<GoldengateConnectionPropertiesDb2ConnectionPropertiesAdditionalAttribute>?>? additionalAttributes;
   /// The name of the database.
-  final pulumi.Input<String>? database;
+  final pulumi.Input<String?>? database;
   /// The name or address of a host.
-  final pulumi.Input<String>? host;
+  final pulumi.Input<String?>? host;
   /// Input only. The password Oracle Goldengate uses for Db2 connection in plain text.
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// Input only. The resource name of a secret version in Secret Manager which contains
   /// the password Oracle Goldengate uses for Db2 connection.
   /// Format: projects/{project}/secrets/{secret}/versions/{version}.
-  final pulumi.Input<String>? passwordSecretVersion;
+  final pulumi.Input<String?>? passwordSecretVersion;
   /// The port of an endpoint usually specified for a connection.
-  final pulumi.Input<int>? port;
+  final pulumi.Input<int?>? port;
   /// Security protocol for the DB2 database.
   /// Possible values:
   /// PLAIN
   /// TLS
-  final pulumi.Input<String>? securityProtocol;
+  final pulumi.Input<String?>? securityProtocol;
   /// The keystash file which contains the encrypted password to
   /// the key database file. Not supported for IBM Db2 for i.
-  final pulumi.Input<String>? sslClientKeystashFile;
+  final pulumi.Input<String?>? sslClientKeystashFile;
   /// The keystore file created at the client containing the
   /// server certificate / CA root certificate. Not supported for IBM Db2 for i.
-  final pulumi.Input<String>? sslClientKeystoredbFile;
+  final pulumi.Input<String?>? sslClientKeystoredbFile;
   /// The file which contains the self-signed server certificate
   /// / Certificate Authority (CA) certificate.
-  final pulumi.Input<String>? sslServerCertificateFile;
+  final pulumi.Input<String?>? sslServerCertificateFile;
   /// The technology type of Db2Connection.
-  final pulumi.Input<String>? technologyType;
+  final pulumi.Input<String?>? technologyType;
   /// The username Oracle Goldengate uses to connect to the DB2 database.
-  final pulumi.Input<String>? username;
+  final pulumi.Input<String?>? username;
 
   /// Creates a new [GoldengateConnectionPropertiesDb2ConnectionProperties].
   /// [additionalAttributes] An array of name-value pair attribute entries.
@@ -90,7 +90,7 @@ class GoldengateConnectionPropertiesDb2ConnectionProperties {
       host: (() { final guardedValue = map['host']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       password: (() { final guardedValue = map['password']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       passwordSecretVersion: (() { final guardedValue = map['passwordSecretVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       securityProtocol: (() { final guardedValue = map['securityProtocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sslClientKeystashFile: (() { final guardedValue = map['sslClientKeystashFile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sslClientKeystoredbFile: (() { final guardedValue = map['sslClientKeystoredbFile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

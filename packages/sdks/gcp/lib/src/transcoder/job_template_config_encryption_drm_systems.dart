@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class JobTemplateConfigEncryptionDrmSystems {
   /// Clearkey configuration.
-  final pulumi.Input<Map<String, dynamic>>? clearkey;
+  final pulumi.Input<Map<String, dynamic>?>? clearkey;
   /// Fairplay configuration.
-  final pulumi.Input<Map<String, dynamic>>? fairplay;
+  final pulumi.Input<Map<String, dynamic>?>? fairplay;
   /// Playready configuration.
-  final pulumi.Input<Map<String, dynamic>>? playready;
+  final pulumi.Input<Map<String, dynamic>?>? playready;
   /// Widevine configuration.
-  final pulumi.Input<Map<String, dynamic>>? widevine;
+  final pulumi.Input<Map<String, dynamic>?>? widevine;
 
   /// Creates a new [JobTemplateConfigEncryptionDrmSystems].
   /// [clearkey] Clearkey configuration.

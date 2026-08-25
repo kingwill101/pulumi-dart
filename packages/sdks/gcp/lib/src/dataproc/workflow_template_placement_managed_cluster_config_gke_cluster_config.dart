@@ -5,7 +5,7 @@ import 'workflow_template_placement_managed_cluster_config_gke_cluster_config_na
 
 class WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfig {
   /// A target for the deployment.
-  final pulumi.Input<WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTarget>? namespacedGkeDeploymentTarget;
+  final pulumi.Input<WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTarget?>? namespacedGkeDeploymentTarget;
 
   /// Creates a new [WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfig].
   /// [namespacedGkeDeploymentTarget] A target for the deployment.

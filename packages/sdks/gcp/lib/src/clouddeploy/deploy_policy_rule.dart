@@ -6,7 +6,7 @@ import 'deploy_policy_rule_rollout_restriction.dart';
 class DeployPolicyRule {
   /// Rollout restrictions.
   /// Structure is documented below.
-  final pulumi.Input<DeployPolicyRuleRolloutRestriction>? rolloutRestriction;
+  final pulumi.Input<DeployPolicyRuleRolloutRestriction?>? rolloutRestriction;
 
   /// Creates a new [DeployPolicyRule].
   /// [rolloutRestriction] Rollout restrictions.

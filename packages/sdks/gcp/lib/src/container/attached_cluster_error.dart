@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AttachedClusterError {
   /// Human-friendly description of the error.
-  final pulumi.Input<String>? message;
+  final pulumi.Input<String?>? message;
 
   /// Creates a new [AttachedClusterError].
   /// [message] Human-friendly description of the error.

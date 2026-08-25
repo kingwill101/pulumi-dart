@@ -1073,13 +1073,13 @@ class HiveTableIamBinding extends pulumi.CustomResource {
           'gcp:biglake/hiveTableIamBinding:HiveTableIamBinding',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     catalog = registerOutput<String>('catalog');
     condition = registerOutput<HiveTableIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HiveTableIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     database = registerOutput<String>('database');
     etag = registerOutput<String>('etag');
-    members = registerOutput<List<String>>('members');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     role = registerOutput<String>('role');
@@ -1090,11 +1090,12 @@ class HiveTableIamBinding extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     HiveTableIamBindingState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return HiveTableIamBinding._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1112,7 +1113,26 @@ class HiveTableIamBinding extends pulumi.CustomResource {
     condition = registerOutput<HiveTableIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HiveTableIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     database = registerOutput<String>('database');
     etag = registerOutput<String>('etag');
-    members = registerOutput<List<String>>('members');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    role = registerOutput<String>('role');
+  }
+
+  /// Creates a typed reference to an existing [HiveTableIamBinding] resource.
+  HiveTableIamBinding.reference(String urn)
+    : super(
+        'gcp:biglake/hiveTableIamBinding:HiveTableIamBinding',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    catalog = registerOutput<String>('catalog');
+    condition = registerOutput<HiveTableIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HiveTableIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    database = registerOutput<String>('database');
+    etag = registerOutput<String>('etag');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     role = registerOutput<String>('role');

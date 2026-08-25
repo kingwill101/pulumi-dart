@@ -9,10 +9,10 @@ class InstancePscAttachmentDetail {
   /// CONNECTION_TYPE_DISCOVERY
   /// CONNECTION_TYPE_PRIMARY
   /// CONNECTION_TYPE_READER
-  final pulumi.Input<String>? connectionType;
+  final pulumi.Input<String?>? connectionType;
   /// (Output)
   /// Output only. The service attachment which is the target of the PSC connection, in the form of projects/{project-id}/regions/{region}/serviceAttachments/{service-attachment-id}.
-  final pulumi.Input<String>? serviceAttachment;
+  final pulumi.Input<String?>? serviceAttachment;
 
   /// Creates a new [InstancePscAttachmentDetail].
   /// [connectionType] (Output)

@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RestoreWorkloadComputeInstanceRestorePropertiesDisplayDevice {
   /// Optional. Enables display for the Compute Engine VM.
-  final pulumi.Input<bool>? enableDisplay;
+  final pulumi.Input<bool?>? enableDisplay;
 
   /// Creates a new [RestoreWorkloadComputeInstanceRestorePropertiesDisplayDevice].
   /// [enableDisplay] Optional. Enables display for the Compute Engine VM.

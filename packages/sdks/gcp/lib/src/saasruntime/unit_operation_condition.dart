@@ -5,20 +5,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UnitOperationCondition {
   /// (Output)
   /// Last time the condition transited from one status to another.
-  final pulumi.Input<String>? lastTransitionTime;
+  final pulumi.Input<String?>? lastTransitionTime;
   /// (Output)
   /// Human readable message indicating details about the last transition.
-  final pulumi.Input<String>? message;
+  final pulumi.Input<String?>? message;
   /// (Output)
   /// Brief reason for the condition's last transition.
-  final pulumi.Input<String>? reason;
+  final pulumi.Input<String?>? reason;
   /// (Output)
   /// Status of the condition.
   /// Possible values:
   /// STATUS_UNKNOWN
   /// STATUS_TRUE
   /// STATUS_FALSE
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// (Output)
   /// Type of the condition.
   /// Possible values:
@@ -26,7 +26,7 @@ class UnitOperationCondition {
   /// TYPE_RUNNING
   /// TYPE_SUCCEEDED
   /// TYPE_CANCELLED
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [UnitOperationCondition].
   /// [lastTransitionTime] (Output)

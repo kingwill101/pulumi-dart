@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AnalysisRuleAnnotatorSelectorQaConfigScorecardList {
   /// List of QaScorecardRevisions.
-  final pulumi.Input<List<String>>? qaScorecardRevisions;
+  final pulumi.Input<List<String>?>? qaScorecardRevisions;
 
   /// Creates a new [AnalysisRuleAnnotatorSelectorQaConfigScorecardList].
   /// [qaScorecardRevisions] List of QaScorecardRevisions.

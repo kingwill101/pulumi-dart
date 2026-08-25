@@ -10,10 +10,10 @@ import 'prevention_job_trigger_inspect_job_inspect_config_custom_info_type_store
 class PreventionJobTriggerInspectJobInspectConfigCustomInfoType {
   /// Dictionary which defines the rule.
   /// Structure is documented below.
-  final pulumi.Input<PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionary>? dictionary;
+  final pulumi.Input<PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionary?>? dictionary;
   /// If set to EXCLUSION_TYPE_EXCLUDE this infoType will not cause a finding to be returned. It still can be used for rules matching.
   /// Possible values are: `EXCLUSION_TYPE_EXCLUDE`.
-  final pulumi.Input<String>? exclusionType;
+  final pulumi.Input<String?>? exclusionType;
   /// CustomInfoType can either be a new infoType, or an extension of built-in infoType, when the name matches one of existing
   /// infoTypes and that infoType is specified in `infoTypes` field. Specifying the latter adds findings to the
   /// one detected by the system. If built-in info type is not specified in `infoTypes` list then the name is
@@ -24,18 +24,18 @@ class PreventionJobTriggerInspectJobInspectConfigCustomInfoType {
   /// specified by the rule.
   /// Default value is `VERY_LIKELY`.
   /// Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
-  final pulumi.Input<String>? likelihood;
+  final pulumi.Input<String?>? likelihood;
   /// Regular expression which defines the rule.
   /// Structure is documented below.
-  final pulumi.Input<PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeRegex>? regex;
+  final pulumi.Input<PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeRegex?>? regex;
   /// Optional custom sensitivity for this InfoType. This only applies to data profiling.
   /// Structure is documented below.
-  final pulumi.Input<PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeSensitivityScore>? sensitivityScore;
+  final pulumi.Input<PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeSensitivityScore?>? sensitivityScore;
   /// A reference to a StoredInfoType to use with scanning.
   /// Structure is documented below.
-  final pulumi.Input<PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeStoredType>? storedType;
+  final pulumi.Input<PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeStoredType?>? storedType;
   /// Message for detecting output from deidentification transformations that support reversing.
-  final pulumi.Input<Map<String, dynamic>>? surrogateType;
+  final pulumi.Input<Map<String, dynamic>?>? surrogateType;
 
   /// Creates a new [PreventionJobTriggerInspectJobInspectConfigCustomInfoType].
   /// [dictionary] Dictionary which defines the rule.

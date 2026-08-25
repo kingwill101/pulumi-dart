@@ -6,7 +6,7 @@ class TopicIngestionDataSourceSettingsCloudStorageTextFormat {
   /// The delimiter to use when using the 'text' format. Each line of text as
   /// specified by the delimiter will be set to the 'data' field of a Pub/Sub
   /// message. When unset, '\n' is used.
-  final pulumi.Input<String>? delimiter;
+  final pulumi.Input<String?>? delimiter;
 
   /// Creates a new [TopicIngestionDataSourceSettingsCloudStorageTextFormat].
   /// [delimiter] The delimiter to use when using the 'text' format. Each line of text as

@@ -481,7 +481,7 @@ class BigQueryExport extends pulumi.CustomResource {
           'gcp:chronicle/bigQueryExport:BigQueryExport',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     bigQueryExportPackage = registerOutput<String>('bigQueryExportPackage');
     entityGraphSettings = registerOutput<BigQueryExportEntityGraphSettings>('entityGraphSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BigQueryExportEntityGraphSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -501,11 +501,12 @@ class BigQueryExport extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     BigQueryExportState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return BigQueryExport._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -519,6 +520,28 @@ class BigQueryExport extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    bigQueryExportPackage = registerOutput<String>('bigQueryExportPackage');
+    entityGraphSettings = registerOutput<BigQueryExportEntityGraphSettings>('entityGraphSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BigQueryExportEntityGraphSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    instance = registerOutput<String>('instance');
+    iocMatchesSettings = registerOutput<BigQueryExportIocMatchesSettings>('iocMatchesSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BigQueryExportIocMatchesSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    provisioned = registerOutput<bool>('provisioned');
+    ruleDetectionsSettings = registerOutput<BigQueryExportRuleDetectionsSettings>('ruleDetectionsSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BigQueryExportRuleDetectionsSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    udmEventsAggregatesSettings = registerOutput<BigQueryExportUdmEventsAggregatesSettings>('udmEventsAggregatesSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BigQueryExportUdmEventsAggregatesSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    udmEventsSettings = registerOutput<BigQueryExportUdmEventsSettings>('udmEventsSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BigQueryExportUdmEventsSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [BigQueryExport] resource.
+  BigQueryExport.reference(String urn)
+    : super(
+        'gcp:chronicle/bigQueryExport:BigQueryExport',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     bigQueryExportPackage = registerOutput<String>('bigQueryExportPackage');
     entityGraphSettings = registerOutput<BigQueryExportEntityGraphSettings>('entityGraphSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BigQueryExportEntityGraphSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     instance = registerOutput<String>('instance');

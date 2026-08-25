@@ -404,7 +404,7 @@ class DataTableRow extends pulumi.CustomResource {
           'gcp:chronicle/dataTableRow:DataTableRow',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     dataTableId = registerOutput<String>('dataTableId');
@@ -416,7 +416,7 @@ class DataTableRow extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     rowTimeToLive = registerOutput<String?>('rowTimeToLive');
     updateTime = registerOutput<String>('updateTime');
-    values = registerOutput<List<String>>('values');
+    values = registerOutput<List<String>>('values', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [DataTableRow] resource's state with the given [name] and [id].
@@ -424,11 +424,12 @@ class DataTableRow extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DataTableRowState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DataTableRow._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -452,6 +453,28 @@ class DataTableRow extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     rowTimeToLive = registerOutput<String?>('rowTimeToLive');
     updateTime = registerOutput<String>('updateTime');
-    values = registerOutput<List<String>>('values');
+    values = registerOutput<List<String>>('values', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [DataTableRow] resource.
+  DataTableRow.reference(String urn)
+    : super(
+        'gcp:chronicle/dataTableRow:DataTableRow',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    dataTableId = registerOutput<String>('dataTableId');
+    dataTableRow = registerOutput<String>('dataTableRow');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    instance = registerOutput<String>('instance');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    rowTimeToLive = registerOutput<String?>('rowTimeToLive');
+    updateTime = registerOutput<String>('updateTime');
+    values = registerOutput<List<String>>('values', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

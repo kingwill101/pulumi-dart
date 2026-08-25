@@ -8,13 +8,13 @@ import 'future_reservation_status_last_known_good_state_future_reservation_specs
 class FutureReservationStatusLastKnownGoodStateFutureReservationSpecs {
   /// Settings for sharing the future reservation
   /// Structure is documented below.
-  final pulumi.Input<FutureReservationStatusLastKnownGoodStateFutureReservationSpecsShareSettings>? shareSettings;
+  final pulumi.Input<FutureReservationStatusLastKnownGoodStateFutureReservationSpecsShareSettings?>? shareSettings;
   /// Future Reservation configuration to indicate instance properties and total count.
   /// Structure is documented below.
-  final pulumi.Input<FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuProperties>? specificSkuProperties;
+  final pulumi.Input<FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuProperties?>? specificSkuProperties;
   /// Time window for this Future Reservation.
   /// Structure is documented below.
-  final pulumi.Input<FutureReservationStatusLastKnownGoodStateFutureReservationSpecsTimeWindow>? timeWindow;
+  final pulumi.Input<FutureReservationStatusLastKnownGoodStateFutureReservationSpecsTimeWindow?>? timeWindow;
 
   /// Creates a new [FutureReservationStatusLastKnownGoodStateFutureReservationSpecs].
   /// [shareSettings] Settings for sharing the future reservation

@@ -6,7 +6,7 @@ import 'bare_metal_cluster_load_balancer_bgp_lb_config_load_balancer_node_pool_c
 class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfig {
   /// The generic configuration for a node pool running a load balancer.
   /// Structure is documented below.
-  final pulumi.Input<BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfig>? nodePoolConfig;
+  final pulumi.Input<BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfig?>? nodePoolConfig;
 
   /// Creates a new [BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfig].
   /// [nodePoolConfig] The generic configuration for a node pool running a load balancer.

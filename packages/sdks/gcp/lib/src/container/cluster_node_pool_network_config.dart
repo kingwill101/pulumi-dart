@@ -8,26 +8,26 @@ import 'cluster_node_pool_network_config_pod_cidr_overprovision_config.dart';
 
 class ClusterNodePoolNetworkConfig {
   /// The accelerator network profile to use for this node pool.
-  final pulumi.Input<String>? acceleratorNetworkProfile;
+  final pulumi.Input<String?>? acceleratorNetworkProfile;
   /// We specify the additional node networks for this node pool using this list. Each node network corresponds to an additional interface
-  final pulumi.Input<List<ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig>>? additionalNodeNetworkConfigs;
+  final pulumi.Input<List<ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig>?>? additionalNodeNetworkConfigs;
   /// We specify the additional pod networks for this node pool using this list. Each pod network corresponds to an additional alias IP range for the node
-  final pulumi.Input<List<ClusterNodePoolNetworkConfigAdditionalPodNetworkConfig>>? additionalPodNetworkConfigs;
+  final pulumi.Input<List<ClusterNodePoolNetworkConfigAdditionalPodNetworkConfig>?>? additionalPodNetworkConfigs;
   /// Whether to create a new range for pod IPs in this node pool. Defaults are provided for podRange and podIpv4CidrBlock if they are not specified.
-  final pulumi.Input<bool>? createPodRange;
+  final pulumi.Input<bool?>? createPodRange;
   /// Whether nodes have internal IP addresses only.
-  final pulumi.Input<bool>? enablePrivateNodes;
+  final pulumi.Input<bool?>? enablePrivateNodes;
   /// Network bandwidth tier configuration.
-  final pulumi.Input<ClusterNodePoolNetworkConfigNetworkPerformanceConfig>? networkPerformanceConfig;
+  final pulumi.Input<ClusterNodePoolNetworkConfigNetworkPerformanceConfig?>? networkPerformanceConfig;
   /// Configuration for node-pool level pod cidr overprovision. If not set, the cluster level setting will be inherited
-  final pulumi.Input<ClusterNodePoolNetworkConfigPodCidrOverprovisionConfig>? podCidrOverprovisionConfig;
+  final pulumi.Input<ClusterNodePoolNetworkConfigPodCidrOverprovisionConfig?>? podCidrOverprovisionConfig;
   /// The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
-  final pulumi.Input<String>? podIpv4CidrBlock;
+  final pulumi.Input<String?>? podIpv4CidrBlock;
   /// The ID of the secondary range for pod IPs. If createPodRange is true, this ID is used for the new range. If createPodRange is false, uses an existing secondary range with this ID.
-  final pulumi.Input<String>? podRange;
+  final pulumi.Input<String?>? podRange;
   /// The name or selfLink of the Google Compute Engine
   /// subnetwork in which the cluster's instances are launched.
-  final pulumi.Input<String>? subnetwork;
+  final pulumi.Input<String?>? subnetwork;
 
   /// Creates a new [ClusterNodePoolNetworkConfig].
   /// [acceleratorNetworkProfile] The accelerator network profile to use for this node pool.

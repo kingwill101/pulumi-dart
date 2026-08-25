@@ -10,7 +10,7 @@ class GetRegionalSecretArgs {
   /// The location of the regional secret. eg us-central1
   final pulumi.Input<String> location;
   /// The ID of the project in which the resource belongs.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The name of the regional secret.
   final pulumi.Input<String> secretId;
 

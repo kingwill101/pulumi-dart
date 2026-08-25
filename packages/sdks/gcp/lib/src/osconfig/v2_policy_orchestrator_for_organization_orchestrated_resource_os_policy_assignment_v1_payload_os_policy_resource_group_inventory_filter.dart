@@ -10,7 +10,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
   /// last character. For example, to match all versions with a major
   /// version of `7`, specify the following value for this field `7.*`
   /// An empty string matches all OS versions.
-  final pulumi.Input<String>? osVersion;
+  final pulumi.Input<String?>? osVersion;
 
   /// Creates a new [V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilter].
   /// [osShortName] Required. The OS short name

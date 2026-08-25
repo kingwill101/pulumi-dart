@@ -8,7 +8,7 @@ import 'table_iam_member_condition.dart';
 /// {@endtemplate}
 /// {@macro pulumi_bigtable_table_iam_member_table_iam_member_args_doc}
 class TableIamMemberArgs {
-  final pulumi.Input<TableIamMemberCondition>? condition;
+  final pulumi.Input<TableIamMemberCondition?>? condition;
   /// The name or relative resource id of the instance that owns the table.
   final pulumi.Input<String> instanceName;
   /// Identities that will be granted the privilege in `role`.
@@ -22,7 +22,7 @@ class TableIamMemberArgs {
   final pulumi.Input<String> member;
   /// The project in which the table belongs. If it
   /// is not provided, this provider will use the provider default.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The role that should be applied. Only one
   /// `gcp.bigtable.TableIamBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).

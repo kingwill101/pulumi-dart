@@ -10,7 +10,7 @@ class GetPythonPackagesArgs {
   /// The location of the Artifact Registry repository.
   final pulumi.Input<String> location;
   /// The project ID in which the resource belongs. If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The last part of the repository name to fetch from.
   final pulumi.Input<String> repositoryId;
 

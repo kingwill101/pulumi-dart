@@ -139,6 +139,17 @@ Future<GetInstanceIamPolicyResult> getInstanceIamPolicy(
   return GetInstanceIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetInstanceIamPolicyResult> getInstanceIamPolicyOutput(
+  GetInstanceIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:notebooks/getInstanceIamPolicy:getInstanceIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInstanceIamPolicyResult.fromMap);
+}
+
 /// &gt; **Warning:** The parent resource has been deprecated: `gcp.notebooks.Runtime` is deprecated and will be removed in a future major release. Use `gcp.workbench.Instance` instead.
 ///
 /// Retrieves the current IAM policy data for runtime
@@ -272,4 +283,15 @@ Future<GetRuntimeIamPolicyResult> getRuntimeIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRuntimeIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetRuntimeIamPolicyResult> getRuntimeIamPolicyOutput(
+  GetRuntimeIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:notebooks/getRuntimeIamPolicy:getRuntimeIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRuntimeIamPolicyResult.fromMap);
 }

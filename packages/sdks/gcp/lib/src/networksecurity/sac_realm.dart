@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'sac_realm_args.dart';
+import 'sac_realm_pairing_key.dart';
 import 'sac_realm_state.dart';
 import 'sac_realm_symantec_options.dart';
 
@@ -334,7 +335,7 @@ class SacRealm extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// Key to be shared with SSE service provider during pairing.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> pairingKeys;
+  late final pulumi.Output<List<SacRealmPairingKey>> pairingKeys;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
@@ -364,16 +365,17 @@ class SacRealm extends pulumi.CustomResource {
           'gcp:networksecurity/sacRealm:SacRealm',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    labels = registerOutput<Map<String, String>?>('labels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
-    pairingKeys = registerOutput<List<Map<String, dynamic>>>('pairingKeys');
+    pairingKeys = registerOutput<List<SacRealmPairingKey>>('pairingKeys', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SacRealmPairingKey>(guardedValue, (value) => SacRealmPairingKey.fromMap((value as Map).cast<String, dynamic>())); });
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     securityService = registerOutput<String>('securityService');
     state = registerOutput<String>('state');
     symantecOptions = registerOutput<SacRealmSymantecOptions?>('symantecOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SacRealmSymantecOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -385,11 +387,12 @@ class SacRealm extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SacRealmState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SacRealm._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -405,14 +408,38 @@ class SacRealm extends pulumi.CustomResource {
         ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    labels = registerOutput<Map<String, String>?>('labels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
-    pairingKeys = registerOutput<List<Map<String, dynamic>>>('pairingKeys');
+    pairingKeys = registerOutput<List<SacRealmPairingKey>>('pairingKeys', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SacRealmPairingKey>(guardedValue, (value) => SacRealmPairingKey.fromMap((value as Map).cast<String, dynamic>())); });
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     securityService = registerOutput<String>('securityService');
     this.state = registerOutput<String>('state');
+    symantecOptions = registerOutput<SacRealmSymantecOptions?>('symantecOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SacRealmSymantecOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [SacRealm] resource.
+  SacRealm.reference(String urn)
+    : super(
+        'gcp:networksecurity/sacRealm:SacRealm',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    this.name = registerOutput<String>('name');
+    pairingKeys = registerOutput<List<SacRealmPairingKey>>('pairingKeys', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SacRealmPairingKey>(guardedValue, (value) => SacRealmPairingKey.fromMap((value as Map).cast<String, dynamic>())); });
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    securityService = registerOutput<String>('securityService');
+    state = registerOutput<String>('state');
     symantecOptions = registerOutput<SacRealmSymantecOptions?>('symantecOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SacRealmSymantecOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     updateTime = registerOutput<String>('updateTime');
   }

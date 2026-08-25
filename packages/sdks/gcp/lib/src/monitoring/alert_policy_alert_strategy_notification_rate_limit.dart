@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AlertPolicyAlertStrategyNotificationRateLimit {
   /// Not more than one notification per period.
   /// A duration in seconds with up to nine fractional digits, terminated by 's'. Example "60.5s".
-  final pulumi.Input<String>? period;
+  final pulumi.Input<String?>? period;
 
   /// Creates a new [AlertPolicyAlertStrategyNotificationRateLimit].
   /// [period] Not more than one notification per period.

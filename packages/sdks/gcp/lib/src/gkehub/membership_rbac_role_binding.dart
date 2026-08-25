@@ -2,6 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'membership_rbac_role_binding_args.dart';
 import 'membership_rbac_role_binding_gkehub_state.dart';
 import 'membership_rbac_role_binding_role.dart';
+import 'membership_rbac_role_binding_state.dart';
 
 /// RBACRoleBinding represents a rbacrolebinding across the Fleet.
 ///
@@ -400,7 +401,7 @@ class MembershipRbacRoleBinding extends pulumi.CustomResource {
   late final pulumi.Output<MembershipRbacRoleBindingRole> role;
   /// State of the RBAC Role Binding resource.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> states;
+  late final pulumi.Output<List<MembershipRbacRoleBindingState>> states;
   /// Google-generated UUID for this resource.
   late final pulumi.Output<String> uid;
   /// Time the RBAC Role Binding was updated in UTC.
@@ -423,7 +424,7 @@ class MembershipRbacRoleBinding extends pulumi.CustomResource {
           'gcp:gkehub/membershipRbacRoleBinding:MembershipRbacRoleBinding',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     deleteTime = registerOutput<String>('deleteTime');
@@ -434,7 +435,7 @@ class MembershipRbacRoleBinding extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     role = registerOutput<MembershipRbacRoleBindingRole>('role', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MembershipRbacRoleBindingRole.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    states = registerOutput<List<Map<String, dynamic>>>('states');
+    states = registerOutput<List<MembershipRbacRoleBindingState>>('states', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MembershipRbacRoleBindingState>(guardedValue, (value) => MembershipRbacRoleBindingState.fromMap((value as Map).cast<String, dynamic>())); });
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
     user = registerOutput<String>('user');
@@ -445,11 +446,12 @@ class MembershipRbacRoleBinding extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     MembershipRbacRoleBindingGkehubState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return MembershipRbacRoleBinding._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -472,7 +474,31 @@ class MembershipRbacRoleBinding extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     role = registerOutput<MembershipRbacRoleBindingRole>('role', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MembershipRbacRoleBindingRole.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    states = registerOutput<List<Map<String, dynamic>>>('states');
+    states = registerOutput<List<MembershipRbacRoleBindingState>>('states', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MembershipRbacRoleBindingState>(guardedValue, (value) => MembershipRbacRoleBindingState.fromMap((value as Map).cast<String, dynamic>())); });
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
+    user = registerOutput<String>('user');
+  }
+
+  /// Creates a typed reference to an existing [MembershipRbacRoleBinding] resource.
+  MembershipRbacRoleBinding.reference(String urn)
+    : super(
+        'gcp:gkehub/membershipRbacRoleBinding:MembershipRbacRoleBinding',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    deleteTime = registerOutput<String>('deleteTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    location = registerOutput<String>('location');
+    membershipId = registerOutput<String>('membershipId');
+    membershipRbacRoleBindingId = registerOutput<String>('membershipRbacRoleBindingId');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    role = registerOutput<MembershipRbacRoleBindingRole>('role', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MembershipRbacRoleBindingRole.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    states = registerOutput<List<MembershipRbacRoleBindingState>>('states', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MembershipRbacRoleBindingState>(guardedValue, (value) => MembershipRbacRoleBindingState.fromMap((value as Map).cast<String, dynamic>())); });
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
     user = registerOutput<String>('user');

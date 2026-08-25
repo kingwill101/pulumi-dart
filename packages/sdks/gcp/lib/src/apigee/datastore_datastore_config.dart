@@ -4,15 +4,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DatastoreDatastoreConfig {
   /// The name of the Cloud Storage bucket. Required for `gcs` target type.
-  final pulumi.Input<String>? bucketName;
+  final pulumi.Input<String?>? bucketName;
   /// The name of the BigQuery dataset. Required for `bigquery` target type.
-  final pulumi.Input<String>? datasetName;
+  final pulumi.Input<String?>? datasetName;
   /// The path within the Cloud Storage bucket. Used for `gcs` target type.
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? path;
   /// The GCP project ID that the datastore target resides in.
   final pulumi.Input<String> projectId;
   /// The prefix for BigQuery table names. Used for `bigquery` target type.
-  final pulumi.Input<String>? tablePrefix;
+  final pulumi.Input<String?>? tablePrefix;
 
   /// Creates a new [DatastoreDatastoreConfig].
   /// [bucketName] The name of the Cloud Storage bucket. Required for `gcs` target type.

@@ -5,20 +5,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VmwareAdminClusterPlatformConfigStatusCondition {
   /// (Output)
   /// Last time the condition transit from one status to another.
-  final pulumi.Input<String>? lastTransitionTime;
+  final pulumi.Input<String?>? lastTransitionTime;
   /// (Output)
   /// Human-readable message indicating details about last transition.
-  final pulumi.Input<String>? message;
+  final pulumi.Input<String?>? message;
   /// (Output)
   /// Machine-readable message indicating details about last transition.
-  final pulumi.Input<String>? reason;
+  final pulumi.Input<String?>? reason;
   /// (Output)
   /// The lifecycle state of the condition.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// (Output)
   /// Type of the condition.
   /// (e.g., ClusterRunning, NodePoolRunning or ServerSidePreflightReady)
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [VmwareAdminClusterPlatformConfigStatusCondition].
   /// [lastTransitionTime] (Output)

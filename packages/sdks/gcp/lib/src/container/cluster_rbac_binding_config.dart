@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterRbacBindingConfig {
   /// Setting this to true will allow any ClusterRoleBinding and RoleBinding with subjects system:authenticated.
-  final pulumi.Input<bool>? enableInsecureBindingSystemAuthenticated;
+  final pulumi.Input<bool?>? enableInsecureBindingSystemAuthenticated;
   /// Setting this to true will allow any ClusterRoleBinding and RoleBinding with subjects system:anonymous or system:unauthenticated.
-  final pulumi.Input<bool>? enableInsecureBindingSystemUnauthenticated;
+  final pulumi.Input<bool?>? enableInsecureBindingSystemUnauthenticated;
 
   /// Creates a new [ClusterRbacBindingConfig].
   /// [enableInsecureBindingSystemAuthenticated] Setting this to true will allow any ClusterRoleBinding and RoleBinding with subjects system:authenticated.

@@ -7,12 +7,12 @@ import 'service_template_spec_container_env_from_secret_ref.dart';
 class ServiceTemplateSpecContainerEnvFrom {
   /// The ConfigMap to select from.
   /// Structure is documented below.
-  final pulumi.Input<ServiceTemplateSpecContainerEnvFromConfigMapRef>? configMapRef;
+  final pulumi.Input<ServiceTemplateSpecContainerEnvFromConfigMapRef?>? configMapRef;
   /// An optional identifier to prepend to each key in the ConfigMap.
-  final pulumi.Input<String>? prefix;
+  final pulumi.Input<String?>? prefix;
   /// The Secret to select from.
   /// Structure is documented below.
-  final pulumi.Input<ServiceTemplateSpecContainerEnvFromSecretRef>? secretRef;
+  final pulumi.Input<ServiceTemplateSpecContainerEnvFromSecretRef?>? secretRef;
 
   /// Creates a new [ServiceTemplateSpecContainerEnvFrom].
   /// [configMapRef] The ConfigMap to select from.

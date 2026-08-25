@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NoteRelatedUrl {
   /// Label to describe usage of the URL
-  final pulumi.Input<String>? label;
+  final pulumi.Input<String?>? label;
   /// Specific URL associated with the resource.
   final pulumi.Input<String> url;
 

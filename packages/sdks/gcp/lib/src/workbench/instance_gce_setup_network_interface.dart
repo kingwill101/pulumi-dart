@@ -9,15 +9,15 @@ class InstanceGceSetupNetworkInterface {
   /// instance will have an external internet access through an ephemeral
   /// external IP address.
   /// Structure is documented below.
-  final pulumi.Input<List<InstanceGceSetupNetworkInterfaceAccessConfig>>? accessConfigs;
+  final pulumi.Input<List<InstanceGceSetupNetworkInterfaceAccessConfig>?>? accessConfigs;
   /// Optional. The name of the VPC that this VM instance is in.
-  final pulumi.Input<String>? network;
+  final pulumi.Input<String?>? network;
   /// Optional. The type of vNIC to be used on this interface. This
   /// may be gVNIC or VirtioNet.
   /// Possible values are: `VIRTIO_NET`, `GVNIC`.
-  final pulumi.Input<String>? nicType;
+  final pulumi.Input<String?>? nicType;
   /// Optional. The name of the subnet that this VM instance is in.
-  final pulumi.Input<String>? subnet;
+  final pulumi.Input<String?>? subnet;
 
   /// Creates a new [InstanceGceSetupNetworkInterface].
   /// [accessConfigs] Optional. An array of configurations for this interface. Currently, only one access

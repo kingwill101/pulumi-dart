@@ -12,7 +12,7 @@ class FunctionServiceConfigSecretVolume {
   final pulumi.Input<String> secret;
   /// List of secret versions to mount for this secret. If empty, the latest version of the secret will be made available in a file named after the secret under the mount point.'
   /// Structure is documented below.
-  final pulumi.Input<List<FunctionServiceConfigSecretVolumeVersion>>? versions;
+  final pulumi.Input<List<FunctionServiceConfigSecretVolumeVersion>?>? versions;
 
   /// Creates a new [FunctionServiceConfigSecretVolume].
   /// [mountPath] The path within the container to mount the secret volume. For example, setting the mountPath as /etc/secrets would mount the secret value files under the /etc/secrets directory. This directory will also be completely shadowed and unavailable to mount any other secrets. Recommended mount path: /etc/secrets

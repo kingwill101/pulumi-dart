@@ -8,19 +8,19 @@ class ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEngin
   /// Possible values:
   /// LICENSE_TYPE_DEFAULT
   /// LICENSE_TYPE_BRING_YOUR_OWN_LICENSE
-  final pulumi.Input<String>? licenseType;
+  final pulumi.Input<String?>? licenseType;
   /// (Output)
   /// The type of machines to consider when calculating virtual machine migration
   /// insights and recommendations.
   /// Not all machine types are available in all zones and regions.
   /// Structure is documented below.
-  final pulumi.Input<List<ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreference>>? machinePreferences;
+  final pulumi.Input<List<ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreferenceMachinePreference>?>? machinePreferences;
   /// (Output)
   /// Possible values:
   /// PERSISTENT_DISK_TYPE_STANDARD
   /// PERSISTENT_DISK_TYPE_BALANCED
   /// PERSISTENT_DISK_TYPE_SSD
-  final pulumi.Input<String>? persistentDiskType;
+  final pulumi.Input<String?>? persistentDiskType;
 
   /// Creates a new [ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceComputeEnginePreference].
   /// [licenseType] (Output)

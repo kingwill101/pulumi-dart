@@ -6,7 +6,7 @@ import 'stream_source_config_oracle_source_config_exclude_objects_oracle_schema_
 class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTable {
   /// Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
   /// Structure is documented below.
-  final pulumi.Input<List<StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumn>>? oracleColumns;
+  final pulumi.Input<List<StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumn>?>? oracleColumns;
   /// Table name.
   final pulumi.Input<String> table;
 

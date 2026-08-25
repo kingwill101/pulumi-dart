@@ -13,7 +13,7 @@ class InstanceArgs {
   /// IP-based access rules for the Managed Lustre instance. These options
   /// define the root user squash configuration.
   /// Structure is documented below.
-  final pulumi.Input<InstanceAccessRulesOptions>? accessRulesOptions;
+  final pulumi.Input<InstanceAccessRulesOptions?>? accessRulesOptions;
   /// The storage capacity of the instance in gibibytes (GiB). Allowed values
   /// are from `9000` to `7632000`, depending on the `perUnitStorageThroughput`.
   /// See [Performance tiers and maximum storage
@@ -26,19 +26,19 @@ class InstanceArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// A user-readable description of the instance.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Dynamic tier options for a Managed Lustre instance.
   /// Structure is documented below.
-  final pulumi.Input<InstanceDynamicTierOptions>? dynamicTierOptions;
+  final pulumi.Input<InstanceDynamicTierOptions?>? dynamicTierOptions;
   /// The filesystem name for this instance. This name is used by client-side
   /// tools, including when mounting the instance. Must be eight characters or
   /// less and can only contain letters and numbers.
   final pulumi.Input<String> filesystem;
   /// Indicates whether you want to enable support for GKE clients. By default,
   /// GKE clients are not supported.
-  final pulumi.Input<bool>? gkeSupportEnabled;
+  final pulumi.Input<bool?>? gkeSupportEnabled;
   /// The name of the Managed Lustre instance.
   /// * Must contain only lowercase letters, numbers, and hyphens.
   /// * Must start with a letter.
@@ -51,16 +51,16 @@ class InstanceArgs {
   /// The key must be in the same region as the instance.
   /// The key format is:
   /// projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{key}
-  final pulumi.Input<String>? kmsKey;
+  final pulumi.Input<String?>? kmsKey;
   /// Labels as key value pairs.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final pulumi.Input<String> location;
   /// Defines a maintenance policy for a resource.
   /// Structure is documented below.
-  final pulumi.Input<InstanceMaintenancePolicy>? maintenancePolicy;
+  final pulumi.Input<InstanceMaintenancePolicy?>? maintenancePolicy;
   /// The full name of the VPC network to which the instance is connected.
   /// Must be in the format
   /// `projects/{project_id}/global/networks/{network_name}`.
@@ -72,13 +72,13 @@ class InstanceArgs {
   /// for more information.
   /// If the instance is using the Dynamic tier, this field must not be set or
   /// must be set to zero.
-  final pulumi.Input<String>? perUnitStorageThroughput;
+  final pulumi.Input<String?>? perUnitStorageThroughput;
   /// The placement policy name for the instance in the format of
   /// projects/{project}/locations/{location}/resourcePolicies/{resource_policy}
-  final pulumi.Input<String>? placementPolicy;
+  final pulumi.Input<String?>? placementPolicy;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [InstanceArgs].
   /// [accessRulesOptions] IP-based access rules for the Managed Lustre instance. These options

@@ -8,7 +8,7 @@ class WorkloadIdentityPoolIamBindingCondition {
   /// &gt; **Warning:** Terraform considers the `role` and condition contents (`title`+`description`+`expression`) as the
   /// identifier for the binding. This means that if any part of the condition is changed out-of-band, Terraform will
   /// consider it to be an entirely different resource and will treat it as such.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Textual representation of an expression in Common Expression Language syntax.
   final pulumi.Input<String> expression;
   /// A title for the expression, i.e. a short string describing its purpose.

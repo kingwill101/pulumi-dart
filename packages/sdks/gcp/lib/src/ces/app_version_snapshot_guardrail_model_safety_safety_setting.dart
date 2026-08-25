@@ -10,7 +10,7 @@ class AppVersionSnapshotGuardrailModelSafetySafetySetting {
   /// HARM_CATEGORY_DANGEROUS_CONTENT
   /// HARM_CATEGORY_HARASSMENT
   /// HARM_CATEGORY_SEXUALLY_EXPLICIT
-  final pulumi.Input<String>? category;
+  final pulumi.Input<String?>? category;
   /// (Output)
   /// The harm block threshold.
   /// Possible values:
@@ -19,7 +19,7 @@ class AppVersionSnapshotGuardrailModelSafetySafetySetting {
   /// BLOCK_ONLY_HIGH
   /// BLOCK_NONE
   /// OFF
-  final pulumi.Input<String>? threshold;
+  final pulumi.Input<String?>? threshold;
 
   /// Creates a new [AppVersionSnapshotGuardrailModelSafetySafetySetting].
   /// [category] (Output)

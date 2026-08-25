@@ -5,23 +5,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering NetworkFirewallPolicyAssociation resources.
 class NetworkFirewallPolicyAssociationState {
   /// The target that the firewall policy is attached to.
-  final pulumi.Input<String>? attachmentTarget;
+  final pulumi.Input<String?>? attachmentTarget;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The firewall policy of the resource.
-  final pulumi.Input<String>? firewallPolicy;
+  final pulumi.Input<String?>? firewallPolicy;
   /// The name for an association.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The short name of the firewall policy of the association.
-  final pulumi.Input<String>? shortName;
+  final pulumi.Input<String?>? shortName;
 
   /// Creates a new [NetworkFirewallPolicyAssociationState].
   /// [attachmentTarget] The target that the firewall policy is attached to.

@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'uptime_check_config_args.dart';
+import 'uptime_check_config_content_matcher.dart';
 import 'uptime_check_config_http_check.dart';
 import 'uptime_check_config_monitored_resource.dart';
 import 'uptime_check_config_resource_group.dart';
@@ -1965,7 +1966,7 @@ class UptimeCheckConfig extends pulumi.CustomResource {
   late final pulumi.Output<String> checkerType;
   /// The expected content on the page the check is run against. Currently, only the first entry in the list is supported, and other entries will be ignored. The server will look for an exact match of the string in the page response's content. This field is optional and should only be specified if a content match is required.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> contentMatchers;
+  late final pulumi.Output<List<UptimeCheckConfigContentMatcher>?> contentMatchers;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -2021,10 +2022,10 @@ class UptimeCheckConfig extends pulumi.CustomResource {
           'gcp:monitoring/uptimeCheckConfig:UptimeCheckConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     checkerType = registerOutput<String>('checkerType');
-    contentMatchers = registerOutput<List<Map<String, dynamic>>?>('contentMatchers');
+    contentMatchers = registerOutput<List<UptimeCheckConfigContentMatcher>?>('contentMatchers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<UptimeCheckConfigContentMatcher>(guardedValue, (value) => UptimeCheckConfigContentMatcher.fromMap((value as Map).cast<String, dynamic>())); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
     httpCheck = registerOutput<UptimeCheckConfigHttpCheck?>('httpCheck', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UptimeCheckConfigHttpCheck.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -2034,12 +2035,12 @@ class UptimeCheckConfig extends pulumi.CustomResource {
     period = registerOutput<String?>('period');
     project = registerOutput<String>('project');
     resourceGroup = registerOutput<UptimeCheckConfigResourceGroup?>('resourceGroup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UptimeCheckConfigResourceGroup.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    selectedRegions = registerOutput<List<String>?>('selectedRegions');
+    selectedRegions = registerOutput<List<String>?>('selectedRegions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     syntheticMonitor = registerOutput<UptimeCheckConfigSyntheticMonitor?>('syntheticMonitor', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UptimeCheckConfigSyntheticMonitor.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tcpCheck = registerOutput<UptimeCheckConfigTcpCheck?>('tcpCheck', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UptimeCheckConfigTcpCheck.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     timeout = registerOutput<String>('timeout');
     uptimeCheckId = registerOutput<String>('uptimeCheckId');
-    userLabels = registerOutput<Map<String, String>?>('userLabels');
+    userLabels = registerOutput<Map<String, String>?>('userLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [UptimeCheckConfig] resource's state with the given [name] and [id].
@@ -2047,11 +2048,12 @@ class UptimeCheckConfig extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     UptimeCheckConfigState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return UptimeCheckConfig._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -2066,7 +2068,7 @@ class UptimeCheckConfig extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     checkerType = registerOutput<String>('checkerType');
-    contentMatchers = registerOutput<List<Map<String, dynamic>>?>('contentMatchers');
+    contentMatchers = registerOutput<List<UptimeCheckConfigContentMatcher>?>('contentMatchers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<UptimeCheckConfigContentMatcher>(guardedValue, (value) => UptimeCheckConfigContentMatcher.fromMap((value as Map).cast<String, dynamic>())); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
     httpCheck = registerOutput<UptimeCheckConfigHttpCheck?>('httpCheck', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UptimeCheckConfigHttpCheck.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -2076,11 +2078,39 @@ class UptimeCheckConfig extends pulumi.CustomResource {
     period = registerOutput<String?>('period');
     project = registerOutput<String>('project');
     resourceGroup = registerOutput<UptimeCheckConfigResourceGroup?>('resourceGroup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UptimeCheckConfigResourceGroup.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    selectedRegions = registerOutput<List<String>?>('selectedRegions');
+    selectedRegions = registerOutput<List<String>?>('selectedRegions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     syntheticMonitor = registerOutput<UptimeCheckConfigSyntheticMonitor?>('syntheticMonitor', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UptimeCheckConfigSyntheticMonitor.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     tcpCheck = registerOutput<UptimeCheckConfigTcpCheck?>('tcpCheck', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UptimeCheckConfigTcpCheck.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     timeout = registerOutput<String>('timeout');
     uptimeCheckId = registerOutput<String>('uptimeCheckId');
-    userLabels = registerOutput<Map<String, String>?>('userLabels');
+    userLabels = registerOutput<Map<String, String>?>('userLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [UptimeCheckConfig] resource.
+  UptimeCheckConfig.reference(String urn)
+    : super(
+        'gcp:monitoring/uptimeCheckConfig:UptimeCheckConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    checkerType = registerOutput<String>('checkerType');
+    contentMatchers = registerOutput<List<UptimeCheckConfigContentMatcher>?>('contentMatchers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<UptimeCheckConfigContentMatcher>(guardedValue, (value) => UptimeCheckConfigContentMatcher.fromMap((value as Map).cast<String, dynamic>())); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    displayName = registerOutput<String>('displayName');
+    httpCheck = registerOutput<UptimeCheckConfigHttpCheck?>('httpCheck', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UptimeCheckConfigHttpCheck.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    logCheckFailures = registerOutput<bool?>('logCheckFailures');
+    monitoredResource = registerOutput<UptimeCheckConfigMonitoredResource?>('monitoredResource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UptimeCheckConfigMonitoredResource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    period = registerOutput<String?>('period');
+    project = registerOutput<String>('project');
+    resourceGroup = registerOutput<UptimeCheckConfigResourceGroup?>('resourceGroup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UptimeCheckConfigResourceGroup.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    selectedRegions = registerOutput<List<String>?>('selectedRegions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    syntheticMonitor = registerOutput<UptimeCheckConfigSyntheticMonitor?>('syntheticMonitor', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UptimeCheckConfigSyntheticMonitor.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tcpCheck = registerOutput<UptimeCheckConfigTcpCheck?>('tcpCheck', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UptimeCheckConfigTcpCheck.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    timeout = registerOutput<String>('timeout');
+    uptimeCheckId = registerOutput<String>('uptimeCheckId');
+    userLabels = registerOutput<Map<String, String>?>('userLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

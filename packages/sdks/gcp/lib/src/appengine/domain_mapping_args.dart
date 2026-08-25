@@ -14,20 +14,20 @@ class DomainMappingArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Relative name of the domain serving the application. Example: example.com.
   final pulumi.Input<String> domainName;
   /// Whether the domain creation should override any existing mappings for this domain.
   /// By default, overrides are rejected.
   /// Default value is `STRICT`.
   /// Possible values are: `STRICT`, `OVERRIDE`.
-  final pulumi.Input<String>? overrideStrategy;
+  final pulumi.Input<String?>? overrideStrategy;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
   /// Structure is documented below.
-  final pulumi.Input<DomainMappingSslSettings>? sslSettings;
+  final pulumi.Input<DomainMappingSslSettings?>? sslSettings;
 
   /// Creates a new [DomainMappingArgs].
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

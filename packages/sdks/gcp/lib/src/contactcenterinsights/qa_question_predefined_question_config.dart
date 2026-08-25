@@ -7,7 +7,7 @@ class QaQuestionPredefinedQuestionConfig {
   /// Possible values:
   /// CONVERSATION_OUTCOME
   /// CONVERSATION_OUTCOME_ESCALATION_INITIATOR_ROLE
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [QaQuestionPredefinedQuestionConfig].
   /// [type] The type of the predefined question.

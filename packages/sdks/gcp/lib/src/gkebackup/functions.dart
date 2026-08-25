@@ -137,6 +137,17 @@ Future<GetBackupPlanIamPolicyResult> getBackupPlanIamPolicy(
   return GetBackupPlanIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetBackupPlanIamPolicyResult> getBackupPlanIamPolicyOutput(
+  GetBackupPlanIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:gkebackup/getBackupPlanIamPolicy:getBackupPlanIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBackupPlanIamPolicyResult.fromMap);
+}
+
 /// Retrieves the current IAM policy data for restoreplan
 ///
 ///
@@ -268,4 +279,15 @@ Future<GetRestorePlanIamPolicyResult> getRestorePlanIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRestorePlanIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetRestorePlanIamPolicyResult> getRestorePlanIamPolicyOutput(
+  GetRestorePlanIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:gkebackup/getRestorePlanIamPolicy:getRestorePlanIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRestorePlanIamPolicyResult.fromMap);
 }

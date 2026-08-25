@@ -2,6 +2,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'wasm_plugin_args.dart';
 import 'wasm_plugin_log_config.dart';
 import 'wasm_plugin_state.dart';
+import 'wasm_plugin_used_by.dart';
+import 'wasm_plugin_version.dart';
 
 /// WasmPlugin is a resource representing a service executing a customer-provided Wasm module.
 ///
@@ -579,10 +581,10 @@ class WasmPlugin extends pulumi.CustomResource {
   late final pulumi.Output<String> updateTime;
   /// Output only. List of all extensions that use this WasmPlugin resource.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> usedBies;
+  late final pulumi.Output<List<WasmPluginUsedBy>> usedBies;
   /// All versions of this WasmPlugin resource in the key-value format. The key is the resource ID, and the value is the VersionDetails object.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> versions;
+  late final pulumi.Output<List<WasmPluginVersion>> versions;
 
   /// Creates a new [WasmPlugin].
   /// [name] The Pulumi resource name.
@@ -596,22 +598,23 @@ class WasmPlugin extends pulumi.CustomResource {
           'gcp:networkservices/wasmPlugin:WasmPlugin',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    labels = registerOutput<Map<String, String>?>('labels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String?>('location');
     logConfig = registerOutput<WasmPluginLogConfig?>('logConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WasmPluginLogConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     mainVersionId = registerOutput<String>('mainVersionId');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     updateTime = registerOutput<String>('updateTime');
-    usedBies = registerOutput<List<Map<String, dynamic>>>('usedBies');
-    versions = registerOutput<List<Map<String, dynamic>>>('versions');
+    usedBies = registerOutput<List<WasmPluginUsedBy>>('usedBies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WasmPluginUsedBy>(guardedValue, (value) => WasmPluginUsedBy.fromMap((value as Map).cast<String, dynamic>())); });
+    versions = registerOutput<List<WasmPluginVersion>>('versions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WasmPluginVersion>(guardedValue, (value) => WasmPluginVersion.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [WasmPlugin] resource's state with the given [name] and [id].
@@ -619,11 +622,12 @@ class WasmPlugin extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     WasmPluginState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return WasmPlugin._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -640,16 +644,42 @@ class WasmPlugin extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    labels = registerOutput<Map<String, String>?>('labels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String?>('location');
     logConfig = registerOutput<WasmPluginLogConfig?>('logConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WasmPluginLogConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     mainVersionId = registerOutput<String>('mainVersionId');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     updateTime = registerOutput<String>('updateTime');
-    usedBies = registerOutput<List<Map<String, dynamic>>>('usedBies');
-    versions = registerOutput<List<Map<String, dynamic>>>('versions');
+    usedBies = registerOutput<List<WasmPluginUsedBy>>('usedBies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WasmPluginUsedBy>(guardedValue, (value) => WasmPluginUsedBy.fromMap((value as Map).cast<String, dynamic>())); });
+    versions = registerOutput<List<WasmPluginVersion>>('versions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WasmPluginVersion>(guardedValue, (value) => WasmPluginVersion.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [WasmPlugin] resource.
+  WasmPlugin.reference(String urn)
+    : super(
+        'gcp:networkservices/wasmPlugin:WasmPlugin',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String?>('location');
+    logConfig = registerOutput<WasmPluginLogConfig?>('logConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WasmPluginLogConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    mainVersionId = registerOutput<String>('mainVersionId');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    updateTime = registerOutput<String>('updateTime');
+    usedBies = registerOutput<List<WasmPluginUsedBy>>('usedBies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WasmPluginUsedBy>(guardedValue, (value) => WasmPluginUsedBy.fromMap((value as Map).cast<String, dynamic>())); });
+    versions = registerOutput<List<WasmPluginVersion>>('versions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WasmPluginVersion>(guardedValue, (value) => WasmPluginVersion.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

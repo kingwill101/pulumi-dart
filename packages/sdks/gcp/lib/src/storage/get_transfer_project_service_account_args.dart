@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_storage_get_transfer_project_service_account_get_transfer_project_service_account_args_doc}
 class GetTransferProjectServiceAccountArgs {
   /// The project ID. If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetTransferProjectServiceAccountArgs].
   /// [project] The project ID. If it is not provided, the provider project is used.

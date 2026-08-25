@@ -5,10 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RegionHealthCheckSslHealthCheck {
   /// The TCP port number for the HTTP2 health check request.
   /// The default value is 443.
-  final pulumi.Input<int>? port;
+  final pulumi.Input<int?>? port;
   /// Port name as defined in InstanceGroup#NamedPort#name. If both port and
   /// portName are defined, port takes precedence.
-  final pulumi.Input<String>? portName;
+  final pulumi.Input<String?>? portName;
   /// Specifies how port is selected for health checking, can be one of the
   /// following values:
   /// * `USE_FIXED_PORT`: The port number in `port` is used for health checking.
@@ -20,21 +20,21 @@ class RegionHealthCheckSslHealthCheck {
   /// If not specified, HTTP2 health check follows behavior specified in `port` and
   /// `portName` fields.
   /// Possible values are: `USE_FIXED_PORT`, `USE_NAMED_PORT`, `USE_SERVING_PORT`.
-  final pulumi.Input<String>? portSpecification;
+  final pulumi.Input<String?>? portSpecification;
   /// Specifies the type of proxy header to append before sending data to the
   /// backend.
   /// Default value is `NONE`.
   /// Possible values are: `NONE`, `PROXY_V1`.
-  final pulumi.Input<String>? proxyHeader;
+  final pulumi.Input<String?>? proxyHeader;
   /// The application data to send once the SSL connection has been
   /// established (default value is empty). If both request and response are
   /// empty, the connection establishment alone will indicate health. The request
   /// data can only be ASCII.
-  final pulumi.Input<String>? request;
+  final pulumi.Input<String?>? request;
   /// The bytes to match against the beginning of the response data. If left empty
   /// (the default value), any response will indicate health. The response data
   /// can only be ASCII.
-  final pulumi.Input<String>? response;
+  final pulumi.Input<String?>? response;
 
   /// Creates a new [RegionHealthCheckSslHealthCheck].
   /// [port] The TCP port number for the HTTP2 health check request.
@@ -65,7 +65,7 @@ class RegionHealthCheckSslHealthCheck {
 
   factory RegionHealthCheckSslHealthCheck.fromMap(Map<String, dynamic> map) {
     return RegionHealthCheckSslHealthCheck(
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       portName: (() { final guardedValue = map['portName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       portSpecification: (() { final guardedValue = map['portSpecification']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       proxyHeader: (() { final guardedValue = map['proxyHeader']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

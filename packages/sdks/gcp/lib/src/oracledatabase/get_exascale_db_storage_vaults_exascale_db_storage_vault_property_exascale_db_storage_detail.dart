@@ -27,8 +27,8 @@ class GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyExascaleDbStorageD
 
   factory GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyExascaleDbStorageDetail.fromMap(Map<String, dynamic> map) {
     return GetExascaleDbStorageVaultsExascaleDbStorageVaultPropertyExascaleDbStorageDetail(
-      availableSizeGbs: pulumi.Input.fromValue(map['availableSizeGbs'] as int),
-      totalSizeGbs: pulumi.Input.fromValue(map['totalSizeGbs'] as int),
+      availableSizeGbs: pulumi.Input.fromValue((map['availableSizeGbs'] as num).toInt()),
+      totalSizeGbs: pulumi.Input.fromValue((map['totalSizeGbs'] as num).toInt()),
     );
   }
 }

@@ -13,20 +13,20 @@ class IAMCustomRoleArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// A human-readable description for the role.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The names of the permissions this role grants when bound in an IAM policy. At least one permission must be specified.
   final pulumi.Input<List<String>> permissions;
   /// The project that the custom role will be created in.
   /// Defaults to the provider project configuration.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The camel case role id to use for this role. Cannot contain `-` characters.
-  final pulumi.Input<String>? roleId;
+  final pulumi.Input<String?>? roleId;
   /// The current launch stage of the role.
   /// Defaults to `GA`.
   /// List of possible stages is [here](https://cloud.google.com/iam/reference/rest/v1/organizations.roles#Role.RoleLaunchStage).
-  final pulumi.Input<String>? stage;
+  final pulumi.Input<String?>? stage;
   /// A human-readable title for the role.
   final pulumi.Input<String> title;
 

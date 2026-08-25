@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ControlSynonymsAction {
   /// The synonyms to apply to the search results.
-  final pulumi.Input<List<String>>? synonyms;
+  final pulumi.Input<List<String>?>? synonyms;
 
   /// Creates a new [ControlSynonymsAction].
   /// [synonyms] The synonyms to apply to the search results.

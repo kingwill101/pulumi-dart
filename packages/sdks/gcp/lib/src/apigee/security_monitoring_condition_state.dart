@@ -5,34 +5,34 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering SecurityMonitoringCondition resources.
 class SecurityMonitoringConditionState {
   /// Resource ID of the security monitoring condition.
-  final pulumi.Input<String>? conditionId;
+  final pulumi.Input<String?>? conditionId;
   /// The timestamp at which this profile was created.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// A nested object resource.
-  final pulumi.Input<Map<String, dynamic>>? includeAllResources;
+  final pulumi.Input<Map<String, dynamic>?>? includeAllResources;
   /// Name of the security monitoring condition resource,
   /// in the format `organizations/{{org_name}}/securityMonitoringConditions/{{condition_id}}`.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The Apigee Organization associated with the Apigee Security Monitoring Condition,
   /// in the format `organizations/{{org_name}}`.
-  final pulumi.Input<String>? orgId;
+  final pulumi.Input<String?>? orgId;
   /// ID of security profile of the security monitoring condition.
-  final pulumi.Input<String>? profile;
+  final pulumi.Input<String?>? profile;
   /// ID of security profile of the security monitoring condition.
-  final pulumi.Input<String>? scope;
+  final pulumi.Input<String?>? scope;
   /// Total number of deployed resources within scope.
-  final pulumi.Input<int>? totalDeployedResources;
+  final pulumi.Input<int?>? totalDeployedResources;
   /// Total number of monitored resources within this condition.
-  final pulumi.Input<int>? totalMonitoredResources;
+  final pulumi.Input<int?>? totalMonitoredResources;
   /// The timestamp at which this profile was most recently updated.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [SecurityMonitoringConditionState].
   /// [conditionId] Resource ID of the security monitoring condition.
@@ -86,8 +86,8 @@ class SecurityMonitoringConditionState {
       orgId: (() { final guardedValue = map['orgId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       profile: (() { final guardedValue = map['profile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       scope: (() { final guardedValue = map['scope']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      totalDeployedResources: (() { final guardedValue = map['totalDeployedResources']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      totalMonitoredResources: (() { final guardedValue = map['totalMonitoredResources']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      totalDeployedResources: (() { final guardedValue = map['totalDeployedResources']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      totalMonitoredResources: (() { final guardedValue = map['totalMonitoredResources']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

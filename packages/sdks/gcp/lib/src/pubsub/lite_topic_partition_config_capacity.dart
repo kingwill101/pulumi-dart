@@ -25,8 +25,8 @@ class LiteTopicPartitionConfigCapacity {
 
   factory LiteTopicPartitionConfigCapacity.fromMap(Map<String, dynamic> map) {
     return LiteTopicPartitionConfigCapacity(
-      publishMibPerSec: pulumi.Input.fromValue(map['publishMibPerSec'] as int),
-      subscribeMibPerSec: pulumi.Input.fromValue(map['subscribeMibPerSec'] as int),
+      publishMibPerSec: pulumi.Input.fromValue((map['publishMibPerSec'] as num).toInt()),
+      subscribeMibPerSec: pulumi.Input.fromValue((map['subscribeMibPerSec'] as num).toInt()),
     );
   }
 }

@@ -1111,7 +1111,7 @@ class PreventionDeidentifyTemplate extends pulumi.CustomResource {
           'gcp:dataloss/preventionDeidentifyTemplate:PreventionDeidentifyTemplate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     deidentifyConfig = registerOutput<PreventionDeidentifyTemplateDeidentifyConfig>('deidentifyConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PreventionDeidentifyTemplateDeidentifyConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -1129,11 +1129,12 @@ class PreventionDeidentifyTemplate extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PreventionDeidentifyTemplateState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return PreventionDeidentifyTemplate._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1147,6 +1148,26 @@ class PreventionDeidentifyTemplate extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    createTime = registerOutput<String>('createTime');
+    deidentifyConfig = registerOutput<PreventionDeidentifyTemplateDeidentifyConfig>('deidentifyConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PreventionDeidentifyTemplateDeidentifyConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String?>('displayName');
+    this.name = registerOutput<String>('name');
+    parent = registerOutput<String>('parent');
+    templateId = registerOutput<String>('templateId');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [PreventionDeidentifyTemplate] resource.
+  PreventionDeidentifyTemplate.reference(String urn)
+    : super(
+        'gcp:dataloss/preventionDeidentifyTemplate:PreventionDeidentifyTemplate',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     createTime = registerOutput<String>('createTime');
     deidentifyConfig = registerOutput<PreventionDeidentifyTemplateDeidentifyConfig>('deidentifyConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PreventionDeidentifyTemplateDeidentifyConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deletionPolicy = registerOutput<String>('deletionPolicy');

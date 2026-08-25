@@ -4,56 +4,56 @@
 /// Result data returned by getSecretVersionAccess.
 class GetSecretVersionAccessResult {
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   final bool? isSecretDataBase64;
   /// The resource name of the SecretVersion. Format:
   /// `projects/{{project}}/secrets/{{secret_id}}/versions/{{version}}`
-  final String name;
-  final String project;
-  final String secret;
+  final String? name;
+  final String? project;
+  final String? secret;
   /// The secret data. No larger than 64KiB.
-  final String secretData;
-  final String version;
+  final String? secretData;
+  final String? version;
 
   /// Creates a new [GetSecretVersionAccessResult].
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [isSecretDataBase64] Optional.
   /// [name] The resource name of the SecretVersion. Format:
-  /// [project] Required.
-  /// [secret] Required.
+  /// [project] Optional.
+  /// [secret] Optional.
   /// [secretData] The secret data. No larger than 64KiB.
-  /// [version] Required.
+  /// [version] Optional.
   const GetSecretVersionAccessResult({
-    required this.id,
+    this.id,
     this.isSecretDataBase64,
-    required this.name,
-    required this.project,
-    required this.secret,
-    required this.secretData,
-    required this.version,
+    this.name,
+    this.project,
+    this.secret,
+    this.secretData,
+    this.version,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'id': id,
+      'id': ?id,
       'isSecretDataBase64': ?isSecretDataBase64,
-      'name': name,
-      'project': project,
-      'secret': secret,
-      'secretData': secretData,
-      'version': version,
+      'name': ?name,
+      'project': ?project,
+      'secret': ?secret,
+      'secretData': ?secretData,
+      'version': ?version,
     };
   }
 
   factory GetSecretVersionAccessResult.fromMap(Map<String, dynamic> map) {
     return GetSecretVersionAccessResult(
-      id: map['id'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       isSecretDataBase64: (() { final guardedValue = map['isSecretDataBase64']; if (guardedValue == null) return null; return guardedValue as bool; })(),
-      name: map['name'] as String,
-      project: map['project'] as String,
-      secret: map['secret'] as String,
-      secretData: map['secretData'] as String,
-      version: map['version'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      secret: (() { final guardedValue = map['secret']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      secretData: (() { final guardedValue = map['secretData']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

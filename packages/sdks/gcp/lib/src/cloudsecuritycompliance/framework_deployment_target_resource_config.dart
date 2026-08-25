@@ -6,11 +6,11 @@ import 'framework_deployment_target_resource_config_target_resource_creation_con
 class FrameworkDeploymentTargetResourceConfig {
   /// CRM node in format organizations/{organization}, folders/{folder},
   /// or projects/{project}
-  final pulumi.Input<String>? existingTargetResource;
+  final pulumi.Input<String?>? existingTargetResource;
   /// TargetResourceCreationConfig contains the config to create a new resource to
   /// be used as the targetResource of a deployment.
   /// Structure is documented below.
-  final pulumi.Input<FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfig>? targetResourceCreationConfig;
+  final pulumi.Input<FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfig?>? targetResourceCreationConfig;
 
   /// Creates a new [FrameworkDeploymentTargetResourceConfig].
   /// [existingTargetResource] CRM node in format organizations/{organization}, folders/{folder},

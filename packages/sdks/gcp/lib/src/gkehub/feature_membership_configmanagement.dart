@@ -7,23 +7,23 @@ import 'feature_membership_configmanagement_policy_controller.dart';
 
 class FeatureMembershipConfigmanagement {
   /// Config Sync configuration for the cluster. Structure is documented below.
-  final pulumi.Input<FeatureMembershipConfigmanagementConfigSync>? configSync;
+  final pulumi.Input<FeatureMembershipConfigmanagementConfigSync?>? configSync;
   /// Hierarchy Controller configuration for the cluster. Structure is documented below.
   /// Configuring Hierarchy Controller through the configmanagement feature is no longer recommended.
   /// Use open source Kubernetes [Hierarchical Namespace Controller (HNC)](https://github.com/kubernetes-sigs/hierarchical-namespaces) instead.
   /// Follow the [instructions](https://cloud.google.com/kubernetes-engine/enterprise/config-sync/docs/how-to/migrate-hierarchy-controller)
   /// to migrate from Hierarchy Controller to HNC.
-  final pulumi.Input<FeatureMembershipConfigmanagementHierarchyController>? hierarchyController;
+  final pulumi.Input<FeatureMembershipConfigmanagementHierarchyController?>? hierarchyController;
   /// Enables automatic Feature management. Set this field to MANAGEMENT_AUTOMATIC to enable Config Sync auto-upgrades,
   /// and set this field to MANAGEMENT_MANUAL or MANAGEMENT_UNSPECIFIED to disable Config Sync auto-upgrades.
   /// This field was introduced in Terraform version 5.41.0.
-  final pulumi.Input<String>? management;
+  final pulumi.Input<String?>? management;
   /// Policy Controller configuration for the cluster. Structure is documented below.
   /// Configuring Policy Controller through the configmanagement feature is no longer recommended.
   /// Use the policycontroller feature instead.
-  final pulumi.Input<FeatureMembershipConfigmanagementPolicyController>? policyController;
+  final pulumi.Input<FeatureMembershipConfigmanagementPolicyController?>? policyController;
   /// Version of Config Sync installed.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [FeatureMembershipConfigmanagement].
   /// [configSync] Config Sync configuration for the cluster. Structure is documented below.

@@ -5,9 +5,9 @@ import 'prevention_discovery_config_error_details.dart';
 
 class PreventionDiscoveryConfigError {
   /// A list of messages that carry the error details.
-  final pulumi.Input<PreventionDiscoveryConfigErrorDetails>? details;
+  final pulumi.Input<PreventionDiscoveryConfigErrorDetails?>? details;
   /// The times the error occurred. List includes the oldest timestamp and the last 9 timestamps.
-  final pulumi.Input<String>? timestamp;
+  final pulumi.Input<String?>? timestamp;
 
   /// Creates a new [PreventionDiscoveryConfigError].
   /// [details] A list of messages that carry the error details.

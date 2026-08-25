@@ -20,6 +20,17 @@ Future<GetServiceConsumersIamPolicyResult> getServiceConsumersIamPolicy(
   return GetServiceConsumersIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetServiceConsumersIamPolicyResult> getServiceConsumersIamPolicyOutput(
+  GetServiceConsumersIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:endpoints/getServiceConsumersIamPolicy:getServiceConsumersIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServiceConsumersIamPolicyResult.fromMap);
+}
+
 /// Retrieves the current IAM policy data for service
 ///
 ///
@@ -137,4 +148,15 @@ Future<GetServiceIamPolicyResult> getServiceIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetServiceIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetServiceIamPolicyResult> getServiceIamPolicyOutput(
+  GetServiceIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:endpoints/getServiceIamPolicy:getServiceIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServiceIamPolicyResult.fromMap);
 }

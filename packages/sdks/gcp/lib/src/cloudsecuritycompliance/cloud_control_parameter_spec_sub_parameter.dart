@@ -8,21 +8,21 @@ import 'cloud_control_parameter_spec_sub_parameter_validation.dart';
 class CloudControlParameterSpecSubParameter {
   /// Possible parameter value types.
   /// Structure is documented below.
-  final pulumi.Input<CloudControlParameterSpecSubParameterDefaultValue>? defaultValue;
+  final pulumi.Input<CloudControlParameterSpecSubParameterDefaultValue?>? defaultValue;
   /// The description of the parameter. The maximum length is 2000 characters.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The display name of the parameter. The maximum length is 200 characters.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// if the parameter is required
   final pulumi.Input<bool> isRequired;
   /// The name of the parameter.
   final pulumi.Input<String> name;
   /// List of parameter substitutions.
   /// Structure is documented below.
-  final pulumi.Input<List<CloudControlParameterSpecSubParameterSubstitutionRule>>? substitutionRules;
+  final pulumi.Input<List<CloudControlParameterSpecSubParameterSubstitutionRule>?>? substitutionRules;
   /// Validation of the parameter.
   /// Structure is documented below.
-  final pulumi.Input<CloudControlParameterSpecSubParameterValidation>? validation;
+  final pulumi.Input<CloudControlParameterSpecSubParameterValidation?>? validation;
   /// Parameter value type.
   /// Possible values:
   /// STRING

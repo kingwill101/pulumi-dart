@@ -9,16 +9,16 @@ import 'template_filter_config_sdp_settings.dart';
 class TemplateFilterConfig {
   /// Malicious URI filter settings.
   /// Structure is documented below.
-  final pulumi.Input<TemplateFilterConfigMaliciousUriFilterSettings>? maliciousUriFilterSettings;
+  final pulumi.Input<TemplateFilterConfigMaliciousUriFilterSettings?>? maliciousUriFilterSettings;
   /// Prompt injection and Jailbreak Filter settings.
   /// Structure is documented below.
-  final pulumi.Input<TemplateFilterConfigPiAndJailbreakFilterSettings>? piAndJailbreakFilterSettings;
+  final pulumi.Input<TemplateFilterConfigPiAndJailbreakFilterSettings?>? piAndJailbreakFilterSettings;
   /// Responsible AI Filter settings.
   /// Structure is documented below.
-  final pulumi.Input<TemplateFilterConfigRaiSettings>? raiSettings;
+  final pulumi.Input<TemplateFilterConfigRaiSettings?>? raiSettings;
   /// Sensitive Data Protection settings.
   /// Structure is documented below.
-  final pulumi.Input<TemplateFilterConfigSdpSettings>? sdpSettings;
+  final pulumi.Input<TemplateFilterConfigSdpSettings?>? sdpSettings;
 
   /// Creates a new [TemplateFilterConfig].
   /// [maliciousUriFilterSettings] Malicious URI filter settings.

@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceCrossInstanceReplicationConfigMembershipSecondaryInstance {
   /// The full resource path of the secondary instance in the format: projects/{project}/locations/{region}/instance/{instance-id}
-  final pulumi.Input<String>? instance;
+  final pulumi.Input<String?>? instance;
   /// Output only. System assigned, unique identifier for the instance.
-  final pulumi.Input<String>? uid;
+  final pulumi.Input<String?>? uid;
 
   /// Creates a new [InstanceCrossInstanceReplicationConfigMembershipSecondaryInstance].
   /// [instance] The full resource path of the secondary instance in the format: projects/{project}/locations/{region}/instance/{instance-id}

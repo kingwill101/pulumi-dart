@@ -8,45 +8,45 @@ class GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionProperties {
   /// NONE
   /// BASIC
   /// MUTUAL
-  final pulumi.Input<String>? authenticationType;
+  final pulumi.Input<String?>? authenticationType;
   /// The content of the KeyStore file.
-  final pulumi.Input<String>? keyStoreFile;
+  final pulumi.Input<String?>? keyStoreFile;
   /// Input only. The KeyStore password in plain text.
-  final pulumi.Input<String>? keyStorePassword;
+  final pulumi.Input<String?>? keyStorePassword;
   /// Input only. The resource name of a secret version in Secret Manager which contains
   /// the KeyStore password.
   /// Format: projects/{project}/secrets/{secret}/versions/{version}.
-  final pulumi.Input<String>? keyStorePasswordSecretVersion;
+  final pulumi.Input<String?>? keyStorePasswordSecretVersion;
   /// Input only. The password to access Schema Registry in plain text.
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// Input only. The resource name of a secret version in Secret Manager which contains
   /// the password to access Schema Registry using basic authentication.
   /// Format: projects/{project}/secrets/{secret}/versions/{version}.
-  final pulumi.Input<String>? passwordSecretVersion;
+  final pulumi.Input<String?>? passwordSecretVersion;
   /// Input only. The password for the cert inside the KeyStore in plain text.
-  final pulumi.Input<String>? sslKeyPassword;
+  final pulumi.Input<String?>? sslKeyPassword;
   /// Input only. The resource name of a secret version in Secret Manager which contains
   /// the password for the cert inside the KeyStore.
   /// Format: projects/{project}/secrets/{secret}/versions/{version}.
-  final pulumi.Input<String>? sslKeyPasswordSecretVersion;
+  final pulumi.Input<String?>? sslKeyPasswordSecretVersion;
   /// The technology type of KafkaSchemaRegistryConnection.
-  final pulumi.Input<String>? technologyType;
+  final pulumi.Input<String?>? technologyType;
   /// The content of the TrustStore file.
-  final pulumi.Input<String>? trustStoreFile;
+  final pulumi.Input<String?>? trustStoreFile;
   /// Input only. The TrustStore password in plain text.
-  final pulumi.Input<String>? trustStorePassword;
+  final pulumi.Input<String?>? trustStorePassword;
   /// Input only. The resource name of a secret version in Secret Manager which contains
   /// the TrustStore password.
   /// Format: projects/{project}/secrets/{secret}/versions/{version}.
-  final pulumi.Input<String>? trustStorePasswordSecretVersion;
+  final pulumi.Input<String?>? trustStorePasswordSecretVersion;
   /// Kafka Schema Registry URL.
   /// e.g.: 'https://server1.us.oracle.com:8081'
-  final pulumi.Input<String>? url;
+  final pulumi.Input<String?>? url;
   /// The username to access Schema Registry using basic authentication.
   /// This value is injected into
   /// 'schema.registry.basic.auth.user.info=user:password' configuration
   /// property.
-  final pulumi.Input<String>? username;
+  final pulumi.Input<String?>? username;
 
   /// Creates a new [GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionProperties].
   /// [authenticationType] Used authentication mechanism to access Schema Registry.

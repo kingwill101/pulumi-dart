@@ -5,10 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InsightsDatasetConfigLink {
   /// (Output)
   /// Dataset name for the linked DatasetConfig.
-  final pulumi.Input<String>? dataset;
+  final pulumi.Input<String?>? dataset;
   /// (Output)
   /// State of the linked DatasetConfig.
-  final pulumi.Input<bool>? linked;
+  final pulumi.Input<bool?>? linked;
 
   /// Creates a new [InsightsDatasetConfigLink].
   /// [dataset] (Output)

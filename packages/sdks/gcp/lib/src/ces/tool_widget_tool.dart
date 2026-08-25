@@ -9,19 +9,19 @@ class ToolWidgetTool {
   /// Optional. The mapping that defines how data from a source tool is mapped to the
   /// widget's input parameters.
   /// Structure is documented below.
-  final pulumi.Input<ToolWidgetToolDataMapping>? dataMapping;
+  final pulumi.Input<ToolWidgetToolDataMapping?>? dataMapping;
   /// Optional. The description of the widget tool.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Required. The display name of the widget tool.
   final pulumi.Input<String> name;
   /// Optional. The input parameters of the widget tool. Represents a Schema object.
   /// Structure is documented below.
-  final pulumi.Input<ToolWidgetToolParameters>? parameters;
+  final pulumi.Input<ToolWidgetToolParameters?>? parameters;
   /// Optional. Configuration for always-included text responses.
   /// Structure is documented below.
-  final pulumi.Input<ToolWidgetToolTextResponseConfig>? textResponseConfig;
+  final pulumi.Input<ToolWidgetToolTextResponseConfig?>? textResponseConfig;
   /// Optional. Configuration for rendering the widget. Represents a JSON object.
-  final pulumi.Input<String>? uiConfig;
+  final pulumi.Input<String?>? uiConfig;
   /// Optional. The type of the widget tool. If not specified, the default type will be CUSTOMIZED.
   /// Possible values:
   /// WIDGET_TYPE_UNSPECIFIED
@@ -38,7 +38,7 @@ class ToolWidgetTool {
   /// APPOINTMENT_SCHEDULER
   /// CONTACT_FORM
   /// Possible values are: `WIDGET_TYPE_UNSPECIFIED`, `CUSTOM`, `PRODUCT_CAROUSEL`, `PRODUCT_DETAILS`, `QUICK_ACTIONS`, `PRODUCT_COMPARISON`, `ADVANCED_PRODUCT_DETAILS`, `SHORT_FORM`, `OVERALL_SATISFACTION`, `ORDER_SUMMARY`, `APPOINTMENT_DETAILS`, `APPOINTMENT_SCHEDULER`, `CONTACT_FORM`.
-  final pulumi.Input<String>? widgetType;
+  final pulumi.Input<String?>? widgetType;
 
   /// Creates a new [ToolWidgetTool].
   /// [dataMapping] Optional. The mapping that defines how data from a source tool is mapped to the

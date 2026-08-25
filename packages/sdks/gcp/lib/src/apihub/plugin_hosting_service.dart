@@ -6,7 +6,7 @@ class PluginHostingService {
   /// The URI of the service implemented by the plugin developer, used to
   /// invoke the plugin's functionality. This information is only required for
   /// user defined plugins.
-  final pulumi.Input<String>? serviceUri;
+  final pulumi.Input<String?>? serviceUri;
 
   /// Creates a new [PluginHostingService].
   /// [serviceUri] The URI of the service implemented by the plugin developer, used to

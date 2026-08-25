@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MulticastGroupRangeLogConfig {
   /// Whether to enable logging or not.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
 
   /// Creates a new [MulticastGroupRangeLogConfig].
   /// [enabled] Whether to enable logging or not.

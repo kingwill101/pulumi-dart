@@ -450,7 +450,7 @@ class HostingSite extends pulumi.CustomResource {
           'gcp:firebase/hostingSite:HostingSite',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     appId = registerOutput<String?>('appId');
     defaultUrl = registerOutput<String>('defaultUrl');
@@ -466,11 +466,12 @@ class HostingSite extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     HostingSiteState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return HostingSite._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -484,6 +485,24 @@ class HostingSite extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    appId = registerOutput<String?>('appId');
+    defaultUrl = registerOutput<String>('defaultUrl');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    siteId = registerOutput<String?>('siteId');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [HostingSite] resource.
+  HostingSite.reference(String urn)
+    : super(
+        'gcp:firebase/hostingSite:HostingSite',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     appId = registerOutput<String?>('appId');
     defaultUrl = registerOutput<String>('defaultUrl');
     deletionPolicy = registerOutput<String>('deletionPolicy');

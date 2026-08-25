@@ -51,12 +51,12 @@ class GetServiceTemplateSpecContainerReadinessProbe {
 
   factory GetServiceTemplateSpecContainerReadinessProbe.fromMap(Map<String, dynamic> map) {
     return GetServiceTemplateSpecContainerReadinessProbe(
-      failureThreshold: pulumi.Input.fromValue(map['failureThreshold'] as int),
+      failureThreshold: pulumi.Input.fromValue((map['failureThreshold'] as num).toInt()),
       grpcs: pulumi.Input.fromValue(pulumi.Input.decodeList<GetServiceTemplateSpecContainerReadinessProbeGrpc>(map['grpcs']!, (value) => GetServiceTemplateSpecContainerReadinessProbeGrpc.fromMap((value as Map).cast<String, dynamic>()))),
       httpGets: pulumi.Input.fromValue(pulumi.Input.decodeList<GetServiceTemplateSpecContainerReadinessProbeHttpGet>(map['httpGets']!, (value) => GetServiceTemplateSpecContainerReadinessProbeHttpGet.fromMap((value as Map).cast<String, dynamic>()))),
-      periodSeconds: pulumi.Input.fromValue(map['periodSeconds'] as int),
-      successThreshold: pulumi.Input.fromValue(map['successThreshold'] as int),
-      timeoutSeconds: pulumi.Input.fromValue(map['timeoutSeconds'] as int),
+      periodSeconds: pulumi.Input.fromValue((map['periodSeconds'] as num).toInt()),
+      successThreshold: pulumi.Input.fromValue((map['successThreshold'] as num).toInt()),
+      timeoutSeconds: pulumi.Input.fromValue((map['timeoutSeconds'] as num).toInt()),
     );
   }
 }

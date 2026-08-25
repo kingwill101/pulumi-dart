@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DataStoreAdvancedSiteSearchConfig {
   /// If set true, automatic refresh is disabled for the DataStore.
-  final pulumi.Input<bool>? disableAutomaticRefresh;
+  final pulumi.Input<bool?>? disableAutomaticRefresh;
   /// If set true, initial indexing is disabled for the DataStore.
-  final pulumi.Input<bool>? disableInitialIndex;
+  final pulumi.Input<bool?>? disableInitialIndex;
 
   /// Creates a new [DataStoreAdvancedSiteSearchConfig].
   /// [disableAutomaticRefresh] If set true, automatic refresh is disabled for the DataStore.

@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RestoreWorkloadTargetResourceGcpResource {
   /// Output only. Name of the Google Cloud resource.
-  final pulumi.Input<String>? gcpResourcename;
+  final pulumi.Input<String?>? gcpResourcename;
   /// Required. The location for the backup vault.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Output only. Type of the resource.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [RestoreWorkloadTargetResourceGcpResource].
   /// [gcpResourcename] Output only. Name of the Google Cloud resource.

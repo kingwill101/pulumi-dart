@@ -5,20 +5,20 @@ import 'example_message_chunk_tool_call_toolset_tool.dart';
 
 class ExampleMessageChunkToolCall {
   /// The input parameters and values for the tool in JSON object format.
-  final pulumi.Input<String>? args;
+  final pulumi.Input<String?>? args;
   /// (Output)
   /// Display name of the tool.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The unique identifier of the tool call. If populated, the client should
   /// return the execution result with the matching ID in
   /// ToolResponse.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The name of the tool to execute.
   /// Format: `projects/{project}/locations/{location}/apps/{app}/tools/{tool}`
-  final pulumi.Input<String>? tool;
+  final pulumi.Input<String?>? tool;
   /// A tool that is created from a toolset.
   /// Structure is documented below.
-  final pulumi.Input<ExampleMessageChunkToolCallToolsetTool>? toolsetTool;
+  final pulumi.Input<ExampleMessageChunkToolCallToolsetTool?>? toolsetTool;
 
   /// Creates a new [ExampleMessageChunkToolCall].
   /// [args] The input parameters and values for the tool in JSON object format.

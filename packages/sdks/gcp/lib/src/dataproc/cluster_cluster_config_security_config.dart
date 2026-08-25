@@ -7,10 +7,10 @@ import 'cluster_cluster_config_security_config_kerberos_config.dart';
 class ClusterClusterConfigSecurityConfig {
   /// Identity Configuration. At least one of `identityConfig`
   /// or `kerberosConfig` is required.
-  final pulumi.Input<ClusterClusterConfigSecurityConfigIdentityConfig>? identityConfig;
+  final pulumi.Input<ClusterClusterConfigSecurityConfigIdentityConfig?>? identityConfig;
   /// Kerberos Configuration. At least one of `identityConfig`
   /// or `kerberosConfig` is required.
-  final pulumi.Input<ClusterClusterConfigSecurityConfigKerberosConfig>? kerberosConfig;
+  final pulumi.Input<ClusterClusterConfigSecurityConfigKerberosConfig?>? kerberosConfig;
 
   /// Creates a new [ClusterClusterConfigSecurityConfig].
   /// [identityConfig] Identity Configuration. At least one of `identityConfig`

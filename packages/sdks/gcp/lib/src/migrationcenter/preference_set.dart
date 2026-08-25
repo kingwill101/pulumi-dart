@@ -822,7 +822,7 @@ class PreferenceSet extends pulumi.CustomResource {
           'gcp:migrationcenter/preferenceSet:PreferenceSet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -841,11 +841,12 @@ class PreferenceSet extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PreferenceSetState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return PreferenceSet._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -859,6 +860,27 @@ class PreferenceSet extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String?>('displayName');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    preferenceSetId = registerOutput<String>('preferenceSetId');
+    project = registerOutput<String>('project');
+    updateTime = registerOutput<String>('updateTime');
+    virtualMachinePreferences = registerOutput<PreferenceSetVirtualMachinePreferences?>('virtualMachinePreferences', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PreferenceSetVirtualMachinePreferences.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [PreferenceSet] resource.
+  PreferenceSet.reference(String urn)
+    : super(
+        'gcp:migrationcenter/preferenceSet:PreferenceSet',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');

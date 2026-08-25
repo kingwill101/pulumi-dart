@@ -935,7 +935,7 @@ class AccessPolicyIamMember extends pulumi.CustomResource {
           'gcp:accesscontextmanager/accessPolicyIamMember:AccessPolicyIamMember',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     condition = registerOutput<AccessPolicyIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccessPolicyIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
@@ -949,11 +949,12 @@ class AccessPolicyIamMember extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AccessPolicyIamMemberState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AccessPolicyIamMember._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -967,6 +968,22 @@ class AccessPolicyIamMember extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    condition = registerOutput<AccessPolicyIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccessPolicyIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    etag = registerOutput<String>('etag');
+    member = registerOutput<String>('member');
+    this.name = registerOutput<String>('name');
+    role = registerOutput<String>('role');
+  }
+
+  /// Creates a typed reference to an existing [AccessPolicyIamMember] resource.
+  AccessPolicyIamMember.reference(String urn)
+    : super(
+        'gcp:accesscontextmanager/accessPolicyIamMember:AccessPolicyIamMember',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     condition = registerOutput<AccessPolicyIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccessPolicyIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
     member = registerOutput<String>('member');

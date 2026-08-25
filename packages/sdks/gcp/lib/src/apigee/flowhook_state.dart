@@ -5,24 +5,24 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering Flowhook resources.
 class FlowhookState {
   /// Flag that specifies whether execution should continue if the flow hook throws an exception. Set to true to continue execution. Set to false to stop execution if the flow hook throws an exception. Defaults to true.
-  final pulumi.Input<bool>? continueOnError;
+  final pulumi.Input<bool?>? continueOnError;
   /// (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Description of the flow hook.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The resource ID of the environment.
-  final pulumi.Input<String>? environment;
+  final pulumi.Input<String?>? environment;
   /// Where in the API call flow the flow hook is invoked. Must be one of PreProxyFlowHook, PostProxyFlowHook, PreTargetFlowHook, or PostTargetFlowHook.
-  final pulumi.Input<String>? flowHookPoint;
+  final pulumi.Input<String?>? flowHookPoint;
   /// The Apigee Organization associated with the environment
-  final pulumi.Input<String>? orgId;
+  final pulumi.Input<String?>? orgId;
   /// Id of the Sharedflow attaching to a flowhook point.
-  final pulumi.Input<String>? sharedflow;
+  final pulumi.Input<String?>? sharedflow;
 
   /// Creates a new [FlowhookState].
   /// [continueOnError] Flag that specifies whether execution should continue if the flow hook throws an exception. Set to true to continue execution. Set to false to stop execution if the flow hook throws an exception. Defaults to true.

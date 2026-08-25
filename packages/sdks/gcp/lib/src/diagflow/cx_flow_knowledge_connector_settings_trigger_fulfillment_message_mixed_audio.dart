@@ -5,7 +5,7 @@ import 'cx_flow_knowledge_connector_settings_trigger_fulfillment_message_mixed_a
 
 class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudio {
   /// Segments this audio response is composed of.
-  final pulumi.Input<List<CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegment>>? segments;
+  final pulumi.Input<List<CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegment>?>? segments;
 
   /// Creates a new [CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudio].
   /// [segments] Segments this audio response is composed of.

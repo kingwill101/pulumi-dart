@@ -1,8 +1,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'workstation_config_allowed_port.dart';
 import 'workstation_config_args.dart';
+import 'workstation_config_condition.dart';
 import 'workstation_config_container.dart';
 import 'workstation_config_encryption_key.dart';
+import 'workstation_config_ephemeral_directory.dart';
 import 'workstation_config_host.dart';
+import 'workstation_config_persistent_directory.dart';
+import 'workstation_config_readiness_check.dart';
 import 'workstation_config_state.dart';
 
 /// A set of configuration options describing how a workstation will be run. Workstation configurations are intended to be shared across multiple workstations.
@@ -5277,14 +5282,14 @@ import 'workstation_config_state.dart';
 class WorkstationConfig extends pulumi.CustomResource {
   /// A list of port ranges specifying single ports or ranges of ports that are externally accessible in the workstation. Allowed ports must be one of 22, 80, or within range 1024-65535. If not specified defaults to ports 22, 80, and ports 1024-65535.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> allowedPorts;
+  late final pulumi.Output<List<WorkstationConfigAllowedPort>> allowedPorts;
   /// Client-specified annotations. This is distinct from labels.
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
   late final pulumi.Output<Map<String, String>?> annotations;
   /// Status conditions describing the current resource state.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> conditions;
+  late final pulumi.Output<List<WorkstationConfigCondition>> conditions;
   /// Container that will be run for each workstation using this configuration when that workstation is started.
   /// Structure is documented below.
   late final pulumi.Output<WorkstationConfigContainer> container;
@@ -5317,7 +5322,7 @@ class WorkstationConfig extends pulumi.CustomResource {
   late final pulumi.Output<WorkstationConfigEncryptionKey?> encryptionKey;
   /// Ephemeral directories which won't persist across workstation sessions.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> ephemeralDirectories;
+  late final pulumi.Output<List<WorkstationConfigEphemeralDirectory>> ephemeralDirectories;
   /// Checksum computed by the server.
   /// May be sent on update and delete requests to ensure that the client has an up-to-date value before proceeding.
   late final pulumi.Output<String> etag;
@@ -5345,7 +5350,7 @@ class WorkstationConfig extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// Directories to persist across workstation sessions.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> persistentDirectories;
+  late final pulumi.Output<List<WorkstationConfigPersistentDirectory>> persistentDirectories;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
@@ -5354,7 +5359,7 @@ class WorkstationConfig extends pulumi.CustomResource {
   late final pulumi.Output<Map<String, String>> pulumiLabels;
   /// Readiness checks to be performed on a workstation.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> readinessChecks;
+  late final pulumi.Output<List<WorkstationConfigReadinessCheck>?> readinessChecks;
   /// Specifies the zones used to replicate the VM and disk resources within the region. If set, exactly two zones within the workstation cluster's region must be specified—for example, `['us-central1-a', 'us-central1-f']`.
   /// If this field is empty, two default zones within the region are used. Immutable after the workstation configuration is created.
   late final pulumi.Output<List<String>> replicaZones;
@@ -5380,35 +5385,36 @@ class WorkstationConfig extends pulumi.CustomResource {
           'gcp:workstations/workstationConfig:WorkstationConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
-    allowedPorts = registerOutput<List<Map<String, dynamic>>>('allowedPorts');
-    annotations = registerOutput<Map<String, String>?>('annotations');
-    conditions = registerOutput<List<Map<String, dynamic>>>('conditions');
+    allowedPorts = registerOutput<List<WorkstationConfigAllowedPort>>('allowedPorts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkstationConfigAllowedPort>(guardedValue, (value) => WorkstationConfigAllowedPort.fromMap((value as Map).cast<String, dynamic>())); });
+    annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    conditions = registerOutput<List<WorkstationConfigCondition>>('conditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkstationConfigCondition>(guardedValue, (value) => WorkstationConfigCondition.fromMap((value as Map).cast<String, dynamic>())); });
     container = registerOutput<WorkstationConfigContainer>('container', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkstationConfigContainer.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     degraded = registerOutput<bool>('degraded');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     disableTcpConnections = registerOutput<bool?>('disableTcpConnections');
     displayName = registerOutput<String?>('displayName');
-    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     enableAuditAgent = registerOutput<bool?>('enableAuditAgent');
     encryptionKey = registerOutput<WorkstationConfigEncryptionKey?>('encryptionKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkstationConfigEncryptionKey.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    ephemeralDirectories = registerOutput<List<Map<String, dynamic>>>('ephemeralDirectories');
+    ephemeralDirectories = registerOutput<List<WorkstationConfigEphemeralDirectory>>('ephemeralDirectories', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkstationConfigEphemeralDirectory>(guardedValue, (value) => WorkstationConfigEphemeralDirectory.fromMap((value as Map).cast<String, dynamic>())); });
     etag = registerOutput<String>('etag');
     host = registerOutput<WorkstationConfigHost>('host', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkstationConfigHost.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     idleAction = registerOutput<String?>('idleAction');
     idleTimeout = registerOutput<String?>('idleTimeout');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     maxUsableWorkstations = registerOutput<int>('maxUsableWorkstations');
     this.name = registerOutput<String>('name');
-    persistentDirectories = registerOutput<List<Map<String, dynamic>>>('persistentDirectories');
+    persistentDirectories = registerOutput<List<WorkstationConfigPersistentDirectory>>('persistentDirectories', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkstationConfigPersistentDirectory>(guardedValue, (value) => WorkstationConfigPersistentDirectory.fromMap((value as Map).cast<String, dynamic>())); });
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    readinessChecks = registerOutput<List<Map<String, dynamic>>?>('readinessChecks');
-    replicaZones = registerOutput<List<String>>('replicaZones');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    readinessChecks = registerOutput<List<WorkstationConfigReadinessCheck>?>('readinessChecks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkstationConfigReadinessCheck>(guardedValue, (value) => WorkstationConfigReadinessCheck.fromMap((value as Map).cast<String, dynamic>())); });
+    replicaZones = registerOutput<List<String>>('replicaZones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     runningTimeout = registerOutput<String?>('runningTimeout');
     uid = registerOutput<String>('uid');
     workstationClusterId = registerOutput<String>('workstationClusterId');
@@ -5420,11 +5426,12 @@ class WorkstationConfig extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     WorkstationConfigState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return WorkstationConfig._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -5438,33 +5445,76 @@ class WorkstationConfig extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    allowedPorts = registerOutput<List<Map<String, dynamic>>>('allowedPorts');
-    annotations = registerOutput<Map<String, String>?>('annotations');
-    conditions = registerOutput<List<Map<String, dynamic>>>('conditions');
+    allowedPorts = registerOutput<List<WorkstationConfigAllowedPort>>('allowedPorts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkstationConfigAllowedPort>(guardedValue, (value) => WorkstationConfigAllowedPort.fromMap((value as Map).cast<String, dynamic>())); });
+    annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    conditions = registerOutput<List<WorkstationConfigCondition>>('conditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkstationConfigCondition>(guardedValue, (value) => WorkstationConfigCondition.fromMap((value as Map).cast<String, dynamic>())); });
     container = registerOutput<WorkstationConfigContainer>('container', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkstationConfigContainer.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     degraded = registerOutput<bool>('degraded');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     disableTcpConnections = registerOutput<bool?>('disableTcpConnections');
     displayName = registerOutput<String?>('displayName');
-    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     enableAuditAgent = registerOutput<bool?>('enableAuditAgent');
     encryptionKey = registerOutput<WorkstationConfigEncryptionKey?>('encryptionKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkstationConfigEncryptionKey.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    ephemeralDirectories = registerOutput<List<Map<String, dynamic>>>('ephemeralDirectories');
+    ephemeralDirectories = registerOutput<List<WorkstationConfigEphemeralDirectory>>('ephemeralDirectories', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkstationConfigEphemeralDirectory>(guardedValue, (value) => WorkstationConfigEphemeralDirectory.fromMap((value as Map).cast<String, dynamic>())); });
     etag = registerOutput<String>('etag');
     host = registerOutput<WorkstationConfigHost>('host', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkstationConfigHost.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     idleAction = registerOutput<String?>('idleAction');
     idleTimeout = registerOutput<String?>('idleTimeout');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     maxUsableWorkstations = registerOutput<int>('maxUsableWorkstations');
     this.name = registerOutput<String>('name');
-    persistentDirectories = registerOutput<List<Map<String, dynamic>>>('persistentDirectories');
+    persistentDirectories = registerOutput<List<WorkstationConfigPersistentDirectory>>('persistentDirectories', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkstationConfigPersistentDirectory>(guardedValue, (value) => WorkstationConfigPersistentDirectory.fromMap((value as Map).cast<String, dynamic>())); });
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    readinessChecks = registerOutput<List<Map<String, dynamic>>?>('readinessChecks');
-    replicaZones = registerOutput<List<String>>('replicaZones');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    readinessChecks = registerOutput<List<WorkstationConfigReadinessCheck>?>('readinessChecks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkstationConfigReadinessCheck>(guardedValue, (value) => WorkstationConfigReadinessCheck.fromMap((value as Map).cast<String, dynamic>())); });
+    replicaZones = registerOutput<List<String>>('replicaZones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    runningTimeout = registerOutput<String?>('runningTimeout');
+    uid = registerOutput<String>('uid');
+    workstationClusterId = registerOutput<String>('workstationClusterId');
+    workstationConfigId = registerOutput<String>('workstationConfigId');
+  }
+
+  /// Creates a typed reference to an existing [WorkstationConfig] resource.
+  WorkstationConfig.reference(String urn)
+    : super(
+        'gcp:workstations/workstationConfig:WorkstationConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    allowedPorts = registerOutput<List<WorkstationConfigAllowedPort>>('allowedPorts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkstationConfigAllowedPort>(guardedValue, (value) => WorkstationConfigAllowedPort.fromMap((value as Map).cast<String, dynamic>())); });
+    annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    conditions = registerOutput<List<WorkstationConfigCondition>>('conditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkstationConfigCondition>(guardedValue, (value) => WorkstationConfigCondition.fromMap((value as Map).cast<String, dynamic>())); });
+    container = registerOutput<WorkstationConfigContainer>('container', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkstationConfigContainer.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createTime = registerOutput<String>('createTime');
+    degraded = registerOutput<bool>('degraded');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    disableTcpConnections = registerOutput<bool?>('disableTcpConnections');
+    displayName = registerOutput<String?>('displayName');
+    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    enableAuditAgent = registerOutput<bool?>('enableAuditAgent');
+    encryptionKey = registerOutput<WorkstationConfigEncryptionKey?>('encryptionKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkstationConfigEncryptionKey.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    ephemeralDirectories = registerOutput<List<WorkstationConfigEphemeralDirectory>>('ephemeralDirectories', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkstationConfigEphemeralDirectory>(guardedValue, (value) => WorkstationConfigEphemeralDirectory.fromMap((value as Map).cast<String, dynamic>())); });
+    etag = registerOutput<String>('etag');
+    host = registerOutput<WorkstationConfigHost>('host', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkstationConfigHost.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    idleAction = registerOutput<String?>('idleAction');
+    idleTimeout = registerOutput<String?>('idleTimeout');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    maxUsableWorkstations = registerOutput<int>('maxUsableWorkstations');
+    this.name = registerOutput<String>('name');
+    persistentDirectories = registerOutput<List<WorkstationConfigPersistentDirectory>>('persistentDirectories', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkstationConfigPersistentDirectory>(guardedValue, (value) => WorkstationConfigPersistentDirectory.fromMap((value as Map).cast<String, dynamic>())); });
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    readinessChecks = registerOutput<List<WorkstationConfigReadinessCheck>?>('readinessChecks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkstationConfigReadinessCheck>(guardedValue, (value) => WorkstationConfigReadinessCheck.fromMap((value as Map).cast<String, dynamic>())); });
+    replicaZones = registerOutput<List<String>>('replicaZones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     runningTimeout = registerOutput<String?>('runningTimeout');
     uid = registerOutput<String>('uid');
     workstationClusterId = registerOutput<String>('workstationClusterId');

@@ -1099,7 +1099,7 @@ class MetastoreTableIamPolicy extends pulumi.CustomResource {
           'gcp:dataproc/metastoreTableIamPolicy:MetastoreTableIamPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     databaseId = registerOutput<String>('databaseId');
     etag = registerOutput<String>('etag');
@@ -1115,11 +1115,12 @@ class MetastoreTableIamPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     MetastoreTableIamPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return MetastoreTableIamPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1133,6 +1134,24 @@ class MetastoreTableIamPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    databaseId = registerOutput<String>('databaseId');
+    etag = registerOutput<String>('etag');
+    location = registerOutput<String>('location');
+    policyData = registerOutput<String>('policyData');
+    project = registerOutput<String>('project');
+    serviceId = registerOutput<String>('serviceId');
+    table = registerOutput<String>('table');
+  }
+
+  /// Creates a typed reference to an existing [MetastoreTableIamPolicy] resource.
+  MetastoreTableIamPolicy.reference(String urn)
+    : super(
+        'gcp:dataproc/metastoreTableIamPolicy:MetastoreTableIamPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     databaseId = registerOutput<String>('databaseId');
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');

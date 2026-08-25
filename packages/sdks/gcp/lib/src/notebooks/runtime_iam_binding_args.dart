@@ -8,11 +8,11 @@ import 'runtime_iam_binding_condition.dart';
 /// {@endtemplate}
 /// {@macro pulumi_notebooks_runtime_iam_binding_runtime_iam_binding_args_doc}
 class RuntimeIamBindingArgs {
-  final pulumi.Input<RuntimeIamBindingCondition>? condition;
+  final pulumi.Input<RuntimeIamBindingCondition?>? condition;
   /// A reference to the zone where the machine resides. Used to find the parent resource to bind the IAM policy to. If not specified,
   /// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
   /// location is specified, it is taken from the provider configuration.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
   /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
@@ -28,7 +28,7 @@ class RuntimeIamBindingArgs {
   final pulumi.Input<List<String>> members;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The role that should be applied. Only one
   /// `gcp.notebooks.RuntimeIamBinding` can be used per role. Note that custom roles must be of the format
   /// `[projects|organizations]/{parent-name}/roles/{role-name}`.

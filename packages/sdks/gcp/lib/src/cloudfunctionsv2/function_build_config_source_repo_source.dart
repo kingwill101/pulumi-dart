@@ -4,21 +4,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FunctionBuildConfigSourceRepoSource {
   /// Regex matching branches to build.
-  final pulumi.Input<String>? branchName;
+  final pulumi.Input<String?>? branchName;
   /// Regex matching tags to build.
-  final pulumi.Input<String>? commitSha;
+  final pulumi.Input<String?>? commitSha;
   /// Directory, relative to the source root, in which to run the build.
-  final pulumi.Input<String>? dir;
+  final pulumi.Input<String?>? dir;
   /// Only trigger a build if the revision regex does
   /// NOT match the revision regex.
-  final pulumi.Input<bool>? invertRegex;
+  final pulumi.Input<bool?>? invertRegex;
   /// ID of the project that owns the Cloud Source Repository. If omitted, the
   /// project ID requesting the build is assumed.
-  final pulumi.Input<String>? projectId;
+  final pulumi.Input<String?>? projectId;
   /// Name of the Cloud Source Repository.
-  final pulumi.Input<String>? repoName;
+  final pulumi.Input<String?>? repoName;
   /// Regex matching tags to build.
-  final pulumi.Input<String>? tagName;
+  final pulumi.Input<String?>? tagName;
 
   /// Creates a new [FunctionBuildConfigSourceRepoSource].
   /// [branchName] Regex matching branches to build.

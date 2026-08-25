@@ -7,19 +7,19 @@ import 'node_pool_node_config_containerd_config_registry_host_host_header.dart';
 
 class NodePoolNodeConfigContainerdConfigRegistryHostHost {
   /// Represent the capabilities of the registry host, specifying what operations a host is capable of performing.
-  final pulumi.Input<List<String>>? capabilities;
+  final pulumi.Input<List<String>?>? capabilities;
   /// Configures the registry host certificate.
-  final pulumi.Input<List<NodePoolNodeConfigContainerdConfigRegistryHostHostCa>>? cas;
+  final pulumi.Input<List<NodePoolNodeConfigContainerdConfigRegistryHostHostCa>?>? cas;
   /// Configures the registry host client certificate and key.
-  final pulumi.Input<List<NodePoolNodeConfigContainerdConfigRegistryHostHostClient>>? clients;
+  final pulumi.Input<List<NodePoolNodeConfigContainerdConfigRegistryHostHostClient>?>? clients;
   /// Specifies the maximum duration allowed for a connection attempt to complete.
-  final pulumi.Input<String>? dialTimeout;
+  final pulumi.Input<String?>? dialTimeout;
   /// Configures the registry host headers.
-  final pulumi.Input<List<NodePoolNodeConfigContainerdConfigRegistryHostHostHeader>>? headers;
+  final pulumi.Input<List<NodePoolNodeConfigContainerdConfigRegistryHostHostHeader>?>? headers;
   /// Configures the registry host/mirror.
   final pulumi.Input<String> host;
   /// Indicate the host's API root endpoint is defined in the URL path rather than by the API specification.
-  final pulumi.Input<bool>? overridePath;
+  final pulumi.Input<bool?>? overridePath;
 
   /// Creates a new [NodePoolNodeConfigContainerdConfigRegistryHostHost].
   /// [capabilities] Represent the capabilities of the registry host, specifying what operations a host is capable of performing.

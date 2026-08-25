@@ -13,15 +13,15 @@ class ClusterMaintenancePolicy {
   /// where HH : \[00-23\] and MM : \[00-59\] GMT. For example:
   ///
   /// Examples:
-  final pulumi.Input<ClusterMaintenancePolicyDailyMaintenanceWindow>? dailyMaintenanceWindow;
+  final pulumi.Input<ClusterMaintenancePolicyDailyMaintenanceWindow?>? dailyMaintenanceWindow;
   /// structure documented below
   ///
   /// In beta, one of `recurringWindow`, `recurringMaintenanceWindow` and `dailyMaintenanceWindow` is required if a `maintenancePolicy` block is supplied.
-  final pulumi.Input<ClusterMaintenancePolicyDisruptionBudget>? disruptionBudget;
+  final pulumi.Input<ClusterMaintenancePolicyDisruptionBudget?>? disruptionBudget;
   /// Exceptions to maintenance window. Non-emergency maintenance should not occur in these windows. A cluster can have up to 20 maintenance exclusions at a time [Maintenance Window and Exclusions](https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions)
-  final pulumi.Input<List<ClusterMaintenancePolicyMaintenanceExclusion>>? maintenanceExclusions;
+  final pulumi.Input<List<ClusterMaintenancePolicyMaintenanceExclusion>?>? maintenanceExclusions;
   /// Defines a recurring window for maintenance operations.
-  final pulumi.Input<ClusterMaintenancePolicyRecurringMaintenanceWindow>? recurringMaintenanceWindow;
+  final pulumi.Input<ClusterMaintenancePolicyRecurringMaintenanceWindow?>? recurringMaintenanceWindow;
   /// Time window for recurring maintenance operations.
   ///
   /// Specify `startTime` and `endTime` in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) "Zulu" date format.  The start time's date is
@@ -49,7 +49,7 @@ class ClusterMaintenancePolicy {
   /// }
   /// }
   /// ```
-  final pulumi.Input<ClusterMaintenancePolicyRecurringWindow>? recurringWindow;
+  final pulumi.Input<ClusterMaintenancePolicyRecurringWindow?>? recurringWindow;
 
   /// Creates a new [ClusterMaintenancePolicy].
   /// [dailyMaintenanceWindow] Time window specified for daily maintenance operations.

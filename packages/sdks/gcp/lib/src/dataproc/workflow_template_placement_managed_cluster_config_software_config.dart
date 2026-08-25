@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig {
   /// The version of software inside the cluster. It must be one of the supported [Dataproc Versions](https://docs.cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#supported_dataproc_versions), such as "1.2" (including a subminor version, such as "1.2.29"), or the ["preview" version](https://docs.cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#other_versions). If unspecified, it defaults to the latest Debian version.
-  final pulumi.Input<String>? imageVersion;
+  final pulumi.Input<String?>? imageVersion;
   /// The set of components to activate on the cluster.
-  final pulumi.Input<List<String>>? optionalComponents;
+  final pulumi.Input<List<String>?>? optionalComponents;
   /// The properties to set on daemon config files.
   ///
   /// Property keys are specified in `prefix:property` format, for example `core:hadoop.tmp.dir`. The following are supported prefixes and their mappings:
@@ -23,7 +23,7 @@ class WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig {
   ///
   ///
   /// For more information, see [Cluster properties](https://docs.cloud.google.com/dataproc/docs/concepts/cluster-properties).
-  final pulumi.Input<Map<String, String>>? properties;
+  final pulumi.Input<Map<String, String>?>? properties;
 
   /// Creates a new [WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig].
   /// [imageVersion] The version of software inside the cluster. It must be one of the supported [Dataproc Versions](https://docs.cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#supported_dataproc_versions), such as "1.2" (including a subminor version, such as "1.2.29"), or the ["preview" version](https://docs.cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#other_versions). If unspecified, it defaults to the latest Debian version.

@@ -9,7 +9,7 @@ import 'connector_task_restart_policy.dart';
 /// {@macro pulumi_managedkafka_connector_connector_args_doc}
 class ConnectorArgs {
   /// Connector config as keys/values. The keys of the map are connector property names, for example: `connector.class`, `tasks.max`, `key.converter`.
-  final pulumi.Input<Map<String, String>>? configs;
+  final pulumi.Input<Map<String, String>?>? configs;
   /// The connect cluster name.
   final pulumi.Input<String> connectCluster;
   /// The ID to use for the connector, which will become the final component of the connector's name. This value is structured like: `my-connector-id`.
@@ -20,15 +20,15 @@ class ConnectorArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// ID of the location of the Kafka Connect resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
   final pulumi.Input<String> location;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// A policy that specifies how to restart the failed connectors/tasks in a Cluster resource. If not set, the failed connectors/tasks won't be restarted.
   /// Structure is documented below.
-  final pulumi.Input<ConnectorTaskRestartPolicy>? taskRestartPolicy;
+  final pulumi.Input<ConnectorTaskRestartPolicy?>? taskRestartPolicy;
 
   /// Creates a new [ConnectorArgs].
   /// [configs] Connector config as keys/values. The keys of the map are connector property names, for example: `connector.class`, `tasks.max`, `key.converter`.

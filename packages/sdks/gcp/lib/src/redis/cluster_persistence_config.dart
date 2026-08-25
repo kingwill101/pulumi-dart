@@ -7,16 +7,16 @@ import 'cluster_persistence_config_rdb_config.dart';
 class ClusterPersistenceConfig {
   /// AOF configuration. This field will be ignored if mode is not AOF.
   /// Structure is documented below.
-  final pulumi.Input<ClusterPersistenceConfigAofConfig>? aofConfig;
+  final pulumi.Input<ClusterPersistenceConfigAofConfig?>? aofConfig;
   /// Optional. Controls whether Persistence features are enabled. If not provided, the existing value will be used.
   /// - DISABLED: 	Persistence (both backup and restore) is disabled for the cluster.
   /// - RDB: RDB based Persistence is enabled.
   /// - AOF: AOF based Persistence is enabled.
   /// Possible values are: `PERSISTENCE_MODE_UNSPECIFIED`, `DISABLED`, `RDB`, `AOF`.
-  final pulumi.Input<String>? mode;
+  final pulumi.Input<String?>? mode;
   /// RDB configuration. This field will be ignored if mode is not RDB.
   /// Structure is documented below.
-  final pulumi.Input<ClusterPersistenceConfigRdbConfig>? rdbConfig;
+  final pulumi.Input<ClusterPersistenceConfigRdbConfig?>? rdbConfig;
 
   /// Creates a new [ClusterPersistenceConfig].
   /// [aofConfig] AOF configuration. This field will be ignored if mode is not AOF.

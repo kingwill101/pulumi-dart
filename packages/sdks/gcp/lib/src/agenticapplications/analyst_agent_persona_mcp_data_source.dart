@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AnalystAgentPersonaMcpDataSource {
   /// Input only. The API key of the MCP server.
-  final pulumi.Input<String>? apiKey;
+  final pulumi.Input<String?>? apiKey;
   /// The API key parameter name.
-  final pulumi.Input<String>? apiKeyName;
+  final pulumi.Input<String?>? apiKeyName;
   /// The client ID for authentication.
-  final pulumi.Input<String>? clientId;
+  final pulumi.Input<String?>? clientId;
   /// Input only. The client secret for authentication.
-  final pulumi.Input<String>? clientSecret;
+  final pulumi.Input<String?>? clientSecret;
   /// The description of the MCP agent.
   final pulumi.Input<String> description;
   /// The display name of the persona, shown to users.
@@ -18,9 +18,9 @@ class AnalystAgentPersonaMcpDataSource {
   /// Whether this external data source is enabled for the current analysis.
   final pulumi.Input<bool> enabled;
   /// The URL to use for retrieving the OAuth token.
-  final pulumi.Input<String>? oauthTokenUrl;
+  final pulumi.Input<String?>? oauthTokenUrl;
   /// The custom prompt for the MCP agent.
-  final pulumi.Input<String>? prompt;
+  final pulumi.Input<String?>? prompt;
   /// The URL of the MCP server.
   final pulumi.Input<String> serverUrl;
 

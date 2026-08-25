@@ -11,7 +11,7 @@ class GlobalVmExtensionPolicyRolloutOperation {
   /// (Output)
   /// Rollout status.
   /// Structure is documented below.
-  final pulumi.Input<List<GlobalVmExtensionPolicyRolloutOperationRolloutStatus>>? rolloutStatuses;
+  final pulumi.Input<List<GlobalVmExtensionPolicyRolloutOperationRolloutStatus>?>? rolloutStatuses;
 
   /// Creates a new [GlobalVmExtensionPolicyRolloutOperation].
   /// [rolloutInput] Rollout input settings.

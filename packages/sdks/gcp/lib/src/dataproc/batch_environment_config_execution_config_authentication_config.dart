@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BatchEnvironmentConfigExecutionConfigAuthenticationConfig {
   /// Authentication type for the user workload running in containers.
   /// Possible values are: `SERVICE_ACCOUNT`, `END_USER_CREDENTIALS`.
-  final pulumi.Input<String>? userWorkloadAuthenticationType;
+  final pulumi.Input<String?>? userWorkloadAuthenticationType;
 
   /// Creates a new [BatchEnvironmentConfigExecutionConfigAuthenticationConfig].
   /// [userWorkloadAuthenticationType] Authentication type for the user workload running in containers.

@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterStorageResourceBucket {
   /// Name of the bucket.
-  final pulumi.Input<String>? bucket;
+  final pulumi.Input<String?>? bucket;
 
   /// Creates a new [ClusterStorageResourceBucket].
   /// [bucket] Name of the bucket.

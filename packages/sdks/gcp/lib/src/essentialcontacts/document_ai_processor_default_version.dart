@@ -198,7 +198,7 @@ class DocumentAiProcessorDefaultVersion extends pulumi.CustomResource {
           'gcp:essentialcontacts/documentAiProcessorDefaultVersion:DocumentAiProcessorDefaultVersion',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     processor = registerOutput<String>('processor');
     version = registerOutput<String>('version');
@@ -209,11 +209,12 @@ class DocumentAiProcessorDefaultVersion extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DocumentAiProcessorDefaultVersionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DocumentAiProcessorDefaultVersion._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -227,6 +228,19 @@ class DocumentAiProcessorDefaultVersion extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    processor = registerOutput<String>('processor');
+    version = registerOutput<String>('version');
+  }
+
+  /// Creates a typed reference to an existing [DocumentAiProcessorDefaultVersion] resource.
+  DocumentAiProcessorDefaultVersion.reference(String urn)
+    : super(
+        'gcp:essentialcontacts/documentAiProcessorDefaultVersion:DocumentAiProcessorDefaultVersion',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     processor = registerOutput<String>('processor');
     version = registerOutput<String>('version');
   }

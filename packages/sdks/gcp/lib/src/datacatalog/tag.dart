@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'tag_args.dart';
+import 'tag_field.dart';
 import 'tag_state.dart';
 
 /// &gt; **Warning:** `gcp.datacatalog.Tag` is deprecated and will be removed in a future major release. For steps to transition your Data Catalog users, workloads, and content to Dataplex Catalog, see https://cloud.google.com/dataplex/docs/transition-to-dataplex-catalog.
@@ -2037,7 +2038,7 @@ class Tag extends pulumi.CustomResource {
   /// This maps the ID of a tag field to the value of and additional information about that field.
   /// Valid field IDs are defined by the tag's template. A tag must have at least 1 field and at most 500 fields.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> fields;
+  late final pulumi.Output<List<TagField>> fields;
   /// The resource name of the tag in URL format. Example:
   /// projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/entries/{entryId}/tags/{tag_id} or
   /// projects/{project_id}/locations/{location}/entrygroups/{entryGroupId}/tags/{tag_id}
@@ -2065,11 +2066,11 @@ class Tag extends pulumi.CustomResource {
           'gcp:datacatalog/tag:Tag',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     column = registerOutput<String?>('column');
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    fields = registerOutput<List<Map<String, dynamic>>>('fields');
+    fields = registerOutput<List<TagField>>('fields', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TagField>(guardedValue, (value) => TagField.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     parent = registerOutput<String?>('parent');
     template = registerOutput<String>('template');
@@ -2081,11 +2082,12 @@ class Tag extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TagState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Tag._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -2101,7 +2103,25 @@ class Tag extends pulumi.CustomResource {
         ) {
     column = registerOutput<String?>('column');
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    fields = registerOutput<List<Map<String, dynamic>>>('fields');
+    fields = registerOutput<List<TagField>>('fields', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TagField>(guardedValue, (value) => TagField.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    parent = registerOutput<String?>('parent');
+    template = registerOutput<String>('template');
+    templateDisplayname = registerOutput<String>('templateDisplayname');
+  }
+
+  /// Creates a typed reference to an existing [Tag] resource.
+  Tag.reference(String urn)
+    : super(
+        'gcp:datacatalog/tag:Tag',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    column = registerOutput<String?>('column');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    fields = registerOutput<List<TagField>>('fields', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TagField>(guardedValue, (value) => TagField.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     parent = registerOutput<String?>('parent');
     template = registerOutput<String>('template');

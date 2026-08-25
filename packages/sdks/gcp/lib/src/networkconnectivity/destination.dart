@@ -1,6 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'destination_args.dart';
+import 'destination_endpoint.dart';
 import 'destination_state.dart';
+import 'destination_state_timeline.dart';
 
 /// 'Manage Multicloud Data Transfer Destinations'
 ///
@@ -273,7 +275,7 @@ class Destination extends pulumi.CustomResource {
   late final pulumi.Output<Map<String, String>> effectiveLabels;
   /// The list of DestinationEndpoint resources configured for the IP prefix.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> endpoints;
+  late final pulumi.Output<List<DestinationEndpoint>> endpoints;
   /// The etag is computed by the server, and might be sent with update and
   /// delete requests so that the client has an up-to-date value before
   /// proceeding.
@@ -301,7 +303,7 @@ class Destination extends pulumi.CustomResource {
   /// state. If a state change is expected, the value is `ADDING`,
   /// `DELETING` or `SUSPENDING`, depending on the action specified.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> stateTimelines;
+  late final pulumi.Output<List<DestinationStateTimeline>> stateTimelines;
   /// The Google-generated unique ID for the `Destination` resource.
   /// This value is unique across all `Destination` resources.
   /// If a resource is deleted and another with the same name is
@@ -322,22 +324,23 @@ class Destination extends pulumi.CustomResource {
           'gcp:networkconnectivity/destination:Destination',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    endpoints = registerOutput<List<Map<String, dynamic>>>('endpoints');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    endpoints = registerOutput<List<DestinationEndpoint>>('endpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DestinationEndpoint>(guardedValue, (value) => DestinationEndpoint.fromMap((value as Map).cast<String, dynamic>())); });
     etag = registerOutput<String>('etag');
     ipPrefix = registerOutput<String>('ipPrefix');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     multicloudDataTransferConfig = registerOutput<String>('multicloudDataTransferConfig');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    stateTimelines = registerOutput<List<Map<String, dynamic>>>('stateTimelines');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    stateTimelines = registerOutput<List<DestinationStateTimeline>>('stateTimelines', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DestinationStateTimeline>(guardedValue, (value) => DestinationStateTimeline.fromMap((value as Map).cast<String, dynamic>())); });
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
   }
@@ -347,11 +350,12 @@ class Destination extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DestinationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Destination._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -368,17 +372,45 @@ class Destination extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    endpoints = registerOutput<List<Map<String, dynamic>>>('endpoints');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    endpoints = registerOutput<List<DestinationEndpoint>>('endpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DestinationEndpoint>(guardedValue, (value) => DestinationEndpoint.fromMap((value as Map).cast<String, dynamic>())); });
     etag = registerOutput<String>('etag');
     ipPrefix = registerOutput<String>('ipPrefix');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     multicloudDataTransferConfig = registerOutput<String>('multicloudDataTransferConfig');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
-    stateTimelines = registerOutput<List<Map<String, dynamic>>>('stateTimelines');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    stateTimelines = registerOutput<List<DestinationStateTimeline>>('stateTimelines', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DestinationStateTimeline>(guardedValue, (value) => DestinationStateTimeline.fromMap((value as Map).cast<String, dynamic>())); });
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [Destination] resource.
+  Destination.reference(String urn)
+    : super(
+        'gcp:networkconnectivity/destination:Destination',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    endpoints = registerOutput<List<DestinationEndpoint>>('endpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DestinationEndpoint>(guardedValue, (value) => DestinationEndpoint.fromMap((value as Map).cast<String, dynamic>())); });
+    etag = registerOutput<String>('etag');
+    ipPrefix = registerOutput<String>('ipPrefix');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    multicloudDataTransferConfig = registerOutput<String>('multicloudDataTransferConfig');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    stateTimelines = registerOutput<List<DestinationStateTimeline>>('stateTimelines', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DestinationStateTimeline>(guardedValue, (value) => DestinationStateTimeline.fromMap((value as Map).cast<String, dynamic>())); });
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
   }

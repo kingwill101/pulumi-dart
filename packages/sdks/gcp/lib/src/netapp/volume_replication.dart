@@ -1,7 +1,10 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'volume_replication_args.dart';
 import 'volume_replication_destination_volume_parameters.dart';
+import 'volume_replication_hybrid_peering_detail.dart';
+import 'volume_replication_hybrid_replication_user_command.dart';
 import 'volume_replication_state.dart';
+import 'volume_replication_transfer_stat.dart';
 
 /// Volume replication creates an asynchronous mirror of a volume in a different location. This capability
 /// lets you use the replicated volume for critical application activity in case of a location-wide outage
@@ -550,12 +553,12 @@ class VolumeReplication extends pulumi.CustomResource {
   late final pulumi.Output<bool> healthy;
   /// HybridPeeringDetails contains details about the hybrid peering.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> hybridPeeringDetails;
+  late final pulumi.Output<List<VolumeReplicationHybridPeeringDetail>> hybridPeeringDetails;
   /// Hybrid replication type.
   late final pulumi.Output<String> hybridReplicationType;
   /// Copy pastable snapmirror commands to be executed on onprem cluster by the customer.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> hybridReplicationUserCommands;
+  late final pulumi.Output<List<VolumeReplicationHybridReplicationUserCommand>> hybridReplicationUserCommands;
   /// Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -596,7 +599,7 @@ class VolumeReplication extends pulumi.CustomResource {
   late final pulumi.Output<String> stateDetails;
   /// Replication transfer statistics. All statistics are updated every 5 minutes.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> transferStats;
+  late final pulumi.Output<List<VolumeReplicationTransferStat>> transferStats;
   /// The name of the existing source volume.
   late final pulumi.Output<String> volumeName;
   /// Replication resource state is independent of mirror_state. With enough data, it can take many hours
@@ -616,7 +619,8 @@ class VolumeReplication extends pulumi.CustomResource {
           'gcp:netapp/volumeReplication:VolumeReplication',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');
     deleteDestinationVolume = registerOutput<bool?>('deleteDestinationVolume');
@@ -624,25 +628,25 @@ class VolumeReplication extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     destinationVolume = registerOutput<String>('destinationVolume');
     destinationVolumeParameters = registerOutput<VolumeReplicationDestinationVolumeParameters?>('destinationVolumeParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VolumeReplicationDestinationVolumeParameters.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     forceStopping = registerOutput<bool?>('forceStopping');
     healthy = registerOutput<bool>('healthy');
-    hybridPeeringDetails = registerOutput<List<Map<String, dynamic>>>('hybridPeeringDetails');
+    hybridPeeringDetails = registerOutput<List<VolumeReplicationHybridPeeringDetail>>('hybridPeeringDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VolumeReplicationHybridPeeringDetail>(guardedValue, (value) => VolumeReplicationHybridPeeringDetail.fromMap((value as Map).cast<String, dynamic>())); });
     hybridReplicationType = registerOutput<String>('hybridReplicationType');
-    hybridReplicationUserCommands = registerOutput<List<Map<String, dynamic>>>('hybridReplicationUserCommands');
-    labels = registerOutput<Map<String, String>?>('labels');
+    hybridReplicationUserCommands = registerOutput<List<VolumeReplicationHybridReplicationUserCommand>>('hybridReplicationUserCommands', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VolumeReplicationHybridReplicationUserCommand>(guardedValue, (value) => VolumeReplicationHybridReplicationUserCommand.fromMap((value as Map).cast<String, dynamic>())); });
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     mirrorState = registerOutput<String>('mirrorState');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     replicationEnabled = registerOutput<bool?>('replicationEnabled');
     replicationSchedule = registerOutput<String>('replicationSchedule');
     role = registerOutput<String>('role');
     sourceVolume = registerOutput<String>('sourceVolume');
     state = registerOutput<String>('state');
     stateDetails = registerOutput<String>('stateDetails');
-    transferStats = registerOutput<List<Map<String, dynamic>>>('transferStats');
+    transferStats = registerOutput<List<VolumeReplicationTransferStat>>('transferStats', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VolumeReplicationTransferStat>(guardedValue, (value) => VolumeReplicationTransferStat.fromMap((value as Map).cast<String, dynamic>())); });
     volumeName = registerOutput<String>('volumeName');
     waitForMirror = registerOutput<bool?>('waitForMirror');
   }
@@ -652,11 +656,12 @@ class VolumeReplication extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VolumeReplicationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VolumeReplication._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -676,25 +681,64 @@ class VolumeReplication extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     destinationVolume = registerOutput<String>('destinationVolume');
     destinationVolumeParameters = registerOutput<VolumeReplicationDestinationVolumeParameters?>('destinationVolumeParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VolumeReplicationDestinationVolumeParameters.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     forceStopping = registerOutput<bool?>('forceStopping');
     healthy = registerOutput<bool>('healthy');
-    hybridPeeringDetails = registerOutput<List<Map<String, dynamic>>>('hybridPeeringDetails');
+    hybridPeeringDetails = registerOutput<List<VolumeReplicationHybridPeeringDetail>>('hybridPeeringDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VolumeReplicationHybridPeeringDetail>(guardedValue, (value) => VolumeReplicationHybridPeeringDetail.fromMap((value as Map).cast<String, dynamic>())); });
     hybridReplicationType = registerOutput<String>('hybridReplicationType');
-    hybridReplicationUserCommands = registerOutput<List<Map<String, dynamic>>>('hybridReplicationUserCommands');
-    labels = registerOutput<Map<String, String>?>('labels');
+    hybridReplicationUserCommands = registerOutput<List<VolumeReplicationHybridReplicationUserCommand>>('hybridReplicationUserCommands', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VolumeReplicationHybridReplicationUserCommand>(guardedValue, (value) => VolumeReplicationHybridReplicationUserCommand.fromMap((value as Map).cast<String, dynamic>())); });
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     mirrorState = registerOutput<String>('mirrorState');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     replicationEnabled = registerOutput<bool?>('replicationEnabled');
     replicationSchedule = registerOutput<String>('replicationSchedule');
     role = registerOutput<String>('role');
     sourceVolume = registerOutput<String>('sourceVolume');
     this.state = registerOutput<String>('state');
     stateDetails = registerOutput<String>('stateDetails');
-    transferStats = registerOutput<List<Map<String, dynamic>>>('transferStats');
+    transferStats = registerOutput<List<VolumeReplicationTransferStat>>('transferStats', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VolumeReplicationTransferStat>(guardedValue, (value) => VolumeReplicationTransferStat.fromMap((value as Map).cast<String, dynamic>())); });
+    volumeName = registerOutput<String>('volumeName');
+    waitForMirror = registerOutput<bool?>('waitForMirror');
+  }
+
+  /// Creates a typed reference to an existing [VolumeReplication] resource.
+  VolumeReplication.reference(String urn)
+    : super(
+        'gcp:netapp/volumeReplication:VolumeReplication',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    deleteDestinationVolume = registerOutput<bool?>('deleteDestinationVolume');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    destinationVolume = registerOutput<String>('destinationVolume');
+    destinationVolumeParameters = registerOutput<VolumeReplicationDestinationVolumeParameters?>('destinationVolumeParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VolumeReplicationDestinationVolumeParameters.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    forceStopping = registerOutput<bool?>('forceStopping');
+    healthy = registerOutput<bool>('healthy');
+    hybridPeeringDetails = registerOutput<List<VolumeReplicationHybridPeeringDetail>>('hybridPeeringDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VolumeReplicationHybridPeeringDetail>(guardedValue, (value) => VolumeReplicationHybridPeeringDetail.fromMap((value as Map).cast<String, dynamic>())); });
+    hybridReplicationType = registerOutput<String>('hybridReplicationType');
+    hybridReplicationUserCommands = registerOutput<List<VolumeReplicationHybridReplicationUserCommand>>('hybridReplicationUserCommands', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VolumeReplicationHybridReplicationUserCommand>(guardedValue, (value) => VolumeReplicationHybridReplicationUserCommand.fromMap((value as Map).cast<String, dynamic>())); });
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    mirrorState = registerOutput<String>('mirrorState');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    replicationEnabled = registerOutput<bool?>('replicationEnabled');
+    replicationSchedule = registerOutput<String>('replicationSchedule');
+    role = registerOutput<String>('role');
+    sourceVolume = registerOutput<String>('sourceVolume');
+    state = registerOutput<String>('state');
+    stateDetails = registerOutput<String>('stateDetails');
+    transferStats = registerOutput<List<VolumeReplicationTransferStat>>('transferStats', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VolumeReplicationTransferStat>(guardedValue, (value) => VolumeReplicationTransferStat.fromMap((value as Map).cast<String, dynamic>())); });
     volumeName = registerOutput<String>('volumeName');
     waitForMirror = registerOutput<bool?>('waitForMirror');
   }

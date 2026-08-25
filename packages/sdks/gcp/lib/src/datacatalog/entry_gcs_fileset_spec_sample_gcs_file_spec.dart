@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EntryGcsFilesetSpecSampleGcsFileSpec {
   /// The full file path
-  final pulumi.Input<String>? filePath;
+  final pulumi.Input<String?>? filePath;
   /// The size of the file, in bytes.
-  final pulumi.Input<int>? sizeBytes;
+  final pulumi.Input<int?>? sizeBytes;
 
   /// Creates a new [EntryGcsFilesetSpecSampleGcsFileSpec].
   /// [filePath] The full file path
@@ -26,7 +26,7 @@ class EntryGcsFilesetSpecSampleGcsFileSpec {
   factory EntryGcsFilesetSpecSampleGcsFileSpec.fromMap(Map<String, dynamic> map) {
     return EntryGcsFilesetSpecSampleGcsFileSpec(
       filePath: (() { final guardedValue = map['filePath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      sizeBytes: (() { final guardedValue = map['sizeBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      sizeBytes: (() { final guardedValue = map['sizeBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

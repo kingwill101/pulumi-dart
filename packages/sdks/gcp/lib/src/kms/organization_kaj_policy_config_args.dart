@@ -12,7 +12,7 @@ class OrganizationKajPolicyConfigArgs {
   /// created in this organization. This is only used when a Key Access Justifications
   /// policy is not provided in the CreateCryptoKeyRequest.
   /// Structure is documented below.
-  final pulumi.Input<OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicy>? defaultKeyAccessJustificationPolicy;
+  final pulumi.Input<OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicy?>? defaultKeyAccessJustificationPolicy;
   /// The organization number for which to retrieve config.
   final pulumi.Input<String> organization;
 

@@ -6,11 +6,11 @@ import 'instance_initial_replication_replica.dart';
 class InstanceInitialReplication {
   /// The replication role.
   /// Structure is documented below.
-  final pulumi.Input<List<InstanceInitialReplicationReplica>>? replicas;
+  final pulumi.Input<List<InstanceInitialReplicationReplica>?>? replicas;
   /// The replication role.
   /// Default value is `STANDBY`.
   /// Possible values are: `ROLE_UNSPECIFIED`, `ACTIVE`, `STANDBY`.
-  final pulumi.Input<String>? role;
+  final pulumi.Input<String?>? role;
 
   /// Creates a new [InstanceInitialReplication].
   /// [replicas] The replication role.

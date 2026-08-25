@@ -11,37 +11,37 @@ class BackupPlanAssociationState {
   /// - A Backup Plan configured for 'compute.googleapis.com/Disk' can be used to protect both standard Disks and Regional Disks resources.
   /// - A Backup Plan configured for 'file.googleapis.com/Instance' can only protect Filestore instances.
   /// - A Backup Plan configured for 'sqladmin.googleapis.com/Instance' can only protect Cloud SQL instances.
-  final pulumi.Input<String>? backupPlan;
+  final pulumi.Input<String?>? backupPlan;
   /// The id of backupplan association
-  final pulumi.Input<String>? backupPlanAssociationId;
+  final pulumi.Input<String?>? backupPlanAssociationId;
   /// The time when the instance was created
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Resource name of data source which will be used as storage location for backups taken
-  final pulumi.Input<String>? dataSource;
+  final pulumi.Input<String?>? dataSource;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The location for the backupplan association
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of backup plan association resource created
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The resource for which BPA needs to be created
-  final pulumi.Input<String>? resource;
+  final pulumi.Input<String?>? resource;
   /// The resource type of workload on which backupplan is applied.
   /// Examples include, "compute.googleapis.com/Instance", "compute.googleapis.com/Disk", "compute.googleapis.com/RegionDisk", and "file.googleapis.com/Instance"
-  final pulumi.Input<String>? resourceType;
+  final pulumi.Input<String?>? resourceType;
   /// Message for rules config info
   /// Structure is documented below.
-  final pulumi.Input<List<BackupPlanAssociationRulesConfigInfo>>? rulesConfigInfos;
+  final pulumi.Input<List<BackupPlanAssociationRulesConfigInfo>?>? rulesConfigInfos;
   /// The time when the instance was updated.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [BackupPlanAssociationState].
   /// [backupPlan] The BP with which resource needs to be created

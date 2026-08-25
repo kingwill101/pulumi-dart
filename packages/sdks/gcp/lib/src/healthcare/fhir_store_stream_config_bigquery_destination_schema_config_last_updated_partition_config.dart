@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfig {
   /// Number of milliseconds for which to keep the storage for a partition.
-  final pulumi.Input<String>? expirationMs;
+  final pulumi.Input<String?>? expirationMs;
   /// Type of partitioning.
   /// Possible values are: `PARTITION_TYPE_UNSPECIFIED`, `HOUR`, `DAY`, `MONTH`, `YEAR`.
   final pulumi.Input<String> type;

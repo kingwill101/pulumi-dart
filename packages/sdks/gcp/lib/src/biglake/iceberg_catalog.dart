@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'iceberg_catalog_args.dart';
 import 'iceberg_catalog_federated_catalog_options.dart';
+import 'iceberg_catalog_replica.dart';
 import 'iceberg_catalog_restricted_locations_config.dart';
 import 'iceberg_catalog_state.dart';
 
@@ -1151,7 +1152,7 @@ class IcebergCatalog extends pulumi.CustomResource {
   late final pulumi.Output<String> project;
   /// Output only. The replicas for the catalog metadata.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> replicas;
+  late final pulumi.Output<List<IcebergCatalogReplica>> replicas;
   /// Configuration for the additional GCS locations that are permitted for use
   /// by resources within this catalog.
   /// Structure is documented below.
@@ -1173,7 +1174,7 @@ class IcebergCatalog extends pulumi.CustomResource {
           'gcp:biglake/icebergCatalog:IcebergCatalog',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     biglakeServiceAccount = registerOutput<String>('biglakeServiceAccount');
     biglakeServiceAccountId = registerOutput<String>('biglakeServiceAccountId');
@@ -1187,9 +1188,9 @@ class IcebergCatalog extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     primaryLocation = registerOutput<String?>('primaryLocation');
     project = registerOutput<String>('project');
-    replicas = registerOutput<List<Map<String, dynamic>>>('replicas');
+    replicas = registerOutput<List<IcebergCatalogReplica>>('replicas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<IcebergCatalogReplica>(guardedValue, (value) => IcebergCatalogReplica.fromMap((value as Map).cast<String, dynamic>())); });
     restrictedLocationsConfig = registerOutput<IcebergCatalogRestrictedLocationsConfig>('restrictedLocationsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IcebergCatalogRestrictedLocationsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    storageRegions = registerOutput<List<String>>('storageRegions');
+    storageRegions = registerOutput<List<String>>('storageRegions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     updateTime = registerOutput<String>('updateTime');
   }
 
@@ -1198,11 +1199,12 @@ class IcebergCatalog extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     IcebergCatalogState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return IcebergCatalog._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1228,9 +1230,36 @@ class IcebergCatalog extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     primaryLocation = registerOutput<String?>('primaryLocation');
     project = registerOutput<String>('project');
-    replicas = registerOutput<List<Map<String, dynamic>>>('replicas');
+    replicas = registerOutput<List<IcebergCatalogReplica>>('replicas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<IcebergCatalogReplica>(guardedValue, (value) => IcebergCatalogReplica.fromMap((value as Map).cast<String, dynamic>())); });
     restrictedLocationsConfig = registerOutput<IcebergCatalogRestrictedLocationsConfig>('restrictedLocationsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IcebergCatalogRestrictedLocationsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    storageRegions = registerOutput<List<String>>('storageRegions');
+    storageRegions = registerOutput<List<String>>('storageRegions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [IcebergCatalog] resource.
+  IcebergCatalog.reference(String urn)
+    : super(
+        'gcp:biglake/icebergCatalog:IcebergCatalog',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    biglakeServiceAccount = registerOutput<String>('biglakeServiceAccount');
+    biglakeServiceAccountId = registerOutput<String>('biglakeServiceAccountId');
+    catalogType = registerOutput<String>('catalogType');
+    createTime = registerOutput<String>('createTime');
+    credentialMode = registerOutput<String>('credentialMode');
+    defaultLocation = registerOutput<String>('defaultLocation');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    federatedCatalogOptions = registerOutput<IcebergCatalogFederatedCatalogOptions?>('federatedCatalogOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IcebergCatalogFederatedCatalogOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    primaryLocation = registerOutput<String?>('primaryLocation');
+    project = registerOutput<String>('project');
+    replicas = registerOutput<List<IcebergCatalogReplica>>('replicas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<IcebergCatalogReplica>(guardedValue, (value) => IcebergCatalogReplica.fromMap((value as Map).cast<String, dynamic>())); });
+    restrictedLocationsConfig = registerOutput<IcebergCatalogRestrictedLocationsConfig>('restrictedLocationsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IcebergCatalogRestrictedLocationsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    storageRegions = registerOutput<List<String>>('storageRegions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     updateTime = registerOutput<String>('updateTime');
   }
 }

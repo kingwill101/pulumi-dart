@@ -8,41 +8,41 @@ class NetworkState {
   /// Creation time of this resource.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
   /// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// User-provided description for this VMware Engine network.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Checksum that may be sent on update and delete requests to ensure that the user-provided value is up to date befor
   /// The server computes checksums based on the value of other fields in the request.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// The location where the VMwareEngineNetwork should reside.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The ID of the VMwareEngineNetwork.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// State of the VMware Engine network.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// VMware Engine network type.
   /// Possible values are: `LEGACY`, `STANDARD`.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// System-generated unique identifier for the resource.
-  final pulumi.Input<String>? uid;
+  final pulumi.Input<String?>? uid;
   /// Last update time of this resource.
   /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
   /// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
   /// VMware Engine service VPC networks that provide connectivity from a private cloud to customer projects,
   /// the internet, and other Google Cloud services.
   /// Structure is documented below.
-  final pulumi.Input<List<NetworkVpcNetwork>>? vpcNetworks;
+  final pulumi.Input<List<NetworkVpcNetwork>?>? vpcNetworks;
 
   /// Creates a new [NetworkState].
   /// [createTime] Creation time of this resource.

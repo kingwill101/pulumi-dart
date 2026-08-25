@@ -7,7 +7,7 @@ class ResizeRequestStatusLastAttemptError {
   /// (Output)
   /// The array of errors encountered while processing this operation.
   /// Structure is documented below.
-  final pulumi.Input<List<ResizeRequestStatusLastAttemptErrorError>>? errors;
+  final pulumi.Input<List<ResizeRequestStatusLastAttemptErrorError>?>? errors;
 
   /// Creates a new [ResizeRequestStatusLastAttemptError].
   /// [errors] (Output)

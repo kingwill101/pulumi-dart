@@ -12,27 +12,27 @@ import 'stream_source_config_sql_server_source_config.dart';
 class StreamSourceConfig {
   /// MongoDB source configuration.
   /// Structure is documented below.
-  final pulumi.Input<StreamSourceConfigMongodbSourceConfig>? mongodbSourceConfig;
+  final pulumi.Input<StreamSourceConfigMongodbSourceConfig?>? mongodbSourceConfig;
   /// MySQL data source configuration.
   /// Structure is documented below.
-  final pulumi.Input<StreamSourceConfigMysqlSourceConfig>? mysqlSourceConfig;
+  final pulumi.Input<StreamSourceConfigMysqlSourceConfig?>? mysqlSourceConfig;
   /// MySQL data source configuration.
   /// Structure is documented below.
-  final pulumi.Input<StreamSourceConfigOracleSourceConfig>? oracleSourceConfig;
+  final pulumi.Input<StreamSourceConfigOracleSourceConfig?>? oracleSourceConfig;
   /// PostgreSQL data source configuration.
   /// Structure is documented below.
-  final pulumi.Input<StreamSourceConfigPostgresqlSourceConfig>? postgresqlSourceConfig;
+  final pulumi.Input<StreamSourceConfigPostgresqlSourceConfig?>? postgresqlSourceConfig;
   /// Salesforce data source configuration.
   /// Structure is documented below.
-  final pulumi.Input<StreamSourceConfigSalesforceSourceConfig>? salesforceSourceConfig;
+  final pulumi.Input<StreamSourceConfigSalesforceSourceConfig?>? salesforceSourceConfig;
   /// Source connection profile resource. Format: projects/{project}/locations/{location}/connectionProfiles/{name}
   final pulumi.Input<String> sourceConnectionProfile;
   /// Spanner data source configuration.
   /// Structure is documented below.
-  final pulumi.Input<StreamSourceConfigSpannerSourceConfig>? spannerSourceConfig;
+  final pulumi.Input<StreamSourceConfigSpannerSourceConfig?>? spannerSourceConfig;
   /// SQL Server data source configuration.
   /// Structure is documented below.
-  final pulumi.Input<StreamSourceConfigSqlServerSourceConfig>? sqlServerSourceConfig;
+  final pulumi.Input<StreamSourceConfigSqlServerSourceConfig?>? sqlServerSourceConfig;
 
   /// Creates a new [StreamSourceConfig].
   /// [mongodbSourceConfig] MongoDB source configuration.

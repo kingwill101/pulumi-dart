@@ -189,7 +189,7 @@ class AiSemanticGovernancePolicyEngine extends pulumi.CustomResource {
           'gcp:vertex/aiSemanticGovernancePolicyEngine:AiSemanticGovernancePolicyEngine',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -208,11 +208,12 @@ class AiSemanticGovernancePolicyEngine extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AiSemanticGovernancePolicyEngineState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AiSemanticGovernancePolicyEngine._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -235,6 +236,27 @@ class AiSemanticGovernancePolicyEngine extends pulumi.CustomResource {
     pscServiceAttachment = registerOutput<String>('pscServiceAttachment');
     region = registerOutput<String>('region');
     this.state = registerOutput<String>('state');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [AiSemanticGovernancePolicyEngine] resource.
+  AiSemanticGovernancePolicyEngine.reference(String urn)
+    : super(
+        'gcp:vertex/aiSemanticGovernancePolicyEngine:AiSemanticGovernancePolicyEngine',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    ipAddress = registerOutput<String>('ipAddress');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    pscForwardingRule = registerOutput<String>('pscForwardingRule');
+    pscServiceAttachment = registerOutput<String>('pscServiceAttachment');
+    region = registerOutput<String>('region');
+    state = registerOutput<String>('state');
     updateTime = registerOutput<String>('updateTime');
   }
 }

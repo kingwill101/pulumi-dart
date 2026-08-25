@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class V2PolicyOrchestratorOrchestrationStatePreviousIterationStateErrorDetail {
   /// A URL/resource name that uniquely identifies the type of the serialized protocol buffer message
-  final pulumi.Input<String>? typeUrl;
+  final pulumi.Input<String?>? typeUrl;
   /// (Optional)
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [V2PolicyOrchestratorOrchestrationStatePreviousIterationStateErrorDetail].
   /// [typeUrl] A URL/resource name that uniquely identifies the type of the serialized protocol buffer message

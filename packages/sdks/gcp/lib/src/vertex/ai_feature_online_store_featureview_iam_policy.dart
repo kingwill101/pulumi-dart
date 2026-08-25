@@ -1016,7 +1016,7 @@ class AiFeatureOnlineStoreFeatureviewIamPolicy extends pulumi.CustomResource {
           'gcp:vertex/aiFeatureOnlineStoreFeatureviewIamPolicy:AiFeatureOnlineStoreFeatureviewIamPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     etag = registerOutput<String>('etag');
     featureOnlineStore = registerOutput<String>('featureOnlineStore');
@@ -1031,11 +1031,12 @@ class AiFeatureOnlineStoreFeatureviewIamPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AiFeatureOnlineStoreFeatureviewIamPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AiFeatureOnlineStoreFeatureviewIamPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1049,6 +1050,23 @@ class AiFeatureOnlineStoreFeatureviewIamPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    etag = registerOutput<String>('etag');
+    featureOnlineStore = registerOutput<String>('featureOnlineStore');
+    featureView = registerOutput<String>('featureView');
+    policyData = registerOutput<String>('policyData');
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [AiFeatureOnlineStoreFeatureviewIamPolicy] resource.
+  AiFeatureOnlineStoreFeatureviewIamPolicy.reference(String urn)
+    : super(
+        'gcp:vertex/aiFeatureOnlineStoreFeatureviewIamPolicy:AiFeatureOnlineStoreFeatureviewIamPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     etag = registerOutput<String>('etag');
     featureOnlineStore = registerOutput<String>('featureOnlineStore');
     featureView = registerOutput<String>('featureView');

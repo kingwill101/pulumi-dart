@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceFromMachineImageSourceMachineImageEncryptionKey {
-  final pulumi.Input<String>? kmsKeyName;
-  final pulumi.Input<String>? kmsKeyServiceAccount;
-  final pulumi.Input<String>? rawKey;
-  final pulumi.Input<String>? rsaEncryptedKey;
-  final pulumi.Input<String>? sha256;
+  final pulumi.Input<String?>? kmsKeyName;
+  final pulumi.Input<String?>? kmsKeyServiceAccount;
+  final pulumi.Input<String?>? rawKey;
+  final pulumi.Input<String?>? rsaEncryptedKey;
+  final pulumi.Input<String?>? sha256;
 
   /// Creates a new [InstanceFromMachineImageSourceMachineImageEncryptionKey].
   /// [kmsKeyName] Optional.

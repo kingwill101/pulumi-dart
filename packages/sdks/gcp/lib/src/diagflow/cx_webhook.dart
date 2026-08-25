@@ -2317,7 +2317,7 @@ class CxWebhook extends pulumi.CustomResource {
           'gcp:diagflow/cxWebhook:CxWebhook',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     disabled = registerOutput<bool?>('disabled');
@@ -2338,11 +2338,12 @@ class CxWebhook extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CxWebhookState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return CxWebhook._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -2356,6 +2357,29 @@ class CxWebhook extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    disabled = registerOutput<bool?>('disabled');
+    displayName = registerOutput<String>('displayName');
+    enableSpellCorrection = registerOutput<bool?>('enableSpellCorrection');
+    enableStackdriverLogging = registerOutput<bool?>('enableStackdriverLogging');
+    genericWebService = registerOutput<CxWebhookGenericWebService?>('genericWebService', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxWebhookGenericWebService.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    parent = registerOutput<String?>('parent');
+    securitySettings = registerOutput<String?>('securitySettings');
+    serviceDirectory = registerOutput<CxWebhookServiceDirectory?>('serviceDirectory', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxWebhookServiceDirectory.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    startFlow = registerOutput<String>('startFlow');
+    timeout = registerOutput<String?>('timeout');
+  }
+
+  /// Creates a typed reference to an existing [CxWebhook] resource.
+  CxWebhook.reference(String urn)
+    : super(
+        'gcp:diagflow/cxWebhook:CxWebhook',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     disabled = registerOutput<bool?>('disabled');
     displayName = registerOutput<String>('displayName');

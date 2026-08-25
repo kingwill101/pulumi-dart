@@ -4,17 +4,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConnectionProfileSalesforceProfileUserCredentials {
   /// Password of the user.
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// A reference to a Secret Manager resource name storing the user's password.
-  final pulumi.Input<String>? secretManagerStoredPassword;
+  final pulumi.Input<String?>? secretManagerStoredPassword;
   /// A reference to a Secret Manager resource name storing the user's security token.
   ///
   /// &lt;a name="nestedSalesforceProfileOauth2ClientCredentials"&gt;&lt;/a&gt;The `oauth2ClientCredentials` block supports:
-  final pulumi.Input<String>? secretManagerStoredSecurityToken;
+  final pulumi.Input<String?>? secretManagerStoredSecurityToken;
   /// Security token of the user.
-  final pulumi.Input<String>? securityToken;
+  final pulumi.Input<String?>? securityToken;
   /// Username to use for authentication.
-  final pulumi.Input<String>? username;
+  final pulumi.Input<String?>? username;
 
   /// Creates a new [ConnectionProfileSalesforceProfileUserCredentials].
   /// [password] Password of the user.

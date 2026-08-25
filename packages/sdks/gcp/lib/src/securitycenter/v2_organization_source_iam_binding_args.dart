@@ -8,7 +8,7 @@ import 'v2_organization_source_iam_binding_condition.dart';
 /// {@endtemplate}
 /// {@macro pulumi_securitycenter_v2_organization_source_iam_binding_v2_organization_source_iam_binding_args_doc}
 class V2OrganizationSourceIamBindingArgs {
-  final pulumi.Input<V2OrganizationSourceIamBindingCondition>? condition;
+  final pulumi.Input<V2OrganizationSourceIamBindingCondition?>? condition;
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
   /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.

@@ -14,15 +14,15 @@ class ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceVmwareEngine
   /// COMMITMENT_3_YEAR_MONTHLY_PAYMENTS
   /// COMMITMENT_1_YEAR_UPFRONT_PAYMENT
   /// COMMITMENT_3_YEAR_UPFRONT_PAYMENT
-  final pulumi.Input<String>? commitmentPlan;
+  final pulumi.Input<String?>? commitmentPlan;
   /// (Output)
   /// CPU overcommit ratio.
   /// Acceptable values are between 1.0 and 8.0, with 0.1 increment.
-  final pulumi.Input<double>? cpuOvercommitRatio;
+  final pulumi.Input<double?>? cpuOvercommitRatio;
   /// (Output)
   /// Memory overcommit ratio.
   /// Acceptable values are 1.0, 1.25, 1.5, 1.75 and 2.0.
-  final pulumi.Input<double>? memoryOvercommitRatio;
+  final pulumi.Input<double?>? memoryOvercommitRatio;
   /// (Output)
   /// The Deduplication and Compression ratio is based on the logical (Used
   /// Before) space required to store data before applying deduplication and
@@ -32,7 +32,7 @@ class ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceVmwareEngine
   /// Before space is 3 GB, but the physical Used After space is 1 GB, the
   /// deduplication and compression ratio is 3x. Acceptable values are
   /// between 1.0 and 4.0.
-  final pulumi.Input<double>? storageDeduplicationCompressionRatio;
+  final pulumi.Input<double?>? storageDeduplicationCompressionRatio;
 
   /// Creates a new [ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceVmwareEnginePreference].
   /// [commitmentPlan] (Output)
@@ -58,9 +58,9 @@ class ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceVmwareEngine
   factory ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceVmwareEnginePreference.fromMap(Map<String, dynamic> map) {
     return ReportSummaryGroupFindingPreferenceSetFindingMachinePreferenceVmwareEnginePreference(
       commitmentPlan: (() { final guardedValue = map['commitmentPlan']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      cpuOvercommitRatio: (() { final guardedValue = map['cpuOvercommitRatio']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      memoryOvercommitRatio: (() { final guardedValue = map['memoryOvercommitRatio']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      storageDeduplicationCompressionRatio: (() { final guardedValue = map['storageDeduplicationCompressionRatio']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      cpuOvercommitRatio: (() { final guardedValue = map['cpuOvercommitRatio']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      memoryOvercommitRatio: (() { final guardedValue = map['memoryOvercommitRatio']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      storageDeduplicationCompressionRatio: (() { final guardedValue = map['storageDeduplicationCompressionRatio']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

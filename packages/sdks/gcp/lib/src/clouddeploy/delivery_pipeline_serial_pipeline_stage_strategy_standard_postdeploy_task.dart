@@ -5,7 +5,7 @@ import 'delivery_pipeline_serial_pipeline_stage_strategy_standard_postdeploy_tas
 
 class DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTask {
   /// Optional. This task is represented by a container that is executed in the Cloud Build execution environment.
-  final pulumi.Input<DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainer>? container;
+  final pulumi.Input<DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainer?>? container;
 
   /// Creates a new [DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTask].
   /// [container] Optional. This task is represented by a container that is executed in the Cloud Build execution environment.

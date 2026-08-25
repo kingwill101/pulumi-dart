@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class JobTemplateConfigEditList {
   /// List of values identifying files that should be used in this atom.
-  final pulumi.Input<List<String>>? inputs;
+  final pulumi.Input<List<String>?>? inputs;
   /// A unique key for this atom.
-  final pulumi.Input<String>? key;
+  final pulumi.Input<String?>? key;
   /// Start time in seconds for the atom, relative to the input file timeline.  The default is `0s`.
-  final pulumi.Input<String>? startTimeOffset;
+  final pulumi.Input<String?>? startTimeOffset;
 
   /// Creates a new [JobTemplateConfigEditList].
   /// [inputs] List of values identifying files that should be used in this atom.

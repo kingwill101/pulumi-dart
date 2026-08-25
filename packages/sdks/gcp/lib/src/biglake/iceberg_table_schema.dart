@@ -7,12 +7,12 @@ class IcebergTableSchema {
   /// Structure is documented below.
   final pulumi.Input<List<IcebergTableSchemaField>> fields;
   /// The field IDs that make up the identifier for the table.
-  final pulumi.Input<List<int>>? identifierFieldIds;
+  final pulumi.Input<List<int>?>? identifierFieldIds;
   /// (Output)
   /// The unique identifier of the schema.
-  final pulumi.Input<int>? schemaId;
+  final pulumi.Input<int?>? schemaId;
   /// The type of the schema.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [IcebergTableSchema].
   /// [fields] Structure is documented below.
@@ -39,7 +39,7 @@ class IcebergTableSchema {
     return IcebergTableSchema(
       fields: pulumi.Input.fromValue(pulumi.Input.decodeList<IcebergTableSchemaField>(map['fields']!, (value) => IcebergTableSchemaField.fromMap((value as Map).cast<String, dynamic>()))),
       identifierFieldIds: (() { final guardedValue = map['identifierFieldIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<int>()); })(),
-      schemaId: (() { final guardedValue = map['schemaId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      schemaId: (() { final guardedValue = map['schemaId']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

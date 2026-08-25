@@ -10,28 +10,28 @@ class VariableState {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The name of the variable to manage. Note that variable
   /// names can be hierarchical using slashes (e.g. "prod-variables/hostname").
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the RuntimeConfig resource containing this
   /// variable.
-  final pulumi.Input<String>? parent;
+  final pulumi.Input<String?>? parent;
   /// The ID of the project in which the resource belongs. If it
   /// is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// or `value` - (Required) The content to associate with the variable.
   /// Exactly one of `text` or `variable` must be specified. If `text` is specified,
   /// it must be a valid UTF-8 string and less than 4096 bytes in length. If `value`
   /// is specified, it must be base64 encoded and less than 4096 bytes in length.
   ///
   /// - - -
-  final pulumi.Input<String>? text;
+  final pulumi.Input<String?>? text;
   /// (Computed) The timestamp in RFC3339 UTC "Zulu" format,
   /// accurate to nanoseconds, representing when the variable was last updated.
   /// Example: "2016-10-09T12:33:37.578138407Z".
-  final pulumi.Input<String>? updateTime;
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? updateTime;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [VariableState].
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".

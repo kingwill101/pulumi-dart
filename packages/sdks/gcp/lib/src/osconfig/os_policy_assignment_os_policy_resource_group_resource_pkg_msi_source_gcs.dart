@@ -6,7 +6,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcs {
   /// Bucket of the Cloud Storage object.
   final pulumi.Input<String> bucket;
   /// Generation number of the Cloud Storage object.
-  final pulumi.Input<int>? generation;
+  final pulumi.Input<int?>? generation;
   /// Name of the Cloud Storage object.
   final pulumi.Input<String> object_;
 
@@ -31,7 +31,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcs {
   factory OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcs.fromMap(Map<String, dynamic> map) {
     return OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcs(
       bucket: pulumi.Input.fromValue(map['bucket'] as String),
-      generation: (() { final guardedValue = map['generation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      generation: (() { final guardedValue = map['generation']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       object_: pulumi.Input.fromValue(map['object'] as String),
     );
   }

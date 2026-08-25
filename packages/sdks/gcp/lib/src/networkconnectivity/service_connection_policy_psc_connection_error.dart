@@ -4,12 +4,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServiceConnectionPolicyPscConnectionError {
   /// The status code, which should be an enum value of [google.rpc.Code][].
-  final pulumi.Input<int>? code;
+  final pulumi.Input<int?>? code;
   /// (Output)
   /// A list of messages that carry the error details.
-  final pulumi.Input<List<Map<String, String>>>? details;
+  final pulumi.Input<List<Map<String, String>>?>? details;
   /// A developer-facing error message.
-  final pulumi.Input<String>? message;
+  final pulumi.Input<String?>? message;
 
   /// Creates a new [ServiceConnectionPolicyPscConnectionError].
   /// [code] The status code, which should be an enum value of [google.rpc.Code][].
@@ -31,8 +31,8 @@ class ServiceConnectionPolicyPscConnectionError {
 
   factory ServiceConnectionPolicyPscConnectionError.fromMap(Map<String, dynamic> map) {
     return ServiceConnectionPolicyPscConnectionError(
-      code: (() { final guardedValue = map['code']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      details: (() { final guardedValue = map['details']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<Map<String, String>>()); })(),
+      code: (() { final guardedValue = map['code']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      details: (() { final guardedValue = map['details']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<Map<String, String>>(guardedValue, (value) => (value as Map).cast<String, String>())); })(),
       message: (() { final guardedValue = map['message']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

@@ -297,7 +297,7 @@ class TransferAgentPool extends pulumi.CustomResource {
           'gcp:storage/transferAgentPool:TransferAgentPool',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     bandwidthLimit = registerOutput<TransferAgentPoolBandwidthLimit?>('bandwidthLimit', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TransferAgentPoolBandwidthLimit.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -312,11 +312,12 @@ class TransferAgentPool extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TransferAgentPoolState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return TransferAgentPool._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -336,5 +337,22 @@ class TransferAgentPool extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     this.state = registerOutput<String>('state');
+  }
+
+  /// Creates a typed reference to an existing [TransferAgentPool] resource.
+  TransferAgentPool.reference(String urn)
+    : super(
+        'gcp:storage/transferAgentPool:TransferAgentPool',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    bandwidthLimit = registerOutput<TransferAgentPoolBandwidthLimit?>('bandwidthLimit', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TransferAgentPoolBandwidthLimit.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    displayName = registerOutput<String?>('displayName');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    state = registerOutput<String>('state');
   }
 }

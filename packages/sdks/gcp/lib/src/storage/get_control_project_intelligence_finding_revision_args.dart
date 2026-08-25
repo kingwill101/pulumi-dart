@@ -10,9 +10,9 @@ class GetControlProjectIntelligenceFindingRevisionArgs {
   /// The ID of the intelligence finding.
   final pulumi.Input<String> findingId;
   /// The location of the intelligence finding. Currently default value is global and users cannot use for input for now.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The ID of the finding revision.
   final pulumi.Input<String> revisionId;
 

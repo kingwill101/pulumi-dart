@@ -128,3 +128,14 @@ Future<GetConfigResult> getConfig(
   );
   return GetConfigResult.fromMap(result);
 }
+
+pulumi.Output<GetConfigResult> getConfigOutput(
+  GetConfigArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:datalineage/getConfig:getConfig',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetConfigResult.fromMap);
+}

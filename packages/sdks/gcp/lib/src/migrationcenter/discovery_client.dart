@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'discovery_client_args.dart';
+import 'discovery_client_error.dart';
 import 'discovery_client_state.dart';
 
 /// DiscoveryClient represents an on-premise discovery agent that scans infrastructure and uploads discovery data to Migration Center.
@@ -341,7 +342,7 @@ class DiscoveryClient extends pulumi.CustomResource {
   late final pulumi.Output<Map<String, String>> effectiveLabels;
   /// Errors affecting client functionality.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> errors;
+  late final pulumi.Output<List<DiscoveryClientError>> errors;
   /// Client expiration time in UTC. If specified, the backend will not accept
   /// new frames after this time.
   late final pulumi.Output<String> expireTime;
@@ -400,22 +401,23 @@ class DiscoveryClient extends pulumi.CustomResource {
           'gcp:migrationcenter/discoveryClient:DiscoveryClient',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     discoveryClientId = registerOutput<String>('discoveryClientId');
     displayName = registerOutput<String?>('displayName');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    errors = registerOutput<List<Map<String, dynamic>>>('errors');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    errors = registerOutput<List<DiscoveryClientError>>('errors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DiscoveryClientError>(guardedValue, (value) => DiscoveryClientError.fromMap((value as Map).cast<String, dynamic>())); });
     expireTime = registerOutput<String>('expireTime');
     heartbeatTime = registerOutput<String>('heartbeatTime');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     serviceAccount = registerOutput<String>('serviceAccount');
     signalsEndpoint = registerOutput<String>('signalsEndpoint');
     source = registerOutput<String>('source');
@@ -430,11 +432,12 @@ class DiscoveryClient extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DiscoveryClientState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DiscoveryClient._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -453,19 +456,52 @@ class DiscoveryClient extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     discoveryClientId = registerOutput<String>('discoveryClientId');
     displayName = registerOutput<String?>('displayName');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
-    errors = registerOutput<List<Map<String, dynamic>>>('errors');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    errors = registerOutput<List<DiscoveryClientError>>('errors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DiscoveryClientError>(guardedValue, (value) => DiscoveryClientError.fromMap((value as Map).cast<String, dynamic>())); });
     expireTime = registerOutput<String>('expireTime');
     heartbeatTime = registerOutput<String>('heartbeatTime');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     serviceAccount = registerOutput<String>('serviceAccount');
     signalsEndpoint = registerOutput<String>('signalsEndpoint');
     source = registerOutput<String>('source');
     this.state = registerOutput<String>('state');
+    ttl = registerOutput<String?>('ttl');
+    updateTime = registerOutput<String>('updateTime');
+    version = registerOutput<String>('version');
+  }
+
+  /// Creates a typed reference to an existing [DiscoveryClient] resource.
+  DiscoveryClient.reference(String urn)
+    : super(
+        'gcp:migrationcenter/discoveryClient:DiscoveryClient',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    discoveryClientId = registerOutput<String>('discoveryClientId');
+    displayName = registerOutput<String?>('displayName');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    errors = registerOutput<List<DiscoveryClientError>>('errors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DiscoveryClientError>(guardedValue, (value) => DiscoveryClientError.fromMap((value as Map).cast<String, dynamic>())); });
+    expireTime = registerOutput<String>('expireTime');
+    heartbeatTime = registerOutput<String>('heartbeatTime');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    serviceAccount = registerOutput<String>('serviceAccount');
+    signalsEndpoint = registerOutput<String>('signalsEndpoint');
+    source = registerOutput<String>('source');
+    state = registerOutput<String>('state');
     ttl = registerOutput<String?>('ttl');
     updateTime = registerOutput<String>('updateTime');
     version = registerOutput<String>('version');

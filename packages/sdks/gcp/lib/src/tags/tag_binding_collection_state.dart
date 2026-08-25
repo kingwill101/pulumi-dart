@@ -6,20 +6,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TagBindingCollectionState {
   /// (Output) The most recent state of all direct tags on the resource, as reported by the API.
   /// This includes the tags configured through Terraform, Google system tags, and tags attached by other clients.
-  final pulumi.Input<Map<String, String>>? activeTags;
+  final pulumi.Input<Map<String, String>?>? activeTags;
   /// The full resource name of the resource to which the tags are bound. E.g. //cloudresourcemanager.googleapis.com/projects/123
-  final pulumi.Input<String>? fullResourceName;
+  final pulumi.Input<String?>? fullResourceName;
   /// The location of the TagBindingCollection.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the TagBindingCollection, in the format:
   /// locations/{location}/tagBindingCollections/{encoded_full_resource_name}
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A map of tag keys to values directly bound to this resource, specified in namespaced format.
   /// For example:
   /// "123/environment": "production"
   /// Keys must be namespaced names of TagKeys, and values must be short names of TagValues.
   /// This field is non-authoritative. Terraform will only manage the precise tags present in this map.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [TagBindingCollectionState].
   /// [activeTags] (Output) The most recent state of all direct tags on the resource, as reported by the API.

@@ -39,7 +39,7 @@ class GetServiceAttachmentConsumerAcceptList {
 
   factory GetServiceAttachmentConsumerAcceptList.fromMap(Map<String, dynamic> map) {
     return GetServiceAttachmentConsumerAcceptList(
-      connectionLimit: pulumi.Input.fromValue(map['connectionLimit'] as int),
+      connectionLimit: pulumi.Input.fromValue((map['connectionLimit'] as num).toInt()),
       endpointUrl: pulumi.Input.fromValue(map['endpointUrl'] as String),
       networkUrl: pulumi.Input.fromValue(map['networkUrl'] as String),
       projectIdOrNum: pulumi.Input.fromValue(map['projectIdOrNum'] as String),

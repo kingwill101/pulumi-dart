@@ -26,7 +26,7 @@ class EnterpriseKeyWebSettingsChallengeSettingsActionSetting {
   factory EnterpriseKeyWebSettingsChallengeSettingsActionSetting.fromMap(Map<String, dynamic> map) {
     return EnterpriseKeyWebSettingsChallengeSettingsActionSetting(
       action: pulumi.Input.fromValue(map['action'] as String),
-      scoreThreshold: pulumi.Input.fromValue(map['scoreThreshold'] as double),
+      scoreThreshold: pulumi.Input.fromValue((map['scoreThreshold'] as num).toDouble()),
     );
   }
 }

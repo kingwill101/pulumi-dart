@@ -6,12 +6,12 @@ import 'certificate_certificate_description_x509_description_additional_extensio
 class CertificateCertificateDescriptionX509DescriptionAdditionalExtension {
   /// Indicates whether or not this extension is critical (i.e., if the client does not know how to
   /// handle this extension, the client should consider this to be an error).
-  final pulumi.Input<bool>? critical;
+  final pulumi.Input<bool?>? critical;
   /// Describes values that are relevant in a CA certificate.
   /// Structure is documented below.
-  final pulumi.Input<List<CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectId>>? objectIds;
+  final pulumi.Input<List<CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectId>?>? objectIds;
   /// The value of this X.509 extension. A base64-encoded string.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [CertificateCertificateDescriptionX509DescriptionAdditionalExtension].
   /// [critical] Indicates whether or not this extension is critical (i.e., if the client does not know how to

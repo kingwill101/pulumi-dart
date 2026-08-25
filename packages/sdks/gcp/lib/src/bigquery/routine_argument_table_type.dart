@@ -6,7 +6,7 @@ import 'routine_argument_table_type_column.dart';
 class RoutineArgumentTableType {
   /// The columns in the table type.
   /// Structure is documented below.
-  final pulumi.Input<List<RoutineArgumentTableTypeColumn>>? columns;
+  final pulumi.Input<List<RoutineArgumentTableTypeColumn>?>? columns;
 
   /// Creates a new [RoutineArgumentTableType].
   /// [columns] The columns in the table type.

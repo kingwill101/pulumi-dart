@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FeedDetailsAmazonSqsV2SettingsAuthenticationAwsIamRoleAuth {
   /// AWS IAM Role for Identity Federation.
-  final pulumi.Input<String>? awsIamRoleArn;
+  final pulumi.Input<String?>? awsIamRoleArn;
   /// Subject ID to use for SQS.
   ///
   /// &lt;a name="nestedDetailsAmazonSqsV2SettingsAuthenticationSqsV2AccessKeySecretAuth"&gt;&lt;/a&gt;The `sqsV2AccessKeySecretAuth` block supports:
-  final pulumi.Input<String>? subjectId;
+  final pulumi.Input<String?>? subjectId;
 
   /// Creates a new [FeedDetailsAmazonSqsV2SettingsAuthenticationAwsIamRoleAuth].
   /// [awsIamRoleArn] AWS IAM Role for Identity Federation.

@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTarget {
   /// A namespace within the GKE cluster to deploy into.
-  final pulumi.Input<String>? clusterNamespace;
+  final pulumi.Input<String?>? clusterNamespace;
   /// The target GKE cluster to deploy to. Format: 'projects/{project}/locations/{location}/clusters/{cluster_id}'
-  final pulumi.Input<String>? targetGkeCluster;
+  final pulumi.Input<String?>? targetGkeCluster;
 
   /// Creates a new [WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTarget].
   /// [clusterNamespace] A namespace within the GKE cluster to deploy into.

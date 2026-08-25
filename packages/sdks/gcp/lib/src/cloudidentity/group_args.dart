@@ -14,12 +14,12 @@ class GroupArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// An extended description to help users determine the purpose of a Group.
   /// Must not be longer than 4,096 characters.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The display name of the Group.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// EntityKey of the Group.
   /// Structure is documented below.
   final pulumi.Input<GroupGroupKey> groupKey;
@@ -29,7 +29,7 @@ class GroupArgs {
   /// for possible values.
   /// Default value is `EMPTY`.
   /// Possible values are: `INITIAL_GROUP_CONFIG_UNSPECIFIED`, `WITH_INITIAL_OWNER`, `EMPTY`.
-  final pulumi.Input<String>? initialGroupConfig;
+  final pulumi.Input<String?>? initialGroupConfig;
   /// One or more label entries that apply to the Group. Currently supported labels contain a key with an empty value.
   /// Google Groups are the default type of group and have a label with a key of cloudidentity.googleapis.com/groups.discussion_forum and an empty value.
   /// Existing Google Groups can have an additional label with a key of cloudidentity.googleapis.com/groups.security and an empty value added to them. This is an immutable change and the security label cannot be removed once added.

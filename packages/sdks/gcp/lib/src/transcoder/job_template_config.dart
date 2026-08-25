@@ -15,34 +15,34 @@ import 'job_template_config_pubsub_destination.dart';
 class JobTemplateConfig {
   /// Ad break.
   /// Structure is documented below.
-  final pulumi.Input<List<JobTemplateConfigAdBreak>>? adBreaks;
+  final pulumi.Input<List<JobTemplateConfigAdBreak>?>? adBreaks;
   /// List of input assets stored in Cloud Storage.
   /// Structure is documented below.
-  final pulumi.Input<List<JobTemplateConfigEditList>>? editLists;
+  final pulumi.Input<List<JobTemplateConfigEditList>?>? editLists;
   /// List of input assets stored in Cloud Storage.
   /// Structure is documented below.
-  final pulumi.Input<List<JobTemplateConfigElementaryStream>>? elementaryStreams;
+  final pulumi.Input<List<JobTemplateConfigElementaryStream>?>? elementaryStreams;
   /// List of encryption configurations for the content.
   /// Structure is documented below.
-  final pulumi.Input<List<JobTemplateConfigEncryption>>? encryptions;
+  final pulumi.Input<List<JobTemplateConfigEncryption>?>? encryptions;
   /// List of input assets stored in Cloud Storage.
   /// Structure is documented below.
-  final pulumi.Input<List<JobTemplateConfigInput>>? inputs;
+  final pulumi.Input<List<JobTemplateConfigInput>?>? inputs;
   /// Manifest configuration.
   /// Structure is documented below.
-  final pulumi.Input<List<JobTemplateConfigManifest>>? manifests;
+  final pulumi.Input<List<JobTemplateConfigManifest>?>? manifests;
   /// Multiplexing settings for output stream.
   /// Structure is documented below.
-  final pulumi.Input<List<JobTemplateConfigMuxStream>>? muxStreams;
+  final pulumi.Input<List<JobTemplateConfigMuxStream>?>? muxStreams;
   /// Location of output file(s) in a Cloud Storage bucket.
   /// Structure is documented below.
-  final pulumi.Input<JobTemplateConfigOutput>? output;
+  final pulumi.Input<JobTemplateConfigOutput?>? output;
   /// List of overlays on the output video, in descending Z-order.
   /// Structure is documented below.
-  final pulumi.Input<List<JobTemplateConfigOverlay>>? overlays;
+  final pulumi.Input<List<JobTemplateConfigOverlay>?>? overlays;
   /// Pub/Sub destination.
   /// Structure is documented below.
-  final pulumi.Input<JobTemplateConfigPubsubDestination>? pubsubDestination;
+  final pulumi.Input<JobTemplateConfigPubsubDestination?>? pubsubDestination;
 
   /// Creates a new [JobTemplateConfig].
   /// [adBreaks] Ad break.

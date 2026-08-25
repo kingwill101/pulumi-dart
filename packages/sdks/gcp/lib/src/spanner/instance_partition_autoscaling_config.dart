@@ -12,11 +12,11 @@ class InstancePartitionAutoscalingConfig {
   /// units to specify the limits, but should use the same unit to set both the
   /// minLimit and max_limit.
   /// Structure is documented below.
-  final pulumi.Input<InstancePartitionAutoscalingConfigAutoscalingLimits>? autoscalingLimits;
+  final pulumi.Input<InstancePartitionAutoscalingConfigAutoscalingLimits?>? autoscalingLimits;
   /// Defines scale in controls to reduce the risk of response latency
   /// and outages due to abrupt scale-in events
   /// Structure is documented below.
-  final pulumi.Input<InstancePartitionAutoscalingConfigAutoscalingTargets>? autoscalingTargets;
+  final pulumi.Input<InstancePartitionAutoscalingConfigAutoscalingTargets?>? autoscalingTargets;
 
   /// Creates a new [InstancePartitionAutoscalingConfig].
   /// [autoscalingLimits] Defines scale in controls to reduce the risk of response latency

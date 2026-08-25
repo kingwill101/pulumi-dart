@@ -799,7 +799,7 @@ class AnalysisRule extends pulumi.CustomResource {
           'gcp:contactcenterinsights/analysisRule:AnalysisRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     active = registerOutput<bool?>('active');
     analysisPercentage = registerOutput<double?>('analysisPercentage');
@@ -819,11 +819,12 @@ class AnalysisRule extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AnalysisRuleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AnalysisRule._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -837,6 +838,28 @@ class AnalysisRule extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    active = registerOutput<bool?>('active');
+    analysisPercentage = registerOutput<double?>('analysisPercentage');
+    annotatorSelector = registerOutput<AnalysisRuleAnnotatorSelector?>('annotatorSelector', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AnalysisRuleAnnotatorSelector.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    conversationFilter = registerOutput<String?>('conversationFilter');
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    displayName = registerOutput<String?>('displayName');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [AnalysisRule] resource.
+  AnalysisRule.reference(String urn)
+    : super(
+        'gcp:contactcenterinsights/analysisRule:AnalysisRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     active = registerOutput<bool?>('active');
     analysisPercentage = registerOutput<double?>('analysisPercentage');
     annotatorSelector = registerOutput<AnalysisRuleAnnotatorSelector?>('annotatorSelector', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AnalysisRuleAnnotatorSelector.fromMap((guardedValue as Map).cast<String, dynamic>()); });

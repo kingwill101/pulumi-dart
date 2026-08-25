@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AttachedClusterMonitoringConfigManagedPrometheusConfig {
   /// Enable Managed Collection.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
 
   /// Creates a new [AttachedClusterMonitoringConfigManagedPrometheusConfig].
   /// [enabled] Enable Managed Collection.

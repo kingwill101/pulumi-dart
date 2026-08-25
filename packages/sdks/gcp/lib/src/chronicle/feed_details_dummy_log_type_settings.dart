@@ -5,10 +5,10 @@ import 'feed_details_dummy_log_type_settings_authentication.dart';
 
 class FeedDetailsDummyLogTypeSettings {
   /// Full API Endpoint.
-  final pulumi.Input<String>? apiEndpoint;
+  final pulumi.Input<String?>? apiEndpoint;
   /// HTTP header based authentication.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsDummyLogTypeSettingsAuthentication>? authentication;
+  final pulumi.Input<FeedDetailsDummyLogTypeSettingsAuthentication?>? authentication;
 
   /// Creates a new [FeedDetailsDummyLogTypeSettings].
   /// [apiEndpoint] Full API Endpoint.

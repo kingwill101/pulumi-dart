@@ -9,38 +9,38 @@ class InstancePscAutoConnection {
   /// CONNECTION_TYPE_DISCOVERY
   /// CONNECTION_TYPE_PRIMARY
   /// CONNECTION_TYPE_READER
-  final pulumi.Input<String>? connectionType;
+  final pulumi.Input<String?>? connectionType;
   /// (Output)
   /// Output only. The URI of the consumer side forwarding rule.
   /// Format:
   /// projects/{project}/regions/{region}/forwardingRules/{forwarding_rule}
-  final pulumi.Input<String>? forwardingRule;
+  final pulumi.Input<String?>? forwardingRule;
   /// (Output)
   /// Output only. The IP allocated on the consumer network for the PSC forwarding rule.
-  final pulumi.Input<String>? ipAddress;
+  final pulumi.Input<String?>? ipAddress;
   /// (Output)
   /// Output only. The consumer network where the IP address resides, in the form of
   /// projects/{project_id}/global/networks/{network_id}.
-  final pulumi.Input<String>? network;
+  final pulumi.Input<String?>? network;
   /// (Output)
   /// Output only. Ports of the exposed endpoint.
-  final pulumi.Input<int>? port;
+  final pulumi.Input<int?>? port;
   /// (Output)
   /// Output only. The consumer projectId where the forwarding rule is created from.
-  final pulumi.Input<String>? projectId;
+  final pulumi.Input<String?>? projectId;
   /// (Output)
   /// Output only. The PSC connection id of the forwarding rule connected to the
   /// service attachment.
-  final pulumi.Input<String>? pscConnectionId;
+  final pulumi.Input<String?>? pscConnectionId;
   /// (Output)
   /// Output Only. The status of the PSC connection: whether a connection exists and ACTIVE or it no longer exists.
   /// Possible values:
   /// ACTIVE
   /// NOT_FOUND
-  final pulumi.Input<String>? pscConnectionStatus;
+  final pulumi.Input<String?>? pscConnectionStatus;
   /// (Output)
   /// Output only. The service attachment which is the target of the PSC connection, in the form of projects/{project-id}/regions/{region}/serviceAttachments/{service-attachment-id}.
-  final pulumi.Input<String>? serviceAttachment;
+  final pulumi.Input<String?>? serviceAttachment;
 
   /// Creates a new [InstancePscAutoConnection].
   /// [connectionType] (Output)
@@ -84,7 +84,7 @@ class InstancePscAutoConnection {
       forwardingRule: (() { final guardedValue = map['forwardingRule']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ipAddress: (() { final guardedValue = map['ipAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       network: (() { final guardedValue = map['network']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       projectId: (() { final guardedValue = map['projectId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       pscConnectionId: (() { final guardedValue = map['pscConnectionId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       pscConnectionStatus: (() { final guardedValue = map['pscConnectionStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

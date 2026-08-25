@@ -6,29 +6,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class EndpointAttachmentState {
   /// State of the endpoint attachment connection to the service attachment.
   /// Possible values are: `CONNECTION_STATE_UNSPECIFIED`, `PENDING`, `ACCEPTED`, `REJECTED`, `CLOSED`.
-  final pulumi.Input<String>? connectionState;
+  final pulumi.Input<String?>? connectionState;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// ID of the endpoint attachment.
-  final pulumi.Input<String>? endpointAttachmentId;
+  final pulumi.Input<String?>? endpointAttachmentId;
   /// Host that can be used in either HTTP Target Endpoint directly, or as the host in Target Server.
-  final pulumi.Input<String>? host;
+  final pulumi.Input<String?>? host;
   /// The location of the endpoint attachment.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Name of the Endpoint Attachment in the following format:
   /// organizations/{organization}/endpointAttachments/{endpointAttachment}.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The Apigee Organization associated with the Apigee instance,
   /// in the format `organizations/{{org_name}}`.
-  final pulumi.Input<String>? orgId;
+  final pulumi.Input<String?>? orgId;
   /// The resource URL of the service attachment in the format:
   /// `projects/*/regions/*/serviceAttachments/*`.
-  final pulumi.Input<String>? serviceAttachment;
+  final pulumi.Input<String?>? serviceAttachment;
 
   /// Creates a new [EndpointAttachmentState].
   /// [connectionState] State of the endpoint attachment connection to the service attachment.

@@ -7,10 +7,10 @@ import 'unit_kind_output_variable_mapping_to.dart';
 class UnitKindOutputVariableMapping {
   /// Output variables whose values will be passed on to dependencies
   /// Structure is documented below.
-  final pulumi.Input<UnitKindOutputVariableMappingFrom>? from;
+  final pulumi.Input<UnitKindOutputVariableMappingFrom?>? from;
   /// Input variables whose values will be passed on to dependencies
   /// Structure is documented below.
-  final pulumi.Input<UnitKindOutputVariableMappingTo>? to;
+  final pulumi.Input<UnitKindOutputVariableMappingTo?>? to;
   /// name of the variable
   final pulumi.Input<String> variable;
 

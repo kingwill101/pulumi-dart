@@ -51,7 +51,7 @@ class GetRouterNatRule {
       actions: pulumi.Input.fromValue(pulumi.Input.decodeList<GetRouterNatRuleAction>(map['actions']!, (value) => GetRouterNatRuleAction.fromMap((value as Map).cast<String, dynamic>()))),
       description: pulumi.Input.fromValue(map['description'] as String),
       match: pulumi.Input.fromValue(map['match'] as String),
-      ruleNumber: pulumi.Input.fromValue(map['ruleNumber'] as int),
+      ruleNumber: pulumi.Input.fromValue((map['ruleNumber'] as num).toInt()),
     );
   }
 }

@@ -5,16 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class UptimeCheckConfigHttpCheckAuthInfo {
   /// The password to authenticate.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
   /// (Optional, Write-Only)
   /// The password to authenticate.
   /// **Note**: This property is write-only and will not be read from the API.
   ///
   /// &gt; **Note:** One of `password` or `passwordWo` can only be set.
-  final pulumi.Input<String>? passwordWo;
+  final pulumi.Input<String?>? passwordWo;
   /// The password write-only version.
-  final pulumi.Input<String>? passwordWoVersion;
+  final pulumi.Input<String?>? passwordWoVersion;
   /// The username to authenticate.
   final pulumi.Input<String> username;
 

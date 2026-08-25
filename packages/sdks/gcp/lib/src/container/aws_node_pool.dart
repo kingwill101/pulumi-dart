@@ -3074,15 +3074,15 @@ class AwsNodePool extends pulumi.CustomResource {
           'gcp:container/awsNodePool:AwsNodePool',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
-    annotations = registerOutput<Map<String, String>?>('annotations');
+    annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     autoscaling = registerOutput<AwsNodePoolAutoscaling>('autoscaling', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AwsNodePoolAutoscaling.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     cluster = registerOutput<String>('cluster');
     config = registerOutput<AwsNodePoolConfig>('config', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AwsNodePoolConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
+    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     etag = registerOutput<String>('etag');
     kubeletConfig = registerOutput<AwsNodePoolKubeletConfig>('kubeletConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AwsNodePoolKubeletConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
@@ -3104,11 +3104,12 @@ class AwsNodePool extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AwsNodePoolState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AwsNodePool._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -3122,13 +3123,13 @@ class AwsNodePool extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    annotations = registerOutput<Map<String, String>?>('annotations');
+    annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     autoscaling = registerOutput<AwsNodePoolAutoscaling>('autoscaling', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AwsNodePoolAutoscaling.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     cluster = registerOutput<String>('cluster');
     config = registerOutput<AwsNodePoolConfig>('config', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AwsNodePoolConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations');
+    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     etag = registerOutput<String>('etag');
     kubeletConfig = registerOutput<AwsNodePoolKubeletConfig>('kubeletConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AwsNodePoolKubeletConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
@@ -3138,6 +3139,38 @@ class AwsNodePool extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     reconciling = registerOutput<bool>('reconciling');
     this.state = registerOutput<String>('state');
+    subnetId = registerOutput<String>('subnetId');
+    uid = registerOutput<String>('uid');
+    updateSettings = registerOutput<AwsNodePoolUpdateSettings>('updateSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AwsNodePoolUpdateSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    updateTime = registerOutput<String>('updateTime');
+    version = registerOutput<String>('version');
+  }
+
+  /// Creates a typed reference to an existing [AwsNodePool] resource.
+  AwsNodePool.reference(String urn)
+    : super(
+        'gcp:container/awsNodePool:AwsNodePool',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    autoscaling = registerOutput<AwsNodePoolAutoscaling>('autoscaling', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AwsNodePoolAutoscaling.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    cluster = registerOutput<String>('cluster');
+    config = registerOutput<AwsNodePoolConfig>('config', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AwsNodePoolConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    effectiveAnnotations = registerOutput<Map<String, String>>('effectiveAnnotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    etag = registerOutput<String>('etag');
+    kubeletConfig = registerOutput<AwsNodePoolKubeletConfig>('kubeletConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AwsNodePoolKubeletConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    management = registerOutput<AwsNodePoolManagement>('management', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AwsNodePoolManagement.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    maxPodsConstraint = registerOutput<AwsNodePoolMaxPodsConstraint>('maxPodsConstraint', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AwsNodePoolMaxPodsConstraint.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    reconciling = registerOutput<bool>('reconciling');
+    state = registerOutput<String>('state');
     subnetId = registerOutput<String>('subnetId');
     uid = registerOutput<String>('uid');
     updateSettings = registerOutput<AwsNodePoolUpdateSettings>('updateSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AwsNodePoolUpdateSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });

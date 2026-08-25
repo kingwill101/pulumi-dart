@@ -12,7 +12,7 @@ class BucketIAMMemberArgs {
   final pulumi.Input<String> bucket;
   /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
   /// Structure is documented below.
-  final pulumi.Input<BucketIAMMemberCondition>? condition;
+  final pulumi.Input<BucketIAMMemberCondition?>? condition;
   /// Identities that will be granted the privilege in `role`.
   /// Each entry can have one of the following values:
   /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.

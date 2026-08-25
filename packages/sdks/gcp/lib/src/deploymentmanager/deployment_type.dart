@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'deployment_args.dart';
+import 'deployment_label.dart';
 import 'deployment_state.dart';
 import 'deployment_target.dart';
 
@@ -269,7 +270,7 @@ class DeploymentType extends pulumi.CustomResource {
   late final pulumi.Output<String?> description;
   /// Key-value pairs to apply to this labels.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> labels;
+  late final pulumi.Output<List<DeploymentLabel>?> labels;
   /// Output only. URL of the manifest representing the last manifest that
   /// was successfully deployed.
   late final pulumi.Output<String> manifest;
@@ -306,14 +307,14 @@ class DeploymentType extends pulumi.CustomResource {
           'gcp:deploymentmanager/deployment:Deployment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     createPolicy = registerOutput<String?>('createPolicy');
     deletePolicy = registerOutput<String?>('deletePolicy');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     deploymentId = registerOutput<String>('deploymentId');
     description = registerOutput<String?>('description');
-    labels = registerOutput<List<Map<String, dynamic>>?>('labels');
+    labels = registerOutput<List<DeploymentLabel>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DeploymentLabel>(guardedValue, (value) => DeploymentLabel.fromMap((value as Map).cast<String, dynamic>())); });
     manifest = registerOutput<String>('manifest');
     this.name = registerOutput<String>('name');
     preview = registerOutput<bool?>('preview');
@@ -327,11 +328,12 @@ class DeploymentType extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DeploymentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DeploymentType._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -350,7 +352,30 @@ class DeploymentType extends pulumi.CustomResource {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     deploymentId = registerOutput<String>('deploymentId');
     description = registerOutput<String?>('description');
-    labels = registerOutput<List<Map<String, dynamic>>?>('labels');
+    labels = registerOutput<List<DeploymentLabel>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DeploymentLabel>(guardedValue, (value) => DeploymentLabel.fromMap((value as Map).cast<String, dynamic>())); });
+    manifest = registerOutput<String>('manifest');
+    this.name = registerOutput<String>('name');
+    preview = registerOutput<bool?>('preview');
+    project = registerOutput<String>('project');
+    selfLink = registerOutput<String>('selfLink');
+    target = registerOutput<DeploymentTarget>('target', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeploymentTarget.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [DeploymentType] resource.
+  DeploymentType.reference(String urn)
+    : super(
+        'gcp:deploymentmanager/deployment:Deployment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createPolicy = registerOutput<String?>('createPolicy');
+    deletePolicy = registerOutput<String?>('deletePolicy');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    deploymentId = registerOutput<String>('deploymentId');
+    description = registerOutput<String?>('description');
+    labels = registerOutput<List<DeploymentLabel>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DeploymentLabel>(guardedValue, (value) => DeploymentLabel.fromMap((value as Map).cast<String, dynamic>())); });
     manifest = registerOutput<String>('manifest');
     this.name = registerOutput<String>('name');
     preview = registerOutput<bool?>('preview');

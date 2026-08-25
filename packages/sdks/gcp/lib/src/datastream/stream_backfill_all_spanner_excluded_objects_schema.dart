@@ -8,7 +8,7 @@ class StreamBackfillAllSpannerExcludedObjectsSchema {
   final pulumi.Input<String> schema;
   /// Tables in the schema.
   /// Structure is documented below.
-  final pulumi.Input<List<StreamBackfillAllSpannerExcludedObjectsSchemaTable>>? tables;
+  final pulumi.Input<List<StreamBackfillAllSpannerExcludedObjectsSchemaTable>?>? tables;
 
   /// Creates a new [StreamBackfillAllSpannerExcludedObjectsSchema].
   /// [schema] Schema name.

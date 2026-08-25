@@ -27,8 +27,8 @@ class URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbort {
 
   factory URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbort.fromMap(Map<String, dynamic> map) {
     return URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbort(
-      httpStatus: pulumi.Input.fromValue(map['httpStatus'] as int),
-      percentage: pulumi.Input.fromValue(map['percentage'] as double),
+      httpStatus: pulumi.Input.fromValue((map['httpStatus'] as num).toInt()),
+      percentage: pulumi.Input.fromValue((map['percentage'] as num).toDouble()),
     );
   }
 }

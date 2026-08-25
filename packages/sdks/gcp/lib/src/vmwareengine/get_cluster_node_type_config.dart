@@ -32,8 +32,8 @@ class GetClusterNodeTypeConfig {
 
   factory GetClusterNodeTypeConfig.fromMap(Map<String, dynamic> map) {
     return GetClusterNodeTypeConfig(
-      customCoreCount: pulumi.Input.fromValue(map['customCoreCount'] as int),
-      nodeCount: pulumi.Input.fromValue(map['nodeCount'] as int),
+      customCoreCount: pulumi.Input.fromValue((map['customCoreCount'] as num).toInt()),
+      nodeCount: pulumi.Input.fromValue((map['nodeCount'] as num).toInt()),
       nodeTypeId: pulumi.Input.fromValue(map['nodeTypeId'] as String),
     );
   }

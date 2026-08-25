@@ -124,6 +124,17 @@ Future<GetCertificateMapResult> getCertificateMap(
   return GetCertificateMapResult.fromMap(result);
 }
 
+pulumi.Output<GetCertificateMapResult> getCertificateMapOutput(
+  GetCertificateMapArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:certificatemanager/getCertificateMap:getCertificateMap',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCertificateMapResult.fromMap);
+}
+
 /// List all certificates within Google Certificate Manager for a given project, region or filter.
 ///
 /// ## Example Usage
@@ -317,6 +328,17 @@ Future<GetCertificatesResult> getCertificates(
   return GetCertificatesResult.fromMap(result);
 }
 
+pulumi.Output<GetCertificatesResult> getCertificatesOutput(
+  GetCertificatesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:certificatemanager/getCertificates:getCertificates',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCertificatesResult.fromMap);
+}
+
 /// Use this data source to get information about a Certificate Manager DNS Authorization. For more details, see the [API documentation](https://cloud.google.com/certificate-manager/docs/reference/certificate-manager/rest/v1/projects.locations.dnsAuthorizations).
 ///
 /// ## Example Usage
@@ -440,4 +462,15 @@ Future<GetDnsAuthorizationResult> getDnsAuthorization(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDnsAuthorizationResult.fromMap(result);
+}
+
+pulumi.Output<GetDnsAuthorizationResult> getDnsAuthorizationOutput(
+  GetDnsAuthorizationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:certificatemanager/getDnsAuthorization:getDnsAuthorization',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDnsAuthorizationResult.fromMap);
 }

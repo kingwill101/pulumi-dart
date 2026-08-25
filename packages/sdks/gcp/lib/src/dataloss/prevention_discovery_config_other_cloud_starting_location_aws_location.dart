@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PreventionDiscoveryConfigOtherCloudStartingLocationAwsLocation {
   /// The AWS account ID that this discovery config applies to. Within an organization, you can find the AWS account ID inside an AWS account ARN. Example: arn:&lt;partition&gt;:organizations::&lt;management-account-id&gt;:account/&lt;organization-id&gt;/&lt;account-id&gt;
-  final pulumi.Input<String>? accountId;
+  final pulumi.Input<String?>? accountId;
   /// All AWS assets stored in Asset Inventory that didn't match other AWS discovery configs.
-  final pulumi.Input<bool>? allAssetInventoryAssets;
+  final pulumi.Input<bool?>? allAssetInventoryAssets;
 
   /// Creates a new [PreventionDiscoveryConfigOtherCloudStartingLocationAwsLocation].
   /// [accountId] The AWS account ID that this discovery config applies to. Within an organization, you can find the AWS account ID inside an AWS account ARN. Example: arn:&lt;partition&gt;:organizations::&lt;management-account-id&gt;:account/&lt;organization-id&gt;/&lt;account-id&gt;

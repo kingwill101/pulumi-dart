@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ReservationReservationSharingPolicy {
   /// Sharing config for all Google Cloud services.
   /// Possible values are: `ALLOW_ALL`, `DISALLOW_ALL`.
-  final pulumi.Input<String>? serviceShareType;
+  final pulumi.Input<String?>? serviceShareType;
 
   /// Creates a new [ReservationReservationSharingPolicy].
   /// [serviceShareType] Sharing config for all Google Cloud services.

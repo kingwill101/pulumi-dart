@@ -12,7 +12,7 @@ class JobState {
   /// If the job providers a App Engine HTTP target the cron will
   /// send a request to the service instance
   /// Structure is documented below.
-  final pulumi.Input<JobAppEngineHttpTarget>? appEngineHttpTarget;
+  final pulumi.Input<JobAppEngineHttpTarget?>? appEngineHttpTarget;
   /// The deadline for job attempts. If the request handler does not respond by this deadline then the request is
   /// cancelled and the attempt is marked as a DEADLINE_EXCEEDED failure. The failed attempt can be viewed in
   /// execution logs. Cloud Scheduler will retry the job according to the RetryConfig.
@@ -21,48 +21,48 @@ class JobState {
   /// * For App Engine HTTP targets, between 15 seconds and 24 hours.
   /// * **Note**: For PubSub targets, this field is ignored - setting it will introduce an unresolvable diff.
   /// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
-  final pulumi.Input<String>? attemptDeadline;
+  final pulumi.Input<String?>? attemptDeadline;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// A human-readable description for the job.
   /// This string must not contain more than 500 characters.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// HTTP target.
   /// If the job providers a httpTarget the cron will
   /// send a request to the targeted url
   /// Structure is documented below.
-  final pulumi.Input<JobHttpTarget>? httpTarget;
+  final pulumi.Input<JobHttpTarget?>? httpTarget;
   /// The name of the job.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Sets the job to a paused state. Jobs default to being enabled when this property is not set.
-  final pulumi.Input<bool>? paused;
+  final pulumi.Input<bool?>? paused;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Pub/Sub target
   /// If the job providers a Pub/Sub target the cron will publish
   /// a message to the provided topic
   /// Structure is documented below.
-  final pulumi.Input<JobPubsubTarget>? pubsubTarget;
+  final pulumi.Input<JobPubsubTarget?>? pubsubTarget;
   /// Region where the scheduler job resides. If it is not provided, this provider will use the provider default.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// By default, if a job does not complete successfully,
   /// meaning that an acknowledgement is not received from the handler,
   /// then it will be retried with exponential backoff according to the settings
   /// Structure is documented below.
-  final pulumi.Input<JobRetryConfig>? retryConfig;
+  final pulumi.Input<JobRetryConfig?>? retryConfig;
   /// Describes the schedule on which the job will be executed.
-  final pulumi.Input<String>? schedule;
+  final pulumi.Input<String?>? schedule;
   /// State of the job.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// Specifies the time zone to be used in interpreting schedule.
   /// The value of this field must be a time zone name from the tz database.
-  final pulumi.Input<String>? timeZone;
+  final pulumi.Input<String?>? timeZone;
 
   /// Creates a new [JobState].
   /// [appEngineHttpTarget] App Engine HTTP target.

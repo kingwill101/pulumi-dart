@@ -8,7 +8,7 @@ class GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleClou
   /// The project ID of Google Cloud Storage.
   final pulumi.Input<String> projectId;
   /// The service account key file of Google Cloud Storage.
-  final pulumi.Input<String>? serviceAccountKeyFile;
+  final pulumi.Input<String?>? serviceAccountKeyFile;
 
   /// Creates a new [GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStorage].
   /// [bucket] The bucket of Google Cloud Storage.

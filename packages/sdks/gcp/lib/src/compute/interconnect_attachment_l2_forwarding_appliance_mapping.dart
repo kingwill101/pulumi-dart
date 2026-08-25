@@ -5,13 +5,13 @@ import 'interconnect_attachment_l2_forwarding_appliance_mapping_inner_vlan_to_ap
 
 class InterconnectAttachmentL2ForwardingApplianceMapping {
   /// The appliance IP address.
-  final pulumi.Input<String>? applianceIpAddress;
+  final pulumi.Input<String?>? applianceIpAddress;
   /// Structure is documented below.
-  final pulumi.Input<List<InterconnectAttachmentL2ForwardingApplianceMappingInnerVlanToApplianceMapping>>? innerVlanToApplianceMappings;
+  final pulumi.Input<List<InterconnectAttachmentL2ForwardingApplianceMappingInnerVlanToApplianceMapping>?>? innerVlanToApplianceMappings;
   /// The name of this appliance mapping rule.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The VLAN tag.
-  final pulumi.Input<String>? vlanId;
+  final pulumi.Input<String?>? vlanId;
 
   /// Creates a new [InterconnectAttachmentL2ForwardingApplianceMapping].
   /// [applianceIpAddress] The appliance IP address.

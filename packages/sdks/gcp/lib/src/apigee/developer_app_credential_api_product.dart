@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DeveloperAppCredentialApiProduct {
   /// (Output)
   /// Name of the API product.
-  final pulumi.Input<String>? apiproduct;
+  final pulumi.Input<String?>? apiproduct;
   /// Status of the credential. Valid values include approved or revoked.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
 
   /// Creates a new [DeveloperAppCredentialApiProduct].
   /// [apiproduct] (Output)

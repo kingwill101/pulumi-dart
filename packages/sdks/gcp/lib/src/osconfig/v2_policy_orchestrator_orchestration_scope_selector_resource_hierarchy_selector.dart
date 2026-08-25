@@ -5,10 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class V2PolicyOrchestratorOrchestrationScopeSelectorResourceHierarchySelector {
   /// Optional. Names of the folders in scope.
   /// Format: `folders/{folder_id}`
-  final pulumi.Input<List<String>>? includedFolders;
+  final pulumi.Input<List<String>?>? includedFolders;
   /// Optional. Names of the projects in scope.
   /// Format: `projects/{project_number}`
-  final pulumi.Input<List<String>>? includedProjects;
+  final pulumi.Input<List<String>?>? includedProjects;
 
   /// Creates a new [V2PolicyOrchestratorOrchestrationScopeSelectorResourceHierarchySelector].
   /// [includedFolders] Optional. Names of the folders in scope.

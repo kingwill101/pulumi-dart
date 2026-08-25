@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfig {
   /// The TTL duration for memories uploaded via CreateMemory.
-  final pulumi.Input<String>? createTtl;
+  final pulumi.Input<String?>? createTtl;
   /// The TTL duration for memories newly generated via GenerateMemories.
-  final pulumi.Input<String>? generateCreatedTtl;
+  final pulumi.Input<String?>? generateCreatedTtl;
   /// The TTL duration for memories updated via GenerateMemories.
-  final pulumi.Input<String>? generateUpdatedTtl;
+  final pulumi.Input<String?>? generateUpdatedTtl;
 
   /// Creates a new [AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfig].
   /// [createTtl] The TTL duration for memories uploaded via CreateMemory.

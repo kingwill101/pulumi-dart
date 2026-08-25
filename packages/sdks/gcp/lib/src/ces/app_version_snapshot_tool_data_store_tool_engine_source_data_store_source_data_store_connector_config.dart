@@ -5,14 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AppVersionSnapshotToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfig {
   /// (Output)
   /// Resource name of the collection the data store belongs to.
-  final pulumi.Input<String>? collection;
+  final pulumi.Input<String?>? collection;
   /// (Output)
   /// Display name of the collection the data store belongs to.
-  final pulumi.Input<String>? collectionDisplayName;
+  final pulumi.Input<String?>? collectionDisplayName;
   /// (Output)
   /// The name of the data source.
   /// Example: `salesforce`, `jira`, `confluence`, `bigquery`.
-  final pulumi.Input<String>? dataSource;
+  final pulumi.Input<String?>? dataSource;
 
   /// Creates a new [AppVersionSnapshotToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfig].
   /// [collection] (Output)

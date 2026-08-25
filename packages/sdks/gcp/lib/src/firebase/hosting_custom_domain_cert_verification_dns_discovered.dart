@@ -5,10 +5,10 @@ import 'hosting_custom_domain_cert_verification_dns_discovered_record.dart';
 
 class HostingCustomDomainCertVerificationDnsDiscovered {
   /// The domain name the record pertains to, e.g. `foo.bar.com.`.
-  final pulumi.Input<String>? domainName;
+  final pulumi.Input<String?>? domainName;
   /// Records on the domain
   /// Structure is documented below.
-  final pulumi.Input<List<HostingCustomDomainCertVerificationDnsDiscoveredRecord>>? records;
+  final pulumi.Input<List<HostingCustomDomainCertVerificationDnsDiscoveredRecord>?>? records;
 
   /// Creates a new [HostingCustomDomainCertVerificationDnsDiscovered].
   /// [domainName] The domain name the record pertains to, e.g. `foo.bar.com.`.

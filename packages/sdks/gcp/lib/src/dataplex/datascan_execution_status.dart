@@ -5,10 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DatascanExecutionStatus {
   /// (Output)
   /// The time when the latest DataScanJob ended.
-  final pulumi.Input<String>? latestJobEndTime;
+  final pulumi.Input<String?>? latestJobEndTime;
   /// (Output)
   /// The time when the latest DataScanJob started.
-  final pulumi.Input<String>? latestJobStartTime;
+  final pulumi.Input<String?>? latestJobStartTime;
 
   /// Creates a new [DatascanExecutionStatus].
   /// [latestJobEndTime] (Output)

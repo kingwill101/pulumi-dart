@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClusterMaintenancePolicyMaintenanceExclusionWindow {
   /// The time that the window ends. The end time must take place after the
   /// start time.
-  final pulumi.Input<String>? endTime;
+  final pulumi.Input<String?>? endTime;
   /// The time that the window first starts.
-  final pulumi.Input<String>? startTime;
+  final pulumi.Input<String?>? startTime;
 
   /// Creates a new [ClusterMaintenancePolicyMaintenanceExclusionWindow].
   /// [endTime] The time that the window ends. The end time must take place after the

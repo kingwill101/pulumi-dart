@@ -12,7 +12,7 @@ class ManagedFolderIamBindingArgs {
   final pulumi.Input<String> bucket;
   /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
   /// Structure is documented below.
-  final pulumi.Input<ManagedFolderIamBindingCondition>? condition;
+  final pulumi.Input<ManagedFolderIamBindingCondition?>? condition;
   /// Used to find the parent resource to bind the IAM policy to
   final pulumi.Input<String> managedFolder;
   /// Identities that will be granted the privilege in `role`.

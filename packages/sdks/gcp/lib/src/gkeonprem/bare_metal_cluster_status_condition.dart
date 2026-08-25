@@ -5,18 +5,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class BareMetalClusterStatusCondition {
   /// (Output)
   /// Last time the condition transit from one status to another.
-  final pulumi.Input<String>? lastTransitionTime;
+  final pulumi.Input<String?>? lastTransitionTime;
   /// Human-readable message indicating details about last transition.
-  final pulumi.Input<String>? message;
+  final pulumi.Input<String?>? message;
   /// (Output)
   /// A human-readable message of the check failure.
-  final pulumi.Input<String>? reason;
+  final pulumi.Input<String?>? reason;
   /// (Output)
   /// The lifecycle state of the condition.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// Type of the condition.
   /// (e.g., ClusterRunning, NodePoolRunning or ServerSidePreflightReady)
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [BareMetalClusterStatusCondition].
   /// [lastTransitionTime] (Output)

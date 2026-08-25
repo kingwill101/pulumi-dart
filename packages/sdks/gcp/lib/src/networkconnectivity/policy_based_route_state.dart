@@ -9,56 +9,56 @@ import 'policy_based_route_warning.dart';
 /// Input properties used for looking up and filtering PolicyBasedRoute resources.
 class PolicyBasedRouteState {
   /// Time when the policy-based route was created.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// An optional description of this resource.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveLabels;
+  final pulumi.Input<Map<String, String>?>? effectiveLabels;
   /// The filter to match L4 traffic.
   /// Structure is documented below.
-  final pulumi.Input<PolicyBasedRouteFilter>? filter;
+  final pulumi.Input<PolicyBasedRouteFilter?>? filter;
   /// The interconnect attachments that this policy-based route applies to.
   /// Structure is documented below.
-  final pulumi.Input<PolicyBasedRouteInterconnectAttachment>? interconnectAttachment;
+  final pulumi.Input<PolicyBasedRouteInterconnectAttachment?>? interconnectAttachment;
   /// Type of this resource.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// User-defined labels.
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The name of the policy based route.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Fully-qualified URL of the network that this route applies to, for example: projects/my-project/global/networks/my-network.
-  final pulumi.Input<String>? network;
+  final pulumi.Input<String?>? network;
   /// The IP address of a global-access-enabled L4 ILB that is the next hop for matching packets.
-  final pulumi.Input<String>? nextHopIlbIp;
+  final pulumi.Input<String?>? nextHopIlbIp;
   /// Other routes that will be referenced to determine the next hop of the packet.
   /// Possible values are: `DEFAULT_ROUTING`.
-  final pulumi.Input<String>? nextHopOtherRoutes;
+  final pulumi.Input<String?>? nextHopOtherRoutes;
   /// The priority of this policy-based route. Priority is used to break ties in cases where there are more than one matching policy-based routes found. In cases where multiple policy-based routes are matched, the one with the lowest-numbered priority value wins. The default value is 1000. The priority value must be from 1 to 65535, inclusive.
-  final pulumi.Input<int>? priority;
+  final pulumi.Input<int?>? priority;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  final pulumi.Input<Map<String, String>>? pulumiLabels;
+  final pulumi.Input<Map<String, String>?>? pulumiLabels;
   /// Time when the policy-based route was created.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
   /// VM instances to which this policy-based route applies to.
   /// Structure is documented below.
-  final pulumi.Input<PolicyBasedRouteVirtualMachine>? virtualMachine;
+  final pulumi.Input<PolicyBasedRouteVirtualMachine?>? virtualMachine;
   /// If potential misconfigurations are detected for this route, this field will be populated with warning messages.
   /// Structure is documented below.
-  final pulumi.Input<List<PolicyBasedRouteWarning>>? warnings;
+  final pulumi.Input<List<PolicyBasedRouteWarning>?>? warnings;
 
   /// Creates a new [PolicyBasedRouteState].
   /// [createTime] Time when the policy-based route was created.
@@ -137,7 +137,7 @@ class PolicyBasedRouteState {
       network: (() { final guardedValue = map['network']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       nextHopIlbIp: (() { final guardedValue = map['nextHopIlbIp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       nextHopOtherRoutes: (() { final guardedValue = map['nextHopOtherRoutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       pulumiLabels: (() { final guardedValue = map['pulumiLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

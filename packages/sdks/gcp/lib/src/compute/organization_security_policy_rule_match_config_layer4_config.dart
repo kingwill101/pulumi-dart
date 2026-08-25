@@ -16,7 +16,7 @@ class OrganizationSecurityPolicyRuleMatchConfigLayer4Config {
   ///
   /// Example inputs include: ["22"], ["80","443"], and
   /// ["12345-12349"].
-  final pulumi.Input<List<String>>? ports;
+  final pulumi.Input<List<String>?>? ports;
 
   /// Creates a new [OrganizationSecurityPolicyRuleMatchConfigLayer4Config].
   /// [ipProtocol] The IP protocol to which this rule applies. The protocol

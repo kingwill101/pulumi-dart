@@ -6,10 +6,10 @@ import 'keystores_aliases_pkcs12_certs_info.dart';
 /// Input properties used for looking up and filtering KeystoresAliasesPkcs12 resources.
 class KeystoresAliasesPkcs12State {
   /// Alias Name
-  final pulumi.Input<String>? alias;
+  final pulumi.Input<String?>? alias;
   /// Chain of certificates under this alias.
   /// Structure is documented below.
-  final pulumi.Input<List<KeystoresAliasesPkcs12CertsInfo>>? certsInfos;
+  final pulumi.Input<List<KeystoresAliasesPkcs12CertsInfo>?>? certsInfos;
   /// (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -18,21 +18,21 @@ class KeystoresAliasesPkcs12State {
   /// When set to "DELETE", deleting the resource is allowed.
   ///
   /// - - -
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Environment associated with the alias
-  final pulumi.Input<String>? environment;
+  final pulumi.Input<String?>? environment;
   /// PKCS12 file content
-  final pulumi.Input<String>? file;
+  final pulumi.Input<String?>? file;
   /// Hash of the pkcs file
-  final pulumi.Input<String>? filehash;
+  final pulumi.Input<String?>? filehash;
   /// Keystore Name
-  final pulumi.Input<String>? keystore;
+  final pulumi.Input<String?>? keystore;
   /// Organization ID associated with the alias, without organization/ prefix
-  final pulumi.Input<String>? orgId;
+  final pulumi.Input<String?>? orgId;
   /// Password for the PKCS12 file if it's encrypted
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// Optional.Type of Alias
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [KeystoresAliasesPkcs12State].
   /// [alias] Alias Name

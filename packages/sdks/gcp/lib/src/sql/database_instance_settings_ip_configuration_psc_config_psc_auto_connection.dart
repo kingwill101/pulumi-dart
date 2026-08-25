@@ -6,21 +6,21 @@ class DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnection {
   /// "The consumer network of this consumer endpoint. This must be a resource path that includes both the host project and the network name. For example, `projects/project1/global/networks/network1`. The consumer host project of this network might be different from the consumer service project."
   final pulumi.Input<String> consumerNetwork;
   /// (Output) The connection policy status of the consumer network.
-  final pulumi.Input<String>? consumerNetworkStatus;
+  final pulumi.Input<String?>? consumerNetworkStatus;
   /// The project ID of consumer service project of this consumer endpoint.
-  final pulumi.Input<String>? consumerServiceProjectId;
+  final pulumi.Input<String?>? consumerServiceProjectId;
   /// (Output) The status of the automated DNS provisioning for the instance.
-  final pulumi.Input<String>? instanceAutoDnsStatus;
+  final pulumi.Input<String?>? instanceAutoDnsStatus;
   /// (Output) The IP address of the consumer endpoint.
-  final pulumi.Input<String>? ipAddress;
+  final pulumi.Input<String?>? ipAddress;
   /// (Output) The service connection policy created for the auto connection.
-  final pulumi.Input<String>? serviceConnectionPolicy;
+  final pulumi.Input<String?>? serviceConnectionPolicy;
   /// (Output) The result of the service connection policy creation.
-  final pulumi.Input<String>? serviceConnectionPolicyCreationResult;
+  final pulumi.Input<String?>? serviceConnectionPolicyCreationResult;
   /// (Output) The connection status of the consumer endpoint.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// (Output) The status of the automated DNS provisioning for the write endpoint.
-  final pulumi.Input<String>? writeEndpointAutoDnsStatus;
+  final pulumi.Input<String?>? writeEndpointAutoDnsStatus;
 
   /// Creates a new [DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnection].
   /// [consumerNetwork] "The consumer network of this consumer endpoint. This must be a resource path that includes both the host project and the network name. For example, `projects/project1/global/networks/network1`. The consumer host project of this network might be different from the consumer service project."

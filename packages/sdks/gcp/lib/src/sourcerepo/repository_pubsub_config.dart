@@ -12,7 +12,7 @@ class RepositoryPubsubConfig {
   /// This service account needs to be in the same project as the PubsubConfig. When added,
   /// the caller needs to have iam.serviceAccounts.actAs permission on this service account.
   /// If unspecified, it defaults to the compute engine default service account.
-  final pulumi.Input<String>? serviceAccountEmail;
+  final pulumi.Input<String?>? serviceAccountEmail;
   /// The identifier for this object. Format specified above.
   final pulumi.Input<String> topic;
 

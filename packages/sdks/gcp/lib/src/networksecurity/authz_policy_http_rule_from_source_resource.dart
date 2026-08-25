@@ -7,10 +7,10 @@ import 'authz_policy_http_rule_from_source_resource_tag_value_id_set.dart';
 class AuthzPolicyHttpRuleFromSourceResource {
   /// An IAM service account to match against the source service account of the VM sending the request.
   /// Structure is documented below.
-  final pulumi.Input<AuthzPolicyHttpRuleFromSourceResourceIamServiceAccount>? iamServiceAccount;
+  final pulumi.Input<AuthzPolicyHttpRuleFromSourceResourceIamServiceAccount?>? iamServiceAccount;
   /// A list of resource tag value permanent IDs to match against the resource manager tags value associated with the source VM of a request.
   /// Structure is documented below.
-  final pulumi.Input<AuthzPolicyHttpRuleFromSourceResourceTagValueIdSet>? tagValueIdSet;
+  final pulumi.Input<AuthzPolicyHttpRuleFromSourceResourceTagValueIdSet?>? tagValueIdSet;
 
   /// Creates a new [AuthzPolicyHttpRuleFromSourceResource].
   /// [iamServiceAccount] An IAM service account to match against the source service account of the VM sending the request.

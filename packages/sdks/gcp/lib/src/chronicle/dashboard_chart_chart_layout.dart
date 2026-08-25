@@ -8,9 +8,9 @@ class DashboardChartChartLayout {
   /// (Required)
   final pulumi.Input<int> spanY;
   /// (Optional)
-  final pulumi.Input<int>? startX;
+  final pulumi.Input<int?>? startX;
   /// (Optional)
-  final pulumi.Input<int>? startY;
+  final pulumi.Input<int?>? startY;
 
   /// Creates a new [DashboardChartChartLayout].
   /// [spanX] (Required)
@@ -35,10 +35,10 @@ class DashboardChartChartLayout {
 
   factory DashboardChartChartLayout.fromMap(Map<String, dynamic> map) {
     return DashboardChartChartLayout(
-      spanX: pulumi.Input.fromValue(map['spanX'] as int),
-      spanY: pulumi.Input.fromValue(map['spanY'] as int),
-      startX: (() { final guardedValue = map['startX']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      startY: (() { final guardedValue = map['startY']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      spanX: pulumi.Input.fromValue((map['spanX'] as num).toInt()),
+      spanY: pulumi.Input.fromValue((map['spanY'] as num).toInt()),
+      startX: (() { final guardedValue = map['startX']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      startY: (() { final guardedValue = map['startY']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

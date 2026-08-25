@@ -295,7 +295,7 @@ class ServicePerimeterResource extends pulumi.CustomResource {
           'gcp:accesscontextmanager/servicePerimeterResource:ServicePerimeterResource',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     accessPolicyId = registerOutput<String>('accessPolicyId');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -309,11 +309,12 @@ class ServicePerimeterResource extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ServicePerimeterResourceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ServicePerimeterResource._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -327,6 +328,22 @@ class ServicePerimeterResource extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    accessPolicyId = registerOutput<String>('accessPolicyId');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    etag = registerOutput<String>('etag');
+    perimeterName = registerOutput<String>('perimeterName');
+    resource = registerOutput<String>('resource');
+  }
+
+  /// Creates a typed reference to an existing [ServicePerimeterResource] resource.
+  ServicePerimeterResource.reference(String urn)
+    : super(
+        'gcp:accesscontextmanager/servicePerimeterResource:ServicePerimeterResource',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     accessPolicyId = registerOutput<String>('accessPolicyId');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     etag = registerOutput<String>('etag');

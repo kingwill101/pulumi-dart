@@ -8,10 +8,10 @@ import 'repository_iam_binding_condition.dart';
 /// {@endtemplate}
 /// {@macro pulumi_dataform_repository_iam_binding_repository_iam_binding_args_doc}
 class RepositoryIamBindingArgs {
-  final pulumi.Input<RepositoryIamBindingCondition>? condition;
+  final pulumi.Input<RepositoryIamBindingCondition?>? condition;
   final pulumi.Input<List<String>> members;
-  final pulumi.Input<String>? project;
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? project;
+  final pulumi.Input<String?>? region;
   final pulumi.Input<String> repository;
   final pulumi.Input<String> role;
 

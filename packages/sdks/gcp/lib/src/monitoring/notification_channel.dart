@@ -396,19 +396,19 @@ class NotificationChannel extends pulumi.CustomResource {
           'gcp:monitoring/notificationChannel:NotificationChannel',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
     enabled = registerOutput<bool?>('enabled');
     forceDelete = registerOutput<bool?>('forceDelete');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     sensitiveLabels = registerOutput<NotificationChannelSensitiveLabels?>('sensitiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NotificationChannelSensitiveLabels.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
-    userLabels = registerOutput<Map<String, String>?>('userLabels');
+    userLabels = registerOutput<Map<String, String>?>('userLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     verificationStatus = registerOutput<String>('verificationStatus');
   }
 
@@ -417,11 +417,12 @@ class NotificationChannel extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     NotificationChannelState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return NotificationChannel._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -440,12 +441,35 @@ class NotificationChannel extends pulumi.CustomResource {
     displayName = registerOutput<String?>('displayName');
     enabled = registerOutput<bool?>('enabled');
     forceDelete = registerOutput<bool?>('forceDelete');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     sensitiveLabels = registerOutput<NotificationChannelSensitiveLabels?>('sensitiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NotificationChannelSensitiveLabels.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
-    userLabels = registerOutput<Map<String, String>?>('userLabels');
+    userLabels = registerOutput<Map<String, String>?>('userLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    verificationStatus = registerOutput<String>('verificationStatus');
+  }
+
+  /// Creates a typed reference to an existing [NotificationChannel] resource.
+  NotificationChannel.reference(String urn)
+    : super(
+        'gcp:monitoring/notificationChannel:NotificationChannel',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String?>('displayName');
+    enabled = registerOutput<bool?>('enabled');
+    forceDelete = registerOutput<bool?>('forceDelete');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    sensitiveLabels = registerOutput<NotificationChannelSensitiveLabels?>('sensitiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NotificationChannelSensitiveLabels.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+    userLabels = registerOutput<Map<String, String>?>('userLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     verificationStatus = registerOutput<String>('verificationStatus');
   }
 }

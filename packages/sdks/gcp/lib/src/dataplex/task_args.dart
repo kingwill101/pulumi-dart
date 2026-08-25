@@ -17,11 +17,11 @@ class TaskArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// User-provided description of the task.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// User friendly display name.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Configuration for the cluster
   /// Structure is documented below.
   final pulumi.Input<TaskExecutionSpec> executionSpec;
@@ -29,22 +29,22 @@ class TaskArgs {
   ///
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The lake in which the task will be created in.
-  final pulumi.Input<String>? lake;
+  final pulumi.Input<String?>? lake;
   /// The location in which the task will be created in.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
   /// Structure is documented below.
-  final pulumi.Input<TaskNotebook>? notebook;
+  final pulumi.Input<TaskNotebook?>? notebook;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
   /// Structure is documented below.
-  final pulumi.Input<TaskSpark>? spark;
+  final pulumi.Input<TaskSpark?>? spark;
   /// The task Id of the task.
-  final pulumi.Input<String>? taskId;
+  final pulumi.Input<String?>? taskId;
   /// Configuration for the cluster
   /// Structure is documented below.
   final pulumi.Input<TaskTriggerSpec> triggerSpec;

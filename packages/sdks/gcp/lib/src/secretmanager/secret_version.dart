@@ -1338,7 +1338,8 @@ class SecretVersion extends pulumi.CustomResource {
           'gcp:secretmanager/secretVersion:SecretVersion',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['secretData', 'secretDataWo'],
         ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -1348,8 +1349,8 @@ class SecretVersion extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     secret = registerOutput<String>('secret');
-    secretData = registerOutput<String?>('secretData');
-    secretDataWo = registerOutput<String?>('secretDataWo');
+    secretData = registerOutput<String?>('secretData', isSecret: true);
+    secretDataWo = registerOutput<String?>('secretDataWo', isSecret: true);
     secretDataWoVersion = registerOutput<int?>('secretDataWoVersion');
     version = registerOutput<String>('version');
   }
@@ -1359,11 +1360,12 @@ class SecretVersion extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SecretVersionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SecretVersion._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1385,8 +1387,32 @@ class SecretVersion extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     secret = registerOutput<String>('secret');
-    secretData = registerOutput<String?>('secretData');
-    secretDataWo = registerOutput<String?>('secretDataWo');
+    secretData = registerOutput<String?>('secretData', isSecret: true);
+    secretDataWo = registerOutput<String?>('secretDataWo', isSecret: true);
+    secretDataWoVersion = registerOutput<int?>('secretDataWoVersion');
+    version = registerOutput<String>('version');
+  }
+
+  /// Creates a typed reference to an existing [SecretVersion] resource.
+  SecretVersion.reference(String urn)
+    : super(
+        'gcp:secretmanager/secretVersion:SecretVersion',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['secretData', 'secretDataWo'],
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    destroyTime = registerOutput<String>('destroyTime');
+    enabled = registerOutput<bool?>('enabled');
+    isSecretDataBase64 = registerOutput<bool?>('isSecretDataBase64');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    secret = registerOutput<String>('secret');
+    secretData = registerOutput<String?>('secretData', isSecret: true);
+    secretDataWo = registerOutput<String?>('secretDataWo', isSecret: true);
     secretDataWoVersion = registerOutput<int?>('secretDataWoVersion');
     version = registerOutput<String>('version');
   }

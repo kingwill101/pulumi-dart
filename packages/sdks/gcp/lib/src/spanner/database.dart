@@ -311,10 +311,10 @@ class Database extends pulumi.CustomResource {
           'gcp:spanner/database:Database',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     databaseDialect = registerOutput<String>('databaseDialect');
-    ddls = registerOutput<List<String>?>('ddls');
+    ddls = registerOutput<List<String>?>('ddls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     defaultTimeZone = registerOutput<String?>('defaultTimeZone');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     deletionProtection = registerOutput<bool?>('deletionProtection');
@@ -332,11 +332,12 @@ class Database extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DatabaseState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Database._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -351,7 +352,7 @@ class Database extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     databaseDialect = registerOutput<String>('databaseDialect');
-    ddls = registerOutput<List<String>?>('ddls');
+    ddls = registerOutput<List<String>?>('ddls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     defaultTimeZone = registerOutput<String?>('defaultTimeZone');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     deletionProtection = registerOutput<bool?>('deletionProtection');
@@ -361,6 +362,29 @@ class Database extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     this.state = registerOutput<String>('state');
+    versionRetentionPeriod = registerOutput<String>('versionRetentionPeriod');
+  }
+
+  /// Creates a typed reference to an existing [Database] resource.
+  Database.reference(String urn)
+    : super(
+        'gcp:spanner/database:Database',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    databaseDialect = registerOutput<String>('databaseDialect');
+    ddls = registerOutput<List<String>?>('ddls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    defaultTimeZone = registerOutput<String?>('defaultTimeZone');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    deletionProtection = registerOutput<bool?>('deletionProtection');
+    enableDropProtection = registerOutput<bool?>('enableDropProtection');
+    encryptionConfig = registerOutput<DatabaseEncryptionConfig?>('encryptionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseEncryptionConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    instance = registerOutput<String>('instance');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    state = registerOutput<String>('state');
     versionRetentionPeriod = registerOutput<String>('versionRetentionPeriod');
   }
 }

@@ -6,45 +6,45 @@ import 'cmek_config_single_region_key.dart';
 /// Input properties used for looking up and filtering CmekConfig resources.
 class CmekConfigState {
   /// The unique id of the cmek config.
-  final pulumi.Input<String>? cmekConfigId;
+  final pulumi.Input<String?>? cmekConfigId;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The default CmekConfig for the Customer.
-  final pulumi.Input<bool>? isDefault;
+  final pulumi.Input<bool?>? isDefault;
   /// KMS key resource name which will be used to encrypt resources
   /// `projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{keyId}`.
-  final pulumi.Input<String>? kmsKey;
+  final pulumi.Input<String?>? kmsKey;
   /// KMS key version resource name which will be used to encrypt resources
   /// `&lt;kms_key&gt;/cryptoKeyVersions/{keyVersion}`.
-  final pulumi.Input<String>? kmsKeyVersion;
+  final pulumi.Input<String?>? kmsKeyVersion;
   /// The timestamp of the last key rotation.
-  final pulumi.Input<int>? lastRotationTimestampMicros;
+  final pulumi.Input<int?>? lastRotationTimestampMicros;
   /// The geographic location where the CMEK config should reside. The value can
   /// only be one of "us" and "eu".
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The unique full resource name of the cmek config. Values are of the format
   /// `projects/{project}/locations/{location}/cmekConfigs/{cmek_config_id}`.
   /// This field must be a UTF-8 encoded string with a length limit of 1024
   /// characters.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Whether the NotebookLM Corpus is ready to be used.
-  final pulumi.Input<String>? notebooklmState;
+  final pulumi.Input<String?>? notebooklmState;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Set the following CmekConfig as the default to be used for child resources
   /// if one is not specified. The default value is true.
-  final pulumi.Input<bool>? setDefault;
+  final pulumi.Input<bool?>? setDefault;
   /// Single-regional CMEKs that are required for some VAIS features.
   /// Structure is documented below.
-  final pulumi.Input<List<CmekConfigSingleRegionKey>>? singleRegionKeys;
+  final pulumi.Input<List<CmekConfigSingleRegionKey>?>? singleRegionKeys;
   /// The state of the CmekConfig.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
 
   /// Creates a new [CmekConfigState].
   /// [cmekConfigId] The unique id of the cmek config.
@@ -101,7 +101,7 @@ class CmekConfigState {
       isDefault: (() { final guardedValue = map['isDefault']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       kmsKey: (() { final guardedValue = map['kmsKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       kmsKeyVersion: (() { final guardedValue = map['kmsKeyVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      lastRotationTimestampMicros: (() { final guardedValue = map['lastRotationTimestampMicros']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      lastRotationTimestampMicros: (() { final guardedValue = map['lastRotationTimestampMicros']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       notebooklmState: (() { final guardedValue = map['notebooklmState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

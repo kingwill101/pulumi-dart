@@ -4,18 +4,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConnectionProfileOracleProfile {
   /// Connection string attributes
-  final pulumi.Input<Map<String, String>>? connectionAttributes;
+  final pulumi.Input<Map<String, String>?>? connectionAttributes;
   /// Database for the Oracle connection.
   final pulumi.Input<String> databaseService;
   /// Hostname for the Oracle connection.
   final pulumi.Input<String> hostname;
   /// Password for the Oracle connection.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// Port for the Oracle connection.
-  final pulumi.Input<int>? port;
+  final pulumi.Input<int?>? port;
   /// A reference to a Secret Manager resource name storing the user's password.
-  final pulumi.Input<String>? secretManagerStoredPassword;
+  final pulumi.Input<String?>? secretManagerStoredPassword;
   /// Username for the Oracle connection.
   final pulumi.Input<String> username;
 
@@ -55,7 +55,7 @@ class ConnectionProfileOracleProfile {
       databaseService: pulumi.Input.fromValue(map['databaseService'] as String),
       hostname: pulumi.Input.fromValue(map['hostname'] as String),
       password: (() { final guardedValue = map['password']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       secretManagerStoredPassword: (() { final guardedValue = map['secretManagerStoredPassword']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       username: pulumi.Input.fromValue(map['username'] as String),
     );

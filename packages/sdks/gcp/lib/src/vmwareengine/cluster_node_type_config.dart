@@ -7,7 +7,7 @@ class ClusterNodeTypeConfig {
   /// This number must always be one of `nodeType.availableCustomCoreCounts`.
   /// If zero is provided max value from `nodeType.availableCustomCoreCounts` will be used.
   /// Once the customer is created then corecount cannot be changed.
-  final pulumi.Input<int>? customCoreCount;
+  final pulumi.Input<int?>? customCoreCount;
   /// The number of nodes of this type in the cluster.
   final pulumi.Input<int> nodeCount;
   /// The identifier for this object. Format specified above.
@@ -33,8 +33,8 @@ class ClusterNodeTypeConfig {
 
   factory ClusterNodeTypeConfig.fromMap(Map<String, dynamic> map) {
     return ClusterNodeTypeConfig(
-      customCoreCount: (() { final guardedValue = map['customCoreCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      nodeCount: pulumi.Input.fromValue(map['nodeCount'] as int),
+      customCoreCount: (() { final guardedValue = map['customCoreCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      nodeCount: pulumi.Input.fromValue((map['nodeCount'] as num).toInt()),
       nodeTypeId: pulumi.Input.fromValue(map['nodeTypeId'] as String),
     );
   }

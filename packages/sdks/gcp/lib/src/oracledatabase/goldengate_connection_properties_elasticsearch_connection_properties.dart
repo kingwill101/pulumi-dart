@@ -7,32 +7,32 @@ class GoldengateConnectionPropertiesElasticsearchConnectionProperties {
   /// Possible values:
   /// NONE
   /// BASIC
-  final pulumi.Input<String>? authenticationType;
+  final pulumi.Input<String?>? authenticationType;
   /// Fingerprint required by TLS security protocol.
   /// Eg.: '6152b2dfbff200f973c5074a5b91d06ab3b472c07c09a1ea57bb7fd406cdce9c'
-  final pulumi.Input<String>? fingerprint;
+  final pulumi.Input<String?>? fingerprint;
   /// Input only. The password Oracle Goldengate uses for Elastic Search connection
   /// in plain text.
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// Input only. The resource name of a secret version in Secret Manager which contains
   /// the password Oracle Goldengate uses for Elastic Search connection.
   /// Format: projects/{project}/secrets/{secret}/versions/{version}.
-  final pulumi.Input<String>? passwordSecretVersion;
+  final pulumi.Input<String?>? passwordSecretVersion;
   /// Security protocol for Elasticsearch.
   /// Possible values:
   /// PLAIN
   /// TLS
-  final pulumi.Input<String>? securityProtocol;
+  final pulumi.Input<String?>? securityProtocol;
   /// Comma separated list of Elasticsearch server addresses, specified as
   /// host:port entries, where :port is optional. If port is not specified, it
   /// defaults to 9200. Example:
   /// "server1.example.com:4000,server2.example.com:4000"
-  final pulumi.Input<String>? servers;
+  final pulumi.Input<String?>? servers;
   /// The technology type of ElasticsearchConnection.
-  final pulumi.Input<String>? technologyType;
+  final pulumi.Input<String?>? technologyType;
   /// The username Oracle Goldengate uses to connect the associated system of
   /// the given technology.
-  final pulumi.Input<String>? username;
+  final pulumi.Input<String?>? username;
 
   /// Creates a new [GoldengateConnectionPropertiesElasticsearchConnectionProperties].
   /// [authenticationType] Authentication type for Elasticsearch.

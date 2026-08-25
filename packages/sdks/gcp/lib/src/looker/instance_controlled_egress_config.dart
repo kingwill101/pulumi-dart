@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class InstanceControlledEgressConfig {
   /// List of fully qualified domain names to be added to the allowlist for
   /// outbound traffic.
-  final pulumi.Input<List<String>>? egressFqdns;
+  final pulumi.Input<List<String>?>? egressFqdns;
   /// Whether the Looker Marketplace is enabled.
-  final pulumi.Input<bool>? marketplaceEnabled;
+  final pulumi.Input<bool?>? marketplaceEnabled;
 
   /// Creates a new [InstanceControlledEgressConfig].
   /// [egressFqdns] List of fully qualified domain names to be added to the allowlist for

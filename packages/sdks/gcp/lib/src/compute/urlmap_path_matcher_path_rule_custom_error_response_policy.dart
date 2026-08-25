@@ -9,14 +9,14 @@ class URLMapPathMatcherPathRuleCustomErrorResponsePolicy {
   /// For example, assume that you configure a rule for 401 (Un-authorized) code, and another for all 4 series error codes (4XX).
   /// If the backend service returns a 401, then the rule for 401 will be applied. However if the backend service returns a 403, the rule for 4xx takes effect.
   /// Structure is documented below.
-  final pulumi.Input<List<URLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRule>>? errorResponseRules;
+  final pulumi.Input<List<URLMapPathMatcherPathRuleCustomErrorResponsePolicyErrorResponseRule>?>? errorResponseRules;
   /// The full or partial URL to the BackendBucket resource that contains the custom error content. Examples are:
   /// https://www.googleapis.com/compute/v1/projects/project/global/backendBuckets/myBackendBucket
   /// compute/v1/projects/project/global/backendBuckets/myBackendBucket
   /// global/backendBuckets/myBackendBucket
   /// If errorService is not specified at lower levels like pathMatcher, pathRule and routeRule, an errorService specified at a higher level in the UrlMap will be used. If UrlMap.defaultCustomErrorResponsePolicy contains one or more errorResponseRules[], it must specify errorService.
   /// If load balancer cannot reach the backendBucket, a simple Not Found Error will be returned, with the original response code (or overrideResponseCode if configured).
-  final pulumi.Input<String>? errorService;
+  final pulumi.Input<String?>? errorService;
 
   /// Creates a new [URLMapPathMatcherPathRuleCustomErrorResponsePolicy].
   /// [errorResponseRules] Specifies rules for returning error responses.

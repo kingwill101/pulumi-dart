@@ -23,43 +23,43 @@ class JobArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// By default, you can only delete inactive jobs within
   /// Dataproc. Setting this to true, and calling destroy, will ensure that the
   /// job is first cancelled before issuing the delete.
-  final pulumi.Input<bool>? forceDelete;
+  final pulumi.Input<bool?>? forceDelete;
   /// The config of Hadoop job
-  final pulumi.Input<JobHadoopConfig>? hadoopConfig;
+  final pulumi.Input<JobHadoopConfig?>? hadoopConfig;
   /// The config of hive job
-  final pulumi.Input<JobHiveConfig>? hiveConfig;
+  final pulumi.Input<JobHiveConfig?>? hiveConfig;
   /// The list of labels (key/value pairs) to add to the job.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field 'effective_labels' for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The config of pag job.
-  final pulumi.Input<JobPigConfig>? pigConfig;
+  final pulumi.Input<JobPigConfig?>? pigConfig;
   /// The config of job placement.
   final pulumi.Input<JobPlacement> placement;
   /// The config of presto job
-  final pulumi.Input<JobPrestoConfig>? prestoConfig;
+  final pulumi.Input<JobPrestoConfig?>? prestoConfig;
   /// The project in which the `cluster` can be found and jobs
   /// subsequently run against. If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The config of pySpark job.
-  final pulumi.Input<JobPysparkConfig>? pysparkConfig;
+  final pulumi.Input<JobPysparkConfig?>? pysparkConfig;
   /// The reference of the job
-  final pulumi.Input<JobReference>? reference;
+  final pulumi.Input<JobReference?>? reference;
   /// The Cloud Dataproc region. This essentially determines which clusters are available
   /// for this job to be submitted to. If not specified, defaults to `global`.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Optional. Job scheduling configuration.
-  final pulumi.Input<JobScheduling>? scheduling;
+  final pulumi.Input<JobScheduling?>? scheduling;
   /// The config of the Spark job.
-  final pulumi.Input<JobSparkConfig>? sparkConfig;
+  final pulumi.Input<JobSparkConfig?>? sparkConfig;
   /// The config of SparkSql job
-  final pulumi.Input<JobSparksqlConfig>? sparksqlConfig;
+  final pulumi.Input<JobSparksqlConfig?>? sparksqlConfig;
   /// If set to true, Terraform will wait for the job to reach a terminal state (`DONE`, `ERROR`, `CANCELLED`, `ATTEMPT_FAILURE`). Otherwise, Terraform will consider the job 'created' once it is in the `RUNNING` state.
-  final pulumi.Input<bool>? waitForCompletion;
+  final pulumi.Input<bool?>? waitForCompletion;
 
   /// Creates a new [JobArgs].
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".

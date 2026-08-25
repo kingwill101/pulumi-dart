@@ -635,18 +635,18 @@ class SearchEngine extends pulumi.CustomResource {
           'gcp:discoveryengine/searchEngine:SearchEngine',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     appType = registerOutput<String?>('appType');
     collectionId = registerOutput<String>('collectionId');
     commonConfig = registerOutput<SearchEngineCommonConfig?>('commonConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SearchEngineCommonConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
-    dataStoreIds = registerOutput<List<String>>('dataStoreIds');
+    dataStoreIds = registerOutput<List<String>>('dataStoreIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     disableAnalytics = registerOutput<bool?>('disableAnalytics');
     displayName = registerOutput<String>('displayName');
     engineId = registerOutput<String>('engineId');
-    features = registerOutput<Map<String, String>>('features');
+    features = registerOutput<Map<String, String>>('features', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     industryVertical = registerOutput<String?>('industryVertical');
     kmsKeyName = registerOutput<String?>('kmsKeyName');
     knowledgeGraphConfig = registerOutput<SearchEngineKnowledgeGraphConfig>('knowledgeGraphConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SearchEngineKnowledgeGraphConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -662,11 +662,12 @@ class SearchEngine extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SearchEngineState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SearchEngine._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -684,12 +685,41 @@ class SearchEngine extends pulumi.CustomResource {
     collectionId = registerOutput<String>('collectionId');
     commonConfig = registerOutput<SearchEngineCommonConfig?>('commonConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SearchEngineCommonConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
-    dataStoreIds = registerOutput<List<String>>('dataStoreIds');
+    dataStoreIds = registerOutput<List<String>>('dataStoreIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     disableAnalytics = registerOutput<bool?>('disableAnalytics');
     displayName = registerOutput<String>('displayName');
     engineId = registerOutput<String>('engineId');
-    features = registerOutput<Map<String, String>>('features');
+    features = registerOutput<Map<String, String>>('features', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    industryVertical = registerOutput<String?>('industryVertical');
+    kmsKeyName = registerOutput<String?>('kmsKeyName');
+    knowledgeGraphConfig = registerOutput<SearchEngineKnowledgeGraphConfig>('knowledgeGraphConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SearchEngineKnowledgeGraphConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    searchEngineConfig = registerOutput<SearchEngineSearchEngineConfig>('searchEngineConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SearchEngineSearchEngineConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [SearchEngine] resource.
+  SearchEngine.reference(String urn)
+    : super(
+        'gcp:discoveryengine/searchEngine:SearchEngine',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    appType = registerOutput<String?>('appType');
+    collectionId = registerOutput<String>('collectionId');
+    commonConfig = registerOutput<SearchEngineCommonConfig?>('commonConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SearchEngineCommonConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createTime = registerOutput<String>('createTime');
+    dataStoreIds = registerOutput<List<String>>('dataStoreIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    disableAnalytics = registerOutput<bool?>('disableAnalytics');
+    displayName = registerOutput<String>('displayName');
+    engineId = registerOutput<String>('engineId');
+    features = registerOutput<Map<String, String>>('features', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     industryVertical = registerOutput<String?>('industryVertical');
     kmsKeyName = registerOutput<String?>('kmsKeyName');
     knowledgeGraphConfig = registerOutput<SearchEngineKnowledgeGraphConfig>('knowledgeGraphConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SearchEngineKnowledgeGraphConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

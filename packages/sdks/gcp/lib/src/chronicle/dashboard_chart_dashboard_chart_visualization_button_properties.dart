@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DashboardChartDashboardChartVisualizationButtonProperties {
   /// Possible values are: `BUTTON_STYLE_UNSPECIFIED`, `BUTTON_STYLE_FILLED`, `BUTTON_STYLE_OUTLINED`, `BUTTON_STYLE_TRANSPARENT`.
-  final pulumi.Input<String>? buttonStyle;
+  final pulumi.Input<String?>? buttonStyle;
   /// (Optional)
-  final pulumi.Input<String>? color;
+  final pulumi.Input<String?>? color;
 
   /// Creates a new [DashboardChartDashboardChartVisualizationButtonProperties].
   /// [buttonStyle] Possible values are: `BUTTON_STYLE_UNSPECIFIED`, `BUTTON_STYLE_FILLED`, `BUTTON_STYLE_OUTLINED`, `BUTTON_STYLE_TRANSPARENT`.

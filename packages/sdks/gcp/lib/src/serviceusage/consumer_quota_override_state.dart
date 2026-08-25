@@ -10,27 +10,27 @@ class ConsumerQuotaOverrideState {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// If this map is nonempty, then this override applies only to specific values for dimensions defined in the limit unit.
-  final pulumi.Input<Map<String, String>>? dimensions;
+  final pulumi.Input<Map<String, String>?>? dimensions;
   /// If the new quota would decrease the existing quota by more than 10%, the request is rejected.
   /// If `force` is `true`, that safety check is ignored.
-  final pulumi.Input<bool>? force;
+  final pulumi.Input<bool?>? force;
   /// The limit on the metric, e.g. `/project/region`.
   /// &gt; Make sure that `limit` is in a format that doesn't start with `1/` or contain curly braces.
   /// E.g. use `/project/user` instead of `1/{project}/{user}`.
-  final pulumi.Input<String>? limit;
+  final pulumi.Input<String?>? limit;
   /// The metric that should be limited, e.g. `compute.googleapis.com/cpus`.
-  final pulumi.Input<String>? metric;
+  final pulumi.Input<String?>? metric;
   /// The server-generated name of the quota override.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The overriding quota limit value. Can be any nonnegative integer, or -1 (unlimited quota).
-  final pulumi.Input<String>? overrideValue;
+  final pulumi.Input<String?>? overrideValue;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The service that the metrics belong to, e.g. `compute.googleapis.com`.
-  final pulumi.Input<String>? service;
+  final pulumi.Input<String?>? service;
 
   /// Creates a new [ConsumerQuotaOverrideState].
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

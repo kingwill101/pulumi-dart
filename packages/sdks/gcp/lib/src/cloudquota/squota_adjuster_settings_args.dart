@@ -11,7 +11,7 @@ class SQuotaAdjusterSettingsArgs {
   /// Possible values are: `ENABLED`, `DISABLED`.
   final pulumi.Input<String> enablement;
   /// The parent of the quota preference. Allowed parent format is "projects/[project-id / number]".
-  final pulumi.Input<String>? parent;
+  final pulumi.Input<String?>? parent;
 
   /// Creates a new [SQuotaAdjusterSettingsArgs].
   /// [enablement] Required. The configured value of the enablement at the given resource.

@@ -17,13 +17,13 @@ class AwsClusterArgs {
   ///
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
-  final pulumi.Input<Map<String, String>>? annotations;
+  final pulumi.Input<Map<String, String>?>? annotations;
   /// Configuration related to the cluster RBAC settings.
   final pulumi.Input<AwsClusterAuthorization> authorization;
   /// The AWS region where the cluster runs. Each Google Cloud region supports a subset of nearby AWS regions. You can call to list all supported AWS regions within a given Google Cloud region.
   final pulumi.Input<String> awsRegion;
   /// Configuration options for the Binary Authorization feature.
-  final pulumi.Input<AwsClusterBinaryAuthorization>? binaryAuthorization;
+  final pulumi.Input<AwsClusterBinaryAuthorization?>? binaryAuthorization;
   /// Configuration related to the cluster control plane.
   final pulumi.Input<AwsClusterControlPlane> controlPlane;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
@@ -32,21 +32,21 @@ class AwsClusterArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Optional. A human readable description of this cluster. Cannot be longer than 255 UTF-8 encoded bytes.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Fleet configuration.
   final pulumi.Input<AwsClusterFleet> fleet;
   /// The location for the resource
   final pulumi.Input<String> location;
   /// Logging configuration.
-  final pulumi.Input<AwsClusterLoggingConfig>? loggingConfig;
+  final pulumi.Input<AwsClusterLoggingConfig?>? loggingConfig;
   /// The name of this resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Cluster-wide networking configuration.
   final pulumi.Input<AwsClusterNetworking> networking;
   /// The project for the resource
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [AwsClusterArgs].
   /// [annotations] Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.

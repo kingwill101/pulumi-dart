@@ -7,43 +7,43 @@ import 'get_machine_types_machine_type.dart';
 class GetMachineTypesResult {
   final String? filter;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// The list of machine types matching the provided filter. Structure is documented below.
-  final List<GetMachineTypesMachineType> machineTypes;
-  final String project;
-  final String zone;
+  final List<GetMachineTypesMachineType>? machineTypes;
+  final String? project;
+  final String? zone;
 
   /// Creates a new [GetMachineTypesResult].
   /// [filter] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [machineTypes] The list of machine types matching the provided filter. Structure is documented below.
-  /// [project] Required.
-  /// [zone] Required.
+  /// [project] Optional.
+  /// [zone] Optional.
   const GetMachineTypesResult({
     this.filter,
-    required this.id,
-    required this.machineTypes,
-    required this.project,
-    required this.zone,
+    this.id,
+    this.machineTypes,
+    this.project,
+    this.zone,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'filter': ?filter,
-      'id': id,
-      'machineTypes': pulumi.Input.encodeList<GetMachineTypesMachineType, Map<String, dynamic>>(machineTypes, (value) => value.toMap()),
-      'project': project,
-      'zone': zone,
+      'id': ?id,
+      'machineTypes': ?(() { final guardedValue = machineTypes; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetMachineTypesMachineType, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'project': ?project,
+      'zone': ?zone,
     };
   }
 
   factory GetMachineTypesResult.fromMap(Map<String, dynamic> map) {
     return GetMachineTypesResult(
       filter: (() { final guardedValue = map['filter']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
-      machineTypes: pulumi.Input.decodeList<GetMachineTypesMachineType>(map['machineTypes']!, (value) => GetMachineTypesMachineType.fromMap((value as Map).cast<String, dynamic>())),
-      project: map['project'] as String,
-      zone: map['zone'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      machineTypes: (() { final guardedValue = map['machineTypes']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetMachineTypesMachineType>(guardedValue, (value) => GetMachineTypesMachineType.fromMap((value as Map).cast<String, dynamic>())); })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      zone: (() { final guardedValue = map['zone']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

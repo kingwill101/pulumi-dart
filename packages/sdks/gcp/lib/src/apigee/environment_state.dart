@@ -10,17 +10,17 @@ class EnvironmentState {
   /// Optional. API Proxy type supported by the environment. The type can be set when creating
   /// the Environment and cannot be changed.
   /// Possible values are: `API_PROXY_TYPE_UNSPECIFIED`, `PROGRAMMABLE`, `CONFIGURABLE`.
-  final pulumi.Input<String>? apiProxyType;
+  final pulumi.Input<String?>? apiProxyType;
   /// The algorithm to resolve IP. This will affect Analytics, API Security, and other features that use the client ip. To remove a client ip resolution config, update the field to an empty value. Example: '{ "clientIpResolutionConfig" = {} }' For more information, see: https://cloud.google.com/apigee/docs/api-platform/system-administration/client-ip-resolution
   /// Structure is documented below.
-  final pulumi.Input<EnvironmentClientIpResolutionConfig>? clientIpResolutionConfig;
+  final pulumi.Input<EnvironmentClientIpResolutionConfig?>? clientIpResolutionConfig;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Optional. Deployment type supported by the environment. The deployment type can be
   /// set when creating the environment and cannot be changed. When you enable archive
   /// deployment, you will be prevented from performing a subset of actions within the
@@ -29,30 +29,30 @@ class EnvironmentState {
   /// Creating, updating, or deleting resource files;
   /// Creating, updating, or deleting target servers.
   /// Possible values are: `DEPLOYMENT_TYPE_UNSPECIFIED`, `PROXY`, `ARCHIVE`.
-  final pulumi.Input<String>? deploymentType;
+  final pulumi.Input<String?>? deploymentType;
   /// Description of the environment.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Display name of the environment.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Optional. URI of the forward proxy to be applied to the runtime instances in this environment. Must be in the format of {scheme}://{hostname}:{port}. Note that the scheme must be one of "http" or "https", and the port must be supplied.
-  final pulumi.Input<String>? forwardProxyUri;
+  final pulumi.Input<String?>? forwardProxyUri;
   /// The resource ID of the environment.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// NodeConfig for setting the min/max number of nodes associated with the environment.
   /// Structure is documented below.
-  final pulumi.Input<EnvironmentNodeConfig>? nodeConfig;
+  final pulumi.Input<EnvironmentNodeConfig?>? nodeConfig;
   /// The Apigee Organization associated with the Apigee environment,
   /// in the format `organizations/{{org_name}}`.
-  final pulumi.Input<String>? orgId;
+  final pulumi.Input<String?>? orgId;
   /// Key-value pairs that may be used for customizing the environment.
   /// Structure is documented below.
-  final pulumi.Input<EnvironmentProperties>? properties;
+  final pulumi.Input<EnvironmentProperties?>? properties;
   /// Types that can be selected for an Environment. Each of the types are
   /// limited by capability and capacity. Refer to Apigee's public documentation
   /// to understand about each of these types in details.
   /// An Apigee org can support heterogeneous Environments.
   /// Possible values are: `ENVIRONMENT_TYPE_UNSPECIFIED`, `BASE`, `INTERMEDIATE`, `COMPREHENSIVE`.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [EnvironmentState].
   /// [apiProxyType] Optional. API Proxy type supported by the environment. The type can be set when creating

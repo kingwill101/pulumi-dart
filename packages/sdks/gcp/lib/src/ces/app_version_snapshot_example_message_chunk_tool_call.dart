@@ -6,20 +6,20 @@ import 'app_version_snapshot_example_message_chunk_tool_call_toolset_tool.dart';
 class AppVersionSnapshotExampleMessageChunkToolCall {
   /// (Output)
   /// The input parameters and values for the tool in JSON object format.
-  final pulumi.Input<String>? args;
+  final pulumi.Input<String?>? args;
   /// The display name of the app version.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// (Output)
   /// The matching ID of the tool call the response is for.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// (Output)
   /// The name of the tool to execute.
   /// Format: `projects/{project}/locations/{location}/apps/{app}/tools/{tool}`
-  final pulumi.Input<String>? tool;
+  final pulumi.Input<String?>? tool;
   /// (Output)
   /// A tool that is created from a toolset.
   /// Structure is documented below.
-  final pulumi.Input<List<AppVersionSnapshotExampleMessageChunkToolCallToolsetTool>>? toolsetTools;
+  final pulumi.Input<List<AppVersionSnapshotExampleMessageChunkToolCallToolsetTool>?>? toolsetTools;
 
   /// Creates a new [AppVersionSnapshotExampleMessageChunkToolCall].
   /// [args] (Output)

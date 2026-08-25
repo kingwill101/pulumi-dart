@@ -7,10 +7,10 @@ import 'grpc_route_rule_match.dart';
 class GrpcRouteRule {
   /// Required. A detailed rule defining how to route traffic.
   /// Structure is documented below.
-  final pulumi.Input<GrpcRouteRuleAction>? action;
+  final pulumi.Input<GrpcRouteRuleAction?>? action;
   /// Matches define conditions used for matching the rule against incoming gRPC requests.
   /// Structure is documented below.
-  final pulumi.Input<List<GrpcRouteRuleMatch>>? matches;
+  final pulumi.Input<List<GrpcRouteRuleMatch>?>? matches;
 
   /// Creates a new [GrpcRouteRule].
   /// [action] Required. A detailed rule defining how to route traffic.

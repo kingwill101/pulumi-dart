@@ -2,6 +2,10 @@
 
 All notable changes to this package will be documented in this file.
 
+## 4.79.0+1
+
+- Add provider documentation and a runnable example.
+
 ## 4.79.0
 
 - Initial generated release.

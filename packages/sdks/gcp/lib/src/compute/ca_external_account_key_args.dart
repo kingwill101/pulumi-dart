@@ -8,10 +8,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_compute_ca_external_account_key_ca_external_account_key_args_doc}
 class CaExternalAccountKeyArgs {
   /// Location for the externalAccountKey. Currently only `global` is supported.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [CaExternalAccountKeyArgs].
   /// [location] Location for the externalAccountKey. Currently only `global` is supported.

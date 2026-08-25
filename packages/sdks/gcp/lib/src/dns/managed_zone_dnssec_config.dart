@@ -9,16 +9,16 @@ class ManagedZoneDnssecConfig {
   /// you must also provide one for the other.
   /// defaultKeySpecs can only be updated when the state is `off`.
   /// Structure is documented below.
-  final pulumi.Input<List<ManagedZoneDnssecConfigDefaultKeySpec>>? defaultKeySpecs;
+  final pulumi.Input<List<ManagedZoneDnssecConfigDefaultKeySpec>?>? defaultKeySpecs;
   /// Identifies what kind of resource this is
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// Specifies the mechanism used to provide authenticated denial-of-existence responses.
   /// nonExistence can only be updated when the state is `off`.
   /// Possible values are: `nsec`, `nsec3`.
-  final pulumi.Input<String>? nonExistence;
+  final pulumi.Input<String?>? nonExistence;
   /// Specifies whether DNSSEC is enabled, and what mode it is in
   /// Possible values are: `off`, `on`, `transfer`.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
 
   /// Creates a new [ManagedZoneDnssecConfig].
   /// [defaultKeySpecs] Specifies parameters that will be used for generating initial DnsKeys

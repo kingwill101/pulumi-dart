@@ -11,6 +11,7 @@ import 'job_scheduling.dart';
 import 'job_spark_config.dart';
 import 'job_sparksql_config.dart';
 import 'job_state.dart';
+import 'job_status.dart';
 
 /// Manages a job resource within a Dataproc cluster within GCE. For more information see
 /// [the official dataproc documentation](https://cloud.google.com/dataproc/).
@@ -482,7 +483,7 @@ class Job extends pulumi.CustomResource {
   /// The config of SparkSql job
   late final pulumi.Output<JobSparksqlConfig?> sparksqlConfig;
   /// The status of the job.
-  late final pulumi.Output<List<Map<String, dynamic>>> statuses;
+  late final pulumi.Output<List<JobStatus>> statuses;
   /// If set to true, Terraform will wait for the job to reach a terminal state (`DONE`, `ERROR`, `CANCELLED`, `ATTEMPT_FAILURE`). Otherwise, Terraform will consider the job 'created' once it is in the `RUNNING` state.
   late final pulumi.Output<bool?> waitForCompletion;
 
@@ -498,28 +499,29 @@ class Job extends pulumi.CustomResource {
           'gcp:dataproc/job:Job',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     driverControlsFilesUri = registerOutput<String>('driverControlsFilesUri');
     driverOutputResourceUri = registerOutput<String>('driverOutputResourceUri');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     forceDelete = registerOutput<bool?>('forceDelete');
     hadoopConfig = registerOutput<JobHadoopConfig?>('hadoopConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobHadoopConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     hiveConfig = registerOutput<JobHiveConfig?>('hiveConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobHiveConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     pigConfig = registerOutput<JobPigConfig?>('pigConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobPigConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     placement = registerOutput<JobPlacement>('placement', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobPlacement.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     prestoConfig = registerOutput<JobPrestoConfig?>('prestoConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobPrestoConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     pysparkConfig = registerOutput<JobPysparkConfig?>('pysparkConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobPysparkConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     reference = registerOutput<JobReference>('reference', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobReference.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String?>('region');
     scheduling = registerOutput<JobScheduling?>('scheduling', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobScheduling.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     sparkConfig = registerOutput<JobSparkConfig?>('sparkConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobSparkConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     sparksqlConfig = registerOutput<JobSparksqlConfig?>('sparksqlConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobSparksqlConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    statuses = registerOutput<List<Map<String, dynamic>>>('statuses');
+    statuses = registerOutput<List<JobStatus>>('statuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<JobStatus>(guardedValue, (value) => JobStatus.fromMap((value as Map).cast<String, dynamic>())); });
     waitForCompletion = registerOutput<bool?>('waitForCompletion');
   }
 
@@ -528,11 +530,12 @@ class Job extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     JobState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Job._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -549,23 +552,56 @@ class Job extends pulumi.CustomResource {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     driverControlsFilesUri = registerOutput<String>('driverControlsFilesUri');
     driverOutputResourceUri = registerOutput<String>('driverOutputResourceUri');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     forceDelete = registerOutput<bool?>('forceDelete');
     hadoopConfig = registerOutput<JobHadoopConfig?>('hadoopConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobHadoopConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     hiveConfig = registerOutput<JobHiveConfig?>('hiveConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobHiveConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     pigConfig = registerOutput<JobPigConfig?>('pigConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobPigConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     placement = registerOutput<JobPlacement>('placement', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobPlacement.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     prestoConfig = registerOutput<JobPrestoConfig?>('prestoConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobPrestoConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     pysparkConfig = registerOutput<JobPysparkConfig?>('pysparkConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobPysparkConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     reference = registerOutput<JobReference>('reference', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobReference.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String?>('region');
     scheduling = registerOutput<JobScheduling?>('scheduling', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobScheduling.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     sparkConfig = registerOutput<JobSparkConfig?>('sparkConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobSparkConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     sparksqlConfig = registerOutput<JobSparksqlConfig?>('sparksqlConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobSparksqlConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    statuses = registerOutput<List<Map<String, dynamic>>>('statuses');
+    statuses = registerOutput<List<JobStatus>>('statuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<JobStatus>(guardedValue, (value) => JobStatus.fromMap((value as Map).cast<String, dynamic>())); });
+    waitForCompletion = registerOutput<bool?>('waitForCompletion');
+  }
+
+  /// Creates a typed reference to an existing [Job] resource.
+  Job.reference(String urn)
+    : super(
+        'gcp:dataproc/job:Job',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    driverControlsFilesUri = registerOutput<String>('driverControlsFilesUri');
+    driverOutputResourceUri = registerOutput<String>('driverOutputResourceUri');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    forceDelete = registerOutput<bool?>('forceDelete');
+    hadoopConfig = registerOutput<JobHadoopConfig?>('hadoopConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobHadoopConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    hiveConfig = registerOutput<JobHiveConfig?>('hiveConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobHiveConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    pigConfig = registerOutput<JobPigConfig?>('pigConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobPigConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    placement = registerOutput<JobPlacement>('placement', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobPlacement.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    prestoConfig = registerOutput<JobPrestoConfig?>('prestoConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobPrestoConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    pysparkConfig = registerOutput<JobPysparkConfig?>('pysparkConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobPysparkConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    reference = registerOutput<JobReference>('reference', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobReference.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    region = registerOutput<String?>('region');
+    scheduling = registerOutput<JobScheduling?>('scheduling', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobScheduling.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sparkConfig = registerOutput<JobSparkConfig?>('sparkConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobSparkConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sparksqlConfig = registerOutput<JobSparksqlConfig?>('sparksqlConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobSparksqlConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    statuses = registerOutput<List<JobStatus>>('statuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<JobStatus>(guardedValue, (value) => JobStatus.fromMap((value as Map).cast<String, dynamic>())); });
     waitForCompletion = registerOutput<bool?>('waitForCompletion');
   }
 }

@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConnectivityTestSourceCloudRunRevision {
   /// A Cloud Run revision URI.
-  final pulumi.Input<String>? uri;
+  final pulumi.Input<String?>? uri;
 
   /// Creates a new [ConnectivityTestSourceCloudRunRevision].
   /// [uri] A Cloud Run revision URI.

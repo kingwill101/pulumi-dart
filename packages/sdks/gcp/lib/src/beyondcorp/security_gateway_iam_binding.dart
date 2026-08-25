@@ -2158,12 +2158,12 @@ class SecurityGatewayIamBinding extends pulumi.CustomResource {
           'gcp:beyondcorp/securityGatewayIamBinding:SecurityGatewayIamBinding',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     condition = registerOutput<SecurityGatewayIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityGatewayIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');
-    members = registerOutput<List<String>>('members');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     project = registerOutput<String>('project');
     role = registerOutput<String>('role');
     securityGatewayId = registerOutput<String>('securityGatewayId');
@@ -2174,11 +2174,12 @@ class SecurityGatewayIamBinding extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SecurityGatewayIamBindingState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SecurityGatewayIamBinding._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -2195,7 +2196,25 @@ class SecurityGatewayIamBinding extends pulumi.CustomResource {
     condition = registerOutput<SecurityGatewayIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityGatewayIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');
-    members = registerOutput<List<String>>('members');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    project = registerOutput<String>('project');
+    role = registerOutput<String>('role');
+    securityGatewayId = registerOutput<String>('securityGatewayId');
+  }
+
+  /// Creates a typed reference to an existing [SecurityGatewayIamBinding] resource.
+  SecurityGatewayIamBinding.reference(String urn)
+    : super(
+        'gcp:beyondcorp/securityGatewayIamBinding:SecurityGatewayIamBinding',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    condition = registerOutput<SecurityGatewayIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityGatewayIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    etag = registerOutput<String>('etag');
+    location = registerOutput<String>('location');
+    members = registerOutput<List<String>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     project = registerOutput<String>('project');
     role = registerOutput<String>('role');
     securityGatewayId = registerOutput<String>('securityGatewayId');

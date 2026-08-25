@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetwork {
   /// The time when this access control entry expires in RFC 3339 format.
-  final pulumi.Input<String>? expireTime;
+  final pulumi.Input<String?>? expireTime;
   /// A label to identify this entry.
-  final pulumi.Input<String>? label;
+  final pulumi.Input<String?>? label;
   /// Input only. The time-to-leave of this access control entry.
-  final pulumi.Input<String>? ttl;
+  final pulumi.Input<String?>? ttl;
   /// The allowlisted value for the access control list.
   final pulumi.Input<String> value;
 

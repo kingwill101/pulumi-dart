@@ -11,10 +11,10 @@ import 'data_product_access_group.dart';
 class DataProductArgs {
   /// Configuration for access approval for the data product.
   /// Structure is documented below.
-  final pulumi.Input<DataProductAccessApprovalConfig>? accessApprovalConfig;
+  final pulumi.Input<DataProductAccessApprovalConfig?>? accessApprovalConfig;
   /// Custom user defined access groups at the data product level.
   /// Structure is documented below.
-  final pulumi.Input<List<DataProductAccessGroup>>? accessGroups;
+  final pulumi.Input<List<DataProductAccessGroup>?>? accessGroups;
   /// The ID of the data product.
   final pulumi.Input<String> dataProductId;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -23,9 +23,9 @@ class DataProductArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Description of the data product.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// User-friendly display name.
   final pulumi.Input<String> displayName;
   /// Base64 encoded image representing the data product. Max Size: 3.0MiB
@@ -33,18 +33,18 @@ class DataProductArgs {
   /// performs validation on size of the encoded data.
   /// Note: For byte fields, the content of the fields are base64-encoded (which
   /// increases the size of the data by 33-36%) when using JSON on the wire.
-  final pulumi.Input<String>? icon;
+  final pulumi.Input<String?>? icon;
   /// User-defined labels.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The location for the data product.
   final pulumi.Input<String> location;
   /// Emails of the owners.
   final pulumi.Input<List<String>> ownerEmails;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [DataProductArgs].
   /// [accessApprovalConfig] Configuration for access approval for the data product.

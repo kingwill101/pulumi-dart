@@ -11,66 +11,66 @@ class GdcSparkApplicationState {
   /// The annotations to associate with this application. Annotations may be used to store client information, but are not used by the server.
   /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
   /// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
-  final pulumi.Input<Map<String, String>>? annotations;
+  final pulumi.Input<Map<String, String>?>? annotations;
   /// An ApplicationEnvironment from which to inherit configuration properties.
-  final pulumi.Input<String>? applicationEnvironment;
+  final pulumi.Input<String?>? applicationEnvironment;
   /// The timestamp when the resource was created.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// List of container image uris for additional file dependencies. Dependent files are sequentially copied from each image. If a file with the same name exists in 2 images then the file from later image is used.
-  final pulumi.Input<List<String>>? dependencyImages;
+  final pulumi.Input<List<String>?>? dependencyImages;
   /// User-provided human-readable name to be used in user interfaces.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveAnnotations;
+  final pulumi.Input<Map<String, String>?>? effectiveAnnotations;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-  final pulumi.Input<Map<String, String>>? effectiveLabels;
+  final pulumi.Input<Map<String, String>?>? effectiveLabels;
   /// The labels to associate with this application. Labels may be used for filtering and billing tracking.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The location of the spark application.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// URL for a monitoring UI for this application (for eventual Spark PHS/UI support) Out of scope for private GA
-  final pulumi.Input<String>? monitoringEndpoint;
+  final pulumi.Input<String?>? monitoringEndpoint;
   /// Identifier. The name of the application. Format: projects/{project}/locations/{location}/serviceInstances/{service_instance}/sparkApplications/{application}
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The Kubernetes namespace in which to create the application. This namespace must already exist on the cluster.
-  final pulumi.Input<String>? namespace;
+  final pulumi.Input<String?>? namespace;
   /// An HCFS URI pointing to the location of stdout and stdout of the application Mainly useful for Pantheon and gcloud Not in scope for private GA
-  final pulumi.Input<String>? outputUri;
+  final pulumi.Input<String?>? outputUri;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// application-specific properties.
-  final pulumi.Input<Map<String, String>>? properties;
+  final pulumi.Input<Map<String, String>?>? properties;
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
-  final pulumi.Input<Map<String, String>>? pulumiLabels;
+  final pulumi.Input<Map<String, String>?>? pulumiLabels;
   /// Represents the PySparkApplicationConfig.
   /// Structure is documented below.
-  final pulumi.Input<GdcSparkApplicationPysparkApplicationConfig>? pysparkApplicationConfig;
+  final pulumi.Input<GdcSparkApplicationPysparkApplicationConfig?>? pysparkApplicationConfig;
   /// Whether the application is currently reconciling. True if the current state of the resource does not match the intended state, and the system is working to reconcile them, whether or not the change was user initiated.
-  final pulumi.Input<bool>? reconciling;
+  final pulumi.Input<bool?>? reconciling;
   /// The id of the service instance to which this spark application belongs.
-  final pulumi.Input<String>? serviceinstance;
+  final pulumi.Input<String?>? serviceinstance;
   /// Represents the SparkApplicationConfig.
   /// Structure is documented below.
-  final pulumi.Input<GdcSparkApplicationSparkApplicationConfig>? sparkApplicationConfig;
+  final pulumi.Input<GdcSparkApplicationSparkApplicationConfig?>? sparkApplicationConfig;
   /// The id of the application
-  final pulumi.Input<String>? sparkApplicationId;
+  final pulumi.Input<String?>? sparkApplicationId;
   /// Represents the SparkRApplicationConfig.
   /// Structure is documented below.
-  final pulumi.Input<GdcSparkApplicationSparkRApplicationConfig>? sparkRApplicationConfig;
+  final pulumi.Input<GdcSparkApplicationSparkRApplicationConfig?>? sparkRApplicationConfig;
   /// Represents the SparkRApplicationConfig.
   /// Structure is documented below.
-  final pulumi.Input<GdcSparkApplicationSparkSqlApplicationConfig>? sparkSqlApplicationConfig;
+  final pulumi.Input<GdcSparkApplicationSparkSqlApplicationConfig?>? sparkSqlApplicationConfig;
   /// The current state.
   /// Possible values:
   /// * `STATE_UNSPECIFIED`
@@ -80,15 +80,15 @@ class GdcSparkApplicationState {
   /// * `CANCELLED`
   /// * `SUCCEEDED`
   /// * `FAILED`
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// A message explaining the current state.
-  final pulumi.Input<String>? stateMessage;
+  final pulumi.Input<String?>? stateMessage;
   /// System generated unique identifier for this application, formatted as UUID4.
-  final pulumi.Input<String>? uid;
+  final pulumi.Input<String?>? uid;
   /// The timestamp when the resource was most recently updated.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
   /// The Dataproc version of this application.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [GdcSparkApplicationState].
   /// [annotations] The annotations to associate with this application. Annotations may be used to store client information, but are not used by the server.

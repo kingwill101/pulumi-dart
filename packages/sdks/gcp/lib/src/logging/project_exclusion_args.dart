@@ -8,19 +8,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_logging_project_exclusion_project_exclusion_args_doc}
 class ProjectExclusionArgs {
   /// A human-readable description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Whether this exclusion rule should be disabled or not. This defaults to
   /// false.
-  final pulumi.Input<bool>? disabled;
+  final pulumi.Input<bool?>? disabled;
   /// The filter to apply when excluding logs. Only log entries that match the filter are excluded.
   /// See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced-filters) for information on how to
   /// write a filter.
   final pulumi.Input<String> filter;
   /// The name of the logging exclusion.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The project to create the exclusion in. If omitted, the project associated with the provider is
   /// used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [ProjectExclusionArgs].
   /// [description] A human-readable description.

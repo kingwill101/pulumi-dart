@@ -5,10 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConnectorTaskRestartPolicy {
   /// The maximum amount of time to wait before retrying a failed task. This sets an upper bound for the backoff delay.
   /// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
-  final pulumi.Input<String>? maximumBackoff;
+  final pulumi.Input<String?>? maximumBackoff;
   /// The minimum amount of time to wait before retrying a failed task. This sets a lower bound for the backoff delay.
   /// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
-  final pulumi.Input<String>? minimumBackoff;
+  final pulumi.Input<String?>? minimumBackoff;
 
   /// Creates a new [ConnectorTaskRestartPolicy].
   /// [maximumBackoff] The maximum amount of time to wait before retrying a failed task. This sets an upper bound for the backoff delay.

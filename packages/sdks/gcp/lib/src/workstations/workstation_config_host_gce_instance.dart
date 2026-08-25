@@ -9,43 +9,43 @@ import 'workstation_config_host_gce_instance_shielded_instance_config.dart';
 class WorkstationConfigHostGceInstance {
   /// An accelerator card attached to the instance.
   /// Structure is documented below.
-  final pulumi.Input<List<WorkstationConfigHostGceInstanceAccelerator>>? accelerators;
+  final pulumi.Input<List<WorkstationConfigHostGceInstanceAccelerator>?>? accelerators;
   /// A list of the boost configurations that workstations created using this workstation configuration are allowed to use.
   /// Structure is documented below.
-  final pulumi.Input<List<WorkstationConfigHostGceInstanceBoostConfig>>? boostConfigs;
+  final pulumi.Input<List<WorkstationConfigHostGceInstanceBoostConfig>?>? boostConfigs;
   /// Size of the boot disk in GB.
-  final pulumi.Input<int>? bootDiskSizeGb;
+  final pulumi.Input<int?>? bootDiskSizeGb;
   /// A set of Compute Engine Confidential VM instance options.
   /// Structure is documented below.
-  final pulumi.Input<WorkstationConfigHostGceInstanceConfidentialInstanceConfig>? confidentialInstanceConfig;
+  final pulumi.Input<WorkstationConfigHostGceInstanceConfidentialInstanceConfig?>? confidentialInstanceConfig;
   /// Whether instances have no public IP address.
-  final pulumi.Input<bool>? disablePublicIpAddresses;
+  final pulumi.Input<bool?>? disablePublicIpAddresses;
   /// Whether to disable SSH access to the VM.
-  final pulumi.Input<bool>? disableSsh;
+  final pulumi.Input<bool?>? disableSsh;
   /// Whether to enable nested virtualization on the Compute Engine VMs backing the Workstations.
   /// See https://cloud.google.com/workstations/docs/reference/rest/v1/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
-  final pulumi.Input<bool>? enableNestedVirtualization;
+  final pulumi.Input<bool?>? enableNestedVirtualization;
   /// Client-specified metadata key-value pairs, to be passed to the start-up script in the VM.
-  final pulumi.Input<Map<String, String>>? instanceMetadata;
+  final pulumi.Input<Map<String, String>?>? instanceMetadata;
   /// The name of a Compute Engine machine type.
-  final pulumi.Input<String>? machineType;
+  final pulumi.Input<String?>? machineType;
   /// Number of instances to pool for faster workstation startup.
-  final pulumi.Input<int>? poolSize;
+  final pulumi.Input<int?>? poolSize;
   /// Email address of the service account that will be used on VM instances used to support this config. This service account must have permission to pull the specified container image. If not set, VMs will run without a service account, in which case the image must be publicly accessible.
-  final pulumi.Input<String>? serviceAccount;
+  final pulumi.Input<String?>? serviceAccount;
   /// Scopes to grant to the service_account. Various scopes are automatically added based on feature usage. When specified, users of workstations under this configuration must have `iam.serviceAccounts.actAs` on the service account.
-  final pulumi.Input<List<String>>? serviceAccountScopes;
+  final pulumi.Input<List<String>?>? serviceAccountScopes;
   /// A set of Compute Engine Shielded instance options.
   /// Structure is documented below.
-  final pulumi.Input<WorkstationConfigHostGceInstanceShieldedInstanceConfig>? shieldedInstanceConfig;
+  final pulumi.Input<WorkstationConfigHostGceInstanceShieldedInstanceConfig?>? shieldedInstanceConfig;
   /// Network tags to add to the Compute Engine machines backing the Workstations.
-  final pulumi.Input<List<String>>? tags;
+  final pulumi.Input<List<String>?>? tags;
   /// Resource manager tags to be bound to the VM instances backing the Workstations.
   /// Tag keys and values have the same definition as
   /// https://docs.cloud.google.com/resource-manager/docs/tags/tags-overview
   /// Keys must be in the format `tagKeys/{tag_key_id}`, and
   /// values are in the format `tagValues/456`.
-  final pulumi.Input<Map<String, String>>? vmTags;
+  final pulumi.Input<Map<String, String>?>? vmTags;
 
   /// Creates a new [WorkstationConfigHostGceInstance].
   /// [accelerators] An accelerator card attached to the instance.
@@ -105,14 +105,14 @@ class WorkstationConfigHostGceInstance {
     return WorkstationConfigHostGceInstance(
       accelerators: (() { final guardedValue = map['accelerators']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<WorkstationConfigHostGceInstanceAccelerator>(guardedValue, (value) => WorkstationConfigHostGceInstanceAccelerator.fromMap((value as Map).cast<String, dynamic>()))); })(),
       boostConfigs: (() { final guardedValue = map['boostConfigs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<WorkstationConfigHostGceInstanceBoostConfig>(guardedValue, (value) => WorkstationConfigHostGceInstanceBoostConfig.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      bootDiskSizeGb: (() { final guardedValue = map['bootDiskSizeGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      bootDiskSizeGb: (() { final guardedValue = map['bootDiskSizeGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       confidentialInstanceConfig: (() { final guardedValue = map['confidentialInstanceConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WorkstationConfigHostGceInstanceConfidentialInstanceConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       disablePublicIpAddresses: (() { final guardedValue = map['disablePublicIpAddresses']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       disableSsh: (() { final guardedValue = map['disableSsh']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       enableNestedVirtualization: (() { final guardedValue = map['enableNestedVirtualization']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       instanceMetadata: (() { final guardedValue = map['instanceMetadata']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       machineType: (() { final guardedValue = map['machineType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      poolSize: (() { final guardedValue = map['poolSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      poolSize: (() { final guardedValue = map['poolSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       serviceAccount: (() { final guardedValue = map['serviceAccount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       serviceAccountScopes: (() { final guardedValue = map['serviceAccountScopes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       shieldedInstanceConfig: (() { final guardedValue = map['shieldedInstanceConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WorkstationConfigHostGceInstanceShieldedInstanceConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

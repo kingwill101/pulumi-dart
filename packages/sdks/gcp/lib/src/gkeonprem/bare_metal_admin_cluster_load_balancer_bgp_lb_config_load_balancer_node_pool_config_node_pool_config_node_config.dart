@@ -7,9 +7,9 @@ class BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNode
   /// An object containing a list of key/value pairs.
   /// Example:
   /// { "name": "wrench", "mass": "1.3kg", "count": "3" }.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// (Optional)
-  final pulumi.Input<String>? nodeIp;
+  final pulumi.Input<String?>? nodeIp;
 
   /// Creates a new [BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfig].
   /// [labels] The labels assigned to nodes of this node pool.

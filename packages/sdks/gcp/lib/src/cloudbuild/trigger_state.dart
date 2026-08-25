@@ -19,41 +19,41 @@ class TriggerState {
   /// Builds created by this trigger will require approval before they execute.
   /// Any user with a Cloud Build Approver role for the project can approve a build.
   /// Structure is documented below.
-  final pulumi.Input<TriggerApprovalConfig>? approvalConfig;
+  final pulumi.Input<TriggerApprovalConfig?>? approvalConfig;
   /// BitbucketServerTriggerConfig describes the configuration of a trigger that creates a build whenever a Bitbucket Server event is received.
   /// Structure is documented below.
-  final pulumi.Input<TriggerBitbucketServerTriggerConfig>? bitbucketServerTriggerConfig;
+  final pulumi.Input<TriggerBitbucketServerTriggerConfig?>? bitbucketServerTriggerConfig;
   /// Contents of the build template. Either a filename or build template must be provided.
   /// Structure is documented below.
-  final pulumi.Input<TriggerBuild>? build;
+  final pulumi.Input<TriggerBuild?>? build;
   /// Time when the trigger was created.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Human-readable description of the trigger.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Configuration for triggers that respond to Developer Connect events.
   /// Structure is documented below.
-  final pulumi.Input<TriggerDeveloperConnectEventConfig>? developerConnectEventConfig;
+  final pulumi.Input<TriggerDeveloperConnectEventConfig?>? developerConnectEventConfig;
   /// Whether the trigger is disabled or not. If true, the trigger will never result in a build.
-  final pulumi.Input<bool>? disabled;
+  final pulumi.Input<bool?>? disabled;
   /// Path, from the source root, to a file whose contents is used for the template.
   /// Either a filename or build template must be provided. Set this only when using triggerTemplate or github.
   /// When using Pub/Sub, Webhook or Manual set the file name using gitFileSource instead.
-  final pulumi.Input<String>? filename;
+  final pulumi.Input<String?>? filename;
   /// A Common Expression Language string. Used only with Pub/Sub and Webhook.
-  final pulumi.Input<String>? filter;
+  final pulumi.Input<String?>? filter;
   /// The file source describing the local or remote Build template.
   /// Structure is documented below.
-  final pulumi.Input<TriggerGitFileSource>? gitFileSource;
+  final pulumi.Input<TriggerGitFileSource?>? gitFileSource;
   /// Describes the configuration of a trigger that creates a build whenever a GitHub event is received.
   /// Structure is documented below.
-  final pulumi.Input<TriggerGithub>? github;
+  final pulumi.Input<TriggerGithub?>? github;
   /// ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
   /// extended with support for `**`.
   /// If ignoredFiles and changed files are both empty, then they are not
@@ -61,12 +61,12 @@ class TriggerState {
   /// If ignoredFiles is not empty, then we ignore any files that match any
   /// of the ignoredFile globs. If the change has no files that are outside
   /// of the ignoredFiles globs, then we do not trigger a build.
-  final pulumi.Input<List<String>>? ignoredFiles;
+  final pulumi.Input<List<String>?>? ignoredFiles;
   /// Build logs will be sent back to GitHub as part of the checkrun
   /// result.  Values can be INCLUDE_BUILD_LOGS_UNSPECIFIED or
   /// INCLUDE_BUILD_LOGS_WITH_STATUS
   /// Possible values are: `INCLUDE_BUILD_LOGS_UNSPECIFIED`, `INCLUDE_BUILD_LOGS_WITH_STATUS`.
-  final pulumi.Input<String>? includeBuildLogs;
+  final pulumi.Input<String?>? includeBuildLogs;
   /// ignoredFiles and includedFiles are file glob matches using https://golang.org/pkg/path/filepath/#Match
   /// extended with support for `**`.
   /// If any of the files altered in the commit pass the ignoredFiles filter
@@ -76,50 +76,50 @@ class TriggerState {
   /// and includedFiles is not empty, then we make sure that at least one of
   /// those files matches a includedFiles glob. If not, then we do not trigger
   /// a build.
-  final pulumi.Input<List<String>>? includedFiles;
+  final pulumi.Input<List<String>?>? includedFiles;
   /// The [Cloud Build location](https://cloud.google.com/build/docs/locations) for the trigger.
   /// If not specified, "global" is used.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Name of the trigger. Must be unique within the project.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// PubsubConfig describes the configuration of a trigger that creates
   /// a build whenever a Pub/Sub message is published.
   /// Structure is documented below.
-  final pulumi.Input<TriggerPubsubConfig>? pubsubConfig;
+  final pulumi.Input<TriggerPubsubConfig?>? pubsubConfig;
   /// The configuration of a trigger that creates a build whenever an event from Repo API is received.
   /// Structure is documented below.
-  final pulumi.Input<TriggerRepositoryEventConfig>? repositoryEventConfig;
+  final pulumi.Input<TriggerRepositoryEventConfig?>? repositoryEventConfig;
   /// The service account used for all user-controlled operations including
   /// triggers.patch, triggers.run, builds.create, and builds.cancel.
   /// If no service account is set, then the standard Cloud Build service account
   /// ([PROJECT_NUM]@system.gserviceaccount.com) will be used instead.
   /// Format: projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT_ID_OR_EMAIL}
-  final pulumi.Input<String>? serviceAccount;
+  final pulumi.Input<String?>? serviceAccount;
   /// The repo and ref of the repository from which to build.
   /// This field is used only for those triggers that do not respond to SCM events.
   /// Triggers that respond to such events build source at whatever commit caused the event.
   /// This field is currently only used by Webhook, Pub/Sub, Manual, and Cron triggers.
   /// Structure is documented below.
-  final pulumi.Input<TriggerSourceToBuild>? sourceToBuild;
+  final pulumi.Input<TriggerSourceToBuild?>? sourceToBuild;
   /// Substitutions data for Build resource.
-  final pulumi.Input<Map<String, String>>? substitutions;
+  final pulumi.Input<Map<String, String>?>? substitutions;
   /// Tags for annotation of a BuildTrigger
-  final pulumi.Input<List<String>>? tags;
+  final pulumi.Input<List<String>?>? tags;
   /// The unique identifier for the trigger.
-  final pulumi.Input<String>? triggerId;
+  final pulumi.Input<String?>? triggerId;
   /// Template describing the types of source changes to trigger a build.
   /// Branch and tag names in trigger templates are interpreted as regular
   /// expressions. Any branch or tag change that matches that regular
   /// expression will trigger a build.
   /// Structure is documented below.
-  final pulumi.Input<TriggerTriggerTemplate>? triggerTemplate;
+  final pulumi.Input<TriggerTriggerTemplate?>? triggerTemplate;
   /// WebhookConfig describes the configuration of a trigger that creates
   /// a build whenever a webhook is sent to a trigger's webhook URL.
   /// Structure is documented below.
-  final pulumi.Input<TriggerWebhookConfig>? webhookConfig;
+  final pulumi.Input<TriggerWebhookConfig?>? webhookConfig;
 
   /// Creates a new [TriggerState].
   /// [approvalConfig] Configuration for manual approval to start a build invocation of this BuildTrigger.

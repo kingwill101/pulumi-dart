@@ -10,35 +10,35 @@ import 'conversation_profile_human_agent_assistant_config_end_user_suggestion_co
 class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfig {
   /// Configs of custom conversation model.
   /// Structure is documented below.
-  final pulumi.Input<ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfig>? conversationModelConfig;
+  final pulumi.Input<ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationModelConfig?>? conversationModelConfig;
   /// Config to process conversation.
   /// Structure is documented below.
-  final pulumi.Input<ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfig>? conversationProcessConfig;
+  final pulumi.Input<ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigConversationProcessConfig?>? conversationProcessConfig;
   /// Disable the logging of search queries sent by human agents. It can prevent those queries from being stored at answer records.
   /// This feature is only supported for types: KNOWLEDGE_SEARCH.
-  final pulumi.Input<bool>? disableAgentQueryLogging;
+  final pulumi.Input<bool?>? disableAgentQueryLogging;
   /// Enable including conversation context during query answer generation.
   /// This feature is only supported for types: KNOWLEDGE_SEARCH.
-  final pulumi.Input<bool>? enableConversationAugmentedQuery;
+  final pulumi.Input<bool?>? enableConversationAugmentedQuery;
   /// Automatically iterates all participants and tries to compile suggestions.
   /// This feature is only supported for types: ARTICLE_SUGGESTION, FAQ, DIALOGFLOW_ASSIST, KNOWLEDGE_ASSIST.
-  final pulumi.Input<bool>? enableEventBasedSuggestion;
+  final pulumi.Input<bool?>? enableEventBasedSuggestion;
   /// Enable query suggestion only.
   /// This feature is only supported for types: KNOWLEDGE_ASSIST
-  final pulumi.Input<bool>? enableQuerySuggestionOnly;
+  final pulumi.Input<bool?>? enableQuerySuggestionOnly;
   /// Enable query suggestion even if we can't find its answer. By default, queries are suggested only if we find its answer.
   /// This feature is only supported for types: KNOWLEDGE_ASSIST.
-  final pulumi.Input<bool>? enableQuerySuggestionWhenNoAnswer;
+  final pulumi.Input<bool?>? enableQuerySuggestionWhenNoAnswer;
   /// Configs of query.
   /// Structure is documented below.
-  final pulumi.Input<ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfig>? queryConfig;
+  final pulumi.Input<ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfig?>? queryConfig;
   /// The suggestion feature.
   /// Structure is documented below.
-  final pulumi.Input<ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeature>? suggestionFeature;
+  final pulumi.Input<ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionFeature?>? suggestionFeature;
   /// Settings of suggestion trigger.
   /// This feature is only supported for types: ARTICLE_SUGGESTION, FAQ.
   /// Structure is documented below.
-  final pulumi.Input<ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettings>? suggestionTriggerSettings;
+  final pulumi.Input<ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettings?>? suggestionTriggerSettings;
 
   /// Creates a new [ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfig].
   /// [conversationModelConfig] Configs of custom conversation model.

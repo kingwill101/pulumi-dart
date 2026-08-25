@@ -7,7 +7,7 @@ class EdgeCacheOriginFlexShielding {
   /// near the specified origin. Best effort.
   /// You must specify exactly one FlexShieldingRegion.
   /// Each value may be one of: `AFRICA_SOUTH1`, `ME_CENTRAL1`.
-  final pulumi.Input<String>? flexShieldingRegions;
+  final pulumi.Input<String?>? flexShieldingRegions;
 
   /// Creates a new [EdgeCacheOriginFlexShielding].
   /// [flexShieldingRegions] Whenever possible, content will be fetched from origin and cached in or

@@ -17,7 +17,7 @@ class KeystoresAliasesPkcs12Args {
   /// When set to "DELETE", deleting the resource is allowed.
   ///
   /// - - -
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// Environment associated with the alias
   final pulumi.Input<String> environment;
   /// PKCS12 file content
@@ -29,7 +29,7 @@ class KeystoresAliasesPkcs12Args {
   /// Organization ID associated with the alias, without organization/ prefix
   final pulumi.Input<String> orgId;
   /// Password for the PKCS12 file if it's encrypted
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
 
   /// Creates a new [KeystoresAliasesPkcs12Args].
   /// [alias] Alias Name

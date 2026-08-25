@@ -10,9 +10,9 @@ class AnalystAgentPersonaArtifactsConfigSlideGenerationOptions {
   /// PNG
   /// PPTX
   /// GOOGLE_SLIDES
-  final pulumi.Input<String>? exportFormat;
+  final pulumi.Input<String?>? exportFormat;
   /// Examples for slide generation.
-  final pulumi.Input<List<AnalystAgentPersonaArtifactsConfigSlideGenerationOptionsSlideExample>>? slideExamples;
+  final pulumi.Input<List<AnalystAgentPersonaArtifactsConfigSlideGenerationOptionsSlideExample>?>? slideExamples;
 
   /// Creates a new [AnalystAgentPersonaArtifactsConfigSlideGenerationOptions].
   /// [exportFormat] Format for slide export.

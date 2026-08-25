@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PreventionDiscoveryConfigActionExportDataSampleFindingsTable {
   /// Dataset Id of the table
-  final pulumi.Input<String>? datasetId;
+  final pulumi.Input<String?>? datasetId;
   /// The Google Cloud Platform project ID of the project containing the table. If omitted, the project ID is inferred from the API call.
-  final pulumi.Input<String>? projectId;
+  final pulumi.Input<String?>? projectId;
   /// Name of the table
-  final pulumi.Input<String>? tableId;
+  final pulumi.Input<String?>? tableId;
 
   /// Creates a new [PreventionDiscoveryConfigActionExportDataSampleFindingsTable].
   /// [datasetId] Dataset Id of the table

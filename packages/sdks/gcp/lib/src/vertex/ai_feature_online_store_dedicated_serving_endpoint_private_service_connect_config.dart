@@ -6,7 +6,7 @@ class AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfig {
   /// If set to true, customers will use private service connection to send request. Otherwise, the connection will set to public endpoint.
   final pulumi.Input<bool> enablePrivateServiceConnect;
   /// A list of Projects from which the forwarding rule will target the service attachment.
-  final pulumi.Input<List<String>>? projectAllowlists;
+  final pulumi.Input<List<String>?>? projectAllowlists;
 
   /// Creates a new [AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfig].
   /// [enablePrivateServiceConnect] If set to true, customers will use private service connection to send request. Otherwise, the connection will set to public endpoint.

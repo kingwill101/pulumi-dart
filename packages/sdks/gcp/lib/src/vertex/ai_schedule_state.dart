@@ -8,60 +8,60 @@ import 'ai_schedule_last_scheduled_run_response.dart';
 /// Input properties used for looking up and filtering AiSchedule resources.
 class AiScheduleState {
   /// Whether new scheduled runs can be queued when maxConcurrentRuns limit is reached. If set to true, new runs will be queued instead of skipped. Default to false.
-  final pulumi.Input<bool>? allowQueueing;
+  final pulumi.Input<bool?>? allowQueueing;
   /// Whether to backfill missed runs when the schedule is resumed from PAUSED state. If set to true, all missed runs will be scheduled. New runs will be scheduled after the backfill is complete. Default to false.
-  final pulumi.Input<bool>? catchUp;
+  final pulumi.Input<bool?>? catchUp;
   /// Request message for [NotebookService.CreateNotebookExecutionJob]
   /// Structure is documented below.
-  final pulumi.Input<AiScheduleCreateNotebookExecutionJobRequest>? createNotebookExecutionJobRequest;
+  final pulumi.Input<AiScheduleCreateNotebookExecutionJobRequest?>? createNotebookExecutionJobRequest;
   /// Request message for PipelineService.CreatePipelineJob.
   /// Structure is documented below.
-  final pulumi.Input<AiScheduleCreatePipelineJobRequest>? createPipelineJobRequest;
+  final pulumi.Input<AiScheduleCreatePipelineJobRequest?>? createPipelineJobRequest;
   /// Timestamp when this Schedule was created.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Cron schedule (https://en.wikipedia.org/wiki/Cron) to launch scheduled runs. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or "TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *".
-  final pulumi.Input<String>? cron;
+  final pulumi.Input<String?>? cron;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// User provided name of the Schedule. The name can be up to 128 characters long and can consist of any UTF-8 characters.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Timestamp after which no new runs can be scheduled. If specified, The schedule will be completed when either endTime is reached or when scheduledRunCount &gt;= max_run_count. If not specified, new runs will keep getting scheduled until this Schedule is paused or deleted. Already scheduled runs will be allowed to complete. Unset if not specified.
-  final pulumi.Input<String>? endTime;
+  final pulumi.Input<String?>? endTime;
   /// Timestamp when this Schedule was last paused. Unset if never paused.
-  final pulumi.Input<String>? lastPauseTime;
+  final pulumi.Input<String?>? lastPauseTime;
   /// Timestamp when this Schedule was last resumed. Unset if never resumed from pause.
-  final pulumi.Input<String>? lastResumeTime;
+  final pulumi.Input<String?>? lastResumeTime;
   /// Status of a scheduled run.
   /// Structure is documented below.
-  final pulumi.Input<List<AiScheduleLastScheduledRunResponse>>? lastScheduledRunResponses;
+  final pulumi.Input<List<AiScheduleLastScheduledRunResponse>?>? lastScheduledRunResponses;
   /// The location of the Schedule. eg us-central1
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Specifies the maximum number of active runs that can be executed concurrently for this Schedule. This limits the number of runs that can be in a non-terminal state at the same time. Currently, this field is only supported for requests of type CreatePipelineJobRequest.
-  final pulumi.Input<String>? maxConcurrentActiveRunCount;
+  final pulumi.Input<String?>? maxConcurrentActiveRunCount;
   /// Maximum number of runs that can be started concurrently for this Schedule. This is the limit for starting the scheduled requests and not the execution of the operations/jobs created by the requests (if applicable).
-  final pulumi.Input<String>? maxConcurrentRunCount;
+  final pulumi.Input<String?>? maxConcurrentRunCount;
   /// Maximum run count of the schedule. If specified, The schedule will be completed when either startedRunCount &gt;= maxRunCount or when endTime is reached. If not specified, new runs will keep getting scheduled until this Schedule is paused or deleted. Already scheduled runs will be allowed to complete. Unset if not specified.
-  final pulumi.Input<String>? maxRunCount;
+  final pulumi.Input<String?>? maxRunCount;
   /// The resource name of the Schedule.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Timestamp when this Schedule should schedule the next run. Having a nextRunTime in the past means the runs are being started behind schedule.
-  final pulumi.Input<String>? nextRunTime;
+  final pulumi.Input<String?>? nextRunTime;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Timestamp after which the first run can be scheduled. Default to Schedule create time if not specified.
-  final pulumi.Input<String>? startTime;
+  final pulumi.Input<String?>? startTime;
   /// The number of runs started by this schedule.
-  final pulumi.Input<String>? startedRunCount;
+  final pulumi.Input<String?>? startedRunCount;
   /// The state of this Schedule. Possible values: ACTIVE PAUSED COMPLETED
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// Timestamp when this Schedule was updated.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [AiScheduleState].
   /// [allowQueueing] Whether new scheduled runs can be queued when maxConcurrentRuns limit is reached. If set to true, new runs will be queued instead of skipped. Default to false.

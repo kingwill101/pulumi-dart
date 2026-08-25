@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class StandardAppVersionLibrary {
   /// Name of the library. Example "django".
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Version of the library to select, or "latest".
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [StandardAppVersionLibrary].
   /// [name] Name of the library. Example "django".

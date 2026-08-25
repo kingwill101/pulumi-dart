@@ -4,10 +4,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class V2VmServiceAccount {
   /// Email address of the service account. If empty, default Compute service account will be used.
-  final pulumi.Input<String>? email;
+  final pulumi.Input<String?>? email;
   /// The list of scopes to be made available for this service account. If empty, access to all
   /// Cloud APIs will be allowed.
-  final pulumi.Input<List<String>>? scopes;
+  final pulumi.Input<List<String>?>? scopes;
 
   /// Creates a new [V2VmServiceAccount].
   /// [email] Email address of the service account. If empty, default Compute service account will be used.

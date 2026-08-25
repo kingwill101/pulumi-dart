@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FeedDetailsHttpsPushWebhookSettings {
   /// Delimiter to split on for the feed.
-  final pulumi.Input<String>? splitDelimiter;
+  final pulumi.Input<String?>? splitDelimiter;
 
   /// Creates a new [FeedDetailsHttpsPushWebhookSettings].
   /// [splitDelimiter] Delimiter to split on for the feed.

@@ -7,7 +7,7 @@ class FeedDetailsTrellixHxHostsSettings {
   /// TrellixStarXAuthentication contains a oneof with all of the authentication
   /// types supported by Trellix *X devices.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsTrellixHxHostsSettingsAuthentication>? authentication;
+  final pulumi.Input<FeedDetailsTrellixHxHostsSettingsAuthentication?>? authentication;
   /// Trellix HX Device URL.
   /// This must be a valid URL with an http or https scheme. It has no default.
   /// Usually a device URL is in the form of either:

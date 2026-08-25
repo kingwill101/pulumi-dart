@@ -10,7 +10,7 @@ class GetTaxonomyArgs {
   /// The user-defined name of the taxonomy to look up.
   final pulumi.Input<String> displayName;
   /// The project in which the taxonomy exists. If not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The region the taxonomy is located in.
   final pulumi.Input<String> region;
 

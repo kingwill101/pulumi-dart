@@ -5,16 +5,16 @@ import 'inbound_saml_config_sp_config_sp_certificate.dart';
 
 class InboundSamlConfigSpConfig {
   /// Callback URI where responses from IDP are handled. Must start with `https://`.
-  final pulumi.Input<String>? callbackUri;
+  final pulumi.Input<String?>? callbackUri;
   /// (Output)
   /// The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
   /// Structure is documented below.
   ///
   ///
   /// &lt;a name="nestedSpConfigSpCertificates"&gt;&lt;/a&gt;The `spCertificates` block contains:
-  final pulumi.Input<List<InboundSamlConfigSpConfigSpCertificate>>? spCertificates;
+  final pulumi.Input<List<InboundSamlConfigSpConfigSpCertificate>?>? spCertificates;
   /// Unique identifier for all SAML entities.
-  final pulumi.Input<String>? spEntityId;
+  final pulumi.Input<String?>? spEntityId;
 
   /// Creates a new [InboundSamlConfigSpConfig].
   /// [callbackUri] Callback URI where responses from IDP are handled. Must start with `https://`.

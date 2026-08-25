@@ -62,7 +62,7 @@ class GetRegionBackendServiceConnectionTrackingPolicy {
     return GetRegionBackendServiceConnectionTrackingPolicy(
       connectionPersistenceOnUnhealthyBackends: pulumi.Input.fromValue(map['connectionPersistenceOnUnhealthyBackends'] as String),
       enableStrongAffinity: pulumi.Input.fromValue(map['enableStrongAffinity'] as bool),
-      idleTimeoutSec: pulumi.Input.fromValue(map['idleTimeoutSec'] as int),
+      idleTimeoutSec: pulumi.Input.fromValue((map['idleTimeoutSec'] as num).toInt()),
       trackingMode: pulumi.Input.fromValue(map['trackingMode'] as String),
     );
   }

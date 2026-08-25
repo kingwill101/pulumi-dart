@@ -7,7 +7,7 @@ class WireGroupEndpoint {
   /// The identifier for this object. Format specified above.
   final pulumi.Input<String> endpoint;
   /// Structure is documented below.
-  final pulumi.Input<List<WireGroupEndpointInterconnect>>? interconnects;
+  final pulumi.Input<List<WireGroupEndpointInterconnect>?>? interconnects;
 
   /// Creates a new [WireGroupEndpoint].
   /// [endpoint] The identifier for this object. Format specified above.

@@ -5,10 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConnectionInstallationState {
   /// Output only. Link to follow for next action. Empty string if the installation is already
   /// complete.
-  final pulumi.Input<String>? actionUri;
+  final pulumi.Input<String?>? actionUri;
   /// Output only. Message of what the user should do next to continue the installation.
   /// Empty string if the installation is already complete.
-  final pulumi.Input<String>? message;
+  final pulumi.Input<String?>? message;
   /// (Output)
   /// Output only. Current step of the installation process.
   /// Possible values:
@@ -17,7 +17,7 @@ class ConnectionInstallationState {
   /// PENDING_USER_OAUTH
   /// PENDING_INSTALL_APP
   /// COMPLETE
-  final pulumi.Input<String>? stage;
+  final pulumi.Input<String?>? stage;
 
   /// Creates a new [ConnectionInstallationState].
   /// [actionUri] Output only. Link to follow for next action. Empty string if the installation is already

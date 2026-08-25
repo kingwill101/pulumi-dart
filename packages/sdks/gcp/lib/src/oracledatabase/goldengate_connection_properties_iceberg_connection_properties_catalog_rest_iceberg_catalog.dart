@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalog {
   /// The content of the configuration file containing additional properties for
   /// the REST catalog.
-  final pulumi.Input<String>? properties;
+  final pulumi.Input<String?>? properties;
   /// The REST uri.
   final pulumi.Input<String> uri;
 

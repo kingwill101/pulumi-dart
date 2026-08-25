@@ -13,7 +13,7 @@ class KeyRingImportJobArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// It must be unique within a KeyRing and match the regular expression [a-zA-Z0-9_-]{1,63}
   final pulumi.Input<String> importJobId;
   /// The wrapping method to be used for incoming key material.

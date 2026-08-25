@@ -5,12 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RolloutPlanWaveOrchestrationOptionsDelay {
   /// Controls whether the delay should only be added between batches of projects corresponding to different locations, or also between batches of projects corresponding to the same location.
   /// Possible values are: `DELIMITER_UNSPECIFIED`, `DELIMITER_LOCATION`, `DELIMITER_BATCH`.
-  final pulumi.Input<String>? delimiter;
+  final pulumi.Input<String?>? delimiter;
   /// The duration of the delay, if any, to be added between batches of projects.
-  final pulumi.Input<String>? duration;
+  final pulumi.Input<String?>? duration;
   /// Controls whether the specified duration is to be added at the end of each batch, or if the total processing time for each batch will be padded if needed to meet the specified duration.
   /// Possible values are: `TYPE_UNSPECIFIED`, `TYPE_OFFSET`, `TYPE_MINIMUM`.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [RolloutPlanWaveOrchestrationOptionsDelay].
   /// [delimiter] Controls whether the delay should only be added between batches of projects corresponding to different locations, or also between batches of projects corresponding to the same location.

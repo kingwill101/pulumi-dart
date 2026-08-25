@@ -6,7 +6,7 @@ import 'feed_details_netskope_alert_settings_authentication_header_key_value.dar
 class FeedDetailsNetskopeAlertSettingsAuthentication {
   /// Header key-value pairs.
   /// Structure is documented below.
-  final pulumi.Input<List<FeedDetailsNetskopeAlertSettingsAuthenticationHeaderKeyValue>>? headerKeyValues;
+  final pulumi.Input<List<FeedDetailsNetskopeAlertSettingsAuthenticationHeaderKeyValue>?>? headerKeyValues;
 
   /// Creates a new [FeedDetailsNetskopeAlertSettingsAuthentication].
   /// [headerKeyValues] Header key-value pairs.

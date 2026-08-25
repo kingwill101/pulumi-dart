@@ -7,12 +7,12 @@ class InterceptEndpointGroupConnectedDeploymentGroup {
   /// (Output)
   /// The list of locations where the deployment group is present.
   /// Structure is documented below.
-  final pulumi.Input<List<InterceptEndpointGroupConnectedDeploymentGroupLocation>>? locations;
+  final pulumi.Input<List<InterceptEndpointGroupConnectedDeploymentGroupLocation>?>? locations;
   /// (Output)
   /// The connected deployment group's resource name, for example:
   /// `projects/123456789/locations/global/interceptDeploymentGroups/my-dg`.
   /// See https://google.aip.dev/124.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [InterceptEndpointGroupConnectedDeploymentGroup].
   /// [locations] (Output)

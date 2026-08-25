@@ -11,12 +11,12 @@ class RegionBackendServiceFailoverPolicy {
   /// of 10 min.
   /// This can be set to true only if the protocol is TCP.
   /// The default is false.
-  final pulumi.Input<bool>? disableConnectionDrainOnFailover;
+  final pulumi.Input<bool?>? disableConnectionDrainOnFailover;
   /// This option is used only when no healthy VMs are detected in the primary
   /// and backup instance groups. When set to true, traffic is dropped. When
   /// set to false, new connections are sent across all VMs in the primary group.
   /// The default is false.
-  final pulumi.Input<bool>? dropTrafficIfUnhealthy;
+  final pulumi.Input<bool?>? dropTrafficIfUnhealthy;
   /// The value of the field must be in [0, 1]. If the ratio of the healthy
   /// VMs in the primary backend is at or below this number, traffic arriving
   /// at the load-balanced IP will be directed to the failover backend.
@@ -25,7 +25,7 @@ class RegionBackendServiceFailoverPolicy {
   /// backend in the "force" mode, where traffic will be spread to the healthy
   /// VMs with the best effort, or to all VMs when no VM is healthy.
   /// This field is only used with l4 load balancing.
-  final pulumi.Input<double>? failoverRatio;
+  final pulumi.Input<double?>? failoverRatio;
 
   /// Creates a new [RegionBackendServiceFailoverPolicy].
   /// [disableConnectionDrainOnFailover] On failover or failback, this field indicates whether connection drain
@@ -49,7 +49,7 @@ class RegionBackendServiceFailoverPolicy {
     return RegionBackendServiceFailoverPolicy(
       disableConnectionDrainOnFailover: (() { final guardedValue = map['disableConnectionDrainOnFailover']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       dropTrafficIfUnhealthy: (() { final guardedValue = map['dropTrafficIfUnhealthy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      failoverRatio: (() { final guardedValue = map['failoverRatio']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      failoverRatio: (() { final guardedValue = map['failoverRatio']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

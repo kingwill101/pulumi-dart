@@ -8,9 +8,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_serviceaccount_get_account_access_token_get_account_access_token_args_doc}
 class GetAccountAccessTokenArgs {
   /// Delegate chain of approvals needed to perform full impersonation. Specify the fully qualified service account name.  (e.g. `["projects/-/serviceAccounts/delegate-svc-account@project-id.iam.gserviceaccount.com"]`)
-  final pulumi.Input<List<String>>? delegates;
+  final pulumi.Input<List<String>?>? delegates;
   /// Lifetime of the impersonated token (defaults to its max: `3600s`).
-  final pulumi.Input<String>? lifetime;
+  final pulumi.Input<String?>? lifetime;
   /// The scopes the new credential should have (e.g. `["cloud-platform"]`)
   final pulumi.Input<List<String>> scopes;
   /// The service account _to_ impersonate (e.g. `service_B@your-project-id.iam.gserviceaccount.com`)

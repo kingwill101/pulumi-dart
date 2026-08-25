@@ -295,7 +295,7 @@ class AnywhereCache extends pulumi.CustomResource {
           'gcp:storage/anywhereCache:AnywhereCache',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     admissionPolicy = registerOutput<String?>('admissionPolicy');
     anywhereCacheId = registerOutput<String>('anywhereCacheId');
@@ -315,11 +315,12 @@ class AnywhereCache extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AnywhereCacheState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AnywhereCache._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -341,6 +342,28 @@ class AnywhereCache extends pulumi.CustomResource {
     ingestOnWrite = registerOutput<bool?>('ingestOnWrite');
     pendingUpdate = registerOutput<bool>('pendingUpdate');
     this.state = registerOutput<String>('state');
+    ttl = registerOutput<String?>('ttl');
+    updateTime = registerOutput<String>('updateTime');
+    zone = registerOutput<String>('zone');
+  }
+
+  /// Creates a typed reference to an existing [AnywhereCache] resource.
+  AnywhereCache.reference(String urn)
+    : super(
+        'gcp:storage/anywhereCache:AnywhereCache',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    admissionPolicy = registerOutput<String?>('admissionPolicy');
+    anywhereCacheId = registerOutput<String>('anywhereCacheId');
+    bucket = registerOutput<String>('bucket');
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    ingestOnWrite = registerOutput<bool?>('ingestOnWrite');
+    pendingUpdate = registerOutput<bool>('pendingUpdate');
+    state = registerOutput<String>('state');
     ttl = registerOutput<String?>('ttl');
     updateTime = registerOutput<String>('updateTime');
     zone = registerOutput<String>('zone');

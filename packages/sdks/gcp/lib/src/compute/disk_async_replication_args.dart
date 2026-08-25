@@ -16,7 +16,7 @@ class DiskAsyncReplicationArgs {
   /// When set to "DELETE", deleting the resource is allowed.
   ///
   /// The `secondaryDisk` block includes:
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// The primary disk (source of replication).
   final pulumi.Input<String> primaryDisk;
   /// The secondary disk (target of replication). You can specify only one value. Structure is documented below.

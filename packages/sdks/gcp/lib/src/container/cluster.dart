@@ -32,6 +32,7 @@ import 'cluster_network_performance_config.dart';
 import 'cluster_network_policy.dart';
 import 'cluster_node_config.dart';
 import 'cluster_node_creation_config.dart';
+import 'cluster_node_pool.dart';
 import 'cluster_node_pool_auto_config.dart';
 import 'cluster_node_pool_defaults.dart';
 import 'cluster_notification_config.dart';
@@ -1316,7 +1317,7 @@ class Cluster extends pulumi.CustomResource {
   /// cluster creation without deleting and recreating the entire cluster. Unless you absolutely need the ability
   /// to say "these are the _only_ node pools associated with this cluster", use the
   /// gcp.container.NodePool resource instead of this property.
-  late final pulumi.Output<List<Map<String, dynamic>>> nodePools;
+  late final pulumi.Output<List<ClusterNodePool>> nodePools;
   /// The Kubernetes version on the nodes. Must either be unset
   /// or set to the same value as `minMasterVersion` on create. Defaults to the default
   /// version set by GKE which is not necessarily the latest version. This only affects
@@ -1432,14 +1433,15 @@ class Cluster extends pulumi.CustomResource {
           'gcp:container/cluster:Cluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     addonsConfig = registerOutput<ClusterAddonsConfig>('addonsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterAddonsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     allowNetAdmin = registerOutput<bool?>('allowNetAdmin');
     anonymousAuthenticationConfig = registerOutput<ClusterAnonymousAuthenticationConfig>('anonymousAuthenticationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterAnonymousAuthenticationConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     authenticatorGroupsConfig = registerOutput<ClusterAuthenticatorGroupsConfig>('authenticatorGroupsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterAuthenticatorGroupsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     autopilotClusterPolicyConfig = registerOutput<ClusterAutopilotClusterPolicyConfig>('autopilotClusterPolicyConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterAutopilotClusterPolicyConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    autopilotPrivilegedAdmissions = registerOutput<List<String>>('autopilotPrivilegedAdmissions');
+    autopilotPrivilegedAdmissions = registerOutput<List<String>>('autopilotPrivilegedAdmissions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     binaryAuthorization = registerOutput<ClusterBinaryAuthorization?>('binaryAuthorization', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterBinaryAuthorization.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     clusterAutoscaling = registerOutput<ClusterClusterAutoscaling>('clusterAutoscaling', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterClusterAutoscaling.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     clusterIpv4Cidr = registerOutput<String>('clusterIpv4Cidr');
@@ -1458,7 +1460,7 @@ class Cluster extends pulumi.CustomResource {
     desiredEmulatedVersion = registerOutput<String?>('desiredEmulatedVersion');
     disableL4LbFirewallReconciliation = registerOutput<bool?>('disableL4LbFirewallReconciliation');
     dnsConfig = registerOutput<ClusterDnsConfig?>('dnsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterDnsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     emulatedVersion = registerOutput<String>('emulatedVersion');
     enableAutopilot = registerOutput<bool?>('enableAutopilot');
     enableCiliumClusterwideNetworkPolicy = registerOutput<bool?>('enableCiliumClusterwideNetworkPolicy');
@@ -1502,10 +1504,10 @@ class Cluster extends pulumi.CustomResource {
     networkingMode = registerOutput<String>('networkingMode');
     nodeConfig = registerOutput<ClusterNodeConfig>('nodeConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterNodeConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     nodeCreationConfig = registerOutput<ClusterNodeCreationConfig>('nodeCreationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterNodeCreationConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    nodeLocations = registerOutput<List<String>>('nodeLocations');
+    nodeLocations = registerOutput<List<String>>('nodeLocations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     nodePoolAutoConfig = registerOutput<ClusterNodePoolAutoConfig>('nodePoolAutoConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterNodePoolAutoConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     nodePoolDefaults = registerOutput<ClusterNodePoolDefaults>('nodePoolDefaults', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterNodePoolDefaults.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    nodePools = registerOutput<List<Map<String, dynamic>>>('nodePools');
+    nodePools = registerOutput<List<ClusterNodePool>>('nodePools', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterNodePool>(guardedValue, (value) => ClusterNodePool.fromMap((value as Map).cast<String, dynamic>())); });
     nodeVersion = registerOutput<String>('nodeVersion');
     notificationConfig = registerOutput<ClusterNotificationConfig>('notificationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterNotificationConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     operation = registerOutput<String>('operation');
@@ -1515,11 +1517,11 @@ class Cluster extends pulumi.CustomResource {
     privateIpv6GoogleAccess = registerOutput<String>('privateIpv6GoogleAccess');
     project = registerOutput<String>('project');
     protectConfig = registerOutput<ClusterProtectConfig>('protectConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterProtectConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     rbacBindingConfig = registerOutput<ClusterRbacBindingConfig>('rbacBindingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterRbacBindingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     releaseChannel = registerOutput<ClusterReleaseChannel>('releaseChannel', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterReleaseChannel.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     removeDefaultNodePool = registerOutput<bool?>('removeDefaultNodePool');
-    resourceLabels = registerOutput<Map<String, String>?>('resourceLabels');
+    resourceLabels = registerOutput<Map<String, String>?>('resourceLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     resourceUsageExportConfig = registerOutput<ClusterResourceUsageExportConfig?>('resourceUsageExportConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterResourceUsageExportConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     rollbackSafeUpgrade = registerOutput<ClusterRollbackSafeUpgrade?>('rollbackSafeUpgrade', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterRollbackSafeUpgrade.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     secretManagerConfig = registerOutput<ClusterSecretManagerConfig?>('secretManagerConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterSecretManagerConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -1543,11 +1545,12 @@ class Cluster extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ClusterState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Cluster._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1566,7 +1569,7 @@ class Cluster extends pulumi.CustomResource {
     anonymousAuthenticationConfig = registerOutput<ClusterAnonymousAuthenticationConfig>('anonymousAuthenticationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterAnonymousAuthenticationConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     authenticatorGroupsConfig = registerOutput<ClusterAuthenticatorGroupsConfig>('authenticatorGroupsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterAuthenticatorGroupsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     autopilotClusterPolicyConfig = registerOutput<ClusterAutopilotClusterPolicyConfig>('autopilotClusterPolicyConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterAutopilotClusterPolicyConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    autopilotPrivilegedAdmissions = registerOutput<List<String>>('autopilotPrivilegedAdmissions');
+    autopilotPrivilegedAdmissions = registerOutput<List<String>>('autopilotPrivilegedAdmissions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     binaryAuthorization = registerOutput<ClusterBinaryAuthorization?>('binaryAuthorization', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterBinaryAuthorization.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     clusterAutoscaling = registerOutput<ClusterClusterAutoscaling>('clusterAutoscaling', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterClusterAutoscaling.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     clusterIpv4Cidr = registerOutput<String>('clusterIpv4Cidr');
@@ -1585,7 +1588,7 @@ class Cluster extends pulumi.CustomResource {
     desiredEmulatedVersion = registerOutput<String?>('desiredEmulatedVersion');
     disableL4LbFirewallReconciliation = registerOutput<bool?>('disableL4LbFirewallReconciliation');
     dnsConfig = registerOutput<ClusterDnsConfig?>('dnsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterDnsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     emulatedVersion = registerOutput<String>('emulatedVersion');
     enableAutopilot = registerOutput<bool?>('enableAutopilot');
     enableCiliumClusterwideNetworkPolicy = registerOutput<bool?>('enableCiliumClusterwideNetworkPolicy');
@@ -1629,10 +1632,10 @@ class Cluster extends pulumi.CustomResource {
     networkingMode = registerOutput<String>('networkingMode');
     nodeConfig = registerOutput<ClusterNodeConfig>('nodeConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterNodeConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     nodeCreationConfig = registerOutput<ClusterNodeCreationConfig>('nodeCreationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterNodeCreationConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    nodeLocations = registerOutput<List<String>>('nodeLocations');
+    nodeLocations = registerOutput<List<String>>('nodeLocations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     nodePoolAutoConfig = registerOutput<ClusterNodePoolAutoConfig>('nodePoolAutoConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterNodePoolAutoConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     nodePoolDefaults = registerOutput<ClusterNodePoolDefaults>('nodePoolDefaults', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterNodePoolDefaults.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    nodePools = registerOutput<List<Map<String, dynamic>>>('nodePools');
+    nodePools = registerOutput<List<ClusterNodePool>>('nodePools', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterNodePool>(guardedValue, (value) => ClusterNodePool.fromMap((value as Map).cast<String, dynamic>())); });
     nodeVersion = registerOutput<String>('nodeVersion');
     notificationConfig = registerOutput<ClusterNotificationConfig>('notificationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterNotificationConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     operation = registerOutput<String>('operation');
@@ -1642,11 +1645,125 @@ class Cluster extends pulumi.CustomResource {
     privateIpv6GoogleAccess = registerOutput<String>('privateIpv6GoogleAccess');
     project = registerOutput<String>('project');
     protectConfig = registerOutput<ClusterProtectConfig>('protectConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterProtectConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     rbacBindingConfig = registerOutput<ClusterRbacBindingConfig>('rbacBindingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterRbacBindingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     releaseChannel = registerOutput<ClusterReleaseChannel>('releaseChannel', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterReleaseChannel.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     removeDefaultNodePool = registerOutput<bool?>('removeDefaultNodePool');
-    resourceLabels = registerOutput<Map<String, String>?>('resourceLabels');
+    resourceLabels = registerOutput<Map<String, String>?>('resourceLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    resourceUsageExportConfig = registerOutput<ClusterResourceUsageExportConfig?>('resourceUsageExportConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterResourceUsageExportConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    rollbackSafeUpgrade = registerOutput<ClusterRollbackSafeUpgrade?>('rollbackSafeUpgrade', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterRollbackSafeUpgrade.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    secretManagerConfig = registerOutput<ClusterSecretManagerConfig?>('secretManagerConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterSecretManagerConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    secretSyncConfig = registerOutput<ClusterSecretSyncConfig?>('secretSyncConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterSecretSyncConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    securityPostureConfig = registerOutput<ClusterSecurityPostureConfig>('securityPostureConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterSecurityPostureConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    selfLink = registerOutput<String>('selfLink');
+    serviceExternalIpsConfig = registerOutput<ClusterServiceExternalIpsConfig>('serviceExternalIpsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterServiceExternalIpsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    servicesIpv4Cidr = registerOutput<String>('servicesIpv4Cidr');
+    skipNodePoolRefresh = registerOutput<bool?>('skipNodePoolRefresh');
+    subnetwork = registerOutput<String>('subnetwork');
+    tpuConfig = registerOutput<ClusterTpuConfig>('tpuConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterTpuConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tpuIpv4CidrBlock = registerOutput<String>('tpuIpv4CidrBlock');
+    userManagedKeysConfig = registerOutput<ClusterUserManagedKeysConfig?>('userManagedKeysConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterUserManagedKeysConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    verticalPodAutoscaling = registerOutput<ClusterVerticalPodAutoscaling>('verticalPodAutoscaling', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterVerticalPodAutoscaling.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    workloadAltsConfig = registerOutput<ClusterWorkloadAltsConfig>('workloadAltsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterWorkloadAltsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    workloadIdentityConfig = registerOutput<ClusterWorkloadIdentityConfig>('workloadIdentityConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterWorkloadIdentityConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Cluster] resource.
+  Cluster.reference(String urn)
+    : super(
+        'gcp:container/cluster:Cluster',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    addonsConfig = registerOutput<ClusterAddonsConfig>('addonsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterAddonsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    allowNetAdmin = registerOutput<bool?>('allowNetAdmin');
+    anonymousAuthenticationConfig = registerOutput<ClusterAnonymousAuthenticationConfig>('anonymousAuthenticationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterAnonymousAuthenticationConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    authenticatorGroupsConfig = registerOutput<ClusterAuthenticatorGroupsConfig>('authenticatorGroupsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterAuthenticatorGroupsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    autopilotClusterPolicyConfig = registerOutput<ClusterAutopilotClusterPolicyConfig>('autopilotClusterPolicyConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterAutopilotClusterPolicyConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    autopilotPrivilegedAdmissions = registerOutput<List<String>>('autopilotPrivilegedAdmissions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    binaryAuthorization = registerOutput<ClusterBinaryAuthorization?>('binaryAuthorization', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterBinaryAuthorization.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    clusterAutoscaling = registerOutput<ClusterClusterAutoscaling>('clusterAutoscaling', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterClusterAutoscaling.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    clusterIpv4Cidr = registerOutput<String>('clusterIpv4Cidr');
+    clusterTelemetry = registerOutput<ClusterClusterTelemetry>('clusterTelemetry', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterClusterTelemetry.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    confidentialNodes = registerOutput<ClusterConfidentialNodes>('confidentialNodes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterConfidentialNodes.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    controlPlaneEndpointsConfig = registerOutput<ClusterControlPlaneEndpointsConfig>('controlPlaneEndpointsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterControlPlaneEndpointsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    costManagementConfig = registerOutput<ClusterCostManagementConfig>('costManagementConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterCostManagementConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    databaseEncryption = registerOutput<ClusterDatabaseEncryption>('databaseEncryption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterDatabaseEncryption.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    datapathProvider = registerOutput<String>('datapathProvider');
+    dataplaneOptimizationMode = registerOutput<String?>('dataplaneOptimizationMode');
+    defaultMaxPodsPerNode = registerOutput<int>('defaultMaxPodsPerNode');
+    defaultSnatStatus = registerOutput<ClusterDefaultSnatStatus>('defaultSnatStatus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterDefaultSnatStatus.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    deletionProtection = registerOutput<bool?>('deletionProtection');
+    description = registerOutput<String?>('description');
+    desiredEmulatedVersion = registerOutput<String?>('desiredEmulatedVersion');
+    disableL4LbFirewallReconciliation = registerOutput<bool?>('disableL4LbFirewallReconciliation');
+    dnsConfig = registerOutput<ClusterDnsConfig?>('dnsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterDnsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    emulatedVersion = registerOutput<String>('emulatedVersion');
+    enableAutopilot = registerOutput<bool?>('enableAutopilot');
+    enableCiliumClusterwideNetworkPolicy = registerOutput<bool?>('enableCiliumClusterwideNetworkPolicy');
+    enableFqdnNetworkPolicy = registerOutput<bool?>('enableFqdnNetworkPolicy');
+    enableIntranodeVisibility = registerOutput<bool>('enableIntranodeVisibility');
+    enableK8sBetaApis = registerOutput<ClusterEnableK8sBetaApis?>('enableK8sBetaApis', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterEnableK8sBetaApis.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    enableKubernetesAlpha = registerOutput<bool?>('enableKubernetesAlpha');
+    enableL4IlbSubsetting = registerOutput<bool>('enableL4IlbSubsetting');
+    enableLegacyAbac = registerOutput<bool?>('enableLegacyAbac');
+    enableMultiNetworking = registerOutput<bool?>('enableMultiNetworking');
+    enableShieldedNodes = registerOutput<bool?>('enableShieldedNodes');
+    enableTpu = registerOutput<bool>('enableTpu');
+    endpoint = registerOutput<String>('endpoint');
+    enterpriseConfig = registerOutput<ClusterEnterpriseConfig>('enterpriseConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterEnterpriseConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    fleet = registerOutput<ClusterFleet?>('fleet', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterFleet.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    gatewayApiConfig = registerOutput<ClusterGatewayApiConfig>('gatewayApiConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterGatewayApiConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    gkeAutoUpgradeConfig = registerOutput<ClusterGkeAutoUpgradeConfig>('gkeAutoUpgradeConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterGkeAutoUpgradeConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    identityServiceConfig = registerOutput<ClusterIdentityServiceConfig>('identityServiceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterIdentityServiceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    ignoreNodeCountChanges = registerOutput<bool?>('ignoreNodeCountChanges');
+    inTransitEncryptionConfig = registerOutput<String?>('inTransitEncryptionConfig');
+    initialNodeCount = registerOutput<int?>('initialNodeCount');
+    ipAllocationPolicy = registerOutput<ClusterIpAllocationPolicy>('ipAllocationPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterIpAllocationPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    labelFingerprint = registerOutput<String>('labelFingerprint');
+    location = registerOutput<String>('location');
+    loggingConfig = registerOutput<ClusterLoggingConfig>('loggingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterLoggingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    loggingService = registerOutput<String>('loggingService');
+    maintenancePolicy = registerOutput<ClusterMaintenancePolicy?>('maintenancePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterMaintenancePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    managedMachineLearningDiagnosticsConfig = registerOutput<ClusterManagedMachineLearningDiagnosticsConfig>('managedMachineLearningDiagnosticsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterManagedMachineLearningDiagnosticsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    managedOpentelemetryConfig = registerOutput<ClusterManagedOpentelemetryConfig>('managedOpentelemetryConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterManagedOpentelemetryConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    masterAuth = registerOutput<ClusterMasterAuth>('masterAuth', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterMasterAuth.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    masterAuthorizedNetworksConfig = registerOutput<ClusterMasterAuthorizedNetworksConfig>('masterAuthorizedNetworksConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterMasterAuthorizedNetworksConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    masterVersion = registerOutput<String>('masterVersion');
+    meshCertificates = registerOutput<ClusterMeshCertificates>('meshCertificates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterMeshCertificates.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    minMasterVersion = registerOutput<String?>('minMasterVersion');
+    monitoringConfig = registerOutput<ClusterMonitoringConfig>('monitoringConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterMonitoringConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    monitoringService = registerOutput<String>('monitoringService');
+    this.name = registerOutput<String>('name');
+    network = registerOutput<String?>('network');
+    networkPerformanceConfig = registerOutput<ClusterNetworkPerformanceConfig?>('networkPerformanceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterNetworkPerformanceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    networkPolicy = registerOutput<ClusterNetworkPolicy?>('networkPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterNetworkPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    networkingMode = registerOutput<String>('networkingMode');
+    nodeConfig = registerOutput<ClusterNodeConfig>('nodeConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterNodeConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    nodeCreationConfig = registerOutput<ClusterNodeCreationConfig>('nodeCreationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterNodeCreationConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    nodeLocations = registerOutput<List<String>>('nodeLocations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    nodePoolAutoConfig = registerOutput<ClusterNodePoolAutoConfig>('nodePoolAutoConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterNodePoolAutoConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    nodePoolDefaults = registerOutput<ClusterNodePoolDefaults>('nodePoolDefaults', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterNodePoolDefaults.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    nodePools = registerOutput<List<ClusterNodePool>>('nodePools', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterNodePool>(guardedValue, (value) => ClusterNodePool.fromMap((value as Map).cast<String, dynamic>())); });
+    nodeVersion = registerOutput<String>('nodeVersion');
+    notificationConfig = registerOutput<ClusterNotificationConfig>('notificationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterNotificationConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    operation = registerOutput<String>('operation');
+    podAutoscaling = registerOutput<ClusterPodAutoscaling>('podAutoscaling', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterPodAutoscaling.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    podSecurityPolicyConfig = registerOutput<ClusterPodSecurityPolicyConfig?>('podSecurityPolicyConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterPodSecurityPolicyConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    privateClusterConfig = registerOutput<ClusterPrivateClusterConfig>('privateClusterConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterPrivateClusterConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    privateIpv6GoogleAccess = registerOutput<String>('privateIpv6GoogleAccess');
+    project = registerOutput<String>('project');
+    protectConfig = registerOutput<ClusterProtectConfig>('protectConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterProtectConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    rbacBindingConfig = registerOutput<ClusterRbacBindingConfig>('rbacBindingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterRbacBindingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    releaseChannel = registerOutput<ClusterReleaseChannel>('releaseChannel', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterReleaseChannel.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    removeDefaultNodePool = registerOutput<bool?>('removeDefaultNodePool');
+    resourceLabels = registerOutput<Map<String, String>?>('resourceLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     resourceUsageExportConfig = registerOutput<ClusterResourceUsageExportConfig?>('resourceUsageExportConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterResourceUsageExportConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     rollbackSafeUpgrade = registerOutput<ClusterRollbackSafeUpgrade?>('rollbackSafeUpgrade', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterRollbackSafeUpgrade.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     secretManagerConfig = registerOutput<ClusterSecretManagerConfig?>('secretManagerConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterSecretManagerConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

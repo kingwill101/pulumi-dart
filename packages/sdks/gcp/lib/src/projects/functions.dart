@@ -133,6 +133,17 @@ Future<GetAncestryResult> getAncestry(
   return GetAncestryResult.fromMap(result);
 }
 
+pulumi.Output<GetAncestryResult> getAncestryOutput(
+  GetAncestryArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:projects/getAncestry:getAncestry',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAncestryResult.fromMap);
+}
+
 /// Get information about a Google Cloud Project IAM Custom Role. Note that you must have the `roles/iam.roleViewer` role (or equivalent permissions) at the project level to use this datasource.
 ///
 ///
@@ -301,6 +312,17 @@ Future<GetIamCustomRoleResult> getIamCustomRole(
   return GetIamCustomRoleResult.fromMap(result);
 }
 
+pulumi.Output<GetIamCustomRoleResult> getIamCustomRoleOutput(
+  GetIamCustomRoleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:projects/getIamCustomRole:getIamCustomRole',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetIamCustomRoleResult.fromMap);
+}
+
 /// Get information about Google Cloud IAM Custom Roles from a project.
 /// Note that you must have the `roles/iam.roleViewer`.
 /// See [the official documentation](https://cloud.google.com/iam/docs/creating-custom-roles)
@@ -434,6 +456,17 @@ Future<GetIamCustomRolesResult> getIamCustomRoles(
   return GetIamCustomRolesResult.fromMap(result);
 }
 
+pulumi.Output<GetIamCustomRolesResult> getIamCustomRolesOutput(
+  GetIamCustomRolesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:projects/getIamCustomRoles:getIamCustomRoles',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetIamCustomRolesResult.fromMap);
+}
+
 /// Retrieves the current IAM policy data for a project.
 ///
 /// ## example
@@ -550,6 +583,17 @@ Future<GetIamPolicyResult> getIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetIamPolicyResult> getIamPolicyOutput(
+  GetIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:projects/getIamPolicy:getIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetIamPolicyResult.fromMap);
 }
 
 /// Allows management of Organization policies for a Google Project. For more information see
@@ -691,6 +735,17 @@ Future<GetOrganizationPolicyResult> getOrganizationPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetOrganizationPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetOrganizationPolicyResult> getOrganizationPolicyOutput(
+  GetOrganizationPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:projects/getOrganizationPolicy:getOrganizationPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetOrganizationPolicyResult.fromMap);
 }
 
 /// Retrieve information about a set of projects based on a filter. See the
@@ -843,6 +898,17 @@ Future<GetProjectResult> getProject(
   return GetProjectResult.fromMap(result);
 }
 
+pulumi.Output<GetProjectResult> getProjectOutput(
+  GetProjectArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:projects/getProject:getProject',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetProjectResult.fromMap);
+}
+
 /// Verify the API service for the Google Cloud Platform project to see if it is enabled or not.
 ///
 /// For a list of services available, visit the [API library page](https://console.cloud.google.com/apis/library)
@@ -972,4 +1038,15 @@ Future<GetProjectServiceResult> getProjectService(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetProjectServiceResult.fromMap(result);
+}
+
+pulumi.Output<GetProjectServiceResult> getProjectServiceOutput(
+  GetProjectServiceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'gcp:projects/getProjectService:getProjectService',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetProjectServiceResult.fromMap);
 }

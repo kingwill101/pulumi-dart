@@ -2,6 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'scope_rbac_role_binding_args.dart';
 import 'scope_rbac_role_binding_gkehub_state.dart';
 import 'scope_rbac_role_binding_role.dart';
+import 'scope_rbac_role_binding_state.dart';
 
 /// RBACRoleBinding represents a rbacrolebinding across the Fleet.
 ///
@@ -538,7 +539,7 @@ class ScopeRbacRoleBinding extends pulumi.CustomResource {
   late final pulumi.Output<String> scopeRbacRoleBindingId;
   /// State of the RBAC Role Binding resource.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> states;
+  late final pulumi.Output<List<ScopeRbacRoleBindingState>> states;
   /// Google-generated UUID for this resource.
   late final pulumi.Output<String> uid;
   /// Time the RBAC Role Binding was updated in UTC.
@@ -561,21 +562,22 @@ class ScopeRbacRoleBinding extends pulumi.CustomResource {
           'gcp:gkehub/scopeRbacRoleBinding:ScopeRbacRoleBinding',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');
     deleteTime = registerOutput<String>('deleteTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     group = registerOutput<String?>('group');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     role = registerOutput<ScopeRbacRoleBindingRole>('role', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScopeRbacRoleBindingRole.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     scopeId = registerOutput<String>('scopeId');
     scopeRbacRoleBindingId = registerOutput<String>('scopeRbacRoleBindingId');
-    states = registerOutput<List<Map<String, dynamic>>>('states');
+    states = registerOutput<List<ScopeRbacRoleBindingState>>('states', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ScopeRbacRoleBindingState>(guardedValue, (value) => ScopeRbacRoleBindingState.fromMap((value as Map).cast<String, dynamic>())); });
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
     user = registerOutput<String?>('user');
@@ -586,11 +588,12 @@ class ScopeRbacRoleBinding extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ScopeRbacRoleBindingGkehubState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ScopeRbacRoleBinding._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -607,16 +610,44 @@ class ScopeRbacRoleBinding extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     deleteTime = registerOutput<String>('deleteTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     group = registerOutput<String?>('group');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     role = registerOutput<ScopeRbacRoleBindingRole>('role', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScopeRbacRoleBindingRole.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     scopeId = registerOutput<String>('scopeId');
     scopeRbacRoleBindingId = registerOutput<String>('scopeRbacRoleBindingId');
-    states = registerOutput<List<Map<String, dynamic>>>('states');
+    states = registerOutput<List<ScopeRbacRoleBindingState>>('states', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ScopeRbacRoleBindingState>(guardedValue, (value) => ScopeRbacRoleBindingState.fromMap((value as Map).cast<String, dynamic>())); });
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
+    user = registerOutput<String?>('user');
+  }
+
+  /// Creates a typed reference to an existing [ScopeRbacRoleBinding] resource.
+  ScopeRbacRoleBinding.reference(String urn)
+    : super(
+        'gcp:gkehub/scopeRbacRoleBinding:ScopeRbacRoleBinding',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    deleteTime = registerOutput<String>('deleteTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    group = registerOutput<String?>('group');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    role = registerOutput<ScopeRbacRoleBindingRole>('role', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScopeRbacRoleBindingRole.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    scopeId = registerOutput<String>('scopeId');
+    scopeRbacRoleBindingId = registerOutput<String>('scopeRbacRoleBindingId');
+    states = registerOutput<List<ScopeRbacRoleBindingState>>('states', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ScopeRbacRoleBindingState>(guardedValue, (value) => ScopeRbacRoleBindingState.fromMap((value as Map).cast<String, dynamic>())); });
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
     user = registerOutput<String?>('user');

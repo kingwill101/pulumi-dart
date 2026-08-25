@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'watchlist_args.dart';
+import 'watchlist_entity_count.dart';
 import 'watchlist_entity_population_mechanism.dart';
 import 'watchlist_state.dart';
 import 'watchlist_watchlist_user_preferences.dart';
@@ -411,7 +412,7 @@ class Watchlist extends pulumi.CustomResource {
   late final pulumi.Output<String> displayName;
   /// Count of different types of entities in the watchlist.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> entityCounts;
+  late final pulumi.Output<List<WatchlistEntityCount>> entityCounts;
   /// Mechanism to populate entities in the watchlist.
   /// Structure is documented below.
   late final pulumi.Output<WatchlistEntityPopulationMechanism> entityPopulationMechanism;
@@ -453,13 +454,13 @@ class Watchlist extends pulumi.CustomResource {
           'gcp:chronicle/watchlist:Watchlist',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
-    entityCounts = registerOutput<List<Map<String, dynamic>>>('entityCounts');
+    entityCounts = registerOutput<List<WatchlistEntityCount>>('entityCounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WatchlistEntityCount>(guardedValue, (value) => WatchlistEntityCount.fromMap((value as Map).cast<String, dynamic>())); });
     entityPopulationMechanism = registerOutput<WatchlistEntityPopulationMechanism>('entityPopulationMechanism', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WatchlistEntityPopulationMechanism.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     instance = registerOutput<String>('instance');
     location = registerOutput<String>('location');
@@ -476,11 +477,12 @@ class Watchlist extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     WatchlistState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Watchlist._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -498,7 +500,32 @@ class Watchlist extends pulumi.CustomResource {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
-    entityCounts = registerOutput<List<Map<String, dynamic>>>('entityCounts');
+    entityCounts = registerOutput<List<WatchlistEntityCount>>('entityCounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WatchlistEntityCount>(guardedValue, (value) => WatchlistEntityCount.fromMap((value as Map).cast<String, dynamic>())); });
+    entityPopulationMechanism = registerOutput<WatchlistEntityPopulationMechanism>('entityPopulationMechanism', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WatchlistEntityPopulationMechanism.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    instance = registerOutput<String>('instance');
+    location = registerOutput<String>('location');
+    multiplyingFactor = registerOutput<double?>('multiplyingFactor');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    updateTime = registerOutput<String>('updateTime');
+    watchlistId = registerOutput<String>('watchlistId');
+    watchlistUserPreferences = registerOutput<WatchlistWatchlistUserPreferences>('watchlistUserPreferences', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WatchlistWatchlistUserPreferences.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Watchlist] resource.
+  Watchlist.reference(String urn)
+    : super(
+        'gcp:chronicle/watchlist:Watchlist',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    entityCounts = registerOutput<List<WatchlistEntityCount>>('entityCounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WatchlistEntityCount>(guardedValue, (value) => WatchlistEntityCount.fromMap((value as Map).cast<String, dynamic>())); });
     entityPopulationMechanism = registerOutput<WatchlistEntityPopulationMechanism>('entityPopulationMechanism', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WatchlistEntityPopulationMechanism.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     instance = registerOutput<String>('instance');
     location = registerOutput<String>('location');

@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'project_sink_args.dart';
 import 'project_sink_bigquery_options.dart';
+import 'project_sink_exclusion.dart';
 import 'project_sink_state.dart';
 
 /// Manages a project-level logging sink. For more information see:
@@ -1014,7 +1015,7 @@ class ProjectSink extends pulumi.CustomResource {
   /// If set to True, then this sink is disabled and it does not export any log entries.
   late final pulumi.Output<bool?> disabled;
   /// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both `filter` and one of `exclusions.filter`, it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> exclusions;
+  late final pulumi.Output<List<ProjectSinkExclusion>?> exclusions;
   /// The filter to apply when exporting logs. Only log entries that match the filter are exported.
   /// See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
   /// write a filter.
@@ -1047,7 +1048,7 @@ class ProjectSink extends pulumi.CustomResource {
           'gcp:logging/projectSink:ProjectSink',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     bigqueryOptions = registerOutput<ProjectSinkBigqueryOptions>('bigqueryOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProjectSinkBigqueryOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     customWriterIdentity = registerOutput<String?>('customWriterIdentity');
@@ -1055,7 +1056,7 @@ class ProjectSink extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     destination = registerOutput<String>('destination');
     disabled = registerOutput<bool?>('disabled');
-    exclusions = registerOutput<List<Map<String, dynamic>>?>('exclusions');
+    exclusions = registerOutput<List<ProjectSinkExclusion>?>('exclusions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ProjectSinkExclusion>(guardedValue, (value) => ProjectSinkExclusion.fromMap((value as Map).cast<String, dynamic>())); });
     filter = registerOutput<String?>('filter');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
@@ -1068,11 +1069,12 @@ class ProjectSink extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ProjectSinkState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ProjectSink._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1092,7 +1094,30 @@ class ProjectSink extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     destination = registerOutput<String>('destination');
     disabled = registerOutput<bool?>('disabled');
-    exclusions = registerOutput<List<Map<String, dynamic>>?>('exclusions');
+    exclusions = registerOutput<List<ProjectSinkExclusion>?>('exclusions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ProjectSinkExclusion>(guardedValue, (value) => ProjectSinkExclusion.fromMap((value as Map).cast<String, dynamic>())); });
+    filter = registerOutput<String?>('filter');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    uniqueWriterIdentity = registerOutput<bool?>('uniqueWriterIdentity');
+    writerIdentity = registerOutput<String>('writerIdentity');
+  }
+
+  /// Creates a typed reference to an existing [ProjectSink] resource.
+  ProjectSink.reference(String urn)
+    : super(
+        'gcp:logging/projectSink:ProjectSink',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    bigqueryOptions = registerOutput<ProjectSinkBigqueryOptions>('bigqueryOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProjectSinkBigqueryOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    customWriterIdentity = registerOutput<String?>('customWriterIdentity');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    destination = registerOutput<String>('destination');
+    disabled = registerOutput<bool?>('disabled');
+    exclusions = registerOutput<List<ProjectSinkExclusion>?>('exclusions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ProjectSinkExclusion>(guardedValue, (value) => ProjectSinkExclusion.fromMap((value as Map).cast<String, dynamic>())); });
     filter = registerOutput<String?>('filter');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

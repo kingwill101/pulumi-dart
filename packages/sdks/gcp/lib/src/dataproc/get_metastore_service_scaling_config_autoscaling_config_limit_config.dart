@@ -25,8 +25,8 @@ class GetMetastoreServiceScalingConfigAutoscalingConfigLimitConfig {
 
   factory GetMetastoreServiceScalingConfigAutoscalingConfigLimitConfig.fromMap(Map<String, dynamic> map) {
     return GetMetastoreServiceScalingConfigAutoscalingConfigLimitConfig(
-      maxScalingFactor: pulumi.Input.fromValue(map['maxScalingFactor'] as double),
-      minScalingFactor: pulumi.Input.fromValue(map['minScalingFactor'] as double),
+      maxScalingFactor: pulumi.Input.fromValue((map['maxScalingFactor'] as num).toDouble()),
+      minScalingFactor: pulumi.Input.fromValue((map['minScalingFactor'] as num).toDouble()),
     );
   }
 }

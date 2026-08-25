@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'deny_policy_args.dart';
+import 'deny_policy_rule.dart';
 import 'deny_policy_state.dart';
 
 /// Represents a collection of denial policies to apply to a given resource.
@@ -495,7 +496,7 @@ class DenyPolicy extends pulumi.CustomResource {
   late final pulumi.Output<String> parent;
   /// Rules to be applied.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> rules;
+  late final pulumi.Output<List<DenyPolicyRule>> rules;
 
   /// Creates a new [DenyPolicy].
   /// [name] The Pulumi resource name.
@@ -509,14 +510,14 @@ class DenyPolicy extends pulumi.CustomResource {
           'gcp:iam/denyPolicy:DenyPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
     etag = registerOutput<String>('etag');
     this.name = registerOutput<String>('name');
     parent = registerOutput<String>('parent');
-    rules = registerOutput<List<Map<String, dynamic>>>('rules');
+    rules = registerOutput<List<DenyPolicyRule>>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DenyPolicyRule>(guardedValue, (value) => DenyPolicyRule.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [DenyPolicy] resource's state with the given [name] and [id].
@@ -524,11 +525,12 @@ class DenyPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DenyPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DenyPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -547,6 +549,23 @@ class DenyPolicy extends pulumi.CustomResource {
     etag = registerOutput<String>('etag');
     this.name = registerOutput<String>('name');
     parent = registerOutput<String>('parent');
-    rules = registerOutput<List<Map<String, dynamic>>>('rules');
+    rules = registerOutput<List<DenyPolicyRule>>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DenyPolicyRule>(guardedValue, (value) => DenyPolicyRule.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [DenyPolicy] resource.
+  DenyPolicy.reference(String urn)
+    : super(
+        'gcp:iam/denyPolicy:DenyPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    displayName = registerOutput<String?>('displayName');
+    etag = registerOutput<String>('etag');
+    this.name = registerOutput<String>('name');
+    parent = registerOutput<String>('parent');
+    rules = registerOutput<List<DenyPolicyRule>>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DenyPolicyRule>(guardedValue, (value) => DenyPolicyRule.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

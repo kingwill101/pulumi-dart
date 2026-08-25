@@ -11,7 +11,7 @@ class GetDataSourceReferenceArgs {
   final pulumi.Input<String> dataSourceReferenceId;
   final pulumi.Input<String> location;
   /// - (Optional) The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetDataSourceReferenceArgs].
   /// [dataSourceReferenceId] - (Required) The id of the data source reference.

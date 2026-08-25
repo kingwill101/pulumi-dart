@@ -5,13 +5,13 @@ import 'analyst_agent_persona_artifacts_config_document_generation_options_docum
 
 class AnalystAgentPersonaArtifactsConfigDocumentGenerationOptions {
   /// Examples for document generation.
-  final pulumi.Input<List<AnalystAgentPersonaArtifactsConfigDocumentGenerationOptionsDocumentExample>>? documentExamples;
+  final pulumi.Input<List<AnalystAgentPersonaArtifactsConfigDocumentGenerationOptionsDocumentExample>?>? documentExamples;
   /// Format for document export.
   /// Possible values:
   /// PDF
   /// DOCX
   /// GOOGLE_DOCS
-  final pulumi.Input<String>? exportFormat;
+  final pulumi.Input<String?>? exportFormat;
 
   /// Creates a new [AnalystAgentPersonaArtifactsConfigDocumentGenerationOptions].
   /// [documentExamples] Examples for document generation.

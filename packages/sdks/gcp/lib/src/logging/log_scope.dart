@@ -216,7 +216,7 @@ class LogScope extends pulumi.CustomResource {
           'gcp:logging/logScope:LogScope',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
@@ -224,7 +224,7 @@ class LogScope extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     parent = registerOutput<String>('parent');
-    resourceNames = registerOutput<List<String>>('resourceNames');
+    resourceNames = registerOutput<List<String>>('resourceNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     updateTime = registerOutput<String>('updateTime');
   }
 
@@ -233,11 +233,12 @@ class LogScope extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LogScopeState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LogScope._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -257,7 +258,26 @@ class LogScope extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     parent = registerOutput<String>('parent');
-    resourceNames = registerOutput<List<String>>('resourceNames');
+    resourceNames = registerOutput<List<String>>('resourceNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [LogScope] resource.
+  LogScope.reference(String urn)
+    : super(
+        'gcp:logging/logScope:LogScope',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    parent = registerOutput<String>('parent');
+    resourceNames = registerOutput<List<String>>('resourceNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     updateTime = registerOutput<String>('updateTime');
   }
 }

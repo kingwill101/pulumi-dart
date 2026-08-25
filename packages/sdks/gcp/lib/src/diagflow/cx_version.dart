@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cx_version_args.dart';
+import 'cx_version_nlu_setting.dart';
 import 'cx_version_state.dart';
 
 /// You can create multiple versions of your agent flows and deploy them to separate serving environments.
@@ -295,7 +296,7 @@ class CxVersion extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// The NLU settings of the flow at version creation.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> nluSettings;
+  late final pulumi.Output<List<CxVersionNluSetting>> nluSettings;
   /// The Flow to create an Version for.
   /// Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/flows/&lt;Flow ID&gt;.
   late final pulumi.Output<String?> parent;
@@ -317,14 +318,14 @@ class CxVersion extends pulumi.CustomResource {
           'gcp:diagflow/cxVersion:CxVersion',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     this.name = registerOutput<String>('name');
-    nluSettings = registerOutput<List<Map<String, dynamic>>>('nluSettings');
+    nluSettings = registerOutput<List<CxVersionNluSetting>>('nluSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CxVersionNluSetting>(guardedValue, (value) => CxVersionNluSetting.fromMap((value as Map).cast<String, dynamic>())); });
     parent = registerOutput<String?>('parent');
     state = registerOutput<String>('state');
   }
@@ -334,11 +335,12 @@ class CxVersion extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CxVersionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return CxVersion._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -357,8 +359,27 @@ class CxVersion extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     this.name = registerOutput<String>('name');
-    nluSettings = registerOutput<List<Map<String, dynamic>>>('nluSettings');
+    nluSettings = registerOutput<List<CxVersionNluSetting>>('nluSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CxVersionNluSetting>(guardedValue, (value) => CxVersionNluSetting.fromMap((value as Map).cast<String, dynamic>())); });
     parent = registerOutput<String?>('parent');
     this.state = registerOutput<String>('state');
+  }
+
+  /// Creates a typed reference to an existing [CxVersion] resource.
+  CxVersion.reference(String urn)
+    : super(
+        'gcp:diagflow/cxVersion:CxVersion',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    this.name = registerOutput<String>('name');
+    nluSettings = registerOutput<List<CxVersionNluSetting>>('nluSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CxVersionNluSetting>(guardedValue, (value) => CxVersionNluSetting.fromMap((value as Map).cast<String, dynamic>())); });
+    parent = registerOutput<String?>('parent');
+    state = registerOutput<String>('state');
   }
 }

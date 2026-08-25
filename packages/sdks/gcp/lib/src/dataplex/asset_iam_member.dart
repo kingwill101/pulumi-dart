@@ -1115,7 +1115,7 @@ class AssetIamMember extends pulumi.CustomResource {
           'gcp:dataplex/assetIamMember:AssetIamMember',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     asset = registerOutput<String>('asset');
     condition = registerOutput<AssetIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AssetIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -1133,11 +1133,12 @@ class AssetIamMember extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AssetIamMemberState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AssetIamMember._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1151,6 +1152,26 @@ class AssetIamMember extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    asset = registerOutput<String>('asset');
+    condition = registerOutput<AssetIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AssetIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dataplexZone = registerOutput<String>('dataplexZone');
+    etag = registerOutput<String>('etag');
+    lake = registerOutput<String>('lake');
+    location = registerOutput<String>('location');
+    member = registerOutput<String>('member');
+    project = registerOutput<String>('project');
+    role = registerOutput<String>('role');
+  }
+
+  /// Creates a typed reference to an existing [AssetIamMember] resource.
+  AssetIamMember.reference(String urn)
+    : super(
+        'gcp:dataplex/assetIamMember:AssetIamMember',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     asset = registerOutput<String>('asset');
     condition = registerOutput<AssetIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AssetIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     dataplexZone = registerOutput<String>('dataplexZone');

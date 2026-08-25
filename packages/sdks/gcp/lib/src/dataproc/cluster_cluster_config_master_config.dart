@@ -7,29 +7,29 @@ import 'cluster_cluster_config_master_config_instance_flexibility_policy.dart';
 
 class ClusterClusterConfigMasterConfig {
   /// The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.
-  final pulumi.Input<List<ClusterClusterConfigMasterConfigAccelerator>>? accelerators;
+  final pulumi.Input<List<ClusterClusterConfigMasterConfigAccelerator>?>? accelerators;
   /// Disk Config
-  final pulumi.Input<ClusterClusterConfigMasterConfigDiskConfig>? diskConfig;
+  final pulumi.Input<ClusterClusterConfigMasterConfigDiskConfig?>? diskConfig;
   /// The URI for the image to use for this worker.  See [the guide](https://cloud.google.com/dataproc/docs/guides/dataproc-images)
   /// for more information.
-  final pulumi.Input<String>? imageUri;
+  final pulumi.Input<String?>? imageUri;
   /// Instance flexibility Policy allowing a mixture of VM shapes.
-  final pulumi.Input<ClusterClusterConfigMasterConfigInstanceFlexibilityPolicy>? instanceFlexibilityPolicy;
+  final pulumi.Input<ClusterClusterConfigMasterConfigInstanceFlexibilityPolicy?>? instanceFlexibilityPolicy;
   /// List of master instance names which
   /// have been assigned to the cluster.
-  final pulumi.Input<List<String>>? instanceNames;
+  final pulumi.Input<List<String>?>? instanceNames;
   /// The name of a Google Compute Engine machine type
   /// to create for the master. If not specified, GCP will default to a predetermined
   /// computed value (currently `n1-standard-4`).
-  final pulumi.Input<String>? machineType;
+  final pulumi.Input<String?>? machineType;
   /// The name of a minimum generation of CPU family
   /// for the master. If not specified, GCP will default to a predetermined computed value
   /// for each zone. See [the guide](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
   /// for details about which CPU families are available (and defaulted) for each zone.
-  final pulumi.Input<String>? minCpuPlatform;
+  final pulumi.Input<String?>? minCpuPlatform;
   /// Specifies the number of master nodes to create.
   /// If not specified, GCP will default to a predetermined computed value (currently 1).
-  final pulumi.Input<int>? numInstances;
+  final pulumi.Input<int?>? numInstances;
 
   /// Creates a new [ClusterClusterConfigMasterConfig].
   /// [accelerators] The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.
@@ -73,7 +73,7 @@ class ClusterClusterConfigMasterConfig {
       instanceNames: (() { final guardedValue = map['instanceNames']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       machineType: (() { final guardedValue = map['machineType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       minCpuPlatform: (() { final guardedValue = map['minCpuPlatform']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      numInstances: (() { final guardedValue = map['numInstances']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      numInstances: (() { final guardedValue = map['numInstances']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

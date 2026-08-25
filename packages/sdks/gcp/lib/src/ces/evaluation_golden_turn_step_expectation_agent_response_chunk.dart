@@ -10,23 +10,23 @@ import 'evaluation_golden_turn_step_expectation_agent_response_chunk_tool_respon
 class EvaluationGoldenTurnStepExpectationAgentResponseChunk {
   /// Represents an event indicating the transfer of a conversation to a different agent.
   /// Structure is documented below.
-  final pulumi.Input<EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransfer>? agentTransfer;
+  final pulumi.Input<EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransfer?>? agentTransfer;
   /// Represents a blob input or output in the conversation.
   /// Structure is documented below.
-  final pulumi.Input<EvaluationGoldenTurnStepExpectationAgentResponseChunkBlob>? blob;
+  final pulumi.Input<EvaluationGoldenTurnStepExpectationAgentResponseChunkBlob?>? blob;
   /// Represents an image input or output in the conversation.
   /// Structure is documented below.
-  final pulumi.Input<EvaluationGoldenTurnStepExpectationAgentResponseChunkImage>? image;
+  final pulumi.Input<EvaluationGoldenTurnStepExpectationAgentResponseChunkImage?>? image;
   /// Text data.
-  final pulumi.Input<String>? text;
+  final pulumi.Input<String?>? text;
   /// Request for the client or the agent to execute the specified tool.
   /// Structure is documented below.
-  final pulumi.Input<EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCall>? toolCall;
+  final pulumi.Input<EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCall?>? toolCall;
   /// The execution result of a specific tool from the client or the agent.
   /// Structure is documented below.
-  final pulumi.Input<EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponse>? toolResponse;
+  final pulumi.Input<EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponse?>? toolResponse;
   /// Updated variables in JSON object format.
-  final pulumi.Input<Map<String, String>>? updatedVariables;
+  final pulumi.Input<Map<String, String>?>? updatedVariables;
 
   /// Creates a new [EvaluationGoldenTurnStepExpectationAgentResponseChunk].
   /// [agentTransfer] Represents an event indicating the transfer of a conversation to a different agent.

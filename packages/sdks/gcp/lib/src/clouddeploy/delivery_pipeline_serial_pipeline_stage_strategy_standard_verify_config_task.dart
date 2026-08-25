@@ -5,7 +5,7 @@ import 'delivery_pipeline_serial_pipeline_stage_strategy_standard_verify_config_
 
 class DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTask {
   /// Optional. This task is represented by a container that is executed in the Cloud Build execution environment.
-  final pulumi.Input<DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainer>? container;
+  final pulumi.Input<DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainer?>? container;
 
   /// Creates a new [DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTask].
   /// [container] Optional. This task is represented by a container that is executed in the Cloud Build execution environment.

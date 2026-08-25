@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClusterStorageResourceFilestore {
   /// Name of the Filestore instance, in the format
   /// 'projects/{project}/locations/{location}/instances/{instance}'
-  final pulumi.Input<String>? filestore;
+  final pulumi.Input<String?>? filestore;
 
   /// Creates a new [ClusterStorageResourceFilestore].
   /// [filestore] Name of the Filestore instance, in the format

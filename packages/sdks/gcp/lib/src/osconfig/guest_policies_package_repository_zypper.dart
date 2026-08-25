@@ -6,9 +6,9 @@ class GuestPoliciesPackageRepositoryZypper {
   /// The location of the repository directory.
   final pulumi.Input<String> baseUrl;
   /// The display name of the repository.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// URIs of GPG keys.
-  final pulumi.Input<List<String>>? gpgKeys;
+  final pulumi.Input<List<String>?>? gpgKeys;
   /// A one word, unique name for this repository. This is the repo id in the zypper config file and also the displayName
   /// if displayName is omitted. This id is also used as the unique identifier when checking for guest policy conflicts.
   final pulumi.Input<String> id;

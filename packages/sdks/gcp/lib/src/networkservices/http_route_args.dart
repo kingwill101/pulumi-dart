@@ -14,27 +14,27 @@ class HttpRouteArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// A free-text description of the resource. Max length 1024 characters.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Gateways defines a list of gateways this HttpRoute is attached to, as one of the routing rules to route the requests served by the gateway.
   /// Each gateway reference should match the pattern: projects/*/locations/global/gateways/&lt;gateway_name&gt;
-  final pulumi.Input<List<String>>? gateways;
+  final pulumi.Input<List<String>?>? gateways;
   /// Set of hosts that should match against the HTTP host header to select a HttpRoute to process the request.
   final pulumi.Input<List<String>> hostnames;
   /// Set of label tags associated with the HttpRoute resource.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Meshes defines a list of meshes this HttpRoute is attached to, as one of the routing rules to route the requests served by the mesh.
   /// Each mesh reference should match the pattern: projects/*/locations/global/meshes/&lt;mesh_name&gt;.
   /// The attached Mesh should be of a type SIDECAR.
-  final pulumi.Input<List<String>>? meshes;
+  final pulumi.Input<List<String>?>? meshes;
   /// Name of the HttpRoute resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Rules that define how traffic is routed and handled.
   /// Structure is documented below.
   final pulumi.Input<List<HttpRouteRule>> rules;

@@ -3,109 +3,109 @@
 
 /// Result data returned by getNetworkPeering.
 class GetNetworkPeeringResult {
-  final String createTime;
-  final String deletionPolicy;
-  final String description;
-  final bool exportCustomRoutes;
-  final bool exportCustomRoutesWithPublicIp;
+  final String? createTime;
+  final String? deletionPolicy;
+  final String? description;
+  final bool? exportCustomRoutes;
+  final bool? exportCustomRoutesWithPublicIp;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final bool importCustomRoutes;
-  final bool importCustomRoutesWithPublicIp;
-  final String name;
-  final String peerNetwork;
-  final String peerNetworkType;
+  final String? id;
+  final bool? importCustomRoutes;
+  final bool? importCustomRoutesWithPublicIp;
+  final String? name;
+  final String? peerNetwork;
+  final String? peerNetworkType;
   final String? project;
-  final String state;
-  final String stateDetails;
-  final String uid;
-  final String updateTime;
-  final String vmwareEngineNetwork;
-  final String vmwareEngineNetworkCanonical;
+  final String? state;
+  final String? stateDetails;
+  final String? uid;
+  final String? updateTime;
+  final String? vmwareEngineNetwork;
+  final String? vmwareEngineNetworkCanonical;
 
   /// Creates a new [GetNetworkPeeringResult].
-  /// [createTime] Required.
-  /// [deletionPolicy] Required.
-  /// [description] Required.
-  /// [exportCustomRoutes] Required.
-  /// [exportCustomRoutesWithPublicIp] Required.
+  /// [createTime] Optional.
+  /// [deletionPolicy] Optional.
+  /// [description] Optional.
+  /// [exportCustomRoutes] Optional.
+  /// [exportCustomRoutesWithPublicIp] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [importCustomRoutes] Required.
-  /// [importCustomRoutesWithPublicIp] Required.
-  /// [name] Required.
-  /// [peerNetwork] Required.
-  /// [peerNetworkType] Required.
+  /// [importCustomRoutes] Optional.
+  /// [importCustomRoutesWithPublicIp] Optional.
+  /// [name] Optional.
+  /// [peerNetwork] Optional.
+  /// [peerNetworkType] Optional.
   /// [project] Optional.
-  /// [state] Required.
-  /// [stateDetails] Required.
-  /// [uid] Required.
-  /// [updateTime] Required.
-  /// [vmwareEngineNetwork] Required.
-  /// [vmwareEngineNetworkCanonical] Required.
+  /// [state] Optional.
+  /// [stateDetails] Optional.
+  /// [uid] Optional.
+  /// [updateTime] Optional.
+  /// [vmwareEngineNetwork] Optional.
+  /// [vmwareEngineNetworkCanonical] Optional.
   const GetNetworkPeeringResult({
-    required this.createTime,
-    required this.deletionPolicy,
-    required this.description,
-    required this.exportCustomRoutes,
-    required this.exportCustomRoutesWithPublicIp,
-    required this.id,
-    required this.importCustomRoutes,
-    required this.importCustomRoutesWithPublicIp,
-    required this.name,
-    required this.peerNetwork,
-    required this.peerNetworkType,
+    this.createTime,
+    this.deletionPolicy,
+    this.description,
+    this.exportCustomRoutes,
+    this.exportCustomRoutesWithPublicIp,
+    this.id,
+    this.importCustomRoutes,
+    this.importCustomRoutesWithPublicIp,
+    this.name,
+    this.peerNetwork,
+    this.peerNetworkType,
     this.project,
-    required this.state,
-    required this.stateDetails,
-    required this.uid,
-    required this.updateTime,
-    required this.vmwareEngineNetwork,
-    required this.vmwareEngineNetworkCanonical,
+    this.state,
+    this.stateDetails,
+    this.uid,
+    this.updateTime,
+    this.vmwareEngineNetwork,
+    this.vmwareEngineNetworkCanonical,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'createTime': createTime,
-      'deletionPolicy': deletionPolicy,
-      'description': description,
-      'exportCustomRoutes': exportCustomRoutes,
-      'exportCustomRoutesWithPublicIp': exportCustomRoutesWithPublicIp,
-      'id': id,
-      'importCustomRoutes': importCustomRoutes,
-      'importCustomRoutesWithPublicIp': importCustomRoutesWithPublicIp,
-      'name': name,
-      'peerNetwork': peerNetwork,
-      'peerNetworkType': peerNetworkType,
+      'createTime': ?createTime,
+      'deletionPolicy': ?deletionPolicy,
+      'description': ?description,
+      'exportCustomRoutes': ?exportCustomRoutes,
+      'exportCustomRoutesWithPublicIp': ?exportCustomRoutesWithPublicIp,
+      'id': ?id,
+      'importCustomRoutes': ?importCustomRoutes,
+      'importCustomRoutesWithPublicIp': ?importCustomRoutesWithPublicIp,
+      'name': ?name,
+      'peerNetwork': ?peerNetwork,
+      'peerNetworkType': ?peerNetworkType,
       'project': ?project,
-      'state': state,
-      'stateDetails': stateDetails,
-      'uid': uid,
-      'updateTime': updateTime,
-      'vmwareEngineNetwork': vmwareEngineNetwork,
-      'vmwareEngineNetworkCanonical': vmwareEngineNetworkCanonical,
+      'state': ?state,
+      'stateDetails': ?stateDetails,
+      'uid': ?uid,
+      'updateTime': ?updateTime,
+      'vmwareEngineNetwork': ?vmwareEngineNetwork,
+      'vmwareEngineNetworkCanonical': ?vmwareEngineNetworkCanonical,
     };
   }
 
   factory GetNetworkPeeringResult.fromMap(Map<String, dynamic> map) {
     return GetNetworkPeeringResult(
-      createTime: map['createTime'] as String,
-      deletionPolicy: map['deletionPolicy'] as String,
-      description: map['description'] as String,
-      exportCustomRoutes: map['exportCustomRoutes'] as bool,
-      exportCustomRoutesWithPublicIp: map['exportCustomRoutesWithPublicIp'] as bool,
-      id: map['id'] as String,
-      importCustomRoutes: map['importCustomRoutes'] as bool,
-      importCustomRoutesWithPublicIp: map['importCustomRoutesWithPublicIp'] as bool,
-      name: map['name'] as String,
-      peerNetwork: map['peerNetwork'] as String,
-      peerNetworkType: map['peerNetworkType'] as String,
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      exportCustomRoutes: (() { final guardedValue = map['exportCustomRoutes']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      exportCustomRoutesWithPublicIp: (() { final guardedValue = map['exportCustomRoutesWithPublicIp']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      importCustomRoutes: (() { final guardedValue = map['importCustomRoutes']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      importCustomRoutesWithPublicIp: (() { final guardedValue = map['importCustomRoutesWithPublicIp']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      peerNetwork: (() { final guardedValue = map['peerNetwork']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      peerNetworkType: (() { final guardedValue = map['peerNetworkType']; if (guardedValue == null) return null; return guardedValue as String; })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      state: map['state'] as String,
-      stateDetails: map['stateDetails'] as String,
-      uid: map['uid'] as String,
-      updateTime: map['updateTime'] as String,
-      vmwareEngineNetwork: map['vmwareEngineNetwork'] as String,
-      vmwareEngineNetworkCanonical: map['vmwareEngineNetworkCanonical'] as String,
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      stateDetails: (() { final guardedValue = map['stateDetails']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      uid: (() { final guardedValue = map['uid']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      vmwareEngineNetwork: (() { final guardedValue = map['vmwareEngineNetwork']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      vmwareEngineNetworkCanonical: (() { final guardedValue = map['vmwareEngineNetworkCanonical']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

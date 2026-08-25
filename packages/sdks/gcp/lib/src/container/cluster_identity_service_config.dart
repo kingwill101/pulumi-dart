@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterIdentityServiceConfig {
   /// Whether to enable the Identity Service component. It is disabled by default. Set `enabled=true` to enable.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
 
   /// Creates a new [ClusterIdentityServiceConfig].
   /// [enabled] Whether to enable the Identity Service component. It is disabled by default. Set `enabled=true` to enable.

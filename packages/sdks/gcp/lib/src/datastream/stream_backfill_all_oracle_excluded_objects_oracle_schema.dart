@@ -6,7 +6,7 @@ import 'stream_backfill_all_oracle_excluded_objects_oracle_schema_oracle_table.d
 class StreamBackfillAllOracleExcludedObjectsOracleSchema {
   /// Tables in the database.
   /// Structure is documented below.
-  final pulumi.Input<List<StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable>>? oracleTables;
+  final pulumi.Input<List<StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTable>?>? oracleTables;
   /// Schema name.
   final pulumi.Input<String> schema;
 

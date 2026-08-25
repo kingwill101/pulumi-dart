@@ -30,7 +30,7 @@ class GetNetblockIPRangesArgs {
   /// * `health-checkers` - Corresponds to the IP addresses used for health checking in Cloud Load Balancing. [More details.](https://cloud.google.com/load-balancing/docs/health-checks)
   ///
   /// * `legacy-health-checkers` - Corresponds to the IP addresses used for legacy style health checkers (used by Network Load Balancing). [More details.](https://cloud.google.com/load-balancing/docs/health-checks)
-  final pulumi.Input<String>? rangeType;
+  final pulumi.Input<String?>? rangeType;
 
   /// Creates a new [GetNetblockIPRangesArgs].
   /// [rangeType] The type of range for which to provide results.

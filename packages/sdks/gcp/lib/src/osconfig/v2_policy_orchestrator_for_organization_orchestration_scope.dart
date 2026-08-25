@@ -10,7 +10,7 @@ class V2PolicyOrchestratorForOrganizationOrchestrationScope {
   /// the scope is by default bounded to the parent of the policy orchestrator
   /// resource.
   /// Structure is documented below.
-  final pulumi.Input<List<V2PolicyOrchestratorForOrganizationOrchestrationScopeSelector>>? selectors;
+  final pulumi.Input<List<V2PolicyOrchestratorForOrganizationOrchestrationScopeSelector>?>? selectors;
 
   /// Creates a new [V2PolicyOrchestratorForOrganizationOrchestrationScope].
   /// [selectors] Optional. Selectors of the orchestration scope. There is a logical AND between each

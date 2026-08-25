@@ -7,7 +7,7 @@ class FeatureState {
   /// (Output)
   /// Output only. The "running state" of the Feature in this Hub.
   /// Structure is documented below.
-  final pulumi.Input<List<FeatureStateState>>? states;
+  final pulumi.Input<List<FeatureStateState>?>? states;
 
   /// Creates a new [FeatureState].
   /// [states] (Output)

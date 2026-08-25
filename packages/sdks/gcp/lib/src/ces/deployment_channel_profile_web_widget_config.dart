@@ -11,18 +11,18 @@ class DeploymentChannelProfileWebWidgetConfig {
   /// VOICE_ONLY
   /// CHAT_ONLY
   /// CHAT_VOICE_AND_VIDEO
-  final pulumi.Input<String>? modality;
+  final pulumi.Input<String?>? modality;
   /// The security settings of the web widget.
   /// Structure is documented below.
-  final pulumi.Input<DeploymentChannelProfileWebWidgetConfigSecuritySettings>? securitySettings;
+  final pulumi.Input<DeploymentChannelProfileWebWidgetConfigSecuritySettings?>? securitySettings;
   /// The theme of the web widget.
   /// Possible values:
   /// THEME_UNSPECIFIED
   /// LIGHT
   /// DARK
-  final pulumi.Input<String>? theme;
+  final pulumi.Input<String?>? theme;
   /// The title of the web widget.
-  final pulumi.Input<String>? webWidgetTitle;
+  final pulumi.Input<String?>? webWidgetTitle;
 
   /// Creates a new [DeploymentChannelProfileWebWidgetConfig].
   /// [modality] The modality of the web widget.

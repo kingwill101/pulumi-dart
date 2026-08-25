@@ -5,14 +5,14 @@ import 'feed_details_azure_ad_audit_settings_authentication.dart';
 
 class FeedDetailsAzureAdAuditSettings {
   /// API Auth Endpoint.
-  final pulumi.Input<String>? authEndpoint;
+  final pulumi.Input<String?>? authEndpoint;
   /// Microsoft OAuth 2.0 client credentials grant.
   /// Structure is documented below.
-  final pulumi.Input<FeedDetailsAzureAdAuditSettingsAuthentication>? authentication;
+  final pulumi.Input<FeedDetailsAzureAdAuditSettingsAuthentication?>? authentication;
   /// API Hostname.
-  final pulumi.Input<String>? hostname;
+  final pulumi.Input<String?>? hostname;
   /// Tenant ID.
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
 
   /// Creates a new [FeedDetailsAzureAdAuditSettings].
   /// [authEndpoint] API Auth Endpoint.

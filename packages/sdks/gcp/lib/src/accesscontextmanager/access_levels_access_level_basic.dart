@@ -11,7 +11,7 @@ class AccessLevelsAccessLevelBasic {
   /// for the AccessLevel to be applied.
   /// Default value is `AND`.
   /// Possible values are: `AND`, `OR`.
-  final pulumi.Input<String>? combiningFunction;
+  final pulumi.Input<String?>? combiningFunction;
   /// A set of requirements for the AccessLevel to be granted.
   /// Structure is documented below.
   final pulumi.Input<List<AccessLevelsAccessLevelBasicCondition>> conditions;

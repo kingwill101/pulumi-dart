@@ -9,7 +9,7 @@ class ReportSummaryGroupFindingAssetAggregateStatOperatingSystem {
   /// with the name being the x-axis label, and the value being the y-axis
   /// value.
   /// Structure is documented below.
-  final pulumi.Input<List<ReportSummaryGroupFindingAssetAggregateStatOperatingSystemDataPoint>>? dataPoints;
+  final pulumi.Input<List<ReportSummaryGroupFindingAssetAggregateStatOperatingSystemDataPoint>?>? dataPoints;
 
   /// Creates a new [ReportSummaryGroupFindingAssetAggregateStatOperatingSystem].
   /// [dataPoints] (Output)

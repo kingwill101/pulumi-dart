@@ -35,7 +35,7 @@ class GetTableTimePartitioning {
 
   factory GetTableTimePartitioning.fromMap(Map<String, dynamic> map) {
     return GetTableTimePartitioning(
-      expirationMs: pulumi.Input.fromValue(map['expirationMs'] as int),
+      expirationMs: pulumi.Input.fromValue((map['expirationMs'] as num).toInt()),
       field: pulumi.Input.fromValue(map['field'] as String),
       requirePartitionFilter: pulumi.Input.fromValue(map['requirePartitionFilter'] as bool),
       type: pulumi.Input.fromValue(map['type'] as String),

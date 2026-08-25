@@ -6,7 +6,7 @@ class FutureReservationShareSettingsProjectMap {
   /// The identifier for this object. Format specified above.
   final pulumi.Input<String> id;
   /// The project ID, should be same as the key of this project config in the parent map.
-  final pulumi.Input<String>? projectId;
+  final pulumi.Input<String?>? projectId;
 
   /// Creates a new [FutureReservationShareSettingsProjectMap].
   /// [id] The identifier for this object. Format specified above.

@@ -5,10 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClusterNetworkResourceNetwork {
   /// Name of the network, in the format
   /// 'projects/{project}/global/networks/{network}'.
-  final pulumi.Input<String>? network;
+  final pulumi.Input<String?>? network;
   /// Name of the particular subnetwork being used by the cluster, in the format
   /// 'projects/{project}/regions/{region}/subnetworks/{subnetwork}'.
-  final pulumi.Input<String>? subnetwork;
+  final pulumi.Input<String?>? subnetwork;
 
   /// Creates a new [ClusterNetworkResourceNetwork].
   /// [network] Name of the network, in the format

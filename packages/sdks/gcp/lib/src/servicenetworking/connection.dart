@@ -344,12 +344,12 @@ class Connection extends pulumi.CustomResource {
           'gcp:servicenetworking/connection:Connection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     network = registerOutput<String>('network');
     peering = registerOutput<String>('peering');
-    reservedPeeringRanges = registerOutput<List<String>>('reservedPeeringRanges');
+    reservedPeeringRanges = registerOutput<List<String>>('reservedPeeringRanges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     service = registerOutput<String>('service');
     updateOnCreationFail = registerOutput<bool?>('updateOnCreationFail');
   }
@@ -359,11 +359,12 @@ class Connection extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ConnectionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Connection._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -380,7 +381,24 @@ class Connection extends pulumi.CustomResource {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     network = registerOutput<String>('network');
     peering = registerOutput<String>('peering');
-    reservedPeeringRanges = registerOutput<List<String>>('reservedPeeringRanges');
+    reservedPeeringRanges = registerOutput<List<String>>('reservedPeeringRanges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    service = registerOutput<String>('service');
+    updateOnCreationFail = registerOutput<bool?>('updateOnCreationFail');
+  }
+
+  /// Creates a typed reference to an existing [Connection] resource.
+  Connection.reference(String urn)
+    : super(
+        'gcp:servicenetworking/connection:Connection',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    network = registerOutput<String>('network');
+    peering = registerOutput<String>('peering');
+    reservedPeeringRanges = registerOutput<List<String>>('reservedPeeringRanges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     service = registerOutput<String>('service');
     updateOnCreationFail = registerOutput<bool?>('updateOnCreationFail');
   }

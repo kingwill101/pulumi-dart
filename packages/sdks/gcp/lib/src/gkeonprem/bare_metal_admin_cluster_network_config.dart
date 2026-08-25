@@ -6,13 +6,13 @@ import 'bare_metal_admin_cluster_network_config_multiple_network_interfaces_conf
 
 class BareMetalAdminClusterNetworkConfig {
   /// Enables the use of advanced Anthos networking features.
-  final pulumi.Input<bool>? advancedNetworking;
+  final pulumi.Input<bool?>? advancedNetworking;
   /// A nested object resource.
   /// Structure is documented below.
-  final pulumi.Input<BareMetalAdminClusterNetworkConfigIslandModeCidr>? islandModeCidr;
+  final pulumi.Input<BareMetalAdminClusterNetworkConfigIslandModeCidr?>? islandModeCidr;
   /// Configuration for multiple network interfaces.
   /// Structure is documented below.
-  final pulumi.Input<BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfig>? multipleNetworkInterfacesConfig;
+  final pulumi.Input<BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfig?>? multipleNetworkInterfacesConfig;
 
   /// Creates a new [BareMetalAdminClusterNetworkConfig].
   /// [advancedNetworking] Enables the use of advanced Anthos networking features.

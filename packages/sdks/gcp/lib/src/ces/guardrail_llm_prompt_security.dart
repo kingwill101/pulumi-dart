@@ -8,16 +8,16 @@ class GuardrailLlmPromptSecurity {
   /// Guardrail that blocks the conversation if the LLM response is considered
   /// violating the policy based on the LLM classification.
   /// Structure is documented below.
-  final pulumi.Input<GuardrailLlmPromptSecurityCustomPolicy>? customPolicy;
+  final pulumi.Input<GuardrailLlmPromptSecurityCustomPolicy?>? customPolicy;
   /// Configuration for default system security settings.
   /// Structure is documented below.
-  final pulumi.Input<GuardrailLlmPromptSecurityDefaultSettings>? defaultSettings;
+  final pulumi.Input<GuardrailLlmPromptSecurityDefaultSettings?>? defaultSettings;
   /// Determines the behavior when the guardrail encounters an LLM error.
   /// - If true: the guardrail is bypassed.
   /// - If false (default): the guardrail triggers/blocks.
   /// Note: If a custom policy is provided, this field is ignored in favor of
   /// the policy's 'failOpen' configuration.
-  final pulumi.Input<bool>? failOpen;
+  final pulumi.Input<bool?>? failOpen;
 
   /// Creates a new [GuardrailLlmPromptSecurity].
   /// [customPolicy] Guardrail that blocks the conversation if the LLM response is considered

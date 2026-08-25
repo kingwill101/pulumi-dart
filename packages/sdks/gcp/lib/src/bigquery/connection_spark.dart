@@ -7,13 +7,13 @@ import 'connection_spark_spark_history_server_config.dart';
 class ConnectionSpark {
   /// Dataproc Metastore Service configuration for the connection.
   /// Structure is documented below.
-  final pulumi.Input<ConnectionSparkMetastoreServiceConfig>? metastoreServiceConfig;
+  final pulumi.Input<ConnectionSparkMetastoreServiceConfig?>? metastoreServiceConfig;
   /// (Output)
   /// The account ID of the service created for the purpose of this connection.
-  final pulumi.Input<String>? serviceAccountId;
+  final pulumi.Input<String?>? serviceAccountId;
   /// Spark History Server configuration for the connection.
   /// Structure is documented below.
-  final pulumi.Input<ConnectionSparkSparkHistoryServerConfig>? sparkHistoryServerConfig;
+  final pulumi.Input<ConnectionSparkSparkHistoryServerConfig?>? sparkHistoryServerConfig;
 
   /// Creates a new [ConnectionSpark].
   /// [metastoreServiceConfig] Dataproc Metastore Service configuration for the connection.

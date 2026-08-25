@@ -8,9 +8,9 @@ class GcpUserAccessBindingPrincipal {
   /// service accounts in a project and a policy for the service account), the closest (i.e.
   /// the most specific) dry-run policy will be used for the dry-run functionality and the
   /// closest policy will be used for the enforcement.
-  final pulumi.Input<String>? serviceAccount;
+  final pulumi.Input<String?>? serviceAccount;
   /// Immutable. Cloud project number used to assign policies to all service accounts owned by the project.
-  final pulumi.Input<String>? serviceAccountProjectNumber;
+  final pulumi.Input<String?>? serviceAccountProjectNumber;
 
   /// Creates a new [GcpUserAccessBindingPrincipal].
   /// [serviceAccount] Immutable. Service account email used to assign policies to a single service account.

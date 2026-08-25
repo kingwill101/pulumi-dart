@@ -1,6 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'alert_policy_alert_strategy.dart';
 import 'alert_policy_args.dart';
+import 'alert_policy_condition.dart';
+import 'alert_policy_creation_record.dart';
 import 'alert_policy_documentation.dart';
 import 'alert_policy_state.dart';
 
@@ -1178,12 +1180,12 @@ class AlertPolicy extends pulumi.CustomResource {
   /// evaluate to true, then an incident is created. A policy can have from
   /// one to six conditions.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> conditions;
+  late final pulumi.Output<List<AlertPolicyCondition>> conditions;
   /// A read-only record of the creation of the alerting policy.
   /// If provided in a call to create or update, this field will
   /// be ignored.
   /// Structure is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> creationRecords;
+  late final pulumi.Output<List<AlertPolicyCreationRecord>> creationRecords;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -1243,21 +1245,21 @@ class AlertPolicy extends pulumi.CustomResource {
           'gcp:monitoring/alertPolicy:AlertPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     alertStrategy = registerOutput<AlertPolicyAlertStrategy?>('alertStrategy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AlertPolicyAlertStrategy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     combiner = registerOutput<String>('combiner');
-    conditions = registerOutput<List<Map<String, dynamic>>>('conditions');
-    creationRecords = registerOutput<List<Map<String, dynamic>>>('creationRecords');
+    conditions = registerOutput<List<AlertPolicyCondition>>('conditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AlertPolicyCondition>(guardedValue, (value) => AlertPolicyCondition.fromMap((value as Map).cast<String, dynamic>())); });
+    creationRecords = registerOutput<List<AlertPolicyCreationRecord>>('creationRecords', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AlertPolicyCreationRecord>(guardedValue, (value) => AlertPolicyCreationRecord.fromMap((value as Map).cast<String, dynamic>())); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
     documentation = registerOutput<AlertPolicyDocumentation?>('documentation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AlertPolicyDocumentation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     enabled = registerOutput<bool?>('enabled');
     this.name = registerOutput<String>('name');
-    notificationChannels = registerOutput<List<String>?>('notificationChannels');
+    notificationChannels = registerOutput<List<String>?>('notificationChannels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     project = registerOutput<String>('project');
     severity = registerOutput<String?>('severity');
-    userLabels = registerOutput<Map<String, String>?>('userLabels');
+    userLabels = registerOutput<Map<String, String>?>('userLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [AlertPolicy] resource's state with the given [name] and [id].
@@ -1265,11 +1267,12 @@ class AlertPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AlertPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AlertPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1285,16 +1288,40 @@ class AlertPolicy extends pulumi.CustomResource {
         ) {
     alertStrategy = registerOutput<AlertPolicyAlertStrategy?>('alertStrategy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AlertPolicyAlertStrategy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     combiner = registerOutput<String>('combiner');
-    conditions = registerOutput<List<Map<String, dynamic>>>('conditions');
-    creationRecords = registerOutput<List<Map<String, dynamic>>>('creationRecords');
+    conditions = registerOutput<List<AlertPolicyCondition>>('conditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AlertPolicyCondition>(guardedValue, (value) => AlertPolicyCondition.fromMap((value as Map).cast<String, dynamic>())); });
+    creationRecords = registerOutput<List<AlertPolicyCreationRecord>>('creationRecords', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AlertPolicyCreationRecord>(guardedValue, (value) => AlertPolicyCreationRecord.fromMap((value as Map).cast<String, dynamic>())); });
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
     documentation = registerOutput<AlertPolicyDocumentation?>('documentation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AlertPolicyDocumentation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     enabled = registerOutput<bool?>('enabled');
     this.name = registerOutput<String>('name');
-    notificationChannels = registerOutput<List<String>?>('notificationChannels');
+    notificationChannels = registerOutput<List<String>?>('notificationChannels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     project = registerOutput<String>('project');
     severity = registerOutput<String?>('severity');
-    userLabels = registerOutput<Map<String, String>?>('userLabels');
+    userLabels = registerOutput<Map<String, String>?>('userLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [AlertPolicy] resource.
+  AlertPolicy.reference(String urn)
+    : super(
+        'gcp:monitoring/alertPolicy:AlertPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    alertStrategy = registerOutput<AlertPolicyAlertStrategy?>('alertStrategy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AlertPolicyAlertStrategy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    combiner = registerOutput<String>('combiner');
+    conditions = registerOutput<List<AlertPolicyCondition>>('conditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AlertPolicyCondition>(guardedValue, (value) => AlertPolicyCondition.fromMap((value as Map).cast<String, dynamic>())); });
+    creationRecords = registerOutput<List<AlertPolicyCreationRecord>>('creationRecords', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AlertPolicyCreationRecord>(guardedValue, (value) => AlertPolicyCreationRecord.fromMap((value as Map).cast<String, dynamic>())); });
+    deletionPolicy = registerOutput<String>('deletionPolicy');
+    displayName = registerOutput<String>('displayName');
+    documentation = registerOutput<AlertPolicyDocumentation?>('documentation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AlertPolicyDocumentation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    enabled = registerOutput<bool?>('enabled');
+    this.name = registerOutput<String>('name');
+    notificationChannels = registerOutput<List<String>?>('notificationChannels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    project = registerOutput<String>('project');
+    severity = registerOutput<String?>('severity');
+    userLabels = registerOutput<Map<String, String>?>('userLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

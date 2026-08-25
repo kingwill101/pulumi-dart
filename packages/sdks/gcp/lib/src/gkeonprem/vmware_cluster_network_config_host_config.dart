@@ -6,11 +6,11 @@ class VMwareClusterNetworkConfigHostConfig {
   /// DNS search domains.
   ///
   /// &lt;a name="nestedNetworkConfigControlPlaneV2Config"&gt;&lt;/a&gt;The `controlPlaneV2Config` block supports:
-  final pulumi.Input<List<String>>? dnsSearchDomains;
+  final pulumi.Input<List<String>?>? dnsSearchDomains;
   /// DNS servers.
-  final pulumi.Input<List<String>>? dnsServers;
+  final pulumi.Input<List<String>?>? dnsServers;
   /// NTP servers.
-  final pulumi.Input<List<String>>? ntpServers;
+  final pulumi.Input<List<String>?>? ntpServers;
 
   /// Creates a new [VMwareClusterNetworkConfigHostConfig].
   /// [dnsSearchDomains] DNS search domains.

@@ -13,37 +13,37 @@ class MirroringEndpointGroupArgs {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// User-provided description of the endpoint group.
   /// Used as additional context for the endpoint group.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Labels are key/value pairs that help to organize and filter resources.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The cloud location of the endpoint group, currently restricted to `global`.
   final pulumi.Input<String> location;
   /// The deployment group that this DIRECT endpoint group is connected to, for example:
   /// `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
   /// See https://google.aip.dev/124.
-  final pulumi.Input<String>? mirroringDeploymentGroup;
+  final pulumi.Input<String?>? mirroringDeploymentGroup;
   /// A list of the deployment groups that this BROKER endpoint group is
   /// connected to, for example:
   /// `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
   /// See https://google.aip.dev/124.
-  final pulumi.Input<List<String>>? mirroringDeploymentGroups;
+  final pulumi.Input<List<String>?>? mirroringDeploymentGroups;
   /// The ID to use for the endpoint group, which will become the final component
   /// of the endpoint group's resource name.
   final pulumi.Input<String> mirroringEndpointGroupId;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The type of the endpoint group.
   /// If left unspecified, defaults to DIRECT.
   /// Possible values:
   /// DIRECT
   /// BROKER
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [MirroringEndpointGroupArgs].
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

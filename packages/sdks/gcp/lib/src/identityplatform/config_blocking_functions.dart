@@ -7,7 +7,7 @@ import 'config_blocking_functions_trigger.dart';
 class ConfigBlockingFunctions {
   /// The user credentials to include in the JWT payload that is sent to the registered Blocking Functions.
   /// Structure is documented below.
-  final pulumi.Input<ConfigBlockingFunctionsForwardInboundCredentials>? forwardInboundCredentials;
+  final pulumi.Input<ConfigBlockingFunctionsForwardInboundCredentials?>? forwardInboundCredentials;
   /// Map of Trigger to event type. Key should be one of the supported event types: "beforeCreate", "beforeSignIn".
   /// Structure is documented below.
   final pulumi.Input<List<ConfigBlockingFunctionsTrigger>> triggers;

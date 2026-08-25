@@ -5,26 +5,26 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GoldengateDeploymentPropertiesBackupSchedule {
   /// (Output)
   /// The timestamp of when the backup was scheduled.
-  final pulumi.Input<String>? backupScheduledTime;
+  final pulumi.Input<String?>? backupScheduledTime;
   /// (Output)
   /// The bucket name.
-  final pulumi.Input<String>? bucket;
+  final pulumi.Input<String?>? bucket;
   /// (Output)
   /// The compartment id.
-  final pulumi.Input<String>? compartmentId;
+  final pulumi.Input<String?>? compartmentId;
   /// (Output)
   /// The frequency backup scheduled.
   /// Possible values:
   /// DAILY
   /// WEEKLY
   /// MONTHLY
-  final pulumi.Input<String>? frequencyBackupScheduled;
+  final pulumi.Input<String?>? frequencyBackupScheduled;
   /// (Output)
   /// If metadata only.
-  final pulumi.Input<bool>? metadataOnly;
+  final pulumi.Input<bool?>? metadataOnly;
   /// (Output)
   /// The namespace name.
-  final pulumi.Input<String>? namespace;
+  final pulumi.Input<String?>? namespace;
 
   /// Creates a new [GoldengateDeploymentPropertiesBackupSchedule].
   /// [backupScheduledTime] (Output)

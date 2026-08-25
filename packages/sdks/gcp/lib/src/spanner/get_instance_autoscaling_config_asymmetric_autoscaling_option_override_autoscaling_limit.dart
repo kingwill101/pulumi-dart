@@ -38,10 +38,10 @@ class GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscaling
 
   factory GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimit.fromMap(Map<String, dynamic> map) {
     return GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimit(
-      maxNodes: pulumi.Input.fromValue(map['maxNodes'] as int),
-      maxProcessingUnits: pulumi.Input.fromValue(map['maxProcessingUnits'] as int),
-      minNodes: pulumi.Input.fromValue(map['minNodes'] as int),
-      minProcessingUnits: pulumi.Input.fromValue(map['minProcessingUnits'] as int),
+      maxNodes: pulumi.Input.fromValue((map['maxNodes'] as num).toInt()),
+      maxProcessingUnits: pulumi.Input.fromValue((map['maxProcessingUnits'] as num).toInt()),
+      minNodes: pulumi.Input.fromValue((map['minNodes'] as num).toInt()),
+      minProcessingUnits: pulumi.Input.fromValue((map['minProcessingUnits'] as num).toInt()),
     );
   }
 }

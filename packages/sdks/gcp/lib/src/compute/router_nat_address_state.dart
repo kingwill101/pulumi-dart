@@ -10,22 +10,22 @@ class RouterNatAddressState {
   /// When set to "ABANDON", the command will remove the resource from Terraform
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
-  final pulumi.Input<String>? deletionPolicy;
+  final pulumi.Input<String?>? deletionPolicy;
   /// A list of URLs of the IP resources to be drained. These IPs must be
   /// valid static external IPs that have been assigned to the NAT.
-  final pulumi.Input<List<String>>? drainNatIps;
+  final pulumi.Input<List<String>?>? drainNatIps;
   /// Self-links of NAT IPs to be used in a Nat service. Only valid if the referenced RouterNat
   /// natIpAllocateOption is set to MANUAL_ONLY.
-  final pulumi.Input<List<String>>? natIps;
+  final pulumi.Input<List<String>?>? natIps;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Region where the NAT service reside.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The name of the Cloud Router in which the referenced NAT service is configured.
-  final pulumi.Input<String>? router;
+  final pulumi.Input<String?>? router;
   /// The name of the Nat service in which this address will be configured.
-  final pulumi.Input<String>? routerNat;
+  final pulumi.Input<String?>? routerNat;
 
   /// Creates a new [RouterNatAddressState].
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.

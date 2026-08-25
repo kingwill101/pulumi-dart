@@ -6,7 +6,7 @@ import 'stream_source_config_postgresql_source_config_exclude_objects_postgresql
 class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchema {
   /// Tables in the schema.
   /// Structure is documented below.
-  final pulumi.Input<List<StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTable>>? postgresqlTables;
+  final pulumi.Input<List<StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTable>?>? postgresqlTables;
   /// Database name.
   final pulumi.Input<String> schema;
 

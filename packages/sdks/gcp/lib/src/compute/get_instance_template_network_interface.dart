@@ -131,7 +131,7 @@ class GetInstanceTemplateNetworkInterface {
       aliasIpRanges: pulumi.Input.fromValue(pulumi.Input.decodeList<GetInstanceTemplateNetworkInterfaceAliasIpRange>(map['aliasIpRanges']!, (value) => GetInstanceTemplateNetworkInterfaceAliasIpRange.fromMap((value as Map).cast<String, dynamic>()))),
       aliasIpv6Ranges: pulumi.Input.fromValue(pulumi.Input.decodeList<GetInstanceTemplateNetworkInterfaceAliasIpv6Range>(map['aliasIpv6Ranges']!, (value) => GetInstanceTemplateNetworkInterfaceAliasIpv6Range.fromMap((value as Map).cast<String, dynamic>()))),
       igmpQuery: pulumi.Input.fromValue(map['igmpQuery'] as String),
-      internalIpv6PrefixLength: pulumi.Input.fromValue(map['internalIpv6PrefixLength'] as int),
+      internalIpv6PrefixLength: pulumi.Input.fromValue((map['internalIpv6PrefixLength'] as num).toInt()),
       ipv6AccessConfigs: pulumi.Input.fromValue(pulumi.Input.decodeList<GetInstanceTemplateNetworkInterfaceIpv6AccessConfig>(map['ipv6AccessConfigs']!, (value) => GetInstanceTemplateNetworkInterfaceIpv6AccessConfig.fromMap((value as Map).cast<String, dynamic>()))),
       ipv6AccessType: pulumi.Input.fromValue(map['ipv6AccessType'] as String),
       ipv6Address: pulumi.Input.fromValue(map['ipv6Address'] as String),
@@ -141,11 +141,11 @@ class GetInstanceTemplateNetworkInterface {
       networkIp: pulumi.Input.fromValue(map['networkIp'] as String),
       nicType: pulumi.Input.fromValue(map['nicType'] as String),
       parentNicName: pulumi.Input.fromValue(map['parentNicName'] as String),
-      queueCount: pulumi.Input.fromValue(map['queueCount'] as int),
+      queueCount: pulumi.Input.fromValue((map['queueCount'] as num).toInt()),
       stackType: pulumi.Input.fromValue(map['stackType'] as String),
       subnetwork: pulumi.Input.fromValue(map['subnetwork'] as String),
       subnetworkProject: pulumi.Input.fromValue(map['subnetworkProject'] as String),
-      vlan: pulumi.Input.fromValue(map['vlan'] as int),
+      vlan: pulumi.Input.fromValue((map['vlan'] as num).toInt()),
     );
   }
 }

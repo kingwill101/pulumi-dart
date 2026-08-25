@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RegionBackendServiceHaPolicyLeaderNetworkEndpoint {
   /// The name of the VM instance of the leader network endpoint. The instance must
   /// already be attached to the NEG specified in the haPolicy.leader.backendGroup.
-  final pulumi.Input<String>? instance;
+  final pulumi.Input<String?>? instance;
 
   /// Creates a new [RegionBackendServiceHaPolicyLeaderNetworkEndpoint].
   /// [instance] The name of the VM instance of the leader network endpoint. The instance must

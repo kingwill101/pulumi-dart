@@ -274,12 +274,12 @@ class DefaultServiceAccounts extends pulumi.CustomResource {
           'gcp:projects/defaultServiceAccounts:DefaultServiceAccounts',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '9.35.1').merge(options),
         ) {
     action = registerOutput<String>('action');
     project = registerOutput<String>('project');
     restorePolicy = registerOutput<String?>('restorePolicy');
-    serviceAccounts = registerOutput<Map<String, String>>('serviceAccounts');
+    serviceAccounts = registerOutput<Map<String, String>>('serviceAccounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [DefaultServiceAccounts] resource's state with the given [name] and [id].
@@ -287,11 +287,12 @@ class DefaultServiceAccounts extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DefaultServiceAccountsState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DefaultServiceAccounts._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -308,6 +309,21 @@ class DefaultServiceAccounts extends pulumi.CustomResource {
     action = registerOutput<String>('action');
     project = registerOutput<String>('project');
     restorePolicy = registerOutput<String?>('restorePolicy');
-    serviceAccounts = registerOutput<Map<String, String>>('serviceAccounts');
+    serviceAccounts = registerOutput<Map<String, String>>('serviceAccounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [DefaultServiceAccounts] resource.
+  DefaultServiceAccounts.reference(String urn)
+    : super(
+        'gcp:projects/defaultServiceAccounts:DefaultServiceAccounts',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    action = registerOutput<String>('action');
+    project = registerOutput<String>('project');
+    restorePolicy = registerOutput<String?>('restorePolicy');
+    serviceAccounts = registerOutput<Map<String, String>>('serviceAccounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

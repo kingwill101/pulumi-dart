@@ -6,9 +6,9 @@ class BindingAuthProviderBinding {
   /// The resource name of the target auth provider.
   final pulumi.Input<String> authProvider;
   /// The continue URI of the auth provider.
-  final pulumi.Input<String>? continueUri;
+  final pulumi.Input<String?>? continueUri;
   /// The list of OAuth2 scopes of the auth provider.
-  final pulumi.Input<List<String>>? scopes;
+  final pulumi.Input<List<String>?>? scopes;
 
   /// Creates a new [BindingAuthProviderBinding].
   /// [authProvider] The resource name of the target auth provider.
