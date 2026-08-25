@@ -7,9 +7,14 @@ class GoogleNativeStack extends pulumi.Stack {
   late final List<pulumi.OutputProperty> _outputProperties;
 
   GoogleNativeStack() {
+    final config = pulumi.Config();
+    final project0 = config.require('project');
+    final bucketName = config.require('bucketName');
     final bucket = pulumi_google_native_storage.Bucket(
       'bucket',
       args: pulumi_google_native_storage.BucketArgs(
+        name: pulumi.Input.asInput(bucketName),
+        project: pulumi.Input.asInput(project0),
         location: pulumi.Input.asInput('US'),
       ),
     );
