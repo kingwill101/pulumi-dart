@@ -6,7 +6,7 @@ import 'dart:io';
 
 import 'package:grpc/grpc.dart';
 import 'package:protobuf/well_known_types/google/protobuf/empty.pb.dart';
-import 'package:protobuf/well_known_types/google/protobuf/struct.pb.dart';
+import 'package:pulumi/src/asset_archive.dart';
 import 'package:pulumi/src/constants.dart';
 import 'package:pulumi/src/pulumirpc/pulumi/analyzer.pb.dart' as analyzerpb;
 import 'package:pulumi/src/pulumirpc/pulumi/analyzer.pbgrpc.dart'
@@ -15,6 +15,8 @@ import 'package:pulumi/src/pulumirpc/pulumi/plugin.pb.dart' as pluginpb;
 import 'package:pulumi/src/store/store.dart' as runtime_store;
 import 'package:pulumi/src/struct_converter.dart';
 import 'package:yaml/yaml.dart';
+
+import 'value_decoder.dart';
 
 /// Indicates the impact of a policy violation.
 enum EnforcementLevel {
@@ -48,15 +50,6 @@ enum Severity {
 
 /// Report a policy violation with a message and optional resource URN.
 typedef ReportViolation = void Function(String message, [String? urn]);
-
-/// A value marked as secret so remediation output can preserve sensitivity.
-class Secret {
-  /// Creates a wrapper that marks [value] as secret in remediation outputs.
-  const Secret(this.value);
-
-  /// The wrapped secret value.
-  final Object? value;
-}
 
 /// JSON schema-like configuration metadata for a policy.
 class PolicyConfigSchema {
@@ -1194,6 +1187,23 @@ class PolicyAnalyzerServer extends analyzergrpc.AnalyzerServiceBase {
               ),
             );
           });
+        } on UnknownValueError catch (error) {
+          diagnostics.add(
+            analyzerpb.AnalyzeDiagnostic(
+              policyName: policy.name,
+              policyPackName: policyPackName,
+              policyPackVersion: policyPackVersion,
+              description: policy.description,
+              message:
+                  "can't run policy '${policy.name}' from policy pack "
+                  "'$policyPackName@v$policyPackVersion' during preview: $error",
+              enforcementLevel: analyzerpb.EnforcementLevel.ADVISORY,
+              urn: request.urn,
+              severity: policy.severity == null
+                  ? analyzerpb.PolicySeverity.POLICY_SEVERITY_UNSPECIFIED
+                  : _toProtoSeverity(policy.severity!),
+            ),
+          );
         } on PolicyNotApplicableError catch (error) {
           notApplicable.add(
             analyzerpb.PolicyNotApplicable(
@@ -1297,6 +1307,22 @@ class PolicyAnalyzerServer extends analyzergrpc.AnalyzerServiceBase {
             ),
           );
         });
+      } on UnknownValueError catch (error) {
+        diagnostics.add(
+          analyzerpb.AnalyzeDiagnostic(
+            policyName: policy.name,
+            policyPackName: policyPackName,
+            policyPackVersion: policyPackVersion,
+            description: policy.description,
+            message:
+                "can't run policy '${policy.name}' from policy pack "
+                "'$policyPackName@v$policyPackVersion' during preview: $error",
+            enforcementLevel: analyzerpb.EnforcementLevel.ADVISORY,
+            severity: policy.severity == null
+                ? analyzerpb.PolicySeverity.POLICY_SEVERITY_UNSPECIFIED
+                : _toProtoSeverity(policy.severity!),
+          ),
+        );
       } on PolicyNotApplicableError catch (error) {
         notApplicable.add(
           analyzerpb.PolicyNotApplicable(
@@ -1322,7 +1348,10 @@ class PolicyAnalyzerServer extends analyzergrpc.AnalyzerServiceBase {
     final remediations = <analyzerpb.Remediation>[];
     final notApplicable = <analyzerpb.PolicyNotApplicable>[];
 
-    var props = _structToObject(request.properties);
+    var props = decodePolicyProperties(
+      request.properties,
+      preserveSecrets: true,
+    );
 
     for (final policy in policyPackArgs.policies) {
       if (policy is! ResourceValidationPolicy) {
@@ -1375,8 +1404,22 @@ class PolicyAnalyzerServer extends analyzergrpc.AnalyzerServiceBase {
             policyPackVersion: policyPackVersion,
             description: policy.description,
             properties: await StructConverter.toStruct(
-              _normalizeRemediationProperties(result),
+              _normalizeRemediationProperties(
+                unwrapPolicyValue(result)! as Map<String, Object?>,
+              ),
             ),
+          ),
+        );
+      } on UnknownValueError catch (error) {
+        remediations.add(
+          analyzerpb.Remediation(
+            policyName: policy.name,
+            policyPackName: policyPackName,
+            policyPackVersion: policyPackVersion,
+            description: policy.description,
+            diagnostic:
+                "can't run remediation '${policy.name}' from policy pack "
+                "'$policyPackName@v$policyPackVersion' during preview: $error",
           ),
         );
       } on PolicyNotApplicableError catch (error) {
@@ -1411,7 +1454,7 @@ class PolicyAnalyzerServer extends analyzergrpc.AnalyzerServiceBase {
   }) {
     return ResourceValidationArgs(
       type: request.type,
-      props: _structToObject(request.properties),
+      props: decodePolicyProperties(request.properties),
       urn: request.urn,
       name: request.name,
       opts: _toPolicyResourceOptions(request.options),
@@ -1427,7 +1470,7 @@ class PolicyAnalyzerServer extends analyzergrpc.AnalyzerServiceBase {
   PolicyResource _toPolicyResource(analyzerpb.AnalyzerResource resource) {
     return PolicyResource(
       type: resource.type,
-      props: _structToObject(resource.properties),
+      props: decodePolicyProperties(resource.properties),
       urn: resource.urn,
       name: resource.name,
       opts: _toPolicyResourceOptions(resource.options),
@@ -1549,16 +1592,10 @@ PolicyProviderResource _toProviderResource(
 ) {
   return PolicyProviderResource(
     type: provider.type,
-    props: _structToObject(provider.properties),
+    props: decodePolicyProperties(provider.properties),
     urn: provider.urn,
     name: provider.name,
   );
-}
-
-/// Converts protobuf struct values to plain Dart map values.
-Map<String, Object?> _structToObject(Struct struct) {
-  final map = StructConverter.fromStruct(struct);
-  return map.map((key, value) => MapEntry(key, value));
 }
 
 /// Normalizes remediation properties for protobuf struct serialization.
@@ -1580,6 +1617,10 @@ dynamic _normalizeRemediationValue(dynamic value) {
       Constants.specialSigKey: Constants.specialSecretSig,
       Constants.valueName: _normalizeRemediationValue(value.value),
     };
+  }
+
+  if (value is AssetOrArchive) {
+    return value;
   }
 
   if (value is Map) {

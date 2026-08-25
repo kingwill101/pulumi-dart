@@ -4,11 +4,12 @@
 import 'package:grpc/grpc.dart';
 import 'package:protobuf/well_known_types/google/protobuf/empty.pb.dart';
 import 'package:protobuf/well_known_types/google/protobuf/struct.pb.dart';
+import 'package:pulumi/pulumi.dart'
+    show AssetArchive, FileAsset, RemoteArchive, StringAsset;
 import 'package:pulumi/src/constants.dart';
 import 'package:pulumi/src/pulumirpc/pulumi/analyzer.pb.dart' as analyzerpb;
 import 'package:pulumi/src/struct_converter.dart';
 import 'package:pulumi_policy/pulumi_policy.dart';
-import 'package:pulumi_policy/src/policy.dart';
 import 'package:test/test.dart';
 
 class _FakeServiceCall implements ServiceCall {
@@ -677,6 +678,149 @@ void main() {
         final nested = properties['nested']! as Map<String, Object?>;
         final nestedItems = nested['items']! as List<Object?>;
         expect(nestedItems.first, equals(42));
+      },
+    );
+
+    test('analyze reports unknown preview value access as advisory', () async {
+      final policy = ResourceValidationPolicy(
+        name: 'unknown-policy',
+        description: 'reads a computed property',
+        enforcementLevel: EnforcementLevel.mandatory,
+        validateResource: [
+          (args, reportViolation) {
+            final nested = args.props['nested']! as Map<String, Object?>;
+            nested['computed'];
+          },
+        ],
+      );
+      final server = PolicyAnalyzerServer(
+        policyPackName: 'pack-a',
+        policyPackVersion: '1.0.0',
+        defaultEnforcementLevel: EnforcementLevel.advisory,
+        policyPackArgs: PolicyPackArgs(policies: [policy]),
+        initialConfig: null,
+      );
+      final properties = Struct()
+        ..fields['nested'] = (Value()
+          ..structValue = (Struct()
+            ..fields['computed'] = (Value()
+              ..stringValue = Constants.unknownNumberValue)));
+
+      final response = await server.analyze(
+        call,
+        analyzerpb.AnalyzeRequest(
+          type: 'pkg:index:Resource',
+          urn: 'urn:pulumi:dev::proj::pkg:index:Resource::res',
+          name: 'res',
+          options: analyzerpb.AnalyzerResourceOptions(),
+          properties: properties,
+        ),
+      );
+
+      expect(response.diagnostics, hasLength(1));
+      expect(
+        response.diagnostics.single.enforcementLevel,
+        analyzerpb.EnforcementLevel.ADVISORY,
+      );
+      expect(response.diagnostics.single.message, contains('.nested.computed'));
+      expect(response.diagnostics.single.message, contains('number value'));
+    });
+
+    test('analyze decodes assets, archives, and plaintext secrets', () async {
+      final policy = ResourceValidationPolicy(
+        name: 'value-policy',
+        description: 'checks decoded runtime values',
+        validateResource: [
+          (args, reportViolation) {
+            expect(args.props['file'], isA<FileAsset>());
+            expect(args.props['text'], isA<StringAsset>());
+            expect(args.props['archive'], isA<RemoteArchive>());
+            final assets = args.props['assets']! as AssetArchive;
+            expect(assets.assets['nested'], isA<StringAsset>());
+            expect(args.props['token'], equals('plaintext'));
+          },
+        ],
+      );
+      final server = PolicyAnalyzerServer(
+        policyPackName: 'pack-a',
+        policyPackVersion: '1.0.0',
+        defaultEnforcementLevel: EnforcementLevel.advisory,
+        policyPackArgs: PolicyPackArgs(policies: [policy]),
+        initialConfig: null,
+      );
+      final properties = await StructConverter.toStruct({
+        'file': FileAsset('/tmp/file.txt'),
+        'text': StringAsset('hello'),
+        'archive': RemoteArchive('https://example.com/archive.tgz'),
+        'assets': AssetArchive({'nested': StringAsset('nested')}),
+        'token': {
+          Constants.specialSigKey: Constants.specialSecretSig,
+          Constants.valueName: 'plaintext',
+        },
+      });
+
+      final response = await server.analyze(
+        call,
+        analyzerpb.AnalyzeRequest(
+          type: 'pkg:index:Resource',
+          urn: 'urn:pulumi:dev::proj::pkg:index:Resource::res',
+          name: 'res',
+          options: analyzerpb.AnalyzerResourceOptions(),
+          properties: properties,
+        ),
+      );
+
+      expect(response.diagnostics, isEmpty);
+    });
+
+    test(
+      'remediate preserves secrecy when mutating a secret property',
+      () async {
+        final policy = ResourceValidationPolicy(
+          name: 'secret-copy-policy',
+          description: 'updates a secret without losing its marker',
+          enforcementLevel: EnforcementLevel.remediate,
+          remediateResource: (args) {
+            expect(args.props['token'], equals('original'));
+            args.props['token'] = 'replacement';
+            return args.props;
+          },
+        );
+        final server = PolicyAnalyzerServer(
+          policyPackName: 'pack-a',
+          policyPackVersion: '1.0.0',
+          defaultEnforcementLevel: EnforcementLevel.advisory,
+          policyPackArgs: PolicyPackArgs(policies: [policy]),
+          initialConfig: null,
+        );
+        final properties = await StructConverter.toStruct({
+          'token': {
+            Constants.specialSigKey: Constants.specialSecretSig,
+            Constants.valueName: 'original',
+          },
+        });
+
+        final response = await server.remediate(
+          call,
+          analyzerpb.AnalyzeRequest(
+            type: 'pkg:index:Resource',
+            urn: 'urn:pulumi:dev::proj::pkg:index:Resource::res',
+            name: 'res',
+            options: analyzerpb.AnalyzerResourceOptions(),
+            properties: properties,
+          ),
+        );
+
+        final token = response.remediations.single.properties.fields['token']!;
+        expect(token.whichKind(), Value_Kind.structValue);
+        expect(
+          token.structValue.fields[Constants.specialSigKey]?.stringValue,
+          Constants.specialSecretSig,
+        );
+        expect(
+          token.structValue.fields[Constants.valueName]?.stringValue,
+          'replacement',
+        );
       },
     );
   });
