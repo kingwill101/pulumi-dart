@@ -1082,28 +1082,16 @@ func setupLocalDartLanguagePluginPath(t *testing.T, rootPath string) {
 
 var (
 	preseedConversionPluginsOnce sync.Once
-	preseedConversionPluginsHome = defaultPulumiHome()
+	preseedConversionPluginsHome string
 )
-
-func defaultPulumiHome() string {
-	pulumiHome := os.Getenv("PULUMI_HOME")
-	if pulumiHome != "" {
-		return pulumiHome
-	}
-
-	homeDir, err := os.UserHomeDir()
-	if err != nil {
-		return filepath.Join(os.Getenv("HOME"), ".pulumi")
-	}
-
-	return filepath.Join(homeDir, ".pulumi")
-}
 
 func preseedConversionPluginCache(t *testing.T) {
 	t.Helper()
 
 	preseedConversionPluginsOnce.Do(func() {
-		require.NoError(t, os.MkdirAll(preseedConversionPluginsHome, 0o700))
+		var err error
+		preseedConversionPluginsHome, err = os.MkdirTemp("", "pulumi-dart-conversion-plugins-")
+		require.NoError(t, err)
 
 		run := func(args ...string) {
 			cmd := exec.Command("pulumi", args...)
@@ -1122,8 +1110,8 @@ func preseedConversionPluginCache(t *testing.T) {
 			)
 		}
 
-		run("plugin", "install", "converter", "terraform")
-		run("plugin", "install", "resource", "terraform-provider")
+		run("plugin", "install", "converter", "terraform", "v1.3.0")
+		run("plugin", "install", "resource", "terraform-provider", "v1.3.0")
 	})
 
 	require.DirExists(t, preseedConversionPluginsHome)
@@ -1266,7 +1254,7 @@ func TestPackageAddNamespaceDart(t *testing.T) {
 	require.NoError(t, err)
 	for _, expected := range []string{
 		"import 'package:pulumi_my_namespace_mypkg/index.dart' as module_index;",
-		"final index = const _IndexModuleNamespace();",
+		"final index = _IndexModuleNamespace();",
 		"final getResource = module_index.getResource;",
 	} {
 		assert.Contains(t, string(rootSDK), expected)

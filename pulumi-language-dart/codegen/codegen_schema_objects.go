@@ -90,10 +90,14 @@ func buildObjectClassSpec(
 }
 
 func objectClassHasDefaults(object packageObjectClassSpec) bool {
+	hasDefaults := false
 	for _, property := range object.Properties {
+		if property.Required && property.DefaultExpression == "" {
+			return false
+		}
 		if property.DefaultExpression != "" {
-			return true
+			hasDefaults = true
 		}
 	}
-	return false
+	return hasDefaults
 }

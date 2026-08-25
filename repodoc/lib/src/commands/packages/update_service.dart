@@ -13,7 +13,9 @@ final class PackageUpdatePlan {
   const PackageUpdatePlan({
     required this.provider,
     required this.localVersion,
+    required this.localPackageVersion,
     required this.upstreamVersion,
+    required this.targetPackageVersion,
     required this.schemaUrl,
     required this.schemaSource,
     required this.schemaPath,
@@ -25,7 +27,9 @@ final class PackageUpdatePlan {
 
   final String provider;
   final String localVersion;
+  final String localPackageVersion;
   final String upstreamVersion;
+  final String targetPackageVersion;
   final String schemaUrl;
   final String schemaSource;
   final String schemaPath;
@@ -50,7 +54,11 @@ final class PackageUpdater {
     return PackageUpdatePlan(
       provider: provider,
       localVersion: _string(report, 'local_version'),
+      localPackageVersion: _string(report, 'package_version'),
       upstreamVersion: _string(report, 'upstream_version'),
+      targetPackageVersion: providerPackageVersion(
+        _string(report, 'upstream_version'),
+      ),
       schemaUrl: _string(report, 'schema_url'),
       schemaSource: _string(report, 'schema_source'),
       schemaPath: p.join(repositoryRoot.path, schemaPath),
@@ -59,7 +67,7 @@ final class PackageUpdater {
       versionChanged: report['upstream_version_changed'] == true,
       dependencyPubspecPaths: _exactDependencyPubspecs(
         provider,
-        _string(report, 'local_version'),
+        _string(report, 'package_version'),
       ),
     );
   }
@@ -127,7 +135,7 @@ final class PackageUpdater {
         '--provider',
         plan.provider,
         '--sdk-version',
-        plan.upstreamVersion,
+        plan.targetPackageVersion,
       ]);
       if (exitCode != 0) throw StateError('Generation failed ($exitCode).');
 
@@ -272,13 +280,24 @@ final class PackageUpdater {
             if (match == null) return line;
             final openingQuote = match.group(2) ?? '';
             final closingQuote = match.group(3) ?? '';
-            return '${match.group(1)}$openingQuote${plan.upstreamVersion}'
+            return '${match.group(1)}$openingQuote${plan.targetPackageVersion}'
                 '$closingQuote${match.group(4)}';
           })
           .join('\n');
       file.writeAsStringSync('$updated\n');
     }
   }
+}
+
+String providerPackageVersion(String upstreamVersion) {
+  final version = Version.parse(upstreamVersion);
+  return Version(
+    version.major,
+    version.minor,
+    version.patch,
+    pre: version.preRelease.isEmpty ? null : version.preRelease.join('.'),
+    build: '1',
+  ).toString();
 }
 
 String _string(Map<String, dynamic> report, String key) =>

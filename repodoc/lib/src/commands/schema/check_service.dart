@@ -257,7 +257,7 @@ Future<Map<String, dynamic>> _reportForProvider(
   String packageVersionMatchesLocalSchema;
   if (packageVersion.isEmpty || localVersion.isEmpty) {
     packageVersionMatchesLocalSchema = 'unknown';
-  } else if (packageVersion == localVersion) {
+  } else if (packageVersion.split('+').first == localVersion) {
     packageVersionMatchesLocalSchema = 'true';
   } else {
     packageVersionMatchesLocalSchema = 'false';
