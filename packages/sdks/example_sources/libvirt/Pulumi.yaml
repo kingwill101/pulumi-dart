@@ -1,0 +1,9 @@
+name: libvirt-pool-example
+runtime: yaml
+resources:
+  pool:
+    type: libvirt:index/pool:Pool
+    properties:
+      type: dir
+outputs:
+  poolName: ${pool.name}

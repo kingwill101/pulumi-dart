@@ -1,0 +1,19 @@
+# Adapted from pulumi/pulumi-docker-build's unauthenticated YAML example.
+# Its repository-local provider plugin path is intentionally omitted.
+name: docker-build-example
+description: Build and load an image from an inline Dockerfile.
+runtime: yaml
+resources:
+  image:
+    type: docker-build:Image
+    properties:
+      tags:
+        - alpine-local
+      load: true
+      push: false
+      context:
+        location: .
+      dockerfile:
+        inline: FROM alpine
+outputs:
+  imageRef: ${image.ref}

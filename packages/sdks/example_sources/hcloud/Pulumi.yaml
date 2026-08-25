@@ -1,0 +1,9 @@
+name: hcloud-firewall-example
+runtime: yaml
+resources:
+  firewall:
+    type: hcloud:index/firewall:Firewall
+    properties:
+      name: pulumi-dart-example
+outputs:
+  firewallId: ${firewall.id}

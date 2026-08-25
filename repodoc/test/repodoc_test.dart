@@ -17,6 +17,7 @@ void main() {
       containsAll(<String>[
         'schema:check',
         'packages:generate',
+        'packages:docs',
         'packages:remove',
         'packages:update',
         'packages:check-workspace',

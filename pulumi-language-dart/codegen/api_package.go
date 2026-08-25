@@ -15,8 +15,11 @@ func SafeOutputPath(rootDir, relativePath string) (string, error) {
 func GeneratedPackageExampleMain(packageName string) []byte {
 	return generatedPackageExampleMain(packageName)
 }
-func GeneratedPackageReadme(packageName, packagePath, gitURL, gitRef string) []byte {
-	return generatedPackageReadme(packageName, packagePath, gitURL, gitRef)
+func GeneratedPackageProject(packageName string) []byte {
+	return generatedPackageProject(packageName)
+}
+func GeneratedPackageReadme(spec *PackageSchema, packageName, packagePath, gitURL, gitRef string) []byte {
+	return generatedPackageReadme(spec, packageName, packagePath, gitURL, gitRef)
 }
 func GeneratedPackageChangelog(version string) []byte { return generatedPackageChangelog(version) }
 func GeneratedPackageAnalysisOptions() []byte         { return generatedPackageAnalysisOptions() }

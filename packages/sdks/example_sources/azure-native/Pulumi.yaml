@@ -1,0 +1,7 @@
+name: azure-native-resource-group-example
+runtime: yaml
+resources:
+  resource-group:
+    type: azure-native:resources:ResourceGroup
+outputs:
+  resourceGroupName: ${resource-group.name}

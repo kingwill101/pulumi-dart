@@ -1,0 +1,9 @@
+name: awsx-repository-example
+runtime: yaml
+resources:
+  repository:
+    type: awsx:ecr:Repository
+    properties:
+      forceDelete: true
+outputs:
+  repositoryUrl: ${repository.url}

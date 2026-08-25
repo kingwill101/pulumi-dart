@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package_version.dart';
 import 'pubspec_dependencies.dart';
 import 'schema_normalization.dart';
+import 'authored_example_service.dart';
 
 final class ProviderSchema {
   ProviderSchema({
@@ -13,6 +14,7 @@ final class ProviderSchema {
     required this.packagePubspecPath,
     this.falseSecrets = const [],
     this.publishTo = '',
+    this.exampleSourcePath = '',
     this.requiredPropertyRelaxations = const {},
   });
 
@@ -22,6 +24,7 @@ final class ProviderSchema {
   final String packagePubspecPath;
   final List<String> falseSecrets;
   final String publishTo;
+  final String exampleSourcePath;
   final Map<String, List<String>> requiredPropertyRelaxations;
 }
 
@@ -68,13 +71,56 @@ Future<void> main(List<String> args) async {
   if (!generatedSdksRoot.existsSync()) {
     generatedSdksRoot.createSync(recursive: true);
   }
-  final languageHostPath = _buildLanguageHost(repoRoot.path);
-  final generationEnvironment = {
+  final baseGenerationEnvironment = {
     ...Platform.environment,
     'PULUMI_DART_WORKSPACE_RESOLUTION': 'true',
     'PULUMI_DART_PULUMI_DEPENDENCY_PATH': '',
     'PULUMI_DART_PULUMI_DEPENDENCY_CONSTRAINT': pulumiConstraint,
     'PULUMI_DART_PULUMI_DEPENDENCY_VERSION': '',
+  };
+
+  if (parsed.docsOnly) {
+    final requiresConversion = selectedProviders.any((provider) {
+      if (provider.exampleSourcePath.isEmpty) return false;
+      final source = Directory(
+        _joinPath([repoRoot.path, provider.exampleSourcePath]),
+      );
+      return !File(_joinPath([source.path, 'main.dart'])).existsSync();
+    });
+    final generationEnvironment = {
+      ...baseGenerationEnvironment,
+      if (requiresConversion)
+        'PATH': _mergePathPrefix(
+          _buildLanguageHost(repoRoot.path),
+          Platform.environment['PATH'] ?? '',
+        ),
+    };
+    stdout.writeln(
+      'Refreshing examples for ${selectedProviders.length} provider package(s)...',
+    );
+    for (var i = 0; i < selectedProviders.length; i++) {
+      final provider = selectedProviders[i];
+      stdout.writeln('[${i + 1}/${selectedProviders.length}] ${provider.name}');
+      if (provider.exampleSourcePath.isEmpty) continue;
+      await const AuthoredExampleGenerator().generate(
+        repositoryRoot: repoRoot,
+        provider: provider.name,
+        sourcePath: provider.exampleSourcePath,
+        generatedPackage: Directory(
+          _resolveGeneratedPackageDir(repoRoot.path, provider),
+        ),
+        environment: generationEnvironment,
+      );
+    }
+    stdout.writeln(
+      'Done. Refreshed examples for ${selectedProviders.length} package(s).',
+    );
+    return;
+  }
+
+  final languageHostPath = _buildLanguageHost(repoRoot.path);
+  final generationEnvironment = {
+    ...baseGenerationEnvironment,
     'PATH': _mergePathPrefix(
       languageHostPath,
       Platform.environment['PATH'] ?? '',
@@ -181,6 +227,16 @@ Future<void> main(List<String> args) async {
       return;
     }
 
+    if (provider.exampleSourcePath.isNotEmpty) {
+      await const AuthoredExampleGenerator().generate(
+        repositoryRoot: repoRoot,
+        provider: provider.name,
+        sourcePath: provider.exampleSourcePath,
+        generatedPackage: generatedDartDir,
+        environment: providerEnvironment,
+      );
+    }
+
     // Replace generated sources as a directory so stale files are cleaned up
     // without leaving the package half-deleted if replacement fails.
     _replaceGeneratedLib(generatedDartDir, destinationDir);
@@ -263,10 +319,17 @@ List<ProviderSchema> _loadProviders(String schemaSourcePath) {
     final rawPackagePubspecPath = entry['package_pubspec_path'];
     final rawFalseSecrets = entry['false_secrets'];
     final rawPublishTo = entry['publish_to'];
+    final rawExampleSourcePath = entry['example_source_path'];
     final rawRelaxations = entry['required_property_relaxations'];
     if (rawPublishTo != null && rawPublishTo is! String) {
       stderr.writeln(
         'Invalid publish_to for provider $name in $schemaSourcePath.',
+      );
+      exit(65);
+    }
+    if (rawExampleSourcePath != null && rawExampleSourcePath is! String) {
+      stderr.writeln(
+        'Invalid example_source_path for provider $name in $schemaSourcePath.',
       );
       exit(65);
     }
@@ -324,6 +387,9 @@ List<ProviderSchema> _loadProviders(String schemaSourcePath) {
             ? const []
             : List<String>.unmodifiable(rawFalseSecrets.cast<String>()),
         publishTo: rawPublishTo is String ? rawPublishTo.trim() : '',
+        exampleSourcePath: rawExampleSourcePath is String
+            ? rawExampleSourcePath.trim()
+            : '',
         requiredPropertyRelaxations: Map.unmodifiable(relaxations),
       ),
     );
@@ -627,6 +693,7 @@ final class _ParsedArgs {
   _ParsedArgs({
     required this.providers,
     required this.keepSdks,
+    required this.docsOnly,
     required this.sdkVersion,
     required this.pulumiConstraint,
     required this.workingDirectory,
@@ -634,6 +701,7 @@ final class _ParsedArgs {
 
   final Set<String> providers;
   final bool keepSdks;
+  final bool docsOnly;
   final String sdkVersion;
   final String pulumiConstraint;
   final String workingDirectory;
@@ -642,6 +710,7 @@ final class _ParsedArgs {
 _ParsedArgs _parseArgs(List<String> args) {
   final providers = <String>{};
   var keepSdks = false;
+  var docsOnly = false;
   var sdkVersion = '';
   var pulumiConstraint = '';
 
@@ -662,6 +731,10 @@ _ParsedArgs _parseArgs(List<String> args) {
     }
     if (arg == '--keep-sdks') {
       keepSdks = true;
+      continue;
+    }
+    if (arg == '--docs-only') {
+      docsOnly = true;
       continue;
     }
     if (arg == '--all') {
@@ -716,6 +789,7 @@ _ParsedArgs _parseArgs(List<String> args) {
   return _ParsedArgs(
     providers: providers,
     keepSdks: keepSdks,
+    docsOnly: docsOnly,
     sdkVersion: sdkVersion,
     pulumiConstraint: pulumiConstraint,
     workingDirectory: Directory.current.path,
@@ -735,6 +809,7 @@ Options:
   --sdk-version <version>     Override the generated package version
   --pulumi-constraint <range> Override the generated pulumi dependency constraint
   --keep-sdks                 Keep temporary generation output under .gen/sdk-gen
+  --docs-only                 Refresh README and example without replacing SDK sources
   -h, --help                  Show this help
 ''');
 }

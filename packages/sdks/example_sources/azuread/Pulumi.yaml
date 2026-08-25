@@ -1,0 +1,9 @@
+name: azuread-application-example
+runtime: yaml
+resources:
+  application:
+    type: azuread:index/application:Application
+    properties:
+      displayName: pulumi-dart-example
+outputs:
+  clientId: ${application.clientId}

@@ -1,0 +1,9 @@
+name: aws-apigateway-example
+runtime: yaml
+resources:
+  api:
+    type: aws-apigateway:index:RestAPI
+    properties:
+      description: API generated from a Pulumi Dart program
+outputs:
+  url: ${api.url}

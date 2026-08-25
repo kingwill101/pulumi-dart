@@ -1,14 +1,18 @@
 # Pulumi for Dart
 
-`pulumi` is the core SDK for building infrastructure with Pulumi and Dart.
+`pulumi` is the core SDK for defining and managing infrastructure in Dart. It
+provides the runtime primitives used by Pulumi programs, generated provider
+SDKs, Automation API clients, dynamic resources, and Dart-authored providers.
 
-This package provides the runtime primitives used by Pulumi programs and by
-generated provider SDKs.
+> [!IMPORTANT]
+> A Dart Pulumi project needs both this package and the
+> `pulumi-language-dart` executable. The Pulumi CLI starts the language host to
+> load and run your Dart program.
 
 ## Requirements
 
 - Dart SDK `>=3.11.0 <4.0.0`
-- Pulumi CLI
+- [Pulumi CLI](https://www.pulumi.com/docs/iac/download-install/)
 - `pulumi-language-dart` available on your `PATH`
 
 ## Install
@@ -25,9 +29,32 @@ Add a provider SDK as needed:
 dart pub add pulumi_random
 ```
 
+Verify all three parts of the toolchain before creating a stack:
+
+```bash
+dart --version
+pulumi version
+pulumi-language-dart -help
+```
+
 ## Install the Dart language host
 
-This package ships a small helper CLI for installing `pulumi-language-dart`:
+Install the latest language-host release for your operating system and
+architecture:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/kingwill101/pulumi-dart/pulumi-v3.1.0/scripts/install-pulumi-language-dart.sh | bash
+```
+
+The script downloads the host built by the repository's release workflow and
+installs it to `$HOME/.local/bin`. Add that directory to `PATH` if needed:
+
+```bash
+export PATH="$HOME/.local/bin:$PATH"
+pulumi-language-dart -help
+```
+
+This package also ships a helper CLI that runs the same installer:
 
 ```bash
 dart pub global activate pulumi
@@ -124,6 +151,15 @@ Destroy when finished:
 
 ```bash
 pulumi destroy
+```
+
+If Pulumi reports that it cannot find the Dart language plugin, confirm that
+`pulumi-language-dart` is executable and visible in the same process `PATH` as
+the `pulumi` command:
+
+```bash
+command -v pulumi-language-dart
+pulumi-language-dart -help
 ```
 
 ## Core concepts

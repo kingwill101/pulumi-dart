@@ -35,64 +35,42 @@ func generatedPulumiPluginJSON(spec *schemair.Package) []byte {
 }
 
 func generatedPackageExampleMain(packageName string) []byte {
-	return []byte(fmt.Sprintf(`// ignore_for_file: unused_import
-import 'package:pulumi/pulumi.dart' as pulumi;
-import 'package:%s/%s.dart' as provider;
+	stackName := generatedPackageStackName(packageName)
+	return []byte(fmt.Sprintf(`import 'package:pulumi/pulumi.dart' as pulumi;
+import 'package:%s/providers.dart' as provider;
 
-class ExampleStack extends pulumi.Stack {
-  ExampleStack() {
-    // Add resources from package:%s.
-    // Example:
-    // final resource = provider.YourResource("example");
+class %s extends pulumi.Stack {
+  %s() {
+    // An explicit provider is useful when a stack needs more than one provider
+    // configuration. Most programs can omit it and use the default provider.
+    final configuredProvider = provider.ProviderProvider('example');
+
+    registerOutputs({'providerUrn': configuredProvider.urn});
   }
 }
 
 Future<void> main() async {
-  await pulumi.Deployment.runOrThrow(() => ExampleStack());
+  await pulumi.Deployment.runOrThrow(() => %s());
 }
-`, packageName, packageName, packageName))
+`, packageName, stackName, stackName, stackName))
 }
 
-func generatedPackageReadme(packageName, packagePath, gitURL, gitRef string) []byte {
-	gitURL = strings.TrimSpace(gitURL)
-	if gitURL == "" {
-		gitURL = "https://github.com/kingwill101/pulumi-dart.git"
+func generatedPackageStackName(packageName string) string {
+	name := strings.TrimPrefix(packageName, "pulumi_")
+	parts := strings.FieldsFunc(name, func(r rune) bool { return r == '_' || r == '-' })
+	for i, part := range parts {
+		parts[i] = strings.ToUpper(part[:1]) + part[1:]
 	}
-	gitRef = strings.TrimSpace(gitRef)
-	if gitRef == "" {
-		gitRef = "main"
+	if len(parts) == 0 {
+		return "PackageStack"
 	}
-	return []byte(fmt.Sprintf(`# %s
+	return strings.Join(parts, "") + "Stack"
+}
 
-Generated Pulumi provider SDK for Dart.
-
-## Installation
-
-~~~sh
-dart pub add %s
-~~~
-
-## Usage
-
-~~~dart
-import 'package:%s/%s.dart' as provider;
-~~~
-
-## Alternative: Use directly from GitHub
-
-~~~yaml
-dependencies:
-  %s:
-    git:
-      url: %s
-      path: packages/%s
-      ref: %s
-~~~
-
-See the example/ directory for a runnable sample.
-
-_This file is preserved across SDK regeneration done via task generate:<provider>._
-`, packageName, packageName, packageName, packageName, packageName, gitURL, packagePath, gitRef))
+func generatedPackageProject(packageName string) []byte {
+	name := strings.TrimPrefix(packageName, "pulumi_")
+	name = strings.ReplaceAll(name, "_", "-")
+	return []byte(fmt.Sprintf("name: dart-%s-example\nruntime: dart\nmain: example/main.dart\n", name))
 }
 
 func generatedPackageChangelog(version string) []byte {

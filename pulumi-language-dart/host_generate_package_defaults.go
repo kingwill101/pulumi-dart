@@ -12,6 +12,7 @@ func defaultGeneratedExtraFiles(
 ) map[string][]byte {
 	files := map[string][]byte{
 		"README.md": codegen.GeneratedPackageReadme(
+			spec,
 			packageName,
 			packagePath,
 			os.Getenv("PULUMI_DART_SDK_GIT_URL"),
@@ -20,6 +21,7 @@ func defaultGeneratedExtraFiles(
 		"CHANGELOG.md":          codegen.GeneratedPackageChangelog(packageVersion),
 		"analysis_options.yaml": codegen.GeneratedPackageAnalysisOptions(),
 		"example/main.dart":     codegen.GeneratedPackageExampleMain(packageName),
+		"Pulumi.yaml":           codegen.GeneratedPackageProject(packageName),
 		"pulumi-plugin.json":    codegen.GeneratedPulumiPluginJSON(spec),
 	}
 	if license := codegen.GeneratedPackageLicense(spec.License); len(license) > 0 {

@@ -1,0 +1,11 @@
+# Adapted from pulumi/pulumi-pulumiservice's API access-token YAML example.
+name: pulumiservice-access-token-example
+description: Provision a Pulumi Cloud access token.
+runtime: yaml
+resources:
+  access-token:
+    type: pulumiservice:index:AccessToken
+    properties:
+      description: example token
+outputs:
+  token: ${access-token.value}

@@ -1,0 +1,9 @@
+name: cloudflare-account-example
+runtime: yaml
+resources:
+  account:
+    type: cloudflare:index/account:Account
+    properties:
+      name: pulumi-dart-example
+outputs:
+  accountId: ${account.id}

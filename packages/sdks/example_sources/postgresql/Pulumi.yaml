@@ -1,0 +1,9 @@
+name: postgresql-database-example
+runtime: yaml
+resources:
+  database:
+    type: postgresql:index/database:Database
+    properties:
+      name: pulumi_dart_example
+outputs:
+  databaseName: ${database.name}

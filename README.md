@@ -196,12 +196,48 @@ maintenance:
 ```bash
 repodoc --help
 repodoc schema:check
+repodoc packages:docs
 repodoc packages:update --provider aws
 repodoc upstream:check --details
 ```
 
 See [`CONTRIBUTING.md`](CONTRIBUTING.md) for validation, conformance snapshot
 generation, provider maintenance, and pull-request expectations.
+
+## Continuous integration and releases
+
+Pull requests are checked by two main workflows:
+
+- **Dart CI** analyzes and tests the workspace and language host.
+- **Dart Integration** builds the local language host, prewarms Dart kernels,
+  computes the integration matrix, and runs the direct Go integration harness
+  in shards. It does not require Dagger.
+
+Provider schema drift is checked separately. Use `repodoc schema:check` before
+regenerating packages and `repodoc packages:update --provider <name>` to update
+one provider deliberately.
+
+Provider examples are generated with `repodoc packages:docs`. The command
+converts tracked `Pulumi.yaml` sources through Pulumi PCL and the Dart language
+host, copies tracked `main.dart` sources directly, and skips providers without
+an `example_source_path`. See
+[`packages/sdks/example_sources`](packages/sdks/example_sources) for source
+provenance and contribution guidance.
+
+Tagged releases build the `pulumi-language-dart` binaries consumed by the curl
+installer. Maintainers can validate the release workflow without publishing:
+
+```bash
+gh workflow run dart-release-language-host.yml \
+  --ref <branch> \
+  -f mode=snapshot
+```
+
+A release is published from a `v*.*.*` tag. The install script selects the
+archive for the user's operating system and architecture, verifies its
+checksum, and installs it under `$HOME/.local/bin` by default. See
+[`scripts/install-pulumi-language-dart.sh`](scripts/install-pulumi-language-dart.sh)
+for supported overrides.
 
 ## Repository layout
 

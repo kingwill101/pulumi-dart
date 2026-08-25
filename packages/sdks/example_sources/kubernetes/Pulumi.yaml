@@ -1,0 +1,7 @@
+name: kubernetes-namespace-example
+runtime: yaml
+resources:
+  namespace:
+    type: kubernetes:core/v1:Namespace
+outputs:
+  namespaceId: ${namespace.id}
