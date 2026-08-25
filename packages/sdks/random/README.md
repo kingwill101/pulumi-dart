@@ -27,6 +27,7 @@ is exposed as `provider.<module>.<Resource>(...)`. See
 [`example/main.dart`](example/main.dart) for a runnable example.
 
 ~~~sh
+# Run these commands from the package directory containing Pulumi.yaml.
 dart pub get
 pulumi preview
 pulumi up

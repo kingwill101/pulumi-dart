@@ -8,8 +8,8 @@ environment:
 
 dependencies:
   pulumi: ^3.0.0
-  pulumi_command: 1.2.1
-  pulumi_eks: 4.3.0
+  pulumi_command: 1.2.1+1
+  pulumi_eks: 4.3.0+1
 
 dev_dependencies:
   lints: ^6.1.0

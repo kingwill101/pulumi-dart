@@ -1,0 +1,3 @@
+name: dart-azure-native-example
+runtime: dart
+main: example/main.dart

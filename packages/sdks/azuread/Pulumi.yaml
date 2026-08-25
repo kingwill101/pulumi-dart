@@ -1,0 +1,3 @@
+name: dart-azuread-example
+runtime: dart
+main: example/main.dart

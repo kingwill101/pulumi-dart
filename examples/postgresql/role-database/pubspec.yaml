@@ -8,7 +8,7 @@ environment:
 
 dependencies:
   pulumi: ^3.0.0
-  pulumi_postgresql: 3.18.0
+  pulumi_postgresql: 3.18.0+1
 
 dev_dependencies:
   lints: ^6.1.0
