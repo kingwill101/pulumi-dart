@@ -130,6 +130,10 @@ void main() {
     expect(result.reports.single['local_version_source'], 'package');
   });
 
+  test('schema comparison ignores provider package build metadata', () {
+    expect(comparableProviderVersion('1.3.0+1'), '1.3.0');
+  });
+
   test('package updater rejects same-version content changes by default', () {
     final updater = PackageUpdater();
     const plan = PackageUpdatePlan(
@@ -174,7 +178,10 @@ void main() {
     );
   });
 
-  test('provider package versions retain the upstream version with build 1', () {
-    expect(providerPackageVersion('9.35.1'), '9.35.1+1');
-  });
+  test(
+    'provider package versions retain the upstream version with build 1',
+    () {
+      expect(providerPackageVersion('9.35.1'), '9.35.1+1');
+    },
+  );
 }
