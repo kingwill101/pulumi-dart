@@ -1,12 +1,10 @@
-// ignore_for_file: unused_import
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'package:pulumi_azure_native/pulumi_azure_native.dart' as provider;
+import 'package:pulumi_azure_native/resources.dart' as resources;
 
 class ExampleStack extends pulumi.Stack {
   ExampleStack() {
-    // Add resources from package:pulumi_azure_native.
-    // Example:
-    // final resource = provider.YourResource("example");
+    final resourceGroup = resources.ResourceGroup('resource-group');
+    registerOutputs({'resourceGroupName': resourceGroup.name});
   }
 }
 

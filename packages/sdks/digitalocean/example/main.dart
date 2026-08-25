@@ -1,15 +1,30 @@
-// ignore_for_file: unused_import
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'package:pulumi_digitalocean/pulumi_digitalocean.dart' as provider;
 
-class ExampleStack extends pulumi.Stack {
-  ExampleStack() {
-    // Add resources from package:pulumi_digitalocean.
-    // Example:
-    // final resource = provider.YourResource("example");
+import 'package:pulumi_digitalocean/index.dart' as pulumi_digitalocean_index;
+
+class GeneratedStack extends pulumi.Stack {
+  late final List<pulumi.OutputProperty> _outputProperties;
+
+  GeneratedStack() {
+    final tag = pulumi_digitalocean_index.Tag(
+      'tag',
+      args: pulumi_digitalocean_index.TagArgs(
+        name: pulumi.Input.asInput('pulumi-dart-example'),
+      ),
+    );
+
+    _outputProperties = [
+      pulumi.OutputProperty(
+        'tagId',
+        pulumi.output(tag.id).apply<Object?>((value) => value),
+      ),
+    ];
   }
+
+  @override
+  List<pulumi.OutputProperty> getOutputProperties() => _outputProperties;
 }
 
 Future<void> main() async {
-  await pulumi.Deployment.runOrThrow(() => ExampleStack());
+  await pulumi.Deployment.runOrThrow(() => GeneratedStack());
 }

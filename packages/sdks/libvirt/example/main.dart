@@ -1,15 +1,28 @@
-// ignore_for_file: unused_import
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'package:pulumi_libvirt/pulumi_libvirt.dart' as provider;
 
-class ExampleStack extends pulumi.Stack {
-  ExampleStack() {
-    // Add resources from package:pulumi_libvirt.
-    // Example:
-    // final resource = provider.YourResource("example");
+import 'package:pulumi_libvirt/index.dart' as pulumi_libvirt_index;
+
+class GeneratedStack extends pulumi.Stack {
+  late final List<pulumi.OutputProperty> _outputProperties;
+
+  GeneratedStack() {
+    final pool = pulumi_libvirt_index.Pool(
+      'pool',
+      args: pulumi_libvirt_index.PoolArgs(type: pulumi.Input.asInput('dir')),
+    );
+
+    _outputProperties = [
+      pulumi.OutputProperty(
+        'poolName',
+        pulumi.output(pool.name).apply<Object?>((value) => value),
+      ),
+    ];
   }
+
+  @override
+  List<pulumi.OutputProperty> getOutputProperties() => _outputProperties;
 }
 
 Future<void> main() async {
-  await pulumi.Deployment.runOrThrow(() => ExampleStack());
+  await pulumi.Deployment.runOrThrow(() => GeneratedStack());
 }

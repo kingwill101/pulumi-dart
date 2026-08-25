@@ -1,12 +1,13 @@
-// ignore_for_file: unused_import
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'package:pulumi_eks/pulumi_eks.dart' as provider;
+import 'package:pulumi_eks/index.dart' as eks;
 
 class ExampleStack extends pulumi.Stack {
   ExampleStack() {
-    // Add resources from package:pulumi_eks.
-    // Example:
-    // final resource = provider.YourResource("example");
+    final cluster = eks.Cluster(
+      'cluster',
+      args: eks.ClusterArgs(skipDefaultNodeGroup: true.input()),
+    );
+    registerOutputs({'oidcIssuer': cluster.oidcIssuer});
   }
 }
 

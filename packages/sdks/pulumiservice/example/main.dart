@@ -1,15 +1,30 @@
-// ignore_for_file: unused_import
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'package:pulumi_pulumiservice/pulumi_pulumiservice.dart' as provider;
 
-class ExampleStack extends pulumi.Stack {
-  ExampleStack() {
-    // Add resources from package:pulumi_pulumiservice.
-    // Example:
-    // final resource = provider.YourResource("example");
+import 'package:pulumi_pulumiservice/index.dart' as pulumi_pulumiservice_index;
+
+class GeneratedStack extends pulumi.Stack {
+  late final List<pulumi.OutputProperty> _outputProperties;
+
+  GeneratedStack() {
+    final accessToken = pulumi_pulumiservice_index.AccessToken(
+      'access-token',
+      args: pulumi_pulumiservice_index.AccessTokenArgs(
+        description: pulumi.Input.asInput('example token'),
+      ),
+    );
+
+    _outputProperties = [
+      pulumi.OutputProperty(
+        'token',
+        pulumi.output(accessToken.value).apply<Object?>((value) => value),
+      ),
+    ];
   }
+
+  @override
+  List<pulumi.OutputProperty> getOutputProperties() => _outputProperties;
 }
 
 Future<void> main() async {
-  await pulumi.Deployment.runOrThrow(() => ExampleStack());
+  await pulumi.Deployment.runOrThrow(() => GeneratedStack());
 }

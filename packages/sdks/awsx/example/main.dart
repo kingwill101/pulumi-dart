@@ -1,12 +1,13 @@
-// ignore_for_file: unused_import
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'package:pulumi_awsx/pulumi_awsx.dart' as provider;
+import 'package:pulumi_awsx/ecr.dart' as ecr;
 
 class ExampleStack extends pulumi.Stack {
   ExampleStack() {
-    // Add resources from package:pulumi_awsx.
-    // Example:
-    // final resource = provider.YourResource("example");
+    final repository = ecr.Repository(
+      'repository',
+      args: ecr.RepositoryArgs(forceDelete: true.input()),
+    );
+    registerOutputs({'repositoryUrl': repository.url});
   }
 }
 
