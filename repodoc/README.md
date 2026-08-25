@@ -29,6 +29,7 @@ dart run repodoc/bin/repodoc.dart --help
 | --- | --- |
 | `schema:check` | Compare tracked provider schemas with current upstream releases. |
 | `packages:generate` | Generate one or more Dart provider SDKs from tracked schemas. |
+| `packages:docs` | Refresh runnable provider examples without regenerating SDKs. |
 | `packages:update` | Download, validate, regenerate, and analyze one provider update. |
 | `packages:remove` | Remove provider code, schema, examples, and tracking metadata. |
 | `packages:check-workspace` | Validate generated-package workspace conventions. |
@@ -61,6 +62,19 @@ Generate providers from their currently tracked schemas:
 repodoc packages:generate --provider aws
 repodoc packages:generate --provider aws --provider gcp
 ```
+
+Refresh examples without replacing SDK sources, READMEs, or package metadata:
+
+```bash
+repodoc packages:docs
+repodoc packages:docs --provider aws
+```
+
+When a provider has an `example_source_path` in
+`packages/sdks/schema_sources.json`, `packages:docs` uses the checked-in source
+under `packages/sdks/example_sources/`. Pulumi YAML sources are converted
+through PCL and the Dart language host; hand-authored Dart sources are copied
+and formatted directly. Neither path regenerates the provider SDK.
 
 Resolve and apply the latest upstream release for one provider:
 

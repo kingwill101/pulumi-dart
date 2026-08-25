@@ -1,0 +1,9 @@
+name: aws-bucket-example
+runtime: yaml
+resources:
+  bucket:
+    type: aws:s3/bucket:Bucket
+    properties:
+      forceDestroy: true
+outputs:
+  bucketName: ${bucket.bucket}

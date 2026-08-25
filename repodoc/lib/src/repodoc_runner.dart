@@ -2,6 +2,7 @@ import 'package:artisanal/args.dart';
 
 import 'commands/packages/add_command.dart';
 import 'commands/packages/generate_command.dart';
+import 'commands/packages/docs_command.dart';
 import 'commands/packages/remove_command.dart';
 import 'commands/packages/update_command.dart';
 import 'commands/packages/check_workspace_command.dart';
@@ -23,6 +24,7 @@ CommandRunner<int> createRepodocRunner() {
     ..addCommand(PackagesAddCommand())
     ..addCommand(SchemaCheckCommand())
     ..addCommand(PackagesGenerateCommand())
+    ..addCommand(PackagesDocsCommand())
     ..addCommand(PackagesRemoveCommand())
     ..addCommand(PackagesUpdateCommand())
     ..addCommand(PackagesCheckWorkspaceCommand())

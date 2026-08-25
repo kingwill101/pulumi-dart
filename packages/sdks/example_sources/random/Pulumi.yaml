@@ -1,0 +1,9 @@
+name: random-pet-example
+runtime: yaml
+resources:
+  pet:
+    type: random:index/randomPet:RandomPet
+    properties:
+      length: 2
+outputs:
+  petName: ${pet.id}

@@ -1,0 +1,9 @@
+name: eks-cluster-example
+runtime: yaml
+resources:
+  cluster:
+    type: eks:index:Cluster
+    properties:
+      skipDefaultNodeGroup: true
+outputs:
+  oidcIssuer: ${cluster.oidcIssuer}

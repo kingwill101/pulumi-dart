@@ -5,43 +5,50 @@
       "name": "aws",
       "schema_url": "https://www.pulumi.com/registry/packages/aws/schema.json",
       "local_schema_path": "packages/sdks/schemas/aws.schema.json",
-      "package_pubspec_path": "packages/sdks/aws/pubspec.yaml"
+      "package_pubspec_path": "packages/sdks/aws/pubspec.yaml",
+      "example_source_path": "packages/sdks/example_sources/aws"
     },
     {
       "name": "aws-apigateway",
       "schema_url": "https://www.pulumi.com/registry/packages/aws-apigateway/schema.json",
       "local_schema_path": "packages/sdks/schemas/aws-apigateway.schema.json",
-      "package_pubspec_path": "packages/sdks/aws-apigateway/pubspec.yaml"
+      "package_pubspec_path": "packages/sdks/aws-apigateway/pubspec.yaml",
+      "example_source_path": "packages/sdks/example_sources/aws-apigateway"
     },
     {
       "name": "awsx",
       "schema_url": "https://www.pulumi.com/registry/packages/awsx/schema.json",
       "local_schema_path": "packages/sdks/schemas/awsx.schema.json",
-      "package_pubspec_path": "packages/sdks/awsx/pubspec.yaml"
+      "package_pubspec_path": "packages/sdks/awsx/pubspec.yaml",
+      "example_source_path": "packages/sdks/example_sources/awsx"
     },
     {
       "name": "azure",
       "schema_url": "https://www.pulumi.com/registry/packages/azure/schema.json",
       "local_schema_path": "packages/sdks/schemas/azure.schema.json",
-      "package_pubspec_path": "packages/sdks/azure/pubspec.yaml"
+      "package_pubspec_path": "packages/sdks/azure/pubspec.yaml",
+      "example_source_path": "packages/sdks/example_sources/azure"
     },
     {
       "name": "azure-native",
       "schema_url": "https://www.pulumi.com/registry/packages/azure-native/schema.json",
       "local_schema_path": "packages/sdks/schemas/azure-native.schema.json",
-      "package_pubspec_path": "packages/sdks/azure-native/pubspec.yaml"
+      "package_pubspec_path": "packages/sdks/azure-native/pubspec.yaml",
+      "example_source_path": "packages/sdks/example_sources/azure-native"
     },
     {
       "name": "azuread",
       "schema_url": "https://www.pulumi.com/registry/packages/azuread/schema.json",
       "local_schema_path": "packages/sdks/schemas/azuread.schema.json",
-      "package_pubspec_path": "packages/sdks/azuread/pubspec.yaml"
+      "package_pubspec_path": "packages/sdks/azuread/pubspec.yaml",
+      "example_source_path": "packages/sdks/example_sources/azuread"
     },
     {
       "name": "cloudflare",
       "schema_url": "https://www.pulumi.com/registry/packages/cloudflare/schema.json",
       "local_schema_path": "packages/sdks/schemas/cloudflare.schema.json",
       "package_pubspec_path": "packages/sdks/cloudflare/pubspec.yaml",
+      "example_source_path": "packages/sdks/example_sources/cloudflare",
       "false_secrets": [
         "/lib/src/index/authenticated_origin_pulls_certificate.dart",
         "/lib/src/index/authenticated_origin_pulls_hostname_certificate.dart",
@@ -54,37 +61,43 @@
       "name": "command",
       "schema_url": "https://www.pulumi.com/registry/packages/command/schema.json",
       "local_schema_path": "packages/sdks/schemas/command.schema.json",
-      "package_pubspec_path": "packages/sdks/command/pubspec.yaml"
+      "package_pubspec_path": "packages/sdks/command/pubspec.yaml",
+      "example_source_path": "packages/sdks/example_sources/command"
     },
     {
       "name": "digitalocean",
       "schema_url": "https://www.pulumi.com/registry/packages/digitalocean/schema.json",
       "local_schema_path": "packages/sdks/schemas/digitalocean.schema.json",
-      "package_pubspec_path": "packages/sdks/digitalocean/pubspec.yaml"
+      "package_pubspec_path": "packages/sdks/digitalocean/pubspec.yaml",
+      "example_source_path": "packages/sdks/example_sources/digitalocean"
     },
     {
       "name": "docker",
       "schema_url": "https://www.pulumi.com/registry/packages/docker/schema.json",
       "local_schema_path": "packages/sdks/schemas/docker.schema.json",
-      "package_pubspec_path": "packages/sdks/docker/pubspec.yaml"
+      "package_pubspec_path": "packages/sdks/docker/pubspec.yaml",
+      "example_source_path": "packages/sdks/example_sources/docker"
     },
     {
       "name": "docker-build",
       "schema_url": "https://www.pulumi.com/registry/packages/docker-build/schema.json",
       "local_schema_path": "packages/sdks/schemas/docker-build.schema.json",
-      "package_pubspec_path": "packages/sdks/docker-build/pubspec.yaml"
+      "package_pubspec_path": "packages/sdks/docker-build/pubspec.yaml",
+      "example_source_path": "packages/sdks/example_sources/docker-build"
     },
     {
       "name": "eks",
       "schema_url": "https://www.pulumi.com/registry/packages/eks/schema.json",
       "local_schema_path": "packages/sdks/schemas/eks.schema.json",
-      "package_pubspec_path": "packages/sdks/eks/pubspec.yaml"
+      "package_pubspec_path": "packages/sdks/eks/pubspec.yaml",
+      "example_source_path": "packages/sdks/example_sources/eks"
     },
     {
       "name": "gcp",
       "schema_url": "https://www.pulumi.com/registry/packages/gcp/schema.json",
       "local_schema_path": "packages/sdks/schemas/gcp.schema.json",
       "package_pubspec_path": "packages/sdks/gcp/pubspec.yaml",
+      "example_source_path": "packages/sdks/example_sources/gcp",
       "false_secrets": [
         "/lib/src/firebase/app_check_recaptcha_enterprise_config.dart"
       ]
@@ -94,6 +107,7 @@
       "schema_url": "https://www.pulumi.com/registry/packages/google-native/schema.json",
       "local_schema_path": "packages/sdks/schemas/google-native.schema.json",
       "package_pubspec_path": "packages/sdks/google-native/pubspec.yaml",
+      "example_source_path": "packages/sdks/example_sources/google-native",
       "required_property_relaxations": {
         "google-native:bigquery/v2:QueryParameterTypeResponse": [
           "arrayType"
@@ -108,56 +122,65 @@
       "name": "hcloud",
       "schema_url": "https://www.pulumi.com/registry/packages/hcloud/schema.json",
       "local_schema_path": "packages/sdks/schemas/hcloud.schema.json",
-      "package_pubspec_path": "packages/sdks/hcloud/pubspec.yaml"
+      "package_pubspec_path": "packages/sdks/hcloud/pubspec.yaml",
+      "example_source_path": "packages/sdks/example_sources/hcloud"
     },
     {
       "name": "kubernetes",
       "schema_url": "https://www.pulumi.com/registry/packages/kubernetes/schema.json",
       "local_schema_path": "packages/sdks/schemas/kubernetes.schema.json",
-      "package_pubspec_path": "packages/sdks/kubernetes/pubspec.yaml"
+      "package_pubspec_path": "packages/sdks/kubernetes/pubspec.yaml",
+      "example_source_path": "packages/sdks/example_sources/kubernetes"
     },
     {
       "name": "libvirt",
       "schema_url": "https://www.pulumi.com/registry/packages/libvirt/schema.json",
       "local_schema_path": "packages/sdks/schemas/libvirt.schema.json",
       "package_pubspec_path": "packages/sdks/libvirt/pubspec.yaml",
+      "example_source_path": "packages/sdks/example_sources/libvirt",
       "publish_to": "none"
     },
     {
       "name": "mysql",
       "schema_url": "https://www.pulumi.com/registry/packages/mysql/schema.json",
       "local_schema_path": "packages/sdks/schemas/mysql.schema.json",
-      "package_pubspec_path": "packages/sdks/mysql/pubspec.yaml"
+      "package_pubspec_path": "packages/sdks/mysql/pubspec.yaml",
+      "example_source_path": "packages/sdks/example_sources/mysql"
     },
     {
       "name": "postgresql",
       "schema_url": "https://www.pulumi.com/registry/packages/postgresql/schema.json",
       "local_schema_path": "packages/sdks/schemas/postgresql.schema.json",
-      "package_pubspec_path": "packages/sdks/postgresql/pubspec.yaml"
+      "package_pubspec_path": "packages/sdks/postgresql/pubspec.yaml",
+      "example_source_path": "packages/sdks/example_sources/postgresql"
     },
     {
       "name": "pulumiservice",
       "schema_url": "https://www.pulumi.com/registry/packages/pulumiservice/schema.json",
       "local_schema_path": "packages/sdks/schemas/pulumiservice.schema.json",
-      "package_pubspec_path": "packages/sdks/pulumiservice/pubspec.yaml"
+      "package_pubspec_path": "packages/sdks/pulumiservice/pubspec.yaml",
+      "example_source_path": "packages/sdks/example_sources/pulumiservice"
     },
     {
       "name": "random",
       "schema_url": "https://www.pulumi.com/registry/packages/random/schema.json",
       "local_schema_path": "packages/sdks/schemas/random.schema.json",
-      "package_pubspec_path": "packages/sdks/random/pubspec.yaml"
+      "package_pubspec_path": "packages/sdks/random/pubspec.yaml",
+      "example_source_path": "packages/sdks/example_sources/random"
     },
     {
       "name": "terraform",
       "schema_url": "https://www.pulumi.com/registry/packages/terraform/schema.json",
       "local_schema_path": "packages/sdks/schemas/terraform.schema.json",
-      "package_pubspec_path": "packages/sdks/terraform/pubspec.yaml"
+      "package_pubspec_path": "packages/sdks/terraform/pubspec.yaml",
+      "example_source_path": "packages/sdks/example_sources/terraform"
     },
     {
       "name": "tls",
       "schema_url": "https://www.pulumi.com/registry/packages/tls/schema.json",
       "local_schema_path": "packages/sdks/schemas/tls.schema.json",
-      "package_pubspec_path": "packages/sdks/tls/pubspec.yaml"
+      "package_pubspec_path": "packages/sdks/tls/pubspec.yaml",
+      "example_source_path": "packages/sdks/example_sources/tls"
     }
   ]
 }

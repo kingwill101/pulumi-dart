@@ -1,0 +1,9 @@
+name: command-local-example
+runtime: yaml
+resources:
+  greeting:
+    type: command:local:Command
+    properties:
+      create: echo 'hello from Pulumi Dart'
+outputs:
+  message: ${greeting.stdout}

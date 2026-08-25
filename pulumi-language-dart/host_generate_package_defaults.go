@@ -12,6 +12,7 @@ func defaultGeneratedExtraFiles(
 ) map[string][]byte {
 	files := map[string][]byte{
 		"README.md": codegen.GeneratedPackageReadme(
+			spec,
 			packageName,
 			packagePath,
 			os.Getenv("PULUMI_DART_SDK_GIT_URL"),

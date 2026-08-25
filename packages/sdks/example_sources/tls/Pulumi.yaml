@@ -1,0 +1,9 @@
+name: tls-private-key-example
+runtime: yaml
+resources:
+  private-key:
+    type: tls:index/privateKey:PrivateKey
+    properties:
+      algorithm: ED25519
+outputs:
+  publicKey: ${private-key.publicKeyOpenssh}

@@ -1,0 +1,9 @@
+name: mysql-database-example
+runtime: yaml
+resources:
+  database:
+    type: mysql:index/database:Database
+    properties:
+      name: pulumi_dart_example
+outputs:
+  databaseName: ${database.name}

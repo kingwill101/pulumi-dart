@@ -1,0 +1,18 @@
+# Adapted from pulumi/pulumi-docker's docs-generation YAML example.
+# The upstream v-prefixed resource option was omitted because current PCL
+# requires a canonical semantic version and the tracked schema selects it.
+name: docker-image-example
+description: Build a local Docker image without pushing it.
+runtime: yaml
+resources:
+  demo-image:
+    type: docker:Image
+    properties:
+      imageName: username/image:local
+      skipPush: true
+      build:
+        dockerfile: Dockerfile
+        context: .
+        platform: linux/amd64
+outputs:
+  imageName: ${demo-image.imageName}

@@ -3,6 +3,7 @@ package codegen
 import (
 	"testing"
 
+	"github.com/kingwill101/pulumi-dart/pulumi-language-dart/codegen/schemair"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )
@@ -52,6 +53,7 @@ func TestGeneratedSDKPackageVersionUsesExplicitInputs(t *testing.T) {
 
 func TestGeneratedPackageReadmeUsesExplicitRepository(t *testing.T) {
 	readme := string(generatedPackageReadme(
+		&schemair.Package{Name: "sample", Repository: "https://example.com/provider"},
 		"pulumi_sample",
 		"sample",
 		"https://example.com/sdk.git",
@@ -59,5 +61,7 @@ func TestGeneratedPackageReadmeUsesExplicitRepository(t *testing.T) {
 	))
 
 	require.Contains(t, readme, "url: https://example.com/sdk.git")
+	require.Contains(t, readme, "path: packages/sdks/sample")
 	require.Contains(t, readme, "ref: release/v1")
+	require.Contains(t, readme, "https://example.com/provider")
 }

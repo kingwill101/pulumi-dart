@@ -1,0 +1,10 @@
+name: gcp-bucket-example
+runtime: yaml
+resources:
+  bucket:
+    type: gcp:storage/bucket:Bucket
+    properties:
+      location: US
+      forceDestroy: true
+outputs:
+  bucketUrl: ${bucket.url}

@@ -1,0 +1,9 @@
+name: digitalocean-tag-example
+runtime: yaml
+resources:
+  tag:
+    type: digitalocean:index/tag:Tag
+    properties:
+      name: pulumi-dart-example
+outputs:
+  tagId: ${tag.id}
