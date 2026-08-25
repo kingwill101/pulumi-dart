@@ -81,7 +81,12 @@ Useful options:
 pulumi-dart install-language-host --version v3.0.0
 pulumi-dart install-language-host --install-dir "$HOME/bin"
 pulumi-dart install-language-host --repo kingwill101/pulumi-dart
+pulumi-dart install-language-host --ref pulumi-v3.1.1
 ```
+
+By default, the CLI downloads the installer from its own immutable package
+release tag. Set `PULUMI_DART_INSTALLER_REF` or pass `--ref` to test another
+tag or branch; `--ref` takes precedence.
 
 ## Minimal Pulumi program
 

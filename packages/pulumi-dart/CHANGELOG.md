@@ -1,3 +1,9 @@
+## 3.1.1
+
+- Fix `pulumi-dart install-language-host` to download its installer from the
+  immutable package release tag, with flag and environment overrides for
+  custom repositories and refs.
+
 ## 3.1.0
 
 - Preserve provider properties whose names begin with `__` during serialization.

@@ -85,10 +85,7 @@ void main() {
       expect(exitCode, 0);
       expect(
         capturedUrl,
-        buildInstallerScriptUrl(
-          repo: defaultPulumiDartRepo,
-          ref: defaultPulumiDartRef,
-        ),
+        'https://raw.githubusercontent.com/kingwill101/pulumi-dart/pulumi-v3.1.1/scripts/install-pulumi-language-dart.sh',
       );
       expect(capturedScriptPath, contains('install-pulumi-language-dart.sh'));
       expect(
@@ -96,6 +93,30 @@ void main() {
         buildInstallerScriptArgs(repo: defaultPulumiDartRepo),
       );
       expect(out.toString(), contains('Running installer script from:'));
+    });
+
+    test('applies installer ref environment override', () async {
+      late String capturedUrl;
+
+      final exitCode = await installLanguageHost(
+        const [],
+        environment: const {'PULUMI_DART_INSTALLER_REF': 'next'},
+        isLinux: true,
+        isMacOS: false,
+        createTempDir: Directory.systemTemp.createTemp,
+        downloadFile: (url, file) async {
+          capturedUrl = url;
+          await file.writeAsString('#!/usr/bin/env bash\n');
+        },
+        makeExecutable: (_) async {},
+        runInstaller: (_, _) async => 0,
+      );
+
+      expect(exitCode, 0);
+      expect(
+        capturedUrl,
+        'https://raw.githubusercontent.com/kingwill101/pulumi-dart/next/scripts/install-pulumi-language-dart.sh',
+      );
     });
 
     test('applies repo env override and forwards flags', () async {
