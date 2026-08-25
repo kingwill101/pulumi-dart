@@ -2,7 +2,9 @@ import 'dart:convert';
 import 'dart:io';
 
 const defaultPulumiDartRepo = 'kingwill101/pulumi-dart';
-const defaultPulumiDartRef = 'main';
+// Keep this aligned with the package release tag so installed CLIs bootstrap
+// from immutable source rather than a moving repository branch.
+const defaultPulumiDartRef = 'pulumi-v3.1.1';
 
 /// Runs the `pulumi-dart` utility CLI and returns the desired process exit
 /// code.
@@ -95,7 +97,10 @@ Future<int> installLanguageHost(
       readOption(args, '--repo') ??
       env['PULUMI_DART_RELEASE_REPO'] ??
       defaultPulumiDartRepo;
-  final ref = readOption(args, '--ref') ?? defaultPulumiDartRef;
+  final ref =
+      readOption(args, '--ref') ??
+      env['PULUMI_DART_INSTALLER_REF'] ??
+      defaultPulumiDartRef;
   final version = readOption(args, '--version');
   final installDir = readOption(args, '--install-dir');
 
