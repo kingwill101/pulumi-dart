@@ -1396,7 +1396,7 @@ class PolicyAnalyzerServer extends analyzergrpc.AnalyzerServiceBase {
           continue;
         }
 
-        props = result;
+        props = prepareRemediationProperties(result, props);
         remediations.add(
           analyzerpb.Remediation(
             policyName: policy.name,
@@ -1405,7 +1405,7 @@ class PolicyAnalyzerServer extends analyzergrpc.AnalyzerServiceBase {
             description: policy.description,
             properties: await StructConverter.toStruct(
               _normalizeRemediationProperties(
-                unwrapPolicyValue(result)! as Map<String, Object?>,
+                unwrapPolicyValue(props)! as Map<String, Object?>,
               ),
             ),
           ),

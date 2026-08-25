@@ -185,7 +185,13 @@ class _PolicyMap extends MapBase<String, Object?> {
   Iterable<String> get keys => _values.keys;
 
   @override
-  Object? remove(Object? key) => _values.remove(key);
+  Object? remove(Object? key) {
+    final value = _values.remove(key);
+    return _readPolicyValue(value, [
+      ..._path,
+      key ?? 'null',
+    ], preserveSecrets: preserveSecrets);
+  }
 }
 
 class _PolicyList extends ListBase<Object?> {
@@ -238,3 +244,61 @@ Object? unwrapPolicyValue(Object? value) {
   }
   return value;
 }
+
+/// Prepares remediation output for another policy and restores secret markers
+/// at paths that were secret in [source].
+///
+/// This preserves secrecy when a policy returns a copied map, for example
+/// `{...args.props, 'enabled': true}`, rather than mutating and returning the
+/// original policy map.
+Map<String, Object?> prepareRemediationProperties(
+  Map<String, Object?> value,
+  Map<String, Object?> source,
+) {
+  final restored = _restorePolicySecrets(value, source);
+  return _readPolicyValue(restored, const [], preserveSecrets: true)!
+      as Map<String, Object?>;
+}
+
+Object? _restorePolicySecrets(Object? value, Object? source) {
+  final rawValue = _rawPolicyValue(value);
+  final rawSource = _rawPolicyValue(source);
+
+  if (rawValue is Secret) {
+    return Secret(
+      _restorePolicySecrets(
+        rawValue.value,
+        rawSource is Secret ? rawSource.value : rawSource,
+      ),
+    );
+  }
+  if (rawSource is Secret) {
+    return Secret(_restorePolicySecrets(rawValue, rawSource.value));
+  }
+  if (rawValue is Map && rawSource is Map) {
+    return <String, Object?>{
+      for (final entry in rawValue.entries)
+        entry.key.toString(): _restorePolicySecrets(
+          entry.value,
+          rawSource[entry.key],
+        ),
+    };
+  }
+  if (rawValue is Iterable && rawSource is Iterable) {
+    final sourceValues = rawSource.toList(growable: false);
+    return <Object?>[
+      for (final (index, item) in rawValue.indexed)
+        _restorePolicySecrets(
+          item,
+          index < sourceValues.length ? sourceValues[index] : null,
+        ),
+    ];
+  }
+  return rawValue;
+}
+
+Object? _rawPolicyValue(Object? value) => switch (value) {
+  _PolicyMap() => value._values,
+  _PolicyList() => value._values,
+  _ => value,
+};

@@ -823,5 +823,78 @@ void main() {
         );
       },
     );
+
+    test('remediate preserves secrets copied into a new map', () async {
+      final policy = ResourceValidationPolicy(
+        name: 'secret-spread-policy',
+        description: 'copies properties and adds a value',
+        enforcementLevel: EnforcementLevel.remediate,
+        remediateResource: (args) => {...args.props, 'enabled': true},
+      );
+      final server = PolicyAnalyzerServer(
+        policyPackName: 'pack-a',
+        policyPackVersion: '1.0.0',
+        defaultEnforcementLevel: EnforcementLevel.advisory,
+        policyPackArgs: PolicyPackArgs(policies: [policy]),
+        initialConfig: null,
+      );
+      final properties = await StructConverter.toStruct({
+        'token': {
+          Constants.specialSigKey: Constants.specialSecretSig,
+          Constants.valueName: 'original',
+        },
+      });
+
+      final response = await server.remediate(
+        call,
+        analyzerpb.AnalyzeRequest(
+          type: 'pkg:index:Resource',
+          urn: 'urn:pulumi:dev::proj::pkg:index:Resource::res',
+          name: 'res',
+          options: analyzerpb.AnalyzerResourceOptions(),
+          properties: properties,
+        ),
+      );
+
+      final token = response.remediations.single.properties.fields['token']!;
+      expect(
+        token.structValue.fields[Constants.specialSigKey]?.stringValue,
+        Constants.specialSecretSig,
+      );
+      expect(
+        token.structValue.fields[Constants.valueName]?.stringValue,
+        'original',
+      );
+    });
+
+    test('remove decodes policy values', () async {
+      final policy = ResourceValidationPolicy(
+        name: 'remove-policy',
+        description: 'removes a computed property',
+        enforcementLevel: EnforcementLevel.remediate,
+        remediateResource: (args) {
+          args.props.remove('computed');
+          return args.props;
+        },
+      );
+      final server = PolicyAnalyzerServer(
+        policyPackName: 'pack-a',
+        policyPackVersion: '1.0.0',
+        defaultEnforcementLevel: EnforcementLevel.advisory,
+        policyPackArgs: PolicyPackArgs(policies: [policy]),
+        initialConfig: null,
+      );
+
+      final response = await server.remediate(
+        call,
+        await _newAnalyzeRequest(
+          type: 'pkg:index:Resource',
+          properties: const {'computed': Constants.unknownNumberValue},
+        ),
+      );
+
+      expect(response.remediations.single.hasDiagnostic(), isTrue);
+      expect(response.remediations.single.diagnostic, contains('.computed'));
+    });
   });
 }
