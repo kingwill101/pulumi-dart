@@ -71,10 +71,15 @@ jobs:
           go version
           dart --version
 
-      - name: Verify language host tests
+      - name: Verify language host unit tests
         run: |
           cd pulumi-language-dart
-          go test -count=1 ./...
+          go test -count=1 -skip '^TestLanguageConformance$' . ./dartpub/...
+
+      - name: Verify language host codegen tests
+        run: |
+          cd pulumi-language-dart
+          go test -count=1 ./codegen/...
 
       - name: Analyze pulumi core package
         run: dart analyze packages/pulumi-dart
