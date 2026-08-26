@@ -44,7 +44,7 @@ jobs:
         with:
           submodules: recursive
       - uses: cachix/install-nix-action@v31
-      - uses: cachix/cachix-action@v16
+      - uses: cachix/cachix-action@v17
         with:
           name: devenv
       - name: Install devenv
@@ -80,7 +80,7 @@ jobs:
         with:
           node-version: 22
       - uses: cachix/install-nix-action@v31
-      - uses: cachix/cachix-action@v16
+      - uses: cachix/cachix-action@v17
         with:
           name: devenv
       - name: Install devenv
@@ -118,7 +118,7 @@ jobs:
           submodules: recursive
       - uses: cachix/install-nix-action@v31
         if: env.OP_SERVICE_ACCOUNT_TOKEN != ''
-      - uses: cachix/cachix-action@v16
+      - uses: cachix/cachix-action@v17
         if: env.OP_SERVICE_ACCOUNT_TOKEN != ''
         with:
           name: devenv
@@ -146,7 +146,7 @@ jobs:
         with:
           submodules: recursive
       - uses: cachix/install-nix-action@v31
-      - uses: cachix/cachix-action@v16
+      - uses: cachix/cachix-action@v17
         with:
           name: devenv
       - name: Install devenv
@@ -162,7 +162,7 @@ jobs:
         with:
           submodules: recursive
       - uses: cachix/install-nix-action@v31
-      - uses: cachix/cachix-action@v16
+      - uses: cachix/cachix-action@v17
         with:
           name: devenv
       - name: Install devenv
@@ -183,7 +183,7 @@ jobs:
         with:
           submodules: recursive
       - uses: cachix/install-nix-action@v31
-      - uses: cachix/cachix-action@v16
+      - uses: cachix/cachix-action@v17
         with:
           name: devenv
       - name: Install devenv
@@ -217,7 +217,7 @@ jobs:
           test "$CONFORMANCE_RESULT" = success
       - uses: actions/checkout@v7
       - uses: cachix/install-nix-action@v31
-      - uses: cachix/cachix-action@v16
+      - uses: cachix/cachix-action@v17
         with:
           name: devenv
       - name: Install devenv
