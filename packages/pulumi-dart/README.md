@@ -9,6 +9,28 @@ SDKs, Automation API clients, dynamic resources, and Dart-authored providers.
 > `pulumi-language-dart` executable. The Pulumi CLI starts the language host to
 > load and run your Dart program.
 
+## Contents
+
+- [Requirements](#requirements)
+- [Install](#install)
+- [Install the Dart language host](#install-the-dart-language-host)
+- [Minimal Pulumi program](#minimal-pulumi-program)
+- [Example with a provider SDK](#example-with-a-provider-sdk)
+- [Running with Pulumi CLI](#running-with-pulumi-cli)
+- [Core concepts](#core-concepts)
+  - [`Input` and `Output`](#input-and-output)
+  - [`Stack`](#stack)
+  - [`Config`](#config)
+  - [`ResourceOptions`](#resourceoptions)
+- [Additional libraries in this package](#additional-libraries-in-this-package)
+  - [Automation API](#automation-api)
+  - [Dynamic resource APIs](#dynamic-resource-apis)
+  - [Provider authoring APIs](#provider-authoring-apis)
+- [More examples](#more-examples)
+- [Using generated provider SDKs directly from Git](#using-generated-provider-sdks-directly-from-git)
+- [Development and upstream fixtures](#development-and-upstream-fixtures)
+- [Repository and support](#repository-and-support)
+
 ## Requirements
 
 - Dart SDK `>=3.11.0 <4.0.0`
@@ -242,7 +264,7 @@ Use this when you are implementing a Pulumi provider plugin in Dart.
 See:
 
 - [`example/provider_authoring_example.dart`](example/provider_authoring_example.dart)
-- [`integration_tests/provider_authoring/dart/bin/provider_plugin.dart`](../integration_tests/provider_authoring/dart/bin/provider_plugin.dart)
+- [`integration_tests/provider_authoring/dart/bin/provider_plugin.dart`](../../integration_tests/provider_authoring/dart/bin/provider_plugin.dart)
 
 ## More examples
 
@@ -250,13 +272,6 @@ See:
   - [`example/raw_invoke_example.dart`](example/raw_invoke_example.dart)
 - raw provider/custom resource example:
   - [`example/pulumi_dart_example.dart`](example/pulumi_dart_example.dart)
-
-## Repository
-
-- source:
-  - <https://github.com/kingwill101/pulumi-dart>
-- issue tracker:
-  - <https://github.com/kingwill101/pulumi-dart/issues>
 
 ## Using generated provider SDKs directly from Git
 
@@ -290,10 +305,33 @@ dependencies:
 This is the recommended approach for unreleased or not-yet-published provider
 SDKs while the initial pub.dev release set is still intentionally small.
 
-## Development
+## Development and upstream fixtures
 
 ```bash
 dart pub get
 dart analyze
 dart test
 ```
+
+Changes to the core SDK, language host, or code generator may also require
+refreshing language conformance fixtures from the pinned Pulumi upstream
+submodule. From the repository root, audit upstream drift before regenerating
+fixtures:
+
+```bash
+repodoc upstream:check --core-only
+repodoc upstream:check --details
+```
+
+Regenerate a single affected conformance case first, then the full supported
+fixture set. Generated snapshots live in
+`pulumi-language-dart/testdata/published` and must not be edited by hand. The
+complete commands and review checklist are documented in the repository's
+[upstream drift and test fixtures](../../README.md#upstream-drift-and-test-fixtures)
+section and in [`CONTRIBUTING.md`](../../CONTRIBUTING.md#generate-language-conformance-testdata).
+
+## Repository and support
+
+- [Source repository](https://github.com/kingwill101/pulumi-dart)
+- [Issue tracker](https://github.com/kingwill101/pulumi-dart/issues)
+- [Contributing guide](../../CONTRIBUTING.md)

@@ -16,6 +16,19 @@ The repository contains:
 > Dart support is community maintained rather than an officially supported
 > Pulumi language. Please report compatibility problems in this repository.
 
+## Contents
+
+- [Requirements](#requirements)
+- [Install](#install)
+- [Quickstart](#quickstart)
+- [Provider SDKs](#provider-sdks)
+- [Templates and libraries](#templates-and-libraries)
+- [Repository development](#repository-development)
+- [Upstream drift and test fixtures](#upstream-drift-and-test-fixtures)
+- [Continuous integration and releases](#continuous-integration-and-releases)
+- [Repository layout](#repository-layout)
+- [Contributing and support](#contributing-and-support)
+
 ## Requirements
 
 - Dart SDK `>=3.11.0 <4.0.0`
@@ -203,6 +216,53 @@ repodoc upstream:check --details
 
 See [`CONTRIBUTING.md`](CONTRIBUTING.md) for validation, conformance snapshot
 generation, provider maintenance, and pull-request expectations.
+
+## Upstream drift and test fixtures
+
+Pulumi Dart tracks two kinds of upstream change, and they should be reviewed
+separately:
+
+- **Provider schema drift** changes generated provider SDKs. Check all tracked
+  providers, or focus on one provider before updating it deliberately:
+
+  ```bash
+  repodoc schema:check --fail-on-drift
+  repodoc schema:check --provider aws
+  repodoc packages:update --provider aws
+  ```
+
+- **Runtime and SDK drift** covers Pulumi language runtime, protocol, codegen,
+  Automation API, and hand-written provider overlays. Audit it with:
+
+  ```bash
+  repodoc upstream:check --core-only
+  repodoc upstream:check --provider aws
+  repodoc upstream:check --details
+  ```
+
+Language conformance fixtures are generated from the Pulumi version pinned in
+`thirdparty/pulumi`. Update that submodule first, then regenerate one affected
+case before accepting the complete fixture set:
+
+```bash
+devenv shell -- bash -c '
+  cd pulumi-language-dart
+  PULUMI_ACCEPT=true go test -count=1 -v -timeout=10m \
+    -run "^TestLanguageConformance$/^<upstream-test-name>$" .
+'
+
+PULUMI_ACCEPT=true devenv shell -- language-conformance-test
+devenv shell -- language-conformance-test
+```
+
+Review every generated change under
+`pulumi-language-dart/testdata/published`; do not edit those snapshots by hand.
+Fixtures under `pulumi-language-dart/testdata/providers` and
+`pulumi-language-dart/testdata/policies` are maintained inputs and should be
+updated intentionally. See
+[`CONTRIBUTING.md`](CONTRIBUTING.md#generate-language-conformance-testdata) and
+[`docs/upstream-maintenance.md`](docs/upstream-maintenance.md) for the full
+workflow and review boundaries.
 
 ## Continuous integration and releases
 
