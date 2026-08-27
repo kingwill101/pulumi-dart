@@ -65,4 +65,4 @@ When opening issues, include:
 
 ## Related links
 
-- [Pulumi Dart repository issues](https://github.com/pulumi/pulumi-dart/issues)
+- [Pulumi Dart repository issues](https://github.com/kingwill101/pulumi-dart/issues)

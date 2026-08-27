@@ -81,5 +81,5 @@ A future `pulumi-dart` CLI command such as `pulumi-dart install-language-host` c
 
 ## Related links
 
-- [GitHub Releases](https://github.com/pulumi/pulumi-dart/releases)
+- [GitHub Releases](https://github.com/kingwill101/pulumi-dart/releases)
 - [Dependency registry](../providers/dependency-registry.md)

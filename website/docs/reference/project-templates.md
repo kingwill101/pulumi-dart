@@ -20,7 +20,7 @@ pulumi new ./templates/dart-minimal -y --name my-dart-stack --stack dev --secret
 Remote:
 
 ```bash
-pulumi new https://github.com/pulumi/pulumi-dart/tree/main/templates/dart-minimal -y --name my-dart-stack --stack dev --secrets-provider passphrase
+pulumi new https://github.com/kingwill101/pulumi-dart/tree/master/templates/dart-minimal -y --name my-dart-stack --stack dev --secrets-provider passphrase
 ```
 
 ## Minimal stack file structure
