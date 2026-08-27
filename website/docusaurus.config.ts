@@ -11,7 +11,7 @@ const config: Config = {
   },
   url: 'https://pulumi-dart.dev',
   baseUrl: '/',
-  organizationName: 'pulumi',
+  organizationName: 'kingwill101',
   projectName: 'pulumi-dart',
   onBrokenLinks: 'throw',
   i18n: {
@@ -25,7 +25,7 @@ const config: Config = {
         docs: {
           routeBasePath: 'docs',
           sidebarPath: './sidebars.ts',
-          editUrl: 'https://github.com/pulumi/pulumi-dart/tree/main/website/',
+          editUrl: 'https://github.com/kingwill101/pulumi-dart/tree/master/website/',
         },
         blog: false,
         theme: {
@@ -51,7 +51,7 @@ const config: Config = {
         {to: '/docs/providers/generate-provider-sdk', label: 'Provider SDKs', position: 'left'},
         {to: '/docs/reference/community-support', label: 'Community', position: 'left'},
         {
-          href: 'https://github.com/pulumi/pulumi-dart',
+          href: 'https://github.com/kingwill101/pulumi-dart',
           label: 'GitHub',
           position: 'right',
         },
@@ -72,13 +72,13 @@ const config: Config = {
         {
           title: 'Project',
           items: [
-            {label: 'Repository', href: 'https://github.com/pulumi/pulumi-dart'},
+            {label: 'Repository', href: 'https://github.com/kingwill101/pulumi-dart'},
             {label: 'Pulumi Registry', href: 'https://www.pulumi.com/registry/'},
             {label: 'Pulumi Docs', href: 'https://www.pulumi.com/docs/'},
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Pulumi Corporation`,
+      copyright: `Copyright © ${new Date().getFullYear()} Pulumi Dart contributors`,
     },
     prism: {
       theme: prismThemes.github,

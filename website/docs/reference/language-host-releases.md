@@ -4,7 +4,7 @@ sidebar_position: 2
 
 # Language Host Releases and Installation Strategy
 
-This page describes how `pulumi-language-dart` should be released and consumed.
+This page describes how `pulumi-language-dart` is released and consumed.
 
 ## Goals
 
@@ -14,7 +14,7 @@ This page describes how `pulumi-language-dart` should be released and consumed.
 
 ## Artifact strategy
 
-Publish GitHub Releases in `pulumi/pulumi-dart` with semver tags:
+GitHub Releases are published from `kingwill101/pulumi-dart` with semver tags:
 
 - tag format: `vX.Y.Z`
 - assets:
@@ -38,16 +38,29 @@ Supported options:
 - `--version <tag>`
 - `--install-dir <dir>`
 - `--repo <owner/repo>`
+- `--ref <tag-or-branch>` when using the `pulumi-dart` helper CLI
 
 Default install path is `~/.local/bin`.
 
-## Suggested release automation
+The published `pulumi` package includes a helper that wraps the same installer:
 
-1. Build matrix for Linux/macOS/Windows and amd64/arm64
-2. Package binaries with stable asset naming
-3. Generate and upload checksums
-4. Publish release notes
-5. Smoke-test installer script against new release
+```bash
+dart pub global activate pulumi
+pulumi-dart install-language-host
+pulumi-dart install-language-host --version v3.1.1
+```
+
+The helper CLI currently supports Linux and macOS. Windows users install the
+`.zip` release asset manually and place `pulumi-language-dart.exe` on `%PATH%`.
+
+## Release automation
+
+The release workflow performs these steps after tests pass:
+
+1. Build Linux, macOS, and Windows archives for amd64 and arm64.
+2. Package binaries with stable asset names.
+3. Generate and upload checksums.
+4. Publish the GitHub Release and its assets.
 
 ## Current GitHub workflows in this repo
 
@@ -70,9 +83,32 @@ Default install path is `~/.local/bin`.
 - installer works on clean shell profile
 - docs reference latest stable tag examples
 
-## CLI installer roadmap
+Run a complete build without publishing from any trusted branch:
 
-A future `pulumi-dart` CLI command such as `pulumi-dart install-language-host` can wrap the shell script flow for a better DX.
+```bash
+gh workflow run dart-release-language-host.yml \
+  --ref <branch> \
+  -f mode=snapshot
+```
+
+To publish, create and push an annotated `vX.Y.Z` language-host tag. The tag
+must exist before using manual release mode because the workflow checks out the
+requested release tag:
+
+```bash
+git tag -a vX.Y.Z -m 'pulumi-language-dart vX.Y.Z'
+git push origin vX.Y.Z
+```
+
+The tag push publishes automatically. If that run needs to be started manually
+after the tag exists, dispatch release mode from a trusted branch:
+
+```bash
+gh workflow run dart-release-language-host.yml \
+  --ref <trusted-branch> \
+  -f mode=release \
+  -f release_tag=vX.Y.Z
+```
 
 ## Next steps
 
@@ -81,5 +117,5 @@ A future `pulumi-dart` CLI command such as `pulumi-dart install-language-host` c
 
 ## Related links
 
-- [GitHub Releases](https://github.com/pulumi/pulumi-dart/releases)
+- [GitHub Releases](https://github.com/kingwill101/pulumi-dart/releases)
 - [Dependency registry](../providers/dependency-registry.md)

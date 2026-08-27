@@ -19,10 +19,10 @@ Pulumi for Dart is community-maintained and is not currently an officially suppo
 
 ## Project components
 
-- `pulumi-dart/`: core Dart runtime SDK (`package:pulumi`)
+- `packages/pulumi-dart/`: core Dart runtime SDK (`package:pulumi`)
 - `pulumi-language-dart/`: language host plugin used by Pulumi CLI
-- `packages/`: generated provider SDK packages (`pulumi_aws`, `pulumi_random`, etc.)
-- `packages/sdk_dependency_registry.yaml`: community dependency registry for provider generation
+- `packages/sdks/`: generated provider SDK packages (`pulumi_aws`, `pulumi_random`, etc.)
+- `repodoc/`: provider updates, drift detection, and repository maintenance tooling
 
 ## How it works (high-level)
 
@@ -51,4 +51,4 @@ Pulumi for Dart is community-maintained and is not currently an officially suppo
 ## Related links
 - [Pulumi docs](https://www.pulumi.com/docs/)
 - [Pulumi Registry](https://www.pulumi.com/registry/)
-- [Pulumi Dart repository](https://github.com/pulumi/pulumi-dart)
+- [Pulumi Dart repository](https://github.com/kingwill101/pulumi-dart)

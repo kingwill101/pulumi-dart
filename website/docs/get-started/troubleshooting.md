@@ -35,7 +35,7 @@ Use `dependency_overrides`:
 ```yaml
 dependency_overrides:
   pulumi:
-    path: /abs/path/to/pulumi-dart/pulumi-dart
+    path: /abs/path/to/pulumi-dart/packages/pulumi-dart
 ```
 
 ## Generation warnings about provider `__self__` references
@@ -62,13 +62,17 @@ Keep this consistent for a given stack to avoid decrypt/encrypt mismatch errors.
 
 ## Generated package missing a transitive dependency
 
-Use a registry entry:
+First update the relevant provider deliberately so schema references and
+generated metadata are refreshed together:
 
-1. Add dependency mapping to `sdk_dependency_registry.yaml`
-2. Regenerate package
-3. Re-run `dart pub get`
+```bash
+repodoc packages:update --provider <provider>
+```
 
-Or point to your own registry with `PULUMI_DART_DEPENDENCY_REGISTRY`.
+If the upstream schema still lacks Dart-specific dependency metadata, supply an
+external registry with `PULUMI_DART_DEPENDENCY_REGISTRY` or
+`PULUMI_DART_DEPENDENCY_REGISTRY_URL`, regenerate the package, and rerun
+`dart pub get`.
 
 ## Next steps
 

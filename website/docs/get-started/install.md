@@ -11,20 +11,20 @@ Pulumi CLI must be able to discover `pulumi-language-dart` on your `PATH` when y
 Use the installer script:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/pulumi/pulumi-dart/main/scripts/install-pulumi-language-dart.sh | bash
+curl -fsSL https://raw.githubusercontent.com/kingwill101/pulumi-dart/master/scripts/install-pulumi-language-dart.sh | bash
 ```
 
 Pin to an explicit version:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/pulumi/pulumi-dart/main/scripts/install-pulumi-language-dart.sh | \
-  bash -s -- --version v0.1.0
+curl -fsSL https://raw.githubusercontent.com/kingwill101/pulumi-dart/master/scripts/install-pulumi-language-dart.sh | \
+  bash -s -- --version v3.1.1
 ```
 
 Install to a custom directory:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/pulumi/pulumi-dart/main/scripts/install-pulumi-language-dart.sh | \
+curl -fsSL https://raw.githubusercontent.com/kingwill101/pulumi-dart/master/scripts/install-pulumi-language-dart.sh | \
   bash -s -- --install-dir "$HOME/bin"
 ```
 
@@ -42,13 +42,18 @@ pulumi-dart install-language-host
 With explicit version:
 
 ```bash
-pulumi-dart install-language-host --version v0.1.0
+pulumi-dart install-language-host --version v3.1.1
 ```
+
+The Dart CLI wrapper currently supports Linux and macOS. On Windows, download
+the matching `.zip` asset from the
+[GitHub Release](https://github.com/kingwill101/pulumi-dart/releases/tag/v3.1.1),
+extract `pulumi-language-dart.exe`, and place it in a directory on `%PATH%`.
 
 ## Option B: build from source
 
 ```bash
-git clone https://github.com/pulumi/pulumi-dart.git
+git clone https://github.com/kingwill101/pulumi-dart.git
 cd pulumi-dart/pulumi-language-dart
 go build -o pulumi-language-dart .
 install -m 0755 pulumi-language-dart "$HOME/.local/bin/pulumi-language-dart"

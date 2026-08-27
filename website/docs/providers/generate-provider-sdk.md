@@ -41,7 +41,7 @@ dependencies:
 
 dependency_overrides:
   pulumi:
-    path: /abs/path/to/pulumi-dart/pulumi-dart
+    path: /abs/path/to/pulumi-dart/packages/pulumi-dart
 ```
 
 Install dependencies:
@@ -102,7 +102,7 @@ dependencies:
 
 dependency_overrides:
   pulumi:
-    path: /abs/path/to/pulumi-dart/pulumi-dart
+    path: /abs/path/to/pulumi-dart/packages/pulumi-dart
 ```
 
 Then run:
