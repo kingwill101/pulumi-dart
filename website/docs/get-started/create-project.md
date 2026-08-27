@@ -50,8 +50,8 @@ environment:
   sdk: ">=3.11.0 <4.0.0"
 
 dependencies:
-  pulumi: ^1.0.0
-  pulumi_random: ^4.19.1
+  pulumi: any
+  pulumi_random: any
 ```
 
 ### Option B: use Git source directly (community flow)
@@ -67,12 +67,12 @@ environment:
 dependencies:
   pulumi:
     git:
-      url: https://github.com/pulumi/pulumi-dart.git
-      path: pulumi-dart
+      url: https://github.com/kingwill101/pulumi-dart.git
+      path: packages/pulumi-dart
   pulumi_random:
     git:
-      url: https://github.com/pulumi/pulumi-dart.git
-      path: packages/random
+      url: https://github.com/kingwill101/pulumi-dart.git
+      path: packages/sdks/random
 ```
 
 Install dependencies:

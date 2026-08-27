@@ -25,7 +25,6 @@ Use these as the source of truth for contributor workflows:
 - `Taskfile.yml`: primary command entrypoint for setup, generation, smoke tests, and checks
 - `packages/README.md`: generated provider package workflow and conventions
 - `packages/sdks/schema_sources.json`: provider schema sources and local mapping
-- `packages/sdk_dependency_registry.yaml`: cross-provider dependency mapping for generated pubspecs
 - `repodoc schema:check`: upstream schema drift detection
 - `repodoc upstream:check`: upstream runtime, SDK, codegen, and overlay review
 - `scripts/install-pulumi-language-dart.sh`: install script for language host releases
@@ -91,7 +90,7 @@ task setup
 task generate:provider PACKAGE=gcp
 ```
 
-Generated output goes to `packages/<provider>`.
+Generated output goes to `packages/sdks/<provider>`.
 
 ### Smoke Test A Generated Provider
 
