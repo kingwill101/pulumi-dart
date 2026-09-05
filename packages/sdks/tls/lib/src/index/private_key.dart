@@ -255,13 +255,14 @@ class PrivateKey extends pulumi.CustomResource {
           'tls:index/privateKey:PrivateKey',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '5.6.0').merge(options),
+          additionalSecretOutputs: const ['privateKeyOpenssh', 'privateKeyPem', 'privateKeyPemPkcs8'],
         ) {
     algorithm = registerOutput<String>('algorithm');
     ecdsaCurve = registerOutput<String>('ecdsaCurve');
-    privateKeyOpenssh = registerOutput<String>('privateKeyOpenssh');
-    privateKeyPem = registerOutput<String>('privateKeyPem');
-    privateKeyPemPkcs8 = registerOutput<String>('privateKeyPemPkcs8');
+    privateKeyOpenssh = registerOutput<String>('privateKeyOpenssh', isSecret: true);
+    privateKeyPem = registerOutput<String>('privateKeyPem', isSecret: true);
+    privateKeyPemPkcs8 = registerOutput<String>('privateKeyPemPkcs8', isSecret: true);
     publicKeyFingerprintMd5 = registerOutput<String>('publicKeyFingerprintMd5');
     publicKeyFingerprintSha256 = registerOutput<String>('publicKeyFingerprintSha256');
     publicKeyOpenssh = registerOutput<String>('publicKeyOpenssh');
@@ -274,11 +275,12 @@ class PrivateKey extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PrivateKeyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return PrivateKey._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -294,9 +296,31 @@ class PrivateKey extends pulumi.CustomResource {
         ) {
     algorithm = registerOutput<String>('algorithm');
     ecdsaCurve = registerOutput<String>('ecdsaCurve');
-    privateKeyOpenssh = registerOutput<String>('privateKeyOpenssh');
-    privateKeyPem = registerOutput<String>('privateKeyPem');
-    privateKeyPemPkcs8 = registerOutput<String>('privateKeyPemPkcs8');
+    privateKeyOpenssh = registerOutput<String>('privateKeyOpenssh', isSecret: true);
+    privateKeyPem = registerOutput<String>('privateKeyPem', isSecret: true);
+    privateKeyPemPkcs8 = registerOutput<String>('privateKeyPemPkcs8', isSecret: true);
+    publicKeyFingerprintMd5 = registerOutput<String>('publicKeyFingerprintMd5');
+    publicKeyFingerprintSha256 = registerOutput<String>('publicKeyFingerprintSha256');
+    publicKeyOpenssh = registerOutput<String>('publicKeyOpenssh');
+    publicKeyPem = registerOutput<String>('publicKeyPem');
+    rsaBits = registerOutput<int>('rsaBits');
+  }
+
+  /// Creates a typed reference to an existing [PrivateKey] resource.
+  PrivateKey.reference(String urn)
+    : super(
+        'tls:index/privateKey:PrivateKey',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['privateKeyOpenssh', 'privateKeyPem', 'privateKeyPemPkcs8'],
+        isResourceReference: true,
+      ) {
+    algorithm = registerOutput<String>('algorithm');
+    ecdsaCurve = registerOutput<String>('ecdsaCurve');
+    privateKeyOpenssh = registerOutput<String>('privateKeyOpenssh', isSecret: true);
+    privateKeyPem = registerOutput<String>('privateKeyPem', isSecret: true);
+    privateKeyPemPkcs8 = registerOutput<String>('privateKeyPemPkcs8', isSecret: true);
     publicKeyFingerprintMd5 = registerOutput<String>('publicKeyFingerprintMd5');
     publicKeyFingerprintSha256 = registerOutput<String>('publicKeyFingerprintSha256');
     publicKeyOpenssh = registerOutput<String>('publicKeyOpenssh');

@@ -4,25 +4,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SelfSignedCertSubject {
   /// Distinguished name: `CN`
-  final pulumi.Input<String>? commonName;
+  final pulumi.Input<String?>? commonName;
   /// Distinguished name: `C`
-  final pulumi.Input<String>? country;
+  final pulumi.Input<String?>? country;
   /// ASN.1 Object Identifier (OID): `1.2.840.113549.1.9.1`
-  final pulumi.Input<String>? emailAddress;
+  final pulumi.Input<String?>? emailAddress;
   /// Distinguished name: `L`
-  final pulumi.Input<String>? locality;
+  final pulumi.Input<String?>? locality;
   /// Distinguished name: `O`
-  final pulumi.Input<String>? organization;
+  final pulumi.Input<String?>? organization;
   /// Distinguished name: `OU`
-  final pulumi.Input<String>? organizationalUnit;
+  final pulumi.Input<String?>? organizationalUnit;
   /// Distinguished name: `PC`
-  final pulumi.Input<String>? postalCode;
+  final pulumi.Input<String?>? postalCode;
   /// Distinguished name: `ST`
-  final pulumi.Input<String>? province;
+  final pulumi.Input<String?>? province;
   /// Distinguished name: `SERIALNUMBER`
-  final pulumi.Input<String>? serialNumber;
+  final pulumi.Input<String?>? serialNumber;
   /// Distinguished name: `STREET`
-  final pulumi.Input<List<String>>? streetAddresses;
+  final pulumi.Input<List<String>?>? streetAddresses;
 
   /// Creates a new [SelfSignedCertSubject].
   /// [commonName] Distinguished name: `CN`

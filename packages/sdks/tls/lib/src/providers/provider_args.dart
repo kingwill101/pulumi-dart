@@ -9,7 +9,7 @@ import '../index/provider_proxy.dart';
 /// {@macro pulumi_providers_provider_args_doc}
 class ProviderArgs {
   /// Proxy used by resources and data sources that connect to external endpoints.
-  final pulumi.Input<ProviderProxy>? proxy;
+  final pulumi.Input<ProviderProxy?>? proxy;
 
   /// Creates a new [ProviderArgs].
   /// [proxy] Proxy used by resources and data sources that connect to external endpoints.

@@ -9,7 +9,7 @@ environment:
 dependencies:
   pulumi: ^3.0.0
   pulumi_azure_native: 3.26.0+1
-  pulumi_tls: 5.5.1+1
+  pulumi_tls: 5.6.0+1
 
 dev_dependencies:
   lints: ^6.1.0

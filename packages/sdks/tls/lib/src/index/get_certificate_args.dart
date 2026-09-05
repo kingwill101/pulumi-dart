@@ -8,11 +8,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_index_get_certificate_get_certificate_args_doc}
 class GetCertificateArgs {
   /// The content of the certificate in [PEM (RFC 1421)](https://datatracker.ietf.org/doc/html/rfc1421) format. Cannot be used with `url`.
-  final pulumi.Input<String>? content;
+  final pulumi.Input<String?>? content;
   /// The URL of the website to get the certificates from. Cannot be used with `content`.
-  final pulumi.Input<String>? url;
+  final pulumi.Input<String?>? url;
   /// Whether to verify the certificate chain while parsing it or not (default: `true`). Cannot be used with `content`.
-  final pulumi.Input<bool>? verifyChain;
+  final pulumi.Input<bool?>? verifyChain;
 
   /// Creates a new [GetCertificateArgs].
   /// [content] The content of the certificate in [PEM (RFC 1421)](https://datatracker.ietf.org/doc/html/rfc1421) format. Cannot be used with `url`.

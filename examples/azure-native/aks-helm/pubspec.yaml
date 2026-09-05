@@ -11,7 +11,7 @@ dependencies:
   pulumi_azure_native: 3.26.0+1
   pulumi_azuread: 6.10.0+1
   pulumi_kubernetes: 4.34.0+1
-  pulumi_tls: 5.5.1+1
+  pulumi_tls: 5.6.0+1
 
 dev_dependencies:
   lints: ^6.1.0

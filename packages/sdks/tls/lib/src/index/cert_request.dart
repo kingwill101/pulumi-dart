@@ -171,7 +171,7 @@ import 'cert_request_subject.dart';
 ///         organization: ACME Examples, Inc
 /// ```
 class CertRequest extends pulumi.CustomResource {
-  /// The certificate request data in [PEM (RFC 1421)](https://datatracker.ietf.org/doc/html/rfc1421) format. **NOTE**: the [underlying](https://pkg.go.dev/encoding/pem#Encode) [libraries](https://pkg.go.dev/golang.org/x/crypto/ssh#MarshalAuthorizedKey) that generate this value append a `\n` at the end of the PEM. In case this disrupts your use case, we recommend using `trimspace()`.
+  /// The certificate request data in [PEM (RFC 1421)](https://datatracker.ietf.org/doc/html/rfc1421) format. **NOTE**: the [underlying](https://pkg.go.dev/encoding/pem#Encode) [libraries](https://pkg.go.dev/golang.org/x/crypto/ssh#MarshalAuthorizedKey) that generate this value append a `\n` at the end of the PEM. In case this disrupts your use case, we recommend using [`trimspace()`](https://www.terraform.io/language/functions/trimspace).
   late final pulumi.Output<String> certRequestPem;
   /// List of DNS names for which a certificate is being requested (i.e. certificate subjects).
   late final pulumi.Output<List<String>?> dnsNames;
@@ -179,8 +179,13 @@ class CertRequest extends pulumi.CustomResource {
   late final pulumi.Output<List<String>?> ipAddresses;
   /// Name of the algorithm used when generating the private key provided in `privateKeyPem`.
   late final pulumi.Output<String> keyAlgorithm;
-  /// Private key in [PEM (RFC 1421)](https://datatracker.ietf.org/doc/html/rfc1421) format, that the certificate will belong to. This can be read from a separate file using the `file` interpolation function.
-  late final pulumi.Output<String> privateKeyPem;
+  /// Private key in [PEM (RFC 1421)](https://datatracker.ietf.org/doc/html/rfc1421) format, that the certificate will belong to. This can be read from a separate file using the [`file`](https://www.terraform.io/language/functions/file) interpolation function. Exactly one of `privateKeyPem` or `privateKeyPemWo` must be set.
+  late final pulumi.Output<String?> privateKeyPem;
+  /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+  /// Write-only private key in [PEM (RFC 1421)](https://datatracker.ietf.org/doc/html/rfc1421) format, that the certificate will belong to. Unlike `privateKeyPem`, the value provided here is never persisted to Terraform state. Requires `privateKeyPemWoVersion` to be set, and exactly one of `privateKeyPem` or `privateKeyPemWo` must be set.
+  late final pulumi.Output<String?> privateKeyPemWo;
+  /// The version of the `privateKeyPemWo` write-only private key. Because the write-only key is not stored in state, this version is the only signal the provider has that the key changed: increment it to force the certificate request to be re-issued when rotating the key.
+  late final pulumi.Output<int?> privateKeyPemWoVersion;
   /// The subject for which a certificate is being requested. The acceptable arguments are all optional and their naming is based upon [Issuer Distinguished Names (RFC5280)](https://tools.ietf.org/html/rfc5280#section-4.1.2.4) section.
   late final pulumi.Output<CertRequestSubject?> subject;
   /// List of URIs for which a certificate is being requested (i.e. certificate subjects).
@@ -198,15 +203,18 @@ class CertRequest extends pulumi.CustomResource {
           'tls:index/certRequest:CertRequest',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '5.6.0').merge(options),
+          additionalSecretOutputs: const ['privateKeyPem', 'privateKeyPemWo'],
         ) {
     certRequestPem = registerOutput<String>('certRequestPem');
-    dnsNames = registerOutput<List<String>?>('dnsNames');
-    ipAddresses = registerOutput<List<String>?>('ipAddresses');
+    dnsNames = registerOutput<List<String>?>('dnsNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    ipAddresses = registerOutput<List<String>?>('ipAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     keyAlgorithm = registerOutput<String>('keyAlgorithm');
-    privateKeyPem = registerOutput<String>('privateKeyPem');
+    privateKeyPem = registerOutput<String?>('privateKeyPem', isSecret: true);
+    privateKeyPemWo = registerOutput<String?>('privateKeyPemWo', isSecret: true);
+    privateKeyPemWoVersion = registerOutput<int?>('privateKeyPemWoVersion');
     subject = registerOutput<CertRequestSubject?>('subject', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CertRequestSubject.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    uris = registerOutput<List<String>?>('uris');
+    uris = registerOutput<List<String>?>('uris', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [CertRequest] resource's state with the given [name] and [id].
@@ -214,11 +222,12 @@ class CertRequest extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CertRequestState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return CertRequest._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -233,11 +242,34 @@ class CertRequest extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     certRequestPem = registerOutput<String>('certRequestPem');
-    dnsNames = registerOutput<List<String>?>('dnsNames');
-    ipAddresses = registerOutput<List<String>?>('ipAddresses');
+    dnsNames = registerOutput<List<String>?>('dnsNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    ipAddresses = registerOutput<List<String>?>('ipAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     keyAlgorithm = registerOutput<String>('keyAlgorithm');
-    privateKeyPem = registerOutput<String>('privateKeyPem');
+    privateKeyPem = registerOutput<String?>('privateKeyPem', isSecret: true);
+    privateKeyPemWo = registerOutput<String?>('privateKeyPemWo', isSecret: true);
+    privateKeyPemWoVersion = registerOutput<int?>('privateKeyPemWoVersion');
     subject = registerOutput<CertRequestSubject?>('subject', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CertRequestSubject.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    uris = registerOutput<List<String>?>('uris');
+    uris = registerOutput<List<String>?>('uris', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [CertRequest] resource.
+  CertRequest.reference(String urn)
+    : super(
+        'tls:index/certRequest:CertRequest',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['privateKeyPem', 'privateKeyPemWo'],
+        isResourceReference: true,
+      ) {
+    certRequestPem = registerOutput<String>('certRequestPem');
+    dnsNames = registerOutput<List<String>?>('dnsNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    ipAddresses = registerOutput<List<String>?>('ipAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    keyAlgorithm = registerOutput<String>('keyAlgorithm');
+    privateKeyPem = registerOutput<String?>('privateKeyPem', isSecret: true);
+    privateKeyPemWo = registerOutput<String?>('privateKeyPemWo', isSecret: true);
+    privateKeyPemWoVersion = registerOutput<int?>('privateKeyPemWoVersion');
+    subject = registerOutput<CertRequestSubject?>('subject', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CertRequestSubject.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    uris = registerOutput<List<String>?>('uris', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }
