@@ -6,7 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SecretsStoreSecretState {
   /// Account Identifier
   final pulumi.Input<String?>? accountId;
-  /// Freeform text describing the secret.
+  /// Freeform text describing the secret
   final pulumi.Input<String?>? comment;
   /// When the secret was created.
   final pulumi.Input<String?>? created;
@@ -14,7 +14,7 @@ class SecretsStoreSecretState {
   final pulumi.Input<String?>? modified;
   /// The name of the secret
   final pulumi.Input<String?>? name;
-  /// The list of services that can use this secret.
+  /// The list of services that can use this secret. Valid values are `workers`, `aiGateway`, `dex`, and `access`. Must be listed in alphabetical order.
   final pulumi.Input<List<String>?>? scopes;
   /// Available values: "pending", "active", "deleted".
   final pulumi.Input<String?>? status;
@@ -25,11 +25,11 @@ class SecretsStoreSecretState {
 
   /// Creates a new [SecretsStoreSecretState].
   /// [accountId] Account Identifier
-  /// [comment] Freeform text describing the secret.
+  /// [comment] Freeform text describing the secret
   /// [created] When the secret was created.
   /// [modified] When the secret was modified.
   /// [name] The name of the secret
-  /// [scopes] The list of services that can use this secret.
+  /// [scopes] The list of services that can use this secret. Valid values are `workers`, `aiGateway`, `dex`, and `access`. Must be listed in alphabetical order.
   /// [status] Available values: "pending", "active", "deleted".
   /// [storeId] Store Identifier
   /// [value] The value of the secret. Maximum 64 KiB (65,536 bytes). Note that this is 'write only' - no API response will provide this value, it is only used to create/modify secrets.

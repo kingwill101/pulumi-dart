@@ -70,8 +70,8 @@ import 'worker_cron_trigger_state.dart';
 /// 		_, err := cloudflare.NewWorkersCronTrigger(ctx, "example_workers_cron_trigger", &cloudflare.WorkersCronTriggerArgs{
 /// 			AccountId:  pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 /// 			ScriptName: pulumi.String("this-is_my_script-01"),
-/// 			Body: []map[string]interface{}{
-/// 				map[string]interface{}{
+/// 			Body: []map[string]string{
+/// 				{
 /// 					"cron": "*/30 * * * *",
 /// 				},
 /// 			},
@@ -167,7 +167,7 @@ class WorkerCronTrigger extends pulumi.CustomResource {
           'cloudflare:index/workerCronTrigger:WorkerCronTrigger',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.19.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     schedules = registerOutput<List<WorkerCronTriggerSchedule>>('schedules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkerCronTriggerSchedule>(guardedValue, (value) => WorkerCronTriggerSchedule.fromMap((value as Map).cast<String, dynamic>())); });

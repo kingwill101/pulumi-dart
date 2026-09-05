@@ -36,6 +36,7 @@ import 'ai_gateway_stripe.dart';
 ///     retryBackoff: "constant",
 ///     retryDelay: 0,
 ///     retryMaxAttempts: 1,
+///     storeId: "store_id",
 ///     workersAiBillingMode: "postpaid",
 ///     zdr: true,
 /// });
@@ -61,6 +62,7 @@ import 'ai_gateway_stripe.dart';
 ///     retry_backoff="constant",
 ///     retry_delay=0,
 ///     retry_max_attempts=1,
+///     store_id="store_id",
 ///     workers_ai_billing_mode="postpaid",
 ///     zdr=True)
 /// ```
@@ -90,6 +92,7 @@ import 'ai_gateway_stripe.dart';
 ///         RetryBackoff = "constant",
 ///         RetryDelay = 0,
 ///         RetryMaxAttempts = 1,
+///         StoreId = "store_id",
 ///         WorkersAiBillingMode = "postpaid",
 ///         Zdr = true,
 ///     });
@@ -123,6 +126,7 @@ import 'ai_gateway_stripe.dart';
 /// 			RetryBackoff:            pulumi.String("constant"),
 /// 			RetryDelay:              pulumi.Int(0),
 /// 			RetryMaxAttempts:        pulumi.Int(1),
+/// 			StoreId:                 pulumi.String("store_id"),
 /// 			WorkersAiBillingMode:    pulumi.String("postpaid"),
 /// 			Zdr:                     pulumi.Bool(true),
 /// 		})
@@ -159,6 +163,7 @@ import 'ai_gateway_stripe.dart';
 ///   retry_backoff              = "constant"
 ///   retry_delay                = 0
 ///   retry_max_attempts         = 1
+///   store_id                   = "store_id"
 ///   workers_ai_billing_mode    = "postpaid"
 ///   zdr                        = true
 /// }
@@ -201,6 +206,7 @@ import 'ai_gateway_stripe.dart';
 ///             .retryBackoff("constant")
 ///             .retryDelay(0)
 ///             .retryMaxAttempts(1)
+///             .storeId("store_id")
 ///             .workersAiBillingMode("postpaid")
 ///             .zdr(true)
 ///             .build());
@@ -230,6 +236,7 @@ import 'ai_gateway_stripe.dart';
 ///       retryBackoff: constant
 ///       retryDelay: 0
 ///       retryMaxAttempts: 1
+///       storeId: store_id
 ///       workersAiBillingMode: postpaid
 ///       zdr: true
 /// ```
@@ -252,6 +259,7 @@ class AiGateway extends pulumi.CustomResource {
   late final pulumi.Output<AiGatewayDlp?> dlp;
   late final pulumi.Output<AiGatewayGuardrails?> guardrails;
   late final pulumi.Output<bool> isDefault;
+  late final pulumi.Output<bool?> logClassification;
   late final pulumi.Output<int?> logManagement;
   /// Available values: "STOP*INSERTING", "DELETE*OLDEST".
   late final pulumi.Output<String?> logManagementStrategy;
@@ -273,8 +281,8 @@ class AiGateway extends pulumi.CustomResource {
   late final pulumi.Output<AiGatewaySpendLimits> spendLimits;
   late final pulumi.Output<String?> storeId;
   late final pulumi.Output<AiGatewayStripe?> stripe;
-  /// Controls how Workers AI inference calls routed through this gateway are billed. Only 'postpaid' is currently supported.
-  /// Available values: "postpaid".
+  /// Controls how Workers AI inference calls routed through this gateway are billed. 'postpaid' bills the account directly through Workers AI; 'unified' deducts credits via AI Gateway using neuron-based pricing and delegates billing to AI Gateway.
+  /// Available values: "postpaid", "unified".
   late final pulumi.Output<String> workersAiBillingMode;
   late final pulumi.Output<bool?> zdr;
 
@@ -290,7 +298,7 @@ class AiGateway extends pulumi.CustomResource {
           'cloudflare:index/aiGateway:AiGateway',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.19.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     aiGatewayId = registerOutput<String>('aiGatewayId');
@@ -302,6 +310,7 @@ class AiGateway extends pulumi.CustomResource {
     dlp = registerOutput<AiGatewayDlp?>('dlp', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiGatewayDlp.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     guardrails = registerOutput<AiGatewayGuardrails?>('guardrails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiGatewayGuardrails.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     isDefault = registerOutput<bool>('isDefault');
+    logClassification = registerOutput<bool?>('logClassification');
     logManagement = registerOutput<int?>('logManagement');
     logManagementStrategy = registerOutput<String?>('logManagementStrategy');
     logpush = registerOutput<bool?>('logpush');
@@ -355,6 +364,7 @@ class AiGateway extends pulumi.CustomResource {
     dlp = registerOutput<AiGatewayDlp?>('dlp', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiGatewayDlp.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     guardrails = registerOutput<AiGatewayGuardrails?>('guardrails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiGatewayGuardrails.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     isDefault = registerOutput<bool>('isDefault');
+    logClassification = registerOutput<bool?>('logClassification');
     logManagement = registerOutput<int?>('logManagement');
     logManagementStrategy = registerOutput<String?>('logManagementStrategy');
     logpush = registerOutput<bool?>('logpush');
@@ -393,6 +403,7 @@ class AiGateway extends pulumi.CustomResource {
     dlp = registerOutput<AiGatewayDlp?>('dlp', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiGatewayDlp.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     guardrails = registerOutput<AiGatewayGuardrails?>('guardrails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiGatewayGuardrails.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     isDefault = registerOutput<bool>('isDefault');
+    logClassification = registerOutput<bool?>('logClassification');
     logManagement = registerOutput<int?>('logManagement');
     logManagementStrategy = registerOutput<String?>('logManagementStrategy');
     logpush = registerOutput<bool?>('logpush');

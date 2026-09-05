@@ -6,37 +6,46 @@ import 'zero_trust_access_ai_controls_mcp_portal_server.dart';
 /// Input properties used for looking up and filtering ZeroTrustAccessAiControlsMcpPortal resources.
 class ZeroTrustAccessAiControlsMcpPortalState {
   final pulumi.Input<String?>? accountId;
-  /// Allow remote code execution in Dynamic Workers (beta)
+  /// Deprecated: use `codeMode` for new integrations. `true` maps to any non-off Code Mode policy; `false` maps to `code_mode: off`. If both fields are sent, they must be consistent or the request returns a 400.
   final pulumi.Input<bool?>? allowCodeMode;
+  /// Code Mode policy for this portal. `off`: Code Mode is unavailable; query parameters are ignored. `optIn`: Code Mode is off by default; clients turn it on with `?codemode=search_and_execute`. `defaultOn`: Code Mode is on by default; clients can opt out with `?codemode=off`. `enforced`: Code Mode is always on; query parameters are ignored. Defaults to `optIn` when omitted on create. If both `codeMode` and `allowCodeMode` are sent, they must be consistent or the request returns a 400.
+  /// Available values: "off", "opt*in", "default*on", "enforced".
+  final pulumi.Input<String?>? codeMode;
   final pulumi.Input<String?>? createdAt;
   final pulumi.Input<String?>? createdBy;
+  /// Optional description of the MCP portal.
   final pulumi.Input<String?>? description;
+  /// Hostname where the MCP portal is available.
   final pulumi.Input<String?>? hostname;
   final pulumi.Input<String?>? modifiedAt;
   final pulumi.Input<String?>? modifiedBy;
+  /// Display name for the MCP portal.
   final pulumi.Input<String?>? name;
-  /// Route outbound MCP traffic through Zero Trust Secure Web Gateway
+  /// Route outbound MCP traffic through Zero Trust Secure Web Gateway.
   final pulumi.Input<bool?>? secureWebGateway;
+  /// MCP servers attached to the portal and their portal-specific settings.
   final pulumi.Input<List<ZeroTrustAccessAiControlsMcpPortalServer>?>? servers;
-  /// portal id
+  /// Unique identifier for the MCP portal.
   final pulumi.Input<String?>? zeroTrustAccessAiControlsMcpPortalId;
 
   /// Creates a new [ZeroTrustAccessAiControlsMcpPortalState].
   /// [accountId] Optional.
-  /// [allowCodeMode] Allow remote code execution in Dynamic Workers (beta)
+  /// [allowCodeMode] Deprecated: use `codeMode` for new integrations. `true` maps to any non-off Code Mode policy; `false` maps to `code_mode: off`. If both fields are sent, they must be consistent or the request returns a 400.
+  /// [codeMode] Code Mode policy for this portal. `off`: Code Mode is unavailable; query parameters are ignored. `optIn`: Code Mode is off by default; clients turn it on with `?codemode=search_and_execute`. `defaultOn`: Code Mode is on by default; clients can opt out with `?codemode=off`. `enforced`: Code Mode is always on; query parameters are ignored. Defaults to `optIn` when omitted on create. If both `codeMode` and `allowCodeMode` are sent, they must be consistent or the request returns a 400.
   /// [createdAt] Optional.
   /// [createdBy] Optional.
-  /// [description] Optional.
-  /// [hostname] Optional.
+  /// [description] Optional description of the MCP portal.
+  /// [hostname] Hostname where the MCP portal is available.
   /// [modifiedAt] Optional.
   /// [modifiedBy] Optional.
-  /// [name] Optional.
-  /// [secureWebGateway] Route outbound MCP traffic through Zero Trust Secure Web Gateway
-  /// [servers] Optional.
-  /// [zeroTrustAccessAiControlsMcpPortalId] portal id
+  /// [name] Display name for the MCP portal.
+  /// [secureWebGateway] Route outbound MCP traffic through Zero Trust Secure Web Gateway.
+  /// [servers] MCP servers attached to the portal and their portal-specific settings.
+  /// [zeroTrustAccessAiControlsMcpPortalId] Unique identifier for the MCP portal.
   const ZeroTrustAccessAiControlsMcpPortalState({
     this.accountId,
     this.allowCodeMode,
+    this.codeMode,
     this.createdAt,
     this.createdBy,
     this.description,
@@ -53,6 +62,7 @@ class ZeroTrustAccessAiControlsMcpPortalState {
     return <String, dynamic>{
       'accountId': ?accountId,
       'allowCodeMode': ?allowCodeMode,
+      'codeMode': ?codeMode,
       'createdAt': ?createdAt,
       'createdBy': ?createdBy,
       'description': ?description,
@@ -70,6 +80,7 @@ class ZeroTrustAccessAiControlsMcpPortalState {
     return ZeroTrustAccessAiControlsMcpPortalState(
       accountId: (() { final guardedValue = map['accountId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       allowCodeMode: (() { final guardedValue = map['allowCodeMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      codeMode: (() { final guardedValue = map['codeMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       createdAt: (() { final guardedValue = map['createdAt']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       createdBy: (() { final guardedValue = map['createdBy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

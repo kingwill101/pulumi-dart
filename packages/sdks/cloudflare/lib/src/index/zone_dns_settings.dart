@@ -282,17 +282,17 @@ class ZoneDnsSettings extends pulumi.CustomResource {
   /// Whether to enable Foundation DNS Advanced Nameservers on the zone.
   late final pulumi.Output<bool?> foundationDns;
   /// Settings for this internal zone.
-  late final pulumi.Output<ZoneDnsSettingsInternalDns?> internalDns;
+  late final pulumi.Output<ZoneDnsSettingsInternalDns> internalDns;
   /// Whether to enable multi-provider DNS, which causes Cloudflare to activate the zone even when non-Cloudflare NS records exist, and to respect NS records at the zone apex during outbound zone transfers.
   late final pulumi.Output<bool?> multiProvider;
   /// Settings determining the nameservers through which the zone should be available.
-  late final pulumi.Output<ZoneDnsSettingsNameservers?> nameservers;
+  late final pulumi.Output<ZoneDnsSettingsNameservers> nameservers;
   /// The time to live (TTL) of the zone's nameserver (NS) records.
   late final pulumi.Output<double?> nsTtl;
   /// Allows a Secondary DNS zone to use (proxied) override records and CNAME flattening at the zone apex.
   late final pulumi.Output<bool?> secondaryOverrides;
   /// Components of the zone's SOA record.
-  late final pulumi.Output<ZoneDnsSettingsSoa?> soa;
+  late final pulumi.Output<ZoneDnsSettingsSoa> soa;
   /// Identifier.
   late final pulumi.Output<String> zoneId;
   /// Whether the zone mode is a regular or CDN/DNS only zone.
@@ -311,16 +311,16 @@ class ZoneDnsSettings extends pulumi.CustomResource {
           'cloudflare:index/zoneDnsSettings:ZoneDnsSettings',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.19.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
         ) {
     flattenAllCnames = registerOutput<bool?>('flattenAllCnames');
     foundationDns = registerOutput<bool?>('foundationDns');
-    internalDns = registerOutput<ZoneDnsSettingsInternalDns?>('internalDns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ZoneDnsSettingsInternalDns.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    internalDns = registerOutput<ZoneDnsSettingsInternalDns>('internalDns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ZoneDnsSettingsInternalDns.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     multiProvider = registerOutput<bool?>('multiProvider');
-    nameservers = registerOutput<ZoneDnsSettingsNameservers?>('nameservers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ZoneDnsSettingsNameservers.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    nameservers = registerOutput<ZoneDnsSettingsNameservers>('nameservers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ZoneDnsSettingsNameservers.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     nsTtl = registerOutput<double?>('nsTtl');
     secondaryOverrides = registerOutput<bool?>('secondaryOverrides');
-    soa = registerOutput<ZoneDnsSettingsSoa?>('soa', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ZoneDnsSettingsSoa.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    soa = registerOutput<ZoneDnsSettingsSoa>('soa', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ZoneDnsSettingsSoa.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     zoneId = registerOutput<String>('zoneId');
     zoneMode = registerOutput<String?>('zoneMode');
   }
@@ -351,12 +351,12 @@ class ZoneDnsSettings extends pulumi.CustomResource {
         ) {
     flattenAllCnames = registerOutput<bool?>('flattenAllCnames');
     foundationDns = registerOutput<bool?>('foundationDns');
-    internalDns = registerOutput<ZoneDnsSettingsInternalDns?>('internalDns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ZoneDnsSettingsInternalDns.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    internalDns = registerOutput<ZoneDnsSettingsInternalDns>('internalDns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ZoneDnsSettingsInternalDns.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     multiProvider = registerOutput<bool?>('multiProvider');
-    nameservers = registerOutput<ZoneDnsSettingsNameservers?>('nameservers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ZoneDnsSettingsNameservers.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    nameservers = registerOutput<ZoneDnsSettingsNameservers>('nameservers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ZoneDnsSettingsNameservers.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     nsTtl = registerOutput<double?>('nsTtl');
     secondaryOverrides = registerOutput<bool?>('secondaryOverrides');
-    soa = registerOutput<ZoneDnsSettingsSoa?>('soa', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ZoneDnsSettingsSoa.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    soa = registerOutput<ZoneDnsSettingsSoa>('soa', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ZoneDnsSettingsSoa.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     zoneId = registerOutput<String>('zoneId');
     zoneMode = registerOutput<String?>('zoneMode');
   }
@@ -372,12 +372,12 @@ class ZoneDnsSettings extends pulumi.CustomResource {
       ) {
     flattenAllCnames = registerOutput<bool?>('flattenAllCnames');
     foundationDns = registerOutput<bool?>('foundationDns');
-    internalDns = registerOutput<ZoneDnsSettingsInternalDns?>('internalDns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ZoneDnsSettingsInternalDns.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    internalDns = registerOutput<ZoneDnsSettingsInternalDns>('internalDns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ZoneDnsSettingsInternalDns.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     multiProvider = registerOutput<bool?>('multiProvider');
-    nameservers = registerOutput<ZoneDnsSettingsNameservers?>('nameservers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ZoneDnsSettingsNameservers.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    nameservers = registerOutput<ZoneDnsSettingsNameservers>('nameservers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ZoneDnsSettingsNameservers.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     nsTtl = registerOutput<double?>('nsTtl');
     secondaryOverrides = registerOutput<bool?>('secondaryOverrides');
-    soa = registerOutput<ZoneDnsSettingsSoa?>('soa', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ZoneDnsSettingsSoa.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    soa = registerOutput<ZoneDnsSettingsSoa>('soa', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ZoneDnsSettingsSoa.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     zoneId = registerOutput<String>('zoneId');
     zoneMode = registerOutput<String?>('zoneMode');
   }

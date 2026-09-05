@@ -248,7 +248,7 @@ class ZeroTrustAccessGroup extends pulumi.CustomResource {
           'cloudflare:index/zeroTrustAccessGroup:ZeroTrustAccessGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.19.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
         ) {
     accountId = registerOutput<String?>('accountId');
     excludes = registerOutput<List<ZeroTrustAccessGroupExclude>?>('excludes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ZeroTrustAccessGroupExclude>(guardedValue, (value) => ZeroTrustAccessGroupExclude.fromMap((value as Map).cast<String, dynamic>())); });

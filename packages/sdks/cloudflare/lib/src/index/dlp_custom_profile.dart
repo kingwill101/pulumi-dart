@@ -130,7 +130,7 @@ import 'dlp_custom_profile_state.dart';
 /// 		_, err = cloudflare.NewZeroTrustDlpCustomEntry(ctx, "example_custom_entry", &cloudflare.ZeroTrustDlpCustomEntryArgs{
 /// 			Name:      pulumi.String("custom"),
 /// 			AccountId: pulumi.String("account_id"),
-/// 			ProfileId: exampleZeroTrustDlpCustomProfile.ID(),
+/// 			ProfileId: exampleZeroTrustDlpCustomProfile.ID().ToIDOutput().ToStringOutput(),
 /// 			Pattern: &cloudflare.ZeroTrustDlpCustomEntryPatternArgs{
 /// 				Regex: pulumi.String("customentryregex"),
 /// 			},
@@ -299,7 +299,7 @@ class DlpCustomProfile extends pulumi.CustomResource {
           'cloudflare:index/dlpCustomProfile:DlpCustomProfile',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.19.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     aiContextEnabled = registerOutput<bool>('aiContextEnabled');

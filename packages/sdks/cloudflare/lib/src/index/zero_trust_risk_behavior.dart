@@ -172,7 +172,7 @@ class ZeroTrustRiskBehavior extends pulumi.CustomResource {
           'cloudflare:index/zeroTrustRiskBehavior:ZeroTrustRiskBehavior',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.19.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     behaviors = registerOutput<Map<String, ZeroTrustRiskBehaviorBehaviors>>('behaviors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<ZeroTrustRiskBehaviorBehaviors>(guardedValue, (value) => ZeroTrustRiskBehaviorBehaviors.fromMap((value as Map).cast<String, dynamic>())); });

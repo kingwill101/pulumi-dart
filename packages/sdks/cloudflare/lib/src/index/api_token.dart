@@ -152,7 +152,7 @@ import 'api_token_state.dart';
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		tmpJSON0, err := json.Marshal(map[string]interface{}{
+/// 		tmpJSON0, err := json.Marshal(map[string]string{
 /// 			"com.cloudflare.api.account.b67e14daa5f8dceeb91fe5449ba496eb": "*",
 /// 		})
 /// 		if err != nil {
@@ -356,7 +356,7 @@ class ApiToken extends pulumi.CustomResource {
           'cloudflare:index/apiToken:ApiToken',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.19.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
           additionalSecretOutputs: const ['value'],
         ) {
     condition = registerOutput<ApiTokenCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApiTokenCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });

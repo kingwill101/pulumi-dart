@@ -22,6 +22,7 @@ class GetAiGatewayResult {
   /// gateway id
   final String? id;
   final bool? isDefault;
+  final bool? logClassification;
   final int? logManagement;
   /// Available values: "STOP*INSERTING", "DELETE*OLDEST".
   final String? logManagementStrategy;
@@ -43,8 +44,8 @@ class GetAiGatewayResult {
   final GetAiGatewaySpendLimits? spendLimits;
   final String? storeId;
   final GetAiGatewayStripe? stripe;
-  /// Controls how Workers AI inference calls routed through this gateway are billed. Only 'postpaid' is currently supported.
-  /// Available values: "postpaid".
+  /// Controls how Workers AI inference calls routed through this gateway are billed. 'postpaid' bills the account directly through Workers AI; 'unified' deducts credits via AI Gateway using neuron-based pricing and delegates billing to AI Gateway.
+  /// Available values: "postpaid", "unified".
   final String? workersAiBillingMode;
   final bool? zdr;
 
@@ -60,6 +61,7 @@ class GetAiGatewayResult {
   /// [guardrails] Optional.
   /// [id] gateway id
   /// [isDefault] Optional.
+  /// [logClassification] Optional.
   /// [logManagement] Optional.
   /// [logManagementStrategy] Available values: "STOP*INSERTING", "DELETE*OLDEST".
   /// [logpush] Optional.
@@ -75,7 +77,7 @@ class GetAiGatewayResult {
   /// [spendLimits] Optional.
   /// [storeId] Optional.
   /// [stripe] Optional.
-  /// [workersAiBillingMode] Controls how Workers AI inference calls routed through this gateway are billed. Only 'postpaid' is currently supported.
+  /// [workersAiBillingMode] Controls how Workers AI inference calls routed through this gateway are billed. 'postpaid' bills the account directly through Workers AI; 'unified' deducts credits via AI Gateway using neuron-based pricing and delegates billing to AI Gateway.
   /// [zdr] Optional.
   const GetAiGatewayResult({
     this.accountId,
@@ -89,6 +91,7 @@ class GetAiGatewayResult {
     this.guardrails,
     this.id,
     this.isDefault,
+    this.logClassification,
     this.logManagement,
     this.logManagementStrategy,
     this.logpush,
@@ -121,6 +124,7 @@ class GetAiGatewayResult {
       'guardrails': ?guardrails?.toMap(),
       'id': ?id,
       'isDefault': ?isDefault,
+      'logClassification': ?logClassification,
       'logManagement': ?logManagement,
       'logManagementStrategy': ?logManagementStrategy,
       'logpush': ?logpush,
@@ -154,6 +158,7 @@ class GetAiGatewayResult {
       guardrails: (() { final guardedValue = map['guardrails']; if (guardedValue == null) return null; return GetAiGatewayGuardrails.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       isDefault: (() { final guardedValue = map['isDefault']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      logClassification: (() { final guardedValue = map['logClassification']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       logManagement: (() { final guardedValue = map['logManagement']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
       logManagementStrategy: (() { final guardedValue = map['logManagementStrategy']; if (guardedValue == null) return null; return guardedValue as String; })(),
       logpush: (() { final guardedValue = map['logpush']; if (guardedValue == null) return null; return guardedValue as bool; })(),

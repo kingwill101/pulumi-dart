@@ -225,7 +225,7 @@ class BotManagement extends pulumi.CustomResource {
           'cloudflare:index/botManagement:BotManagement',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.19.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
         ) {
     aiBotsProtection = registerOutput<String>('aiBotsProtection');
     autoUpdateModel = registerOutput<bool>('autoUpdateModel');

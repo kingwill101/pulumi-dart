@@ -149,7 +149,7 @@ class R2ManagedDomain extends pulumi.CustomResource {
           'cloudflare:index/r2ManagedDomain:R2ManagedDomain',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.19.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     bucketId = registerOutput<String>('bucketId');

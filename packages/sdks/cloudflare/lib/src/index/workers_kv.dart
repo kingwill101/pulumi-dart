@@ -169,7 +169,7 @@ class WorkersKv extends pulumi.CustomResource {
           'cloudflare:index/workersKv:WorkersKv',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.19.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     keyName = registerOutput<String>('keyName');

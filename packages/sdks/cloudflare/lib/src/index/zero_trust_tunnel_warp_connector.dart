@@ -175,7 +175,7 @@ class ZeroTrustTunnelWarpConnector extends pulumi.CustomResource {
           'cloudflare:index/zeroTrustTunnelWarpConnector:ZeroTrustTunnelWarpConnector',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.19.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
           additionalSecretOutputs: const ['tunnelSecret'],
         ) {
     accountId = registerOutput<String>('accountId');

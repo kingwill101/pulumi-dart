@@ -141,7 +141,7 @@ class ListItemResource extends pulumi.CustomResource {
   late final pulumi.Output<String?> comment;
   /// The RFC 3339 timestamp of when the item was created.
   late final pulumi.Output<String> createdOn;
-  /// Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
+  /// Hostnames support ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
   late final pulumi.Output<ListItemHostname?> hostname;
   /// An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR.
   late final pulumi.Output<String?> ip;
@@ -166,7 +166,7 @@ class ListItemResource extends pulumi.CustomResource {
           'cloudflare:index/listItem:ListItem',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.19.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     asn = registerOutput<int?>('asn');

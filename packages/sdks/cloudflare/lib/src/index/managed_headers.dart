@@ -244,7 +244,7 @@ class ManagedHeaders extends pulumi.CustomResource {
           'cloudflare:index/managedHeaders:ManagedHeaders',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.19.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
         ) {
     managedRequestHeaders = registerOutput<List<ManagedHeadersManagedRequestHeader>?>('managedRequestHeaders', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ManagedHeadersManagedRequestHeader>(guardedValue, (value) => ManagedHeadersManagedRequestHeader.fromMap((value as Map).cast<String, dynamic>())); });
     managedResponseHeaders = registerOutput<List<ManagedHeadersManagedResponseHeader>?>('managedResponseHeaders', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ManagedHeadersManagedResponseHeader>(guardedValue, (value) => ManagedHeadersManagedResponseHeader.fromMap((value as Map).cast<String, dynamic>())); });

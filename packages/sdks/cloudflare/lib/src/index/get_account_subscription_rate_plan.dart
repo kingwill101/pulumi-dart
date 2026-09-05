@@ -8,7 +8,7 @@ class GetAccountSubscriptionRatePlan {
   /// Whether this rate plan is managed externally from Cloudflare.
   final pulumi.Input<bool> externallyManaged;
   /// The ID of the rate plan.
-  /// Available values: "free", "lite", "pro", "pro*plus", "business", "enterprise", "partners*free", "partners*pro", "partners*business", "partnersEnterprise".
+  /// Available values: "free", "lite", "pro", "pro*plus", "business", "enterprise", "partners*free", "partners*pro", "partners*business", "partnersEnt".
   final pulumi.Input<String> id;
   /// Whether a rate plan is enterprise-based (or newly adopted term contract).
   final pulumi.Input<bool> isContract;

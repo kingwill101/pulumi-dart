@@ -13,7 +13,7 @@ class GetListItemResult {
   final String? comment;
   /// The RFC 3339 timestamp of when the list was created.
   final String? createdOn;
-  /// Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
+  /// Hostnames support ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
   final GetListItemHostname? hostname;
   /// Defines the unique ID of the item in the List.
   final String? id;
@@ -33,7 +33,7 @@ class GetListItemResult {
   /// [asn] Defines a non-negative 32 bit integer.
   /// [comment] Defines an informative summary of the list item.
   /// [createdOn] The RFC 3339 timestamp of when the list was created.
-  /// [hostname] Valid characters for hostnames are ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
+  /// [hostname] Hostnames support ASCII(7) letters from a to z, the digits from 0 to 9, wildcards (*), and the hyphen (-).
   /// [id] Defines the unique ID of the item in the List.
   /// [ip] An IPv4 address, an IPv4 CIDR, an IPv6 address, or an IPv6 CIDR.
   /// [itemId] Defines the unique ID of the item in the List.

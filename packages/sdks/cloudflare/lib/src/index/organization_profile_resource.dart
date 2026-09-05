@@ -164,7 +164,7 @@ class OrganizationProfileResource extends pulumi.CustomResource {
           'cloudflare:index/organizationProfile:OrganizationProfile',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.19.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
         ) {
     businessAddress = registerOutput<String>('businessAddress');
     businessEmail = registerOutput<String>('businessEmail');

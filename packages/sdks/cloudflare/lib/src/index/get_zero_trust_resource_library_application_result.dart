@@ -14,25 +14,25 @@ class GetZeroTrustResourceLibraryApplicationResult {
   final String? applicationType;
   /// Returns the application type description.
   final String? applicationTypeDescription;
+  /// Returns the category ID.
+  final int? categoryId;
   /// Returns the application creation time.
   final String? createdAt;
   /// GenAI score for the application. Returns -1 when no score is available.
   final double? genAiScore;
-  /// Returns the list of hostnames for the application.
+  /// Hostnames matched by the application.
   final List<String>? hostnames;
   /// Returns the human readable ID.
   final String? humanId;
   /// The ID of this resource.
-  final String? id;
-  /// Returns the Intel API ID for the application.
-  final int? intelId;
-  /// Returns the list of IP subnets for the application.
+  final int? id;
+  /// IP subnets matched by the application.
   final List<String>? ipSubnets;
   /// Returns the application name.
   final String? name;
-  /// Returns the list of port protocols for the application.
+  /// Port and protocol pairs matched by the application.
   final List<String>? portProtocols;
-  /// Returns the list of support domains for the application.
+  /// Support domains matched by the application.
   final List<String>? supportDomains;
   /// Cloudflare products that support this application.
   final List<String>? supporteds;
@@ -48,16 +48,16 @@ class GetZeroTrustResourceLibraryApplicationResult {
   /// [applicationSource] Returns the application source.
   /// [applicationType] Returns the application type.
   /// [applicationTypeDescription] Returns the application type description.
+  /// [categoryId] Returns the category ID.
   /// [createdAt] Returns the application creation time.
   /// [genAiScore] GenAI score for the application. Returns -1 when no score is available.
-  /// [hostnames] Returns the list of hostnames for the application.
+  /// [hostnames] Hostnames matched by the application.
   /// [humanId] Returns the human readable ID.
   /// [id] The ID of this resource.
-  /// [intelId] Returns the Intel API ID for the application.
-  /// [ipSubnets] Returns the list of IP subnets for the application.
+  /// [ipSubnets] IP subnets matched by the application.
   /// [name] Returns the application name.
-  /// [portProtocols] Returns the list of port protocols for the application.
-  /// [supportDomains] Returns the list of support domains for the application.
+  /// [portProtocols] Port and protocol pairs matched by the application.
+  /// [supportDomains] Support domains matched by the application.
   /// [supporteds] Cloudflare products that support this application.
   /// [updatedAt] Returns the application update time.
   /// [version] Returns the application version.
@@ -68,12 +68,12 @@ class GetZeroTrustResourceLibraryApplicationResult {
     this.applicationSource,
     this.applicationType,
     this.applicationTypeDescription,
+    this.categoryId,
     this.createdAt,
     this.genAiScore,
     this.hostnames,
     this.humanId,
     this.id,
-    this.intelId,
     this.ipSubnets,
     this.name,
     this.portProtocols,
@@ -91,12 +91,12 @@ class GetZeroTrustResourceLibraryApplicationResult {
       'applicationSource': ?applicationSource,
       'applicationType': ?applicationType,
       'applicationTypeDescription': ?applicationTypeDescription,
+      'categoryId': ?categoryId,
       'createdAt': ?createdAt,
       'genAiScore': ?genAiScore,
       'hostnames': ?hostnames,
       'humanId': ?humanId,
       'id': ?id,
-      'intelId': ?intelId,
       'ipSubnets': ?ipSubnets,
       'name': ?name,
       'portProtocols': ?portProtocols,
@@ -115,12 +115,12 @@ class GetZeroTrustResourceLibraryApplicationResult {
       applicationSource: (() { final guardedValue = map['applicationSource']; if (guardedValue == null) return null; return guardedValue as String; })(),
       applicationType: (() { final guardedValue = map['applicationType']; if (guardedValue == null) return null; return guardedValue as String; })(),
       applicationTypeDescription: (() { final guardedValue = map['applicationTypeDescription']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      categoryId: (() { final guardedValue = map['categoryId']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
       createdAt: (() { final guardedValue = map['createdAt']; if (guardedValue == null) return null; return guardedValue as String; })(),
       genAiScore: (() { final guardedValue = map['genAiScore']; if (guardedValue == null) return null; return (guardedValue as num).toDouble(); })(),
       hostnames: (() { final guardedValue = map['hostnames']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       humanId: (() { final guardedValue = map['humanId']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      intelId: (() { final guardedValue = map['intelId']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
       ipSubnets: (() { final guardedValue = map['ipSubnets']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       portProtocols: (() { final guardedValue = map['portProtocols']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),

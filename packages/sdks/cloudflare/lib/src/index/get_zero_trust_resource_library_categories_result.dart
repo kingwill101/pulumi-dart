@@ -8,7 +8,7 @@ class GetZeroTrustResourceLibraryCategoriesResult {
   /// Returns the category description.
   final pulumi.Input<String> description;
   /// Returns the category ID.
-  final pulumi.Input<String> id;
+  final pulumi.Input<int> id;
   /// Returns the category name.
   final pulumi.Input<String> name;
 
@@ -37,7 +37,7 @@ class GetZeroTrustResourceLibraryCategoriesResult {
     return GetZeroTrustResourceLibraryCategoriesResult(
       createdAt: pulumi.Input.fromValue(map['createdAt'] as String),
       description: pulumi.Input.fromValue(map['description'] as String),
-      id: pulumi.Input.fromValue(map['id'] as String),
+      id: pulumi.Input.fromValue((map['id'] as num).toInt()),
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }

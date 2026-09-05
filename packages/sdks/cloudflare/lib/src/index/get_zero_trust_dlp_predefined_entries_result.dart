@@ -12,6 +12,9 @@ class GetZeroTrustDlpPredefinedEntriesResult {
   final pulumi.Input<bool> caseSensitive;
   final pulumi.Input<GetZeroTrustDlpPredefinedEntriesResultConfidence> confidence;
   final pulumi.Input<String> createdAt;
+  /// Whether this entry is deprecated for new use. This is computed from the static catalog and
+  /// emitted only when true.
+  final pulumi.Input<bool> deprecated;
   final pulumi.Input<String> description;
   final pulumi.Input<bool> enabled;
   final pulumi.Input<String> id;
@@ -32,6 +35,7 @@ class GetZeroTrustDlpPredefinedEntriesResult {
   /// [caseSensitive] Only applies to custom word lists.
   /// [confidence] Required.
   /// [createdAt] Required.
+  /// [deprecated] Whether this entry is deprecated for new use. This is computed from the static catalog and
   /// [description] Required.
   /// [enabled] Required.
   /// [id] Required.
@@ -48,6 +52,7 @@ class GetZeroTrustDlpPredefinedEntriesResult {
     required this.caseSensitive,
     required this.confidence,
     required this.createdAt,
+    required this.deprecated,
     required this.description,
     required this.enabled,
     required this.id,
@@ -67,6 +72,7 @@ class GetZeroTrustDlpPredefinedEntriesResult {
       'caseSensitive': caseSensitive,
       'confidence': pulumi.Input.mapInputValue<GetZeroTrustDlpPredefinedEntriesResultConfidence, Map<String, dynamic>>(confidence, (value) => value.toMap()),
       'createdAt': createdAt,
+      'deprecated': deprecated,
       'description': description,
       'enabled': enabled,
       'id': id,
@@ -87,6 +93,7 @@ class GetZeroTrustDlpPredefinedEntriesResult {
       caseSensitive: pulumi.Input.fromValue(map['caseSensitive'] as bool),
       confidence: pulumi.Input.fromValue(GetZeroTrustDlpPredefinedEntriesResultConfidence.fromMap((map['confidence']! as Map).cast<String, dynamic>())),
       createdAt: pulumi.Input.fromValue(map['createdAt'] as String),
+      deprecated: pulumi.Input.fromValue(map['deprecated'] as bool),
       description: pulumi.Input.fromValue(map['description'] as String),
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
       id: pulumi.Input.fromValue(map['id'] as String),

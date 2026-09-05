@@ -354,7 +354,7 @@ class MagicWanIpsecTunnel extends pulumi.CustomResource {
           'cloudflare:index/magicWanIpsecTunnel:MagicWanIpsecTunnel',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.19.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
           additionalSecretOutputs: const ['psk'],
         ) {
     accountId = registerOutput<String>('accountId');

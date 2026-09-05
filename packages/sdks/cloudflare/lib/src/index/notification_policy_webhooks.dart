@@ -171,7 +171,7 @@ class NotificationPolicyWebhooks extends pulumi.CustomResource {
           'cloudflare:index/notificationPolicyWebhooks:NotificationPolicyWebhooks',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.19.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
           additionalSecretOutputs: const ['secret'],
         ) {
     accountId = registerOutput<String>('accountId');

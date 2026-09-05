@@ -141,7 +141,7 @@ class LogpullRetention extends pulumi.CustomResource {
           'cloudflare:index/logpullRetention:LogpullRetention',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.19.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
         ) {
     flag = registerOutput<bool?>('flag');
     zoneId = registerOutput<String>('zoneId');

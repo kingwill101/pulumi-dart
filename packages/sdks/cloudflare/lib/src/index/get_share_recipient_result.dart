@@ -7,8 +7,10 @@ import 'get_share_recipient_resource.dart';
 class GetShareRecipientResult {
   /// Account identifier.
   final String? accountId;
-  /// Share Recipient association status.
-  /// Available values: "associating", "associated", "disassociating", "disassociated".
+  /// The current state of the recipient relative to the share. The
+  /// `desiredAssociationStatus` (not exposed in the response) tracks the
+  /// target state set by the API; the background reconciliation workflow
+  /// drives `currentAssociationStatus` toward it.
   final String? associationStatus;
   /// When the share was created.
   final String? created;
@@ -26,7 +28,7 @@ class GetShareRecipientResult {
 
   /// Creates a new [GetShareRecipientResult].
   /// [accountId] Account identifier.
-  /// [associationStatus] Share Recipient association status.
+  /// [associationStatus] The current state of the recipient relative to the share. The
   /// [created] When the share was created.
   /// [id] Share Recipient identifier tag.
   /// [includeResources] Include resources in the response.

@@ -15,6 +15,9 @@ class ZeroTrustDlpCustomEntryState {
   final pulumi.Input<bool?>? caseSensitive;
   final pulumi.Input<ZeroTrustDlpCustomEntryConfidence?>? confidence;
   final pulumi.Input<String?>? createdAt;
+  /// Whether this entry is deprecated for new use. This is computed from the static catalog and
+  /// emitted only when true.
+  final pulumi.Input<bool?>? deprecated;
   final pulumi.Input<String?>? description;
   final pulumi.Input<bool?>? enabled;
   final pulumi.Input<String?>? name;
@@ -36,6 +39,7 @@ class ZeroTrustDlpCustomEntryState {
   /// [caseSensitive] Only applies to custom word lists.
   /// [confidence] Optional.
   /// [createdAt] Optional.
+  /// [deprecated] Whether this entry is deprecated for new use. This is computed from the static catalog and
   /// [description] Optional.
   /// [enabled] Optional.
   /// [name] Optional.
@@ -53,6 +57,7 @@ class ZeroTrustDlpCustomEntryState {
     this.caseSensitive,
     this.confidence,
     this.createdAt,
+    this.deprecated,
     this.description,
     this.enabled,
     this.name,
@@ -73,6 +78,7 @@ class ZeroTrustDlpCustomEntryState {
       'caseSensitive': ?caseSensitive,
       'confidence': ?pulumi.Input.mapOptionalInputValue<ZeroTrustDlpCustomEntryConfidence, Map<String, dynamic>>(confidence, (value) => value.toMap()),
       'createdAt': ?createdAt,
+      'deprecated': ?deprecated,
       'description': ?description,
       'enabled': ?enabled,
       'name': ?name,
@@ -94,6 +100,7 @@ class ZeroTrustDlpCustomEntryState {
       caseSensitive: (() { final guardedValue = map['caseSensitive']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       confidence: (() { final guardedValue = map['confidence']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ZeroTrustDlpCustomEntryConfidence.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       createdAt: (() { final guardedValue = map['createdAt']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deprecated: (() { final guardedValue = map['deprecated']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

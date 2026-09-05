@@ -157,7 +157,7 @@ class OriginTlsComplianceModes extends pulumi.CustomResource {
           'cloudflare:index/originTlsComplianceModes:OriginTlsComplianceModes',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.19.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
         ) {
     editable = registerOutput<bool>('editable');
     modifiedOn = registerOutput<String>('modifiedOn');

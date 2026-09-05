@@ -259,7 +259,7 @@ class TokenValidationConfig extends pulumi.CustomResource {
           'cloudflare:index/tokenValidationConfig:TokenValidationConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.19.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
         ) {
     createdAt = registerOutput<String>('createdAt');
     credentials = registerOutput<TokenValidationConfigCredentials>('credentials', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TokenValidationConfigCredentials.fromMap((guardedValue as Map).cast<String, dynamic>()); });

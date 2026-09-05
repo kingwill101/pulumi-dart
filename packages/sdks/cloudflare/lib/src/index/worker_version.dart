@@ -55,6 +55,30 @@ import 'worker_version_state.dart';
 ///     containers: [{
 ///         className: "MyDurableObject",
 ///     }],
+///     exports: {
+///         Admin: {
+///             type: "worker",
+///             cache: {
+///                 enabled: true,
+///             },
+///             renamedTo: "renamed_to",
+///             state: "created",
+///             storage: "sqlite",
+///             transferFrom: "transfer_from",
+///             transferredTo: "transferred_to",
+///         },
+///         "default": {
+///             type: "worker",
+///             cache: {
+///                 enabled: false,
+///             },
+///             renamedTo: "renamed_to",
+///             state: "created",
+///             storage: "sqlite",
+///             transferFrom: "transfer_from",
+///             transferredTo: "transferred_to",
+///         },
+///     },
 ///     limits: {
 ///         cpuMs: 50,
 ///         subrequests: 1000,
@@ -124,6 +148,30 @@ import 'worker_version_state.dart';
 ///     containers=[{
 ///         "class_name": "MyDurableObject",
 ///     }],
+///     exports={
+///         "Admin": {
+///             "type": "worker",
+///             "cache": {
+///                 "enabled": True,
+///             },
+///             "renamed_to": "renamed_to",
+///             "state": "created",
+///             "storage": "sqlite",
+///             "transfer_from": "transfer_from",
+///             "transferred_to": "transferred_to",
+///         },
+///         "default": {
+///             "type": "worker",
+///             "cache": {
+///                 "enabled": False,
+///             },
+///             "renamed_to": "renamed_to",
+///             "state": "created",
+///             "storage": "sqlite",
+///             "transfer_from": "transfer_from",
+///             "transferred_to": "transferred_to",
+///         },
+///     },
 ///     limits={
 ///         "cpu_ms": 50,
 ///         "subrequests": 1000,
@@ -211,6 +259,35 @@ import 'worker_version_state.dart';
 ///             {
 ///                 ClassName = "MyDurableObject",
 ///             },
+///         },
+///         Exports =
+///         {
+///             { "Admin", new Cloudflare.Inputs.WorkerVersionExportsArgs
+///             {
+///                 Type = "worker",
+///                 Cache = new Cloudflare.Inputs.WorkerVersionExportsCacheArgs
+///                 {
+///                     Enabled = true,
+///                 },
+///                 RenamedTo = "renamed_to",
+///                 State = "created",
+///                 Storage = "sqlite",
+///                 TransferFrom = "transfer_from",
+///                 TransferredTo = "transferred_to",
+///             } },
+///             { "default", new Cloudflare.Inputs.WorkerVersionExportsArgs
+///             {
+///                 Type = "worker",
+///                 Cache = new Cloudflare.Inputs.WorkerVersionExportsCacheArgs
+///                 {
+///                     Enabled = false,
+///                 },
+///                 RenamedTo = "renamed_to",
+///                 State = "created",
+///                 Storage = "sqlite",
+///                 TransferFrom = "transfer_from",
+///                 TransferredTo = "transferred_to",
+///             } },
 ///         },
 ///         Limits = new Cloudflare.Inputs.WorkerVersionLimitsArgs
 ///         {
@@ -323,6 +400,30 @@ import 'worker_version_state.dart';
 /// 					ClassName: pulumi.String("MyDurableObject"),
 /// 				},
 /// 			},
+/// 			Exports: cloudflare.WorkerVersionExportsMap{
+/// 				"Admin": &cloudflare.WorkerVersionExportsArgs{
+/// 					Type: pulumi.String("worker"),
+/// 					Cache: &cloudflare.WorkerVersionExportsCacheArgs{
+/// 						Enabled: pulumi.Bool(true),
+/// 					},
+/// 					RenamedTo:     pulumi.String("renamed_to"),
+/// 					State:         pulumi.String("created"),
+/// 					Storage:       pulumi.String("sqlite"),
+/// 					TransferFrom:  pulumi.String("transfer_from"),
+/// 					TransferredTo: pulumi.String("transferred_to"),
+/// 				},
+/// 				"default": &cloudflare.WorkerVersionExportsArgs{
+/// 					Type: pulumi.String("worker"),
+/// 					Cache: &cloudflare.WorkerVersionExportsCacheArgs{
+/// 						Enabled: pulumi.Bool(false),
+/// 					},
+/// 					RenamedTo:     pulumi.String("renamed_to"),
+/// 					State:         pulumi.String("created"),
+/// 					Storage:       pulumi.String("sqlite"),
+/// 					TransferFrom:  pulumi.String("transfer_from"),
+/// 					TransferredTo: pulumi.String("transferred_to"),
+/// 				},
+/// 			},
 /// 			Limits: &cloudflare.WorkerVersionLimitsArgs{
 /// 				CpuMs:       pulumi.Int(50),
 /// 				Subrequests: pulumi.Int(1000),
@@ -417,6 +518,30 @@ import 'worker_version_state.dart';
 ///   containers {
 ///     class_name = "MyDurableObject"
 ///   }
+///   exports = {
+///     "Admin" = {
+///       type = "worker"
+///       cache = {
+///         enabled = true
+///       }
+///       renamed_to     = "renamed_to"
+///       state          = "created"
+///       storage        = "sqlite"
+///       transfer_from  = "transfer_from"
+///       transferred_to = "transferred_to"
+///     }
+///     "default" = {
+///       type = "worker"
+///       cache = {
+///         enabled = false
+///       }
+///       renamed_to     = "renamed_to"
+///       state          = "created"
+///       storage        = "sqlite"
+///       transfer_from  = "transfer_from"
+///       transferred_to = "transferred_to"
+///     }
+///   }
 ///   limits = {
 ///     cpu_ms      = 50
 ///     subrequests = 1000
@@ -467,6 +592,8 @@ import 'worker_version_state.dart';
 /// import com.pulumi.cloudflare.inputs.WorkerVersionBindingArgs;
 /// import com.pulumi.cloudflare.inputs.WorkerVersionCacheOptionsArgs;
 /// import com.pulumi.cloudflare.inputs.WorkerVersionContainerArgs;
+/// import com.pulumi.cloudflare.inputs.WorkerVersionExportsArgs;
+/// import com.pulumi.cloudflare.inputs.WorkerVersionExportsCacheArgs;
 /// import com.pulumi.cloudflare.inputs.WorkerVersionLimitsArgs;
 /// import com.pulumi.cloudflare.inputs.WorkerVersionMigrationsArgs;
 /// import com.pulumi.cloudflare.inputs.WorkerVersionMigrationsRenamedClassArgs;
@@ -516,6 +643,30 @@ import 'worker_version_state.dart';
 ///             .containers(WorkerVersionContainerArgs.builder()
 ///                 .className("MyDurableObject")
 ///                 .build())
+///             .exports(Map.ofEntries(
+///                 Map.entry("Admin", WorkerVersionExportsArgs.builder()
+///                     .type("worker")
+///                     .cache(WorkerVersionExportsCacheArgs.builder()
+///                         .enabled(true)
+///                         .build())
+///                     .renamedTo("renamed_to")
+///                     .state("created")
+///                     .storage("sqlite")
+///                     .transferFrom("transfer_from")
+///                     .transferredTo("transferred_to")
+///                     .build()),
+///                 Map.entry("default", WorkerVersionExportsArgs.builder()
+///                     .type("worker")
+///                     .cache(WorkerVersionExportsCacheArgs.builder()
+///                         .enabled(false)
+///                         .build())
+///                     .renamedTo("renamed_to")
+///                     .state("created")
+///                     .storage("sqlite")
+///                     .transferFrom("transfer_from")
+///                     .transferredTo("transferred_to")
+///                     .build())
+///             ))
 ///             .limits(WorkerVersionLimitsArgs.builder()
 ///                 .cpuMs(50)
 ///                 .subrequests(1000)
@@ -584,6 +735,25 @@ import 'worker_version_state.dart';
 ///         - nodejs_compat
 ///       containers:
 ///         - className: MyDurableObject
+///       exports:
+///         Admin:
+///           type: worker
+///           cache:
+///             enabled: true
+///           renamedTo: renamed_to
+///           state: created
+///           storage: sqlite
+///           transferFrom: transfer_from
+///           transferredTo: transferred_to
+///         default:
+///           type: worker
+///           cache:
+///             enabled: false
+///           renamedTo: renamed_to
+///           state: created
+///           storage: sqlite
+///           transferFrom: transfer_from
+///           transferredTo: transferred_to
 ///       limits:
 ///         cpuMs: 50
 ///         subrequests: 1000
@@ -699,7 +869,7 @@ class WorkerVersion extends pulumi.CustomResource {
           'cloudflare:index/workerVersion:WorkerVersion',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.19.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     annotations = registerOutput<WorkerVersionAnnotations>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkerVersionAnnotations.fromMap((guardedValue as Map).cast<String, dynamic>()); });

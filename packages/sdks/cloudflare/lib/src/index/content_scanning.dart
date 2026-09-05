@@ -144,7 +144,7 @@ class ContentScanning extends pulumi.CustomResource {
           'cloudflare:index/contentScanning:ContentScanning',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.19.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
         ) {
     modified = registerOutput<String>('modified');
     value = registerOutput<String>('value');

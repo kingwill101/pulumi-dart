@@ -4,7 +4,6 @@ import 'hostname_tls_setting_state.dart';
 
 /// Accepted Permissions
 ///
-/// - `SSL and Certificates Read`
 /// - `SSL and Certificates Write`
 ///
 /// ## Example Usage
@@ -152,7 +151,7 @@ import 'hostname_tls_setting_state.dart';
 /// ## Import
 ///
 /// ```sh
-/// $ pulumi import cloudflare:index/hostnameTlsSetting:HostnameTlsSetting example '<zone_id>/<setting_id>'
+/// $ pulumi import cloudflare:index/hostnameTlsSetting:HostnameTlsSetting example '<zone_id>/<setting_id>/<hostname>'
 /// ```
 class HostnameTlsSetting extends pulumi.CustomResource {
   /// This is the time the tls setting was originally created for this hostname.
@@ -184,7 +183,7 @@ class HostnameTlsSetting extends pulumi.CustomResource {
           'cloudflare:index/hostnameTlsSetting:HostnameTlsSetting',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.19.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
         ) {
     createdAt = registerOutput<String>('createdAt');
     hostname = registerOutput<String>('hostname');
