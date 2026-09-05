@@ -6,11 +6,11 @@ class CachePatchSchedule {
   /// the Weekday name - possible values include `Monday`, `Tuesday`, `Wednesday` etc.
   final pulumi.Input<String> dayOfWeek;
   /// The ISO 8601 timespan which specifies the amount of time the Redis Cache can be updated. Defaults to `PT5H`.
-  final pulumi.Input<String>? maintenanceWindow;
+  final pulumi.Input<String?>? maintenanceWindow;
   /// the Start Hour for maintenance in UTC - possible values range from `0 - 23`.
   ///
   /// &gt; **Note:** The Patch Window lasts for `5` hours from the `startHourUtc`.
-  final pulumi.Input<int>? startHourUtc;
+  final pulumi.Input<int?>? startHourUtc;
 
   /// Creates a new [CachePatchSchedule].
   /// [dayOfWeek] the Weekday name - possible values include `Monday`, `Tuesday`, `Wednesday` etc.
@@ -34,7 +34,7 @@ class CachePatchSchedule {
     return CachePatchSchedule(
       dayOfWeek: pulumi.Input.fromValue(map['dayOfWeek'] as String),
       maintenanceWindow: (() { final guardedValue = map['maintenanceWindow']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      startHourUtc: (() { final guardedValue = map['startHourUtc']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      startHourUtc: (() { final guardedValue = map['startHourUtc']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

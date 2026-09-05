@@ -12,25 +12,25 @@ import 'data_collection_rule_destinations_storage_table_direct.dart';
 
 class DataCollectionRuleDestinations {
   /// A `azureMonitorMetrics` block as defined above.
-  final pulumi.Input<DataCollectionRuleDestinationsAzureMonitorMetrics>? azureMonitorMetrics;
+  final pulumi.Input<DataCollectionRuleDestinationsAzureMonitorMetrics?>? azureMonitorMetrics;
   /// One or more `eventHub` blocks as defined below.
-  final pulumi.Input<DataCollectionRuleDestinationsEventHub>? eventHub;
+  final pulumi.Input<DataCollectionRuleDestinationsEventHub?>? eventHub;
   /// One or more `eventHub` blocks as defined below.
-  final pulumi.Input<DataCollectionRuleDestinationsEventHubDirect>? eventHubDirect;
+  final pulumi.Input<DataCollectionRuleDestinationsEventHubDirect?>? eventHubDirect;
   /// One or more `logAnalytics` blocks as defined below.
-  final pulumi.Input<List<DataCollectionRuleDestinationsLogAnalytic>>? logAnalytics;
+  final pulumi.Input<List<DataCollectionRuleDestinationsLogAnalytic>?>? logAnalytics;
   /// One or more `monitorAccount` blocks as defined below.
-  final pulumi.Input<List<DataCollectionRuleDestinationsMonitorAccount>>? monitorAccounts;
+  final pulumi.Input<List<DataCollectionRuleDestinationsMonitorAccount>?>? monitorAccounts;
   /// One or more `storageBlobDirect` blocks as defined below.
-  final pulumi.Input<List<DataCollectionRuleDestinationsStorageBlobDirect>>? storageBlobDirects;
+  final pulumi.Input<List<DataCollectionRuleDestinationsStorageBlobDirect>?>? storageBlobDirects;
   /// One or more `storageBlob` blocks as defined below.
-  final pulumi.Input<List<DataCollectionRuleDestinationsStorageBlob>>? storageBlobs;
+  final pulumi.Input<List<DataCollectionRuleDestinationsStorageBlob>?>? storageBlobs;
   /// One or more `storageTableDirect` blocks as defined below.
   ///
   /// &gt; **Note:** `eventHubDirect`, `storageBlobDirect`, and `storageTableDirect` are only available for rules of kind `AgentDirectToStore`.
   ///
   /// &gt; **Note:** At least one of `azureMonitorMetrics`, `eventHub`, `eventHubDirect`, `logAnalytics`, `monitorAccount`, `storageBlob`, `storageBlobDirect`,and `storageTableDirect` blocks must be specified.
-  final pulumi.Input<List<DataCollectionRuleDestinationsStorageTableDirect>>? storageTableDirects;
+  final pulumi.Input<List<DataCollectionRuleDestinationsStorageTableDirect>?>? storageTableDirects;
 
   /// Creates a new [DataCollectionRuleDestinations].
   /// [azureMonitorMetrics] A `azureMonitorMetrics` block as defined above.

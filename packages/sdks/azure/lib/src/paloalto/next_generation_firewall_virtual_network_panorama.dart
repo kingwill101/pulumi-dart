@@ -1,7 +1,9 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'next_generation_firewall_virtual_network_panorama_args.dart';
+import 'next_generation_firewall_virtual_network_panorama_destination_nat.dart';
 import 'next_generation_firewall_virtual_network_panorama_dns_settings.dart';
 import 'next_generation_firewall_virtual_network_panorama_network_profile.dart';
+import 'next_generation_firewall_virtual_network_panorama_panorama.dart';
 import 'next_generation_firewall_virtual_network_panorama_state.dart';
 
 /// Manages a Palo Alto Next Generation Firewall Virtual Network Panorama.
@@ -362,8 +364,8 @@ import 'next_generation_firewall_virtual_network_panorama_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = network.NewSubnetNetworkSecurityGroupAssociation(ctx, "trust", &network.SubnetNetworkSecurityGroupAssociationArgs{
-/// 			SubnetId:               trust.ID(),
-/// 			NetworkSecurityGroupId: exampleNetworkSecurityGroup.ID(),
+/// 			SubnetId:               trust.ID().ToIDOutput().ToStringOutput(),
+/// 			NetworkSecurityGroupId: exampleNetworkSecurityGroup.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -391,8 +393,8 @@ import 'next_generation_firewall_virtual_network_panorama_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = network.NewSubnetNetworkSecurityGroupAssociation(ctx, "untrust", &network.SubnetNetworkSecurityGroupAssociationArgs{
-/// 			SubnetId:               untrust.ID(),
-/// 			NetworkSecurityGroupId: exampleNetworkSecurityGroup.ID(),
+/// 			SubnetId:               untrust.ID().ToIDOutput().ToStringOutput(),
+/// 			NetworkSecurityGroupId: exampleNetworkSecurityGroup.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -404,12 +406,12 @@ import 'next_generation_firewall_virtual_network_panorama_state.dart';
 /// 			PanoramaBase64Config: pulumi.String("e2RnbmFtZTogY25nZnctYXotZXhhbXBsZSwgdHBsbmFtZTogY25nZnctZXhhbXBsZS10ZW1wbGF0ZS1zdGFjaywgZXhhbXBsZS1wYW5vcmFtYS1zZXJ2ZXI6IDE5Mi4xNjguMC4xLCB2bS1hdXRoLWtleTogMDAwMDAwMDAwMDAwMDAwLCBleHBpcnk6IDIwMjQvMDcvMzF9Cg=="),
 /// 			NetworkProfile: &paloalto.NextGenerationFirewallVirtualNetworkPanoramaNetworkProfileArgs{
 /// 				PublicIpAddressIds: pulumi.StringArray{
-/// 					examplePublicIp.ID(),
+/// 					examplePublicIp.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 				VnetConfiguration: &paloalto.NextGenerationFirewallVirtualNetworkPanoramaNetworkProfileVnetConfigurationArgs{
-/// 					VirtualNetworkId:  exampleVirtualNetwork.ID(),
-/// 					TrustedSubnetId:   trust.ID(),
-/// 					UntrustedSubnetId: untrust.ID(),
+/// 					VirtualNetworkId:  exampleVirtualNetwork.ID().ToIDOutput().ToStringOutput(),
+/// 					TrustedSubnetId:   trust.ID().ToIDOutput().ToStringOutput(),
+/// 					UntrustedSubnetId: untrust.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 		})
@@ -731,7 +733,7 @@ import 'next_generation_firewall_virtual_network_panorama_state.dart';
 /// ```
 class NextGenerationFirewallVirtualNetworkPanorama extends pulumi.CustomResource {
   /// One or more `destinationNat` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> destinationNats;
+  late final pulumi.Output<List<NextGenerationFirewallVirtualNetworkPanoramaDestinationNat>?> destinationNats;
   /// A `dnsSettings` block as defined below.
   late final pulumi.Output<NextGenerationFirewallVirtualNetworkPanoramaDnsSettings?> dnsSettings;
   /// The Azure Region where the Palo Alto Next Generation Firewall Virtual Network Panorama should exist. Changing this forces a new Palo Alto Next Generation Firewall Virtual Network Panorama to be created.
@@ -745,7 +747,7 @@ class NextGenerationFirewallVirtualNetworkPanorama extends pulumi.CustomResource
   /// The base64 encoded configuration registration string as defined by your Panorama Server for your Cloud Device Group.
   late final pulumi.Output<String> panoramaBase64Config;
   /// A `panorama` block as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>> panoramas;
+  late final pulumi.Output<List<NextGenerationFirewallVirtualNetworkPanoramaPanorama>> panoramas;
   /// The billing plan ID as published by Liftr.PAN. Defaults to `panw-cloud-ngfw-payg`.
   ///
   /// &gt; **Note:** The former `planId` `panw-cloud-ngfw-payg` is defined as stop sell, but has been set as the default to not break any existing resources that were originally provisioned with it. Users need to explicitly set `planId` to `panw-cngfw-payg` when creating new resources.
@@ -767,19 +769,19 @@ class NextGenerationFirewallVirtualNetworkPanorama extends pulumi.CustomResource
           'azure:paloalto/nextGenerationFirewallVirtualNetworkPanorama:NextGenerationFirewallVirtualNetworkPanorama',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
-    destinationNats = registerOutput<List<Map<String, dynamic>>?>('destinationNats');
+    destinationNats = registerOutput<List<NextGenerationFirewallVirtualNetworkPanoramaDestinationNat>?>('destinationNats', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NextGenerationFirewallVirtualNetworkPanoramaDestinationNat>(guardedValue, (value) => NextGenerationFirewallVirtualNetworkPanoramaDestinationNat.fromMap((value as Map).cast<String, dynamic>())); });
     dnsSettings = registerOutput<NextGenerationFirewallVirtualNetworkPanoramaDnsSettings?>('dnsSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NextGenerationFirewallVirtualNetworkPanoramaDnsSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     marketplaceOfferId = registerOutput<String?>('marketplaceOfferId');
     this.name = registerOutput<String>('name');
     networkProfile = registerOutput<NextGenerationFirewallVirtualNetworkPanoramaNetworkProfile>('networkProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NextGenerationFirewallVirtualNetworkPanoramaNetworkProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     panoramaBase64Config = registerOutput<String>('panoramaBase64Config');
-    panoramas = registerOutput<List<Map<String, dynamic>>>('panoramas');
+    panoramas = registerOutput<List<NextGenerationFirewallVirtualNetworkPanoramaPanorama>>('panoramas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NextGenerationFirewallVirtualNetworkPanoramaPanorama>(guardedValue, (value) => NextGenerationFirewallVirtualNetworkPanoramaPanorama.fromMap((value as Map).cast<String, dynamic>())); });
     planId = registerOutput<String?>('planId');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [NextGenerationFirewallVirtualNetworkPanorama] resource's state with the given [name] and [id].
@@ -787,11 +789,12 @@ class NextGenerationFirewallVirtualNetworkPanorama extends pulumi.CustomResource
     String name,
     pulumi.Input<String> id, {
     NextGenerationFirewallVirtualNetworkPanoramaState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return NextGenerationFirewallVirtualNetworkPanorama._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -805,16 +808,38 @@ class NextGenerationFirewallVirtualNetworkPanorama extends pulumi.CustomResource
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    destinationNats = registerOutput<List<Map<String, dynamic>>?>('destinationNats');
+    destinationNats = registerOutput<List<NextGenerationFirewallVirtualNetworkPanoramaDestinationNat>?>('destinationNats', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NextGenerationFirewallVirtualNetworkPanoramaDestinationNat>(guardedValue, (value) => NextGenerationFirewallVirtualNetworkPanoramaDestinationNat.fromMap((value as Map).cast<String, dynamic>())); });
     dnsSettings = registerOutput<NextGenerationFirewallVirtualNetworkPanoramaDnsSettings?>('dnsSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NextGenerationFirewallVirtualNetworkPanoramaDnsSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     marketplaceOfferId = registerOutput<String?>('marketplaceOfferId');
     this.name = registerOutput<String>('name');
     networkProfile = registerOutput<NextGenerationFirewallVirtualNetworkPanoramaNetworkProfile>('networkProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NextGenerationFirewallVirtualNetworkPanoramaNetworkProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     panoramaBase64Config = registerOutput<String>('panoramaBase64Config');
-    panoramas = registerOutput<List<Map<String, dynamic>>>('panoramas');
+    panoramas = registerOutput<List<NextGenerationFirewallVirtualNetworkPanoramaPanorama>>('panoramas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NextGenerationFirewallVirtualNetworkPanoramaPanorama>(guardedValue, (value) => NextGenerationFirewallVirtualNetworkPanoramaPanorama.fromMap((value as Map).cast<String, dynamic>())); });
     planId = registerOutput<String?>('planId');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [NextGenerationFirewallVirtualNetworkPanorama] resource.
+  NextGenerationFirewallVirtualNetworkPanorama.reference(String urn)
+    : super(
+        'azure:paloalto/nextGenerationFirewallVirtualNetworkPanorama:NextGenerationFirewallVirtualNetworkPanorama',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    destinationNats = registerOutput<List<NextGenerationFirewallVirtualNetworkPanoramaDestinationNat>?>('destinationNats', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NextGenerationFirewallVirtualNetworkPanoramaDestinationNat>(guardedValue, (value) => NextGenerationFirewallVirtualNetworkPanoramaDestinationNat.fromMap((value as Map).cast<String, dynamic>())); });
+    dnsSettings = registerOutput<NextGenerationFirewallVirtualNetworkPanoramaDnsSettings?>('dnsSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NextGenerationFirewallVirtualNetworkPanoramaDnsSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    marketplaceOfferId = registerOutput<String?>('marketplaceOfferId');
+    this.name = registerOutput<String>('name');
+    networkProfile = registerOutput<NextGenerationFirewallVirtualNetworkPanoramaNetworkProfile>('networkProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NextGenerationFirewallVirtualNetworkPanoramaNetworkProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    panoramaBase64Config = registerOutput<String>('panoramaBase64Config');
+    panoramas = registerOutput<List<NextGenerationFirewallVirtualNetworkPanoramaPanorama>>('panoramas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NextGenerationFirewallVirtualNetworkPanoramaPanorama>(guardedValue, (value) => NextGenerationFirewallVirtualNetworkPanoramaPanorama.fromMap((value as Map).cast<String, dynamic>())); });
+    planId = registerOutput<String?>('planId');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

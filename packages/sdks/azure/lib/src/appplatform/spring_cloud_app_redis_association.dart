@@ -173,8 +173,8 @@ import 'spring_cloud_app_redis_association_state.dart';
 /// 		}
 /// 		_, err = appplatform.NewSpringCloudAppRedisAssociation(ctx, "example", &appplatform.SpringCloudAppRedisAssociationArgs{
 /// 			Name:             pulumi.String("example-bind"),
-/// 			SpringCloudAppId: exampleSpringCloudApp.ID(),
-/// 			RedisCacheId:     exampleCache.ID(),
+/// 			SpringCloudAppId: exampleSpringCloudApp.ID().ToIDOutput().ToStringOutput(),
+/// 			RedisCacheId:     exampleCache.ID().ToIDOutput().ToStringOutput(),
 /// 			RedisAccessKey:   exampleCache.PrimaryAccessKey,
 /// 			SslEnabled:       pulumi.Bool(true),
 /// 		})
@@ -367,7 +367,7 @@ class SpringCloudAppRedisAssociation extends pulumi.CustomResource {
           'azure:appplatform/springCloudAppRedisAssociation:SpringCloudAppRedisAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     this.name = registerOutput<String>('name');
     redisAccessKey = registerOutput<String>('redisAccessKey');
@@ -381,11 +381,12 @@ class SpringCloudAppRedisAssociation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SpringCloudAppRedisAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SpringCloudAppRedisAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -399,6 +400,22 @@ class SpringCloudAppRedisAssociation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    this.name = registerOutput<String>('name');
+    redisAccessKey = registerOutput<String>('redisAccessKey');
+    redisCacheId = registerOutput<String>('redisCacheId');
+    springCloudAppId = registerOutput<String>('springCloudAppId');
+    sslEnabled = registerOutput<bool?>('sslEnabled');
+  }
+
+  /// Creates a typed reference to an existing [SpringCloudAppRedisAssociation] resource.
+  SpringCloudAppRedisAssociation.reference(String urn)
+    : super(
+        'azure:appplatform/springCloudAppRedisAssociation:SpringCloudAppRedisAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     this.name = registerOutput<String>('name');
     redisAccessKey = registerOutput<String>('redisAccessKey');
     redisCacheId = registerOutput<String>('redisCacheId');

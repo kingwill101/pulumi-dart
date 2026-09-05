@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AlertRuleAnomalyBuiltInPrioritizedExcludeObservation {
   /// The description of the threshold observation.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The excluded value per `description`.
-  final pulumi.Input<String>? exclude;
+  final pulumi.Input<String?>? exclude;
   /// The Name of the built-in Anomaly Alert Rule.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The prioritized value per `description`.
-  final pulumi.Input<String>? prioritize;
+  final pulumi.Input<String?>? prioritize;
 
   /// Creates a new [AlertRuleAnomalyBuiltInPrioritizedExcludeObservation].
   /// [description] The description of the threshold observation.

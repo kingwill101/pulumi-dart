@@ -10,9 +10,9 @@ class GetConfigurationKeysArgs {
   /// Specifies the id of the App Configuration.
   final pulumi.Input<String> configurationStoreId;
   /// The name of the App Configuration Keys to look up.
-  final pulumi.Input<String>? key;
+  final pulumi.Input<String?>? key;
   /// The label of the App Configuration Keys tp look up.
-  final pulumi.Input<String>? label;
+  final pulumi.Input<String?>? label;
 
   /// Creates a new [GetConfigurationKeysArgs].
   /// [configurationStoreId] Specifies the id of the App Configuration.

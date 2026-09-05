@@ -6,7 +6,7 @@ class ClusterFabricSetting {
   /// The name of the Fabric Setting, such as `Security` or `Federation`.
   final pulumi.Input<String> name;
   /// A map containing settings for the specified Fabric Setting.
-  final pulumi.Input<Map<String, String>>? parameters;
+  final pulumi.Input<Map<String, String>?>? parameters;
 
   /// Creates a new [ClusterFabricSetting].
   /// [name] The name of the Fabric Setting, such as `Security` or `Federation`.

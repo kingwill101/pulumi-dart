@@ -148,3 +148,14 @@ Future<GetResourceBridgeApplianceResult> getResourceBridgeAppliance(
   );
   return GetResourceBridgeApplianceResult.fromMap(result);
 }
+
+pulumi.Output<GetResourceBridgeApplianceResult> getResourceBridgeApplianceOutput(
+  GetResourceBridgeApplianceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:arc/getResourceBridgeAppliance:getResourceBridgeAppliance',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetResourceBridgeApplianceResult.fromMap);
+}

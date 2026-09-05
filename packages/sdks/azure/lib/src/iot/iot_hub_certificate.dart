@@ -304,9 +304,10 @@ class IotHubCertificate extends pulumi.CustomResource {
           'azure:iot/iotHubCertificate:IotHubCertificate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['certificateContent'],
         ) {
-    certificateContent = registerOutput<String>('certificateContent');
+    certificateContent = registerOutput<String>('certificateContent', isSecret: true);
     iotDpsName = registerOutput<String>('iotDpsName');
     isVerified = registerOutput<bool?>('isVerified');
     this.name = registerOutput<String>('name');
@@ -318,11 +319,12 @@ class IotHubCertificate extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     IotHubCertificateState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return IotHubCertificate._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -336,7 +338,24 @@ class IotHubCertificate extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    certificateContent = registerOutput<String>('certificateContent');
+    certificateContent = registerOutput<String>('certificateContent', isSecret: true);
+    iotDpsName = registerOutput<String>('iotDpsName');
+    isVerified = registerOutput<bool?>('isVerified');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+  }
+
+  /// Creates a typed reference to an existing [IotHubCertificate] resource.
+  IotHubCertificate.reference(String urn)
+    : super(
+        'azure:iot/iotHubCertificate:IotHubCertificate',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['certificateContent'],
+        isResourceReference: true,
+      ) {
+    certificateContent = registerOutput<String>('certificateContent', isSecret: true);
     iotDpsName = registerOutput<String>('iotDpsName');
     isVerified = registerOutput<bool?>('isVerified');
     this.name = registerOutput<String>('name');

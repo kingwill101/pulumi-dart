@@ -7,45 +7,45 @@ import 'private_cloud_management_cluster.dart';
 /// Input properties used for looking up and filtering PrivateCloud resources.
 class PrivateCloudState {
   /// A `circuit` block as defined below.
-  final pulumi.Input<List<PrivateCloudCircuit>>? circuits;
+  final pulumi.Input<List<PrivateCloudCircuit>?>? circuits;
   /// The endpoint for the VMware HCX Cloud Manager.
-  final pulumi.Input<String>? hcxCloudManagerEndpoint;
+  final pulumi.Input<String?>? hcxCloudManagerEndpoint;
   /// Is the Azure VMware Solution Private Cloud connected to the internet? This field can not be updated with `management_cluster[0].size` together.
   /// &gt; **Note:** `internetConnectionEnabled` and `management_cluster[0].size` cannot be updated at the same time.
-  final pulumi.Input<bool>? internetConnectionEnabled;
+  final pulumi.Input<bool?>? internetConnectionEnabled;
   /// The Azure Region where the Azure VMware Solution Private Cloud should exist. Changing this forces a new Azure VMware Solution Private Cloud to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// A `managementCluster` block as defined below.
   /// &gt; **Note:** `internetConnectionEnabled` and `management_cluster[0].size` cannot be updated at the same time.
-  final pulumi.Input<PrivateCloudManagementCluster>? managementCluster;
+  final pulumi.Input<PrivateCloudManagementCluster?>? managementCluster;
   /// The network used to access VMware vCenter Server and NSX Manager.
-  final pulumi.Input<String>? managementSubnetCidr;
+  final pulumi.Input<String?>? managementSubnetCidr;
   /// The name which should be used for this Azure VMware Solution Private Cloud. Changing this forces a new Azure VMware Solution Private Cloud to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The subnet which should be unique across virtual network in your subscription as well as on-premise. Changing this forces a new Azure VMware Solution Private Cloud to be created.
-  final pulumi.Input<String>? networkSubnetCidr;
+  final pulumi.Input<String?>? networkSubnetCidr;
   /// The thumbprint of the VMware NSX Manager SSL certificate.
-  final pulumi.Input<String>? nsxtCertificateThumbprint;
+  final pulumi.Input<String?>? nsxtCertificateThumbprint;
   /// The endpoint for the VMware NSX Manager.
-  final pulumi.Input<String>? nsxtManagerEndpoint;
+  final pulumi.Input<String?>? nsxtManagerEndpoint;
   /// The password of the VMware NSX Manager cloudadmin. Changing this forces a new Azure VMware Solution Private Cloud to be created.
-  final pulumi.Input<String>? nsxtPassword;
+  final pulumi.Input<String?>? nsxtPassword;
   /// The network which is used for virtual machine cold migration, cloning, and snapshot migration.
-  final pulumi.Input<String>? provisioningSubnetCidr;
+  final pulumi.Input<String?>? provisioningSubnetCidr;
   /// The name of the Resource Group where the Azure VMware Solution Private Cloud should exist. Changing this forces a new Azure VMware Solution Private Cloud to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// The Name of the SKU used for this Azure VMware Solution Private Cloud. Possible values are `av20`, `av36`, `av36t`, `av36p`, `av36pt`, `av48`, `av48t`, `av52`, `av52t`, and `av64`. Changing this forces a new Azure VMware Solution Private Cloud to be created.
-  final pulumi.Input<String>? skuName;
+  final pulumi.Input<String?>? skuName;
   /// A mapping of tags which should be assigned to the Azure VMware Solution Private Cloud.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The thumbprint of the VMware vCenter Server SSL certificate.
-  final pulumi.Input<String>? vcenterCertificateThumbprint;
+  final pulumi.Input<String?>? vcenterCertificateThumbprint;
   /// The password of the VMware vCenter Server cloudadmin. Changing this forces a new Azure VMware Solution Private Cloud to be created.
-  final pulumi.Input<String>? vcenterPassword;
+  final pulumi.Input<String?>? vcenterPassword;
   /// The endpoint for VMware vCenter Server Appliance.
-  final pulumi.Input<String>? vcsaEndpoint;
+  final pulumi.Input<String?>? vcsaEndpoint;
   /// The network which is used for live migration of virtual machines.
-  final pulumi.Input<String>? vmotionSubnetCidr;
+  final pulumi.Input<String?>? vmotionSubnetCidr;
 
   /// Creates a new [PrivateCloudState].
   /// [circuits] A `circuit` block as defined below.

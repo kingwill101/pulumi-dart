@@ -1,4 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'automation_rule_action_incident.dart';
+import 'automation_rule_action_incident_task.dart';
+import 'automation_rule_action_playbook.dart';
 import 'automation_rule_args.dart';
 import 'automation_rule_state.dart';
 
@@ -130,7 +133,7 @@ import 'automation_rule_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleLogAnalyticsWorkspaceOnboarding, err := sentinel.NewLogAnalyticsWorkspaceOnboarding(ctx, "example", &sentinel.LogAnalyticsWorkspaceOnboardingArgs{
-/// 			WorkspaceId: exampleAnalyticsWorkspace.ID(),
+/// 			WorkspaceId: exampleAnalyticsWorkspace.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -295,13 +298,13 @@ import 'automation_rule_state.dart';
 /// ```
 class AutomationRule extends pulumi.CustomResource {
   /// One or more `actionIncidentTask` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> actionIncidentTasks;
+  late final pulumi.Output<List<AutomationRuleActionIncidentTask>?> actionIncidentTasks;
   /// One or more `actionIncident` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> actionIncidents;
+  late final pulumi.Output<List<AutomationRuleActionIncident>?> actionIncidents;
   /// One or more `actionPlaybook` blocks as defined below.
   ///
   /// &gt; **Note:** Either one `actionIncident` block or `actionPlaybook` block has to be specified.
-  late final pulumi.Output<List<Map<String, dynamic>>?> actionPlaybooks;
+  late final pulumi.Output<List<AutomationRuleActionPlaybook>?> actionPlaybooks;
   /// A JSON array of one or more condition JSON objects as is defined [here](https://learn.microsoft.com/en-us/rest/api/securityinsights/preview/automation-rules/create-or-update?tabs=HTTP#automationruletriggeringlogic).
   late final pulumi.Output<String?> conditionJson;
   /// The display name which should be used for this Sentinel Automation Rule.
@@ -333,11 +336,11 @@ class AutomationRule extends pulumi.CustomResource {
           'azure:sentinel/automationRule:AutomationRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
-    actionIncidentTasks = registerOutput<List<Map<String, dynamic>>?>('actionIncidentTasks');
-    actionIncidents = registerOutput<List<Map<String, dynamic>>?>('actionIncidents');
-    actionPlaybooks = registerOutput<List<Map<String, dynamic>>?>('actionPlaybooks');
+    actionIncidentTasks = registerOutput<List<AutomationRuleActionIncidentTask>?>('actionIncidentTasks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AutomationRuleActionIncidentTask>(guardedValue, (value) => AutomationRuleActionIncidentTask.fromMap((value as Map).cast<String, dynamic>())); });
+    actionIncidents = registerOutput<List<AutomationRuleActionIncident>?>('actionIncidents', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AutomationRuleActionIncident>(guardedValue, (value) => AutomationRuleActionIncident.fromMap((value as Map).cast<String, dynamic>())); });
+    actionPlaybooks = registerOutput<List<AutomationRuleActionPlaybook>?>('actionPlaybooks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AutomationRuleActionPlaybook>(guardedValue, (value) => AutomationRuleActionPlaybook.fromMap((value as Map).cast<String, dynamic>())); });
     conditionJson = registerOutput<String?>('conditionJson');
     displayName = registerOutput<String>('displayName');
     enabled = registerOutput<bool?>('enabled');
@@ -354,11 +357,12 @@ class AutomationRule extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AutomationRuleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AutomationRule._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -372,9 +376,32 @@ class AutomationRule extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    actionIncidentTasks = registerOutput<List<Map<String, dynamic>>?>('actionIncidentTasks');
-    actionIncidents = registerOutput<List<Map<String, dynamic>>?>('actionIncidents');
-    actionPlaybooks = registerOutput<List<Map<String, dynamic>>?>('actionPlaybooks');
+    actionIncidentTasks = registerOutput<List<AutomationRuleActionIncidentTask>?>('actionIncidentTasks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AutomationRuleActionIncidentTask>(guardedValue, (value) => AutomationRuleActionIncidentTask.fromMap((value as Map).cast<String, dynamic>())); });
+    actionIncidents = registerOutput<List<AutomationRuleActionIncident>?>('actionIncidents', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AutomationRuleActionIncident>(guardedValue, (value) => AutomationRuleActionIncident.fromMap((value as Map).cast<String, dynamic>())); });
+    actionPlaybooks = registerOutput<List<AutomationRuleActionPlaybook>?>('actionPlaybooks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AutomationRuleActionPlaybook>(guardedValue, (value) => AutomationRuleActionPlaybook.fromMap((value as Map).cast<String, dynamic>())); });
+    conditionJson = registerOutput<String?>('conditionJson');
+    displayName = registerOutput<String>('displayName');
+    enabled = registerOutput<bool?>('enabled');
+    expiration = registerOutput<String?>('expiration');
+    logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
+    this.name = registerOutput<String>('name');
+    order = registerOutput<int>('order');
+    triggersOn = registerOutput<String?>('triggersOn');
+    triggersWhen = registerOutput<String?>('triggersWhen');
+  }
+
+  /// Creates a typed reference to an existing [AutomationRule] resource.
+  AutomationRule.reference(String urn)
+    : super(
+        'azure:sentinel/automationRule:AutomationRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    actionIncidentTasks = registerOutput<List<AutomationRuleActionIncidentTask>?>('actionIncidentTasks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AutomationRuleActionIncidentTask>(guardedValue, (value) => AutomationRuleActionIncidentTask.fromMap((value as Map).cast<String, dynamic>())); });
+    actionIncidents = registerOutput<List<AutomationRuleActionIncident>?>('actionIncidents', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AutomationRuleActionIncident>(guardedValue, (value) => AutomationRuleActionIncident.fromMap((value as Map).cast<String, dynamic>())); });
+    actionPlaybooks = registerOutput<List<AutomationRuleActionPlaybook>?>('actionPlaybooks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AutomationRuleActionPlaybook>(guardedValue, (value) => AutomationRuleActionPlaybook.fromMap((value as Map).cast<String, dynamic>())); });
     conditionJson = registerOutput<String?>('conditionJson');
     displayName = registerOutput<String>('displayName');
     enabled = registerOutput<bool?>('enabled');

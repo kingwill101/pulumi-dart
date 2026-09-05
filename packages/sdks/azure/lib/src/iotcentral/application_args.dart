@@ -11,25 +11,25 @@ class ApplicationArgs {
   /// A `displayName` name. Custom display name for the IoT Central application. Default is resource name.
   ///
   /// &gt; **Note:** Due to a bug in the provider, the default value of `displayName` of a newly created IoT Central App will be the Resource Group Name, it will be fixed and use resource name in 4.0. For an existing IoT Central App, this could be fixed by specifying the `displayName` explicitly.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// An `identity` block as defined below.
-  final pulumi.Input<ApplicationIdentity>? identity;
+  final pulumi.Input<ApplicationIdentity?>? identity;
   /// Specifies the supported Azure location where the resource has to be create. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Specifies the name of the IotHub resource. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Whether public network access is allowed for the IoT Central Application. Defaults to `true`.
-  final pulumi.Input<bool>? publicNetworkAccessEnabled;
+  final pulumi.Input<bool?>? publicNetworkAccessEnabled;
   /// The name of the resource group under which the IotHub resource has to be created. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
   /// A `sku` name. Possible values is `ST0`, `ST1`, `ST2`, Default value is `ST1`
-  final pulumi.Input<String>? sku;
+  final pulumi.Input<String?>? sku;
   /// A `subDomain` name. Subdomain for the IoT Central URL. Each application must have a unique subdomain.
   final pulumi.Input<String> subDomain;
   /// A mapping of tags to assign to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A `template` name. IoT Central application template name. Defaults to `iotc-pnp-preview@1.0.0`. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? template;
+  final pulumi.Input<String?>? template;
 
   /// Creates a new [ApplicationArgs].
   /// [displayName] A `displayName` name. Custom display name for the IoT Central application. Default is resource name.

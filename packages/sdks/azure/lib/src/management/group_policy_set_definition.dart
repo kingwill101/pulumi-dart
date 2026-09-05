@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'group_policy_set_definition_args.dart';
+import 'group_policy_set_definition_policy_definition_group.dart';
+import 'group_policy_set_definition_policy_definition_reference.dart';
 import 'group_policy_set_definition_state.dart';
 
 /// Manages a Policy Set Definition for a Management Group.
@@ -134,7 +136,7 @@ import 'group_policy_set_definition_state.dart';
 /// 			Name:              pulumi.String("example"),
 /// 			PolicyType:        pulumi.String("Custom"),
 /// 			DisplayName:       pulumi.String("Example"),
-/// 			ManagementGroupId: example.ID(),
+/// 			ManagementGroupId: example.ID().ToIDOutput().ToStringOutput(),
 /// 			Parameters: pulumi.String(`   {
 ///        \"allowedLocations\": {
 ///            \"type\": \"Array\",
@@ -308,9 +310,9 @@ class GroupPolicySetDefinition extends pulumi.CustomResource {
   /// The parameters for the Policy Set Definition in JSON format. Reducing the number of parameters forces a new resource to be created.
   late final pulumi.Output<String?> parameters;
   /// One or more `policyDefinitionGroup` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> policyDefinitionGroups;
+  late final pulumi.Output<List<GroupPolicySetDefinitionPolicyDefinitionGroup>?> policyDefinitionGroups;
   /// One or more `policyDefinitionReference` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>> policyDefinitionReferences;
+  late final pulumi.Output<List<GroupPolicySetDefinitionPolicyDefinitionReference>> policyDefinitionReferences;
   /// The Policy Set Definition type. Possible values are `BuiltIn`, `Custom`, `NotSpecified`, and `Static`. Changing this forces a new Policy Set Definition to be created.
   late final pulumi.Output<String> policyType;
 
@@ -326,7 +328,7 @@ class GroupPolicySetDefinition extends pulumi.CustomResource {
           'azure:management/groupPolicySetDefinition:GroupPolicySetDefinition',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
@@ -334,8 +336,8 @@ class GroupPolicySetDefinition extends pulumi.CustomResource {
     metadata = registerOutput<String>('metadata');
     this.name = registerOutput<String>('name');
     parameters = registerOutput<String?>('parameters');
-    policyDefinitionGroups = registerOutput<List<Map<String, dynamic>>?>('policyDefinitionGroups');
-    policyDefinitionReferences = registerOutput<List<Map<String, dynamic>>>('policyDefinitionReferences');
+    policyDefinitionGroups = registerOutput<List<GroupPolicySetDefinitionPolicyDefinitionGroup>?>('policyDefinitionGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GroupPolicySetDefinitionPolicyDefinitionGroup>(guardedValue, (value) => GroupPolicySetDefinitionPolicyDefinitionGroup.fromMap((value as Map).cast<String, dynamic>())); });
+    policyDefinitionReferences = registerOutput<List<GroupPolicySetDefinitionPolicyDefinitionReference>>('policyDefinitionReferences', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GroupPolicySetDefinitionPolicyDefinitionReference>(guardedValue, (value) => GroupPolicySetDefinitionPolicyDefinitionReference.fromMap((value as Map).cast<String, dynamic>())); });
     policyType = registerOutput<String>('policyType');
   }
 
@@ -344,11 +346,12 @@ class GroupPolicySetDefinition extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     GroupPolicySetDefinitionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return GroupPolicySetDefinition._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -368,8 +371,28 @@ class GroupPolicySetDefinition extends pulumi.CustomResource {
     metadata = registerOutput<String>('metadata');
     this.name = registerOutput<String>('name');
     parameters = registerOutput<String?>('parameters');
-    policyDefinitionGroups = registerOutput<List<Map<String, dynamic>>?>('policyDefinitionGroups');
-    policyDefinitionReferences = registerOutput<List<Map<String, dynamic>>>('policyDefinitionReferences');
+    policyDefinitionGroups = registerOutput<List<GroupPolicySetDefinitionPolicyDefinitionGroup>?>('policyDefinitionGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GroupPolicySetDefinitionPolicyDefinitionGroup>(guardedValue, (value) => GroupPolicySetDefinitionPolicyDefinitionGroup.fromMap((value as Map).cast<String, dynamic>())); });
+    policyDefinitionReferences = registerOutput<List<GroupPolicySetDefinitionPolicyDefinitionReference>>('policyDefinitionReferences', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GroupPolicySetDefinitionPolicyDefinitionReference>(guardedValue, (value) => GroupPolicySetDefinitionPolicyDefinitionReference.fromMap((value as Map).cast<String, dynamic>())); });
+    policyType = registerOutput<String>('policyType');
+  }
+
+  /// Creates a typed reference to an existing [GroupPolicySetDefinition] resource.
+  GroupPolicySetDefinition.reference(String urn)
+    : super(
+        'azure:management/groupPolicySetDefinition:GroupPolicySetDefinition',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    managementGroupId = registerOutput<String>('managementGroupId');
+    metadata = registerOutput<String>('metadata');
+    this.name = registerOutput<String>('name');
+    parameters = registerOutput<String?>('parameters');
+    policyDefinitionGroups = registerOutput<List<GroupPolicySetDefinitionPolicyDefinitionGroup>?>('policyDefinitionGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GroupPolicySetDefinitionPolicyDefinitionGroup>(guardedValue, (value) => GroupPolicySetDefinitionPolicyDefinitionGroup.fromMap((value as Map).cast<String, dynamic>())); });
+    policyDefinitionReferences = registerOutput<List<GroupPolicySetDefinitionPolicyDefinitionReference>>('policyDefinitionReferences', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GroupPolicySetDefinitionPolicyDefinitionReference>(guardedValue, (value) => GroupPolicySetDefinitionPolicyDefinitionReference.fromMap((value as Map).cast<String, dynamic>())); });
     policyType = registerOutput<String>('policyType');
   }
 }

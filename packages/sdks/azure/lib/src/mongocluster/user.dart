@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'user_args.dart';
+import 'user_role.dart';
 import 'user_state.dart';
 
 /// Manages a Mongo Cluster User.
@@ -172,7 +173,7 @@ import 'user_state.dart';
 /// 		}
 /// 		_, err = mongocluster.NewUser(ctx, "example", &mongocluster.UserArgs{
 /// 			ObjectId:             pulumi.String(current.ObjectId),
-/// 			MongoClusterId:       exampleMongoCluster.ID(),
+/// 			MongoClusterId:       exampleMongoCluster.ID().ToIDOutput().ToStringOutput(),
 /// 			IdentityProviderType: pulumi.String("MicrosoftEntraID"),
 /// 			PrincipalType:        pulumi.String("servicePrincipal"),
 /// 			Roles: mongocluster.UserRoleArray{
@@ -360,7 +361,7 @@ class User extends pulumi.CustomResource {
   /// The principal type for the Mongo Cluster User. Possible values are `user` and `servicePrincipal`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> principalType;
   /// One or more `role` blocks as defined below. Changing this forces a new resource to be created.
-  late final pulumi.Output<List<Map<String, dynamic>>> roles;
+  late final pulumi.Output<List<UserRole>> roles;
 
   /// Creates a new [User].
   /// [name] The Pulumi resource name.
@@ -374,13 +375,13 @@ class User extends pulumi.CustomResource {
           'azure:mongocluster/user:User',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     identityProviderType = registerOutput<String>('identityProviderType');
     mongoClusterId = registerOutput<String>('mongoClusterId');
     objectId = registerOutput<String>('objectId');
     principalType = registerOutput<String>('principalType');
-    roles = registerOutput<List<Map<String, dynamic>>>('roles');
+    roles = registerOutput<List<UserRole>>('roles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<UserRole>(guardedValue, (value) => UserRole.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [User] resource's state with the given [name] and [id].
@@ -388,11 +389,12 @@ class User extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     UserState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return User._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -410,6 +412,22 @@ class User extends pulumi.CustomResource {
     mongoClusterId = registerOutput<String>('mongoClusterId');
     objectId = registerOutput<String>('objectId');
     principalType = registerOutput<String>('principalType');
-    roles = registerOutput<List<Map<String, dynamic>>>('roles');
+    roles = registerOutput<List<UserRole>>('roles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<UserRole>(guardedValue, (value) => UserRole.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [User] resource.
+  User.reference(String urn)
+    : super(
+        'azure:mongocluster/user:User',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    identityProviderType = registerOutput<String>('identityProviderType');
+    mongoClusterId = registerOutput<String>('mongoClusterId');
+    objectId = registerOutput<String>('objectId');
+    principalType = registerOutput<String>('principalType');
+    roles = registerOutput<List<UserRole>>('roles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<UserRole>(guardedValue, (value) => UserRole.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

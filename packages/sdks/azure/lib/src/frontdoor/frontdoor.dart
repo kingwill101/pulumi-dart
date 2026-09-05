@@ -1,5 +1,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'frontdoor_args.dart';
+import 'frontdoor_backend_pool.dart';
+import 'frontdoor_backend_pool_health_probe.dart';
+import 'frontdoor_backend_pool_load_balancing.dart';
+import 'frontdoor_backend_pool_setting.dart';
+import 'frontdoor_explicit_resource_order.dart';
+import 'frontdoor_frontend_endpoint.dart';
+import 'frontdoor_routing_rule.dart';
 import 'frontdoor_state.dart';
 
 /// &gt; **IMPORTANT** This deploys an Azure Front Door (classic) resource which has been deprecated and will receive security updates only. Please migrate your existing Azure Front Door (classic) deployments to the new Azure Front Door (standard/premium) resources. For your convenience, the service team has exposed a `Front Door Classic` to `Front Door Standard/Premium` [migration tool](https://learn.microsoft.com/azure/frontdoor/tier-migration) to allow you to migrate your existing `Front Door Classic` instances to the new `Front Door Standard/Premium` product tiers.
@@ -460,28 +467,28 @@ import 'frontdoor_state.dart';
 /// ```
 class Frontdoor extends pulumi.CustomResource {
   /// A `backendPoolHealthProbe` block as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>> backendPoolHealthProbes;
+  late final pulumi.Output<List<FrontdoorBackendPoolHealthProbe>> backendPoolHealthProbes;
   /// A map/dictionary of Backend Pool Health Probe Names (key) to the Backend Pool Health Probe ID (value)
   late final pulumi.Output<Map<String, String>> backendPoolHealthProbesMap;
   /// A map/dictionary of Backend Pool Load Balancing Setting Names (key) to the Backend Pool Load Balancing Setting ID (value)
   late final pulumi.Output<Map<String, String>> backendPoolLoadBalancingSettingsMap;
   /// A `backendPoolLoadBalancing` block as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>> backendPoolLoadBalancings;
+  late final pulumi.Output<List<FrontdoorBackendPoolLoadBalancing>> backendPoolLoadBalancings;
   /// A `backendPoolSettings` block as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>> backendPoolSettings;
+  late final pulumi.Output<List<FrontdoorBackendPoolSetting>> backendPoolSettings;
   /// A `backendPool` block as defined below.
   ///
   /// &gt; Azure by default allows specifying up to 50 Backend Pools - but this quota can be increased via Microsoft Support.
-  late final pulumi.Output<List<Map<String, dynamic>>> backendPools;
+  late final pulumi.Output<List<FrontdoorBackendPool>> backendPools;
   /// A map/dictionary of Backend Pool Names (key) to the Backend Pool ID (value)
   late final pulumi.Output<Map<String, String>> backendPoolsMap;
   /// The host that each frontendEndpoint must CNAME to.
   late final pulumi.Output<String> cname;
-  late final pulumi.Output<List<Map<String, dynamic>>> explicitResourceOrders;
+  late final pulumi.Output<List<FrontdoorExplicitResourceOrder>> explicitResourceOrders;
   /// A friendly name for the Front Door service.
   late final pulumi.Output<String?> friendlyName;
   /// A `frontendEndpoint` block as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>> frontendEndpoints;
+  late final pulumi.Output<List<FrontdoorFrontendEndpoint>> frontendEndpoints;
   /// A map/dictionary of Frontend Endpoint Names (key) to the Frontend Endpoint ID (value)
   late final pulumi.Output<Map<String, String>> frontendEndpointsMap;
   /// The unique ID of the Front Door which is embedded into the incoming headers `X-Azure-FDID` attribute and maybe used to filter traffic sent by the Front Door to your backend.
@@ -493,7 +500,7 @@ class Frontdoor extends pulumi.CustomResource {
   /// Specifies the name of the Resource Group in which the Front Door service should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
   /// A `routingRule` block as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>> routingRules;
+  late final pulumi.Output<List<FrontdoorRoutingRule>> routingRules;
   /// A map/dictionary of Routing Rule Names (key) to the Routing Rule ID (value)
   late final pulumi.Output<Map<String, String>> routingRulesMap;
   /// A mapping of tags to assign to the resource.
@@ -511,27 +518,27 @@ class Frontdoor extends pulumi.CustomResource {
           'azure:frontdoor/frontdoor:Frontdoor',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
-    backendPoolHealthProbes = registerOutput<List<Map<String, dynamic>>>('backendPoolHealthProbes');
-    backendPoolHealthProbesMap = registerOutput<Map<String, String>>('backendPoolHealthProbesMap');
-    backendPoolLoadBalancingSettingsMap = registerOutput<Map<String, String>>('backendPoolLoadBalancingSettingsMap');
-    backendPoolLoadBalancings = registerOutput<List<Map<String, dynamic>>>('backendPoolLoadBalancings');
-    backendPoolSettings = registerOutput<List<Map<String, dynamic>>>('backendPoolSettings');
-    backendPools = registerOutput<List<Map<String, dynamic>>>('backendPools');
-    backendPoolsMap = registerOutput<Map<String, String>>('backendPoolsMap');
+    backendPoolHealthProbes = registerOutput<List<FrontdoorBackendPoolHealthProbe>>('backendPoolHealthProbes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FrontdoorBackendPoolHealthProbe>(guardedValue, (value) => FrontdoorBackendPoolHealthProbe.fromMap((value as Map).cast<String, dynamic>())); });
+    backendPoolHealthProbesMap = registerOutput<Map<String, String>>('backendPoolHealthProbesMap', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    backendPoolLoadBalancingSettingsMap = registerOutput<Map<String, String>>('backendPoolLoadBalancingSettingsMap', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    backendPoolLoadBalancings = registerOutput<List<FrontdoorBackendPoolLoadBalancing>>('backendPoolLoadBalancings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FrontdoorBackendPoolLoadBalancing>(guardedValue, (value) => FrontdoorBackendPoolLoadBalancing.fromMap((value as Map).cast<String, dynamic>())); });
+    backendPoolSettings = registerOutput<List<FrontdoorBackendPoolSetting>>('backendPoolSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FrontdoorBackendPoolSetting>(guardedValue, (value) => FrontdoorBackendPoolSetting.fromMap((value as Map).cast<String, dynamic>())); });
+    backendPools = registerOutput<List<FrontdoorBackendPool>>('backendPools', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FrontdoorBackendPool>(guardedValue, (value) => FrontdoorBackendPool.fromMap((value as Map).cast<String, dynamic>())); });
+    backendPoolsMap = registerOutput<Map<String, String>>('backendPoolsMap', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     cname = registerOutput<String>('cname');
-    explicitResourceOrders = registerOutput<List<Map<String, dynamic>>>('explicitResourceOrders');
+    explicitResourceOrders = registerOutput<List<FrontdoorExplicitResourceOrder>>('explicitResourceOrders', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FrontdoorExplicitResourceOrder>(guardedValue, (value) => FrontdoorExplicitResourceOrder.fromMap((value as Map).cast<String, dynamic>())); });
     friendlyName = registerOutput<String?>('friendlyName');
-    frontendEndpoints = registerOutput<List<Map<String, dynamic>>>('frontendEndpoints');
-    frontendEndpointsMap = registerOutput<Map<String, String>>('frontendEndpointsMap');
+    frontendEndpoints = registerOutput<List<FrontdoorFrontendEndpoint>>('frontendEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FrontdoorFrontendEndpoint>(guardedValue, (value) => FrontdoorFrontendEndpoint.fromMap((value as Map).cast<String, dynamic>())); });
+    frontendEndpointsMap = registerOutput<Map<String, String>>('frontendEndpointsMap', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     headerFrontdoorId = registerOutput<String>('headerFrontdoorId');
     loadBalancerEnabled = registerOutput<bool?>('loadBalancerEnabled');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    routingRules = registerOutput<List<Map<String, dynamic>>>('routingRules');
-    routingRulesMap = registerOutput<Map<String, String>>('routingRulesMap');
-    tags = registerOutput<Map<String, String>?>('tags');
+    routingRules = registerOutput<List<FrontdoorRoutingRule>>('routingRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FrontdoorRoutingRule>(guardedValue, (value) => FrontdoorRoutingRule.fromMap((value as Map).cast<String, dynamic>())); });
+    routingRulesMap = registerOutput<Map<String, String>>('routingRulesMap', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Frontdoor] resource's state with the given [name] and [id].
@@ -539,11 +546,12 @@ class Frontdoor extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FrontdoorState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Frontdoor._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -557,24 +565,54 @@ class Frontdoor extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    backendPoolHealthProbes = registerOutput<List<Map<String, dynamic>>>('backendPoolHealthProbes');
-    backendPoolHealthProbesMap = registerOutput<Map<String, String>>('backendPoolHealthProbesMap');
-    backendPoolLoadBalancingSettingsMap = registerOutput<Map<String, String>>('backendPoolLoadBalancingSettingsMap');
-    backendPoolLoadBalancings = registerOutput<List<Map<String, dynamic>>>('backendPoolLoadBalancings');
-    backendPoolSettings = registerOutput<List<Map<String, dynamic>>>('backendPoolSettings');
-    backendPools = registerOutput<List<Map<String, dynamic>>>('backendPools');
-    backendPoolsMap = registerOutput<Map<String, String>>('backendPoolsMap');
+    backendPoolHealthProbes = registerOutput<List<FrontdoorBackendPoolHealthProbe>>('backendPoolHealthProbes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FrontdoorBackendPoolHealthProbe>(guardedValue, (value) => FrontdoorBackendPoolHealthProbe.fromMap((value as Map).cast<String, dynamic>())); });
+    backendPoolHealthProbesMap = registerOutput<Map<String, String>>('backendPoolHealthProbesMap', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    backendPoolLoadBalancingSettingsMap = registerOutput<Map<String, String>>('backendPoolLoadBalancingSettingsMap', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    backendPoolLoadBalancings = registerOutput<List<FrontdoorBackendPoolLoadBalancing>>('backendPoolLoadBalancings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FrontdoorBackendPoolLoadBalancing>(guardedValue, (value) => FrontdoorBackendPoolLoadBalancing.fromMap((value as Map).cast<String, dynamic>())); });
+    backendPoolSettings = registerOutput<List<FrontdoorBackendPoolSetting>>('backendPoolSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FrontdoorBackendPoolSetting>(guardedValue, (value) => FrontdoorBackendPoolSetting.fromMap((value as Map).cast<String, dynamic>())); });
+    backendPools = registerOutput<List<FrontdoorBackendPool>>('backendPools', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FrontdoorBackendPool>(guardedValue, (value) => FrontdoorBackendPool.fromMap((value as Map).cast<String, dynamic>())); });
+    backendPoolsMap = registerOutput<Map<String, String>>('backendPoolsMap', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     cname = registerOutput<String>('cname');
-    explicitResourceOrders = registerOutput<List<Map<String, dynamic>>>('explicitResourceOrders');
+    explicitResourceOrders = registerOutput<List<FrontdoorExplicitResourceOrder>>('explicitResourceOrders', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FrontdoorExplicitResourceOrder>(guardedValue, (value) => FrontdoorExplicitResourceOrder.fromMap((value as Map).cast<String, dynamic>())); });
     friendlyName = registerOutput<String?>('friendlyName');
-    frontendEndpoints = registerOutput<List<Map<String, dynamic>>>('frontendEndpoints');
-    frontendEndpointsMap = registerOutput<Map<String, String>>('frontendEndpointsMap');
+    frontendEndpoints = registerOutput<List<FrontdoorFrontendEndpoint>>('frontendEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FrontdoorFrontendEndpoint>(guardedValue, (value) => FrontdoorFrontendEndpoint.fromMap((value as Map).cast<String, dynamic>())); });
+    frontendEndpointsMap = registerOutput<Map<String, String>>('frontendEndpointsMap', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     headerFrontdoorId = registerOutput<String>('headerFrontdoorId');
     loadBalancerEnabled = registerOutput<bool?>('loadBalancerEnabled');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    routingRules = registerOutput<List<Map<String, dynamic>>>('routingRules');
-    routingRulesMap = registerOutput<Map<String, String>>('routingRulesMap');
-    tags = registerOutput<Map<String, String>?>('tags');
+    routingRules = registerOutput<List<FrontdoorRoutingRule>>('routingRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FrontdoorRoutingRule>(guardedValue, (value) => FrontdoorRoutingRule.fromMap((value as Map).cast<String, dynamic>())); });
+    routingRulesMap = registerOutput<Map<String, String>>('routingRulesMap', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Frontdoor] resource.
+  Frontdoor.reference(String urn)
+    : super(
+        'azure:frontdoor/frontdoor:Frontdoor',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    backendPoolHealthProbes = registerOutput<List<FrontdoorBackendPoolHealthProbe>>('backendPoolHealthProbes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FrontdoorBackendPoolHealthProbe>(guardedValue, (value) => FrontdoorBackendPoolHealthProbe.fromMap((value as Map).cast<String, dynamic>())); });
+    backendPoolHealthProbesMap = registerOutput<Map<String, String>>('backendPoolHealthProbesMap', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    backendPoolLoadBalancingSettingsMap = registerOutput<Map<String, String>>('backendPoolLoadBalancingSettingsMap', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    backendPoolLoadBalancings = registerOutput<List<FrontdoorBackendPoolLoadBalancing>>('backendPoolLoadBalancings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FrontdoorBackendPoolLoadBalancing>(guardedValue, (value) => FrontdoorBackendPoolLoadBalancing.fromMap((value as Map).cast<String, dynamic>())); });
+    backendPoolSettings = registerOutput<List<FrontdoorBackendPoolSetting>>('backendPoolSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FrontdoorBackendPoolSetting>(guardedValue, (value) => FrontdoorBackendPoolSetting.fromMap((value as Map).cast<String, dynamic>())); });
+    backendPools = registerOutput<List<FrontdoorBackendPool>>('backendPools', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FrontdoorBackendPool>(guardedValue, (value) => FrontdoorBackendPool.fromMap((value as Map).cast<String, dynamic>())); });
+    backendPoolsMap = registerOutput<Map<String, String>>('backendPoolsMap', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    cname = registerOutput<String>('cname');
+    explicitResourceOrders = registerOutput<List<FrontdoorExplicitResourceOrder>>('explicitResourceOrders', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FrontdoorExplicitResourceOrder>(guardedValue, (value) => FrontdoorExplicitResourceOrder.fromMap((value as Map).cast<String, dynamic>())); });
+    friendlyName = registerOutput<String?>('friendlyName');
+    frontendEndpoints = registerOutput<List<FrontdoorFrontendEndpoint>>('frontendEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FrontdoorFrontendEndpoint>(guardedValue, (value) => FrontdoorFrontendEndpoint.fromMap((value as Map).cast<String, dynamic>())); });
+    frontendEndpointsMap = registerOutput<Map<String, String>>('frontendEndpointsMap', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    headerFrontdoorId = registerOutput<String>('headerFrontdoorId');
+    loadBalancerEnabled = registerOutput<bool?>('loadBalancerEnabled');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    routingRules = registerOutput<List<FrontdoorRoutingRule>>('routingRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FrontdoorRoutingRule>(guardedValue, (value) => FrontdoorRoutingRule.fromMap((value as Map).cast<String, dynamic>())); });
+    routingRulesMap = registerOutput<Map<String, String>>('routingRulesMap', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

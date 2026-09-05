@@ -15,39 +15,39 @@ import 'firewall_policy_tls_certificate.dart';
 /// {@macro pulumi_network_firewall_policy_firewall_policy_args_doc}
 class FirewallPolicyArgs {
   /// Whether enable auto learn private ip range.
-  final pulumi.Input<bool>? autoLearnPrivateRangesEnabled;
+  final pulumi.Input<bool?>? autoLearnPrivateRangesEnabled;
   /// The ID of the base Firewall Policy.
-  final pulumi.Input<String>? basePolicyId;
+  final pulumi.Input<String?>? basePolicyId;
   /// A `dns` block as defined below.
-  final pulumi.Input<FirewallPolicyDns>? dns;
+  final pulumi.Input<FirewallPolicyDns?>? dns;
   /// A `explicitProxy` block as defined below.
-  final pulumi.Input<FirewallPolicyExplicitProxy>? explicitProxy;
+  final pulumi.Input<FirewallPolicyExplicitProxy?>? explicitProxy;
   /// An `identity` block as defined below.
-  final pulumi.Input<FirewallPolicyIdentity>? identity;
+  final pulumi.Input<FirewallPolicyIdentity?>? identity;
   /// An `insights` block as defined below.
-  final pulumi.Input<FirewallPolicyInsights>? insights;
+  final pulumi.Input<FirewallPolicyInsights?>? insights;
   /// A `intrusionDetection` block as defined below.
-  final pulumi.Input<FirewallPolicyIntrusionDetection>? intrusionDetection;
+  final pulumi.Input<FirewallPolicyIntrusionDetection?>? intrusionDetection;
   /// The Azure Region where the Firewall Policy should exist. Changing this forces a new Firewall Policy to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name which should be used for this Firewall Policy. Changing this forces a new Firewall Policy to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A list of private IP ranges to which traffic will not be SNAT.
-  final pulumi.Input<List<String>>? privateIpRanges;
+  final pulumi.Input<List<String>?>? privateIpRanges;
   /// The name of the Resource Group where the Firewall Policy should exist. Changing this forces a new Firewall Policy to be created.
   final pulumi.Input<String> resourceGroupName;
   /// The SKU Tier of the Firewall Policy. Possible values are `Standard`, `Premium` and `Basic`. Defaults to `Standard`. Changing this forces a new Firewall Policy to be created.
-  final pulumi.Input<String>? sku;
+  final pulumi.Input<String?>? sku;
   /// Whether SQL Redirect traffic filtering is allowed. Enabling this flag requires no rule using ports between `11000`-`11999`.
-  final pulumi.Input<bool>? sqlRedirectAllowed;
+  final pulumi.Input<bool?>? sqlRedirectAllowed;
   /// A mapping of tags which should be assigned to the Firewall Policy.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A `threatIntelligenceAllowlist` block as defined below.
-  final pulumi.Input<FirewallPolicyThreatIntelligenceAllowlist>? threatIntelligenceAllowlist;
+  final pulumi.Input<FirewallPolicyThreatIntelligenceAllowlist?>? threatIntelligenceAllowlist;
   /// The operation mode for Threat Intelligence. Possible values are `Alert`, `Deny` and `Off`. Defaults to `Alert`.
-  final pulumi.Input<String>? threatIntelligenceMode;
+  final pulumi.Input<String?>? threatIntelligenceMode;
   /// A `tlsCertificate` block as defined below.
-  final pulumi.Input<FirewallPolicyTlsCertificate>? tlsCertificate;
+  final pulumi.Input<FirewallPolicyTlsCertificate?>? tlsCertificate;
 
   /// Creates a new [FirewallPolicyArgs].
   /// [autoLearnPrivateRangesEnabled] Whether enable auto learn private ip range.

@@ -4,27 +4,27 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FluxConfigurationGitRepository {
   /// Specifies the Base64-encoded HTTPS certificate authority contents used to access git private git repositories over HTTPS.
-  final pulumi.Input<String>? httpsCaCertBase64;
+  final pulumi.Input<String?>? httpsCaCertBase64;
   /// Specifies the Base64-encoded HTTPS personal access token or password that will be used to access the repository.
-  final pulumi.Input<String>? httpsKeyBase64;
+  final pulumi.Input<String?>? httpsKeyBase64;
   /// Specifies the plaintext HTTPS username used to access private git repositories over HTTPS.
-  final pulumi.Input<String>? httpsUser;
+  final pulumi.Input<String?>? httpsUser;
   /// Specifies the name of a local secret on the Kubernetes cluster to use as the authentication secret rather than the managed or user-provided configuration secrets. It must be between 1 and 63 characters. It can contain only lowercase letters, numbers, and hyphens (-). It must start and end with a lowercase letter or number.
-  final pulumi.Input<String>? localAuthReference;
+  final pulumi.Input<String?>? localAuthReference;
   /// Specifies the OIDC provider used for workload identity federation authentication against git repositories. Possible values are `Azure`, `Generic`, `GitHub`.
-  final pulumi.Input<String>? provider;
+  final pulumi.Input<String?>? provider;
   /// Specifies the source reference type for the GitRepository object. Possible values are `branch`, `commit`, `semver` and `tag`.
   final pulumi.Input<String> referenceType;
   /// Specifies the source reference value for the GitRepository object.
   final pulumi.Input<String> referenceValue;
   /// Specifies the Base64-encoded knownHosts value containing public SSH keys required to access private git repositories over SSH.
-  final pulumi.Input<String>? sshKnownHostsBase64;
+  final pulumi.Input<String?>? sshKnownHostsBase64;
   /// Specifies the Base64-encoded SSH private key in PEM format.
-  final pulumi.Input<String>? sshPrivateKeyBase64;
+  final pulumi.Input<String?>? sshPrivateKeyBase64;
   /// Specifies the interval at which to re-reconcile the cluster git repository source with the remote. Defaults to `600`.
-  final pulumi.Input<int>? syncIntervalInSeconds;
+  final pulumi.Input<int?>? syncIntervalInSeconds;
   /// Specifies the maximum time to attempt to reconcile the cluster git repository source with the remote. Defaults to `600`.
-  final pulumi.Input<int>? timeoutInSeconds;
+  final pulumi.Input<int?>? timeoutInSeconds;
   /// Specifies the URL to sync for the flux configuration git repository. It must start with `http://`, `https://`, `git@` or `ssh://`.
   final pulumi.Input<String> url;
 
@@ -84,8 +84,8 @@ class FluxConfigurationGitRepository {
       referenceValue: pulumi.Input.fromValue(map['referenceValue'] as String),
       sshKnownHostsBase64: (() { final guardedValue = map['sshKnownHostsBase64']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sshPrivateKeyBase64: (() { final guardedValue = map['sshPrivateKeyBase64']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      syncIntervalInSeconds: (() { final guardedValue = map['syncIntervalInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      timeoutInSeconds: (() { final guardedValue = map['timeoutInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      syncIntervalInSeconds: (() { final guardedValue = map['syncIntervalInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      timeoutInSeconds: (() { final guardedValue = map['timeoutInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       url: pulumi.Input.fromValue(map['url'] as String),
     );
   }

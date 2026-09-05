@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DatasetAzureBlobSchemaColumn {
   /// The description of the column.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The name of the column.
   final pulumi.Input<String> name;
   /// Type of the column. Valid values are `Byte`, `Byte[]`, `Boolean`, `Date`, `DateTime`,`DateTimeOffset`, `Decimal`, `Double`, `Guid`, `Int16`, `Int32`, `Int64`, `Single`, `String`, `TimeSpan`. Please note these values are case sensitive.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [DatasetAzureBlobSchemaColumn].
   /// [description] The description of the column.

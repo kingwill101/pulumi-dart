@@ -10,53 +10,53 @@ import 'cluster_virtual_network_configuration.dart';
 /// Input properties used for looking up and filtering Cluster resources.
 class ClusterState {
   /// List of allowed FQDNs (Fully Qualified Domain Name) for egress from Cluster.
-  final pulumi.Input<List<String>>? allowedFqdns;
+  final pulumi.Input<List<String>?>? allowedFqdns;
   /// The list of ips in the format of CIDR allowed to connect to the cluster.
-  final pulumi.Input<List<String>>? allowedIpRanges;
+  final pulumi.Input<List<String>?>? allowedIpRanges;
   /// Specifies if the cluster could be automatically stopped (due to lack of data or no activity for many days). Defaults to `true`.
-  final pulumi.Input<bool>? autoStopEnabled;
+  final pulumi.Input<bool?>? autoStopEnabled;
   /// The Kusto Cluster URI to be used for data ingestion.
-  final pulumi.Input<String>? dataIngestionUri;
+  final pulumi.Input<String?>? dataIngestionUri;
   /// Specifies if the cluster's disks are encrypted. Defaults to `false`.
-  final pulumi.Input<bool>? diskEncryptionEnabled;
+  final pulumi.Input<bool?>? diskEncryptionEnabled;
   /// Is the cluster's double encryption enabled? Changing this forces a new resource to be created.
-  final pulumi.Input<bool>? doubleEncryptionEnabled;
+  final pulumi.Input<bool?>? doubleEncryptionEnabled;
   /// An `identity` block as defined below.
-  final pulumi.Input<ClusterIdentity>? identity;
+  final pulumi.Input<ClusterIdentity?>? identity;
   /// A `languageExtension` block as defined below.
-  final pulumi.Input<List<ClusterLanguageExtension>>? languageExtension;
-  final pulumi.Input<List<ClusterLanguageExtension>>? languageExtensions;
+  final pulumi.Input<List<ClusterLanguageExtension>?>? languageExtension;
+  final pulumi.Input<List<ClusterLanguageExtension>?>? languageExtensions;
   /// The location where the Kusto Cluster should be created. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the Kusto Cluster to create. Only lowercase Alphanumeric characters allowed, starting with a letter. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// An `optimizedAutoScale` block as defined below.
-  final pulumi.Input<ClusterOptimizedAutoScale>? optimizedAutoScale;
+  final pulumi.Input<ClusterOptimizedAutoScale?>? optimizedAutoScale;
   /// Whether to restrict outbound network access. Defaults to `false`.
-  final pulumi.Input<bool>? outboundNetworkAccessRestricted;
+  final pulumi.Input<bool?>? outboundNetworkAccessRestricted;
   /// Indicates what public IP type to create - IPv4 (default), or DualStack (both IPv4 and IPv6). Defaults to `IPv4`.
-  final pulumi.Input<String>? publicIpType;
+  final pulumi.Input<String?>? publicIpType;
   /// Is the public network access enabled? Defaults to `true`.
-  final pulumi.Input<bool>? publicNetworkAccessEnabled;
+  final pulumi.Input<bool?>? publicNetworkAccessEnabled;
   /// Specifies if the purge operations are enabled. Defaults to `false`.
-  final pulumi.Input<bool>? purgeEnabled;
+  final pulumi.Input<bool?>? purgeEnabled;
   /// Specifies the Resource Group where the Kusto Cluster should exist. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// A `sku` block as defined below.
-  final pulumi.Input<ClusterSku>? sku;
+  final pulumi.Input<ClusterSku?>? sku;
   /// Specifies if the streaming ingest is enabled. Defaults to `false`.
-  final pulumi.Input<bool>? streamingIngestionEnabled;
+  final pulumi.Input<bool?>? streamingIngestionEnabled;
   /// A mapping of tags to assign to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Specifies a list of tenant IDs that are trusted by the cluster. Default setting trusts all other tenants. Use `trustedExternalTenants = ["*"]` to explicitly allow all other tenants, `trustedExternalTenants = ["MyTenantOnly"]` for only your tenant or `trustedExternalTenants = ["&lt;tenantId1&gt;", "&lt;tenantIdx&gt;"]` to allow specific other tenants.
   ///
   /// &gt; **Note:** In v3.0 of `azurerm` a new or updated Kusto Cluster will only allow your own tenant by default. Explicit configuration of this setting will change from `trustedExternalTenants = ["MyTenantOnly"]` to `trustedExternalTenants = []`.
-  final pulumi.Input<List<String>>? trustedExternalTenants;
+  final pulumi.Input<List<String>?>? trustedExternalTenants;
   /// The FQDN of the Azure Kusto Cluster.
-  final pulumi.Input<String>? uri;
-  final pulumi.Input<ClusterVirtualNetworkConfiguration>? virtualNetworkConfiguration;
+  final pulumi.Input<String?>? uri;
+  final pulumi.Input<ClusterVirtualNetworkConfiguration?>? virtualNetworkConfiguration;
   /// Specifies a list of Availability Zones in which this Kusto Cluster should be located. Changing this forces a new Kusto Cluster to be created.
-  final pulumi.Input<List<String>>? zones;
+  final pulumi.Input<List<String>?>? zones;
 
   /// Creates a new [ClusterState].
   /// [allowedFqdns] List of allowed FQDNs (Fully Qualified Domain Name) for egress from Cluster.

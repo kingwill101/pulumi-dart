@@ -10,7 +10,7 @@ class ManagedHardwareSecurityModuleRoleAssignmentArgs {
   /// The ID of a Managed Hardware Security Module resource. Changing this forces a new Managed Hardware Security Module to be created.
   final pulumi.Input<String> managedHsmId;
   /// The name in GUID notation which should be used for this Managed Hardware Security Module Role Assignment. Changing this forces a new Managed Hardware Security Module to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The principal ID to be assigned to this role. It can point to a user, service principal, or security group. Changing this forces a new Managed Hardware Security Module to be created.
   final pulumi.Input<String> principalId;
   /// The resource ID of the role definition to assign. Changing this forces a new Managed Hardware Security Module to be created.

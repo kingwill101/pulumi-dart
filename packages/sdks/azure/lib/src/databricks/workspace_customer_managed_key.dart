@@ -231,7 +231,7 @@ class WorkspaceCustomerManagedKey extends pulumi.CustomResource {
           'azure:databricks/workspaceCustomerManagedKey:WorkspaceCustomerManagedKey',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     keyVaultKeyId = registerOutput<String>('keyVaultKeyId');
     workspaceId = registerOutput<String>('workspaceId');
@@ -242,11 +242,12 @@ class WorkspaceCustomerManagedKey extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     WorkspaceCustomerManagedKeyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return WorkspaceCustomerManagedKey._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -260,6 +261,19 @@ class WorkspaceCustomerManagedKey extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    keyVaultKeyId = registerOutput<String>('keyVaultKeyId');
+    workspaceId = registerOutput<String>('workspaceId');
+  }
+
+  /// Creates a typed reference to an existing [WorkspaceCustomerManagedKey] resource.
+  WorkspaceCustomerManagedKey.reference(String urn)
+    : super(
+        'azure:databricks/workspaceCustomerManagedKey:WorkspaceCustomerManagedKey',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     keyVaultKeyId = registerOutput<String>('keyVaultKeyId');
     workspaceId = registerOutput<String>('workspaceId');
   }

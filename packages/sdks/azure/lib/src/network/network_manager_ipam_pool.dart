@@ -153,7 +153,7 @@ import 'network_manager_ipam_pool_state.dart';
 /// 		_, err = network.NewNetworkManagerIpamPool(ctx, "example", &network.NetworkManagerIpamPoolArgs{
 /// 			Name:             pulumi.String("example-ipam-pool"),
 /// 			Location:         pulumi.String("West Europe"),
-/// 			NetworkManagerId: exampleNetworkManager.ID(),
+/// 			NetworkManagerId: exampleNetworkManager.ID().ToIDOutput().ToStringOutput(),
 /// 			DisplayName:      pulumi.String("example-pool"),
 /// 			AddressPrefixes: pulumi.StringArray{
 /// 				pulumi.String("10.0.0.0/24"),
@@ -340,16 +340,16 @@ class NetworkManagerIpamPool extends pulumi.CustomResource {
           'azure:network/networkManagerIpamPool:NetworkManagerIpamPool',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
-    addressPrefixes = registerOutput<List<String>>('addressPrefixes');
+    addressPrefixes = registerOutput<List<String>>('addressPrefixes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     networkManagerId = registerOutput<String>('networkManagerId');
     parentPoolName = registerOutput<String?>('parentPoolName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [NetworkManagerIpamPool] resource's state with the given [name] and [id].
@@ -357,11 +357,12 @@ class NetworkManagerIpamPool extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     NetworkManagerIpamPoolState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return NetworkManagerIpamPool._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -375,13 +376,32 @@ class NetworkManagerIpamPool extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    addressPrefixes = registerOutput<List<String>>('addressPrefixes');
+    addressPrefixes = registerOutput<List<String>>('addressPrefixes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     networkManagerId = registerOutput<String>('networkManagerId');
     parentPoolName = registerOutput<String?>('parentPoolName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [NetworkManagerIpamPool] resource.
+  NetworkManagerIpamPool.reference(String urn)
+    : super(
+        'azure:network/networkManagerIpamPool:NetworkManagerIpamPool',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    addressPrefixes = registerOutput<List<String>>('addressPrefixes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String?>('displayName');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    networkManagerId = registerOutput<String>('networkManagerId');
+    parentPoolName = registerOutput<String?>('parentPoolName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

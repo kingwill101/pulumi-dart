@@ -100,7 +100,7 @@ import 'local_rulestack_certificate_state.dart';
 /// 		}
 /// 		_, err = paloalto.NewLocalRulestackCertificate(ctx, "example", &paloalto.LocalRulestackCertificateArgs{
 /// 			Name:        pulumi.String("example"),
-/// 			RulestackId: exampleLocalRulestack.ID(),
+/// 			RulestackId: exampleLocalRulestack.ID().ToIDOutput().ToStringOutput(),
 /// 			SelfSigned:  pulumi.Bool(true),
 /// 		})
 /// 		if err != nil {
@@ -245,7 +245,7 @@ class LocalRulestackCertificate extends pulumi.CustomResource {
           'azure:paloalto/localRulestackCertificate:LocalRulestackCertificate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     auditComment = registerOutput<String?>('auditComment');
     description = registerOutput<String?>('description');
@@ -260,11 +260,12 @@ class LocalRulestackCertificate extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LocalRulestackCertificateState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LocalRulestackCertificate._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -278,6 +279,23 @@ class LocalRulestackCertificate extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    auditComment = registerOutput<String?>('auditComment');
+    description = registerOutput<String?>('description');
+    keyVaultCertificateId = registerOutput<String?>('keyVaultCertificateId');
+    this.name = registerOutput<String>('name');
+    rulestackId = registerOutput<String>('rulestackId');
+    selfSigned = registerOutput<bool?>('selfSigned');
+  }
+
+  /// Creates a typed reference to an existing [LocalRulestackCertificate] resource.
+  LocalRulestackCertificate.reference(String urn)
+    : super(
+        'azure:paloalto/localRulestackCertificate:LocalRulestackCertificate',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     auditComment = registerOutput<String?>('auditComment');
     description = registerOutput<String?>('description');
     keyVaultCertificateId = registerOutput<String?>('keyVaultCertificateId');

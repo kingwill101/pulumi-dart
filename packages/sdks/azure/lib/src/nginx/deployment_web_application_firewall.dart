@@ -7,7 +7,7 @@ class DeploymentWebApplicationFirewall {
   /// Whether WAF is enabled/disabled for this NGINX Deployment.
   final pulumi.Input<bool> activationStateEnabled;
   /// A `status` block as defined below.
-  final pulumi.Input<List<DeploymentWebApplicationFirewallStatus>>? statuses;
+  final pulumi.Input<List<DeploymentWebApplicationFirewallStatus>?>? statuses;
 
   /// Creates a new [DeploymentWebApplicationFirewall].
   /// [activationStateEnabled] Whether WAF is enabled/disabled for this NGINX Deployment.

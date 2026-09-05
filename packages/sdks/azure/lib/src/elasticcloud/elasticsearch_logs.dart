@@ -5,13 +5,13 @@ import 'elasticsearch_logs_filtering_tag.dart';
 
 class ElasticsearchLogs {
   /// A list of `filteringTag` blocks as defined above.
-  final pulumi.Input<List<ElasticsearchLogsFilteringTag>>? filteringTags;
+  final pulumi.Input<List<ElasticsearchLogsFilteringTag>?>? filteringTags;
   /// Specifies if the Azure Activity Logs should be sent to the Elasticsearch cluster. Defaults to `false`.
-  final pulumi.Input<bool>? sendActivityLogs;
+  final pulumi.Input<bool?>? sendActivityLogs;
   /// Specifies if the AzureAD Logs should be sent to the Elasticsearch cluster. Defaults to `false`.
-  final pulumi.Input<bool>? sendAzureadLogs;
+  final pulumi.Input<bool?>? sendAzureadLogs;
   /// Specifies if the Azure Subscription Logs should be sent to the Elasticsearch cluster. Defaults to `false`.
-  final pulumi.Input<bool>? sendSubscriptionLogs;
+  final pulumi.Input<bool?>? sendSubscriptionLogs;
 
   /// Creates a new [ElasticsearchLogs].
   /// [filteringTags] A list of `filteringTag` blocks as defined above.

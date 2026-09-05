@@ -113,7 +113,7 @@ import 'email_service_domain_sender_username_state.dart';
 /// 		}
 /// 		exampleEmailServiceDomain, err := communication.NewEmailServiceDomain(ctx, "example", &communication.EmailServiceDomainArgs{
 /// 			Name:             pulumi.String("AzureManagedDomain"),
-/// 			EmailServiceId:   exampleEmailService.ID(),
+/// 			EmailServiceId:   exampleEmailService.ID().ToIDOutput().ToStringOutput(),
 /// 			DomainManagement: pulumi.String("AzureManaged"),
 /// 		})
 /// 		if err != nil {
@@ -121,7 +121,7 @@ import 'email_service_domain_sender_username_state.dart';
 /// 		}
 /// 		_, err = communication.NewEmailServiceDomainSenderUsername(ctx, "example", &communication.EmailServiceDomainSenderUsernameArgs{
 /// 			Name:                 pulumi.String("example-su"),
-/// 			EmailServiceDomainId: exampleEmailServiceDomain.ID(),
+/// 			EmailServiceDomainId: exampleEmailServiceDomain.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -274,7 +274,7 @@ class EmailServiceDomainSenderUsername extends pulumi.CustomResource {
           'azure:communication/emailServiceDomainSenderUsername:EmailServiceDomainSenderUsername',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     displayName = registerOutput<String?>('displayName');
     emailServiceDomainId = registerOutput<String>('emailServiceDomainId');
@@ -286,11 +286,12 @@ class EmailServiceDomainSenderUsername extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EmailServiceDomainSenderUsernameState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return EmailServiceDomainSenderUsername._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -304,6 +305,20 @@ class EmailServiceDomainSenderUsername extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    displayName = registerOutput<String?>('displayName');
+    emailServiceDomainId = registerOutput<String>('emailServiceDomainId');
+    this.name = registerOutput<String>('name');
+  }
+
+  /// Creates a typed reference to an existing [EmailServiceDomainSenderUsername] resource.
+  EmailServiceDomainSenderUsername.reference(String urn)
+    : super(
+        'azure:communication/emailServiceDomainSenderUsername:EmailServiceDomainSenderUsername',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     displayName = registerOutput<String?>('displayName');
     emailServiceDomainId = registerOutput<String>('emailServiceDomainId');
     this.name = registerOutput<String>('name');

@@ -5,25 +5,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering OutputTable resources.
 class OutputTableState {
   /// The number of records for a batch operation. Must be between `1` and `100`.
-  final pulumi.Input<int>? batchSize;
+  final pulumi.Input<int?>? batchSize;
   /// A list of the column names to be removed from output event entities.
-  final pulumi.Input<List<String>>? columnsToRemoves;
+  final pulumi.Input<List<String>?>? columnsToRemoves;
   /// The name of the Stream Output. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the output column that contains the partition key.
-  final pulumi.Input<String>? partitionKey;
+  final pulumi.Input<String?>? partitionKey;
   /// The name of the Resource Group where the Stream Analytics Job exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// The name of the output column that contains the row key.
-  final pulumi.Input<String>? rowKey;
+  final pulumi.Input<String?>? rowKey;
   /// The Access Key which should be used to connect to this Storage Account.
-  final pulumi.Input<String>? storageAccountKey;
+  final pulumi.Input<String?>? storageAccountKey;
   /// The name of the Storage Account.
-  final pulumi.Input<String>? storageAccountName;
+  final pulumi.Input<String?>? storageAccountName;
   /// The name of the Stream Analytics Job. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? streamAnalyticsJobName;
+  final pulumi.Input<String?>? streamAnalyticsJobName;
   /// The name of the table where the stream should be output to.
-  final pulumi.Input<String>? table;
+  final pulumi.Input<String?>? table;
 
   /// Creates a new [OutputTableState].
   /// [batchSize] The number of records for a batch operation. Must be between `1` and `100`.
@@ -66,7 +66,7 @@ class OutputTableState {
 
   factory OutputTableState.fromMap(Map<String, dynamic> map) {
     return OutputTableState(
-      batchSize: (() { final guardedValue = map['batchSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      batchSize: (() { final guardedValue = map['batchSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       columnsToRemoves: (() { final guardedValue = map['columnsToRemoves']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       partitionKey: (() { final guardedValue = map['partitionKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

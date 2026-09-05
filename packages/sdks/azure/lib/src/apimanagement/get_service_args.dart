@@ -12,7 +12,7 @@ class GetServiceArgs {
   /// The Name of the Resource Group in which the API Management Service exists.
   final pulumi.Input<String> resourceGroupName;
   /// A mapping of tags assigned to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetServiceArgs].
   /// [name] The name of the API Management service.

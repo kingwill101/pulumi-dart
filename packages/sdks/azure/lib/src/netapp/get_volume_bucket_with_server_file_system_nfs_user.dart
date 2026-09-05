@@ -25,8 +25,8 @@ class GetVolumeBucketWithServerFileSystemNfsUser {
 
   factory GetVolumeBucketWithServerFileSystemNfsUser.fromMap(Map<String, dynamic> map) {
     return GetVolumeBucketWithServerFileSystemNfsUser(
-      groupId: pulumi.Input.fromValue(map['groupId'] as int),
-      userId: pulumi.Input.fromValue(map['userId'] as int),
+      groupId: pulumi.Input.fromValue((map['groupId'] as num).toInt()),
+      userId: pulumi.Input.fromValue((map['userId'] as num).toInt()),
     );
   }
 }

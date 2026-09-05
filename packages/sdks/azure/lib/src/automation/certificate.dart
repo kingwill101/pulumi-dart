@@ -300,10 +300,11 @@ class Certificate extends pulumi.CustomResource {
           'azure:automation/certificate:Certificate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['base64'],
         ) {
     automationAccountName = registerOutput<String>('automationAccountName');
-    base64 = registerOutput<String>('base64');
+    base64 = registerOutput<String>('base64', isSecret: true);
     description = registerOutput<String?>('description');
     exportable = registerOutput<bool?>('exportable');
     this.name = registerOutput<String>('name');
@@ -316,11 +317,12 @@ class Certificate extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CertificateState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Certificate._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -335,7 +337,26 @@ class Certificate extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     automationAccountName = registerOutput<String>('automationAccountName');
-    base64 = registerOutput<String>('base64');
+    base64 = registerOutput<String>('base64', isSecret: true);
+    description = registerOutput<String?>('description');
+    exportable = registerOutput<bool?>('exportable');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    thumbprint = registerOutput<String>('thumbprint');
+  }
+
+  /// Creates a typed reference to an existing [Certificate] resource.
+  Certificate.reference(String urn)
+    : super(
+        'azure:automation/certificate:Certificate',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['base64'],
+        isResourceReference: true,
+      ) {
+    automationAccountName = registerOutput<String>('automationAccountName');
+    base64 = registerOutput<String>('base64', isSecret: true);
     description = registerOutput<String?>('description');
     exportable = registerOutput<bool?>('exportable');
     this.name = registerOutput<String>('name');

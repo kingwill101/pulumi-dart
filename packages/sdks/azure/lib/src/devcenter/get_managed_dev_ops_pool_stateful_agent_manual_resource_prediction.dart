@@ -67,7 +67,7 @@ class GetManagedDevOpsPoolStatefulAgentManualResourcePrediction {
 
   factory GetManagedDevOpsPoolStatefulAgentManualResourcePrediction.fromMap(Map<String, dynamic> map) {
     return GetManagedDevOpsPoolStatefulAgentManualResourcePrediction(
-      allWeekSchedule: pulumi.Input.fromValue(map['allWeekSchedule'] as int),
+      allWeekSchedule: pulumi.Input.fromValue((map['allWeekSchedule'] as num).toInt()),
       fridaySchedules: pulumi.Input.fromValue(pulumi.Input.decodeList<GetManagedDevOpsPoolStatefulAgentManualResourcePredictionFridaySchedule>(map['fridaySchedules']!, (value) => GetManagedDevOpsPoolStatefulAgentManualResourcePredictionFridaySchedule.fromMap((value as Map).cast<String, dynamic>()))),
       mondaySchedules: pulumi.Input.fromValue(pulumi.Input.decodeList<GetManagedDevOpsPoolStatefulAgentManualResourcePredictionMondaySchedule>(map['mondaySchedules']!, (value) => GetManagedDevOpsPoolStatefulAgentManualResourcePredictionMondaySchedule.fromMap((value as Map).cast<String, dynamic>()))),
       saturdaySchedules: pulumi.Input.fromValue(pulumi.Input.decodeList<GetManagedDevOpsPoolStatefulAgentManualResourcePredictionSaturdaySchedule>(map['saturdaySchedules']!, (value) => GetManagedDevOpsPoolStatefulAgentManualResourcePredictionSaturdaySchedule.fromMap((value as Map).cast<String, dynamic>()))),

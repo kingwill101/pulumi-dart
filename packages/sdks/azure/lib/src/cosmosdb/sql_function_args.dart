@@ -12,7 +12,7 @@ class SqlFunctionArgs {
   /// The id of the Cosmos DB SQL Container to create the SQL User Defined Function within. Changing this forces a new SQL User Defined Function to be created.
   final pulumi.Input<String> containerId;
   /// The name which should be used for this SQL User Defined Function. Changing this forces a new SQL User Defined Function to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [SqlFunctionArgs].
   /// [body] Body of the User Defined Function.

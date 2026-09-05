@@ -247,7 +247,7 @@ class Provider extends pulumi.CustomResource {
           'azure:attestation/provider:Provider',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     attestationUri = registerOutput<String>('attestationUri');
     location = registerOutput<String>('location');
@@ -257,7 +257,7 @@ class Provider extends pulumi.CustomResource {
     resourceGroupName = registerOutput<String>('resourceGroupName');
     sevSnpPolicyBase64 = registerOutput<String?>('sevSnpPolicyBase64');
     sgxEnclavePolicyBase64 = registerOutput<String?>('sgxEnclavePolicyBase64');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tpmPolicyBase64 = registerOutput<String?>('tpmPolicyBase64');
     trustModel = registerOutput<String>('trustModel');
   }
@@ -267,11 +267,12 @@ class Provider extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ProviderState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Provider._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -293,7 +294,29 @@ class Provider extends pulumi.CustomResource {
     resourceGroupName = registerOutput<String>('resourceGroupName');
     sevSnpPolicyBase64 = registerOutput<String?>('sevSnpPolicyBase64');
     sgxEnclavePolicyBase64 = registerOutput<String?>('sgxEnclavePolicyBase64');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tpmPolicyBase64 = registerOutput<String?>('tpmPolicyBase64');
+    trustModel = registerOutput<String>('trustModel');
+  }
+
+  /// Creates a typed reference to an existing [Provider] resource.
+  Provider.reference(String urn)
+    : super(
+        'azure:attestation/provider:Provider',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    attestationUri = registerOutput<String>('attestationUri');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    openEnclavePolicyBase64 = registerOutput<String?>('openEnclavePolicyBase64');
+    policySigningCertificateData = registerOutput<String?>('policySigningCertificateData');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    sevSnpPolicyBase64 = registerOutput<String?>('sevSnpPolicyBase64');
+    sgxEnclavePolicyBase64 = registerOutput<String?>('sgxEnclavePolicyBase64');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tpmPolicyBase64 = registerOutput<String?>('tpmPolicyBase64');
     trustModel = registerOutput<String>('trustModel');
   }

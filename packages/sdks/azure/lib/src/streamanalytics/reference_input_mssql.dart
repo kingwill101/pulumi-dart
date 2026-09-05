@@ -33,8 +33,8 @@ import 'reference_input_mssql_state.dart';
 /// });
 /// const exampleReferenceInputMssql = new azure.streamanalytics.ReferenceInputMssql("example", {
 ///     name: "example-reference-input",
-///     resourceGroupName: example.apply(example => example.resourceGroupName),
-///     streamAnalyticsJobName: example.apply(example => example.name),
+///     resourceGroupName: example.resourceGroupName,
+///     streamAnalyticsJobName: example.name,
 ///     server: exampleServer.fullyQualifiedDomainName,
 ///     database: exampleDatabase.name,
 ///     username: "exampleuser",
@@ -172,19 +172,15 @@ import 'reference_input_mssql_state.dart';
 /// 		}
 /// 		exampleDatabase, err := mssql.NewDatabase(ctx, "example", &mssql.DatabaseArgs{
 /// 			Name:     pulumi.String("example-db"),
-/// 			ServerId: exampleServer.ID(),
+/// 			ServerId: exampleServer.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = streamanalytics.NewReferenceInputMssql(ctx, "example", &streamanalytics.ReferenceInputMssqlArgs{
-/// 			Name: pulumi.String("example-reference-input"),
-/// 			ResourceGroupName: pulumi.String(example.ApplyT(func(example streamanalytics.GetJobResult) (*string, error) {
-/// 				return example.ResourceGroupName, nil
-/// 			}).(pulumi.StringPtrOutput)),
-/// 			StreamAnalyticsJobName: pulumi.String(example.ApplyT(func(example streamanalytics.GetJobResult) (*string, error) {
-/// 				return example.Name, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			Name:                    pulumi.String("example-reference-input"),
+/// 			ResourceGroupName:       example.ResourceGroupName(),
+/// 			StreamAnalyticsJobName:  example.Name(),
 /// 			Server:                  exampleServer.FullyQualifiedDomainName,
 /// 			Database:                exampleDatabase.Name,
 /// 			Username:                pulumi.String("exampleuser"),
@@ -419,13 +415,14 @@ class ReferenceInputMssql extends pulumi.CustomResource {
           'azure:streamanalytics/referenceInputMssql:ReferenceInputMssql',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['password'],
         ) {
     database = registerOutput<String>('database');
     deltaSnapshotQuery = registerOutput<String?>('deltaSnapshotQuery');
     fullSnapshotQuery = registerOutput<String>('fullSnapshotQuery');
     this.name = registerOutput<String>('name');
-    password = registerOutput<String>('password');
+    password = registerOutput<String>('password', isSecret: true);
     refreshIntervalDuration = registerOutput<String?>('refreshIntervalDuration');
     refreshType = registerOutput<String>('refreshType');
     resourceGroupName = registerOutput<String>('resourceGroupName');
@@ -440,11 +437,12 @@ class ReferenceInputMssql extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ReferenceInputMssqlState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ReferenceInputMssql._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -462,7 +460,31 @@ class ReferenceInputMssql extends pulumi.CustomResource {
     deltaSnapshotQuery = registerOutput<String?>('deltaSnapshotQuery');
     fullSnapshotQuery = registerOutput<String>('fullSnapshotQuery');
     this.name = registerOutput<String>('name');
-    password = registerOutput<String>('password');
+    password = registerOutput<String>('password', isSecret: true);
+    refreshIntervalDuration = registerOutput<String?>('refreshIntervalDuration');
+    refreshType = registerOutput<String>('refreshType');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    server = registerOutput<String>('server');
+    streamAnalyticsJobName = registerOutput<String>('streamAnalyticsJobName');
+    table = registerOutput<String?>('table');
+    username = registerOutput<String>('username');
+  }
+
+  /// Creates a typed reference to an existing [ReferenceInputMssql] resource.
+  ReferenceInputMssql.reference(String urn)
+    : super(
+        'azure:streamanalytics/referenceInputMssql:ReferenceInputMssql',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['password'],
+        isResourceReference: true,
+      ) {
+    database = registerOutput<String>('database');
+    deltaSnapshotQuery = registerOutput<String?>('deltaSnapshotQuery');
+    fullSnapshotQuery = registerOutput<String>('fullSnapshotQuery');
+    this.name = registerOutput<String>('name');
+    password = registerOutput<String>('password', isSecret: true);
     refreshIntervalDuration = registerOutput<String?>('refreshIntervalDuration');
     refreshType = registerOutput<String>('refreshType');
     resourceGroupName = registerOutput<String>('resourceGroupName');

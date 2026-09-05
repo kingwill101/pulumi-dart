@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_streamanalytics_output_cosmosdb_output_cosmosdb_args_doc}
 class OutputCosmosdbArgs {
   /// The authentication mode for the CosmosDB database. Possible values are `ConnectionString` and `Msi`. Defaults to `ConnectionString`.
-  final pulumi.Input<String>? authenticationMode;
+  final pulumi.Input<String?>? authenticationMode;
   /// The name of the CosmosDB container.
   final pulumi.Input<String> containerName;
   /// The account key for the CosmosDB database.
@@ -16,11 +16,11 @@ class OutputCosmosdbArgs {
   /// The ID of the CosmosDB database.
   final pulumi.Input<String> cosmosdbSqlDatabaseId;
   /// The name of the field in output events used to specify the primary key which insert or update operations are based on.
-  final pulumi.Input<String>? documentId;
+  final pulumi.Input<String?>? documentId;
   /// The name of the Stream Analytics Output. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the field in output events used to specify the key for partitioning output across collections. If `containerName` contains `{partition}` token, this property is required to be specified.
-  final pulumi.Input<String>? partitionKey;
+  final pulumi.Input<String?>? partitionKey;
   /// The ID of the Stream Analytics Job. Changing this forces a new resource to be created.
   final pulumi.Input<String> streamAnalyticsJobId;
 

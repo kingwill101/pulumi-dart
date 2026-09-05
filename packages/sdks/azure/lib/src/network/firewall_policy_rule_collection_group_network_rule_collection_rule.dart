@@ -3,17 +3,17 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FirewallPolicyRuleCollectionGroupNetworkRuleCollectionRule {
-  final pulumi.Input<String>? description;
-  final pulumi.Input<List<String>>? destinationAddresses;
-  final pulumi.Input<List<String>>? destinationFqdns;
+  final pulumi.Input<String?>? description;
+  final pulumi.Input<List<String>?>? destinationAddresses;
+  final pulumi.Input<List<String>?>? destinationFqdns;
   /// Specifies a list of destination IP groups.
-  final pulumi.Input<List<String>>? destinationIpGroups;
+  final pulumi.Input<List<String>?>? destinationIpGroups;
   final pulumi.Input<List<String>> destinationPorts;
   /// The name which should be used for this Firewall Policy Rule Collection Group. Changing this forces a new Firewall Policy Rule Collection Group to be created.
   final pulumi.Input<String> name;
   final pulumi.Input<List<String>> protocols;
-  final pulumi.Input<List<String>>? sourceAddresses;
-  final pulumi.Input<List<String>>? sourceIpGroups;
+  final pulumi.Input<List<String>?>? sourceAddresses;
+  final pulumi.Input<List<String>?>? sourceIpGroups;
 
   /// Creates a new [FirewallPolicyRuleCollectionGroupNetworkRuleCollectionRule].
   /// [description] Optional.

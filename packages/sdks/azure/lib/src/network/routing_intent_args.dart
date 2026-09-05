@@ -9,7 +9,7 @@ import 'routing_intent_routing_policy.dart';
 /// {@macro pulumi_network_routing_intent_routing_intent_args_doc}
 class RoutingIntentArgs {
   /// The name which should be used for this Virtual Hub Routing Intent. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// One or more `routingPolicy` blocks as defined below.
   final pulumi.Input<List<RoutingIntentRoutingPolicy>> routingPolicies;
   /// The resource ID of the Virtual Hub. Changing this forces a new resource to be created.

@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ManagedDevOpsPoolAzureDevopsOrganizationPermissionAdministratorAccount {
   /// Specifies a list of group email addresses. Changing this forces a new resource to be created.
-  final pulumi.Input<List<String>>? groups;
+  final pulumi.Input<List<String>?>? groups;
   /// Specifies a list of user email addresses. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** At least one of `groups` and `users` must be specified.
-  final pulumi.Input<List<String>>? users;
+  final pulumi.Input<List<String>?>? users;
 
   /// Creates a new [ManagedDevOpsPoolAzureDevopsOrganizationPermissionAdministratorAccount].
   /// [groups] Specifies a list of group email addresses. Changing this forces a new resource to be created.

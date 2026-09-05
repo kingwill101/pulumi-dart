@@ -16,63 +16,63 @@ import 'virtual_machine_storage_os_disk.dart';
 /// Input properties used for looking up and filtering VirtualMachine resources.
 class VirtualMachineState {
   /// An `additionalCapabilities` block as defined below.
-  final pulumi.Input<VirtualMachineAdditionalCapabilities>? additionalCapabilities;
+  final pulumi.Input<VirtualMachineAdditionalCapabilities?>? additionalCapabilities;
   /// The ID of the Availability Set in which the Virtual Machine should exist. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? availabilitySetId;
+  final pulumi.Input<String?>? availabilitySetId;
   /// A `bootDiagnostics` block as defined below.
-  final pulumi.Input<VirtualMachineBootDiagnostics>? bootDiagnostics;
+  final pulumi.Input<VirtualMachineBootDiagnostics?>? bootDiagnostics;
   /// Should the Data Disks (either the Managed Disks / VHD Blobs) be deleted when the Virtual Machine is destroyed? Defaults to `false`.
   ///
   /// &gt; **Note:** This setting works when instance is deleted via the provider only and don't forget to delete disks manually if you deleted VM manually. It can increase spending.
-  final pulumi.Input<bool>? deleteDataDisksOnTermination;
+  final pulumi.Input<bool?>? deleteDataDisksOnTermination;
   /// Should the OS Disk (either the Managed Disk / VHD Blob) be deleted when the Virtual Machine is destroyed? Defaults to `false`.
   ///
   /// &gt; **Note:** This setting works when instance is deleted via the provider only and don't forget to delete disks manually if you deleted VM manually. It can increase spending.
-  final pulumi.Input<bool>? deleteOsDiskOnTermination;
+  final pulumi.Input<bool?>? deleteOsDiskOnTermination;
   /// An `identity` block as defined below.
-  final pulumi.Input<VirtualMachineIdentity>? identity;
+  final pulumi.Input<VirtualMachineIdentity?>? identity;
   /// Specifies the BYOL Type for this Virtual Machine. This is only applicable to Windows Virtual Machines. Possible values are `Windows_Client` and `Windows_Server`.
-  final pulumi.Input<String>? licenseType;
+  final pulumi.Input<String?>? licenseType;
   /// Specifies the Azure Region where the Virtual Machine exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Specifies the name of the Virtual Machine. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A list of Network Interface IDs which should be associated with the Virtual Machine.
-  final pulumi.Input<List<String>>? networkInterfaceIds;
+  final pulumi.Input<List<String>?>? networkInterfaceIds;
   /// An `osProfile` block as defined below. Required when `createOption` in the `storageOsDisk` block is set to `FromImage`.
-  final pulumi.Input<VirtualMachineOsProfile>? osProfile;
+  final pulumi.Input<VirtualMachineOsProfile?>? osProfile;
   /// (Required, when a Linux machine) An `osProfileLinuxConfig` block as defined below.
-  final pulumi.Input<VirtualMachineOsProfileLinuxConfig>? osProfileLinuxConfig;
+  final pulumi.Input<VirtualMachineOsProfileLinuxConfig?>? osProfileLinuxConfig;
   /// One or more `osProfileSecrets` blocks as defined below.
-  final pulumi.Input<List<VirtualMachineOsProfileSecret>>? osProfileSecrets;
+  final pulumi.Input<List<VirtualMachineOsProfileSecret>?>? osProfileSecrets;
   /// (Required, when a Windows machine) An `osProfileWindowsConfig` block as defined below.
-  final pulumi.Input<VirtualMachineOsProfileWindowsConfig>? osProfileWindowsConfig;
+  final pulumi.Input<VirtualMachineOsProfileWindowsConfig?>? osProfileWindowsConfig;
   /// A `plan` block as defined below.
-  final pulumi.Input<VirtualMachinePlan>? plan;
+  final pulumi.Input<VirtualMachinePlan?>? plan;
   /// The ID of the Network Interface (which must be attached to the Virtual Machine) which should be the Primary Network Interface for this Virtual Machine.
-  final pulumi.Input<String>? primaryNetworkInterfaceId;
+  final pulumi.Input<String?>? primaryNetworkInterfaceId;
   /// The ID of the Proximity Placement Group to which this Virtual Machine should be assigned. Changing this forces a new resource to be created
-  final pulumi.Input<String>? proximityPlacementGroupId;
+  final pulumi.Input<String?>? proximityPlacementGroupId;
   /// Specifies the name of the Resource Group in which the Virtual Machine should exist. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// One or more `storageDataDisk` blocks as defined below.
   ///
   /// &gt; **Please Note:** Data Disks can also be attached either using this block or the `azure.compute.DataDiskAttachment` resource - but not both.
-  final pulumi.Input<List<VirtualMachineStorageDataDisk>>? storageDataDisks;
+  final pulumi.Input<List<VirtualMachineStorageDataDisk>?>? storageDataDisks;
   /// A `storageImageReference` block as defined below. Changing this forces a new resource to be created.
-  final pulumi.Input<VirtualMachineStorageImageReference>? storageImageReference;
+  final pulumi.Input<VirtualMachineStorageImageReference?>? storageImageReference;
   /// A `storageOsDisk` block as defined below.
-  final pulumi.Input<VirtualMachineStorageOsDisk>? storageOsDisk;
+  final pulumi.Input<VirtualMachineStorageOsDisk?>? storageOsDisk;
   /// A mapping of tags to assign to the Virtual Machine.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Specifies the [size of the Virtual Machine](https://docs.microsoft.com/azure/virtual-machines/sizes-general). See also [Azure VM Naming Conventions](https://docs.microsoft.com/azure/virtual-machines/vm-naming-conventions).
-  final pulumi.Input<String>? vmSize;
+  final pulumi.Input<String?>? vmSize;
   /// A list of a single item of the Availability Zone which the Virtual Machine should be allocated in. Changing this forces a new resource to be created.
   ///
   /// &gt; **Please Note:** Availability Zones are [only supported in several regions at this time](https://docs.microsoft.com/azure/availability-zones/az-overview).
   ///
   /// For more information on the different example configurations, please check out the [Azure documentation](https://docs.microsoft.com/en-gb/rest/api/compute/virtualmachines/createorupdate#examples)
-  final pulumi.Input<String>? zones;
+  final pulumi.Input<String?>? zones;
 
   /// Creates a new [VirtualMachineState].
   /// [additionalCapabilities] An `additionalCapabilities` block as defined below.

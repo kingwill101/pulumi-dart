@@ -6,7 +6,7 @@ class AppServiceSiteConfigCors {
   /// A list of origins which should be able to make cross-origin calls. `*` can be used to allow all calls.
   final pulumi.Input<List<String>> allowedOrigins;
   /// Are credentials supported?
-  final pulumi.Input<bool>? supportCredentials;
+  final pulumi.Input<bool?>? supportCredentials;
 
   /// Creates a new [AppServiceSiteConfigCors].
   /// [allowedOrigins] A list of origins which should be able to make cross-origin calls. `*` can be used to allow all calls.

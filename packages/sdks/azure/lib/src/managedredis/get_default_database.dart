@@ -91,7 +91,7 @@ class GetDefaultDatabase {
       modules: pulumi.Input.fromValue(pulumi.Input.decodeList<GetDefaultDatabaseModule>(map['modules']!, (value) => GetDefaultDatabaseModule.fromMap((value as Map).cast<String, dynamic>()))),
       persistenceAppendOnlyFileBackupFrequency: pulumi.Input.fromValue(map['persistenceAppendOnlyFileBackupFrequency'] as String),
       persistenceRedisDatabaseBackupFrequency: pulumi.Input.fromValue(map['persistenceRedisDatabaseBackupFrequency'] as String),
-      port: pulumi.Input.fromValue(map['port'] as int),
+      port: pulumi.Input.fromValue((map['port'] as num).toInt()),
       primaryAccessKey: pulumi.Input.fromValue(map['primaryAccessKey'] as String),
       secondaryAccessKey: pulumi.Input.fromValue(map['secondaryAccessKey'] as String),
     );

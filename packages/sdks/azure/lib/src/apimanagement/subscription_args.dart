@@ -8,31 +8,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_apimanagement_subscription_subscription_args_doc}
 class SubscriptionArgs {
   /// Determines whether tracing can be enabled. Defaults to `true`.
-  final pulumi.Input<bool>? allowTracing;
+  final pulumi.Input<bool?>? allowTracing;
   /// The ID of the API which should be assigned to this Subscription. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** Only one of `productId` and `apiId` can be set. If both are missing `/apis` scope is used for the subscription and all apis are accessible.
-  final pulumi.Input<String>? apiId;
+  final pulumi.Input<String?>? apiId;
   /// The name of the API Management Service where this Subscription should be created. Changing this forces a new resource to be created.
   final pulumi.Input<String> apiManagementName;
   /// The display name of this Subscription.
   final pulumi.Input<String> displayName;
   /// The primary subscription key to use for the subscription.
-  final pulumi.Input<String>? primaryKey;
+  final pulumi.Input<String?>? primaryKey;
   /// The ID of the Product which should be assigned to this Subscription. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** Only one of `productId` and `apiId` can be set. If both are missing `allApis` scope is used for the subscription.
-  final pulumi.Input<String>? productId;
+  final pulumi.Input<String?>? productId;
   /// The name of the Resource Group in which the API Management Service exists. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
   /// The secondary subscription key to use for the subscription.
-  final pulumi.Input<String>? secondaryKey;
+  final pulumi.Input<String?>? secondaryKey;
   /// The state of this Subscription. Possible values are `active`, `cancelled`, `expired`, `rejected`, `submitted` and `suspended`. Defaults to `submitted`.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// An Identifier which should used as the ID of this Subscription. If not specified a new Subscription ID will be generated. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? subscriptionId;
+  final pulumi.Input<String?>? subscriptionId;
   /// The ID of the User which should be assigned to this Subscription. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? userId;
+  final pulumi.Input<String?>? userId;
 
   /// Creates a new [SubscriptionArgs].
   /// [allowTracing] Determines whether tracing can be enabled. Defaults to `true`.

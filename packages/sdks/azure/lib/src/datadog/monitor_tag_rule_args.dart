@@ -12,11 +12,11 @@ class MonitorTagRuleArgs {
   /// The Datadog Monitor Id which should be used for this Datadog Monitor Tag Rule. Changing this forces a new Datadog Monitor Tag Rule to be created.
   final pulumi.Input<String> datadogMonitorId;
   /// A `log` block as defined below.
-  final pulumi.Input<List<MonitorTagRuleLog>>? logs;
+  final pulumi.Input<List<MonitorTagRuleLog>?>? logs;
   /// A `metric` block as defined below.
-  final pulumi.Input<List<MonitorTagRuleMetric>>? metrics;
+  final pulumi.Input<List<MonitorTagRuleMetric>?>? metrics;
   /// The name of the Tag Rules configuration. The allowed value is `default`. Defaults to `default`.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [MonitorTagRuleArgs].
   /// [datadogMonitorId] The Datadog Monitor Id which should be used for this Datadog Monitor Tag Rule. Changing this forces a new Datadog Monitor Tag Rule to be created.

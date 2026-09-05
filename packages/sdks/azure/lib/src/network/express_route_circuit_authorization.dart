@@ -317,9 +317,10 @@ class ExpressRouteCircuitAuthorization extends pulumi.CustomResource {
           'azure:network/expressRouteCircuitAuthorization:ExpressRouteCircuitAuthorization',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['authorizationKey'],
         ) {
-    authorizationKey = registerOutput<String>('authorizationKey');
+    authorizationKey = registerOutput<String>('authorizationKey', isSecret: true);
     authorizationUseStatus = registerOutput<String>('authorizationUseStatus');
     expressRouteCircuitName = registerOutput<String>('expressRouteCircuitName');
     this.name = registerOutput<String>('name');
@@ -331,11 +332,12 @@ class ExpressRouteCircuitAuthorization extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ExpressRouteCircuitAuthorizationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ExpressRouteCircuitAuthorization._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -349,7 +351,24 @@ class ExpressRouteCircuitAuthorization extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    authorizationKey = registerOutput<String>('authorizationKey');
+    authorizationKey = registerOutput<String>('authorizationKey', isSecret: true);
+    authorizationUseStatus = registerOutput<String>('authorizationUseStatus');
+    expressRouteCircuitName = registerOutput<String>('expressRouteCircuitName');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+  }
+
+  /// Creates a typed reference to an existing [ExpressRouteCircuitAuthorization] resource.
+  ExpressRouteCircuitAuthorization.reference(String urn)
+    : super(
+        'azure:network/expressRouteCircuitAuthorization:ExpressRouteCircuitAuthorization',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['authorizationKey'],
+        isResourceReference: true,
+      ) {
+    authorizationKey = registerOutput<String>('authorizationKey', isSecret: true);
     authorizationUseStatus = registerOutput<String>('authorizationUseStatus');
     expressRouteCircuitName = registerOutput<String>('expressRouteCircuitName');
     this.name = registerOutput<String>('name');

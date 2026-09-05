@@ -7,24 +7,24 @@ import 'get_spring_cloud_app_persistent_disk.dart';
 /// Result data returned by getSpringCloudApp.
 class GetSpringCloudAppResult {
   /// The Fully Qualified DNS Name.
-  final String fqdn;
+  final String? fqdn;
   /// Is only HTTPS allowed?
-  final bool httpsOnly;
+  final bool? httpsOnly;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// An `identity` block as defined below.
-  final List<GetSpringCloudAppIdentity> identities;
+  final List<GetSpringCloudAppIdentity>? identities;
   /// Does the Spring Cloud Application have public endpoint?
-  final bool isPublic;
-  final String name;
+  final bool? isPublic;
+  final String? name;
   /// A `persistentDisk` block as defined below.
-  final List<GetSpringCloudAppPersistentDisk> persistentDisks;
-  final String resourceGroupName;
-  final String serviceName;
+  final List<GetSpringCloudAppPersistentDisk>? persistentDisks;
+  final String? resourceGroupName;
+  final String? serviceName;
   /// Is End to End TLS Enabled?
-  final bool tlsEnabled;
+  final bool? tlsEnabled;
   /// The public endpoint of the Spring Cloud Application.
-  final String url;
+  final String? url;
 
   /// Creates a new [GetSpringCloudAppResult].
   /// [fqdn] The Fully Qualified DNS Name.
@@ -32,55 +32,55 @@ class GetSpringCloudAppResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [identities] An `identity` block as defined below.
   /// [isPublic] Does the Spring Cloud Application have public endpoint?
-  /// [name] Required.
+  /// [name] Optional.
   /// [persistentDisks] A `persistentDisk` block as defined below.
-  /// [resourceGroupName] Required.
-  /// [serviceName] Required.
+  /// [resourceGroupName] Optional.
+  /// [serviceName] Optional.
   /// [tlsEnabled] Is End to End TLS Enabled?
   /// [url] The public endpoint of the Spring Cloud Application.
   const GetSpringCloudAppResult({
-    required this.fqdn,
-    required this.httpsOnly,
-    required this.id,
-    required this.identities,
-    required this.isPublic,
-    required this.name,
-    required this.persistentDisks,
-    required this.resourceGroupName,
-    required this.serviceName,
-    required this.tlsEnabled,
-    required this.url,
+    this.fqdn,
+    this.httpsOnly,
+    this.id,
+    this.identities,
+    this.isPublic,
+    this.name,
+    this.persistentDisks,
+    this.resourceGroupName,
+    this.serviceName,
+    this.tlsEnabled,
+    this.url,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'fqdn': fqdn,
-      'httpsOnly': httpsOnly,
-      'id': id,
-      'identities': pulumi.Input.encodeList<GetSpringCloudAppIdentity, Map<String, dynamic>>(identities, (value) => value.toMap()),
-      'isPublic': isPublic,
-      'name': name,
-      'persistentDisks': pulumi.Input.encodeList<GetSpringCloudAppPersistentDisk, Map<String, dynamic>>(persistentDisks, (value) => value.toMap()),
-      'resourceGroupName': resourceGroupName,
-      'serviceName': serviceName,
-      'tlsEnabled': tlsEnabled,
-      'url': url,
+      'fqdn': ?fqdn,
+      'httpsOnly': ?httpsOnly,
+      'id': ?id,
+      'identities': ?(() { final guardedValue = identities; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetSpringCloudAppIdentity, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'isPublic': ?isPublic,
+      'name': ?name,
+      'persistentDisks': ?(() { final guardedValue = persistentDisks; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetSpringCloudAppPersistentDisk, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'resourceGroupName': ?resourceGroupName,
+      'serviceName': ?serviceName,
+      'tlsEnabled': ?tlsEnabled,
+      'url': ?url,
     };
   }
 
   factory GetSpringCloudAppResult.fromMap(Map<String, dynamic> map) {
     return GetSpringCloudAppResult(
-      fqdn: map['fqdn'] as String,
-      httpsOnly: map['httpsOnly'] as bool,
-      id: map['id'] as String,
-      identities: pulumi.Input.decodeList<GetSpringCloudAppIdentity>(map['identities']!, (value) => GetSpringCloudAppIdentity.fromMap((value as Map).cast<String, dynamic>())),
-      isPublic: map['isPublic'] as bool,
-      name: map['name'] as String,
-      persistentDisks: pulumi.Input.decodeList<GetSpringCloudAppPersistentDisk>(map['persistentDisks']!, (value) => GetSpringCloudAppPersistentDisk.fromMap((value as Map).cast<String, dynamic>())),
-      resourceGroupName: map['resourceGroupName'] as String,
-      serviceName: map['serviceName'] as String,
-      tlsEnabled: map['tlsEnabled'] as bool,
-      url: map['url'] as String,
+      fqdn: (() { final guardedValue = map['fqdn']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      httpsOnly: (() { final guardedValue = map['httpsOnly']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      identities: (() { final guardedValue = map['identities']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetSpringCloudAppIdentity>(guardedValue, (value) => GetSpringCloudAppIdentity.fromMap((value as Map).cast<String, dynamic>())); })(),
+      isPublic: (() { final guardedValue = map['isPublic']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      persistentDisks: (() { final guardedValue = map['persistentDisks']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetSpringCloudAppPersistentDisk>(guardedValue, (value) => GetSpringCloudAppPersistentDisk.fromMap((value as Map).cast<String, dynamic>())); })(),
+      resourceGroupName: (() { final guardedValue = map['resourceGroupName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      serviceName: (() { final guardedValue = map['serviceName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tlsEnabled: (() { final guardedValue = map['tlsEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      url: (() { final guardedValue = map['url']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

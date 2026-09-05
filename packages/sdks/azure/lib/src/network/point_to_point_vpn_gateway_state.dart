@@ -6,25 +6,25 @@ import 'point_to_point_vpn_gateway_connection_configuration.dart';
 /// Input properties used for looking up and filtering PointToPointVpnGateway resources.
 class PointToPointVpnGatewayState {
   /// A `connectionConfiguration` block as defined below.
-  final pulumi.Input<List<PointToPointVpnGatewayConnectionConfiguration>>? connectionConfigurations;
+  final pulumi.Input<List<PointToPointVpnGatewayConnectionConfiguration>?>? connectionConfigurations;
   /// A list of IP Addresses of DNS Servers for the Point-to-Site VPN Gateway.
-  final pulumi.Input<List<String>>? dnsServers;
+  final pulumi.Input<List<String>?>? dnsServers;
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Specifies the name of the Point-to-Site VPN Gateway. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the resource group in which to create the Point-to-Site VPN Gateway. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// Is the Routing Preference for the Public IP Interface of the VPN Gateway enabled? Defaults to `false`. Changing this forces a new resource to be created.
-  final pulumi.Input<bool>? routingPreferenceInternetEnabled;
+  final pulumi.Input<bool?>? routingPreferenceInternetEnabled;
   /// The [Scale Unit](https://docs.microsoft.com/azure/virtual-wan/virtual-wan-faq#what-is-a-virtual-wan-gateway-scale-unit) for this Point-to-Site VPN Gateway.
-  final pulumi.Input<int>? scaleUnit;
+  final pulumi.Input<int?>? scaleUnit;
   /// A mapping of tags to assign to the Point-to-Site VPN Gateway.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The ID of the Virtual Hub where this Point-to-Site VPN Gateway should exist. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? virtualHubId;
+  final pulumi.Input<String?>? virtualHubId;
   /// The ID of the VPN Server Configuration which this Point-to-Site VPN Gateway should use. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? vpnServerConfigurationId;
+  final pulumi.Input<String?>? vpnServerConfigurationId;
 
   /// Creates a new [PointToPointVpnGatewayState].
   /// [connectionConfigurations] A `connectionConfiguration` block as defined below.
@@ -73,7 +73,7 @@ class PointToPointVpnGatewayState {
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceGroupName: (() { final guardedValue = map['resourceGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       routingPreferenceInternetEnabled: (() { final guardedValue = map['routingPreferenceInternetEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      scaleUnit: (() { final guardedValue = map['scaleUnit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      scaleUnit: (() { final guardedValue = map['scaleUnit']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       virtualHubId: (() { final guardedValue = map['virtualHubId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       vpnServerConfigurationId: (() { final guardedValue = map['vpnServerConfigurationId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

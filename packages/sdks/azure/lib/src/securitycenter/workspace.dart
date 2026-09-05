@@ -104,7 +104,7 @@ import 'workspace_state.dart';
 /// 		}
 /// 		_, err = securitycenter.NewWorkspace(ctx, "example", &securitycenter.WorkspaceArgs{
 /// 			Scope:       pulumi.String("/subscriptions/00000000-0000-0000-0000-000000000000"),
-/// 			WorkspaceId: exampleAnalyticsWorkspace.ID(),
+/// 			WorkspaceId: exampleAnalyticsWorkspace.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -231,7 +231,7 @@ class Workspace extends pulumi.CustomResource {
           'azure:securitycenter/workspace:Workspace',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     scope = registerOutput<String>('scope');
     workspaceId = registerOutput<String>('workspaceId');
@@ -242,11 +242,12 @@ class Workspace extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     WorkspaceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Workspace._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -260,6 +261,19 @@ class Workspace extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    scope = registerOutput<String>('scope');
+    workspaceId = registerOutput<String>('workspaceId');
+  }
+
+  /// Creates a typed reference to an existing [Workspace] resource.
+  Workspace.reference(String urn)
+    : super(
+        'azure:securitycenter/workspace:Workspace',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     scope = registerOutput<String>('scope');
     workspaceId = registerOutput<String>('workspaceId');
   }

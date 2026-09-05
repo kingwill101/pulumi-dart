@@ -13,7 +13,7 @@ class CacheAccessPolicyArgs {
   /// The ID of the HPC Cache that this HPC Cache Access Policy resides in. Changing this forces a new HPC Cache Access Policy to be created.
   final pulumi.Input<String> hpcCacheId;
   /// The name which should be used for this HPC Cache Access Policy. Changing this forces a new HPC Cache Access Policy to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [CacheAccessPolicyArgs].
   /// [accessRules] One or more `accessRule` blocks (up to three) as defined below.

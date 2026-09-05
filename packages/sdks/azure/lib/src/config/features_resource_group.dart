@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FeaturesResourceGroup {
-  final pulumi.Input<bool>? preventDeletionIfContainsResources;
+  final pulumi.Input<bool?>? preventDeletionIfContainsResources;
 
   /// Creates a new [FeaturesResourceGroup].
   /// [preventDeletionIfContainsResources] Optional.

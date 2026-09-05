@@ -31,7 +31,7 @@ class GetAppDapr {
   factory GetAppDapr.fromMap(Map<String, dynamic> map) {
     return GetAppDapr(
       appId: pulumi.Input.fromValue(map['appId'] as String),
-      appPort: pulumi.Input.fromValue(map['appPort'] as int),
+      appPort: pulumi.Input.fromValue((map['appPort'] as num).toInt()),
       appProtocol: pulumi.Input.fromValue(map['appProtocol'] as String),
     );
   }

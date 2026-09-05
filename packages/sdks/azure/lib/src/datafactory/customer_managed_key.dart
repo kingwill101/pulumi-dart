@@ -24,6 +24,7 @@ import 'customer_managed_key_state.dart';
 ///     name: "example-key-vault",
 ///     location: example.location,
 ///     resourceGroupName: example.name,
+///     rbacAuthorizationEnabled: false,
 ///     tenantId: current.then(current => current.tenantId),
 ///     skuName: "standard",
 ///     purgeProtectionEnabled: true,
@@ -104,6 +105,7 @@ import 'customer_managed_key_state.dart';
 ///     name="example-key-vault",
 ///     location=example.location,
 ///     resource_group_name=example.name,
+///     rbac_authorization_enabled=False,
 ///     tenant_id=current.tenant_id,
 ///     sku_name="standard",
 ///     purge_protection_enabled=True)
@@ -187,6 +189,7 @@ import 'customer_managed_key_state.dart';
 ///         Name = "example-key-vault",
 ///         Location = example.Location,
 ///         ResourceGroupName = example.Name,
+///         RbacAuthorizationEnabled = false,
 ///         TenantId = current.Apply(getClientConfigResult => getClientConfigResult.TenantId),
 ///         SkuName = "standard",
 ///         PurgeProtectionEnabled = true,
@@ -300,19 +303,20 @@ import 'customer_managed_key_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleKeyVault, err := keyvault.NewKeyVault(ctx, "example", &keyvault.KeyVaultArgs{
-/// 			Name:                   pulumi.String("example-key-vault"),
-/// 			Location:               example.Location,
-/// 			ResourceGroupName:      example.Name,
-/// 			TenantId:               pulumi.String(current.TenantId),
-/// 			SkuName:                pulumi.String("standard"),
-/// 			PurgeProtectionEnabled: pulumi.Bool(true),
+/// 			Name:                     pulumi.String("example-key-vault"),
+/// 			Location:                 example.Location,
+/// 			ResourceGroupName:        example.Name,
+/// 			RbacAuthorizationEnabled: pulumi.Bool(false),
+/// 			TenantId:                 pulumi.String(current.TenantId),
+/// 			SkuName:                  pulumi.String("standard"),
+/// 			PurgeProtectionEnabled:   pulumi.Bool(true),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		exampleKey, err := keyvault.NewKey(ctx, "example", &keyvault.KeyArgs{
 /// 			Name:       pulumi.String("examplekey"),
-/// 			KeyVaultId: exampleKeyVault.ID(),
+/// 			KeyVaultId: exampleKeyVault.ID().ToIDOutput().ToStringOutput(),
 /// 			KeyType:    pulumi.String("RSA"),
 /// 			KeySize:    pulumi.Int(2048),
 /// 			KeyOpts: pulumi.StringArray{
@@ -324,7 +328,7 @@ import 'customer_managed_key_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = keyvault.NewAccessPolicy(ctx, "current_client_policy", &keyvault.AccessPolicyArgs{
-/// 			KeyVaultId: exampleKeyVault.ID(),
+/// 			KeyVaultId: exampleKeyVault.ID().ToIDOutput().ToStringOutput(),
 /// 			TenantId:   pulumi.String(current.TenantId),
 /// 			ObjectId:   pulumi.String(current.ObjectId),
 /// 			KeyPermissions: pulumi.StringArray{
@@ -360,13 +364,9 @@ import 'customer_managed_key_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = keyvault.NewAccessPolicy(ctx, "datafactory", &keyvault.AccessPolicyArgs{
-/// 			KeyVaultId: exampleKeyVault.ID(),
-/// 			TenantId: pulumi.String(exampleFactory.Identity.ApplyT(func(identity datafactory.FactoryIdentity) (*string, error) {
-/// 				return identity.TenantId, nil
-/// 			}).(pulumi.StringPtrOutput)),
-/// 			ObjectId: pulumi.String(exampleFactory.Identity.ApplyT(func(identity datafactory.FactoryIdentity) (*string, error) {
-/// 				return identity.PrincipalId, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			KeyVaultId: exampleKeyVault.ID().ToIDOutput().ToStringOutput(),
+/// 			TenantId:   exampleFactory.Identity.TenantId(),
+/// 			ObjectId:   exampleFactory.Identity.PrincipalId(),
 /// 			KeyPermissions: pulumi.StringArray{
 /// 				pulumi.String("Create"),
 /// 				pulumi.String("Delete"),
@@ -388,8 +388,8 @@ import 'customer_managed_key_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = datafactory.NewCustomerManagedKey(ctx, "example", &datafactory.CustomerManagedKeyArgs{
-/// 			DataFactoryId:        exampleFactory.ID(),
-/// 			CustomerManagedKeyId: exampleKey.ID(),
+/// 			DataFactoryId:        exampleFactory.ID().ToIDOutput().ToStringOutput(),
+/// 			CustomerManagedKeyId: exampleKey.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -415,12 +415,13 @@ import 'customer_managed_key_state.dart';
 ///   location = "West Europe"
 /// }
 /// resource "azure_keyvault_keyvault" "example" {
-///   name                     = "example-key-vault"
-///   location                 = azure_core_resourcegroup.example.location
-///   resource_group_name      = azure_core_resourcegroup.example.name
-///   tenant_id                = data.azure_core_getclientconfig.current.tenant_id
-///   sku_name                 = "standard"
-///   purge_protection_enabled = true
+///   name                       = "example-key-vault"
+///   location                   = azure_core_resourcegroup.example.location
+///   resource_group_name        = azure_core_resourcegroup.example.name
+///   rbac_authorization_enabled = false
+///   tenant_id                  = data.azure_core_getclientconfig.current.tenant_id
+///   sku_name                   = "standard"
+///   purge_protection_enabled   = true
 /// }
 /// resource "azure_keyvault_key" "example" {
 ///   name         = "examplekey"
@@ -501,6 +502,7 @@ import 'customer_managed_key_state.dart';
 ///             .name("example-key-vault")
 ///             .location(example.location())
 ///             .resourceGroupName(example.name())
+///             .rbacAuthorizationEnabled(false)
 ///             .tenantId(current.tenantId())
 ///             .skuName("standard")
 ///             .purgeProtectionEnabled(true)
@@ -586,6 +588,7 @@ import 'customer_managed_key_state.dart';
 ///       name: example-key-vault
 ///       location: ${example.location}
 ///       resourceGroupName: ${example.name}
+///       rbacAuthorizationEnabled: false
 ///       tenantId: ${current.tenantId}
 ///       skuName: standard
 ///       purgeProtectionEnabled: true
@@ -698,7 +701,7 @@ class CustomerManagedKey extends pulumi.CustomResource {
           'azure:datafactory/customerManagedKey:CustomerManagedKey',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     customerManagedKeyId = registerOutput<String>('customerManagedKeyId');
     dataFactoryId = registerOutput<String>('dataFactoryId');
@@ -710,11 +713,12 @@ class CustomerManagedKey extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CustomerManagedKeyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return CustomerManagedKey._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -728,6 +732,20 @@ class CustomerManagedKey extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    customerManagedKeyId = registerOutput<String>('customerManagedKeyId');
+    dataFactoryId = registerOutput<String>('dataFactoryId');
+    userAssignedIdentityId = registerOutput<String?>('userAssignedIdentityId');
+  }
+
+  /// Creates a typed reference to an existing [CustomerManagedKey] resource.
+  CustomerManagedKey.reference(String urn)
+    : super(
+        'azure:datafactory/customerManagedKey:CustomerManagedKey',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     customerManagedKeyId = registerOutput<String>('customerManagedKeyId');
     dataFactoryId = registerOutput<String>('dataFactoryId');
     userAssignedIdentityId = registerOutput<String?>('userAssignedIdentityId');

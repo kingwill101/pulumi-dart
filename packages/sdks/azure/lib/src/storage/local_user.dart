@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'local_user_args.dart';
+import 'local_user_permission_scope.dart';
+import 'local_user_ssh_authorized_key.dart';
 import 'local_user_state.dart';
 
 /// Manages a Storage Account Local User.
@@ -204,7 +206,7 @@ import 'local_user_state.dart';
 /// 		}
 /// 		_, err = storage.NewLocalUser(ctx, "example", &storage.LocalUserArgs{
 /// 			Name:               pulumi.String("user1"),
-/// 			StorageAccountId:   exampleAccount.ID(),
+/// 			StorageAccountId:   exampleAccount.ID().ToIDOutput().ToStringOutput(),
 /// 			SshKeyEnabled:      pulumi.Bool(true),
 /// 			SshPasswordEnabled: pulumi.Bool(true),
 /// 			HomeDirectory:      pulumi.String("example_path"),
@@ -433,11 +435,11 @@ class LocalUser extends pulumi.CustomResource {
   /// The value of the password, which is only available when `sshPasswordEnabled` is set to `true`.
   late final pulumi.Output<String> password;
   /// One or more `permissionScope` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> permissionScopes;
+  late final pulumi.Output<List<LocalUserPermissionScope>?> permissionScopes;
   /// The unique Security Identifier of this Storage Account Local User.
   late final pulumi.Output<String> sid;
   /// One or more `sshAuthorizedKey` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> sshAuthorizedKeys;
+  late final pulumi.Output<List<LocalUserSshAuthorizedKey>?> sshAuthorizedKeys;
   /// Specifies whether SSH Key Authentication is enabled. Defaults to `false`.
   late final pulumi.Output<bool?> sshKeyEnabled;
   /// Specifies whether SSH Password Authentication is enabled. Defaults to `false`.
@@ -457,14 +459,15 @@ class LocalUser extends pulumi.CustomResource {
           'azure:storage/localUser:LocalUser',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['password', 'sid'],
         ) {
     homeDirectory = registerOutput<String?>('homeDirectory');
     this.name = registerOutput<String>('name');
-    password = registerOutput<String>('password');
-    permissionScopes = registerOutput<List<Map<String, dynamic>>?>('permissionScopes');
-    sid = registerOutput<String>('sid');
-    sshAuthorizedKeys = registerOutput<List<Map<String, dynamic>>?>('sshAuthorizedKeys');
+    password = registerOutput<String>('password', isSecret: true);
+    permissionScopes = registerOutput<List<LocalUserPermissionScope>?>('permissionScopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LocalUserPermissionScope>(guardedValue, (value) => LocalUserPermissionScope.fromMap((value as Map).cast<String, dynamic>())); });
+    sid = registerOutput<String>('sid', isSecret: true);
+    sshAuthorizedKeys = registerOutput<List<LocalUserSshAuthorizedKey>?>('sshAuthorizedKeys', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LocalUserSshAuthorizedKey>(guardedValue, (value) => LocalUserSshAuthorizedKey.fromMap((value as Map).cast<String, dynamic>())); });
     sshKeyEnabled = registerOutput<bool?>('sshKeyEnabled');
     sshPasswordEnabled = registerOutput<bool?>('sshPasswordEnabled');
     storageAccountId = registerOutput<String>('storageAccountId');
@@ -475,11 +478,12 @@ class LocalUser extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LocalUserState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LocalUser._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -495,10 +499,31 @@ class LocalUser extends pulumi.CustomResource {
         ) {
     homeDirectory = registerOutput<String?>('homeDirectory');
     this.name = registerOutput<String>('name');
-    password = registerOutput<String>('password');
-    permissionScopes = registerOutput<List<Map<String, dynamic>>?>('permissionScopes');
-    sid = registerOutput<String>('sid');
-    sshAuthorizedKeys = registerOutput<List<Map<String, dynamic>>?>('sshAuthorizedKeys');
+    password = registerOutput<String>('password', isSecret: true);
+    permissionScopes = registerOutput<List<LocalUserPermissionScope>?>('permissionScopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LocalUserPermissionScope>(guardedValue, (value) => LocalUserPermissionScope.fromMap((value as Map).cast<String, dynamic>())); });
+    sid = registerOutput<String>('sid', isSecret: true);
+    sshAuthorizedKeys = registerOutput<List<LocalUserSshAuthorizedKey>?>('sshAuthorizedKeys', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LocalUserSshAuthorizedKey>(guardedValue, (value) => LocalUserSshAuthorizedKey.fromMap((value as Map).cast<String, dynamic>())); });
+    sshKeyEnabled = registerOutput<bool?>('sshKeyEnabled');
+    sshPasswordEnabled = registerOutput<bool?>('sshPasswordEnabled');
+    storageAccountId = registerOutput<String>('storageAccountId');
+  }
+
+  /// Creates a typed reference to an existing [LocalUser] resource.
+  LocalUser.reference(String urn)
+    : super(
+        'azure:storage/localUser:LocalUser',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['password', 'sid'],
+        isResourceReference: true,
+      ) {
+    homeDirectory = registerOutput<String?>('homeDirectory');
+    this.name = registerOutput<String>('name');
+    password = registerOutput<String>('password', isSecret: true);
+    permissionScopes = registerOutput<List<LocalUserPermissionScope>?>('permissionScopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LocalUserPermissionScope>(guardedValue, (value) => LocalUserPermissionScope.fromMap((value as Map).cast<String, dynamic>())); });
+    sid = registerOutput<String>('sid', isSecret: true);
+    sshAuthorizedKeys = registerOutput<List<LocalUserSshAuthorizedKey>?>('sshAuthorizedKeys', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LocalUserSshAuthorizedKey>(guardedValue, (value) => LocalUserSshAuthorizedKey.fromMap((value as Map).cast<String, dynamic>())); });
     sshKeyEnabled = registerOutput<bool?>('sshKeyEnabled');
     sshPasswordEnabled = registerOutput<bool?>('sshPasswordEnabled');
     storageAccountId = registerOutput<String>('storageAccountId');

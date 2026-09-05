@@ -12,7 +12,7 @@ class SpringCloudAppMysqlAssociationArgs {
   /// Specifies the ID of the MySQL Server. Changing this forces a new resource to be created.
   final pulumi.Input<String> mysqlServerId;
   /// Specifies the name of the Spring Cloud Application Association. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specifies the password which should be used when connecting to the MySQL Database from the Spring Cloud App.
   final pulumi.Input<String> password;
   /// Specifies the ID of the Spring Cloud Application where this Association is created. Changing this forces a new resource to be created.

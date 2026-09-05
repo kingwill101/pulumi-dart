@@ -332,7 +332,7 @@ import 'event_grid_data_connection_state.dart';
 /// 		}
 /// 		exampleEventHub, err := eventhub.NewEventHub(ctx, "example", &eventhub.EventHubArgs{
 /// 			Name:             pulumi.String("eventhub-example"),
-/// 			NamespaceId:      exampleEventHubNamespace.ID(),
+/// 			NamespaceId:      exampleEventHubNamespace.ID().ToIDOutput().ToStringOutput(),
 /// 			PartitionCount:   pulumi.Int(1),
 /// 			MessageRetention: pulumi.Int(1),
 /// 		})
@@ -350,8 +350,8 @@ import 'event_grid_data_connection_state.dart';
 /// 		}
 /// 		exampleEventSubscription, err := eventgrid.NewEventSubscription(ctx, "example", &eventgrid.EventSubscriptionArgs{
 /// 			Name:                pulumi.String("eventgrid-example"),
-/// 			Scope:               exampleAccount.ID(),
-/// 			EventhubEndpointId:  exampleEventHub.ID(),
+/// 			Scope:               exampleAccount.ID().ToIDOutput().ToStringOutput(),
+/// 			EventhubEndpointId:  exampleEventHub.ID().ToIDOutput().ToStringOutput(),
 /// 			EventDeliverySchema: pulumi.String("EventGridSchema"),
 /// 			IncludedEventTypes: pulumi.StringArray{
 /// 				pulumi.String("Microsoft.Storage.BlobCreated"),
@@ -371,8 +371,8 @@ import 'event_grid_data_connection_state.dart';
 /// 			Location:                  example.Location,
 /// 			ClusterName:               exampleCluster.Name,
 /// 			DatabaseName:              exampleDatabase.Name,
-/// 			StorageAccountId:          exampleAccount.ID(),
-/// 			EventhubId:                exampleEventHub.ID(),
+/// 			StorageAccountId:          exampleAccount.ID().ToIDOutput().ToStringOutput(),
+/// 			EventhubId:                exampleEventHub.ID().ToIDOutput().ToStringOutput(),
 /// 			EventhubConsumerGroupName: exampleConsumerGroup.Name,
 /// 			TableName:                 pulumi.String("my-table"),
 /// 			MappingRuleName:           pulumi.String("my-table-mapping"),
@@ -751,7 +751,7 @@ class EventGridDataConnection extends pulumi.CustomResource {
           'azure:kusto/eventGridDataConnection:EventGridDataConnection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     blobStorageEventType = registerOutput<String?>('blobStorageEventType');
     clusterName = registerOutput<String>('clusterName');
@@ -778,11 +778,12 @@ class EventGridDataConnection extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EventGridDataConnectionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return EventGridDataConnection._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -796,6 +797,35 @@ class EventGridDataConnection extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    blobStorageEventType = registerOutput<String?>('blobStorageEventType');
+    clusterName = registerOutput<String>('clusterName');
+    dataFormat = registerOutput<String?>('dataFormat');
+    databaseName = registerOutput<String>('databaseName');
+    databaseRoutingType = registerOutput<String?>('databaseRoutingType');
+    eventgridEventSubscriptionId = registerOutput<String>('eventgridEventSubscriptionId');
+    eventgridResourceId = registerOutput<String>('eventgridResourceId');
+    eventhubConsumerGroupName = registerOutput<String>('eventhubConsumerGroupName');
+    eventhubId = registerOutput<String>('eventhubId');
+    location = registerOutput<String>('location');
+    managedIdentityId = registerOutput<String>('managedIdentityId');
+    managedIdentityResourceId = registerOutput<String>('managedIdentityResourceId');
+    mappingRuleName = registerOutput<String?>('mappingRuleName');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    skipFirstRecord = registerOutput<bool?>('skipFirstRecord');
+    storageAccountId = registerOutput<String>('storageAccountId');
+    tableName = registerOutput<String?>('tableName');
+  }
+
+  /// Creates a typed reference to an existing [EventGridDataConnection] resource.
+  EventGridDataConnection.reference(String urn)
+    : super(
+        'azure:kusto/eventGridDataConnection:EventGridDataConnection',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     blobStorageEventType = registerOutput<String?>('blobStorageEventType');
     clusterName = registerOutput<String>('clusterName');
     dataFormat = registerOutput<String?>('dataFormat');

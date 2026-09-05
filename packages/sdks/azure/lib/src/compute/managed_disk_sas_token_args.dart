@@ -38,7 +38,7 @@ class ManagedDiskSasTokenArgs {
   factory ManagedDiskSasTokenArgs.fromMap(Map<String, dynamic> map) {
     return ManagedDiskSasTokenArgs(
       accessLevel: pulumi.Input.fromValue(map['accessLevel'] as String),
-      durationInSeconds: pulumi.Input.fromValue(map['durationInSeconds'] as int),
+      durationInSeconds: pulumi.Input.fromValue((map['durationInSeconds'] as num).toInt()),
       managedDiskId: pulumi.Input.fromValue(map['managedDiskId'] as String),
     );
   }

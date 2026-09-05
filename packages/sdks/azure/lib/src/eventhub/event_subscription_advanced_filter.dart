@@ -23,45 +23,45 @@ import 'event_subscription_advanced_filter_string_not_in.dart';
 
 class EventSubscriptionAdvancedFilter {
   /// Compares a value of an event using a single boolean value.
-  final pulumi.Input<List<EventSubscriptionAdvancedFilterBoolEqual>>? boolEquals;
+  final pulumi.Input<List<EventSubscriptionAdvancedFilterBoolEqual>?>? boolEquals;
   /// Evaluates if a value of an event isn't NULL or undefined.
-  final pulumi.Input<List<EventSubscriptionAdvancedFilterIsNotNull>>? isNotNulls;
+  final pulumi.Input<List<EventSubscriptionAdvancedFilterIsNotNull>?>? isNotNulls;
   /// Evaluates if a value of an event is NULL or undefined.
   ///
   /// Each nested block consists of a key and a value(s) element.
-  final pulumi.Input<List<EventSubscriptionAdvancedFilterIsNullOrUndefined>>? isNullOrUndefineds;
+  final pulumi.Input<List<EventSubscriptionAdvancedFilterIsNullOrUndefined>?>? isNullOrUndefineds;
   /// Compares a value of an event using a single floating point number.
-  final pulumi.Input<List<EventSubscriptionAdvancedFilterNumberGreaterThanOrEqual>>? numberGreaterThanOrEquals;
+  final pulumi.Input<List<EventSubscriptionAdvancedFilterNumberGreaterThanOrEqual>?>? numberGreaterThanOrEquals;
   /// Compares a value of an event using a single floating point number.
-  final pulumi.Input<List<EventSubscriptionAdvancedFilterNumberGreaterThan>>? numberGreaterThans;
+  final pulumi.Input<List<EventSubscriptionAdvancedFilterNumberGreaterThan>?>? numberGreaterThans;
   /// Compares a value of an event using multiple floating point number ranges.
-  final pulumi.Input<List<EventSubscriptionAdvancedFilterNumberInRange>>? numberInRanges;
+  final pulumi.Input<List<EventSubscriptionAdvancedFilterNumberInRange>?>? numberInRanges;
   /// Compares a value of an event using multiple floating point numbers.
-  final pulumi.Input<List<EventSubscriptionAdvancedFilterNumberIn>>? numberIns;
+  final pulumi.Input<List<EventSubscriptionAdvancedFilterNumberIn>?>? numberIns;
   /// Compares a value of an event using a single floating point number.
-  final pulumi.Input<List<EventSubscriptionAdvancedFilterNumberLessThanOrEqual>>? numberLessThanOrEquals;
+  final pulumi.Input<List<EventSubscriptionAdvancedFilterNumberLessThanOrEqual>?>? numberLessThanOrEquals;
   /// Compares a value of an event using a single floating point number.
-  final pulumi.Input<List<EventSubscriptionAdvancedFilterNumberLessThan>>? numberLessThans;
+  final pulumi.Input<List<EventSubscriptionAdvancedFilterNumberLessThan>?>? numberLessThans;
   /// Compares a value of an event using multiple floating point number ranges.
-  final pulumi.Input<List<EventSubscriptionAdvancedFilterNumberNotInRange>>? numberNotInRanges;
+  final pulumi.Input<List<EventSubscriptionAdvancedFilterNumberNotInRange>?>? numberNotInRanges;
   /// Compares a value of an event using multiple floating point numbers.
-  final pulumi.Input<List<EventSubscriptionAdvancedFilterNumberNotIn>>? numberNotIns;
+  final pulumi.Input<List<EventSubscriptionAdvancedFilterNumberNotIn>?>? numberNotIns;
   /// Compares a value of an event using multiple string values.
-  final pulumi.Input<List<EventSubscriptionAdvancedFilterStringBeginsWith>>? stringBeginsWiths;
+  final pulumi.Input<List<EventSubscriptionAdvancedFilterStringBeginsWith>?>? stringBeginsWiths;
   /// Compares a value of an event using multiple string values.
-  final pulumi.Input<List<EventSubscriptionAdvancedFilterStringContain>>? stringContains;
+  final pulumi.Input<List<EventSubscriptionAdvancedFilterStringContain>?>? stringContains;
   /// Compares a value of an event using multiple string values.
-  final pulumi.Input<List<EventSubscriptionAdvancedFilterStringEndsWith>>? stringEndsWiths;
+  final pulumi.Input<List<EventSubscriptionAdvancedFilterStringEndsWith>?>? stringEndsWiths;
   /// Compares a value of an event using multiple string values.
-  final pulumi.Input<List<EventSubscriptionAdvancedFilterStringIn>>? stringIns;
+  final pulumi.Input<List<EventSubscriptionAdvancedFilterStringIn>?>? stringIns;
   /// Compares a value of an event using multiple string values.
-  final pulumi.Input<List<EventSubscriptionAdvancedFilterStringNotBeginsWith>>? stringNotBeginsWiths;
+  final pulumi.Input<List<EventSubscriptionAdvancedFilterStringNotBeginsWith>?>? stringNotBeginsWiths;
   /// Compares a value of an event using multiple string values.
-  final pulumi.Input<List<EventSubscriptionAdvancedFilterStringNotContain>>? stringNotContains;
+  final pulumi.Input<List<EventSubscriptionAdvancedFilterStringNotContain>?>? stringNotContains;
   /// Compares a value of an event using multiple string values.
-  final pulumi.Input<List<EventSubscriptionAdvancedFilterStringNotEndsWith>>? stringNotEndsWiths;
+  final pulumi.Input<List<EventSubscriptionAdvancedFilterStringNotEndsWith>?>? stringNotEndsWiths;
   /// Compares a value of an event using multiple string values.
-  final pulumi.Input<List<EventSubscriptionAdvancedFilterStringNotIn>>? stringNotIns;
+  final pulumi.Input<List<EventSubscriptionAdvancedFilterStringNotIn>?>? stringNotIns;
 
   /// Creates a new [EventSubscriptionAdvancedFilter].
   /// [boolEquals] Compares a value of an event using a single boolean value.

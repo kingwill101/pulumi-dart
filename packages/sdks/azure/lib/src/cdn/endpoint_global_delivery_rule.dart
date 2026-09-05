@@ -10,17 +10,17 @@ import 'endpoint_global_delivery_rule_url_rewrite_action.dart';
 
 class EndpointGlobalDeliveryRule {
   /// A `cacheExpirationAction` block as defined above.
-  final pulumi.Input<EndpointGlobalDeliveryRuleCacheExpirationAction>? cacheExpirationAction;
+  final pulumi.Input<EndpointGlobalDeliveryRuleCacheExpirationAction?>? cacheExpirationAction;
   /// A `cacheKeyQueryStringAction` block as defined above.
-  final pulumi.Input<EndpointGlobalDeliveryRuleCacheKeyQueryStringAction>? cacheKeyQueryStringAction;
+  final pulumi.Input<EndpointGlobalDeliveryRuleCacheKeyQueryStringAction?>? cacheKeyQueryStringAction;
   /// A `modifyRequestHeaderAction` block as defined below.
-  final pulumi.Input<List<EndpointGlobalDeliveryRuleModifyRequestHeaderAction>>? modifyRequestHeaderActions;
+  final pulumi.Input<List<EndpointGlobalDeliveryRuleModifyRequestHeaderAction>?>? modifyRequestHeaderActions;
   /// A `modifyResponseHeaderAction` block as defined below.
-  final pulumi.Input<List<EndpointGlobalDeliveryRuleModifyResponseHeaderAction>>? modifyResponseHeaderActions;
+  final pulumi.Input<List<EndpointGlobalDeliveryRuleModifyResponseHeaderAction>?>? modifyResponseHeaderActions;
   /// A `urlRedirectAction` block as defined below.
-  final pulumi.Input<EndpointGlobalDeliveryRuleUrlRedirectAction>? urlRedirectAction;
+  final pulumi.Input<EndpointGlobalDeliveryRuleUrlRedirectAction?>? urlRedirectAction;
   /// A `urlRewriteAction` block as defined below.
-  final pulumi.Input<EndpointGlobalDeliveryRuleUrlRewriteAction>? urlRewriteAction;
+  final pulumi.Input<EndpointGlobalDeliveryRuleUrlRewriteAction?>? urlRewriteAction;
 
   /// Creates a new [EndpointGlobalDeliveryRule].
   /// [cacheExpirationAction] A `cacheExpirationAction` block as defined above.

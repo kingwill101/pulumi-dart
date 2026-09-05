@@ -12,23 +12,23 @@ class SpringCloudAppDynamicsApplicationPerformanceMonitoringArgs {
   /// Specifies the account name of the App Dynamics account.
   final pulumi.Input<String> agentAccountName;
   /// Specifies the name of the logical business application that this JVM node belongs to.
-  final pulumi.Input<String>? agentApplicationName;
+  final pulumi.Input<String?>? agentApplicationName;
   /// Specifies the name of the node. Where JVMs are dynamically created.
-  final pulumi.Input<String>? agentNodeName;
+  final pulumi.Input<String?>? agentNodeName;
   /// Specifies the name of the tier that this JVM node belongs to.
-  final pulumi.Input<String>? agentTierName;
+  final pulumi.Input<String?>? agentTierName;
   /// Specifies the unique host ID which is used to Logically partition a single physical host or virtual machine such that it appears to the Controller that the application is running on different machines.
-  final pulumi.Input<String>? agentUniqueHostId;
+  final pulumi.Input<String?>? agentUniqueHostId;
   /// Specifies the hostname or the IP address of the AppDynamics Controller.
   final pulumi.Input<String> controllerHostName;
   /// Specifies the HTTP(S) port of the AppDynamics Controller. This is the port used to access the AppDynamics browser-based user interface.
-  final pulumi.Input<int>? controllerPort;
+  final pulumi.Input<int?>? controllerPort;
   /// Specifies whether enable use SSL (HTTPS) to connect to the AppDynamics Controller.
-  final pulumi.Input<bool>? controllerSslEnabled;
+  final pulumi.Input<bool?>? controllerSslEnabled;
   /// Specifies whether the Spring Cloud Application Performance Monitoring resource for Application Insights is enabled globally. Defaults to `false`.
-  final pulumi.Input<bool>? globallyEnabled;
+  final pulumi.Input<bool?>? globallyEnabled;
   /// The name which should be used for this Spring Cloud Application Performance Monitoring resource for App Dynamics. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the Spring Cloud Service. Changing this forces a new resource to be created.
   final pulumi.Input<String> springCloudServiceId;
 
@@ -86,7 +86,7 @@ class SpringCloudAppDynamicsApplicationPerformanceMonitoringArgs {
       agentTierName: (() { final guardedValue = map['agentTierName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       agentUniqueHostId: (() { final guardedValue = map['agentUniqueHostId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       controllerHostName: pulumi.Input.fromValue(map['controllerHostName'] as String),
-      controllerPort: (() { final guardedValue = map['controllerPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      controllerPort: (() { final guardedValue = map['controllerPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       controllerSslEnabled: (() { final guardedValue = map['controllerSslEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       globallyEnabled: (() { final guardedValue = map['globallyEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

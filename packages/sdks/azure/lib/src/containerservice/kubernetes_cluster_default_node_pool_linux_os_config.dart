@@ -5,14 +5,14 @@ import 'kubernetes_cluster_default_node_pool_linux_os_config_sysctl_config.dart'
 
 class KubernetesClusterDefaultNodePoolLinuxOsConfig {
   /// Specifies the size of the swap file on each node in MB.
-  final pulumi.Input<int>? swapFileSizeMb;
+  final pulumi.Input<int?>? swapFileSizeMb;
   /// A `sysctlConfig` block as defined below.
-  final pulumi.Input<KubernetesClusterDefaultNodePoolLinuxOsConfigSysctlConfig>? sysctlConfig;
+  final pulumi.Input<KubernetesClusterDefaultNodePoolLinuxOsConfigSysctlConfig?>? sysctlConfig;
   /// Specifies the Transparent Huge Page configuration. Possible values are `always`, `madvise` and `never`.
-  final pulumi.Input<String>? transparentHugePage;
+  final pulumi.Input<String?>? transparentHugePage;
   /// specifies the defrag configuration for Transparent Huge Page. Possible values are `always`, `defer`, `defer+madvise`, `madvise` and `never`.
-  final pulumi.Input<String>? transparentHugePageDefrag;
-  final pulumi.Input<String>? transparentHugePageEnabled;
+  final pulumi.Input<String?>? transparentHugePageDefrag;
+  final pulumi.Input<String?>? transparentHugePageEnabled;
 
   /// Creates a new [KubernetesClusterDefaultNodePoolLinuxOsConfig].
   /// [swapFileSizeMb] Specifies the size of the swap file on each node in MB.
@@ -40,7 +40,7 @@ class KubernetesClusterDefaultNodePoolLinuxOsConfig {
 
   factory KubernetesClusterDefaultNodePoolLinuxOsConfig.fromMap(Map<String, dynamic> map) {
     return KubernetesClusterDefaultNodePoolLinuxOsConfig(
-      swapFileSizeMb: (() { final guardedValue = map['swapFileSizeMb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      swapFileSizeMb: (() { final guardedValue = map['swapFileSizeMb']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       sysctlConfig: (() { final guardedValue = map['sysctlConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(KubernetesClusterDefaultNodePoolLinuxOsConfigSysctlConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       transparentHugePage: (() { final guardedValue = map['transparentHugePage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       transparentHugePageDefrag: (() { final guardedValue = map['transparentHugePageDefrag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

@@ -7,19 +7,19 @@ class ManagedPrivateEndpointState {
   /// A list of fully qualified domain names to assign to the Synapse Private Endpoint. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** `fullyQualifiedDomainNames` must be specified when the `targetResourceId` is a Private Link Service.
-  final pulumi.Input<List<String>>? fullyQualifiedDomainNames;
+  final pulumi.Input<List<String>?>? fullyQualifiedDomainNames;
   /// Specifies the name which should be used for this Managed Private Endpoint. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specifies the sub resource name which the Synapse Private Endpoint is able to connect to. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** Possible values are listed in [documentation](https://docs.microsoft.com/azure/private-link/private-endpoint-overview#dns-configuration).
-  final pulumi.Input<String>? subresourceName;
+  final pulumi.Input<String?>? subresourceName;
   /// The ID of the Synapse Workspace on which to create the Managed Private Endpoint. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** A Synapse firewall rule including local IP is needed for managing current resource.
-  final pulumi.Input<String>? synapseWorkspaceId;
+  final pulumi.Input<String?>? synapseWorkspaceId;
   /// The ID of the Private Link Enabled Remote Resource which this Synapse Private Endpoint should be connected to. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? targetResourceId;
+  final pulumi.Input<String?>? targetResourceId;
 
   /// Creates a new [ManagedPrivateEndpointState].
   /// [fullyQualifiedDomainNames] A list of fully qualified domain names to assign to the Synapse Private Endpoint. Changing this forces a new resource to be created.

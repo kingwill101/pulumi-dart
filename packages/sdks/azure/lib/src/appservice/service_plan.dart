@@ -241,7 +241,7 @@ class ServicePlan extends pulumi.CustomResource {
           'azure:appservice/servicePlan:ServicePlan',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     appServiceEnvironmentId = registerOutput<String?>('appServiceEnvironmentId');
     kind = registerOutput<String>('kind');
@@ -254,7 +254,7 @@ class ServicePlan extends pulumi.CustomResource {
     reserved = registerOutput<bool>('reserved');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     skuName = registerOutput<String>('skuName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     workerCount = registerOutput<int>('workerCount');
     zoneBalancingEnabled = registerOutput<bool?>('zoneBalancingEnabled');
   }
@@ -264,11 +264,12 @@ class ServicePlan extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ServicePlanState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ServicePlan._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -293,7 +294,32 @@ class ServicePlan extends pulumi.CustomResource {
     reserved = registerOutput<bool>('reserved');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     skuName = registerOutput<String>('skuName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    workerCount = registerOutput<int>('workerCount');
+    zoneBalancingEnabled = registerOutput<bool?>('zoneBalancingEnabled');
+  }
+
+  /// Creates a typed reference to an existing [ServicePlan] resource.
+  ServicePlan.reference(String urn)
+    : super(
+        'azure:appservice/servicePlan:ServicePlan',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    appServiceEnvironmentId = registerOutput<String?>('appServiceEnvironmentId');
+    kind = registerOutput<String>('kind');
+    location = registerOutput<String>('location');
+    maximumElasticWorkerCount = registerOutput<int>('maximumElasticWorkerCount');
+    this.name = registerOutput<String>('name');
+    osType = registerOutput<String>('osType');
+    perSiteScalingEnabled = registerOutput<bool?>('perSiteScalingEnabled');
+    premiumPlanAutoScaleEnabled = registerOutput<bool?>('premiumPlanAutoScaleEnabled');
+    reserved = registerOutput<bool>('reserved');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    skuName = registerOutput<String>('skuName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     workerCount = registerOutput<int>('workerCount');
     zoneBalancingEnabled = registerOutput<bool?>('zoneBalancingEnabled');
   }

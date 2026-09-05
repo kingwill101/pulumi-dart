@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering VirtualMachineManagerVirtualMachineTemplate resources.
 class VirtualMachineManagerVirtualMachineTemplateState {
   /// The ID of the Custom Location for the System Center Virtual Machine Manager Virtual Machine Template. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? customLocationId;
+  final pulumi.Input<String?>? customLocationId;
   /// The Azure Region where the System Center Virtual Machine Manager Virtual Machine Template should exist. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the System Center Virtual Machine Manager Virtual Machine Template. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the Resource Group where the System Center Virtual Machine Manager Virtual Machine Template should exist. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// The ID of the System Center Virtual Machine Manager Server Inventory Item. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? systemCenterVirtualMachineManagerServerInventoryItemId;
+  final pulumi.Input<String?>? systemCenterVirtualMachineManagerServerInventoryItemId;
   /// A mapping of tags which should be assigned to the System Center Virtual Machine Manager Virtual Machine Template.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [VirtualMachineManagerVirtualMachineTemplateState].
   /// [customLocationId] The ID of the Custom Location for the System Center Virtual Machine Manager Virtual Machine Template. Changing this forces a new resource to be created.

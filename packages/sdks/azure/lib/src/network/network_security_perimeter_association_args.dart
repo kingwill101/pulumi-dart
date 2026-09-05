@@ -10,7 +10,7 @@ class NetworkSecurityPerimeterAssociationArgs {
   /// Access mode for the associated resource on the Network Security Perimeter. Possible values are `Audit`, `Enforced`, and `Learning`.
   final pulumi.Input<String> accessMode;
   /// The name which should be used for this Network Security Perimeter Association. Changing this forces a new Network Security Perimeter Association to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the Network Security Perimeter Profile. Changing this forces a new Network Security Perimeter Association to be created.
   final pulumi.Input<String> networkSecurityPerimeterProfileId;
   /// The ID of the associated resource. Changing this forces a new Network Security Perimeter Association to be created.

@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'monitor_args.dart';
+import 'monitor_environment_property.dart';
 import 'monitor_identity.dart';
 import 'monitor_plan.dart';
 import 'monitor_state.dart';
@@ -307,7 +308,7 @@ import 'monitor_user.dart';
 /// ```
 class Monitor extends pulumi.CustomResource {
   /// Properties of the Dynatrace environment. An `environmentProperties` block as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> environmentProperties;
+  late final pulumi.Output<List<MonitorEnvironmentProperty>?> environmentProperties;
   /// The kind of managed identity assigned to this resource. A `identity` block as defined below.
   late final pulumi.Output<MonitorIdentity> identity;
   /// The Azure Region where the Dynatrace monitor should exist. Changing this forces a new resource to be created.
@@ -339,9 +340,9 @@ class Monitor extends pulumi.CustomResource {
           'azure:dynatrace/monitor:Monitor',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
-    environmentProperties = registerOutput<List<Map<String, dynamic>>?>('environmentProperties');
+    environmentProperties = registerOutput<List<MonitorEnvironmentProperty>?>('environmentProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MonitorEnvironmentProperty>(guardedValue, (value) => MonitorEnvironmentProperty.fromMap((value as Map).cast<String, dynamic>())); });
     identity = registerOutput<MonitorIdentity>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MonitorIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     marketplaceSubscription = registerOutput<String>('marketplaceSubscription');
@@ -349,7 +350,7 @@ class Monitor extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     plan = registerOutput<MonitorPlan>('plan', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MonitorPlan.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     user = registerOutput<MonitorUser>('user', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MonitorUser.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
@@ -358,11 +359,12 @@ class Monitor extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     MonitorState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Monitor._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -376,7 +378,7 @@ class Monitor extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    environmentProperties = registerOutput<List<Map<String, dynamic>>?>('environmentProperties');
+    environmentProperties = registerOutput<List<MonitorEnvironmentProperty>?>('environmentProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MonitorEnvironmentProperty>(guardedValue, (value) => MonitorEnvironmentProperty.fromMap((value as Map).cast<String, dynamic>())); });
     identity = registerOutput<MonitorIdentity>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MonitorIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     marketplaceSubscription = registerOutput<String>('marketplaceSubscription');
@@ -384,7 +386,28 @@ class Monitor extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     plan = registerOutput<MonitorPlan>('plan', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MonitorPlan.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    user = registerOutput<MonitorUser>('user', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MonitorUser.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Monitor] resource.
+  Monitor.reference(String urn)
+    : super(
+        'azure:dynatrace/monitor:Monitor',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    environmentProperties = registerOutput<List<MonitorEnvironmentProperty>?>('environmentProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MonitorEnvironmentProperty>(guardedValue, (value) => MonitorEnvironmentProperty.fromMap((value as Map).cast<String, dynamic>())); });
+    identity = registerOutput<MonitorIdentity>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MonitorIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    marketplaceSubscription = registerOutput<String>('marketplaceSubscription');
+    monitoringEnabled = registerOutput<bool?>('monitoringEnabled');
+    this.name = registerOutput<String>('name');
+    plan = registerOutput<MonitorPlan>('plan', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MonitorPlan.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     user = registerOutput<MonitorUser>('user', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MonitorUser.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

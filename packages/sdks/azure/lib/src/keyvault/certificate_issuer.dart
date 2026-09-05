@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'certificate_issuer_admin.dart';
 import 'certificate_issuer_args.dart';
 import 'certificate_issuer_state.dart';
 
@@ -20,6 +21,7 @@ import 'certificate_issuer_state.dart';
 ///     name: "examplekeyvault",
 ///     location: example.location,
 ///     resourceGroupName: example.name,
+///     rbacAuthorizationEnabled: false,
 ///     skuName: "standard",
 ///     tenantId: current.then(current => current.tenantId),
 /// });
@@ -44,6 +46,7 @@ import 'certificate_issuer_state.dart';
 ///     name="examplekeyvault",
 ///     location=example.location,
 ///     resource_group_name=example.name,
+///     rbac_authorization_enabled=False,
 ///     sku_name="standard",
 ///     tenant_id=current.tenant_id)
 /// example_certificate_issuer = azure.keyvault.CertificateIssuer("example",
@@ -75,6 +78,7 @@ import 'certificate_issuer_state.dart';
 ///         Name = "examplekeyvault",
 ///         Location = example.Location,
 ///         ResourceGroupName = example.Name,
+///         RbacAuthorizationEnabled = false,
 ///         SkuName = "standard",
 ///         TenantId = current.Apply(getClientConfigResult => getClientConfigResult.TenantId),
 ///     });
@@ -114,11 +118,12 @@ import 'certificate_issuer_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleKeyVault, err := keyvault.NewKeyVault(ctx, "example", &keyvault.KeyVaultArgs{
-/// 			Name:              pulumi.String("examplekeyvault"),
-/// 			Location:          example.Location,
-/// 			ResourceGroupName: example.Name,
-/// 			SkuName:           pulumi.String("standard"),
-/// 			TenantId:          pulumi.String(current.TenantId),
+/// 			Name:                     pulumi.String("examplekeyvault"),
+/// 			Location:                 example.Location,
+/// 			ResourceGroupName:        example.Name,
+/// 			RbacAuthorizationEnabled: pulumi.Bool(false),
+/// 			SkuName:                  pulumi.String("standard"),
+/// 			TenantId:                 pulumi.String(current.TenantId),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -126,7 +131,7 @@ import 'certificate_issuer_state.dart';
 /// 		_, err = keyvault.NewCertificateIssuer(ctx, "example", &keyvault.CertificateIssuerArgs{
 /// 			Name:         pulumi.String("example-issuer"),
 /// 			OrgId:        pulumi.String("ExampleOrgName"),
-/// 			KeyVaultId:   exampleKeyVault.ID(),
+/// 			KeyVaultId:   exampleKeyVault.ID().ToIDOutput().ToStringOutput(),
 /// 			ProviderName: pulumi.String("DigiCert"),
 /// 			AccountId:    pulumi.String("0000"),
 /// 			Password:     pulumi.String("example-password"),
@@ -155,11 +160,12 @@ import 'certificate_issuer_state.dart';
 ///   location = "West Europe"
 /// }
 /// resource "azure_keyvault_keyvault" "example" {
-///   name                = "examplekeyvault"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   sku_name            = "standard"
-///   tenant_id           = data.azure_core_getclientconfig.current.tenant_id
+///   name                       = "examplekeyvault"
+///   location                   = azure_core_resourcegroup.example.location
+///   resource_group_name        = azure_core_resourcegroup.example.name
+///   rbac_authorization_enabled = false
+///   sku_name                   = "standard"
+///   tenant_id                  = data.azure_core_getclientconfig.current.tenant_id
 /// }
 /// resource "azure_keyvault_certificateissuer" "example" {
 ///   name          = "example-issuer"
@@ -207,6 +213,7 @@ import 'certificate_issuer_state.dart';
 ///             .name("examplekeyvault")
 ///             .location(example.location())
 ///             .resourceGroupName(example.name())
+///             .rbacAuthorizationEnabled(false)
 ///             .skuName("standard")
 ///             .tenantId(current.tenantId())
 ///             .build());
@@ -237,6 +244,7 @@ import 'certificate_issuer_state.dart';
 ///       name: examplekeyvault
 ///       location: ${example.location}
 ///       resourceGroupName: ${example.name}
+///       rbacAuthorizationEnabled: false
 ///       skuName: standard
 ///       tenantId: ${current.tenantId}
 ///   exampleCertificateIssuer:
@@ -268,7 +276,7 @@ class CertificateIssuer extends pulumi.CustomResource {
   /// The account number with the third-party Certificate Issuer.
   late final pulumi.Output<String?> accountId;
   /// One or more `admin` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> admins;
+  late final pulumi.Output<List<CertificateIssuerAdmin>?> admins;
   /// The ID of the Key Vault in which to create the Certificate Issuer. Changing this forces a new resource to be created.
   late final pulumi.Output<String> keyVaultId;
   /// The name which should be used for this Key Vault Certificate Issuer. Changing this forces a new Key Vault Certificate Issuer to be created.
@@ -292,14 +300,15 @@ class CertificateIssuer extends pulumi.CustomResource {
           'azure:keyvault/certificateIssuer:CertificateIssuer',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['password'],
         ) {
     accountId = registerOutput<String?>('accountId');
-    admins = registerOutput<List<Map<String, dynamic>>?>('admins');
+    admins = registerOutput<List<CertificateIssuerAdmin>?>('admins', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CertificateIssuerAdmin>(guardedValue, (value) => CertificateIssuerAdmin.fromMap((value as Map).cast<String, dynamic>())); });
     keyVaultId = registerOutput<String>('keyVaultId');
     this.name = registerOutput<String>('name');
     orgId = registerOutput<String?>('orgId');
-    password = registerOutput<String?>('password');
+    password = registerOutput<String?>('password', isSecret: true);
     providerName = registerOutput<String>('providerName');
   }
 
@@ -308,11 +317,12 @@ class CertificateIssuer extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CertificateIssuerState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return CertificateIssuer._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -327,11 +337,30 @@ class CertificateIssuer extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     accountId = registerOutput<String?>('accountId');
-    admins = registerOutput<List<Map<String, dynamic>>?>('admins');
+    admins = registerOutput<List<CertificateIssuerAdmin>?>('admins', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CertificateIssuerAdmin>(guardedValue, (value) => CertificateIssuerAdmin.fromMap((value as Map).cast<String, dynamic>())); });
     keyVaultId = registerOutput<String>('keyVaultId');
     this.name = registerOutput<String>('name');
     orgId = registerOutput<String?>('orgId');
-    password = registerOutput<String?>('password');
+    password = registerOutput<String?>('password', isSecret: true);
+    providerName = registerOutput<String>('providerName');
+  }
+
+  /// Creates a typed reference to an existing [CertificateIssuer] resource.
+  CertificateIssuer.reference(String urn)
+    : super(
+        'azure:keyvault/certificateIssuer:CertificateIssuer',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['password'],
+        isResourceReference: true,
+      ) {
+    accountId = registerOutput<String?>('accountId');
+    admins = registerOutput<List<CertificateIssuerAdmin>?>('admins', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CertificateIssuerAdmin>(guardedValue, (value) => CertificateIssuerAdmin.fromMap((value as Map).cast<String, dynamic>())); });
+    keyVaultId = registerOutput<String>('keyVaultId');
+    this.name = registerOutput<String>('name');
+    orgId = registerOutput<String?>('orgId');
+    password = registerOutput<String?>('password', isSecret: true);
     providerName = registerOutput<String>('providerName');
   }
 }

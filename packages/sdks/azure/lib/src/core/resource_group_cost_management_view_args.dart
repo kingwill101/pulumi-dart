@@ -19,11 +19,11 @@ class ResourceGroupCostManagementViewArgs {
   /// User visible input name of the Cost Management View.
   final pulumi.Input<String> displayName;
   /// One or more `kpi` blocks as defined below, to show in Cost Analysis UI.
-  final pulumi.Input<List<ResourceGroupCostManagementViewKpi>>? kpis;
+  final pulumi.Input<List<ResourceGroupCostManagementViewKpi>?>? kpis;
   /// The name which should be used for this Cost Management View for a Resource Group. Changing this forces a new Cost Management View for a Resource Group to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// One or more `pivot` blocks as defined below, containing the configuration of 3 sub-views in the Cost Analysis UI. Non table views should have three pivots.
-  final pulumi.Input<List<ResourceGroupCostManagementViewPivot>>? pivots;
+  final pulumi.Input<List<ResourceGroupCostManagementViewPivot>?>? pivots;
   /// The type of the report. The only possible value is `Usage`.
   final pulumi.Input<String> reportType;
   /// The ID of the Resource Group this View is scoped to. Changing this forces a new Cost Management View for a Resource Group to be created.

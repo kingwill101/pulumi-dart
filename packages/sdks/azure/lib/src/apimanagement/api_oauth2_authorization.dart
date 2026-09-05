@@ -6,7 +6,7 @@ class ApiOauth2Authorization {
   /// OAuth authorization server identifier. The name of an OAuth2 Authorization Server.
   final pulumi.Input<String> authorizationServerName;
   /// Operations scope.
-  final pulumi.Input<String>? scope;
+  final pulumi.Input<String?>? scope;
 
   /// Creates a new [ApiOauth2Authorization].
   /// [authorizationServerName] OAuth authorization server identifier. The name of an OAuth2 Authorization Server.

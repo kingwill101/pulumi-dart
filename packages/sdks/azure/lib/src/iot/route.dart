@@ -235,7 +235,7 @@ import 'route_state.dart';
 /// 		}
 /// 		exampleEndpointStorageContainer, err := iot.NewEndpointStorageContainer(ctx, "example", &iot.EndpointStorageContainerArgs{
 /// 			ResourceGroupName:       example.Name,
-/// 			IothubId:                exampleIoTHub.ID(),
+/// 			IothubId:                exampleIoTHub.ID().ToIDOutput().ToStringOutput(),
 /// 			Name:                    pulumi.String("example"),
 /// 			ConnectionString:        exampleAccount.PrimaryBlobConnectionString,
 /// 			BatchFrequencyInSeconds: pulumi.Int(60),
@@ -505,7 +505,7 @@ class Route extends pulumi.CustomResource {
           'azure:iot/route:Route',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     condition = registerOutput<String?>('condition');
     enabled = registerOutput<bool>('enabled');
@@ -521,11 +521,12 @@ class Route extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RouteState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Route._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -539,6 +540,24 @@ class Route extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    condition = registerOutput<String?>('condition');
+    enabled = registerOutput<bool>('enabled');
+    endpointNames = registerOutput<String>('endpointNames');
+    iothubName = registerOutput<String>('iothubName');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    source = registerOutput<String>('source');
+  }
+
+  /// Creates a typed reference to an existing [Route] resource.
+  Route.reference(String urn)
+    : super(
+        'azure:iot/route:Route',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     condition = registerOutput<String?>('condition');
     enabled = registerOutput<bool>('enabled');
     endpointNames = registerOutput<String>('endpointNames');

@@ -163,7 +163,7 @@ import 'workspace_state.dart';
 /// 		}
 /// 		exampleDataLakeGen2Filesystem, err := storage.NewDataLakeGen2Filesystem(ctx, "example", &storage.DataLakeGen2FilesystemArgs{
 /// 			Name:             pulumi.String("example"),
-/// 			StorageAccountId: exampleAccount.ID(),
+/// 			StorageAccountId: exampleAccount.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -172,7 +172,7 @@ import 'workspace_state.dart';
 /// 			Name:                            pulumi.String("example"),
 /// 			ResourceGroupName:               example.Name,
 /// 			Location:                        example.Location,
-/// 			StorageDataLakeGen2FilesystemId: exampleDataLakeGen2Filesystem.ID(),
+/// 			StorageDataLakeGen2FilesystemId: exampleDataLakeGen2Filesystem.ID().ToIDOutput().ToStringOutput(),
 /// 			SqlAdministratorLogin:           pulumi.String("sqladminuser"),
 /// 			SqlAdministratorLoginPassword:   pulumi.String("H@Sh1CoR3!"),
 /// 			Identity: &synapse.WorkspaceIdentityArgs{
@@ -364,6 +364,7 @@ import 'workspace_state.dart';
 ///     name: "example",
 ///     location: example.location,
 ///     resourceGroupName: example.name,
+///     rbacAuthorizationEnabled: false,
 ///     tenantId: current.then(current => current.tenantId),
 ///     skuName: "standard",
 ///     purgeProtectionEnabled: true,
@@ -460,6 +461,7 @@ import 'workspace_state.dart';
 ///     name="example",
 ///     location=example.location,
 ///     resource_group_name=example.name,
+///     rbac_authorization_enabled=False,
 ///     tenant_id=current.tenant_id,
 ///     sku_name="standard",
 ///     purge_protection_enabled=True)
@@ -561,6 +563,7 @@ import 'workspace_state.dart';
 ///         Name = "example",
 ///         Location = example.Location,
 ///         ResourceGroupName = example.Name,
+///         RbacAuthorizationEnabled = false,
 ///         TenantId = current.Apply(getClientConfigResult => getClientConfigResult.TenantId),
 ///         SkuName = "standard",
 ///         PurgeProtectionEnabled = true,
@@ -704,24 +707,25 @@ import 'workspace_state.dart';
 /// 		}
 /// 		exampleDataLakeGen2Filesystem, err := storage.NewDataLakeGen2Filesystem(ctx, "example", &storage.DataLakeGen2FilesystemArgs{
 /// 			Name:             pulumi.String("example"),
-/// 			StorageAccountId: exampleAccount.ID(),
+/// 			StorageAccountId: exampleAccount.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		exampleKeyVault, err := keyvault.NewKeyVault(ctx, "example", &keyvault.KeyVaultArgs{
-/// 			Name:                   pulumi.String("example"),
-/// 			Location:               example.Location,
-/// 			ResourceGroupName:      example.Name,
-/// 			TenantId:               pulumi.String(current.TenantId),
-/// 			SkuName:                pulumi.String("standard"),
-/// 			PurgeProtectionEnabled: pulumi.Bool(true),
+/// 			Name:                     pulumi.String("example"),
+/// 			Location:                 example.Location,
+/// 			ResourceGroupName:        example.Name,
+/// 			RbacAuthorizationEnabled: pulumi.Bool(false),
+/// 			TenantId:                 pulumi.String(current.TenantId),
+/// 			SkuName:                  pulumi.String("standard"),
+/// 			PurgeProtectionEnabled:   pulumi.Bool(true),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		deployer, err := keyvault.NewAccessPolicy(ctx, "deployer", &keyvault.AccessPolicyArgs{
-/// 			KeyVaultId: exampleKeyVault.ID(),
+/// 			KeyVaultId: exampleKeyVault.ID().ToIDOutput().ToStringOutput(),
 /// 			TenantId:   pulumi.String(current.TenantId),
 /// 			ObjectId:   pulumi.String(current.ObjectId),
 /// 			KeyPermissions: pulumi.StringArray{
@@ -737,7 +741,7 @@ import 'workspace_state.dart';
 /// 		}
 /// 		exampleKey, err := keyvault.NewKey(ctx, "example", &keyvault.KeyArgs{
 /// 			Name:       pulumi.String("workspaceencryptionkey"),
-/// 			KeyVaultId: exampleKeyVault.ID(),
+/// 			KeyVaultId: exampleKeyVault.ID().ToIDOutput().ToStringOutput(),
 /// 			KeyType:    pulumi.String("RSA"),
 /// 			KeySize:    pulumi.Int(2048),
 /// 			KeyOpts: pulumi.StringArray{
@@ -754,7 +758,7 @@ import 'workspace_state.dart';
 /// 			Name:                            pulumi.String("example"),
 /// 			ResourceGroupName:               example.Name,
 /// 			Location:                        example.Location,
-/// 			StorageDataLakeGen2FilesystemId: exampleDataLakeGen2Filesystem.ID(),
+/// 			StorageDataLakeGen2FilesystemId: exampleDataLakeGen2Filesystem.ID().ToIDOutput().ToStringOutput(),
 /// 			SqlAdministratorLogin:           pulumi.String("sqladminuser"),
 /// 			SqlAdministratorLoginPassword:   pulumi.String("H@Sh1CoR3!"),
 /// 			CustomerManagedKey: &synapse.WorkspaceCustomerManagedKeyArgs{
@@ -772,13 +776,9 @@ import 'workspace_state.dart';
 /// 			return err
 /// 		}
 /// 		workspacePolicy, err := keyvault.NewAccessPolicy(ctx, "workspace_policy", &keyvault.AccessPolicyArgs{
-/// 			KeyVaultId: exampleKeyVault.ID(),
-/// 			TenantId: pulumi.String(exampleWorkspace.Identity.ApplyT(func(identity synapse.WorkspaceIdentity) (*string, error) {
-/// 				return identity.TenantId, nil
-/// 			}).(pulumi.StringPtrOutput)),
-/// 			ObjectId: pulumi.String(exampleWorkspace.Identity.ApplyT(func(identity synapse.WorkspaceIdentity) (*string, error) {
-/// 				return identity.PrincipalId, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			KeyVaultId: exampleKeyVault.ID().ToIDOutput().ToStringOutput(),
+/// 			TenantId:   exampleWorkspace.Identity.TenantId(),
+/// 			ObjectId:   exampleWorkspace.Identity.PrincipalId(),
 /// 			KeyPermissions: pulumi.StringArray{
 /// 				pulumi.String("Get"),
 /// 				pulumi.String("WrapKey"),
@@ -790,7 +790,7 @@ import 'workspace_state.dart';
 /// 		}
 /// 		exampleWorkspaceKey, err := synapse.NewWorkspaceKey(ctx, "example", &synapse.WorkspaceKeyArgs{
 /// 			CustomerManagedKeyVersionlessId: exampleKey.VersionlessId,
-/// 			SynapseWorkspaceId:              exampleWorkspace.ID(),
+/// 			SynapseWorkspaceId:              exampleWorkspace.ID().ToIDOutput().ToStringOutput(),
 /// 			Active:                          pulumi.Bool(true),
 /// 			CustomerManagedKeyName:          pulumi.String("enckey"),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
@@ -800,7 +800,7 @@ import 'workspace_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = synapse.NewWorkspaceAadAdmin(ctx, "example", &synapse.WorkspaceAadAdminArgs{
-/// 			SynapseWorkspaceId: exampleWorkspace.ID(),
+/// 			SynapseWorkspaceId: exampleWorkspace.ID().ToIDOutput().ToStringOutput(),
 /// 			Login:              pulumi.String("AzureAD Admin"),
 /// 			ObjectId:           pulumi.String("00000000-0000-0000-0000-000000000000"),
 /// 			TenantId:           pulumi.String("00000000-0000-0000-0000-000000000000"),
@@ -844,12 +844,13 @@ import 'workspace_state.dart';
 ///   storage_account_id = azure_storage_account.example.id
 /// }
 /// resource "azure_keyvault_keyvault" "example" {
-///   name                     = "example"
-///   location                 = azure_core_resourcegroup.example.location
-///   resource_group_name      = azure_core_resourcegroup.example.name
-///   tenant_id                = data.azure_core_getclientconfig.current.tenant_id
-///   sku_name                 = "standard"
-///   purge_protection_enabled = true
+///   name                       = "example"
+///   location                   = azure_core_resourcegroup.example.location
+///   resource_group_name        = azure_core_resourcegroup.example.name
+///   rbac_authorization_enabled = false
+///   tenant_id                  = data.azure_core_getclientconfig.current.tenant_id
+///   sku_name                   = "standard"
+///   purge_protection_enabled   = true
 /// }
 /// resource "azure_keyvault_accesspolicy" "deployer" {
 ///   key_vault_id    = azure_keyvault_keyvault.example.id
@@ -971,6 +972,7 @@ import 'workspace_state.dart';
 ///             .name("example")
 ///             .location(example.location())
 ///             .resourceGroupName(example.name())
+///             .rbacAuthorizationEnabled(false)
 ///             .tenantId(current.tenantId())
 ///             .skuName("standard")
 ///             .purgeProtectionEnabled(true)
@@ -1079,6 +1081,7 @@ import 'workspace_state.dart';
 ///       name: example
 ///       location: ${example.location}
 ///       resourceGroupName: ${example.name}
+///       rbacAuthorizationEnabled: false
 ///       tenantId: ${current.tenantId}
 ///       skuName: standard
 ///       purgeProtectionEnabled: true
@@ -1229,17 +1232,18 @@ class Workspace extends pulumi.CustomResource {
           'azure:synapse/workspace:Workspace',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['sqlAdministratorLoginPassword'],
         ) {
     azureDevopsRepo = registerOutput<WorkspaceAzureDevopsRepo?>('azureDevopsRepo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkspaceAzureDevopsRepo.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     azureadAuthenticationOnly = registerOutput<bool?>('azureadAuthenticationOnly');
     computeSubnetId = registerOutput<String?>('computeSubnetId');
-    connectivityEndpoints = registerOutput<Map<String, String>>('connectivityEndpoints');
+    connectivityEndpoints = registerOutput<Map<String, String>>('connectivityEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     customerManagedKey = registerOutput<WorkspaceCustomerManagedKey?>('customerManagedKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkspaceCustomerManagedKey.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     dataExfiltrationProtectionEnabled = registerOutput<bool?>('dataExfiltrationProtectionEnabled');
     githubRepo = registerOutput<WorkspaceGithubRepo?>('githubRepo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkspaceGithubRepo.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     identity = registerOutput<WorkspaceIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkspaceIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    linkingAllowedForAadTenantIds = registerOutput<List<String>?>('linkingAllowedForAadTenantIds');
+    linkingAllowedForAadTenantIds = registerOutput<List<String>?>('linkingAllowedForAadTenantIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     location = registerOutput<String>('location');
     managedResourceGroupName = registerOutput<String>('managedResourceGroupName');
     managedVirtualNetworkEnabled = registerOutput<bool?>('managedVirtualNetworkEnabled');
@@ -1248,10 +1252,10 @@ class Workspace extends pulumi.CustomResource {
     purviewId = registerOutput<String?>('purviewId');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     sqlAdministratorLogin = registerOutput<String?>('sqlAdministratorLogin');
-    sqlAdministratorLoginPassword = registerOutput<String?>('sqlAdministratorLoginPassword');
+    sqlAdministratorLoginPassword = registerOutput<String?>('sqlAdministratorLoginPassword', isSecret: true);
     sqlIdentityControlEnabled = registerOutput<bool?>('sqlIdentityControlEnabled');
     storageDataLakeGen2FilesystemId = registerOutput<String>('storageDataLakeGen2FilesystemId');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Workspace] resource's state with the given [name] and [id].
@@ -1259,11 +1263,12 @@ class Workspace extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     WorkspaceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Workspace._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1280,12 +1285,12 @@ class Workspace extends pulumi.CustomResource {
     azureDevopsRepo = registerOutput<WorkspaceAzureDevopsRepo?>('azureDevopsRepo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkspaceAzureDevopsRepo.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     azureadAuthenticationOnly = registerOutput<bool?>('azureadAuthenticationOnly');
     computeSubnetId = registerOutput<String?>('computeSubnetId');
-    connectivityEndpoints = registerOutput<Map<String, String>>('connectivityEndpoints');
+    connectivityEndpoints = registerOutput<Map<String, String>>('connectivityEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     customerManagedKey = registerOutput<WorkspaceCustomerManagedKey?>('customerManagedKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkspaceCustomerManagedKey.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     dataExfiltrationProtectionEnabled = registerOutput<bool?>('dataExfiltrationProtectionEnabled');
     githubRepo = registerOutput<WorkspaceGithubRepo?>('githubRepo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkspaceGithubRepo.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     identity = registerOutput<WorkspaceIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkspaceIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    linkingAllowedForAadTenantIds = registerOutput<List<String>?>('linkingAllowedForAadTenantIds');
+    linkingAllowedForAadTenantIds = registerOutput<List<String>?>('linkingAllowedForAadTenantIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     location = registerOutput<String>('location');
     managedResourceGroupName = registerOutput<String>('managedResourceGroupName');
     managedVirtualNetworkEnabled = registerOutput<bool?>('managedVirtualNetworkEnabled');
@@ -1294,9 +1299,42 @@ class Workspace extends pulumi.CustomResource {
     purviewId = registerOutput<String?>('purviewId');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     sqlAdministratorLogin = registerOutput<String?>('sqlAdministratorLogin');
-    sqlAdministratorLoginPassword = registerOutput<String?>('sqlAdministratorLoginPassword');
+    sqlAdministratorLoginPassword = registerOutput<String?>('sqlAdministratorLoginPassword', isSecret: true);
     sqlIdentityControlEnabled = registerOutput<bool?>('sqlIdentityControlEnabled');
     storageDataLakeGen2FilesystemId = registerOutput<String>('storageDataLakeGen2FilesystemId');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Workspace] resource.
+  Workspace.reference(String urn)
+    : super(
+        'azure:synapse/workspace:Workspace',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['sqlAdministratorLoginPassword'],
+        isResourceReference: true,
+      ) {
+    azureDevopsRepo = registerOutput<WorkspaceAzureDevopsRepo?>('azureDevopsRepo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkspaceAzureDevopsRepo.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    azureadAuthenticationOnly = registerOutput<bool?>('azureadAuthenticationOnly');
+    computeSubnetId = registerOutput<String?>('computeSubnetId');
+    connectivityEndpoints = registerOutput<Map<String, String>>('connectivityEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    customerManagedKey = registerOutput<WorkspaceCustomerManagedKey?>('customerManagedKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkspaceCustomerManagedKey.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dataExfiltrationProtectionEnabled = registerOutput<bool?>('dataExfiltrationProtectionEnabled');
+    githubRepo = registerOutput<WorkspaceGithubRepo?>('githubRepo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkspaceGithubRepo.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    identity = registerOutput<WorkspaceIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkspaceIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    linkingAllowedForAadTenantIds = registerOutput<List<String>?>('linkingAllowedForAadTenantIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    location = registerOutput<String>('location');
+    managedResourceGroupName = registerOutput<String>('managedResourceGroupName');
+    managedVirtualNetworkEnabled = registerOutput<bool?>('managedVirtualNetworkEnabled');
+    this.name = registerOutput<String>('name');
+    publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
+    purviewId = registerOutput<String?>('purviewId');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    sqlAdministratorLogin = registerOutput<String?>('sqlAdministratorLogin');
+    sqlAdministratorLoginPassword = registerOutput<String?>('sqlAdministratorLoginPassword', isSecret: true);
+    sqlIdentityControlEnabled = registerOutput<bool?>('sqlIdentityControlEnabled');
+    storageDataLakeGen2FilesystemId = registerOutput<String>('storageDataLakeGen2FilesystemId');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

@@ -12,7 +12,7 @@ class AccountCorsRule {
   /// A list of response headers that are exposed to CORS clients.
   final pulumi.Input<List<String>> exposedHeaders;
   /// The number of seconds the client should cache a preflight response. Possible values are between `1` and `2147483647`.
-  final pulumi.Input<int>? maxAgeInSeconds;
+  final pulumi.Input<int?>? maxAgeInSeconds;
 
   /// Creates a new [AccountCorsRule].
   /// [allowedHeaders] A list of headers that are allowed to be a part of the cross-origin request.
@@ -44,7 +44,7 @@ class AccountCorsRule {
       allowedMethods: pulumi.Input.fromValue((map['allowedMethods'] as List).cast<String>()),
       allowedOrigins: pulumi.Input.fromValue((map['allowedOrigins'] as List).cast<String>()),
       exposedHeaders: pulumi.Input.fromValue((map['exposedHeaders'] as List).cast<String>()),
-      maxAgeInSeconds: (() { final guardedValue = map['maxAgeInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxAgeInSeconds: (() { final guardedValue = map['maxAgeInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

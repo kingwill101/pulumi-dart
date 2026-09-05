@@ -306,19 +306,20 @@ class DpsSharedAccessPolicy extends pulumi.CustomResource {
           'azure:iot/dpsSharedAccessPolicy:DpsSharedAccessPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['primaryConnectionString', 'primaryKey', 'secondaryConnectionString', 'secondaryKey'],
         ) {
     enrollmentRead = registerOutput<bool?>('enrollmentRead');
     enrollmentWrite = registerOutput<bool?>('enrollmentWrite');
     iothubDpsName = registerOutput<String>('iothubDpsName');
     this.name = registerOutput<String>('name');
-    primaryConnectionString = registerOutput<String>('primaryConnectionString');
-    primaryKey = registerOutput<String>('primaryKey');
+    primaryConnectionString = registerOutput<String>('primaryConnectionString', isSecret: true);
+    primaryKey = registerOutput<String>('primaryKey', isSecret: true);
     registrationRead = registerOutput<bool?>('registrationRead');
     registrationWrite = registerOutput<bool?>('registrationWrite');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    secondaryConnectionString = registerOutput<String>('secondaryConnectionString');
-    secondaryKey = registerOutput<String>('secondaryKey');
+    secondaryConnectionString = registerOutput<String>('secondaryConnectionString', isSecret: true);
+    secondaryKey = registerOutput<String>('secondaryKey', isSecret: true);
     serviceConfig = registerOutput<bool?>('serviceConfig');
   }
 
@@ -327,11 +328,12 @@ class DpsSharedAccessPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DpsSharedAccessPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DpsSharedAccessPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -349,13 +351,37 @@ class DpsSharedAccessPolicy extends pulumi.CustomResource {
     enrollmentWrite = registerOutput<bool?>('enrollmentWrite');
     iothubDpsName = registerOutput<String>('iothubDpsName');
     this.name = registerOutput<String>('name');
-    primaryConnectionString = registerOutput<String>('primaryConnectionString');
-    primaryKey = registerOutput<String>('primaryKey');
+    primaryConnectionString = registerOutput<String>('primaryConnectionString', isSecret: true);
+    primaryKey = registerOutput<String>('primaryKey', isSecret: true);
     registrationRead = registerOutput<bool?>('registrationRead');
     registrationWrite = registerOutput<bool?>('registrationWrite');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    secondaryConnectionString = registerOutput<String>('secondaryConnectionString');
-    secondaryKey = registerOutput<String>('secondaryKey');
+    secondaryConnectionString = registerOutput<String>('secondaryConnectionString', isSecret: true);
+    secondaryKey = registerOutput<String>('secondaryKey', isSecret: true);
+    serviceConfig = registerOutput<bool?>('serviceConfig');
+  }
+
+  /// Creates a typed reference to an existing [DpsSharedAccessPolicy] resource.
+  DpsSharedAccessPolicy.reference(String urn)
+    : super(
+        'azure:iot/dpsSharedAccessPolicy:DpsSharedAccessPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['primaryConnectionString', 'primaryKey', 'secondaryConnectionString', 'secondaryKey'],
+        isResourceReference: true,
+      ) {
+    enrollmentRead = registerOutput<bool?>('enrollmentRead');
+    enrollmentWrite = registerOutput<bool?>('enrollmentWrite');
+    iothubDpsName = registerOutput<String>('iothubDpsName');
+    this.name = registerOutput<String>('name');
+    primaryConnectionString = registerOutput<String>('primaryConnectionString', isSecret: true);
+    primaryKey = registerOutput<String>('primaryKey', isSecret: true);
+    registrationRead = registerOutput<bool?>('registrationRead');
+    registrationWrite = registerOutput<bool?>('registrationWrite');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    secondaryConnectionString = registerOutput<String>('secondaryConnectionString', isSecret: true);
+    secondaryKey = registerOutput<String>('secondaryKey', isSecret: true);
     serviceConfig = registerOutput<bool?>('serviceConfig');
   }
 }

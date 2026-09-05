@@ -142,7 +142,7 @@ import 'traffic_manager_profile_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		server, err := random.NewId(ctx, "server", &random.IdArgs{
-/// 			Keepers: map[string]interface{}{
+/// 			Keepers: map[string]int{
 /// 				"aziId": 1,
 /// 			},
 /// 			ByteLength: 8,
@@ -377,7 +377,7 @@ class TrafficManagerProfile extends pulumi.CustomResource {
           'azure:network/trafficManagerProfile:TrafficManagerProfile',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     dnsConfig = registerOutput<TrafficManagerProfileDnsConfig>('dnsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TrafficManagerProfileDnsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     fqdn = registerOutput<String>('fqdn');
@@ -386,7 +386,7 @@ class TrafficManagerProfile extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     profileStatus = registerOutput<String?>('profileStatus');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     trafficRoutingMethod = registerOutput<String>('trafficRoutingMethod');
     trafficViewEnabled = registerOutput<bool?>('trafficViewEnabled');
   }
@@ -396,11 +396,12 @@ class TrafficManagerProfile extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TrafficManagerProfileState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return TrafficManagerProfile._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -421,7 +422,28 @@ class TrafficManagerProfile extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     profileStatus = registerOutput<String?>('profileStatus');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    trafficRoutingMethod = registerOutput<String>('trafficRoutingMethod');
+    trafficViewEnabled = registerOutput<bool?>('trafficViewEnabled');
+  }
+
+  /// Creates a typed reference to an existing [TrafficManagerProfile] resource.
+  TrafficManagerProfile.reference(String urn)
+    : super(
+        'azure:network/trafficManagerProfile:TrafficManagerProfile',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    dnsConfig = registerOutput<TrafficManagerProfileDnsConfig>('dnsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TrafficManagerProfileDnsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    fqdn = registerOutput<String>('fqdn');
+    maxReturn = registerOutput<int?>('maxReturn');
+    monitorConfig = registerOutput<TrafficManagerProfileMonitorConfig>('monitorConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TrafficManagerProfileMonitorConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    profileStatus = registerOutput<String?>('profileStatus');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     trafficRoutingMethod = registerOutput<String>('trafficRoutingMethod');
     trafficViewEnabled = registerOutput<bool?>('trafficViewEnabled');
   }

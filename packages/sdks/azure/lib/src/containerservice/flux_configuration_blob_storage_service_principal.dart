@@ -4,15 +4,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FluxConfigurationBlobStorageServicePrincipal {
   /// Base64-encoded certificate used to authenticate a Service Principal .
-  final pulumi.Input<String>? clientCertificateBase64;
+  final pulumi.Input<String?>? clientCertificateBase64;
   /// Specifies the password for the certificate used to authenticate a Service Principal .
-  final pulumi.Input<String>? clientCertificatePassword;
+  final pulumi.Input<String?>? clientCertificatePassword;
   /// Specifies whether to include x5c header in client claims when acquiring a token to enable subject name / issuer based authentication for the client certificate.
-  final pulumi.Input<bool>? clientCertificateSendChain;
+  final pulumi.Input<bool?>? clientCertificateSendChain;
   /// Specifies the client ID for authenticating a Service Principal.
   final pulumi.Input<String> clientId;
   /// Specifies the client secret for authenticating a Service Principal.
-  final pulumi.Input<String>? clientSecret;
+  final pulumi.Input<String?>? clientSecret;
   /// Specifies the tenant ID for authenticating a Service Principal.
   final pulumi.Input<String> tenantId;
 

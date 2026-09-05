@@ -276,7 +276,7 @@ class FlexibleDatabase extends pulumi.CustomResource {
           'azure:mysql/flexibleDatabase:FlexibleDatabase',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     charset = registerOutput<String>('charset');
     collation = registerOutput<String>('collation');
@@ -290,11 +290,12 @@ class FlexibleDatabase extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FlexibleDatabaseState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return FlexibleDatabase._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -308,6 +309,22 @@ class FlexibleDatabase extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    charset = registerOutput<String>('charset');
+    collation = registerOutput<String>('collation');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    serverName = registerOutput<String>('serverName');
+  }
+
+  /// Creates a typed reference to an existing [FlexibleDatabase] resource.
+  FlexibleDatabase.reference(String urn)
+    : super(
+        'azure:mysql/flexibleDatabase:FlexibleDatabase',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     charset = registerOutput<String>('charset');
     collation = registerOutput<String>('collation');
     this.name = registerOutput<String>('name');

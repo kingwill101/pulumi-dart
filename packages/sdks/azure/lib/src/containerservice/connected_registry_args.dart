@@ -9,31 +9,31 @@ import 'connected_registry_notification.dart';
 /// {@macro pulumi_containerservice_connected_registry_connected_registry_args_doc}
 class ConnectedRegistryArgs {
   /// Should the log auditing be enabled?
-  final pulumi.Input<bool>? auditLogEnabled;
+  final pulumi.Input<bool?>? auditLogEnabled;
   /// Specifies a list of IDs of Container Registry Tokens, which are meant to be used by the clients to connect to the Connected Registry.
-  final pulumi.Input<List<String>>? clientTokenIds;
+  final pulumi.Input<List<String>?>? clientTokenIds;
   /// The ID of the Container Registry that this Connected Registry will reside in. Changing this forces a new Container Connected Registry to be created.
   ///
   /// &gt; **Note:** If `parentRegistryId` is not specified, the Connected Registry will be connected to the Container Registry identified by `containerRegistryId`.
   final pulumi.Input<String> containerRegistryId;
   /// The verbosity of the logs. Possible values are `None`, `Debug`, `Information`, `Warning` and `Error`. Defaults to `None`.
-  final pulumi.Input<String>? logLevel;
+  final pulumi.Input<String?>? logLevel;
   /// The mode of the Connected Registry. Possible values are `Mirror`, `ReadOnly`, `ReadWrite` and `Registry`. Changing this forces a new Container Connected Registry to be created. Defaults to `ReadWrite`.
-  final pulumi.Input<String>? mode;
+  final pulumi.Input<String?>? mode;
   /// The name which should be used for this Container Connected Registry. Changing this forces a new Container Connected Registry to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// One or more `notification` blocks as defined below.
-  final pulumi.Input<List<ConnectedRegistryNotification>>? notifications;
+  final pulumi.Input<List<ConnectedRegistryNotification>?>? notifications;
   /// The ID of the parent registry. This can be either a Container Registry ID or a Connected Registry ID. Changing this forces a new Container Connected Registry to be created.
-  final pulumi.Input<String>? parentRegistryId;
+  final pulumi.Input<String?>? parentRegistryId;
   /// The period of time (in form of ISO8601) for which a message is available to sync before it is expired. Allowed range is from `P1D` to `P90D`. Defaults to `P1D`.
-  final pulumi.Input<String>? syncMessageTtl;
+  final pulumi.Input<String?>? syncMessageTtl;
   /// The cron expression indicating the schedule that the Connected Registry will sync with its parent. Defaults to `* * * * *`.
-  final pulumi.Input<String>? syncSchedule;
+  final pulumi.Input<String?>? syncSchedule;
   /// The ID of the Container Registry Token which is used for synchronizing the Connected Registry. Changing this forces a new Container Connected Registry to be created.
   final pulumi.Input<String> syncTokenId;
   /// The time window (in form of ISO8601) during which sync is enabled for each schedule occurrence. Allowed range is from `PT3H` to `P7D`.
-  final pulumi.Input<String>? syncWindow;
+  final pulumi.Input<String?>? syncWindow;
 
   /// Creates a new [ConnectedRegistryArgs].
   /// [auditLogEnabled] Should the log auditing be enabled?

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering NetworkSecurityPerimeterProfile resources.
 class NetworkSecurityPerimeterProfileState {
   /// The name which should be used for this Network Security Perimeter Profile. Changing this forces a new Network Security Perimeter Profile to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the Network Security Perimeter within this Profile is created. Changing this forces a new Network Security Perimeter Profile to be created.
-  final pulumi.Input<String>? networkSecurityPerimeterId;
+  final pulumi.Input<String?>? networkSecurityPerimeterId;
 
   /// Creates a new [NetworkSecurityPerimeterProfileState].
   /// [name] The name which should be used for this Network Security Perimeter Profile. Changing this forces a new Network Security Perimeter Profile to be created.

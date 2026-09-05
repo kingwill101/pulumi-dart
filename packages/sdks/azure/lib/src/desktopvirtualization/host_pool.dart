@@ -339,7 +339,7 @@ class HostPool extends pulumi.CustomResource {
           'azure:desktopvirtualization/hostPool:HostPool',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     customRdpProperties = registerOutput<String?>('customRdpProperties');
     description = registerOutput<String?>('description');
@@ -354,7 +354,7 @@ class HostPool extends pulumi.CustomResource {
     resourceGroupName = registerOutput<String>('resourceGroupName');
     scheduledAgentUpdates = registerOutput<HostPoolScheduledAgentUpdates?>('scheduledAgentUpdates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HostPoolScheduledAgentUpdates.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     startVmOnConnect = registerOutput<bool?>('startVmOnConnect');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
     validateEnvironment = registerOutput<bool?>('validateEnvironment');
     vmTemplate = registerOutput<String?>('vmTemplate');
@@ -365,11 +365,12 @@ class HostPool extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     HostPoolState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return HostPool._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -396,7 +397,35 @@ class HostPool extends pulumi.CustomResource {
     resourceGroupName = registerOutput<String>('resourceGroupName');
     scheduledAgentUpdates = registerOutput<HostPoolScheduledAgentUpdates?>('scheduledAgentUpdates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HostPoolScheduledAgentUpdates.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     startVmOnConnect = registerOutput<bool?>('startVmOnConnect');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    validateEnvironment = registerOutput<bool?>('validateEnvironment');
+    vmTemplate = registerOutput<String?>('vmTemplate');
+  }
+
+  /// Creates a typed reference to an existing [HostPool] resource.
+  HostPool.reference(String urn)
+    : super(
+        'azure:desktopvirtualization/hostPool:HostPool',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    customRdpProperties = registerOutput<String?>('customRdpProperties');
+    description = registerOutput<String?>('description');
+    friendlyName = registerOutput<String?>('friendlyName');
+    loadBalancerType = registerOutput<String>('loadBalancerType');
+    location = registerOutput<String>('location');
+    maximumSessionsAllowed = registerOutput<int?>('maximumSessionsAllowed');
+    this.name = registerOutput<String>('name');
+    personalDesktopAssignmentType = registerOutput<String?>('personalDesktopAssignmentType');
+    preferredAppGroupType = registerOutput<String?>('preferredAppGroupType');
+    publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    scheduledAgentUpdates = registerOutput<HostPoolScheduledAgentUpdates?>('scheduledAgentUpdates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HostPoolScheduledAgentUpdates.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    startVmOnConnect = registerOutput<bool?>('startVmOnConnect');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
     validateEnvironment = registerOutput<bool?>('validateEnvironment');
     vmTemplate = registerOutput<String?>('vmTemplate');

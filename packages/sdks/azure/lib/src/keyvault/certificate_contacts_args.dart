@@ -9,7 +9,7 @@ import 'certificate_contacts_contact.dart';
 /// {@macro pulumi_keyvault_certificate_contacts_certificate_contacts_args_doc}
 class CertificateContactsArgs {
   /// One or more `contact` blocks as defined below.
-  final pulumi.Input<List<CertificateContactsContact>>? contacts;
+  final pulumi.Input<List<CertificateContactsContact>?>? contacts;
   /// The ID of the Key Vault. Changing this forces a new resource to be created.
   final pulumi.Input<String> keyVaultId;
 

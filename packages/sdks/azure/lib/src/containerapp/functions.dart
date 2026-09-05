@@ -141,6 +141,17 @@ Future<GetAppResult> getApp(
   return GetAppResult.fromMap(result);
 }
 
+pulumi.Output<GetAppResult> getAppOutput(
+  GetAppArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:containerapp/getApp:getApp',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAppResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Container App Environment.
 ///
 /// ## Example Usage
@@ -275,6 +286,17 @@ Future<GetEnvironmentResult> getEnvironment(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetEnvironmentResult.fromMap(result);
+}
+
+pulumi.Output<GetEnvironmentResult> getEnvironmentOutput(
+  GetEnvironmentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:containerapp/getEnvironment:getEnvironment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEnvironmentResult.fromMap);
 }
 
 /// Use this data source to access information about an existing Container App Environment Certificate.
@@ -445,6 +467,17 @@ Future<GetEnvironmentCertificateResult> getEnvironmentCertificate(
   return GetEnvironmentCertificateResult.fromMap(result);
 }
 
+pulumi.Output<GetEnvironmentCertificateResult> getEnvironmentCertificateOutput(
+  GetEnvironmentCertificateArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:containerapp/getEnvironmentCertificate:getEnvironmentCertificate',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEnvironmentCertificateResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Container App Environment Storage.
 ///
 /// ## Example Usage
@@ -611,4 +644,15 @@ Future<GetEnvironmentStorageResult> getEnvironmentStorage(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetEnvironmentStorageResult.fromMap(result);
+}
+
+pulumi.Output<GetEnvironmentStorageResult> getEnvironmentStorageOutput(
+  GetEnvironmentStorageArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:containerapp/getEnvironmentStorage:getEnvironmentStorage',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEnvironmentStorageResult.fromMap);
 }

@@ -31,7 +31,7 @@ class AccessPolicyAssignment extends pulumi.CustomResource {
           'azure:managedredis/accessPolicyAssignment:AccessPolicyAssignment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     managedRedisId = registerOutput<String>('managedRedisId');
     objectId = registerOutput<String>('objectId');
@@ -42,11 +42,12 @@ class AccessPolicyAssignment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AccessPolicyAssignmentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AccessPolicyAssignment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -60,6 +61,19 @@ class AccessPolicyAssignment extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    managedRedisId = registerOutput<String>('managedRedisId');
+    objectId = registerOutput<String>('objectId');
+  }
+
+  /// Creates a typed reference to an existing [AccessPolicyAssignment] resource.
+  AccessPolicyAssignment.reference(String urn)
+    : super(
+        'azure:managedredis/accessPolicyAssignment:AccessPolicyAssignment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     managedRedisId = registerOutput<String>('managedRedisId');
     objectId = registerOutput<String>('objectId');
   }

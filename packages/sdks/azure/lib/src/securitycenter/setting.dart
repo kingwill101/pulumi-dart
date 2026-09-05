@@ -150,7 +150,7 @@ class Setting extends pulumi.CustomResource {
           'azure:securitycenter/setting:Setting',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     enabled = registerOutput<bool>('enabled');
     settingName = registerOutput<String>('settingName');
@@ -161,11 +161,12 @@ class Setting extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SettingState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Setting._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -179,6 +180,19 @@ class Setting extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    enabled = registerOutput<bool>('enabled');
+    settingName = registerOutput<String>('settingName');
+  }
+
+  /// Creates a typed reference to an existing [Setting] resource.
+  Setting.reference(String urn)
+    : super(
+        'azure:securitycenter/setting:Setting',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     enabled = registerOutput<bool>('enabled');
     settingName = registerOutput<String>('settingName');
   }

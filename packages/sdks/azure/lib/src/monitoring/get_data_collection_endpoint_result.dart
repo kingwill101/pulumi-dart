@@ -4,27 +4,27 @@
 /// Result data returned by getDataCollectionEndpoint.
 class GetDataCollectionEndpointResult {
   /// The endpoint used for accessing configuration, e.g., `https://mydce-abcd.eastus-1.control.monitor.azure.com`.
-  final String configurationAccessEndpoint;
+  final String? configurationAccessEndpoint;
   /// Specifies a description for the Data Collection Endpoint.
-  final String description;
+  final String? description;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// The immutable ID of the Data Collection Endpoint.
-  final String immutableId;
+  final String? immutableId;
   /// The kind of the Data Collection Endpoint. Possible values are `Linux` and `Windows`.
-  final String kind;
+  final String? kind;
   /// The Azure Region where the Data Collection Endpoint should exist.
-  final String location;
+  final String? location;
   /// The endpoint used for ingesting logs, e.g., `https://mydce-abcd.eastus-1.ingest.monitor.azure.com`.
-  final String logsIngestionEndpoint;
+  final String? logsIngestionEndpoint;
   /// The endpoint used for ingesting metrics, e.g., `https://mydce-abcd.eastus-1.metrics.ingest.monitor.azure.com`.
-  final String metricsIngestionEndpoint;
-  final String name;
+  final String? metricsIngestionEndpoint;
+  final String? name;
   /// Whether network access from public internet to the Data Collection Endpoint are allowed. Possible values are `true` and `false`.
-  final bool publicNetworkAccessEnabled;
-  final String resourceGroupName;
+  final bool? publicNetworkAccessEnabled;
+  final String? resourceGroupName;
   /// A mapping of tags which should be assigned to the Data Collection Endpoint.
-  final Map<String, String> tags;
+  final Map<String, String>? tags;
 
   /// Creates a new [GetDataCollectionEndpointResult].
   /// [configurationAccessEndpoint] The endpoint used for accessing configuration, e.g., `https://mydce-abcd.eastus-1.control.monitor.azure.com`.
@@ -35,56 +35,56 @@ class GetDataCollectionEndpointResult {
   /// [location] The Azure Region where the Data Collection Endpoint should exist.
   /// [logsIngestionEndpoint] The endpoint used for ingesting logs, e.g., `https://mydce-abcd.eastus-1.ingest.monitor.azure.com`.
   /// [metricsIngestionEndpoint] The endpoint used for ingesting metrics, e.g., `https://mydce-abcd.eastus-1.metrics.ingest.monitor.azure.com`.
-  /// [name] Required.
+  /// [name] Optional.
   /// [publicNetworkAccessEnabled] Whether network access from public internet to the Data Collection Endpoint are allowed. Possible values are `true` and `false`.
-  /// [resourceGroupName] Required.
+  /// [resourceGroupName] Optional.
   /// [tags] A mapping of tags which should be assigned to the Data Collection Endpoint.
   const GetDataCollectionEndpointResult({
-    required this.configurationAccessEndpoint,
-    required this.description,
-    required this.id,
-    required this.immutableId,
-    required this.kind,
-    required this.location,
-    required this.logsIngestionEndpoint,
-    required this.metricsIngestionEndpoint,
-    required this.name,
-    required this.publicNetworkAccessEnabled,
-    required this.resourceGroupName,
-    required this.tags,
+    this.configurationAccessEndpoint,
+    this.description,
+    this.id,
+    this.immutableId,
+    this.kind,
+    this.location,
+    this.logsIngestionEndpoint,
+    this.metricsIngestionEndpoint,
+    this.name,
+    this.publicNetworkAccessEnabled,
+    this.resourceGroupName,
+    this.tags,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'configurationAccessEndpoint': configurationAccessEndpoint,
-      'description': description,
-      'id': id,
-      'immutableId': immutableId,
-      'kind': kind,
-      'location': location,
-      'logsIngestionEndpoint': logsIngestionEndpoint,
-      'metricsIngestionEndpoint': metricsIngestionEndpoint,
-      'name': name,
-      'publicNetworkAccessEnabled': publicNetworkAccessEnabled,
-      'resourceGroupName': resourceGroupName,
-      'tags': tags,
+      'configurationAccessEndpoint': ?configurationAccessEndpoint,
+      'description': ?description,
+      'id': ?id,
+      'immutableId': ?immutableId,
+      'kind': ?kind,
+      'location': ?location,
+      'logsIngestionEndpoint': ?logsIngestionEndpoint,
+      'metricsIngestionEndpoint': ?metricsIngestionEndpoint,
+      'name': ?name,
+      'publicNetworkAccessEnabled': ?publicNetworkAccessEnabled,
+      'resourceGroupName': ?resourceGroupName,
+      'tags': ?tags,
     };
   }
 
   factory GetDataCollectionEndpointResult.fromMap(Map<String, dynamic> map) {
     return GetDataCollectionEndpointResult(
-      configurationAccessEndpoint: map['configurationAccessEndpoint'] as String,
-      description: map['description'] as String,
-      id: map['id'] as String,
-      immutableId: map['immutableId'] as String,
-      kind: map['kind'] as String,
-      location: map['location'] as String,
-      logsIngestionEndpoint: map['logsIngestionEndpoint'] as String,
-      metricsIngestionEndpoint: map['metricsIngestionEndpoint'] as String,
-      name: map['name'] as String,
-      publicNetworkAccessEnabled: map['publicNetworkAccessEnabled'] as bool,
-      resourceGroupName: map['resourceGroupName'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
+      configurationAccessEndpoint: (() { final guardedValue = map['configurationAccessEndpoint']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      immutableId: (() { final guardedValue = map['immutableId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      logsIngestionEndpoint: (() { final guardedValue = map['logsIngestionEndpoint']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      metricsIngestionEndpoint: (() { final guardedValue = map['metricsIngestionEndpoint']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      publicNetworkAccessEnabled: (() { final guardedValue = map['publicNetworkAccessEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      resourceGroupName: (() { final guardedValue = map['resourceGroupName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
     );
   }
 }

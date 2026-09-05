@@ -142,7 +142,7 @@ import 'profile_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		server, err := random.NewId(ctx, "server", &random.IdArgs{
-/// 			Keepers: map[string]interface{}{
+/// 			Keepers: map[string]int{
 /// 				"aziId": 1,
 /// 			},
 /// 			ByteLength: 8,
@@ -377,7 +377,7 @@ class Profile extends pulumi.CustomResource {
           'azure:trafficmanager/profile:Profile',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     dnsConfig = registerOutput<ProfileDnsConfig>('dnsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProfileDnsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     fqdn = registerOutput<String>('fqdn');
@@ -386,7 +386,7 @@ class Profile extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     profileStatus = registerOutput<String?>('profileStatus');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     trafficRoutingMethod = registerOutput<String>('trafficRoutingMethod');
     trafficViewEnabled = registerOutput<bool?>('trafficViewEnabled');
   }
@@ -396,11 +396,12 @@ class Profile extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ProfileState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Profile._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -421,7 +422,28 @@ class Profile extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     profileStatus = registerOutput<String?>('profileStatus');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    trafficRoutingMethod = registerOutput<String>('trafficRoutingMethod');
+    trafficViewEnabled = registerOutput<bool?>('trafficViewEnabled');
+  }
+
+  /// Creates a typed reference to an existing [Profile] resource.
+  Profile.reference(String urn)
+    : super(
+        'azure:trafficmanager/profile:Profile',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    dnsConfig = registerOutput<ProfileDnsConfig>('dnsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProfileDnsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    fqdn = registerOutput<String>('fqdn');
+    maxReturn = registerOutput<int?>('maxReturn');
+    monitorConfig = registerOutput<ProfileMonitorConfig>('monitorConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProfileMonitorConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    profileStatus = registerOutput<String?>('profileStatus');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     trafficRoutingMethod = registerOutput<String>('trafficRoutingMethod');
     trafficViewEnabled = registerOutput<bool?>('trafficViewEnabled');
   }

@@ -5,9 +5,9 @@ import 'integration_runtime_ssis_express_custom_setup_command_key_key_vault_pass
 
 class IntegrationRuntimeSsisExpressCustomSetupCommandKey {
   /// A `keyVaultSecretReference` block as defined below.
-  final pulumi.Input<IntegrationRuntimeSsisExpressCustomSetupCommandKeyKeyVaultPassword>? keyVaultPassword;
+  final pulumi.Input<IntegrationRuntimeSsisExpressCustomSetupCommandKeyKeyVaultPassword?>? keyVaultPassword;
   /// The password for the target device.
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// The target computer or domain name.
   final pulumi.Input<String> targetName;
   /// The username for the target device.

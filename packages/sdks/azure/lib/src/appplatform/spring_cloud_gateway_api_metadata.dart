@@ -4,15 +4,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SpringCloudGatewayApiMetadata {
   /// Detailed description of the APIs available on the Gateway instance.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Location of additional documentation for the APIs available on the Gateway instance.
-  final pulumi.Input<String>? documentationUrl;
+  final pulumi.Input<String?>? documentationUrl;
   /// Base URL that API consumers will use to access APIs on the Gateway instance.
-  final pulumi.Input<String>? serverUrl;
+  final pulumi.Input<String?>? serverUrl;
   /// Specifies the title describing the context of the APIs available on the Gateway instance.
-  final pulumi.Input<String>? title;
+  final pulumi.Input<String?>? title;
   /// Specifies the version of APIs available on this Gateway instance.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [SpringCloudGatewayApiMetadata].
   /// [description] Detailed description of the APIs available on the Gateway instance.

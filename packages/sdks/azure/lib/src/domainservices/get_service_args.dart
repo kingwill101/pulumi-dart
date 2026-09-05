@@ -12,7 +12,7 @@ class GetServiceArgs {
   /// The name of the Resource Group in which the Domain Service should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
   /// A mapping of tags assigned to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetServiceArgs].
   /// [name] The display name for your managed Active Directory Domain Service resource. Changing this forces a new resource to be created.

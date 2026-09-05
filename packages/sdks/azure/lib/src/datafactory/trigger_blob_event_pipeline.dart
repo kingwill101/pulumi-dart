@@ -6,7 +6,7 @@ class TriggerBlobEventPipeline {
   /// The Data Factory Pipeline name that the trigger will act on.
   final pulumi.Input<String> name;
   /// The Data Factory Pipeline parameters that the trigger will act on.
-  final pulumi.Input<Map<String, String>>? parameters;
+  final pulumi.Input<Map<String, String>?>? parameters;
 
   /// Creates a new [TriggerBlobEventPipeline].
   /// [name] The Data Factory Pipeline name that the trigger will act on.

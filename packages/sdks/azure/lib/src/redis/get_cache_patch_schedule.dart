@@ -32,7 +32,7 @@ class GetCachePatchSchedule {
     return GetCachePatchSchedule(
       dayOfWeek: pulumi.Input.fromValue(map['dayOfWeek'] as String),
       maintenanceWindow: pulumi.Input.fromValue(map['maintenanceWindow'] as String),
-      startHourUtc: pulumi.Input.fromValue(map['startHourUtc'] as int),
+      startHourUtc: pulumi.Input.fromValue((map['startHourUtc'] as num).toInt()),
     );
   }
 }

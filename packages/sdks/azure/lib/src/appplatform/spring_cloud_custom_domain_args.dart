@@ -8,13 +8,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_appplatform_spring_cloud_custom_domain_spring_cloud_custom_domain_args_doc}
 class SpringCloudCustomDomainArgs {
   /// Specifies the name of the Spring Cloud Certificate that binds to the Spring Cloud Custom Domain. Required when `thumbprint` is specified
-  final pulumi.Input<String>? certificateName;
+  final pulumi.Input<String?>? certificateName;
   /// Specifies the name of the Spring Cloud Custom Domain. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specifies the resource ID of the Spring Cloud Application. Changing this forces a new resource to be created.
   final pulumi.Input<String> springCloudAppId;
   /// Specifies the thumbprint of the Spring Cloud Certificate that binds to the Spring Cloud Custom Domain. Required when `certificateName` is specified. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? thumbprint;
+  final pulumi.Input<String?>? thumbprint;
 
   /// Creates a new [SpringCloudCustomDomainArgs].
   /// [certificateName] Specifies the name of the Spring Cloud Certificate that binds to the Spring Cloud Custom Domain. Required when `thumbprint` is specified

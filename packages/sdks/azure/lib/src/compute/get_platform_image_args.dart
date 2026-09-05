@@ -16,7 +16,7 @@ class GetPlatformImageArgs {
   /// Specifies the SKU of the Platform Image.
   final pulumi.Input<String> sku;
   /// The version of the Platform Image.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [GetPlatformImageArgs].
   /// [location] Specifies the Location to pull information about this Platform Image from.

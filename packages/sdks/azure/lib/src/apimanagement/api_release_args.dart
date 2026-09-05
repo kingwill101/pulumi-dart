@@ -10,9 +10,9 @@ class ApiReleaseArgs {
   /// The ID of the API Management API. Changing this forces a new API Management API Release to be created.
   final pulumi.Input<String> apiId;
   /// The name which should be used for this API Management API Release. Changing this forces a new API Management API Release to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The Release Notes.
-  final pulumi.Input<String>? notes;
+  final pulumi.Input<String?>? notes;
 
   /// Creates a new [ApiReleaseArgs].
   /// [apiId] The ID of the API Management API. Changing this forces a new API Management API Release to be created.

@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cache_args.dart';
 import 'cache_identity.dart';
+import 'cache_patch_schedule.dart';
 import 'cache_redis_configuration.dart';
 import 'cache_state.dart';
 
@@ -257,7 +258,7 @@ class Cache extends pulumi.CustomResource {
   /// Enable the non-SSL port (6379) - disabled by default.
   late final pulumi.Output<bool?> nonSslPortEnabled;
   /// A list of `patchSchedule` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> patchSchedules;
+  late final pulumi.Output<List<CachePatchSchedule>?> patchSchedules;
   /// The non-SSL Port of the Redis Instance
   late final pulumi.Output<int> port;
   /// The Primary Access Key for the Redis Instance
@@ -315,7 +316,8 @@ class Cache extends pulumi.CustomResource {
           'azure:redis/cache:Cache',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['primaryAccessKey', 'primaryConnectionString', 'secondaryAccessKey', 'secondaryConnectionString'],
         ) {
     accessKeysAuthenticationEnabled = registerOutput<bool?>('accessKeysAuthenticationEnabled');
     capacity = registerOutput<int>('capacity');
@@ -326,10 +328,10 @@ class Cache extends pulumi.CustomResource {
     minimumTlsVersion = registerOutput<String?>('minimumTlsVersion');
     this.name = registerOutput<String>('name');
     nonSslPortEnabled = registerOutput<bool?>('nonSslPortEnabled');
-    patchSchedules = registerOutput<List<Map<String, dynamic>>?>('patchSchedules');
+    patchSchedules = registerOutput<List<CachePatchSchedule>?>('patchSchedules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CachePatchSchedule>(guardedValue, (value) => CachePatchSchedule.fromMap((value as Map).cast<String, dynamic>())); });
     port = registerOutput<int>('port');
-    primaryAccessKey = registerOutput<String>('primaryAccessKey');
-    primaryConnectionString = registerOutput<String>('primaryConnectionString');
+    primaryAccessKey = registerOutput<String>('primaryAccessKey', isSecret: true);
+    primaryConnectionString = registerOutput<String>('primaryConnectionString', isSecret: true);
     privateStaticIpAddress = registerOutput<String>('privateStaticIpAddress');
     publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
     redisConfiguration = registerOutput<CacheRedisConfiguration>('redisConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CacheRedisConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -337,15 +339,15 @@ class Cache extends pulumi.CustomResource {
     replicasPerMaster = registerOutput<int>('replicasPerMaster');
     replicasPerPrimary = registerOutput<int>('replicasPerPrimary');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    secondaryAccessKey = registerOutput<String>('secondaryAccessKey');
-    secondaryConnectionString = registerOutput<String>('secondaryConnectionString');
+    secondaryAccessKey = registerOutput<String>('secondaryAccessKey', isSecret: true);
+    secondaryConnectionString = registerOutput<String>('secondaryConnectionString', isSecret: true);
     shardCount = registerOutput<int?>('shardCount');
     skuName = registerOutput<String>('skuName');
     sslPort = registerOutput<int>('sslPort');
     subnetId = registerOutput<String?>('subnetId');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tenantSettings = registerOutput<Map<String, String>?>('tenantSettings');
-    zones = registerOutput<List<String>?>('zones');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tenantSettings = registerOutput<Map<String, String>?>('tenantSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    zones = registerOutput<List<String>?>('zones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [Cache] resource's state with the given [name] and [id].
@@ -353,11 +355,12 @@ class Cache extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CacheState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Cache._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -380,10 +383,10 @@ class Cache extends pulumi.CustomResource {
     minimumTlsVersion = registerOutput<String?>('minimumTlsVersion');
     this.name = registerOutput<String>('name');
     nonSslPortEnabled = registerOutput<bool?>('nonSslPortEnabled');
-    patchSchedules = registerOutput<List<Map<String, dynamic>>?>('patchSchedules');
+    patchSchedules = registerOutput<List<CachePatchSchedule>?>('patchSchedules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CachePatchSchedule>(guardedValue, (value) => CachePatchSchedule.fromMap((value as Map).cast<String, dynamic>())); });
     port = registerOutput<int>('port');
-    primaryAccessKey = registerOutput<String>('primaryAccessKey');
-    primaryConnectionString = registerOutput<String>('primaryConnectionString');
+    primaryAccessKey = registerOutput<String>('primaryAccessKey', isSecret: true);
+    primaryConnectionString = registerOutput<String>('primaryConnectionString', isSecret: true);
     privateStaticIpAddress = registerOutput<String>('privateStaticIpAddress');
     publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
     redisConfiguration = registerOutput<CacheRedisConfiguration>('redisConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CacheRedisConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -391,14 +394,55 @@ class Cache extends pulumi.CustomResource {
     replicasPerMaster = registerOutput<int>('replicasPerMaster');
     replicasPerPrimary = registerOutput<int>('replicasPerPrimary');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    secondaryAccessKey = registerOutput<String>('secondaryAccessKey');
-    secondaryConnectionString = registerOutput<String>('secondaryConnectionString');
+    secondaryAccessKey = registerOutput<String>('secondaryAccessKey', isSecret: true);
+    secondaryConnectionString = registerOutput<String>('secondaryConnectionString', isSecret: true);
     shardCount = registerOutput<int?>('shardCount');
     skuName = registerOutput<String>('skuName');
     sslPort = registerOutput<int>('sslPort');
     subnetId = registerOutput<String?>('subnetId');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tenantSettings = registerOutput<Map<String, String>?>('tenantSettings');
-    zones = registerOutput<List<String>?>('zones');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tenantSettings = registerOutput<Map<String, String>?>('tenantSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    zones = registerOutput<List<String>?>('zones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Cache] resource.
+  Cache.reference(String urn)
+    : super(
+        'azure:redis/cache:Cache',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['primaryAccessKey', 'primaryConnectionString', 'secondaryAccessKey', 'secondaryConnectionString'],
+        isResourceReference: true,
+      ) {
+    accessKeysAuthenticationEnabled = registerOutput<bool?>('accessKeysAuthenticationEnabled');
+    capacity = registerOutput<int>('capacity');
+    family = registerOutput<String>('family');
+    hostname = registerOutput<String>('hostname');
+    identity = registerOutput<CacheIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CacheIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    minimumTlsVersion = registerOutput<String?>('minimumTlsVersion');
+    this.name = registerOutput<String>('name');
+    nonSslPortEnabled = registerOutput<bool?>('nonSslPortEnabled');
+    patchSchedules = registerOutput<List<CachePatchSchedule>?>('patchSchedules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CachePatchSchedule>(guardedValue, (value) => CachePatchSchedule.fromMap((value as Map).cast<String, dynamic>())); });
+    port = registerOutput<int>('port');
+    primaryAccessKey = registerOutput<String>('primaryAccessKey', isSecret: true);
+    primaryConnectionString = registerOutput<String>('primaryConnectionString', isSecret: true);
+    privateStaticIpAddress = registerOutput<String>('privateStaticIpAddress');
+    publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
+    redisConfiguration = registerOutput<CacheRedisConfiguration>('redisConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CacheRedisConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    redisVersion = registerOutput<String?>('redisVersion');
+    replicasPerMaster = registerOutput<int>('replicasPerMaster');
+    replicasPerPrimary = registerOutput<int>('replicasPerPrimary');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    secondaryAccessKey = registerOutput<String>('secondaryAccessKey', isSecret: true);
+    secondaryConnectionString = registerOutput<String>('secondaryConnectionString', isSecret: true);
+    shardCount = registerOutput<int?>('shardCount');
+    skuName = registerOutput<String>('skuName');
+    sslPort = registerOutput<int>('sslPort');
+    subnetId = registerOutput<String?>('subnetId');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tenantSettings = registerOutput<Map<String, String>?>('tenantSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    zones = registerOutput<List<String>?>('zones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

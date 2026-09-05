@@ -4,17 +4,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DomainInputMappingFields {
   /// Specifies the data version of the EventGrid Event to associate with the domain. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? dataVersion;
+  final pulumi.Input<String?>? dataVersion;
   /// Specifies the event time of the EventGrid Event to associate with the domain. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? eventTime;
+  final pulumi.Input<String?>? eventTime;
   /// Specifies the event type of the EventGrid Event to associate with the domain. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? eventType;
+  final pulumi.Input<String?>? eventType;
   /// Specifies the id of the EventGrid Event to associate with the domain. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Specifies the subject of the EventGrid Event to associate with the domain. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? subject;
+  final pulumi.Input<String?>? subject;
   /// Specifies the topic of the EventGrid Event to associate with the domain. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? topic;
+  final pulumi.Input<String?>? topic;
 
   /// Creates a new [DomainInputMappingFields].
   /// [dataVersion] Specifies the data version of the EventGrid Event to associate with the domain. Changing this forces a new resource to be created.

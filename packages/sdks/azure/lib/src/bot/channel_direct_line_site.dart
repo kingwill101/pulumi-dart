@@ -4,29 +4,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ChannelDirectLineSite {
   /// Enables/Disables this site. Defaults to `true`.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// Is the endpoint parameters enabled for this site?
-  final pulumi.Input<bool>? endpointParametersEnabled;
+  final pulumi.Input<bool?>? endpointParametersEnabled;
   /// Enables additional security measures for this site, see [Enhanced Directline Authentication Features](https://blog.botframework.com/2018/09/25/enhanced-direct-line-authentication-features). Disabled by default.
-  final pulumi.Input<bool>? enhancedAuthenticationEnabled;
+  final pulumi.Input<bool?>? enhancedAuthenticationEnabled;
   /// Id for the site
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Primary key for accessing this site
-  final pulumi.Input<String>? key;
+  final pulumi.Input<String?>? key;
   /// Secondary key for accessing this site
-  final pulumi.Input<String>? key2;
+  final pulumi.Input<String?>? key2;
   /// The name of the site
   final pulumi.Input<String> name;
   /// Is the storage site enabled for detailed logging? Defaults to `true`.
-  final pulumi.Input<bool>? storageEnabled;
+  final pulumi.Input<bool?>? storageEnabled;
   /// This field is required when `isSecureSiteEnabled` is enabled. Determines which origins can establish a Directline conversation for this site.
-  final pulumi.Input<List<String>>? trustedOrigins;
+  final pulumi.Input<List<String>?>? trustedOrigins;
   /// Is the user upload enabled for this site? Defaults to `true`.
-  final pulumi.Input<bool>? userUploadEnabled;
+  final pulumi.Input<bool?>? userUploadEnabled;
   /// Enables v1 of the Directline protocol for this site. Defaults to `true`.
-  final pulumi.Input<bool>? v1Allowed;
+  final pulumi.Input<bool?>? v1Allowed;
   /// Enables v3 of the Directline protocol for this site. Defaults to `true`.
-  final pulumi.Input<bool>? v3Allowed;
+  final pulumi.Input<bool?>? v3Allowed;
 
   /// Creates a new [ChannelDirectLineSite].
   /// [enabled] Enables/Disables this site. Defaults to `true`.

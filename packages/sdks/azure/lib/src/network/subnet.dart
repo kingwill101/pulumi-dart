@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'subnet_args.dart';
+import 'subnet_delegation.dart';
 import 'subnet_ip_address_pool.dart';
 import 'subnet_state.dart';
 
@@ -329,7 +330,7 @@ class Subnet extends pulumi.CustomResource {
   /// Enable default outbound access to the internet for the subnet. Defaults to `true`.
   late final pulumi.Output<bool?> defaultOutboundAccessEnabled;
   /// One or more `delegation` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> delegations;
+  late final pulumi.Output<List<SubnetDelegation>?> delegations;
   /// An `ipAddressPool` block as defined below.
   ///
   /// &gt; **Note:** Exactly one of `addressPrefixes` or `ipAddressPool` must be specified.
@@ -377,18 +378,18 @@ class Subnet extends pulumi.CustomResource {
           'azure:network/subnet:Subnet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
-    addressPrefixes = registerOutput<List<String>?>('addressPrefixes');
+    addressPrefixes = registerOutput<List<String>?>('addressPrefixes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     defaultOutboundAccessEnabled = registerOutput<bool?>('defaultOutboundAccessEnabled');
-    delegations = registerOutput<List<Map<String, dynamic>>?>('delegations');
+    delegations = registerOutput<List<SubnetDelegation>?>('delegations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubnetDelegation>(guardedValue, (value) => SubnetDelegation.fromMap((value as Map).cast<String, dynamic>())); });
     ipAddressPool = registerOutput<SubnetIpAddressPool?>('ipAddressPool', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubnetIpAddressPool.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     privateEndpointNetworkPolicies = registerOutput<String?>('privateEndpointNetworkPolicies');
     privateLinkServiceNetworkPoliciesEnabled = registerOutput<bool?>('privateLinkServiceNetworkPoliciesEnabled');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    serviceEndpointPolicyIds = registerOutput<List<String>?>('serviceEndpointPolicyIds');
-    serviceEndpoints = registerOutput<List<String>?>('serviceEndpoints');
+    serviceEndpointPolicyIds = registerOutput<List<String>?>('serviceEndpointPolicyIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    serviceEndpoints = registerOutput<List<String>?>('serviceEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     sharingScope = registerOutput<String?>('sharingScope');
     virtualNetworkName = registerOutput<String>('virtualNetworkName');
   }
@@ -398,11 +399,12 @@ class Subnet extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SubnetState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Subnet._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -416,16 +418,39 @@ class Subnet extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    addressPrefixes = registerOutput<List<String>?>('addressPrefixes');
+    addressPrefixes = registerOutput<List<String>?>('addressPrefixes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     defaultOutboundAccessEnabled = registerOutput<bool?>('defaultOutboundAccessEnabled');
-    delegations = registerOutput<List<Map<String, dynamic>>?>('delegations');
+    delegations = registerOutput<List<SubnetDelegation>?>('delegations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubnetDelegation>(guardedValue, (value) => SubnetDelegation.fromMap((value as Map).cast<String, dynamic>())); });
     ipAddressPool = registerOutput<SubnetIpAddressPool?>('ipAddressPool', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubnetIpAddressPool.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     privateEndpointNetworkPolicies = registerOutput<String?>('privateEndpointNetworkPolicies');
     privateLinkServiceNetworkPoliciesEnabled = registerOutput<bool?>('privateLinkServiceNetworkPoliciesEnabled');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    serviceEndpointPolicyIds = registerOutput<List<String>?>('serviceEndpointPolicyIds');
-    serviceEndpoints = registerOutput<List<String>?>('serviceEndpoints');
+    serviceEndpointPolicyIds = registerOutput<List<String>?>('serviceEndpointPolicyIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    serviceEndpoints = registerOutput<List<String>?>('serviceEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    sharingScope = registerOutput<String?>('sharingScope');
+    virtualNetworkName = registerOutput<String>('virtualNetworkName');
+  }
+
+  /// Creates a typed reference to an existing [Subnet] resource.
+  Subnet.reference(String urn)
+    : super(
+        'azure:network/subnet:Subnet',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    addressPrefixes = registerOutput<List<String>?>('addressPrefixes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    defaultOutboundAccessEnabled = registerOutput<bool?>('defaultOutboundAccessEnabled');
+    delegations = registerOutput<List<SubnetDelegation>?>('delegations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubnetDelegation>(guardedValue, (value) => SubnetDelegation.fromMap((value as Map).cast<String, dynamic>())); });
+    ipAddressPool = registerOutput<SubnetIpAddressPool?>('ipAddressPool', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubnetIpAddressPool.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    privateEndpointNetworkPolicies = registerOutput<String?>('privateEndpointNetworkPolicies');
+    privateLinkServiceNetworkPoliciesEnabled = registerOutput<bool?>('privateLinkServiceNetworkPoliciesEnabled');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    serviceEndpointPolicyIds = registerOutput<List<String>?>('serviceEndpointPolicyIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    serviceEndpoints = registerOutput<List<String>?>('serviceEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     sharingScope = registerOutput<String?>('sharingScope');
     virtualNetworkName = registerOutput<String>('virtualNetworkName');
   }

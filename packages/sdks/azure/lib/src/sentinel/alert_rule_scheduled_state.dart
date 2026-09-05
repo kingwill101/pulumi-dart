@@ -10,57 +10,57 @@ import 'alert_rule_scheduled_sentinel_entity_mapping.dart';
 /// Input properties used for looking up and filtering AlertRuleScheduled resources.
 class AlertRuleScheduledState {
   /// An `alertDetailsOverride` block as defined below.
-  final pulumi.Input<List<AlertRuleScheduledAlertDetailsOverride>>? alertDetailsOverrides;
+  final pulumi.Input<List<AlertRuleScheduledAlertDetailsOverride>?>? alertDetailsOverrides;
   /// The GUID of the alert rule template which is used for this Sentinel Scheduled Alert Rule. Changing this forces a new Sentinel Scheduled Alert Rule to be created.
-  final pulumi.Input<String>? alertRuleTemplateGuid;
+  final pulumi.Input<String?>? alertRuleTemplateGuid;
   /// The version of the alert rule template which is used for this Sentinel Scheduled Alert Rule.
-  final pulumi.Input<String>? alertRuleTemplateVersion;
+  final pulumi.Input<String?>? alertRuleTemplateVersion;
   /// A map of string key-value pairs of columns to be attached to this Sentinel Scheduled Alert Rule. The key will appear as the field name in alerts and the value is the event parameter you wish to surface in the alerts.
-  final pulumi.Input<Map<String, String>>? customDetails;
+  final pulumi.Input<Map<String, String>?>? customDetails;
   /// The description of this Sentinel Scheduled Alert Rule.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The friendly name of this Sentinel Scheduled Alert Rule.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Should the Sentinel Scheduled Alert Rule be enabled? Defaults to `true`.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// A list of `entityMapping` blocks as defined below.
-  final pulumi.Input<List<AlertRuleScheduledEntityMapping>>? entityMappings;
+  final pulumi.Input<List<AlertRuleScheduledEntityMapping>?>? entityMappings;
   /// A `eventGrouping` block as defined below.
-  final pulumi.Input<AlertRuleScheduledEventGrouping>? eventGrouping;
+  final pulumi.Input<AlertRuleScheduledEventGrouping?>? eventGrouping;
   /// A `incident` block as defined below.
-  final pulumi.Input<AlertRuleScheduledIncident>? incident;
+  final pulumi.Input<AlertRuleScheduledIncident?>? incident;
   /// The ID of the Log Analytics Workspace this Sentinel Scheduled Alert Rule belongs to. Changing this forces a new Sentinel Scheduled Alert Rule to be created.
-  final pulumi.Input<String>? logAnalyticsWorkspaceId;
+  final pulumi.Input<String?>? logAnalyticsWorkspaceId;
   /// The name which should be used for this Sentinel Scheduled Alert Rule. Changing this forces a new Sentinel Scheduled Alert Rule to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The query of this Sentinel Scheduled Alert Rule.
-  final pulumi.Input<String>? query;
+  final pulumi.Input<String?>? query;
   /// The ISO 8601 timespan duration between two consecutive queries. Defaults to `PT5H`.
-  final pulumi.Input<String>? queryFrequency;
+  final pulumi.Input<String?>? queryFrequency;
   /// The ISO 8601 timespan duration, which determine the time period of the data covered by the query. For example, it can query the past 10 minutes of data, or the past 6 hours of data. Defaults to `PT5H`.
   ///
   /// &gt; **Note:** `queryPeriod` must larger than or equal to `queryFrequency`, which ensures there is no gaps in the overall query coverage.
-  final pulumi.Input<String>? queryPeriod;
+  final pulumi.Input<String?>? queryPeriod;
   /// A list of `sentinelEntityMapping` blocks as defined below.
   ///
   /// &gt; **Note:** `entityMapping` and `sentinelEntityMapping` together can't exceed 10.
-  final pulumi.Input<List<AlertRuleScheduledSentinelEntityMapping>>? sentinelEntityMappings;
+  final pulumi.Input<List<AlertRuleScheduledSentinelEntityMapping>?>? sentinelEntityMappings;
   /// The alert severity of this Sentinel Scheduled Alert Rule. Possible values are `High`, `Medium`, `Low` and `Informational`.
-  final pulumi.Input<String>? severity;
+  final pulumi.Input<String?>? severity;
   /// If `suppressionEnabled` is `true`, this is ISO 8601 timespan duration, which specifies the amount of time the query should stop running after alert is generated. Defaults to `PT5H`.
   ///
   /// &gt; **Note:** `suppressionDuration` must larger than or equal to `queryFrequency`, otherwise the suppression has no actual effect since no query will happen during the suppression duration.
-  final pulumi.Input<String>? suppressionDuration;
+  final pulumi.Input<String?>? suppressionDuration;
   /// Should the Sentinel Scheduled Alert Rulea stop running query after alert is generated? Defaults to `false`.
-  final pulumi.Input<bool>? suppressionEnabled;
+  final pulumi.Input<bool?>? suppressionEnabled;
   /// A list of categories of attacks by which to classify the rule. Possible values are `Collection`, `CommandAndControl`, `CredentialAccess`, `DefenseEvasion`, `Discovery`, `Execution`, `Exfiltration`, `ImpairProcessControl`, `InhibitResponseFunction`, `Impact`, `InitialAccess`, `LateralMovement`, `Persistence`, `PrivilegeEscalation`, `PreAttack`, `Reconnaissance` and `ResourceDevelopment`.
-  final pulumi.Input<List<String>>? tactics;
+  final pulumi.Input<List<String>?>? tactics;
   /// A list of techniques of attacks by which to classify the rule.
-  final pulumi.Input<List<String>>? techniques;
+  final pulumi.Input<List<String>?>? techniques;
   /// The alert trigger operator, combined with `triggerThreshold`, setting alert threshold of this Sentinel Scheduled Alert Rule. Possible values are `Equal`, `GreaterThan`, `LessThan`, `NotEqual`. Defaults to `GreaterThan`.
-  final pulumi.Input<String>? triggerOperator;
+  final pulumi.Input<String?>? triggerOperator;
   /// The baseline number of query results generated, combined with `triggerOperator`, setting alert threshold of this Sentinel Scheduled Alert Rule. Defaults to `0`.
-  final pulumi.Input<int>? triggerThreshold;
+  final pulumi.Input<int?>? triggerThreshold;
 
   /// Creates a new [AlertRuleScheduledState].
   /// [alertDetailsOverrides] An `alertDetailsOverride` block as defined below.
@@ -164,7 +164,7 @@ class AlertRuleScheduledState {
       tactics: (() { final guardedValue = map['tactics']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       techniques: (() { final guardedValue = map['techniques']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       triggerOperator: (() { final guardedValue = map['triggerOperator']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      triggerThreshold: (() { final guardedValue = map['triggerThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      triggerThreshold: (() { final guardedValue = map['triggerThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

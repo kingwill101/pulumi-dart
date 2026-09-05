@@ -8,13 +8,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_advisor_get_recommendations_get_recommendations_args_doc}
 class GetRecommendationsArgs {
   /// Specifies a list of categories in which the Advisor Recommendations will be listed. Possible values are `HighAvailability`, `Security`, `Performance`, `Cost` and `OperationalExcellence`.
-  final pulumi.Input<List<String>>? filterByCategories;
+  final pulumi.Input<List<String>?>? filterByCategories;
   /// Specifies a list of recommendation types about which the Advisor Recommendations will be listed.
-  final pulumi.Input<List<String>>? filterByRecommendationTypeGuids;
+  final pulumi.Input<List<String>?>? filterByRecommendationTypeGuids;
   /// Specifies a list of resource groups about which the Advisor Recommendations will be listed.
-  final pulumi.Input<List<String>>? filterByResourceGroups;
+  final pulumi.Input<List<String>?>? filterByResourceGroups;
   /// Specifies a list of resource about which the Advisor Recommendations will be listed.
-  final pulumi.Input<List<String>>? filterByResourceIds;
+  final pulumi.Input<List<String>?>? filterByResourceIds;
 
   /// Creates a new [GetRecommendationsArgs].
   /// [filterByCategories] Specifies a list of categories in which the Advisor Recommendations will be listed. Possible values are `HighAvailability`, `Security`, `Performance`, `Cost` and `OperationalExcellence`.

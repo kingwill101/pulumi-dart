@@ -8,31 +8,31 @@ import 'iot_hub_dps_sku.dart';
 /// Input properties used for looking up and filtering IotHubDps resources.
 class IotHubDpsState {
   /// The allocation policy of the IoT Device Provisioning Service (`Hashed`, `GeoLatency` or `Static`). Defaults to `Hashed`.
-  final pulumi.Input<String>? allocationPolicy;
+  final pulumi.Input<String?>? allocationPolicy;
   /// Specifies if the IoT Device Provisioning Service has data residency enabled, removing the cross geo-pair disaster recovery. Defaults to `false`. Changing this forces a new resource to be created.
-  final pulumi.Input<bool>? dataResidencyEnabled;
+  final pulumi.Input<bool?>? dataResidencyEnabled;
   /// The device endpoint of the IoT Device Provisioning Service.
-  final pulumi.Input<String>? deviceProvisioningHostName;
+  final pulumi.Input<String?>? deviceProvisioningHostName;
   /// The unique identifier of the IoT Device Provisioning Service.
-  final pulumi.Input<String>? idScope;
+  final pulumi.Input<String?>? idScope;
   /// An `ipFilterRule` block as defined below.
-  final pulumi.Input<List<IotHubDpsIpFilterRule>>? ipFilterRules;
+  final pulumi.Input<List<IotHubDpsIpFilterRule>?>? ipFilterRules;
   /// A `linkedHub` block as defined below.
-  final pulumi.Input<List<IotHubDpsLinkedHub>>? linkedHubs;
+  final pulumi.Input<List<IotHubDpsLinkedHub>?>? linkedHubs;
   /// Specifies the supported Azure location where the resource has to be created. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Specifies the name of the Iot Device Provisioning Service resource. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Whether requests from Public Network are allowed. Defaults to `true`.
-  final pulumi.Input<bool>? publicNetworkAccessEnabled;
+  final pulumi.Input<bool?>? publicNetworkAccessEnabled;
   /// The name of the resource group under which the Iot Device Provisioning Service resource has to be created. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// The service endpoint of the IoT Device Provisioning Service.
-  final pulumi.Input<String>? serviceOperationsHostName;
+  final pulumi.Input<String?>? serviceOperationsHostName;
   /// A `sku` block as defined below.
-  final pulumi.Input<IotHubDpsSku>? sku;
+  final pulumi.Input<IotHubDpsSku?>? sku;
   /// A mapping of tags to assign to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [IotHubDpsState].
   /// [allocationPolicy] The allocation policy of the IoT Device Provisioning Service (`Hashed`, `GeoLatency` or `Static`). Defaults to `Hashed`.

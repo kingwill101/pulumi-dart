@@ -10,9 +10,9 @@ class WindowsFunctionAppAuthSettingsV2FacebookV2 {
   /// &gt; **Note:** A setting with this name must exist in `appSettings` to function correctly.
   final pulumi.Input<String> appSecretSettingName;
   /// The version of the Facebook API to be used while logging in.
-  final pulumi.Input<String>? graphApiVersion;
+  final pulumi.Input<String?>? graphApiVersion;
   /// The list of scopes that should be requested as part of Facebook Login authentication.
-  final pulumi.Input<List<String>>? loginScopes;
+  final pulumi.Input<List<String>?>? loginScopes;
 
   /// Creates a new [WindowsFunctionAppAuthSettingsV2FacebookV2].
   /// [appId] The App ID of the Facebook app used for login.

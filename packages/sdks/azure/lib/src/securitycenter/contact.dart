@@ -168,7 +168,7 @@ class Contact extends pulumi.CustomResource {
           'azure:securitycenter/contact:Contact',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     alertNotifications = registerOutput<bool>('alertNotifications');
     alertsToAdmins = registerOutput<bool>('alertsToAdmins');
@@ -182,11 +182,12 @@ class Contact extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ContactState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Contact._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -200,6 +201,22 @@ class Contact extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    alertNotifications = registerOutput<bool>('alertNotifications');
+    alertsToAdmins = registerOutput<bool>('alertsToAdmins');
+    email = registerOutput<String>('email');
+    this.name = registerOutput<String>('name');
+    phone = registerOutput<String?>('phone');
+  }
+
+  /// Creates a typed reference to an existing [Contact] resource.
+  Contact.reference(String urn)
+    : super(
+        'azure:securitycenter/contact:Contact',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     alertNotifications = registerOutput<bool>('alertNotifications');
     alertsToAdmins = registerOutput<bool>('alertsToAdmins');
     email = registerOutput<String>('email');

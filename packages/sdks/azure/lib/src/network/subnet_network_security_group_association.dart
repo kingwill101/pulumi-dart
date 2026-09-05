@@ -212,8 +212,8 @@ import 'subnet_network_security_group_association_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = network.NewSubnetNetworkSecurityGroupAssociation(ctx, "example", &network.SubnetNetworkSecurityGroupAssociationArgs{
-/// 			SubnetId:               exampleSubnet.ID(),
-/// 			NetworkSecurityGroupId: exampleNetworkSecurityGroup.ID(),
+/// 			SubnetId:               exampleSubnet.ID().ToIDOutput().ToStringOutput(),
+/// 			NetworkSecurityGroupId: exampleNetworkSecurityGroup.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -425,7 +425,7 @@ class SubnetNetworkSecurityGroupAssociation extends pulumi.CustomResource {
           'azure:network/subnetNetworkSecurityGroupAssociation:SubnetNetworkSecurityGroupAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     networkSecurityGroupId = registerOutput<String>('networkSecurityGroupId');
     subnetId = registerOutput<String>('subnetId');
@@ -436,11 +436,12 @@ class SubnetNetworkSecurityGroupAssociation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SubnetNetworkSecurityGroupAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SubnetNetworkSecurityGroupAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -454,6 +455,19 @@ class SubnetNetworkSecurityGroupAssociation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    networkSecurityGroupId = registerOutput<String>('networkSecurityGroupId');
+    subnetId = registerOutput<String>('subnetId');
+  }
+
+  /// Creates a typed reference to an existing [SubnetNetworkSecurityGroupAssociation] resource.
+  SubnetNetworkSecurityGroupAssociation.reference(String urn)
+    : super(
+        'azure:network/subnetNetworkSecurityGroupAssociation:SubnetNetworkSecurityGroupAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     networkSecurityGroupId = registerOutput<String>('networkSecurityGroupId');
     subnetId = registerOutput<String>('subnetId');
   }

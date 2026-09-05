@@ -6,9 +6,9 @@ class LinuxWebAppSlotSiteCredential {
   /// The name which should be used for this Linux Web App Slot. Changing this forces a new Linux Web App Slot to be created.
   ///
   /// &gt; **Note:** Terraform will perform a name availability check as part of the creation progress, if this Web App is part of an App Service Environment terraform will require Read permission on the ASE for this to complete reliably.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The Site Credentials Password used for publishing.
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
 
   /// Creates a new [LinuxWebAppSlotSiteCredential].
   /// [name] The name which should be used for this Linux Web App Slot. Changing this forces a new Linux Web App Slot to be created.

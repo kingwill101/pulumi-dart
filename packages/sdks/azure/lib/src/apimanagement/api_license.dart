@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApiLicense {
   /// The name of the license .
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Absolute URL of the license.
-  final pulumi.Input<String>? url;
+  final pulumi.Input<String?>? url;
 
   /// Creates a new [ApiLicense].
   /// [name] The name of the license .

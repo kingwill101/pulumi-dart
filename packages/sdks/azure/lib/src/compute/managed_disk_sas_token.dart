@@ -117,7 +117,7 @@ import 'managed_disk_sas_token_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = compute.NewManagedDiskSasToken(ctx, "test", &compute.ManagedDiskSasTokenArgs{
-/// 			ManagedDiskId:     testManagedDisk.ID(),
+/// 			ManagedDiskId:     testManagedDisk.ID().ToIDOutput().ToStringOutput(),
 /// 			DurationInSeconds: pulumi.Int(300),
 /// 			AccessLevel:       pulumi.String("Read"),
 /// 		})
@@ -269,12 +269,13 @@ class ManagedDiskSasToken extends pulumi.CustomResource {
           'azure:compute/managedDiskSasToken:ManagedDiskSasToken',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['sasUrl'],
         ) {
     accessLevel = registerOutput<String>('accessLevel');
     durationInSeconds = registerOutput<int>('durationInSeconds');
     managedDiskId = registerOutput<String>('managedDiskId');
-    sasUrl = registerOutput<String>('sasUrl');
+    sasUrl = registerOutput<String>('sasUrl', isSecret: true);
   }
 
   /// Gets an existing [ManagedDiskSasToken] resource's state with the given [name] and [id].
@@ -282,11 +283,12 @@ class ManagedDiskSasToken extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ManagedDiskSasTokenState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ManagedDiskSasToken._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -303,6 +305,22 @@ class ManagedDiskSasToken extends pulumi.CustomResource {
     accessLevel = registerOutput<String>('accessLevel');
     durationInSeconds = registerOutput<int>('durationInSeconds');
     managedDiskId = registerOutput<String>('managedDiskId');
-    sasUrl = registerOutput<String>('sasUrl');
+    sasUrl = registerOutput<String>('sasUrl', isSecret: true);
+  }
+
+  /// Creates a typed reference to an existing [ManagedDiskSasToken] resource.
+  ManagedDiskSasToken.reference(String urn)
+    : super(
+        'azure:compute/managedDiskSasToken:ManagedDiskSasToken',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['sasUrl'],
+        isResourceReference: true,
+      ) {
+    accessLevel = registerOutput<String>('accessLevel');
+    durationInSeconds = registerOutput<int>('durationInSeconds');
+    managedDiskId = registerOutput<String>('managedDiskId');
+    sasUrl = registerOutput<String>('sasUrl', isSecret: true);
   }
 }

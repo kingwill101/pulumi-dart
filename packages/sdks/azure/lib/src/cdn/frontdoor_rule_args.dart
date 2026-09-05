@@ -12,13 +12,15 @@ class FrontdoorRuleArgs {
   /// An `actions` block as defined below.
   final pulumi.Input<FrontdoorRuleActions> actions;
   /// If this rule is a match should the rules engine continue processing the remaining rules or stop? Possible values are `Continue` and `Stop`. Defaults to `Continue`.
-  final pulumi.Input<String>? behaviorOnMatch;
+  final pulumi.Input<String?>? behaviorOnMatch;
   /// The resource ID of the Front Door Rule Set for this Front Door Rule. Changing this forces a new Front Door Rule to be created.
+  ///
+  /// &gt; **Note:** The `cdnFrontdoorRuleSetId` must reference a non-batch mode rule set, individual rules for batch mode rule sets cannot be managed by this resource.
   final pulumi.Input<String> cdnFrontdoorRuleSetId;
   /// A `conditions` block as defined below.
-  final pulumi.Input<FrontdoorRuleConditions>? conditions;
+  final pulumi.Input<FrontdoorRuleConditions?>? conditions;
   /// The name which should be used for this Front Door Rule. Possible values must be between 1 and 260 characters in length, begin with a letter and may contain only letters and numbers. Changing this forces a new Front Door Rule to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The order in which the rules will be applied for the Front Door Endpoint. The order value should be sequential and begin at `1`(e.g. `1`, `2`, `3`...). A Front Door Rule with a lesser order value will be applied before a rule with a greater order value.
   ///
   /// &gt; **Note:** If the Front Door Rule has an order value of `0` they do not require any conditions and the actions will always be applied.
@@ -58,7 +60,7 @@ class FrontdoorRuleArgs {
       cdnFrontdoorRuleSetId: pulumi.Input.fromValue(map['cdnFrontdoorRuleSetId'] as String),
       conditions: (() { final guardedValue = map['conditions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FrontdoorRuleConditions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      order: pulumi.Input.fromValue(map['order'] as int),
+      order: pulumi.Input.fromValue((map['order'] as num).toInt()),
     );
   }
 }

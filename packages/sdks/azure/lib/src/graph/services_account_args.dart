@@ -10,11 +10,11 @@ class ServicesAccountArgs {
   /// Customer owned application ID. Changing this forces a new Account to be created.
   final pulumi.Input<String> applicationId;
   /// Specifies the name of this Account. Changing this forces a new Account to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specifies the name of the Resource Group within which this Account should exist. Changing this forces a new Account to be created.
   final pulumi.Input<String> resourceGroupName;
   /// A mapping of tags which should be assigned to the Account.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ServicesAccountArgs].
   /// [applicationId] Customer owned application ID. Changing this forces a new Account to be created.

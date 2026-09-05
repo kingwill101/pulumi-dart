@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ComputeClusterSsh {
   /// Password of the administrator user account. Changing this forces a new Machine Learning Compute Cluster to be created.
-  final pulumi.Input<String>? adminPassword;
+  final pulumi.Input<String?>? adminPassword;
   /// Name of the administrator user account which can be used to SSH to nodes. Changing this forces a new Machine Learning Compute Cluster to be created.
   final pulumi.Input<String> adminUsername;
   /// SSH public key of the administrator user account. Changing this forces a new Machine Learning Compute Cluster to be created.
   ///
   /// &gt; **Note:** At least one of `adminPassword` and `keyValue` shoud be specified.
-  final pulumi.Input<String>? keyValue;
+  final pulumi.Input<String?>? keyValue;
 
   /// Creates a new [ComputeClusterSsh].
   /// [adminPassword] Password of the administrator user account. Changing this forces a new Machine Learning Compute Cluster to be created.

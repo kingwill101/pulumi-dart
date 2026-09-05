@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class JobJobStorageAccount {
   /// The account key for the Azure storage account.
-  final pulumi.Input<String>? accountKey;
+  final pulumi.Input<String?>? accountKey;
   /// The name of the Azure storage account.
   final pulumi.Input<String> accountName;
   /// The authentication mode of the storage account. Possible values are `ConnectionString` and `Msi`. Defaults to `ConnectionString`.
-  final pulumi.Input<String>? authenticationMode;
+  final pulumi.Input<String?>? authenticationMode;
 
   /// Creates a new [JobJobStorageAccount].
   /// [accountKey] The account key for the Azure storage account.

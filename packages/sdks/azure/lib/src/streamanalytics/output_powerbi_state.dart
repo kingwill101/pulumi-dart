@@ -5,21 +5,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering OutputPowerbi resources.
 class OutputPowerbiState {
   /// The name of the Power BI dataset.
-  final pulumi.Input<String>? dataset;
+  final pulumi.Input<String?>? dataset;
   /// The ID of the Power BI group, this must be a valid UUID.
-  final pulumi.Input<String>? groupId;
+  final pulumi.Input<String?>? groupId;
   /// The name of the Power BI group. Use this property to help remember which specific Power BI group id was used.
-  final pulumi.Input<String>? groupName;
+  final pulumi.Input<String?>? groupName;
   /// The name of the Stream Output. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the Stream Analytics Job. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? streamAnalyticsJobId;
+  final pulumi.Input<String?>? streamAnalyticsJobId;
   /// The name of the Power BI table under the specified dataset.
-  final pulumi.Input<String>? table;
+  final pulumi.Input<String?>? table;
   /// The user display name of the user that was used to obtain the refresh token.
-  final pulumi.Input<String>? tokenUserDisplayName;
+  final pulumi.Input<String?>? tokenUserDisplayName;
   /// The user principal name (UPN) of the user that was used to obtain the refresh token.
-  final pulumi.Input<String>? tokenUserPrincipalName;
+  final pulumi.Input<String?>? tokenUserPrincipalName;
 
   /// Creates a new [OutputPowerbiState].
   /// [dataset] The name of the Power BI dataset.

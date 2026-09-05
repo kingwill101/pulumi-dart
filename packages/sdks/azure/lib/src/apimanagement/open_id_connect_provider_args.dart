@@ -14,13 +14,13 @@ class OpenIdConnectProviderArgs {
   /// The Client Secret used for the Client Application.
   final pulumi.Input<String> clientSecret;
   /// A description of this OpenID Connect Provider.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// A user-friendly name for this OpenID Connect Provider.
   final pulumi.Input<String> displayName;
   /// The URI of the Metadata endpoint.
   final pulumi.Input<String> metadataEndpoint;
   /// the Name of the OpenID Connect Provider which should be created within the API Management Service. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the Resource Group where the API Management Service exists. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
 

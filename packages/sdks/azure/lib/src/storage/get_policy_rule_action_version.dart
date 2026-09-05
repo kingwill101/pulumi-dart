@@ -40,11 +40,11 @@ class GetPolicyRuleActionVersion {
 
   factory GetPolicyRuleActionVersion.fromMap(Map<String, dynamic> map) {
     return GetPolicyRuleActionVersion(
-      changeTierToArchiveAfterDaysSinceCreation: pulumi.Input.fromValue(map['changeTierToArchiveAfterDaysSinceCreation'] as int),
-      changeTierToCoolAfterDaysSinceCreation: pulumi.Input.fromValue(map['changeTierToCoolAfterDaysSinceCreation'] as int),
-      deleteAfterDaysSinceCreation: pulumi.Input.fromValue(map['deleteAfterDaysSinceCreation'] as int),
-      tierToArchiveAfterDaysSinceLastTierChangeGreaterThan: pulumi.Input.fromValue(map['tierToArchiveAfterDaysSinceLastTierChangeGreaterThan'] as int),
-      tierToColdAfterDaysSinceCreationGreaterThan: pulumi.Input.fromValue(map['tierToColdAfterDaysSinceCreationGreaterThan'] as int),
+      changeTierToArchiveAfterDaysSinceCreation: pulumi.Input.fromValue((map['changeTierToArchiveAfterDaysSinceCreation'] as num).toInt()),
+      changeTierToCoolAfterDaysSinceCreation: pulumi.Input.fromValue((map['changeTierToCoolAfterDaysSinceCreation'] as num).toInt()),
+      deleteAfterDaysSinceCreation: pulumi.Input.fromValue((map['deleteAfterDaysSinceCreation'] as num).toInt()),
+      tierToArchiveAfterDaysSinceLastTierChangeGreaterThan: pulumi.Input.fromValue((map['tierToArchiveAfterDaysSinceLastTierChangeGreaterThan'] as num).toInt()),
+      tierToColdAfterDaysSinceCreationGreaterThan: pulumi.Input.fromValue((map['tierToColdAfterDaysSinceCreationGreaterThan'] as num).toInt()),
     );
   }
 }

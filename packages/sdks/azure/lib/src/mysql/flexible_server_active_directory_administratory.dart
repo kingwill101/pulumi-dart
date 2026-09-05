@@ -168,7 +168,7 @@ import 'flexible_server_active_directory_administratory_state.dart';
 /// 			Identity: &mysql.FlexibleServerIdentityArgs{
 /// 				Type: pulumi.String("UserAssigned"),
 /// 				IdentityIds: pulumi.StringArray{
-/// 					exampleUserAssignedIdentity.ID(),
+/// 					exampleUserAssignedIdentity.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 		})
@@ -176,8 +176,8 @@ import 'flexible_server_active_directory_administratory_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = mysql.NewFlexibleServerActiveDirectoryAdministratory(ctx, "example", &mysql.FlexibleServerActiveDirectoryAdministratoryArgs{
-/// 			ServerId:   exampleFlexibleServer.ID(),
-/// 			IdentityId: exampleUserAssignedIdentity.ID(),
+/// 			ServerId:   exampleFlexibleServer.ID().ToIDOutput().ToStringOutput(),
+/// 			IdentityId: exampleUserAssignedIdentity.ID().ToIDOutput().ToStringOutput(),
 /// 			Login:      pulumi.String("sqladmin"),
 /// 			ObjectId:   pulumi.String(current.ClientId),
 /// 			TenantId:   pulumi.String(current.TenantId),
@@ -382,7 +382,7 @@ class FlexibleServerActiveDirectoryAdministratory extends pulumi.CustomResource 
           'azure:mysql/flexibleServerActiveDirectoryAdministratory:FlexibleServerActiveDirectoryAdministratory',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     identityId = registerOutput<String>('identityId');
     login = registerOutput<String>('login');
@@ -396,11 +396,12 @@ class FlexibleServerActiveDirectoryAdministratory extends pulumi.CustomResource 
     String name,
     pulumi.Input<String> id, {
     FlexibleServerActiveDirectoryAdministratoryState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return FlexibleServerActiveDirectoryAdministratory._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -414,6 +415,22 @@ class FlexibleServerActiveDirectoryAdministratory extends pulumi.CustomResource 
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    identityId = registerOutput<String>('identityId');
+    login = registerOutput<String>('login');
+    objectId = registerOutput<String>('objectId');
+    serverId = registerOutput<String>('serverId');
+    tenantId = registerOutput<String>('tenantId');
+  }
+
+  /// Creates a typed reference to an existing [FlexibleServerActiveDirectoryAdministratory] resource.
+  FlexibleServerActiveDirectoryAdministratory.reference(String urn)
+    : super(
+        'azure:mysql/flexibleServerActiveDirectoryAdministratory:FlexibleServerActiveDirectoryAdministratory',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     identityId = registerOutput<String>('identityId');
     login = registerOutput<String>('login');
     objectId = registerOutput<String>('objectId');

@@ -12,7 +12,7 @@ class ReplicationPolicyArgs {
   /// &gt; **Note:** The value of `applicationConsistentSnapshotFrequencyInMinutes` must be less than or equal to the value of `recoveryPointRetentionInMinutes`.
   final pulumi.Input<int> applicationConsistentSnapshotFrequencyInMinutes;
   /// The name of the replication policy. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The duration in minutes for which the recovery points need to be stored.
   final pulumi.Input<int> recoveryPointRetentionInMinutes;
   /// The name of the vault that should be updated. Changing this forces a new resource to be created.
@@ -46,9 +46,9 @@ class ReplicationPolicyArgs {
 
   factory ReplicationPolicyArgs.fromMap(Map<String, dynamic> map) {
     return ReplicationPolicyArgs(
-      applicationConsistentSnapshotFrequencyInMinutes: pulumi.Input.fromValue(map['applicationConsistentSnapshotFrequencyInMinutes'] as int),
+      applicationConsistentSnapshotFrequencyInMinutes: pulumi.Input.fromValue((map['applicationConsistentSnapshotFrequencyInMinutes'] as num).toInt()),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      recoveryPointRetentionInMinutes: pulumi.Input.fromValue(map['recoveryPointRetentionInMinutes'] as int),
+      recoveryPointRetentionInMinutes: pulumi.Input.fromValue((map['recoveryPointRetentionInMinutes'] as num).toInt()),
       recoveryVaultName: pulumi.Input.fromValue(map['recoveryVaultName'] as String),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );

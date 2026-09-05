@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'dataset_http_args.dart';
+import 'dataset_http_schema_column.dart';
 import 'dataset_http_state.dart';
 
 /// Manages an Azure HTTP Dataset inside an Azure Data Factory.
@@ -128,7 +129,7 @@ import 'dataset_http_state.dart';
 /// 		}
 /// 		exampleLinkedServiceWeb, err := datafactory.NewLinkedServiceWeb(ctx, "example", &datafactory.LinkedServiceWebArgs{
 /// 			Name:               pulumi.String("example"),
-/// 			DataFactoryId:      exampleFactory.ID(),
+/// 			DataFactoryId:      exampleFactory.ID().ToIDOutput().ToStringOutput(),
 /// 			AuthenticationType: pulumi.String("Anonymous"),
 /// 			Url:                pulumi.String("https://www.bing.com"),
 /// 		})
@@ -137,7 +138,7 @@ import 'dataset_http_state.dart';
 /// 		}
 /// 		_, err = datafactory.NewDatasetHttp(ctx, "example", &datafactory.DatasetHttpArgs{
 /// 			Name:              pulumi.String("example"),
-/// 			DataFactoryId:     exampleFactory.ID(),
+/// 			DataFactoryId:     exampleFactory.ID().ToIDOutput().ToStringOutput(),
 /// 			LinkedServiceName: exampleLinkedServiceWeb.Name,
 /// 			RelativeUrl:       pulumi.String("http://www.bing.com"),
 /// 			RequestBody:       pulumi.String("foo=bar"),
@@ -308,7 +309,7 @@ class DatasetHttp extends pulumi.CustomResource {
   /// The HTTP method for the HTTP request. (e.g. GET, POST)
   late final pulumi.Output<String?> requestMethod;
   /// A `schemaColumn` block as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> schemaColumns;
+  late final pulumi.Output<List<DatasetHttpSchemaColumn>?> schemaColumns;
 
   /// Creates a new [DatasetHttp].
   /// [name] The Pulumi resource name.
@@ -322,20 +323,20 @@ class DatasetHttp extends pulumi.CustomResource {
           'azure:datafactory/datasetHttp:DatasetHttp',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
-    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
-    annotations = registerOutput<List<String>?>('annotations');
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     dataFactoryId = registerOutput<String>('dataFactoryId');
     description = registerOutput<String?>('description');
     folder = registerOutput<String?>('folder');
     linkedServiceName = registerOutput<String>('linkedServiceName');
     this.name = registerOutput<String>('name');
-    parameters = registerOutput<Map<String, String>?>('parameters');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     relativeUrl = registerOutput<String?>('relativeUrl');
     requestBody = registerOutput<String?>('requestBody');
     requestMethod = registerOutput<String?>('requestMethod');
-    schemaColumns = registerOutput<List<Map<String, dynamic>>?>('schemaColumns');
+    schemaColumns = registerOutput<List<DatasetHttpSchemaColumn>?>('schemaColumns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DatasetHttpSchemaColumn>(guardedValue, (value) => DatasetHttpSchemaColumn.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [DatasetHttp] resource's state with the given [name] and [id].
@@ -343,11 +344,12 @@ class DatasetHttp extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DatasetHttpState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DatasetHttp._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -361,17 +363,40 @@ class DatasetHttp extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
-    annotations = registerOutput<List<String>?>('annotations');
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     dataFactoryId = registerOutput<String>('dataFactoryId');
     description = registerOutput<String?>('description');
     folder = registerOutput<String?>('folder');
     linkedServiceName = registerOutput<String>('linkedServiceName');
     this.name = registerOutput<String>('name');
-    parameters = registerOutput<Map<String, String>?>('parameters');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     relativeUrl = registerOutput<String?>('relativeUrl');
     requestBody = registerOutput<String?>('requestBody');
     requestMethod = registerOutput<String?>('requestMethod');
-    schemaColumns = registerOutput<List<Map<String, dynamic>>?>('schemaColumns');
+    schemaColumns = registerOutput<List<DatasetHttpSchemaColumn>?>('schemaColumns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DatasetHttpSchemaColumn>(guardedValue, (value) => DatasetHttpSchemaColumn.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [DatasetHttp] resource.
+  DatasetHttp.reference(String urn)
+    : super(
+        'azure:datafactory/datasetHttp:DatasetHttp',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    dataFactoryId = registerOutput<String>('dataFactoryId');
+    description = registerOutput<String?>('description');
+    folder = registerOutput<String?>('folder');
+    linkedServiceName = registerOutput<String>('linkedServiceName');
+    this.name = registerOutput<String>('name');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    relativeUrl = registerOutput<String?>('relativeUrl');
+    requestBody = registerOutput<String?>('requestBody');
+    requestMethod = registerOutput<String?>('requestMethod');
+    schemaColumns = registerOutput<List<DatasetHttpSchemaColumn>?>('schemaColumns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DatasetHttpSchemaColumn>(guardedValue, (value) => DatasetHttpSchemaColumn.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

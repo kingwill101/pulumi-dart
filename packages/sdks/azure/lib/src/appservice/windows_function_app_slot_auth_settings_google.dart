@@ -6,11 +6,11 @@ class WindowsFunctionAppSlotAuthSettingsGoogle {
   /// The OpenID Connect Client ID for the Google web application.
   final pulumi.Input<String> clientId;
   /// The client secret associated with the Google web application. Cannot be specified with `clientSecretSettingName`.
-  final pulumi.Input<String>? clientSecret;
+  final pulumi.Input<String?>? clientSecret;
   /// The app setting name that contains the `clientSecret` value used for Google login. Cannot be specified with `clientSecret`.
-  final pulumi.Input<String>? clientSecretSettingName;
+  final pulumi.Input<String?>? clientSecretSettingName;
   /// Specifies a list of OAuth 2.0 scopes that will be requested as part of Google Sign-In authentication. If not specified, "openid", "profile", and "email" are used as default scopes.
-  final pulumi.Input<List<String>>? oauthScopes;
+  final pulumi.Input<List<String>?>? oauthScopes;
 
   /// Creates a new [WindowsFunctionAppSlotAuthSettingsGoogle].
   /// [clientId] The OpenID Connect Client ID for the Google web application.

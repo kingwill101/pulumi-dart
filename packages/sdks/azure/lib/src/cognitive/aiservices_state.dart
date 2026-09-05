@@ -11,41 +11,41 @@ class AIServicesState {
   /// The subdomain name used for token-based authentication. This property is required when `networkAcls` is specified. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** If you do not specify a `customSubdomainName` then you will not be able to attach a Private Endpoint to the resource.
-  final pulumi.Input<String>? customSubdomainName;
+  final pulumi.Input<String?>? customSubdomainName;
   /// A `customerManagedKey` block as documented below.
-  final pulumi.Input<AIServicesCustomerManagedKey>? customerManagedKey;
+  final pulumi.Input<AIServicesCustomerManagedKey?>? customerManagedKey;
   /// The endpoint used to connect to the AI Services Account.
-  final pulumi.Input<String>? endpoint;
+  final pulumi.Input<String?>? endpoint;
   /// List of FQDNs allowed for the AI Services Account.
-  final pulumi.Input<List<String>>? fqdns;
+  final pulumi.Input<List<String>?>? fqdns;
   /// An `identity` block as defined below.
-  final pulumi.Input<AIServicesIdentity>? identity;
+  final pulumi.Input<AIServicesIdentity?>? identity;
   /// Whether local authentication is enabled for the AI Services Account. Defaults to `true`.
-  final pulumi.Input<bool>? localAuthenticationEnabled;
+  final pulumi.Input<bool?>? localAuthenticationEnabled;
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Specifies the name of the AI Services Account. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A `networkAcls` block as defined below. When this property is specified, `customSubdomainName` is also required to be set.
-  final pulumi.Input<AIServicesNetworkAcls>? networkAcls;
+  final pulumi.Input<AIServicesNetworkAcls?>? networkAcls;
   /// Whether outbound network access is restricted for the AI Services Account. Defaults to `false`.
-  final pulumi.Input<bool>? outboundNetworkAccessRestricted;
+  final pulumi.Input<bool?>? outboundNetworkAccessRestricted;
   /// A primary access key which can be used to connect to the AI Services Account.
-  final pulumi.Input<String>? primaryAccessKey;
+  final pulumi.Input<String?>? primaryAccessKey;
   /// Whether public network access is allowed for the AI Services Account. Possible values are `Enabled` and `Disabled`. Defaults to `Enabled`.
-  final pulumi.Input<String>? publicNetworkAccess;
+  final pulumi.Input<String?>? publicNetworkAccess;
   /// The name of the resource group in which the AI Services Account is created. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// The secondary access key which can be used to connect to the AI Services Account.
-  final pulumi.Input<String>? secondaryAccessKey;
+  final pulumi.Input<String?>? secondaryAccessKey;
   /// Specifies the SKU Name for this AI Services Account. Possible values are `F0`, `F1`, `S0`, `S`, `S1`, `S2`, `S3`, `S4`, `S5`, `S6`, `P0`, `P1`, `P2`, `E0` and `DC0`.
   ///
   /// &gt; **Note:** SKU `DC0` is the commitment tier for AI Services Account containers running in disconnected environments. You must obtain approval from Microsoft by submitting the [request form](https://aka.ms/csdisconnectedcontainers) first, before you can use this SKU. More information on [Purchase a commitment plan to use containers in disconnected environments](https://learn.microsoft.com/en-us/azure/cognitive-services/containers/disconnected-containers?tabs=stt#purchase-a-commitment-plan-to-use-containers-in-disconnected-environments).
-  final pulumi.Input<String>? skuName;
+  final pulumi.Input<String?>? skuName;
   /// A `storage` block as defined below.
-  final pulumi.Input<List<AIServicesStorage>>? storages;
+  final pulumi.Input<List<AIServicesStorage>?>? storages;
   /// A mapping of tags to assign to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [AIServicesState].
   /// [customSubdomainName] The subdomain name used for token-based authentication. This property is required when `networkAcls` is specified. Changing this forces a new resource to be created.

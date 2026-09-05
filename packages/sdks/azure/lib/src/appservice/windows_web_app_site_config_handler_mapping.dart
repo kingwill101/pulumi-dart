@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WindowsWebAppSiteConfigHandlerMapping {
   /// Specifies the command-line arguments to be passed to the script processor.
-  final pulumi.Input<String>? arguments;
+  final pulumi.Input<String?>? arguments;
   /// Specifies which extension to be handled by the specified FastCGI application.
   final pulumi.Input<String> extension;
   /// Specifies the absolute path to the FastCGI application.

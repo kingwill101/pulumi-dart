@@ -6,19 +6,19 @@ import 'dataset_blob_storage_storage_account.dart';
 /// Input properties used for looking up and filtering DatasetBlobStorage resources.
 class DatasetBlobStorageState {
   /// The name of the storage account container to be shared with the receiver. Changing this forces a new Data Share Blob Storage Dataset to be created.
-  final pulumi.Input<String>? containerName;
+  final pulumi.Input<String?>? containerName;
   /// The ID of the Data Share in which this Data Share Blob Storage Dataset should be created. Changing this forces a new Data Share Blob Storage Dataset to be created.
-  final pulumi.Input<String>? dataShareId;
+  final pulumi.Input<String?>? dataShareId;
   /// The name of the Data Share Dataset.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The path of the file in the storage container to be shared with the receiver. Changing this forces a new Data Share Blob Storage Dataset to be created.
-  final pulumi.Input<String>? filePath;
+  final pulumi.Input<String?>? filePath;
   /// The path of the folder in the storage container to be shared with the receiver. Changing this forces a new Data Share Blob Storage Dataset to be created.
-  final pulumi.Input<String>? folderPath;
+  final pulumi.Input<String?>? folderPath;
   /// The name which should be used for this Data Share Blob Storage Dataset. Changing this forces a new Data Share Blob Storage Dataset to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A `storageAccount` block as defined below. Changing this forces a new resource to be created.
-  final pulumi.Input<DatasetBlobStorageStorageAccount>? storageAccount;
+  final pulumi.Input<DatasetBlobStorageStorageAccount?>? storageAccount;
 
   /// Creates a new [DatasetBlobStorageState].
   /// [containerName] The name of the storage account container to be shared with the receiver. Changing this forces a new Data Share Blob Storage Dataset to be created.

@@ -9,7 +9,7 @@ import 'get_elasticsearch_log.dart';
 /// {@macro pulumi_elasticcloud_get_elasticsearch_get_elasticsearch_args_doc}
 class GetElasticsearchArgs {
   /// A `logs` block as defined below.
-  final pulumi.Input<List<GetElasticsearchLog>>? logs;
+  final pulumi.Input<List<GetElasticsearchLog>?>? logs;
   /// The name of the Elasticsearch resource.
   final pulumi.Input<String> name;
   /// The name of the resource group in which the Elasticsearch exists.

@@ -5,7 +5,7 @@ import 'backend_circuit_breaker_rule_failure_condition.dart';
 
 class BackendCircuitBreakerRule {
   /// Specifies whether the circuit breaker should honor `Retry-After` requests. Defaults to `false`.
-  final pulumi.Input<bool>? acceptRetryAfterEnabled;
+  final pulumi.Input<bool?>? acceptRetryAfterEnabled;
   /// A `failureCondition` block as defined below.
   final pulumi.Input<BackendCircuitBreakerRuleFailureCondition> failureCondition;
   /// The name of the circuit breaker rule.

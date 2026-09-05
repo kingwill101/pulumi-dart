@@ -5,19 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering ClusterManagedPrivateEndpoint resources.
 class ClusterManagedPrivateEndpointState {
   /// The name of the Kusto Cluster. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? clusterName;
+  final pulumi.Input<String?>? clusterName;
   /// The group id in which the managed private endpoint is created. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? groupId;
+  final pulumi.Input<String?>? groupId;
   /// The name of the Managed Private Endpoints to create. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ARM resource ID of the resource for which the managed private endpoint is created. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? privateLinkResourceId;
+  final pulumi.Input<String?>? privateLinkResourceId;
   /// The region of the resource to which the managed private endpoint is created. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? privateLinkResourceRegion;
+  final pulumi.Input<String?>? privateLinkResourceRegion;
   /// The user request message.
-  final pulumi.Input<String>? requestMessage;
+  final pulumi.Input<String?>? requestMessage;
   /// Specifies the Resource Group where the Kusto Cluster should exist. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
 
   /// Creates a new [ClusterManagedPrivateEndpointState].
   /// [clusterName] The name of the Kusto Cluster. Changing this forces a new resource to be created.

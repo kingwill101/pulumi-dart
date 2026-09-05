@@ -153,6 +153,17 @@ Future<GetEndpointConnectionResult> getEndpointConnection(
   return GetEndpointConnectionResult.fromMap(result);
 }
 
+pulumi.Output<GetEndpointConnectionResult> getEndpointConnectionOutput(
+  GetEndpointConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:privatelink/getEndpointConnection:getEndpointConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEndpointConnectionResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Private Link Service.
 ///
 /// ## Example Usage
@@ -300,6 +311,17 @@ Future<GetServiceResult> getService(
   return GetServiceResult.fromMap(result);
 }
 
+pulumi.Output<GetServiceResult> getServiceOutput(
+  GetServiceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:privatelink/getService:getService',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServiceResult.fromMap);
+}
+
 /// Use this data source to access endpoint connection information about an existing Private Link Service.
 ///
 /// ## Example Usage
@@ -445,4 +467,15 @@ Future<GetServiceEndpointConnectionsResult> getServiceEndpointConnections(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetServiceEndpointConnectionsResult.fromMap(result);
+}
+
+pulumi.Output<GetServiceEndpointConnectionsResult> getServiceEndpointConnectionsOutput(
+  GetServiceEndpointConnectionsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:privatelink/getServiceEndpointConnections:getServiceEndpointConnections',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServiceEndpointConnectionsResult.fromMap);
 }

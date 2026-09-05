@@ -286,13 +286,14 @@ class IdentityProviderAad extends pulumi.CustomResource {
           'azure:apimanagement/identityProviderAad:IdentityProviderAad',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['clientSecret'],
         ) {
-    allowedTenants = registerOutput<List<String>>('allowedTenants');
+    allowedTenants = registerOutput<List<String>>('allowedTenants', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     apiManagementName = registerOutput<String>('apiManagementName');
     clientId = registerOutput<String>('clientId');
     clientLibrary = registerOutput<String?>('clientLibrary');
-    clientSecret = registerOutput<String>('clientSecret');
+    clientSecret = registerOutput<String>('clientSecret', isSecret: true);
     resourceGroupName = registerOutput<String>('resourceGroupName');
     signinTenant = registerOutput<String?>('signinTenant');
   }
@@ -302,11 +303,12 @@ class IdentityProviderAad extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     IdentityProviderAadState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return IdentityProviderAad._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -320,11 +322,30 @@ class IdentityProviderAad extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    allowedTenants = registerOutput<List<String>>('allowedTenants');
+    allowedTenants = registerOutput<List<String>>('allowedTenants', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     apiManagementName = registerOutput<String>('apiManagementName');
     clientId = registerOutput<String>('clientId');
     clientLibrary = registerOutput<String?>('clientLibrary');
-    clientSecret = registerOutput<String>('clientSecret');
+    clientSecret = registerOutput<String>('clientSecret', isSecret: true);
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    signinTenant = registerOutput<String?>('signinTenant');
+  }
+
+  /// Creates a typed reference to an existing [IdentityProviderAad] resource.
+  IdentityProviderAad.reference(String urn)
+    : super(
+        'azure:apimanagement/identityProviderAad:IdentityProviderAad',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['clientSecret'],
+        isResourceReference: true,
+      ) {
+    allowedTenants = registerOutput<List<String>>('allowedTenants', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    apiManagementName = registerOutput<String>('apiManagementName');
+    clientId = registerOutput<String>('clientId');
+    clientLibrary = registerOutput<String?>('clientLibrary');
+    clientSecret = registerOutput<String>('clientSecret', isSecret: true);
     resourceGroupName = registerOutput<String>('resourceGroupName');
     signinTenant = registerOutput<String?>('signinTenant');
   }

@@ -1,5 +1,9 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'threat_intelligence_indicator_args.dart';
+import 'threat_intelligence_indicator_external_reference.dart';
+import 'threat_intelligence_indicator_granular_marking.dart';
+import 'threat_intelligence_indicator_kill_chain_phase.dart';
+import 'threat_intelligence_indicator_parsed_pattern.dart';
 import 'threat_intelligence_indicator_state.dart';
 
 /// Manages a Sentinel Threat Intelligence Indicator.
@@ -124,7 +128,7 @@ import 'threat_intelligence_indicator_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleLogAnalyticsWorkspaceOnboarding, err := sentinel.NewLogAnalyticsWorkspaceOnboarding(ctx, "example", &sentinel.LogAnalyticsWorkspaceOnboardingArgs{
-/// 			WorkspaceId: exampleAnalyticsWorkspace.ID(),
+/// 			WorkspaceId: exampleAnalyticsWorkspace.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -293,15 +297,15 @@ class ThreatIntelligenceIndicator extends pulumi.CustomResource {
   /// the External last updated time in UTC.
   late final pulumi.Output<String> externalLastUpdatedTimeUtc;
   /// One or more `externalReference` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> externalReferences;
+  late final pulumi.Output<List<ThreatIntelligenceIndicatorExternalReference>?> externalReferences;
   /// One or more `granularMarking` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> granularMarkings;
+  late final pulumi.Output<List<ThreatIntelligenceIndicatorGranularMarking>?> granularMarkings;
   /// The guid of this Sentinel Threat Intelligence Indicator.
   late final pulumi.Output<String> guid;
   /// A list of indicator types of this Threat Intelligence Indicator.
   late final pulumi.Output<List<String>> indicatorTypes;
   /// One or more `killChainPhase` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> killChainPhases;
+  late final pulumi.Output<List<ThreatIntelligenceIndicatorKillChainPhase>?> killChainPhases;
   /// The language of the Threat Intelligence Indicator.
   late final pulumi.Output<String?> language;
   /// The last updated time of the Threat Intelligence Indicator in UTC.
@@ -309,7 +313,7 @@ class ThreatIntelligenceIndicator extends pulumi.CustomResource {
   /// Specifies a list of Threat Intelligence marking references.
   late final pulumi.Output<List<String>?> objectMarkingRefs;
   /// A `parsedPattern` block as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>> parsedPatterns;
+  late final pulumi.Output<List<ThreatIntelligenceIndicatorParsedPattern>> parsedPatterns;
   /// The pattern used by the Threat Intelligence Indicator. When `patternType` set to `file`, `pattern` must be specified with `&lt;HashName&gt;:&lt;Value&gt;` format, such as `MD5:78ecc5c05cd8b79af480df2f8fba0b9d`.
   late final pulumi.Output<String> pattern;
   /// The type of pattern used by the Threat Intelligence Indicator. Possible values are `domain-name`, `file`, `ipv4-addr`, `ipv6-addr` and `url`.
@@ -343,7 +347,7 @@ class ThreatIntelligenceIndicator extends pulumi.CustomResource {
           'azure:sentinel/threatIntelligenceIndicator:ThreatIntelligenceIndicator',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     confidence = registerOutput<int?>('confidence');
     createdBy = registerOutput<String?>('createdBy');
@@ -354,22 +358,22 @@ class ThreatIntelligenceIndicator extends pulumi.CustomResource {
     extension = registerOutput<String>('extension');
     externalId = registerOutput<String>('externalId');
     externalLastUpdatedTimeUtc = registerOutput<String>('externalLastUpdatedTimeUtc');
-    externalReferences = registerOutput<List<Map<String, dynamic>>?>('externalReferences');
-    granularMarkings = registerOutput<List<Map<String, dynamic>>?>('granularMarkings');
+    externalReferences = registerOutput<List<ThreatIntelligenceIndicatorExternalReference>?>('externalReferences', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ThreatIntelligenceIndicatorExternalReference>(guardedValue, (value) => ThreatIntelligenceIndicatorExternalReference.fromMap((value as Map).cast<String, dynamic>())); });
+    granularMarkings = registerOutput<List<ThreatIntelligenceIndicatorGranularMarking>?>('granularMarkings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ThreatIntelligenceIndicatorGranularMarking>(guardedValue, (value) => ThreatIntelligenceIndicatorGranularMarking.fromMap((value as Map).cast<String, dynamic>())); });
     guid = registerOutput<String>('guid');
-    indicatorTypes = registerOutput<List<String>>('indicatorTypes');
-    killChainPhases = registerOutput<List<Map<String, dynamic>>?>('killChainPhases');
+    indicatorTypes = registerOutput<List<String>>('indicatorTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    killChainPhases = registerOutput<List<ThreatIntelligenceIndicatorKillChainPhase>?>('killChainPhases', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ThreatIntelligenceIndicatorKillChainPhase>(guardedValue, (value) => ThreatIntelligenceIndicatorKillChainPhase.fromMap((value as Map).cast<String, dynamic>())); });
     language = registerOutput<String?>('language');
     lastUpdatedTimeUtc = registerOutput<String>('lastUpdatedTimeUtc');
-    objectMarkingRefs = registerOutput<List<String>?>('objectMarkingRefs');
-    parsedPatterns = registerOutput<List<Map<String, dynamic>>>('parsedPatterns');
+    objectMarkingRefs = registerOutput<List<String>?>('objectMarkingRefs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    parsedPatterns = registerOutput<List<ThreatIntelligenceIndicatorParsedPattern>>('parsedPatterns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ThreatIntelligenceIndicatorParsedPattern>(guardedValue, (value) => ThreatIntelligenceIndicatorParsedPattern.fromMap((value as Map).cast<String, dynamic>())); });
     pattern = registerOutput<String>('pattern');
     patternType = registerOutput<String>('patternType');
     patternVersion = registerOutput<String?>('patternVersion');
     revoked = registerOutput<bool?>('revoked');
     source = registerOutput<String>('source');
-    tags = registerOutput<List<String>?>('tags');
-    threatTypes = registerOutput<List<String>?>('threatTypes');
+    tags = registerOutput<List<String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    threatTypes = registerOutput<List<String>?>('threatTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     validateFromUtc = registerOutput<String>('validateFromUtc');
     validateUntilUtc = registerOutput<String?>('validateUntilUtc');
     workspaceId = registerOutput<String>('workspaceId');
@@ -380,11 +384,12 @@ class ThreatIntelligenceIndicator extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ThreatIntelligenceIndicatorState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ThreatIntelligenceIndicator._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -407,22 +412,61 @@ class ThreatIntelligenceIndicator extends pulumi.CustomResource {
     extension = registerOutput<String>('extension');
     externalId = registerOutput<String>('externalId');
     externalLastUpdatedTimeUtc = registerOutput<String>('externalLastUpdatedTimeUtc');
-    externalReferences = registerOutput<List<Map<String, dynamic>>?>('externalReferences');
-    granularMarkings = registerOutput<List<Map<String, dynamic>>?>('granularMarkings');
+    externalReferences = registerOutput<List<ThreatIntelligenceIndicatorExternalReference>?>('externalReferences', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ThreatIntelligenceIndicatorExternalReference>(guardedValue, (value) => ThreatIntelligenceIndicatorExternalReference.fromMap((value as Map).cast<String, dynamic>())); });
+    granularMarkings = registerOutput<List<ThreatIntelligenceIndicatorGranularMarking>?>('granularMarkings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ThreatIntelligenceIndicatorGranularMarking>(guardedValue, (value) => ThreatIntelligenceIndicatorGranularMarking.fromMap((value as Map).cast<String, dynamic>())); });
     guid = registerOutput<String>('guid');
-    indicatorTypes = registerOutput<List<String>>('indicatorTypes');
-    killChainPhases = registerOutput<List<Map<String, dynamic>>?>('killChainPhases');
+    indicatorTypes = registerOutput<List<String>>('indicatorTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    killChainPhases = registerOutput<List<ThreatIntelligenceIndicatorKillChainPhase>?>('killChainPhases', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ThreatIntelligenceIndicatorKillChainPhase>(guardedValue, (value) => ThreatIntelligenceIndicatorKillChainPhase.fromMap((value as Map).cast<String, dynamic>())); });
     language = registerOutput<String?>('language');
     lastUpdatedTimeUtc = registerOutput<String>('lastUpdatedTimeUtc');
-    objectMarkingRefs = registerOutput<List<String>?>('objectMarkingRefs');
-    parsedPatterns = registerOutput<List<Map<String, dynamic>>>('parsedPatterns');
+    objectMarkingRefs = registerOutput<List<String>?>('objectMarkingRefs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    parsedPatterns = registerOutput<List<ThreatIntelligenceIndicatorParsedPattern>>('parsedPatterns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ThreatIntelligenceIndicatorParsedPattern>(guardedValue, (value) => ThreatIntelligenceIndicatorParsedPattern.fromMap((value as Map).cast<String, dynamic>())); });
     pattern = registerOutput<String>('pattern');
     patternType = registerOutput<String>('patternType');
     patternVersion = registerOutput<String?>('patternVersion');
     revoked = registerOutput<bool?>('revoked');
     source = registerOutput<String>('source');
-    tags = registerOutput<List<String>?>('tags');
-    threatTypes = registerOutput<List<String>?>('threatTypes');
+    tags = registerOutput<List<String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    threatTypes = registerOutput<List<String>?>('threatTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    validateFromUtc = registerOutput<String>('validateFromUtc');
+    validateUntilUtc = registerOutput<String?>('validateUntilUtc');
+    workspaceId = registerOutput<String>('workspaceId');
+  }
+
+  /// Creates a typed reference to an existing [ThreatIntelligenceIndicator] resource.
+  ThreatIntelligenceIndicator.reference(String urn)
+    : super(
+        'azure:sentinel/threatIntelligenceIndicator:ThreatIntelligenceIndicator',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    confidence = registerOutput<int?>('confidence');
+    createdBy = registerOutput<String?>('createdBy');
+    createdOn = registerOutput<String>('createdOn');
+    defanged = registerOutput<bool>('defanged');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    extension = registerOutput<String>('extension');
+    externalId = registerOutput<String>('externalId');
+    externalLastUpdatedTimeUtc = registerOutput<String>('externalLastUpdatedTimeUtc');
+    externalReferences = registerOutput<List<ThreatIntelligenceIndicatorExternalReference>?>('externalReferences', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ThreatIntelligenceIndicatorExternalReference>(guardedValue, (value) => ThreatIntelligenceIndicatorExternalReference.fromMap((value as Map).cast<String, dynamic>())); });
+    granularMarkings = registerOutput<List<ThreatIntelligenceIndicatorGranularMarking>?>('granularMarkings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ThreatIntelligenceIndicatorGranularMarking>(guardedValue, (value) => ThreatIntelligenceIndicatorGranularMarking.fromMap((value as Map).cast<String, dynamic>())); });
+    guid = registerOutput<String>('guid');
+    indicatorTypes = registerOutput<List<String>>('indicatorTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    killChainPhases = registerOutput<List<ThreatIntelligenceIndicatorKillChainPhase>?>('killChainPhases', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ThreatIntelligenceIndicatorKillChainPhase>(guardedValue, (value) => ThreatIntelligenceIndicatorKillChainPhase.fromMap((value as Map).cast<String, dynamic>())); });
+    language = registerOutput<String?>('language');
+    lastUpdatedTimeUtc = registerOutput<String>('lastUpdatedTimeUtc');
+    objectMarkingRefs = registerOutput<List<String>?>('objectMarkingRefs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    parsedPatterns = registerOutput<List<ThreatIntelligenceIndicatorParsedPattern>>('parsedPatterns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ThreatIntelligenceIndicatorParsedPattern>(guardedValue, (value) => ThreatIntelligenceIndicatorParsedPattern.fromMap((value as Map).cast<String, dynamic>())); });
+    pattern = registerOutput<String>('pattern');
+    patternType = registerOutput<String>('patternType');
+    patternVersion = registerOutput<String?>('patternVersion');
+    revoked = registerOutput<bool?>('revoked');
+    source = registerOutput<String>('source');
+    tags = registerOutput<List<String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    threatTypes = registerOutput<List<String>?>('threatTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     validateFromUtc = registerOutput<String>('validateFromUtc');
     validateUntilUtc = registerOutput<String?>('validateUntilUtc');
     workspaceId = registerOutput<String>('workspaceId');

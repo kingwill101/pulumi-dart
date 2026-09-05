@@ -153,6 +153,17 @@ Future<GetIntegrationAccountResult> getIntegrationAccount(
   return GetIntegrationAccountResult.fromMap(result);
 }
 
+pulumi.Output<GetIntegrationAccountResult> getIntegrationAccountOutput(
+  GetIntegrationAccountArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:logicapps/getIntegrationAccount:getIntegrationAccount',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetIntegrationAccountResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Logic App Standard instance.
 ///
 /// ## Example Usage
@@ -300,6 +311,17 @@ Future<GetStandardResult> getStandard(
   return GetStandardResult.fromMap(result);
 }
 
+pulumi.Output<GetStandardResult> getStandardOutput(
+  GetStandardArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:logicapps/getStandard:getStandard',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetStandardResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Logic App Workflow.
 ///
 /// ## Example Usage
@@ -445,4 +467,15 @@ Future<GetWorkflowResult> getWorkflow(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWorkflowResult.fromMap(result);
+}
+
+pulumi.Output<GetWorkflowResult> getWorkflowOutput(
+  GetWorkflowArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:logicapps/getWorkflow:getWorkflow',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWorkflowResult.fromMap);
 }

@@ -209,7 +209,7 @@ class UserAssignedIdentity extends pulumi.CustomResource {
           'azure:authorization/userAssignedIdentity:UserAssignedIdentity',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     clientId = registerOutput<String>('clientId');
     isolationScope = registerOutput<String?>('isolationScope');
@@ -217,7 +217,7 @@ class UserAssignedIdentity extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     principalId = registerOutput<String>('principalId');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tenantId = registerOutput<String>('tenantId');
   }
 
@@ -226,11 +226,12 @@ class UserAssignedIdentity extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     UserAssignedIdentityState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return UserAssignedIdentity._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -250,7 +251,26 @@ class UserAssignedIdentity extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     principalId = registerOutput<String>('principalId');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tenantId = registerOutput<String>('tenantId');
+  }
+
+  /// Creates a typed reference to an existing [UserAssignedIdentity] resource.
+  UserAssignedIdentity.reference(String urn)
+    : super(
+        'azure:authorization/userAssignedIdentity:UserAssignedIdentity',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    clientId = registerOutput<String>('clientId');
+    isolationScope = registerOutput<String?>('isolationScope');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    principalId = registerOutput<String>('principalId');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tenantId = registerOutput<String>('tenantId');
   }
 }

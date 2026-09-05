@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FrontdoorRoutingRuleRedirectConfiguration {
   /// The destination fragment in the portion of URL after '#'. Set this to add a fragment to the redirect URL.
-  final pulumi.Input<String>? customFragment;
+  final pulumi.Input<String?>? customFragment;
   /// Set this to change the URL for the redirection.
-  final pulumi.Input<String>? customHost;
+  final pulumi.Input<String?>? customHost;
   /// The path to retain as per the incoming request, or update in the URL for the redirection.
-  final pulumi.Input<String>? customPath;
+  final pulumi.Input<String?>? customPath;
   /// Replace any existing query string from the incoming request URL.
-  final pulumi.Input<String>? customQueryString;
+  final pulumi.Input<String?>? customQueryString;
   /// Protocol to use when redirecting. Valid options are `HttpOnly`, `HttpsOnly`, or `MatchRequest`.
   final pulumi.Input<String> redirectProtocol;
   /// Status code for the redirect. Valida options are `Moved`, `Found`, `TemporaryRedirect`, `PermanentRedirect`.

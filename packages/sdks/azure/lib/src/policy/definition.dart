@@ -349,7 +349,7 @@ class Definition extends pulumi.CustomResource {
           'azure:policy/definition:Definition',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
@@ -360,7 +360,7 @@ class Definition extends pulumi.CustomResource {
     parameters = registerOutput<String?>('parameters');
     policyRule = registerOutput<String?>('policyRule');
     policyType = registerOutput<String>('policyType');
-    roleDefinitionIds = registerOutput<List<String>>('roleDefinitionIds');
+    roleDefinitionIds = registerOutput<List<String>>('roleDefinitionIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [Definition] resource's state with the given [name] and [id].
@@ -368,11 +368,12 @@ class Definition extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DefinitionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Definition._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -395,6 +396,27 @@ class Definition extends pulumi.CustomResource {
     parameters = registerOutput<String?>('parameters');
     policyRule = registerOutput<String?>('policyRule');
     policyType = registerOutput<String>('policyType');
-    roleDefinitionIds = registerOutput<List<String>>('roleDefinitionIds');
+    roleDefinitionIds = registerOutput<List<String>>('roleDefinitionIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Definition] resource.
+  Definition.reference(String urn)
+    : super(
+        'azure:policy/definition:Definition',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    managementGroupId = registerOutput<String?>('managementGroupId');
+    metadata = registerOutput<String>('metadata');
+    mode = registerOutput<String>('mode');
+    this.name = registerOutput<String>('name');
+    parameters = registerOutput<String?>('parameters');
+    policyRule = registerOutput<String?>('policyRule');
+    policyType = registerOutput<String>('policyType');
+    roleDefinitionIds = registerOutput<List<String>>('roleDefinitionIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

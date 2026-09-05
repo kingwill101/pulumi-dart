@@ -137,7 +137,7 @@ import 'table_entity_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = storage.NewTableEntity(ctx, "example", &storage.TableEntityArgs{
-/// 			StorageTableId: exampleTable.ID(),
+/// 			StorageTableId: exampleTable.ID().ToIDOutput().ToStringOutput(),
 /// 			PartitionKey:   pulumi.String("examplepartition"),
 /// 			RowKey:         pulumi.String("examplerow"),
 /// 			Entity: pulumi.StringMap{
@@ -302,9 +302,9 @@ class TableEntity extends pulumi.CustomResource {
           'azure:storage/tableEntity:TableEntity',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
-    entity = registerOutput<Map<String, String>>('entity');
+    entity = registerOutput<Map<String, String>>('entity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     partitionKey = registerOutput<String>('partitionKey');
     rowKey = registerOutput<String>('rowKey');
     storageTableId = registerOutput<String>('storageTableId');
@@ -315,11 +315,12 @@ class TableEntity extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TableEntityState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return TableEntity._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -333,7 +334,22 @@ class TableEntity extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    entity = registerOutput<Map<String, String>>('entity');
+    entity = registerOutput<Map<String, String>>('entity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    partitionKey = registerOutput<String>('partitionKey');
+    rowKey = registerOutput<String>('rowKey');
+    storageTableId = registerOutput<String>('storageTableId');
+  }
+
+  /// Creates a typed reference to an existing [TableEntity] resource.
+  TableEntity.reference(String urn)
+    : super(
+        'azure:storage/tableEntity:TableEntity',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    entity = registerOutput<Map<String, String>>('entity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     partitionKey = registerOutput<String>('partitionKey');
     rowKey = registerOutput<String>('rowKey');
     storageTableId = registerOutput<String>('storageTableId');

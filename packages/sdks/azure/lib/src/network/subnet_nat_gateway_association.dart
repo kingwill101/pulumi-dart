@@ -162,8 +162,8 @@ import 'subnet_nat_gateway_association_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = network.NewSubnetNatGatewayAssociation(ctx, "example", &network.SubnetNatGatewayAssociationArgs{
-/// 			SubnetId:     exampleSubnet.ID(),
-/// 			NatGatewayId: exampleNatGateway.ID(),
+/// 			SubnetId:     exampleSubnet.ID().ToIDOutput().ToStringOutput(),
+/// 			NatGatewayId: exampleNatGateway.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -342,7 +342,7 @@ class SubnetNatGatewayAssociation extends pulumi.CustomResource {
           'azure:network/subnetNatGatewayAssociation:SubnetNatGatewayAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     natGatewayId = registerOutput<String>('natGatewayId');
     subnetId = registerOutput<String>('subnetId');
@@ -353,11 +353,12 @@ class SubnetNatGatewayAssociation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SubnetNatGatewayAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SubnetNatGatewayAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -371,6 +372,19 @@ class SubnetNatGatewayAssociation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    natGatewayId = registerOutput<String>('natGatewayId');
+    subnetId = registerOutput<String>('subnetId');
+  }
+
+  /// Creates a typed reference to an existing [SubnetNatGatewayAssociation] resource.
+  SubnetNatGatewayAssociation.reference(String urn)
+    : super(
+        'azure:network/subnetNatGatewayAssociation:SubnetNatGatewayAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     natGatewayId = registerOutput<String>('natGatewayId');
     subnetId = registerOutput<String>('subnetId');
   }

@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'replication_recovery_plan_args.dart';
 import 'replication_recovery_plan_azure_to_azure_settings.dart';
+import 'replication_recovery_plan_boot_recovery_group.dart';
 import 'replication_recovery_plan_failover_recovery_group.dart';
 import 'replication_recovery_plan_shutdown_recovery_group.dart';
 import 'replication_recovery_plan_state.dart';
@@ -173,7 +174,7 @@ import 'replication_recovery_plan_state.dart';
 ///     targetRecoveryFabricId: secondaryFabric.id,
 ///     targetRecoveryProtectionContainerId: secondaryProtectionContainer.id,
 ///     managedDisks: [{
-///         diskId: vm.storageOsDisk.apply(storageOsDisk => storageOsDisk.managedDiskId),
+///         diskId: vm.storageOsDisk.managedDiskId,
 ///         stagingStorageAccountId: primaryAccount.id,
 ///         targetResourceGroupId: secondary.id,
 ///         targetDiskType: "Premium_LRS",
@@ -719,9 +720,9 @@ import 'replication_recovery_plan_state.dart';
 /// 			IpConfigurations: network.NetworkInterfaceIpConfigurationArray{
 /// 				&network.NetworkInterfaceIpConfigurationArgs{
 /// 					Name:                       pulumi.String("vm"),
-/// 					SubnetId:                   primarySubnet.ID(),
+/// 					SubnetId:                   primarySubnet.ID().ToIDOutput().ToStringOutput(),
 /// 					PrivateIpAddressAllocation: pulumi.String("Dynamic"),
-/// 					PublicIpAddressId:          primaryPublicIp.ID(),
+/// 					PublicIpAddressId:          primaryPublicIp.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 		})
@@ -734,7 +735,7 @@ import 'replication_recovery_plan_state.dart';
 /// 			ResourceGroupName: primary.Name,
 /// 			VmSize:            pulumi.String("Standard_B1s"),
 /// 			NetworkInterfaceIds: pulumi.StringArray{
-/// 				vmNetworkInterface.ID(),
+/// 				vmNetworkInterface.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			StorageImageReference: &compute.VirtualMachineStorageImageReferenceArgs{
 /// 				Publisher: pulumi.String("Canonical"),
@@ -822,8 +823,8 @@ import 'replication_recovery_plan_state.dart';
 /// 			RecoveryVaultName:                     vault.Name,
 /// 			RecoveryFabricName:                    primaryFabric.Name,
 /// 			RecoverySourceProtectionContainerName: primaryProtectionContainer.Name,
-/// 			RecoveryTargetProtectionContainerId:   secondaryProtectionContainer.ID(),
-/// 			RecoveryReplicationPolicyId:           policy.ID(),
+/// 			RecoveryTargetProtectionContainerId:   secondaryProtectionContainer.ID().ToIDOutput().ToStringOutput(),
+/// 			RecoveryReplicationPolicyId:           policy.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -845,8 +846,8 @@ import 'replication_recovery_plan_state.dart';
 /// 			RecoveryVaultName:        vault.Name,
 /// 			SourceRecoveryFabricName: primaryFabric.Name,
 /// 			TargetRecoveryFabricName: secondaryFabric.Name,
-/// 			SourceNetworkId:          primaryVirtualNetwork.ID(),
-/// 			TargetNetworkId:          secondaryVirtualNetwork.ID(),
+/// 			SourceNetworkId:          primaryVirtualNetwork.ID().ToIDOutput().ToStringOutput(),
+/// 			TargetNetworkId:          secondaryVirtualNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -887,28 +888,26 @@ import 'replication_recovery_plan_state.dart';
 /// 			ResourceGroupName:                     secondary.Name,
 /// 			RecoveryVaultName:                     vault.Name,
 /// 			SourceRecoveryFabricName:              primaryFabric.Name,
-/// 			SourceVmId:                            vm.ID(),
-/// 			RecoveryReplicationPolicyId:           policy.ID(),
+/// 			SourceVmId:                            vm.ID().ToIDOutput().ToStringOutput(),
+/// 			RecoveryReplicationPolicyId:           policy.ID().ToIDOutput().ToStringOutput(),
 /// 			SourceRecoveryProtectionContainerName: primaryProtectionContainer.Name,
-/// 			TargetResourceGroupId:                 secondary.ID(),
-/// 			TargetRecoveryFabricId:                secondaryFabric.ID(),
-/// 			TargetRecoveryProtectionContainerId:   secondaryProtectionContainer.ID(),
+/// 			TargetResourceGroupId:                 secondary.ID().ToIDOutput().ToStringOutput(),
+/// 			TargetRecoveryFabricId:                secondaryFabric.ID().ToIDOutput().ToStringOutput(),
+/// 			TargetRecoveryProtectionContainerId:   secondaryProtectionContainer.ID().ToIDOutput().ToStringOutput(),
 /// 			ManagedDisks: siterecovery.ReplicatedVMManagedDiskArray{
 /// 				&siterecovery.ReplicatedVMManagedDiskArgs{
-/// 					DiskId: vm.StorageOsDisk.ApplyT(func(storageOsDisk compute.VirtualMachineStorageOsDisk) (*string, error) {
-/// 						return storageOsDisk.ManagedDiskId, nil
-/// 					}).(pulumi.StringPtrOutput),
-/// 					StagingStorageAccountId: primaryAccount.ID(),
-/// 					TargetResourceGroupId:   secondary.ID(),
+/// 					DiskId:                  vm.StorageOsDisk.ManagedDiskId(),
+/// 					StagingStorageAccountId: primaryAccount.ID().ToIDOutput().ToStringOutput(),
+/// 					TargetResourceGroupId:   secondary.ID().ToIDOutput().ToStringOutput(),
 /// 					TargetDiskType:          pulumi.String("Premium_LRS"),
 /// 					TargetReplicaDiskType:   pulumi.String("Premium_LRS"),
 /// 				},
 /// 			},
 /// 			NetworkInterfaces: siterecovery.ReplicatedVMNetworkInterfaceArray{
 /// 				&siterecovery.ReplicatedVMNetworkInterfaceArgs{
-/// 					SourceNetworkInterfaceId:  vmNetworkInterface.ID(),
+/// 					SourceNetworkInterfaceId:  vmNetworkInterface.ID().ToIDOutput().ToStringOutput(),
 /// 					TargetSubnetName:          secondarySubnet.Name,
-/// 					RecoveryPublicIpAddressId: secondaryPublicIp.ID(),
+/// 					RecoveryPublicIpAddressId: secondaryPublicIp.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
@@ -920,15 +919,15 @@ import 'replication_recovery_plan_state.dart';
 /// 		}
 /// 		_, err = siterecovery.NewReplicationRecoveryPlan(ctx, "example", &siterecovery.ReplicationRecoveryPlanArgs{
 /// 			Name:                   pulumi.String("example-recover-plan"),
-/// 			RecoveryVaultId:        vault.ID(),
-/// 			SourceRecoveryFabricId: primaryFabric.ID(),
-/// 			TargetRecoveryFabricId: secondaryFabric.ID(),
+/// 			RecoveryVaultId:        vault.ID().ToIDOutput().ToStringOutput(),
+/// 			SourceRecoveryFabricId: primaryFabric.ID().ToIDOutput().ToStringOutput(),
+/// 			TargetRecoveryFabricId: secondaryFabric.ID().ToIDOutput().ToStringOutput(),
 /// 			ShutdownRecoveryGroup:  &siterecovery.ReplicationRecoveryPlanShutdownRecoveryGroupArgs{},
 /// 			FailoverRecoveryGroup:  &siterecovery.ReplicationRecoveryPlanFailoverRecoveryGroupArgs{},
 /// 			BootRecoveryGroups: siterecovery.ReplicationRecoveryPlanBootRecoveryGroupArray{
 /// 				&siterecovery.ReplicationRecoveryPlanBootRecoveryGroupArgs{
 /// 					ReplicatedProtectedItems: pulumi.StringArray{
-/// 						vm_replication.ID(),
+/// 						vm_replication.ID().ToIDOutput().ToStringOutput(),
 /// 					},
 /// 				},
 /// 			},
@@ -1425,7 +1424,7 @@ class ReplicationRecoveryPlan extends pulumi.CustomResource {
   /// An `azureToAzureSettings` block as defined below.
   late final pulumi.Output<ReplicationRecoveryPlanAzureToAzureSettings?> azureToAzureSettings;
   /// One or more `bootRecoveryGroup` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>> bootRecoveryGroups;
+  late final pulumi.Output<List<ReplicationRecoveryPlanBootRecoveryGroup>> bootRecoveryGroups;
   /// One `failoverRecoveryGroup` block as defined below.
   late final pulumi.Output<ReplicationRecoveryPlanFailoverRecoveryGroup> failoverRecoveryGroup;
   /// The name of the Replication Plan. The name can contain only letters, numbers, and hyphens. It should start with a letter and end with a letter or a number. Can be a maximum of 63 characters. Changing this forces a new resource to be created.
@@ -1451,10 +1450,10 @@ class ReplicationRecoveryPlan extends pulumi.CustomResource {
           'azure:siterecovery/replicationRecoveryPlan:ReplicationRecoveryPlan',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     azureToAzureSettings = registerOutput<ReplicationRecoveryPlanAzureToAzureSettings?>('azureToAzureSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReplicationRecoveryPlanAzureToAzureSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    bootRecoveryGroups = registerOutput<List<Map<String, dynamic>>>('bootRecoveryGroups');
+    bootRecoveryGroups = registerOutput<List<ReplicationRecoveryPlanBootRecoveryGroup>>('bootRecoveryGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ReplicationRecoveryPlanBootRecoveryGroup>(guardedValue, (value) => ReplicationRecoveryPlanBootRecoveryGroup.fromMap((value as Map).cast<String, dynamic>())); });
     failoverRecoveryGroup = registerOutput<ReplicationRecoveryPlanFailoverRecoveryGroup>('failoverRecoveryGroup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReplicationRecoveryPlanFailoverRecoveryGroup.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     recoveryVaultId = registerOutput<String>('recoveryVaultId');
@@ -1468,11 +1467,12 @@ class ReplicationRecoveryPlan extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ReplicationRecoveryPlanState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ReplicationRecoveryPlan._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1487,7 +1487,26 @@ class ReplicationRecoveryPlan extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     azureToAzureSettings = registerOutput<ReplicationRecoveryPlanAzureToAzureSettings?>('azureToAzureSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReplicationRecoveryPlanAzureToAzureSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    bootRecoveryGroups = registerOutput<List<Map<String, dynamic>>>('bootRecoveryGroups');
+    bootRecoveryGroups = registerOutput<List<ReplicationRecoveryPlanBootRecoveryGroup>>('bootRecoveryGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ReplicationRecoveryPlanBootRecoveryGroup>(guardedValue, (value) => ReplicationRecoveryPlanBootRecoveryGroup.fromMap((value as Map).cast<String, dynamic>())); });
+    failoverRecoveryGroup = registerOutput<ReplicationRecoveryPlanFailoverRecoveryGroup>('failoverRecoveryGroup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReplicationRecoveryPlanFailoverRecoveryGroup.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    recoveryVaultId = registerOutput<String>('recoveryVaultId');
+    shutdownRecoveryGroup = registerOutput<ReplicationRecoveryPlanShutdownRecoveryGroup>('shutdownRecoveryGroup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReplicationRecoveryPlanShutdownRecoveryGroup.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sourceRecoveryFabricId = registerOutput<String>('sourceRecoveryFabricId');
+    targetRecoveryFabricId = registerOutput<String>('targetRecoveryFabricId');
+  }
+
+  /// Creates a typed reference to an existing [ReplicationRecoveryPlan] resource.
+  ReplicationRecoveryPlan.reference(String urn)
+    : super(
+        'azure:siterecovery/replicationRecoveryPlan:ReplicationRecoveryPlan',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureToAzureSettings = registerOutput<ReplicationRecoveryPlanAzureToAzureSettings?>('azureToAzureSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReplicationRecoveryPlanAzureToAzureSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    bootRecoveryGroups = registerOutput<List<ReplicationRecoveryPlanBootRecoveryGroup>>('bootRecoveryGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ReplicationRecoveryPlanBootRecoveryGroup>(guardedValue, (value) => ReplicationRecoveryPlanBootRecoveryGroup.fromMap((value as Map).cast<String, dynamic>())); });
     failoverRecoveryGroup = registerOutput<ReplicationRecoveryPlanFailoverRecoveryGroup>('failoverRecoveryGroup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReplicationRecoveryPlanFailoverRecoveryGroup.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     recoveryVaultId = registerOutput<String>('recoveryVaultId');

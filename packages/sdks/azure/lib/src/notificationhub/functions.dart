@@ -158,6 +158,17 @@ Future<GetHubResult> getHub(
   return GetHubResult.fromMap(result);
 }
 
+pulumi.Output<GetHubResult> getHubOutput(
+  GetHubArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:notificationhub/getHub:getHub',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetHubResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Notification Hub Namespace.
 ///
 /// ## Example Usage
@@ -303,4 +314,15 @@ Future<GetNamespaceResult> getNamespace(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetNamespaceResult.fromMap(result);
+}
+
+pulumi.Output<GetNamespaceResult> getNamespaceOutput(
+  GetNamespaceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:notificationhub/getNamespace:getNamespace',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNamespaceResult.fromMap);
 }

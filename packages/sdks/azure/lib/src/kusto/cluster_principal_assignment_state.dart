@@ -5,23 +5,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering ClusterPrincipalAssignment resources.
 class ClusterPrincipalAssignmentState {
   /// The name of the cluster in which to create the resource. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? clusterName;
+  final pulumi.Input<String?>? clusterName;
   /// The name of the Kusto cluster principal assignment. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The object id of the principal. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? principalId;
+  final pulumi.Input<String?>? principalId;
   /// The name of the principal.
-  final pulumi.Input<String>? principalName;
+  final pulumi.Input<String?>? principalName;
   /// The type of the principal. Valid values include `App`, `Group`, `User`. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? principalType;
+  final pulumi.Input<String?>? principalType;
   /// The name of the resource group in which to create the resource. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// The cluster role assigned to the principal. Valid values include `AllDatabasesAdmin`, `AllDatabasesViewer`, and `AllDatabasesMonitor`. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? role;
+  final pulumi.Input<String?>? role;
   /// The tenant id in which the principal resides. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
   /// The name of the tenant.
-  final pulumi.Input<String>? tenantName;
+  final pulumi.Input<String?>? tenantName;
 
   /// Creates a new [ClusterPrincipalAssignmentState].
   /// [clusterName] The name of the cluster in which to create the resource. Changing this forces a new resource to be created.

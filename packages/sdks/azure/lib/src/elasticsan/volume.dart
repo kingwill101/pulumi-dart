@@ -137,14 +137,14 @@ import 'volume_state.dart';
 /// 		}
 /// 		exampleVolumeGroup, err := elasticsan.NewVolumeGroup(ctx, "example", &elasticsan.VolumeGroupArgs{
 /// 			Name:         pulumi.String("example-esvg"),
-/// 			ElasticSanId: exampleElasticSan.ID(),
+/// 			ElasticSanId: exampleElasticSan.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		exampleVolume, err := elasticsan.NewVolume(ctx, "example", &elasticsan.VolumeArgs{
 /// 			Name:          pulumi.String("example-esv"),
-/// 			VolumeGroupId: exampleVolumeGroup.ID(),
+/// 			VolumeGroupId: exampleVolumeGroup.ID().ToIDOutput().ToStringOutput(),
 /// 			SizeInGib:     pulumi.Int(1),
 /// 		})
 /// 		if err != nil {
@@ -470,7 +470,7 @@ import 'volume_state.dart';
 /// 		}
 /// 		exampleVolumeGroup, err := elasticsan.NewVolumeGroup(ctx, "example", &elasticsan.VolumeGroupArgs{
 /// 			Name:         pulumi.String("example-esvg"),
-/// 			ElasticSanId: exampleElasticSan.ID(),
+/// 			ElasticSanId: exampleElasticSan.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -491,18 +491,18 @@ import 'volume_state.dart';
 /// 			Location:          example.Location,
 /// 			ResourceGroupName: example.Name,
 /// 			CreateOption:      pulumi.String("Copy"),
-/// 			SourceUri:         exampleManagedDisk.ID(),
+/// 			SourceUri:         exampleManagedDisk.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = elasticsan.NewVolume(ctx, "example2", &elasticsan.VolumeArgs{
 /// 			Name:          pulumi.String("example-esv2"),
-/// 			VolumeGroupId: exampleVolumeGroup.ID(),
+/// 			VolumeGroupId: exampleVolumeGroup.ID().ToIDOutput().ToStringOutput(),
 /// 			SizeInGib:     pulumi.Int(2),
 /// 			CreateSource: &elasticsan.VolumeCreateSourceArgs{
 /// 				SourceType: pulumi.String("DiskSnapshot"),
-/// 				SourceId:   exampleSnapshot.ID(),
+/// 				SourceId:   exampleSnapshot.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -746,7 +746,7 @@ class Volume extends pulumi.CustomResource {
           'azure:elasticsan/volume:Volume',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     createSource = registerOutput<VolumeCreateSource?>('createSource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VolumeCreateSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
@@ -763,11 +763,12 @@ class Volume extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VolumeState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Volume._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -781,6 +782,25 @@ class Volume extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    createSource = registerOutput<VolumeCreateSource?>('createSource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VolumeCreateSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    sizeInGib = registerOutput<int>('sizeInGib');
+    targetIqn = registerOutput<String>('targetIqn');
+    targetPortalHostname = registerOutput<String>('targetPortalHostname');
+    targetPortalPort = registerOutput<int>('targetPortalPort');
+    volumeGroupId = registerOutput<String>('volumeGroupId');
+    volumeId = registerOutput<String>('volumeId');
+  }
+
+  /// Creates a typed reference to an existing [Volume] resource.
+  Volume.reference(String urn)
+    : super(
+        'azure:elasticsan/volume:Volume',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     createSource = registerOutput<VolumeCreateSource?>('createSource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VolumeCreateSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     sizeInGib = registerOutput<int>('sizeInGib');

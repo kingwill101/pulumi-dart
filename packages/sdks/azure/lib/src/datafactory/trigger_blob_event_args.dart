@@ -9,27 +9,27 @@ import 'trigger_blob_event_pipeline.dart';
 /// {@macro pulumi_datafactory_trigger_blob_event_trigger_blob_event_args_doc}
 class TriggerBlobEventArgs {
   /// Specifies if the Data Factory Blob Event Trigger is activated. Defaults to `true`.
-  final pulumi.Input<bool>? activated;
+  final pulumi.Input<bool?>? activated;
   /// A map of additional properties to associate with the Data Factory Blob Event Trigger.
-  final pulumi.Input<Map<String, String>>? additionalProperties;
+  final pulumi.Input<Map<String, String>?>? additionalProperties;
   /// List of tags that can be used for describing the Data Factory Blob Event Trigger.
-  final pulumi.Input<List<String>>? annotations;
+  final pulumi.Input<List<String>?>? annotations;
   /// The pattern that blob path starts with for trigger to fire.
-  final pulumi.Input<String>? blobPathBeginsWith;
+  final pulumi.Input<String?>? blobPathBeginsWith;
   /// The pattern that blob path ends with for trigger to fire.
   ///
   /// &gt; **Note:** At least one of `blobPathBeginsWith` and `blobPathEndsWith` must be set.
-  final pulumi.Input<String>? blobPathEndsWith;
+  final pulumi.Input<String?>? blobPathEndsWith;
   /// The ID of Data Factory in which to associate the Trigger with. Changing this forces a new resource.
   final pulumi.Input<String> dataFactoryId;
   /// The description for the Data Factory Blob Event Trigger.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// List of events that will fire this trigger. Possible values are `Microsoft.Storage.BlobCreated` and `Microsoft.Storage.BlobDeleted`.
   final pulumi.Input<List<String>> events;
   /// are blobs with zero bytes ignored?
-  final pulumi.Input<bool>? ignoreEmptyBlobs;
+  final pulumi.Input<bool?>? ignoreEmptyBlobs;
   /// Specifies the name of the Data Factory Blob Event Trigger. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// One or more `pipeline` blocks as defined below.
   final pulumi.Input<List<TriggerBlobEventPipeline>> pipelines;
   /// The ID of Storage Account in which blob event will be listened. Changing this forces a new resource.

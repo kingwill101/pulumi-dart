@@ -229,7 +229,7 @@ class Vault extends pulumi.CustomResource {
           'azure:recoveryservices/vault:Vault',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     classicVmwareReplicationEnabled = registerOutput<bool?>('classicVmwareReplicationEnabled');
     crossRegionRestoreEnabled = registerOutput<bool?>('crossRegionRestoreEnabled');
@@ -244,7 +244,7 @@ class Vault extends pulumi.CustomResource {
     sku = registerOutput<String>('sku');
     softDeleteEnabled = registerOutput<bool?>('softDeleteEnabled');
     storageModeType = registerOutput<String?>('storageModeType');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Vault] resource's state with the given [name] and [id].
@@ -252,11 +252,12 @@ class Vault extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VaultState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Vault._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -283,6 +284,31 @@ class Vault extends pulumi.CustomResource {
     sku = registerOutput<String>('sku');
     softDeleteEnabled = registerOutput<bool?>('softDeleteEnabled');
     storageModeType = registerOutput<String?>('storageModeType');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Vault] resource.
+  Vault.reference(String urn)
+    : super(
+        'azure:recoveryservices/vault:Vault',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    classicVmwareReplicationEnabled = registerOutput<bool?>('classicVmwareReplicationEnabled');
+    crossRegionRestoreEnabled = registerOutput<bool?>('crossRegionRestoreEnabled');
+    encryption = registerOutput<VaultEncryption?>('encryption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VaultEncryption.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    identity = registerOutput<VaultIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VaultIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    immutability = registerOutput<String>('immutability');
+    location = registerOutput<String>('location');
+    monitoring = registerOutput<VaultMonitoring?>('monitoring', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VaultMonitoring.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    sku = registerOutput<String>('sku');
+    softDeleteEnabled = registerOutput<bool?>('softDeleteEnabled');
+    storageModeType = registerOutput<String?>('storageModeType');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

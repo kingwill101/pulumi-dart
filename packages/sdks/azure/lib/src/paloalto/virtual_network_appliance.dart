@@ -132,7 +132,7 @@ import 'virtual_network_appliance_state.dart';
 /// 			Name:              pulumi.String("example-virtualhub"),
 /// 			ResourceGroupName: example.Name,
 /// 			Location:          example.Location,
-/// 			VirtualWanId:      exampleVirtualWan.ID(),
+/// 			VirtualWanId:      exampleVirtualWan.ID().ToIDOutput().ToStringOutput(),
 /// 			AddressPrefix:     pulumi.String("10.0.0.0/23"),
 /// 			Tags: pulumi.StringMap{
 /// 				"hubSaaSPreview": pulumi.String("true"),
@@ -143,7 +143,7 @@ import 'virtual_network_appliance_state.dart';
 /// 		}
 /// 		_, err = paloalto.NewVirtualNetworkAppliance(ctx, "example", &paloalto.VirtualNetworkApplianceArgs{
 /// 			Name:         pulumi.String("example-appliance"),
-/// 			VirtualHubId: exampleVirtualHub.ID(),
+/// 			VirtualHubId: exampleVirtualHub.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -308,7 +308,7 @@ class VirtualNetworkAppliance extends pulumi.CustomResource {
           'azure:paloalto/virtualNetworkAppliance:VirtualNetworkAppliance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     this.name = registerOutput<String>('name');
     virtualHubId = registerOutput<String>('virtualHubId');
@@ -319,11 +319,12 @@ class VirtualNetworkAppliance extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VirtualNetworkApplianceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VirtualNetworkAppliance._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -337,6 +338,19 @@ class VirtualNetworkAppliance extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    this.name = registerOutput<String>('name');
+    virtualHubId = registerOutput<String>('virtualHubId');
+  }
+
+  /// Creates a typed reference to an existing [VirtualNetworkAppliance] resource.
+  VirtualNetworkAppliance.reference(String urn)
+    : super(
+        'azure:paloalto/virtualNetworkAppliance:VirtualNetworkAppliance',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     this.name = registerOutput<String>('name');
     virtualHubId = registerOutput<String>('virtualHubId');
   }

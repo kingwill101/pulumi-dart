@@ -7,29 +7,29 @@ import 'firewall_policy_managed_rule.dart';
 /// Input properties used for looking up and filtering FirewallPolicy resources.
 class FirewallPolicyState {
   /// If a `customRule` block's action type is `block`, this is the response body. The body must be specified in base64 encoding.
-  final pulumi.Input<String>? customBlockResponseBody;
+  final pulumi.Input<String?>? customBlockResponseBody;
   /// If a `customRule` block's action type is `block`, this is the response status code. Possible values are `200`, `403`, `405`, `406`, or `429`.
-  final pulumi.Input<int>? customBlockResponseStatusCode;
+  final pulumi.Input<int?>? customBlockResponseStatusCode;
   /// One or more `customRule` blocks as defined below.
-  final pulumi.Input<List<FirewallPolicyCustomRule>>? customRules;
+  final pulumi.Input<List<FirewallPolicyCustomRule>?>? customRules;
   /// Is the policy a enabled state or disabled state. Defaults to `true`.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// The Frontend Endpoints associated with this Front Door Web Application Firewall policy.
-  final pulumi.Input<List<String>>? frontendEndpointIds;
+  final pulumi.Input<List<String>?>? frontendEndpointIds;
   /// The Azure Region where this Front Door Firewall Policy exists.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// One or more `managedRule` blocks as defined below.
-  final pulumi.Input<List<FirewallPolicyManagedRule>>? managedRules;
+  final pulumi.Input<List<FirewallPolicyManagedRule>?>? managedRules;
   /// The firewall policy mode. Possible values are `Detection`, `Prevention`. Defaults to `Prevention`.
-  final pulumi.Input<String>? mode;
+  final pulumi.Input<String?>? mode;
   /// The name of the policy. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// If action type is redirect, this field represents redirect URL for the client.
-  final pulumi.Input<String>? redirectUrl;
+  final pulumi.Input<String?>? redirectUrl;
   /// The name of the resource group. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// A mapping of tags to assign to the Web Application Firewall Policy.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [FirewallPolicyState].
   /// [customBlockResponseBody] If a `customRule` block's action type is `block`, this is the response body. The body must be specified in base64 encoding.
@@ -79,7 +79,7 @@ class FirewallPolicyState {
   factory FirewallPolicyState.fromMap(Map<String, dynamic> map) {
     return FirewallPolicyState(
       customBlockResponseBody: (() { final guardedValue = map['customBlockResponseBody']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      customBlockResponseStatusCode: (() { final guardedValue = map['customBlockResponseStatusCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      customBlockResponseStatusCode: (() { final guardedValue = map['customBlockResponseStatusCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       customRules: (() { final guardedValue = map['customRules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<FirewallPolicyCustomRule>(guardedValue, (value) => FirewallPolicyCustomRule.fromMap((value as Map).cast<String, dynamic>()))); })(),
       enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       frontendEndpointIds: (() { final guardedValue = map['frontendEndpointIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),

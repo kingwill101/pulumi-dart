@@ -8,17 +8,17 @@ import 'application_gateway_rewrite_rule_set_rewrite_rule_url.dart';
 
 class ApplicationGatewayRewriteRuleSetRewriteRule {
   /// One or more `condition` blocks as defined above.
-  final pulumi.Input<List<ApplicationGatewayRewriteRuleSetRewriteRuleCondition>>? conditions;
+  final pulumi.Input<List<ApplicationGatewayRewriteRuleSetRewriteRuleCondition>?>? conditions;
   /// Unique name of the rewrite rule block
   final pulumi.Input<String> name;
   /// One or more `requestHeaderConfiguration` blocks as defined above.
-  final pulumi.Input<List<ApplicationGatewayRewriteRuleSetRewriteRuleRequestHeaderConfiguration>>? requestHeaderConfigurations;
+  final pulumi.Input<List<ApplicationGatewayRewriteRuleSetRewriteRuleRequestHeaderConfiguration>?>? requestHeaderConfigurations;
   /// One or more `responseHeaderConfiguration` blocks as defined above.
-  final pulumi.Input<List<ApplicationGatewayRewriteRuleSetRewriteRuleResponseHeaderConfiguration>>? responseHeaderConfigurations;
+  final pulumi.Input<List<ApplicationGatewayRewriteRuleSetRewriteRuleResponseHeaderConfiguration>?>? responseHeaderConfigurations;
   /// Rule sequence of the rewrite rule that determines the order of execution in a set.
   final pulumi.Input<int> ruleSequence;
   /// One `url` block as defined below
-  final pulumi.Input<ApplicationGatewayRewriteRuleSetRewriteRuleUrl>? url;
+  final pulumi.Input<ApplicationGatewayRewriteRuleSetRewriteRuleUrl?>? url;
 
   /// Creates a new [ApplicationGatewayRewriteRuleSetRewriteRule].
   /// [conditions] One or more `condition` blocks as defined above.
@@ -53,7 +53,7 @@ class ApplicationGatewayRewriteRuleSetRewriteRule {
       name: pulumi.Input.fromValue(map['name'] as String),
       requestHeaderConfigurations: (() { final guardedValue = map['requestHeaderConfigurations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ApplicationGatewayRewriteRuleSetRewriteRuleRequestHeaderConfiguration>(guardedValue, (value) => ApplicationGatewayRewriteRuleSetRewriteRuleRequestHeaderConfiguration.fromMap((value as Map).cast<String, dynamic>()))); })(),
       responseHeaderConfigurations: (() { final guardedValue = map['responseHeaderConfigurations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ApplicationGatewayRewriteRuleSetRewriteRuleResponseHeaderConfiguration>(guardedValue, (value) => ApplicationGatewayRewriteRuleSetRewriteRuleResponseHeaderConfiguration.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      ruleSequence: pulumi.Input.fromValue(map['ruleSequence'] as int),
+      ruleSequence: pulumi.Input.fromValue((map['ruleSequence'] as num).toInt()),
       url: (() { final guardedValue = map['url']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ApplicationGatewayRewriteRuleSetRewriteRuleUrl.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

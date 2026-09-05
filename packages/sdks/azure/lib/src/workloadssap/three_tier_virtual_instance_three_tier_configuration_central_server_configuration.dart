@@ -31,7 +31,7 @@ class ThreeTierVirtualInstanceThreeTierConfigurationCentralServerConfiguration {
 
   factory ThreeTierVirtualInstanceThreeTierConfigurationCentralServerConfiguration.fromMap(Map<String, dynamic> map) {
     return ThreeTierVirtualInstanceThreeTierConfigurationCentralServerConfiguration(
-      instanceCount: pulumi.Input.fromValue(map['instanceCount'] as int),
+      instanceCount: pulumi.Input.fromValue((map['instanceCount'] as num).toInt()),
       subnetId: pulumi.Input.fromValue(map['subnetId'] as String),
       virtualMachineConfiguration: pulumi.Input.fromValue(ThreeTierVirtualInstanceThreeTierConfigurationCentralServerConfigurationVirtualMachineConfiguration.fromMap((map['virtualMachineConfiguration']! as Map).cast<String, dynamic>())),
     );

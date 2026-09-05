@@ -153,6 +153,17 @@ Future<GetApplicationGroupResult> getApplicationGroup(
   return GetApplicationGroupResult.fromMap(result);
 }
 
+pulumi.Output<GetApplicationGroupResult> getApplicationGroupOutput(
+  GetApplicationGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:desktopvirtualization/getApplicationGroup:getApplicationGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetApplicationGroupResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Virtual Desktop Host Pool.
 ///
 /// ## Example Usage
@@ -284,6 +295,17 @@ Future<GetHostPoolResult> getHostPool(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetHostPoolResult.fromMap(result);
+}
+
+pulumi.Output<GetHostPoolResult> getHostPoolOutput(
+  GetHostPoolArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:desktopvirtualization/getHostPool:getHostPool',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetHostPoolResult.fromMap);
 }
 
 /// Use this data source to access information about an existing Virtual Desktop Workspace.
@@ -431,4 +453,15 @@ Future<GetWorkspaceResult> getWorkspace(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWorkspaceResult.fromMap(result);
+}
+
+pulumi.Output<GetWorkspaceResult> getWorkspaceOutput(
+  GetWorkspaceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:desktopvirtualization/getWorkspace:getWorkspace',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWorkspaceResult.fromMap);
 }

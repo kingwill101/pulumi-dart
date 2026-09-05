@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering FlexibleServerBackup resources.
 class FlexibleServerBackupState {
   /// The Time (ISO8601 format) at which the backup was completed.
-  final pulumi.Input<String>? completedTime;
+  final pulumi.Input<String?>? completedTime;
   /// Specifies the name of this PostgreSQL Flexible Server Backup. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the PostgreSQL Flexible Server from which to create this PostgreSQL Flexible Server Backup. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? serverId;
+  final pulumi.Input<String?>? serverId;
 
   /// Creates a new [FlexibleServerBackupState].
   /// [completedTime] The Time (ISO8601 format) at which the backup was completed.

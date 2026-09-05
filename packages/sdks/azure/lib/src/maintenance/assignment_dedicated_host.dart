@@ -147,7 +147,7 @@ import 'assignment_dedicated_host_state.dart';
 /// 		exampleDedicatedHost, err := compute.NewDedicatedHost(ctx, "example", &compute.DedicatedHostArgs{
 /// 			Name:                 pulumi.String("example-host"),
 /// 			Location:             example.Location,
-/// 			DedicatedHostGroupId: exampleDedicatedHostGroup.ID(),
+/// 			DedicatedHostGroupId: exampleDedicatedHostGroup.ID().ToIDOutput().ToStringOutput(),
 /// 			SkuName:              pulumi.String("DSv3-Type3"),
 /// 			PlatformFaultDomain:  pulumi.Int(1),
 /// 		})
@@ -165,8 +165,8 @@ import 'assignment_dedicated_host_state.dart';
 /// 		}
 /// 		_, err = maintenance.NewAssignmentDedicatedHost(ctx, "example", &maintenance.AssignmentDedicatedHostArgs{
 /// 			Location:                   example.Location,
-/// 			MaintenanceConfigurationId: exampleConfiguration.ID(),
-/// 			DedicatedHostId:            exampleDedicatedHost.ID(),
+/// 			MaintenanceConfigurationId: exampleConfiguration.ID().ToIDOutput().ToStringOutput(),
+/// 			DedicatedHostId:            exampleDedicatedHost.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -354,7 +354,7 @@ class AssignmentDedicatedHost extends pulumi.CustomResource {
           'azure:maintenance/assignmentDedicatedHost:AssignmentDedicatedHost',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     dedicatedHostId = registerOutput<String>('dedicatedHostId');
     location = registerOutput<String>('location');
@@ -366,11 +366,12 @@ class AssignmentDedicatedHost extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AssignmentDedicatedHostState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AssignmentDedicatedHost._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -384,6 +385,20 @@ class AssignmentDedicatedHost extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    dedicatedHostId = registerOutput<String>('dedicatedHostId');
+    location = registerOutput<String>('location');
+    maintenanceConfigurationId = registerOutput<String>('maintenanceConfigurationId');
+  }
+
+  /// Creates a typed reference to an existing [AssignmentDedicatedHost] resource.
+  AssignmentDedicatedHost.reference(String urn)
+    : super(
+        'azure:maintenance/assignmentDedicatedHost:AssignmentDedicatedHost',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     dedicatedHostId = registerOutput<String>('dedicatedHostId');
     location = registerOutput<String>('location');
     maintenanceConfigurationId = registerOutput<String>('maintenanceConfigurationId');

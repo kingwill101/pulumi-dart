@@ -4,15 +4,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ThreatIntelligenceIndicatorExternalReference {
   /// The description of the external reference of the Threat Intelligence Indicator.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The list of hashes of the external reference of the Threat Intelligence Indicator.
-  final pulumi.Input<Map<String, String>>? hashes;
+  final pulumi.Input<Map<String, String>?>? hashes;
   /// The ID of the Sentinel Threat Intelligence Indicator.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The source name of the external reference of the Threat Intelligence Indicator.
-  final pulumi.Input<String>? sourceName;
+  final pulumi.Input<String?>? sourceName;
   /// The url of the external reference of the Threat Intelligence Indicator.
-  final pulumi.Input<String>? url;
+  final pulumi.Input<String?>? url;
 
   /// Creates a new [ThreatIntelligenceIndicatorExternalReference].
   /// [description] The description of the external reference of the Threat Intelligence Indicator.

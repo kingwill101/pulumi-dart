@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering EnvironmentCustomDomain resources.
 class EnvironmentCustomDomainState {
   /// The bundle of Private Key and Certificate for the Custom DNS Suffix as a base64 encoded PFX or PEM.
-  final pulumi.Input<String>? certificateBlobBase64;
+  final pulumi.Input<String?>? certificateBlobBase64;
   /// The password for the Certificate bundle.
-  final pulumi.Input<String>? certificatePassword;
+  final pulumi.Input<String?>? certificatePassword;
   /// The ID of the Container Apps Managed Environment. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? containerAppEnvironmentId;
+  final pulumi.Input<String?>? containerAppEnvironmentId;
   /// Custom DNS Suffix for the Container App Environment.
-  final pulumi.Input<String>? dnsSuffix;
+  final pulumi.Input<String?>? dnsSuffix;
 
   /// Creates a new [EnvironmentCustomDomainState].
   /// [certificateBlobBase64] The bundle of Private Key and Certificate for the Custom DNS Suffix as a base64 encoded PFX or PEM.

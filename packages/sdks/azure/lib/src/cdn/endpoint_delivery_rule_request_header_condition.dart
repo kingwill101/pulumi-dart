@@ -4,15 +4,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EndpointDeliveryRuleRequestHeaderCondition {
   /// List of header values. This is required if `operator` is not `Any`.
-  final pulumi.Input<List<String>>? matchValues;
+  final pulumi.Input<List<String>?>? matchValues;
   /// Defaults to `false`.
-  final pulumi.Input<bool>? negateCondition;
+  final pulumi.Input<bool?>? negateCondition;
   /// Valid values are `Any`, `BeginsWith`, `Contains`, `EndsWith`, `Equal`, `GreaterThan`, `GreaterThanOrEqual`, `LessThan` and `LessThanOrEqual`.
   final pulumi.Input<String> operator;
   /// Header name.
   final pulumi.Input<String> selector;
   /// A list of transforms. Valid values are `Lowercase` and `Uppercase`.
-  final pulumi.Input<List<String>>? transforms;
+  final pulumi.Input<List<String>?>? transforms;
 
   /// Creates a new [EndpointDeliveryRuleRequestHeaderCondition].
   /// [matchValues] List of header values. This is required if `operator` is not `Any`.

@@ -5,13 +5,13 @@ import 'definition_eligible_authorization_just_in_time_access_policy_approver.da
 
 class DefinitionEligibleAuthorizationJustInTimeAccessPolicy {
   /// An `approver` block as defined below.
-  final pulumi.Input<List<DefinitionEligibleAuthorizationJustInTimeAccessPolicyApprover>>? approvers;
+  final pulumi.Input<List<DefinitionEligibleAuthorizationJustInTimeAccessPolicyApprover>?>? approvers;
   /// The maximum access duration in ISO 8601 format for just-in-time access requests. Defaults to `PT8H`.
-  final pulumi.Input<String>? maximumActivationDuration;
+  final pulumi.Input<String?>? maximumActivationDuration;
   /// The multi-factor authorization provider to be used for just-in-time access requests. Possible value is `Azure`.
   ///
   /// &gt; **Note:** When this property isn't set, it would be set to `None`.
-  final pulumi.Input<String>? multiFactorAuthProvider;
+  final pulumi.Input<String?>? multiFactorAuthProvider;
 
   /// Creates a new [DefinitionEligibleAuthorizationJustInTimeAccessPolicy].
   /// [approvers] An `approver` block as defined below.

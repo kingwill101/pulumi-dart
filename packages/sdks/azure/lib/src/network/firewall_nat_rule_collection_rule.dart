@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FirewallNatRuleCollectionRule {
   /// Specifies a description for the rule.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// A list of destination IP addresses and/or IP ranges.
   final pulumi.Input<List<String>> destinationAddresses;
   /// A list of destination ports.
@@ -14,11 +14,11 @@ class FirewallNatRuleCollectionRule {
   /// A list of protocols. Possible values are `Any`, `ICMP`, `TCP` and `UDP`. If `action` is `Dnat`, protocols can only be `TCP` and `UDP`.
   final pulumi.Input<List<String>> protocols;
   /// A list of source IP addresses and/or IP ranges.
-  final pulumi.Input<List<String>>? sourceAddresses;
+  final pulumi.Input<List<String>?>? sourceAddresses;
   /// A list of source IP Group IDs for the rule.
   ///
   /// &gt; **Note:** At least one of `sourceAddresses` and `sourceIpGroups` must be specified for a rule.
-  final pulumi.Input<List<String>>? sourceIpGroups;
+  final pulumi.Input<List<String>?>? sourceIpGroups;
   /// The address of the service behind the Firewall.
   final pulumi.Input<String> translatedAddress;
   /// The port of the service behind the Firewall.

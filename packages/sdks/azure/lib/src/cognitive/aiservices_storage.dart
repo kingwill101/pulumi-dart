@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AIServicesStorage {
   /// The client ID of the Managed Identity associated with the Storage Account.
-  final pulumi.Input<String>? identityClientId;
+  final pulumi.Input<String?>? identityClientId;
   /// The ID of the Storage Account.
   final pulumi.Input<String> storageAccountId;
 

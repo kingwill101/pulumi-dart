@@ -15,9 +15,9 @@ class VolumeGroupSapHanaArgs {
   /// Volume group description. Changing this forces a new Application Volume Group to be created and data will be lost.
   final pulumi.Input<String> groupDescription;
   /// The Azure Region where the Application Volume Group should exist. Changing this forces a new Application Volume Group to be created and data will be lost.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name which should be used for this Application Volume Group. Changing this forces a new Application Volume Group to be created and data will be lost.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the Resource Group where the Application Volume Group should exist. Changing this forces a new Application Volume Group to be created and data will be lost.
   final pulumi.Input<String> resourceGroupName;
   /// One or more `volume` blocks as defined below.

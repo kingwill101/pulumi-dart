@@ -6,9 +6,9 @@ import 'three_tier_virtual_instance_three_tier_configuration_database_server_con
 
 class ThreeTierVirtualInstanceThreeTierConfigurationDatabaseServerConfiguration {
   /// The database type for the Database Server. Possible values are `DB2` and `HANA`. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? databaseType;
+  final pulumi.Input<String?>? databaseType;
   /// One or more `diskVolumeConfiguration` blocks as defined below. Changing this forces a new resource to be created.
-  final pulumi.Input<List<ThreeTierVirtualInstanceThreeTierConfigurationDatabaseServerConfigurationDiskVolumeConfiguration>>? diskVolumeConfigurations;
+  final pulumi.Input<List<ThreeTierVirtualInstanceThreeTierConfigurationDatabaseServerConfigurationDiskVolumeConfiguration>?>? diskVolumeConfigurations;
   /// The number of instances for the Database Server. Possible values are at least `1`. Changing this forces a new resource to be created.
   final pulumi.Input<int> instanceCount;
   /// The resource ID of the Subnet for the Database Server. Changing this forces a new resource to be created.
@@ -44,7 +44,7 @@ class ThreeTierVirtualInstanceThreeTierConfigurationDatabaseServerConfiguration 
     return ThreeTierVirtualInstanceThreeTierConfigurationDatabaseServerConfiguration(
       databaseType: (() { final guardedValue = map['databaseType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       diskVolumeConfigurations: (() { final guardedValue = map['diskVolumeConfigurations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ThreeTierVirtualInstanceThreeTierConfigurationDatabaseServerConfigurationDiskVolumeConfiguration>(guardedValue, (value) => ThreeTierVirtualInstanceThreeTierConfigurationDatabaseServerConfigurationDiskVolumeConfiguration.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      instanceCount: pulumi.Input.fromValue(map['instanceCount'] as int),
+      instanceCount: pulumi.Input.fromValue((map['instanceCount'] as num).toInt()),
       subnetId: pulumi.Input.fromValue(map['subnetId'] as String),
       virtualMachineConfiguration: pulumi.Input.fromValue(ThreeTierVirtualInstanceThreeTierConfigurationDatabaseServerConfigurationVirtualMachineConfiguration.fromMap((map['virtualMachineConfiguration']! as Map).cast<String, dynamic>())),
     );

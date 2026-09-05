@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering IdentityProviderGoogle resources.
 class IdentityProviderGoogleState {
   /// The Name of the API Management Service where this Google Identity Provider should be created. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? apiManagementName;
+  final pulumi.Input<String?>? apiManagementName;
   /// Client Id for Google Sign-in.
-  final pulumi.Input<String>? clientId;
+  final pulumi.Input<String?>? clientId;
   /// Client secret for Google Sign-in.
-  final pulumi.Input<String>? clientSecret;
+  final pulumi.Input<String?>? clientSecret;
   /// The Name of the Resource Group where the API Management Service exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
 
   /// Creates a new [IdentityProviderGoogleState].
   /// [apiManagementName] The Name of the API Management Service where this Google Identity Provider should be created. Changing this forces a new resource to be created.

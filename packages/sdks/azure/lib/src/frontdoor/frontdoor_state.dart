@@ -12,44 +12,44 @@ import 'frontdoor_routing_rule.dart';
 /// Input properties used for looking up and filtering Frontdoor resources.
 class FrontdoorState {
   /// A `backendPoolHealthProbe` block as defined below.
-  final pulumi.Input<List<FrontdoorBackendPoolHealthProbe>>? backendPoolHealthProbes;
+  final pulumi.Input<List<FrontdoorBackendPoolHealthProbe>?>? backendPoolHealthProbes;
   /// A map/dictionary of Backend Pool Health Probe Names (key) to the Backend Pool Health Probe ID (value)
-  final pulumi.Input<Map<String, String>>? backendPoolHealthProbesMap;
+  final pulumi.Input<Map<String, String>?>? backendPoolHealthProbesMap;
   /// A map/dictionary of Backend Pool Load Balancing Setting Names (key) to the Backend Pool Load Balancing Setting ID (value)
-  final pulumi.Input<Map<String, String>>? backendPoolLoadBalancingSettingsMap;
+  final pulumi.Input<Map<String, String>?>? backendPoolLoadBalancingSettingsMap;
   /// A `backendPoolLoadBalancing` block as defined below.
-  final pulumi.Input<List<FrontdoorBackendPoolLoadBalancing>>? backendPoolLoadBalancings;
+  final pulumi.Input<List<FrontdoorBackendPoolLoadBalancing>?>? backendPoolLoadBalancings;
   /// A `backendPoolSettings` block as defined below.
-  final pulumi.Input<List<FrontdoorBackendPoolSetting>>? backendPoolSettings;
+  final pulumi.Input<List<FrontdoorBackendPoolSetting>?>? backendPoolSettings;
   /// A `backendPool` block as defined below.
   ///
   /// &gt; Azure by default allows specifying up to 50 Backend Pools - but this quota can be increased via Microsoft Support.
-  final pulumi.Input<List<FrontdoorBackendPool>>? backendPools;
+  final pulumi.Input<List<FrontdoorBackendPool>?>? backendPools;
   /// A map/dictionary of Backend Pool Names (key) to the Backend Pool ID (value)
-  final pulumi.Input<Map<String, String>>? backendPoolsMap;
+  final pulumi.Input<Map<String, String>?>? backendPoolsMap;
   /// The host that each frontendEndpoint must CNAME to.
-  final pulumi.Input<String>? cname;
-  final pulumi.Input<List<FrontdoorExplicitResourceOrder>>? explicitResourceOrders;
+  final pulumi.Input<String?>? cname;
+  final pulumi.Input<List<FrontdoorExplicitResourceOrder>?>? explicitResourceOrders;
   /// A friendly name for the Front Door service.
-  final pulumi.Input<String>? friendlyName;
+  final pulumi.Input<String?>? friendlyName;
   /// A `frontendEndpoint` block as defined below.
-  final pulumi.Input<List<FrontdoorFrontendEndpoint>>? frontendEndpoints;
+  final pulumi.Input<List<FrontdoorFrontendEndpoint>?>? frontendEndpoints;
   /// A map/dictionary of Frontend Endpoint Names (key) to the Frontend Endpoint ID (value)
-  final pulumi.Input<Map<String, String>>? frontendEndpointsMap;
+  final pulumi.Input<Map<String, String>?>? frontendEndpointsMap;
   /// The unique ID of the Front Door which is embedded into the incoming headers `X-Azure-FDID` attribute and maybe used to filter traffic sent by the Front Door to your backend.
-  final pulumi.Input<String>? headerFrontdoorId;
+  final pulumi.Input<String?>? headerFrontdoorId;
   /// Should the Front Door Load Balancer be Enabled? Defaults to `true`.
-  final pulumi.Input<bool>? loadBalancerEnabled;
+  final pulumi.Input<bool?>? loadBalancerEnabled;
   /// Specifies the name of the Front Door service. Must be globally unique. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specifies the name of the Resource Group in which the Front Door service should exist. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// A `routingRule` block as defined below.
-  final pulumi.Input<List<FrontdoorRoutingRule>>? routingRules;
+  final pulumi.Input<List<FrontdoorRoutingRule>?>? routingRules;
   /// A map/dictionary of Routing Rule Names (key) to the Routing Rule ID (value)
-  final pulumi.Input<Map<String, String>>? routingRulesMap;
+  final pulumi.Input<Map<String, String>?>? routingRulesMap;
   /// A mapping of tags to assign to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [FrontdoorState].
   /// [backendPoolHealthProbes] A `backendPoolHealthProbe` block as defined below.

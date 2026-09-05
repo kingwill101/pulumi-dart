@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RouteMapRuleActionParameter {
   /// A list of AS paths.
-  final pulumi.Input<List<String>>? asPaths;
+  final pulumi.Input<List<String>?>? asPaths;
   /// A list of BGP communities.
-  final pulumi.Input<List<String>>? communities;
+  final pulumi.Input<List<String>?>? communities;
   /// A list of route prefixes.
-  final pulumi.Input<List<String>>? routePrefixes;
+  final pulumi.Input<List<String>?>? routePrefixes;
 
   /// Creates a new [RouteMapRuleActionParameter].
   /// [asPaths] A list of AS paths.

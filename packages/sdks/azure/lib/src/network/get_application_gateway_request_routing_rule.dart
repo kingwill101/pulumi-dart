@@ -103,7 +103,7 @@ class GetApplicationGatewayRequestRoutingRule {
       httpListenerName: pulumi.Input.fromValue(map['httpListenerName'] as String),
       id: pulumi.Input.fromValue(map['id'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
-      priority: pulumi.Input.fromValue(map['priority'] as int),
+      priority: pulumi.Input.fromValue((map['priority'] as num).toInt()),
       redirectConfigurationId: pulumi.Input.fromValue(map['redirectConfigurationId'] as String),
       redirectConfigurationName: pulumi.Input.fromValue(map['redirectConfigurationName'] as String),
       rewriteRuleSetId: pulumi.Input.fromValue(map['rewriteRuleSetId'] as String),

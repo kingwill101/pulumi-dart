@@ -39,6 +39,7 @@ import 'account_customer_managed_key_state.dart';
 ///     name: "example-vault",
 ///     location: example.location,
 ///     resourceGroupName: example.name,
+///     rbacAuthorizationEnabled: false,
 ///     tenantId: current.then(current => current.tenantId),
 ///     skuName: "standard",
 ///     purgeProtectionEnabled: true,
@@ -152,6 +153,7 @@ import 'account_customer_managed_key_state.dart';
 ///     name="example-vault",
 ///     location=example.location,
 ///     resource_group_name=example.name,
+///     rbac_authorization_enabled=False,
 ///     tenant_id=current.tenant_id,
 ///     sku_name="standard",
 ///     purge_protection_enabled=True,
@@ -281,6 +283,7 @@ import 'account_customer_managed_key_state.dart';
 ///         Name = "example-vault",
 ///         Location = example.Location,
 ///         ResourceGroupName = example.Name,
+///         RbacAuthorizationEnabled = false,
 ///         TenantId = current.Apply(getClientConfigResult => getClientConfigResult.TenantId),
 ///         SkuName = "standard",
 ///         PurgeProtectionEnabled = true,
@@ -432,7 +435,7 @@ import 'account_customer_managed_key_state.dart';
 /// 			Identity: &cognitive.AccountIdentityArgs{
 /// 				Type: pulumi.String("SystemAssigned, UserAssigned"),
 /// 				IdentityIds: pulumi.StringArray{
-/// 					exampleUserAssignedIdentity.ID(),
+/// 					exampleUserAssignedIdentity.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 		})
@@ -440,20 +443,17 @@ import 'account_customer_managed_key_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleKeyVault, err := keyvault.NewKeyVault(ctx, "example", &keyvault.KeyVaultArgs{
-/// 			Name:                   pulumi.String("example-vault"),
-/// 			Location:               example.Location,
-/// 			ResourceGroupName:      example.Name,
-/// 			TenantId:               pulumi.String(current.TenantId),
-/// 			SkuName:                pulumi.String("standard"),
-/// 			PurgeProtectionEnabled: pulumi.Bool(true),
+/// 			Name:                     pulumi.String("example-vault"),
+/// 			Location:                 example.Location,
+/// 			ResourceGroupName:        example.Name,
+/// 			RbacAuthorizationEnabled: pulumi.Bool(false),
+/// 			TenantId:                 pulumi.String(current.TenantId),
+/// 			SkuName:                  pulumi.String("standard"),
+/// 			PurgeProtectionEnabled:   pulumi.Bool(true),
 /// 			AccessPolicies: keyvault.KeyVaultAccessPolicyArray{
 /// 				&keyvault.KeyVaultAccessPolicyArgs{
-/// 					TenantId: exampleAccount.Identity.ApplyT(func(identity cognitive.AccountIdentity) (*string, error) {
-/// 						return identity.TenantId, nil
-/// 					}).(pulumi.StringPtrOutput),
-/// 					ObjectId: exampleAccount.Identity.ApplyT(func(identity cognitive.AccountIdentity) (*string, error) {
-/// 						return identity.PrincipalId, nil
-/// 					}).(pulumi.StringPtrOutput),
+/// 					TenantId: exampleAccount.Identity.TenantId(),
+/// 					ObjectId: exampleAccount.Identity.PrincipalId(),
 /// 					KeyPermissions: pulumi.StringArray{
 /// 						pulumi.String("Get"),
 /// 						pulumi.String("Create"),
@@ -524,7 +524,7 @@ import 'account_customer_managed_key_state.dart';
 /// 		}
 /// 		exampleKey, err := keyvault.NewKey(ctx, "example", &keyvault.KeyArgs{
 /// 			Name:       pulumi.String("example-key"),
-/// 			KeyVaultId: exampleKeyVault.ID(),
+/// 			KeyVaultId: exampleKeyVault.ID().ToIDOutput().ToStringOutput(),
 /// 			KeyType:    pulumi.String("RSA"),
 /// 			KeySize:    pulumi.Int(2048),
 /// 			KeyOpts: pulumi.StringArray{
@@ -540,8 +540,8 @@ import 'account_customer_managed_key_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = cognitive.NewAccountCustomerManagedKey(ctx, "example", &cognitive.AccountCustomerManagedKeyArgs{
-/// 			CognitiveAccountId: exampleAccount.ID(),
-/// 			KeyVaultKeyId:      exampleKey.ID(),
+/// 			CognitiveAccountId: exampleAccount.ID().ToIDOutput().ToStringOutput(),
+/// 			KeyVaultKeyId:      exampleKey.ID().ToIDOutput().ToStringOutput(),
 /// 			IdentityClientId:   exampleUserAssignedIdentity.ClientId,
 /// 		})
 /// 		if err != nil {
@@ -585,12 +585,13 @@ import 'account_customer_managed_key_state.dart';
 ///   }
 /// }
 /// resource "azure_keyvault_keyvault" "example" {
-///   name                     = "example-vault"
-///   location                 = azure_core_resourcegroup.example.location
-///   resource_group_name      = azure_core_resourcegroup.example.name
-///   tenant_id                = data.azure_core_getclientconfig.current.tenant_id
-///   sku_name                 = "standard"
-///   purge_protection_enabled = true
+///   name                       = "example-vault"
+///   location                   = azure_core_resourcegroup.example.location
+///   resource_group_name        = azure_core_resourcegroup.example.name
+///   rbac_authorization_enabled = false
+///   tenant_id                  = data.azure_core_getclientconfig.current.tenant_id
+///   sku_name                   = "standard"
+///   purge_protection_enabled   = true
 ///   access_policies {
 ///     tenant_id          = azure_cognitive_account.example.identity.tenant_id
 ///     object_id          = azure_cognitive_account.example.identity.principal_id
@@ -687,6 +688,7 @@ import 'account_customer_managed_key_state.dart';
 ///             .name("example-vault")
 ///             .location(example.location())
 ///             .resourceGroupName(example.name())
+///             .rbacAuthorizationEnabled(false)
 ///             .tenantId(current.tenantId())
 ///             .skuName("standard")
 ///             .purgeProtectionEnabled(true)
@@ -808,6 +810,7 @@ import 'account_customer_managed_key_state.dart';
 ///       name: example-vault
 ///       location: ${example.location}
 ///       resourceGroupName: ${example.name}
+///       rbacAuthorizationEnabled: false
 ///       tenantId: ${current.tenantId}
 ///       skuName: standard
 ///       purgeProtectionEnabled: true
@@ -930,7 +933,7 @@ class AccountCustomerManagedKeyCognitive extends pulumi.CustomResource {
           'azure:cognitive/accountCustomerManagedKey:AccountCustomerManagedKey',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     cognitiveAccountId = registerOutput<String>('cognitiveAccountId');
     identityClientId = registerOutput<String?>('identityClientId');
@@ -942,11 +945,12 @@ class AccountCustomerManagedKeyCognitive extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AccountCustomerManagedKeyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AccountCustomerManagedKeyCognitive._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -960,6 +964,20 @@ class AccountCustomerManagedKeyCognitive extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    cognitiveAccountId = registerOutput<String>('cognitiveAccountId');
+    identityClientId = registerOutput<String?>('identityClientId');
+    keyVaultKeyId = registerOutput<String>('keyVaultKeyId');
+  }
+
+  /// Creates a typed reference to an existing [AccountCustomerManagedKeyCognitive] resource.
+  AccountCustomerManagedKeyCognitive.reference(String urn)
+    : super(
+        'azure:cognitive/accountCustomerManagedKey:AccountCustomerManagedKey',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     cognitiveAccountId = registerOutput<String>('cognitiveAccountId');
     identityClientId = registerOutput<String?>('identityClientId');
     keyVaultKeyId = registerOutput<String>('keyVaultKeyId');

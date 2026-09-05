@@ -6,9 +6,9 @@ class WorkspaceServerlessCompute {
   /// Should serverless compute nodes deployed in a custom Virtual Network have public IP addresses enabled for a workspace with private endpoint? Defaults to `false`.
   ///
   /// &gt; **Note:** `publicIpEnabled` cannot be updated from `true` to `false` when `subnetId` is not set. `publicIpEnabled` must be set to `true` if `subnetId` is not set and when `publicNetworkAccessEnabled` is `false`.
-  final pulumi.Input<bool>? publicIpEnabled;
+  final pulumi.Input<bool?>? publicIpEnabled;
   /// The ID of an existing Virtual Network Subnet in which the serverless compute nodes should be deployed to.
-  final pulumi.Input<String>? subnetId;
+  final pulumi.Input<String?>? subnetId;
 
   /// Creates a new [WorkspaceServerlessCompute].
   /// [publicIpEnabled] Should serverless compute nodes deployed in a custom Virtual Network have public IP addresses enabled for a workspace with private endpoint? Defaults to `false`.

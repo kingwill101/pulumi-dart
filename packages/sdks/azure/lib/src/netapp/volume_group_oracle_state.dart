@@ -6,19 +6,19 @@ import 'volume_group_oracle_volume.dart';
 /// Input properties used for looking up and filtering VolumeGroupOracle resources.
 class VolumeGroupOracleState {
   /// Name of the account where the application volume group belong to. Changing this forces a new Application Volume Group to be created and data will be lost.
-  final pulumi.Input<String>? accountName;
+  final pulumi.Input<String?>? accountName;
   /// The Oracle System ID. Changing this forces a new Application Volume Group to be created and data will be lost.
-  final pulumi.Input<String>? applicationIdentifier;
+  final pulumi.Input<String?>? applicationIdentifier;
   /// Volume group description. Changing this forces a new Application Volume Group to be created and data will be lost.
-  final pulumi.Input<String>? groupDescription;
+  final pulumi.Input<String?>? groupDescription;
   /// The Azure Region where the Application Volume Group should exist. Changing this forces a new Application Volume Group to be created and data will be lost.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name which should be used for this Application Volume Group. Changing this forces a new Application Volume Group to be created and data will be lost.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the Resource Group where the Application Volume Group should exist. Changing this forces a new Application Volume Group to be created and data will be lost.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// One or more `volume` blocks as defined below.
-  final pulumi.Input<List<VolumeGroupOracleVolume>>? volumes;
+  final pulumi.Input<List<VolumeGroupOracleVolume>?>? volumes;
 
   /// Creates a new [VolumeGroupOracleState].
   /// [accountName] Name of the account where the application volume group belong to. Changing this forces a new Application Volume Group to be created and data will be lost.

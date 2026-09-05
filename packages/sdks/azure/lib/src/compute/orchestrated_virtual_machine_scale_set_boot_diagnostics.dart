@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class OrchestratedVirtualMachineScaleSetBootDiagnostics {
   /// The Primary/Secondary Endpoint for the Azure Storage Account which should be used to store Boot Diagnostics, including Console Output and Screenshots from the Hypervisor. By including a `bootDiagnostics` block without passing the `storageAccountUri` field will cause the API to utilize a Managed Storage Account to store the Boot Diagnostics output.
-  final pulumi.Input<String>? storageAccountUri;
+  final pulumi.Input<String?>? storageAccountUri;
 
   /// Creates a new [OrchestratedVirtualMachineScaleSetBootDiagnostics].
   /// [storageAccountUri] The Primary/Secondary Endpoint for the Azure Storage Account which should be used to store Boot Diagnostics, including Console Output and Screenshots from the Hypervisor. By including a `bootDiagnostics` block without passing the `storageAccountUri` field will cause the API to utilize a Managed Storage Account to store the Boot Diagnostics output.

@@ -12,11 +12,11 @@ class ContainerImmutabilityPolicyArgs {
   /// Whether to lock this immutability policy. Cannot be set to `false` once the policy has been locked.
   ///
   /// &gt; **Note:** Once an Immutability Policy has been locked, it cannot be unlocked. After locking, it will only be possible to increase the value for `retentionPeriodInDays` up to 5 times for the lifetime of the policy. No other properties will be updateable. Furthermore, the Storage Container and the Storage Account in which it resides will become protected by the policy. It will no longer be possible to delete the Storage Container or the Storage Account. Please refer to [official documentation](https://learn.microsoft.com/en-us/azure/storage/blobs/immutable-policy-configure-container-scope?tabs=azure-portal#lock-a-time-based-retention-policy) for more information.
-  final pulumi.Input<bool>? locked;
+  final pulumi.Input<bool?>? locked;
   /// Whether to allow protected append writes to block and append blobs to the container. Defaults to `false`. Cannot be set with `protectedAppendWritesEnabled`.
-  final pulumi.Input<bool>? protectedAppendWritesAllEnabled;
+  final pulumi.Input<bool?>? protectedAppendWritesAllEnabled;
   /// Whether to allow protected append writes to append blobs to the container. Defaults to `false`. Cannot be set with `protectedAppendWritesAllEnabled`.
-  final pulumi.Input<bool>? protectedAppendWritesEnabled;
+  final pulumi.Input<bool?>? protectedAppendWritesEnabled;
   /// The Resource Manager ID of the Storage Container where this Immutability Policy should be applied. Changing this forces a new resource to be created.
   final pulumi.Input<String> storageContainerResourceManagerId;
 
@@ -46,7 +46,7 @@ class ContainerImmutabilityPolicyArgs {
 
   factory ContainerImmutabilityPolicyArgs.fromMap(Map<String, dynamic> map) {
     return ContainerImmutabilityPolicyArgs(
-      immutabilityPeriodInDays: pulumi.Input.fromValue(map['immutabilityPeriodInDays'] as int),
+      immutabilityPeriodInDays: pulumi.Input.fromValue((map['immutabilityPeriodInDays'] as num).toInt()),
       locked: (() { final guardedValue = map['locked']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       protectedAppendWritesAllEnabled: (() { final guardedValue = map['protectedAppendWritesAllEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       protectedAppendWritesEnabled: (() { final guardedValue = map['protectedAppendWritesEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),

@@ -131,7 +131,7 @@ import 'firewall_rule_state.dart';
 /// 		}
 /// 		_, err = mongocluster.NewFirewallRule(ctx, "example", &mongocluster.FirewallRuleArgs{
 /// 			Name:           pulumi.String("example-firewall-rule"),
-/// 			MongoClusterId: exampleMongoCluster.ID(),
+/// 			MongoClusterId: exampleMongoCluster.ID().ToIDOutput().ToStringOutput(),
 /// 			StartIpAddress: pulumi.String("10.0.0.1"),
 /// 			EndIpAddress:   pulumi.String("10.0.0.255"),
 /// 		})
@@ -295,7 +295,7 @@ class FirewallRule extends pulumi.CustomResource {
           'azure:mongocluster/firewallRule:FirewallRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     endIpAddress = registerOutput<String>('endIpAddress');
     mongoClusterId = registerOutput<String>('mongoClusterId');
@@ -308,11 +308,12 @@ class FirewallRule extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FirewallRuleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return FirewallRule._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -326,6 +327,21 @@ class FirewallRule extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    endIpAddress = registerOutput<String>('endIpAddress');
+    mongoClusterId = registerOutput<String>('mongoClusterId');
+    this.name = registerOutput<String>('name');
+    startIpAddress = registerOutput<String>('startIpAddress');
+  }
+
+  /// Creates a typed reference to an existing [FirewallRule] resource.
+  FirewallRule.reference(String urn)
+    : super(
+        'azure:mongocluster/firewallRule:FirewallRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     endIpAddress = registerOutput<String>('endIpAddress');
     mongoClusterId = registerOutput<String>('mongoClusterId');
     this.name = registerOutput<String>('name');

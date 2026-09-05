@@ -167,7 +167,7 @@ import 'cluster_deployment_safeguard_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = containerservice.NewClusterDeploymentSafeguard(ctx, "example", &containerservice.ClusterDeploymentSafeguardArgs{
-/// 			KubernetesClusterId: exampleKubernetesCluster.ID(),
+/// 			KubernetesClusterId: exampleKubernetesCluster.ID().ToIDOutput().ToStringOutput(),
 /// 			Level:               pulumi.String("Enforce"),
 /// 			ExcludedNamespaces: pulumi.StringArray{
 /// 				pulumi.String("my-app-namespace"),
@@ -357,9 +357,9 @@ class ClusterDeploymentSafeguard extends pulumi.CustomResource {
           'azure:containerservice/clusterDeploymentSafeguard:ClusterDeploymentSafeguard',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
-    excludedNamespaces = registerOutput<List<String>?>('excludedNamespaces');
+    excludedNamespaces = registerOutput<List<String>?>('excludedNamespaces', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     kubernetesClusterId = registerOutput<String>('kubernetesClusterId');
     level = registerOutput<String>('level');
     podSecurityStandardsLevel = registerOutput<String?>('podSecurityStandardsLevel');
@@ -370,11 +370,12 @@ class ClusterDeploymentSafeguard extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ClusterDeploymentSafeguardState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ClusterDeploymentSafeguard._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -388,7 +389,22 @@ class ClusterDeploymentSafeguard extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    excludedNamespaces = registerOutput<List<String>?>('excludedNamespaces');
+    excludedNamespaces = registerOutput<List<String>?>('excludedNamespaces', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    kubernetesClusterId = registerOutput<String>('kubernetesClusterId');
+    level = registerOutput<String>('level');
+    podSecurityStandardsLevel = registerOutput<String?>('podSecurityStandardsLevel');
+  }
+
+  /// Creates a typed reference to an existing [ClusterDeploymentSafeguard] resource.
+  ClusterDeploymentSafeguard.reference(String urn)
+    : super(
+        'azure:containerservice/clusterDeploymentSafeguard:ClusterDeploymentSafeguard',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    excludedNamespaces = registerOutput<List<String>?>('excludedNamespaces', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     kubernetesClusterId = registerOutput<String>('kubernetesClusterId');
     level = registerOutput<String>('level');
     podSecurityStandardsLevel = registerOutput<String?>('podSecurityStandardsLevel');

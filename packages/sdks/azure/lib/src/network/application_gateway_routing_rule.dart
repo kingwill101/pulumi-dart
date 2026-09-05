@@ -4,17 +4,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApplicationGatewayRoutingRule {
   /// The ID of the associated Backend Address Pool.
-  final pulumi.Input<String>? backendAddressPoolId;
+  final pulumi.Input<String?>? backendAddressPoolId;
   /// The Name of the Backend Address Pool which should be used for this Routing Rule.
   final pulumi.Input<String> backendAddressPoolName;
   /// The ID of the associated Backend Settings.
-  final pulumi.Input<String>? backendId;
+  final pulumi.Input<String?>? backendId;
   /// The Name of the Backend Settings which should be used for this Routing Rule.
   final pulumi.Input<String> backendName;
   /// The ID of the Rewrite Rule Set
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The ID of the associated Listener.
-  final pulumi.Input<String>? listenerId;
+  final pulumi.Input<String?>? listenerId;
   /// The Name of the Listener which should be used for this Routing Rule.
   final pulumi.Input<String> listenerName;
   /// The Name of this Routing Rule.
@@ -68,7 +68,7 @@ class ApplicationGatewayRoutingRule {
       listenerId: (() { final guardedValue = map['listenerId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       listenerName: pulumi.Input.fromValue(map['listenerName'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
-      priority: pulumi.Input.fromValue(map['priority'] as int),
+      priority: pulumi.Input.fromValue((map['priority'] as num).toInt()),
     );
   }
 }

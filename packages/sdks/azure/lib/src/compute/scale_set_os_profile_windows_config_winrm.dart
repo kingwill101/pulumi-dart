@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ScaleSetOsProfileWindowsConfigWinrm {
   /// Specifies URL of the certificate with which new Virtual Machines is provisioned.
-  final pulumi.Input<String>? certificateUrl;
+  final pulumi.Input<String?>? certificateUrl;
   /// Specifies the protocol of listener
   final pulumi.Input<String> protocol;
 

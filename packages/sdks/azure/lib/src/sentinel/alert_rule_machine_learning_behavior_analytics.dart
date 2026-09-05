@@ -111,14 +111,14 @@ import 'alert_rule_machine_learning_behavior_analytics_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = sentinel.NewLogAnalyticsWorkspaceOnboarding(ctx, "example", &sentinel.LogAnalyticsWorkspaceOnboardingArgs{
-/// 			WorkspaceId: exampleAnalyticsWorkspace.ID(),
+/// 			WorkspaceId: exampleAnalyticsWorkspace.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = sentinel.NewAlertRuleMachineLearningBehaviorAnalytics(ctx, "example", &sentinel.AlertRuleMachineLearningBehaviorAnalyticsArgs{
 /// 			Name:                    pulumi.String("example-ml-alert-rule"),
-/// 			LogAnalyticsWorkspaceId: exampleAnalyticsWorkspace.ID(),
+/// 			LogAnalyticsWorkspaceId: exampleAnalyticsWorkspace.ID().ToIDOutput().ToStringOutput(),
 /// 			AlertRuleTemplateGuid:   pulumi.String("737a2ce1-70a3-4968-9e90-3e6aca836abf"),
 /// 		})
 /// 		if err != nil {
@@ -274,7 +274,7 @@ class AlertRuleMachineLearningBehaviorAnalytics extends pulumi.CustomResource {
           'azure:sentinel/alertRuleMachineLearningBehaviorAnalytics:AlertRuleMachineLearningBehaviorAnalytics',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     alertRuleTemplateGuid = registerOutput<String>('alertRuleTemplateGuid');
     enabled = registerOutput<bool?>('enabled');
@@ -287,11 +287,12 @@ class AlertRuleMachineLearningBehaviorAnalytics extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AlertRuleMachineLearningBehaviorAnalyticsState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AlertRuleMachineLearningBehaviorAnalytics._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -305,6 +306,21 @@ class AlertRuleMachineLearningBehaviorAnalytics extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    alertRuleTemplateGuid = registerOutput<String>('alertRuleTemplateGuid');
+    enabled = registerOutput<bool?>('enabled');
+    logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
+    this.name = registerOutput<String>('name');
+  }
+
+  /// Creates a typed reference to an existing [AlertRuleMachineLearningBehaviorAnalytics] resource.
+  AlertRuleMachineLearningBehaviorAnalytics.reference(String urn)
+    : super(
+        'azure:sentinel/alertRuleMachineLearningBehaviorAnalytics:AlertRuleMachineLearningBehaviorAnalytics',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     alertRuleTemplateGuid = registerOutput<String>('alertRuleTemplateGuid');
     enabled = registerOutput<bool?>('enabled');
     logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');

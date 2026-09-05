@@ -26,7 +26,7 @@ class GetTrafficManagerProfileDnsConfig {
   factory GetTrafficManagerProfileDnsConfig.fromMap(Map<String, dynamic> map) {
     return GetTrafficManagerProfileDnsConfig(
       relativeName: pulumi.Input.fromValue(map['relativeName'] as String),
-      ttl: pulumi.Input.fromValue(map['ttl'] as int),
+      ttl: pulumi.Input.fromValue((map['ttl'] as num).toInt()),
     );
   }
 }

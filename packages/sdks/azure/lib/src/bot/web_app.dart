@@ -261,16 +261,17 @@ class WebApp extends pulumi.CustomResource {
           'azure:bot/webApp:WebApp',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['developerAppInsightsApiKey', 'luisKey'],
         ) {
-    developerAppInsightsApiKey = registerOutput<String?>('developerAppInsightsApiKey');
+    developerAppInsightsApiKey = registerOutput<String?>('developerAppInsightsApiKey', isSecret: true);
     developerAppInsightsApplicationId = registerOutput<String?>('developerAppInsightsApplicationId');
     developerAppInsightsKey = registerOutput<String?>('developerAppInsightsKey');
     displayName = registerOutput<String>('displayName');
     endpoint = registerOutput<String?>('endpoint');
     location = registerOutput<String>('location');
-    luisAppIds = registerOutput<List<String>?>('luisAppIds');
-    luisKey = registerOutput<String?>('luisKey');
+    luisAppIds = registerOutput<List<String>?>('luisAppIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    luisKey = registerOutput<String?>('luisKey', isSecret: true);
     microsoftAppId = registerOutput<String>('microsoftAppId');
     microsoftAppTenantId = registerOutput<String?>('microsoftAppTenantId');
     microsoftAppType = registerOutput<String>('microsoftAppType');
@@ -278,7 +279,7 @@ class WebApp extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     sku = registerOutput<String>('sku');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [WebApp] resource's state with the given [name] and [id].
@@ -286,11 +287,12 @@ class WebApp extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     WebAppState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return WebApp._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -304,14 +306,14 @@ class WebApp extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    developerAppInsightsApiKey = registerOutput<String?>('developerAppInsightsApiKey');
+    developerAppInsightsApiKey = registerOutput<String?>('developerAppInsightsApiKey', isSecret: true);
     developerAppInsightsApplicationId = registerOutput<String?>('developerAppInsightsApplicationId');
     developerAppInsightsKey = registerOutput<String?>('developerAppInsightsKey');
     displayName = registerOutput<String>('displayName');
     endpoint = registerOutput<String?>('endpoint');
     location = registerOutput<String>('location');
-    luisAppIds = registerOutput<List<String>?>('luisAppIds');
-    luisKey = registerOutput<String?>('luisKey');
+    luisAppIds = registerOutput<List<String>?>('luisAppIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    luisKey = registerOutput<String?>('luisKey', isSecret: true);
     microsoftAppId = registerOutput<String>('microsoftAppId');
     microsoftAppTenantId = registerOutput<String?>('microsoftAppTenantId');
     microsoftAppType = registerOutput<String>('microsoftAppType');
@@ -319,6 +321,34 @@ class WebApp extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     sku = registerOutput<String>('sku');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [WebApp] resource.
+  WebApp.reference(String urn)
+    : super(
+        'azure:bot/webApp:WebApp',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['developerAppInsightsApiKey', 'luisKey'],
+        isResourceReference: true,
+      ) {
+    developerAppInsightsApiKey = registerOutput<String?>('developerAppInsightsApiKey', isSecret: true);
+    developerAppInsightsApplicationId = registerOutput<String?>('developerAppInsightsApplicationId');
+    developerAppInsightsKey = registerOutput<String?>('developerAppInsightsKey');
+    displayName = registerOutput<String>('displayName');
+    endpoint = registerOutput<String?>('endpoint');
+    location = registerOutput<String>('location');
+    luisAppIds = registerOutput<List<String>?>('luisAppIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    luisKey = registerOutput<String?>('luisKey', isSecret: true);
+    microsoftAppId = registerOutput<String>('microsoftAppId');
+    microsoftAppTenantId = registerOutput<String?>('microsoftAppTenantId');
+    microsoftAppType = registerOutput<String>('microsoftAppType');
+    microsoftAppUserAssignedIdentityId = registerOutput<String?>('microsoftAppUserAssignedIdentityId');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    sku = registerOutput<String>('sku');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

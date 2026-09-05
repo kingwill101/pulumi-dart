@@ -150,7 +150,7 @@ class ResourceProviderFeatureRegistration extends pulumi.CustomResource {
           'azure:core/resourceProviderFeatureRegistration:ResourceProviderFeatureRegistration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     this.name = registerOutput<String>('name');
     providerName = registerOutput<String>('providerName');
@@ -161,11 +161,12 @@ class ResourceProviderFeatureRegistration extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ResourceProviderFeatureRegistrationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ResourceProviderFeatureRegistration._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -179,6 +180,19 @@ class ResourceProviderFeatureRegistration extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    this.name = registerOutput<String>('name');
+    providerName = registerOutput<String>('providerName');
+  }
+
+  /// Creates a typed reference to an existing [ResourceProviderFeatureRegistration] resource.
+  ResourceProviderFeatureRegistration.reference(String urn)
+    : super(
+        'azure:core/resourceProviderFeatureRegistration:ResourceProviderFeatureRegistration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     this.name = registerOutput<String>('name');
     providerName = registerOutput<String>('providerName');
   }

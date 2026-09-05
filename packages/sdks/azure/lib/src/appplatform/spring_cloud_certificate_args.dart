@@ -8,13 +8,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_appplatform_spring_cloud_certificate_spring_cloud_certificate_args_doc}
 class SpringCloudCertificateArgs {
   /// The content of uploaded certificate. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? certificateContent;
+  final pulumi.Input<String?>? certificateContent;
   /// Specifies whether the private key should be excluded from the Key Vault Certificate. Changing this forces a new resource to be created. Defaults to `false`.
-  final pulumi.Input<bool>? excludePrivateKey;
+  final pulumi.Input<bool?>? excludePrivateKey;
   /// Specifies the ID of the Key Vault Certificate resource. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? keyVaultCertificateId;
+  final pulumi.Input<String?>? keyVaultCertificateId;
   /// Specifies the name of the Spring Cloud Certificate. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specifies the name of the resource group in which to create the Spring Cloud Certificate. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
   /// Specifies the name of the Spring Cloud Service resource. Changing this forces a new resource to be created.

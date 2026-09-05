@@ -134,7 +134,7 @@ import 'sql_function_state.dart';
 /// 		}
 /// 		_, err = cosmosdb.NewSqlFunction(ctx, "example", &cosmosdb.SqlFunctionArgs{
 /// 			Name:        pulumi.String("test-function"),
-/// 			ContainerId: exampleSqlContainer.ID(),
+/// 			ContainerId: exampleSqlContainer.ID().ToIDOutput().ToStringOutput(),
 /// 			Body:        pulumi.String("function trigger(){}"),
 /// 		})
 /// 		if err != nil {
@@ -303,7 +303,7 @@ class SqlFunction extends pulumi.CustomResource {
           'azure:cosmosdb/sqlFunction:SqlFunction',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     body = registerOutput<String>('body');
     containerId = registerOutput<String>('containerId');
@@ -315,11 +315,12 @@ class SqlFunction extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SqlFunctionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SqlFunction._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -333,6 +334,20 @@ class SqlFunction extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    body = registerOutput<String>('body');
+    containerId = registerOutput<String>('containerId');
+    this.name = registerOutput<String>('name');
+  }
+
+  /// Creates a typed reference to an existing [SqlFunction] resource.
+  SqlFunction.reference(String urn)
+    : super(
+        'azure:cosmosdb/sqlFunction:SqlFunction',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     body = registerOutput<String>('body');
     containerId = registerOutput<String>('containerId');
     this.name = registerOutput<String>('name');

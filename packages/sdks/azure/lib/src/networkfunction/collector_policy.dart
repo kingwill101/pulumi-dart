@@ -251,7 +251,7 @@ import 'collector_policy_state.dart';
 /// 			Name:               pulumi.String("example-erc"),
 /// 			Location:           example.Location,
 /// 			ResourceGroupName:  example.Name,
-/// 			ExpressRoutePortId: exampleExpressRoutePort.ID(),
+/// 			ExpressRoutePortId: exampleExpressRoutePort.ID().ToIDOutput().ToStringOutput(),
 /// 			BandwidthInGbps:    pulumi.Float64(1),
 /// 			Sku: &network.ExpressRouteCircuitSkuArgs{
 /// 				Tier:   pulumi.String("Standard"),
@@ -290,14 +290,14 @@ import 'collector_policy_state.dart';
 /// 		}
 /// 		_, err = networkfunction.NewCollectorPolicy(ctx, "example", &networkfunction.CollectorPolicyArgs{
 /// 			Name:               pulumi.String("example-nfcp"),
-/// 			TrafficCollectorId: exampleAzureTrafficCollector.ID(),
+/// 			TrafficCollectorId: exampleAzureTrafficCollector.ID().ToIDOutput().ToStringOutput(),
 /// 			Location:           example.Location,
 /// 			IpfxEmission: &networkfunction.CollectorPolicyIpfxEmissionArgs{
 /// 				DestinationTypes: pulumi.String("AzureMonitor"),
 /// 			},
 /// 			IpfxIngestion: &networkfunction.CollectorPolicyIpfxIngestionArgs{
 /// 				SourceResourceIds: pulumi.StringArray{
-/// 					exampleExpressRouteCircuit.ID(),
+/// 					exampleExpressRouteCircuit.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 			Tags: pulumi.StringMap{
@@ -585,13 +585,13 @@ class CollectorPolicy extends pulumi.CustomResource {
           'azure:networkfunction/collectorPolicy:CollectorPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     ipfxEmission = registerOutput<CollectorPolicyIpfxEmission>('ipfxEmission', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CollectorPolicyIpfxEmission.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     ipfxIngestion = registerOutput<CollectorPolicyIpfxIngestion>('ipfxIngestion', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CollectorPolicyIpfxIngestion.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     trafficCollectorId = registerOutput<String>('trafficCollectorId');
   }
 
@@ -600,11 +600,12 @@ class CollectorPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CollectorPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return CollectorPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -622,7 +623,24 @@ class CollectorPolicy extends pulumi.CustomResource {
     ipfxIngestion = registerOutput<CollectorPolicyIpfxIngestion>('ipfxIngestion', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CollectorPolicyIpfxIngestion.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    trafficCollectorId = registerOutput<String>('trafficCollectorId');
+  }
+
+  /// Creates a typed reference to an existing [CollectorPolicy] resource.
+  CollectorPolicy.reference(String urn)
+    : super(
+        'azure:networkfunction/collectorPolicy:CollectorPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    ipfxEmission = registerOutput<CollectorPolicyIpfxEmission>('ipfxEmission', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CollectorPolicyIpfxEmission.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    ipfxIngestion = registerOutput<CollectorPolicyIpfxIngestion>('ipfxIngestion', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CollectorPolicyIpfxIngestion.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     trafficCollectorId = registerOutput<String>('trafficCollectorId');
   }
 }

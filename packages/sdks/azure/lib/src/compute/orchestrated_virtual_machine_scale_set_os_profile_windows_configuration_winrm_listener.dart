@@ -6,7 +6,7 @@ class OrchestratedVirtualMachineScaleSetOsProfileWindowsConfigurationWinrmListen
   /// The Secret URL of a Key Vault Certificate, which must be specified when protocol is set to `Https`. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** This can be sourced from the `secretId` field within the `azure.keyvault.Certificate` Resource.
-  final pulumi.Input<String>? certificateUrl;
+  final pulumi.Input<String?>? certificateUrl;
   /// Specifies the protocol of listener. Possible values are `Http` and `Https`. Changing this forces a new resource to be created.
   final pulumi.Input<String> protocol;
 

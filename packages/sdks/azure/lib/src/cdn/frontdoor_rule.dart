@@ -8,7 +8,7 @@ import 'frontdoor_rule_state.dart';
 ///
 /// &gt; **Note:** The Rules resource **must** include a `dependsOn` meta-argument which references the `azure.cdn.FrontdoorOrigin` and the `azure.cdn.FrontdoorOriginGroup`.
 ///
-/// &gt; **Note:** Azure Front Door Rule operations are currently affected by a service-side regression where unattached rules or rule sets can fail with `400 Bad Request` until they are associated with a Front Door Route. As a result, unattached and attached scenarios can currently behave differently while the service-side fix is pending.
+/// &gt; **Note:** This resource cannot be used to manage individual rules for a rule set provisioned in batch mode, to manage rules for a batch mode rule set, use `azure.cdn.FrontdoorBatchRuleSet`.
 ///
 /// ## Example Usage
 ///
@@ -488,7 +488,7 @@ import 'frontdoor_rule_state.dart';
 /// 		}
 /// 		exampleFrontdoorEndpoint, err := cdn.NewFrontdoorEndpoint(ctx, "example", &cdn.FrontdoorEndpointArgs{
 /// 			Name:                  pulumi.String("example-endpoint"),
-/// 			CdnFrontdoorProfileId: exampleFrontdoorProfile.ID(),
+/// 			CdnFrontdoorProfileId: exampleFrontdoorProfile.ID().ToIDOutput().ToStringOutput(),
 /// 			Tags: pulumi.StringMap{
 /// 				"endpoint": pulumi.String("contoso.com"),
 /// 			},
@@ -498,7 +498,7 @@ import 'frontdoor_rule_state.dart';
 /// 		}
 /// 		exampleFrontdoorOriginGroup, err := cdn.NewFrontdoorOriginGroup(ctx, "example", &cdn.FrontdoorOriginGroupArgs{
 /// 			Name:                   pulumi.String("example-originGroup"),
-/// 			CdnFrontdoorProfileId:  exampleFrontdoorProfile.ID(),
+/// 			CdnFrontdoorProfileId:  exampleFrontdoorProfile.ID().ToIDOutput().ToStringOutput(),
 /// 			SessionAffinityEnabled: pulumi.Bool(true),
 /// 			RestoreTrafficTimeToHealedOrNewEndpointInMinutes: pulumi.Int(10),
 /// 			HealthProbe: &cdn.FrontdoorOriginGroupHealthProbeArgs{
@@ -518,7 +518,7 @@ import 'frontdoor_rule_state.dart';
 /// 		}
 /// 		exampleFrontdoorOrigin, err := cdn.NewFrontdoorOrigin(ctx, "example", &cdn.FrontdoorOriginArgs{
 /// 			Name:                        pulumi.String("example-origin"),
-/// 			CdnFrontdoorOriginGroupId:   exampleFrontdoorOriginGroup.ID(),
+/// 			CdnFrontdoorOriginGroupId:   exampleFrontdoorOriginGroup.ID().ToIDOutput().ToStringOutput(),
 /// 			Enabled:                     pulumi.Bool(true),
 /// 			CertificateNameCheckEnabled: pulumi.Bool(false),
 /// 			HostName:                    exampleFrontdoorEndpoint.HostName,
@@ -533,19 +533,19 @@ import 'frontdoor_rule_state.dart';
 /// 		}
 /// 		exampleFrontdoorRuleSet, err := cdn.NewFrontdoorRuleSet(ctx, "example", &cdn.FrontdoorRuleSetArgs{
 /// 			Name:                  pulumi.String("exampleruleset"),
-/// 			CdnFrontdoorProfileId: exampleFrontdoorProfile.ID(),
+/// 			CdnFrontdoorProfileId: exampleFrontdoorProfile.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = cdn.NewFrontdoorRule(ctx, "example", &cdn.FrontdoorRuleArgs{
 /// 			Name:                  pulumi.String("examplerule"),
-/// 			CdnFrontdoorRuleSetId: exampleFrontdoorRuleSet.ID(),
+/// 			CdnFrontdoorRuleSetId: exampleFrontdoorRuleSet.ID().ToIDOutput().ToStringOutput(),
 /// 			Order:                 pulumi.Int(1),
 /// 			BehaviorOnMatch:       pulumi.String("Continue"),
 /// 			Actions: &cdn.FrontdoorRuleActionsArgs{
 /// 				RouteConfigurationOverrideAction: &cdn.FrontdoorRuleActionsRouteConfigurationOverrideActionArgs{
-/// 					CdnFrontdoorOriginGroupId:  exampleFrontdoorOriginGroup.ID(),
+/// 					CdnFrontdoorOriginGroupId:  exampleFrontdoorOriginGroup.ID().ToIDOutput().ToStringOutput(),
 /// 					ForwardingProtocol:         pulumi.String("HttpsOnly"),
 /// 					QueryStringCachingBehavior: pulumi.String("IncludeSpecifiedQueryStrings"),
 /// 					QueryStringParameters: pulumi.StringArray{
@@ -1185,7 +1185,7 @@ import 'frontdoor_rule_state.dart';
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
-/// * `Microsoft.Cdn` - 2024-09-01
+/// * `Microsoft.Cdn` - 2025-12-01
 ///
 /// ## Import
 ///
@@ -1200,6 +1200,8 @@ class FrontdoorRule extends pulumi.CustomResource {
   /// If this rule is a match should the rules engine continue processing the remaining rules or stop? Possible values are `Continue` and `Stop`. Defaults to `Continue`.
   late final pulumi.Output<String?> behaviorOnMatch;
   /// The resource ID of the Front Door Rule Set for this Front Door Rule. Changing this forces a new Front Door Rule to be created.
+  ///
+  /// &gt; **Note:** The `cdnFrontdoorRuleSetId` must reference a non-batch mode rule set, individual rules for batch mode rule sets cannot be managed by this resource.
   late final pulumi.Output<String> cdnFrontdoorRuleSetId;
   /// The name of the Front Door Rule Set containing this Front Door Rule.
   late final pulumi.Output<String> cdnFrontdoorRuleSetName;
@@ -1224,7 +1226,7 @@ class FrontdoorRule extends pulumi.CustomResource {
           'azure:cdn/frontdoorRule:FrontdoorRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     actions = registerOutput<FrontdoorRuleActions>('actions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FrontdoorRuleActions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     behaviorOnMatch = registerOutput<String?>('behaviorOnMatch');
@@ -1240,11 +1242,12 @@ class FrontdoorRule extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FrontdoorRuleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return FrontdoorRule._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1258,6 +1261,24 @@ class FrontdoorRule extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    actions = registerOutput<FrontdoorRuleActions>('actions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FrontdoorRuleActions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    behaviorOnMatch = registerOutput<String?>('behaviorOnMatch');
+    cdnFrontdoorRuleSetId = registerOutput<String>('cdnFrontdoorRuleSetId');
+    cdnFrontdoorRuleSetName = registerOutput<String>('cdnFrontdoorRuleSetName');
+    conditions = registerOutput<FrontdoorRuleConditions?>('conditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FrontdoorRuleConditions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    order = registerOutput<int>('order');
+  }
+
+  /// Creates a typed reference to an existing [FrontdoorRule] resource.
+  FrontdoorRule.reference(String urn)
+    : super(
+        'azure:cdn/frontdoorRule:FrontdoorRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     actions = registerOutput<FrontdoorRuleActions>('actions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FrontdoorRuleActions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     behaviorOnMatch = registerOutput<String?>('behaviorOnMatch');
     cdnFrontdoorRuleSetId = registerOutput<String>('cdnFrontdoorRuleSetId');

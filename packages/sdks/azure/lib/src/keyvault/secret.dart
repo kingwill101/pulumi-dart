@@ -20,6 +20,7 @@ import 'secret_state.dart';
 ///     name: "examplekeyvault",
 ///     location: example.location,
 ///     resourceGroupName: example.name,
+///     rbacAuthorizationEnabled: false,
 ///     tenantId: current.then(current => current.tenantId),
 ///     skuName: "premium",
 ///     softDeleteRetentionDays: 7,
@@ -57,6 +58,7 @@ import 'secret_state.dart';
 ///     name="examplekeyvault",
 ///     location=example.location,
 ///     resource_group_name=example.name,
+///     rbac_authorization_enabled=False,
 ///     tenant_id=current.tenant_id,
 ///     sku_name="premium",
 ///     soft_delete_retention_days=7,
@@ -101,6 +103,7 @@ import 'secret_state.dart';
 ///         Name = "examplekeyvault",
 ///         Location = example.Location,
 ///         ResourceGroupName = example.Name,
+///         RbacAuthorizationEnabled = false,
 ///         TenantId = current.Apply(getClientConfigResult => getClientConfigResult.TenantId),
 ///         SkuName = "premium",
 ///         SoftDeleteRetentionDays = 7,
@@ -159,12 +162,13 @@ import 'secret_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleKeyVault, err := keyvault.NewKeyVault(ctx, "example", &keyvault.KeyVaultArgs{
-/// 			Name:                    pulumi.String("examplekeyvault"),
-/// 			Location:                example.Location,
-/// 			ResourceGroupName:       example.Name,
-/// 			TenantId:                pulumi.String(current.TenantId),
-/// 			SkuName:                 pulumi.String("premium"),
-/// 			SoftDeleteRetentionDays: pulumi.Int(7),
+/// 			Name:                     pulumi.String("examplekeyvault"),
+/// 			Location:                 example.Location,
+/// 			ResourceGroupName:        example.Name,
+/// 			RbacAuthorizationEnabled: pulumi.Bool(false),
+/// 			TenantId:                 pulumi.String(current.TenantId),
+/// 			SkuName:                  pulumi.String("premium"),
+/// 			SoftDeleteRetentionDays:  pulumi.Int(7),
 /// 			AccessPolicies: keyvault.KeyVaultAccessPolicyArray{
 /// 				&keyvault.KeyVaultAccessPolicyArgs{
 /// 					TenantId: pulumi.String(current.TenantId),
@@ -189,7 +193,7 @@ import 'secret_state.dart';
 /// 		_, err = keyvault.NewSecret(ctx, "example", &keyvault.SecretArgs{
 /// 			Name:       pulumi.String("secret-sauce"),
 /// 			Value:      pulumi.String("szechuan"),
-/// 			KeyVaultId: exampleKeyVault.ID(),
+/// 			KeyVaultId: exampleKeyVault.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -218,6 +222,7 @@ import 'secret_state.dart';
 ///   name                       = "examplekeyvault"
 ///   location                   = azure_core_resourcegroup.example.location
 ///   resource_group_name        = azure_core_resourcegroup.example.name
+///   rbac_authorization_enabled = false
 ///   tenant_id                  = data.azure_core_getclientconfig.current.tenant_id
 ///   sku_name                   = "premium"
 ///   soft_delete_retention_days = 7
@@ -272,6 +277,7 @@ import 'secret_state.dart';
 ///             .name("examplekeyvault")
 ///             .location(example.location())
 ///             .resourceGroupName(example.name())
+///             .rbacAuthorizationEnabled(false)
 ///             .tenantId(current.tenantId())
 ///             .skuName("premium")
 ///             .softDeleteRetentionDays(7)
@@ -313,6 +319,7 @@ import 'secret_state.dart';
 ///       name: examplekeyvault
 ///       location: ${example.location}
 ///       resourceGroupName: ${example.name}
+///       rbacAuthorizationEnabled: false
 ///       tenantId: ${current.tenantId}
 ///       skuName: premium
 ///       softDeleteRetentionDays: 7
@@ -395,7 +402,8 @@ class Secret extends pulumi.CustomResource {
           'azure:keyvault/secret:Secret',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['value', 'valueWo'],
         ) {
     contentType = registerOutput<String?>('contentType');
     expirationDate = registerOutput<String?>('expirationDate');
@@ -404,9 +412,9 @@ class Secret extends pulumi.CustomResource {
     notBeforeDate = registerOutput<String?>('notBeforeDate');
     resourceId = registerOutput<String>('resourceId');
     resourceVersionlessId = registerOutput<String>('resourceVersionlessId');
-    tags = registerOutput<Map<String, String>?>('tags');
-    value = registerOutput<String?>('value');
-    valueWo = registerOutput<String?>('valueWo');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    value = registerOutput<String?>('value', isSecret: true);
+    valueWo = registerOutput<String?>('valueWo', isSecret: true);
     valueWoVersion = registerOutput<int?>('valueWoVersion');
     version = registerOutput<String>('version');
     versionlessId = registerOutput<String>('versionlessId');
@@ -417,11 +425,12 @@ class Secret extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SecretState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Secret._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -442,9 +451,34 @@ class Secret extends pulumi.CustomResource {
     notBeforeDate = registerOutput<String?>('notBeforeDate');
     resourceId = registerOutput<String>('resourceId');
     resourceVersionlessId = registerOutput<String>('resourceVersionlessId');
-    tags = registerOutput<Map<String, String>?>('tags');
-    value = registerOutput<String?>('value');
-    valueWo = registerOutput<String?>('valueWo');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    value = registerOutput<String?>('value', isSecret: true);
+    valueWo = registerOutput<String?>('valueWo', isSecret: true);
+    valueWoVersion = registerOutput<int?>('valueWoVersion');
+    version = registerOutput<String>('version');
+    versionlessId = registerOutput<String>('versionlessId');
+  }
+
+  /// Creates a typed reference to an existing [Secret] resource.
+  Secret.reference(String urn)
+    : super(
+        'azure:keyvault/secret:Secret',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['value', 'valueWo'],
+        isResourceReference: true,
+      ) {
+    contentType = registerOutput<String?>('contentType');
+    expirationDate = registerOutput<String?>('expirationDate');
+    keyVaultId = registerOutput<String>('keyVaultId');
+    this.name = registerOutput<String>('name');
+    notBeforeDate = registerOutput<String?>('notBeforeDate');
+    resourceId = registerOutput<String>('resourceId');
+    resourceVersionlessId = registerOutput<String>('resourceVersionlessId');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    value = registerOutput<String?>('value', isSecret: true);
+    valueWo = registerOutput<String?>('valueWo', isSecret: true);
     valueWoVersion = registerOutput<int?>('valueWoVersion');
     version = registerOutput<String>('version');
     versionlessId = registerOutput<String>('versionlessId');

@@ -8,17 +8,17 @@ import 'experiment_step.dart';
 /// Input properties used for looking up and filtering Experiment resources.
 class ExperimentState {
   /// A `identity` block as defined below.
-  final pulumi.Input<ExperimentIdentity>? identity;
+  final pulumi.Input<ExperimentIdentity?>? identity;
   /// The Azure Region where the Chaos Studio Experiment should exist. Changing this forces a new Chaos Studio Experiment to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name which should be used for this Chaos Studio Experiment. Changing this forces a new Chaos Studio Experiment to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the Resource Group where the Chaos Studio Experiment should exist. Changing this forces a new Chaos Studio Experiment to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// One or more `selectors` blocks as defined below.
-  final pulumi.Input<List<ExperimentSelector>>? selectors;
+  final pulumi.Input<List<ExperimentSelector>?>? selectors;
   /// One or more `steps` blocks as defined below.
-  final pulumi.Input<List<ExperimentStep>>? steps;
+  final pulumi.Input<List<ExperimentStep>?>? steps;
 
   /// Creates a new [ExperimentState].
   /// [identity] A `identity` block as defined below.

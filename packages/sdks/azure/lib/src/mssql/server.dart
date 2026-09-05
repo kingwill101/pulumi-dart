@@ -260,6 +260,7 @@ import 'server_state.dart';
 ///     name: "mssqltdeexample",
 ///     location: example.location,
 ///     resourceGroupName: example.name,
+///     rbacAuthorizationEnabled: false,
 ///     enabledForDiskEncryption: true,
 ///     tenantId: exampleUserAssignedIdentity.tenantId,
 ///     softDeleteRetentionDays: 7,
@@ -340,6 +341,7 @@ import 'server_state.dart';
 ///     name="mssqltdeexample",
 ///     location=example.location,
 ///     resource_group_name=example.name,
+///     rbac_authorization_enabled=False,
 ///     enabled_for_disk_encryption=True,
 ///     tenant_id=example_user_assigned_identity.tenant_id,
 ///     soft_delete_retention_days=7,
@@ -428,6 +430,7 @@ import 'server_state.dart';
 ///         Name = "mssqltdeexample",
 ///         Location = example.Location,
 ///         ResourceGroupName = example.Name,
+///         RbacAuthorizationEnabled = false,
 ///         EnabledForDiskEncryption = true,
 ///         TenantId = exampleUserAssignedIdentity.TenantId,
 ///         SoftDeleteRetentionDays = 7,
@@ -549,6 +552,7 @@ import 'server_state.dart';
 /// 			Name:                     pulumi.String("mssqltdeexample"),
 /// 			Location:                 example.Location,
 /// 			ResourceGroupName:        example.Name,
+/// 			RbacAuthorizationEnabled: pulumi.Bool(false),
 /// 			EnabledForDiskEncryption: pulumi.Bool(true),
 /// 			TenantId:                 exampleUserAssignedIdentity.TenantId,
 /// 			SoftDeleteRetentionDays:  pulumi.Int(7),
@@ -585,7 +589,7 @@ import 'server_state.dart';
 /// 		}
 /// 		exampleKey, err := keyvault.NewKey(ctx, "example", &keyvault.KeyArgs{
 /// 			Name:       pulumi.String("example-key"),
-/// 			KeyVaultId: exampleKeyVault.ID(),
+/// 			KeyVaultId: exampleKeyVault.ID().ToIDOutput().ToStringOutput(),
 /// 			KeyType:    pulumi.String("RSA"),
 /// 			KeySize:    pulumi.Int(2048),
 /// 			KeyOpts: pulumi.StringArray{
@@ -613,11 +617,11 @@ import 'server_state.dart';
 /// 			Identity: &mssql.ServerIdentityArgs{
 /// 				Type: pulumi.String("UserAssigned"),
 /// 				IdentityIds: pulumi.StringArray{
-/// 					exampleUserAssignedIdentity.ID(),
+/// 					exampleUserAssignedIdentity.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
-/// 			PrimaryUserAssignedIdentityId:          exampleUserAssignedIdentity.ID(),
-/// 			TransparentDataEncryptionKeyVaultKeyId: exampleKey.ID(),
+/// 			PrimaryUserAssignedIdentityId:          exampleUserAssignedIdentity.ID().ToIDOutput().ToStringOutput(),
+/// 			TransparentDataEncryptionKeyVaultKeyId: exampleKey.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -671,6 +675,7 @@ import 'server_state.dart';
 ///   name                        = "mssqltdeexample"
 ///   location                    = azure_core_resourcegroup.example.location
 ///   resource_group_name         = azure_core_resourcegroup.example.name
+///   rbac_authorization_enabled  = false
 ///   enabled_for_disk_encryption = true
 ///   tenant_id                   = azure_authorization_userassignedidentity.example.tenant_id
 ///   soft_delete_retention_days  = 7
@@ -748,6 +753,7 @@ import 'server_state.dart';
 ///             .name("mssqltdeexample")
 ///             .location(example.location())
 ///             .resourceGroupName(example.name())
+///             .rbacAuthorizationEnabled(false)
 ///             .enabledForDiskEncryption(true)
 ///             .tenantId(exampleUserAssignedIdentity.tenantId())
 ///             .softDeleteRetentionDays(7)
@@ -854,6 +860,7 @@ import 'server_state.dart';
 ///       name: mssqltdeexample
 ///       location: ${example.location}
 ///       resourceGroupName: ${example.name}
+///       rbacAuthorizationEnabled: false
 ///       enabledForDiskEncryption: true
 ///       tenantId: ${exampleUserAssignedIdentity.tenantId}
 ///       softDeleteRetentionDays: 7
@@ -977,10 +984,11 @@ class Server extends pulumi.CustomResource {
           'azure:mssql/server:Server',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['administratorLoginPassword'],
         ) {
     administratorLogin = registerOutput<String>('administratorLogin');
-    administratorLoginPassword = registerOutput<String?>('administratorLoginPassword');
+    administratorLoginPassword = registerOutput<String?>('administratorLoginPassword', isSecret: true);
     administratorLoginPasswordWoVersion = registerOutput<int?>('administratorLoginPasswordWoVersion');
     azureadAdministrator = registerOutput<ServerAzureadAdministrator?>('azureadAdministrator', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServerAzureadAdministrator.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     connectionPolicy = registerOutput<String?>('connectionPolicy');
@@ -994,8 +1002,8 @@ class Server extends pulumi.CustomResource {
     primaryUserAssignedIdentityId = registerOutput<String>('primaryUserAssignedIdentityId');
     publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    restorableDroppedDatabaseIds = registerOutput<List<String>>('restorableDroppedDatabaseIds');
-    tags = registerOutput<Map<String, String>?>('tags');
+    restorableDroppedDatabaseIds = registerOutput<List<String>>('restorableDroppedDatabaseIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     transparentDataEncryptionKeyVaultKeyId = registerOutput<String?>('transparentDataEncryptionKeyVaultKeyId');
     version = registerOutput<String>('version');
   }
@@ -1005,11 +1013,12 @@ class Server extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ServerState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Server._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1024,7 +1033,7 @@ class Server extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     administratorLogin = registerOutput<String>('administratorLogin');
-    administratorLoginPassword = registerOutput<String?>('administratorLoginPassword');
+    administratorLoginPassword = registerOutput<String?>('administratorLoginPassword', isSecret: true);
     administratorLoginPasswordWoVersion = registerOutput<int?>('administratorLoginPasswordWoVersion');
     azureadAdministrator = registerOutput<ServerAzureadAdministrator?>('azureadAdministrator', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServerAzureadAdministrator.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     connectionPolicy = registerOutput<String?>('connectionPolicy');
@@ -1038,8 +1047,39 @@ class Server extends pulumi.CustomResource {
     primaryUserAssignedIdentityId = registerOutput<String>('primaryUserAssignedIdentityId');
     publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    restorableDroppedDatabaseIds = registerOutput<List<String>>('restorableDroppedDatabaseIds');
-    tags = registerOutput<Map<String, String>?>('tags');
+    restorableDroppedDatabaseIds = registerOutput<List<String>>('restorableDroppedDatabaseIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    transparentDataEncryptionKeyVaultKeyId = registerOutput<String?>('transparentDataEncryptionKeyVaultKeyId');
+    version = registerOutput<String>('version');
+  }
+
+  /// Creates a typed reference to an existing [Server] resource.
+  Server.reference(String urn)
+    : super(
+        'azure:mssql/server:Server',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['administratorLoginPassword'],
+        isResourceReference: true,
+      ) {
+    administratorLogin = registerOutput<String>('administratorLogin');
+    administratorLoginPassword = registerOutput<String?>('administratorLoginPassword', isSecret: true);
+    administratorLoginPasswordWoVersion = registerOutput<int?>('administratorLoginPasswordWoVersion');
+    azureadAdministrator = registerOutput<ServerAzureadAdministrator?>('azureadAdministrator', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServerAzureadAdministrator.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    connectionPolicy = registerOutput<String?>('connectionPolicy');
+    expressVulnerabilityAssessmentEnabled = registerOutput<bool?>('expressVulnerabilityAssessmentEnabled');
+    fullyQualifiedDomainName = registerOutput<String>('fullyQualifiedDomainName');
+    identity = registerOutput<ServerIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServerIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    minimumTlsVersion = registerOutput<String?>('minimumTlsVersion');
+    this.name = registerOutput<String>('name');
+    outboundNetworkRestrictionEnabled = registerOutput<bool?>('outboundNetworkRestrictionEnabled');
+    primaryUserAssignedIdentityId = registerOutput<String>('primaryUserAssignedIdentityId');
+    publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    restorableDroppedDatabaseIds = registerOutput<List<String>>('restorableDroppedDatabaseIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     transparentDataEncryptionKeyVaultKeyId = registerOutput<String?>('transparentDataEncryptionKeyVaultKeyId');
     version = registerOutput<String>('version');
   }

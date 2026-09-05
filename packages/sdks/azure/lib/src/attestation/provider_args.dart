@@ -8,27 +8,27 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_attestation_provider_provider_args_doc}
 class ProviderArgs {
   /// The Azure Region where the Attestation Provider should exist. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name which should be used for this Attestation Provider. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specifies the base64 URI Encoded RFC 7519 JWT that should be used for the Attestation Policy.
-  final pulumi.Input<String>? openEnclavePolicyBase64;
+  final pulumi.Input<String?>? openEnclavePolicyBase64;
   /// A valid X.509 certificate (Section 4 of [RFC4648](https://tools.ietf.org/html/rfc4648)). Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** If the `policySigningCertificateData` argument contains more than one valid X.509 certificate only the first certificate will be used.
-  final pulumi.Input<String>? policySigningCertificateData;
+  final pulumi.Input<String?>? policySigningCertificateData;
   /// The name of the Resource Group where the attestation provider should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
   /// Specifies the base64 URI Encoded RFC 7519 JWT that should be used for the Attestation Policy.
   ///
   /// &gt; **Note:** [More information on the JWT Policies can be found in this article on `learn.microsoft.com`](https://learn.microsoft.com/azure/attestation/author-sign-policy).
-  final pulumi.Input<String>? sevSnpPolicyBase64;
+  final pulumi.Input<String?>? sevSnpPolicyBase64;
   /// Specifies the base64 URI Encoded RFC 7519 JWT that should be used for the Attestation Policy.
-  final pulumi.Input<String>? sgxEnclavePolicyBase64;
+  final pulumi.Input<String?>? sgxEnclavePolicyBase64;
   /// A mapping of tags which should be assigned to the Attestation Provider.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Specifies the base64 URI Encoded RFC 7519 JWT that should be used for the Attestation Policy.
-  final pulumi.Input<String>? tpmPolicyBase64;
+  final pulumi.Input<String?>? tpmPolicyBase64;
 
   /// Creates a new [ProviderArgs].
   /// [location] The Azure Region where the Attestation Provider should exist. Changing this forces a new resource to be created.

@@ -122,7 +122,7 @@ import 'snapshot_state.dart';
 /// 			Location:          example.Location,
 /// 			ResourceGroupName: example.Name,
 /// 			CreateOption:      pulumi.String("Copy"),
-/// 			SourceUri:         exampleManagedDisk.ID(),
+/// 			SourceUri:         exampleManagedDisk.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -301,7 +301,7 @@ class Snapshot extends pulumi.CustomResource {
           'azure:compute/snapshot:Snapshot',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     createOption = registerOutput<String>('createOption');
     diskAccessId = registerOutput<String?>('diskAccessId');
@@ -316,7 +316,7 @@ class Snapshot extends pulumi.CustomResource {
     sourceResourceId = registerOutput<String?>('sourceResourceId');
     sourceUri = registerOutput<String?>('sourceUri');
     storageAccountId = registerOutput<String?>('storageAccountId');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     trustedLaunchEnabled = registerOutput<bool>('trustedLaunchEnabled');
   }
 
@@ -325,11 +325,12 @@ class Snapshot extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SnapshotState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Snapshot._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -356,7 +357,33 @@ class Snapshot extends pulumi.CustomResource {
     sourceResourceId = registerOutput<String?>('sourceResourceId');
     sourceUri = registerOutput<String?>('sourceUri');
     storageAccountId = registerOutput<String?>('storageAccountId');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    trustedLaunchEnabled = registerOutput<bool>('trustedLaunchEnabled');
+  }
+
+  /// Creates a typed reference to an existing [Snapshot] resource.
+  Snapshot.reference(String urn)
+    : super(
+        'azure:compute/snapshot:Snapshot',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createOption = registerOutput<String>('createOption');
+    diskAccessId = registerOutput<String?>('diskAccessId');
+    diskSizeGb = registerOutput<int>('diskSizeGb');
+    encryptionSettings = registerOutput<SnapshotEncryptionSettings?>('encryptionSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SnapshotEncryptionSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    incrementalEnabled = registerOutput<bool?>('incrementalEnabled');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    networkAccessPolicy = registerOutput<String?>('networkAccessPolicy');
+    publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    sourceResourceId = registerOutput<String?>('sourceResourceId');
+    sourceUri = registerOutput<String?>('sourceUri');
+    storageAccountId = registerOutput<String?>('storageAccountId');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     trustedLaunchEnabled = registerOutput<bool>('trustedLaunchEnabled');
   }
 }

@@ -172,7 +172,7 @@ import 'account_cost_management_export_state.dart';
 /// 			RecurrencePeriodEndDate:   pulumi.String("2020-09-18T00:00:00Z"),
 /// 			FileFormat:                pulumi.String("Csv"),
 /// 			ExportDataStorageLocation: &billing.AccountCostManagementExportExportDataStorageLocationArgs{
-/// 				ContainerId:    exampleContainer.ID(),
+/// 				ContainerId:    exampleContainer.ID().ToIDOutput().ToStringOutput(),
 /// 				RootFolderPath: pulumi.String("/root/updated"),
 /// 			},
 /// 			ExportDataOptions: &billing.AccountCostManagementExportExportDataOptionsArgs{
@@ -382,7 +382,7 @@ class AccountCostManagementExport extends pulumi.CustomResource {
           'azure:billing/accountCostManagementExport:AccountCostManagementExport',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     active = registerOutput<bool?>('active');
     billingAccountId = registerOutput<String>('billingAccountId');
@@ -400,11 +400,12 @@ class AccountCostManagementExport extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AccountCostManagementExportState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AccountCostManagementExport._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -418,6 +419,26 @@ class AccountCostManagementExport extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    active = registerOutput<bool?>('active');
+    billingAccountId = registerOutput<String>('billingAccountId');
+    exportDataOptions = registerOutput<AccountCostManagementExportExportDataOptions>('exportDataOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountCostManagementExportExportDataOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    exportDataStorageLocation = registerOutput<AccountCostManagementExportExportDataStorageLocation>('exportDataStorageLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountCostManagementExportExportDataStorageLocation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    fileFormat = registerOutput<String?>('fileFormat');
+    this.name = registerOutput<String>('name');
+    recurrencePeriodEndDate = registerOutput<String>('recurrencePeriodEndDate');
+    recurrencePeriodStartDate = registerOutput<String>('recurrencePeriodStartDate');
+    recurrenceType = registerOutput<String>('recurrenceType');
+  }
+
+  /// Creates a typed reference to an existing [AccountCostManagementExport] resource.
+  AccountCostManagementExport.reference(String urn)
+    : super(
+        'azure:billing/accountCostManagementExport:AccountCostManagementExport',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     active = registerOutput<bool?>('active');
     billingAccountId = registerOutput<String>('billingAccountId');
     exportDataOptions = registerOutput<AccountCostManagementExportExportDataOptions>('exportDataOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountCostManagementExportExportDataOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });

@@ -205,17 +205,18 @@ class Service extends pulumi.CustomResource {
           'azure:communication/service:Service',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['primaryConnectionString', 'primaryKey', 'secondaryConnectionString', 'secondaryKey'],
         ) {
     dataLocation = registerOutput<String?>('dataLocation');
     hostname = registerOutput<String>('hostname');
     this.name = registerOutput<String>('name');
-    primaryConnectionString = registerOutput<String>('primaryConnectionString');
-    primaryKey = registerOutput<String>('primaryKey');
+    primaryConnectionString = registerOutput<String>('primaryConnectionString', isSecret: true);
+    primaryKey = registerOutput<String>('primaryKey', isSecret: true);
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    secondaryConnectionString = registerOutput<String>('secondaryConnectionString');
-    secondaryKey = registerOutput<String>('secondaryKey');
-    tags = registerOutput<Map<String, String>?>('tags');
+    secondaryConnectionString = registerOutput<String>('secondaryConnectionString', isSecret: true);
+    secondaryKey = registerOutput<String>('secondaryKey', isSecret: true);
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Service] resource's state with the given [name] and [id].
@@ -223,11 +224,12 @@ class Service extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ServiceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Service._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -244,11 +246,32 @@ class Service extends pulumi.CustomResource {
     dataLocation = registerOutput<String?>('dataLocation');
     hostname = registerOutput<String>('hostname');
     this.name = registerOutput<String>('name');
-    primaryConnectionString = registerOutput<String>('primaryConnectionString');
-    primaryKey = registerOutput<String>('primaryKey');
+    primaryConnectionString = registerOutput<String>('primaryConnectionString', isSecret: true);
+    primaryKey = registerOutput<String>('primaryKey', isSecret: true);
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    secondaryConnectionString = registerOutput<String>('secondaryConnectionString');
-    secondaryKey = registerOutput<String>('secondaryKey');
-    tags = registerOutput<Map<String, String>?>('tags');
+    secondaryConnectionString = registerOutput<String>('secondaryConnectionString', isSecret: true);
+    secondaryKey = registerOutput<String>('secondaryKey', isSecret: true);
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Service] resource.
+  Service.reference(String urn)
+    : super(
+        'azure:communication/service:Service',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['primaryConnectionString', 'primaryKey', 'secondaryConnectionString', 'secondaryKey'],
+        isResourceReference: true,
+      ) {
+    dataLocation = registerOutput<String?>('dataLocation');
+    hostname = registerOutput<String>('hostname');
+    this.name = registerOutput<String>('name');
+    primaryConnectionString = registerOutput<String>('primaryConnectionString', isSecret: true);
+    primaryKey = registerOutput<String>('primaryKey', isSecret: true);
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    secondaryConnectionString = registerOutput<String>('secondaryConnectionString', isSecret: true);
+    secondaryKey = registerOutput<String>('secondaryKey', isSecret: true);
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

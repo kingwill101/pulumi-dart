@@ -9,7 +9,7 @@ class ApiImport {
   /// The Content from which the API Definition should be imported. When a `contentFormat` of `*-link-*` is specified this must be a URL, otherwise this must be defined inline. The URL must be accessible and return a valid document; otherwise, deployment may fail.
   final pulumi.Input<String> contentValue;
   /// A `wsdlSelector` block as defined below, which allows you to limit the import of a WSDL to only a subset of the document. This can only be specified when `contentFormat` is `wsdl` or `wsdl-link`.
-  final pulumi.Input<ApiImportWsdlSelector>? wsdlSelector;
+  final pulumi.Input<ApiImportWsdlSelector?>? wsdlSelector;
 
   /// Creates a new [ApiImport].
   /// [contentFormat] The format of the content from which the API Definition should be imported. Possible values are: `openapi`, `openapi+json`, `openapi+json-link`, `openapi-link`, `swagger-json`, `swagger-link-json`, `wadl-link-json`, `wadl-xml`, `wsdl` and `wsdl-link`.

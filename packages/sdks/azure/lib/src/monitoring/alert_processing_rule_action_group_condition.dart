@@ -15,29 +15,29 @@ import 'alert_processing_rule_action_group_condition_target_resource_type.dart';
 
 class AlertProcessingRuleActionGroupCondition {
   /// A `alertContext` block as defined above.
-  final pulumi.Input<AlertProcessingRuleActionGroupConditionAlertContext>? alertContext;
+  final pulumi.Input<AlertProcessingRuleActionGroupConditionAlertContext?>? alertContext;
   /// A `alertRuleId` block as defined above.
-  final pulumi.Input<AlertProcessingRuleActionGroupConditionAlertRuleId>? alertRuleId;
+  final pulumi.Input<AlertProcessingRuleActionGroupConditionAlertRuleId?>? alertRuleId;
   /// A `alertRuleName` block as defined above.
-  final pulumi.Input<AlertProcessingRuleActionGroupConditionAlertRuleName>? alertRuleName;
+  final pulumi.Input<AlertProcessingRuleActionGroupConditionAlertRuleName?>? alertRuleName;
   /// A `description` block as defined below.
-  final pulumi.Input<AlertProcessingRuleActionGroupConditionDescription>? description;
+  final pulumi.Input<AlertProcessingRuleActionGroupConditionDescription?>? description;
   /// A `monitorCondition` block as defined below.
-  final pulumi.Input<AlertProcessingRuleActionGroupConditionMonitorCondition>? monitorCondition;
+  final pulumi.Input<AlertProcessingRuleActionGroupConditionMonitorCondition?>? monitorCondition;
   /// A `monitorService` block as defined below.
-  final pulumi.Input<AlertProcessingRuleActionGroupConditionMonitorService>? monitorService;
+  final pulumi.Input<AlertProcessingRuleActionGroupConditionMonitorService?>? monitorService;
   /// A `severity` block as defined below.
-  final pulumi.Input<AlertProcessingRuleActionGroupConditionSeverity>? severity;
+  final pulumi.Input<AlertProcessingRuleActionGroupConditionSeverity?>? severity;
   /// A `signalType` block as defined below.
-  final pulumi.Input<AlertProcessingRuleActionGroupConditionSignalType>? signalType;
+  final pulumi.Input<AlertProcessingRuleActionGroupConditionSignalType?>? signalType;
   /// A `targetResource` block as defined below.
-  final pulumi.Input<AlertProcessingRuleActionGroupConditionTargetResource>? targetResource;
+  final pulumi.Input<AlertProcessingRuleActionGroupConditionTargetResource?>? targetResource;
   /// A `targetResourceGroup` block as defined below.
-  final pulumi.Input<AlertProcessingRuleActionGroupConditionTargetResourceGroup>? targetResourceGroup;
+  final pulumi.Input<AlertProcessingRuleActionGroupConditionTargetResourceGroup?>? targetResourceGroup;
   /// A `targetResourceType` block as defined below.
   ///
   /// &gt; **Note:** At least one of the `alertContext`, `alertRuleId`, `alertRuleName`, `description`, `monitorCondition`, `monitorService`, `severity`, `signalType`, `targetResource`, `targetResourceGroup`, `targetResourceType` must be specified.
-  final pulumi.Input<AlertProcessingRuleActionGroupConditionTargetResourceType>? targetResourceType;
+  final pulumi.Input<AlertProcessingRuleActionGroupConditionTargetResourceType?>? targetResourceType;
 
   /// Creates a new [AlertProcessingRuleActionGroupCondition].
   /// [alertContext] A `alertContext` block as defined above.

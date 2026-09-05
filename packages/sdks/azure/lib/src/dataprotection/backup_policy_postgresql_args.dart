@@ -13,13 +13,13 @@ class BackupPolicyPostgresqlArgs {
   /// The duration of default retention rule. It should follow `ISO 8601` duration format. Changing this forces a new Backup Policy PostgreSQL to be created.
   final pulumi.Input<String> defaultRetentionDuration;
   /// The name which should be used for this Backup Policy PostgreSQL. Changing this forces a new Backup Policy PostgreSQL to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the Resource Group where the Backup Policy PostgreSQL should exist. Changing this forces a new Backup Policy PostgreSQL to be created.
   final pulumi.Input<String> resourceGroupName;
   /// One or more `retentionRule` blocks as defined below. Changing this forces a new Backup Policy PostgreSQL to be created.
-  final pulumi.Input<List<BackupPolicyPostgresqlRetentionRule>>? retentionRules;
+  final pulumi.Input<List<BackupPolicyPostgresqlRetentionRule>?>? retentionRules;
   /// Specifies the Time Zone which should be used by the backup schedule. Changing this forces a new Backup Policy PostgreSQL to be created.
-  final pulumi.Input<String>? timeZone;
+  final pulumi.Input<String?>? timeZone;
   /// The name of the Backup Vault where the Backup Policy PostgreSQL should exist. Changing this forces a new Backup Policy PostgreSQL to be created.
   final pulumi.Input<String> vaultName;
 

@@ -12,17 +12,17 @@ class PoolArgs {
   /// Whether the NetApp Pool can hold cool access enabled volumes. Defaults to `false`.
   ///
   /// &gt; **Note:** Disabling `coolAccessEnabled` is not allowed and forces a new resource to be created.
-  final pulumi.Input<bool>? coolAccessEnabled;
+  final pulumi.Input<bool?>? coolAccessEnabled;
   /// The custom throughput for the pool in MiB/s. Minimum value is `128`. This field can only be set when `serviceLevel` is set to `Flexible` and `qosType` is set to `Manual`.
-  final pulumi.Input<int>? customThroughputMibps;
+  final pulumi.Input<int?>? customThroughputMibps;
   /// The encryption type of the pool. Valid values include `Single`, and `Double`. Defaults to `Single`. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? encryptionType;
+  final pulumi.Input<String?>? encryptionType;
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the NetApp Pool. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// QoS Type of the pool. Valid values include `Auto` or `Manual`. Defaults to `Auto`.
-  final pulumi.Input<String>? qosType;
+  final pulumi.Input<String?>? qosType;
   /// The name of the resource group where the NetApp Pool should be created. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
   /// The service level of the file system. Valid values include `Premium`, `Standard`, `Ultra`, and `Flexible`. Changing this forces a new resource to be created.
@@ -34,7 +34,7 @@ class PoolArgs {
   /// &gt; **Note:** The maximum `sizeInTb` is goverened by regional quotas. You may request additional capacity from Azure, currently up to `2048`.
   final pulumi.Input<int> sizeInTb;
   /// A mapping of tags to assign to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [PoolArgs].
   /// [accountName] The name of the NetApp account in which the NetApp Pool should be created. Changing this forces a new resource to be created.
@@ -82,14 +82,14 @@ class PoolArgs {
     return PoolArgs(
       accountName: pulumi.Input.fromValue(map['accountName'] as String),
       coolAccessEnabled: (() { final guardedValue = map['coolAccessEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      customThroughputMibps: (() { final guardedValue = map['customThroughputMibps']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      customThroughputMibps: (() { final guardedValue = map['customThroughputMibps']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       encryptionType: (() { final guardedValue = map['encryptionType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       qosType: (() { final guardedValue = map['qosType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       serviceLevel: pulumi.Input.fromValue(map['serviceLevel'] as String),
-      sizeInTb: pulumi.Input.fromValue(map['sizeInTb'] as int),
+      sizeInTb: pulumi.Input.fromValue((map['sizeInTb'] as num).toInt()),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }

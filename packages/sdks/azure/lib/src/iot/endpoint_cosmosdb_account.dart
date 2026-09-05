@@ -272,7 +272,7 @@ import 'endpoint_cosmosdb_account_state.dart';
 /// 		_, err = iot.NewEndpointCosmosdbAccount(ctx, "example", &iot.EndpointCosmosdbAccountArgs{
 /// 			Name:              pulumi.String("example"),
 /// 			ResourceGroupName: example.Name,
-/// 			IothubId:          exampleIoTHub.ID(),
+/// 			IothubId:          exampleIoTHub.ID().ToIDOutput().ToStringOutput(),
 /// 			ContainerName:     exampleSqlContainer.Name,
 /// 			DatabaseName:      exampleSqlDatabase.Name,
 /// 			EndpointUri:       exampleAccount.Endpoint,
@@ -560,7 +560,8 @@ class EndpointCosmosdbAccount extends pulumi.CustomResource {
           'azure:iot/endpointCosmosdbAccount:EndpointCosmosdbAccount',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['primaryKey', 'secondaryKey'],
         ) {
     authenticationType = registerOutput<String?>('authenticationType');
     containerName = registerOutput<String>('containerName');
@@ -571,9 +572,9 @@ class EndpointCosmosdbAccount extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     partitionKeyName = registerOutput<String?>('partitionKeyName');
     partitionKeyTemplate = registerOutput<String?>('partitionKeyTemplate');
-    primaryKey = registerOutput<String?>('primaryKey');
+    primaryKey = registerOutput<String?>('primaryKey', isSecret: true);
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    secondaryKey = registerOutput<String?>('secondaryKey');
+    secondaryKey = registerOutput<String?>('secondaryKey', isSecret: true);
     subscriptionId = registerOutput<String>('subscriptionId');
   }
 
@@ -582,11 +583,12 @@ class EndpointCosmosdbAccount extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EndpointCosmosdbAccountState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return EndpointCosmosdbAccount._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -609,9 +611,34 @@ class EndpointCosmosdbAccount extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     partitionKeyName = registerOutput<String?>('partitionKeyName');
     partitionKeyTemplate = registerOutput<String?>('partitionKeyTemplate');
-    primaryKey = registerOutput<String?>('primaryKey');
+    primaryKey = registerOutput<String?>('primaryKey', isSecret: true);
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    secondaryKey = registerOutput<String?>('secondaryKey');
+    secondaryKey = registerOutput<String?>('secondaryKey', isSecret: true);
+    subscriptionId = registerOutput<String>('subscriptionId');
+  }
+
+  /// Creates a typed reference to an existing [EndpointCosmosdbAccount] resource.
+  EndpointCosmosdbAccount.reference(String urn)
+    : super(
+        'azure:iot/endpointCosmosdbAccount:EndpointCosmosdbAccount',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['primaryKey', 'secondaryKey'],
+        isResourceReference: true,
+      ) {
+    authenticationType = registerOutput<String?>('authenticationType');
+    containerName = registerOutput<String>('containerName');
+    databaseName = registerOutput<String>('databaseName');
+    endpointUri = registerOutput<String>('endpointUri');
+    identityId = registerOutput<String?>('identityId');
+    iothubId = registerOutput<String>('iothubId');
+    this.name = registerOutput<String>('name');
+    partitionKeyName = registerOutput<String?>('partitionKeyName');
+    partitionKeyTemplate = registerOutput<String?>('partitionKeyTemplate');
+    primaryKey = registerOutput<String?>('primaryKey', isSecret: true);
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    secondaryKey = registerOutput<String?>('secondaryKey', isSecret: true);
     subscriptionId = registerOutput<String>('subscriptionId');
   }
 }

@@ -5,21 +5,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering OutputSynapse resources.
 class OutputSynapseState {
   /// The name of the Azure SQL database. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? database;
+  final pulumi.Input<String?>? database;
   /// The name of the Stream Output. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The password that will be used to connect to the Azure SQL database.
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// The name of the Resource Group where the Stream Analytics Job exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// The name of the SQL server containing the Azure SQL database. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? server;
+  final pulumi.Input<String?>? server;
   /// The name of the Stream Analytics Job. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? streamAnalyticsJobName;
+  final pulumi.Input<String?>? streamAnalyticsJobName;
   /// The name of the table in the Azure SQL database. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? table;
+  final pulumi.Input<String?>? table;
   /// The user name that will be used to connect to the Azure SQL database. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? user;
+  final pulumi.Input<String?>? user;
 
   /// Creates a new [OutputSynapseState].
   /// [database] The name of the Azure SQL database. Changing this forces a new resource to be created.

@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApplicationGatewayProbeMatch {
   /// A snippet from the Response Body which must be present in the Response.
-  final pulumi.Input<String>? body;
+  final pulumi.Input<String?>? body;
   /// A list of allowed status codes for this Health Probe.
   final pulumi.Input<List<String>> statusCodes;
 

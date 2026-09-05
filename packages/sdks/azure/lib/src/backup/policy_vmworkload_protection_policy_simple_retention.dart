@@ -20,7 +20,7 @@ class PolicyVMWorkloadProtectionPolicySimpleRetention {
 
   factory PolicyVMWorkloadProtectionPolicySimpleRetention.fromMap(Map<String, dynamic> map) {
     return PolicyVMWorkloadProtectionPolicySimpleRetention(
-      count: pulumi.Input.fromValue(map['count'] as int),
+      count: pulumi.Input.fromValue((map['count'] as num).toInt()),
     );
   }
 }

@@ -3,54 +3,54 @@
 
 /// Result data returned by getAccountEncryption.
 class GetAccountEncryptionResult {
-  final String crossTenantKeyVaultResourceId;
-  final String encryptionKey;
-  final String federatedClientId;
+  final String? crossTenantKeyVaultResourceId;
+  final String? encryptionKey;
+  final String? federatedClientId;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final String netappAccountId;
-  final String systemAssignedIdentityPrincipalId;
-  final String userAssignedIdentityId;
+  final String? id;
+  final String? netappAccountId;
+  final String? systemAssignedIdentityPrincipalId;
+  final String? userAssignedIdentityId;
 
   /// Creates a new [GetAccountEncryptionResult].
-  /// [crossTenantKeyVaultResourceId] Required.
-  /// [encryptionKey] Required.
-  /// [federatedClientId] Required.
+  /// [crossTenantKeyVaultResourceId] Optional.
+  /// [encryptionKey] Optional.
+  /// [federatedClientId] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [netappAccountId] Required.
-  /// [systemAssignedIdentityPrincipalId] Required.
-  /// [userAssignedIdentityId] Required.
+  /// [netappAccountId] Optional.
+  /// [systemAssignedIdentityPrincipalId] Optional.
+  /// [userAssignedIdentityId] Optional.
   const GetAccountEncryptionResult({
-    required this.crossTenantKeyVaultResourceId,
-    required this.encryptionKey,
-    required this.federatedClientId,
-    required this.id,
-    required this.netappAccountId,
-    required this.systemAssignedIdentityPrincipalId,
-    required this.userAssignedIdentityId,
+    this.crossTenantKeyVaultResourceId,
+    this.encryptionKey,
+    this.federatedClientId,
+    this.id,
+    this.netappAccountId,
+    this.systemAssignedIdentityPrincipalId,
+    this.userAssignedIdentityId,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'crossTenantKeyVaultResourceId': crossTenantKeyVaultResourceId,
-      'encryptionKey': encryptionKey,
-      'federatedClientId': federatedClientId,
-      'id': id,
-      'netappAccountId': netappAccountId,
-      'systemAssignedIdentityPrincipalId': systemAssignedIdentityPrincipalId,
-      'userAssignedIdentityId': userAssignedIdentityId,
+      'crossTenantKeyVaultResourceId': ?crossTenantKeyVaultResourceId,
+      'encryptionKey': ?encryptionKey,
+      'federatedClientId': ?federatedClientId,
+      'id': ?id,
+      'netappAccountId': ?netappAccountId,
+      'systemAssignedIdentityPrincipalId': ?systemAssignedIdentityPrincipalId,
+      'userAssignedIdentityId': ?userAssignedIdentityId,
     };
   }
 
   factory GetAccountEncryptionResult.fromMap(Map<String, dynamic> map) {
     return GetAccountEncryptionResult(
-      crossTenantKeyVaultResourceId: map['crossTenantKeyVaultResourceId'] as String,
-      encryptionKey: map['encryptionKey'] as String,
-      federatedClientId: map['federatedClientId'] as String,
-      id: map['id'] as String,
-      netappAccountId: map['netappAccountId'] as String,
-      systemAssignedIdentityPrincipalId: map['systemAssignedIdentityPrincipalId'] as String,
-      userAssignedIdentityId: map['userAssignedIdentityId'] as String,
+      crossTenantKeyVaultResourceId: (() { final guardedValue = map['crossTenantKeyVaultResourceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      encryptionKey: (() { final guardedValue = map['encryptionKey']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      federatedClientId: (() { final guardedValue = map['federatedClientId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      netappAccountId: (() { final guardedValue = map['netappAccountId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemAssignedIdentityPrincipalId: (() { final guardedValue = map['systemAssignedIdentityPrincipalId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      userAssignedIdentityId: (() { final guardedValue = map['userAssignedIdentityId']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

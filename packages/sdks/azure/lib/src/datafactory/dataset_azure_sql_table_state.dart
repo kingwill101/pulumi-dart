@@ -6,27 +6,27 @@ import 'dataset_azure_sql_table_schema_column.dart';
 /// Input properties used for looking up and filtering DatasetAzureSqlTable resources.
 class DatasetAzureSqlTableState {
   /// A map of additional properties to associate with the Data Factory Dataset Azure SQL Table.
-  final pulumi.Input<Map<String, String>>? additionalProperties;
+  final pulumi.Input<Map<String, String>?>? additionalProperties;
   /// List of tags that can be used for describing the Data Factory Dataset Azure SQL Table.
-  final pulumi.Input<List<String>>? annotations;
+  final pulumi.Input<List<String>?>? annotations;
   /// The Data Factory ID in which to associate the Linked Service with. Changing this forces a new resource.
-  final pulumi.Input<String>? dataFactoryId;
+  final pulumi.Input<String?>? dataFactoryId;
   /// The description for the Data Factory Dataset Azure SQL Table.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The folder that this Dataset is in. If not specified, the Dataset will appear at the root level.
-  final pulumi.Input<String>? folder;
+  final pulumi.Input<String?>? folder;
   /// The Data Factory Linked Service ID in which to associate the Dataset with.
-  final pulumi.Input<String>? linkedServiceId;
+  final pulumi.Input<String?>? linkedServiceId;
   /// Specifies the name of the Data Factory Dataset Azure SQL Table. Changing this forces a new resource to be created. Must be globally unique. See the [Microsoft documentation](https://docs.microsoft.com/azure/data-factory/naming-rules) for all restrictions.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A map of parameters to associate with the Data Factory Dataset Azure SQL Table.
-  final pulumi.Input<Map<String, String>>? parameters;
+  final pulumi.Input<Map<String, String>?>? parameters;
   /// The schema name of the table in the Azure SQL Database.
-  final pulumi.Input<String>? schema;
+  final pulumi.Input<String?>? schema;
   /// A `schemaColumn` block as defined below.
-  final pulumi.Input<List<DatasetAzureSqlTableSchemaColumn>>? schemaColumns;
+  final pulumi.Input<List<DatasetAzureSqlTableSchemaColumn>?>? schemaColumns;
   /// The table name of the table in the Azure SQL Database.
-  final pulumi.Input<String>? table;
+  final pulumi.Input<String?>? table;
 
   /// Creates a new [DatasetAzureSqlTableState].
   /// [additionalProperties] A map of additional properties to associate with the Data Factory Dataset Azure SQL Table.

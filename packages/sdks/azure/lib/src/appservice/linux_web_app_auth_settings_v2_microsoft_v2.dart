@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LinuxWebAppAuthSettingsV2MicrosoftV2 {
   /// Specifies a list of Allowed Audiences that will be requested as part of Microsoft Sign-In authentication.
-  final pulumi.Input<List<String>>? allowedAudiences;
+  final pulumi.Input<List<String>?>? allowedAudiences;
   /// The OAuth 2.0 client ID that was created for the app used for authentication.
   final pulumi.Input<String> clientId;
   /// The app setting name containing the OAuth 2.0 client secret that was created for the app used for authentication.
@@ -12,7 +12,7 @@ class LinuxWebAppAuthSettingsV2MicrosoftV2 {
   /// &gt; **Note:** A setting with this name must exist in `appSettings` to function correctly.
   final pulumi.Input<String> clientSecretSettingName;
   /// The list of Login scopes that should be requested as part of Microsoft Account authentication.
-  final pulumi.Input<List<String>>? loginScopes;
+  final pulumi.Input<List<String>?>? loginScopes;
 
   /// Creates a new [LinuxWebAppAuthSettingsV2MicrosoftV2].
   /// [allowedAudiences] Specifies a list of Allowed Audiences that will be requested as part of Microsoft Sign-In authentication.

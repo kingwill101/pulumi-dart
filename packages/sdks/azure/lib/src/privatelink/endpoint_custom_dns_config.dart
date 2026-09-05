@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EndpointCustomDnsConfig {
   /// The fully qualified domain name to the `privateDnsZone`.
-  final pulumi.Input<String>? fqdn;
+  final pulumi.Input<String?>? fqdn;
   /// A list of all IP Addresses that map to the `privateDnsZone` fqdn.
-  final pulumi.Input<List<String>>? ipAddresses;
+  final pulumi.Input<List<String>?>? ipAddresses;
 
   /// Creates a new [EndpointCustomDnsConfig].
   /// [fqdn] The fully qualified domain name to the `privateDnsZone`.

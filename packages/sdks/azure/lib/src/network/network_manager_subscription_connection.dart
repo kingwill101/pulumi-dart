@@ -139,7 +139,7 @@ import 'network_manager_subscription_connection_state.dart';
 /// 		_, err = network.NewNetworkManagerSubscriptionConnection(ctx, "example", &network.NetworkManagerSubscriptionConnectionArgs{
 /// 			Name:             pulumi.String("example-nsnmc"),
 /// 			SubscriptionId:   pulumi.String(current.Id),
-/// 			NetworkManagerId: exampleNetworkManager.ID(),
+/// 			NetworkManagerId: exampleNetworkManager.ID().ToIDOutput().ToStringOutput(),
 /// 			Description:      pulumi.String("example"),
 /// 		})
 /// 		if err != nil {
@@ -310,7 +310,7 @@ class NetworkManagerSubscriptionConnection extends pulumi.CustomResource {
           'azure:network/networkManagerSubscriptionConnection:NetworkManagerSubscriptionConnection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     connectionState = registerOutput<String>('connectionState');
     description = registerOutput<String?>('description');
@@ -324,11 +324,12 @@ class NetworkManagerSubscriptionConnection extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     NetworkManagerSubscriptionConnectionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return NetworkManagerSubscriptionConnection._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -342,6 +343,22 @@ class NetworkManagerSubscriptionConnection extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    connectionState = registerOutput<String>('connectionState');
+    description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    networkManagerId = registerOutput<String>('networkManagerId');
+    subscriptionId = registerOutput<String>('subscriptionId');
+  }
+
+  /// Creates a typed reference to an existing [NetworkManagerSubscriptionConnection] resource.
+  NetworkManagerSubscriptionConnection.reference(String urn)
+    : super(
+        'azure:network/networkManagerSubscriptionConnection:NetworkManagerSubscriptionConnection',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     connectionState = registerOutput<String>('connectionState');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');

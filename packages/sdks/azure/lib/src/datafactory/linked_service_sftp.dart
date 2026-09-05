@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'linked_service_sftp_args.dart';
+import 'linked_service_sftp_key_vault_password.dart';
 import 'linked_service_sftp_key_vault_private_key_content_base64.dart';
 import 'linked_service_sftp_key_vault_private_key_passphrase.dart';
 import 'linked_service_sftp_state.dart';
@@ -115,7 +116,7 @@ import 'linked_service_sftp_state.dart';
 /// 		}
 /// 		_, err = datafactory.NewLinkedServiceSftp(ctx, "example", &datafactory.LinkedServiceSftpArgs{
 /// 			Name:               pulumi.String("example"),
-/// 			DataFactoryId:      exampleFactory.ID(),
+/// 			DataFactoryId:      exampleFactory.ID().ToIDOutput().ToStringOutput(),
 /// 			AuthenticationType: pulumi.String("Basic"),
 /// 			Host:               pulumi.String("http://www.bing.com"),
 /// 			Port:               pulumi.Int(22),
@@ -263,7 +264,7 @@ class LinkedServiceSftp extends pulumi.CustomResource {
   /// A `keyVaultPassword` block as defined below.
   ///
   /// &gt; **Note:** Either `password` or `keyVaultPassword` is required when `authenticationType` is set to `Basic`.
-  late final pulumi.Output<List<Map<String, dynamic>>?> keyVaultPasswords;
+  late final pulumi.Output<List<LinkedServiceSftpKeyVaultPassword>?> keyVaultPasswords;
   /// A `keyVaultPrivateKeyContentBase64` block as defined below.
   late final pulumi.Output<LinkedServiceSftpKeyVaultPrivateKeyContentBase64?> keyVaultPrivateKeyContentBase64;
   /// A `keyVaultPrivateKeyPassphrase` block as defined below.
@@ -303,25 +304,26 @@ class LinkedServiceSftp extends pulumi.CustomResource {
           'azure:datafactory/linkedServiceSftp:LinkedServiceSftp',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['password', 'privateKeyContentBase64', 'privateKeyPassphrase'],
         ) {
-    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
-    annotations = registerOutput<List<String>?>('annotations');
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     authenticationType = registerOutput<String>('authenticationType');
     dataFactoryId = registerOutput<String>('dataFactoryId');
     description = registerOutput<String?>('description');
     host = registerOutput<String>('host');
     hostKeyFingerprint = registerOutput<String?>('hostKeyFingerprint');
     integrationRuntimeName = registerOutput<String?>('integrationRuntimeName');
-    keyVaultPasswords = registerOutput<List<Map<String, dynamic>>?>('keyVaultPasswords');
+    keyVaultPasswords = registerOutput<List<LinkedServiceSftpKeyVaultPassword>?>('keyVaultPasswords', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LinkedServiceSftpKeyVaultPassword>(guardedValue, (value) => LinkedServiceSftpKeyVaultPassword.fromMap((value as Map).cast<String, dynamic>())); });
     keyVaultPrivateKeyContentBase64 = registerOutput<LinkedServiceSftpKeyVaultPrivateKeyContentBase64?>('keyVaultPrivateKeyContentBase64', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinkedServiceSftpKeyVaultPrivateKeyContentBase64.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     keyVaultPrivateKeyPassphrase = registerOutput<LinkedServiceSftpKeyVaultPrivateKeyPassphrase?>('keyVaultPrivateKeyPassphrase', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinkedServiceSftpKeyVaultPrivateKeyPassphrase.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    parameters = registerOutput<Map<String, String>?>('parameters');
-    password = registerOutput<String?>('password');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    password = registerOutput<String?>('password', isSecret: true);
     port = registerOutput<int>('port');
-    privateKeyContentBase64 = registerOutput<String?>('privateKeyContentBase64');
-    privateKeyPassphrase = registerOutput<String?>('privateKeyPassphrase');
+    privateKeyContentBase64 = registerOutput<String?>('privateKeyContentBase64', isSecret: true);
+    privateKeyPassphrase = registerOutput<String?>('privateKeyPassphrase', isSecret: true);
     privateKeyPath = registerOutput<String?>('privateKeyPath');
     skipHostKeyValidation = registerOutput<bool?>('skipHostKeyValidation');
     username = registerOutput<String>('username');
@@ -332,11 +334,12 @@ class LinkedServiceSftp extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LinkedServiceSftpState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LinkedServiceSftp._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -350,23 +353,55 @@ class LinkedServiceSftp extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
-    annotations = registerOutput<List<String>?>('annotations');
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     authenticationType = registerOutput<String>('authenticationType');
     dataFactoryId = registerOutput<String>('dataFactoryId');
     description = registerOutput<String?>('description');
     host = registerOutput<String>('host');
     hostKeyFingerprint = registerOutput<String?>('hostKeyFingerprint');
     integrationRuntimeName = registerOutput<String?>('integrationRuntimeName');
-    keyVaultPasswords = registerOutput<List<Map<String, dynamic>>?>('keyVaultPasswords');
+    keyVaultPasswords = registerOutput<List<LinkedServiceSftpKeyVaultPassword>?>('keyVaultPasswords', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LinkedServiceSftpKeyVaultPassword>(guardedValue, (value) => LinkedServiceSftpKeyVaultPassword.fromMap((value as Map).cast<String, dynamic>())); });
     keyVaultPrivateKeyContentBase64 = registerOutput<LinkedServiceSftpKeyVaultPrivateKeyContentBase64?>('keyVaultPrivateKeyContentBase64', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinkedServiceSftpKeyVaultPrivateKeyContentBase64.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     keyVaultPrivateKeyPassphrase = registerOutput<LinkedServiceSftpKeyVaultPrivateKeyPassphrase?>('keyVaultPrivateKeyPassphrase', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinkedServiceSftpKeyVaultPrivateKeyPassphrase.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    parameters = registerOutput<Map<String, String>?>('parameters');
-    password = registerOutput<String?>('password');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    password = registerOutput<String?>('password', isSecret: true);
     port = registerOutput<int>('port');
-    privateKeyContentBase64 = registerOutput<String?>('privateKeyContentBase64');
-    privateKeyPassphrase = registerOutput<String?>('privateKeyPassphrase');
+    privateKeyContentBase64 = registerOutput<String?>('privateKeyContentBase64', isSecret: true);
+    privateKeyPassphrase = registerOutput<String?>('privateKeyPassphrase', isSecret: true);
+    privateKeyPath = registerOutput<String?>('privateKeyPath');
+    skipHostKeyValidation = registerOutput<bool?>('skipHostKeyValidation');
+    username = registerOutput<String>('username');
+  }
+
+  /// Creates a typed reference to an existing [LinkedServiceSftp] resource.
+  LinkedServiceSftp.reference(String urn)
+    : super(
+        'azure:datafactory/linkedServiceSftp:LinkedServiceSftp',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['password', 'privateKeyContentBase64', 'privateKeyPassphrase'],
+        isResourceReference: true,
+      ) {
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    authenticationType = registerOutput<String>('authenticationType');
+    dataFactoryId = registerOutput<String>('dataFactoryId');
+    description = registerOutput<String?>('description');
+    host = registerOutput<String>('host');
+    hostKeyFingerprint = registerOutput<String?>('hostKeyFingerprint');
+    integrationRuntimeName = registerOutput<String?>('integrationRuntimeName');
+    keyVaultPasswords = registerOutput<List<LinkedServiceSftpKeyVaultPassword>?>('keyVaultPasswords', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LinkedServiceSftpKeyVaultPassword>(guardedValue, (value) => LinkedServiceSftpKeyVaultPassword.fromMap((value as Map).cast<String, dynamic>())); });
+    keyVaultPrivateKeyContentBase64 = registerOutput<LinkedServiceSftpKeyVaultPrivateKeyContentBase64?>('keyVaultPrivateKeyContentBase64', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinkedServiceSftpKeyVaultPrivateKeyContentBase64.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    keyVaultPrivateKeyPassphrase = registerOutput<LinkedServiceSftpKeyVaultPrivateKeyPassphrase?>('keyVaultPrivateKeyPassphrase', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinkedServiceSftpKeyVaultPrivateKeyPassphrase.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    password = registerOutput<String?>('password', isSecret: true);
+    port = registerOutput<int>('port');
+    privateKeyContentBase64 = registerOutput<String?>('privateKeyContentBase64', isSecret: true);
+    privateKeyPassphrase = registerOutput<String?>('privateKeyPassphrase', isSecret: true);
     privateKeyPath = registerOutput<String?>('privateKeyPath');
     skipHostKeyValidation = registerOutput<bool?>('skipHostKeyValidation');
     username = registerOutput<String>('username');

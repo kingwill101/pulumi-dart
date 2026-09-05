@@ -30,8 +30,8 @@ class GetDeploymentAutoScaleProfile {
 
   factory GetDeploymentAutoScaleProfile.fromMap(Map<String, dynamic> map) {
     return GetDeploymentAutoScaleProfile(
-      maxCapacity: pulumi.Input.fromValue(map['maxCapacity'] as int),
-      minCapacity: pulumi.Input.fromValue(map['minCapacity'] as int),
+      maxCapacity: pulumi.Input.fromValue((map['maxCapacity'] as num).toInt()),
+      minCapacity: pulumi.Input.fromValue((map['minCapacity'] as num).toInt()),
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }

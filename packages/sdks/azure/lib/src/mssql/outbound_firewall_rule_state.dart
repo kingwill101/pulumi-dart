@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering OutboundFirewallRule resources.
 class OutboundFirewallRuleState {
   /// The name of the outbound firewall rule. This should be a FQDN. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The resource ID of the SQL Server on which to create the Outbound Firewall Rule. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? serverId;
+  final pulumi.Input<String?>? serverId;
 
   /// Creates a new [OutboundFirewallRuleState].
   /// [name] The name of the outbound firewall rule. This should be a FQDN. Changing this forces a new resource to be created.

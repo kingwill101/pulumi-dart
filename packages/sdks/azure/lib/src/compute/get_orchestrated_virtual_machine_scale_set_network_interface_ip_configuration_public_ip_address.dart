@@ -47,7 +47,7 @@ class GetOrchestratedVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublic
   factory GetOrchestratedVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddress.fromMap(Map<String, dynamic> map) {
     return GetOrchestratedVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddress(
       domainNameLabel: pulumi.Input.fromValue(map['domainNameLabel'] as String),
-      idleTimeoutInMinutes: pulumi.Input.fromValue(map['idleTimeoutInMinutes'] as int),
+      idleTimeoutInMinutes: pulumi.Input.fromValue((map['idleTimeoutInMinutes'] as num).toInt()),
       ipTags: pulumi.Input.fromValue(pulumi.Input.decodeList<GetOrchestratedVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddressIpTag>(map['ipTags']!, (value) => GetOrchestratedVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddressIpTag.fromMap((value as Map).cast<String, dynamic>()))),
       name: pulumi.Input.fromValue(map['name'] as String),
       publicIpPrefixId: pulumi.Input.fromValue(map['publicIpPrefixId'] as String),

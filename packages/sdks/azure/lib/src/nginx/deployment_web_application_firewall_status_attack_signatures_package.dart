@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DeploymentWebApplicationFirewallStatusAttackSignaturesPackage {
   /// The revision date and time of the threat campaigns package.
-  final pulumi.Input<String>? revisionDatetime;
+  final pulumi.Input<String?>? revisionDatetime;
   /// The version of the threat campaigns package.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [DeploymentWebApplicationFirewallStatusAttackSignaturesPackage].
   /// [revisionDatetime] The revision date and time of the threat campaigns package.

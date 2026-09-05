@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering ClusterTrustedAccessRoleBinding resources.
 class ClusterTrustedAccessRoleBindingState {
   /// Specifies the Kubernetes Cluster Id within which this Kubernetes Cluster Trusted Access Role Binding should exist. Changing this forces a new Kubernetes Cluster Trusted Access Role Binding to be created.
-  final pulumi.Input<String>? kubernetesClusterId;
+  final pulumi.Input<String?>? kubernetesClusterId;
   /// Specifies the name of this Kubernetes Cluster Trusted Access Role Binding. Changing this forces a new Kubernetes Cluster Trusted Access Role Binding to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A list of roles to bind, each item is a resource type qualified role name.
-  final pulumi.Input<List<String>>? roles;
+  final pulumi.Input<List<String>?>? roles;
   /// The ARM resource ID of source resource that trusted access is configured for. Changing this forces a new Kubernetes Cluster Trusted Access Role Binding to be created.
-  final pulumi.Input<String>? sourceResourceId;
+  final pulumi.Input<String?>? sourceResourceId;
 
   /// Creates a new [ClusterTrustedAccessRoleBindingState].
   /// [kubernetesClusterId] Specifies the Kubernetes Cluster Id within which this Kubernetes Cluster Trusted Access Role Binding should exist. Changing this forces a new Kubernetes Cluster Trusted Access Role Binding to be created.

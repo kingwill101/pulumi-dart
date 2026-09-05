@@ -237,7 +237,7 @@ class NamespaceTopic extends pulumi.CustomResource {
           'azure:eventgrid/namespaceTopic:NamespaceTopic',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     eventRetentionInDays = registerOutput<int?>('eventRetentionInDays');
     eventgridNamespaceId = registerOutput<String>('eventgridNamespaceId');
@@ -249,11 +249,12 @@ class NamespaceTopic extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     NamespaceTopicState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return NamespaceTopic._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -267,6 +268,20 @@ class NamespaceTopic extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    eventRetentionInDays = registerOutput<int?>('eventRetentionInDays');
+    eventgridNamespaceId = registerOutput<String>('eventgridNamespaceId');
+    this.name = registerOutput<String>('name');
+  }
+
+  /// Creates a typed reference to an existing [NamespaceTopic] resource.
+  NamespaceTopic.reference(String urn)
+    : super(
+        'azure:eventgrid/namespaceTopic:NamespaceTopic',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     eventRetentionInDays = registerOutput<int?>('eventRetentionInDays');
     eventgridNamespaceId = registerOutput<String>('eventgridNamespaceId');
     this.name = registerOutput<String>('name');

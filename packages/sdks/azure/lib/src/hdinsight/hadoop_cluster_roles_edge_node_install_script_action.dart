@@ -6,7 +6,7 @@ class HadoopClusterRolesEdgeNodeInstallScriptAction {
   /// The name of the install script action.
   final pulumi.Input<String> name;
   /// The parameters for the script.
-  final pulumi.Input<String>? parameters;
+  final pulumi.Input<String?>? parameters;
   /// The URI pointing to the script to run during the installation of the edge node.
   final pulumi.Input<String> uri;
 

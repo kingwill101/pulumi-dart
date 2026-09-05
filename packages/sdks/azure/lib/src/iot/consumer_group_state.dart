@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering ConsumerGroup resources.
 class ConsumerGroupState {
   /// The name of the Event Hub-compatible endpoint in the IoT hub. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? eventhubEndpointName;
+  final pulumi.Input<String?>? eventhubEndpointName;
   /// The name of the IoT Hub. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? iothubName;
+  final pulumi.Input<String?>? iothubName;
   /// The name of this Consumer Group. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the resource group that contains the IoT hub. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
 
   /// Creates a new [ConsumerGroupState].
   /// [eventhubEndpointName] The name of the Event Hub-compatible endpoint in the IoT hub. Changing this forces a new resource to be created.

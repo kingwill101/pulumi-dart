@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering FlexibleServerActiveDirectoryAdministrator resources.
 class FlexibleServerActiveDirectoryAdministratorState {
   /// The object ID of a user, service principal or security group in the Azure Active Directory tenant set as the Flexible Server Admin. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? objectId;
+  final pulumi.Input<String?>? objectId;
   /// The name of Azure Active Directory principal. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? principalName;
+  final pulumi.Input<String?>? principalName;
   /// The type of Azure Active Directory principal. Possible values are `Group`, `ServicePrincipal` and `User`. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? principalType;
+  final pulumi.Input<String?>? principalType;
   /// The name of the resource group for the PostgreSQL Server. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// The name of the PostgreSQL Flexible Server on which to set the administrator. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? serverName;
+  final pulumi.Input<String?>? serverName;
   /// The Azure Tenant ID. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
 
   /// Creates a new [FlexibleServerActiveDirectoryAdministratorState].
   /// [objectId] The object ID of a user, service principal or security group in the Azure Active Directory tenant set as the Flexible Server Admin. Changing this forces a new resource to be created.

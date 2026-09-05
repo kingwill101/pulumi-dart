@@ -471,7 +471,7 @@ class Monitor extends pulumi.CustomResource {
           'azure:datadog/monitor:Monitor',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     datadogOrganization = registerOutput<MonitorDatadogOrganization>('datadogOrganization', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MonitorDatadogOrganization.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     identity = registerOutput<MonitorIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MonitorIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -481,7 +481,7 @@ class Monitor extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     skuName = registerOutput<String>('skuName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     user = registerOutput<MonitorUser>('user', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MonitorUser.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
@@ -490,11 +490,12 @@ class Monitor extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     MonitorState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Monitor._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -516,7 +517,28 @@ class Monitor extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     skuName = registerOutput<String>('skuName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    user = registerOutput<MonitorUser>('user', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MonitorUser.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Monitor] resource.
+  Monitor.reference(String urn)
+    : super(
+        'azure:datadog/monitor:Monitor',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    datadogOrganization = registerOutput<MonitorDatadogOrganization>('datadogOrganization', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MonitorDatadogOrganization.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    identity = registerOutput<MonitorIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MonitorIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    marketplaceSubscriptionStatus = registerOutput<String>('marketplaceSubscriptionStatus');
+    monitoringEnabled = registerOutput<bool?>('monitoringEnabled');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    skuName = registerOutput<String>('skuName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     user = registerOutput<MonitorUser>('user', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MonitorUser.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

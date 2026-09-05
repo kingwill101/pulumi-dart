@@ -8,21 +8,21 @@ class BlobInventoryPolicyRuleFilter {
   /// &gt; **Note:** The `rules.*.schema_fields` for this rule has to include `BlobType` so that you can specify the `blobTypes`.
   final pulumi.Input<List<String>> blobTypes;
   /// A set of strings for blob prefixes to be excluded. Maximum of 10 blob prefixes.
-  final pulumi.Input<List<String>>? excludePrefixes;
+  final pulumi.Input<List<String>?>? excludePrefixes;
   /// Includes blob versions in blob inventory or not? Defaults to `false`.
   ///
   /// &gt; **Note:** The `rules.*.schema_fields` for this rule has to include `IsCurrentVersion` and `VersionId` so that you can specify the `includeBlobVersions`.
-  final pulumi.Input<bool>? includeBlobVersions;
+  final pulumi.Input<bool?>? includeBlobVersions;
   /// Includes deleted blobs in blob inventory or not? Defaults to `false`.
   ///
   /// &gt; **Note:** If `rules.*.scope` is `Container`, the `rules.*.schema_fields` for this rule must include `Deleted`, `Version`, `DeletedTime`, and `RemainingRetentionDays` so that you can specify the `includeDeleted`. If `rules.*.scope` is `Blob`, the `rules.*.schema_fields` must include `Deleted` and `RemainingRetentionDays` so that you can specify the `includeDeleted`. If `rules.*.scope` is `Blob` and the storage account specified by `storageAccountId` has hierarchical namespaces enabled (`isHnsEnabled` is `true` on the storage account), the `rules.*.schema_fields` for this rule must include `Deleted`, `Version`, `DeletedTime`, and `RemainingRetentionDays` so that you can specify the `includeDeleted`.
-  final pulumi.Input<bool>? includeDeleted;
+  final pulumi.Input<bool?>? includeDeleted;
   /// Includes blob snapshots in blob inventory or not? Defaults to `false`.
   ///
   /// &gt; **Note:** The `rules.*.schema_fields` for this rule has to include `Snapshot` so that you can specify the `includeSnapshots`.
-  final pulumi.Input<bool>? includeSnapshots;
+  final pulumi.Input<bool?>? includeSnapshots;
   /// A set of strings for blob prefixes to be matched. Maximum of 10 blob prefixes.
-  final pulumi.Input<List<String>>? prefixMatches;
+  final pulumi.Input<List<String>?>? prefixMatches;
 
   /// Creates a new [BlobInventoryPolicyRuleFilter].
   /// [blobTypes] A set of blob types. Possible values are `blockBlob`, `appendBlob`, and `pageBlob`. The storage account with `isHnsEnabled` is `true` doesn't support `pageBlob`.

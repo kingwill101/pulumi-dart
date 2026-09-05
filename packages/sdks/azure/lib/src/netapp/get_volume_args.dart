@@ -16,7 +16,7 @@ class GetVolumeArgs {
   /// The Name of the Resource Group where the NetApp Volume exists.
   final pulumi.Input<String> resourceGroupName;
   /// Volume security style
-  final pulumi.Input<String>? securityStyle;
+  final pulumi.Input<String?>? securityStyle;
 
   /// Creates a new [GetVolumeArgs].
   /// [accountName] The name of the NetApp account where the NetApp pool exists.

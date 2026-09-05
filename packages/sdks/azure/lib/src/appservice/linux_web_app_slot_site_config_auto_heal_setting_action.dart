@@ -6,7 +6,7 @@ class LinuxWebAppSlotSiteConfigAutoHealSettingAction {
   /// Predefined action to be taken to an Auto Heal trigger. Possible values include: `Recycle`.
   final pulumi.Input<String> actionType;
   /// The minimum amount of time in `hh:mm:ss` the Linux Web App must have been running before the defined action will be run in the event of a trigger.
-  final pulumi.Input<String>? minimumProcessExecutionTime;
+  final pulumi.Input<String?>? minimumProcessExecutionTime;
 
   /// Creates a new [LinuxWebAppSlotSiteConfigAutoHealSettingAction].
   /// [actionType] Predefined action to be taken to an Auto Heal trigger. Possible values include: `Recycle`.

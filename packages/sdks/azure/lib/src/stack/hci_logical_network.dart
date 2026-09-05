@@ -147,7 +147,7 @@ import 'hci_logical_network_subnet.dart';
 /// 				IpAllocationMethod: pulumi.String("Static"),
 /// 				AddressPrefix:      pulumi.String("10.0.0.0/24"),
 /// 				VlanId:             pulumi.Int(123),
-/// 				Route: map[string]interface{}{
+/// 				Route: map[string]string{
 /// 					"addressPrefix":    "0.0.0.0/0",
 /// 					"nextHopIpAddress": "10.0.0.1",
 /// 				},
@@ -325,15 +325,15 @@ class HciLogicalNetwork extends pulumi.CustomResource {
           'azure:stack/hciLogicalNetwork:HciLogicalNetwork',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     customLocationId = registerOutput<String>('customLocationId');
-    dnsServers = registerOutput<List<String>?>('dnsServers');
+    dnsServers = registerOutput<List<String>?>('dnsServers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     subnet = registerOutput<HciLogicalNetworkSubnet>('subnet', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HciLogicalNetworkSubnet.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     virtualSwitchName = registerOutput<String>('virtualSwitchName');
   }
 
@@ -342,11 +342,12 @@ class HciLogicalNetwork extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     HciLogicalNetworkState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return HciLogicalNetwork._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -361,12 +362,31 @@ class HciLogicalNetwork extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     customLocationId = registerOutput<String>('customLocationId');
-    dnsServers = registerOutput<List<String>?>('dnsServers');
+    dnsServers = registerOutput<List<String>?>('dnsServers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     subnet = registerOutput<HciLogicalNetworkSubnet>('subnet', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HciLogicalNetworkSubnet.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    virtualSwitchName = registerOutput<String>('virtualSwitchName');
+  }
+
+  /// Creates a typed reference to an existing [HciLogicalNetwork] resource.
+  HciLogicalNetwork.reference(String urn)
+    : super(
+        'azure:stack/hciLogicalNetwork:HciLogicalNetwork',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    customLocationId = registerOutput<String>('customLocationId');
+    dnsServers = registerOutput<List<String>?>('dnsServers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    subnet = registerOutput<HciLogicalNetworkSubnet>('subnet', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HciLogicalNetworkSubnet.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     virtualSwitchName = registerOutput<String>('virtualSwitchName');
   }
 }

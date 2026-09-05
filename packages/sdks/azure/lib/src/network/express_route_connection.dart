@@ -240,7 +240,7 @@ import 'express_route_connection_state.dart';
 /// 			Name:              pulumi.String("example-vhub"),
 /// 			ResourceGroupName: example.Name,
 /// 			Location:          example.Location,
-/// 			VirtualWanId:      exampleVirtualWan.ID(),
+/// 			VirtualWanId:      exampleVirtualWan.ID().ToIDOutput().ToStringOutput(),
 /// 			AddressPrefix:     pulumi.String("10.0.1.0/24"),
 /// 		})
 /// 		if err != nil {
@@ -250,7 +250,7 @@ import 'express_route_connection_state.dart';
 /// 			Name:              pulumi.String("example-expressroutegateway"),
 /// 			ResourceGroupName: example.Name,
 /// 			Location:          example.Location,
-/// 			VirtualHubId:      exampleVirtualHub.ID(),
+/// 			VirtualHubId:      exampleVirtualHub.ID().ToIDOutput().ToStringOutput(),
 /// 			ScaleUnits:        pulumi.Int(1),
 /// 		})
 /// 		if err != nil {
@@ -271,7 +271,7 @@ import 'express_route_connection_state.dart';
 /// 			Name:               pulumi.String("example-erc"),
 /// 			Location:           example.Location,
 /// 			ResourceGroupName:  example.Name,
-/// 			ExpressRoutePortId: exampleExpressRoutePort.ID(),
+/// 			ExpressRoutePortId: exampleExpressRoutePort.ID().ToIDOutput().ToStringOutput(),
 /// 			BandwidthInGbps:    pulumi.Float64(5),
 /// 			Sku: &network.ExpressRouteCircuitSkuArgs{
 /// 				Tier:   pulumi.String("Standard"),
@@ -296,8 +296,8 @@ import 'express_route_connection_state.dart';
 /// 		}
 /// 		_, err = network.NewExpressRouteConnection(ctx, "example", &network.ExpressRouteConnectionArgs{
 /// 			Name:                         pulumi.String("example-expressrouteconn"),
-/// 			ExpressRouteGatewayId:        exampleExpressRouteGateway.ID(),
-/// 			ExpressRouteCircuitPeeringId: exampleExpressRouteCircuitPeering.ID(),
+/// 			ExpressRouteGatewayId:        exampleExpressRouteGateway.ID().ToIDOutput().ToStringOutput(),
+/// 			ExpressRouteCircuitPeeringId: exampleExpressRouteCircuitPeering.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -599,7 +599,7 @@ class ExpressRouteConnection extends pulumi.CustomResource {
           'azure:network/expressRouteConnection:ExpressRouteConnection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     authorizationKey = registerOutput<String?>('authorizationKey');
     enableInternetSecurity = registerOutput<bool>('enableInternetSecurity');
@@ -618,11 +618,12 @@ class ExpressRouteConnection extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ExpressRouteConnectionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ExpressRouteConnection._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -636,6 +637,27 @@ class ExpressRouteConnection extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    authorizationKey = registerOutput<String?>('authorizationKey');
+    enableInternetSecurity = registerOutput<bool>('enableInternetSecurity');
+    expressRouteCircuitPeeringId = registerOutput<String>('expressRouteCircuitPeeringId');
+    expressRouteGatewayBypassEnabled = registerOutput<bool?>('expressRouteGatewayBypassEnabled');
+    expressRouteGatewayId = registerOutput<String>('expressRouteGatewayId');
+    internetSecurityEnabled = registerOutput<bool>('internetSecurityEnabled');
+    this.name = registerOutput<String>('name');
+    privateLinkFastPathEnabled = registerOutput<bool?>('privateLinkFastPathEnabled');
+    routing = registerOutput<ExpressRouteConnectionRouting>('routing', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExpressRouteConnectionRouting.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    routingWeight = registerOutput<int?>('routingWeight');
+  }
+
+  /// Creates a typed reference to an existing [ExpressRouteConnection] resource.
+  ExpressRouteConnection.reference(String urn)
+    : super(
+        'azure:network/expressRouteConnection:ExpressRouteConnection',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     authorizationKey = registerOutput<String?>('authorizationKey');
     enableInternetSecurity = registerOutput<bool>('enableInternetSecurity');
     expressRouteCircuitPeeringId = registerOutput<String>('expressRouteCircuitPeeringId');

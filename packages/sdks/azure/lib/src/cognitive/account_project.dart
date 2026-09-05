@@ -158,7 +158,7 @@ import 'account_project_state.dart';
 /// 		}
 /// 		_, err = cognitive.NewAccountProject(ctx, "example", &cognitive.AccountProjectArgs{
 /// 			Name:               pulumi.String("example-project"),
-/// 			CognitiveAccountId: exampleAccount.ID(),
+/// 			CognitiveAccountId: exampleAccount.ID().ToIDOutput().ToStringOutput(),
 /// 			Location:           example.Location,
 /// 			Description:        pulumi.String("Example cognitive services project"),
 /// 			DisplayName:        pulumi.String("Example Project"),
@@ -357,17 +357,17 @@ class AccountProject extends pulumi.CustomResource {
           'azure:cognitive/accountProject:AccountProject',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     cognitiveAccountId = registerOutput<String>('cognitiveAccountId');
     default_ = registerOutput<bool>('default');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
-    endpoints = registerOutput<Map<String, String>>('endpoints');
+    endpoints = registerOutput<Map<String, String>>('endpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     identity = registerOutput<AccountProjectIdentity>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountProjectIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [AccountProject] resource's state with the given [name] and [id].
@@ -375,11 +375,12 @@ class AccountProject extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AccountProjectState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AccountProject._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -397,10 +398,30 @@ class AccountProject extends pulumi.CustomResource {
     default_ = registerOutput<bool>('default');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
-    endpoints = registerOutput<Map<String, String>>('endpoints');
+    endpoints = registerOutput<Map<String, String>>('endpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     identity = registerOutput<AccountProjectIdentity>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountProjectIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [AccountProject] resource.
+  AccountProject.reference(String urn)
+    : super(
+        'azure:cognitive/accountProject:AccountProject',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    cognitiveAccountId = registerOutput<String>('cognitiveAccountId');
+    default_ = registerOutput<bool>('default');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String?>('displayName');
+    endpoints = registerOutput<Map<String, String>>('endpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    identity = registerOutput<AccountProjectIdentity>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountProjectIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

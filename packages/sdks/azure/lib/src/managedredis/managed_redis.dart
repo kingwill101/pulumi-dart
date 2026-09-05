@@ -213,6 +213,7 @@ import 'managed_redis_state.dart';
 ///     name: "example",
 ///     location: example.location,
 ///     resourceGroupName: example.name,
+///     rbacAuthorizationEnabled: false,
 ///     tenantId: current.then(current => current.tenantId),
 ///     skuName: "standard",
 ///     purgeProtectionEnabled: true,
@@ -287,6 +288,7 @@ import 'managed_redis_state.dart';
 ///     name="example",
 ///     location=example.location,
 ///     resource_group_name=example.name,
+///     rbac_authorization_enabled=False,
 ///     tenant_id=current.tenant_id,
 ///     sku_name="standard",
 ///     purge_protection_enabled=True,
@@ -370,6 +372,7 @@ import 'managed_redis_state.dart';
 ///         Name = "example",
 ///         Location = example.Location,
 ///         ResourceGroupName = example.Name,
+///         RbacAuthorizationEnabled = false,
 ///         TenantId = current.Apply(getClientConfigResult => getClientConfigResult.TenantId),
 ///         SkuName = "standard",
 ///         PurgeProtectionEnabled = true,
@@ -479,12 +482,13 @@ import 'managed_redis_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleKeyVault, err := keyvault.NewKeyVault(ctx, "example", &keyvault.KeyVaultArgs{
-/// 			Name:                   pulumi.String("example"),
-/// 			Location:               example.Location,
-/// 			ResourceGroupName:      example.Name,
-/// 			TenantId:               pulumi.String(current.TenantId),
-/// 			SkuName:                pulumi.String("standard"),
-/// 			PurgeProtectionEnabled: pulumi.Bool(true),
+/// 			Name:                     pulumi.String("example"),
+/// 			Location:                 example.Location,
+/// 			ResourceGroupName:        example.Name,
+/// 			RbacAuthorizationEnabled: pulumi.Bool(false),
+/// 			TenantId:                 pulumi.String(current.TenantId),
+/// 			SkuName:                  pulumi.String("standard"),
+/// 			PurgeProtectionEnabled:   pulumi.Bool(true),
 /// 			AccessPolicies: keyvault.KeyVaultAccessPolicyArray{
 /// 				&keyvault.KeyVaultAccessPolicyArgs{
 /// 					TenantId: pulumi.String(current.TenantId),
@@ -517,7 +521,7 @@ import 'managed_redis_state.dart';
 /// 		}
 /// 		exampleKey, err := keyvault.NewKey(ctx, "example", &keyvault.KeyArgs{
 /// 			Name:       pulumi.String("managedrediscmk"),
-/// 			KeyVaultId: exampleKeyVault.ID(),
+/// 			KeyVaultId: exampleKeyVault.ID().ToIDOutput().ToStringOutput(),
 /// 			KeyType:    pulumi.String("RSA"),
 /// 			KeySize:    pulumi.Int(2048),
 /// 			KeyOpts: pulumi.StringArray{
@@ -536,12 +540,12 @@ import 'managed_redis_state.dart';
 /// 			Identity: &managedredis.ManagedRedisIdentityArgs{
 /// 				Type: pulumi.String("UserAssigned"),
 /// 				IdentityIds: pulumi.StringArray{
-/// 					exampleUserAssignedIdentity.ID(),
+/// 					exampleUserAssignedIdentity.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 			CustomerManagedKey: &managedredis.ManagedRedisCustomerManagedKeyArgs{
-/// 				KeyVaultKeyId:          exampleKey.ID(),
-/// 				UserAssignedIdentityId: exampleUserAssignedIdentity.ID(),
+/// 				KeyVaultKeyId:          exampleKey.ID().ToIDOutput().ToStringOutput(),
+/// 				UserAssignedIdentityId: exampleUserAssignedIdentity.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			DefaultDatabase: &managedredis.ManagedRedisDefaultDatabaseArgs{
 /// 				GeoReplicationGroupName: pulumi.String("myGeoGroup"),
@@ -576,12 +580,13 @@ import 'managed_redis_state.dart';
 ///   location            = azure_core_resourcegroup.example.location
 /// }
 /// resource "azure_keyvault_keyvault" "example" {
-///   name                     = "example"
-///   location                 = azure_core_resourcegroup.example.location
-///   resource_group_name      = azure_core_resourcegroup.example.name
-///   tenant_id                = data.azure_core_getclientconfig.current.tenant_id
-///   sku_name                 = "standard"
-///   purge_protection_enabled = true
+///   name                       = "example"
+///   location                   = azure_core_resourcegroup.example.location
+///   resource_group_name        = azure_core_resourcegroup.example.name
+///   rbac_authorization_enabled = false
+///   tenant_id                  = data.azure_core_getclientconfig.current.tenant_id
+///   sku_name                   = "standard"
+///   purge_protection_enabled   = true
 ///   access_policies {
 ///     tenant_id       = data.azure_core_getclientconfig.current.tenant_id
 ///     object_id       = data.azure_core_getclientconfig.current.object_id
@@ -669,6 +674,7 @@ import 'managed_redis_state.dart';
 ///             .name("example")
 ///             .location(example.location())
 ///             .resourceGroupName(example.name())
+///             .rbacAuthorizationEnabled(false)
 ///             .tenantId(current.tenantId())
 ///             .skuName("standard")
 ///             .purgeProtectionEnabled(true)
@@ -749,6 +755,7 @@ import 'managed_redis_state.dart';
 ///       name: example
 ///       location: ${example.location}
 ///       resourceGroupName: ${example.name}
+///       rbacAuthorizationEnabled: false
 ///       tenantId: ${current.tenantId}
 ///       skuName: standard
 ///       purgeProtectionEnabled: true
@@ -865,7 +872,7 @@ class ManagedRedis extends pulumi.CustomResource {
           'azure:managedredis/managedRedis:ManagedRedis',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     customerManagedKey = registerOutput<ManagedRedisCustomerManagedKey?>('customerManagedKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedRedisCustomerManagedKey.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     defaultDatabase = registerOutput<ManagedRedisDefaultDatabase?>('defaultDatabase', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedRedisDefaultDatabase.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -877,7 +884,7 @@ class ManagedRedis extends pulumi.CustomResource {
     publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     skuName = registerOutput<String>('skuName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [ManagedRedis] resource's state with the given [name] and [id].
@@ -885,11 +892,12 @@ class ManagedRedis extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ManagedRedisState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ManagedRedis._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -913,6 +921,28 @@ class ManagedRedis extends pulumi.CustomResource {
     publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     skuName = registerOutput<String>('skuName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [ManagedRedis] resource.
+  ManagedRedis.reference(String urn)
+    : super(
+        'azure:managedredis/managedRedis:ManagedRedis',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    customerManagedKey = registerOutput<ManagedRedisCustomerManagedKey?>('customerManagedKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedRedisCustomerManagedKey.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    defaultDatabase = registerOutput<ManagedRedisDefaultDatabase?>('defaultDatabase', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedRedisDefaultDatabase.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    highAvailabilityEnabled = registerOutput<bool?>('highAvailabilityEnabled');
+    hostname = registerOutput<String>('hostname');
+    identity = registerOutput<ManagedRedisIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedRedisIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    skuName = registerOutput<String>('skuName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

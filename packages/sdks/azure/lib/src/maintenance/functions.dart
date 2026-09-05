@@ -151,6 +151,17 @@ Future<GetConfigurationResult> getConfiguration(
   return GetConfigurationResult.fromMap(result);
 }
 
+pulumi.Output<GetConfigurationResult> getConfigurationOutput(
+  GetConfigurationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:maintenance/getConfiguration:getConfiguration',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetConfigurationResult.fromMap);
+}
+
 /// Use this data source to access information about existing Public Maintenance Configurations.
 ///
 /// ## Example Usage
@@ -303,4 +314,15 @@ Future<GetPublicConfigurationsResult> getPublicConfigurations(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPublicConfigurationsResult.fromMap(result);
+}
+
+pulumi.Output<GetPublicConfigurationsResult> getPublicConfigurationsOutput(
+  GetPublicConfigurationsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:maintenance/getPublicConfigurations:getPublicConfigurations',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPublicConfigurationsResult.fromMap);
 }

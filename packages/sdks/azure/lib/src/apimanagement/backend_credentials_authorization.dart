@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BackendCredentialsAuthorization {
   /// The authentication Parameter value.
-  final pulumi.Input<String>? parameter;
+  final pulumi.Input<String?>? parameter;
   /// The authentication Scheme name.
-  final pulumi.Input<String>? scheme;
+  final pulumi.Input<String?>? scheme;
 
   /// Creates a new [BackendCredentialsAuthorization].
   /// [parameter] The authentication Parameter value.

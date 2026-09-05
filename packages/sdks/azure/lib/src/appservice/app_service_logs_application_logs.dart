@@ -5,9 +5,9 @@ import 'app_service_logs_application_logs_azure_blob_storage.dart';
 
 class AppServiceLogsApplicationLogs {
   /// An `azureBlobStorage` block as defined below.
-  final pulumi.Input<AppServiceLogsApplicationLogsAzureBlobStorage>? azureBlobStorage;
+  final pulumi.Input<AppServiceLogsApplicationLogsAzureBlobStorage?>? azureBlobStorage;
   /// Log level for filesystem based logging. Supported values are `Error`, `Information`, `Verbose`, `Warning` and `Off`. Defaults to `Off`.
-  final pulumi.Input<String>? fileSystemLevel;
+  final pulumi.Input<String?>? fileSystemLevel;
 
   /// Creates a new [AppServiceLogsApplicationLogs].
   /// [azureBlobStorage] An `azureBlobStorage` block as defined below.

@@ -33,94 +33,94 @@ import 'application_gateway_waf_configuration.dart';
 /// Input properties used for looking up and filtering ApplicationGateway resources.
 class ApplicationGatewayState {
   /// One or more `authenticationCertificate` blocks as defined below.
-  final pulumi.Input<List<ApplicationGatewayAuthenticationCertificate>>? authenticationCertificates;
+  final pulumi.Input<List<ApplicationGatewayAuthenticationCertificate>?>? authenticationCertificates;
   /// An `autoscaleConfiguration` block as defined below.
-  final pulumi.Input<ApplicationGatewayAutoscaleConfiguration>? autoscaleConfiguration;
+  final pulumi.Input<ApplicationGatewayAutoscaleConfiguration?>? autoscaleConfiguration;
   /// One or more `backendAddressPool` blocks as defined below.
-  final pulumi.Input<List<ApplicationGatewayBackendAddressPool>>? backendAddressPools;
+  final pulumi.Input<List<ApplicationGatewayBackendAddressPool>?>? backendAddressPools;
   /// One or more `backendHttpSettings` blocks as defined below.
   ///
   /// &gt; **Note:** At least one of `backendHttpSettings` or `backend` must be specified.
-  final pulumi.Input<List<ApplicationGatewayBackendHttpSetting>>? backendHttpSettings;
+  final pulumi.Input<List<ApplicationGatewayBackendHttpSetting>?>? backendHttpSettings;
   /// One or more `backend` blocks as defined below.
   ///
   /// &gt; **Note:** At least one of `backendHttpSettings` or `backend` must be specified.
-  final pulumi.Input<List<ApplicationGatewayBackend>>? backends;
+  final pulumi.Input<List<ApplicationGatewayBackend>?>? backends;
   /// One or more `customErrorConfiguration` blocks as defined below.
-  final pulumi.Input<List<ApplicationGatewayCustomErrorConfiguration>>? customErrorConfigurations;
-  final pulumi.Input<bool>? enableHttp2;
+  final pulumi.Input<List<ApplicationGatewayCustomErrorConfiguration>?>? customErrorConfigurations;
+  final pulumi.Input<bool?>? enableHttp2;
   /// Is FIPS enabled on the Application Gateway?
-  final pulumi.Input<bool>? fipsEnabled;
+  final pulumi.Input<bool?>? fipsEnabled;
   /// The ID of the Web Application Firewall Policy.
-  final pulumi.Input<String>? firewallPolicyId;
+  final pulumi.Input<String?>? firewallPolicyId;
   /// Is the Firewall Policy associated with the Application Gateway?
-  final pulumi.Input<bool>? forceFirewallPolicyAssociation;
+  final pulumi.Input<bool?>? forceFirewallPolicyAssociation;
   /// One or more `frontendIpConfiguration` blocks as defined below.
-  final pulumi.Input<List<ApplicationGatewayFrontendIpConfiguration>>? frontendIpConfigurations;
+  final pulumi.Input<List<ApplicationGatewayFrontendIpConfiguration>?>? frontendIpConfigurations;
   /// One or more `frontendPort` blocks as defined below.
-  final pulumi.Input<List<ApplicationGatewayFrontendPort>>? frontendPorts;
+  final pulumi.Input<List<ApplicationGatewayFrontendPort>?>? frontendPorts;
   /// One or more `gatewayIpConfiguration` blocks as defined below.
-  final pulumi.Input<List<ApplicationGatewayGatewayIpConfiguration>>? gatewayIpConfigurations;
+  final pulumi.Input<List<ApplicationGatewayGatewayIpConfiguration>?>? gatewayIpConfigurations;
   /// A `global` block as defined below.
-  final pulumi.Input<ApplicationGatewayGlobal>? global;
+  final pulumi.Input<ApplicationGatewayGlobal?>? global;
   /// Is HTTP2 enabled on the application gateway resource? Defaults to `false`.
-  final pulumi.Input<bool>? http2Enabled;
+  final pulumi.Input<bool?>? http2Enabled;
   /// One or more `httpListener` blocks as defined below.
   ///
   /// &gt; **Note:** At least one of `httpListener` or `listener` must be specified.
-  final pulumi.Input<List<ApplicationGatewayHttpListener>>? httpListeners;
+  final pulumi.Input<List<ApplicationGatewayHttpListener>?>? httpListeners;
   /// An `identity` block as defined below.
-  final pulumi.Input<ApplicationGatewayIdentity>? identity;
+  final pulumi.Input<ApplicationGatewayIdentity?>? identity;
   /// One or more `listener` blocks as defined below.
   ///
   /// &gt; **Note:** At least one of `httpListener` or `listener` must be specified.
-  final pulumi.Input<List<ApplicationGatewayListener>>? listeners;
+  final pulumi.Input<List<ApplicationGatewayListener>?>? listeners;
   /// The Azure region where the Application Gateway should exist. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the Application Gateway. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A list of `privateEndpointConnection` blocks as defined below.
-  final pulumi.Input<List<ApplicationGatewayPrivateEndpointConnection>>? privateEndpointConnections;
+  final pulumi.Input<List<ApplicationGatewayPrivateEndpointConnection>?>? privateEndpointConnections;
   /// One or more `privateLinkConfiguration` blocks as defined below.
-  final pulumi.Input<List<ApplicationGatewayPrivateLinkConfiguration>>? privateLinkConfigurations;
+  final pulumi.Input<List<ApplicationGatewayPrivateLinkConfiguration>?>? privateLinkConfigurations;
   /// One or more `probe` blocks as defined below.
-  final pulumi.Input<List<ApplicationGatewayProbe>>? probes;
+  final pulumi.Input<List<ApplicationGatewayProbe>?>? probes;
   /// One or more `redirectConfiguration` blocks as defined below.
-  final pulumi.Input<List<ApplicationGatewayRedirectConfiguration>>? redirectConfigurations;
+  final pulumi.Input<List<ApplicationGatewayRedirectConfiguration>?>? redirectConfigurations;
   /// One or more `requestRoutingRule` blocks as defined below.
   ///
   /// &gt; **Note:** At least one of `requestRoutingRule` or `routingRule` must be specified.
-  final pulumi.Input<List<ApplicationGatewayRequestRoutingRule>>? requestRoutingRules;
+  final pulumi.Input<List<ApplicationGatewayRequestRoutingRule>?>? requestRoutingRules;
   /// The name of the resource group in which to the Application Gateway should exist. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// One or more `rewriteRuleSet` blocks as defined below. Only valid for v2 WAF and Standard SKUs.
-  final pulumi.Input<List<ApplicationGatewayRewriteRuleSet>>? rewriteRuleSets;
+  final pulumi.Input<List<ApplicationGatewayRewriteRuleSet>?>? rewriteRuleSets;
   /// One or more `routingRule` blocks as defined below.
   ///
   /// &gt; **Note:** At least one of `requestRoutingRule` or `routingRule` must be specified.
-  final pulumi.Input<List<ApplicationGatewayRoutingRule>>? routingRules;
+  final pulumi.Input<List<ApplicationGatewayRoutingRule>?>? routingRules;
   /// A `sku` block as defined below.
-  final pulumi.Input<ApplicationGatewaySku>? sku;
+  final pulumi.Input<ApplicationGatewaySku?>? sku;
   /// One or more `sslCertificate` blocks as defined below.
-  final pulumi.Input<List<ApplicationGatewaySslCertificate>>? sslCertificates;
+  final pulumi.Input<List<ApplicationGatewaySslCertificate>?>? sslCertificates;
   /// a `sslPolicy` block as defined below.
-  final pulumi.Input<ApplicationGatewaySslPolicy>? sslPolicy;
+  final pulumi.Input<ApplicationGatewaySslPolicy?>? sslPolicy;
   /// One or more `sslProfile` blocks as defined below.
-  final pulumi.Input<List<ApplicationGatewaySslProfile>>? sslProfiles;
+  final pulumi.Input<List<ApplicationGatewaySslProfile>?>? sslProfiles;
   /// A mapping of tags to assign to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// One or more `trustedClientCertificate` blocks as defined below.
-  final pulumi.Input<List<ApplicationGatewayTrustedClientCertificate>>? trustedClientCertificates;
+  final pulumi.Input<List<ApplicationGatewayTrustedClientCertificate>?>? trustedClientCertificates;
   /// One or more `trustedRootCertificate` blocks as defined below.
-  final pulumi.Input<List<ApplicationGatewayTrustedRootCertificate>>? trustedRootCertificates;
+  final pulumi.Input<List<ApplicationGatewayTrustedRootCertificate>?>? trustedRootCertificates;
   /// One or more `urlPathMap` blocks as defined below.
-  final pulumi.Input<List<ApplicationGatewayUrlPathMap>>? urlPathMaps;
+  final pulumi.Input<List<ApplicationGatewayUrlPathMap>?>? urlPathMaps;
   /// A `wafConfiguration` block as defined below.
-  final pulumi.Input<ApplicationGatewayWafConfiguration>? wafConfiguration;
+  final pulumi.Input<ApplicationGatewayWafConfiguration?>? wafConfiguration;
   /// Specifies a list of Availability Zones in which this Application Gateway should be located. Changing this forces a new Application Gateway to be created.
   ///
   /// &gt; **Note:** Availability Zones are not supported in all regions at this time, please check the [official documentation](https://docs.microsoft.com/azure/availability-zones/az-overview) for more information. They are also only supported for [v2 SKUs](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant)
-  final pulumi.Input<List<String>>? zones;
+  final pulumi.Input<List<String>?>? zones;
 
   /// Creates a new [ApplicationGatewayState].
   /// [authenticationCertificates] One or more `authenticationCertificate` blocks as defined below.

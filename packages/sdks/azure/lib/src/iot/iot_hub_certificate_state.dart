@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering IotHubCertificate resources.
 class IotHubCertificateState {
   /// The Base-64 representation of the X509 leaf certificate .cer file or just a .pem file content.
-  final pulumi.Input<String>? certificateContent;
+  final pulumi.Input<String?>? certificateContent;
   /// The name of the IoT Device Provisioning Service that this certificate will be attached to. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? iotDpsName;
+  final pulumi.Input<String?>? iotDpsName;
   /// Specifies if the certificate is created in verified state. Defaults to `false`. Changing this forces a new resource to be created.
-  final pulumi.Input<bool>? isVerified;
+  final pulumi.Input<bool?>? isVerified;
   /// Specifies the name of the Iot Device Provisioning Service Certificate resource. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the resource group under which the Iot Device Provisioning Service Certificate resource has to be created. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
 
   /// Creates a new [IotHubCertificateState].
   /// [certificateContent] The Base-64 representation of the X509 leaf certificate .cer file or just a .pem file content.

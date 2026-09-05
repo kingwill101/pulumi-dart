@@ -296,7 +296,8 @@ class VirtualMachine extends pulumi.CustomResource {
           'azure:mssql/virtualMachine:VirtualMachine',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['sqlConnectivityUpdatePassword', 'sqlConnectivityUpdateUsername'],
         ) {
     assessment = registerOutput<VirtualMachineAssessment?>('assessment', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualMachineAssessment.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     autoBackup = registerOutput<VirtualMachineAutoBackup?>('autoBackup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualMachineAutoBackup.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -305,13 +306,13 @@ class VirtualMachine extends pulumi.CustomResource {
     rServicesEnabled = registerOutput<bool?>('rServicesEnabled');
     sqlConnectivityPort = registerOutput<int?>('sqlConnectivityPort');
     sqlConnectivityType = registerOutput<String?>('sqlConnectivityType');
-    sqlConnectivityUpdatePassword = registerOutput<String?>('sqlConnectivityUpdatePassword');
-    sqlConnectivityUpdateUsername = registerOutput<String?>('sqlConnectivityUpdateUsername');
+    sqlConnectivityUpdatePassword = registerOutput<String?>('sqlConnectivityUpdatePassword', isSecret: true);
+    sqlConnectivityUpdateUsername = registerOutput<String?>('sqlConnectivityUpdateUsername', isSecret: true);
     sqlInstance = registerOutput<VirtualMachineSqlInstance?>('sqlInstance', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualMachineSqlInstance.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     sqlLicenseType = registerOutput<String?>('sqlLicenseType');
     sqlVirtualMachineGroupId = registerOutput<String?>('sqlVirtualMachineGroupId');
     storageConfiguration = registerOutput<VirtualMachineStorageConfiguration?>('storageConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualMachineStorageConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     virtualMachineId = registerOutput<String>('virtualMachineId');
     wsfcDomainCredential = registerOutput<VirtualMachineWsfcDomainCredential?>('wsfcDomainCredential', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualMachineWsfcDomainCredential.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
@@ -321,11 +322,12 @@ class VirtualMachine extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VirtualMachineState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VirtualMachine._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -346,13 +348,41 @@ class VirtualMachine extends pulumi.CustomResource {
     rServicesEnabled = registerOutput<bool?>('rServicesEnabled');
     sqlConnectivityPort = registerOutput<int?>('sqlConnectivityPort');
     sqlConnectivityType = registerOutput<String?>('sqlConnectivityType');
-    sqlConnectivityUpdatePassword = registerOutput<String?>('sqlConnectivityUpdatePassword');
-    sqlConnectivityUpdateUsername = registerOutput<String?>('sqlConnectivityUpdateUsername');
+    sqlConnectivityUpdatePassword = registerOutput<String?>('sqlConnectivityUpdatePassword', isSecret: true);
+    sqlConnectivityUpdateUsername = registerOutput<String?>('sqlConnectivityUpdateUsername', isSecret: true);
     sqlInstance = registerOutput<VirtualMachineSqlInstance?>('sqlInstance', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualMachineSqlInstance.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     sqlLicenseType = registerOutput<String?>('sqlLicenseType');
     sqlVirtualMachineGroupId = registerOutput<String?>('sqlVirtualMachineGroupId');
     storageConfiguration = registerOutput<VirtualMachineStorageConfiguration?>('storageConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualMachineStorageConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    virtualMachineId = registerOutput<String>('virtualMachineId');
+    wsfcDomainCredential = registerOutput<VirtualMachineWsfcDomainCredential?>('wsfcDomainCredential', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualMachineWsfcDomainCredential.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [VirtualMachine] resource.
+  VirtualMachine.reference(String urn)
+    : super(
+        'azure:mssql/virtualMachine:VirtualMachine',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['sqlConnectivityUpdatePassword', 'sqlConnectivityUpdateUsername'],
+        isResourceReference: true,
+      ) {
+    assessment = registerOutput<VirtualMachineAssessment?>('assessment', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualMachineAssessment.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    autoBackup = registerOutput<VirtualMachineAutoBackup?>('autoBackup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualMachineAutoBackup.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    autoPatching = registerOutput<VirtualMachineAutoPatching?>('autoPatching', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualMachineAutoPatching.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    keyVaultCredential = registerOutput<VirtualMachineKeyVaultCredential?>('keyVaultCredential', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualMachineKeyVaultCredential.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    rServicesEnabled = registerOutput<bool?>('rServicesEnabled');
+    sqlConnectivityPort = registerOutput<int?>('sqlConnectivityPort');
+    sqlConnectivityType = registerOutput<String?>('sqlConnectivityType');
+    sqlConnectivityUpdatePassword = registerOutput<String?>('sqlConnectivityUpdatePassword', isSecret: true);
+    sqlConnectivityUpdateUsername = registerOutput<String?>('sqlConnectivityUpdateUsername', isSecret: true);
+    sqlInstance = registerOutput<VirtualMachineSqlInstance?>('sqlInstance', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualMachineSqlInstance.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sqlLicenseType = registerOutput<String?>('sqlLicenseType');
+    sqlVirtualMachineGroupId = registerOutput<String?>('sqlVirtualMachineGroupId');
+    storageConfiguration = registerOutput<VirtualMachineStorageConfiguration?>('storageConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualMachineStorageConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     virtualMachineId = registerOutput<String>('virtualMachineId');
     wsfcDomainCredential = registerOutput<VirtualMachineWsfcDomainCredential?>('wsfcDomainCredential', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualMachineWsfcDomainCredential.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }

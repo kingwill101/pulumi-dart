@@ -14,59 +14,59 @@ import 'app_service_storage_account.dart';
 /// Input properties used for looking up and filtering AppService resources.
 class AppServiceState {
   /// The ID of the App Service Plan within which to create this App Service.
-  final pulumi.Input<String>? appServicePlanId;
+  final pulumi.Input<String?>? appServicePlanId;
   /// A key-value pair of App Settings.
-  final pulumi.Input<Map<String, String>>? appSettings;
+  final pulumi.Input<Map<String, String>?>? appSettings;
   /// A `authSettings` block as defined below.
-  final pulumi.Input<AppServiceAuthSettings>? authSettings;
+  final pulumi.Input<AppServiceAuthSettings?>? authSettings;
   /// A `backup` block as defined below.
-  final pulumi.Input<AppServiceBackup>? backup;
+  final pulumi.Input<AppServiceBackup?>? backup;
   /// Should the App Service send session affinity cookies, which route client requests in the same session to the same instance?
-  final pulumi.Input<bool>? clientAffinityEnabled;
+  final pulumi.Input<bool?>? clientAffinityEnabled;
   /// Does the App Service require client certificates for incoming requests? Defaults to `false`.
-  final pulumi.Input<bool>? clientCertEnabled;
+  final pulumi.Input<bool?>? clientCertEnabled;
   /// Mode of client certificates for this App Service. Possible values are `Required`, `Optional` and `OptionalInteractiveUser`. If this parameter is set, `clientCertEnabled` must be set to `true`, otherwise this parameter is ignored.
-  final pulumi.Input<String>? clientCertMode;
+  final pulumi.Input<String?>? clientCertMode;
   /// One or more `connectionString` blocks as defined below.
-  final pulumi.Input<List<AppServiceConnectionString>>? connectionStrings;
+  final pulumi.Input<List<AppServiceConnectionString>?>? connectionStrings;
   /// An identifier used by App Service to perform domain ownership verification via DNS TXT record.
-  final pulumi.Input<String>? customDomainVerificationId;
+  final pulumi.Input<String?>? customDomainVerificationId;
   /// The Default Hostname associated with the App Service - such as `mysite.azurewebsites.net`
-  final pulumi.Input<String>? defaultSiteHostname;
+  final pulumi.Input<String?>? defaultSiteHostname;
   /// Is the App Service Enabled? Defaults to `true`.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// Can the App Service only be accessed via HTTPS? Defaults to `false`.
-  final pulumi.Input<bool>? httpsOnly;
+  final pulumi.Input<bool?>? httpsOnly;
   /// An `identity` block as defined below.
-  final pulumi.Input<AppServiceIdentity>? identity;
+  final pulumi.Input<AppServiceIdentity?>? identity;
   /// The User Assigned Identity Id used for looking up KeyVault secrets. The identity must be assigned to the application. [For more information see - Access vaults with a user-assigned identity](https://docs.microsoft.com/azure/app-service/app-service-key-vault-references#access-vaults-with-a-user-assigned-identity)
-  final pulumi.Input<String>? keyVaultReferenceIdentityId;
+  final pulumi.Input<String?>? keyVaultReferenceIdentityId;
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// A `logs` block as defined below.
-  final pulumi.Input<AppServiceLogs>? logs;
+  final pulumi.Input<AppServiceLogs?>? logs;
   /// Specifies the name of the App Service. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A list of outbound IP addresses - such as `["52.23.25.3", "52.143.43.12"]`
-  final pulumi.Input<List<String>>? outboundIpAddressLists;
+  final pulumi.Input<List<String>?>? outboundIpAddressLists;
   /// A comma separated list of outbound IP addresses - such as `52.23.25.3,52.143.43.12`
-  final pulumi.Input<String>? outboundIpAddresses;
+  final pulumi.Input<String?>? outboundIpAddresses;
   /// A list of outbound IP addresses - such as `["52.23.25.3", "52.143.43.12", "52.143.43.17"]` - not all of which are necessarily in use. Superset of `outboundIpAddressList`.
-  final pulumi.Input<List<String>>? possibleOutboundIpAddressLists;
+  final pulumi.Input<List<String>?>? possibleOutboundIpAddressLists;
   /// A comma separated list of outbound IP addresses - such as `52.23.25.3,52.143.43.12,52.143.43.17` - not all of which are necessarily in use. Superset of `outboundIpAddresses`.
-  final pulumi.Input<String>? possibleOutboundIpAddresses;
+  final pulumi.Input<String?>? possibleOutboundIpAddresses;
   /// The name of the resource group in which to create the App Service. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// A `siteConfig` block as defined below.
-  final pulumi.Input<AppServiceSiteConfig>? siteConfig;
+  final pulumi.Input<AppServiceSiteConfig?>? siteConfig;
   /// A `siteCredential` block as defined below, which contains the site-level credentials used to publish to this App Service.
-  final pulumi.Input<List<AppServiceSiteCredential>>? siteCredentials;
+  final pulumi.Input<List<AppServiceSiteCredential>?>? siteCredentials;
   /// A `sourceControl` block as defined below.
-  final pulumi.Input<AppServiceSourceControl>? sourceControl;
+  final pulumi.Input<AppServiceSourceControl?>? sourceControl;
   /// One or more `storageAccount` blocks as defined below.
-  final pulumi.Input<List<AppServiceStorageAccount>>? storageAccounts;
+  final pulumi.Input<List<AppServiceStorageAccount>?>? storageAccounts;
   /// A mapping of tags to assign to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [AppServiceState].
   /// [appServicePlanId] The ID of the App Service Plan within which to create this App Service.

@@ -6,19 +6,19 @@ import 'group_init_container_volume.dart';
 
 class GroupInitContainer {
   /// A list of commands which should be run on the container. Changing this forces a new resource to be created.
-  final pulumi.Input<List<String>>? commands;
+  final pulumi.Input<List<String>?>? commands;
   /// A list of environment variables to be set on the container. Specified as a map of name/value pairs. Changing this forces a new resource to be created.
-  final pulumi.Input<Map<String, String>>? environmentVariables;
+  final pulumi.Input<Map<String, String>?>? environmentVariables;
   /// The container image name. Changing this forces a new resource to be created.
   final pulumi.Input<String> image;
   /// Specifies the name of the Container. Changing this forces a new resource to be created.
   final pulumi.Input<String> name;
   /// A list of sensitive environment variables to be set on the container. Specified as a map of name/value pairs. Changing this forces a new resource to be created.
-  final pulumi.Input<Map<String, String>>? secureEnvironmentVariables;
+  final pulumi.Input<Map<String, String>?>? secureEnvironmentVariables;
   /// The definition of the security context for this container as documented in the `security` block below. Changing this forces a new resource to be created.
-  final pulumi.Input<List<GroupInitContainerSecurity>>? securities;
+  final pulumi.Input<List<GroupInitContainerSecurity>?>? securities;
   /// The definition of a volume mount for this container as documented in the `volume` block below. Changing this forces a new resource to be created.
-  final pulumi.Input<List<GroupInitContainerVolume>>? volumes;
+  final pulumi.Input<List<GroupInitContainerVolume>?>? volumes;
 
   /// Creates a new [GroupInitContainer].
   /// [commands] A list of commands which should be run on the container. Changing this forces a new resource to be created.

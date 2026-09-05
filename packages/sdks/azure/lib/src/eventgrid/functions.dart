@@ -159,6 +159,17 @@ Future<GetDomainResult> getDomain(
   return GetDomainResult.fromMap(result);
 }
 
+pulumi.Output<GetDomainResult> getDomainOutput(
+  GetDomainArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:eventgrid/getDomain:getDomain',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDomainResult.fromMap);
+}
+
 /// Use this data source to access information about an existing EventGrid Domain Topic
 ///
 /// ## Example Usage
@@ -290,6 +301,17 @@ Future<GetDomainTopicResult> getDomainTopic(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDomainTopicResult.fromMap(result);
+}
+
+pulumi.Output<GetDomainTopicResult> getDomainTopicOutput(
+  GetDomainTopicArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:eventgrid/getDomainTopic:getDomainTopic',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDomainTopicResult.fromMap);
 }
 
 /// Use this data source to access information about an existing Event Grid Partner Namespace
@@ -439,6 +461,17 @@ Future<GetPartnerNamespaceResult> getPartnerNamespace(
   return GetPartnerNamespaceResult.fromMap(result);
 }
 
+pulumi.Output<GetPartnerNamespaceResult> getPartnerNamespaceOutput(
+  GetPartnerNamespaceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:eventgrid/getPartnerNamespace:getPartnerNamespace',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPartnerNamespaceResult.fromMap);
+}
+
 /// Use this data source to access information about an existing EventGrid Partner Registration
 ///
 /// ## Example Usage
@@ -586,6 +619,17 @@ Future<GetPartnerRegistrationResult> getPartnerRegistration(
   return GetPartnerRegistrationResult.fromMap(result);
 }
 
+pulumi.Output<GetPartnerRegistrationResult> getPartnerRegistrationOutput(
+  GetPartnerRegistrationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:eventgrid/getPartnerRegistration:getPartnerRegistration',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPartnerRegistrationResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Event Grid System Topic
 ///
 /// ## Example Usage
@@ -719,6 +763,17 @@ Future<GetSystemTopicResult> getSystemTopic(
   return GetSystemTopicResult.fromMap(result);
 }
 
+pulumi.Output<GetSystemTopicResult> getSystemTopicOutput(
+  GetSystemTopicArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:eventgrid/getSystemTopic:getSystemTopic',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSystemTopicResult.fromMap);
+}
+
 /// Use this data source to access information about an existing EventGrid Topic
 ///
 /// ## Example Usage
@@ -850,4 +905,15 @@ Future<GetTopicResult> getTopic(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetTopicResult.fromMap(result);
+}
+
+pulumi.Output<GetTopicResult> getTopicOutput(
+  GetTopicArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:eventgrid/getTopic:getTopic',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTopicResult.fromMap);
 }

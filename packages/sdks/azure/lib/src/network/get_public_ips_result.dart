@@ -8,11 +8,11 @@ class GetPublicIPsResult {
   final String? allocationType;
   final String? attachmentStatus;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   final String? namePrefix;
   /// A List of `publicIps` blocks as defined below filtered by the criteria above.
-  final List<GetPublicIPsPublicIp> publicIps;
-  final String resourceGroupName;
+  final List<GetPublicIPsPublicIp>? publicIps;
+  final String? resourceGroupName;
 
   /// Creates a new [GetPublicIPsResult].
   /// [allocationType] Optional.
@@ -20,24 +20,24 @@ class GetPublicIPsResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [namePrefix] Optional.
   /// [publicIps] A List of `publicIps` blocks as defined below filtered by the criteria above.
-  /// [resourceGroupName] Required.
+  /// [resourceGroupName] Optional.
   const GetPublicIPsResult({
     this.allocationType,
     this.attachmentStatus,
-    required this.id,
+    this.id,
     this.namePrefix,
-    required this.publicIps,
-    required this.resourceGroupName,
+    this.publicIps,
+    this.resourceGroupName,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'allocationType': ?allocationType,
       'attachmentStatus': ?attachmentStatus,
-      'id': id,
+      'id': ?id,
       'namePrefix': ?namePrefix,
-      'publicIps': pulumi.Input.encodeList<GetPublicIPsPublicIp, Map<String, dynamic>>(publicIps, (value) => value.toMap()),
-      'resourceGroupName': resourceGroupName,
+      'publicIps': ?(() { final guardedValue = publicIps; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetPublicIPsPublicIp, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'resourceGroupName': ?resourceGroupName,
     };
   }
 
@@ -45,10 +45,10 @@ class GetPublicIPsResult {
     return GetPublicIPsResult(
       allocationType: (() { final guardedValue = map['allocationType']; if (guardedValue == null) return null; return guardedValue as String; })(),
       attachmentStatus: (() { final guardedValue = map['attachmentStatus']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       namePrefix: (() { final guardedValue = map['namePrefix']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      publicIps: pulumi.Input.decodeList<GetPublicIPsPublicIp>(map['publicIps']!, (value) => GetPublicIPsPublicIp.fromMap((value as Map).cast<String, dynamic>())),
-      resourceGroupName: map['resourceGroupName'] as String,
+      publicIps: (() { final guardedValue = map['publicIps']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetPublicIPsPublicIp>(guardedValue, (value) => GetPublicIPsPublicIp.fromMap((value as Map).cast<String, dynamic>())); })(),
+      resourceGroupName: (() { final guardedValue = map['resourceGroupName']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

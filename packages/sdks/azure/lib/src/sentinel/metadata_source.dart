@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MetadataSource {
   /// The id of the content source, the solution ID, Log Analytics Workspace name etc.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The kind of the content source. Possible values are `Community`, `LocalWorkspace`, `Solution` and `SourceRepository`.
   final pulumi.Input<String> kind;
   /// The name of the content source, repo name, solution name, Log Analytics Workspace name, etc.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [MetadataSource].
   /// [id] The id of the content source, the solution ID, Log Analytics Workspace name etc.

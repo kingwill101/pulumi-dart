@@ -14,17 +14,17 @@ class RuntimeEnvironmentPackageArgs {
   /// The version of the package content. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** The `contentVersion` must be a version string with 2 to 4 segments (e.g. `1.0`, `1.0.0`, or `1.0.0.0`).
-  final pulumi.Input<String>? contentVersion;
+  final pulumi.Input<String?>? contentVersion;
   /// The hash algorithm used to hash the content. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** The argument `hashAlgorithm` is required when `hashValue` is specified.
-  final pulumi.Input<String>? hashAlgorithm;
+  final pulumi.Input<String?>? hashAlgorithm;
   /// The hash value of the content. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** The argument `hashValue` is required when `hashAlgorithm` is specified.
-  final pulumi.Input<String>? hashValue;
+  final pulumi.Input<String?>? hashValue;
   /// The name of the package. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [RuntimeEnvironmentPackageArgs].
   /// [automationRuntimeEnvironmentId] The ID of the Automation Runtime Environment in which to create this package. Changing this forces a new resource to be created.

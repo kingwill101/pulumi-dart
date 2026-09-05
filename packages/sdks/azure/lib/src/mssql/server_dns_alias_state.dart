@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering ServerDnsAlias resources.
 class ServerDnsAliasState {
   /// The fully qualified DNS record for alias.
-  final pulumi.Input<String>? dnsRecord;
+  final pulumi.Input<String?>? dnsRecord;
   /// The ID of the mssql server. Changing this forces a new MSSQL Server DNS Alias to be created.
-  final pulumi.Input<String>? mssqlServerId;
+  final pulumi.Input<String?>? mssqlServerId;
   /// The name which should be used for this MSSQL Server DNS Alias. Changing this forces a new MSSQL Server DNS Alias to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [ServerDnsAliasState].
   /// [dnsRecord] The fully qualified DNS record for alias.

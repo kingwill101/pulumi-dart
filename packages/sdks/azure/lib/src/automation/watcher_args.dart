@@ -10,23 +10,23 @@ class WatcherArgs {
   /// The ID of Automation Account to manage this Watcher. Changing this forces a new Watcher to be created.
   final pulumi.Input<String> automationAccountId;
   /// A description of this Automation Watcher.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// A string of etag assigned to this Automation Watcher.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// Specify the frequency at which the watcher is invoked.
   final pulumi.Input<int> executionFrequencyInSeconds;
   /// The Azure Region where the Automation Watcher should exist. Changing this forces a new Automation Watcher to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name which should be used for this Automation Watcher. Changing this forces a new Automation Watcher to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specify the name of an existing runbook this watcher is attached to. Changing this forces a new Automation to be created.
   final pulumi.Input<String> scriptName;
   /// Specifies a list of key-vaule parameters. Changing this forces a new Automation watcher to be created.
-  final pulumi.Input<Map<String, String>>? scriptParameters;
+  final pulumi.Input<Map<String, String>?>? scriptParameters;
   /// Specify the name of the Hybrid work group the watcher will run on.
   final pulumi.Input<String> scriptRunOn;
   /// A mapping of tags which should be assigned to the Automation Watcher.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [WatcherArgs].
   /// [automationAccountId] The ID of Automation Account to manage this Watcher. Changing this forces a new Watcher to be created.
@@ -72,7 +72,7 @@ class WatcherArgs {
       automationAccountId: pulumi.Input.fromValue(map['automationAccountId'] as String),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      executionFrequencyInSeconds: pulumi.Input.fromValue(map['executionFrequencyInSeconds'] as int),
+      executionFrequencyInSeconds: pulumi.Input.fromValue((map['executionFrequencyInSeconds'] as num).toInt()),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       scriptName: pulumi.Input.fromValue(map['scriptName'] as String),

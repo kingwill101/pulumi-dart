@@ -157,3 +157,14 @@ Future<GetBackupVaultResult> getBackupVault(
   );
   return GetBackupVaultResult.fromMap(result);
 }
+
+pulumi.Output<GetBackupVaultResult> getBackupVaultOutput(
+  GetBackupVaultArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:dataprotection/getBackupVault:getBackupVault',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBackupVaultResult.fromMap);
+}

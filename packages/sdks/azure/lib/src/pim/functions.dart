@@ -76,10 +76,10 @@ import 'get_role_management_policy_result.dart';
 /// 			return err
 /// 		}
 /// 		example := pim.GetRoleAssignmentsOutput(ctx, pim.GetRoleAssignmentsOutputArgs{
-/// 			Scope: exampleResourceGroup.ID(),
+/// 			Scope: exampleResourceGroup.ID().ToIDOutput().ToStringOutput(),
 /// 		}, nil)
 /// 		ctx.Export("id", example.ApplyT(func(example pim.GetRoleAssignmentsResult) ([]pim.GetRoleAssignmentsRoleAssignment, error) {
-/// 			return []pim.GetRoleAssignmentsRoleAssignment(example.RoleAssignments), nil
+/// 			return example.RoleAssignments.([]pim.GetRoleAssignmentsRoleAssignment), nil
 /// 		}).(pulumi.ArrayOutput))
 /// 		return nil
 /// 	})
@@ -180,6 +180,17 @@ Future<GetRoleAssignmentsResult> getRoleAssignments(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRoleAssignmentsResult.fromMap(result);
+}
+
+pulumi.Output<GetRoleAssignmentsResult> getRoleAssignmentsOutput(
+  GetRoleAssignmentsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:pim/getRoleAssignments:getRoleAssignments',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRoleAssignmentsResult.fromMap);
 }
 
 /// Use this data source to get information on a role policy for an Azure Management Group, Subscription, Resource Group or resource.
@@ -559,4 +570,15 @@ Future<GetRoleManagementPolicyResult> getRoleManagementPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRoleManagementPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetRoleManagementPolicyResult> getRoleManagementPolicyOutput(
+  GetRoleManagementPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:pim/getRoleManagementPolicy:getRoleManagementPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRoleManagementPolicyResult.fromMap);
 }

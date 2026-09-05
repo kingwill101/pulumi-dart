@@ -8,7 +8,7 @@ class AlertPrometheusRuleGroupRuleAction {
   /// Specifies the properties of an action group object.
   ///
   /// &gt; **Note:** `actionProperties` can only be configured for IcM Connector Action Groups for now. Other public features will be supported in the future.
-  final pulumi.Input<Map<String, String>>? actionProperties;
+  final pulumi.Input<Map<String, String>?>? actionProperties;
 
   /// Creates a new [AlertPrometheusRuleGroupRuleAction].
   /// [actionGroupId] Specifies the resource id of the monitor action group.

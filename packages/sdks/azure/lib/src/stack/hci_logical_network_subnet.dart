@@ -6,17 +6,17 @@ import 'hci_logical_network_subnet_route.dart';
 
 class HciLogicalNetworkSubnet {
   /// The address prefix in CIDR notation. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? addressPrefix;
+  final pulumi.Input<String?>? addressPrefix;
   /// The IP address allocation method for the subnet. Possible values are `Dynamic` and `Static`. Changing this forces a new resource to be created.
   final pulumi.Input<String> ipAllocationMethod;
   /// One or more `ipPool` block as defined above. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** If `ipPool` is not specified, it will be assigned by the server. If you experience a diff you may need to add this to `ignoreChanges`.
-  final pulumi.Input<List<HciLogicalNetworkSubnetIpPool>>? ipPools;
+  final pulumi.Input<List<HciLogicalNetworkSubnetIpPool>?>? ipPools;
   /// A `route` block as defined above. Changing this forces a new resource to be created.
-  final pulumi.Input<List<HciLogicalNetworkSubnetRoute>>? routes;
+  final pulumi.Input<List<HciLogicalNetworkSubnetRoute>?>? routes;
   /// The VLAN ID for the Logical Network. Changing this forces a new resource to be created.
-  final pulumi.Input<int>? vlanId;
+  final pulumi.Input<int?>? vlanId;
 
   /// Creates a new [HciLogicalNetworkSubnet].
   /// [addressPrefix] The address prefix in CIDR notation. Changing this forces a new resource to be created.
@@ -48,7 +48,7 @@ class HciLogicalNetworkSubnet {
       ipAllocationMethod: pulumi.Input.fromValue(map['ipAllocationMethod'] as String),
       ipPools: (() { final guardedValue = map['ipPools']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<HciLogicalNetworkSubnetIpPool>(guardedValue, (value) => HciLogicalNetworkSubnetIpPool.fromMap((value as Map).cast<String, dynamic>()))); })(),
       routes: (() { final guardedValue = map['routes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<HciLogicalNetworkSubnetRoute>(guardedValue, (value) => HciLogicalNetworkSubnetRoute.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      vlanId: (() { final guardedValue = map['vlanId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      vlanId: (() { final guardedValue = map['vlanId']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

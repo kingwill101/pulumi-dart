@@ -14,13 +14,13 @@ class AnomalyAlertArgs {
   /// The email subject of the Cost Anomaly Alerts. Maximum length of the subject is 50.
   final pulumi.Input<String> emailSubject;
   /// The message of the Cost Anomaly Alert. Maximum length of the message is 100.
-  final pulumi.Input<String>? message;
+  final pulumi.Input<String?>? message;
   /// The name which should be used for this Cost Anomaly Alert. Changing this forces a new resource to be created. The name can contain only lowercase letters, numbers and hyphens.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The email address of the point of contact that should get the unsubscribe requests and notification emails.
-  final pulumi.Input<String>? notificationEmail;
+  final pulumi.Input<String?>? notificationEmail;
   /// The ID of the Subscription this Cost Anomaly Alert is scoped to. Changing this forces a new resource to be created. When not supplied this defaults to the subscription configured in the provider.
-  final pulumi.Input<String>? subscriptionId;
+  final pulumi.Input<String?>? subscriptionId;
 
   /// Creates a new [AnomalyAlertArgs].
   /// [displayName] The display name which should be used for this Cost Anomaly Alert.

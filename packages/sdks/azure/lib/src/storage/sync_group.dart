@@ -97,7 +97,7 @@ import 'sync_group_state.dart';
 /// 		}
 /// 		_, err = storage.NewSyncGroup(ctx, "example", &storage.SyncGroupArgs{
 /// 			Name:          pulumi.String("example-ss-group"),
-/// 			StorageSyncId: exampleSync.ID(),
+/// 			StorageSyncId: exampleSync.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -228,7 +228,7 @@ class SyncGroup extends pulumi.CustomResource {
           'azure:storage/syncGroup:SyncGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     this.name = registerOutput<String>('name');
     storageSyncId = registerOutput<String>('storageSyncId');
@@ -239,11 +239,12 @@ class SyncGroup extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SyncGroupState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SyncGroup._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -257,6 +258,19 @@ class SyncGroup extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    this.name = registerOutput<String>('name');
+    storageSyncId = registerOutput<String>('storageSyncId');
+  }
+
+  /// Creates a typed reference to an existing [SyncGroup] resource.
+  SyncGroup.reference(String urn)
+    : super(
+        'azure:storage/syncGroup:SyncGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     this.name = registerOutput<String>('name');
     storageSyncId = registerOutput<String>('storageSyncId');
   }

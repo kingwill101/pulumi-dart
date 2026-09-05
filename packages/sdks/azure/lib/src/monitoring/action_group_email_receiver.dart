@@ -8,7 +8,7 @@ class ActionGroupEmailReceiver {
   /// The name of the email receiver. Names must be unique (case-insensitive) across all receivers within an action group.
   final pulumi.Input<String> name;
   /// Enables or disables the common alert schema.
-  final pulumi.Input<bool>? useCommonAlertSchema;
+  final pulumi.Input<bool?>? useCommonAlertSchema;
 
   /// Creates a new [ActionGroupEmailReceiver].
   /// [emailAddress] The email address of this receiver.

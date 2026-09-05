@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_iot_route_route_args_doc}
 class RouteArgs {
   /// The condition that is evaluated to apply the routing rule. For grammar, see: &lt;https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-query-language&gt;. Defaults to `true`.
-  final pulumi.Input<String>? condition;
+  final pulumi.Input<String?>? condition;
   /// Specifies whether a route is enabled.
   final pulumi.Input<bool> enabled;
   /// The list of endpoints to which messages that satisfy the condition are routed. Currently only one endpoint is allowed.
@@ -16,7 +16,7 @@ class RouteArgs {
   /// The name of the IoTHub to which this Route belongs. Changing this forces a new resource to be created.
   final pulumi.Input<String> iothubName;
   /// The name of the route. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the resource group under which the IotHub Route resource has to be created. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
   /// The source that the routing rule is to be applied to. Possible values include: `DeviceConnectionStateEvents`, `DeviceJobLifecycleEvents`, `DeviceLifecycleEvents`, `DeviceMessages`, `DigitalTwinChangeEvents`, `Invalid`, `TwinChangeEvents`.

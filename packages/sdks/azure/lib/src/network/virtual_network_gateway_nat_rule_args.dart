@@ -14,15 +14,15 @@ class VirtualNetworkGatewayNatRuleArgs {
   /// One or more `internalMapping` blocks as documented below.
   final pulumi.Input<List<VirtualNetworkGatewayNatRuleInternalMapping>> internalMappings;
   /// The ID of the IP Configuration this Virtual Network Gateway Nat Rule applies to.
-  final pulumi.Input<String>? ipConfigurationId;
+  final pulumi.Input<String?>? ipConfigurationId;
   /// The source Nat direction of the Virtual Network Gateway Nat. Possible values are `EgressSnat` and `IngressSnat`. Defaults to `EgressSnat`. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? mode;
+  final pulumi.Input<String?>? mode;
   /// The name which should be used for this Virtual Network Gateway Nat Rule. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The Name of the Resource Group in which this Virtual Network Gateway Nat Rule should be created. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
   /// The type of the Virtual Network Gateway Nat Rule. Possible values are `Dynamic` and `Static`. Defaults to `Static`. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// The ID of the Virtual Network Gateway that this Virtual Network Gateway Nat Rule belongs to. Changing this forces a new resource to be created.
   final pulumi.Input<String> virtualNetworkGatewayId;
 

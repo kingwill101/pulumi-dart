@@ -4,20 +4,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApplicationGatewayRedirectConfiguration {
   /// The ID of the Rewrite Rule Set
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Whether to include the path in the redirected URL. Defaults to `false`
-  final pulumi.Input<bool>? includePath;
+  final pulumi.Input<bool?>? includePath;
   /// Whether to include the query string in the redirected URL. Default to `false`
-  final pulumi.Input<bool>? includeQueryString;
+  final pulumi.Input<bool?>? includeQueryString;
   /// Unique name of the redirect configuration block
   final pulumi.Input<String> name;
   /// The type of redirect. Possible values are `Permanent`, `Temporary`, `Found` and `SeeOther`
   final pulumi.Input<String> redirectType;
-  final pulumi.Input<String>? targetListenerId;
+  final pulumi.Input<String?>? targetListenerId;
   /// The name of the listener to redirect to. Cannot be set if `targetUrl` is set.
-  final pulumi.Input<String>? targetListenerName;
+  final pulumi.Input<String?>? targetListenerName;
   /// The URL to redirect the request to. Cannot be set if `targetListenerName` is set.
-  final pulumi.Input<String>? targetUrl;
+  final pulumi.Input<String?>? targetUrl;
 
   /// Creates a new [ApplicationGatewayRedirectConfiguration].
   /// [id] The ID of the Rewrite Rule Set

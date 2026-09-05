@@ -9,7 +9,7 @@ import 'get_grafana_identity.dart';
 /// {@macro pulumi_dashboard_get_grafana_get_grafana_args_doc}
 class GetGrafanaArgs {
   /// The managed identity of the grafana resource.
-  final pulumi.Input<GetGrafanaIdentity>? identity;
+  final pulumi.Input<GetGrafanaIdentity?>? identity;
   /// Name of the grafana dashboard.
   final pulumi.Input<String> name;
   /// Name of the resource group where resource belongs to.

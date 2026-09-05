@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'monitor_tag_rule_args.dart';
+import 'monitor_tag_rule_log.dart';
+import 'monitor_tag_rule_metric.dart';
 import 'monitor_tag_rule_state.dart';
 
 /// Manages TagRules on the datadog Monitor.
@@ -187,7 +189,7 @@ import 'monitor_tag_rule_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = datadog.NewMonitorTagRule(ctx, "example", &datadog.MonitorTagRuleArgs{
-/// 			DatadogMonitorId: exampleMonitor.ID(),
+/// 			DatadogMonitorId: exampleMonitor.ID().ToIDOutput().ToStringOutput(),
 /// 			Logs: datadog.MonitorTagRuleLogArray{
 /// 				&datadog.MonitorTagRuleLogArgs{
 /// 					SubscriptionLogEnabled: pulumi.Bool(true),
@@ -383,9 +385,9 @@ class MonitorTagRule extends pulumi.CustomResource {
   /// The Datadog Monitor Id which should be used for this Datadog Monitor Tag Rule. Changing this forces a new Datadog Monitor Tag Rule to be created.
   late final pulumi.Output<String> datadogMonitorId;
   /// A `log` block as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> logs;
+  late final pulumi.Output<List<MonitorTagRuleLog>?> logs;
   /// A `metric` block as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> metrics;
+  late final pulumi.Output<List<MonitorTagRuleMetric>?> metrics;
   /// The name of the Tag Rules configuration. The allowed value is `default`. Defaults to `default`.
   late final pulumi.Output<String> name;
 
@@ -401,11 +403,11 @@ class MonitorTagRule extends pulumi.CustomResource {
           'azure:datadog/monitorTagRule:MonitorTagRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     datadogMonitorId = registerOutput<String>('datadogMonitorId');
-    logs = registerOutput<List<Map<String, dynamic>>?>('logs');
-    metrics = registerOutput<List<Map<String, dynamic>>?>('metrics');
+    logs = registerOutput<List<MonitorTagRuleLog>?>('logs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MonitorTagRuleLog>(guardedValue, (value) => MonitorTagRuleLog.fromMap((value as Map).cast<String, dynamic>())); });
+    metrics = registerOutput<List<MonitorTagRuleMetric>?>('metrics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MonitorTagRuleMetric>(guardedValue, (value) => MonitorTagRuleMetric.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
   }
 
@@ -414,11 +416,12 @@ class MonitorTagRule extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     MonitorTagRuleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return MonitorTagRule._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -433,8 +436,23 @@ class MonitorTagRule extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     datadogMonitorId = registerOutput<String>('datadogMonitorId');
-    logs = registerOutput<List<Map<String, dynamic>>?>('logs');
-    metrics = registerOutput<List<Map<String, dynamic>>?>('metrics');
+    logs = registerOutput<List<MonitorTagRuleLog>?>('logs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MonitorTagRuleLog>(guardedValue, (value) => MonitorTagRuleLog.fromMap((value as Map).cast<String, dynamic>())); });
+    metrics = registerOutput<List<MonitorTagRuleMetric>?>('metrics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MonitorTagRuleMetric>(guardedValue, (value) => MonitorTagRuleMetric.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+  }
+
+  /// Creates a typed reference to an existing [MonitorTagRule] resource.
+  MonitorTagRule.reference(String urn)
+    : super(
+        'azure:datadog/monitorTagRule:MonitorTagRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    datadogMonitorId = registerOutput<String>('datadogMonitorId');
+    logs = registerOutput<List<MonitorTagRuleLog>?>('logs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MonitorTagRuleLog>(guardedValue, (value) => MonitorTagRuleLog.fromMap((value as Map).cast<String, dynamic>())); });
+    metrics = registerOutput<List<MonitorTagRuleMetric>?>('metrics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MonitorTagRuleMetric>(guardedValue, (value) => MonitorTagRuleMetric.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
   }
 }

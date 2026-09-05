@@ -6,17 +6,17 @@ class NetworkSecurityGroupSecurityRule {
   /// Specifies whether network traffic is allowed or denied. Possible values are `Allow` and `Deny`.
   final pulumi.Input<String> access;
   /// A description for this rule. Restricted to 140 characters.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// CIDR or destination IP range or * to match any IP. Tags such as `VirtualNetwork`, `AzureLoadBalancer` and `Internet` can also be used. This is required if `destinationAddressPrefixes` is not specified.
-  final pulumi.Input<String>? destinationAddressPrefix;
+  final pulumi.Input<String?>? destinationAddressPrefix;
   /// List of destination address prefixes. Tags may not be used. This is required if `destinationAddressPrefix` is not specified.
-  final pulumi.Input<List<String>>? destinationAddressPrefixes;
+  final pulumi.Input<List<String>?>? destinationAddressPrefixes;
   /// A List of destination Application Security Group IDs
-  final pulumi.Input<List<String>>? destinationApplicationSecurityGroupIds;
+  final pulumi.Input<List<String>?>? destinationApplicationSecurityGroupIds;
   /// Destination Port or Range. Integer or range between `0` and `65535` or `*` to match any. This is required if `destinationPortRanges` is not specified.
-  final pulumi.Input<String>? destinationPortRange;
+  final pulumi.Input<String?>? destinationPortRange;
   /// List of destination ports or port ranges. This is required if `destinationPortRange` is not specified.
-  final pulumi.Input<List<String>>? destinationPortRanges;
+  final pulumi.Input<List<String>?>? destinationPortRanges;
   /// The direction specifies if rule will be evaluated on incoming or outgoing traffic. Possible values are `Inbound` and `Outbound`.
   final pulumi.Input<String> direction;
   /// The name of the security rule.
@@ -26,15 +26,15 @@ class NetworkSecurityGroupSecurityRule {
   /// Network protocol this rule applies to. Possible values include `Tcp`, `Udp`, `Icmp`, `Esp`, `Ah` or `*` (which matches all).
   final pulumi.Input<String> protocol;
   /// CIDR or source IP range or * to match any IP. Tags such as `VirtualNetwork`, `AzureLoadBalancer` and `Internet` can also be used. This is required if `sourceAddressPrefixes` is not specified.
-  final pulumi.Input<String>? sourceAddressPrefix;
+  final pulumi.Input<String?>? sourceAddressPrefix;
   /// List of source address prefixes. Tags may not be used. This is required if `sourceAddressPrefix` is not specified.
-  final pulumi.Input<List<String>>? sourceAddressPrefixes;
+  final pulumi.Input<List<String>?>? sourceAddressPrefixes;
   /// A List of source Application Security Group IDs
-  final pulumi.Input<List<String>>? sourceApplicationSecurityGroupIds;
+  final pulumi.Input<List<String>?>? sourceApplicationSecurityGroupIds;
   /// Source Port or Range. Integer or range between `0` and `65535` or `*` to match any. This is required if `sourcePortRanges` is not specified.
-  final pulumi.Input<String>? sourcePortRange;
+  final pulumi.Input<String?>? sourcePortRange;
   /// List of source ports or port ranges. This is required if `sourcePortRange` is not specified.
-  final pulumi.Input<List<String>>? sourcePortRanges;
+  final pulumi.Input<List<String>?>? sourcePortRanges;
 
   /// Creates a new [NetworkSecurityGroupSecurityRule].
   /// [access] Specifies whether network traffic is allowed or denied. Possible values are `Allow` and `Deny`.
@@ -104,7 +104,7 @@ class NetworkSecurityGroupSecurityRule {
       destinationPortRanges: (() { final guardedValue = map['destinationPortRanges']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       direction: pulumi.Input.fromValue(map['direction'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
-      priority: pulumi.Input.fromValue(map['priority'] as int),
+      priority: pulumi.Input.fromValue((map['priority'] as num).toInt()),
       protocol: pulumi.Input.fromValue(map['protocol'] as String),
       sourceAddressPrefix: (() { final guardedValue = map['sourceAddressPrefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sourceAddressPrefixes: (() { final guardedValue = map['sourceAddressPrefixes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),

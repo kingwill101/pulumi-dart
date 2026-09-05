@@ -30,7 +30,7 @@ class GetManagedDevOpsPoolAzureDevopsOrganizationOrganization {
 
   factory GetManagedDevOpsPoolAzureDevopsOrganizationOrganization.fromMap(Map<String, dynamic> map) {
     return GetManagedDevOpsPoolAzureDevopsOrganizationOrganization(
-      parallelism: pulumi.Input.fromValue(map['parallelism'] as int),
+      parallelism: pulumi.Input.fromValue((map['parallelism'] as num).toInt()),
       projects: pulumi.Input.fromValue((map['projects'] as List).cast<String>()),
       url: pulumi.Input.fromValue(map['url'] as String),
     );

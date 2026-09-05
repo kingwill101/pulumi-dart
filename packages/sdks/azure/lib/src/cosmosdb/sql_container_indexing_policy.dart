@@ -8,15 +8,15 @@ import 'sql_container_indexing_policy_spatial_index.dart';
 
 class SqlContainerIndexingPolicy {
   /// One or more `compositeIndex` blocks as defined below.
-  final pulumi.Input<List<SqlContainerIndexingPolicyCompositeIndex>>? compositeIndices;
+  final pulumi.Input<List<SqlContainerIndexingPolicyCompositeIndex>?>? compositeIndices;
   /// One or more `excludedPath` blocks as defined below. Either `includedPath` or `excludedPath` must contain the `path` `/*`
-  final pulumi.Input<List<SqlContainerIndexingPolicyExcludedPath>>? excludedPaths;
+  final pulumi.Input<List<SqlContainerIndexingPolicyExcludedPath>?>? excludedPaths;
   /// One or more `includedPath` blocks as defined below. Either `includedPath` or `excludedPath` must contain the `path` `/*`
-  final pulumi.Input<List<SqlContainerIndexingPolicyIncludedPath>>? includedPaths;
+  final pulumi.Input<List<SqlContainerIndexingPolicyIncludedPath>?>? includedPaths;
   /// Indicates the indexing mode. Possible values include: `consistent` and `none`. Defaults to `consistent`.
-  final pulumi.Input<String>? indexingMode;
+  final pulumi.Input<String?>? indexingMode;
   /// One or more `spatialIndex` blocks as defined below.
-  final pulumi.Input<List<SqlContainerIndexingPolicySpatialIndex>>? spatialIndices;
+  final pulumi.Input<List<SqlContainerIndexingPolicySpatialIndex>?>? spatialIndices;
 
   /// Creates a new [SqlContainerIndexingPolicy].
   /// [compositeIndices] One or more `compositeIndex` blocks as defined below.

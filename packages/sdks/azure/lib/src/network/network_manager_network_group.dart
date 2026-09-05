@@ -144,7 +144,7 @@ import 'network_manager_network_group_state.dart';
 /// 		}
 /// 		_, err = network.NewNetworkManagerNetworkGroup(ctx, "example", &network.NetworkManagerNetworkGroupArgs{
 /// 			Name:             pulumi.String("example-group"),
-/// 			NetworkManagerId: exampleNetworkManager.ID(),
+/// 			NetworkManagerId: exampleNetworkManager.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -314,7 +314,7 @@ class NetworkManagerNetworkGroup extends pulumi.CustomResource {
           'azure:network/networkManagerNetworkGroup:NetworkManagerNetworkGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     description = registerOutput<String?>('description');
     memberType = registerOutput<String?>('memberType');
@@ -327,11 +327,12 @@ class NetworkManagerNetworkGroup extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     NetworkManagerNetworkGroupState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return NetworkManagerNetworkGroup._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -345,6 +346,21 @@ class NetworkManagerNetworkGroup extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    description = registerOutput<String?>('description');
+    memberType = registerOutput<String?>('memberType');
+    this.name = registerOutput<String>('name');
+    networkManagerId = registerOutput<String>('networkManagerId');
+  }
+
+  /// Creates a typed reference to an existing [NetworkManagerNetworkGroup] resource.
+  NetworkManagerNetworkGroup.reference(String urn)
+    : super(
+        'azure:network/networkManagerNetworkGroup:NetworkManagerNetworkGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     description = registerOutput<String?>('description');
     memberType = registerOutput<String?>('memberType');
     this.name = registerOutput<String>('name');

@@ -5,11 +5,11 @@ import 'job_event_trigger_config_scale.dart';
 
 class JobEventTriggerConfig {
   /// Number of parallel replicas of a job that can run at a given time.
-  final pulumi.Input<int>? parallelism;
+  final pulumi.Input<int?>? parallelism;
   /// Minimum number of successful replica completions before overall job completion.
-  final pulumi.Input<int>? replicaCompletionCount;
+  final pulumi.Input<int?>? replicaCompletionCount;
   /// A `scale` block as defined below.
-  final pulumi.Input<List<JobEventTriggerConfigScale>>? scales;
+  final pulumi.Input<List<JobEventTriggerConfigScale>?>? scales;
 
   /// Creates a new [JobEventTriggerConfig].
   /// [parallelism] Number of parallel replicas of a job that can run at a given time.
@@ -31,8 +31,8 @@ class JobEventTriggerConfig {
 
   factory JobEventTriggerConfig.fromMap(Map<String, dynamic> map) {
     return JobEventTriggerConfig(
-      parallelism: (() { final guardedValue = map['parallelism']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      replicaCompletionCount: (() { final guardedValue = map['replicaCompletionCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      parallelism: (() { final guardedValue = map['parallelism']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      replicaCompletionCount: (() { final guardedValue = map['replicaCompletionCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       scales: (() { final guardedValue = map['scales']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<JobEventTriggerConfigScale>(guardedValue, (value) => JobEventTriggerConfigScale.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }

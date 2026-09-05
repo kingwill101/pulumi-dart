@@ -8,13 +8,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_network_network_manager_network_group_network_manager_network_group_args_doc}
 class NetworkManagerNetworkGroupArgs {
   /// A description of the Network Manager Network Group.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The member type for the network group. Possible values are `Subnet` and `VirtualNetwork`. Defaults to `VirtualNetwork`.
   ///
   /// &gt; **Note:** `memberType` can be set to `Subnet` only if the parent Network Manager has `Routing` included in its `scopeAccesses`.
-  final pulumi.Input<String>? memberType;
+  final pulumi.Input<String?>? memberType;
   /// Specifies the name which should be used for this Network Manager Network Group. Changing this forces a new Network Manager Network Group to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specifies the ID of the Network Manager. Changing this forces a new Network Manager Network Group to be created.
   final pulumi.Input<String> networkManagerId;
 

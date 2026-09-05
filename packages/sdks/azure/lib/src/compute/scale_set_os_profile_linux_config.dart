@@ -5,13 +5,13 @@ import 'scale_set_os_profile_linux_config_ssh_key.dart';
 
 class ScaleSetOsProfileLinuxConfig {
   /// Specifies whether password authentication should be disabled. Defaults to `false`. Changing this forces a new resource to be created.
-  final pulumi.Input<bool>? disablePasswordAuthentication;
+  final pulumi.Input<bool?>? disablePasswordAuthentication;
   /// One or more `sshKeys` blocks as defined below.
   ///
   /// &gt; **Note:** Please note that the only allowed `path` is `/home/&lt;username&gt;/.ssh/authorized_keys` due to a limitation of Azure.
   ///
   /// &gt; **NOTE:** At least one `sshKeys` block is required if `disablePasswordAuthentication` is set to `true`.
-  final pulumi.Input<List<ScaleSetOsProfileLinuxConfigSshKey>>? sshKeys;
+  final pulumi.Input<List<ScaleSetOsProfileLinuxConfigSshKey>?>? sshKeys;
 
   /// Creates a new [ScaleSetOsProfileLinuxConfig].
   /// [disablePasswordAuthentication] Specifies whether password authentication should be disabled. Defaults to `false`. Changing this forces a new resource to be created.

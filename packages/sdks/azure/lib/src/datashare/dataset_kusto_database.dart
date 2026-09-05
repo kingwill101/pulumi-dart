@@ -46,7 +46,7 @@ import 'dataset_kusto_database_state.dart';
 /// const exampleAssignment = new azure.authorization.Assignment("example", {
 ///     scope: exampleCluster.id,
 ///     roleDefinitionName: "Contributor",
-///     principalId: exampleAccount.identity.apply(identity => identity.principalId),
+///     principalId: exampleAccount.identity.principalId,
 /// });
 /// const exampleDatasetKustoDatabase = new azure.datashare.DatasetKustoDatabase("example", {
 ///     name: "example-dskd",
@@ -204,7 +204,7 @@ import 'dataset_kusto_database_state.dart';
 /// 		}
 /// 		exampleShare, err := datashare.NewShare(ctx, "example", &datashare.ShareArgs{
 /// 			Name:      pulumi.String("example_ds"),
-/// 			AccountId: exampleAccount.ID(),
+/// 			AccountId: exampleAccount.ID().ToIDOutput().ToStringOutput(),
 /// 			Kind:      pulumi.String("InPlace"),
 /// 		})
 /// 		if err != nil {
@@ -232,19 +232,17 @@ import 'dataset_kusto_database_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleAssignment, err := authorization.NewAssignment(ctx, "example", &authorization.AssignmentArgs{
-/// 			Scope:              exampleCluster.ID(),
+/// 			Scope:              exampleCluster.ID().ToIDOutput().ToStringOutput(),
 /// 			RoleDefinitionName: pulumi.String("Contributor"),
-/// 			PrincipalId: pulumi.String(exampleAccount.Identity.ApplyT(func(identity datashare.AccountIdentity) (*string, error) {
-/// 				return identity.PrincipalId, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			PrincipalId:        exampleAccount.Identity.PrincipalId(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = datashare.NewDatasetKustoDatabase(ctx, "example", &datashare.DatasetKustoDatabaseArgs{
 /// 			Name:            pulumi.String("example-dskd"),
-/// 			ShareId:         exampleShare.ID(),
-/// 			KustoDatabaseId: exampleDatabase.ID(),
+/// 			ShareId:         exampleShare.ID().ToIDOutput().ToStringOutput(),
+/// 			KustoDatabaseId: exampleDatabase.ID().ToIDOutput().ToStringOutput(),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			exampleAssignment,
 /// 		}))
@@ -497,7 +495,7 @@ class DatasetKustoDatabase extends pulumi.CustomResource {
           'azure:datashare/datasetKustoDatabase:DatasetKustoDatabase',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     displayName = registerOutput<String>('displayName');
     kustoClusterLocation = registerOutput<String>('kustoClusterLocation');
@@ -511,11 +509,12 @@ class DatasetKustoDatabase extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DatasetKustoDatabaseState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DatasetKustoDatabase._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -529,6 +528,22 @@ class DatasetKustoDatabase extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    displayName = registerOutput<String>('displayName');
+    kustoClusterLocation = registerOutput<String>('kustoClusterLocation');
+    kustoDatabaseId = registerOutput<String>('kustoDatabaseId');
+    this.name = registerOutput<String>('name');
+    shareId = registerOutput<String>('shareId');
+  }
+
+  /// Creates a typed reference to an existing [DatasetKustoDatabase] resource.
+  DatasetKustoDatabase.reference(String urn)
+    : super(
+        'azure:datashare/datasetKustoDatabase:DatasetKustoDatabase',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     displayName = registerOutput<String>('displayName');
     kustoClusterLocation = registerOutput<String>('kustoClusterLocation');
     kustoDatabaseId = registerOutput<String>('kustoDatabaseId');

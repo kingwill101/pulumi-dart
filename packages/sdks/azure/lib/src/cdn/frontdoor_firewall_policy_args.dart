@@ -15,37 +15,37 @@ class FrontdoorFirewallPolicyArgs {
   /// &gt; **Note:** The `captchaCookieExpirationInMinutes` field can only be set on `Premium_AzureFrontDoor` sku's. Please see the [Product Documentation](https://learn.microsoft.com/azure/web-application-firewall/afds/captcha-challenge) for more information.
   ///
   /// &gt; **Note:** When you remove the `captchaCookieExpirationInMinutes` field from your configuration, the value will revert to the default of `30` minutes in the Terraform state. This is because Azure manages this setting and Terraform will reflect the actual Azure configuration, which defaults to `30` minutes when not explicitly specified.
-  final pulumi.Input<int>? captchaCookieExpirationInMinutes;
+  final pulumi.Input<int?>? captchaCookieExpirationInMinutes;
   /// If a `customRule` block's action type is `block`, this is the response body. The body must be specified in base64 encoding.
-  final pulumi.Input<String>? customBlockResponseBody;
+  final pulumi.Input<String?>? customBlockResponseBody;
   /// If a `customRule` block's action type is `block`, this is the response status code. Possible values are `200`, `403`, `405`, `406`, `429`, `990`, `991`, `992`, `993`, `994`, `995`, `996`, `997`, `998`, or `999`.
-  final pulumi.Input<int>? customBlockResponseStatusCode;
+  final pulumi.Input<int?>? customBlockResponseStatusCode;
   /// One or more `customRule` blocks as defined below.
-  final pulumi.Input<List<FrontdoorFirewallPolicyCustomRule>>? customRules;
+  final pulumi.Input<List<FrontdoorFirewallPolicyCustomRule>?>? customRules;
   /// Is the Front Door Firewall Policy enabled? Defaults to `true`.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// Specifies the JavaScript challenge cookie lifetime in minutes, after which the user will be revalidated. Possible values are between `5` to `1440` minutes. Defaults to `30` minutes.
   ///
   /// &gt; **Note:** The `jsChallengeCookieExpirationInMinutes` field can only be set on `Premium_AzureFrontDoor` sku's. Please see the [Product Documentation](https://learn.microsoft.com/azure/web-application-firewall/waf-javascript-challenge) for more information.
   ///
   /// &gt; **Note:** When you remove the `jsChallengeCookieExpirationInMinutes` field from your configuration, the value will revert to the default of `30` minutes in the Terraform state. This is because Azure manages this setting and Terraform will reflect the actual Azure configuration, which defaults to `30` minutes when not explicitly specified.
-  final pulumi.Input<int>? jsChallengeCookieExpirationInMinutes;
+  final pulumi.Input<int?>? jsChallengeCookieExpirationInMinutes;
   /// A `logScrubbing` block as defined below.
   ///
   /// &gt; **Note:** Setting the`logScrubbing` block is currently in **PREVIEW**. Please see the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability.
-  final pulumi.Input<FrontdoorFirewallPolicyLogScrubbing>? logScrubbing;
+  final pulumi.Input<FrontdoorFirewallPolicyLogScrubbing?>? logScrubbing;
   /// One or more `managedRule` blocks as defined below.
-  final pulumi.Input<List<FrontdoorFirewallPolicyManagedRule>>? managedRules;
+  final pulumi.Input<List<FrontdoorFirewallPolicyManagedRule>?>? managedRules;
   /// The Front Door Firewall Policy mode. Possible values are `Detection`, `Prevention`.
   final pulumi.Input<String> mode;
   /// The name of the policy. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// If action type is redirect, this field represents redirect URL for the client.
-  final pulumi.Input<String>? redirectUrl;
+  final pulumi.Input<String?>? redirectUrl;
   /// Should policy managed rules inspect the request body content? Defaults to `true`.
   ///
   /// &gt; **Note:** When run in `Detection` mode, the Front Door Firewall Policy doesn't take any other actions other than monitoring and logging the request and its matched Front Door Rule to the Web Application Firewall logs.
-  final pulumi.Input<bool>? requestBodyCheckEnabled;
+  final pulumi.Input<bool?>? requestBodyCheckEnabled;
   /// The name of the resource group. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
   /// The sku's pricing tier for this Front Door Firewall Policy. Possible values include `Standard_AzureFrontDoor` or `Premium_AzureFrontDoor`. Changing this forces a new resource to be created.
@@ -53,7 +53,7 @@ class FrontdoorFirewallPolicyArgs {
   /// &gt; **Note:** The `Standard_AzureFrontDoor` Front Door Firewall Policy sku may contain `custom` rules only. The `Premium_AzureFrontDoor` Front Door Firewall Policy sku's may contain both `custom` and `managed` rules.
   final pulumi.Input<String> skuName;
   /// A mapping of tags to assign to the Front Door Firewall Policy.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [FrontdoorFirewallPolicyArgs].
   /// [captchaCookieExpirationInMinutes] Specifies the Captcha cookie lifetime in minutes. Possible values are between `5` and `1440`. Defaults to`30` minutes.
@@ -111,12 +111,12 @@ class FrontdoorFirewallPolicyArgs {
 
   factory FrontdoorFirewallPolicyArgs.fromMap(Map<String, dynamic> map) {
     return FrontdoorFirewallPolicyArgs(
-      captchaCookieExpirationInMinutes: (() { final guardedValue = map['captchaCookieExpirationInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      captchaCookieExpirationInMinutes: (() { final guardedValue = map['captchaCookieExpirationInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       customBlockResponseBody: (() { final guardedValue = map['customBlockResponseBody']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      customBlockResponseStatusCode: (() { final guardedValue = map['customBlockResponseStatusCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      customBlockResponseStatusCode: (() { final guardedValue = map['customBlockResponseStatusCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       customRules: (() { final guardedValue = map['customRules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<FrontdoorFirewallPolicyCustomRule>(guardedValue, (value) => FrontdoorFirewallPolicyCustomRule.fromMap((value as Map).cast<String, dynamic>()))); })(),
       enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      jsChallengeCookieExpirationInMinutes: (() { final guardedValue = map['jsChallengeCookieExpirationInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      jsChallengeCookieExpirationInMinutes: (() { final guardedValue = map['jsChallengeCookieExpirationInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       logScrubbing: (() { final guardedValue = map['logScrubbing']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FrontdoorFirewallPolicyLogScrubbing.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       managedRules: (() { final guardedValue = map['managedRules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<FrontdoorFirewallPolicyManagedRule>(guardedValue, (value) => FrontdoorFirewallPolicyManagedRule.fromMap((value as Map).cast<String, dynamic>()))); })(),
       mode: pulumi.Input.fromValue(map['mode'] as String),

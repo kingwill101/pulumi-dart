@@ -121,7 +121,7 @@ import 'trigger_custom_state.dart';
 /// 		}
 /// 		_, err = logicapps.NewTriggerCustom(ctx, "example", &logicapps.TriggerCustomArgs{
 /// 			Name:       pulumi.String("example-trigger"),
-/// 			LogicAppId: exampleWorkflow.ID(),
+/// 			LogicAppId: exampleWorkflow.ID().ToIDOutput().ToStringOutput(),
 /// 			Body: pulumi.String(`{
 ///   \"recurrence\": {
 ///     \"frequency\": \"Day\",
@@ -279,7 +279,7 @@ class TriggerCustom extends pulumi.CustomResource {
           'azure:logicapps/triggerCustom:TriggerCustom',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     body = registerOutput<String>('body');
     callbackUrl = registerOutput<String>('callbackUrl');
@@ -292,11 +292,12 @@ class TriggerCustom extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TriggerCustomState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return TriggerCustom._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -310,6 +311,21 @@ class TriggerCustom extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    body = registerOutput<String>('body');
+    callbackUrl = registerOutput<String>('callbackUrl');
+    logicAppId = registerOutput<String>('logicAppId');
+    this.name = registerOutput<String>('name');
+  }
+
+  /// Creates a typed reference to an existing [TriggerCustom] resource.
+  TriggerCustom.reference(String urn)
+    : super(
+        'azure:logicapps/triggerCustom:TriggerCustom',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     body = registerOutput<String>('body');
     callbackUrl = registerOutput<String>('callbackUrl');
     logicAppId = registerOutput<String>('logicAppId');

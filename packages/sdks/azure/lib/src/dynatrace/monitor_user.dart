@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MonitorUser {
   /// Country of the user.
-  final pulumi.Input<String>? country;
+  final pulumi.Input<String?>? country;
   /// Email of the user used by Dynatrace for contacting them if needed.
   final pulumi.Input<String> email;
   /// First name of the user.
@@ -12,7 +12,7 @@ class MonitorUser {
   /// Last name of the user.
   final pulumi.Input<String> lastName;
   /// phone number of the user by Dynatrace for contacting them if needed.
-  final pulumi.Input<String>? phoneNumber;
+  final pulumi.Input<String?>? phoneNumber;
 
   /// Creates a new [MonitorUser].
   /// [country] Country of the user.

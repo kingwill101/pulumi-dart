@@ -6,25 +6,25 @@ import 'workspace_named_value_value_from_key_vault.dart';
 /// Input properties used for looking up and filtering WorkspaceNamedValue resources.
 class WorkspaceNamedValueState {
   /// The ID of the API Management Workspace. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? apiManagementWorkspaceId;
+  final pulumi.Input<String?>? apiManagementWorkspaceId;
   /// The display name of this API Management Workspace Named Value.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The name of the API Management Workspace Named Value. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specifies whether the API Management Workspace Named Value is secret. Defaults to `false`.
   ///
   /// &gt; **Note:** Setting the field `secret` to `true` does not make this field sensitive in Terraform, instead it marks the value as secret and encrypts the value in Azure.
-  final pulumi.Input<bool>? secret;
+  final pulumi.Input<bool?>? secret;
   /// A list of tags to be applied to the API Management Workspace Named Value.
-  final pulumi.Input<List<String>>? tags;
+  final pulumi.Input<List<String>?>? tags;
   /// The value of this API Management Workspace Named Value.
   ///
   /// &gt; **Note:** Exactly one of `value` or `valueFromKeyVault` must be specified.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
   /// A `valueFromKeyVault` block as defined below.
   ///
   /// &gt; **Note:** Exactly one of `value` or `valueFromKeyVault` must be specified. If `valueFromKeyVault` is specified, `secret` must also be set to `true`.
-  final pulumi.Input<WorkspaceNamedValueValueFromKeyVault>? valueFromKeyVault;
+  final pulumi.Input<WorkspaceNamedValueValueFromKeyVault?>? valueFromKeyVault;
 
   /// Creates a new [WorkspaceNamedValueState].
   /// [apiManagementWorkspaceId] The ID of the API Management Workspace. Changing this forces a new resource to be created.

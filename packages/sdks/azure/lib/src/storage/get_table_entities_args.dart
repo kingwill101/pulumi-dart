@@ -10,7 +10,7 @@ class GetTableEntitiesArgs {
   /// The filter used to retrieve the entities.
   final pulumi.Input<String> filter;
   /// A list of properties to select from the returned Storage Table Entities.
-  final pulumi.Input<List<String>>? selects;
+  final pulumi.Input<List<String>?>? selects;
   /// The Storage Table ID where the entities exist.
   final pulumi.Input<String> storageTableId;
 

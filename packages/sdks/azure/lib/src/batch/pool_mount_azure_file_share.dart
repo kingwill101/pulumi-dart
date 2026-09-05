@@ -10,7 +10,7 @@ class PoolMountAzureFileShare {
   /// The Azure Files URL. This is of the form 'https://{account}.file.core.windows.net/'.
   final pulumi.Input<String> azureFileUrl;
   /// Additional command line options to pass to the mount command. These are 'net use' options in Windows and 'mount' options in Linux.
-  final pulumi.Input<String>? mountOptions;
+  final pulumi.Input<String?>? mountOptions;
   /// The relative path on compute node where the file system will be mounted All file systems are mounted relative to the Batch mounts directory, accessible via the `AZ_BATCH_NODE_MOUNTS_DIR` environment variable.
   final pulumi.Input<String> relativeMountPath;
 

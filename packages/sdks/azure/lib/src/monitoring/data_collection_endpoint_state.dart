@@ -5,27 +5,27 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering DataCollectionEndpoint resources.
 class DataCollectionEndpointState {
   /// The endpoint used for accessing configuration, e.g., `https://mydce-abcd.eastus-1.control.monitor.azure.com`.
-  final pulumi.Input<String>? configurationAccessEndpoint;
+  final pulumi.Input<String?>? configurationAccessEndpoint;
   /// Specifies a description for the Data Collection Endpoint.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The immutable ID of the Data Collection Endpoint.
-  final pulumi.Input<String>? immutableId;
+  final pulumi.Input<String?>? immutableId;
   /// The kind of the Data Collection Endpoint. Possible values are `Linux` and `Windows`.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// The Azure Region where the Data Collection Endpoint should exist. Changing this forces a new Data Collection Endpoint to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The endpoint used for ingesting logs, e.g., `https://mydce-abcd.eastus-1.ingest.monitor.azure.com`.
-  final pulumi.Input<String>? logsIngestionEndpoint;
+  final pulumi.Input<String?>? logsIngestionEndpoint;
   /// The endpoint used for ingesting metrics, e.g., `https://mydce-abcd.eastus-1.metrics.ingest.monitor.azure.com`.
-  final pulumi.Input<String>? metricsIngestionEndpoint;
+  final pulumi.Input<String?>? metricsIngestionEndpoint;
   /// The name which should be used for this Data Collection Endpoint. Changing this forces a new Data Collection Endpoint to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Whether network access from public internet to the Data Collection Endpoint are allowed. Possible values are `true` and `false`. Default to `true`.
-  final pulumi.Input<bool>? publicNetworkAccessEnabled;
+  final pulumi.Input<bool?>? publicNetworkAccessEnabled;
   /// The name of the Resource Group where the Data Collection Endpoint should exist. Changing this forces a new Data Collection Endpoint to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// A mapping of tags which should be assigned to the Data Collection Endpoint.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [DataCollectionEndpointState].
   /// [configurationAccessEndpoint] The endpoint used for accessing configuration, e.g., `https://mydce-abcd.eastus-1.control.monitor.azure.com`.

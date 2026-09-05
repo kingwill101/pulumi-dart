@@ -6,9 +6,9 @@ class EnvironmentDaprComponentMetadata {
   /// The name of the Metadata configuration item.
   final pulumi.Input<String> name;
   /// The name of a secret specified in the `secrets` block that contains the value for this metadata configuration item.
-  final pulumi.Input<String>? secretName;
+  final pulumi.Input<String?>? secretName;
   /// The value for this metadata configuration item.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [EnvironmentDaprComponentMetadata].
   /// [name] The name of the Metadata configuration item.

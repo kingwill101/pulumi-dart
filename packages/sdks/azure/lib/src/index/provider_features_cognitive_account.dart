@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ProviderFeaturesCognitiveAccount {
-  final pulumi.Input<bool>? purgeSoftDeleteOnDestroy;
+  final pulumi.Input<bool?>? purgeSoftDeleteOnDestroy;
 
   /// Creates a new [ProviderFeaturesCognitiveAccount].
   /// [purgeSoftDeleteOnDestroy] Optional.

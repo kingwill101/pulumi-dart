@@ -6,19 +6,19 @@ import 'managed_hardware_security_module_role_definition_permission.dart';
 /// Input properties used for looking up and filtering ManagedHardwareSecurityModuleRoleDefinition resources.
 class ManagedHardwareSecurityModuleRoleDefinitionState {
   /// Specifies a text description about this Key Vault Managed Hardware Security Module Role Definition.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The ID of the Key Vault Managed Hardware Security Module. Changing this forces a new Key Vault Managed Hardware Security Module Role Definition to be created.
-  final pulumi.Input<String>? managedHsmId;
+  final pulumi.Input<String?>? managedHsmId;
   /// The name in UUID notation of this Key Vault Managed Hardware Security Module Role Definition. Changing this forces a new Key Vault Managed Hardware Security Module Role Definition to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// One or more `permission` blocks as defined below.
-  final pulumi.Input<List<ManagedHardwareSecurityModuleRoleDefinitionPermission>>? permissions;
+  final pulumi.Input<List<ManagedHardwareSecurityModuleRoleDefinitionPermission>?>? permissions;
   /// The ID of the role definition resource without Key Vault base URL.
-  final pulumi.Input<String>? resourceManagerId;
+  final pulumi.Input<String?>? resourceManagerId;
   /// Specify a display name for this Key Vault Managed Hardware Security Module Role Definition.
-  final pulumi.Input<String>? roleName;
+  final pulumi.Input<String?>? roleName;
   /// The type of the role definition. Possible values are `AKVBuiltInRole` and `CustomRole`.
-  final pulumi.Input<String>? roleType;
+  final pulumi.Input<String?>? roleType;
 
   /// Creates a new [ManagedHardwareSecurityModuleRoleDefinitionState].
   /// [description] Specifies a text description about this Key Vault Managed Hardware Security Module Role Definition.

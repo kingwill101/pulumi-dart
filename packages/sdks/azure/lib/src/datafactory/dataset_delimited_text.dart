@@ -3,6 +3,7 @@ import 'dataset_delimited_text_args.dart';
 import 'dataset_delimited_text_azure_blob_fs_location.dart';
 import 'dataset_delimited_text_azure_blob_storage_location.dart';
 import 'dataset_delimited_text_http_server_location.dart';
+import 'dataset_delimited_text_schema_column.dart';
 import 'dataset_delimited_text_state.dart';
 
 /// Manages an Azure Delimited Text Dataset inside an Azure Data Factory.
@@ -159,7 +160,7 @@ import 'dataset_delimited_text_state.dart';
 /// 		}
 /// 		exampleLinkedServiceWeb, err := datafactory.NewLinkedServiceWeb(ctx, "example", &datafactory.LinkedServiceWebArgs{
 /// 			Name:               pulumi.String("example"),
-/// 			DataFactoryId:      exampleFactory.ID(),
+/// 			DataFactoryId:      exampleFactory.ID().ToIDOutput().ToStringOutput(),
 /// 			AuthenticationType: pulumi.String("Anonymous"),
 /// 			Url:                pulumi.String("https://www.bing.com"),
 /// 		})
@@ -168,7 +169,7 @@ import 'dataset_delimited_text_state.dart';
 /// 		}
 /// 		_, err = datafactory.NewDatasetDelimitedText(ctx, "example", &datafactory.DatasetDelimitedTextArgs{
 /// 			Name:              pulumi.String("example"),
-/// 			DataFactoryId:     exampleFactory.ID(),
+/// 			DataFactoryId:     exampleFactory.ID().ToIDOutput().ToStringOutput(),
 /// 			LinkedServiceName: exampleLinkedServiceWeb.Name,
 /// 			HttpServerLocation: &datafactory.DatasetDelimitedTextHttpServerLocationArgs{
 /// 				RelativeUrl: pulumi.String("http://www.bing.com"),
@@ -395,7 +396,7 @@ class DatasetDelimitedText extends pulumi.CustomResource {
   /// The row delimiter. Defaults to any of the following values on read: `\r\n`, `\r`, `\n`, and `\n` or `\r\n` on write by mapping data flow and Copy activity respectively.
   late final pulumi.Output<String?> rowDelimiter;
   /// A `schemaColumn` block as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> schemaColumns;
+  late final pulumi.Output<List<DatasetDelimitedTextSchemaColumn>?> schemaColumns;
 
   /// Creates a new [DatasetDelimitedText].
   /// [name] The Pulumi resource name.
@@ -409,10 +410,10 @@ class DatasetDelimitedText extends pulumi.CustomResource {
           'azure:datafactory/datasetDelimitedText:DatasetDelimitedText',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
-    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
-    annotations = registerOutput<List<String>?>('annotations');
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     azureBlobFsLocation = registerOutput<DatasetDelimitedTextAzureBlobFsLocation?>('azureBlobFsLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatasetDelimitedTextAzureBlobFsLocation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     azureBlobStorageLocation = registerOutput<DatasetDelimitedTextAzureBlobStorageLocation?>('azureBlobStorageLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatasetDelimitedTextAzureBlobStorageLocation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     columnDelimiter = registerOutput<String?>('columnDelimiter');
@@ -428,10 +429,10 @@ class DatasetDelimitedText extends pulumi.CustomResource {
     linkedServiceName = registerOutput<String>('linkedServiceName');
     this.name = registerOutput<String>('name');
     nullValue = registerOutput<String?>('nullValue');
-    parameters = registerOutput<Map<String, String>?>('parameters');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     quoteCharacter = registerOutput<String?>('quoteCharacter');
     rowDelimiter = registerOutput<String?>('rowDelimiter');
-    schemaColumns = registerOutput<List<Map<String, dynamic>>?>('schemaColumns');
+    schemaColumns = registerOutput<List<DatasetDelimitedTextSchemaColumn>?>('schemaColumns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DatasetDelimitedTextSchemaColumn>(guardedValue, (value) => DatasetDelimitedTextSchemaColumn.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [DatasetDelimitedText] resource's state with the given [name] and [id].
@@ -439,11 +440,12 @@ class DatasetDelimitedText extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DatasetDelimitedTextState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DatasetDelimitedText._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -457,8 +459,8 @@ class DatasetDelimitedText extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
-    annotations = registerOutput<List<String>?>('annotations');
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     azureBlobFsLocation = registerOutput<DatasetDelimitedTextAzureBlobFsLocation?>('azureBlobFsLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatasetDelimitedTextAzureBlobFsLocation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     azureBlobStorageLocation = registerOutput<DatasetDelimitedTextAzureBlobStorageLocation?>('azureBlobStorageLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatasetDelimitedTextAzureBlobStorageLocation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     columnDelimiter = registerOutput<String?>('columnDelimiter');
@@ -474,9 +476,41 @@ class DatasetDelimitedText extends pulumi.CustomResource {
     linkedServiceName = registerOutput<String>('linkedServiceName');
     this.name = registerOutput<String>('name');
     nullValue = registerOutput<String?>('nullValue');
-    parameters = registerOutput<Map<String, String>?>('parameters');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     quoteCharacter = registerOutput<String?>('quoteCharacter');
     rowDelimiter = registerOutput<String?>('rowDelimiter');
-    schemaColumns = registerOutput<List<Map<String, dynamic>>?>('schemaColumns');
+    schemaColumns = registerOutput<List<DatasetDelimitedTextSchemaColumn>?>('schemaColumns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DatasetDelimitedTextSchemaColumn>(guardedValue, (value) => DatasetDelimitedTextSchemaColumn.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [DatasetDelimitedText] resource.
+  DatasetDelimitedText.reference(String urn)
+    : super(
+        'azure:datafactory/datasetDelimitedText:DatasetDelimitedText',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    azureBlobFsLocation = registerOutput<DatasetDelimitedTextAzureBlobFsLocation?>('azureBlobFsLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatasetDelimitedTextAzureBlobFsLocation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    azureBlobStorageLocation = registerOutput<DatasetDelimitedTextAzureBlobStorageLocation?>('azureBlobStorageLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatasetDelimitedTextAzureBlobStorageLocation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    columnDelimiter = registerOutput<String?>('columnDelimiter');
+    compressionCodec = registerOutput<String?>('compressionCodec');
+    compressionLevel = registerOutput<String?>('compressionLevel');
+    dataFactoryId = registerOutput<String>('dataFactoryId');
+    description = registerOutput<String?>('description');
+    encoding = registerOutput<String?>('encoding');
+    escapeCharacter = registerOutput<String?>('escapeCharacter');
+    firstRowAsHeader = registerOutput<bool?>('firstRowAsHeader');
+    folder = registerOutput<String?>('folder');
+    httpServerLocation = registerOutput<DatasetDelimitedTextHttpServerLocation?>('httpServerLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatasetDelimitedTextHttpServerLocation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    linkedServiceName = registerOutput<String>('linkedServiceName');
+    this.name = registerOutput<String>('name');
+    nullValue = registerOutput<String?>('nullValue');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    quoteCharacter = registerOutput<String?>('quoteCharacter');
+    rowDelimiter = registerOutput<String?>('rowDelimiter');
+    schemaColumns = registerOutput<List<DatasetDelimitedTextSchemaColumn>?>('schemaColumns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DatasetDelimitedTextSchemaColumn>(guardedValue, (value) => DatasetDelimitedTextSchemaColumn.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

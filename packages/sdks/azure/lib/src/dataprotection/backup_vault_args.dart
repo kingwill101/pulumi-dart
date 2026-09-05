@@ -11,19 +11,19 @@ class BackupVaultArgs {
   /// Whether to enable cross-region restore for the Backup Vault.
   ///
   /// &gt; **Note:** The `crossRegionRestoreEnabled` can only be specified when `redundancy` is specified for `GeoRedundant`. Once `crossRegionRestoreEnabled` is enabled, it cannot be disabled.
-  final pulumi.Input<bool>? crossRegionRestoreEnabled;
+  final pulumi.Input<bool?>? crossRegionRestoreEnabled;
   /// Specifies the type of the data store. Possible values are `ArchiveStore`, `OperationalStore`, `SnapshotStore` and `VaultStore`. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** The `SnapshotStore` will be removed in version 4.0 as it has been replaced by `OperationalStore`.
   final pulumi.Input<String> datastoreType;
   /// An `identity` block as defined below.
-  final pulumi.Input<BackupVaultIdentity>? identity;
+  final pulumi.Input<BackupVaultIdentity?>? identity;
   /// The state of immutability for this Backup Vault. Possible values are `Disabled`, `Locked`, and `Unlocked`. Defaults to `Disabled`.
-  final pulumi.Input<String>? immutability;
+  final pulumi.Input<String?>? immutability;
   /// The Azure Region where the Backup Vault should exist. Changing this forces a new Backup Vault to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Specifies the name of the Backup Vault. Changing this forces a new Backup Vault to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specifies the backup storage redundancy. Possible values are `GeoRedundant`, `LocallyRedundant` and `ZoneRedundant`. Changing this forces a new Backup Vault to be created.
   final pulumi.Input<String> redundancy;
   /// The name of the Resource Group where the Backup Vault should exist. Changing this forces a new Backup Vault to be created.
@@ -31,13 +31,13 @@ class BackupVaultArgs {
   /// The soft delete retention duration for this Backup Vault. Possible values are between `14` and `180`. Defaults to `14`.
   ///
   /// &gt; **Note:** The `retentionDurationInDays` is the number of days for which deleted data is retained before being permanently deleted. Retention period till 14 days are free of cost, however, retention beyond 14 days may incur additional charges. The `retentionDurationInDays` is required when the `softDelete` is set to `On`.
-  final pulumi.Input<double>? retentionDurationInDays;
+  final pulumi.Input<double?>? retentionDurationInDays;
   /// The state of soft delete for this Backup Vault. Possible values are `AlwaysOn`, `Off`, and `On`. Defaults to `On`.
   ///
   /// &gt; **Note:** Once the `softDelete` is set to `AlwaysOn`, the setting cannot be changed.
-  final pulumi.Input<String>? softDelete;
+  final pulumi.Input<String?>? softDelete;
   /// A mapping of tags which should be assigned to the Backup Vault.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [BackupVaultArgs].
   /// [crossRegionRestoreEnabled] Whether to enable cross-region restore for the Backup Vault.
@@ -91,7 +91,7 @@ class BackupVaultArgs {
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       redundancy: pulumi.Input.fromValue(map['redundancy'] as String),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
-      retentionDurationInDays: (() { final guardedValue = map['retentionDurationInDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      retentionDurationInDays: (() { final guardedValue = map['retentionDurationInDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       softDelete: (() { final guardedValue = map['softDelete']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );

@@ -8,7 +8,7 @@ class SnapshotEncryptionSettings {
   /// A `diskEncryptionKey` block as defined below.
   final pulumi.Input<SnapshotEncryptionSettingsDiskEncryptionKey> diskEncryptionKey;
   /// A `keyEncryptionKey` block as defined below.
-  final pulumi.Input<SnapshotEncryptionSettingsKeyEncryptionKey>? keyEncryptionKey;
+  final pulumi.Input<SnapshotEncryptionSettingsKeyEncryptionKey?>? keyEncryptionKey;
 
   /// Creates a new [SnapshotEncryptionSettings].
   /// [diskEncryptionKey] A `diskEncryptionKey` block as defined below.

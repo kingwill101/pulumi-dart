@@ -5,27 +5,27 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering EndpointServicebusQueue resources.
 class EndpointServicebusQueueState {
   /// Type used to authenticate against the Service Bus Queue endpoint. Possible values are `keyBased` and `identityBased`. Defaults to `keyBased`.
-  final pulumi.Input<String>? authenticationType;
+  final pulumi.Input<String?>? authenticationType;
   /// The connection string for the endpoint. This attribute can only be specified and is mandatory when `authenticationType` is `keyBased`.
-  final pulumi.Input<String>? connectionString;
+  final pulumi.Input<String?>? connectionString;
   /// URI of the Service Bus endpoint. This attribute can only be specified and is mandatory when `authenticationType` is `identityBased`.
-  final pulumi.Input<String>? endpointUri;
+  final pulumi.Input<String?>? endpointUri;
   /// Name of the Service Bus Queue. This attribute can only be specified and is mandatory when `authenticationType` is `identityBased`.
-  final pulumi.Input<String>? entityPath;
+  final pulumi.Input<String?>? entityPath;
   /// ID of the User Managed Identity used to authenticate against the Service Bus Queue endpoint.
   ///
   /// &gt; **Note:** `identityId` can only be specified when `authenticationType` is `identityBased`. It must be one of the `identityIds` of the Iot Hub. If not specified when `authenticationType` is `identityBased`, System Assigned Managed Identity of the Iot Hub will be used.
-  final pulumi.Input<String>? identityId;
+  final pulumi.Input<String?>? identityId;
   /// The IoTHub ID for the endpoint. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? iothubId;
+  final pulumi.Input<String?>? iothubId;
   /// The name of the endpoint. The name must be unique across endpoint types. The following names are reserved: `events`, `operationsMonitoringEvents`, `fileNotifications` and `$default`. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the resource group under which the Service Bus Queue has been created. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// The subscription ID for the endpoint.
   ///
   /// &gt; **Note:** When `subscriptionId` isn't specified it will be set to the subscription ID of the IoT Hub resource.
-  final pulumi.Input<String>? subscriptionId;
+  final pulumi.Input<String?>? subscriptionId;
 
   /// Creates a new [EndpointServicebusQueueState].
   /// [authenticationType] Type used to authenticate against the Service Bus Queue endpoint. Possible values are `keyBased` and `identityBased`. Defaults to `keyBased`.

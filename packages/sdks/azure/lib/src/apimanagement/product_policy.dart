@@ -243,7 +243,7 @@ class ProductPolicy extends pulumi.CustomResource {
           'azure:apimanagement/productPolicy:ProductPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     apiManagementName = registerOutput<String>('apiManagementName');
     productId = registerOutput<String>('productId');
@@ -257,11 +257,12 @@ class ProductPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ProductPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ProductPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -275,6 +276,22 @@ class ProductPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    apiManagementName = registerOutput<String>('apiManagementName');
+    productId = registerOutput<String>('productId');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    xmlContent = registerOutput<String>('xmlContent');
+    xmlLink = registerOutput<String?>('xmlLink');
+  }
+
+  /// Creates a typed reference to an existing [ProductPolicy] resource.
+  ProductPolicy.reference(String urn)
+    : super(
+        'azure:apimanagement/productPolicy:ProductPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     apiManagementName = registerOutput<String>('apiManagementName');
     productId = registerOutput<String>('productId');
     resourceGroupName = registerOutput<String>('resourceGroupName');

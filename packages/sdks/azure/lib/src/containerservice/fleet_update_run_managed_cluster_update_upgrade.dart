@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FleetUpdateRunManagedClusterUpdateUpgrade {
   /// Specifies the Kubernetes version to upgrade the member clusters to. This is required if `type` is set to `Full`.
-  final pulumi.Input<String>? kubernetesVersion;
+  final pulumi.Input<String?>? kubernetesVersion;
   /// Specifies the type of upgrade to perform. Possible values are `Full` and `NodeImageOnly`.
   final pulumi.Input<String> type;
 

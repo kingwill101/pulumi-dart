@@ -8,9 +8,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_databasemigration_project_project_args_doc}
 class ProjectArgs {
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Specify the name of the database migration project. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Name of the resource group in which to create the database migration project. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
   /// Name of the database migration service where resource belongs to. Changing this forces a new resource to be created.
@@ -18,7 +18,7 @@ class ProjectArgs {
   /// The platform type of the migration source. Possible values are `MongoDb`, `MySQL`, `PostgreSql`, `SQL` and `Unknown`. Changing this forces a new resource to be created.
   final pulumi.Input<String> sourcePlatform;
   /// A mapping of tags to assigned to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The platform type of the migration target. Possible values are `AzureDbForMySql`, `AzureDbForPostgreSql`, `MongoDb`, `SQLDB`, `SQLMI` and `Unknown`. Changing this forces a new resource to be created.
   final pulumi.Input<String> targetPlatform;
 

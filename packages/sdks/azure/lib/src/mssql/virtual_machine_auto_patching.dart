@@ -31,8 +31,8 @@ class VirtualMachineAutoPatching {
   factory VirtualMachineAutoPatching.fromMap(Map<String, dynamic> map) {
     return VirtualMachineAutoPatching(
       dayOfWeek: pulumi.Input.fromValue(map['dayOfWeek'] as String),
-      maintenanceWindowDurationInMinutes: pulumi.Input.fromValue(map['maintenanceWindowDurationInMinutes'] as int),
-      maintenanceWindowStartingHour: pulumi.Input.fromValue(map['maintenanceWindowStartingHour'] as int),
+      maintenanceWindowDurationInMinutes: pulumi.Input.fromValue((map['maintenanceWindowDurationInMinutes'] as num).toInt()),
+      maintenanceWindowStartingHour: pulumi.Input.fromValue((map['maintenanceWindowStartingHour'] as num).toInt()),
     );
   }
 }

@@ -8,11 +8,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_containerservice_get_kubernetes_service_versions_get_kubernetes_service_versions_args_doc}
 class GetKubernetesServiceVersionsArgs {
   /// Should Preview versions of Kubernetes in AKS be included? Defaults to `true`
-  final pulumi.Input<bool>? includePreview;
+  final pulumi.Input<bool?>? includePreview;
   /// Specifies the location in which to query for versions.
   final pulumi.Input<String> location;
   /// A prefix filter for the versions of Kubernetes which should be returned; for example `1.` will return `1.9` to `1.14`, whereas `1.12` will return `1.12.2`.
-  final pulumi.Input<String>? versionPrefix;
+  final pulumi.Input<String?>? versionPrefix;
 
   /// Creates a new [GetKubernetesServiceVersionsArgs].
   /// [includePreview] Should Preview versions of Kubernetes in AKS be included? Defaults to `true`

@@ -25,47 +25,47 @@ class SparkClusterArgs {
   /// A `componentVersion` block as defined below.
   final pulumi.Input<SparkClusterComponentVersion> componentVersion;
   /// A `computeIsolation` block as defined below.
-  final pulumi.Input<SparkClusterComputeIsolation>? computeIsolation;
+  final pulumi.Input<SparkClusterComputeIsolation?>? computeIsolation;
   /// One or more `diskEncryption` block as defined below.
-  final pulumi.Input<List<SparkClusterDiskEncryption>>? diskEncryptions;
+  final pulumi.Input<List<SparkClusterDiskEncryption>?>? diskEncryptions;
   /// Whether encryption in transit is enabled for this Cluster. Changing this forces a new resource to be created.
-  final pulumi.Input<bool>? encryptionInTransitEnabled;
+  final pulumi.Input<bool?>? encryptionInTransitEnabled;
   /// An `extension` block as defined below.
-  final pulumi.Input<SparkClusterExtension>? extension;
+  final pulumi.Input<SparkClusterExtension?>? extension;
   /// A `gateway` block as defined below.
   final pulumi.Input<SparkClusterGateway> gateway;
   /// Specifies the Azure Region which this HDInsight Spark Cluster should exist. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// A `metastores` block as defined below.
-  final pulumi.Input<SparkClusterMetastores>? metastores;
+  final pulumi.Input<SparkClusterMetastores?>? metastores;
   /// A `monitor` block as defined below.
-  final pulumi.Input<SparkClusterMonitor>? monitor;
+  final pulumi.Input<SparkClusterMonitor?>? monitor;
   /// Specifies the name for this HDInsight Spark Cluster. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A `network` block as defined below.
-  final pulumi.Input<SparkClusterNetwork>? network;
+  final pulumi.Input<SparkClusterNetwork?>? network;
   /// A `privateLinkConfiguration` block as defined below.
-  final pulumi.Input<SparkClusterPrivateLinkConfiguration>? privateLinkConfiguration;
+  final pulumi.Input<SparkClusterPrivateLinkConfiguration?>? privateLinkConfiguration;
   /// Specifies the name of the Resource Group in which this HDInsight Spark Cluster should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
   /// A `roles` block as defined below.
   final pulumi.Input<SparkClusterRoles> roles;
   /// A `securityProfile` block as defined below. Changing this forces a new resource to be created.
-  final pulumi.Input<SparkClusterSecurityProfile>? securityProfile;
+  final pulumi.Input<SparkClusterSecurityProfile?>? securityProfile;
   /// A `storageAccountGen2` block as defined below.
-  final pulumi.Input<SparkClusterStorageAccountGen2>? storageAccountGen2;
+  final pulumi.Input<SparkClusterStorageAccountGen2?>? storageAccountGen2;
   /// One or more `storageAccount` block as defined below.
-  final pulumi.Input<List<SparkClusterStorageAccount>>? storageAccounts;
+  final pulumi.Input<List<SparkClusterStorageAccount>?>? storageAccounts;
   /// A map of Tags which should be assigned to this HDInsight Spark Cluster.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Specifies the Tier which should be used for this HDInsight Spark Cluster. Possible values are `Standard` or `Premium`. Changing this forces a new resource to be created.
   final pulumi.Input<String> tier;
   /// The minimal supported TLS version. Possible values are 1.0, 1.1 or 1.2. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** Starting on June 30, 2020, Azure HDInsight will enforce TLS 1.2 or later versions for all HTTPS connections. For more information, see [Azure HDInsight TLS 1.2 Enforcement](https://azure.microsoft.com/en-us/updates/azure-hdinsight-tls-12-enforcement/).
-  final pulumi.Input<String>? tlsMinVersion;
+  final pulumi.Input<String?>? tlsMinVersion;
   /// A list of Availability Zones which should be used for this HDInsight Spark Cluster. Changing this forces a new resource to be created.
-  final pulumi.Input<List<String>>? zones;
+  final pulumi.Input<List<String>?>? zones;
 
   /// Creates a new [SparkClusterArgs].
   /// [clusterVersion] Specifies the Version of HDInsights which should be used for this Cluster. Changing this forces a new resource to be created.

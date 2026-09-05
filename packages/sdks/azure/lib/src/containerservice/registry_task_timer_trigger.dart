@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RegistryTaskTimerTrigger {
   /// Should the trigger be enabled? Defaults to `true`.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// The name which should be used for this trigger.
   final pulumi.Input<String> name;
   /// The CRON expression for the task schedule.

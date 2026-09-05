@@ -8,11 +8,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_maintenance_get_public_configurations_get_public_configurations_args_doc}
 class GetPublicConfigurationsArgs {
   /// The Azure location to filter the list of Public Maintenance Configurations against.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The recurring window to filter the list of Public Maintenance Configurations against. Possible values are `Monday-Thursday` and `Friday-Sunday`
-  final pulumi.Input<String>? recurEvery;
+  final pulumi.Input<String?>? recurEvery;
   /// The scope to filter the list of Public Maintenance Configurations against. Possible values are `Extension`, `Host`, `InGuestPatch`, `OSImage`, `SQLDB` and `SQLManagedInstance`.
-  final pulumi.Input<String>? scope;
+  final pulumi.Input<String?>? scope;
 
   /// Creates a new [GetPublicConfigurationsArgs].
   /// [location] The Azure location to filter the list of Public Maintenance Configurations against.

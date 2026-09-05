@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_streamanalytics_managed_private_endpoint_managed_private_endpoint_args_doc}
 class ManagedPrivateEndpointArgs {
   /// The name which should be used for this Stream Analytics Managed Private Endpoint. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the Resource Group where the Stream Analytics Managed Private Endpoint should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the Stream Analytics Cluster where the Managed Private Endpoint should be created. Changing this forces a new resource to be created.

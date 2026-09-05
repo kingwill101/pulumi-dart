@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AutoscaleSettingPredictive {
   /// Specifies the amount of time by which instances are launched in advance. It must be between `PT1M` and `PT1H` in ISO 8601 format.
-  final pulumi.Input<String>? lookAheadTime;
+  final pulumi.Input<String?>? lookAheadTime;
   /// Specifies the predictive scale mode. Possible values are `Enabled` or `ForecastOnly`.
   final pulumi.Input<String> scaleMode;
 

@@ -8,7 +8,7 @@ class RouteTableRoute {
   /// The name of the route.
   final pulumi.Input<String> name;
   /// Contains the IP address packets should be forwarded to. Next hop values are only allowed in routes where the next hop type is `VirtualAppliance`.
-  final pulumi.Input<String>? nextHopInIpAddress;
+  final pulumi.Input<String?>? nextHopInIpAddress;
   /// The type of Azure hop the packet should be sent to. Possible values are `VirtualNetworkGateway`, `VnetLocal`, `Internet`, `VirtualAppliance` and `None`.
   final pulumi.Input<String> nextHopType;
 

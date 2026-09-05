@@ -6,7 +6,7 @@ class TriggerTumblingWindowRetry {
   /// The maximum retry attempts if the pipeline run failed.
   final pulumi.Input<int> count;
   /// The Interval in seconds between each retry if the pipeline run failed. Defaults to `30`.
-  final pulumi.Input<int>? interval;
+  final pulumi.Input<int?>? interval;
 
   /// Creates a new [TriggerTumblingWindowRetry].
   /// [count] The maximum retry attempts if the pipeline run failed.
@@ -25,8 +25,8 @@ class TriggerTumblingWindowRetry {
 
   factory TriggerTumblingWindowRetry.fromMap(Map<String, dynamic> map) {
     return TriggerTumblingWindowRetry(
-      count: pulumi.Input.fromValue(map['count'] as int),
-      interval: (() { final guardedValue = map['interval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      count: pulumi.Input.fromValue((map['count'] as num).toInt()),
+      interval: (() { final guardedValue = map['interval']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

@@ -6,7 +6,7 @@ class ScheduleWeeklyRecurrence {
   /// The time when the schedule takes effect.
   final pulumi.Input<String> time;
   /// A list of days that this schedule takes effect . Possible values include `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday` and `Sunday`.
-  final pulumi.Input<List<String>>? weekDays;
+  final pulumi.Input<List<String>?>? weekDays;
 
   /// Creates a new [ScheduleWeeklyRecurrence].
   /// [time] The time when the schedule takes effect.

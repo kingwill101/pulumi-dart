@@ -273,7 +273,7 @@ class PublicIp extends pulumi.CustomResource {
           'azure:network/publicIp:PublicIp',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     allocationMethod = registerOutput<String>('allocationMethod');
     ddosProtectionMode = registerOutput<String?>('ddosProtectionMode');
@@ -284,7 +284,7 @@ class PublicIp extends pulumi.CustomResource {
     fqdn = registerOutput<String>('fqdn');
     idleTimeoutInMinutes = registerOutput<int?>('idleTimeoutInMinutes');
     ipAddress = registerOutput<String>('ipAddress');
-    ipTags = registerOutput<Map<String, String>?>('ipTags');
+    ipTags = registerOutput<Map<String, String>?>('ipTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     ipVersion = registerOutput<String?>('ipVersion');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -293,8 +293,8 @@ class PublicIp extends pulumi.CustomResource {
     reverseFqdn = registerOutput<String?>('reverseFqdn');
     sku = registerOutput<String?>('sku');
     skuTier = registerOutput<String?>('skuTier');
-    tags = registerOutput<Map<String, String>?>('tags');
-    zones = registerOutput<List<String>?>('zones');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    zones = registerOutput<List<String>?>('zones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [PublicIp] resource's state with the given [name] and [id].
@@ -302,11 +302,12 @@ class PublicIp extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PublicIpState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return PublicIp._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -329,7 +330,7 @@ class PublicIp extends pulumi.CustomResource {
     fqdn = registerOutput<String>('fqdn');
     idleTimeoutInMinutes = registerOutput<int?>('idleTimeoutInMinutes');
     ipAddress = registerOutput<String>('ipAddress');
-    ipTags = registerOutput<Map<String, String>?>('ipTags');
+    ipTags = registerOutput<Map<String, String>?>('ipTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     ipVersion = registerOutput<String?>('ipVersion');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -338,7 +339,38 @@ class PublicIp extends pulumi.CustomResource {
     reverseFqdn = registerOutput<String?>('reverseFqdn');
     sku = registerOutput<String?>('sku');
     skuTier = registerOutput<String?>('skuTier');
-    tags = registerOutput<Map<String, String>?>('tags');
-    zones = registerOutput<List<String>?>('zones');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    zones = registerOutput<List<String>?>('zones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [PublicIp] resource.
+  PublicIp.reference(String urn)
+    : super(
+        'azure:network/publicIp:PublicIp',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    allocationMethod = registerOutput<String>('allocationMethod');
+    ddosProtectionMode = registerOutput<String?>('ddosProtectionMode');
+    ddosProtectionPlanId = registerOutput<String?>('ddosProtectionPlanId');
+    domainNameLabel = registerOutput<String?>('domainNameLabel');
+    domainNameLabelScope = registerOutput<String?>('domainNameLabelScope');
+    edgeZone = registerOutput<String?>('edgeZone');
+    fqdn = registerOutput<String>('fqdn');
+    idleTimeoutInMinutes = registerOutput<int?>('idleTimeoutInMinutes');
+    ipAddress = registerOutput<String>('ipAddress');
+    ipTags = registerOutput<Map<String, String>?>('ipTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    ipVersion = registerOutput<String?>('ipVersion');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    publicIpPrefixId = registerOutput<String?>('publicIpPrefixId');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    reverseFqdn = registerOutput<String?>('reverseFqdn');
+    sku = registerOutput<String?>('sku');
+    skuTier = registerOutput<String?>('skuTier');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    zones = registerOutput<List<String>?>('zones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

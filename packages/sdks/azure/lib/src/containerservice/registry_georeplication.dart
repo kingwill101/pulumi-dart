@@ -6,13 +6,13 @@ class RegistryGeoreplication {
   /// A location where the container registry should be geo-replicated.
   final pulumi.Input<String> location;
   /// Whether regional endpoint is enabled for this Container Registry?
-  final pulumi.Input<bool>? regionalEndpointEnabled;
+  final pulumi.Input<bool?>? regionalEndpointEnabled;
   /// A mapping of tags to assign to this replication location.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Whether zone redundancy is enabled for this replication location? Defaults to `false`.
   ///
   /// &gt; **Note:** Changing the `zoneRedundancyEnabled` forces an underlying replication to be created.
-  final pulumi.Input<bool>? zoneRedundancyEnabled;
+  final pulumi.Input<bool?>? zoneRedundancyEnabled;
 
   /// Creates a new [RegistryGeoreplication].
   /// [location] A location where the container registry should be geo-replicated.

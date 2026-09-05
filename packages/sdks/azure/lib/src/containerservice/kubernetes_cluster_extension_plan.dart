@@ -8,13 +8,13 @@ class KubernetesClusterExtensionPlan {
   /// Specifies the product of the plan from the marketplace. Changing this forces a new Kubernetes Cluster Extension to be created.
   final pulumi.Input<String> product;
   /// Specifies the promotion code to use with the plan. Changing this forces a new Kubernetes Cluster Extension to be created.
-  final pulumi.Input<String>? promotionCode;
+  final pulumi.Input<String?>? promotionCode;
   /// Specifies the publisher of the plan. Changing this forces a new Kubernetes Cluster Extension to be created.
   final pulumi.Input<String> publisher;
   /// Specifies the version of the plan from the marketplace. Changing this forces a new Kubernetes Cluster Extension to be created.
   ///
   /// &gt; **Note:** When `plan` is specified, legal terms must be accepted for this item on this subscription before creating the Kubernetes Cluster Extension. The `azure.marketplace.Agreement` resource or AZ CLI tool can be used to do this.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [KubernetesClusterExtensionPlan].
   /// [name] Specifies the name of the plan from the marketplace. Changing this forces a new Kubernetes Cluster Extension to be created.

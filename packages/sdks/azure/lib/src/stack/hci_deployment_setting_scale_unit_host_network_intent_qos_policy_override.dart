@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class HciDeploymentSettingScaleUnitHostNetworkIntentQosPolicyOverride {
   /// Specifies the percentage of the allocated storage traffic bandwidth. This parameter should only be modified based on your OEM guidance. Changing this forces a new Stack HCI Deployment Setting to be created.
-  final pulumi.Input<String>? bandwidthPercentageSmb;
+  final pulumi.Input<String?>? bandwidthPercentageSmb;
   /// Specifies the Cluster traffic priority. This parameter should only be modified based on your OEM guidance. Changing this forces a new Stack HCI Deployment Setting to be created.
-  final pulumi.Input<String>? priorityValue8021ActionCluster;
+  final pulumi.Input<String?>? priorityValue8021ActionCluster;
   /// Specifies the Priority Flow Control where Data Center Bridging (DCB) is used. This parameter should only be modified based on your OEM guidance. Changing this forces a new Stack HCI Deployment Setting to be created.
-  final pulumi.Input<String>? priorityValue8021ActionSmb;
+  final pulumi.Input<String?>? priorityValue8021ActionSmb;
 
   /// Creates a new [HciDeploymentSettingScaleUnitHostNetworkIntentQosPolicyOverride].
   /// [bandwidthPercentageSmb] Specifies the percentage of the allocated storage traffic bandwidth. This parameter should only be modified based on your OEM guidance. Changing this forces a new Stack HCI Deployment Setting to be created.

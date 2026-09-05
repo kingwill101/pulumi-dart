@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AppFlexConsumptionAlwaysReady {
   /// The instance count of the `alwaysReady` of the Function App. The minimum number is `0`. The total number of `instanceCount` should not exceed the `maximumInstanceCount`.
-  final pulumi.Input<int>? instanceCount;
+  final pulumi.Input<int?>? instanceCount;
   /// The name of the `alwaysReady` of the Function App.
   final pulumi.Input<String> name;
 
@@ -25,7 +25,7 @@ class AppFlexConsumptionAlwaysReady {
 
   factory AppFlexConsumptionAlwaysReady.fromMap(Map<String, dynamic> map) {
     return AppFlexConsumptionAlwaysReady(
-      instanceCount: (() { final guardedValue = map['instanceCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      instanceCount: (() { final guardedValue = map['instanceCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }

@@ -207,8 +207,8 @@ import 'lication_load_balancer_subnet_association_state.dart';
 /// 		}
 /// 		_, err = appconfiguration.NewLicationLoadBalancerSubnetAssociation(ctx, "example", &appconfiguration.LicationLoadBalancerSubnetAssociationArgs{
 /// 			Name:                      pulumi.String("example"),
-/// 			ApplicationLoadBalancerId: exampleLicationLoadBalancer.ID(),
-/// 			SubnetId:                  exampleSubnet.ID(),
+/// 			ApplicationLoadBalancerId: exampleLicationLoadBalancer.ID().ToIDOutput().ToStringOutput(),
+/// 			SubnetId:                  exampleSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -418,12 +418,12 @@ class LicationLoadBalancerSubnetAssociation extends pulumi.CustomResource {
           'azure:appconfiguration/licationLoadBalancerSubnetAssociation:LicationLoadBalancerSubnetAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     applicationLoadBalancerId = registerOutput<String>('applicationLoadBalancerId');
     this.name = registerOutput<String>('name');
     subnetId = registerOutput<String>('subnetId');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [LicationLoadBalancerSubnetAssociation] resource's state with the given [name] and [id].
@@ -431,11 +431,12 @@ class LicationLoadBalancerSubnetAssociation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LicationLoadBalancerSubnetAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LicationLoadBalancerSubnetAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -452,6 +453,21 @@ class LicationLoadBalancerSubnetAssociation extends pulumi.CustomResource {
     applicationLoadBalancerId = registerOutput<String>('applicationLoadBalancerId');
     this.name = registerOutput<String>('name');
     subnetId = registerOutput<String>('subnetId');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [LicationLoadBalancerSubnetAssociation] resource.
+  LicationLoadBalancerSubnetAssociation.reference(String urn)
+    : super(
+        'azure:appconfiguration/licationLoadBalancerSubnetAssociation:LicationLoadBalancerSubnetAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    applicationLoadBalancerId = registerOutput<String>('applicationLoadBalancerId');
+    this.name = registerOutput<String>('name');
+    subnetId = registerOutput<String>('subnetId');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

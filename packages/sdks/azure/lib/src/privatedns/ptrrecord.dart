@@ -258,13 +258,13 @@ class PTRRecord extends pulumi.CustomResource {
           'azure:privatedns/pTRRecord:PTRRecord',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     fqdn = registerOutput<String>('fqdn');
     this.name = registerOutput<String>('name');
-    records = registerOutput<List<String>>('records');
+    records = registerOutput<List<String>>('records', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     ttl = registerOutput<int>('ttl');
     zoneName = registerOutput<String>('zoneName');
   }
@@ -274,11 +274,12 @@ class PTRRecord extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PTRRecordState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return PTRRecord._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -294,9 +295,27 @@ class PTRRecord extends pulumi.CustomResource {
         ) {
     fqdn = registerOutput<String>('fqdn');
     this.name = registerOutput<String>('name');
-    records = registerOutput<List<String>>('records');
+    records = registerOutput<List<String>>('records', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    ttl = registerOutput<int>('ttl');
+    zoneName = registerOutput<String>('zoneName');
+  }
+
+  /// Creates a typed reference to an existing [PTRRecord] resource.
+  PTRRecord.reference(String urn)
+    : super(
+        'azure:privatedns/pTRRecord:PTRRecord',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    fqdn = registerOutput<String>('fqdn');
+    this.name = registerOutput<String>('name');
+    records = registerOutput<List<String>>('records', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     ttl = registerOutput<int>('ttl');
     zoneName = registerOutput<String>('zoneName');
   }

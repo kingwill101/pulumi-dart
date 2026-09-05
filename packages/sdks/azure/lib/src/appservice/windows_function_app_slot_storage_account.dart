@@ -8,7 +8,7 @@ class WindowsFunctionAppSlotStorageAccount {
   /// The Name of the Storage Account.
   final pulumi.Input<String> accountName;
   /// The path at which to mount the storage share.
-  final pulumi.Input<String>? mountPath;
+  final pulumi.Input<String?>? mountPath;
   /// The name which should be used for this Storage Account.
   final pulumi.Input<String> name;
   /// The Name of the File Share or Container Name for Blob storage.

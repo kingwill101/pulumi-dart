@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PolicyManagedRulesManagedRuleSetRuleGroupOverrideRule {
   /// Describes the override action to be applied when rule matches. Possible values are `Allow`, `AnomalyScoring`, `Block`, `JSChallenge` and `Log`. `JSChallenge` is only valid for rulesets of type `Microsoft_BotManagerRuleSet`.
-  final pulumi.Input<String>? action;
+  final pulumi.Input<String?>? action;
   /// Describes if the managed rule is in enabled state or disabled state. Defaults to `false`.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// Identifier for the managed rule.
   final pulumi.Input<String> id;
 

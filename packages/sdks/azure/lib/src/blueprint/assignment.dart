@@ -22,9 +22,9 @@ import 'assignment_state.dart';
 ///     name: "exampleBlueprint",
 ///     scopeId: example.id,
 /// }));
-/// const exampleGetPublishedVersion = Promise.all([exampleGetDefinition, exampleGetDefinition]).then(([exampleGetDefinition, exampleGetDefinition1]) => azure.blueprint.getPublishedVersion({
+/// const exampleGetPublishedVersion = exampleGetDefinition.then(exampleGetDefinition => azure.blueprint.getPublishedVersion({
 ///     scopeId: exampleGetDefinition.scopeId,
-///     blueprintName: exampleGetDefinition1.name,
+///     blueprintName: exampleGetDefinition.name,
 ///     version: "v1.0.0",
 /// }));
 /// const exampleResourceGroup = new azure.core.ResourceGroup("example", {
@@ -315,7 +315,7 @@ import 'assignment_state.dart';
 /// 			Identity: &blueprint.AssignmentIdentityArgs{
 /// 				Type: pulumi.String("UserAssigned"),
 /// 				IdentityIds: pulumi.StringArray{
-/// 					exampleUserAssignedIdentity.ID(),
+/// 					exampleUserAssignedIdentity.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 			ResourceGroups: pulumi.String(`    {
@@ -650,15 +650,15 @@ class Assignment extends pulumi.CustomResource {
           'azure:blueprint/assignment:Assignment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     blueprintName = registerOutput<String>('blueprintName');
     description = registerOutput<String>('description');
     displayName = registerOutput<String>('displayName');
     identity = registerOutput<AssignmentIdentity>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AssignmentIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
-    lockExcludeActions = registerOutput<List<String>?>('lockExcludeActions');
-    lockExcludePrincipals = registerOutput<List<String>?>('lockExcludePrincipals');
+    lockExcludeActions = registerOutput<List<String>?>('lockExcludeActions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    lockExcludePrincipals = registerOutput<List<String>?>('lockExcludePrincipals', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     lockMode = registerOutput<String?>('lockMode');
     this.name = registerOutput<String>('name');
     parameterValues = registerOutput<String?>('parameterValues');
@@ -673,11 +673,12 @@ class Assignment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AssignmentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Assignment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -696,8 +697,33 @@ class Assignment extends pulumi.CustomResource {
     displayName = registerOutput<String>('displayName');
     identity = registerOutput<AssignmentIdentity>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AssignmentIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
-    lockExcludeActions = registerOutput<List<String>?>('lockExcludeActions');
-    lockExcludePrincipals = registerOutput<List<String>?>('lockExcludePrincipals');
+    lockExcludeActions = registerOutput<List<String>?>('lockExcludeActions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    lockExcludePrincipals = registerOutput<List<String>?>('lockExcludePrincipals', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    lockMode = registerOutput<String?>('lockMode');
+    this.name = registerOutput<String>('name');
+    parameterValues = registerOutput<String?>('parameterValues');
+    resourceGroups = registerOutput<String?>('resourceGroups');
+    targetSubscriptionId = registerOutput<String>('targetSubscriptionId');
+    type = registerOutput<String>('type');
+    versionId = registerOutput<String>('versionId');
+  }
+
+  /// Creates a typed reference to an existing [Assignment] resource.
+  Assignment.reference(String urn)
+    : super(
+        'azure:blueprint/assignment:Assignment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    blueprintName = registerOutput<String>('blueprintName');
+    description = registerOutput<String>('description');
+    displayName = registerOutput<String>('displayName');
+    identity = registerOutput<AssignmentIdentity>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AssignmentIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    lockExcludeActions = registerOutput<List<String>?>('lockExcludeActions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    lockExcludePrincipals = registerOutput<List<String>?>('lockExcludePrincipals', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     lockMode = registerOutput<String?>('lockMode');
     this.name = registerOutput<String>('name');
     parameterValues = registerOutput<String?>('parameterValues');

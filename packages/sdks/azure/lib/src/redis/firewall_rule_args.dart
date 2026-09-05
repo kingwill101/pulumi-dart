@@ -10,7 +10,7 @@ class FirewallRuleArgs {
   /// The highest IP address included in the range.
   final pulumi.Input<String> endIp;
   /// The name of the Firewall Rule. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the Redis Cache. Changing this forces a new resource to be created.
   final pulumi.Input<String> redisCacheName;
   /// The name of the resource group in which this Redis Cache exists. Changing this forces a new resource to be created.

@@ -379,7 +379,7 @@ class Api extends pulumi.CustomResource {
           'azure:apimanagement/api:Api',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     apiManagementName = registerOutput<String>('apiManagementName');
     apiType = registerOutput<String>('apiType');
@@ -394,7 +394,7 @@ class Api extends pulumi.CustomResource {
     oauth2Authorization = registerOutput<ApiOauth2Authorization?>('oauth2Authorization', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApiOauth2Authorization.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     openidAuthentication = registerOutput<ApiOpenidAuthentication?>('openidAuthentication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApiOpenidAuthentication.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     path = registerOutput<String>('path');
-    protocols = registerOutput<List<String>>('protocols');
+    protocols = registerOutput<List<String>>('protocols', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     resourceGroupName = registerOutput<String>('resourceGroupName');
     revision = registerOutput<String>('revision');
     revisionDescription = registerOutput<String?>('revisionDescription');
@@ -413,11 +413,12 @@ class Api extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ApiState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Api._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -444,7 +445,43 @@ class Api extends pulumi.CustomResource {
     oauth2Authorization = registerOutput<ApiOauth2Authorization?>('oauth2Authorization', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApiOauth2Authorization.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     openidAuthentication = registerOutput<ApiOpenidAuthentication?>('openidAuthentication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApiOpenidAuthentication.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     path = registerOutput<String>('path');
-    protocols = registerOutput<List<String>>('protocols');
+    protocols = registerOutput<List<String>>('protocols', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    revision = registerOutput<String>('revision');
+    revisionDescription = registerOutput<String?>('revisionDescription');
+    serviceUrl = registerOutput<String>('serviceUrl');
+    sourceApiId = registerOutput<String?>('sourceApiId');
+    subscriptionKeyParameterNames = registerOutput<ApiSubscriptionKeyParameterNames>('subscriptionKeyParameterNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApiSubscriptionKeyParameterNames.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    subscriptionRequired = registerOutput<bool?>('subscriptionRequired');
+    termsOfServiceUrl = registerOutput<String?>('termsOfServiceUrl');
+    version = registerOutput<String>('version');
+    versionDescription = registerOutput<String?>('versionDescription');
+    versionSetId = registerOutput<String>('versionSetId');
+  }
+
+  /// Creates a typed reference to an existing [Api] resource.
+  Api.reference(String urn)
+    : super(
+        'azure:apimanagement/api:Api',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    apiManagementName = registerOutput<String>('apiManagementName');
+    apiType = registerOutput<String>('apiType');
+    contact = registerOutput<ApiContact?>('contact', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApiContact.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    import = registerOutput<ApiImport?>('import', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApiImport.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    isCurrent = registerOutput<bool>('isCurrent');
+    isOnline = registerOutput<bool>('isOnline');
+    license = registerOutput<ApiLicense?>('license', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApiLicense.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    oauth2Authorization = registerOutput<ApiOauth2Authorization?>('oauth2Authorization', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApiOauth2Authorization.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    openidAuthentication = registerOutput<ApiOpenidAuthentication?>('openidAuthentication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApiOpenidAuthentication.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    path = registerOutput<String>('path');
+    protocols = registerOutput<List<String>>('protocols', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     resourceGroupName = registerOutput<String>('resourceGroupName');
     revision = registerOutput<String>('revision');
     revisionDescription = registerOutput<String?>('revisionDescription');

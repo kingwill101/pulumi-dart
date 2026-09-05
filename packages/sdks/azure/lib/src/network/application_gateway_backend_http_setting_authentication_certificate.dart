@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApplicationGatewayBackendHttpSettingAuthenticationCertificate {
   /// The ID of the Rewrite Rule Set
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The Name of the Authentication Certificate to use.
   final pulumi.Input<String> name;
 

@@ -36,8 +36,8 @@ class GetPoolDataDisk {
   factory GetPoolDataDisk.fromMap(Map<String, dynamic> map) {
     return GetPoolDataDisk(
       caching: pulumi.Input.fromValue(map['caching'] as String),
-      diskSizeGb: pulumi.Input.fromValue(map['diskSizeGb'] as int),
-      lun: pulumi.Input.fromValue(map['lun'] as int),
+      diskSizeGb: pulumi.Input.fromValue((map['diskSizeGb'] as num).toInt()),
+      lun: pulumi.Input.fromValue((map['lun'] as num).toInt()),
       storageAccountType: pulumi.Input.fromValue(map['storageAccountType'] as String),
     );
   }

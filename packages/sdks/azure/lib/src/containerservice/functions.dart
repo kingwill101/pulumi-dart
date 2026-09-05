@@ -174,6 +174,17 @@ Future<GetClusterNodePoolResult> getClusterNodePool(
   return GetClusterNodePoolResult.fromMap(result);
 }
 
+pulumi.Output<GetClusterNodePoolResult> getClusterNodePoolOutput(
+  GetClusterNodePoolArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:containerservice/getClusterNodePool:getClusterNodePool',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetClusterNodePoolResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Kubernetes Fleet Manager.
 ///
 /// ## Example Usage
@@ -319,6 +330,17 @@ Future<GetFleetManagerResult> getFleetManager(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetFleetManagerResult.fromMap(result);
+}
+
+pulumi.Output<GetFleetManagerResult> getFleetManagerOutput(
+  GetFleetManagerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:containerservice/getFleetManager:getFleetManager',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFleetManagerResult.fromMap);
 }
 
 /// Use this data source to access information about an existing Container Group instance.
@@ -486,6 +508,17 @@ Future<GetGroupResult> getGroup(
   return GetGroupResult.fromMap(result);
 }
 
+pulumi.Output<GetGroupResult> getGroupOutput(
+  GetGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:containerservice/getGroup:getGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGroupResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Managed Kubernetes Cluster (AKS).
 ///
 /// ## Example Usage
@@ -619,6 +652,17 @@ Future<GetKubernetesClusterResult> getKubernetesCluster(
   return GetKubernetesClusterResult.fromMap(result);
 }
 
+pulumi.Output<GetKubernetesClusterResult> getKubernetesClusterOutput(
+  GetKubernetesClusterArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:containerservice/getKubernetesCluster:getKubernetesCluster',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetKubernetesClusterResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Kubernetes Node Pool Snapshot.
 ///
 /// ## Example Usage
@@ -750,6 +794,17 @@ Future<GetKubernetesNodePoolSnapshotResult> getKubernetesNodePoolSnapshot(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetKubernetesNodePoolSnapshotResult.fromMap(result);
+}
+
+pulumi.Output<GetKubernetesNodePoolSnapshotResult> getKubernetesNodePoolSnapshotOutput(
+  GetKubernetesNodePoolSnapshotArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:containerservice/getKubernetesNodePoolSnapshot:getKubernetesNodePoolSnapshot',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetKubernetesNodePoolSnapshotResult.fromMap);
 }
 
 /// Use this data source to retrieve the version of Kubernetes supported by Azure Kubernetes Service.
@@ -901,6 +956,17 @@ Future<GetKubernetesServiceVersionsResult> getKubernetesServiceVersions(
   return GetKubernetesServiceVersionsResult.fromMap(result);
 }
 
+pulumi.Output<GetKubernetesServiceVersionsResult> getKubernetesServiceVersionsOutput(
+  GetKubernetesServiceVersionsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:containerservice/getKubernetesServiceVersions:getKubernetesServiceVersions',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetKubernetesServiceVersionsResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Container Registry.
 ///
 /// ## Example Usage
@@ -1048,6 +1114,17 @@ Future<GetRegistryResult> getRegistry(
   return GetRegistryResult.fromMap(result);
 }
 
+pulumi.Output<GetRegistryResult> getRegistryOutput(
+  GetRegistryArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:containerservice/getRegistry:getRegistry',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegistryResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Container Registry Cache Rule.
 ///
 /// ## Example Usage
@@ -1103,6 +1180,17 @@ Future<GetRegistryCacheRuleResult> getRegistryCacheRule(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRegistryCacheRuleResult.fromMap(result);
+}
+
+pulumi.Output<GetRegistryCacheRuleResult> getRegistryCacheRuleOutput(
+  GetRegistryCacheRuleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:containerservice/getRegistryCacheRule:getRegistryCacheRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegistryCacheRuleResult.fromMap);
 }
 
 /// Use this data source to access information about an existing Container Registry scope map.
@@ -1259,6 +1347,17 @@ Future<GetRegistryScopeMapResult> getRegistryScopeMap(
   return GetRegistryScopeMapResult.fromMap(result);
 }
 
+pulumi.Output<GetRegistryScopeMapResult> getRegistryScopeMapOutput(
+  GetRegistryScopeMapArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:containerservice/getRegistryScopeMap:getRegistryScopeMap',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegistryScopeMapResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Container Registry token.
 ///
 /// ## Example Usage
@@ -1411,4 +1510,15 @@ Future<GetRegistryTokenResult> getRegistryToken(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRegistryTokenResult.fromMap(result);
+}
+
+pulumi.Output<GetRegistryTokenResult> getRegistryTokenOutput(
+  GetRegistryTokenArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:containerservice/getRegistryToken:getRegistryToken',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegistryTokenResult.fromMap);
 }

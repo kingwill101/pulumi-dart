@@ -220,7 +220,7 @@ import 'linked_service_kusto_state.dart';
 /// 		}
 /// 		_, err = datafactory.NewLinkedServiceKusto(ctx, "example", &datafactory.LinkedServiceKustoArgs{
 /// 			Name:               pulumi.String("example"),
-/// 			DataFactoryId:      exampleFactory.ID(),
+/// 			DataFactoryId:      exampleFactory.ID().ToIDOutput().ToStringOutput(),
 /// 			KustoEndpoint:      exampleCluster.Uri,
 /// 			KustoDatabaseName:  exampleDatabase.Name,
 /// 			UseManagedIdentity: pulumi.Bool(true),
@@ -233,14 +233,10 @@ import 'linked_service_kusto_state.dart';
 /// 			ResourceGroupName: example.Name,
 /// 			ClusterName:       exampleCluster.Name,
 /// 			DatabaseName:      exampleDatabase.Name,
-/// 			TenantId: pulumi.String(exampleFactory.Identity.ApplyT(func(identity datafactory.FactoryIdentity) (*string, error) {
-/// 				return identity.TenantId, nil
-/// 			}).(pulumi.StringPtrOutput)),
-/// 			PrincipalId: pulumi.String(exampleFactory.Identity.ApplyT(func(identity datafactory.FactoryIdentity) (*string, error) {
-/// 				return identity.PrincipalId, nil
-/// 			}).(pulumi.StringPtrOutput)),
-/// 			PrincipalType: pulumi.String("App"),
-/// 			Role:          pulumi.String("Viewer"),
+/// 			TenantId:          exampleFactory.Identity.TenantId(),
+/// 			PrincipalId:       exampleFactory.Identity.PrincipalId(),
+/// 			PrincipalType:     pulumi.String("App"),
+/// 			Role:              pulumi.String("Viewer"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -500,19 +496,20 @@ class LinkedServiceKusto extends pulumi.CustomResource {
           'azure:datafactory/linkedServiceKusto:LinkedServiceKusto',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['servicePrincipalKey'],
         ) {
-    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
-    annotations = registerOutput<List<String>?>('annotations');
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     dataFactoryId = registerOutput<String>('dataFactoryId');
     description = registerOutput<String?>('description');
     integrationRuntimeName = registerOutput<String?>('integrationRuntimeName');
     kustoDatabaseName = registerOutput<String>('kustoDatabaseName');
     kustoEndpoint = registerOutput<String>('kustoEndpoint');
     this.name = registerOutput<String>('name');
-    parameters = registerOutput<Map<String, String>?>('parameters');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     servicePrincipalId = registerOutput<String?>('servicePrincipalId');
-    servicePrincipalKey = registerOutput<String?>('servicePrincipalKey');
+    servicePrincipalKey = registerOutput<String?>('servicePrincipalKey', isSecret: true);
     tenant = registerOutput<String?>('tenant');
     useManagedIdentity = registerOutput<bool?>('useManagedIdentity');
   }
@@ -522,11 +519,12 @@ class LinkedServiceKusto extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LinkedServiceKustoState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LinkedServiceKusto._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -540,17 +538,42 @@ class LinkedServiceKusto extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
-    annotations = registerOutput<List<String>?>('annotations');
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     dataFactoryId = registerOutput<String>('dataFactoryId');
     description = registerOutput<String?>('description');
     integrationRuntimeName = registerOutput<String?>('integrationRuntimeName');
     kustoDatabaseName = registerOutput<String>('kustoDatabaseName');
     kustoEndpoint = registerOutput<String>('kustoEndpoint');
     this.name = registerOutput<String>('name');
-    parameters = registerOutput<Map<String, String>?>('parameters');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     servicePrincipalId = registerOutput<String?>('servicePrincipalId');
-    servicePrincipalKey = registerOutput<String?>('servicePrincipalKey');
+    servicePrincipalKey = registerOutput<String?>('servicePrincipalKey', isSecret: true);
+    tenant = registerOutput<String?>('tenant');
+    useManagedIdentity = registerOutput<bool?>('useManagedIdentity');
+  }
+
+  /// Creates a typed reference to an existing [LinkedServiceKusto] resource.
+  LinkedServiceKusto.reference(String urn)
+    : super(
+        'azure:datafactory/linkedServiceKusto:LinkedServiceKusto',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['servicePrincipalKey'],
+        isResourceReference: true,
+      ) {
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    dataFactoryId = registerOutput<String>('dataFactoryId');
+    description = registerOutput<String?>('description');
+    integrationRuntimeName = registerOutput<String?>('integrationRuntimeName');
+    kustoDatabaseName = registerOutput<String>('kustoDatabaseName');
+    kustoEndpoint = registerOutput<String>('kustoEndpoint');
+    this.name = registerOutput<String>('name');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    servicePrincipalId = registerOutput<String?>('servicePrincipalId');
+    servicePrincipalKey = registerOutput<String?>('servicePrincipalKey', isSecret: true);
     tenant = registerOutput<String?>('tenant');
     useManagedIdentity = registerOutput<bool?>('useManagedIdentity');
   }

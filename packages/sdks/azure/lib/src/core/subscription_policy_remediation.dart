@@ -124,8 +124,8 @@ import 'subscription_policy_remediation_state.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		tmpJSON0, err := json.Marshal(map[string]interface{}{
-/// 			"listOfAllowedLocations": map[string]interface{}{
+/// 		tmpJSON0, err := json.Marshal(map[string]map[string][]string{
+/// 			"listOfAllowedLocations": map[string][]string{
 /// 				"value": []string{
 /// 					"West Europe",
 /// 					"East US",
@@ -148,7 +148,7 @@ import 'subscription_policy_remediation_state.dart';
 /// 		_, err = core.NewSubscriptionPolicyRemediation(ctx, "example", &core.SubscriptionPolicyRemediationArgs{
 /// 			Name:               pulumi.String("example"),
 /// 			SubscriptionId:     pulumi.String(example.Id),
-/// 			PolicyAssignmentId: exampleSubscriptionPolicyAssignment.ID(),
+/// 			PolicyAssignmentId: exampleSubscriptionPolicyAssignment.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -328,10 +328,10 @@ class SubscriptionPolicyRemediation extends pulumi.CustomResource {
           'azure:core/subscriptionPolicyRemediation:SubscriptionPolicyRemediation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     failurePercentage = registerOutput<double?>('failurePercentage');
-    locationFilters = registerOutput<List<String>?>('locationFilters');
+    locationFilters = registerOutput<List<String>?>('locationFilters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     parallelDeployments = registerOutput<int?>('parallelDeployments');
     policyAssignmentId = registerOutput<String>('policyAssignmentId');
@@ -346,11 +346,12 @@ class SubscriptionPolicyRemediation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SubscriptionPolicyRemediationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SubscriptionPolicyRemediation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -365,7 +366,27 @@ class SubscriptionPolicyRemediation extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     failurePercentage = registerOutput<double?>('failurePercentage');
-    locationFilters = registerOutput<List<String>?>('locationFilters');
+    locationFilters = registerOutput<List<String>?>('locationFilters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    this.name = registerOutput<String>('name');
+    parallelDeployments = registerOutput<int?>('parallelDeployments');
+    policyAssignmentId = registerOutput<String>('policyAssignmentId');
+    policyDefinitionReferenceId = registerOutput<String?>('policyDefinitionReferenceId');
+    resourceCount = registerOutput<int?>('resourceCount');
+    resourceDiscoveryMode = registerOutput<String?>('resourceDiscoveryMode');
+    subscriptionId = registerOutput<String>('subscriptionId');
+  }
+
+  /// Creates a typed reference to an existing [SubscriptionPolicyRemediation] resource.
+  SubscriptionPolicyRemediation.reference(String urn)
+    : super(
+        'azure:core/subscriptionPolicyRemediation:SubscriptionPolicyRemediation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    failurePercentage = registerOutput<double?>('failurePercentage');
+    locationFilters = registerOutput<List<String>?>('locationFilters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     parallelDeployments = registerOutput<int?>('parallelDeployments');
     policyAssignmentId = registerOutput<String>('policyAssignmentId');

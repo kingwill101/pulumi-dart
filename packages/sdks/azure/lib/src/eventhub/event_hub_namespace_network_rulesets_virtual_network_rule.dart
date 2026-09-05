@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EventHubNamespaceNetworkRulesetsVirtualNetworkRule {
   /// Are missing virtual network service endpoints ignored?
-  final pulumi.Input<bool>? ignoreMissingVirtualNetworkServiceEndpoint;
+  final pulumi.Input<bool?>? ignoreMissingVirtualNetworkServiceEndpoint;
   /// The id of the subnet to match on.
   final pulumi.Input<String> subnetId;
 

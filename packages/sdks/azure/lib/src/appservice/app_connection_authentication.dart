@@ -4,17 +4,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AppConnectionAuthentication {
   /// Service principal certificate for `servicePrincipal` auth. Should be specified when `type` is set to `servicePrincipalCertificate`.
-  final pulumi.Input<String>? certificate;
+  final pulumi.Input<String?>? certificate;
   /// Client ID for `userAssignedIdentity` or `servicePrincipal` auth. Should be specified when `type` is set to `servicePrincipalSecret` or `servicePrincipalCertificate`. When `type` is set to `userAssignedIdentity`, `clientId` and `subscriptionId` should be either both specified or both not specified.
-  final pulumi.Input<String>? clientId;
+  final pulumi.Input<String?>? clientId;
   /// Username or account name for secret auth. `name` and `secret` should be either both specified or both not specified when `type` is set to `secret`.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Principal ID for `servicePrincipal` auth. Should be specified when `type` is set to `servicePrincipalSecret` or `servicePrincipalCertificate`.
-  final pulumi.Input<String>? principalId;
+  final pulumi.Input<String?>? principalId;
   /// Password or account key for secret auth. `secret` and `name` should be either both specified or both not specified when `type` is set to `secret`.
-  final pulumi.Input<String>? secret;
+  final pulumi.Input<String?>? secret;
   /// Subscription ID for `userAssignedIdentity`. `subscriptionId` and `clientId` should be either both specified or both not specified.
-  final pulumi.Input<String>? subscriptionId;
+  final pulumi.Input<String?>? subscriptionId;
   /// The authentication type. Possible values are `systemAssignedIdentity`, `userAssignedIdentity`, `servicePrincipalSecret`, `servicePrincipalCertificate`, `secret`. Changing this forces a new resource to be created.
   final pulumi.Input<String> type;
 

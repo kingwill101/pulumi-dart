@@ -6,11 +6,11 @@ class SourceControlSlotGithubActionConfigurationContainerConfiguration {
   /// The image name for the build. Changing this forces a new resource to be created.
   final pulumi.Input<String> imageName;
   /// The password used to upload the image to the container registry. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? registryPassword;
+  final pulumi.Input<String?>? registryPassword;
   /// The server URL for the container registry where the build will be hosted. Changing this forces a new resource to be created.
   final pulumi.Input<String> registryUrl;
   /// The username used to upload the image to the container registry. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? registryUsername;
+  final pulumi.Input<String?>? registryUsername;
 
   /// Creates a new [SourceControlSlotGithubActionConfigurationContainerConfiguration].
   /// [imageName] The image name for the build. Changing this forces a new resource to be created.

@@ -9,17 +9,17 @@ import 'virtual_network_subnet.dart';
 /// {@macro pulumi_devtest_virtual_network_virtual_network_args_doc}
 class VirtualNetworkArgs {
   /// A description for the Virtual Network.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Specifies the name of the Dev Test Lab in which the Virtual Network should be created. Changing this forces a new resource to be created.
   final pulumi.Input<String> labName;
   /// Specifies the name of the Dev Test Virtual Network. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the resource group in which the Dev Test Lab resource exists. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
   /// A `subnet` block as defined below.
-  final pulumi.Input<VirtualNetworkSubnet>? subnet;
+  final pulumi.Input<VirtualNetworkSubnet?>? subnet;
   /// A mapping of tags to assign to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [VirtualNetworkArgs].
   /// [description] A description for the Virtual Network.

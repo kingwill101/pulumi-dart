@@ -10,9 +10,9 @@ class GetNamespaceAuthorizationRuleArgs {
   /// Specifies the name of the ServiceBus Namespace Authorization Rule.
   final pulumi.Input<String> name;
   /// Specifies the ID of the ServiceBus Namespace where the Service Bus Namespace Authorization Rule exists.
-  final pulumi.Input<String>? namespaceId;
-  final pulumi.Input<String>? namespaceName;
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? namespaceId;
+  final pulumi.Input<String?>? namespaceName;
+  final pulumi.Input<String?>? resourceGroupName;
 
   /// Creates a new [GetNamespaceAuthorizationRuleArgs].
   /// [name] Specifies the name of the ServiceBus Namespace Authorization Rule.

@@ -8,13 +8,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_compute_get_image_get_image_args_doc}
 class GetImageArgs {
   /// The name of the Image.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Regex pattern of the image to match.
-  final pulumi.Input<String>? nameRegex;
+  final pulumi.Input<String?>? nameRegex;
   /// The Name of the Resource Group where this Image exists.
   final pulumi.Input<String> resourceGroupName;
   /// By default when matching by regex, images are sorted by name in ascending order and the first match is chosen, to sort descending, set this flag.
-  final pulumi.Input<bool>? sortDescending;
+  final pulumi.Input<bool?>? sortDescending;
 
   /// Creates a new [GetImageArgs].
   /// [name] The name of the Image.

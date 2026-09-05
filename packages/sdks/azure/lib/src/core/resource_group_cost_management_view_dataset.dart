@@ -11,9 +11,9 @@ class ResourceGroupCostManagementViewDataset {
   /// The granularity of rows in the report. Possible values are `Daily` and `Monthly`.
   final pulumi.Input<String> granularity;
   /// One or more `grouping` blocks as defined below.
-  final pulumi.Input<List<ResourceGroupCostManagementViewDatasetGrouping>>? groupings;
+  final pulumi.Input<List<ResourceGroupCostManagementViewDatasetGrouping>?>? groupings;
   /// One or more `sorting` blocks as defined below, containing the order by expression to be used in the report
-  final pulumi.Input<List<ResourceGroupCostManagementViewDatasetSorting>>? sortings;
+  final pulumi.Input<List<ResourceGroupCostManagementViewDatasetSorting>?>? sortings;
 
   /// Creates a new [ResourceGroupCostManagementViewDataset].
   /// [aggregations] One or more `aggregation` blocks as defined above.

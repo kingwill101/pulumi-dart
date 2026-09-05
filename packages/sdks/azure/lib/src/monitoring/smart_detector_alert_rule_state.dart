@@ -6,27 +6,27 @@ import 'smart_detector_alert_rule_action_group.dart';
 /// Input properties used for looking up and filtering SmartDetectorAlertRule resources.
 class SmartDetectorAlertRuleState {
   /// An `actionGroup` block as defined below.
-  final pulumi.Input<SmartDetectorAlertRuleActionGroup>? actionGroup;
+  final pulumi.Input<SmartDetectorAlertRuleActionGroup?>? actionGroup;
   /// Specifies a description for the Smart Detector Alert Rule.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Specifies the Built-In Smart Detector type that this alert rule will use. Currently the only possible values are `FailureAnomaliesDetector`, `RequestPerformanceDegradationDetector`, `DependencyPerformanceDegradationDetector`, `ExceptionVolumeChangedDetector`, `TraceSeverityDetector`, `MemoryLeakDetector`.
-  final pulumi.Input<String>? detectorType;
+  final pulumi.Input<String?>? detectorType;
   /// Is the Smart Detector Alert Rule enabled? Defaults to `true`.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// Specifies the frequency of this Smart Detector Alert Rule in ISO8601 format.
-  final pulumi.Input<String>? frequency;
+  final pulumi.Input<String?>? frequency;
   /// Specifies the name of the Monitor Smart Detector Alert Rule. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specifies the name of the resource group in which the Monitor Smart Detector Alert Rule should exist. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// Specifies the scopes of this Smart Detector Alert Rule.
-  final pulumi.Input<List<String>>? scopeResourceIds;
+  final pulumi.Input<List<String>?>? scopeResourceIds;
   /// Specifies the severity of this Smart Detector Alert Rule. Possible values are `Sev0`, `Sev1`, `Sev2`, `Sev3` or `Sev4`.
-  final pulumi.Input<String>? severity;
+  final pulumi.Input<String?>? severity;
   /// A mapping of tags to assign to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Specifies the duration (in ISO8601 format) to wait before notifying on the alert rule again.
-  final pulumi.Input<String>? throttlingDuration;
+  final pulumi.Input<String?>? throttlingDuration;
 
   /// Creates a new [SmartDetectorAlertRuleState].
   /// [actionGroup] An `actionGroup` block as defined below.

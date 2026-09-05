@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering GatewayCertificateAuthority resources.
 class GatewayCertificateAuthorityState {
   /// The ID of the API Management Service. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? apiManagementId;
+  final pulumi.Input<String?>? apiManagementId;
   /// The name of the API Management Certificate. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? certificateName;
+  final pulumi.Input<String?>? certificateName;
   /// The name of the API Management Gateway. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? gatewayName;
+  final pulumi.Input<String?>? gatewayName;
   /// Whether the API Management Gateway Certificate Authority is trusted.
-  final pulumi.Input<bool>? isTrusted;
+  final pulumi.Input<bool?>? isTrusted;
 
   /// Creates a new [GatewayCertificateAuthorityState].
   /// [apiManagementId] The ID of the API Management Service. Changing this forces a new resource to be created.

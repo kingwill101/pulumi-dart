@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FrontdoorExplicitResourceOrder {
-  final pulumi.Input<List<String>>? backendPoolHealthProbeIds;
-  final pulumi.Input<List<String>>? backendPoolIds;
-  final pulumi.Input<List<String>>? backendPoolLoadBalancingIds;
-  final pulumi.Input<List<String>>? frontendEndpointIds;
-  final pulumi.Input<List<String>>? routingRuleIds;
+  final pulumi.Input<List<String>?>? backendPoolHealthProbeIds;
+  final pulumi.Input<List<String>?>? backendPoolIds;
+  final pulumi.Input<List<String>?>? backendPoolLoadBalancingIds;
+  final pulumi.Input<List<String>?>? frontendEndpointIds;
+  final pulumi.Input<List<String>?>? routingRuleIds;
 
   /// Creates a new [FrontdoorExplicitResourceOrder].
   /// [backendPoolHealthProbeIds] Optional.

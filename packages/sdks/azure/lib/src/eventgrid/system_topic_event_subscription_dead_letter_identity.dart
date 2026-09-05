@@ -6,7 +6,7 @@ class SystemTopicEventSubscriptionDeadLetterIdentity {
   /// Specifies the type of Managed Service Identity that is used for dead lettering. Allowed value is `SystemAssigned`, `UserAssigned`.
   final pulumi.Input<String> type;
   /// The user identity associated with the resource.
-  final pulumi.Input<String>? userAssignedIdentity;
+  final pulumi.Input<String?>? userAssignedIdentity;
 
   /// Creates a new [SystemTopicEventSubscriptionDeadLetterIdentity].
   /// [type] Specifies the type of Managed Service Identity that is used for dead lettering. Allowed value is `SystemAssigned`, `UserAssigned`.

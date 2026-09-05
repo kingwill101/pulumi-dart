@@ -25,7 +25,7 @@ class VpnSiteLinkBgp {
 
   factory VpnSiteLinkBgp.fromMap(Map<String, dynamic> map) {
     return VpnSiteLinkBgp(
-      asn: pulumi.Input.fromValue(map['asn'] as int),
+      asn: pulumi.Input.fromValue((map['asn'] as num).toInt()),
       peeringAddress: pulumi.Input.fromValue(map['peeringAddress'] as String),
     );
   }

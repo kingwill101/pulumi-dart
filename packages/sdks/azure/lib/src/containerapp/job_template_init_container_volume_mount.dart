@@ -8,7 +8,7 @@ class JobTemplateInitContainerVolumeMount {
   /// The path within the container at which the volume should be mounted. Must not contain `:`.
   final pulumi.Input<String> path;
   /// The sub path of the volume to be mounted in the container.
-  final pulumi.Input<String>? subPath;
+  final pulumi.Input<String?>? subPath;
 
   /// Creates a new [JobTemplateInitContainerVolumeMount].
   /// [name] The name of the volume to mount. This must match the name of a volume defined in the `volume` block.

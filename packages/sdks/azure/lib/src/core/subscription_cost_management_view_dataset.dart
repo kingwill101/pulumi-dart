@@ -11,9 +11,9 @@ class SubscriptionCostManagementViewDataset {
   /// The granularity of rows in the report. Possible values are `Daily` and `Monthly`.
   final pulumi.Input<String> granularity;
   /// One or more `grouping` blocks as defined below.
-  final pulumi.Input<List<SubscriptionCostManagementViewDatasetGrouping>>? groupings;
+  final pulumi.Input<List<SubscriptionCostManagementViewDatasetGrouping>?>? groupings;
   /// One or more `sorting` blocks as defined below, containing the order by expression to be used in the report
-  final pulumi.Input<List<SubscriptionCostManagementViewDatasetSorting>>? sortings;
+  final pulumi.Input<List<SubscriptionCostManagementViewDatasetSorting>?>? sortings;
 
   /// Creates a new [SubscriptionCostManagementViewDataset].
   /// [aggregations] One or more `aggregation` blocks as defined above.

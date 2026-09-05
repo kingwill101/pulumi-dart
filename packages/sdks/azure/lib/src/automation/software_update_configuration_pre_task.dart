@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SoftwareUpdateConfigurationPreTask {
   /// Specifies a map of parameters for the task.
-  final pulumi.Input<Map<String, String>>? parameters;
+  final pulumi.Input<Map<String, String>?>? parameters;
   /// The name of the runbook for the pre task.
-  final pulumi.Input<String>? source;
+  final pulumi.Input<String?>? source;
 
   /// Creates a new [SoftwareUpdateConfigurationPreTask].
   /// [parameters] Specifies a map of parameters for the task.

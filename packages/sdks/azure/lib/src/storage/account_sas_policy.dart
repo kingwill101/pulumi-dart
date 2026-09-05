@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AccountSasPolicy {
   /// The SAS expiration action. Possible values are `Log` and `Block`. Defaults to `Log`.
-  final pulumi.Input<String>? expirationAction;
+  final pulumi.Input<String?>? expirationAction;
   /// The SAS expiration period in format of `DD.HH:MM:SS`.
   final pulumi.Input<String> expirationPeriod;
 

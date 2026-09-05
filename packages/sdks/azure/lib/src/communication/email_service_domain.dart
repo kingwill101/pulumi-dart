@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'email_service_domain_args.dart';
 import 'email_service_domain_state.dart';
+import 'email_service_domain_verification_record.dart';
 
 /// Manages an Email Communication Service Domain.
 ///
@@ -100,7 +101,7 @@ import 'email_service_domain_state.dart';
 /// 		}
 /// 		_, err = communication.NewEmailServiceDomain(ctx, "example", &communication.EmailServiceDomainArgs{
 /// 			Name:             pulumi.String("AzureManagedDomain"),
-/// 			EmailServiceId:   exampleEmailService.ID(),
+/// 			EmailServiceId:   exampleEmailService.ID().ToIDOutput().ToStringOutput(),
 /// 			DomainManagement: pulumi.String("AzureManaged"),
 /// 		})
 /// 		if err != nil {
@@ -233,7 +234,7 @@ class EmailServiceDomain extends pulumi.CustomResource {
   /// Describes user engagement tracking is enabled or disabled. Defaults to `false`.
   late final pulumi.Output<bool?> userEngagementTrackingEnabled;
   /// (Optional) An `verificationRecords` block as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>> verificationRecords;
+  late final pulumi.Output<List<EmailServiceDomainVerificationRecord>> verificationRecords;
 
   /// Creates a new [EmailServiceDomain].
   /// [name] The Pulumi resource name.
@@ -247,16 +248,16 @@ class EmailServiceDomain extends pulumi.CustomResource {
           'azure:communication/emailServiceDomain:EmailServiceDomain',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     domainManagement = registerOutput<String>('domainManagement');
     emailServiceId = registerOutput<String>('emailServiceId');
     fromSenderDomain = registerOutput<String>('fromSenderDomain');
     mailFromSenderDomain = registerOutput<String>('mailFromSenderDomain');
     this.name = registerOutput<String>('name');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     userEngagementTrackingEnabled = registerOutput<bool?>('userEngagementTrackingEnabled');
-    verificationRecords = registerOutput<List<Map<String, dynamic>>>('verificationRecords');
+    verificationRecords = registerOutput<List<EmailServiceDomainVerificationRecord>>('verificationRecords', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EmailServiceDomainVerificationRecord>(guardedValue, (value) => EmailServiceDomainVerificationRecord.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [EmailServiceDomain] resource's state with the given [name] and [id].
@@ -264,11 +265,12 @@ class EmailServiceDomain extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EmailServiceDomainState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return EmailServiceDomain._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -287,8 +289,27 @@ class EmailServiceDomain extends pulumi.CustomResource {
     fromSenderDomain = registerOutput<String>('fromSenderDomain');
     mailFromSenderDomain = registerOutput<String>('mailFromSenderDomain');
     this.name = registerOutput<String>('name');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     userEngagementTrackingEnabled = registerOutput<bool?>('userEngagementTrackingEnabled');
-    verificationRecords = registerOutput<List<Map<String, dynamic>>>('verificationRecords');
+    verificationRecords = registerOutput<List<EmailServiceDomainVerificationRecord>>('verificationRecords', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EmailServiceDomainVerificationRecord>(guardedValue, (value) => EmailServiceDomainVerificationRecord.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [EmailServiceDomain] resource.
+  EmailServiceDomain.reference(String urn)
+    : super(
+        'azure:communication/emailServiceDomain:EmailServiceDomain',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    domainManagement = registerOutput<String>('domainManagement');
+    emailServiceId = registerOutput<String>('emailServiceId');
+    fromSenderDomain = registerOutput<String>('fromSenderDomain');
+    mailFromSenderDomain = registerOutput<String>('mailFromSenderDomain');
+    this.name = registerOutput<String>('name');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    userEngagementTrackingEnabled = registerOutput<bool?>('userEngagementTrackingEnabled');
+    verificationRecords = registerOutput<List<EmailServiceDomainVerificationRecord>>('verificationRecords', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EmailServiceDomainVerificationRecord>(guardedValue, (value) => EmailServiceDomainVerificationRecord.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

@@ -1,7 +1,9 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'api_operation_args.dart';
 import 'api_operation_request.dart';
+import 'api_operation_response.dart';
 import 'api_operation_state.dart';
+import 'api_operation_template_parameter.dart';
 
 /// Manages an API Operation within an API Management Service.
 ///
@@ -310,9 +312,9 @@ class ApiOperation extends pulumi.CustomResource {
   /// The Name of the Resource Group in which the API Management Service exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
   /// One or more `response` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> responses;
+  late final pulumi.Output<List<ApiOperationResponse>?> responses;
   /// One or more `templateParameter` blocks as defined below. Required if `urlTemplate` contains one or more parameters.
-  late final pulumi.Output<List<Map<String, dynamic>>?> templateParameters;
+  late final pulumi.Output<List<ApiOperationTemplateParameter>?> templateParameters;
   /// The relative URL Template identifying the target resource for this operation, which may include parameters.
   late final pulumi.Output<String> urlTemplate;
 
@@ -328,7 +330,7 @@ class ApiOperation extends pulumi.CustomResource {
           'azure:apimanagement/apiOperation:ApiOperation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     apiManagementName = registerOutput<String>('apiManagementName');
     apiName = registerOutput<String>('apiName');
@@ -338,8 +340,8 @@ class ApiOperation extends pulumi.CustomResource {
     operationId = registerOutput<String>('operationId');
     request = registerOutput<ApiOperationRequest>('request', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApiOperationRequest.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    responses = registerOutput<List<Map<String, dynamic>>?>('responses');
-    templateParameters = registerOutput<List<Map<String, dynamic>>?>('templateParameters');
+    responses = registerOutput<List<ApiOperationResponse>?>('responses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApiOperationResponse>(guardedValue, (value) => ApiOperationResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    templateParameters = registerOutput<List<ApiOperationTemplateParameter>?>('templateParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApiOperationTemplateParameter>(guardedValue, (value) => ApiOperationTemplateParameter.fromMap((value as Map).cast<String, dynamic>())); });
     urlTemplate = registerOutput<String>('urlTemplate');
   }
 
@@ -348,11 +350,12 @@ class ApiOperation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ApiOperationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ApiOperation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -374,8 +377,30 @@ class ApiOperation extends pulumi.CustomResource {
     operationId = registerOutput<String>('operationId');
     request = registerOutput<ApiOperationRequest>('request', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApiOperationRequest.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    responses = registerOutput<List<Map<String, dynamic>>?>('responses');
-    templateParameters = registerOutput<List<Map<String, dynamic>>?>('templateParameters');
+    responses = registerOutput<List<ApiOperationResponse>?>('responses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApiOperationResponse>(guardedValue, (value) => ApiOperationResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    templateParameters = registerOutput<List<ApiOperationTemplateParameter>?>('templateParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApiOperationTemplateParameter>(guardedValue, (value) => ApiOperationTemplateParameter.fromMap((value as Map).cast<String, dynamic>())); });
+    urlTemplate = registerOutput<String>('urlTemplate');
+  }
+
+  /// Creates a typed reference to an existing [ApiOperation] resource.
+  ApiOperation.reference(String urn)
+    : super(
+        'azure:apimanagement/apiOperation:ApiOperation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    apiManagementName = registerOutput<String>('apiManagementName');
+    apiName = registerOutput<String>('apiName');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    method = registerOutput<String>('method');
+    operationId = registerOutput<String>('operationId');
+    request = registerOutput<ApiOperationRequest>('request', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApiOperationRequest.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    responses = registerOutput<List<ApiOperationResponse>?>('responses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApiOperationResponse>(guardedValue, (value) => ApiOperationResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    templateParameters = registerOutput<List<ApiOperationTemplateParameter>?>('templateParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApiOperationTemplateParameter>(guardedValue, (value) => ApiOperationTemplateParameter.fromMap((value as Map).cast<String, dynamic>())); });
     urlTemplate = registerOutput<String>('urlTemplate');
   }
 }

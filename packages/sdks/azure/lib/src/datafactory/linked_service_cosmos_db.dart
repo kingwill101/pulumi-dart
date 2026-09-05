@@ -127,7 +127,7 @@ import 'linked_service_cosmos_db_state.dart';
 /// 		}
 /// 		_, err = datafactory.NewLinkedServiceCosmosDb(ctx, "example", &datafactory.LinkedServiceCosmosDbArgs{
 /// 			Name:            pulumi.String("example"),
-/// 			DataFactoryId:   exampleFactory.ID(),
+/// 			DataFactoryId:   exampleFactory.ID().ToIDOutput().ToStringOutput(),
 /// 			AccountEndpoint: pulumi.String(example.Endpoint),
 /// 			AccountKey:      pulumi.String(example.PrimaryKey),
 /// 			Database:        pulumi.String("foo"),
@@ -303,19 +303,20 @@ class LinkedServiceCosmosDb extends pulumi.CustomResource {
           'azure:datafactory/linkedServiceCosmosDb:LinkedServiceCosmosDb',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['accountKey', 'connectionString'],
         ) {
     accountEndpoint = registerOutput<String?>('accountEndpoint');
-    accountKey = registerOutput<String?>('accountKey');
-    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
-    annotations = registerOutput<List<String>?>('annotations');
-    connectionString = registerOutput<String?>('connectionString');
+    accountKey = registerOutput<String?>('accountKey', isSecret: true);
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    connectionString = registerOutput<String?>('connectionString', isSecret: true);
     dataFactoryId = registerOutput<String>('dataFactoryId');
     database = registerOutput<String?>('database');
     description = registerOutput<String?>('description');
     integrationRuntimeName = registerOutput<String?>('integrationRuntimeName');
     this.name = registerOutput<String>('name');
-    parameters = registerOutput<Map<String, String>?>('parameters');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [LinkedServiceCosmosDb] resource's state with the given [name] and [id].
@@ -323,11 +324,12 @@ class LinkedServiceCosmosDb extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LinkedServiceCosmosDbState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LinkedServiceCosmosDb._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -342,15 +344,38 @@ class LinkedServiceCosmosDb extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     accountEndpoint = registerOutput<String?>('accountEndpoint');
-    accountKey = registerOutput<String?>('accountKey');
-    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
-    annotations = registerOutput<List<String>?>('annotations');
-    connectionString = registerOutput<String?>('connectionString');
+    accountKey = registerOutput<String?>('accountKey', isSecret: true);
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    connectionString = registerOutput<String?>('connectionString', isSecret: true);
     dataFactoryId = registerOutput<String>('dataFactoryId');
     database = registerOutput<String?>('database');
     description = registerOutput<String?>('description');
     integrationRuntimeName = registerOutput<String?>('integrationRuntimeName');
     this.name = registerOutput<String>('name');
-    parameters = registerOutput<Map<String, String>?>('parameters');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [LinkedServiceCosmosDb] resource.
+  LinkedServiceCosmosDb.reference(String urn)
+    : super(
+        'azure:datafactory/linkedServiceCosmosDb:LinkedServiceCosmosDb',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['accountKey', 'connectionString'],
+        isResourceReference: true,
+      ) {
+    accountEndpoint = registerOutput<String?>('accountEndpoint');
+    accountKey = registerOutput<String?>('accountKey', isSecret: true);
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    connectionString = registerOutput<String?>('connectionString', isSecret: true);
+    dataFactoryId = registerOutput<String>('dataFactoryId');
+    database = registerOutput<String?>('database');
+    description = registerOutput<String?>('description');
+    integrationRuntimeName = registerOutput<String?>('integrationRuntimeName');
+    this.name = registerOutput<String>('name');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

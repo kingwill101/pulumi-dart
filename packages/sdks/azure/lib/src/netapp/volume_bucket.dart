@@ -449,7 +449,7 @@ import 'volume_bucket_state.dart';
 /// 			PoolName:          examplePool.Name,
 /// 			VolumePath:        pulumi.String("example-vol"),
 /// 			ServiceLevel:      pulumi.String("Standard"),
-/// 			SubnetId:          exampleSubnet.ID(),
+/// 			SubnetId:          exampleSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 			StorageQuotaInGb:  pulumi.Int(100),
 /// 			Protocols: pulumi.StringArray{
 /// 				pulumi.String("NFSv3"),
@@ -467,8 +467,8 @@ import 'volume_bucket_state.dart';
 /// 		}
 /// 		bucketSelfSignedCert, err := tls.NewSelfSignedCert(ctx, "bucket", &tls.SelfSignedCertArgs{
 /// 			PrivateKeyPem: bucket.PrivateKeyPem,
-/// 			Subject: []map[string]interface{}{
-/// 				map[string]interface{}{
+/// 			Subject: []map[string]string{
+/// 				{
 /// 					"commonName": "example-bucket.example.internal",
 /// 				},
 /// 			},
@@ -494,7 +494,7 @@ import 'volume_bucket_state.dart';
 /// 		// First bucket - establishes the shared bucket server.
 /// 		first, err := netapp.NewVolumeBucketWithServer(ctx, "first", &netapp.VolumeBucketWithServerArgs{
 /// 			Name:     pulumi.String("example-bucket-first"),
-/// 			VolumeId: exampleVolume.ID(),
+/// 			VolumeId: exampleVolume.ID().ToIDOutput().ToStringOutput(),
 /// 			FileSystemNfsUser: &netapp.VolumeBucketWithServerFileSystemNfsUserArgs{
 /// 				GroupId: pulumi.Int(1000),
 /// 				UserId:  pulumi.Int(1000),
@@ -510,7 +510,7 @@ import 'volume_bucket_state.dart';
 /// 		// Subsequent bucket - reuses the server configured by the first bucket.
 /// 		_, err = netapp.NewVolumeBucket(ctx, "example", &netapp.VolumeBucketArgs{
 /// 			Name:     pulumi.String("example-bucket-second"),
-/// 			VolumeId: exampleVolume.ID(),
+/// 			VolumeId: exampleVolume.ID().ToIDOutput().ToStringOutput(),
 /// 			FileSystemNfsUser: &netapp.VolumeBucketFileSystemNfsUserArgs{
 /// 				GroupId: pulumi.Int(2000),
 /// 				UserId:  pulumi.Int(2000),
@@ -938,7 +938,7 @@ class VolumeBucket extends pulumi.CustomResource {
           'azure:netapp/volumeBucket:VolumeBucket',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     fileSystemCifsUsername = registerOutput<String?>('fileSystemCifsUsername');
     fileSystemNfsUser = registerOutput<VolumeBucketFileSystemNfsUser?>('fileSystemNfsUser', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VolumeBucketFileSystemNfsUser.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -958,11 +958,12 @@ class VolumeBucket extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VolumeBucketState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VolumeBucket._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -976,6 +977,28 @@ class VolumeBucket extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    fileSystemCifsUsername = registerOutput<String?>('fileSystemCifsUsername');
+    fileSystemNfsUser = registerOutput<VolumeBucketFileSystemNfsUser?>('fileSystemNfsUser', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VolumeBucketFileSystemNfsUser.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    keyVault = registerOutput<VolumeBucketKeyVault?>('keyVault', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VolumeBucketKeyVault.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    path = registerOutput<String?>('path');
+    permissions = registerOutput<String?>('permissions');
+    serverCertificateCommonName = registerOutput<String>('serverCertificateCommonName');
+    serverCertificateExpiryDate = registerOutput<String>('serverCertificateExpiryDate');
+    serverIpAddress = registerOutput<String>('serverIpAddress');
+    status = registerOutput<String>('status');
+    volumeId = registerOutput<String>('volumeId');
+  }
+
+  /// Creates a typed reference to an existing [VolumeBucket] resource.
+  VolumeBucket.reference(String urn)
+    : super(
+        'azure:netapp/volumeBucket:VolumeBucket',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     fileSystemCifsUsername = registerOutput<String?>('fileSystemCifsUsername');
     fileSystemNfsUser = registerOutput<VolumeBucketFileSystemNfsUser?>('fileSystemNfsUser', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VolumeBucketFileSystemNfsUser.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     keyVault = registerOutput<VolumeBucketKeyVault?>('keyVault', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VolumeBucketKeyVault.fromMap((guardedValue as Map).cast<String, dynamic>()); });

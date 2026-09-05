@@ -5,9 +5,9 @@ import 'kubernetes_cluster_maintenance_window_node_os_not_allowed.dart';
 
 class KubernetesClusterMaintenanceWindowNodeOs {
   /// The day of the month for the maintenance run. Required in combination with AbsoluteMonthly frequency. Value between 0 and 31 (inclusive).
-  final pulumi.Input<int>? dayOfMonth;
+  final pulumi.Input<int?>? dayOfMonth;
   /// The day of the week for the maintenance run. Required in combination with weekly frequency. Possible values are `Friday`, `Monday`, `Saturday`, `Sunday`, `Thursday`, `Tuesday` and `Wednesday`.
-  final pulumi.Input<String>? dayOfWeek;
+  final pulumi.Input<String?>? dayOfWeek;
   /// The duration of the window for maintenance to run in hours. Possible options are between `4` to `24`.
   final pulumi.Input<int> duration;
   /// Frequency of maintenance. Possible options are `Daily`, `Weekly`, `AbsoluteMonthly` and `RelativeMonthly`.
@@ -15,15 +15,15 @@ class KubernetesClusterMaintenanceWindowNodeOs {
   /// The interval for maintenance runs. Depending on the frequency this interval is week or month based.
   final pulumi.Input<int> interval;
   /// One or more `notAllowed` block as defined below.
-  final pulumi.Input<List<KubernetesClusterMaintenanceWindowNodeOsNotAllowed>>? notAlloweds;
+  final pulumi.Input<List<KubernetesClusterMaintenanceWindowNodeOsNotAllowed>?>? notAlloweds;
   /// The date on which the maintenance window begins to take effect.
-  final pulumi.Input<String>? startDate;
+  final pulumi.Input<String?>? startDate;
   /// The time for maintenance to begin, based on the timezone determined by `utcOffset`. Format is `HH:mm`.
-  final pulumi.Input<String>? startTime;
+  final pulumi.Input<String?>? startTime;
   /// Used to determine the timezone for cluster maintenance.
-  final pulumi.Input<String>? utcOffset;
+  final pulumi.Input<String?>? utcOffset;
   /// The week in the month used for the maintenance run. Options are `First`, `Second`, `Third`, `Fourth`, and `Last`.
-  final pulumi.Input<String>? weekIndex;
+  final pulumi.Input<String?>? weekIndex;
 
   /// Creates a new [KubernetesClusterMaintenanceWindowNodeOs].
   /// [dayOfMonth] The day of the month for the maintenance run. Required in combination with AbsoluteMonthly frequency. Value between 0 and 31 (inclusive).
@@ -66,11 +66,11 @@ class KubernetesClusterMaintenanceWindowNodeOs {
 
   factory KubernetesClusterMaintenanceWindowNodeOs.fromMap(Map<String, dynamic> map) {
     return KubernetesClusterMaintenanceWindowNodeOs(
-      dayOfMonth: (() { final guardedValue = map['dayOfMonth']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      dayOfMonth: (() { final guardedValue = map['dayOfMonth']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       dayOfWeek: (() { final guardedValue = map['dayOfWeek']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      duration: pulumi.Input.fromValue(map['duration'] as int),
+      duration: pulumi.Input.fromValue((map['duration'] as num).toInt()),
       frequency: pulumi.Input.fromValue(map['frequency'] as String),
-      interval: pulumi.Input.fromValue(map['interval'] as int),
+      interval: pulumi.Input.fromValue((map['interval'] as num).toInt()),
       notAlloweds: (() { final guardedValue = map['notAlloweds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<KubernetesClusterMaintenanceWindowNodeOsNotAllowed>(guardedValue, (value) => KubernetesClusterMaintenanceWindowNodeOsNotAllowed.fromMap((value as Map).cast<String, dynamic>()))); })(),
       startDate: (() { final guardedValue = map['startDate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       startTime: (() { final guardedValue = map['startTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

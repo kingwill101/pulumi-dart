@@ -272,28 +272,24 @@ import 'backup_instance_postgresql_flexible_server_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleAssignment, err := authorization.NewAssignment(ctx, "example", &authorization.AssignmentArgs{
-/// 			Scope:              example.ID(),
+/// 			Scope:              example.ID().ToIDOutput().ToStringOutput(),
 /// 			RoleDefinitionName: pulumi.String("Reader"),
-/// 			PrincipalId: pulumi.String(exampleBackupVault.Identity.ApplyT(func(identity dataprotection.BackupVaultIdentity) (*string, error) {
-/// 				return identity.PrincipalId, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			PrincipalId:        exampleBackupVault.Identity.PrincipalId(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		example2, err := authorization.NewAssignment(ctx, "example2", &authorization.AssignmentArgs{
-/// 			Scope:              exampleFlexibleServer.ID(),
+/// 			Scope:              exampleFlexibleServer.ID().ToIDOutput().ToStringOutput(),
 /// 			RoleDefinitionName: pulumi.String("PostgreSQL Flexible Server Long Term Retention Backup Role"),
-/// 			PrincipalId: pulumi.String(exampleBackupVault.Identity.ApplyT(func(identity dataprotection.BackupVaultIdentity) (*string, error) {
-/// 				return identity.PrincipalId, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			PrincipalId:        exampleBackupVault.Identity.PrincipalId(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		exampleBackupPolicyPostgresqlFlexibleServer, err := dataprotection.NewBackupPolicyPostgresqlFlexibleServer(ctx, "example", &dataprotection.BackupPolicyPostgresqlFlexibleServerArgs{
 /// 			Name:    pulumi.String("example-dp"),
-/// 			VaultId: exampleBackupVault.ID(),
+/// 			VaultId: exampleBackupVault.ID().ToIDOutput().ToStringOutput(),
 /// 			BackupRepeatingTimeIntervals: pulumi.StringArray{
 /// 				pulumi.String("R/2021-05-23T02:30:00+00:00/P1W"),
 /// 			},
@@ -315,9 +311,9 @@ import 'backup_instance_postgresql_flexible_server_state.dart';
 /// 		_, err = dataprotection.NewBackupInstancePostgresqlFlexibleServer(ctx, "example", &dataprotection.BackupInstancePostgresqlFlexibleServerArgs{
 /// 			Name:           pulumi.String("example-dbi"),
 /// 			Location:       example.Location,
-/// 			VaultId:        exampleBackupVault.ID(),
-/// 			ServerId:       exampleFlexibleServer.ID(),
-/// 			BackupPolicyId: exampleBackupPolicyPostgresqlFlexibleServer.ID(),
+/// 			VaultId:        exampleBackupVault.ID().ToIDOutput().ToStringOutput(),
+/// 			ServerId:       exampleFlexibleServer.ID().ToIDOutput().ToStringOutput(),
+/// 			BackupPolicyId: exampleBackupPolicyPostgresqlFlexibleServer.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -607,7 +603,7 @@ class BackupInstancePostgresqlFlexibleServer extends pulumi.CustomResource {
           'azure:dataprotection/backupInstancePostgresqlFlexibleServer:BackupInstancePostgresqlFlexibleServer',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     backupPolicyId = registerOutput<String>('backupPolicyId');
     location = registerOutput<String>('location');
@@ -622,11 +618,12 @@ class BackupInstancePostgresqlFlexibleServer extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     BackupInstancePostgresqlFlexibleServerState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return BackupInstancePostgresqlFlexibleServer._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -640,6 +637,23 @@ class BackupInstancePostgresqlFlexibleServer extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    backupPolicyId = registerOutput<String>('backupPolicyId');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    protectionState = registerOutput<String>('protectionState');
+    serverId = registerOutput<String>('serverId');
+    vaultId = registerOutput<String>('vaultId');
+  }
+
+  /// Creates a typed reference to an existing [BackupInstancePostgresqlFlexibleServer] resource.
+  BackupInstancePostgresqlFlexibleServer.reference(String urn)
+    : super(
+        'azure:dataprotection/backupInstancePostgresqlFlexibleServer:BackupInstancePostgresqlFlexibleServer',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     backupPolicyId = registerOutput<String>('backupPolicyId');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

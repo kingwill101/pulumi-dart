@@ -292,13 +292,14 @@ class ChannelEmail extends pulumi.CustomResource {
           'azure:bot/channelEmail:ChannelEmail',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['emailPassword', 'magicCode'],
         ) {
     botName = registerOutput<String>('botName');
     emailAddress = registerOutput<String>('emailAddress');
-    emailPassword = registerOutput<String?>('emailPassword');
+    emailPassword = registerOutput<String?>('emailPassword', isSecret: true);
     location = registerOutput<String>('location');
-    magicCode = registerOutput<String?>('magicCode');
+    magicCode = registerOutput<String?>('magicCode', isSecret: true);
     resourceGroupName = registerOutput<String>('resourceGroupName');
   }
 
@@ -307,11 +308,12 @@ class ChannelEmail extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ChannelEmailState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ChannelEmail._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -327,9 +329,27 @@ class ChannelEmail extends pulumi.CustomResource {
         ) {
     botName = registerOutput<String>('botName');
     emailAddress = registerOutput<String>('emailAddress');
-    emailPassword = registerOutput<String?>('emailPassword');
+    emailPassword = registerOutput<String?>('emailPassword', isSecret: true);
     location = registerOutput<String>('location');
-    magicCode = registerOutput<String?>('magicCode');
+    magicCode = registerOutput<String?>('magicCode', isSecret: true);
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+  }
+
+  /// Creates a typed reference to an existing [ChannelEmail] resource.
+  ChannelEmail.reference(String urn)
+    : super(
+        'azure:bot/channelEmail:ChannelEmail',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['emailPassword', 'magicCode'],
+        isResourceReference: true,
+      ) {
+    botName = registerOutput<String>('botName');
+    emailAddress = registerOutput<String>('emailAddress');
+    emailPassword = registerOutput<String?>('emailPassword', isSecret: true);
+    location = registerOutput<String>('location');
+    magicCode = registerOutput<String?>('magicCode', isSecret: true);
     resourceGroupName = registerOutput<String>('resourceGroupName');
   }
 }

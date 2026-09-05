@@ -386,16 +386,17 @@ class ServerSecurityAlertPolicy extends pulumi.CustomResource {
           'azure:mssql/serverSecurityAlertPolicy:ServerSecurityAlertPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['storageAccountAccessKey'],
         ) {
-    disabledAlerts = registerOutput<List<String>?>('disabledAlerts');
+    disabledAlerts = registerOutput<List<String>?>('disabledAlerts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     emailAccountAdmins = registerOutput<bool?>('emailAccountAdmins');
-    emailAddresses = registerOutput<List<String>?>('emailAddresses');
+    emailAddresses = registerOutput<List<String>?>('emailAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     resourceGroupName = registerOutput<String>('resourceGroupName');
     retentionDays = registerOutput<int?>('retentionDays');
     serverName = registerOutput<String>('serverName');
     state = registerOutput<String>('state');
-    storageAccountAccessKey = registerOutput<String?>('storageAccountAccessKey');
+    storageAccountAccessKey = registerOutput<String?>('storageAccountAccessKey', isSecret: true);
     storageEndpoint = registerOutput<String?>('storageEndpoint');
   }
 
@@ -404,11 +405,12 @@ class ServerSecurityAlertPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ServerSecurityAlertPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ServerSecurityAlertPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -422,14 +424,35 @@ class ServerSecurityAlertPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    disabledAlerts = registerOutput<List<String>?>('disabledAlerts');
+    disabledAlerts = registerOutput<List<String>?>('disabledAlerts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     emailAccountAdmins = registerOutput<bool?>('emailAccountAdmins');
-    emailAddresses = registerOutput<List<String>?>('emailAddresses');
+    emailAddresses = registerOutput<List<String>?>('emailAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     resourceGroupName = registerOutput<String>('resourceGroupName');
     retentionDays = registerOutput<int?>('retentionDays');
     serverName = registerOutput<String>('serverName');
     this.state = registerOutput<String>('state');
-    storageAccountAccessKey = registerOutput<String?>('storageAccountAccessKey');
+    storageAccountAccessKey = registerOutput<String?>('storageAccountAccessKey', isSecret: true);
+    storageEndpoint = registerOutput<String?>('storageEndpoint');
+  }
+
+  /// Creates a typed reference to an existing [ServerSecurityAlertPolicy] resource.
+  ServerSecurityAlertPolicy.reference(String urn)
+    : super(
+        'azure:mssql/serverSecurityAlertPolicy:ServerSecurityAlertPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['storageAccountAccessKey'],
+        isResourceReference: true,
+      ) {
+    disabledAlerts = registerOutput<List<String>?>('disabledAlerts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    emailAccountAdmins = registerOutput<bool?>('emailAccountAdmins');
+    emailAddresses = registerOutput<List<String>?>('emailAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    retentionDays = registerOutput<int?>('retentionDays');
+    serverName = registerOutput<String>('serverName');
+    state = registerOutput<String>('state');
+    storageAccountAccessKey = registerOutput<String?>('storageAccountAccessKey', isSecret: true);
     storageEndpoint = registerOutput<String?>('storageEndpoint');
   }
 }

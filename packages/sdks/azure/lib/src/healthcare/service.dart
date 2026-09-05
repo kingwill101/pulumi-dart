@@ -417,9 +417,9 @@ class Service extends pulumi.CustomResource {
           'azure:healthcare/service:Service',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
-    accessPolicyObjectIds = registerOutput<List<String>?>('accessPolicyObjectIds');
+    accessPolicyObjectIds = registerOutput<List<String>?>('accessPolicyObjectIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     authenticationConfiguration = registerOutput<ServiceAuthenticationConfiguration>('authenticationConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceAuthenticationConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     configurationExportStorageAccountName = registerOutput<String?>('configurationExportStorageAccountName');
     corsConfiguration = registerOutput<ServiceCorsConfiguration>('corsConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceCorsConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -431,7 +431,7 @@ class Service extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Service] resource's state with the given [name] and [id].
@@ -439,11 +439,12 @@ class Service extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ServiceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Service._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -457,7 +458,7 @@ class Service extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    accessPolicyObjectIds = registerOutput<List<String>?>('accessPolicyObjectIds');
+    accessPolicyObjectIds = registerOutput<List<String>?>('accessPolicyObjectIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     authenticationConfiguration = registerOutput<ServiceAuthenticationConfiguration>('authenticationConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceAuthenticationConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     configurationExportStorageAccountName = registerOutput<String?>('configurationExportStorageAccountName');
     corsConfiguration = registerOutput<ServiceCorsConfiguration>('corsConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceCorsConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -469,6 +470,30 @@ class Service extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Service] resource.
+  Service.reference(String urn)
+    : super(
+        'azure:healthcare/service:Service',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    accessPolicyObjectIds = registerOutput<List<String>?>('accessPolicyObjectIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    authenticationConfiguration = registerOutput<ServiceAuthenticationConfiguration>('authenticationConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceAuthenticationConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    configurationExportStorageAccountName = registerOutput<String?>('configurationExportStorageAccountName');
+    corsConfiguration = registerOutput<ServiceCorsConfiguration>('corsConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceCorsConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    cosmosdbKeyVaultKeyVersionlessId = registerOutput<String?>('cosmosdbKeyVaultKeyVersionlessId');
+    cosmosdbThroughput = registerOutput<int?>('cosmosdbThroughput');
+    identity = registerOutput<ServiceIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    kind = registerOutput<String?>('kind');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

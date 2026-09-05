@@ -179,7 +179,7 @@ import 'endpoint_event_hub_state.dart';
 /// 		}
 /// 		exampleEventHub, err := eventhub.NewEventHub(ctx, "example", &eventhub.EventHubArgs{
 /// 			Name:             pulumi.String("example-eh"),
-/// 			NamespaceId:      exampleEventHubNamespace.ID(),
+/// 			NamespaceId:      exampleEventHubNamespace.ID().ToIDOutput().ToStringOutput(),
 /// 			PartitionCount:   pulumi.Int(2),
 /// 			MessageRetention: pulumi.Int(1),
 /// 		})
@@ -200,7 +200,7 @@ import 'endpoint_event_hub_state.dart';
 /// 		}
 /// 		_, err = digitaltwins.NewEndpointEventHub(ctx, "example", &digitaltwins.EndpointEventHubArgs{
 /// 			Name:                              pulumi.String("example-EH"),
-/// 			DigitalTwinsId:                    exampleInstance.ID(),
+/// 			DigitalTwinsId:                    exampleInstance.ID().ToIDOutput().ToStringOutput(),
 /// 			EventhubPrimaryConnectionString:   exampleAuthorizationRule.PrimaryConnectionString,
 /// 			EventhubSecondaryConnectionString: exampleAuthorizationRule.SecondaryConnectionString,
 /// 		})
@@ -423,12 +423,13 @@ class EndpointEventHub extends pulumi.CustomResource {
           'azure:digitaltwins/endpointEventHub:EndpointEventHub',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['deadLetterStorageSecret', 'eventhubPrimaryConnectionString', 'eventhubSecondaryConnectionString'],
         ) {
-    deadLetterStorageSecret = registerOutput<String?>('deadLetterStorageSecret');
+    deadLetterStorageSecret = registerOutput<String?>('deadLetterStorageSecret', isSecret: true);
     digitalTwinsId = registerOutput<String>('digitalTwinsId');
-    eventhubPrimaryConnectionString = registerOutput<String>('eventhubPrimaryConnectionString');
-    eventhubSecondaryConnectionString = registerOutput<String>('eventhubSecondaryConnectionString');
+    eventhubPrimaryConnectionString = registerOutput<String>('eventhubPrimaryConnectionString', isSecret: true);
+    eventhubSecondaryConnectionString = registerOutput<String>('eventhubSecondaryConnectionString', isSecret: true);
     this.name = registerOutput<String>('name');
   }
 
@@ -437,11 +438,12 @@ class EndpointEventHub extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EndpointEventHubState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return EndpointEventHub._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -455,10 +457,27 @@ class EndpointEventHub extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    deadLetterStorageSecret = registerOutput<String?>('deadLetterStorageSecret');
+    deadLetterStorageSecret = registerOutput<String?>('deadLetterStorageSecret', isSecret: true);
     digitalTwinsId = registerOutput<String>('digitalTwinsId');
-    eventhubPrimaryConnectionString = registerOutput<String>('eventhubPrimaryConnectionString');
-    eventhubSecondaryConnectionString = registerOutput<String>('eventhubSecondaryConnectionString');
+    eventhubPrimaryConnectionString = registerOutput<String>('eventhubPrimaryConnectionString', isSecret: true);
+    eventhubSecondaryConnectionString = registerOutput<String>('eventhubSecondaryConnectionString', isSecret: true);
+    this.name = registerOutput<String>('name');
+  }
+
+  /// Creates a typed reference to an existing [EndpointEventHub] resource.
+  EndpointEventHub.reference(String urn)
+    : super(
+        'azure:digitaltwins/endpointEventHub:EndpointEventHub',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['deadLetterStorageSecret', 'eventhubPrimaryConnectionString', 'eventhubSecondaryConnectionString'],
+        isResourceReference: true,
+      ) {
+    deadLetterStorageSecret = registerOutput<String?>('deadLetterStorageSecret', isSecret: true);
+    digitalTwinsId = registerOutput<String>('digitalTwinsId');
+    eventhubPrimaryConnectionString = registerOutput<String>('eventhubPrimaryConnectionString', isSecret: true);
+    eventhubSecondaryConnectionString = registerOutput<String>('eventhubSecondaryConnectionString', isSecret: true);
     this.name = registerOutput<String>('name');
   }
 }

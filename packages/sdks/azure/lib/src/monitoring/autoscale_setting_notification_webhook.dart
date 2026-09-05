@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AutoscaleSettingNotificationWebhook {
   /// A map of settings.
-  final pulumi.Input<Map<String, String>>? properties;
+  final pulumi.Input<Map<String, String>?>? properties;
   /// The HTTPS URI which should receive scale notifications.
   final pulumi.Input<String> serviceUri;
 

@@ -12,7 +12,7 @@ class KafkaClusterRoles {
   /// A `kafkaManagementNode` block as defined below.
   ///
   /// &gt; **Note:** This property has been deprecated and will be removed in version 4.0.
-  final pulumi.Input<KafkaClusterRolesKafkaManagementNode>? kafkaManagementNode;
+  final pulumi.Input<KafkaClusterRolesKafkaManagementNode?>? kafkaManagementNode;
   /// A `workerNode` block as defined below.
   final pulumi.Input<KafkaClusterRolesWorkerNode> workerNode;
   /// A `zookeeperNode` block as defined below.

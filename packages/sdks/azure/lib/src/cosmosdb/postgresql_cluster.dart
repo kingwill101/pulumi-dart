@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'postgresql_cluster_args.dart';
 import 'postgresql_cluster_maintenance_window.dart';
+import 'postgresql_cluster_server.dart';
 import 'postgresql_cluster_state.dart';
 
 /// Manages an Azure Cosmos DB for PostgreSQL Cluster.
@@ -246,7 +247,7 @@ class PostgresqlCluster extends pulumi.CustomResource {
   /// The name of the Resource Group where the Azure Cosmos DB for PostgreSQL Cluster should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
   /// A `servers` block as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>> servers;
+  late final pulumi.Output<List<PostgresqlClusterServer>> servers;
   /// Is shards on coordinator enabled for the Azure Cosmos DB for PostgreSQL cluster.
   late final pulumi.Output<bool> shardsOnCoordinatorEnabled;
   /// The Azure region of the source Azure Cosmos DB for PostgreSQL cluster for read replica clusters. Changing this forces a new resource to be created.
@@ -270,9 +271,10 @@ class PostgresqlCluster extends pulumi.CustomResource {
           'azure:cosmosdb/postgresqlCluster:PostgresqlCluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['administratorLoginPassword'],
         ) {
-    administratorLoginPassword = registerOutput<String?>('administratorLoginPassword');
+    administratorLoginPassword = registerOutput<String?>('administratorLoginPassword', isSecret: true);
     citusVersion = registerOutput<String>('citusVersion');
     coordinatorPublicIpAccessEnabled = registerOutput<bool?>('coordinatorPublicIpAccessEnabled');
     coordinatorServerEdition = registerOutput<String?>('coordinatorServerEdition');
@@ -291,12 +293,12 @@ class PostgresqlCluster extends pulumi.CustomResource {
     pointInTimeInUtc = registerOutput<String?>('pointInTimeInUtc');
     preferredPrimaryZone = registerOutput<String?>('preferredPrimaryZone');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    servers = registerOutput<List<Map<String, dynamic>>>('servers');
+    servers = registerOutput<List<PostgresqlClusterServer>>('servers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PostgresqlClusterServer>(guardedValue, (value) => PostgresqlClusterServer.fromMap((value as Map).cast<String, dynamic>())); });
     shardsOnCoordinatorEnabled = registerOutput<bool>('shardsOnCoordinatorEnabled');
     sourceLocation = registerOutput<String?>('sourceLocation');
     sourceResourceId = registerOutput<String?>('sourceResourceId');
     sqlVersion = registerOutput<String>('sqlVersion');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [PostgresqlCluster] resource's state with the given [name] and [id].
@@ -304,11 +306,12 @@ class PostgresqlCluster extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PostgresqlClusterState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return PostgresqlCluster._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -322,7 +325,7 @@ class PostgresqlCluster extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    administratorLoginPassword = registerOutput<String?>('administratorLoginPassword');
+    administratorLoginPassword = registerOutput<String?>('administratorLoginPassword', isSecret: true);
     citusVersion = registerOutput<String>('citusVersion');
     coordinatorPublicIpAccessEnabled = registerOutput<bool?>('coordinatorPublicIpAccessEnabled');
     coordinatorServerEdition = registerOutput<String?>('coordinatorServerEdition');
@@ -341,11 +344,48 @@ class PostgresqlCluster extends pulumi.CustomResource {
     pointInTimeInUtc = registerOutput<String?>('pointInTimeInUtc');
     preferredPrimaryZone = registerOutput<String?>('preferredPrimaryZone');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    servers = registerOutput<List<Map<String, dynamic>>>('servers');
+    servers = registerOutput<List<PostgresqlClusterServer>>('servers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PostgresqlClusterServer>(guardedValue, (value) => PostgresqlClusterServer.fromMap((value as Map).cast<String, dynamic>())); });
     shardsOnCoordinatorEnabled = registerOutput<bool>('shardsOnCoordinatorEnabled');
     sourceLocation = registerOutput<String?>('sourceLocation');
     sourceResourceId = registerOutput<String?>('sourceResourceId');
     sqlVersion = registerOutput<String>('sqlVersion');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [PostgresqlCluster] resource.
+  PostgresqlCluster.reference(String urn)
+    : super(
+        'azure:cosmosdb/postgresqlCluster:PostgresqlCluster',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['administratorLoginPassword'],
+        isResourceReference: true,
+      ) {
+    administratorLoginPassword = registerOutput<String?>('administratorLoginPassword', isSecret: true);
+    citusVersion = registerOutput<String>('citusVersion');
+    coordinatorPublicIpAccessEnabled = registerOutput<bool?>('coordinatorPublicIpAccessEnabled');
+    coordinatorServerEdition = registerOutput<String?>('coordinatorServerEdition');
+    coordinatorStorageQuotaInMb = registerOutput<int?>('coordinatorStorageQuotaInMb');
+    coordinatorVcoreCount = registerOutput<int?>('coordinatorVcoreCount');
+    earliestRestoreTime = registerOutput<String>('earliestRestoreTime');
+    haEnabled = registerOutput<bool?>('haEnabled');
+    location = registerOutput<String>('location');
+    maintenanceWindow = registerOutput<PostgresqlClusterMaintenanceWindow?>('maintenanceWindow', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PostgresqlClusterMaintenanceWindow.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    nodeCount = registerOutput<int>('nodeCount');
+    nodePublicIpAccessEnabled = registerOutput<bool?>('nodePublicIpAccessEnabled');
+    nodeServerEdition = registerOutput<String?>('nodeServerEdition');
+    nodeStorageQuotaInMb = registerOutput<int>('nodeStorageQuotaInMb');
+    nodeVcores = registerOutput<int>('nodeVcores');
+    pointInTimeInUtc = registerOutput<String?>('pointInTimeInUtc');
+    preferredPrimaryZone = registerOutput<String?>('preferredPrimaryZone');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    servers = registerOutput<List<PostgresqlClusterServer>>('servers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PostgresqlClusterServer>(guardedValue, (value) => PostgresqlClusterServer.fromMap((value as Map).cast<String, dynamic>())); });
+    shardsOnCoordinatorEnabled = registerOutput<bool>('shardsOnCoordinatorEnabled');
+    sourceLocation = registerOutput<String?>('sourceLocation');
+    sourceResourceId = registerOutput<String?>('sourceResourceId');
+    sqlVersion = registerOutput<String>('sqlVersion');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

@@ -56,6 +56,7 @@ import 'managed_storage_account_sas_token_definition_state.dart';
 ///     name: "example-keyvault",
 ///     location: exampleResourceGroup.location,
 ///     resourceGroupName: exampleResourceGroup.name,
+///     rbacAuthorizationEnabled: false,
 ///     tenantId: example.then(example => example.tenantId),
 ///     skuName: "standard",
 ///     accessPolicies: [{
@@ -89,7 +90,7 @@ import 'managed_storage_account_sas_token_definition_state.dart';
 ///     name: "examplesasdefinition",
 ///     validityPeriod: "P1D",
 ///     managedStorageAccountId: exampleManagedStorageAccount.id,
-///     sasTemplateUri: exampleGetAccountSAS.apply(exampleGetAccountSAS => exampleGetAccountSAS.sas),
+///     sasTemplateUri: exampleGetAccountSAS.sas,
 ///     sasType: "account",
 /// });
 /// ```
@@ -138,6 +139,7 @@ import 'managed_storage_account_sas_token_definition_state.dart';
 ///     name="example-keyvault",
 ///     location=example_resource_group.location,
 ///     resource_group_name=example_resource_group.name,
+///     rbac_authorization_enabled=False,
 ///     tenant_id=example.tenant_id,
 ///     sku_name="standard",
 ///     access_policies=[{
@@ -236,6 +238,7 @@ import 'managed_storage_account_sas_token_definition_state.dart';
 ///         Name = "example-keyvault",
 ///         Location = exampleResourceGroup.Location,
 ///         ResourceGroupName = exampleResourceGroup.Name,
+///         RbacAuthorizationEnabled = false,
 ///         TenantId = example.Apply(getClientConfigResult => getClientConfigResult.TenantId),
 ///         SkuName = "standard",
 ///         AccessPolicies = new[]
@@ -348,11 +351,12 @@ import 'managed_storage_account_sas_token_definition_state.dart';
 /// 			},
 /// 		}, nil)
 /// 		exampleKeyVault, err := keyvault.NewKeyVault(ctx, "example", &keyvault.KeyVaultArgs{
-/// 			Name:              pulumi.String("example-keyvault"),
-/// 			Location:          exampleResourceGroup.Location,
-/// 			ResourceGroupName: exampleResourceGroup.Name,
-/// 			TenantId:          pulumi.String(example.TenantId),
-/// 			SkuName:           pulumi.String("standard"),
+/// 			Name:                     pulumi.String("example-keyvault"),
+/// 			Location:                 exampleResourceGroup.Location,
+/// 			ResourceGroupName:        exampleResourceGroup.Name,
+/// 			RbacAuthorizationEnabled: pulumi.Bool(false),
+/// 			TenantId:                 pulumi.String(example.TenantId),
+/// 			SkuName:                  pulumi.String("standard"),
 /// 			AccessPolicies: keyvault.KeyVaultAccessPolicyArray{
 /// 				&keyvault.KeyVaultAccessPolicyArgs{
 /// 					TenantId: pulumi.String(example.TenantId),
@@ -379,8 +383,8 @@ import 'managed_storage_account_sas_token_definition_state.dart';
 /// 		}
 /// 		exampleManagedStorageAccount, err := keyvault.NewManagedStorageAccount(ctx, "example", &keyvault.ManagedStorageAccountArgs{
 /// 			Name:                       pulumi.String("examplemanagedstorage"),
-/// 			KeyVaultId:                 exampleKeyVault.ID(),
-/// 			StorageAccountId:           exampleAccount.ID(),
+/// 			KeyVaultId:                 exampleKeyVault.ID().ToIDOutput().ToStringOutput(),
+/// 			StorageAccountId:           exampleAccount.ID().ToIDOutput().ToStringOutput(),
 /// 			StorageAccountKey:          pulumi.String("key1"),
 /// 			RegenerateKeyAutomatically: pulumi.Bool(false),
 /// 			RegenerationPeriod:         pulumi.String("P1D"),
@@ -391,11 +395,9 @@ import 'managed_storage_account_sas_token_definition_state.dart';
 /// 		_, err = keyvault.NewManagedStorageAccountSasTokenDefinition(ctx, "example", &keyvault.ManagedStorageAccountSasTokenDefinitionArgs{
 /// 			Name:                    pulumi.String("examplesasdefinition"),
 /// 			ValidityPeriod:          pulumi.String("P1D"),
-/// 			ManagedStorageAccountId: exampleManagedStorageAccount.ID(),
-/// 			SasTemplateUri: pulumi.String(exampleGetAccountSAS.ApplyT(func(exampleGetAccountSAS storage.GetAccountSASResult) (*string, error) {
-/// 				return exampleGetAccountSAS.Sas, nil
-/// 			}).(pulumi.StringPtrOutput)),
-/// 			SasType: pulumi.String("account"),
+/// 			ManagedStorageAccountId: exampleManagedStorageAccount.ID().ToIDOutput().ToStringOutput(),
+/// 			SasTemplateUri:          exampleGetAccountSAS.Sas(),
+/// 			SasType:                 pulumi.String("account"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -457,11 +459,12 @@ import 'managed_storage_account_sas_token_definition_state.dart';
 ///   account_replication_type = "LRS"
 /// }
 /// resource "azure_keyvault_keyvault" "example" {
-///   name                = "example-keyvault"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   tenant_id           = data.azure_core_getclientconfig.example.tenant_id
-///   sku_name            = "standard"
+///   name                       = "example-keyvault"
+///   location                   = azure_core_resourcegroup.example.location
+///   resource_group_name        = azure_core_resourcegroup.example.name
+///   rbac_authorization_enabled = false
+///   tenant_id                  = data.azure_core_getclientconfig.example.tenant_id
+///   sku_name                   = "standard"
 ///   access_policies {
 ///     tenant_id           = data.azure_core_getclientconfig.example.tenant_id
 ///     object_id           = data.azure_core_getclientconfig.example.object_id
@@ -570,6 +573,7 @@ import 'managed_storage_account_sas_token_definition_state.dart';
 ///             .name("example-keyvault")
 ///             .location(exampleResourceGroup.location())
 ///             .resourceGroupName(exampleResourceGroup.name())
+///             .rbacAuthorizationEnabled(false)
 ///             .tenantId(example.tenantId())
 ///             .skuName("standard")
 ///             .accessPolicies(KeyVaultAccessPolicyArgs.builder()
@@ -634,6 +638,7 @@ import 'managed_storage_account_sas_token_definition_state.dart';
 ///       name: example-keyvault
 ///       location: ${exampleResourceGroup.location}
 ///       resourceGroupName: ${exampleResourceGroup.name}
+///       rbacAuthorizationEnabled: false
 ///       tenantId: ${example.tenantId}
 ///       skuName: standard
 ///       accessPolicies:
@@ -741,14 +746,14 @@ class ManagedStorageAccountSasTokenDefinition extends pulumi.CustomResource {
           'azure:keyvault/managedStorageAccountSasTokenDefinition:ManagedStorageAccountSasTokenDefinition',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     managedStorageAccountId = registerOutput<String>('managedStorageAccountId');
     this.name = registerOutput<String>('name');
     sasTemplateUri = registerOutput<String>('sasTemplateUri');
     sasType = registerOutput<String>('sasType');
     secretId = registerOutput<String>('secretId');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     validityPeriod = registerOutput<String>('validityPeriod');
   }
 
@@ -757,11 +762,12 @@ class ManagedStorageAccountSasTokenDefinition extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ManagedStorageAccountSasTokenDefinitionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ManagedStorageAccountSasTokenDefinition._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -780,7 +786,25 @@ class ManagedStorageAccountSasTokenDefinition extends pulumi.CustomResource {
     sasTemplateUri = registerOutput<String>('sasTemplateUri');
     sasType = registerOutput<String>('sasType');
     secretId = registerOutput<String>('secretId');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    validityPeriod = registerOutput<String>('validityPeriod');
+  }
+
+  /// Creates a typed reference to an existing [ManagedStorageAccountSasTokenDefinition] resource.
+  ManagedStorageAccountSasTokenDefinition.reference(String urn)
+    : super(
+        'azure:keyvault/managedStorageAccountSasTokenDefinition:ManagedStorageAccountSasTokenDefinition',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    managedStorageAccountId = registerOutput<String>('managedStorageAccountId');
+    this.name = registerOutput<String>('name');
+    sasTemplateUri = registerOutput<String>('sasTemplateUri');
+    sasType = registerOutput<String>('sasType');
+    secretId = registerOutput<String>('secretId');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     validityPeriod = registerOutput<String>('validityPeriod');
   }
 }

@@ -11,13 +11,13 @@ class ElasticsearchArgs {
   /// Specifies the Email Address which should be associated with this Elasticsearch account. Changing this forces a new Elasticsearch to be created.
   final pulumi.Input<String> elasticCloudEmailAddress;
   /// The Azure Region where the Elasticsearch resource should exist. Changing this forces a new Elasticsearch to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// A `logs` block as defined below.
-  final pulumi.Input<ElasticsearchLogs>? logs;
+  final pulumi.Input<ElasticsearchLogs?>? logs;
   /// Specifies if the Elasticsearch should have monitoring configured? Defaults to `true`. Changing this forces a new Elasticsearch to be created.
-  final pulumi.Input<bool>? monitoringEnabled;
+  final pulumi.Input<bool?>? monitoringEnabled;
   /// The name which should be used for this Elasticsearch resource. Changing this forces a new Elasticsearch to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the Resource Group where the Elasticsearch resource should exist. Changing this forces a new Elasticsearch to be created.
   final pulumi.Input<String> resourceGroupName;
   /// Specifies the name of the SKU for this Elasticsearch. Changing this forces a new Elasticsearch to be created.
@@ -27,7 +27,7 @@ class ElasticsearchArgs {
   /// You may find your eligible plans [here](https://portal.azure.com/#view/Microsoft_Azure_Marketplace/GalleryItemDetailsBladeNopdl/id/elastic.ec-azure-pp) or in the online documentation [here](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/elastic.ec-azure-pp?tab=PlansAndPrice) for more details or in case of any issues with the SKU.
   final pulumi.Input<String> skuName;
   /// A mapping of tags which should be assigned to the Elasticsearch resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ElasticsearchArgs].
   /// [elasticCloudEmailAddress] Specifies the Email Address which should be associated with this Elasticsearch account. Changing this forces a new Elasticsearch to be created.

@@ -8,13 +8,13 @@ import 'workflow_access_control_workflow_management.dart';
 
 class WorkflowAccessControl {
   /// A `action` block as defined below.
-  final pulumi.Input<WorkflowAccessControlAction>? action;
+  final pulumi.Input<WorkflowAccessControlAction?>? action;
   /// A `content` block as defined below.
-  final pulumi.Input<WorkflowAccessControlContent>? content;
+  final pulumi.Input<WorkflowAccessControlContent?>? content;
   /// A `trigger` block as defined below.
-  final pulumi.Input<WorkflowAccessControlTrigger>? trigger;
+  final pulumi.Input<WorkflowAccessControlTrigger?>? trigger;
   /// A `workflowManagement` block as defined below.
-  final pulumi.Input<WorkflowAccessControlWorkflowManagement>? workflowManagement;
+  final pulumi.Input<WorkflowAccessControlWorkflowManagement?>? workflowManagement;
 
   /// Creates a new [WorkflowAccessControl].
   /// [action] A `action` block as defined below.

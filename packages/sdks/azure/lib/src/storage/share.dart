@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'share_acl.dart';
 import 'share_args.dart';
 import 'share_state.dart';
 
@@ -144,7 +145,7 @@ import 'share_state.dart';
 /// 		}
 /// 		_, err = storage.NewShare(ctx, "example", &storage.ShareArgs{
 /// 			Name:             pulumi.String("sharename"),
-/// 			StorageAccountId: exampleAccount.ID(),
+/// 			StorageAccountId: exampleAccount.ID().ToIDOutput().ToStringOutput(),
 /// 			Quota:            pulumi.Int(50),
 /// 			Acls: storage.ShareAclArray{
 /// 				&storage.ShareAclArgs{
@@ -309,7 +310,7 @@ class Share extends pulumi.CustomResource {
   /// &gt; **Note:** The `FileStorage` `accountKind` of the `azure.storage.Account` requires `Premium` `accessTier`.
   late final pulumi.Output<String> accessTier;
   /// One or more `acl` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> acls;
+  late final pulumi.Output<List<ShareAcl>?> acls;
   /// The protocol used for the share. Possible values are `SMB` and `NFS`. The `SMB` indicates the share can be accessed by SMBv3.0, SMBv2.1 and REST. The `NFS` indicates the share can be accessed by NFSv4.1. Defaults to `SMB`. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** The `FileStorage` `accountKind` of the `azure.storage.Account` is required for the `NFS` protocol.
@@ -351,12 +352,12 @@ class Share extends pulumi.CustomResource {
           'azure:storage/share:Share',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     accessTier = registerOutput<String>('accessTier');
-    acls = registerOutput<List<Map<String, dynamic>>?>('acls');
+    acls = registerOutput<List<ShareAcl>?>('acls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ShareAcl>(guardedValue, (value) => ShareAcl.fromMap((value as Map).cast<String, dynamic>())); });
     enabledProtocol = registerOutput<String?>('enabledProtocol');
-    metadata = registerOutput<Map<String, String>>('metadata');
+    metadata = registerOutput<Map<String, String>>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     quota = registerOutput<int>('quota');
     rbacScopeId = registerOutput<String>('rbacScopeId');
@@ -371,11 +372,12 @@ class Share extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ShareState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Share._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -390,9 +392,31 @@ class Share extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     accessTier = registerOutput<String>('accessTier');
-    acls = registerOutput<List<Map<String, dynamic>>?>('acls');
+    acls = registerOutput<List<ShareAcl>?>('acls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ShareAcl>(guardedValue, (value) => ShareAcl.fromMap((value as Map).cast<String, dynamic>())); });
     enabledProtocol = registerOutput<String?>('enabledProtocol');
-    metadata = registerOutput<Map<String, String>>('metadata');
+    metadata = registerOutput<Map<String, String>>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    this.name = registerOutput<String>('name');
+    quota = registerOutput<int>('quota');
+    rbacScopeId = registerOutput<String>('rbacScopeId');
+    resourceManagerId = registerOutput<String>('resourceManagerId');
+    storageAccountId = registerOutput<String?>('storageAccountId');
+    storageAccountName = registerOutput<String?>('storageAccountName');
+    url = registerOutput<String>('url');
+  }
+
+  /// Creates a typed reference to an existing [Share] resource.
+  Share.reference(String urn)
+    : super(
+        'azure:storage/share:Share',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    accessTier = registerOutput<String>('accessTier');
+    acls = registerOutput<List<ShareAcl>?>('acls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ShareAcl>(guardedValue, (value) => ShareAcl.fromMap((value as Map).cast<String, dynamic>())); });
+    enabledProtocol = registerOutput<String?>('enabledProtocol');
+    metadata = registerOutput<Map<String, String>>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     quota = registerOutput<int>('quota');
     rbacScopeId = registerOutput<String>('rbacScopeId');

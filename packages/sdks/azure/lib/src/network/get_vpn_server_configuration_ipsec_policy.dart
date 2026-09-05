@@ -61,8 +61,8 @@ class GetVpnServerConfigurationIpsecPolicy {
       ipsecEncryption: pulumi.Input.fromValue(map['ipsecEncryption'] as String),
       ipsecIntegrity: pulumi.Input.fromValue(map['ipsecIntegrity'] as String),
       pfsGroup: pulumi.Input.fromValue(map['pfsGroup'] as String),
-      saDataSizeKilobytes: pulumi.Input.fromValue(map['saDataSizeKilobytes'] as int),
-      saLifetimeSeconds: pulumi.Input.fromValue(map['saLifetimeSeconds'] as int),
+      saDataSizeKilobytes: pulumi.Input.fromValue((map['saDataSizeKilobytes'] as num).toInt()),
+      saLifetimeSeconds: pulumi.Input.fromValue((map['saLifetimeSeconds'] as num).toInt()),
     );
   }
 }

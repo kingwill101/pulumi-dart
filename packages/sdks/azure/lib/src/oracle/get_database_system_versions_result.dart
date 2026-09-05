@@ -8,19 +8,19 @@ class GetDatabaseSystemVersionsResult {
   final bool? databaseSoftwareImageSupported;
   final String? databaseSystemShape;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final String location;
+  final String? id;
+  final String? location;
   final String? shapeFamily;
   final String? storageManagement;
   final bool? upgradeSupported;
   /// A `versions` block as defined below.
-  final List<GetDatabaseSystemVersionsVersion> versions;
+  final List<GetDatabaseSystemVersionsVersion>? versions;
 
   /// Creates a new [GetDatabaseSystemVersionsResult].
   /// [databaseSoftwareImageSupported] Optional.
   /// [databaseSystemShape] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [location] Required.
+  /// [location] Optional.
   /// [shapeFamily] Optional.
   /// [storageManagement] Optional.
   /// [upgradeSupported] Optional.
@@ -28,24 +28,24 @@ class GetDatabaseSystemVersionsResult {
   const GetDatabaseSystemVersionsResult({
     this.databaseSoftwareImageSupported,
     this.databaseSystemShape,
-    required this.id,
-    required this.location,
+    this.id,
+    this.location,
     this.shapeFamily,
     this.storageManagement,
     this.upgradeSupported,
-    required this.versions,
+    this.versions,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'databaseSoftwareImageSupported': ?databaseSoftwareImageSupported,
       'databaseSystemShape': ?databaseSystemShape,
-      'id': id,
-      'location': location,
+      'id': ?id,
+      'location': ?location,
       'shapeFamily': ?shapeFamily,
       'storageManagement': ?storageManagement,
       'upgradeSupported': ?upgradeSupported,
-      'versions': pulumi.Input.encodeList<GetDatabaseSystemVersionsVersion, Map<String, dynamic>>(versions, (value) => value.toMap()),
+      'versions': ?(() { final guardedValue = versions; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetDatabaseSystemVersionsVersion, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
     };
   }
 
@@ -53,12 +53,12 @@ class GetDatabaseSystemVersionsResult {
     return GetDatabaseSystemVersionsResult(
       databaseSoftwareImageSupported: (() { final guardedValue = map['databaseSoftwareImageSupported']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       databaseSystemShape: (() { final guardedValue = map['databaseSystemShape']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
-      location: map['location'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
       shapeFamily: (() { final guardedValue = map['shapeFamily']; if (guardedValue == null) return null; return guardedValue as String; })(),
       storageManagement: (() { final guardedValue = map['storageManagement']; if (guardedValue == null) return null; return guardedValue as String; })(),
       upgradeSupported: (() { final guardedValue = map['upgradeSupported']; if (guardedValue == null) return null; return guardedValue as bool; })(),
-      versions: pulumi.Input.decodeList<GetDatabaseSystemVersionsVersion>(map['versions']!, (value) => GetDatabaseSystemVersionsVersion.fromMap((value as Map).cast<String, dynamic>())),
+      versions: (() { final guardedValue = map['versions']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetDatabaseSystemVersionsVersion>(guardedValue, (value) => GetDatabaseSystemVersionsVersion.fromMap((value as Map).cast<String, dynamic>())); })(),
     );
   }
 }

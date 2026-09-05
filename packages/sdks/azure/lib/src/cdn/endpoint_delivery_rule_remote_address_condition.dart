@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EndpointDeliveryRuleRemoteAddressCondition {
   /// List of string values. For `GeoMatch` `operator` this should be a list of country codes (e.g. `US` or `DE`). List of IP address if `operator` equals to `IPMatch`. This is required if `operator` is not `Any`.
-  final pulumi.Input<List<String>>? matchValues;
+  final pulumi.Input<List<String>?>? matchValues;
   /// Defaults to `false`.
-  final pulumi.Input<bool>? negateCondition;
+  final pulumi.Input<bool?>? negateCondition;
   /// Valid values are `Any`, `GeoMatch` and `IPMatch`.
   final pulumi.Input<String> operator;
 

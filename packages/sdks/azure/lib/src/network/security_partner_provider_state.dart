@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering SecurityPartnerProvider resources.
 class SecurityPartnerProviderState {
   /// The Azure Region where the Security Partner Provider should exist. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name which should be used for this Security Partner Provider. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the Resource Group where the Security Partner Provider should exist. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// The security provider name. Possible values are `ZScaler`, `IBoss` and `Checkpoint` is allowed. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? securityProviderName;
+  final pulumi.Input<String?>? securityProviderName;
   /// A mapping of tags which should be assigned to the Security Partner Provider.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The ID of the Virtual Hub within which this Security Partner Provider should be created. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? virtualHubId;
+  final pulumi.Input<String?>? virtualHubId;
 
   /// Creates a new [SecurityPartnerProviderState].
   /// [location] The Azure Region where the Security Partner Provider should exist. Changing this forces a new resource to be created.

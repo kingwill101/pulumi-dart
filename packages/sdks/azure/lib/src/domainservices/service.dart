@@ -529,8 +529,8 @@ import 'service_state.dart';
 /// 			return err
 /// 		}
 /// 		deploySubnetNetworkSecurityGroupAssociation, err := network.NewSubnetNetworkSecurityGroupAssociation(ctx, "deploy", &network.SubnetNetworkSecurityGroupAssociationArgs{
-/// 			SubnetId:               deploySubnet.ID(),
-/// 			NetworkSecurityGroupId: deployNetworkSecurityGroup.ID(),
+/// 			SubnetId:               deploySubnet.ID().ToIDOutput().ToStringOutput(),
+/// 			NetworkSecurityGroupId: deployNetworkSecurityGroup.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -578,7 +578,7 @@ import 'service_state.dart';
 /// 			Sku:                 pulumi.String("Enterprise"),
 /// 			FilteredSyncEnabled: pulumi.Bool(false),
 /// 			InitialReplicaSet: &domainservices.ServiceInitialReplicaSetArgs{
-/// 				SubnetId: deploySubnet.ID(),
+/// 				SubnetId: deploySubnet.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			Notifications: &domainservices.ServiceNotificationsArgs{
 /// 				AdditionalRecipients: pulumi.StringArray{
@@ -1102,7 +1102,7 @@ class Service extends pulumi.CustomResource {
           'azure:domainservices/service:Service',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     deploymentId = registerOutput<String>('deploymentId');
     domainConfigurationType = registerOutput<String?>('domainConfigurationType');
@@ -1118,7 +1118,7 @@ class Service extends pulumi.CustomResource {
     security = registerOutput<ServiceSecurity>('security', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceSecurity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     sku = registerOutput<String>('sku');
     syncOwner = registerOutput<String>('syncOwner');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tenantId = registerOutput<String>('tenantId');
     version = registerOutput<int>('version');
   }
@@ -1128,11 +1128,12 @@ class Service extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ServiceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Service._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1160,7 +1161,35 @@ class Service extends pulumi.CustomResource {
     security = registerOutput<ServiceSecurity>('security', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceSecurity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     sku = registerOutput<String>('sku');
     syncOwner = registerOutput<String>('syncOwner');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tenantId = registerOutput<String>('tenantId');
+    version = registerOutput<int>('version');
+  }
+
+  /// Creates a typed reference to an existing [Service] resource.
+  Service.reference(String urn)
+    : super(
+        'azure:domainservices/service:Service',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    deploymentId = registerOutput<String>('deploymentId');
+    domainConfigurationType = registerOutput<String?>('domainConfigurationType');
+    domainName = registerOutput<String>('domainName');
+    filteredSyncEnabled = registerOutput<bool?>('filteredSyncEnabled');
+    initialReplicaSet = registerOutput<ServiceInitialReplicaSet>('initialReplicaSet', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceInitialReplicaSet.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    notifications = registerOutput<ServiceNotifications>('notifications', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceNotifications.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    resourceId = registerOutput<String>('resourceId');
+    secureLdap = registerOutput<ServiceSecureLdap>('secureLdap', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceSecureLdap.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    security = registerOutput<ServiceSecurity>('security', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceSecurity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sku = registerOutput<String>('sku');
+    syncOwner = registerOutput<String>('syncOwner');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tenantId = registerOutput<String>('tenantId');
     version = registerOutput<int>('version');
   }

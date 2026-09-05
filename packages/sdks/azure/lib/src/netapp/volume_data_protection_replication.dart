@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VolumeDataProtectionReplication {
   /// The endpoint type, default value is `dst` for destination.
-  final pulumi.Input<String>? endpointType;
+  final pulumi.Input<String?>? endpointType;
   /// Location of the primary volume. Changing this forces a new resource to be created.
   final pulumi.Input<String> remoteVolumeLocation;
   /// Resource ID of the primary volume.

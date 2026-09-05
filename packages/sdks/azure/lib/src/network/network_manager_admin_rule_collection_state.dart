@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering NetworkManagerAdminRuleCollection resources.
 class NetworkManagerAdminRuleCollectionState {
   /// A description of the Network Manager Admin Rule Collection.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Specifies the name which should be used for this Network Manager Admin Rule Collection. Changing this forces a new Network Manager Admin Rule Collection to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A list of Network Group ID which this Network Manager Admin Rule Collection applies to.
-  final pulumi.Input<List<String>>? networkGroupIds;
+  final pulumi.Input<List<String>?>? networkGroupIds;
   /// Specifies the ID of the Network Manager Security Admin Configuration. Changing this forces a new Network Manager Admin Rule Collection to be created.
-  final pulumi.Input<String>? securityAdminConfigurationId;
+  final pulumi.Input<String?>? securityAdminConfigurationId;
 
   /// Creates a new [NetworkManagerAdminRuleCollectionState].
   /// [description] A description of the Network Manager Admin Rule Collection.

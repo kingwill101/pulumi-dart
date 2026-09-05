@@ -4,15 +4,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AppServiceSourceControl {
   /// The branch of the remote repository to use. Defaults to 'master'.
-  final pulumi.Input<String>? branch;
+  final pulumi.Input<String?>? branch;
   /// Limits to manual integration. Defaults to `false` if not specified.
-  final pulumi.Input<bool>? manualIntegration;
+  final pulumi.Input<bool?>? manualIntegration;
   /// The URL of the source code repository.
-  final pulumi.Input<String>? repoUrl;
+  final pulumi.Input<String?>? repoUrl;
   /// Enable roll-back for the repository. Defaults to `false` if not specified.
-  final pulumi.Input<bool>? rollbackEnabled;
+  final pulumi.Input<bool?>? rollbackEnabled;
   /// Use Mercurial if `true`, otherwise uses Git.
-  final pulumi.Input<bool>? useMercurial;
+  final pulumi.Input<bool?>? useMercurial;
 
   /// Creates a new [AppServiceSourceControl].
   /// [branch] The branch of the remote repository to use. Defaults to 'master'.

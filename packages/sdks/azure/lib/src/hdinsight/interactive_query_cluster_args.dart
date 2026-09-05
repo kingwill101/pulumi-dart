@@ -25,45 +25,45 @@ class InteractiveQueryClusterArgs {
   /// A `componentVersion` block as defined below.
   final pulumi.Input<InteractiveQueryClusterComponentVersion> componentVersion;
   /// A `computeIsolation` block as defined below.
-  final pulumi.Input<InteractiveQueryClusterComputeIsolation>? computeIsolation;
+  final pulumi.Input<InteractiveQueryClusterComputeIsolation?>? computeIsolation;
   /// A `diskEncryption` block as defined below.
-  final pulumi.Input<List<InteractiveQueryClusterDiskEncryption>>? diskEncryptions;
+  final pulumi.Input<List<InteractiveQueryClusterDiskEncryption>?>? diskEncryptions;
   /// Whether encryption in transit is enabled for this Cluster. Changing this forces a new resource to be created.
-  final pulumi.Input<bool>? encryptionInTransitEnabled;
+  final pulumi.Input<bool?>? encryptionInTransitEnabled;
   /// An `extension` block as defined below.
-  final pulumi.Input<InteractiveQueryClusterExtension>? extension;
+  final pulumi.Input<InteractiveQueryClusterExtension?>? extension;
   /// A `gateway` block as defined below.
   final pulumi.Input<InteractiveQueryClusterGateway> gateway;
   /// Specifies the Azure Region which this HDInsight Interactive Query Cluster should exist. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// A `metastores` block as defined below.
-  final pulumi.Input<InteractiveQueryClusterMetastores>? metastores;
+  final pulumi.Input<InteractiveQueryClusterMetastores?>? metastores;
   /// A `monitor` block as defined below.
-  final pulumi.Input<InteractiveQueryClusterMonitor>? monitor;
+  final pulumi.Input<InteractiveQueryClusterMonitor?>? monitor;
   /// Specifies the name for this HDInsight Interactive Query Cluster. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A `network` block as defined below.
-  final pulumi.Input<InteractiveQueryClusterNetwork>? network;
+  final pulumi.Input<InteractiveQueryClusterNetwork?>? network;
   /// A `privateLinkConfiguration` block as defined below.
-  final pulumi.Input<InteractiveQueryClusterPrivateLinkConfiguration>? privateLinkConfiguration;
+  final pulumi.Input<InteractiveQueryClusterPrivateLinkConfiguration?>? privateLinkConfiguration;
   /// Specifies the name of the Resource Group in which this HDInsight Interactive Query Cluster should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
   /// A `roles` block as defined below.
   final pulumi.Input<InteractiveQueryClusterRoles> roles;
   /// A `securityProfile` block as defined below. Changing this forces a new resource to be created.
-  final pulumi.Input<InteractiveQueryClusterSecurityProfile>? securityProfile;
+  final pulumi.Input<InteractiveQueryClusterSecurityProfile?>? securityProfile;
   /// A `storageAccountGen2` block as defined below.
-  final pulumi.Input<InteractiveQueryClusterStorageAccountGen2>? storageAccountGen2;
+  final pulumi.Input<InteractiveQueryClusterStorageAccountGen2?>? storageAccountGen2;
   /// One or more `storageAccount` block as defined below.
-  final pulumi.Input<List<InteractiveQueryClusterStorageAccount>>? storageAccounts;
+  final pulumi.Input<List<InteractiveQueryClusterStorageAccount>?>? storageAccounts;
   /// A map of Tags which should be assigned to this HDInsight Interactive Query Cluster.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Specifies the Tier which should be used for this HDInsight Interactive Query Cluster. Possible values are `Standard` or `Premium`. Changing this forces a new resource to be created.
   final pulumi.Input<String> tier;
   /// The minimal supported TLS version. Possible values are 1.0, 1.1 or 1.2. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** Starting on June 30, 2020, Azure HDInsight will enforce TLS 1.2 or later versions for all HTTPS connections. For more information, see [Azure HDInsight TLS 1.2 Enforcement](https://azure.microsoft.com/en-us/updates/azure-hdinsight-tls-12-enforcement/).
-  final pulumi.Input<String>? tlsMinVersion;
+  final pulumi.Input<String?>? tlsMinVersion;
 
   /// Creates a new [InteractiveQueryClusterArgs].
   /// [clusterVersion] Specifies the Version of HDInsights which should be used for this Cluster. Changing this forces a new resource to be created.

@@ -31,12 +31,12 @@ import 'stream_input_iot_hub_state.dart';
 /// });
 /// const exampleStreamInputIotHub = new azure.streamanalytics.StreamInputIotHub("example", {
 ///     name: "example-iothub-input",
-///     streamAnalyticsJobName: example.apply(example => example.name),
-///     resourceGroupName: example.apply(example => example.resourceGroupName),
+///     streamAnalyticsJobName: example.name,
+///     resourceGroupName: example.resourceGroupName,
 ///     endpoint: "messages/events",
 ///     eventhubConsumerGroupName: "$Default",
 ///     iothubNamespace: exampleIoTHub.name,
-///     sharedAccessPolicyKey: exampleIoTHub.sharedAccessPolicies.apply(sharedAccessPolicies => sharedAccessPolicies[0].primaryKey),
+///     sharedAccessPolicyKey: exampleIoTHub.sharedAccessPolicies[0].primaryKey,
 ///     sharedAccessPolicyName: "iothubowner",
 ///     serialization: {
 ///         type: "Json",
@@ -162,19 +162,15 @@ import 'stream_input_iot_hub_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = streamanalytics.NewStreamInputIotHub(ctx, "example", &streamanalytics.StreamInputIotHubArgs{
-/// 			Name: pulumi.String("example-iothub-input"),
-/// 			StreamAnalyticsJobName: pulumi.String(example.ApplyT(func(example streamanalytics.GetJobResult) (*string, error) {
-/// 				return example.Name, nil
-/// 			}).(pulumi.StringPtrOutput)),
-/// 			ResourceGroupName: pulumi.String(example.ApplyT(func(example streamanalytics.GetJobResult) (*string, error) {
-/// 				return example.ResourceGroupName, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			Name:                      pulumi.String("example-iothub-input"),
+/// 			StreamAnalyticsJobName:    example.Name(),
+/// 			ResourceGroupName:         example.ResourceGroupName(),
 /// 			Endpoint:                  pulumi.String("messages/events"),
 /// 			EventhubConsumerGroupName: pulumi.String("$Default"),
 /// 			IothubNamespace:           exampleIoTHub.Name,
-/// 			SharedAccessPolicyKey: pulumi.String(exampleIoTHub.SharedAccessPolicies.ApplyT(func(sharedAccessPolicies []iot.IoTHubSharedAccessPolicy) (*string, error) {
+/// 			SharedAccessPolicyKey: exampleIoTHub.SharedAccessPolicies.ApplyT(func(sharedAccessPolicies []iot.IoTHubSharedAccessPolicy) (*string, error) {
 /// 				return sharedAccessPolicies[0].PrimaryKey, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			}).(pulumi.StringPtrOutput),
 /// 			SharedAccessPolicyName: pulumi.String("iothubowner"),
 /// 			Serialization: &streamanalytics.StreamInputIotHubSerializationArgs{
 /// 				Type:     pulumi.String("Json"),
@@ -386,7 +382,8 @@ class StreamInputIotHub extends pulumi.CustomResource {
           'azure:streamanalytics/streamInputIotHub:StreamInputIotHub',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['sharedAccessPolicyKey'],
         ) {
     endpoint = registerOutput<String>('endpoint');
     eventhubConsumerGroupName = registerOutput<String>('eventhubConsumerGroupName');
@@ -394,7 +391,7 @@ class StreamInputIotHub extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     serialization = registerOutput<StreamInputIotHubSerialization>('serialization', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StreamInputIotHubSerialization.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    sharedAccessPolicyKey = registerOutput<String>('sharedAccessPolicyKey');
+    sharedAccessPolicyKey = registerOutput<String>('sharedAccessPolicyKey', isSecret: true);
     sharedAccessPolicyName = registerOutput<String>('sharedAccessPolicyName');
     streamAnalyticsJobName = registerOutput<String>('streamAnalyticsJobName');
   }
@@ -404,11 +401,12 @@ class StreamInputIotHub extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     StreamInputIotHubState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return StreamInputIotHub._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -428,7 +426,28 @@ class StreamInputIotHub extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     serialization = registerOutput<StreamInputIotHubSerialization>('serialization', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StreamInputIotHubSerialization.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    sharedAccessPolicyKey = registerOutput<String>('sharedAccessPolicyKey');
+    sharedAccessPolicyKey = registerOutput<String>('sharedAccessPolicyKey', isSecret: true);
+    sharedAccessPolicyName = registerOutput<String>('sharedAccessPolicyName');
+    streamAnalyticsJobName = registerOutput<String>('streamAnalyticsJobName');
+  }
+
+  /// Creates a typed reference to an existing [StreamInputIotHub] resource.
+  StreamInputIotHub.reference(String urn)
+    : super(
+        'azure:streamanalytics/streamInputIotHub:StreamInputIotHub',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['sharedAccessPolicyKey'],
+        isResourceReference: true,
+      ) {
+    endpoint = registerOutput<String>('endpoint');
+    eventhubConsumerGroupName = registerOutput<String>('eventhubConsumerGroupName');
+    iothubNamespace = registerOutput<String>('iothubNamespace');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    serialization = registerOutput<StreamInputIotHubSerialization>('serialization', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StreamInputIotHubSerialization.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sharedAccessPolicyKey = registerOutput<String>('sharedAccessPolicyKey', isSecret: true);
     sharedAccessPolicyName = registerOutput<String>('sharedAccessPolicyName');
     streamAnalyticsJobName = registerOutput<String>('streamAnalyticsJobName');
   }

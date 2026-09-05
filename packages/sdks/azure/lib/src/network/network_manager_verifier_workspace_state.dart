@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering NetworkManagerVerifierWorkspace resources.
 class NetworkManagerVerifierWorkspaceState {
   /// The Description of the Network Manager Verifier Workspace.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The Azure Region where the Network Manager Verifier Workspace should exist. Changing this forces a new Network Manager Verifier Workspace to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name which should be used for this Network Manager Verifier Workspace. Changing this forces a new Network Manager Verifier Workspace to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the Network Manager. Changing this forces a new Network Manager Verifier Workspace to be created.
-  final pulumi.Input<String>? networkManagerId;
+  final pulumi.Input<String?>? networkManagerId;
   /// A mapping of tags which should be assigned to the Network Manager Verifier Workspace.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [NetworkManagerVerifierWorkspaceState].
   /// [description] The Description of the Network Manager Verifier Workspace.

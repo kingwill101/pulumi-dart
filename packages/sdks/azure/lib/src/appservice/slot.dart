@@ -1,10 +1,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'slot_args.dart';
 import 'slot_auth_settings.dart';
+import 'slot_connection_string.dart';
 import 'slot_identity.dart';
 import 'slot_logs.dart';
 import 'slot_site_config.dart';
+import 'slot_site_credential.dart';
 import 'slot_state.dart';
+import 'slot_storage_account.dart';
 
 /// Manages an App Service Slot (within an App Service).
 ///
@@ -234,7 +237,7 @@ import 'slot_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		server, err := random.NewId(ctx, "server", &random.IdArgs{
-/// 			Keepers: map[string]interface{}{
+/// 			Keepers: map[string]int{
 /// 				"aziId": 1,
 /// 			},
 /// 			ByteLength: 8,
@@ -265,7 +268,7 @@ import 'slot_state.dart';
 /// 			Name:              server.Hex,
 /// 			Location:          example.Location,
 /// 			ResourceGroupName: example.Name,
-/// 			AppServicePlanId:  examplePlan.ID(),
+/// 			AppServicePlanId:  examplePlan.ID().ToIDOutput().ToStringOutput(),
 /// 			SiteConfig: &appservice.AppServiceSiteConfigArgs{
 /// 				DotnetFrameworkVersion: pulumi.String("v4.0"),
 /// 			},
@@ -288,7 +291,7 @@ import 'slot_state.dart';
 /// 			AppServiceName:    exampleAppService.Name,
 /// 			Location:          example.Location,
 /// 			ResourceGroupName: example.Name,
-/// 			AppServicePlanId:  examplePlan.ID(),
+/// 			AppServicePlanId:  examplePlan.ID().ToIDOutput().ToStringOutput(),
 /// 			SiteConfig: &appservice.SlotSiteConfigArgs{
 /// 				DotnetFrameworkVersion: pulumi.String("v4.0"),
 /// 			},
@@ -701,7 +704,7 @@ import 'slot_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		server, err := random.NewId(ctx, "server", &random.IdArgs{
-/// 			Keepers: map[string]interface{}{
+/// 			Keepers: map[string]int{
 /// 				"aziId": 1,
 /// 			},
 /// 			ByteLength: 8,
@@ -732,7 +735,7 @@ import 'slot_state.dart';
 /// 			Name:              server.Hex,
 /// 			Location:          example.Location,
 /// 			ResourceGroupName: example.Name,
-/// 			AppServicePlanId:  examplePlan.ID(),
+/// 			AppServicePlanId:  examplePlan.ID().ToIDOutput().ToStringOutput(),
 /// 			SiteConfig: &appservice.AppServiceSiteConfigArgs{
 /// 				JavaVersion:          pulumi.String("1.8"),
 /// 				JavaContainer:        pulumi.String("JETTY"),
@@ -747,7 +750,7 @@ import 'slot_state.dart';
 /// 			AppServiceName:    exampleAppService.Name,
 /// 			Location:          example.Location,
 /// 			ResourceGroupName: example.Name,
-/// 			AppServicePlanId:  examplePlan.ID(),
+/// 			AppServicePlanId:  examplePlan.ID().ToIDOutput().ToStringOutput(),
 /// 			SiteConfig: &appservice.SlotSiteConfigArgs{
 /// 				JavaVersion:          pulumi.String("1.8"),
 /// 				JavaContainer:        pulumi.String("JETTY"),
@@ -966,7 +969,7 @@ class Slot extends pulumi.CustomResource {
   /// Should the App Service Slot send session affinity cookies, which route client requests in the same session to the same instance?
   late final pulumi.Output<bool> clientAffinityEnabled;
   /// An `connectionString` block as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>> connectionStrings;
+  late final pulumi.Output<List<SlotConnectionString>> connectionStrings;
   /// The Default Hostname associated with the App Service Slot - such as `mysite.azurewebsites.net`
   late final pulumi.Output<String> defaultSiteHostname;
   /// Is the App Service Slot Enabled? Defaults to `true`.
@@ -988,9 +991,9 @@ class Slot extends pulumi.CustomResource {
   /// A `siteConfig` object as defined below.
   late final pulumi.Output<SlotSiteConfig> siteConfig;
   /// A `siteCredential` block as defined below, which contains the site-level credentials used to publish to this App Service slot.
-  late final pulumi.Output<List<Map<String, dynamic>>> siteCredentials;
+  late final pulumi.Output<List<SlotSiteCredential>> siteCredentials;
   /// One or more `storageAccount` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>> storageAccounts;
+  late final pulumi.Output<List<SlotStorageAccount>> storageAccounts;
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -1006,14 +1009,14 @@ class Slot extends pulumi.CustomResource {
           'azure:appservice/slot:Slot',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     appServiceName = registerOutput<String>('appServiceName');
     appServicePlanId = registerOutput<String>('appServicePlanId');
-    appSettings = registerOutput<Map<String, String>>('appSettings');
+    appSettings = registerOutput<Map<String, String>>('appSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     authSettings = registerOutput<SlotAuthSettings>('authSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SlotAuthSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     clientAffinityEnabled = registerOutput<bool>('clientAffinityEnabled');
-    connectionStrings = registerOutput<List<Map<String, dynamic>>>('connectionStrings');
+    connectionStrings = registerOutput<List<SlotConnectionString>>('connectionStrings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SlotConnectionString>(guardedValue, (value) => SlotConnectionString.fromMap((value as Map).cast<String, dynamic>())); });
     defaultSiteHostname = registerOutput<String>('defaultSiteHostname');
     enabled = registerOutput<bool?>('enabled');
     httpsOnly = registerOutput<bool?>('httpsOnly');
@@ -1024,9 +1027,9 @@ class Slot extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     siteConfig = registerOutput<SlotSiteConfig>('siteConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SlotSiteConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    siteCredentials = registerOutput<List<Map<String, dynamic>>>('siteCredentials');
-    storageAccounts = registerOutput<List<Map<String, dynamic>>>('storageAccounts');
-    tags = registerOutput<Map<String, String>?>('tags');
+    siteCredentials = registerOutput<List<SlotSiteCredential>>('siteCredentials', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SlotSiteCredential>(guardedValue, (value) => SlotSiteCredential.fromMap((value as Map).cast<String, dynamic>())); });
+    storageAccounts = registerOutput<List<SlotStorageAccount>>('storageAccounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SlotStorageAccount>(guardedValue, (value) => SlotStorageAccount.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Slot] resource's state with the given [name] and [id].
@@ -1034,11 +1037,12 @@ class Slot extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SlotState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Slot._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1054,10 +1058,10 @@ class Slot extends pulumi.CustomResource {
         ) {
     appServiceName = registerOutput<String>('appServiceName');
     appServicePlanId = registerOutput<String>('appServicePlanId');
-    appSettings = registerOutput<Map<String, String>>('appSettings');
+    appSettings = registerOutput<Map<String, String>>('appSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     authSettings = registerOutput<SlotAuthSettings>('authSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SlotAuthSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     clientAffinityEnabled = registerOutput<bool>('clientAffinityEnabled');
-    connectionStrings = registerOutput<List<Map<String, dynamic>>>('connectionStrings');
+    connectionStrings = registerOutput<List<SlotConnectionString>>('connectionStrings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SlotConnectionString>(guardedValue, (value) => SlotConnectionString.fromMap((value as Map).cast<String, dynamic>())); });
     defaultSiteHostname = registerOutput<String>('defaultSiteHostname');
     enabled = registerOutput<bool?>('enabled');
     httpsOnly = registerOutput<bool?>('httpsOnly');
@@ -1068,8 +1072,38 @@ class Slot extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     siteConfig = registerOutput<SlotSiteConfig>('siteConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SlotSiteConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    siteCredentials = registerOutput<List<Map<String, dynamic>>>('siteCredentials');
-    storageAccounts = registerOutput<List<Map<String, dynamic>>>('storageAccounts');
-    tags = registerOutput<Map<String, String>?>('tags');
+    siteCredentials = registerOutput<List<SlotSiteCredential>>('siteCredentials', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SlotSiteCredential>(guardedValue, (value) => SlotSiteCredential.fromMap((value as Map).cast<String, dynamic>())); });
+    storageAccounts = registerOutput<List<SlotStorageAccount>>('storageAccounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SlotStorageAccount>(guardedValue, (value) => SlotStorageAccount.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Slot] resource.
+  Slot.reference(String urn)
+    : super(
+        'azure:appservice/slot:Slot',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    appServiceName = registerOutput<String>('appServiceName');
+    appServicePlanId = registerOutput<String>('appServicePlanId');
+    appSettings = registerOutput<Map<String, String>>('appSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    authSettings = registerOutput<SlotAuthSettings>('authSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SlotAuthSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    clientAffinityEnabled = registerOutput<bool>('clientAffinityEnabled');
+    connectionStrings = registerOutput<List<SlotConnectionString>>('connectionStrings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SlotConnectionString>(guardedValue, (value) => SlotConnectionString.fromMap((value as Map).cast<String, dynamic>())); });
+    defaultSiteHostname = registerOutput<String>('defaultSiteHostname');
+    enabled = registerOutput<bool?>('enabled');
+    httpsOnly = registerOutput<bool?>('httpsOnly');
+    identity = registerOutput<SlotIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SlotIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    keyVaultReferenceIdentityId = registerOutput<String>('keyVaultReferenceIdentityId');
+    location = registerOutput<String>('location');
+    logs = registerOutput<SlotLogs>('logs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SlotLogs.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    siteConfig = registerOutput<SlotSiteConfig>('siteConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SlotSiteConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    siteCredentials = registerOutput<List<SlotSiteCredential>>('siteCredentials', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SlotSiteCredential>(guardedValue, (value) => SlotSiteCredential.fromMap((value as Map).cast<String, dynamic>())); });
+    storageAccounts = registerOutput<List<SlotStorageAccount>>('storageAccounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SlotStorageAccount>(guardedValue, (value) => SlotStorageAccount.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

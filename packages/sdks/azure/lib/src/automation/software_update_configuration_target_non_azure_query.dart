@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SoftwareUpdateConfigurationTargetNonAzureQuery {
   /// Specifies the Log Analytics save search name.
-  final pulumi.Input<String>? functionAlias;
+  final pulumi.Input<String?>? functionAlias;
   /// The workspace id for Log Analytics in which the saved search in.
-  final pulumi.Input<String>? workspaceId;
+  final pulumi.Input<String?>? workspaceId;
 
   /// Creates a new [SoftwareUpdateConfigurationTargetNonAzureQuery].
   /// [functionAlias] Specifies the Log Analytics save search name.

@@ -16,31 +16,31 @@ class AppArgs {
   /// The ID of the Container App Environment within which this Container App should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String> containerAppEnvironmentId;
   /// A `dapr` block as detailed below.
-  final pulumi.Input<AppDapr>? dapr;
+  final pulumi.Input<AppDapr?>? dapr;
   /// An `identity` block as detailed below.
-  final pulumi.Input<AppIdentity>? identity;
+  final pulumi.Input<AppIdentity?>? identity;
   /// An `ingress` block as detailed below.
-  final pulumi.Input<AppIngress>? ingress;
+  final pulumi.Input<AppIngress?>? ingress;
   /// The maximum of inactive revisions allowed for this Container App.
-  final pulumi.Input<int>? maxInactiveRevisions;
+  final pulumi.Input<int?>? maxInactiveRevisions;
   /// The name for this Container App. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A `registry` block as detailed below.
-  final pulumi.Input<List<AppRegistry>>? registries;
+  final pulumi.Input<List<AppRegistry>?>? registries;
   /// The name of the resource group in which the Container App Environment is to be created. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
   /// The revisions operational mode for the Container App. Possible values include `Single` and `Multiple`. In `Single` mode, a single revision is in operation at any given time. In `Multiple` mode, more than one revision can be active at a time and can be configured with load distribution via the `trafficWeight` block in the `ingress` configuration.
   final pulumi.Input<String> revisionMode;
   /// One or more `secret` block as detailed below.
-  final pulumi.Input<List<AppSecret>>? secrets;
+  final pulumi.Input<List<AppSecret>?>? secrets;
   /// A mapping of tags to assign to the Container App.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A `template` block as detailed below.
   final pulumi.Input<AppTemplate> template;
   /// The name of the Workload Profile in the Container App Environment to place this Container App.
   ///
   /// &gt; **Note:** Omit this value to use the default `Consumption` Workload Profile.
-  final pulumi.Input<String>? workloadProfileName;
+  final pulumi.Input<String?>? workloadProfileName;
 
   /// Creates a new [AppArgs].
   /// [containerAppEnvironmentId] The ID of the Container App Environment within which this Container App should exist. Changing this forces a new resource to be created.
@@ -96,7 +96,7 @@ class AppArgs {
       dapr: (() { final guardedValue = map['dapr']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AppDapr.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AppIdentity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       ingress: (() { final guardedValue = map['ingress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AppIngress.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      maxInactiveRevisions: (() { final guardedValue = map['maxInactiveRevisions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxInactiveRevisions: (() { final guardedValue = map['maxInactiveRevisions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       registries: (() { final guardedValue = map['registries']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AppRegistry>(guardedValue, (value) => AppRegistry.fromMap((value as Map).cast<String, dynamic>()))); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),

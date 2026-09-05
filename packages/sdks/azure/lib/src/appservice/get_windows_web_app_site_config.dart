@@ -213,7 +213,7 @@ class GetWindowsWebAppSiteConfig {
       detailedErrorLoggingEnabled: pulumi.Input.fromValue(map['detailedErrorLoggingEnabled'] as bool),
       ftpsState: pulumi.Input.fromValue(map['ftpsState'] as String),
       handlerMappings: pulumi.Input.fromValue(pulumi.Input.decodeList<GetWindowsWebAppSiteConfigHandlerMapping>(map['handlerMappings']!, (value) => GetWindowsWebAppSiteConfigHandlerMapping.fromMap((value as Map).cast<String, dynamic>()))),
-      healthCheckEvictionTimeInMin: pulumi.Input.fromValue(map['healthCheckEvictionTimeInMin'] as int),
+      healthCheckEvictionTimeInMin: pulumi.Input.fromValue((map['healthCheckEvictionTimeInMin'] as num).toInt()),
       healthCheckPath: pulumi.Input.fromValue(map['healthCheckPath'] as String),
       http2Enabled: pulumi.Input.fromValue(map['http2Enabled'] as bool),
       ipRestrictionDefaultAction: pulumi.Input.fromValue(map['ipRestrictionDefaultAction'] as String),
@@ -235,7 +235,7 @@ class GetWindowsWebAppSiteConfig {
       vnetRouteAllEnabled: pulumi.Input.fromValue(map['vnetRouteAllEnabled'] as bool),
       websocketsEnabled: pulumi.Input.fromValue(map['websocketsEnabled'] as bool),
       windowsFxVersion: pulumi.Input.fromValue(map['windowsFxVersion'] as String),
-      workerCount: pulumi.Input.fromValue(map['workerCount'] as int),
+      workerCount: pulumi.Input.fromValue((map['workerCount'] as num).toInt()),
     );
   }
 }

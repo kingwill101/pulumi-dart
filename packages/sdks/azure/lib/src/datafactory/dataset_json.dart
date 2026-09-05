@@ -2,6 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'dataset_json_args.dart';
 import 'dataset_json_azure_blob_storage_location.dart';
 import 'dataset_json_http_server_location.dart';
+import 'dataset_json_schema_column.dart';
 import 'dataset_json_state.dart';
 
 /// Manages an Azure JSON Dataset inside an Azure Data Factory.
@@ -140,7 +141,7 @@ import 'dataset_json_state.dart';
 /// 		}
 /// 		exampleLinkedServiceWeb, err := datafactory.NewLinkedServiceWeb(ctx, "example", &datafactory.LinkedServiceWebArgs{
 /// 			Name:               pulumi.String("example"),
-/// 			DataFactoryId:      exampleFactory.ID(),
+/// 			DataFactoryId:      exampleFactory.ID().ToIDOutput().ToStringOutput(),
 /// 			AuthenticationType: pulumi.String("Anonymous"),
 /// 			Url:                pulumi.String("https://www.bing.com"),
 /// 		})
@@ -149,7 +150,7 @@ import 'dataset_json_state.dart';
 /// 		}
 /// 		_, err = datafactory.NewDatasetJson(ctx, "example", &datafactory.DatasetJsonArgs{
 /// 			Name:              pulumi.String("example"),
-/// 			DataFactoryId:     exampleFactory.ID(),
+/// 			DataFactoryId:     exampleFactory.ID().ToIDOutput().ToStringOutput(),
 /// 			LinkedServiceName: exampleLinkedServiceWeb.Name,
 /// 			HttpServerLocation: &datafactory.DatasetJsonHttpServerLocationArgs{
 /// 				RelativeUrl: pulumi.String("/fizz/buzz/"),
@@ -334,7 +335,7 @@ class DatasetJson extends pulumi.CustomResource {
   /// A map of parameters to associate with the Data Factory Dataset.
   late final pulumi.Output<Map<String, String>?> parameters;
   /// A `schemaColumn` block as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> schemaColumns;
+  late final pulumi.Output<List<DatasetJsonSchemaColumn>?> schemaColumns;
 
   /// Creates a new [DatasetJson].
   /// [name] The Pulumi resource name.
@@ -348,10 +349,10 @@ class DatasetJson extends pulumi.CustomResource {
           'azure:datafactory/datasetJson:DatasetJson',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
-    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
-    annotations = registerOutput<List<String>?>('annotations');
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     azureBlobStorageLocation = registerOutput<DatasetJsonAzureBlobStorageLocation?>('azureBlobStorageLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatasetJsonAzureBlobStorageLocation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     dataFactoryId = registerOutput<String>('dataFactoryId');
     description = registerOutput<String?>('description');
@@ -360,8 +361,8 @@ class DatasetJson extends pulumi.CustomResource {
     httpServerLocation = registerOutput<DatasetJsonHttpServerLocation?>('httpServerLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatasetJsonHttpServerLocation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     linkedServiceName = registerOutput<String>('linkedServiceName');
     this.name = registerOutput<String>('name');
-    parameters = registerOutput<Map<String, String>?>('parameters');
-    schemaColumns = registerOutput<List<Map<String, dynamic>>?>('schemaColumns');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    schemaColumns = registerOutput<List<DatasetJsonSchemaColumn>?>('schemaColumns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DatasetJsonSchemaColumn>(guardedValue, (value) => DatasetJsonSchemaColumn.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [DatasetJson] resource's state with the given [name] and [id].
@@ -369,11 +370,12 @@ class DatasetJson extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DatasetJsonState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DatasetJson._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -387,8 +389,8 @@ class DatasetJson extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
-    annotations = registerOutput<List<String>?>('annotations');
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     azureBlobStorageLocation = registerOutput<DatasetJsonAzureBlobStorageLocation?>('azureBlobStorageLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatasetJsonAzureBlobStorageLocation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     dataFactoryId = registerOutput<String>('dataFactoryId');
     description = registerOutput<String?>('description');
@@ -397,7 +399,30 @@ class DatasetJson extends pulumi.CustomResource {
     httpServerLocation = registerOutput<DatasetJsonHttpServerLocation?>('httpServerLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatasetJsonHttpServerLocation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     linkedServiceName = registerOutput<String>('linkedServiceName');
     this.name = registerOutput<String>('name');
-    parameters = registerOutput<Map<String, String>?>('parameters');
-    schemaColumns = registerOutput<List<Map<String, dynamic>>?>('schemaColumns');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    schemaColumns = registerOutput<List<DatasetJsonSchemaColumn>?>('schemaColumns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DatasetJsonSchemaColumn>(guardedValue, (value) => DatasetJsonSchemaColumn.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [DatasetJson] resource.
+  DatasetJson.reference(String urn)
+    : super(
+        'azure:datafactory/datasetJson:DatasetJson',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    azureBlobStorageLocation = registerOutput<DatasetJsonAzureBlobStorageLocation?>('azureBlobStorageLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatasetJsonAzureBlobStorageLocation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dataFactoryId = registerOutput<String>('dataFactoryId');
+    description = registerOutput<String?>('description');
+    encoding = registerOutput<String?>('encoding');
+    folder = registerOutput<String?>('folder');
+    httpServerLocation = registerOutput<DatasetJsonHttpServerLocation?>('httpServerLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatasetJsonHttpServerLocation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    linkedServiceName = registerOutput<String>('linkedServiceName');
+    this.name = registerOutput<String>('name');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    schemaColumns = registerOutput<List<DatasetJsonSchemaColumn>?>('schemaColumns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DatasetJsonSchemaColumn>(guardedValue, (value) => DatasetJsonSchemaColumn.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

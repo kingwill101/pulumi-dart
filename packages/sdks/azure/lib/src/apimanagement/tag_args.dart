@@ -10,9 +10,9 @@ class TagArgs {
   /// The ID of the API Management. Changing this forces a new API Management Tag to be created.
   final pulumi.Input<String> apiManagementId;
   /// The display name of the API Management Tag. Defaults to the `name`.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The name which should be used for this API Management Tag. Changing this forces a new API Management Tag to be created. The name must be unique in the API Management Service.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [TagArgs].
   /// [apiManagementId] The ID of the API Management. Changing this forces a new API Management Tag to be created.

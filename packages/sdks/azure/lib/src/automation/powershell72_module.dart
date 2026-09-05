@@ -112,7 +112,7 @@ import 'powershell72_module_state.dart';
 /// 		}
 /// 		_, err = automation.NewPowershell72Module(ctx, "example", &automation.Powershell72ModuleArgs{
 /// 			Name:                pulumi.String("xActiveDirectory"),
-/// 			AutomationAccountId: exampleAccount.ID(),
+/// 			AutomationAccountId: exampleAccount.ID().ToIDOutput().ToStringOutput(),
 /// 			ModuleLink: &automation.Powershell72ModuleModuleLinkArgs{
 /// 				Uri: pulumi.String("https://devopsgallerystorage.blob.core.windows.net/packages/xactivedirectory.2.19.0.nupkg"),
 /// 			},
@@ -262,12 +262,12 @@ class Powershell72Module extends pulumi.CustomResource {
           'azure:automation/powershell72Module:Powershell72Module',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     automationAccountId = registerOutput<String>('automationAccountId');
     moduleLink = registerOutput<Powershell72ModuleModuleLink>('moduleLink', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return Powershell72ModuleModuleLink.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Powershell72Module] resource's state with the given [name] and [id].
@@ -275,11 +275,12 @@ class Powershell72Module extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     Powershell72ModuleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Powershell72Module._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -296,6 +297,21 @@ class Powershell72Module extends pulumi.CustomResource {
     automationAccountId = registerOutput<String>('automationAccountId');
     moduleLink = registerOutput<Powershell72ModuleModuleLink>('moduleLink', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return Powershell72ModuleModuleLink.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Powershell72Module] resource.
+  Powershell72Module.reference(String urn)
+    : super(
+        'azure:automation/powershell72Module:Powershell72Module',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    automationAccountId = registerOutput<String>('automationAccountId');
+    moduleLink = registerOutput<Powershell72ModuleModuleLink>('moduleLink', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return Powershell72ModuleModuleLink.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

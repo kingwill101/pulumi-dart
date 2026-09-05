@@ -6,9 +6,9 @@ class StandardWebTestValidationRulesContent {
   /// A string value containing the content to match on.
   final pulumi.Input<String> contentMatch;
   /// Ignore the casing in the `contentMatch` value.
-  final pulumi.Input<bool>? ignoreCase;
+  final pulumi.Input<bool?>? ignoreCase;
   /// If the content of `contentMatch` is found, pass the test. If set to `false`, the WebTest is failing if the content of `contentMatch` is found.
-  final pulumi.Input<bool>? passIfTextFound;
+  final pulumi.Input<bool?>? passIfTextFound;
 
   /// Creates a new [StandardWebTestValidationRulesContent].
   /// [contentMatch] A string value containing the content to match on.

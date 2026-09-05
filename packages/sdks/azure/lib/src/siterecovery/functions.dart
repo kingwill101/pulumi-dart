@@ -148,6 +148,17 @@ Future<GetFabricResult> getFabric(
   return GetFabricResult.fromMap(result);
 }
 
+pulumi.Output<GetFabricResult> getFabricOutput(
+  GetFabricArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:siterecovery/getFabric:getFabric',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFabricResult.fromMap);
+}
+
 /// Use this data source to access information about an existing site recovery services protection container.
 ///
 /// ## Example Usage
@@ -295,6 +306,17 @@ Future<GetProtectionContainerResult> getProtectionContainer(
   return GetProtectionContainerResult.fromMap(result);
 }
 
+pulumi.Output<GetProtectionContainerResult> getProtectionContainerOutput(
+  GetProtectionContainerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:siterecovery/getProtectionContainer:getProtectionContainer',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetProtectionContainerResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Azure Site Recovery replication policy.
 ///
 /// ## Example Usage
@@ -433,6 +455,17 @@ Future<GetReplicationPolicyResult> getReplicationPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetReplicationPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetReplicationPolicyResult> getReplicationPolicyOutput(
+  GetReplicationPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:siterecovery/getReplicationPolicy:getReplicationPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetReplicationPolicyResult.fromMap);
 }
 
 /// Get information about an Azure Site Recovery Plan within a Recovery Services vault. A recovery plan gathers machines into recovery groups for the purpose of failover.
@@ -603,4 +636,15 @@ Future<GetReplicationRecoveryPlanResult> getReplicationRecoveryPlan(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetReplicationRecoveryPlanResult.fromMap(result);
+}
+
+pulumi.Output<GetReplicationRecoveryPlanResult> getReplicationRecoveryPlanOutput(
+  GetReplicationRecoveryPlanArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:siterecovery/getReplicationRecoveryPlan:getReplicationRecoveryPlan',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetReplicationRecoveryPlanResult.fromMap);
 }

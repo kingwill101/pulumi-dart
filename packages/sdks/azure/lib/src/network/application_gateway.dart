@@ -1,11 +1,33 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'application_gateway_args.dart';
+import 'application_gateway_authentication_certificate.dart';
 import 'application_gateway_autoscale_configuration.dart';
+import 'application_gateway_backend.dart';
+import 'application_gateway_backend_address_pool.dart';
+import 'application_gateway_backend_http_setting.dart';
+import 'application_gateway_custom_error_configuration.dart';
+import 'application_gateway_frontend_ip_configuration.dart';
+import 'application_gateway_frontend_port.dart';
+import 'application_gateway_gateway_ip_configuration.dart';
 import 'application_gateway_global.dart';
+import 'application_gateway_http_listener.dart';
 import 'application_gateway_identity.dart';
+import 'application_gateway_listener.dart';
+import 'application_gateway_private_endpoint_connection.dart';
+import 'application_gateway_private_link_configuration.dart';
+import 'application_gateway_probe.dart';
+import 'application_gateway_redirect_configuration.dart';
+import 'application_gateway_request_routing_rule.dart';
+import 'application_gateway_rewrite_rule_set.dart';
+import 'application_gateway_routing_rule.dart';
 import 'application_gateway_sku.dart';
+import 'application_gateway_ssl_certificate.dart';
 import 'application_gateway_ssl_policy.dart';
+import 'application_gateway_ssl_profile.dart';
 import 'application_gateway_state.dart';
+import 'application_gateway_trusted_client_certificate.dart';
+import 'application_gateway_trusted_root_certificate.dart';
+import 'application_gateway_url_path_map.dart';
 import 'application_gateway_waf_configuration.dart';
 
 /// Manages an Application Gateway.
@@ -397,7 +419,7 @@ import 'application_gateway_waf_configuration.dart';
 /// 			GatewayIpConfigurations: network.ApplicationGatewayGatewayIpConfigurationArray{
 /// 				&network.ApplicationGatewayGatewayIpConfigurationArgs{
 /// 					Name:     pulumi.String("my-gateway-ip-configuration"),
-/// 					SubnetId: exampleSubnet.ID(),
+/// 					SubnetId: exampleSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 			FrontendPorts: network.ApplicationGatewayFrontendPortArray{
@@ -409,7 +431,7 @@ import 'application_gateway_waf_configuration.dart';
 /// 			FrontendIpConfigurations: network.ApplicationGatewayFrontendIpConfigurationArray{
 /// 				&network.ApplicationGatewayFrontendIpConfigurationArgs{
 /// 					Name:              pulumi.String(frontendIpConfigurationName),
-/// 					PublicIpAddressId: examplePublicIp.ID(),
+/// 					PublicIpAddressId: examplePublicIp.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 			BackendAddressPools: network.ApplicationGatewayBackendAddressPoolArray{
@@ -781,21 +803,21 @@ import 'application_gateway_waf_configuration.dart';
 /// ```
 class ApplicationGateway extends pulumi.CustomResource {
   /// One or more `authenticationCertificate` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> authenticationCertificates;
+  late final pulumi.Output<List<ApplicationGatewayAuthenticationCertificate>?> authenticationCertificates;
   /// An `autoscaleConfiguration` block as defined below.
   late final pulumi.Output<ApplicationGatewayAutoscaleConfiguration?> autoscaleConfiguration;
   /// One or more `backendAddressPool` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>> backendAddressPools;
+  late final pulumi.Output<List<ApplicationGatewayBackendAddressPool>> backendAddressPools;
   /// One or more `backendHttpSettings` blocks as defined below.
   ///
   /// &gt; **Note:** At least one of `backendHttpSettings` or `backend` must be specified.
-  late final pulumi.Output<List<Map<String, dynamic>>?> backendHttpSettings;
+  late final pulumi.Output<List<ApplicationGatewayBackendHttpSetting>?> backendHttpSettings;
   /// One or more `backend` blocks as defined below.
   ///
   /// &gt; **Note:** At least one of `backendHttpSettings` or `backend` must be specified.
-  late final pulumi.Output<List<Map<String, dynamic>>?> backends;
+  late final pulumi.Output<List<ApplicationGatewayBackend>?> backends;
   /// One or more `customErrorConfiguration` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> customErrorConfigurations;
+  late final pulumi.Output<List<ApplicationGatewayCustomErrorConfiguration>?> customErrorConfigurations;
   late final pulumi.Output<bool> enableHttp2;
   /// Is FIPS enabled on the Application Gateway?
   late final pulumi.Output<bool?> fipsEnabled;
@@ -804,11 +826,11 @@ class ApplicationGateway extends pulumi.CustomResource {
   /// Is the Firewall Policy associated with the Application Gateway?
   late final pulumi.Output<bool?> forceFirewallPolicyAssociation;
   /// One or more `frontendIpConfiguration` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>> frontendIpConfigurations;
+  late final pulumi.Output<List<ApplicationGatewayFrontendIpConfiguration>> frontendIpConfigurations;
   /// One or more `frontendPort` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>> frontendPorts;
+  late final pulumi.Output<List<ApplicationGatewayFrontendPort>> frontendPorts;
   /// One or more `gatewayIpConfiguration` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>> gatewayIpConfigurations;
+  late final pulumi.Output<List<ApplicationGatewayGatewayIpConfiguration>> gatewayIpConfigurations;
   /// A `global` block as defined below.
   late final pulumi.Output<ApplicationGatewayGlobal?> global;
   /// Is HTTP2 enabled on the application gateway resource? Defaults to `false`.
@@ -816,53 +838,53 @@ class ApplicationGateway extends pulumi.CustomResource {
   /// One or more `httpListener` blocks as defined below.
   ///
   /// &gt; **Note:** At least one of `httpListener` or `listener` must be specified.
-  late final pulumi.Output<List<Map<String, dynamic>>?> httpListeners;
+  late final pulumi.Output<List<ApplicationGatewayHttpListener>?> httpListeners;
   /// An `identity` block as defined below.
   late final pulumi.Output<ApplicationGatewayIdentity?> identity;
   /// One or more `listener` blocks as defined below.
   ///
   /// &gt; **Note:** At least one of `httpListener` or `listener` must be specified.
-  late final pulumi.Output<List<Map<String, dynamic>>?> listeners;
+  late final pulumi.Output<List<ApplicationGatewayListener>?> listeners;
   /// The Azure region where the Application Gateway should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
   /// The name of the Application Gateway. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
   /// A list of `privateEndpointConnection` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>> privateEndpointConnections;
+  late final pulumi.Output<List<ApplicationGatewayPrivateEndpointConnection>> privateEndpointConnections;
   /// One or more `privateLinkConfiguration` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> privateLinkConfigurations;
+  late final pulumi.Output<List<ApplicationGatewayPrivateLinkConfiguration>?> privateLinkConfigurations;
   /// One or more `probe` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> probes;
+  late final pulumi.Output<List<ApplicationGatewayProbe>?> probes;
   /// One or more `redirectConfiguration` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> redirectConfigurations;
+  late final pulumi.Output<List<ApplicationGatewayRedirectConfiguration>?> redirectConfigurations;
   /// One or more `requestRoutingRule` blocks as defined below.
   ///
   /// &gt; **Note:** At least one of `requestRoutingRule` or `routingRule` must be specified.
-  late final pulumi.Output<List<Map<String, dynamic>>?> requestRoutingRules;
+  late final pulumi.Output<List<ApplicationGatewayRequestRoutingRule>?> requestRoutingRules;
   /// The name of the resource group in which to the Application Gateway should exist. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
   /// One or more `rewriteRuleSet` blocks as defined below. Only valid for v2 WAF and Standard SKUs.
-  late final pulumi.Output<List<Map<String, dynamic>>?> rewriteRuleSets;
+  late final pulumi.Output<List<ApplicationGatewayRewriteRuleSet>?> rewriteRuleSets;
   /// One or more `routingRule` blocks as defined below.
   ///
   /// &gt; **Note:** At least one of `requestRoutingRule` or `routingRule` must be specified.
-  late final pulumi.Output<List<Map<String, dynamic>>?> routingRules;
+  late final pulumi.Output<List<ApplicationGatewayRoutingRule>?> routingRules;
   /// A `sku` block as defined below.
   late final pulumi.Output<ApplicationGatewaySku> sku;
   /// One or more `sslCertificate` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> sslCertificates;
+  late final pulumi.Output<List<ApplicationGatewaySslCertificate>?> sslCertificates;
   /// a `sslPolicy` block as defined below.
   late final pulumi.Output<ApplicationGatewaySslPolicy> sslPolicy;
   /// One or more `sslProfile` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> sslProfiles;
+  late final pulumi.Output<List<ApplicationGatewaySslProfile>?> sslProfiles;
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
   /// One or more `trustedClientCertificate` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> trustedClientCertificates;
+  late final pulumi.Output<List<ApplicationGatewayTrustedClientCertificate>?> trustedClientCertificates;
   /// One or more `trustedRootCertificate` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> trustedRootCertificates;
+  late final pulumi.Output<List<ApplicationGatewayTrustedRootCertificate>?> trustedRootCertificates;
   /// One or more `urlPathMap` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> urlPathMaps;
+  late final pulumi.Output<List<ApplicationGatewayUrlPathMap>?> urlPathMaps;
   /// A `wafConfiguration` block as defined below.
   late final pulumi.Output<ApplicationGatewayWafConfiguration?> wafConfiguration;
   /// Specifies a list of Availability Zones in which this Application Gateway should be located. Changing this forces a new Application Gateway to be created.
@@ -882,46 +904,46 @@ class ApplicationGateway extends pulumi.CustomResource {
           'azure:network/applicationGateway:ApplicationGateway',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
-    authenticationCertificates = registerOutput<List<Map<String, dynamic>>?>('authenticationCertificates');
+    authenticationCertificates = registerOutput<List<ApplicationGatewayAuthenticationCertificate>?>('authenticationCertificates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationGatewayAuthenticationCertificate>(guardedValue, (value) => ApplicationGatewayAuthenticationCertificate.fromMap((value as Map).cast<String, dynamic>())); });
     autoscaleConfiguration = registerOutput<ApplicationGatewayAutoscaleConfiguration?>('autoscaleConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationGatewayAutoscaleConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    backendAddressPools = registerOutput<List<Map<String, dynamic>>>('backendAddressPools');
-    backendHttpSettings = registerOutput<List<Map<String, dynamic>>?>('backendHttpSettings');
-    backends = registerOutput<List<Map<String, dynamic>>?>('backends');
-    customErrorConfigurations = registerOutput<List<Map<String, dynamic>>?>('customErrorConfigurations');
+    backendAddressPools = registerOutput<List<ApplicationGatewayBackendAddressPool>>('backendAddressPools', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationGatewayBackendAddressPool>(guardedValue, (value) => ApplicationGatewayBackendAddressPool.fromMap((value as Map).cast<String, dynamic>())); });
+    backendHttpSettings = registerOutput<List<ApplicationGatewayBackendHttpSetting>?>('backendHttpSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationGatewayBackendHttpSetting>(guardedValue, (value) => ApplicationGatewayBackendHttpSetting.fromMap((value as Map).cast<String, dynamic>())); });
+    backends = registerOutput<List<ApplicationGatewayBackend>?>('backends', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationGatewayBackend>(guardedValue, (value) => ApplicationGatewayBackend.fromMap((value as Map).cast<String, dynamic>())); });
+    customErrorConfigurations = registerOutput<List<ApplicationGatewayCustomErrorConfiguration>?>('customErrorConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationGatewayCustomErrorConfiguration>(guardedValue, (value) => ApplicationGatewayCustomErrorConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
     enableHttp2 = registerOutput<bool>('enableHttp2');
     fipsEnabled = registerOutput<bool?>('fipsEnabled');
     firewallPolicyId = registerOutput<String?>('firewallPolicyId');
     forceFirewallPolicyAssociation = registerOutput<bool?>('forceFirewallPolicyAssociation');
-    frontendIpConfigurations = registerOutput<List<Map<String, dynamic>>>('frontendIpConfigurations');
-    frontendPorts = registerOutput<List<Map<String, dynamic>>>('frontendPorts');
-    gatewayIpConfigurations = registerOutput<List<Map<String, dynamic>>>('gatewayIpConfigurations');
+    frontendIpConfigurations = registerOutput<List<ApplicationGatewayFrontendIpConfiguration>>('frontendIpConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationGatewayFrontendIpConfiguration>(guardedValue, (value) => ApplicationGatewayFrontendIpConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
+    frontendPorts = registerOutput<List<ApplicationGatewayFrontendPort>>('frontendPorts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationGatewayFrontendPort>(guardedValue, (value) => ApplicationGatewayFrontendPort.fromMap((value as Map).cast<String, dynamic>())); });
+    gatewayIpConfigurations = registerOutput<List<ApplicationGatewayGatewayIpConfiguration>>('gatewayIpConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationGatewayGatewayIpConfiguration>(guardedValue, (value) => ApplicationGatewayGatewayIpConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
     global = registerOutput<ApplicationGatewayGlobal?>('global', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationGatewayGlobal.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     http2Enabled = registerOutput<bool>('http2Enabled');
-    httpListeners = registerOutput<List<Map<String, dynamic>>?>('httpListeners');
+    httpListeners = registerOutput<List<ApplicationGatewayHttpListener>?>('httpListeners', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationGatewayHttpListener>(guardedValue, (value) => ApplicationGatewayHttpListener.fromMap((value as Map).cast<String, dynamic>())); });
     identity = registerOutput<ApplicationGatewayIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationGatewayIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    listeners = registerOutput<List<Map<String, dynamic>>?>('listeners');
+    listeners = registerOutput<List<ApplicationGatewayListener>?>('listeners', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationGatewayListener>(guardedValue, (value) => ApplicationGatewayListener.fromMap((value as Map).cast<String, dynamic>())); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>('privateEndpointConnections');
-    privateLinkConfigurations = registerOutput<List<Map<String, dynamic>>?>('privateLinkConfigurations');
-    probes = registerOutput<List<Map<String, dynamic>>?>('probes');
-    redirectConfigurations = registerOutput<List<Map<String, dynamic>>?>('redirectConfigurations');
-    requestRoutingRules = registerOutput<List<Map<String, dynamic>>?>('requestRoutingRules');
+    privateEndpointConnections = registerOutput<List<ApplicationGatewayPrivateEndpointConnection>>('privateEndpointConnections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationGatewayPrivateEndpointConnection>(guardedValue, (value) => ApplicationGatewayPrivateEndpointConnection.fromMap((value as Map).cast<String, dynamic>())); });
+    privateLinkConfigurations = registerOutput<List<ApplicationGatewayPrivateLinkConfiguration>?>('privateLinkConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationGatewayPrivateLinkConfiguration>(guardedValue, (value) => ApplicationGatewayPrivateLinkConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
+    probes = registerOutput<List<ApplicationGatewayProbe>?>('probes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationGatewayProbe>(guardedValue, (value) => ApplicationGatewayProbe.fromMap((value as Map).cast<String, dynamic>())); });
+    redirectConfigurations = registerOutput<List<ApplicationGatewayRedirectConfiguration>?>('redirectConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationGatewayRedirectConfiguration>(guardedValue, (value) => ApplicationGatewayRedirectConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
+    requestRoutingRules = registerOutput<List<ApplicationGatewayRequestRoutingRule>?>('requestRoutingRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationGatewayRequestRoutingRule>(guardedValue, (value) => ApplicationGatewayRequestRoutingRule.fromMap((value as Map).cast<String, dynamic>())); });
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    rewriteRuleSets = registerOutput<List<Map<String, dynamic>>?>('rewriteRuleSets');
-    routingRules = registerOutput<List<Map<String, dynamic>>?>('routingRules');
+    rewriteRuleSets = registerOutput<List<ApplicationGatewayRewriteRuleSet>?>('rewriteRuleSets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationGatewayRewriteRuleSet>(guardedValue, (value) => ApplicationGatewayRewriteRuleSet.fromMap((value as Map).cast<String, dynamic>())); });
+    routingRules = registerOutput<List<ApplicationGatewayRoutingRule>?>('routingRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationGatewayRoutingRule>(guardedValue, (value) => ApplicationGatewayRoutingRule.fromMap((value as Map).cast<String, dynamic>())); });
     sku = registerOutput<ApplicationGatewaySku>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationGatewaySku.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    sslCertificates = registerOutput<List<Map<String, dynamic>>?>('sslCertificates');
+    sslCertificates = registerOutput<List<ApplicationGatewaySslCertificate>?>('sslCertificates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationGatewaySslCertificate>(guardedValue, (value) => ApplicationGatewaySslCertificate.fromMap((value as Map).cast<String, dynamic>())); });
     sslPolicy = registerOutput<ApplicationGatewaySslPolicy>('sslPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationGatewaySslPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    sslProfiles = registerOutput<List<Map<String, dynamic>>?>('sslProfiles');
-    tags = registerOutput<Map<String, String>?>('tags');
-    trustedClientCertificates = registerOutput<List<Map<String, dynamic>>?>('trustedClientCertificates');
-    trustedRootCertificates = registerOutput<List<Map<String, dynamic>>?>('trustedRootCertificates');
-    urlPathMaps = registerOutput<List<Map<String, dynamic>>?>('urlPathMaps');
+    sslProfiles = registerOutput<List<ApplicationGatewaySslProfile>?>('sslProfiles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationGatewaySslProfile>(guardedValue, (value) => ApplicationGatewaySslProfile.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    trustedClientCertificates = registerOutput<List<ApplicationGatewayTrustedClientCertificate>?>('trustedClientCertificates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationGatewayTrustedClientCertificate>(guardedValue, (value) => ApplicationGatewayTrustedClientCertificate.fromMap((value as Map).cast<String, dynamic>())); });
+    trustedRootCertificates = registerOutput<List<ApplicationGatewayTrustedRootCertificate>?>('trustedRootCertificates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationGatewayTrustedRootCertificate>(guardedValue, (value) => ApplicationGatewayTrustedRootCertificate.fromMap((value as Map).cast<String, dynamic>())); });
+    urlPathMaps = registerOutput<List<ApplicationGatewayUrlPathMap>?>('urlPathMaps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationGatewayUrlPathMap>(guardedValue, (value) => ApplicationGatewayUrlPathMap.fromMap((value as Map).cast<String, dynamic>())); });
     wafConfiguration = registerOutput<ApplicationGatewayWafConfiguration?>('wafConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationGatewayWafConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    zones = registerOutput<List<String>?>('zones');
+    zones = registerOutput<List<String>?>('zones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [ApplicationGateway] resource's state with the given [name] and [id].
@@ -929,11 +951,12 @@ class ApplicationGateway extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ApplicationGatewayState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ApplicationGateway._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -947,43 +970,92 @@ class ApplicationGateway extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    authenticationCertificates = registerOutput<List<Map<String, dynamic>>?>('authenticationCertificates');
+    authenticationCertificates = registerOutput<List<ApplicationGatewayAuthenticationCertificate>?>('authenticationCertificates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationGatewayAuthenticationCertificate>(guardedValue, (value) => ApplicationGatewayAuthenticationCertificate.fromMap((value as Map).cast<String, dynamic>())); });
     autoscaleConfiguration = registerOutput<ApplicationGatewayAutoscaleConfiguration?>('autoscaleConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationGatewayAutoscaleConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    backendAddressPools = registerOutput<List<Map<String, dynamic>>>('backendAddressPools');
-    backendHttpSettings = registerOutput<List<Map<String, dynamic>>?>('backendHttpSettings');
-    backends = registerOutput<List<Map<String, dynamic>>?>('backends');
-    customErrorConfigurations = registerOutput<List<Map<String, dynamic>>?>('customErrorConfigurations');
+    backendAddressPools = registerOutput<List<ApplicationGatewayBackendAddressPool>>('backendAddressPools', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationGatewayBackendAddressPool>(guardedValue, (value) => ApplicationGatewayBackendAddressPool.fromMap((value as Map).cast<String, dynamic>())); });
+    backendHttpSettings = registerOutput<List<ApplicationGatewayBackendHttpSetting>?>('backendHttpSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationGatewayBackendHttpSetting>(guardedValue, (value) => ApplicationGatewayBackendHttpSetting.fromMap((value as Map).cast<String, dynamic>())); });
+    backends = registerOutput<List<ApplicationGatewayBackend>?>('backends', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationGatewayBackend>(guardedValue, (value) => ApplicationGatewayBackend.fromMap((value as Map).cast<String, dynamic>())); });
+    customErrorConfigurations = registerOutput<List<ApplicationGatewayCustomErrorConfiguration>?>('customErrorConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationGatewayCustomErrorConfiguration>(guardedValue, (value) => ApplicationGatewayCustomErrorConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
     enableHttp2 = registerOutput<bool>('enableHttp2');
     fipsEnabled = registerOutput<bool?>('fipsEnabled');
     firewallPolicyId = registerOutput<String?>('firewallPolicyId');
     forceFirewallPolicyAssociation = registerOutput<bool?>('forceFirewallPolicyAssociation');
-    frontendIpConfigurations = registerOutput<List<Map<String, dynamic>>>('frontendIpConfigurations');
-    frontendPorts = registerOutput<List<Map<String, dynamic>>>('frontendPorts');
-    gatewayIpConfigurations = registerOutput<List<Map<String, dynamic>>>('gatewayIpConfigurations');
+    frontendIpConfigurations = registerOutput<List<ApplicationGatewayFrontendIpConfiguration>>('frontendIpConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationGatewayFrontendIpConfiguration>(guardedValue, (value) => ApplicationGatewayFrontendIpConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
+    frontendPorts = registerOutput<List<ApplicationGatewayFrontendPort>>('frontendPorts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationGatewayFrontendPort>(guardedValue, (value) => ApplicationGatewayFrontendPort.fromMap((value as Map).cast<String, dynamic>())); });
+    gatewayIpConfigurations = registerOutput<List<ApplicationGatewayGatewayIpConfiguration>>('gatewayIpConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationGatewayGatewayIpConfiguration>(guardedValue, (value) => ApplicationGatewayGatewayIpConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
     global = registerOutput<ApplicationGatewayGlobal?>('global', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationGatewayGlobal.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     http2Enabled = registerOutput<bool>('http2Enabled');
-    httpListeners = registerOutput<List<Map<String, dynamic>>?>('httpListeners');
+    httpListeners = registerOutput<List<ApplicationGatewayHttpListener>?>('httpListeners', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationGatewayHttpListener>(guardedValue, (value) => ApplicationGatewayHttpListener.fromMap((value as Map).cast<String, dynamic>())); });
     identity = registerOutput<ApplicationGatewayIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationGatewayIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    listeners = registerOutput<List<Map<String, dynamic>>?>('listeners');
+    listeners = registerOutput<List<ApplicationGatewayListener>?>('listeners', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationGatewayListener>(guardedValue, (value) => ApplicationGatewayListener.fromMap((value as Map).cast<String, dynamic>())); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>('privateEndpointConnections');
-    privateLinkConfigurations = registerOutput<List<Map<String, dynamic>>?>('privateLinkConfigurations');
-    probes = registerOutput<List<Map<String, dynamic>>?>('probes');
-    redirectConfigurations = registerOutput<List<Map<String, dynamic>>?>('redirectConfigurations');
-    requestRoutingRules = registerOutput<List<Map<String, dynamic>>?>('requestRoutingRules');
+    privateEndpointConnections = registerOutput<List<ApplicationGatewayPrivateEndpointConnection>>('privateEndpointConnections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationGatewayPrivateEndpointConnection>(guardedValue, (value) => ApplicationGatewayPrivateEndpointConnection.fromMap((value as Map).cast<String, dynamic>())); });
+    privateLinkConfigurations = registerOutput<List<ApplicationGatewayPrivateLinkConfiguration>?>('privateLinkConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationGatewayPrivateLinkConfiguration>(guardedValue, (value) => ApplicationGatewayPrivateLinkConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
+    probes = registerOutput<List<ApplicationGatewayProbe>?>('probes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationGatewayProbe>(guardedValue, (value) => ApplicationGatewayProbe.fromMap((value as Map).cast<String, dynamic>())); });
+    redirectConfigurations = registerOutput<List<ApplicationGatewayRedirectConfiguration>?>('redirectConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationGatewayRedirectConfiguration>(guardedValue, (value) => ApplicationGatewayRedirectConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
+    requestRoutingRules = registerOutput<List<ApplicationGatewayRequestRoutingRule>?>('requestRoutingRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationGatewayRequestRoutingRule>(guardedValue, (value) => ApplicationGatewayRequestRoutingRule.fromMap((value as Map).cast<String, dynamic>())); });
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    rewriteRuleSets = registerOutput<List<Map<String, dynamic>>?>('rewriteRuleSets');
-    routingRules = registerOutput<List<Map<String, dynamic>>?>('routingRules');
+    rewriteRuleSets = registerOutput<List<ApplicationGatewayRewriteRuleSet>?>('rewriteRuleSets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationGatewayRewriteRuleSet>(guardedValue, (value) => ApplicationGatewayRewriteRuleSet.fromMap((value as Map).cast<String, dynamic>())); });
+    routingRules = registerOutput<List<ApplicationGatewayRoutingRule>?>('routingRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationGatewayRoutingRule>(guardedValue, (value) => ApplicationGatewayRoutingRule.fromMap((value as Map).cast<String, dynamic>())); });
     sku = registerOutput<ApplicationGatewaySku>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationGatewaySku.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    sslCertificates = registerOutput<List<Map<String, dynamic>>?>('sslCertificates');
+    sslCertificates = registerOutput<List<ApplicationGatewaySslCertificate>?>('sslCertificates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationGatewaySslCertificate>(guardedValue, (value) => ApplicationGatewaySslCertificate.fromMap((value as Map).cast<String, dynamic>())); });
     sslPolicy = registerOutput<ApplicationGatewaySslPolicy>('sslPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationGatewaySslPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    sslProfiles = registerOutput<List<Map<String, dynamic>>?>('sslProfiles');
-    tags = registerOutput<Map<String, String>?>('tags');
-    trustedClientCertificates = registerOutput<List<Map<String, dynamic>>?>('trustedClientCertificates');
-    trustedRootCertificates = registerOutput<List<Map<String, dynamic>>?>('trustedRootCertificates');
-    urlPathMaps = registerOutput<List<Map<String, dynamic>>?>('urlPathMaps');
+    sslProfiles = registerOutput<List<ApplicationGatewaySslProfile>?>('sslProfiles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationGatewaySslProfile>(guardedValue, (value) => ApplicationGatewaySslProfile.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    trustedClientCertificates = registerOutput<List<ApplicationGatewayTrustedClientCertificate>?>('trustedClientCertificates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationGatewayTrustedClientCertificate>(guardedValue, (value) => ApplicationGatewayTrustedClientCertificate.fromMap((value as Map).cast<String, dynamic>())); });
+    trustedRootCertificates = registerOutput<List<ApplicationGatewayTrustedRootCertificate>?>('trustedRootCertificates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationGatewayTrustedRootCertificate>(guardedValue, (value) => ApplicationGatewayTrustedRootCertificate.fromMap((value as Map).cast<String, dynamic>())); });
+    urlPathMaps = registerOutput<List<ApplicationGatewayUrlPathMap>?>('urlPathMaps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationGatewayUrlPathMap>(guardedValue, (value) => ApplicationGatewayUrlPathMap.fromMap((value as Map).cast<String, dynamic>())); });
     wafConfiguration = registerOutput<ApplicationGatewayWafConfiguration?>('wafConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationGatewayWafConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    zones = registerOutput<List<String>?>('zones');
+    zones = registerOutput<List<String>?>('zones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [ApplicationGateway] resource.
+  ApplicationGateway.reference(String urn)
+    : super(
+        'azure:network/applicationGateway:ApplicationGateway',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    authenticationCertificates = registerOutput<List<ApplicationGatewayAuthenticationCertificate>?>('authenticationCertificates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationGatewayAuthenticationCertificate>(guardedValue, (value) => ApplicationGatewayAuthenticationCertificate.fromMap((value as Map).cast<String, dynamic>())); });
+    autoscaleConfiguration = registerOutput<ApplicationGatewayAutoscaleConfiguration?>('autoscaleConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationGatewayAutoscaleConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    backendAddressPools = registerOutput<List<ApplicationGatewayBackendAddressPool>>('backendAddressPools', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationGatewayBackendAddressPool>(guardedValue, (value) => ApplicationGatewayBackendAddressPool.fromMap((value as Map).cast<String, dynamic>())); });
+    backendHttpSettings = registerOutput<List<ApplicationGatewayBackendHttpSetting>?>('backendHttpSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationGatewayBackendHttpSetting>(guardedValue, (value) => ApplicationGatewayBackendHttpSetting.fromMap((value as Map).cast<String, dynamic>())); });
+    backends = registerOutput<List<ApplicationGatewayBackend>?>('backends', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationGatewayBackend>(guardedValue, (value) => ApplicationGatewayBackend.fromMap((value as Map).cast<String, dynamic>())); });
+    customErrorConfigurations = registerOutput<List<ApplicationGatewayCustomErrorConfiguration>?>('customErrorConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationGatewayCustomErrorConfiguration>(guardedValue, (value) => ApplicationGatewayCustomErrorConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
+    enableHttp2 = registerOutput<bool>('enableHttp2');
+    fipsEnabled = registerOutput<bool?>('fipsEnabled');
+    firewallPolicyId = registerOutput<String?>('firewallPolicyId');
+    forceFirewallPolicyAssociation = registerOutput<bool?>('forceFirewallPolicyAssociation');
+    frontendIpConfigurations = registerOutput<List<ApplicationGatewayFrontendIpConfiguration>>('frontendIpConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationGatewayFrontendIpConfiguration>(guardedValue, (value) => ApplicationGatewayFrontendIpConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
+    frontendPorts = registerOutput<List<ApplicationGatewayFrontendPort>>('frontendPorts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationGatewayFrontendPort>(guardedValue, (value) => ApplicationGatewayFrontendPort.fromMap((value as Map).cast<String, dynamic>())); });
+    gatewayIpConfigurations = registerOutput<List<ApplicationGatewayGatewayIpConfiguration>>('gatewayIpConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationGatewayGatewayIpConfiguration>(guardedValue, (value) => ApplicationGatewayGatewayIpConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
+    global = registerOutput<ApplicationGatewayGlobal?>('global', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationGatewayGlobal.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    http2Enabled = registerOutput<bool>('http2Enabled');
+    httpListeners = registerOutput<List<ApplicationGatewayHttpListener>?>('httpListeners', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationGatewayHttpListener>(guardedValue, (value) => ApplicationGatewayHttpListener.fromMap((value as Map).cast<String, dynamic>())); });
+    identity = registerOutput<ApplicationGatewayIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationGatewayIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    listeners = registerOutput<List<ApplicationGatewayListener>?>('listeners', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationGatewayListener>(guardedValue, (value) => ApplicationGatewayListener.fromMap((value as Map).cast<String, dynamic>())); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    privateEndpointConnections = registerOutput<List<ApplicationGatewayPrivateEndpointConnection>>('privateEndpointConnections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationGatewayPrivateEndpointConnection>(guardedValue, (value) => ApplicationGatewayPrivateEndpointConnection.fromMap((value as Map).cast<String, dynamic>())); });
+    privateLinkConfigurations = registerOutput<List<ApplicationGatewayPrivateLinkConfiguration>?>('privateLinkConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationGatewayPrivateLinkConfiguration>(guardedValue, (value) => ApplicationGatewayPrivateLinkConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
+    probes = registerOutput<List<ApplicationGatewayProbe>?>('probes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationGatewayProbe>(guardedValue, (value) => ApplicationGatewayProbe.fromMap((value as Map).cast<String, dynamic>())); });
+    redirectConfigurations = registerOutput<List<ApplicationGatewayRedirectConfiguration>?>('redirectConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationGatewayRedirectConfiguration>(guardedValue, (value) => ApplicationGatewayRedirectConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
+    requestRoutingRules = registerOutput<List<ApplicationGatewayRequestRoutingRule>?>('requestRoutingRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationGatewayRequestRoutingRule>(guardedValue, (value) => ApplicationGatewayRequestRoutingRule.fromMap((value as Map).cast<String, dynamic>())); });
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    rewriteRuleSets = registerOutput<List<ApplicationGatewayRewriteRuleSet>?>('rewriteRuleSets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationGatewayRewriteRuleSet>(guardedValue, (value) => ApplicationGatewayRewriteRuleSet.fromMap((value as Map).cast<String, dynamic>())); });
+    routingRules = registerOutput<List<ApplicationGatewayRoutingRule>?>('routingRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationGatewayRoutingRule>(guardedValue, (value) => ApplicationGatewayRoutingRule.fromMap((value as Map).cast<String, dynamic>())); });
+    sku = registerOutput<ApplicationGatewaySku>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationGatewaySku.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sslCertificates = registerOutput<List<ApplicationGatewaySslCertificate>?>('sslCertificates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationGatewaySslCertificate>(guardedValue, (value) => ApplicationGatewaySslCertificate.fromMap((value as Map).cast<String, dynamic>())); });
+    sslPolicy = registerOutput<ApplicationGatewaySslPolicy>('sslPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationGatewaySslPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sslProfiles = registerOutput<List<ApplicationGatewaySslProfile>?>('sslProfiles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationGatewaySslProfile>(guardedValue, (value) => ApplicationGatewaySslProfile.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    trustedClientCertificates = registerOutput<List<ApplicationGatewayTrustedClientCertificate>?>('trustedClientCertificates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationGatewayTrustedClientCertificate>(guardedValue, (value) => ApplicationGatewayTrustedClientCertificate.fromMap((value as Map).cast<String, dynamic>())); });
+    trustedRootCertificates = registerOutput<List<ApplicationGatewayTrustedRootCertificate>?>('trustedRootCertificates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationGatewayTrustedRootCertificate>(guardedValue, (value) => ApplicationGatewayTrustedRootCertificate.fromMap((value as Map).cast<String, dynamic>())); });
+    urlPathMaps = registerOutput<List<ApplicationGatewayUrlPathMap>?>('urlPathMaps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationGatewayUrlPathMap>(guardedValue, (value) => ApplicationGatewayUrlPathMap.fromMap((value as Map).cast<String, dynamic>())); });
+    wafConfiguration = registerOutput<ApplicationGatewayWafConfiguration?>('wafConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationGatewayWafConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    zones = registerOutput<List<String>?>('zones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

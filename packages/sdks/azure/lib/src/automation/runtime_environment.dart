@@ -136,7 +136,7 @@ import 'runtime_environment_state.dart';
 /// 		}
 /// 		_, err = automation.NewRuntimeEnvironment(ctx, "example", &automation.RuntimeEnvironmentArgs{
 /// 			Name:                pulumi.String("powershell_environment_custom_config"),
-/// 			AutomationAccountId: exampleAccount.ID(),
+/// 			AutomationAccountId: exampleAccount.ID().ToIDOutput().ToStringOutput(),
 /// 			RuntimeLanguage:     pulumi.String("PowerShell"),
 /// 			RuntimeVersion:      pulumi.String("7.2"),
 /// 			Location:            example.Location,
@@ -321,16 +321,16 @@ class RuntimeEnvironment extends pulumi.CustomResource {
           'azure:automation/runtimeEnvironment:RuntimeEnvironment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     automationAccountId = registerOutput<String>('automationAccountId');
     description = registerOutput<String?>('description');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    runtimeDefaultPackages = registerOutput<Map<String, String>?>('runtimeDefaultPackages');
+    runtimeDefaultPackages = registerOutput<Map<String, String>?>('runtimeDefaultPackages', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     runtimeLanguage = registerOutput<String>('runtimeLanguage');
     runtimeVersion = registerOutput<String>('runtimeVersion');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [RuntimeEnvironment] resource's state with the given [name] and [id].
@@ -338,11 +338,12 @@ class RuntimeEnvironment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RuntimeEnvironmentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RuntimeEnvironment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -360,9 +361,28 @@ class RuntimeEnvironment extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    runtimeDefaultPackages = registerOutput<Map<String, String>?>('runtimeDefaultPackages');
+    runtimeDefaultPackages = registerOutput<Map<String, String>?>('runtimeDefaultPackages', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     runtimeLanguage = registerOutput<String>('runtimeLanguage');
     runtimeVersion = registerOutput<String>('runtimeVersion');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [RuntimeEnvironment] resource.
+  RuntimeEnvironment.reference(String urn)
+    : super(
+        'azure:automation/runtimeEnvironment:RuntimeEnvironment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    automationAccountId = registerOutput<String>('automationAccountId');
+    description = registerOutput<String?>('description');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    runtimeDefaultPackages = registerOutput<Map<String, String>?>('runtimeDefaultPackages', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    runtimeLanguage = registerOutput<String>('runtimeLanguage');
+    runtimeVersion = registerOutput<String>('runtimeVersion');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

@@ -257,14 +257,15 @@ class Namespace extends pulumi.CustomResource {
           'azure:eventhub/namespace:Namespace',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['defaultPrimaryConnectionString', 'defaultPrimaryKey', 'defaultSecondaryConnectionString', 'defaultSecondaryKey'],
         ) {
     capacity = registerOutput<int?>('capacity');
     customerManagedKey = registerOutput<NamespaceCustomerManagedKey?>('customerManagedKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NamespaceCustomerManagedKey.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    defaultPrimaryConnectionString = registerOutput<String>('defaultPrimaryConnectionString');
-    defaultPrimaryKey = registerOutput<String>('defaultPrimaryKey');
-    defaultSecondaryConnectionString = registerOutput<String>('defaultSecondaryConnectionString');
-    defaultSecondaryKey = registerOutput<String>('defaultSecondaryKey');
+    defaultPrimaryConnectionString = registerOutput<String>('defaultPrimaryConnectionString', isSecret: true);
+    defaultPrimaryKey = registerOutput<String>('defaultPrimaryKey', isSecret: true);
+    defaultSecondaryConnectionString = registerOutput<String>('defaultSecondaryConnectionString', isSecret: true);
+    defaultSecondaryKey = registerOutput<String>('defaultSecondaryKey', isSecret: true);
     endpoint = registerOutput<String>('endpoint');
     identity = registerOutput<NamespaceIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NamespaceIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     localAuthEnabled = registerOutput<bool?>('localAuthEnabled');
@@ -276,7 +277,7 @@ class Namespace extends pulumi.CustomResource {
     publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     sku = registerOutput<String>('sku');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Namespace] resource's state with the given [name] and [id].
@@ -284,11 +285,12 @@ class Namespace extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     NamespaceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Namespace._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -304,10 +306,10 @@ class Namespace extends pulumi.CustomResource {
         ) {
     capacity = registerOutput<int?>('capacity');
     customerManagedKey = registerOutput<NamespaceCustomerManagedKey?>('customerManagedKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NamespaceCustomerManagedKey.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    defaultPrimaryConnectionString = registerOutput<String>('defaultPrimaryConnectionString');
-    defaultPrimaryKey = registerOutput<String>('defaultPrimaryKey');
-    defaultSecondaryConnectionString = registerOutput<String>('defaultSecondaryConnectionString');
-    defaultSecondaryKey = registerOutput<String>('defaultSecondaryKey');
+    defaultPrimaryConnectionString = registerOutput<String>('defaultPrimaryConnectionString', isSecret: true);
+    defaultPrimaryKey = registerOutput<String>('defaultPrimaryKey', isSecret: true);
+    defaultSecondaryConnectionString = registerOutput<String>('defaultSecondaryConnectionString', isSecret: true);
+    defaultSecondaryKey = registerOutput<String>('defaultSecondaryKey', isSecret: true);
     endpoint = registerOutput<String>('endpoint');
     identity = registerOutput<NamespaceIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NamespaceIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     localAuthEnabled = registerOutput<bool?>('localAuthEnabled');
@@ -319,6 +321,36 @@ class Namespace extends pulumi.CustomResource {
     publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     sku = registerOutput<String>('sku');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Namespace] resource.
+  Namespace.reference(String urn)
+    : super(
+        'azure:eventhub/namespace:Namespace',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['defaultPrimaryConnectionString', 'defaultPrimaryKey', 'defaultSecondaryConnectionString', 'defaultSecondaryKey'],
+        isResourceReference: true,
+      ) {
+    capacity = registerOutput<int?>('capacity');
+    customerManagedKey = registerOutput<NamespaceCustomerManagedKey?>('customerManagedKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NamespaceCustomerManagedKey.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    defaultPrimaryConnectionString = registerOutput<String>('defaultPrimaryConnectionString', isSecret: true);
+    defaultPrimaryKey = registerOutput<String>('defaultPrimaryKey', isSecret: true);
+    defaultSecondaryConnectionString = registerOutput<String>('defaultSecondaryConnectionString', isSecret: true);
+    defaultSecondaryKey = registerOutput<String>('defaultSecondaryKey', isSecret: true);
+    endpoint = registerOutput<String>('endpoint');
+    identity = registerOutput<NamespaceIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NamespaceIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    localAuthEnabled = registerOutput<bool?>('localAuthEnabled');
+    location = registerOutput<String>('location');
+    minimumTlsVersion = registerOutput<String?>('minimumTlsVersion');
+    this.name = registerOutput<String>('name');
+    networkRuleSet = registerOutput<NamespaceNetworkRuleSet>('networkRuleSet', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NamespaceNetworkRuleSet.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    premiumMessagingPartitions = registerOutput<int?>('premiumMessagingPartitions');
+    publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    sku = registerOutput<String>('sku');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

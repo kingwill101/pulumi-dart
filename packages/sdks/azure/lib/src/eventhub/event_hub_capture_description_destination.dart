@@ -18,9 +18,9 @@ class EventHubCaptureDescriptionDestination {
   /// &gt; **Note:** The `SystemAssigned` or `UserAssigned` managed identity must be `enabled` on the parent eventhub namespace, in order for the capture feature to be configured.
   ///
   /// &gt; **Note:** The managed identity used by the capture feature must be granted the `Storage Blob Data Contributor` role.
-  final pulumi.Input<String>? storageAuthenticationId;
+  final pulumi.Input<String?>? storageAuthenticationId;
   /// The identity used to authenticate the Blob Storage Account where messages should be archived. Possible values are `StorageSAS`, `SystemAssigned` or `UserAssigned`. Defaults to `StorageSAS`.
-  final pulumi.Input<String>? storageAuthenticationType;
+  final pulumi.Input<String?>? storageAuthenticationType;
 
   /// Creates a new [EventHubCaptureDescriptionDestination].
   /// [archiveNameFormat] The Blob naming convention for archiving. e.g. `{Namespace}/{EventHub}/{PartitionId}/{Year}/{Month}/{Day}/{Hour}/{Minute}/{Second}`. Here all the parameters (Namespace,EventHub .. etc) are mandatory irrespective of order

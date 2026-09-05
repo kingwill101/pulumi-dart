@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConfigurationInstallPatchesLinux {
   /// List of Classification category of patches to be patched. Possible values are `Critical`, `Security` and `Other`.
-  final pulumi.Input<List<String>>? classificationsToIncludes;
+  final pulumi.Input<List<String>?>? classificationsToIncludes;
   /// List of package names to be excluded from patching.
-  final pulumi.Input<List<String>>? packageNamesMaskToExcludes;
+  final pulumi.Input<List<String>?>? packageNamesMaskToExcludes;
   /// List of package names to be included for patching.
-  final pulumi.Input<List<String>>? packageNamesMaskToIncludes;
+  final pulumi.Input<List<String>?>? packageNamesMaskToIncludes;
 
   /// Creates a new [ConfigurationInstallPatchesLinux].
   /// [classificationsToIncludes] List of Classification category of patches to be patched. Possible values are `Critical`, `Security` and `Other`.

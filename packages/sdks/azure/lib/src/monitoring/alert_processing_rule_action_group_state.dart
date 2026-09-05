@@ -7,23 +7,23 @@ import 'alert_processing_rule_action_group_schedule.dart';
 /// Input properties used for looking up and filtering AlertProcessingRuleActionGroup resources.
 class AlertProcessingRuleActionGroupState {
   /// Specifies a list of Action Group IDs.
-  final pulumi.Input<List<String>>? addActionGroupIds;
+  final pulumi.Input<List<String>?>? addActionGroupIds;
   /// A `condition` block as defined below.
-  final pulumi.Input<AlertProcessingRuleActionGroupCondition>? condition;
+  final pulumi.Input<AlertProcessingRuleActionGroupCondition?>? condition;
   /// Specifies a description for the Alert Processing Rule.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Should the Alert Processing Rule be enabled? Defaults to `true`.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// The name which should be used for this Alert Processing Rule. Changing this forces a new Alert Processing Rule to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the Resource Group where the Alert Processing Rule should exist. Changing this forces a new Alert Processing Rule to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// A `schedule` block as defined below.
-  final pulumi.Input<AlertProcessingRuleActionGroupSchedule>? schedule;
+  final pulumi.Input<AlertProcessingRuleActionGroupSchedule?>? schedule;
   /// A list of resource IDs which will be the target of alert processing rule.
-  final pulumi.Input<List<String>>? scopes;
+  final pulumi.Input<List<String>?>? scopes;
   /// A mapping of tags which should be assigned to the Alert Processing Rule.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [AlertProcessingRuleActionGroupState].
   /// [addActionGroupIds] Specifies a list of Action Group IDs.

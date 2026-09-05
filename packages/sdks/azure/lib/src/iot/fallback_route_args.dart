@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_iot_fallback_route_fallback_route_args_doc}
 class FallbackRouteArgs {
   /// The condition that is evaluated to apply the routing rule. For grammar, see: &lt;https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-query-language&gt;. Defaults to `true`.
-  final pulumi.Input<String>? condition;
+  final pulumi.Input<String?>? condition;
   /// Used to specify whether the fallback route is enabled.
   final pulumi.Input<bool> enabled;
   /// The endpoints to which messages that satisfy the condition are routed. Currently only 1 endpoint is allowed.
@@ -18,7 +18,7 @@ class FallbackRouteArgs {
   /// The name of the resource group under which the IotHub Storage Container Endpoint resource has to be created. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
   /// The source that the routing rule is to be applied to. Possible values include: `DeviceConnectionStateEvents`, `DeviceJobLifecycleEvents`, `DeviceLifecycleEvents`, `DeviceMessages`, `DigitalTwinChangeEvents`, `Invalid`, `TwinChangeEvents`. Defaults to `DeviceMessages`.
-  final pulumi.Input<String>? source;
+  final pulumi.Input<String?>? source;
 
   /// Creates a new [FallbackRouteArgs].
   /// [condition] The condition that is evaluated to apply the routing rule. For grammar, see: &lt;https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-query-language&gt;. Defaults to `true`.

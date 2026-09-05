@@ -6,27 +6,27 @@ import 'source_control_slot_github_action_configuration.dart';
 /// Input properties used for looking up and filtering SourceControlSlot resources.
 class SourceControlSlotState {
   /// The URL for the repository. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? branch;
+  final pulumi.Input<String?>? branch;
   /// A `githubActionConfiguration` block as detailed below. Changing this forces a new resource to be created.
-  final pulumi.Input<SourceControlSlotGithubActionConfiguration>? githubActionConfiguration;
+  final pulumi.Input<SourceControlSlotGithubActionConfiguration?>? githubActionConfiguration;
   /// The branch name to use for deployments. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? repoUrl;
+  final pulumi.Input<String?>? repoUrl;
   /// Should the Deployment Rollback be enabled? Defaults to `false` Changing this forces a new resource to be created.
-  final pulumi.Input<bool>? rollbackEnabled;
+  final pulumi.Input<bool?>? rollbackEnabled;
   /// The SCM Type in use. This value is decoded by the service from the repository information supplied.
-  final pulumi.Input<String>? scmType;
+  final pulumi.Input<String?>? scmType;
   /// The ID of the Linux or Windows Web App Slot. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** Function App Slots are not supported at this time.
-  final pulumi.Input<String>? slotId;
+  final pulumi.Input<String?>? slotId;
   /// Should the Slot use local Git configuration. Changing this forces a new resource to be created.
-  final pulumi.Input<bool>? useLocalGit;
+  final pulumi.Input<bool?>? useLocalGit;
   /// Should code be deployed manually. Set to `true` to disable continuous integration, such as webhooks into online repos such as GitHub. Defaults to `false`. Changing this forces a new resource to be created.
-  final pulumi.Input<bool>? useManualIntegration;
+  final pulumi.Input<bool?>? useManualIntegration;
   /// The repository specified is Mercurial. Defaults to `false`. Changing this forces a new resource to be created.
-  final pulumi.Input<bool>? useMercurial;
+  final pulumi.Input<bool?>? useMercurial;
   /// Indicates if the Slot uses a GitHub action for deployment. This value is decoded by the service from the repository information supplied.
-  final pulumi.Input<bool>? usesGithubAction;
+  final pulumi.Input<bool?>? usesGithubAction;
 
   /// Creates a new [SourceControlSlotState].
   /// [branch] The URL for the repository. Changing this forces a new resource to be created.

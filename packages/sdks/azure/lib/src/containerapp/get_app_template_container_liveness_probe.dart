@@ -66,15 +66,15 @@ class GetAppTemplateContainerLivenessProbe {
 
   factory GetAppTemplateContainerLivenessProbe.fromMap(Map<String, dynamic> map) {
     return GetAppTemplateContainerLivenessProbe(
-      failureCountThreshold: pulumi.Input.fromValue(map['failureCountThreshold'] as int),
+      failureCountThreshold: pulumi.Input.fromValue((map['failureCountThreshold'] as num).toInt()),
       headers: pulumi.Input.fromValue(pulumi.Input.decodeList<GetAppTemplateContainerLivenessProbeHeader>(map['headers']!, (value) => GetAppTemplateContainerLivenessProbeHeader.fromMap((value as Map).cast<String, dynamic>()))),
       host: pulumi.Input.fromValue(map['host'] as String),
-      initialDelay: pulumi.Input.fromValue(map['initialDelay'] as int),
-      intervalSeconds: pulumi.Input.fromValue(map['intervalSeconds'] as int),
+      initialDelay: pulumi.Input.fromValue((map['initialDelay'] as num).toInt()),
+      intervalSeconds: pulumi.Input.fromValue((map['intervalSeconds'] as num).toInt()),
       path: pulumi.Input.fromValue(map['path'] as String),
-      port: pulumi.Input.fromValue(map['port'] as int),
-      terminationGracePeriodSeconds: pulumi.Input.fromValue(map['terminationGracePeriodSeconds'] as int),
-      timeout: pulumi.Input.fromValue(map['timeout'] as int),
+      port: pulumi.Input.fromValue((map['port'] as num).toInt()),
+      terminationGracePeriodSeconds: pulumi.Input.fromValue((map['terminationGracePeriodSeconds'] as num).toInt()),
+      timeout: pulumi.Input.fromValue((map['timeout'] as num).toInt()),
       transport: pulumi.Input.fromValue(map['transport'] as String),
     );
   }

@@ -11,80 +11,80 @@ import 'windows_web_app_slot_site_config_virtual_application.dart';
 
 class WindowsWebAppSlotSiteConfig {
   /// If this Windows Web App Slot is Always On enabled. Defaults to `true`.
-  final pulumi.Input<bool>? alwaysOn;
+  final pulumi.Input<bool?>? alwaysOn;
   /// The URL to the API Definition for this Windows Web App Slot.
-  final pulumi.Input<String>? apiDefinitionUrl;
+  final pulumi.Input<String?>? apiDefinitionUrl;
   /// The API Management API ID this Windows Web App Slot os associated with.
-  final pulumi.Input<String>? apiManagementApiId;
+  final pulumi.Input<String?>? apiManagementApiId;
   /// The App command line to launch.
-  final pulumi.Input<String>? appCommandLine;
+  final pulumi.Input<String?>? appCommandLine;
   /// A `applicationStack` block as defined above.
-  final pulumi.Input<WindowsWebAppSlotSiteConfigApplicationStack>? applicationStack;
+  final pulumi.Input<WindowsWebAppSlotSiteConfigApplicationStack?>? applicationStack;
   /// A `autoHealSetting` block as defined above. Required with `autoHeal`.
-  final pulumi.Input<WindowsWebAppSlotSiteConfigAutoHealSetting>? autoHealSetting;
+  final pulumi.Input<WindowsWebAppSlotSiteConfigAutoHealSetting?>? autoHealSetting;
   /// The Windows Web App Slot Name to automatically swap to when deployment to that slot is successfully completed.
   ///
   /// &gt; **Note:** This must be a valid slot name on the target Windows Web App Slot.
-  final pulumi.Input<String>? autoSwapSlotName;
+  final pulumi.Input<String?>? autoSwapSlotName;
   /// The Client ID of the Managed Service Identity to use for connections to the Azure Container Registry.
-  final pulumi.Input<String>? containerRegistryManagedIdentityClientId;
+  final pulumi.Input<String?>? containerRegistryManagedIdentityClientId;
   /// Should connections for Azure Container Registry use Managed Identity.
-  final pulumi.Input<bool>? containerRegistryUseManagedIdentity;
+  final pulumi.Input<bool?>? containerRegistryUseManagedIdentity;
   /// A `cors` block as defined above.
-  final pulumi.Input<WindowsWebAppSlotSiteConfigCors>? cors;
+  final pulumi.Input<WindowsWebAppSlotSiteConfigCors?>? cors;
   /// Specifies a list of Default Documents for the Windows Web App Slot.
-  final pulumi.Input<List<String>>? defaultDocuments;
-  final pulumi.Input<bool>? detailedErrorLoggingEnabled;
+  final pulumi.Input<List<String>?>? defaultDocuments;
+  final pulumi.Input<bool?>? detailedErrorLoggingEnabled;
   /// The State of FTP / FTPS service. Possible values include: `AllAllowed`, `FtpsOnly`, `Disabled`. Defaults to `Disabled`.
   ///
   /// &gt; **Note:** Azure defaults this value to `AllAllowed`, however, in the interests of security Terraform will default this to `Disabled` to ensure the user makes a conscious choice to enable it.
-  final pulumi.Input<String>? ftpsState;
+  final pulumi.Input<String?>? ftpsState;
   /// One or more `handlerMapping` blocks as defined below.
-  final pulumi.Input<List<WindowsWebAppSlotSiteConfigHandlerMapping>>? handlerMappings;
+  final pulumi.Input<List<WindowsWebAppSlotSiteConfigHandlerMapping>?>? handlerMappings;
   /// The amount of time in minutes that a node can be unhealthy before being removed from the load balancer. Possible values are between `2` and `10`. Only valid in conjunction with `healthCheckPath`.
-  final pulumi.Input<int>? healthCheckEvictionTimeInMin;
+  final pulumi.Input<int?>? healthCheckEvictionTimeInMin;
   /// The path to the Health Check.
-  final pulumi.Input<String>? healthCheckPath;
+  final pulumi.Input<String?>? healthCheckPath;
   /// Should the HTTP2 be enabled?
-  final pulumi.Input<bool>? http2Enabled;
+  final pulumi.Input<bool?>? http2Enabled;
   /// The Default action for traffic that does not match any `ipRestriction` rule. possible values include `Allow` and `Deny`. Defaults to `Allow`.
-  final pulumi.Input<String>? ipRestrictionDefaultAction;
+  final pulumi.Input<String?>? ipRestrictionDefaultAction;
   /// One or more `ipRestriction` blocks as defined above.
-  final pulumi.Input<List<WindowsWebAppSlotSiteConfigIpRestriction>>? ipRestrictions;
+  final pulumi.Input<List<WindowsWebAppSlotSiteConfigIpRestriction>?>? ipRestrictions;
   /// The Site load balancing. Possible values include: `WeightedRoundRobin`, `LeastRequests`, `LeastResponseTime`, `WeightedTotalTraffic`, `RequestHash`, `PerSiteRoundRobin`. Defaults to `LeastRequests` if omitted.
-  final pulumi.Input<String>? loadBalancingMode;
+  final pulumi.Input<String?>? loadBalancingMode;
   /// Use Local MySQL. Defaults to `false`.
-  final pulumi.Input<bool>? localMysqlEnabled;
+  final pulumi.Input<bool?>? localMysqlEnabled;
   /// Managed pipeline mode. Possible values include: `Integrated`, `Classic`. Defaults to `Integrated`.
-  final pulumi.Input<String>? managedPipelineMode;
+  final pulumi.Input<String?>? managedPipelineMode;
   /// The configures the minimum cipher suite of TLS required for SSL requests. Possible values include: `TLS_AES_128_GCM_SHA256`,`TLS_AES_256_GCM_SHA384"`,`TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256"`,`TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256"`,`TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384"`,`TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA"`,`TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256"`,`TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256"`,`TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA"`,`TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384"`,`TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384"`, `TLS_RSA_WITH_AES_128_CBC_SHA"`,`TLS_RSA_WITH_AES_128_CBC_SHA256"`,`TLS_RSA_WITH_AES_128_GCM_SHA256"`,`TLS_RSA_WITH_AES_256_CBC_SHA"`,`TLS_RSA_WITH_AES_256_CBC_SHA256"`,`TLS_RSA_WITH_AES_256_GCM_SHA384"`.
-  final pulumi.Input<String>? minimumTlsCipherSuite;
+  final pulumi.Input<String?>? minimumTlsCipherSuite;
   /// The configures the minimum version of TLS required for SSL requests. Possible values are `1.1`, `1.3`, `1.2` and `1.0`. Defaults to `1.2`.
-  final pulumi.Input<String>? minimumTlsVersion;
+  final pulumi.Input<String?>? minimumTlsVersion;
   /// Should Remote Debugging be enabled. Defaults to `false`.
-  final pulumi.Input<bool>? remoteDebuggingEnabled;
+  final pulumi.Input<bool?>? remoteDebuggingEnabled;
   /// The Remote Debugging Version. Currently only `VS2022` is supported.
-  final pulumi.Input<String>? remoteDebuggingVersion;
+  final pulumi.Input<String?>? remoteDebuggingVersion;
   /// The Default action for traffic that does not match any `scmIpRestriction` rule. possible values include `Allow` and `Deny`. Defaults to `Allow`.
-  final pulumi.Input<String>? scmIpRestrictionDefaultAction;
+  final pulumi.Input<String?>? scmIpRestrictionDefaultAction;
   /// One or more `scmIpRestriction` blocks as defined above.
-  final pulumi.Input<List<WindowsWebAppSlotSiteConfigScmIpRestriction>>? scmIpRestrictions;
+  final pulumi.Input<List<WindowsWebAppSlotSiteConfigScmIpRestriction>?>? scmIpRestrictions;
   /// The configures the minimum version of TLS required for SSL requests to the SCM site Possible values are `1.1`, `1.3`, `1.2` and `1.0`. Defaults to `1.2`.
-  final pulumi.Input<String>? scmMinimumTlsVersion;
-  final pulumi.Input<String>? scmType;
+  final pulumi.Input<String?>? scmMinimumTlsVersion;
+  final pulumi.Input<String?>? scmType;
   /// Should the Windows Web App Slot `ipRestriction` configuration be used for the SCM also.
-  final pulumi.Input<bool>? scmUseMainIpRestriction;
+  final pulumi.Input<bool?>? scmUseMainIpRestriction;
   /// Should the Windows Web App Slot use a 32-bit worker. The default value varies from different service plans.
-  final pulumi.Input<bool>? use32BitWorker;
+  final pulumi.Input<bool?>? use32BitWorker;
   /// One or more `virtualApplication` blocks as defined below.
-  final pulumi.Input<List<WindowsWebAppSlotSiteConfigVirtualApplication>>? virtualApplications;
+  final pulumi.Input<List<WindowsWebAppSlotSiteConfigVirtualApplication>?>? virtualApplications;
   /// Should all outbound traffic to have NAT Gateways, Network Security Groups and User Defined Routes applied? Defaults to `false`.
-  final pulumi.Input<bool>? vnetRouteAllEnabled;
+  final pulumi.Input<bool?>? vnetRouteAllEnabled;
   /// Should Web Sockets be enabled. Defaults to `false`.
-  final pulumi.Input<bool>? websocketsEnabled;
-  final pulumi.Input<String>? windowsFxVersion;
+  final pulumi.Input<bool?>? websocketsEnabled;
+  final pulumi.Input<String?>? windowsFxVersion;
   /// The number of Workers for this Windows App Service Slot.
-  final pulumi.Input<int>? workerCount;
+  final pulumi.Input<int?>? workerCount;
 
   /// Creates a new [WindowsWebAppSlotSiteConfig].
   /// [alwaysOn] If this Windows Web App Slot is Always On enabled. Defaults to `true`.
@@ -222,7 +222,7 @@ class WindowsWebAppSlotSiteConfig {
       detailedErrorLoggingEnabled: (() { final guardedValue = map['detailedErrorLoggingEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       ftpsState: (() { final guardedValue = map['ftpsState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       handlerMappings: (() { final guardedValue = map['handlerMappings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<WindowsWebAppSlotSiteConfigHandlerMapping>(guardedValue, (value) => WindowsWebAppSlotSiteConfigHandlerMapping.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      healthCheckEvictionTimeInMin: (() { final guardedValue = map['healthCheckEvictionTimeInMin']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      healthCheckEvictionTimeInMin: (() { final guardedValue = map['healthCheckEvictionTimeInMin']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       healthCheckPath: (() { final guardedValue = map['healthCheckPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       http2Enabled: (() { final guardedValue = map['http2Enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       ipRestrictionDefaultAction: (() { final guardedValue = map['ipRestrictionDefaultAction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -244,7 +244,7 @@ class WindowsWebAppSlotSiteConfig {
       vnetRouteAllEnabled: (() { final guardedValue = map['vnetRouteAllEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       websocketsEnabled: (() { final guardedValue = map['websocketsEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       windowsFxVersion: (() { final guardedValue = map['windowsFxVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      workerCount: (() { final guardedValue = map['workerCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      workerCount: (() { final guardedValue = map['workerCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

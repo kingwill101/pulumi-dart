@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConfigurationStoreReplica {
   /// The URL of the App Configuration Replica.
-  final pulumi.Input<String>? endpoint;
+  final pulumi.Input<String?>? endpoint;
   /// The ID of the Access Key.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Specifies the supported Azure location where the replica exists.
   final pulumi.Input<String> location;
   /// Specifies the name of the replica.

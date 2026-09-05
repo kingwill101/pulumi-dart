@@ -159,9 +159,9 @@ import 'geo_replication_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = managedredis.NewGeoReplication(ctx, "example", &managedredis.GeoReplicationArgs{
-/// 			ManagedRedisId: amr1.ID(),
+/// 			ManagedRedisId: amr1.ID().ToIDOutput().ToStringOutput(),
 /// 			LinkedManagedRedisIds: pulumi.StringArray{
-/// 				amr2.ID(),
+/// 				amr2.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -333,9 +333,9 @@ class GeoReplication extends pulumi.CustomResource {
           'azure:managedredis/geoReplication:GeoReplication',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
-    linkedManagedRedisIds = registerOutput<List<String>>('linkedManagedRedisIds');
+    linkedManagedRedisIds = registerOutput<List<String>>('linkedManagedRedisIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     managedRedisId = registerOutput<String>('managedRedisId');
   }
 
@@ -344,11 +344,12 @@ class GeoReplication extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     GeoReplicationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return GeoReplication._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -362,7 +363,20 @@ class GeoReplication extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    linkedManagedRedisIds = registerOutput<List<String>>('linkedManagedRedisIds');
+    linkedManagedRedisIds = registerOutput<List<String>>('linkedManagedRedisIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    managedRedisId = registerOutput<String>('managedRedisId');
+  }
+
+  /// Creates a typed reference to an existing [GeoReplication] resource.
+  GeoReplication.reference(String urn)
+    : super(
+        'azure:managedredis/geoReplication:GeoReplication',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    linkedManagedRedisIds = registerOutput<List<String>>('linkedManagedRedisIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     managedRedisId = registerOutput<String>('managedRedisId');
   }
 }

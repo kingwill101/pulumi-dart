@@ -20,7 +20,7 @@ class AccountBlobPropertiesRestorePolicy {
 
   factory AccountBlobPropertiesRestorePolicy.fromMap(Map<String, dynamic> map) {
     return AccountBlobPropertiesRestorePolicy(
-      days: pulumi.Input.fromValue(map['days'] as int),
+      days: pulumi.Input.fromValue((map['days'] as num).toInt()),
     );
   }
 }

@@ -8,7 +8,7 @@ class WorkspaceAzureDevopsRepo {
   /// Specifies the collaboration branch of the repository to get code from.
   final pulumi.Input<String> branchName;
   /// The last commit ID.
-  final pulumi.Input<String>? lastCommitId;
+  final pulumi.Input<String?>? lastCommitId;
   /// Specifies the name of the Azure DevOps project.
   final pulumi.Input<String> projectName;
   /// Specifies the name of the git repository.
@@ -16,7 +16,7 @@ class WorkspaceAzureDevopsRepo {
   /// Specifies the root folder within the repository. Set to `/` for the top level.
   final pulumi.Input<String> rootFolder;
   /// the ID of the tenant for the Azure DevOps account.
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
 
   /// Creates a new [WorkspaceAzureDevopsRepo].
   /// [accountName] Specifies the Azure DevOps account name.

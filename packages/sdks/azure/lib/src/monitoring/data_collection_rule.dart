@@ -1,9 +1,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'data_collection_rule_args.dart';
+import 'data_collection_rule_data_flow.dart';
 import 'data_collection_rule_data_sources.dart';
 import 'data_collection_rule_destinations.dart';
 import 'data_collection_rule_identity.dart';
 import 'data_collection_rule_state.dart';
+import 'data_collection_rule_stream_declaration.dart';
 
 /// Manages a Data Collection Rule.
 ///
@@ -18,7 +20,7 @@ class DataCollectionRule extends pulumi.CustomResource {
   /// The resource ID of the Data Collection Endpoint that this rule can be used with.
   late final pulumi.Output<String?> dataCollectionEndpointId;
   /// One or more `dataFlow` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>> dataFlows;
+  late final pulumi.Output<List<DataCollectionRuleDataFlow>> dataFlows;
   /// A `dataSources` block as defined below. This property is optional and can be omitted if the rule is meant to be used via direct calls to the provisioned endpoint.
   late final pulumi.Output<DataCollectionRuleDataSources?> dataSources;
   /// The description of the Data Collection Rule.
@@ -40,7 +42,7 @@ class DataCollectionRule extends pulumi.CustomResource {
   /// The name of the Resource Group where the Data Collection Rule should exist. Changing this forces a new Data Collection Rule to be created.
   late final pulumi.Output<String> resourceGroupName;
   /// A `streamDeclaration` block as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> streamDeclarations;
+  late final pulumi.Output<List<DataCollectionRuleStreamDeclaration>?> streamDeclarations;
   /// A mapping of tags which should be assigned to the Data Collection Rule.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -56,10 +58,10 @@ class DataCollectionRule extends pulumi.CustomResource {
           'azure:monitoring/dataCollectionRule:DataCollectionRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     dataCollectionEndpointId = registerOutput<String?>('dataCollectionEndpointId');
-    dataFlows = registerOutput<List<Map<String, dynamic>>>('dataFlows');
+    dataFlows = registerOutput<List<DataCollectionRuleDataFlow>>('dataFlows', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DataCollectionRuleDataFlow>(guardedValue, (value) => DataCollectionRuleDataFlow.fromMap((value as Map).cast<String, dynamic>())); });
     dataSources = registerOutput<DataCollectionRuleDataSources?>('dataSources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataCollectionRuleDataSources.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');
     destinations = registerOutput<DataCollectionRuleDestinations>('destinations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataCollectionRuleDestinations.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -69,8 +71,8 @@ class DataCollectionRule extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    streamDeclarations = registerOutput<List<Map<String, dynamic>>?>('streamDeclarations');
-    tags = registerOutput<Map<String, String>?>('tags');
+    streamDeclarations = registerOutput<List<DataCollectionRuleStreamDeclaration>?>('streamDeclarations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DataCollectionRuleStreamDeclaration>(guardedValue, (value) => DataCollectionRuleStreamDeclaration.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [DataCollectionRule] resource's state with the given [name] and [id].
@@ -78,11 +80,12 @@ class DataCollectionRule extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DataCollectionRuleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DataCollectionRule._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -97,7 +100,7 @@ class DataCollectionRule extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     dataCollectionEndpointId = registerOutput<String?>('dataCollectionEndpointId');
-    dataFlows = registerOutput<List<Map<String, dynamic>>>('dataFlows');
+    dataFlows = registerOutput<List<DataCollectionRuleDataFlow>>('dataFlows', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DataCollectionRuleDataFlow>(guardedValue, (value) => DataCollectionRuleDataFlow.fromMap((value as Map).cast<String, dynamic>())); });
     dataSources = registerOutput<DataCollectionRuleDataSources?>('dataSources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataCollectionRuleDataSources.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');
     destinations = registerOutput<DataCollectionRuleDestinations>('destinations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataCollectionRuleDestinations.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -107,7 +110,31 @@ class DataCollectionRule extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    streamDeclarations = registerOutput<List<Map<String, dynamic>>?>('streamDeclarations');
-    tags = registerOutput<Map<String, String>?>('tags');
+    streamDeclarations = registerOutput<List<DataCollectionRuleStreamDeclaration>?>('streamDeclarations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DataCollectionRuleStreamDeclaration>(guardedValue, (value) => DataCollectionRuleStreamDeclaration.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [DataCollectionRule] resource.
+  DataCollectionRule.reference(String urn)
+    : super(
+        'azure:monitoring/dataCollectionRule:DataCollectionRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    dataCollectionEndpointId = registerOutput<String?>('dataCollectionEndpointId');
+    dataFlows = registerOutput<List<DataCollectionRuleDataFlow>>('dataFlows', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DataCollectionRuleDataFlow>(guardedValue, (value) => DataCollectionRuleDataFlow.fromMap((value as Map).cast<String, dynamic>())); });
+    dataSources = registerOutput<DataCollectionRuleDataSources?>('dataSources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataCollectionRuleDataSources.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    description = registerOutput<String?>('description');
+    destinations = registerOutput<DataCollectionRuleDestinations>('destinations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataCollectionRuleDestinations.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    identity = registerOutput<DataCollectionRuleIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataCollectionRuleIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    immutableId = registerOutput<String>('immutableId');
+    kind = registerOutput<String?>('kind');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    streamDeclarations = registerOutput<List<DataCollectionRuleStreamDeclaration>?>('streamDeclarations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DataCollectionRuleStreamDeclaration>(guardedValue, (value) => DataCollectionRuleStreamDeclaration.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

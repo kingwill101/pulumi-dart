@@ -12,43 +12,43 @@ import 'endpoint_origin.dart';
 /// {@macro pulumi_cdn_endpoint_endpoint_args_doc}
 class EndpointArgs {
   /// An array of strings that indicates a content types on which compression will be applied. The value for the elements should be MIME types.
-  final pulumi.Input<List<String>>? contentTypesToCompresses;
+  final pulumi.Input<List<String>?>? contentTypesToCompresses;
   /// Rules for the rules engine. An endpoint can contain up until 4 of those rules that consist of conditions and actions. A `deliveryRule` blocks as defined below.
-  final pulumi.Input<List<EndpointDeliveryRule>>? deliveryRules;
+  final pulumi.Input<List<EndpointDeliveryRule>?>? deliveryRules;
   /// A set of Geo Filters for this CDN Endpoint. Each `geoFilter` block supports fields documented below.
-  final pulumi.Input<List<EndpointGeoFilter>>? geoFilters;
+  final pulumi.Input<List<EndpointGeoFilter>?>? geoFilters;
   /// Actions that are valid for all resources regardless of any conditions. A `globalDeliveryRule` block as defined below.
-  final pulumi.Input<EndpointGlobalDeliveryRule>? globalDeliveryRule;
+  final pulumi.Input<EndpointGlobalDeliveryRule?>? globalDeliveryRule;
   /// Indicates whether compression is to be enabled.
-  final pulumi.Input<bool>? isCompressionEnabled;
+  final pulumi.Input<bool?>? isCompressionEnabled;
   /// Specifies if http allowed. Defaults to `true`.
-  final pulumi.Input<bool>? isHttpAllowed;
+  final pulumi.Input<bool?>? isHttpAllowed;
   /// Specifies if https allowed. Defaults to `true`.
-  final pulumi.Input<bool>? isHttpsAllowed;
+  final pulumi.Input<bool?>? isHttpsAllowed;
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Specifies the name of the CDN Endpoint. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// What types of optimization should this CDN Endpoint optimize for? Possible values include `DynamicSiteAcceleration`, `GeneralMediaStreaming`, `GeneralWebDelivery`, `LargeFileDownload` and `VideoOnDemandMediaStreaming`.
-  final pulumi.Input<String>? optimizationType;
+  final pulumi.Input<String?>? optimizationType;
   /// The host header CDN provider will send along with content requests to origins.
-  final pulumi.Input<String>? originHostHeader;
+  final pulumi.Input<String?>? originHostHeader;
   /// The path used at for origin requests.
-  final pulumi.Input<String>? originPath;
+  final pulumi.Input<String?>? originPath;
   /// The set of origins of the CDN endpoint. When multiple origins exist, the first origin will be used as primary and rest will be used as failover options. Each `origin` block supports fields documented below. Changing this forces a new resource to be created.
   final pulumi.Input<List<EndpointOrigin>> origins;
   /// the path to a file hosted on the origin which helps accelerate delivery of the dynamic content and calculate the most optimal routes for the CDN. This is relative to the `originPath`.
   ///
   /// &gt; **Note:** `globalDeliveryRule` and `deliveryRule` are currently only available for `Microsoft_Standard` CDN profiles.
-  final pulumi.Input<String>? probePath;
+  final pulumi.Input<String?>? probePath;
   /// The CDN Profile to which to attach the CDN Endpoint. Changing this forces a new resource to be created.
   final pulumi.Input<String> profileName;
   /// Sets query string caching behavior. Allowed values are `IgnoreQueryString`, `BypassCaching` and `UseQueryString`. `NotSet` value can be used for `Premium Verizon` CDN profile. Defaults to `IgnoreQueryString`.
-  final pulumi.Input<String>? querystringCachingBehaviour;
+  final pulumi.Input<String?>? querystringCachingBehaviour;
   /// The name of the resource group in which to create the CDN Endpoint. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
   /// A mapping of tags to assign to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [EndpointArgs].
   /// [contentTypesToCompresses] An array of strings that indicates a content types on which compression will be applied. The value for the elements should be MIME types.

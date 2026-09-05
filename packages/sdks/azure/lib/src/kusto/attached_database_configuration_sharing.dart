@@ -4,21 +4,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AttachedDatabaseConfigurationSharing {
   /// List of external tables exclude from the follower database.
-  final pulumi.Input<List<String>>? externalTablesToExcludes;
+  final pulumi.Input<List<String>?>? externalTablesToExcludes;
   /// List of external tables to include in the follower database.
-  final pulumi.Input<List<String>>? externalTablesToIncludes;
+  final pulumi.Input<List<String>?>? externalTablesToIncludes;
   /// List of functions to exclude from the follower database.
-  final pulumi.Input<List<String>>? functionsToExcludes;
+  final pulumi.Input<List<String>?>? functionsToExcludes;
   /// List of functions to include in the follower database.
-  final pulumi.Input<List<String>>? functionsToIncludes;
+  final pulumi.Input<List<String>?>? functionsToIncludes;
   /// List of materialized views exclude from the follower database.
-  final pulumi.Input<List<String>>? materializedViewsToExcludes;
+  final pulumi.Input<List<String>?>? materializedViewsToExcludes;
   /// List of materialized views to include in the follower database.
-  final pulumi.Input<List<String>>? materializedViewsToIncludes;
+  final pulumi.Input<List<String>?>? materializedViewsToIncludes;
   /// List of tables to exclude from the follower database.
-  final pulumi.Input<List<String>>? tablesToExcludes;
+  final pulumi.Input<List<String>?>? tablesToExcludes;
   /// List of tables to include in the follower database.
-  final pulumi.Input<List<String>>? tablesToIncludes;
+  final pulumi.Input<List<String>?>? tablesToIncludes;
 
   /// Creates a new [AttachedDatabaseConfigurationSharing].
   /// [externalTablesToExcludes] List of external tables exclude from the follower database.

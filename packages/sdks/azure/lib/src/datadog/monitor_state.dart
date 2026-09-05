@@ -8,25 +8,25 @@ import 'monitor_user.dart';
 /// Input properties used for looking up and filtering Monitor resources.
 class MonitorState {
   /// A `datadogOrganization` block as defined below.
-  final pulumi.Input<MonitorDatadogOrganization>? datadogOrganization;
+  final pulumi.Input<MonitorDatadogOrganization?>? datadogOrganization;
   /// A `identity` block as defined below.
-  final pulumi.Input<MonitorIdentity>? identity;
+  final pulumi.Input<MonitorIdentity?>? identity;
   /// The Azure Region where the Datadog Monitor should exist. Changing this forces a new Datadog Monitor to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Flag specifying the Marketplace Subscription Status of the resource. If payment is not made in time, the resource will go in Suspended state.
-  final pulumi.Input<String>? marketplaceSubscriptionStatus;
+  final pulumi.Input<String?>? marketplaceSubscriptionStatus;
   /// Is monitoring enabled? Defaults to `true`.
-  final pulumi.Input<bool>? monitoringEnabled;
+  final pulumi.Input<bool?>? monitoringEnabled;
   /// The name of the user that will be associated with the Datadog Monitor. Changing this forces a new Datadog Monitor to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the Resource Group where the Datadog Monitor should exist. Changing this forces a new Datadog Monitor to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// The name which should be used for this sku.
-  final pulumi.Input<String>? skuName;
+  final pulumi.Input<String?>? skuName;
   /// A mapping of tags which should be assigned to the Datadog Monitor.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A `user` block as defined below.
-  final pulumi.Input<MonitorUser>? user;
+  final pulumi.Input<MonitorUser?>? user;
 
   /// Creates a new [MonitorState].
   /// [datadogOrganization] A `datadogOrganization` block as defined below.

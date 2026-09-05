@@ -10,13 +10,13 @@ class GetTopicAuthorizationRuleArgs {
   /// The name of the ServiceBus Topic Authorization Rule resource.
   final pulumi.Input<String> name;
   /// The name of the ServiceBus Namespace.
-  final pulumi.Input<String>? namespaceName;
-  final pulumi.Input<String>? queueName;
+  final pulumi.Input<String?>? namespaceName;
+  final pulumi.Input<String?>? queueName;
   /// The name of the resource group in which the ServiceBus Namespace exists.
-  final pulumi.Input<String>? resourceGroupName;
-  final pulumi.Input<String>? topicId;
+  final pulumi.Input<String?>? resourceGroupName;
+  final pulumi.Input<String?>? topicId;
   /// The name of the ServiceBus Topic.
-  final pulumi.Input<String>? topicName;
+  final pulumi.Input<String?>? topicName;
 
   /// Creates a new [GetTopicAuthorizationRuleArgs].
   /// [name] The name of the ServiceBus Topic Authorization Rule resource.

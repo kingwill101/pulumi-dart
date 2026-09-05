@@ -155,7 +155,7 @@ import 'subscription_rule_state.dart';
 /// 		}
 /// 		exampleTopic, err := servicebus.NewTopic(ctx, "example", &servicebus.TopicArgs{
 /// 			Name:               pulumi.String("tfex_servicebus_topic"),
-/// 			NamespaceId:        exampleNamespace.ID(),
+/// 			NamespaceId:        exampleNamespace.ID().ToIDOutput().ToStringOutput(),
 /// 			EnablePartitioning: true,
 /// 		})
 /// 		if err != nil {
@@ -163,7 +163,7 @@ import 'subscription_rule_state.dart';
 /// 		}
 /// 		exampleSubscription, err := servicebus.NewSubscription(ctx, "example", &servicebus.SubscriptionArgs{
 /// 			Name:             pulumi.String("tfex_servicebus_subscription"),
-/// 			TopicId:          exampleTopic.ID(),
+/// 			TopicId:          exampleTopic.ID().ToIDOutput().ToStringOutput(),
 /// 			MaxDeliveryCount: pulumi.Int(1),
 /// 		})
 /// 		if err != nil {
@@ -171,7 +171,7 @@ import 'subscription_rule_state.dart';
 /// 		}
 /// 		_, err = servicebus.NewSubscriptionRule(ctx, "example", &servicebus.SubscriptionRuleArgs{
 /// 			Name:           pulumi.String("tfex_servicebus_rule"),
-/// 			SubscriptionId: exampleSubscription.ID(),
+/// 			SubscriptionId: exampleSubscription.ID().ToIDOutput().ToStringOutput(),
 /// 			FilterType:     pulumi.String("SqlFilter"),
 /// 			SqlFilter:      pulumi.String("colour = 'red'"),
 /// 		})
@@ -496,7 +496,7 @@ import 'subscription_rule_state.dart';
 /// 		}
 /// 		exampleTopic, err := servicebus.NewTopic(ctx, "example", &servicebus.TopicArgs{
 /// 			Name:               pulumi.String("tfex_servicebus_topic"),
-/// 			NamespaceId:        exampleNamespace.ID(),
+/// 			NamespaceId:        exampleNamespace.ID().ToIDOutput().ToStringOutput(),
 /// 			EnablePartitioning: true,
 /// 		})
 /// 		if err != nil {
@@ -504,7 +504,7 @@ import 'subscription_rule_state.dart';
 /// 		}
 /// 		exampleSubscription, err := servicebus.NewSubscription(ctx, "example", &servicebus.SubscriptionArgs{
 /// 			Name:             pulumi.String("tfex_servicebus_subscription"),
-/// 			TopicId:          exampleTopic.ID(),
+/// 			TopicId:          exampleTopic.ID().ToIDOutput().ToStringOutput(),
 /// 			MaxDeliveryCount: pulumi.Int(1),
 /// 		})
 /// 		if err != nil {
@@ -512,7 +512,7 @@ import 'subscription_rule_state.dart';
 /// 		}
 /// 		_, err = servicebus.NewSubscriptionRule(ctx, "example", &servicebus.SubscriptionRuleArgs{
 /// 			Name:           pulumi.String("tfex_servicebus_rule"),
-/// 			SubscriptionId: exampleSubscription.ID(),
+/// 			SubscriptionId: exampleSubscription.ID().ToIDOutput().ToStringOutput(),
 /// 			FilterType:     pulumi.String("CorrelationFilter"),
 /// 			CorrelationFilter: &servicebus.SubscriptionRuleCorrelationFilterArgs{
 /// 				CorrelationId: pulumi.String("high"),
@@ -730,7 +730,7 @@ class SubscriptionRule extends pulumi.CustomResource {
           'azure:servicebus/subscriptionRule:SubscriptionRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     action = registerOutput<String?>('action');
     correlationFilter = registerOutput<SubscriptionRuleCorrelationFilter?>('correlationFilter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubscriptionRuleCorrelationFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -746,11 +746,12 @@ class SubscriptionRule extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SubscriptionRuleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SubscriptionRule._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -764,6 +765,24 @@ class SubscriptionRule extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    action = registerOutput<String?>('action');
+    correlationFilter = registerOutput<SubscriptionRuleCorrelationFilter?>('correlationFilter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubscriptionRuleCorrelationFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    filterType = registerOutput<String>('filterType');
+    this.name = registerOutput<String>('name');
+    sqlFilter = registerOutput<String?>('sqlFilter');
+    sqlFilterCompatibilityLevel = registerOutput<int>('sqlFilterCompatibilityLevel');
+    subscriptionId = registerOutput<String>('subscriptionId');
+  }
+
+  /// Creates a typed reference to an existing [SubscriptionRule] resource.
+  SubscriptionRule.reference(String urn)
+    : super(
+        'azure:servicebus/subscriptionRule:SubscriptionRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     action = registerOutput<String?>('action');
     correlationFilter = registerOutput<SubscriptionRuleCorrelationFilter?>('correlationFilter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubscriptionRuleCorrelationFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     filterType = registerOutput<String>('filterType');

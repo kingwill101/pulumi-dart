@@ -62,6 +62,7 @@ import 'backup_instance_postgresql_state.dart';
 ///     name: "example",
 ///     location: example.location,
 ///     resourceGroupName: example.name,
+///     rbacAuthorizationEnabled: false,
 ///     tenantId: current.then(current => current.tenantId),
 ///     skuName: "premium",
 ///     softDeleteRetentionDays: 7,
@@ -170,6 +171,7 @@ import 'backup_instance_postgresql_state.dart';
 ///     name="example",
 ///     location=example.location,
 ///     resource_group_name=example.name,
+///     rbac_authorization_enabled=False,
 ///     tenant_id=current.tenant_id,
 ///     sku_name="premium",
 ///     soft_delete_retention_days=7,
@@ -209,9 +211,8 @@ import 'backup_instance_postgresql_state.dart';
 ///     name="example",
 ///     value=pulumi.Output.all(
 ///         exampleServerName=example_server.name,
-///         exampleDatabaseName=example_database.name,
-///         exampleServerName1=example_server.name
-/// ).apply(lambda resolved_outputs: f"Server={resolved_outputs['exampleServerName']}.postgres.database.azure.com;Database={resolved_outputs['exampleDatabaseName']};Port=5432;User Id=psqladmin@{resolved_outputs['exampleServerName1']};Password=H@Sh1CoR3!;Ssl Mode=Require;")
+///         exampleDatabaseName=example_database.name
+/// ).apply(lambda resolved_outputs: f"Server={resolved_outputs['exampleServerName']}.postgres.database.azure.com;Database={resolved_outputs['exampleDatabaseName']};Port=5432;User Id=psqladmin@{resolved_outputs['exampleServerName']};Password=H@Sh1CoR3!;Ssl Mode=Require;")
 /// ,
 ///     key_vault_id=example_key_vault.id)
 /// example_backup_policy_postgresql = azure.dataprotection.BackupPolicyPostgresql("example",
@@ -300,6 +301,7 @@ import 'backup_instance_postgresql_state.dart';
 ///         Name = "example",
 ///         Location = example.Location,
 ///         ResourceGroupName = example.Name,
+///         RbacAuthorizationEnabled = false,
 ///         TenantId = current.Apply(getClientConfigResult => getClientConfigResult.TenantId),
 ///         SkuName = "premium",
 ///         SoftDeleteRetentionDays = 7,
@@ -347,12 +349,11 @@ import 'backup_instance_postgresql_state.dart';
 ///     var exampleSecret = new Azure.KeyVault.Secret("example", new()
 ///     {
 ///         Name = "example",
-///         Value = Output.Tuple(exampleServer.Name, exampleDatabase.Name, exampleServer.Name).Apply(values =>
+///         Value = Output.Tuple(exampleServer.Name, exampleDatabase.Name).Apply(values =>
 ///         {
 ///             var exampleServerName = values.Item1;
 ///             var exampleDatabaseName = values.Item2;
-///             var exampleServerName1 = values.Item3;
-///             return $"Server={exampleServerName}.postgres.database.azure.com;Database={exampleDatabaseName};Port=5432;User Id=psqladmin@{exampleServerName1};Password=H@Sh1CoR3!;Ssl Mode=Require;";
+///             return $"Server={exampleServerName}.postgres.database.azure.com;Database={exampleDatabaseName};Port=5432;User Id=psqladmin@{exampleServerName};Password=H@Sh1CoR3!;Ssl Mode=Require;";
 ///         }),
 ///         KeyVaultId = exampleKeyVault.Id,
 ///     });
@@ -466,12 +467,13 @@ import 'backup_instance_postgresql_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleKeyVault, err := keyvault.NewKeyVault(ctx, "example", &keyvault.KeyVaultArgs{
-/// 			Name:                    pulumi.String("example"),
-/// 			Location:                example.Location,
-/// 			ResourceGroupName:       example.Name,
-/// 			TenantId:                pulumi.String(current.TenantId),
-/// 			SkuName:                 pulumi.String("premium"),
-/// 			SoftDeleteRetentionDays: pulumi.Int(7),
+/// 			Name:                     pulumi.String("example"),
+/// 			Location:                 example.Location,
+/// 			ResourceGroupName:        example.Name,
+/// 			RbacAuthorizationEnabled: pulumi.Bool(false),
+/// 			TenantId:                 pulumi.String(current.TenantId),
+/// 			SkuName:                  pulumi.String("premium"),
+/// 			SoftDeleteRetentionDays:  pulumi.Int(7),
 /// 			AccessPolicies: keyvault.KeyVaultAccessPolicyArray{
 /// 				&keyvault.KeyVaultAccessPolicyArgs{
 /// 					TenantId: pulumi.String(current.TenantId),
@@ -489,12 +491,8 @@ import 'backup_instance_postgresql_state.dart';
 /// 					},
 /// 				},
 /// 				&keyvault.KeyVaultAccessPolicyArgs{
-/// 					TenantId: exampleBackupVault.Identity.ApplyT(func(identity dataprotection.BackupVaultIdentity) (*string, error) {
-/// 						return identity.TenantId, nil
-/// 					}).(pulumi.StringPtrOutput),
-/// 					ObjectId: exampleBackupVault.Identity.ApplyT(func(identity dataprotection.BackupVaultIdentity) (*string, error) {
-/// 						return identity.PrincipalId, nil
-/// 					}).(pulumi.StringPtrOutput),
+/// 					TenantId: exampleBackupVault.Identity.TenantId(),
+/// 					ObjectId: exampleBackupVault.Identity.PrincipalId(),
 /// 					KeyPermissions: pulumi.StringArray{
 /// 						pulumi.String("Create"),
 /// 						pulumi.String("Get"),
@@ -514,13 +512,12 @@ import 'backup_instance_postgresql_state.dart';
 /// 		}
 /// 		exampleSecret, err := keyvault.NewSecret(ctx, "example", &keyvault.SecretArgs{
 /// 			Name: pulumi.String("example"),
-/// 			Value: pulumi.All(exampleServer.Name, exampleDatabase.Name, exampleServer.Name).ApplyT(func(_args []interface{}) (string, error) {
+/// 			Value: pulumi.All(exampleServer.Name, exampleDatabase.Name).ApplyT(func(_args []interface{}) (string, error) {
 /// 				exampleServerName := _args[0].(string)
 /// 				exampleDatabaseName := _args[1].(string)
-/// 				exampleServerName1 := _args[2].(string)
-/// 				return fmt.Sprintf("Server=%v.postgres.database.azure.com;Database=%v;Port=5432;User Id=psqladmin@%v;Password=H@Sh1CoR3!;Ssl Mode=Require;", exampleServerName, exampleDatabaseName, exampleServerName1), nil
+/// 				return fmt.Sprintf("Server=%v.postgres.database.azure.com;Database=%v;Port=5432;User Id=psqladmin@%v;Password=H@Sh1CoR3!;Ssl Mode=Require;", exampleServerName, exampleDatabaseName, exampleServerName), nil
 /// 			}).(pulumi.StringOutput),
-/// 			KeyVaultId: exampleKeyVault.ID(),
+/// 			KeyVaultId: exampleKeyVault.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -538,11 +535,9 @@ import 'backup_instance_postgresql_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = authorization.NewAssignment(ctx, "example", &authorization.AssignmentArgs{
-/// 			Scope:              exampleServer.ID(),
+/// 			Scope:              exampleServer.ID().ToIDOutput().ToStringOutput(),
 /// 			RoleDefinitionName: pulumi.String("Reader"),
-/// 			PrincipalId: pulumi.String(exampleBackupVault.Identity.ApplyT(func(identity dataprotection.BackupVaultIdentity) (*string, error) {
-/// 				return identity.PrincipalId, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			PrincipalId:        exampleBackupVault.Identity.PrincipalId(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -550,9 +545,9 @@ import 'backup_instance_postgresql_state.dart';
 /// 		_, err = dataprotection.NewBackupInstancePostgresql(ctx, "example", &dataprotection.BackupInstancePostgresqlArgs{
 /// 			Name:                               pulumi.String("example"),
 /// 			Location:                           example.Location,
-/// 			VaultId:                            exampleBackupVault.ID(),
-/// 			DatabaseId:                         exampleDatabase.ID(),
-/// 			BackupPolicyId:                     exampleBackupPolicyPostgresql.ID(),
+/// 			VaultId:                            exampleBackupVault.ID().ToIDOutput().ToStringOutput(),
+/// 			DatabaseId:                         exampleDatabase.ID().ToIDOutput().ToStringOutput(),
+/// 			BackupPolicyId:                     exampleBackupPolicyPostgresql.ID().ToIDOutput().ToStringOutput(),
 /// 			DatabaseCredentialKeyVaultSecretId: exampleSecret.VersionlessId,
 /// 		})
 /// 		if err != nil {
@@ -620,6 +615,7 @@ import 'backup_instance_postgresql_state.dart';
 ///   name                       = "example"
 ///   location                   = azure_core_resourcegroup.example.location
 ///   resource_group_name        = azure_core_resourcegroup.example.name
+///   rbac_authorization_enabled = false
 ///   tenant_id                  = data.azure_core_getclientconfig.current.tenant_id
 ///   sku_name                   = "premium"
 ///   soft_delete_retention_days = 7
@@ -757,6 +753,7 @@ import 'backup_instance_postgresql_state.dart';
 ///             .name("example")
 ///             .location(example.location())
 ///             .resourceGroupName(example.name())
+///             .rbacAuthorizationEnabled(false)
 ///             .tenantId(current.tenantId())
 ///             .skuName("premium")
 ///             .softDeleteRetentionDays(7)
@@ -791,11 +788,10 @@ import 'backup_instance_postgresql_state.dart';
 ///
 ///         var exampleSecret = new Secret("exampleSecret", SecretArgs.builder()
 ///             .name("example")
-///             .value(Output.tuple(exampleServer.name(), exampleDatabase.name(), exampleServer.name()).applyValue(values -> {
+///             .value(Output.tuple(exampleServer.name(), exampleDatabase.name()).applyValue(values -> {
 ///                 var exampleServerName = values.t1;
 ///                 var exampleDatabaseName = values.t2;
-///                 var exampleServerName1 = values.t3;
-///                 return String.format("Server=%s.postgres.database.azure.com;Database=%s;Port=5432;User Id=psqladmin@%s;Password=H@Sh1CoR3!;Ssl Mode=Require;", exampleServerName,exampleDatabaseName,exampleServerName1);
+///                 return String.format("Server=%s.postgres.database.azure.com;Database=%s;Port=5432;User Id=psqladmin@%s;Password=H@Sh1CoR3!;Ssl Mode=Require;", exampleServerName,exampleDatabaseName,exampleServerName);
 ///             }))
 ///             .keyVaultId(exampleKeyVault.id())
 ///             .build());
@@ -885,6 +881,7 @@ import 'backup_instance_postgresql_state.dart';
 ///       name: example
 ///       location: ${example.location}
 ///       resourceGroupName: ${example.name}
+///       rbacAuthorizationEnabled: false
 ///       tenantId: ${current.tenantId}
 ///       skuName: premium
 ///       softDeleteRetentionDays: 7
@@ -995,7 +992,7 @@ class BackupInstancePostgresql extends pulumi.CustomResource {
           'azure:dataprotection/backupInstancePostgresql:BackupInstancePostgresql',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     backupPolicyId = registerOutput<String>('backupPolicyId');
     databaseCredentialKeyVaultSecretId = registerOutput<String?>('databaseCredentialKeyVaultSecretId');
@@ -1011,11 +1008,12 @@ class BackupInstancePostgresql extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     BackupInstancePostgresqlState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return BackupInstancePostgresql._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1029,6 +1027,24 @@ class BackupInstancePostgresql extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    backupPolicyId = registerOutput<String>('backupPolicyId');
+    databaseCredentialKeyVaultSecretId = registerOutput<String?>('databaseCredentialKeyVaultSecretId');
+    databaseId = registerOutput<String>('databaseId');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    protectionState = registerOutput<String>('protectionState');
+    vaultId = registerOutput<String>('vaultId');
+  }
+
+  /// Creates a typed reference to an existing [BackupInstancePostgresql] resource.
+  BackupInstancePostgresql.reference(String urn)
+    : super(
+        'azure:dataprotection/backupInstancePostgresql:BackupInstancePostgresql',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     backupPolicyId = registerOutput<String>('backupPolicyId');
     databaseCredentialKeyVaultSecretId = registerOutput<String?>('databaseCredentialKeyVaultSecretId');
     databaseId = registerOutput<String>('databaseId');

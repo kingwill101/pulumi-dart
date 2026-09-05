@@ -124,7 +124,7 @@ import 'subscription_policy_exemption_state.dart';
 /// 		_, err = core.NewSubscriptionPolicyExemption(ctx, "example", &core.SubscriptionPolicyExemptionArgs{
 /// 			Name:               pulumi.String("exampleExemption"),
 /// 			SubscriptionId:     pulumi.String(example.Id),
-/// 			PolicyAssignmentId: exampleSubscriptionPolicyAssignment.ID(),
+/// 			PolicyAssignmentId: exampleSubscriptionPolicyAssignment.ID().ToIDOutput().ToStringOutput(),
 /// 			ExemptionCategory:  pulumi.String("Mitigated"),
 /// 		})
 /// 		if err != nil {
@@ -292,7 +292,7 @@ class SubscriptionPolicyExemption extends pulumi.CustomResource {
           'azure:core/subscriptionPolicyExemption:SubscriptionPolicyExemption',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
@@ -301,7 +301,7 @@ class SubscriptionPolicyExemption extends pulumi.CustomResource {
     metadata = registerOutput<String>('metadata');
     this.name = registerOutput<String>('name');
     policyAssignmentId = registerOutput<String>('policyAssignmentId');
-    policyDefinitionReferenceIds = registerOutput<List<String>?>('policyDefinitionReferenceIds');
+    policyDefinitionReferenceIds = registerOutput<List<String>?>('policyDefinitionReferenceIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     subscriptionId = registerOutput<String>('subscriptionId');
   }
 
@@ -310,11 +310,12 @@ class SubscriptionPolicyExemption extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SubscriptionPolicyExemptionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SubscriptionPolicyExemption._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -335,7 +336,27 @@ class SubscriptionPolicyExemption extends pulumi.CustomResource {
     metadata = registerOutput<String>('metadata');
     this.name = registerOutput<String>('name');
     policyAssignmentId = registerOutput<String>('policyAssignmentId');
-    policyDefinitionReferenceIds = registerOutput<List<String>?>('policyDefinitionReferenceIds');
+    policyDefinitionReferenceIds = registerOutput<List<String>?>('policyDefinitionReferenceIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    subscriptionId = registerOutput<String>('subscriptionId');
+  }
+
+  /// Creates a typed reference to an existing [SubscriptionPolicyExemption] resource.
+  SubscriptionPolicyExemption.reference(String urn)
+    : super(
+        'azure:core/subscriptionPolicyExemption:SubscriptionPolicyExemption',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String?>('displayName');
+    exemptionCategory = registerOutput<String>('exemptionCategory');
+    expiresOn = registerOutput<String?>('expiresOn');
+    metadata = registerOutput<String>('metadata');
+    this.name = registerOutput<String>('name');
+    policyAssignmentId = registerOutput<String>('policyAssignmentId');
+    policyDefinitionReferenceIds = registerOutput<List<String>?>('policyDefinitionReferenceIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     subscriptionId = registerOutput<String>('subscriptionId');
   }
 }

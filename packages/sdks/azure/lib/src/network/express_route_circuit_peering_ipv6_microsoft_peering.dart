@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ExpressRouteCircuitPeeringIpv6MicrosoftPeering {
   /// The communities of Bgp Peering specified for microsoft peering.
-  final pulumi.Input<List<String>>? advertisedCommunities;
+  final pulumi.Input<List<String>?>? advertisedCommunities;
   /// A list of Advertised Public Prefixes.
-  final pulumi.Input<List<String>>? advertisedPublicPrefixes;
+  final pulumi.Input<List<String>?>? advertisedPublicPrefixes;
   /// The CustomerASN of the peering. Defaults to `0`.
-  final pulumi.Input<int>? customerAsn;
+  final pulumi.Input<int?>? customerAsn;
   /// The Routing Registry against which the AS number and prefixes are registered. For example: `ARIN`, `RIPE`, `AFRINIC` etc. Defaults to `NONE`.
-  final pulumi.Input<String>? routingRegistryName;
+  final pulumi.Input<String?>? routingRegistryName;
 
   /// Creates a new [ExpressRouteCircuitPeeringIpv6MicrosoftPeering].
   /// [advertisedCommunities] The communities of Bgp Peering specified for microsoft peering.
@@ -37,7 +37,7 @@ class ExpressRouteCircuitPeeringIpv6MicrosoftPeering {
     return ExpressRouteCircuitPeeringIpv6MicrosoftPeering(
       advertisedCommunities: (() { final guardedValue = map['advertisedCommunities']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       advertisedPublicPrefixes: (() { final guardedValue = map['advertisedPublicPrefixes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      customerAsn: (() { final guardedValue = map['customerAsn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      customerAsn: (() { final guardedValue = map['customerAsn']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       routingRegistryName: (() { final guardedValue = map['routingRegistryName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

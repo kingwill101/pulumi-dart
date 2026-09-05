@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'mongo_role_definition_args.dart';
+import 'mongo_role_definition_privilege.dart';
 import 'mongo_role_definition_state.dart';
 
 /// Manages a Cosmos DB Mongo Role Definition.
@@ -198,7 +199,7 @@ import 'mongo_role_definition_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = cosmosdb.NewMongoRoleDefinition(ctx, "example", &cosmosdb.MongoRoleDefinitionArgs{
-/// 			CosmosMongoDatabaseId: exampleMongoDatabase.ID(),
+/// 			CosmosMongoDatabaseId: exampleMongoDatabase.ID().ToIDOutput().ToStringOutput(),
 /// 			RoleName:              pulumi.String("example-roledefinition"),
 /// 		})
 /// 		if err != nil {
@@ -384,7 +385,7 @@ class MongoRoleDefinition extends pulumi.CustomResource {
   /// &gt; **Note:** The role that needs to be inherited should exist in the Mongo DB of `cosmosMongoDatabaseId`.
   late final pulumi.Output<List<String>?> inheritedRoleNames;
   /// A `privilege` block as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> privileges;
+  late final pulumi.Output<List<MongoRoleDefinitionPrivilege>?> privileges;
   /// The user-friendly name for the Mongo Role Definition. It must be unique for the database account. Changing this forces a new resource to be created.
   late final pulumi.Output<String> roleName;
 
@@ -400,11 +401,11 @@ class MongoRoleDefinition extends pulumi.CustomResource {
           'azure:cosmosdb/mongoRoleDefinition:MongoRoleDefinition',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     cosmosMongoDatabaseId = registerOutput<String>('cosmosMongoDatabaseId');
-    inheritedRoleNames = registerOutput<List<String>?>('inheritedRoleNames');
-    privileges = registerOutput<List<Map<String, dynamic>>?>('privileges');
+    inheritedRoleNames = registerOutput<List<String>?>('inheritedRoleNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    privileges = registerOutput<List<MongoRoleDefinitionPrivilege>?>('privileges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MongoRoleDefinitionPrivilege>(guardedValue, (value) => MongoRoleDefinitionPrivilege.fromMap((value as Map).cast<String, dynamic>())); });
     roleName = registerOutput<String>('roleName');
   }
 
@@ -413,11 +414,12 @@ class MongoRoleDefinition extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     MongoRoleDefinitionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return MongoRoleDefinition._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -432,8 +434,23 @@ class MongoRoleDefinition extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     cosmosMongoDatabaseId = registerOutput<String>('cosmosMongoDatabaseId');
-    inheritedRoleNames = registerOutput<List<String>?>('inheritedRoleNames');
-    privileges = registerOutput<List<Map<String, dynamic>>?>('privileges');
+    inheritedRoleNames = registerOutput<List<String>?>('inheritedRoleNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    privileges = registerOutput<List<MongoRoleDefinitionPrivilege>?>('privileges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MongoRoleDefinitionPrivilege>(guardedValue, (value) => MongoRoleDefinitionPrivilege.fromMap((value as Map).cast<String, dynamic>())); });
+    roleName = registerOutput<String>('roleName');
+  }
+
+  /// Creates a typed reference to an existing [MongoRoleDefinition] resource.
+  MongoRoleDefinition.reference(String urn)
+    : super(
+        'azure:cosmosdb/mongoRoleDefinition:MongoRoleDefinition',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    cosmosMongoDatabaseId = registerOutput<String>('cosmosMongoDatabaseId');
+    inheritedRoleNames = registerOutput<List<String>?>('inheritedRoleNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    privileges = registerOutput<List<MongoRoleDefinitionPrivilege>?>('privileges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MongoRoleDefinitionPrivilege>(guardedValue, (value) => MongoRoleDefinitionPrivilege.fromMap((value as Map).cast<String, dynamic>())); });
     roleName = registerOutput<String>('roleName');
   }
 }

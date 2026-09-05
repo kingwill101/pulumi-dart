@@ -8,28 +8,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_keyvault_secret_secret_args_doc}
 class SecretArgs {
   /// Specifies the content type for the Key Vault Secret.
-  final pulumi.Input<String>? contentType;
+  final pulumi.Input<String?>? contentType;
   /// Expiration UTC datetime (Y-m-d'T'H:M:S'Z').
-  final pulumi.Input<String>? expirationDate;
+  final pulumi.Input<String?>? expirationDate;
   /// The ID of the Key Vault where the Secret should be created. Changing this forces a new resource to be created.
   final pulumi.Input<String> keyVaultId;
   /// Specifies the name of the Key Vault Secret. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Key not usable before the provided UTC datetime (Y-m-d'T'H:M:S'Z').
-  final pulumi.Input<String>? notBeforeDate;
+  final pulumi.Input<String?>? notBeforeDate;
   /// A mapping of tags to assign to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Specifies the value of the Key Vault Secret. Changing this will create a new version of the Key Vault Secret.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
   /// Specifies the value of the Key Vault Secret. Changing this will create a new version of the Key Vault Secret.
   ///
   /// &gt; **Note:** One of `value` or `valueWo` must be specified.
-  final pulumi.Input<String>? valueWo;
+  final pulumi.Input<String?>? valueWo;
   /// An integer value used to trigger an update for `valueWo`. This property should be incremented when updating `valueWo`.
   ///
   /// &gt; **Note:** Key Vault strips newlines. To preserve newlines in multi-line secrets try replacing them with `\n` or by base 64 encoding them with `replace(file("mySecretFile"), "/\n/", "\n")` or `base64encode(file("mySecretFile"))`, respectively.
-  final pulumi.Input<int>? valueWoVersion;
+  final pulumi.Input<int?>? valueWoVersion;
 
   /// Creates a new [SecretArgs].
   /// [contentType] Specifies the content type for the Key Vault Secret.
@@ -77,7 +77,7 @@ class SecretArgs {
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       valueWo: (() { final guardedValue = map['valueWo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      valueWoVersion: (() { final guardedValue = map['valueWoVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      valueWoVersion: (() { final guardedValue = map['valueWoVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

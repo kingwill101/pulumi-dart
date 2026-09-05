@@ -8,15 +8,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_maps_creator_creator_args_doc}
 class CreatorArgs {
   /// The Azure Region where the Azure Maps Creator should exist. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The ID of the Azure Maps Creator. Changing this forces a new resource to be created.
   final pulumi.Input<String> mapsAccountId;
   /// The name of the Azure Maps Creator. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The storage units to be allocated. Integer values from 1 to 100, inclusive.
   final pulumi.Input<int> storageUnits;
   /// A mapping of tags which should be assigned to the Azure Maps Creator.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [CreatorArgs].
   /// [location] The Azure Region where the Azure Maps Creator should exist. Changing this forces a new resource to be created.
@@ -47,7 +47,7 @@ class CreatorArgs {
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       mapsAccountId: pulumi.Input.fromValue(map['mapsAccountId'] as String),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      storageUnits: pulumi.Input.fromValue(map['storageUnits'] as int),
+      storageUnits: pulumi.Input.fromValue((map['storageUnits'] as num).toInt()),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }

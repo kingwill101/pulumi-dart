@@ -10,18 +10,18 @@ import 'policy_set_definition_policy_definition_reference.dart';
 /// {@macro pulumi_policy_policy_set_definition_policy_set_definition_args_doc}
 class PolicySetDefinitionArgs {
   /// The description of this Policy Set Definition.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The display name of this Policy Set Definition.
   final pulumi.Input<String> displayName;
-  final pulumi.Input<String>? managementGroupId;
+  final pulumi.Input<String?>? managementGroupId;
   /// The metadata for the Policy Set Definition in JSON format.
-  final pulumi.Input<String>? metadata;
+  final pulumi.Input<String?>? metadata;
   /// The name which should be used for this Policy Set Definition. Changing this forces a new Policy Set Definition to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The parameters for the Policy Set Definition in JSON format. Reducing the number of parameters forces a new resource to be created.
-  final pulumi.Input<String>? parameters;
+  final pulumi.Input<String?>? parameters;
   /// One or more `policyDefinitionGroup` blocks as defined below.
-  final pulumi.Input<List<PolicySetDefinitionPolicyDefinitionGroup>>? policyDefinitionGroups;
+  final pulumi.Input<List<PolicySetDefinitionPolicyDefinitionGroup>?>? policyDefinitionGroups;
   /// One or more `policyDefinitionReference` blocks as defined below.
   final pulumi.Input<List<PolicySetDefinitionPolicyDefinitionReference>> policyDefinitionReferences;
   /// The Policy Set Definition type. Possible values are `BuiltIn`, `Custom`, `NotSpecified`, and `Static`. Changing this forces a new Policy Set Definition to be created.

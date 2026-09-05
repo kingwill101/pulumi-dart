@@ -10,33 +10,33 @@ import 'data_collection_rule_stream_declaration.dart';
 /// Input properties used for looking up and filtering DataCollectionRule resources.
 class DataCollectionRuleState {
   /// The resource ID of the Data Collection Endpoint that this rule can be used with.
-  final pulumi.Input<String>? dataCollectionEndpointId;
+  final pulumi.Input<String?>? dataCollectionEndpointId;
   /// One or more `dataFlow` blocks as defined below.
-  final pulumi.Input<List<DataCollectionRuleDataFlow>>? dataFlows;
+  final pulumi.Input<List<DataCollectionRuleDataFlow>?>? dataFlows;
   /// A `dataSources` block as defined below. This property is optional and can be omitted if the rule is meant to be used via direct calls to the provisioned endpoint.
-  final pulumi.Input<DataCollectionRuleDataSources>? dataSources;
+  final pulumi.Input<DataCollectionRuleDataSources?>? dataSources;
   /// The description of the Data Collection Rule.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// A `destinations` block as defined below.
-  final pulumi.Input<DataCollectionRuleDestinations>? destinations;
+  final pulumi.Input<DataCollectionRuleDestinations?>? destinations;
   /// An `identity` block as defined below.
-  final pulumi.Input<DataCollectionRuleIdentity>? identity;
+  final pulumi.Input<DataCollectionRuleIdentity?>? identity;
   /// The immutable ID of the Data Collection Rule.
-  final pulumi.Input<String>? immutableId;
+  final pulumi.Input<String?>? immutableId;
   /// The kind of the Data Collection Rule. Possible values are `Linux`, `Windows`, `AgentDirectToStore` and `WorkspaceTransforms`. A rule of kind `Linux` does not allow for `windowsEventLog` data sources. And a rule of kind `Windows` does not allow for `syslog` data sources. If kind is not specified, all kinds of data sources are allowed.
   ///
   /// &gt; **Note:** Once `kind` has been set, changing it forces a new Data Collection Rule to be created.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// The Azure Region where the Data Collection Rule should exist. Changing this forces a new Data Collection Rule to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name which should be used for this Data Collection Rule. Changing this forces a new Data Collection Rule to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the Resource Group where the Data Collection Rule should exist. Changing this forces a new Data Collection Rule to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// A `streamDeclaration` block as defined below.
-  final pulumi.Input<List<DataCollectionRuleStreamDeclaration>>? streamDeclarations;
+  final pulumi.Input<List<DataCollectionRuleStreamDeclaration>?>? streamDeclarations;
   /// A mapping of tags which should be assigned to the Data Collection Rule.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [DataCollectionRuleState].
   /// [dataCollectionEndpointId] The resource ID of the Data Collection Endpoint that this rule can be used with.

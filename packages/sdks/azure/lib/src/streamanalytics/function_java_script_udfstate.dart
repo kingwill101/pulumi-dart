@@ -7,17 +7,17 @@ import 'function_java_script_udfoutput.dart';
 /// Input properties used for looking up and filtering FunctionJavaScriptUDF resources.
 class FunctionJavaScriptUDFState {
   /// One or more `input` blocks as defined below.
-  final pulumi.Input<List<FunctionJavaScriptUDFInput>>? inputs;
+  final pulumi.Input<List<FunctionJavaScriptUDFInput>?>? inputs;
   /// The name of the JavaScript UDF Function. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// An `output` blocks as defined below.
-  final pulumi.Input<FunctionJavaScriptUDFOutput>? output;
+  final pulumi.Input<FunctionJavaScriptUDFOutput?>? output;
   /// The name of the Resource Group where the Stream Analytics Job exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// The JavaScript of this UDF Function.
-  final pulumi.Input<String>? script;
+  final pulumi.Input<String?>? script;
   /// The name of the Stream Analytics Job where this Function should be created. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? streamAnalyticsJobName;
+  final pulumi.Input<String?>? streamAnalyticsJobName;
 
   /// Creates a new [FunctionJavaScriptUDFState].
   /// [inputs] One or more `input` blocks as defined below.

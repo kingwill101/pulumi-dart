@@ -5,25 +5,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering TimeSeriesDatabaseConnection resources.
 class TimeSeriesDatabaseConnectionState {
   /// The ID of the Digital Twins. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? digitalTwinsId;
+  final pulumi.Input<String?>? digitalTwinsId;
   /// Name of the Event Hub Consumer Group. Changing this forces a new resource to be created. Defaults to `$Default`.
-  final pulumi.Input<String>? eventhubConsumerGroupName;
+  final pulumi.Input<String?>? eventhubConsumerGroupName;
   /// Name of the Event Hub. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? eventhubName;
+  final pulumi.Input<String?>? eventhubName;
   /// URI of the Event Hub Namespace. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? eventhubNamespaceEndpointUri;
+  final pulumi.Input<String?>? eventhubNamespaceEndpointUri;
   /// The ID of the Event Hub Namespace. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? eventhubNamespaceId;
+  final pulumi.Input<String?>? eventhubNamespaceId;
   /// The ID of the Kusto Cluster. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? kustoClusterId;
+  final pulumi.Input<String?>? kustoClusterId;
   /// URI of the Kusto Cluster. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? kustoClusterUri;
+  final pulumi.Input<String?>? kustoClusterUri;
   /// Name of the Kusto Database. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? kustoDatabaseName;
+  final pulumi.Input<String?>? kustoDatabaseName;
   /// Name of the Kusto Table. Defaults to `AdtPropertyEvents`. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? kustoTableName;
+  final pulumi.Input<String?>? kustoTableName;
   /// The name which should be used for this Digital Twins Time Series Database Connection. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [TimeSeriesDatabaseConnectionState].
   /// [digitalTwinsId] The ID of the Digital Twins. Changing this forces a new resource to be created.

@@ -2,6 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'kafka_cluster_args.dart';
 import 'kafka_cluster_component_version.dart';
 import 'kafka_cluster_compute_isolation.dart';
+import 'kafka_cluster_disk_encryption.dart';
 import 'kafka_cluster_extension.dart';
 import 'kafka_cluster_gateway.dart';
 import 'kafka_cluster_metastores.dart';
@@ -12,6 +13,7 @@ import 'kafka_cluster_rest_proxy.dart';
 import 'kafka_cluster_roles.dart';
 import 'kafka_cluster_security_profile.dart';
 import 'kafka_cluster_state.dart';
+import 'kafka_cluster_storage_account.dart';
 import 'kafka_cluster_storage_account_gen2.dart';
 
 /// Manages a HDInsight Kafka Cluster.
@@ -267,7 +269,7 @@ import 'kafka_cluster_storage_account_gen2.dart';
 /// 			},
 /// 			StorageAccounts: hdinsight.KafkaClusterStorageAccountArray{
 /// 				&hdinsight.KafkaClusterStorageAccountArgs{
-/// 					StorageContainerId: exampleContainer.ID(),
+/// 					StorageContainerId: exampleContainer.ID().ToIDOutput().ToStringOutput(),
 /// 					StorageAccountKey:  exampleAccount.PrimaryAccessKey,
 /// 					IsDefault:          pulumi.Bool(true),
 /// 				},
@@ -541,7 +543,7 @@ class KafkaCluster extends pulumi.CustomResource {
   /// One or more `diskEncryption` block as defined below.
   ///
   /// &gt; **Note:** Starting on June 30, 2020, Azure HDInsight will enforce TLS 1.2 or later versions for all HTTPS connections. For more information, see [Azure HDInsight TLS 1.2 Enforcement](https://azure.microsoft.com/en-us/updates/azure-hdinsight-tls-12-enforcement/).
-  late final pulumi.Output<List<Map<String, dynamic>>?> diskEncryptions;
+  late final pulumi.Output<List<KafkaClusterDiskEncryption>?> diskEncryptions;
   /// Whether encryption in transit is enabled for this HDInsight Kafka Cluster. Changing this forces a new resource to be created.
   late final pulumi.Output<bool?> encryptionInTransitEnabled;
   /// An `extension` block as defined below.
@@ -577,7 +579,7 @@ class KafkaCluster extends pulumi.CustomResource {
   /// A `storageAccountGen2` block as defined below.
   late final pulumi.Output<KafkaClusterStorageAccountGen2?> storageAccountGen2;
   /// One or more `storageAccount` block as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> storageAccounts;
+  late final pulumi.Output<List<KafkaClusterStorageAccount>?> storageAccounts;
   /// A map of Tags which should be assigned to this HDInsight Kafka Cluster.
   late final pulumi.Output<Map<String, String>?> tags;
   /// Specifies the Tier which should be used for this HDInsight Kafka Cluster. Possible values are `Standard` or `Premium`. Changing this forces a new resource to be created.
@@ -597,12 +599,12 @@ class KafkaCluster extends pulumi.CustomResource {
           'azure:hdinsight/kafkaCluster:KafkaCluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     clusterVersion = registerOutput<String>('clusterVersion');
     componentVersion = registerOutput<KafkaClusterComponentVersion>('componentVersion', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KafkaClusterComponentVersion.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     computeIsolation = registerOutput<KafkaClusterComputeIsolation?>('computeIsolation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KafkaClusterComputeIsolation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    diskEncryptions = registerOutput<List<Map<String, dynamic>>?>('diskEncryptions');
+    diskEncryptions = registerOutput<List<KafkaClusterDiskEncryption>?>('diskEncryptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KafkaClusterDiskEncryption>(guardedValue, (value) => KafkaClusterDiskEncryption.fromMap((value as Map).cast<String, dynamic>())); });
     encryptionInTransitEnabled = registerOutput<bool?>('encryptionInTransitEnabled');
     extension = registerOutput<KafkaClusterExtension?>('extension', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KafkaClusterExtension.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     gateway = registerOutput<KafkaClusterGateway>('gateway', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KafkaClusterGateway.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -620,8 +622,8 @@ class KafkaCluster extends pulumi.CustomResource {
     securityProfile = registerOutput<KafkaClusterSecurityProfile?>('securityProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KafkaClusterSecurityProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     sshEndpoint = registerOutput<String>('sshEndpoint');
     storageAccountGen2 = registerOutput<KafkaClusterStorageAccountGen2?>('storageAccountGen2', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KafkaClusterStorageAccountGen2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    storageAccounts = registerOutput<List<Map<String, dynamic>>?>('storageAccounts');
-    tags = registerOutput<Map<String, String>?>('tags');
+    storageAccounts = registerOutput<List<KafkaClusterStorageAccount>?>('storageAccounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KafkaClusterStorageAccount>(guardedValue, (value) => KafkaClusterStorageAccount.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tier = registerOutput<String>('tier');
     tlsMinVersion = registerOutput<String?>('tlsMinVersion');
   }
@@ -631,11 +633,12 @@ class KafkaCluster extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     KafkaClusterState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return KafkaCluster._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -652,7 +655,7 @@ class KafkaCluster extends pulumi.CustomResource {
     clusterVersion = registerOutput<String>('clusterVersion');
     componentVersion = registerOutput<KafkaClusterComponentVersion>('componentVersion', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KafkaClusterComponentVersion.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     computeIsolation = registerOutput<KafkaClusterComputeIsolation?>('computeIsolation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KafkaClusterComputeIsolation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    diskEncryptions = registerOutput<List<Map<String, dynamic>>?>('diskEncryptions');
+    diskEncryptions = registerOutput<List<KafkaClusterDiskEncryption>?>('diskEncryptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KafkaClusterDiskEncryption>(guardedValue, (value) => KafkaClusterDiskEncryption.fromMap((value as Map).cast<String, dynamic>())); });
     encryptionInTransitEnabled = registerOutput<bool?>('encryptionInTransitEnabled');
     extension = registerOutput<KafkaClusterExtension?>('extension', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KafkaClusterExtension.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     gateway = registerOutput<KafkaClusterGateway>('gateway', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KafkaClusterGateway.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -670,8 +673,44 @@ class KafkaCluster extends pulumi.CustomResource {
     securityProfile = registerOutput<KafkaClusterSecurityProfile?>('securityProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KafkaClusterSecurityProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     sshEndpoint = registerOutput<String>('sshEndpoint');
     storageAccountGen2 = registerOutput<KafkaClusterStorageAccountGen2?>('storageAccountGen2', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KafkaClusterStorageAccountGen2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    storageAccounts = registerOutput<List<Map<String, dynamic>>?>('storageAccounts');
-    tags = registerOutput<Map<String, String>?>('tags');
+    storageAccounts = registerOutput<List<KafkaClusterStorageAccount>?>('storageAccounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KafkaClusterStorageAccount>(guardedValue, (value) => KafkaClusterStorageAccount.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tier = registerOutput<String>('tier');
+    tlsMinVersion = registerOutput<String?>('tlsMinVersion');
+  }
+
+  /// Creates a typed reference to an existing [KafkaCluster] resource.
+  KafkaCluster.reference(String urn)
+    : super(
+        'azure:hdinsight/kafkaCluster:KafkaCluster',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    clusterVersion = registerOutput<String>('clusterVersion');
+    componentVersion = registerOutput<KafkaClusterComponentVersion>('componentVersion', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KafkaClusterComponentVersion.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    computeIsolation = registerOutput<KafkaClusterComputeIsolation?>('computeIsolation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KafkaClusterComputeIsolation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    diskEncryptions = registerOutput<List<KafkaClusterDiskEncryption>?>('diskEncryptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KafkaClusterDiskEncryption>(guardedValue, (value) => KafkaClusterDiskEncryption.fromMap((value as Map).cast<String, dynamic>())); });
+    encryptionInTransitEnabled = registerOutput<bool?>('encryptionInTransitEnabled');
+    extension = registerOutput<KafkaClusterExtension?>('extension', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KafkaClusterExtension.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    gateway = registerOutput<KafkaClusterGateway>('gateway', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KafkaClusterGateway.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    httpsEndpoint = registerOutput<String>('httpsEndpoint');
+    kafkaRestProxyEndpoint = registerOutput<String>('kafkaRestProxyEndpoint');
+    location = registerOutput<String>('location');
+    metastores = registerOutput<KafkaClusterMetastores?>('metastores', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KafkaClusterMetastores.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    monitor = registerOutput<KafkaClusterMonitor?>('monitor', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KafkaClusterMonitor.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    network = registerOutput<KafkaClusterNetwork?>('network', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KafkaClusterNetwork.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    privateLinkConfiguration = registerOutput<KafkaClusterPrivateLinkConfiguration?>('privateLinkConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KafkaClusterPrivateLinkConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    restProxy = registerOutput<KafkaClusterRestProxy?>('restProxy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KafkaClusterRestProxy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    roles = registerOutput<KafkaClusterRoles>('roles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KafkaClusterRoles.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    securityProfile = registerOutput<KafkaClusterSecurityProfile?>('securityProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KafkaClusterSecurityProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sshEndpoint = registerOutput<String>('sshEndpoint');
+    storageAccountGen2 = registerOutput<KafkaClusterStorageAccountGen2?>('storageAccountGen2', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KafkaClusterStorageAccountGen2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    storageAccounts = registerOutput<List<KafkaClusterStorageAccount>?>('storageAccounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KafkaClusterStorageAccount>(guardedValue, (value) => KafkaClusterStorageAccount.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tier = registerOutput<String>('tier');
     tlsMinVersion = registerOutput<String?>('tlsMinVersion');
   }

@@ -111,7 +111,7 @@ import 'data_connector_aws_cloud_trail_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleLogAnalyticsWorkspaceOnboarding, err := sentinel.NewLogAnalyticsWorkspaceOnboarding(ctx, "example", &sentinel.LogAnalyticsWorkspaceOnboardingArgs{
-/// 			WorkspaceId: exampleAnalyticsWorkspace.ID(),
+/// 			WorkspaceId: exampleAnalyticsWorkspace.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -265,7 +265,7 @@ class DataConnectorAwsCloudTrail extends pulumi.CustomResource {
           'azure:sentinel/dataConnectorAwsCloudTrail:DataConnectorAwsCloudTrail',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     awsRoleArn = registerOutput<String>('awsRoleArn');
     logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
@@ -277,11 +277,12 @@ class DataConnectorAwsCloudTrail extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DataConnectorAwsCloudTrailState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DataConnectorAwsCloudTrail._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -295,6 +296,20 @@ class DataConnectorAwsCloudTrail extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    awsRoleArn = registerOutput<String>('awsRoleArn');
+    logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
+    this.name = registerOutput<String>('name');
+  }
+
+  /// Creates a typed reference to an existing [DataConnectorAwsCloudTrail] resource.
+  DataConnectorAwsCloudTrail.reference(String urn)
+    : super(
+        'azure:sentinel/dataConnectorAwsCloudTrail:DataConnectorAwsCloudTrail',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     awsRoleArn = registerOutput<String>('awsRoleArn');
     logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
     this.name = registerOutput<String>('name');

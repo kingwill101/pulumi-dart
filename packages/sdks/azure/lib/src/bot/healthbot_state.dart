@@ -5,19 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering Healthbot resources.
 class HealthbotState {
   /// The management portal url.
-  final pulumi.Input<String>? botManagementPortalUrl;
+  final pulumi.Input<String?>? botManagementPortalUrl;
   /// Specifies The Azure Region where the resource exists. Changing this force a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Specifies The name of the Healthbot Service resource. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specifies The name of the Resource Group in which to create the Healthbot Service. changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// The name which should be used for the SKU of the service. Possible values are `C0`, `C1`, `F0`, `PES` and `S1`.
   ///
   /// &gt; **Note:** Downgrading to `F0` forces a new resource to be created.
-  final pulumi.Input<String>? skuName;
+  final pulumi.Input<String?>? skuName;
   /// A mapping of tags which should be assigned to the service.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [HealthbotState].
   /// [botManagementPortalUrl] The management portal url.

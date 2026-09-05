@@ -13,11 +13,11 @@ class BackupPolicyDiskArgs {
   /// The duration of default retention rule. It should follow `ISO 8601` duration format. Changing this forces a new Backup Policy Disk to be created.
   final pulumi.Input<String> defaultRetentionDuration;
   /// The name which should be used for this Backup Policy Disk. Changing this forces a new Backup Policy Disk to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// One or more `retentionRule` blocks as defined below. Changing this forces a new Backup Policy Disk to be created.
-  final pulumi.Input<List<BackupPolicyDiskRetentionRule>>? retentionRules;
+  final pulumi.Input<List<BackupPolicyDiskRetentionRule>?>? retentionRules;
   /// Specifies the Time Zone which should be used by the backup schedule. Changing this forces a new Backup Policy Disk to be created.
-  final pulumi.Input<String>? timeZone;
+  final pulumi.Input<String?>? timeZone;
   /// The ID of the Backup Vault within which the Backup Policy Disk should exist. Changing this forces a new Backup Policy Disk to be created.
   final pulumi.Input<String> vaultId;
 

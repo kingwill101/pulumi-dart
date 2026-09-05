@@ -25,8 +25,8 @@ class SystemTopicEventSubscriptionRetryPolicy {
 
   factory SystemTopicEventSubscriptionRetryPolicy.fromMap(Map<String, dynamic> map) {
     return SystemTopicEventSubscriptionRetryPolicy(
-      eventTimeToLive: pulumi.Input.fromValue(map['eventTimeToLive'] as int),
-      maxDeliveryAttempts: pulumi.Input.fromValue(map['maxDeliveryAttempts'] as int),
+      eventTimeToLive: pulumi.Input.fromValue((map['eventTimeToLive'] as num).toInt()),
+      maxDeliveryAttempts: pulumi.Input.fromValue((map['maxDeliveryAttempts'] as num).toInt()),
     );
   }
 }

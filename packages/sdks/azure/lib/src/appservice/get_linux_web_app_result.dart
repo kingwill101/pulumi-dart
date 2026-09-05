@@ -15,83 +15,83 @@ import 'get_linux_web_app_storage_account.dart';
 /// Result data returned by getLinuxWebApp.
 class GetLinuxWebAppResult {
   /// An `appMetadata` block as defined below.
-  final Map<String, String> appMetadata;
+  final Map<String, String>? appMetadata;
   /// An `appSettings` block as defined below.
-  final Map<String, String> appSettings;
+  final Map<String, String>? appSettings;
   /// An `authSettings` block as defined below.
-  final List<GetLinuxWebAppAuthSetting> authSettings;
+  final List<GetLinuxWebAppAuthSetting>? authSettings;
   /// An `authSettingsV2` block as defined below.
-  final List<GetLinuxWebAppAuthSettingsV2> authSettingsV2s;
+  final List<GetLinuxWebAppAuthSettingsV2>? authSettingsV2s;
   /// The current availability state. Possible values are `Normal`, `Limited`, and `DisasterRecoveryMode`.
-  final String availability;
+  final String? availability;
   /// A `backup` block as defined below.
-  final List<GetLinuxWebAppBackup> backups;
+  final List<GetLinuxWebAppBackup>? backups;
   /// Is Client Affinity enabled?
-  final bool clientAffinityEnabled;
+  final bool? clientAffinityEnabled;
   /// Are Client Certificates enabled?
-  final bool clientCertificateEnabled;
+  final bool? clientCertificateEnabled;
   /// Paths to exclude when using client certificates, separated by ;
-  final String clientCertificateExclusionPaths;
+  final String? clientCertificateExclusionPaths;
   /// The Client Certificate mode.
-  final String clientCertificateMode;
+  final String? clientCertificateMode;
   /// A `connectionString` block as defined below.
-  final List<GetLinuxWebAppConnectionString> connectionStrings;
+  final List<GetLinuxWebAppConnectionString>? connectionStrings;
   /// The identifier used by App Service to perform domain ownership verification via DNS TXT record.
-  final String customDomainVerificationId;
+  final String? customDomainVerificationId;
   /// The default hostname of the Linux Web App.
-  final String defaultHostname;
+  final String? defaultHostname;
   /// Is the Backup enabled?
-  final bool enabled;
+  final bool? enabled;
   /// Are the default FTP Basic Authentication publishing credentials enabled.
-  final bool ftpPublishBasicAuthenticationEnabled;
+  final bool? ftpPublishBasicAuthenticationEnabled;
   /// The ID of the App Service Environment used by App Service.
-  final String hostingEnvironmentId;
+  final String? hostingEnvironmentId;
   /// Should the Linux Web App require HTTPS connections.
-  final bool httpsOnly;
+  final bool? httpsOnly;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// A `identity` block as defined below.
-  final List<GetLinuxWebAppIdentity> identities;
-  final String keyVaultReferenceIdentityId;
+  final List<GetLinuxWebAppIdentity>? identities;
+  final String? keyVaultReferenceIdentityId;
   /// The Kind value for this Linux Web App.
-  final String kind;
+  final String? kind;
   /// The Azure Region where the Linux Web App exists.
-  final String location;
+  final String? location;
   /// A `logs` block as defined below.
-  final List<GetLinuxWebAppLog> logs;
+  final List<GetLinuxWebAppLog>? logs;
   /// The name of this Storage Account.
-  final String name;
+  final String? name;
   /// A `outboundIpAddressList` block as defined below.
-  final List<String> outboundIpAddressLists;
+  final List<String>? outboundIpAddressLists;
   /// A comma separated list of outbound IP addresses - such as `52.23.25.3,52.143.43.12`.
-  final String outboundIpAddresses;
+  final String? outboundIpAddresses;
   /// A `possibleOutboundIpAddressList` block as defined below.
-  final List<String> possibleOutboundIpAddressLists;
+  final List<String>? possibleOutboundIpAddressLists;
   /// A comma separated list of outbound IP addresses - such as `52.23.25.3,52.143.43.12,52.143.43.17` - not all of which are necessarily in use. Superset of `outboundIpAddresses`.
-  final String possibleOutboundIpAddresses;
+  final String? possibleOutboundIpAddresses;
   /// Is Public Network Access enabled for this Linux Web App.
-  final bool publicNetworkAccessEnabled;
-  final String resourceGroupName;
+  final bool? publicNetworkAccessEnabled;
+  final String? resourceGroupName;
   /// The ID of the Service Plan that this Linux Web App exists in.
-  final String servicePlanId;
+  final String? servicePlanId;
   /// A `siteConfig` block as defined below.
-  final List<GetLinuxWebAppSiteConfig> siteConfigs;
+  final List<GetLinuxWebAppSiteConfig>? siteConfigs;
   /// A `siteCredential` block as defined below.
-  final List<GetLinuxWebAppSiteCredential> siteCredentials;
+  final List<GetLinuxWebAppSiteCredential>? siteCredentials;
   /// A `stickySettings` block as defined below.
-  final List<GetLinuxWebAppStickySetting> stickySettings;
+  final List<GetLinuxWebAppStickySetting>? stickySettings;
   /// A `storageAccount` block as defined below.
-  final List<GetLinuxWebAppStorageAccount> storageAccounts;
+  final List<GetLinuxWebAppStorageAccount>? storageAccounts;
   /// A mapping of tags assigned to the Linux Web App.
-  final Map<String, String> tags;
+  final Map<String, String>? tags;
   /// The current usage state. Possible values are `Normal` and `Exceeded`.
-  final String usage;
+  final String? usage;
   /// Whether backup and restore operations over the linked virtual network are enabled.
-  final bool virtualNetworkBackupRestoreEnabled;
+  final bool? virtualNetworkBackupRestoreEnabled;
   /// The subnet id which the Linux Web App is vNet Integrated with.
-  final String virtualNetworkSubnetId;
+  final String? virtualNetworkSubnetId;
   /// Are the default WebDeploy Basic Authentication publishing credentials enabled.
-  final bool webdeployPublishBasicAuthenticationEnabled;
+  final bool? webdeployPublishBasicAuthenticationEnabled;
 
   /// Creates a new [GetLinuxWebAppResult].
   /// [appMetadata] An `appMetadata` block as defined below.
@@ -113,7 +113,7 @@ class GetLinuxWebAppResult {
   /// [httpsOnly] Should the Linux Web App require HTTPS connections.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [identities] A `identity` block as defined below.
-  /// [keyVaultReferenceIdentityId] Required.
+  /// [keyVaultReferenceIdentityId] Optional.
   /// [kind] The Kind value for this Linux Web App.
   /// [location] The Azure Region where the Linux Web App exists.
   /// [logs] A `logs` block as defined below.
@@ -123,7 +123,7 @@ class GetLinuxWebAppResult {
   /// [possibleOutboundIpAddressLists] A `possibleOutboundIpAddressList` block as defined below.
   /// [possibleOutboundIpAddresses] A comma separated list of outbound IP addresses - such as `52.23.25.3,52.143.43.12,52.143.43.17` - not all of which are necessarily in use. Superset of `outboundIpAddresses`.
   /// [publicNetworkAccessEnabled] Is Public Network Access enabled for this Linux Web App.
-  /// [resourceGroupName] Required.
+  /// [resourceGroupName] Optional.
   /// [servicePlanId] The ID of the Service Plan that this Linux Web App exists in.
   /// [siteConfigs] A `siteConfig` block as defined below.
   /// [siteCredentials] A `siteCredential` block as defined below.
@@ -135,135 +135,135 @@ class GetLinuxWebAppResult {
   /// [virtualNetworkSubnetId] The subnet id which the Linux Web App is vNet Integrated with.
   /// [webdeployPublishBasicAuthenticationEnabled] Are the default WebDeploy Basic Authentication publishing credentials enabled.
   const GetLinuxWebAppResult({
-    required this.appMetadata,
-    required this.appSettings,
-    required this.authSettings,
-    required this.authSettingsV2s,
-    required this.availability,
-    required this.backups,
-    required this.clientAffinityEnabled,
-    required this.clientCertificateEnabled,
-    required this.clientCertificateExclusionPaths,
-    required this.clientCertificateMode,
-    required this.connectionStrings,
-    required this.customDomainVerificationId,
-    required this.defaultHostname,
-    required this.enabled,
-    required this.ftpPublishBasicAuthenticationEnabled,
-    required this.hostingEnvironmentId,
-    required this.httpsOnly,
-    required this.id,
-    required this.identities,
-    required this.keyVaultReferenceIdentityId,
-    required this.kind,
-    required this.location,
-    required this.logs,
-    required this.name,
-    required this.outboundIpAddressLists,
-    required this.outboundIpAddresses,
-    required this.possibleOutboundIpAddressLists,
-    required this.possibleOutboundIpAddresses,
-    required this.publicNetworkAccessEnabled,
-    required this.resourceGroupName,
-    required this.servicePlanId,
-    required this.siteConfigs,
-    required this.siteCredentials,
-    required this.stickySettings,
-    required this.storageAccounts,
-    required this.tags,
-    required this.usage,
-    required this.virtualNetworkBackupRestoreEnabled,
-    required this.virtualNetworkSubnetId,
-    required this.webdeployPublishBasicAuthenticationEnabled,
+    this.appMetadata,
+    this.appSettings,
+    this.authSettings,
+    this.authSettingsV2s,
+    this.availability,
+    this.backups,
+    this.clientAffinityEnabled,
+    this.clientCertificateEnabled,
+    this.clientCertificateExclusionPaths,
+    this.clientCertificateMode,
+    this.connectionStrings,
+    this.customDomainVerificationId,
+    this.defaultHostname,
+    this.enabled,
+    this.ftpPublishBasicAuthenticationEnabled,
+    this.hostingEnvironmentId,
+    this.httpsOnly,
+    this.id,
+    this.identities,
+    this.keyVaultReferenceIdentityId,
+    this.kind,
+    this.location,
+    this.logs,
+    this.name,
+    this.outboundIpAddressLists,
+    this.outboundIpAddresses,
+    this.possibleOutboundIpAddressLists,
+    this.possibleOutboundIpAddresses,
+    this.publicNetworkAccessEnabled,
+    this.resourceGroupName,
+    this.servicePlanId,
+    this.siteConfigs,
+    this.siteCredentials,
+    this.stickySettings,
+    this.storageAccounts,
+    this.tags,
+    this.usage,
+    this.virtualNetworkBackupRestoreEnabled,
+    this.virtualNetworkSubnetId,
+    this.webdeployPublishBasicAuthenticationEnabled,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'appMetadata': appMetadata,
-      'appSettings': appSettings,
-      'authSettings': pulumi.Input.encodeList<GetLinuxWebAppAuthSetting, Map<String, dynamic>>(authSettings, (value) => value.toMap()),
-      'authSettingsV2s': pulumi.Input.encodeList<GetLinuxWebAppAuthSettingsV2, Map<String, dynamic>>(authSettingsV2s, (value) => value.toMap()),
-      'availability': availability,
-      'backups': pulumi.Input.encodeList<GetLinuxWebAppBackup, Map<String, dynamic>>(backups, (value) => value.toMap()),
-      'clientAffinityEnabled': clientAffinityEnabled,
-      'clientCertificateEnabled': clientCertificateEnabled,
-      'clientCertificateExclusionPaths': clientCertificateExclusionPaths,
-      'clientCertificateMode': clientCertificateMode,
-      'connectionStrings': pulumi.Input.encodeList<GetLinuxWebAppConnectionString, Map<String, dynamic>>(connectionStrings, (value) => value.toMap()),
-      'customDomainVerificationId': customDomainVerificationId,
-      'defaultHostname': defaultHostname,
-      'enabled': enabled,
-      'ftpPublishBasicAuthenticationEnabled': ftpPublishBasicAuthenticationEnabled,
-      'hostingEnvironmentId': hostingEnvironmentId,
-      'httpsOnly': httpsOnly,
-      'id': id,
-      'identities': pulumi.Input.encodeList<GetLinuxWebAppIdentity, Map<String, dynamic>>(identities, (value) => value.toMap()),
-      'keyVaultReferenceIdentityId': keyVaultReferenceIdentityId,
-      'kind': kind,
-      'location': location,
-      'logs': pulumi.Input.encodeList<GetLinuxWebAppLog, Map<String, dynamic>>(logs, (value) => value.toMap()),
-      'name': name,
-      'outboundIpAddressLists': outboundIpAddressLists,
-      'outboundIpAddresses': outboundIpAddresses,
-      'possibleOutboundIpAddressLists': possibleOutboundIpAddressLists,
-      'possibleOutboundIpAddresses': possibleOutboundIpAddresses,
-      'publicNetworkAccessEnabled': publicNetworkAccessEnabled,
-      'resourceGroupName': resourceGroupName,
-      'servicePlanId': servicePlanId,
-      'siteConfigs': pulumi.Input.encodeList<GetLinuxWebAppSiteConfig, Map<String, dynamic>>(siteConfigs, (value) => value.toMap()),
-      'siteCredentials': pulumi.Input.encodeList<GetLinuxWebAppSiteCredential, Map<String, dynamic>>(siteCredentials, (value) => value.toMap()),
-      'stickySettings': pulumi.Input.encodeList<GetLinuxWebAppStickySetting, Map<String, dynamic>>(stickySettings, (value) => value.toMap()),
-      'storageAccounts': pulumi.Input.encodeList<GetLinuxWebAppStorageAccount, Map<String, dynamic>>(storageAccounts, (value) => value.toMap()),
-      'tags': tags,
-      'usage': usage,
-      'virtualNetworkBackupRestoreEnabled': virtualNetworkBackupRestoreEnabled,
-      'virtualNetworkSubnetId': virtualNetworkSubnetId,
-      'webdeployPublishBasicAuthenticationEnabled': webdeployPublishBasicAuthenticationEnabled,
+      'appMetadata': ?appMetadata,
+      'appSettings': ?appSettings,
+      'authSettings': ?(() { final guardedValue = authSettings; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetLinuxWebAppAuthSetting, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'authSettingsV2s': ?(() { final guardedValue = authSettingsV2s; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetLinuxWebAppAuthSettingsV2, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'availability': ?availability,
+      'backups': ?(() { final guardedValue = backups; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetLinuxWebAppBackup, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'clientAffinityEnabled': ?clientAffinityEnabled,
+      'clientCertificateEnabled': ?clientCertificateEnabled,
+      'clientCertificateExclusionPaths': ?clientCertificateExclusionPaths,
+      'clientCertificateMode': ?clientCertificateMode,
+      'connectionStrings': ?(() { final guardedValue = connectionStrings; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetLinuxWebAppConnectionString, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'customDomainVerificationId': ?customDomainVerificationId,
+      'defaultHostname': ?defaultHostname,
+      'enabled': ?enabled,
+      'ftpPublishBasicAuthenticationEnabled': ?ftpPublishBasicAuthenticationEnabled,
+      'hostingEnvironmentId': ?hostingEnvironmentId,
+      'httpsOnly': ?httpsOnly,
+      'id': ?id,
+      'identities': ?(() { final guardedValue = identities; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetLinuxWebAppIdentity, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'keyVaultReferenceIdentityId': ?keyVaultReferenceIdentityId,
+      'kind': ?kind,
+      'location': ?location,
+      'logs': ?(() { final guardedValue = logs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetLinuxWebAppLog, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'name': ?name,
+      'outboundIpAddressLists': ?outboundIpAddressLists,
+      'outboundIpAddresses': ?outboundIpAddresses,
+      'possibleOutboundIpAddressLists': ?possibleOutboundIpAddressLists,
+      'possibleOutboundIpAddresses': ?possibleOutboundIpAddresses,
+      'publicNetworkAccessEnabled': ?publicNetworkAccessEnabled,
+      'resourceGroupName': ?resourceGroupName,
+      'servicePlanId': ?servicePlanId,
+      'siteConfigs': ?(() { final guardedValue = siteConfigs; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetLinuxWebAppSiteConfig, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'siteCredentials': ?(() { final guardedValue = siteCredentials; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetLinuxWebAppSiteCredential, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'stickySettings': ?(() { final guardedValue = stickySettings; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetLinuxWebAppStickySetting, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'storageAccounts': ?(() { final guardedValue = storageAccounts; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetLinuxWebAppStorageAccount, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'tags': ?tags,
+      'usage': ?usage,
+      'virtualNetworkBackupRestoreEnabled': ?virtualNetworkBackupRestoreEnabled,
+      'virtualNetworkSubnetId': ?virtualNetworkSubnetId,
+      'webdeployPublishBasicAuthenticationEnabled': ?webdeployPublishBasicAuthenticationEnabled,
     };
   }
 
   factory GetLinuxWebAppResult.fromMap(Map<String, dynamic> map) {
     return GetLinuxWebAppResult(
-      appMetadata: (map['appMetadata'] as Map).cast<String, String>(),
-      appSettings: (map['appSettings'] as Map).cast<String, String>(),
-      authSettings: pulumi.Input.decodeList<GetLinuxWebAppAuthSetting>(map['authSettings']!, (value) => GetLinuxWebAppAuthSetting.fromMap((value as Map).cast<String, dynamic>())),
-      authSettingsV2s: pulumi.Input.decodeList<GetLinuxWebAppAuthSettingsV2>(map['authSettingsV2s']!, (value) => GetLinuxWebAppAuthSettingsV2.fromMap((value as Map).cast<String, dynamic>())),
-      availability: map['availability'] as String,
-      backups: pulumi.Input.decodeList<GetLinuxWebAppBackup>(map['backups']!, (value) => GetLinuxWebAppBackup.fromMap((value as Map).cast<String, dynamic>())),
-      clientAffinityEnabled: map['clientAffinityEnabled'] as bool,
-      clientCertificateEnabled: map['clientCertificateEnabled'] as bool,
-      clientCertificateExclusionPaths: map['clientCertificateExclusionPaths'] as String,
-      clientCertificateMode: map['clientCertificateMode'] as String,
-      connectionStrings: pulumi.Input.decodeList<GetLinuxWebAppConnectionString>(map['connectionStrings']!, (value) => GetLinuxWebAppConnectionString.fromMap((value as Map).cast<String, dynamic>())),
-      customDomainVerificationId: map['customDomainVerificationId'] as String,
-      defaultHostname: map['defaultHostname'] as String,
-      enabled: map['enabled'] as bool,
-      ftpPublishBasicAuthenticationEnabled: map['ftpPublishBasicAuthenticationEnabled'] as bool,
-      hostingEnvironmentId: map['hostingEnvironmentId'] as String,
-      httpsOnly: map['httpsOnly'] as bool,
-      id: map['id'] as String,
-      identities: pulumi.Input.decodeList<GetLinuxWebAppIdentity>(map['identities']!, (value) => GetLinuxWebAppIdentity.fromMap((value as Map).cast<String, dynamic>())),
-      keyVaultReferenceIdentityId: map['keyVaultReferenceIdentityId'] as String,
-      kind: map['kind'] as String,
-      location: map['location'] as String,
-      logs: pulumi.Input.decodeList<GetLinuxWebAppLog>(map['logs']!, (value) => GetLinuxWebAppLog.fromMap((value as Map).cast<String, dynamic>())),
-      name: map['name'] as String,
-      outboundIpAddressLists: (map['outboundIpAddressLists'] as List).cast<String>(),
-      outboundIpAddresses: map['outboundIpAddresses'] as String,
-      possibleOutboundIpAddressLists: (map['possibleOutboundIpAddressLists'] as List).cast<String>(),
-      possibleOutboundIpAddresses: map['possibleOutboundIpAddresses'] as String,
-      publicNetworkAccessEnabled: map['publicNetworkAccessEnabled'] as bool,
-      resourceGroupName: map['resourceGroupName'] as String,
-      servicePlanId: map['servicePlanId'] as String,
-      siteConfigs: pulumi.Input.decodeList<GetLinuxWebAppSiteConfig>(map['siteConfigs']!, (value) => GetLinuxWebAppSiteConfig.fromMap((value as Map).cast<String, dynamic>())),
-      siteCredentials: pulumi.Input.decodeList<GetLinuxWebAppSiteCredential>(map['siteCredentials']!, (value) => GetLinuxWebAppSiteCredential.fromMap((value as Map).cast<String, dynamic>())),
-      stickySettings: pulumi.Input.decodeList<GetLinuxWebAppStickySetting>(map['stickySettings']!, (value) => GetLinuxWebAppStickySetting.fromMap((value as Map).cast<String, dynamic>())),
-      storageAccounts: pulumi.Input.decodeList<GetLinuxWebAppStorageAccount>(map['storageAccounts']!, (value) => GetLinuxWebAppStorageAccount.fromMap((value as Map).cast<String, dynamic>())),
-      tags: (map['tags'] as Map).cast<String, String>(),
-      usage: map['usage'] as String,
-      virtualNetworkBackupRestoreEnabled: map['virtualNetworkBackupRestoreEnabled'] as bool,
-      virtualNetworkSubnetId: map['virtualNetworkSubnetId'] as String,
-      webdeployPublishBasicAuthenticationEnabled: map['webdeployPublishBasicAuthenticationEnabled'] as bool,
+      appMetadata: (() { final guardedValue = map['appMetadata']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      appSettings: (() { final guardedValue = map['appSettings']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      authSettings: (() { final guardedValue = map['authSettings']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetLinuxWebAppAuthSetting>(guardedValue, (value) => GetLinuxWebAppAuthSetting.fromMap((value as Map).cast<String, dynamic>())); })(),
+      authSettingsV2s: (() { final guardedValue = map['authSettingsV2s']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetLinuxWebAppAuthSettingsV2>(guardedValue, (value) => GetLinuxWebAppAuthSettingsV2.fromMap((value as Map).cast<String, dynamic>())); })(),
+      availability: (() { final guardedValue = map['availability']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      backups: (() { final guardedValue = map['backups']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetLinuxWebAppBackup>(guardedValue, (value) => GetLinuxWebAppBackup.fromMap((value as Map).cast<String, dynamic>())); })(),
+      clientAffinityEnabled: (() { final guardedValue = map['clientAffinityEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      clientCertificateEnabled: (() { final guardedValue = map['clientCertificateEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      clientCertificateExclusionPaths: (() { final guardedValue = map['clientCertificateExclusionPaths']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      clientCertificateMode: (() { final guardedValue = map['clientCertificateMode']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      connectionStrings: (() { final guardedValue = map['connectionStrings']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetLinuxWebAppConnectionString>(guardedValue, (value) => GetLinuxWebAppConnectionString.fromMap((value as Map).cast<String, dynamic>())); })(),
+      customDomainVerificationId: (() { final guardedValue = map['customDomainVerificationId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      defaultHostname: (() { final guardedValue = map['defaultHostname']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      ftpPublishBasicAuthenticationEnabled: (() { final guardedValue = map['ftpPublishBasicAuthenticationEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      hostingEnvironmentId: (() { final guardedValue = map['hostingEnvironmentId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      httpsOnly: (() { final guardedValue = map['httpsOnly']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      identities: (() { final guardedValue = map['identities']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetLinuxWebAppIdentity>(guardedValue, (value) => GetLinuxWebAppIdentity.fromMap((value as Map).cast<String, dynamic>())); })(),
+      keyVaultReferenceIdentityId: (() { final guardedValue = map['keyVaultReferenceIdentityId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      logs: (() { final guardedValue = map['logs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetLinuxWebAppLog>(guardedValue, (value) => GetLinuxWebAppLog.fromMap((value as Map).cast<String, dynamic>())); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      outboundIpAddressLists: (() { final guardedValue = map['outboundIpAddressLists']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      outboundIpAddresses: (() { final guardedValue = map['outboundIpAddresses']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      possibleOutboundIpAddressLists: (() { final guardedValue = map['possibleOutboundIpAddressLists']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      possibleOutboundIpAddresses: (() { final guardedValue = map['possibleOutboundIpAddresses']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      publicNetworkAccessEnabled: (() { final guardedValue = map['publicNetworkAccessEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      resourceGroupName: (() { final guardedValue = map['resourceGroupName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      servicePlanId: (() { final guardedValue = map['servicePlanId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      siteConfigs: (() { final guardedValue = map['siteConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetLinuxWebAppSiteConfig>(guardedValue, (value) => GetLinuxWebAppSiteConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
+      siteCredentials: (() { final guardedValue = map['siteCredentials']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetLinuxWebAppSiteCredential>(guardedValue, (value) => GetLinuxWebAppSiteCredential.fromMap((value as Map).cast<String, dynamic>())); })(),
+      stickySettings: (() { final guardedValue = map['stickySettings']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetLinuxWebAppStickySetting>(guardedValue, (value) => GetLinuxWebAppStickySetting.fromMap((value as Map).cast<String, dynamic>())); })(),
+      storageAccounts: (() { final guardedValue = map['storageAccounts']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetLinuxWebAppStorageAccount>(guardedValue, (value) => GetLinuxWebAppStorageAccount.fromMap((value as Map).cast<String, dynamic>())); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      usage: (() { final guardedValue = map['usage']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      virtualNetworkBackupRestoreEnabled: (() { final guardedValue = map['virtualNetworkBackupRestoreEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      virtualNetworkSubnetId: (() { final guardedValue = map['virtualNetworkSubnetId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      webdeployPublishBasicAuthenticationEnabled: (() { final guardedValue = map['webdeployPublishBasicAuthenticationEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
     );
   }
 }

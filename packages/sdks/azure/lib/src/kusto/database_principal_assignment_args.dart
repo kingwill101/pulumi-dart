@@ -12,7 +12,7 @@ class DatabasePrincipalAssignmentArgs {
   /// The name of the database in which to create the resource. Changing this forces a new resource to be created.
   final pulumi.Input<String> databaseName;
   /// The name of the kusto principal assignment. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The object id of the principal. Changing this forces a new resource to be created.
   final pulumi.Input<String> principalId;
   /// The type of the principal. Valid values include `App`, `Group`, `User`. Changing this forces a new resource to be created.

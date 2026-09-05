@@ -4,51 +4,51 @@
 /// Result data returned by getIntegrationAccount.
 class GetIntegrationAccountResult {
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// The Azure Region where the Logic App Integration Account exists.
-  final String location;
-  final String name;
-  final String resourceGroupName;
+  final String? location;
+  final String? name;
+  final String? resourceGroupName;
   /// The SKU name of the Logic App Integration Account.
-  final String skuName;
+  final String? skuName;
   /// A mapping of tags assigned to the Logic App Integration Account.
-  final Map<String, String> tags;
+  final Map<String, String>? tags;
 
   /// Creates a new [GetIntegrationAccountResult].
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [location] The Azure Region where the Logic App Integration Account exists.
-  /// [name] Required.
-  /// [resourceGroupName] Required.
+  /// [name] Optional.
+  /// [resourceGroupName] Optional.
   /// [skuName] The SKU name of the Logic App Integration Account.
   /// [tags] A mapping of tags assigned to the Logic App Integration Account.
   const GetIntegrationAccountResult({
-    required this.id,
-    required this.location,
-    required this.name,
-    required this.resourceGroupName,
-    required this.skuName,
-    required this.tags,
+    this.id,
+    this.location,
+    this.name,
+    this.resourceGroupName,
+    this.skuName,
+    this.tags,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'id': id,
-      'location': location,
-      'name': name,
-      'resourceGroupName': resourceGroupName,
-      'skuName': skuName,
-      'tags': tags,
+      'id': ?id,
+      'location': ?location,
+      'name': ?name,
+      'resourceGroupName': ?resourceGroupName,
+      'skuName': ?skuName,
+      'tags': ?tags,
     };
   }
 
   factory GetIntegrationAccountResult.fromMap(Map<String, dynamic> map) {
     return GetIntegrationAccountResult(
-      id: map['id'] as String,
-      location: map['location'] as String,
-      name: map['name'] as String,
-      resourceGroupName: map['resourceGroupName'] as String,
-      skuName: map['skuName'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      resourceGroupName: (() { final guardedValue = map['resourceGroupName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      skuName: (() { final guardedValue = map['skuName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
     );
   }
 }

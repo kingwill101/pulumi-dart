@@ -6,9 +6,9 @@ class CertificateContactsContact {
   /// E-mail address of the contact.
   final pulumi.Input<String> email;
   /// Name of the contact.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Phone number of the contact.
-  final pulumi.Input<String>? phone;
+  final pulumi.Input<String?>? phone;
 
   /// Creates a new [CertificateContactsContact].
   /// [email] E-mail address of the contact.

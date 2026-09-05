@@ -104,7 +104,7 @@ import 'smart_detection_rule_state.dart';
 /// 		}
 /// 		_, err = appinsights.NewSmartDetectionRule(ctx, "example", &appinsights.SmartDetectionRuleArgs{
 /// 			Name:                  pulumi.String("Slow server response time"),
-/// 			ApplicationInsightsId: exampleInsights.ID(),
+/// 			ApplicationInsightsId: exampleInsights.ID().ToIDOutput().ToStringOutput(),
 /// 			Enabled:               pulumi.Bool(false),
 /// 		})
 /// 		if err != nil {
@@ -250,9 +250,9 @@ class SmartDetectionRule extends pulumi.CustomResource {
           'azure:appinsights/smartDetectionRule:SmartDetectionRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
-    additionalEmailRecipients = registerOutput<List<String>?>('additionalEmailRecipients');
+    additionalEmailRecipients = registerOutput<List<String>?>('additionalEmailRecipients', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     applicationInsightsId = registerOutput<String>('applicationInsightsId');
     enabled = registerOutput<bool?>('enabled');
     this.name = registerOutput<String>('name');
@@ -264,11 +264,12 @@ class SmartDetectionRule extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SmartDetectionRuleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SmartDetectionRule._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -282,7 +283,23 @@ class SmartDetectionRule extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    additionalEmailRecipients = registerOutput<List<String>?>('additionalEmailRecipients');
+    additionalEmailRecipients = registerOutput<List<String>?>('additionalEmailRecipients', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    applicationInsightsId = registerOutput<String>('applicationInsightsId');
+    enabled = registerOutput<bool?>('enabled');
+    this.name = registerOutput<String>('name');
+    sendEmailsToSubscriptionOwners = registerOutput<bool?>('sendEmailsToSubscriptionOwners');
+  }
+
+  /// Creates a typed reference to an existing [SmartDetectionRule] resource.
+  SmartDetectionRule.reference(String urn)
+    : super(
+        'azure:appinsights/smartDetectionRule:SmartDetectionRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    additionalEmailRecipients = registerOutput<List<String>?>('additionalEmailRecipients', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     applicationInsightsId = registerOutput<String>('applicationInsightsId');
     enabled = registerOutput<bool?>('enabled');
     this.name = registerOutput<String>('name');

@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'job_target_group_args.dart';
+import 'job_target_group_job_target.dart';
 import 'job_target_group_state.dart';
 
 /// Manages a Job Target Group.
@@ -179,7 +180,7 @@ import 'job_target_group_state.dart';
 /// 		}
 /// 		exampleDatabase, err := mssql.NewDatabase(ctx, "example", &mssql.DatabaseArgs{
 /// 			Name:      pulumi.String("example-db"),
-/// 			ServerId:  exampleServer.ID(),
+/// 			ServerId:  exampleServer.ID().ToIDOutput().ToStringOutput(),
 /// 			Collation: pulumi.String("SQL_Latin1_General_CP1_CI_AS"),
 /// 			SkuName:   pulumi.String("S1"),
 /// 		})
@@ -189,14 +190,14 @@ import 'job_target_group_state.dart';
 /// 		exampleJobAgent, err := mssql.NewJobAgent(ctx, "example", &mssql.JobAgentArgs{
 /// 			Name:       pulumi.String("example-job-agent"),
 /// 			Location:   example.Location,
-/// 			DatabaseId: exampleDatabase.ID(),
+/// 			DatabaseId: exampleDatabase.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		exampleJobCredential, err := mssql.NewJobCredential(ctx, "example", &mssql.JobCredentialArgs{
 /// 			Name:       pulumi.String("example-job-credential"),
-/// 			JobAgentId: exampleJobAgent.ID(),
+/// 			JobAgentId: exampleJobAgent.ID().ToIDOutput().ToStringOutput(),
 /// 			Username:   pulumi.String("testusername"),
 /// 			Password:   pulumi.String("testpassword"),
 /// 		})
@@ -205,11 +206,11 @@ import 'job_target_group_state.dart';
 /// 		}
 /// 		_, err = mssql.NewJobTargetGroup(ctx, "example", &mssql.JobTargetGroupArgs{
 /// 			Name:       pulumi.String("example-target-group"),
-/// 			JobAgentId: exampleJobAgent.ID(),
+/// 			JobAgentId: exampleJobAgent.ID().ToIDOutput().ToStringOutput(),
 /// 			JobTargets: mssql.JobTargetGroupJobTargetArray{
 /// 				&mssql.JobTargetGroupJobTargetArgs{
 /// 					ServerName:      exampleServer.Name,
-/// 					JobCredentialId: exampleJobCredential.ID(),
+/// 					JobCredentialId: exampleJobCredential.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 		})
@@ -415,7 +416,7 @@ class JobTargetGroup extends pulumi.CustomResource {
   /// The ID of the Elastic Job Agent. Changing this forces a new Job Target Group to be created.
   late final pulumi.Output<String> jobAgentId;
   /// One or more `jobTarget` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> jobTargets;
+  late final pulumi.Output<List<JobTargetGroupJobTarget>?> jobTargets;
   /// The name which should be used for this Job Target Group. Changing this forces a new Job Target Group to be created.
   late final pulumi.Output<String> name;
 
@@ -431,10 +432,10 @@ class JobTargetGroup extends pulumi.CustomResource {
           'azure:mssql/jobTargetGroup:JobTargetGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     jobAgentId = registerOutput<String>('jobAgentId');
-    jobTargets = registerOutput<List<Map<String, dynamic>>?>('jobTargets');
+    jobTargets = registerOutput<List<JobTargetGroupJobTarget>?>('jobTargets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<JobTargetGroupJobTarget>(guardedValue, (value) => JobTargetGroupJobTarget.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
   }
 
@@ -443,11 +444,12 @@ class JobTargetGroup extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     JobTargetGroupState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return JobTargetGroup._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -462,7 +464,21 @@ class JobTargetGroup extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     jobAgentId = registerOutput<String>('jobAgentId');
-    jobTargets = registerOutput<List<Map<String, dynamic>>?>('jobTargets');
+    jobTargets = registerOutput<List<JobTargetGroupJobTarget>?>('jobTargets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<JobTargetGroupJobTarget>(guardedValue, (value) => JobTargetGroupJobTarget.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+  }
+
+  /// Creates a typed reference to an existing [JobTargetGroup] resource.
+  JobTargetGroup.reference(String urn)
+    : super(
+        'azure:mssql/jobTargetGroup:JobTargetGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    jobAgentId = registerOutput<String>('jobAgentId');
+    jobTargets = registerOutput<List<JobTargetGroupJobTarget>?>('jobTargets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<JobTargetGroupJobTarget>(guardedValue, (value) => JobTargetGroupJobTarget.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
   }
 }

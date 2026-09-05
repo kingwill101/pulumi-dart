@@ -1,5 +1,10 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'custom_domain_args.dart';
+import 'custom_domain_developer_portal.dart';
+import 'custom_domain_gateway.dart';
+import 'custom_domain_management.dart';
+import 'custom_domain_portal.dart';
+import 'custom_domain_scm.dart';
 import 'custom_domain_state.dart';
 
 /// Manages a API Management Custom Domain.
@@ -357,7 +362,7 @@ import 'custom_domain_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = apimanagement.NewCustomDomain(ctx, "example", &apimanagement.CustomDomainArgs{
-/// 			ApiManagementId: exampleService.ID(),
+/// 			ApiManagementId: exampleService.ID().ToIDOutput().ToStringOutput(),
 /// 			Gateways: apimanagement.CustomDomainGatewayArray{
 /// 				&apimanagement.CustomDomainGatewayArgs{
 /// 					HostName:   pulumi.String("api.example.com"),
@@ -659,15 +664,15 @@ class CustomDomain extends pulumi.CustomResource {
   /// The ID of the API Management service for which to configure Custom Domains. Changing this forces a new API Management Custom Domain resource to be created.
   late final pulumi.Output<String> apiManagementId;
   /// One or more `developerPortal` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> developerPortals;
+  late final pulumi.Output<List<CustomDomainDeveloperPortal>?> developerPortals;
   /// One or more `gateway` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> gateways;
+  late final pulumi.Output<List<CustomDomainGateway>?> gateways;
   /// One or more `management` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> managements;
+  late final pulumi.Output<List<CustomDomainManagement>?> managements;
   /// One or more `portal` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> portals;
+  late final pulumi.Output<List<CustomDomainPortal>?> portals;
   /// One or more `scm` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> scms;
+  late final pulumi.Output<List<CustomDomainScm>?> scms;
 
   /// Creates a new [CustomDomain].
   /// [name] The Pulumi resource name.
@@ -681,14 +686,14 @@ class CustomDomain extends pulumi.CustomResource {
           'azure:apimanagement/customDomain:CustomDomain',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     apiManagementId = registerOutput<String>('apiManagementId');
-    developerPortals = registerOutput<List<Map<String, dynamic>>?>('developerPortals');
-    gateways = registerOutput<List<Map<String, dynamic>>?>('gateways');
-    managements = registerOutput<List<Map<String, dynamic>>?>('managements');
-    portals = registerOutput<List<Map<String, dynamic>>?>('portals');
-    scms = registerOutput<List<Map<String, dynamic>>?>('scms');
+    developerPortals = registerOutput<List<CustomDomainDeveloperPortal>?>('developerPortals', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CustomDomainDeveloperPortal>(guardedValue, (value) => CustomDomainDeveloperPortal.fromMap((value as Map).cast<String, dynamic>())); });
+    gateways = registerOutput<List<CustomDomainGateway>?>('gateways', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CustomDomainGateway>(guardedValue, (value) => CustomDomainGateway.fromMap((value as Map).cast<String, dynamic>())); });
+    managements = registerOutput<List<CustomDomainManagement>?>('managements', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CustomDomainManagement>(guardedValue, (value) => CustomDomainManagement.fromMap((value as Map).cast<String, dynamic>())); });
+    portals = registerOutput<List<CustomDomainPortal>?>('portals', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CustomDomainPortal>(guardedValue, (value) => CustomDomainPortal.fromMap((value as Map).cast<String, dynamic>())); });
+    scms = registerOutput<List<CustomDomainScm>?>('scms', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CustomDomainScm>(guardedValue, (value) => CustomDomainScm.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [CustomDomain] resource's state with the given [name] and [id].
@@ -696,11 +701,12 @@ class CustomDomain extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CustomDomainState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return CustomDomain._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -715,10 +721,27 @@ class CustomDomain extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     apiManagementId = registerOutput<String>('apiManagementId');
-    developerPortals = registerOutput<List<Map<String, dynamic>>?>('developerPortals');
-    gateways = registerOutput<List<Map<String, dynamic>>?>('gateways');
-    managements = registerOutput<List<Map<String, dynamic>>?>('managements');
-    portals = registerOutput<List<Map<String, dynamic>>?>('portals');
-    scms = registerOutput<List<Map<String, dynamic>>?>('scms');
+    developerPortals = registerOutput<List<CustomDomainDeveloperPortal>?>('developerPortals', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CustomDomainDeveloperPortal>(guardedValue, (value) => CustomDomainDeveloperPortal.fromMap((value as Map).cast<String, dynamic>())); });
+    gateways = registerOutput<List<CustomDomainGateway>?>('gateways', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CustomDomainGateway>(guardedValue, (value) => CustomDomainGateway.fromMap((value as Map).cast<String, dynamic>())); });
+    managements = registerOutput<List<CustomDomainManagement>?>('managements', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CustomDomainManagement>(guardedValue, (value) => CustomDomainManagement.fromMap((value as Map).cast<String, dynamic>())); });
+    portals = registerOutput<List<CustomDomainPortal>?>('portals', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CustomDomainPortal>(guardedValue, (value) => CustomDomainPortal.fromMap((value as Map).cast<String, dynamic>())); });
+    scms = registerOutput<List<CustomDomainScm>?>('scms', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CustomDomainScm>(guardedValue, (value) => CustomDomainScm.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [CustomDomain] resource.
+  CustomDomain.reference(String urn)
+    : super(
+        'azure:apimanagement/customDomain:CustomDomain',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    apiManagementId = registerOutput<String>('apiManagementId');
+    developerPortals = registerOutput<List<CustomDomainDeveloperPortal>?>('developerPortals', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CustomDomainDeveloperPortal>(guardedValue, (value) => CustomDomainDeveloperPortal.fromMap((value as Map).cast<String, dynamic>())); });
+    gateways = registerOutput<List<CustomDomainGateway>?>('gateways', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CustomDomainGateway>(guardedValue, (value) => CustomDomainGateway.fromMap((value as Map).cast<String, dynamic>())); });
+    managements = registerOutput<List<CustomDomainManagement>?>('managements', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CustomDomainManagement>(guardedValue, (value) => CustomDomainManagement.fromMap((value as Map).cast<String, dynamic>())); });
+    portals = registerOutput<List<CustomDomainPortal>?>('portals', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CustomDomainPortal>(guardedValue, (value) => CustomDomainPortal.fromMap((value as Map).cast<String, dynamic>())); });
+    scms = registerOutput<List<CustomDomainScm>?>('scms', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CustomDomainScm>(guardedValue, (value) => CustomDomainScm.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

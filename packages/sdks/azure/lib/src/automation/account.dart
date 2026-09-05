@@ -1,6 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'account_args.dart';
+import 'account_encryption.dart';
 import 'account_identity.dart';
+import 'account_private_endpoint_connection.dart';
 import 'account_state.dart';
 
 /// Manages an Automation Account.
@@ -208,7 +210,7 @@ class Account extends pulumi.CustomResource {
   /// The DSC Server Endpoint associated with this Automation Account.
   late final pulumi.Output<String> dscServerEndpoint;
   /// An `encryption` block as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> encryptions;
+  late final pulumi.Output<List<AccountEncryption>?> encryptions;
   /// The URL of automation hybrid service which is used for hybrid worker on-boarding With this Automation Account.
   late final pulumi.Output<String> hybridServiceUrl;
   /// An `identity` block as defined below.
@@ -219,7 +221,7 @@ class Account extends pulumi.CustomResource {
   late final pulumi.Output<String> location;
   /// Specifies the name of the Automation Account. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
-  late final pulumi.Output<List<Map<String, dynamic>>> privateEndpointConnections;
+  late final pulumi.Output<List<AccountPrivateEndpointConnection>> privateEndpointConnections;
   /// Whether public network access is allowed for the automation account. Defaults to `true`.
   late final pulumi.Output<bool?> publicNetworkAccessEnabled;
   /// The name of the resource group in which the Automation Account is created. Changing this forces a new resource to be created.
@@ -241,22 +243,23 @@ class Account extends pulumi.CustomResource {
           'azure:automation/account:Account',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['dscPrimaryAccessKey', 'dscSecondaryAccessKey'],
         ) {
-    dscPrimaryAccessKey = registerOutput<String>('dscPrimaryAccessKey');
-    dscSecondaryAccessKey = registerOutput<String>('dscSecondaryAccessKey');
+    dscPrimaryAccessKey = registerOutput<String>('dscPrimaryAccessKey', isSecret: true);
+    dscSecondaryAccessKey = registerOutput<String>('dscSecondaryAccessKey', isSecret: true);
     dscServerEndpoint = registerOutput<String>('dscServerEndpoint');
-    encryptions = registerOutput<List<Map<String, dynamic>>?>('encryptions');
+    encryptions = registerOutput<List<AccountEncryption>?>('encryptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AccountEncryption>(guardedValue, (value) => AccountEncryption.fromMap((value as Map).cast<String, dynamic>())); });
     hybridServiceUrl = registerOutput<String>('hybridServiceUrl');
     identity = registerOutput<AccountIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     localAuthenticationEnabled = registerOutput<bool?>('localAuthenticationEnabled');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>('privateEndpointConnections');
+    privateEndpointConnections = registerOutput<List<AccountPrivateEndpointConnection>>('privateEndpointConnections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AccountPrivateEndpointConnection>(guardedValue, (value) => AccountPrivateEndpointConnection.fromMap((value as Map).cast<String, dynamic>())); });
     publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     skuName = registerOutput<String>('skuName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Account] resource's state with the given [name] and [id].
@@ -264,11 +267,12 @@ class Account extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AccountState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Account._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -282,19 +286,45 @@ class Account extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    dscPrimaryAccessKey = registerOutput<String>('dscPrimaryAccessKey');
-    dscSecondaryAccessKey = registerOutput<String>('dscSecondaryAccessKey');
+    dscPrimaryAccessKey = registerOutput<String>('dscPrimaryAccessKey', isSecret: true);
+    dscSecondaryAccessKey = registerOutput<String>('dscSecondaryAccessKey', isSecret: true);
     dscServerEndpoint = registerOutput<String>('dscServerEndpoint');
-    encryptions = registerOutput<List<Map<String, dynamic>>?>('encryptions');
+    encryptions = registerOutput<List<AccountEncryption>?>('encryptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AccountEncryption>(guardedValue, (value) => AccountEncryption.fromMap((value as Map).cast<String, dynamic>())); });
     hybridServiceUrl = registerOutput<String>('hybridServiceUrl');
     identity = registerOutput<AccountIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     localAuthenticationEnabled = registerOutput<bool?>('localAuthenticationEnabled');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>('privateEndpointConnections');
+    privateEndpointConnections = registerOutput<List<AccountPrivateEndpointConnection>>('privateEndpointConnections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AccountPrivateEndpointConnection>(guardedValue, (value) => AccountPrivateEndpointConnection.fromMap((value as Map).cast<String, dynamic>())); });
     publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     skuName = registerOutput<String>('skuName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Account] resource.
+  Account.reference(String urn)
+    : super(
+        'azure:automation/account:Account',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['dscPrimaryAccessKey', 'dscSecondaryAccessKey'],
+        isResourceReference: true,
+      ) {
+    dscPrimaryAccessKey = registerOutput<String>('dscPrimaryAccessKey', isSecret: true);
+    dscSecondaryAccessKey = registerOutput<String>('dscSecondaryAccessKey', isSecret: true);
+    dscServerEndpoint = registerOutput<String>('dscServerEndpoint');
+    encryptions = registerOutput<List<AccountEncryption>?>('encryptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AccountEncryption>(guardedValue, (value) => AccountEncryption.fromMap((value as Map).cast<String, dynamic>())); });
+    hybridServiceUrl = registerOutput<String>('hybridServiceUrl');
+    identity = registerOutput<AccountIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    localAuthenticationEnabled = registerOutput<bool?>('localAuthenticationEnabled');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    privateEndpointConnections = registerOutput<List<AccountPrivateEndpointConnection>>('privateEndpointConnections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AccountPrivateEndpointConnection>(guardedValue, (value) => AccountPrivateEndpointConnection.fromMap((value as Map).cast<String, dynamic>())); });
+    publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    skuName = registerOutput<String>('skuName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

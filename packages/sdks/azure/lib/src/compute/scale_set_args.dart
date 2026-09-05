@@ -22,65 +22,65 @@ import 'scale_set_storage_profile_os_disk.dart';
 /// {@macro pulumi_compute_scale_set_scale_set_args_doc}
 class ScaleSetArgs {
   /// Automatic OS patches can be applied by Azure to your scaleset. This is particularly useful when `upgradePolicyMode` is set to `Rolling`. Defaults to `false`.
-  final pulumi.Input<bool>? automaticOsUpgrade;
+  final pulumi.Input<bool?>? automaticOsUpgrade;
   /// A `bootDiagnostics` block as referenced below.
-  final pulumi.Input<ScaleSetBootDiagnostics>? bootDiagnostics;
+  final pulumi.Input<ScaleSetBootDiagnostics?>? bootDiagnostics;
   /// Specifies the eviction policy for Virtual Machines in this Scale Set. Possible values are `Deallocate` and `Delete`. Changing this forces a new resource to be created.
   ///
   /// &gt; **NOTE:** `evictionPolicy` can only be set when `priority` is set to `Low`.
-  final pulumi.Input<String>? evictionPolicy;
+  final pulumi.Input<String?>? evictionPolicy;
   /// Can be specified multiple times to add extension profiles to the scale set. Each `extension` block supports the fields documented below.
-  final pulumi.Input<List<ScaleSetExtension>>? extensions;
+  final pulumi.Input<List<ScaleSetExtension>?>? extensions;
   /// Specifies the identifier for the load balancer health probe. Required when using `Rolling` as your `upgradePolicyMode`.
-  final pulumi.Input<String>? healthProbeId;
+  final pulumi.Input<String?>? healthProbeId;
   /// An `identity` block as defined below.
-  final pulumi.Input<ScaleSetIdentity>? identity;
+  final pulumi.Input<ScaleSetIdentity?>? identity;
   /// (Optional, when a Windows machine) Specifies the Windows OS license type. If supplied, the only allowed values are `Windows_Client` and `Windows_Server`.
-  final pulumi.Input<String>? licenseType;
+  final pulumi.Input<String?>? licenseType;
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Specifies the name of the virtual machine scale set resource. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A collection of `networkProfile` blocks as documented below.
   final pulumi.Input<List<ScaleSetNetworkProfile>> networkProfiles;
   /// A `osProfile` block as documented below.
   final pulumi.Input<ScaleSetOsProfile> osProfile;
   /// A `osProfileLinuxConfig` block as documented below.
-  final pulumi.Input<ScaleSetOsProfileLinuxConfig>? osProfileLinuxConfig;
+  final pulumi.Input<ScaleSetOsProfileLinuxConfig?>? osProfileLinuxConfig;
   /// A collection of `osProfileSecrets` blocks as documented below.
-  final pulumi.Input<List<ScaleSetOsProfileSecret>>? osProfileSecrets;
+  final pulumi.Input<List<ScaleSetOsProfileSecret>?>? osProfileSecrets;
   /// A `osProfileWindowsConfig` block as documented below.
-  final pulumi.Input<ScaleSetOsProfileWindowsConfig>? osProfileWindowsConfig;
+  final pulumi.Input<ScaleSetOsProfileWindowsConfig?>? osProfileWindowsConfig;
   /// Specifies whether the virtual machine scale set should be overprovisioned. Defaults to `true`.
-  final pulumi.Input<bool>? overprovision;
+  final pulumi.Input<bool?>? overprovision;
   /// A `plan` block as documented below.
-  final pulumi.Input<ScaleSetPlan>? plan;
+  final pulumi.Input<ScaleSetPlan?>? plan;
   /// Specifies the priority for the Virtual Machines in the Scale Set. Possible values are `Low` and `Regular`. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? priority;
+  final pulumi.Input<String?>? priority;
   /// The ID of the Proximity Placement Group to which this Virtual Machine should be assigned. Changing this forces a new resource to be created
-  final pulumi.Input<String>? proximityPlacementGroupId;
+  final pulumi.Input<String?>? proximityPlacementGroupId;
   /// The name of the resource group in which to create the virtual machine scale set. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
   /// A `rollingUpgradePolicy` block as defined below. This is only applicable when the `upgradePolicyMode` is `Rolling`.
-  final pulumi.Input<ScaleSetRollingUpgradePolicy>? rollingUpgradePolicy;
+  final pulumi.Input<ScaleSetRollingUpgradePolicy?>? rollingUpgradePolicy;
   /// Specifies whether the scale set is limited to a single placement group with a maximum size of 100 virtual machines. If set to false, managed disks must be used. Changing this forces a new resource to be created. See [documentation](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups) for more information. Defaults to `true`.
-  final pulumi.Input<bool>? singlePlacementGroup;
+  final pulumi.Input<bool?>? singlePlacementGroup;
   /// A `sku` block as documented below.
   final pulumi.Input<ScaleSetSku> sku;
   /// A `storageProfileDataDisk` block as documented below.
-  final pulumi.Input<List<ScaleSetStorageProfileDataDisk>>? storageProfileDataDisks;
+  final pulumi.Input<List<ScaleSetStorageProfileDataDisk>?>? storageProfileDataDisks;
   /// A `storageProfileImageReference` block as documented below.
-  final pulumi.Input<ScaleSetStorageProfileImageReference>? storageProfileImageReference;
+  final pulumi.Input<ScaleSetStorageProfileImageReference?>? storageProfileImageReference;
   /// A `storageProfileOsDisk` block as documented below.
   final pulumi.Input<ScaleSetStorageProfileOsDisk> storageProfileOsDisk;
   /// A mapping of tags to assign to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Specifies the mode of an upgrade to virtual machines in the scale set. Possible values, `Rolling`, `Manual`, or `Automatic`. When choosing `Rolling`, you will need to set a health probe.
   final pulumi.Input<String> upgradePolicyMode;
   /// A collection of availability zones to spread the Virtual Machines over. Changing this forces a new resource to be created.
   ///
   /// &gt; **NOTE:** Availability Zones are [only supported in several regions at this time](https://docs.microsoft.com/azure/availability-zones/az-overview).
-  final pulumi.Input<List<String>>? zones;
+  final pulumi.Input<List<String>?>? zones;
 
   /// Creates a new [ScaleSetArgs].
   /// [automaticOsUpgrade] Automatic OS patches can be applied by Azure to your scaleset. This is particularly useful when `upgradePolicyMode` is set to `Rolling`. Defaults to `false`.

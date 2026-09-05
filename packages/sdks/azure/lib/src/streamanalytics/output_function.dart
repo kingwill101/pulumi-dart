@@ -232,7 +232,7 @@ import 'output_function_state.dart';
 /// 			Name:                    pulumi.String("examplefunctionapp"),
 /// 			Location:                example.Location,
 /// 			ResourceGroupName:       example.Name,
-/// 			AppServicePlanId:        examplePlan.ID(),
+/// 			AppServicePlanId:        examplePlan.ID().ToIDOutput().ToStringOutput(),
 /// 			StorageAccountName:      exampleAccount.Name,
 /// 			StorageAccountAccessKey: exampleAccount.PrimaryAccessKey,
 /// 			OsType:                  pulumi.String("linux"),
@@ -524,9 +524,10 @@ class OutputFunction extends pulumi.CustomResource {
           'azure:streamanalytics/outputFunction:OutputFunction',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['apiKey'],
         ) {
-    apiKey = registerOutput<String>('apiKey');
+    apiKey = registerOutput<String>('apiKey', isSecret: true);
     batchMaxCount = registerOutput<int?>('batchMaxCount');
     batchMaxInBytes = registerOutput<int?>('batchMaxInBytes');
     functionApp = registerOutput<String>('functionApp');
@@ -541,11 +542,12 @@ class OutputFunction extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     OutputFunctionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return OutputFunction._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -559,7 +561,27 @@ class OutputFunction extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    apiKey = registerOutput<String>('apiKey');
+    apiKey = registerOutput<String>('apiKey', isSecret: true);
+    batchMaxCount = registerOutput<int?>('batchMaxCount');
+    batchMaxInBytes = registerOutput<int?>('batchMaxInBytes');
+    functionApp = registerOutput<String>('functionApp');
+    functionName = registerOutput<String>('functionName');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    streamAnalyticsJobName = registerOutput<String>('streamAnalyticsJobName');
+  }
+
+  /// Creates a typed reference to an existing [OutputFunction] resource.
+  OutputFunction.reference(String urn)
+    : super(
+        'azure:streamanalytics/outputFunction:OutputFunction',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['apiKey'],
+        isResourceReference: true,
+      ) {
+    apiKey = registerOutput<String>('apiKey', isSecret: true);
     batchMaxCount = registerOutput<int?>('batchMaxCount');
     batchMaxInBytes = registerOutput<int?>('batchMaxInBytes');
     functionApp = registerOutput<String>('functionApp');

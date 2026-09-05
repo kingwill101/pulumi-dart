@@ -8,7 +8,7 @@ class AccountQueuePropertiesLogging {
   /// Indicates whether all read requests should be logged.
   final pulumi.Input<bool> read;
   /// Specifies the number of days that logs will be retained.
-  final pulumi.Input<int>? retentionPolicyDays;
+  final pulumi.Input<int?>? retentionPolicyDays;
   /// The version of storage analytics to configure.
   final pulumi.Input<String> version;
   /// Indicates whether all write requests should be logged.
@@ -42,7 +42,7 @@ class AccountQueuePropertiesLogging {
     return AccountQueuePropertiesLogging(
       delete: pulumi.Input.fromValue(map['delete'] as bool),
       read: pulumi.Input.fromValue(map['read'] as bool),
-      retentionPolicyDays: (() { final guardedValue = map['retentionPolicyDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      retentionPolicyDays: (() { final guardedValue = map['retentionPolicyDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       version: pulumi.Input.fromValue(map['version'] as String),
       write: pulumi.Input.fromValue(map['write'] as bool),
     );

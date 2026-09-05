@@ -188,8 +188,8 @@ import 'virtual_network_rule_state.dart';
 /// 		}
 /// 		_, err = mssql.NewVirtualNetworkRule(ctx, "example", &mssql.VirtualNetworkRuleArgs{
 /// 			Name:     pulumi.String("sql-vnet-rule"),
-/// 			ServerId: exampleServer.ID(),
-/// 			SubnetId: exampleSubnet.ID(),
+/// 			ServerId: exampleServer.ID().ToIDOutput().ToStringOutput(),
+/// 			SubnetId: exampleSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -390,7 +390,7 @@ class VirtualNetworkRule extends pulumi.CustomResource {
           'azure:mssql/virtualNetworkRule:VirtualNetworkRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     ignoreMissingVnetServiceEndpoint = registerOutput<bool?>('ignoreMissingVnetServiceEndpoint');
     this.name = registerOutput<String>('name');
@@ -403,11 +403,12 @@ class VirtualNetworkRule extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VirtualNetworkRuleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VirtualNetworkRule._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -421,6 +422,21 @@ class VirtualNetworkRule extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    ignoreMissingVnetServiceEndpoint = registerOutput<bool?>('ignoreMissingVnetServiceEndpoint');
+    this.name = registerOutput<String>('name');
+    serverId = registerOutput<String>('serverId');
+    subnetId = registerOutput<String>('subnetId');
+  }
+
+  /// Creates a typed reference to an existing [VirtualNetworkRule] resource.
+  VirtualNetworkRule.reference(String urn)
+    : super(
+        'azure:mssql/virtualNetworkRule:VirtualNetworkRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     ignoreMissingVnetServiceEndpoint = registerOutput<bool?>('ignoreMissingVnetServiceEndpoint');
     this.name = registerOutput<String>('name');
     serverId = registerOutput<String>('serverId');

@@ -289,6 +289,7 @@ import 'certificate_state.dart';
 ///     name: "examplekeyvault",
 ///     location: example.location,
 ///     resourceGroupName: example.name,
+///     rbacAuthorizationEnabled: false,
 ///     tenantId: current.then(current => current.tenantId),
 ///     skuName: "standard",
 /// });
@@ -353,6 +354,7 @@ import 'certificate_state.dart';
 ///     name="examplekeyvault",
 ///     location=example.location,
 ///     resource_group_name=example.name,
+///     rbac_authorization_enabled=False,
 ///     tenant_id=current.tenant_id,
 ///     sku_name="standard")
 /// example_access_policy = azure.keyvault.AccessPolicy("example",
@@ -424,6 +426,7 @@ import 'certificate_state.dart';
 ///         Name = "examplekeyvault",
 ///         Location = example.Location,
 ///         ResourceGroupName = example.Name,
+///         RbacAuthorizationEnabled = false,
 ///         TenantId = current.Apply(getClientConfigResult => getClientConfigResult.TenantId),
 ///         SkuName = "standard",
 ///     });
@@ -524,23 +527,20 @@ import 'certificate_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleKeyVault, err := keyvault.NewKeyVault(ctx, "example", &keyvault.KeyVaultArgs{
-/// 			Name:              pulumi.String("examplekeyvault"),
-/// 			Location:          example.Location,
-/// 			ResourceGroupName: example.Name,
-/// 			TenantId:          pulumi.String(current.TenantId),
-/// 			SkuName:           pulumi.String("standard"),
+/// 			Name:                     pulumi.String("examplekeyvault"),
+/// 			Location:                 example.Location,
+/// 			ResourceGroupName:        example.Name,
+/// 			RbacAuthorizationEnabled: pulumi.Bool(false),
+/// 			TenantId:                 pulumi.String(current.TenantId),
+/// 			SkuName:                  pulumi.String("standard"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = keyvault.NewAccessPolicy(ctx, "example", &keyvault.AccessPolicyArgs{
-/// 			KeyVaultId: exampleKeyVault.ID(),
-/// 			TenantId: pulumi.String(exampleService.Identity.ApplyT(func(identity apimanagement.ServiceIdentity) (*string, error) {
-/// 				return identity.TenantId, nil
-/// 			}).(pulumi.StringPtrOutput)),
-/// 			ObjectId: pulumi.String(exampleService.Identity.ApplyT(func(identity apimanagement.ServiceIdentity) (*string, error) {
-/// 				return identity.PrincipalId, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			KeyVaultId: exampleKeyVault.ID().ToIDOutput().ToStringOutput(),
+/// 			TenantId:   exampleService.Identity.TenantId(),
+/// 			ObjectId:   exampleService.Identity.PrincipalId(),
 /// 			SecretPermissions: pulumi.StringArray{
 /// 				pulumi.String("Get"),
 /// 			},
@@ -559,7 +559,7 @@ import 'certificate_state.dart';
 /// 		}
 /// 		exampleCertificate, err := keyvault.NewCertificate(ctx, "example", &keyvault.CertificateArgs{
 /// 			Name:       pulumi.String("example-cert"),
-/// 			KeyVaultId: exampleKeyVault.ID(),
+/// 			KeyVaultId: exampleKeyVault.ID().ToIDOutput().ToStringOutput(),
 /// 			Certificate: &keyvault.CertificateCertificateArgs{
 /// 				Contents: pulumi.String(invokeFilebase64.Result),
 /// 				Password: pulumi.String("terraform"),
@@ -626,11 +626,12 @@ import 'certificate_state.dart';
 ///   }
 /// }
 /// resource "azure_keyvault_keyvault" "example" {
-///   name                = "examplekeyvault"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   tenant_id           = data.azure_core_getclientconfig.current.tenant_id
-///   sku_name            = "standard"
+///   name                       = "examplekeyvault"
+///   location                   = azure_core_resourcegroup.example.location
+///   resource_group_name        = azure_core_resourcegroup.example.name
+///   rbac_authorization_enabled = false
+///   tenant_id                  = data.azure_core_getclientconfig.current.tenant_id
+///   sku_name                   = "standard"
 /// }
 /// resource "azure_keyvault_accesspolicy" "example" {
 ///   key_vault_id            = azure_keyvault_keyvault.example.id
@@ -727,6 +728,7 @@ import 'certificate_state.dart';
 ///             .name("examplekeyvault")
 ///             .location(example.location())
 ///             .resourceGroupName(example.name())
+///             .rbacAuthorizationEnabled(false)
 ///             .tenantId(current.tenantId())
 ///             .skuName("standard")
 ///             .build());
@@ -800,6 +802,7 @@ import 'certificate_state.dart';
 ///       name: examplekeyvault
 ///       location: ${example.location}
 ///       resourceGroupName: ${example.name}
+///       rbacAuthorizationEnabled: false
 ///       tenantId: ${current.tenantId}
 ///       skuName: standard
 ///   exampleAccessPolicy:
@@ -907,15 +910,16 @@ class Certificate extends pulumi.CustomResource {
           'azure:apimanagement/certificate:Certificate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['data', 'password'],
         ) {
     apiManagementName = registerOutput<String>('apiManagementName');
-    data = registerOutput<String?>('data');
+    data = registerOutput<String?>('data', isSecret: true);
     expiration = registerOutput<String>('expiration');
     keyVaultIdentityClientId = registerOutput<String?>('keyVaultIdentityClientId');
     keyVaultSecretId = registerOutput<String?>('keyVaultSecretId');
     this.name = registerOutput<String>('name');
-    password = registerOutput<String?>('password');
+    password = registerOutput<String?>('password', isSecret: true);
     resourceGroupName = registerOutput<String>('resourceGroupName');
     subject = registerOutput<String>('subject');
     thumbprint = registerOutput<String>('thumbprint');
@@ -926,11 +930,12 @@ class Certificate extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CertificateState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Certificate._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -945,12 +950,34 @@ class Certificate extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     apiManagementName = registerOutput<String>('apiManagementName');
-    data = registerOutput<String?>('data');
+    data = registerOutput<String?>('data', isSecret: true);
     expiration = registerOutput<String>('expiration');
     keyVaultIdentityClientId = registerOutput<String?>('keyVaultIdentityClientId');
     keyVaultSecretId = registerOutput<String?>('keyVaultSecretId');
     this.name = registerOutput<String>('name');
-    password = registerOutput<String?>('password');
+    password = registerOutput<String?>('password', isSecret: true);
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    subject = registerOutput<String>('subject');
+    thumbprint = registerOutput<String>('thumbprint');
+  }
+
+  /// Creates a typed reference to an existing [Certificate] resource.
+  Certificate.reference(String urn)
+    : super(
+        'azure:apimanagement/certificate:Certificate',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['data', 'password'],
+        isResourceReference: true,
+      ) {
+    apiManagementName = registerOutput<String>('apiManagementName');
+    data = registerOutput<String?>('data', isSecret: true);
+    expiration = registerOutput<String>('expiration');
+    keyVaultIdentityClientId = registerOutput<String?>('keyVaultIdentityClientId');
+    keyVaultSecretId = registerOutput<String?>('keyVaultSecretId');
+    this.name = registerOutput<String>('name');
+    password = registerOutput<String?>('password', isSecret: true);
     resourceGroupName = registerOutput<String>('resourceGroupName');
     subject = registerOutput<String>('subject');
     thumbprint = registerOutput<String>('thumbprint');

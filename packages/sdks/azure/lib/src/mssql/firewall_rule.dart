@@ -115,7 +115,7 @@ import 'firewall_rule_state.dart';
 /// 		}
 /// 		_, err = mssql.NewFirewallRule(ctx, "example", &mssql.FirewallRuleArgs{
 /// 			Name:           pulumi.String("FirewallRule1"),
-/// 			ServerId:       exampleServer.ID(),
+/// 			ServerId:       exampleServer.ID().ToIDOutput().ToStringOutput(),
 /// 			StartIpAddress: pulumi.String("10.0.17.62"),
 /// 			EndIpAddress:   pulumi.String("10.0.17.62"),
 /// 		})
@@ -269,7 +269,7 @@ class FirewallRule extends pulumi.CustomResource {
           'azure:mssql/firewallRule:FirewallRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     endIpAddress = registerOutput<String>('endIpAddress');
     this.name = registerOutput<String>('name');
@@ -282,11 +282,12 @@ class FirewallRule extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FirewallRuleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return FirewallRule._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -300,6 +301,21 @@ class FirewallRule extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    endIpAddress = registerOutput<String>('endIpAddress');
+    this.name = registerOutput<String>('name');
+    serverId = registerOutput<String>('serverId');
+    startIpAddress = registerOutput<String>('startIpAddress');
+  }
+
+  /// Creates a typed reference to an existing [FirewallRule] resource.
+  FirewallRule.reference(String urn)
+    : super(
+        'azure:mssql/firewallRule:FirewallRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     endIpAddress = registerOutput<String>('endIpAddress');
     this.name = registerOutput<String>('name');
     serverId = registerOutput<String>('serverId');

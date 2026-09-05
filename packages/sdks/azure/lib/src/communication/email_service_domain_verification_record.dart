@@ -9,15 +9,15 @@ import 'email_service_domain_verification_record_spf.dart';
 
 class EmailServiceDomainVerificationRecord {
   /// (Optional) An `dkim2` block as defined below.
-  final pulumi.Input<List<EmailServiceDomainVerificationRecordDkim2>>? dkim2s;
+  final pulumi.Input<List<EmailServiceDomainVerificationRecordDkim2>?>? dkim2s;
   /// (Optional) An `dkim` block as defined below.
-  final pulumi.Input<List<EmailServiceDomainVerificationRecordDkim>>? dkims;
+  final pulumi.Input<List<EmailServiceDomainVerificationRecordDkim>?>? dkims;
   /// (Optional) An `dmarc` block as defined below.
-  final pulumi.Input<List<EmailServiceDomainVerificationRecordDmarc>>? dmarcs;
+  final pulumi.Input<List<EmailServiceDomainVerificationRecordDmarc>?>? dmarcs;
   /// (Optional) An `domain` block as defined below.
-  final pulumi.Input<List<EmailServiceDomainVerificationRecordDomain>>? domains;
+  final pulumi.Input<List<EmailServiceDomainVerificationRecordDomain>?>? domains;
   /// (Optional) An `spf` block as defined below.
-  final pulumi.Input<List<EmailServiceDomainVerificationRecordSpf>>? spfs;
+  final pulumi.Input<List<EmailServiceDomainVerificationRecordSpf>?>? spfs;
 
   /// Creates a new [EmailServiceDomainVerificationRecord].
   /// [dkim2s] (Optional) An `dkim2` block as defined below.

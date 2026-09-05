@@ -18,9 +18,9 @@ class VirtualNetworkGatewayConnectionIpsecPolicy {
   /// or `None`.
   final pulumi.Input<String> pfsGroup;
   /// The IPSec SA payload size in KB. Must be at least `1024` KB. Defaults to `102400000` KB.
-  final pulumi.Input<int>? saDatasize;
+  final pulumi.Input<int?>? saDatasize;
   /// The IPSec SA lifetime in seconds. Must be at least `300` seconds. Defaults to `27000` seconds.
-  final pulumi.Input<int>? saLifetime;
+  final pulumi.Input<int?>? saLifetime;
 
   /// Creates a new [VirtualNetworkGatewayConnectionIpsecPolicy].
   /// [dhGroup] The DH group used in IKE phase 1 for initial SA. Valid options are `DHGroup1`, `DHGroup14`, `DHGroup2`, `DHGroup2048`, `DHGroup24`, `ECP256`, `ECP384`, or `None`.
@@ -63,8 +63,8 @@ class VirtualNetworkGatewayConnectionIpsecPolicy {
       ipsecEncryption: pulumi.Input.fromValue(map['ipsecEncryption'] as String),
       ipsecIntegrity: pulumi.Input.fromValue(map['ipsecIntegrity'] as String),
       pfsGroup: pulumi.Input.fromValue(map['pfsGroup'] as String),
-      saDatasize: (() { final guardedValue = map['saDatasize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      saLifetime: (() { final guardedValue = map['saLifetime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      saDatasize: (() { final guardedValue = map['saDatasize']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      saLifetime: (() { final guardedValue = map['saLifetime']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

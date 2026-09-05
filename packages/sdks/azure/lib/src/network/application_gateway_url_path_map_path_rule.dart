@@ -4,29 +4,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApplicationGatewayUrlPathMapPathRule {
   /// The ID of the associated Backend Address Pool.
-  final pulumi.Input<String>? backendAddressPoolId;
+  final pulumi.Input<String?>? backendAddressPoolId;
   /// The Name of the Backend Address Pool to use for this Path Rule. Cannot be set if `redirectConfigurationName` is set.
-  final pulumi.Input<String>? backendAddressPoolName;
+  final pulumi.Input<String?>? backendAddressPoolName;
   /// The ID of the associated Backend HTTP Settings Configuration.
-  final pulumi.Input<String>? backendHttpSettingsId;
+  final pulumi.Input<String?>? backendHttpSettingsId;
   /// The Name of the Backend HTTP Settings Collection to use for this Path Rule. Cannot be set if `redirectConfigurationName` is set.
-  final pulumi.Input<String>? backendHttpSettingsName;
+  final pulumi.Input<String?>? backendHttpSettingsName;
   /// The ID of the Web Application Firewall Policy which should be used as an HTTP Listener.
-  final pulumi.Input<String>? firewallPolicyId;
+  final pulumi.Input<String?>? firewallPolicyId;
   /// The ID of the Rewrite Rule Set
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The Name of the Path Rule.
   final pulumi.Input<String> name;
   /// A list of Paths used in this Path Rule.
   final pulumi.Input<List<String>> paths;
   /// The ID of the associated Redirect Configuration.
-  final pulumi.Input<String>? redirectConfigurationId;
+  final pulumi.Input<String?>? redirectConfigurationId;
   /// The Name of a Redirect Configuration to use for this Path Rule. Cannot be set if `backendAddressPoolName` or `backendHttpSettingsName` is set.
-  final pulumi.Input<String>? redirectConfigurationName;
+  final pulumi.Input<String?>? redirectConfigurationName;
   /// The ID of the associated Rewrite Rule Set.
-  final pulumi.Input<String>? rewriteRuleSetId;
+  final pulumi.Input<String?>? rewriteRuleSetId;
   /// The Name of the Rewrite Rule Set which should be used for this URL Path Map. Only valid for v2 SKUs.
-  final pulumi.Input<String>? rewriteRuleSetName;
+  final pulumi.Input<String?>? rewriteRuleSetName;
 
   /// Creates a new [ApplicationGatewayUrlPathMapPathRule].
   /// [backendAddressPoolId] The ID of the associated Backend Address Pool.

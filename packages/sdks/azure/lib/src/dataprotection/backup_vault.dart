@@ -232,7 +232,7 @@ class BackupVault extends pulumi.CustomResource {
           'azure:dataprotection/backupVault:BackupVault',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     crossRegionRestoreEnabled = registerOutput<bool?>('crossRegionRestoreEnabled');
     datastoreType = registerOutput<String>('datastoreType');
@@ -244,7 +244,7 @@ class BackupVault extends pulumi.CustomResource {
     resourceGroupName = registerOutput<String>('resourceGroupName');
     retentionDurationInDays = registerOutput<double?>('retentionDurationInDays');
     softDelete = registerOutput<String?>('softDelete');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [BackupVault] resource's state with the given [name] and [id].
@@ -252,11 +252,12 @@ class BackupVault extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     BackupVaultState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return BackupVault._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -280,6 +281,28 @@ class BackupVault extends pulumi.CustomResource {
     resourceGroupName = registerOutput<String>('resourceGroupName');
     retentionDurationInDays = registerOutput<double?>('retentionDurationInDays');
     softDelete = registerOutput<String?>('softDelete');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [BackupVault] resource.
+  BackupVault.reference(String urn)
+    : super(
+        'azure:dataprotection/backupVault:BackupVault',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    crossRegionRestoreEnabled = registerOutput<bool?>('crossRegionRestoreEnabled');
+    datastoreType = registerOutput<String>('datastoreType');
+    identity = registerOutput<BackupVaultIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackupVaultIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    immutability = registerOutput<String?>('immutability');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    redundancy = registerOutput<String>('redundancy');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    retentionDurationInDays = registerOutput<double?>('retentionDurationInDays');
+    softDelete = registerOutput<String?>('softDelete');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

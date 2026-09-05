@@ -5,11 +5,11 @@ import 'policy_managed_rules_exclusion_excluded_rule_set_rule_group.dart';
 
 class PolicyManagedRulesExclusionExcludedRuleSet {
   /// One or more `ruleGroup` block defined below.
-  final pulumi.Input<List<PolicyManagedRulesExclusionExcludedRuleSetRuleGroup>>? ruleGroups;
+  final pulumi.Input<List<PolicyManagedRulesExclusionExcludedRuleSetRuleGroup>?>? ruleGroups;
   /// The rule set type. Possible values are `Microsoft_DefaultRuleSet`, `Microsoft_BotManagerRuleSet` and `OWASP`. Defaults to `OWASP`.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// The rule set version. Possible values are `1.0`, `1.1` (for rule set type `Microsoft_BotManagerRuleSet`), `2.1`, `2.2` (for rule set type `Microsoft_DefaultRuleSet`) and `3.2` (for rule set type `OWASP`). Defaults to `3.2`.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [PolicyManagedRulesExclusionExcludedRuleSet].
   /// [ruleGroups] One or more `ruleGroup` block defined below.

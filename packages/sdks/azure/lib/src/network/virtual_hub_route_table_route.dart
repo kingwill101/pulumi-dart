@@ -14,7 +14,7 @@ class VirtualHubRouteTableRoute {
   /// The type of next hop. Currently the only possible value is `ResourceId`. Defaults to `ResourceId`.
   ///
   /// &gt; **Note:** The Routes can alternatively be created using the virtualHubRouteTableRoute resource. Using both inline and external routes is not supported and may result in unexpected configuration.
-  final pulumi.Input<String>? nextHopType;
+  final pulumi.Input<String?>? nextHopType;
 
   /// Creates a new [VirtualHubRouteTableRoute].
   /// [destinations] A list of destination addresses for this route.

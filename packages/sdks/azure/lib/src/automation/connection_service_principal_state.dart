@@ -5,21 +5,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering ConnectionServicePrincipal resources.
 class ConnectionServicePrincipalState {
   /// The (Client) ID of the Service Principal.
-  final pulumi.Input<String>? applicationId;
+  final pulumi.Input<String?>? applicationId;
   /// The name of the automation account in which the Connection is created. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? automationAccountName;
+  final pulumi.Input<String?>? automationAccountName;
   /// The thumbprint of the Service Principal Certificate.
-  final pulumi.Input<String>? certificateThumbprint;
+  final pulumi.Input<String?>? certificateThumbprint;
   /// A description for this Connection.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Specifies the name of the Connection. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the resource group in which the Connection is created. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// The subscription GUID.
-  final pulumi.Input<String>? subscriptionId;
+  final pulumi.Input<String?>? subscriptionId;
   /// The ID of the Tenant the Service Principal is assigned in.
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
 
   /// Creates a new [ConnectionServicePrincipalState].
   /// [applicationId] The (Client) ID of the Service Principal.

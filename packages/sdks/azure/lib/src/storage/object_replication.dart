@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'object_replication_args.dart';
+import 'object_replication_rule.dart';
 import 'object_replication_state.dart';
 
 /// Manages a Storage Object Replication.
@@ -254,8 +255,8 @@ import 'object_replication_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = storage.NewObjectReplication(ctx, "example", &storage.ObjectReplicationArgs{
-/// 			SourceStorageAccountId:      srcAccount.ID(),
-/// 			DestinationStorageAccountId: dstAccount.ID(),
+/// 			SourceStorageAccountId:      srcAccount.ID().ToIDOutput().ToStringOutput(),
+/// 			DestinationStorageAccountId: dstAccount.ID().ToIDOutput().ToStringOutput(),
 /// 			Rules: storage.ObjectReplicationRuleArray{
 /// 				&storage.ObjectReplicationRuleArgs{
 /// 					SourceContainerName:      srcContainer.Name,
@@ -498,7 +499,7 @@ class ObjectReplication extends pulumi.CustomResource {
   /// Whether metrics are enabled for this object replication. Defaults to `false`.
   late final pulumi.Output<bool?> metricsEnabled;
   /// One or more `rules` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>> rules;
+  late final pulumi.Output<List<ObjectReplicationRule>> rules;
   /// The ID of the Object Replication in the source storage account.
   late final pulumi.Output<String> sourceObjectReplicationId;
   /// The ID of the source storage account. Changing this forces a new Storage Object Replication to be created.
@@ -516,12 +517,12 @@ class ObjectReplication extends pulumi.CustomResource {
           'azure:storage/objectReplication:ObjectReplication',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     destinationObjectReplicationId = registerOutput<String>('destinationObjectReplicationId');
     destinationStorageAccountId = registerOutput<String>('destinationStorageAccountId');
     metricsEnabled = registerOutput<bool?>('metricsEnabled');
-    rules = registerOutput<List<Map<String, dynamic>>>('rules');
+    rules = registerOutput<List<ObjectReplicationRule>>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ObjectReplicationRule>(guardedValue, (value) => ObjectReplicationRule.fromMap((value as Map).cast<String, dynamic>())); });
     sourceObjectReplicationId = registerOutput<String>('sourceObjectReplicationId');
     sourceStorageAccountId = registerOutput<String>('sourceStorageAccountId');
   }
@@ -531,11 +532,12 @@ class ObjectReplication extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ObjectReplicationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ObjectReplication._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -552,7 +554,24 @@ class ObjectReplication extends pulumi.CustomResource {
     destinationObjectReplicationId = registerOutput<String>('destinationObjectReplicationId');
     destinationStorageAccountId = registerOutput<String>('destinationStorageAccountId');
     metricsEnabled = registerOutput<bool?>('metricsEnabled');
-    rules = registerOutput<List<Map<String, dynamic>>>('rules');
+    rules = registerOutput<List<ObjectReplicationRule>>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ObjectReplicationRule>(guardedValue, (value) => ObjectReplicationRule.fromMap((value as Map).cast<String, dynamic>())); });
+    sourceObjectReplicationId = registerOutput<String>('sourceObjectReplicationId');
+    sourceStorageAccountId = registerOutput<String>('sourceStorageAccountId');
+  }
+
+  /// Creates a typed reference to an existing [ObjectReplication] resource.
+  ObjectReplication.reference(String urn)
+    : super(
+        'azure:storage/objectReplication:ObjectReplication',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    destinationObjectReplicationId = registerOutput<String>('destinationObjectReplicationId');
+    destinationStorageAccountId = registerOutput<String>('destinationStorageAccountId');
+    metricsEnabled = registerOutput<bool?>('metricsEnabled');
+    rules = registerOutput<List<ObjectReplicationRule>>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ObjectReplicationRule>(guardedValue, (value) => ObjectReplicationRule.fromMap((value as Map).cast<String, dynamic>())); });
     sourceObjectReplicationId = registerOutput<String>('sourceObjectReplicationId');
     sourceStorageAccountId = registerOutput<String>('sourceStorageAccountId');
   }

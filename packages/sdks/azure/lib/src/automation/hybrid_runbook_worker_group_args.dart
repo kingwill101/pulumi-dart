@@ -10,9 +10,9 @@ class HybridRunbookWorkerGroupArgs {
   /// The name of the Automation Account in which the Runbook Worker Group is created. Changing this forces a new resource to be created.
   final pulumi.Input<String> automationAccountName;
   /// The name of resource type `azure.automation.Credential` to use for hybrid worker.
-  final pulumi.Input<String>? credentialName;
+  final pulumi.Input<String?>? credentialName;
   /// The name which should be used for this Automation Account Runbook Worker Group. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the Resource Group where the Automation should exist. Changing this forces a new Automation to be created.
   final pulumi.Input<String> resourceGroupName;
 

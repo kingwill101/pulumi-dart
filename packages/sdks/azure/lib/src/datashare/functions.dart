@@ -159,6 +159,17 @@ Future<GetAccountResult> getAccount(
   return GetAccountResult.fromMap(result);
 }
 
+pulumi.Output<GetAccountResult> getAccountOutput(
+  GetAccountArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:datashare/getAccount:getAccount',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAccountResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Data Share Blob Storage Dataset.
 ///
 /// ## Example Usage
@@ -304,6 +315,17 @@ Future<GetDatasetBlobStorageResult> getDatasetBlobStorage(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDatasetBlobStorageResult.fromMap(result);
+}
+
+pulumi.Output<GetDatasetBlobStorageResult> getDatasetBlobStorageOutput(
+  GetDatasetBlobStorageArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:datashare/getDatasetBlobStorage:getDatasetBlobStorage',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDatasetBlobStorageResult.fromMap);
 }
 
 /// Use this data source to access information about an existing Data Share Data Lake Gen2 Dataset.
@@ -453,6 +475,17 @@ Future<GetDatasetDataLakeGen2Result> getDatasetDataLakeGen2(
   return GetDatasetDataLakeGen2Result.fromMap(result);
 }
 
+pulumi.Output<GetDatasetDataLakeGen2Result> getDatasetDataLakeGen2Output(
+  GetDatasetDataLakeGen2Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:datashare/getDatasetDataLakeGen2:getDatasetDataLakeGen2',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDatasetDataLakeGen2Result.fromMap);
+}
+
 /// Use this data source to access information about an existing Data Share Kusto Cluster Dataset.
 ///
 /// ## Example Usage
@@ -600,6 +633,17 @@ Future<GetDatasetKustoClusterResult> getDatasetKustoCluster(
   return GetDatasetKustoClusterResult.fromMap(result);
 }
 
+pulumi.Output<GetDatasetKustoClusterResult> getDatasetKustoClusterOutput(
+  GetDatasetKustoClusterArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:datashare/getDatasetKustoCluster:getDatasetKustoCluster',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDatasetKustoClusterResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Data Share Kusto Database Dataset.
 ///
 /// ## Example Usage
@@ -745,6 +789,17 @@ Future<GetDatasetKustoDatabaseResult> getDatasetKustoDatabase(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDatasetKustoDatabaseResult.fromMap(result);
+}
+
+pulumi.Output<GetDatasetKustoDatabaseResult> getDatasetKustoDatabaseOutput(
+  GetDatasetKustoDatabaseArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:datashare/getDatasetKustoDatabase:getDatasetKustoDatabase',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDatasetKustoDatabaseResult.fromMap);
 }
 
 /// Use this data source to access information about an existing Data Share.
@@ -927,4 +982,15 @@ Future<GetShareResult> getShare(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetShareResult.fromMap(result);
+}
+
+pulumi.Output<GetShareResult> getShareOutput(
+  GetShareArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:datashare/getShare:getShare',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetShareResult.fromMap);
 }

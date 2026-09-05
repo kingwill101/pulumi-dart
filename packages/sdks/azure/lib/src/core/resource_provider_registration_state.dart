@@ -8,9 +8,9 @@ class ResourceProviderRegistrationState {
   /// A list of `feature` blocks as defined below.
   ///
   /// &gt; **Note:** The `feature` block allows a Preview Feature to be explicitly Registered or Unregistered for this Resource Provider - once a Feature has been explicitly Registered or Unregistered, it must be specified in the Terraform Configuration (it's not possible to reset this to the default, unspecified, state).
-  final pulumi.Input<List<ResourceProviderRegistrationFeature>>? features;
+  final pulumi.Input<List<ResourceProviderRegistrationFeature>?>? features;
   /// The namespace of the Resource Provider which should be registered. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [ResourceProviderRegistrationState].
   /// [features] A list of `feature` blocks as defined below.

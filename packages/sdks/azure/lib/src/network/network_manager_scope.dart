@@ -6,9 +6,9 @@ class NetworkManagerScope {
   /// A list of management group IDs.
   ///
   /// &gt; **Note:** When specifying a scope at the management group level, you need to register the `Microsoft.Network` at the management group scope before deploying a Network Manager, more information can be found in the [Azure document](https://learn.microsoft.com/en-us/azure/virtual-network-manager/concept-network-manager-scope#scope).
-  final pulumi.Input<List<String>>? managementGroupIds;
+  final pulumi.Input<List<String>?>? managementGroupIds;
   /// A list of subscription IDs.
-  final pulumi.Input<List<String>>? subscriptionIds;
+  final pulumi.Input<List<String>?>? subscriptionIds;
 
   /// Creates a new [NetworkManagerScope].
   /// [managementGroupIds] A list of management group IDs.

@@ -6,13 +6,13 @@ import 'slot_logs_http_logs.dart';
 
 class SlotLogs {
   /// An `applicationLogs` block as defined below.
-  final pulumi.Input<SlotLogsApplicationLogs>? applicationLogs;
+  final pulumi.Input<SlotLogsApplicationLogs?>? applicationLogs;
   /// Should `Detailed error messages` be enabled on this App Service slot? Defaults to `false`.
-  final pulumi.Input<bool>? detailedErrorMessagesEnabled;
+  final pulumi.Input<bool?>? detailedErrorMessagesEnabled;
   /// Should `Failed request tracing` be enabled on this App Service slot? Defaults to `false`.
-  final pulumi.Input<bool>? failedRequestTracingEnabled;
+  final pulumi.Input<bool?>? failedRequestTracingEnabled;
   /// An `httpLogs` block as defined below.
-  final pulumi.Input<SlotLogsHttpLogs>? httpLogs;
+  final pulumi.Input<SlotLogsHttpLogs?>? httpLogs;
 
   /// Creates a new [SlotLogs].
   /// [applicationLogs] An `applicationLogs` block as defined below.

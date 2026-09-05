@@ -8,19 +8,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_synapse_sql_pool_workload_classifier_sql_pool_workload_classifier_args_doc}
 class SqlPoolWorkloadClassifierArgs {
   /// Specifies the session context value that a request can be classified against.
-  final pulumi.Input<String>? context;
+  final pulumi.Input<String?>? context;
   /// The workload classifier end time for classification. It's of the `HH:MM` format in UTC time zone.
-  final pulumi.Input<String>? endTime;
+  final pulumi.Input<String?>? endTime;
   /// The workload classifier importance. The allowed values are `low`, `belowNormal`, `normal`, `aboveNormal` and `high`.
-  final pulumi.Input<String>? importance;
+  final pulumi.Input<String?>? importance;
   /// Specifies the label value that a request can be classified against.
-  final pulumi.Input<String>? label;
+  final pulumi.Input<String?>? label;
   /// The workload classifier member name used to classified against.
   final pulumi.Input<String> memberName;
   /// The name which should be used for this Synapse SQL Pool Workload Classifier. Changing this forces a new Synapse SQL Pool Workload Classifier to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The workload classifier start time for classification. It's of the `HH:MM` format in UTC time zone.
-  final pulumi.Input<String>? startTime;
+  final pulumi.Input<String?>? startTime;
   /// The ID of the Synapse SQL Pool Workload Group. Changing this forces a new Synapse SQL Pool Workload Classifier to be created.
   final pulumi.Input<String> workloadGroupId;
 

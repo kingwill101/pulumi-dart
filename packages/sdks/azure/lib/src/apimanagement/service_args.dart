@@ -19,37 +19,37 @@ import 'service_virtual_network_configuration.dart';
 /// {@macro pulumi_apimanagement_service_service_args_doc}
 class ServiceArgs {
   /// One or more `additionalLocation` blocks as defined below.
-  final pulumi.Input<List<ServiceAdditionalLocation>>? additionalLocations;
+  final pulumi.Input<List<ServiceAdditionalLocation>?>? additionalLocations;
   /// One or more `certificate` blocks (up to 10) as defined below.
-  final pulumi.Input<List<ServiceCertificate>>? certificates;
+  final pulumi.Input<List<ServiceCertificate>?>? certificates;
   /// Enforce a client certificate to be presented on each request to the gateway? This is only supported when SKU type is `Consumption`.
-  final pulumi.Input<bool>? clientCertificateEnabled;
+  final pulumi.Input<bool?>? clientCertificateEnabled;
   /// A `delegation` block as defined below.
-  final pulumi.Input<ServiceDelegation>? delegation;
+  final pulumi.Input<ServiceDelegation?>? delegation;
   /// Disable the gateway in main region? This is only supported when `additionalLocation` is set.
-  final pulumi.Input<bool>? gatewayDisabled;
+  final pulumi.Input<bool?>? gatewayDisabled;
   /// A `hostnameConfiguration` block as defined below.
-  final pulumi.Input<ServiceHostnameConfiguration>? hostnameConfiguration;
+  final pulumi.Input<ServiceHostnameConfiguration?>? hostnameConfiguration;
   /// An `identity` block as defined below.
-  final pulumi.Input<ServiceIdentity>? identity;
+  final pulumi.Input<ServiceIdentity?>? identity;
   /// The Azure location where the API Management Service exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The version which the control plane API calls to API Management service are limited with version equal to or newer than.
-  final pulumi.Input<String>? minApiVersion;
+  final pulumi.Input<String?>? minApiVersion;
   /// The name of the API Management Service. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Email address from which the notification will be sent.
-  final pulumi.Input<String>? notificationSenderEmail;
+  final pulumi.Input<String?>? notificationSenderEmail;
   /// A `protocols` block as defined below.
-  final pulumi.Input<ServiceProtocols>? protocols;
+  final pulumi.Input<ServiceProtocols?>? protocols;
   /// ID of a standard SKU IPv4 Public IP.
   ///
   /// &gt; **Note:** Custom public IPs are only supported on the `Premium` and `Developer` tiers when deployed in a virtual network.
-  final pulumi.Input<String>? publicIpAddressId;
+  final pulumi.Input<String?>? publicIpAddressId;
   /// Is public access to the service allowed? Defaults to `true`.
   ///
   /// &gt; **Note:** This option is applicable only to the Management plane, not the API gateway or Developer portal. It is required to be `true` on the creation.
-  final pulumi.Input<bool>? publicNetworkAccessEnabled;
+  final pulumi.Input<bool?>? publicNetworkAccessEnabled;
   /// The email of publisher/company.
   final pulumi.Input<String> publisherEmail;
   /// The name of publisher/company.
@@ -57,11 +57,11 @@ class ServiceArgs {
   /// The name of the Resource Group in which the API Management Service should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
   /// A `security` block as defined below.
-  final pulumi.Input<ServiceSecurity>? security;
+  final pulumi.Input<ServiceSecurity?>? security;
   /// A `signIn` block as defined below.
-  final pulumi.Input<ServiceSignIn>? signIn;
+  final pulumi.Input<ServiceSignIn?>? signIn;
   /// A `signUp` block as defined below.
-  final pulumi.Input<ServiceSignUp>? signUp;
+  final pulumi.Input<ServiceSignUp?>? signUp;
   /// `skuName` is a string consisting of two parts separated by an underscore(\_). The first part is the `name`, valid values include: `Consumption`, `Developer`, `Basic`, `BasicV2`, `Standard`, `StandardV2`, `Premium` and `PremiumV2`. The second part is the `capacity` (e.g. the number of deployed units of the `sku`), which must be a positive `integer` (e.g. `Developer_1`).
   ///
   /// &gt; **Note:** Premium SKUs are limited to a default maximum of 12 (i.e. `Premium_12`), this can, however, be increased via support request.
@@ -69,19 +69,19 @@ class ServiceArgs {
   /// &gt; **Note:** Consumption SKU capacity should be 0 (e.g. `Consumption_0`) as this tier includes automatic scaling.
   final pulumi.Input<String> skuName;
   /// A mapping of tags assigned to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A `tenantAccess` block as defined below.
-  final pulumi.Input<ServiceTenantAccess>? tenantAccess;
+  final pulumi.Input<ServiceTenantAccess?>? tenantAccess;
   /// A `virtualNetworkConfiguration` block as defined below. Required when `virtualNetworkType` is `External` or `Internal`.
-  final pulumi.Input<ServiceVirtualNetworkConfiguration>? virtualNetworkConfiguration;
+  final pulumi.Input<ServiceVirtualNetworkConfiguration?>? virtualNetworkConfiguration;
   /// The type of virtual network you want to use, valid values include: `None`, `External`, `Internal`. Defaults to `None`.
   ///
   /// &gt; **Note:** Please ensure that in the subnet, inbound port 3443 is open when `virtualNetworkType` is `Internal` or `External`. Additionally, please ensure other necessary ports are open according to [api management network configuration](https://learn.microsoft.com/azure/api-management/virtual-network-reference).
-  final pulumi.Input<String>? virtualNetworkType;
+  final pulumi.Input<String?>? virtualNetworkType;
   /// Specifies a list of Availability Zones in which this API Management service should be located.
   ///
   /// &gt; **Note:** Availability zones are only supported in the Premium tier.
-  final pulumi.Input<List<String>>? zones;
+  final pulumi.Input<List<String>?>? zones;
 
   /// Creates a new [ServiceArgs].
   /// [additionalLocations] One or more `additionalLocation` blocks as defined below.

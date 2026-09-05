@@ -9,15 +9,15 @@ import 'rules_engine_rule.dart';
 /// {@macro pulumi_frontdoor_rules_engine_rules_engine_args_doc}
 class RulesEngineArgs {
   /// Whether this Rules engine configuration is enabled? Defaults to `true`.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// The name of the Front Door instance. Changing this forces a new resource to be created.
   final pulumi.Input<String> frontdoorName;
   /// The name of the Rules engine configuration. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the resource group. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
   /// A `rule` block as defined below.
-  final pulumi.Input<List<RulesEngineRule>>? rules;
+  final pulumi.Input<List<RulesEngineRule>?>? rules;
 
   /// Creates a new [RulesEngineArgs].
   /// [enabled] Whether this Rules engine configuration is enabled? Defaults to `true`.

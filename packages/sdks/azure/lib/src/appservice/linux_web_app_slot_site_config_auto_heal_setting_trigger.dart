@@ -8,13 +8,13 @@ import 'linux_web_app_slot_site_config_auto_heal_setting_trigger_status_code.dar
 
 class LinuxWebAppSlotSiteConfigAutoHealSettingTrigger {
   /// A `requests` block as defined above.
-  final pulumi.Input<LinuxWebAppSlotSiteConfigAutoHealSettingTriggerRequests>? requests;
+  final pulumi.Input<LinuxWebAppSlotSiteConfigAutoHealSettingTriggerRequests?>? requests;
   /// A `slowRequest` block as defined above.
-  final pulumi.Input<LinuxWebAppSlotSiteConfigAutoHealSettingTriggerSlowRequest>? slowRequest;
+  final pulumi.Input<LinuxWebAppSlotSiteConfigAutoHealSettingTriggerSlowRequest?>? slowRequest;
   /// One or more `slowRequestWithPath` blocks as defined above.
-  final pulumi.Input<List<LinuxWebAppSlotSiteConfigAutoHealSettingTriggerSlowRequestWithPath>>? slowRequestWithPaths;
+  final pulumi.Input<List<LinuxWebAppSlotSiteConfigAutoHealSettingTriggerSlowRequestWithPath>?>? slowRequestWithPaths;
   /// One or more `statusCode` blocks as defined above.
-  final pulumi.Input<List<LinuxWebAppSlotSiteConfigAutoHealSettingTriggerStatusCode>>? statusCodes;
+  final pulumi.Input<List<LinuxWebAppSlotSiteConfigAutoHealSettingTriggerStatusCode>?>? statusCodes;
 
   /// Creates a new [LinuxWebAppSlotSiteConfigAutoHealSettingTrigger].
   /// [requests] A `requests` block as defined above.

@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FhirServiceOciArtifact {
   /// A digest of an image within Azure container registry used for export operations of the service instance to narrow the artifacts down.
-  final pulumi.Input<String>? digest;
+  final pulumi.Input<String?>? digest;
   /// An image within Azure container registry used for export operations of the service instance.
-  final pulumi.Input<String>? imageName;
+  final pulumi.Input<String?>? imageName;
   /// An Azure container registry used for export operations of the service instance.
   final pulumi.Input<String> loginServer;
 

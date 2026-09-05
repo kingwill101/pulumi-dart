@@ -3,10 +3,13 @@ import 'linux_web_app_slot_args.dart';
 import 'linux_web_app_slot_auth_settings.dart';
 import 'linux_web_app_slot_auth_settings_v2.dart';
 import 'linux_web_app_slot_backup.dart';
+import 'linux_web_app_slot_connection_string.dart';
 import 'linux_web_app_slot_identity.dart';
 import 'linux_web_app_slot_logs.dart';
 import 'linux_web_app_slot_site_config.dart';
+import 'linux_web_app_slot_site_credential.dart';
 import 'linux_web_app_slot_state.dart';
+import 'linux_web_app_slot_storage_account.dart';
 
 /// Manages a Linux Web App Slot.
 ///
@@ -138,7 +141,7 @@ import 'linux_web_app_slot_state.dart';
 /// 			Name:              pulumi.String("example-linux-web-app"),
 /// 			ResourceGroupName: example.Name,
 /// 			Location:          exampleServicePlan.Location,
-/// 			ServicePlanId:     exampleServicePlan.ID(),
+/// 			ServicePlanId:     exampleServicePlan.ID().ToIDOutput().ToStringOutput(),
 /// 			SiteConfig:        &appservice.LinuxWebAppSiteConfigArgs{},
 /// 		})
 /// 		if err != nil {
@@ -146,7 +149,7 @@ import 'linux_web_app_slot_state.dart';
 /// 		}
 /// 		_, err = appservice.NewLinuxWebAppSlot(ctx, "example", &appservice.LinuxWebAppSlotArgs{
 /// 			Name:         pulumi.String("example-slot"),
-/// 			AppServiceId: exampleLinuxWebApp.ID(),
+/// 			AppServiceId: exampleLinuxWebApp.ID().ToIDOutput().ToStringOutput(),
 /// 			SiteConfig:   &appservice.LinuxWebAppSlotSiteConfigArgs{},
 /// 		})
 /// 		if err != nil {
@@ -323,7 +326,7 @@ class LinuxWebAppSlot extends pulumi.CustomResource {
   /// The Client Certificate mode. Possible values are `Required`, `Optional`, and `OptionalInteractiveUser`. This property has no effect when `clientCertEnabled` is `false`. Defaults to `Required`.
   late final pulumi.Output<String?> clientCertificateMode;
   /// One or more `connectionString` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> connectionStrings;
+  late final pulumi.Output<List<LinuxWebAppSlotConnectionString>?> connectionStrings;
   /// The identifier used by App Service to perform domain ownership verification via DNS TXT record.
   late final pulumi.Output<String> customDomainVerificationId;
   /// The default hostname of the Linux Web App.
@@ -365,9 +368,9 @@ class LinuxWebAppSlot extends pulumi.CustomResource {
   /// A `siteConfig` block as defined below.
   late final pulumi.Output<LinuxWebAppSlotSiteConfig> siteConfig;
   /// A `siteCredential` block as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>> siteCredentials;
+  late final pulumi.Output<List<LinuxWebAppSlotSiteCredential>> siteCredentials;
   /// One or more `storageAccount` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> storageAccounts;
+  late final pulumi.Output<List<LinuxWebAppSlotStorageAccount>?> storageAccounts;
   /// A mapping of tags that should be assigned to the Linux Web App.
   late final pulumi.Output<Map<String, String>?> tags;
   /// Whether backup and restore operations over the linked virtual network are enabled. Defaults to `false`.
@@ -403,11 +406,12 @@ class LinuxWebAppSlot extends pulumi.CustomResource {
           'azure:appservice/linuxWebAppSlot:LinuxWebAppSlot',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['customDomainVerificationId', 'siteCredentials'],
         ) {
-    appMetadata = registerOutput<Map<String, String>>('appMetadata');
+    appMetadata = registerOutput<Map<String, String>>('appMetadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     appServiceId = registerOutput<String>('appServiceId');
-    appSettings = registerOutput<Map<String, String>?>('appSettings');
+    appSettings = registerOutput<Map<String, String>?>('appSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     authSettings = registerOutput<LinuxWebAppSlotAuthSettings?>('authSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxWebAppSlotAuthSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     authSettingsV2 = registerOutput<LinuxWebAppSlotAuthSettingsV2?>('authSettingsV2', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxWebAppSlotAuthSettingsV2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     backup = registerOutput<LinuxWebAppSlotBackup?>('backup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxWebAppSlotBackup.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -415,8 +419,8 @@ class LinuxWebAppSlot extends pulumi.CustomResource {
     clientCertificateEnabled = registerOutput<bool?>('clientCertificateEnabled');
     clientCertificateExclusionPaths = registerOutput<String?>('clientCertificateExclusionPaths');
     clientCertificateMode = registerOutput<String?>('clientCertificateMode');
-    connectionStrings = registerOutput<List<Map<String, dynamic>>?>('connectionStrings');
-    customDomainVerificationId = registerOutput<String>('customDomainVerificationId');
+    connectionStrings = registerOutput<List<LinuxWebAppSlotConnectionString>?>('connectionStrings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LinuxWebAppSlotConnectionString>(guardedValue, (value) => LinuxWebAppSlotConnectionString.fromMap((value as Map).cast<String, dynamic>())); });
+    customDomainVerificationId = registerOutput<String>('customDomainVerificationId', isSecret: true);
     defaultHostname = registerOutput<String>('defaultHostname');
     enabled = registerOutput<bool?>('enabled');
     ftpPublishBasicAuthenticationEnabled = registerOutput<bool?>('ftpPublishBasicAuthenticationEnabled');
@@ -427,16 +431,16 @@ class LinuxWebAppSlot extends pulumi.CustomResource {
     kind = registerOutput<String>('kind');
     logs = registerOutput<LinuxWebAppSlotLogs?>('logs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxWebAppSlotLogs.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    outboundIpAddressLists = registerOutput<List<String>>('outboundIpAddressLists');
+    outboundIpAddressLists = registerOutput<List<String>>('outboundIpAddressLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     outboundIpAddresses = registerOutput<String>('outboundIpAddresses');
-    possibleOutboundIpAddressLists = registerOutput<List<String>>('possibleOutboundIpAddressLists');
+    possibleOutboundIpAddressLists = registerOutput<List<String>>('possibleOutboundIpAddressLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     possibleOutboundIpAddresses = registerOutput<String>('possibleOutboundIpAddresses');
     publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
     servicePlanId = registerOutput<String?>('servicePlanId');
     siteConfig = registerOutput<LinuxWebAppSlotSiteConfig>('siteConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxWebAppSlotSiteConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    siteCredentials = registerOutput<List<Map<String, dynamic>>>('siteCredentials');
-    storageAccounts = registerOutput<List<Map<String, dynamic>>?>('storageAccounts');
-    tags = registerOutput<Map<String, String>?>('tags');
+    siteCredentials = registerOutput<List<LinuxWebAppSlotSiteCredential>>('siteCredentials', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LinuxWebAppSlotSiteCredential>(guardedValue, (value) => LinuxWebAppSlotSiteCredential.fromMap((value as Map).cast<String, dynamic>())); }, isSecret: true);
+    storageAccounts = registerOutput<List<LinuxWebAppSlotStorageAccount>?>('storageAccounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LinuxWebAppSlotStorageAccount>(guardedValue, (value) => LinuxWebAppSlotStorageAccount.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     virtualNetworkBackupRestoreEnabled = registerOutput<bool?>('virtualNetworkBackupRestoreEnabled');
     virtualNetworkSubnetId = registerOutput<String?>('virtualNetworkSubnetId');
     vnetImagePullEnabled = registerOutput<bool?>('vnetImagePullEnabled');
@@ -449,11 +453,12 @@ class LinuxWebAppSlot extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LinuxWebAppSlotState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LinuxWebAppSlot._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -467,9 +472,9 @@ class LinuxWebAppSlot extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    appMetadata = registerOutput<Map<String, String>>('appMetadata');
+    appMetadata = registerOutput<Map<String, String>>('appMetadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     appServiceId = registerOutput<String>('appServiceId');
-    appSettings = registerOutput<Map<String, String>?>('appSettings');
+    appSettings = registerOutput<Map<String, String>?>('appSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     authSettings = registerOutput<LinuxWebAppSlotAuthSettings?>('authSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxWebAppSlotAuthSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     authSettingsV2 = registerOutput<LinuxWebAppSlotAuthSettingsV2?>('authSettingsV2', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxWebAppSlotAuthSettingsV2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     backup = registerOutput<LinuxWebAppSlotBackup?>('backup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxWebAppSlotBackup.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -477,8 +482,8 @@ class LinuxWebAppSlot extends pulumi.CustomResource {
     clientCertificateEnabled = registerOutput<bool?>('clientCertificateEnabled');
     clientCertificateExclusionPaths = registerOutput<String?>('clientCertificateExclusionPaths');
     clientCertificateMode = registerOutput<String?>('clientCertificateMode');
-    connectionStrings = registerOutput<List<Map<String, dynamic>>?>('connectionStrings');
-    customDomainVerificationId = registerOutput<String>('customDomainVerificationId');
+    connectionStrings = registerOutput<List<LinuxWebAppSlotConnectionString>?>('connectionStrings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LinuxWebAppSlotConnectionString>(guardedValue, (value) => LinuxWebAppSlotConnectionString.fromMap((value as Map).cast<String, dynamic>())); });
+    customDomainVerificationId = registerOutput<String>('customDomainVerificationId', isSecret: true);
     defaultHostname = registerOutput<String>('defaultHostname');
     enabled = registerOutput<bool?>('enabled');
     ftpPublishBasicAuthenticationEnabled = registerOutput<bool?>('ftpPublishBasicAuthenticationEnabled');
@@ -489,16 +494,65 @@ class LinuxWebAppSlot extends pulumi.CustomResource {
     kind = registerOutput<String>('kind');
     logs = registerOutput<LinuxWebAppSlotLogs?>('logs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxWebAppSlotLogs.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    outboundIpAddressLists = registerOutput<List<String>>('outboundIpAddressLists');
+    outboundIpAddressLists = registerOutput<List<String>>('outboundIpAddressLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     outboundIpAddresses = registerOutput<String>('outboundIpAddresses');
-    possibleOutboundIpAddressLists = registerOutput<List<String>>('possibleOutboundIpAddressLists');
+    possibleOutboundIpAddressLists = registerOutput<List<String>>('possibleOutboundIpAddressLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     possibleOutboundIpAddresses = registerOutput<String>('possibleOutboundIpAddresses');
     publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
     servicePlanId = registerOutput<String?>('servicePlanId');
     siteConfig = registerOutput<LinuxWebAppSlotSiteConfig>('siteConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxWebAppSlotSiteConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    siteCredentials = registerOutput<List<Map<String, dynamic>>>('siteCredentials');
-    storageAccounts = registerOutput<List<Map<String, dynamic>>?>('storageAccounts');
-    tags = registerOutput<Map<String, String>?>('tags');
+    siteCredentials = registerOutput<List<LinuxWebAppSlotSiteCredential>>('siteCredentials', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LinuxWebAppSlotSiteCredential>(guardedValue, (value) => LinuxWebAppSlotSiteCredential.fromMap((value as Map).cast<String, dynamic>())); }, isSecret: true);
+    storageAccounts = registerOutput<List<LinuxWebAppSlotStorageAccount>?>('storageAccounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LinuxWebAppSlotStorageAccount>(guardedValue, (value) => LinuxWebAppSlotStorageAccount.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    virtualNetworkBackupRestoreEnabled = registerOutput<bool?>('virtualNetworkBackupRestoreEnabled');
+    virtualNetworkSubnetId = registerOutput<String?>('virtualNetworkSubnetId');
+    vnetImagePullEnabled = registerOutput<bool?>('vnetImagePullEnabled');
+    webdeployPublishBasicAuthenticationEnabled = registerOutput<bool?>('webdeployPublishBasicAuthenticationEnabled');
+    zipDeployFile = registerOutput<String>('zipDeployFile');
+  }
+
+  /// Creates a typed reference to an existing [LinuxWebAppSlot] resource.
+  LinuxWebAppSlot.reference(String urn)
+    : super(
+        'azure:appservice/linuxWebAppSlot:LinuxWebAppSlot',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['customDomainVerificationId', 'siteCredentials'],
+        isResourceReference: true,
+      ) {
+    appMetadata = registerOutput<Map<String, String>>('appMetadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    appServiceId = registerOutput<String>('appServiceId');
+    appSettings = registerOutput<Map<String, String>?>('appSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    authSettings = registerOutput<LinuxWebAppSlotAuthSettings?>('authSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxWebAppSlotAuthSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    authSettingsV2 = registerOutput<LinuxWebAppSlotAuthSettingsV2?>('authSettingsV2', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxWebAppSlotAuthSettingsV2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    backup = registerOutput<LinuxWebAppSlotBackup?>('backup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxWebAppSlotBackup.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    clientAffinityEnabled = registerOutput<bool?>('clientAffinityEnabled');
+    clientCertificateEnabled = registerOutput<bool?>('clientCertificateEnabled');
+    clientCertificateExclusionPaths = registerOutput<String?>('clientCertificateExclusionPaths');
+    clientCertificateMode = registerOutput<String?>('clientCertificateMode');
+    connectionStrings = registerOutput<List<LinuxWebAppSlotConnectionString>?>('connectionStrings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LinuxWebAppSlotConnectionString>(guardedValue, (value) => LinuxWebAppSlotConnectionString.fromMap((value as Map).cast<String, dynamic>())); });
+    customDomainVerificationId = registerOutput<String>('customDomainVerificationId', isSecret: true);
+    defaultHostname = registerOutput<String>('defaultHostname');
+    enabled = registerOutput<bool?>('enabled');
+    ftpPublishBasicAuthenticationEnabled = registerOutput<bool?>('ftpPublishBasicAuthenticationEnabled');
+    hostingEnvironmentId = registerOutput<String>('hostingEnvironmentId');
+    httpsOnly = registerOutput<bool?>('httpsOnly');
+    identity = registerOutput<LinuxWebAppSlotIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxWebAppSlotIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    keyVaultReferenceIdentityId = registerOutput<String>('keyVaultReferenceIdentityId');
+    kind = registerOutput<String>('kind');
+    logs = registerOutput<LinuxWebAppSlotLogs?>('logs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxWebAppSlotLogs.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    outboundIpAddressLists = registerOutput<List<String>>('outboundIpAddressLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    outboundIpAddresses = registerOutput<String>('outboundIpAddresses');
+    possibleOutboundIpAddressLists = registerOutput<List<String>>('possibleOutboundIpAddressLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    possibleOutboundIpAddresses = registerOutput<String>('possibleOutboundIpAddresses');
+    publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
+    servicePlanId = registerOutput<String?>('servicePlanId');
+    siteConfig = registerOutput<LinuxWebAppSlotSiteConfig>('siteConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxWebAppSlotSiteConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    siteCredentials = registerOutput<List<LinuxWebAppSlotSiteCredential>>('siteCredentials', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LinuxWebAppSlotSiteCredential>(guardedValue, (value) => LinuxWebAppSlotSiteCredential.fromMap((value as Map).cast<String, dynamic>())); }, isSecret: true);
+    storageAccounts = registerOutput<List<LinuxWebAppSlotStorageAccount>?>('storageAccounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LinuxWebAppSlotStorageAccount>(guardedValue, (value) => LinuxWebAppSlotStorageAccount.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     virtualNetworkBackupRestoreEnabled = registerOutput<bool?>('virtualNetworkBackupRestoreEnabled');
     virtualNetworkSubnetId = registerOutput<String?>('virtualNetworkSubnetId');
     vnetImagePullEnabled = registerOutput<bool?>('vnetImagePullEnabled');

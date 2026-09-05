@@ -10,19 +10,19 @@ import 'failover_group_read_write_endpoint_failover_policy.dart';
 /// {@macro pulumi_mssql_failover_group_failover_group_args_doc}
 class FailoverGroupArgs {
   /// A set of database names to include in the failover group.
-  final pulumi.Input<List<String>>? databases;
+  final pulumi.Input<List<String>?>? databases;
   /// The name of the Failover Group. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A `partnerServer` block as defined below.
   final pulumi.Input<List<FailoverGroupPartnerServer>> partnerServers;
   /// A `readWriteEndpointFailoverPolicy` block as defined below.
   final pulumi.Input<FailoverGroupReadWriteEndpointFailoverPolicy> readWriteEndpointFailoverPolicy;
   /// Whether failover is enabled for the readonly endpoint. Defaults to `false`.
-  final pulumi.Input<bool>? readonlyEndpointFailoverPolicyEnabled;
+  final pulumi.Input<bool?>? readonlyEndpointFailoverPolicyEnabled;
   /// The ID of the primary SQL Server on which to create the failover group. Changing this forces a new resource to be created.
   final pulumi.Input<String> serverId;
   /// A mapping of tags to assign to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [FailoverGroupArgs].
   /// [databases] A set of database names to include in the failover group.

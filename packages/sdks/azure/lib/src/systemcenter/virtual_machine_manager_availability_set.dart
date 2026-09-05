@@ -125,7 +125,7 @@ import 'virtual_machine_manager_availability_set_state.dart';
 /// 			ResourceGroupName: example.Name,
 /// 			Location:          example.Location,
 /// 			CustomLocationId:  exampleVirtualMachineManagerServer.CustomLocationId,
-/// 			SystemCenterVirtualMachineManagerServerId: exampleVirtualMachineManagerServer.ID(),
+/// 			SystemCenterVirtualMachineManagerServerId: exampleVirtualMachineManagerServer.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -285,14 +285,14 @@ class VirtualMachineManagerAvailabilitySet extends pulumi.CustomResource {
           'azure:systemcenter/virtualMachineManagerAvailabilitySet:VirtualMachineManagerAvailabilitySet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     customLocationId = registerOutput<String>('customLocationId');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     systemCenterVirtualMachineManagerServerId = registerOutput<String>('systemCenterVirtualMachineManagerServerId');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [VirtualMachineManagerAvailabilitySet] resource's state with the given [name] and [id].
@@ -300,11 +300,12 @@ class VirtualMachineManagerAvailabilitySet extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VirtualMachineManagerAvailabilitySetState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VirtualMachineManagerAvailabilitySet._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -323,6 +324,23 @@ class VirtualMachineManagerAvailabilitySet extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     systemCenterVirtualMachineManagerServerId = registerOutput<String>('systemCenterVirtualMachineManagerServerId');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [VirtualMachineManagerAvailabilitySet] resource.
+  VirtualMachineManagerAvailabilitySet.reference(String urn)
+    : super(
+        'azure:systemcenter/virtualMachineManagerAvailabilitySet:VirtualMachineManagerAvailabilitySet',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    customLocationId = registerOutput<String>('customLocationId');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    systemCenterVirtualMachineManagerServerId = registerOutput<String>('systemCenterVirtualMachineManagerServerId');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

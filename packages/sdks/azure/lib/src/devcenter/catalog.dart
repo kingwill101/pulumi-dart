@@ -313,7 +313,7 @@ class Catalog extends pulumi.CustomResource {
           'azure:devcenter/catalog:Catalog',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     catalogAdogit = registerOutput<CatalogCatalogAdogit?>('catalogAdogit', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CatalogCatalogAdogit.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     catalogGithub = registerOutput<CatalogCatalogGithub?>('catalogGithub', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CatalogCatalogGithub.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -327,11 +327,12 @@ class Catalog extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CatalogState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Catalog._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -345,6 +346,22 @@ class Catalog extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    catalogAdogit = registerOutput<CatalogCatalogAdogit?>('catalogAdogit', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CatalogCatalogAdogit.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    catalogGithub = registerOutput<CatalogCatalogGithub?>('catalogGithub', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CatalogCatalogGithub.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    devCenterId = registerOutput<String>('devCenterId');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+  }
+
+  /// Creates a typed reference to an existing [Catalog] resource.
+  Catalog.reference(String urn)
+    : super(
+        'azure:devcenter/catalog:Catalog',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     catalogAdogit = registerOutput<CatalogCatalogAdogit?>('catalogAdogit', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CatalogCatalogAdogit.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     catalogGithub = registerOutput<CatalogCatalogGithub?>('catalogGithub', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CatalogCatalogGithub.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     devCenterId = registerOutput<String>('devCenterId');

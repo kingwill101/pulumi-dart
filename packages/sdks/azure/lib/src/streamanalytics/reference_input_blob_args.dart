@@ -9,11 +9,11 @@ import 'reference_input_blob_serialization.dart';
 /// {@macro pulumi_streamanalytics_reference_input_blob_reference_input_blob_args_doc}
 class ReferenceInputBlobArgs {
   /// The authentication mode for the Stream Analytics Reference Input. Possible values are `Msi` and `ConnectionString`. Defaults to `ConnectionString`.
-  final pulumi.Input<String>? authenticationMode;
+  final pulumi.Input<String?>? authenticationMode;
   /// The date format. Wherever `{date}` appears in `pathPattern`, the value of this property is used as the date format instead.
   final pulumi.Input<String> dateFormat;
   /// The name of the Reference Input Blob. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The blob path pattern. Not a regular expression. It represents a pattern against which blob names will be matched to determine whether or not they should be included as input or output to the job.
   final pulumi.Input<String> pathPattern;
   /// The name of the Resource Group where the Stream Analytics Job exists. Changing this forces a new resource to be created.
@@ -21,7 +21,7 @@ class ReferenceInputBlobArgs {
   /// A `serialization` block as defined below.
   final pulumi.Input<ReferenceInputBlobSerialization> serialization;
   /// The Access Key which should be used to connect to this Storage Account. Required if `authenticationMode` is `ConnectionString`.
-  final pulumi.Input<String>? storageAccountKey;
+  final pulumi.Input<String?>? storageAccountKey;
   /// The name of the Storage Account that has the blob container with reference data.
   final pulumi.Input<String> storageAccountName;
   /// The name of the Container within the Storage Account.

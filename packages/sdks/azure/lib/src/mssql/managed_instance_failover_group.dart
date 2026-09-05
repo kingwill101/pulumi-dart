@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'managed_instance_failover_group_args.dart';
+import 'managed_instance_failover_group_partner_region.dart';
 import 'managed_instance_failover_group_read_write_endpoint_failover_policy.dart';
 import 'managed_instance_failover_group_state.dart';
 
@@ -685,7 +686,7 @@ import 'managed_instance_failover_group_state.dart';
 /// 			Name:               pulumi.String("primary-link"),
 /// 			ResourceGroupName:  primary.Name,
 /// 			PrivateDnsZoneName: exampleZone.Name,
-/// 			VirtualNetworkId:   primaryVirtualNetwork.ID(),
+/// 			VirtualNetworkId:   primaryVirtualNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -723,8 +724,8 @@ import 'managed_instance_failover_group_state.dart';
 /// 			return err
 /// 		}
 /// 		primarySubnetNetworkSecurityGroupAssociation, err := network.NewSubnetNetworkSecurityGroupAssociation(ctx, "primary", &network.SubnetNetworkSecurityGroupAssociationArgs{
-/// 			SubnetId:               primarySubnet.ID(),
-/// 			NetworkSecurityGroupId: primaryNetworkSecurityGroup.ID(),
+/// 			SubnetId:               primarySubnet.ID().ToIDOutput().ToStringOutput(),
+/// 			NetworkSecurityGroupId: primaryNetworkSecurityGroup.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -738,8 +739,8 @@ import 'managed_instance_failover_group_state.dart';
 /// 			return err
 /// 		}
 /// 		primarySubnetRouteTableAssociation, err := network.NewSubnetRouteTableAssociation(ctx, "primary", &network.SubnetRouteTableAssociationArgs{
-/// 			SubnetId:     primarySubnet.ID(),
-/// 			RouteTableId: primaryRouteTable.ID(),
+/// 			SubnetId:     primarySubnet.ID().ToIDOutput().ToStringOutput(),
+/// 			RouteTableId: primaryRouteTable.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -751,7 +752,7 @@ import 'managed_instance_failover_group_state.dart';
 /// 			AdministratorLogin:         pulumi.String("mradministrator"),
 /// 			AdministratorLoginPassword: pulumi.String("thisIsDog11"),
 /// 			LicenseType:                pulumi.String("BasePrice"),
-/// 			SubnetId:                   primarySubnet.ID(),
+/// 			SubnetId:                   primarySubnet.ID().ToIDOutput().ToStringOutput(),
 /// 			SkuName:                    pulumi.String("GP_Gen5"),
 /// 			Vcores:                     pulumi.Int(4),
 /// 			StorageSizeInGb:            pulumi.Int(32),
@@ -785,7 +786,7 @@ import 'managed_instance_failover_group_state.dart';
 /// 			Name:               pulumi.String("failover-link"),
 /// 			ResourceGroupName:  exampleZone.ResourceGroupName,
 /// 			PrivateDnsZoneName: exampleZone.Name,
-/// 			VirtualNetworkId:   failoverVirtualNetwork.ID(),
+/// 			VirtualNetworkId:   failoverVirtualNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -823,8 +824,8 @@ import 'managed_instance_failover_group_state.dart';
 /// 			return err
 /// 		}
 /// 		failoverSubnetNetworkSecurityGroupAssociation, err := network.NewSubnetNetworkSecurityGroupAssociation(ctx, "failover", &network.SubnetNetworkSecurityGroupAssociationArgs{
-/// 			SubnetId:               failoverSubnet.ID(),
-/// 			NetworkSecurityGroupId: failoverNetworkSecurityGroup.ID(),
+/// 			SubnetId:               failoverSubnet.ID().ToIDOutput().ToStringOutput(),
+/// 			NetworkSecurityGroupId: failoverNetworkSecurityGroup.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -838,8 +839,8 @@ import 'managed_instance_failover_group_state.dart';
 /// 			return err
 /// 		}
 /// 		failoverSubnetRouteTableAssociation, err := network.NewSubnetRouteTableAssociation(ctx, "failover", &network.SubnetRouteTableAssociationArgs{
-/// 			SubnetId:     failoverSubnet.ID(),
-/// 			RouteTableId: failoverRouteTable.ID(),
+/// 			SubnetId:     failoverSubnet.ID().ToIDOutput().ToStringOutput(),
+/// 			RouteTableId: failoverRouteTable.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -851,11 +852,11 @@ import 'managed_instance_failover_group_state.dart';
 /// 			AdministratorLogin:         pulumi.String("mradministrator"),
 /// 			AdministratorLoginPassword: pulumi.String("thisIsDog11"),
 /// 			LicenseType:                pulumi.String("BasePrice"),
-/// 			SubnetId:                   failoverSubnet.ID(),
+/// 			SubnetId:                   failoverSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 			SkuName:                    pulumi.String("GP_Gen5"),
 /// 			Vcores:                     pulumi.Int(4),
 /// 			StorageSizeInGb:            pulumi.Int(32),
-/// 			DnsZonePartnerId:           primaryManagedInstance.ID(),
+/// 			DnsZonePartnerId:           primaryManagedInstance.ID().ToIDOutput().ToStringOutput(),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			failoverSubnetNetworkSecurityGroupAssociation,
 /// 			failoverSubnetRouteTableAssociation,
@@ -866,8 +867,8 @@ import 'managed_instance_failover_group_state.dart';
 /// 		_, err = mssql.NewManagedInstanceFailoverGroup(ctx, "example", &mssql.ManagedInstanceFailoverGroupArgs{
 /// 			Name:                     pulumi.String("example-failover-group"),
 /// 			Location:                 primaryManagedInstance.Location,
-/// 			ManagedInstanceId:        primaryManagedInstance.ID(),
-/// 			PartnerManagedInstanceId: failoverManagedInstance.ID(),
+/// 			ManagedInstanceId:        primaryManagedInstance.ID().ToIDOutput().ToStringOutput(),
+/// 			PartnerManagedInstanceId: failoverManagedInstance.ID().ToIDOutput().ToStringOutput(),
 /// 			SecondaryType:            pulumi.String("Geo"),
 /// 			ReadWriteEndpointFailoverPolicy: &mssql.ManagedInstanceFailoverGroupReadWriteEndpointFailoverPolicyArgs{
 /// 				Mode:         pulumi.String("Automatic"),
@@ -882,7 +883,7 @@ import 'managed_instance_failover_group_state.dart';
 /// 		}
 /// 		_, err = network.NewVirtualNetworkPeering(ctx, "primary_to_failover", &network.VirtualNetworkPeeringArgs{
 /// 			Name:                   pulumi.String("primary-to-failover"),
-/// 			RemoteVirtualNetworkId: failoverVirtualNetwork.ID(),
+/// 			RemoteVirtualNetworkId: failoverVirtualNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 			ResourceGroupName:      primary.Name,
 /// 			VirtualNetworkName:     primaryVirtualNetwork.Name,
 /// 		})
@@ -902,7 +903,7 @@ import 'managed_instance_failover_group_state.dart';
 /// 		}
 /// 		_, err = network.NewVirtualNetworkPeering(ctx, "failover_to_primary", &network.VirtualNetworkPeeringArgs{
 /// 			Name:                   pulumi.String("failover-to-primary"),
-/// 			RemoteVirtualNetworkId: primaryVirtualNetwork.ID(),
+/// 			RemoteVirtualNetworkId: primaryVirtualNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 			ResourceGroupName:      failover.Name,
 /// 			VirtualNetworkName:     failoverVirtualNetwork.Name,
 /// 		})
@@ -1601,7 +1602,7 @@ class ManagedInstanceFailoverGroup extends pulumi.CustomResource {
   /// The ID of the Azure SQL Managed Instance which will be replicated to. Changing this forces a new resource to be created.
   late final pulumi.Output<String> partnerManagedInstanceId;
   /// A `partnerRegion` block as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>> partnerRegions;
+  late final pulumi.Output<List<ManagedInstanceFailoverGroupPartnerRegion>> partnerRegions;
   /// A `readWriteEndpointFailoverPolicy` block as defined below.
   late final pulumi.Output<ManagedInstanceFailoverGroupReadWriteEndpointFailoverPolicy> readWriteEndpointFailoverPolicy;
   /// Failover policy for the read-only endpoint. Defaults to `true`.
@@ -1623,13 +1624,13 @@ class ManagedInstanceFailoverGroup extends pulumi.CustomResource {
           'azure:mssql/managedInstanceFailoverGroup:ManagedInstanceFailoverGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     location = registerOutput<String>('location');
     managedInstanceId = registerOutput<String>('managedInstanceId');
     this.name = registerOutput<String>('name');
     partnerManagedInstanceId = registerOutput<String>('partnerManagedInstanceId');
-    partnerRegions = registerOutput<List<Map<String, dynamic>>>('partnerRegions');
+    partnerRegions = registerOutput<List<ManagedInstanceFailoverGroupPartnerRegion>>('partnerRegions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ManagedInstanceFailoverGroupPartnerRegion>(guardedValue, (value) => ManagedInstanceFailoverGroupPartnerRegion.fromMap((value as Map).cast<String, dynamic>())); });
     readWriteEndpointFailoverPolicy = registerOutput<ManagedInstanceFailoverGroupReadWriteEndpointFailoverPolicy>('readWriteEndpointFailoverPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedInstanceFailoverGroupReadWriteEndpointFailoverPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     readonlyEndpointFailoverPolicyEnabled = registerOutput<bool?>('readonlyEndpointFailoverPolicyEnabled');
     role = registerOutput<String>('role');
@@ -1641,11 +1642,12 @@ class ManagedInstanceFailoverGroup extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ManagedInstanceFailoverGroupState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ManagedInstanceFailoverGroup._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1663,7 +1665,27 @@ class ManagedInstanceFailoverGroup extends pulumi.CustomResource {
     managedInstanceId = registerOutput<String>('managedInstanceId');
     this.name = registerOutput<String>('name');
     partnerManagedInstanceId = registerOutput<String>('partnerManagedInstanceId');
-    partnerRegions = registerOutput<List<Map<String, dynamic>>>('partnerRegions');
+    partnerRegions = registerOutput<List<ManagedInstanceFailoverGroupPartnerRegion>>('partnerRegions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ManagedInstanceFailoverGroupPartnerRegion>(guardedValue, (value) => ManagedInstanceFailoverGroupPartnerRegion.fromMap((value as Map).cast<String, dynamic>())); });
+    readWriteEndpointFailoverPolicy = registerOutput<ManagedInstanceFailoverGroupReadWriteEndpointFailoverPolicy>('readWriteEndpointFailoverPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedInstanceFailoverGroupReadWriteEndpointFailoverPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    readonlyEndpointFailoverPolicyEnabled = registerOutput<bool?>('readonlyEndpointFailoverPolicyEnabled');
+    role = registerOutput<String>('role');
+    secondaryType = registerOutput<String?>('secondaryType');
+  }
+
+  /// Creates a typed reference to an existing [ManagedInstanceFailoverGroup] resource.
+  ManagedInstanceFailoverGroup.reference(String urn)
+    : super(
+        'azure:mssql/managedInstanceFailoverGroup:ManagedInstanceFailoverGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    location = registerOutput<String>('location');
+    managedInstanceId = registerOutput<String>('managedInstanceId');
+    this.name = registerOutput<String>('name');
+    partnerManagedInstanceId = registerOutput<String>('partnerManagedInstanceId');
+    partnerRegions = registerOutput<List<ManagedInstanceFailoverGroupPartnerRegion>>('partnerRegions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ManagedInstanceFailoverGroupPartnerRegion>(guardedValue, (value) => ManagedInstanceFailoverGroupPartnerRegion.fromMap((value as Map).cast<String, dynamic>())); });
     readWriteEndpointFailoverPolicy = registerOutput<ManagedInstanceFailoverGroupReadWriteEndpointFailoverPolicy>('readWriteEndpointFailoverPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedInstanceFailoverGroupReadWriteEndpointFailoverPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     readonlyEndpointFailoverPolicyEnabled = registerOutput<bool?>('readonlyEndpointFailoverPolicyEnabled');
     role = registerOutput<String>('role');

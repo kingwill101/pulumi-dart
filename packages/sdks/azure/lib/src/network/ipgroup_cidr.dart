@@ -100,7 +100,7 @@ import 'ipgroup_cidrstate.dart';
 /// 			return err
 /// 		}
 /// 		_, err = network.NewIPGroupCIDR(ctx, "example", &network.IPGroupCIDRArgs{
-/// 			IpGroupId: exampleIPGroup.ID(),
+/// 			IpGroupId: exampleIPGroup.ID().ToIDOutput().ToStringOutput(),
 /// 			Cidr:      pulumi.String("10.10.10.0/24"),
 /// 		})
 /// 		if err != nil {
@@ -237,7 +237,7 @@ class IPGroupCIDR extends pulumi.CustomResource {
           'azure:network/iPGroupCIDR:IPGroupCIDR',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     cidr = registerOutput<String>('cidr');
     ipGroupId = registerOutput<String>('ipGroupId');
@@ -248,11 +248,12 @@ class IPGroupCIDR extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     IPGroupCIDRState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return IPGroupCIDR._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -266,6 +267,19 @@ class IPGroupCIDR extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    cidr = registerOutput<String>('cidr');
+    ipGroupId = registerOutput<String>('ipGroupId');
+  }
+
+  /// Creates a typed reference to an existing [IPGroupCIDR] resource.
+  IPGroupCIDR.reference(String urn)
+    : super(
+        'azure:network/iPGroupCIDR:IPGroupCIDR',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     cidr = registerOutput<String>('cidr');
     ipGroupId = registerOutput<String>('ipGroupId');
   }

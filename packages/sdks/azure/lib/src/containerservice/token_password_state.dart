@@ -7,11 +7,11 @@ import 'token_password_password2.dart';
 /// Input properties used for looking up and filtering TokenPassword resources.
 class TokenPasswordState {
   /// The ID of the Container Registry Token that this Container Registry Token Password resides in. Changing this forces a new Container Registry Token Password to be created.
-  final pulumi.Input<String>? containerRegistryTokenId;
+  final pulumi.Input<String?>? containerRegistryTokenId;
   /// One `password` block as defined below.
-  final pulumi.Input<TokenPasswordPassword1>? password1;
+  final pulumi.Input<TokenPasswordPassword1?>? password1;
   /// One `password` block as defined below.
-  final pulumi.Input<TokenPasswordPassword2>? password2;
+  final pulumi.Input<TokenPasswordPassword2?>? password2;
 
   /// Creates a new [TokenPasswordState].
   /// [containerRegistryTokenId] The ID of the Container Registry Token that this Container Registry Token Password resides in. Changing this forces a new Container Registry Token Password to be created.

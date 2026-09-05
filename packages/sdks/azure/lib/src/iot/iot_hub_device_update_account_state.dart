@@ -6,21 +6,21 @@ import 'iot_hub_device_update_account_identity.dart';
 /// Input properties used for looking up and filtering IotHubDeviceUpdateAccount resources.
 class IotHubDeviceUpdateAccountState {
   /// The API host name of the IoT Hub Device Update Account.
-  final pulumi.Input<String>? hostName;
+  final pulumi.Input<String?>? hostName;
   /// An `identity` block as defined below.
-  final pulumi.Input<IotHubDeviceUpdateAccountIdentity>? identity;
+  final pulumi.Input<IotHubDeviceUpdateAccountIdentity?>? identity;
   /// Specifies the Azure Region where the IoT Hub Device Update Account should exist. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Specifies the name which should be used for this IoT Hub Device Update Account. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specifies whether the public network access is enabled for the IoT Hub Device Update Account. Possible values are `true` and `false`. Defaults to `true`.
-  final pulumi.Input<bool>? publicNetworkAccessEnabled;
+  final pulumi.Input<bool?>? publicNetworkAccessEnabled;
   /// Specifies the name of the Resource Group where the IoT Hub Device Update Account should exist. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// Sku of the IoT Hub Device Update Account. Possible values are `Free` and `Standard`. Defaults to `Standard`. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? sku;
+  final pulumi.Input<String?>? sku;
   /// A mapping of tags which should be assigned to the IoT Hub Device Update Account.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [IotHubDeviceUpdateAccountState].
   /// [hostName] The API host name of the IoT Hub Device Update Account.

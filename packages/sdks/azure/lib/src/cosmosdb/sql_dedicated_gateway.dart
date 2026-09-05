@@ -142,7 +142,7 @@ import 'sql_dedicated_gateway_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = cosmosdb.NewSqlDedicatedGateway(ctx, "example", &cosmosdb.SqlDedicatedGatewayArgs{
-/// 			CosmosdbAccountId: exampleAccount.ID(),
+/// 			CosmosdbAccountId: exampleAccount.ID().ToIDOutput().ToStringOutput(),
 /// 			InstanceCount:     pulumi.Int(1),
 /// 			InstanceSize:      pulumi.String("Cosmos.D4s"),
 /// 		})
@@ -307,7 +307,7 @@ class SqlDedicatedGateway extends pulumi.CustomResource {
           'azure:cosmosdb/sqlDedicatedGateway:SqlDedicatedGateway',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     cosmosdbAccountId = registerOutput<String>('cosmosdbAccountId');
     instanceCount = registerOutput<int>('instanceCount');
@@ -319,11 +319,12 @@ class SqlDedicatedGateway extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SqlDedicatedGatewayState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SqlDedicatedGateway._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -337,6 +338,20 @@ class SqlDedicatedGateway extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    cosmosdbAccountId = registerOutput<String>('cosmosdbAccountId');
+    instanceCount = registerOutput<int>('instanceCount');
+    instanceSize = registerOutput<String>('instanceSize');
+  }
+
+  /// Creates a typed reference to an existing [SqlDedicatedGateway] resource.
+  SqlDedicatedGateway.reference(String urn)
+    : super(
+        'azure:cosmosdb/sqlDedicatedGateway:SqlDedicatedGateway',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     cosmosdbAccountId = registerOutput<String>('cosmosdbAccountId');
     instanceCount = registerOutput<int>('instanceCount');
     instanceSize = registerOutput<String>('instanceSize');

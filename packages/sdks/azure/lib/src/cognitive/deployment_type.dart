@@ -133,7 +133,7 @@ import 'deployment_state.dart';
 /// 		}
 /// 		_, err = cognitive.NewDeployment(ctx, "example", &cognitive.DeploymentArgs{
 /// 			Name:               pulumi.String("example-cd"),
-/// 			CognitiveAccountId: exampleAccount.ID(),
+/// 			CognitiveAccountId: exampleAccount.ID().ToIDOutput().ToStringOutput(),
 /// 			Model: &cognitive.DeploymentModelArgs{
 /// 				Format:  pulumi.String("OpenAI"),
 /// 				Name:    pulumi.String("text-curie-001"),
@@ -312,7 +312,7 @@ class DeploymentType extends pulumi.CustomResource {
           'azure:cognitive/deployment:Deployment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     cognitiveAccountId = registerOutput<String>('cognitiveAccountId');
     dynamicThrottlingEnabled = registerOutput<bool?>('dynamicThrottlingEnabled');
@@ -328,11 +328,12 @@ class DeploymentType extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DeploymentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DeploymentType._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -346,6 +347,24 @@ class DeploymentType extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    cognitiveAccountId = registerOutput<String>('cognitiveAccountId');
+    dynamicThrottlingEnabled = registerOutput<bool?>('dynamicThrottlingEnabled');
+    model = registerOutput<DeploymentModel>('model', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeploymentModel.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    raiPolicyName = registerOutput<String>('raiPolicyName');
+    sku = registerOutput<DeploymentSku>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeploymentSku.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    versionUpgradeOption = registerOutput<String?>('versionUpgradeOption');
+  }
+
+  /// Creates a typed reference to an existing [DeploymentType] resource.
+  DeploymentType.reference(String urn)
+    : super(
+        'azure:cognitive/deployment:Deployment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     cognitiveAccountId = registerOutput<String>('cognitiveAccountId');
     dynamicThrottlingEnabled = registerOutput<bool?>('dynamicThrottlingEnabled');
     model = registerOutput<DeploymentModel>('model', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeploymentModel.fromMap((guardedValue as Map).cast<String, dynamic>()); });

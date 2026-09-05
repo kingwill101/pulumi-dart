@@ -336,7 +336,7 @@ class ProtectionContainer extends pulumi.CustomResource {
           'azure:siterecovery/protectionContainer:ProtectionContainer',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     this.name = registerOutput<String>('name');
     recoveryFabricName = registerOutput<String>('recoveryFabricName');
@@ -349,11 +349,12 @@ class ProtectionContainer extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ProtectionContainerState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ProtectionContainer._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -367,6 +368,21 @@ class ProtectionContainer extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    this.name = registerOutput<String>('name');
+    recoveryFabricName = registerOutput<String>('recoveryFabricName');
+    recoveryVaultName = registerOutput<String>('recoveryVaultName');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+  }
+
+  /// Creates a typed reference to an existing [ProtectionContainer] resource.
+  ProtectionContainer.reference(String urn)
+    : super(
+        'azure:siterecovery/protectionContainer:ProtectionContainer',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     this.name = registerOutput<String>('name');
     recoveryFabricName = registerOutput<String>('recoveryFabricName');
     recoveryVaultName = registerOutput<String>('recoveryVaultName');

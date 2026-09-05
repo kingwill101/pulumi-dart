@@ -4,19 +4,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServiceSecurity {
   /// Whether to enable Kerberos Armoring. Defaults to `false`.
-  final pulumi.Input<bool>? kerberosArmoringEnabled;
+  final pulumi.Input<bool?>? kerberosArmoringEnabled;
   /// Whether to enable Kerberos RC4 Encryption. Defaults to `false`.
-  final pulumi.Input<bool>? kerberosRc4EncryptionEnabled;
+  final pulumi.Input<bool?>? kerberosRc4EncryptionEnabled;
   /// Whether to enable legacy NTLM v1 support. Defaults to `false`.
-  final pulumi.Input<bool>? ntlmV1Enabled;
+  final pulumi.Input<bool?>? ntlmV1Enabled;
   /// Whether to synchronize Kerberos password hashes to the managed domain. Defaults to `false`.
-  final pulumi.Input<bool>? syncKerberosPasswords;
+  final pulumi.Input<bool?>? syncKerberosPasswords;
   /// Whether to synchronize NTLM password hashes to the managed domain. Defaults to `false`.
-  final pulumi.Input<bool>? syncNtlmPasswords;
+  final pulumi.Input<bool?>? syncNtlmPasswords;
   /// Whether to synchronize on-premises password hashes to the managed domain. Defaults to `false`.
-  final pulumi.Input<bool>? syncOnPremPasswords;
+  final pulumi.Input<bool?>? syncOnPremPasswords;
   /// Whether to enable legacy TLS v1 support. Defaults to `false`.
-  final pulumi.Input<bool>? tlsV1Enabled;
+  final pulumi.Input<bool?>? tlsV1Enabled;
 
   /// Creates a new [ServiceSecurity].
   /// [kerberosArmoringEnabled] Whether to enable Kerberos Armoring. Defaults to `false`.

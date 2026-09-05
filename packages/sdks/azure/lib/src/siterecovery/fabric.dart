@@ -286,7 +286,7 @@ class Fabric extends pulumi.CustomResource {
           'azure:siterecovery/fabric:Fabric',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -299,11 +299,12 @@ class Fabric extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FabricState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Fabric._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -317,6 +318,21 @@ class Fabric extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    recoveryVaultName = registerOutput<String>('recoveryVaultName');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+  }
+
+  /// Creates a typed reference to an existing [Fabric] resource.
+  Fabric.reference(String urn)
+    : super(
+        'azure:siterecovery/fabric:Fabric',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     recoveryVaultName = registerOutput<String>('recoveryVaultName');

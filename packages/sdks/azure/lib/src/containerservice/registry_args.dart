@@ -12,17 +12,19 @@ import 'registry_network_rule_set.dart';
 /// {@macro pulumi_containerservice_registry_registry_args_doc}
 class RegistryArgs {
   /// Specifies whether the admin user is enabled. Defaults to `false`.
-  final pulumi.Input<bool>? adminEnabled;
+  final pulumi.Input<bool?>? adminEnabled;
   /// Whether to allow anonymous (unauthenticated) pull access to this Container Registry. This is only supported on resources with the `Standard` or `Premium` SKU.
-  final pulumi.Input<bool>? anonymousPullEnabled;
-  /// Whether to enable dedicated data endpoints for this Container Registry? This is only supported on resources with the `Premium` SKU.
-  final pulumi.Input<bool>? dataEndpointEnabled;
-  /// An `encryption` block as documented below.
-  final pulumi.Input<RegistryEncryption>? encryption;
-  /// Boolean value that indicates whether export policy is enabled. Defaults to `true`. In order to set it to `false`, make sure the `publicNetworkAccessEnabled` is also set to `false`.
+  final pulumi.Input<bool?>? anonymousPullEnabled;
+  /// Whether to use Azure Resource Manager audience token for this Container Registry? Defaults to `true`.
   ///
   /// &gt; **Note:** `quarantinePolicyEnabled`, `retentionPolicyInDays`, `trustPolicyEnabled`, `exportPolicyEnabled` and `zoneRedundancyEnabled` are only supported on resources with the `Premium` SKU.
-  final pulumi.Input<bool>? exportPolicyEnabled;
+  final pulumi.Input<bool?>? azureadAuthenticationAsArmPolicyEnabled;
+  /// Whether to enable dedicated data endpoints for this Container Registry? This is only supported on resources with the `Premium` SKU.
+  final pulumi.Input<bool?>? dataEndpointEnabled;
+  /// An `encryption` block as documented below.
+  final pulumi.Input<RegistryEncryption?>? encryption;
+  /// Boolean value that indicates whether export policy is enabled. Defaults to `true`. In order to set it to `false`, make sure the `publicNetworkAccessEnabled` is also set to `false`.
+  final pulumi.Input<bool?>? exportPolicyEnabled;
   /// One or more `georeplications` blocks as documented below.
   ///
   /// &gt; **Note:** The `georeplications` is only supported on new resources with the `Premium` SKU.
@@ -30,37 +32,42 @@ class RegistryArgs {
   /// &gt; **Note:** The `georeplications` list cannot contain the location where the Container Registry exists.
   ///
   /// &gt; **Note:** If more than one `georeplications` block is specified, they are expected to follow the alphabetic order on the `location` property.
-  final pulumi.Input<List<RegistryGeoreplication>>? georeplications;
+  final pulumi.Input<List<RegistryGeoreplication>?>? georeplications;
   /// An `identity` block as defined below.
-  final pulumi.Input<RegistryIdentity>? identity;
+  final pulumi.Input<RegistryIdentity?>? identity;
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Specifies the name of the Container Registry. Only Alphanumeric characters allowed. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
+  /// Whether to allow Container Registry Tasks to access a network-restricted Container Registry? Defaults to `false`.
+  final pulumi.Input<bool?>? networkRuleBypassForTasksEnabled;
   /// Whether to allow trusted Azure services to access a network-restricted Container Registry? Possible values are `None` and `AzureServices`. Defaults to `AzureServices`.
-  final pulumi.Input<String>? networkRuleBypassOption;
+  final pulumi.Input<String?>? networkRuleBypassOption;
   /// A `networkRuleSet` block as documented below.
-  final pulumi.Input<RegistryNetworkRuleSet>? networkRuleSet;
+  final pulumi.Input<RegistryNetworkRuleSet?>? networkRuleSet;
   /// Whether public network access is allowed for the container registry. Defaults to `true`.
-  final pulumi.Input<bool>? publicNetworkAccessEnabled;
+  final pulumi.Input<bool?>? publicNetworkAccessEnabled;
   /// Boolean value that indicates whether quarantine policy is enabled.
-  final pulumi.Input<bool>? quarantinePolicyEnabled;
+  final pulumi.Input<bool?>? quarantinePolicyEnabled;
   /// The name of the resource group in which to create the Container Registry. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
   /// The number of days to retain and untagged manifest after which it gets purged.
-  final pulumi.Input<int>? retentionPolicyInDays;
+  final pulumi.Input<int?>? retentionPolicyInDays;
+  /// The role assignment mode of this Container Registry. Possible values are `AbacRepositoryPermissions` and `LegacyRegistryPermissions`. Defaults to `LegacyRegistryPermissions`.
+  final pulumi.Input<String?>? roleAssignmentMode;
   /// The SKU name of the container registry. Possible values are `Basic`, `Standard` and `Premium`.
   final pulumi.Input<String> sku;
   /// A mapping of tags to assign to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Boolean value that indicated whether trust policy is enabled. Defaults to `false`.
-  final pulumi.Input<bool>? trustPolicyEnabled;
+  final pulumi.Input<bool?>? trustPolicyEnabled;
   /// Whether zone redundancy is enabled for this Container Registry? Changing this forces a new resource to be created. Defaults to `false`.
-  final pulumi.Input<bool>? zoneRedundancyEnabled;
+  final pulumi.Input<bool?>? zoneRedundancyEnabled;
 
   /// Creates a new [RegistryArgs].
   /// [adminEnabled] Specifies whether the admin user is enabled. Defaults to `false`.
   /// [anonymousPullEnabled] Whether to allow anonymous (unauthenticated) pull access to this Container Registry. This is only supported on resources with the `Standard` or `Premium` SKU.
+  /// [azureadAuthenticationAsArmPolicyEnabled] Whether to use Azure Resource Manager audience token for this Container Registry? Defaults to `true`.
   /// [dataEndpointEnabled] Whether to enable dedicated data endpoints for this Container Registry? This is only supported on resources with the `Premium` SKU.
   /// [encryption] An `encryption` block as documented below.
   /// [exportPolicyEnabled] Boolean value that indicates whether export policy is enabled. Defaults to `true`. In order to set it to `false`, make sure the `publicNetworkAccessEnabled` is also set to `false`.
@@ -68,12 +75,14 @@ class RegistryArgs {
   /// [identity] An `identity` block as defined below.
   /// [location] Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   /// [name] Specifies the name of the Container Registry. Only Alphanumeric characters allowed. Changing this forces a new resource to be created.
+  /// [networkRuleBypassForTasksEnabled] Whether to allow Container Registry Tasks to access a network-restricted Container Registry? Defaults to `false`.
   /// [networkRuleBypassOption] Whether to allow trusted Azure services to access a network-restricted Container Registry? Possible values are `None` and `AzureServices`. Defaults to `AzureServices`.
   /// [networkRuleSet] A `networkRuleSet` block as documented below.
   /// [publicNetworkAccessEnabled] Whether public network access is allowed for the container registry. Defaults to `true`.
   /// [quarantinePolicyEnabled] Boolean value that indicates whether quarantine policy is enabled.
   /// [resourceGroupName] The name of the resource group in which to create the Container Registry. Changing this forces a new resource to be created.
   /// [retentionPolicyInDays] The number of days to retain and untagged manifest after which it gets purged.
+  /// [roleAssignmentMode] The role assignment mode of this Container Registry. Possible values are `AbacRepositoryPermissions` and `LegacyRegistryPermissions`. Defaults to `LegacyRegistryPermissions`.
   /// [sku] The SKU name of the container registry. Possible values are `Basic`, `Standard` and `Premium`.
   /// [tags] A mapping of tags to assign to the resource.
   /// [trustPolicyEnabled] Boolean value that indicated whether trust policy is enabled. Defaults to `false`.
@@ -81,6 +90,7 @@ class RegistryArgs {
   const RegistryArgs({
     this.adminEnabled,
     this.anonymousPullEnabled,
+    this.azureadAuthenticationAsArmPolicyEnabled,
     this.dataEndpointEnabled,
     this.encryption,
     this.exportPolicyEnabled,
@@ -88,12 +98,14 @@ class RegistryArgs {
     this.identity,
     this.location,
     this.name,
+    this.networkRuleBypassForTasksEnabled,
     this.networkRuleBypassOption,
     this.networkRuleSet,
     this.publicNetworkAccessEnabled,
     this.quarantinePolicyEnabled,
     required this.resourceGroupName,
     this.retentionPolicyInDays,
+    this.roleAssignmentMode,
     required this.sku,
     this.tags,
     this.trustPolicyEnabled,
@@ -104,6 +116,7 @@ class RegistryArgs {
     return <String, dynamic>{
       'adminEnabled': ?adminEnabled,
       'anonymousPullEnabled': ?anonymousPullEnabled,
+      'azureadAuthenticationAsArmPolicyEnabled': ?azureadAuthenticationAsArmPolicyEnabled,
       'dataEndpointEnabled': ?dataEndpointEnabled,
       'encryption': ?pulumi.Input.mapOptionalInputValue<RegistryEncryption, Map<String, dynamic>>(encryption, (value) => value.toMap()),
       'exportPolicyEnabled': ?exportPolicyEnabled,
@@ -111,12 +124,14 @@ class RegistryArgs {
       'identity': ?pulumi.Input.mapOptionalInputValue<RegistryIdentity, Map<String, dynamic>>(identity, (value) => value.toMap()),
       'location': ?location,
       'name': ?name,
+      'networkRuleBypassForTasksEnabled': ?networkRuleBypassForTasksEnabled,
       'networkRuleBypassOption': ?networkRuleBypassOption,
       'networkRuleSet': ?pulumi.Input.mapOptionalInputValue<RegistryNetworkRuleSet, Map<String, dynamic>>(networkRuleSet, (value) => value.toMap()),
       'publicNetworkAccessEnabled': ?publicNetworkAccessEnabled,
       'quarantinePolicyEnabled': ?quarantinePolicyEnabled,
       'resourceGroupName': resourceGroupName,
       'retentionPolicyInDays': ?retentionPolicyInDays,
+      'roleAssignmentMode': ?roleAssignmentMode,
       'sku': sku,
       'tags': ?tags,
       'trustPolicyEnabled': ?trustPolicyEnabled,
@@ -128,6 +143,7 @@ class RegistryArgs {
     return RegistryArgs(
       adminEnabled: (() { final guardedValue = map['adminEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       anonymousPullEnabled: (() { final guardedValue = map['anonymousPullEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      azureadAuthenticationAsArmPolicyEnabled: (() { final guardedValue = map['azureadAuthenticationAsArmPolicyEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       dataEndpointEnabled: (() { final guardedValue = map['dataEndpointEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       encryption: (() { final guardedValue = map['encryption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RegistryEncryption.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       exportPolicyEnabled: (() { final guardedValue = map['exportPolicyEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
@@ -135,12 +151,14 @@ class RegistryArgs {
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RegistryIdentity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      networkRuleBypassForTasksEnabled: (() { final guardedValue = map['networkRuleBypassForTasksEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       networkRuleBypassOption: (() { final guardedValue = map['networkRuleBypassOption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       networkRuleSet: (() { final guardedValue = map['networkRuleSet']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RegistryNetworkRuleSet.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       publicNetworkAccessEnabled: (() { final guardedValue = map['publicNetworkAccessEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       quarantinePolicyEnabled: (() { final guardedValue = map['quarantinePolicyEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
-      retentionPolicyInDays: (() { final guardedValue = map['retentionPolicyInDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      retentionPolicyInDays: (() { final guardedValue = map['retentionPolicyInDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      roleAssignmentMode: (() { final guardedValue = map['roleAssignmentMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sku: pulumi.Input.fromValue(map['sku'] as String),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       trustPolicyEnabled: (() { final guardedValue = map['trustPolicyEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),

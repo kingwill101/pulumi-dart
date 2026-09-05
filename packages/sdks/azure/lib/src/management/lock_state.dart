@@ -7,13 +7,13 @@ class LockState {
   /// Specifies the Level to be used for this Lock. Possible values are `CanNotDelete` and `ReadOnly`. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** `CanNotDelete` means authorized users are able to read and modify the resources, but not delete. `ReadOnly` means authorized users can only read from a resource, but they can't modify or delete it.
-  final pulumi.Input<String>? lockLevel;
+  final pulumi.Input<String?>? lockLevel;
   /// Specifies the name of the Management Lock. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specifies some notes about the lock. Maximum of 512 characters. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? notes;
+  final pulumi.Input<String?>? notes;
   /// Specifies the scope at which the Management Lock should be created. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? scope;
+  final pulumi.Input<String?>? scope;
 
   /// Creates a new [LockState].
   /// [lockLevel] Specifies the Level to be used for this Lock. Possible values are `CanNotDelete` and `ReadOnly`. Changing this forces a new resource to be created.

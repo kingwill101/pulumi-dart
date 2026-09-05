@@ -5,15 +5,15 @@ import 'standard_web_test_request_header.dart';
 
 class StandardWebTestRequest {
   /// The WebTest request body.
-  final pulumi.Input<String>? body;
+  final pulumi.Input<String?>? body;
   /// Should the following of redirects be enabled? Defaults to `true`.
-  final pulumi.Input<bool>? followRedirectsEnabled;
+  final pulumi.Input<bool?>? followRedirectsEnabled;
   /// One or more `header` blocks as defined above.
-  final pulumi.Input<List<StandardWebTestRequestHeader>>? headers;
+  final pulumi.Input<List<StandardWebTestRequestHeader>?>? headers;
   /// Which HTTP verb to use for the call. Options are 'GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'HEAD', and 'OPTIONS'. Defaults to `GET`.
-  final pulumi.Input<String>? httpVerb;
+  final pulumi.Input<String?>? httpVerb;
   /// Should the parsing of dependend requests be enabled? Defaults to `true`.
-  final pulumi.Input<bool>? parseDependentRequestsEnabled;
+  final pulumi.Input<bool?>? parseDependentRequestsEnabled;
   /// The WebTest request URL.
   final pulumi.Input<String> url;
 

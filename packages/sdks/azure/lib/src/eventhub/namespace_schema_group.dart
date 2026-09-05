@@ -105,7 +105,7 @@ import 'namespace_schema_group_state.dart';
 /// 		}
 /// 		_, err = eventhub.NewNamespaceSchemaGroup(ctx, "test", &eventhub.NamespaceSchemaGroupArgs{
 /// 			Name:                pulumi.String("example-schemaGroup"),
-/// 			NamespaceId:         test.ID(),
+/// 			NamespaceId:         test.ID().ToIDOutput().ToStringOutput(),
 /// 			SchemaCompatibility: pulumi.String("Forward"),
 /// 			SchemaType:          pulumi.String("Avro"),
 /// 		})
@@ -252,7 +252,7 @@ class NamespaceSchemaGroup extends pulumi.CustomResource {
           'azure:eventhub/namespaceSchemaGroup:NamespaceSchemaGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     this.name = registerOutput<String>('name');
     namespaceId = registerOutput<String>('namespaceId');
@@ -265,11 +265,12 @@ class NamespaceSchemaGroup extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     NamespaceSchemaGroupState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return NamespaceSchemaGroup._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -283,6 +284,21 @@ class NamespaceSchemaGroup extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    this.name = registerOutput<String>('name');
+    namespaceId = registerOutput<String>('namespaceId');
+    schemaCompatibility = registerOutput<String>('schemaCompatibility');
+    schemaType = registerOutput<String>('schemaType');
+  }
+
+  /// Creates a typed reference to an existing [NamespaceSchemaGroup] resource.
+  NamespaceSchemaGroup.reference(String urn)
+    : super(
+        'azure:eventhub/namespaceSchemaGroup:NamespaceSchemaGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     this.name = registerOutput<String>('name');
     namespaceId = registerOutput<String>('namespaceId');
     schemaCompatibility = registerOutput<String>('schemaCompatibility');

@@ -7,13 +7,13 @@ class AccountNetworkAcls {
   /// Whether to allow trusted Azure Services to access the service. Possible values are `None` and `AzureServices`.
   ///
   /// &gt; **Note:** `bypass` can only be set when `kind` is set to `OpenAI`, `AIServices`, or `TextAnalytics`.
-  final pulumi.Input<String>? bypass;
+  final pulumi.Input<String?>? bypass;
   /// The Default Action to use when no rules match from `ipRules` / `virtualNetworkRules`. Possible values are `Allow` and `Deny`.
   final pulumi.Input<String> defaultAction;
   /// One or more IP Addresses, or CIDR Blocks which should be able to access the Cognitive Account.
-  final pulumi.Input<List<String>>? ipRules;
+  final pulumi.Input<List<String>?>? ipRules;
   /// A `virtualNetworkRules` block as defined below.
-  final pulumi.Input<List<AccountNetworkAclsVirtualNetworkRule>>? virtualNetworkRules;
+  final pulumi.Input<List<AccountNetworkAclsVirtualNetworkRule>?>? virtualNetworkRules;
 
   /// Creates a new [AccountNetworkAcls].
   /// [bypass] Whether to allow trusted Azure Services to access the service. Possible values are `None` and `AzureServices`.

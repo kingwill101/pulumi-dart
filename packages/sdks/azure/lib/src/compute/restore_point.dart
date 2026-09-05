@@ -284,7 +284,7 @@ import 'restore_point_state.dart';
 /// 			IpConfigurations: network.NetworkInterfaceIpConfigurationArray{
 /// 				&network.NetworkInterfaceIpConfigurationArgs{
 /// 					Name:                       pulumi.String("internal"),
-/// 					SubnetId:                   exampleSubnet.ID(),
+/// 					SubnetId:                   exampleSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 					PrivateIpAddressAllocation: pulumi.String("Dynamic"),
 /// 				},
 /// 			},
@@ -305,7 +305,7 @@ import 'restore_point_state.dart';
 /// 			Size:              pulumi.String("Standard_D4_v5"),
 /// 			AdminUsername:     pulumi.String("adminuser"),
 /// 			NetworkInterfaceIds: pulumi.StringArray{
-/// 				exampleNetworkInterface.ID(),
+/// 				exampleNetworkInterface.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			AdminSshKeys: compute.LinuxVirtualMachineAdminSshKeyArray{
 /// 				&compute.LinuxVirtualMachineAdminSshKeyArgs{
@@ -331,14 +331,14 @@ import 'restore_point_state.dart';
 /// 			Name:                   pulumi.String("example-collection"),
 /// 			ResourceGroupName:      example.Name,
 /// 			Location:               exampleLinuxVirtualMachine.Location,
-/// 			SourceVirtualMachineId: exampleLinuxVirtualMachine.ID(),
+/// 			SourceVirtualMachineId: exampleLinuxVirtualMachine.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = compute.NewRestorePoint(ctx, "example", &compute.RestorePointArgs{
 /// 			Name:                                   pulumi.String("example-restore-point"),
-/// 			VirtualMachineRestorePointCollectionId: exampleRestorePointCollection.ID(),
+/// 			VirtualMachineRestorePointCollectionId: exampleRestorePointCollection.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -643,10 +643,10 @@ class RestorePoint extends pulumi.CustomResource {
           'azure:compute/restorePoint:RestorePoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     crashConsistencyModeEnabled = registerOutput<bool?>('crashConsistencyModeEnabled');
-    excludedDisks = registerOutput<List<String>?>('excludedDisks');
+    excludedDisks = registerOutput<List<String>?>('excludedDisks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     virtualMachineRestorePointCollectionId = registerOutput<String>('virtualMachineRestorePointCollectionId');
   }
@@ -656,11 +656,12 @@ class RestorePoint extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RestorePointState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RestorePoint._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -675,7 +676,22 @@ class RestorePoint extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     crashConsistencyModeEnabled = registerOutput<bool?>('crashConsistencyModeEnabled');
-    excludedDisks = registerOutput<List<String>?>('excludedDisks');
+    excludedDisks = registerOutput<List<String>?>('excludedDisks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    this.name = registerOutput<String>('name');
+    virtualMachineRestorePointCollectionId = registerOutput<String>('virtualMachineRestorePointCollectionId');
+  }
+
+  /// Creates a typed reference to an existing [RestorePoint] resource.
+  RestorePoint.reference(String urn)
+    : super(
+        'azure:compute/restorePoint:RestorePoint',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    crashConsistencyModeEnabled = registerOutput<bool?>('crashConsistencyModeEnabled');
+    excludedDisks = registerOutput<List<String>?>('excludedDisks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     virtualMachineRestorePointCollectionId = registerOutput<String>('virtualMachineRestorePointCollectionId');
   }

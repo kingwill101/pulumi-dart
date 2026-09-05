@@ -157,6 +157,17 @@ Future<GetDicomServiceResult> getDicomService(
   return GetDicomServiceResult.fromMap(result);
 }
 
+pulumi.Output<GetDicomServiceResult> getDicomServiceOutput(
+  GetDicomServiceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:healthcare/getDicomService:getDicomService',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDicomServiceResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Healthcare FHIR Service(Fast Healthcare Interoperability Resources).
 /// [args] Arguments passed to this invoke. {@macro pulumi_healthcare_get_fhir_service_get_fhir_service_args_doc}
 /// [options] Invoke options controlling this call.
@@ -171,6 +182,17 @@ Future<GetFhirServiceResult> getFhirService(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetFhirServiceResult.fromMap(result);
+}
+
+pulumi.Output<GetFhirServiceResult> getFhirServiceOutput(
+  GetFhirServiceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:healthcare/getFhirService:getFhirService',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFhirServiceResult.fromMap);
 }
 
 /// Use this data source to access information about an existing Healthcare Med Tech Service
@@ -318,6 +340,17 @@ Future<GetMedtechServiceResult> getMedtechService(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetMedtechServiceResult.fromMap(result);
+}
+
+pulumi.Output<GetMedtechServiceResult> getMedtechServiceOutput(
+  GetMedtechServiceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:healthcare/getMedtechService:getMedtechService',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMedtechServiceResult.fromMap);
 }
 
 /// Use this data source to access information about an existing Healthcare Service
@@ -474,6 +507,17 @@ Future<GetServiceResult> getService(
   return GetServiceResult.fromMap(result);
 }
 
+pulumi.Output<GetServiceResult> getServiceOutput(
+  GetServiceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:healthcare/getService:getService',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServiceResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Healthcare Workspace
 ///
 /// ## Example Usage
@@ -619,4 +663,15 @@ Future<GetWorkspaceResult> getWorkspace(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWorkspaceResult.fromMap(result);
+}
+
+pulumi.Output<GetWorkspaceResult> getWorkspaceOutput(
+  GetWorkspaceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:healthcare/getWorkspace:getWorkspace',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWorkspaceResult.fromMap);
 }

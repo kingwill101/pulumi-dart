@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering RegistryCacheRule resources.
 class RegistryCacheRuleState {
   /// The ID of the Container Registry where the Cache Rule should apply. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? containerRegistryId;
+  final pulumi.Input<String?>? containerRegistryId;
   /// The ARM resource ID of the Credential Store which is associated with the Cache Rule.
-  final pulumi.Input<String>? credentialSetId;
+  final pulumi.Input<String?>? credentialSetId;
   /// Specifies the name of the Container Registry Cache Rule. Only Alphanumeric characters allowed. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the source repository path. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? sourceRepo;
+  final pulumi.Input<String?>? sourceRepo;
   /// The name of the new repository path to store artifacts. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? targetRepo;
+  final pulumi.Input<String?>? targetRepo;
 
   /// Creates a new [RegistryCacheRuleState].
   /// [containerRegistryId] The ID of the Container Registry where the Cache Rule should apply. Changing this forces a new resource to be created.

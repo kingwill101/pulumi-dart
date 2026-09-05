@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AlertRuleAnomalyDuplicateRequiredDataConnector {
   /// The ID of the required Data Connector.
-  final pulumi.Input<String>? connectorId;
+  final pulumi.Input<String?>? connectorId;
   /// A list of data types of the required Data Connector.
-  final pulumi.Input<List<String>>? dataTypes;
+  final pulumi.Input<List<String>?>? dataTypes;
 
   /// Creates a new [AlertRuleAnomalyDuplicateRequiredDataConnector].
   /// [connectorId] The ID of the required Data Connector.

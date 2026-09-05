@@ -91,7 +91,7 @@ import 'managed_hardware_security_module_key_rotation_policy_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = keyvault.NewManagedHardwareSecurityModuleKeyRotationPolicy(ctx, "example", &keyvault.ManagedHardwareSecurityModuleKeyRotationPolicyArgs{
-/// 			ManagedHsmKeyId:  example.ID(),
+/// 			ManagedHsmKeyId:  example.ID().ToIDOutput().ToStringOutput(),
 /// 			ExpireAfter:      pulumi.String("P60D"),
 /// 			TimeBeforeExpiry: pulumi.String("P30D"),
 /// 		})
@@ -214,7 +214,7 @@ class ManagedHardwareSecurityModuleKeyRotationPolicy extends pulumi.CustomResour
           'azure:keyvault/managedHardwareSecurityModuleKeyRotationPolicy:ManagedHardwareSecurityModuleKeyRotationPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     expireAfter = registerOutput<String>('expireAfter');
     managedHsmKeyId = registerOutput<String>('managedHsmKeyId');
@@ -227,11 +227,12 @@ class ManagedHardwareSecurityModuleKeyRotationPolicy extends pulumi.CustomResour
     String name,
     pulumi.Input<String> id, {
     ManagedHardwareSecurityModuleKeyRotationPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ManagedHardwareSecurityModuleKeyRotationPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -245,6 +246,21 @@ class ManagedHardwareSecurityModuleKeyRotationPolicy extends pulumi.CustomResour
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    expireAfter = registerOutput<String>('expireAfter');
+    managedHsmKeyId = registerOutput<String>('managedHsmKeyId');
+    timeAfterCreation = registerOutput<String?>('timeAfterCreation');
+    timeBeforeExpiry = registerOutput<String?>('timeBeforeExpiry');
+  }
+
+  /// Creates a typed reference to an existing [ManagedHardwareSecurityModuleKeyRotationPolicy] resource.
+  ManagedHardwareSecurityModuleKeyRotationPolicy.reference(String urn)
+    : super(
+        'azure:keyvault/managedHardwareSecurityModuleKeyRotationPolicy:ManagedHardwareSecurityModuleKeyRotationPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     expireAfter = registerOutput<String>('expireAfter');
     managedHsmKeyId = registerOutput<String>('managedHsmKeyId');
     timeAfterCreation = registerOutput<String?>('timeAfterCreation');

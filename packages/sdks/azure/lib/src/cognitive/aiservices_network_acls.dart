@@ -5,13 +5,13 @@ import 'aiservices_network_acls_virtual_network_rule.dart';
 
 class AIServicesNetworkAcls {
   /// Whether to allow trusted Azure Services to access the service. Possible values are `None` and `AzureServices`. Defaults to `AzureServices`.
-  final pulumi.Input<String>? bypass;
+  final pulumi.Input<String?>? bypass;
   /// The Default Action to use when no rules match from `ipRules` / `virtualNetworkRules`. Possible values are `Allow` and `Deny`.
   final pulumi.Input<String> defaultAction;
   /// One or more IP Addresses, or CIDR Blocks which should be able to access the AI Services Account.
-  final pulumi.Input<List<String>>? ipRules;
+  final pulumi.Input<List<String>?>? ipRules;
   /// A `virtualNetworkRules` block as defined below.
-  final pulumi.Input<List<AIServicesNetworkAclsVirtualNetworkRule>>? virtualNetworkRules;
+  final pulumi.Input<List<AIServicesNetworkAclsVirtualNetworkRule>?>? virtualNetworkRules;
 
   /// Creates a new [AIServicesNetworkAcls].
   /// [bypass] Whether to allow trusted Azure Services to access the service. Possible values are `None` and `AzureServices`. Defaults to `AzureServices`.

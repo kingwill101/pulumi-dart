@@ -32,11 +32,11 @@ class ScalingPlanSchedule {
   /// The number of minutes during Ramp-Down period that autoscale will wait after setting the session host VMs to drain mode, notifying any currently signed in users to save their work before forcing the users to logoff. Once all user sessions on the session host VM have been logged off, Autoscale will shut down the VM.
   final pulumi.Input<int> rampDownWaitTimeMinutes;
   /// This is the value of percentage of used host pool capacity that will be considered to evaluate whether to turn on/off virtual machines during the ramp-up and peak hours. For example, if capacity threshold is specified as `60%` and your total host pool capacity is `100` sessions, autoscale will turn on additional session hosts once the host pool exceeds a load of `60` sessions.
-  final pulumi.Input<int>? rampUpCapacityThresholdPercent;
+  final pulumi.Input<int?>? rampUpCapacityThresholdPercent;
   /// The load Balancing Algorithm to use during the Ramp-Up period. Possible values are `DepthFirst` and `BreadthFirst`.
   final pulumi.Input<String> rampUpLoadBalancingAlgorithm;
   /// Specifies the minimum percentage of session host virtual machines to start during ramp-up for peak hours. For example, if Minimum percentage of hosts is specified as `10%` and total number of session hosts in your host pool is `10`, autoscale will ensure a minimum of `1` session host is available to take user connections.
-  final pulumi.Input<int>? rampUpMinimumHostsPercent;
+  final pulumi.Input<int?>? rampUpMinimumHostsPercent;
   /// The time at which Ramp-Up scaling will begin. This is also the end-time for the Ramp-Up period. The time must be specified in "HH:MM" format.
   final pulumi.Input<String> rampUpStartTime;
 
@@ -111,17 +111,17 @@ class ScalingPlanSchedule {
       offPeakStartTime: pulumi.Input.fromValue(map['offPeakStartTime'] as String),
       peakLoadBalancingAlgorithm: pulumi.Input.fromValue(map['peakLoadBalancingAlgorithm'] as String),
       peakStartTime: pulumi.Input.fromValue(map['peakStartTime'] as String),
-      rampDownCapacityThresholdPercent: pulumi.Input.fromValue(map['rampDownCapacityThresholdPercent'] as int),
+      rampDownCapacityThresholdPercent: pulumi.Input.fromValue((map['rampDownCapacityThresholdPercent'] as num).toInt()),
       rampDownForceLogoffUsers: pulumi.Input.fromValue(map['rampDownForceLogoffUsers'] as bool),
       rampDownLoadBalancingAlgorithm: pulumi.Input.fromValue(map['rampDownLoadBalancingAlgorithm'] as String),
-      rampDownMinimumHostsPercent: pulumi.Input.fromValue(map['rampDownMinimumHostsPercent'] as int),
+      rampDownMinimumHostsPercent: pulumi.Input.fromValue((map['rampDownMinimumHostsPercent'] as num).toInt()),
       rampDownNotificationMessage: pulumi.Input.fromValue(map['rampDownNotificationMessage'] as String),
       rampDownStartTime: pulumi.Input.fromValue(map['rampDownStartTime'] as String),
       rampDownStopHostsWhen: pulumi.Input.fromValue(map['rampDownStopHostsWhen'] as String),
-      rampDownWaitTimeMinutes: pulumi.Input.fromValue(map['rampDownWaitTimeMinutes'] as int),
-      rampUpCapacityThresholdPercent: (() { final guardedValue = map['rampUpCapacityThresholdPercent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      rampDownWaitTimeMinutes: pulumi.Input.fromValue((map['rampDownWaitTimeMinutes'] as num).toInt()),
+      rampUpCapacityThresholdPercent: (() { final guardedValue = map['rampUpCapacityThresholdPercent']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       rampUpLoadBalancingAlgorithm: pulumi.Input.fromValue(map['rampUpLoadBalancingAlgorithm'] as String),
-      rampUpMinimumHostsPercent: (() { final guardedValue = map['rampUpMinimumHostsPercent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      rampUpMinimumHostsPercent: (() { final guardedValue = map['rampUpMinimumHostsPercent']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       rampUpStartTime: pulumi.Input.fromValue(map['rampUpStartTime'] as String),
     );
   }

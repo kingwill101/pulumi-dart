@@ -218,16 +218,16 @@ import 'resource_group_policy_remediation_state.dart';
 /// 		}
 /// 		exampleResourceGroupPolicyAssignment, err := core.NewResourceGroupPolicyAssignment(ctx, "example", &core.ResourceGroupPolicyAssignmentArgs{
 /// 			Name:               pulumi.String("example"),
-/// 			ResourceGroupId:    example.ID(),
-/// 			PolicyDefinitionId: exampleDefinition.ID(),
+/// 			ResourceGroupId:    example.ID().ToIDOutput().ToStringOutput(),
+/// 			PolicyDefinitionId: exampleDefinition.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = core.NewResourceGroupPolicyRemediation(ctx, "example", &core.ResourceGroupPolicyRemediationArgs{
 /// 			Name:               pulumi.String("example-policy-remediation"),
-/// 			ResourceGroupId:    example.ID(),
-/// 			PolicyAssignmentId: exampleResourceGroupPolicyAssignment.ID(),
+/// 			ResourceGroupId:    example.ID().ToIDOutput().ToStringOutput(),
+/// 			PolicyAssignmentId: exampleResourceGroupPolicyAssignment.ID().ToIDOutput().ToStringOutput(),
 /// 			LocationFilters: pulumi.StringArray{
 /// 				pulumi.String("West Europe"),
 /// 			},
@@ -455,10 +455,10 @@ class ResourceGroupPolicyRemediation extends pulumi.CustomResource {
           'azure:core/resourceGroupPolicyRemediation:ResourceGroupPolicyRemediation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     failurePercentage = registerOutput<double?>('failurePercentage');
-    locationFilters = registerOutput<List<String>?>('locationFilters');
+    locationFilters = registerOutput<List<String>?>('locationFilters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     parallelDeployments = registerOutput<int?>('parallelDeployments');
     policyAssignmentId = registerOutput<String>('policyAssignmentId');
@@ -473,11 +473,12 @@ class ResourceGroupPolicyRemediation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ResourceGroupPolicyRemediationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ResourceGroupPolicyRemediation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -492,7 +493,27 @@ class ResourceGroupPolicyRemediation extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     failurePercentage = registerOutput<double?>('failurePercentage');
-    locationFilters = registerOutput<List<String>?>('locationFilters');
+    locationFilters = registerOutput<List<String>?>('locationFilters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    this.name = registerOutput<String>('name');
+    parallelDeployments = registerOutput<int?>('parallelDeployments');
+    policyAssignmentId = registerOutput<String>('policyAssignmentId');
+    policyDefinitionReferenceId = registerOutput<String?>('policyDefinitionReferenceId');
+    resourceCount = registerOutput<int?>('resourceCount');
+    resourceDiscoveryMode = registerOutput<String?>('resourceDiscoveryMode');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+  }
+
+  /// Creates a typed reference to an existing [ResourceGroupPolicyRemediation] resource.
+  ResourceGroupPolicyRemediation.reference(String urn)
+    : super(
+        'azure:core/resourceGroupPolicyRemediation:ResourceGroupPolicyRemediation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    failurePercentage = registerOutput<double?>('failurePercentage');
+    locationFilters = registerOutput<List<String>?>('locationFilters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     parallelDeployments = registerOutput<int?>('parallelDeployments');
     policyAssignmentId = registerOutput<String>('policyAssignmentId');

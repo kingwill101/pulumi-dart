@@ -154,6 +154,17 @@ Future<GetConfigurationKeyResult> getConfigurationKey(
   return GetConfigurationKeyResult.fromMap(result);
 }
 
+pulumi.Output<GetConfigurationKeyResult> getConfigurationKeyOutput(
+  GetConfigurationKeyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:appconfiguration/getConfigurationKey:getConfigurationKey',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetConfigurationKeyResult.fromMap);
+}
+
 /// Use this data source to access information about existing Azure App Configuration Keys.
 ///
 /// &gt; **Note:** App Configuration Keys are provisioned using a Data Plane API which requires the role `App Configuration Data Owner` on either the App Configuration or a parent scope (such as the Resource Group/Subscription). [More information can be found in the Azure Documentation for App Configuration](https://docs.microsoft.com/azure/azure-app-configuration/concept-enable-rbac#azure-built-in-roles-for-azure-app-configuration).
@@ -286,6 +297,17 @@ Future<GetConfigurationKeysResult> getConfigurationKeys(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetConfigurationKeysResult.fromMap(result);
+}
+
+pulumi.Output<GetConfigurationKeysResult> getConfigurationKeysOutput(
+  GetConfigurationKeysArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:appconfiguration/getConfigurationKeys:getConfigurationKeys',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetConfigurationKeysResult.fromMap);
 }
 
 /// Use this data source to access information about an existing App Configuration.
@@ -433,4 +455,15 @@ Future<GetConfigurationStoreResult> getConfigurationStore(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetConfigurationStoreResult.fromMap(result);
+}
+
+pulumi.Output<GetConfigurationStoreResult> getConfigurationStoreOutput(
+  GetConfigurationStoreArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:appconfiguration/getConfigurationStore:getConfigurationStore',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetConfigurationStoreResult.fromMap);
 }

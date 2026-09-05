@@ -177,7 +177,7 @@ import 'network_manager_management_group_connection_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = management.NewGroupSubscriptionAssociation(ctx, "example", &management.GroupSubscriptionAssociationArgs{
-/// 			ManagementGroupId: example.ID(),
+/// 			ManagementGroupId: example.ID().ToIDOutput().ToStringOutput(),
 /// 			SubscriptionId:    pulumi.String(alt.Id),
 /// 		})
 /// 		if err != nil {
@@ -192,7 +192,7 @@ import 'network_manager_management_group_connection_state.dart';
 /// 			return err
 /// 		}
 /// 		networkContributor, err := authorization.NewAssignment(ctx, "network_contributor", &authorization.AssignmentArgs{
-/// 			Scope:              example.ID(),
+/// 			Scope:              example.ID().ToIDOutput().ToStringOutput(),
 /// 			RoleDefinitionName: pulumi.String("Network Contributor"),
 /// 			PrincipalId:        pulumi.String(currentGetClientConfig.ObjectId),
 /// 		})
@@ -224,8 +224,8 @@ import 'network_manager_management_group_connection_state.dart';
 /// 		}
 /// 		_, err = network.NewNetworkManagerManagementGroupConnection(ctx, "example", &network.NetworkManagerManagementGroupConnectionArgs{
 /// 			Name:              pulumi.String("example-nmmgc"),
-/// 			ManagementGroupId: example.ID(),
-/// 			NetworkManagerId:  exampleNetworkManager.ID(),
+/// 			ManagementGroupId: example.ID().ToIDOutput().ToStringOutput(),
+/// 			NetworkManagerId:  exampleNetworkManager.ID().ToIDOutput().ToStringOutput(),
 /// 			Description:       pulumi.String("example"),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			networkContributor,
@@ -470,7 +470,7 @@ class NetworkManagerManagementGroupConnection extends pulumi.CustomResource {
           'azure:network/networkManagerManagementGroupConnection:NetworkManagerManagementGroupConnection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     connectionState = registerOutput<String>('connectionState');
     description = registerOutput<String?>('description');
@@ -484,11 +484,12 @@ class NetworkManagerManagementGroupConnection extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     NetworkManagerManagementGroupConnectionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return NetworkManagerManagementGroupConnection._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -502,6 +503,22 @@ class NetworkManagerManagementGroupConnection extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    connectionState = registerOutput<String>('connectionState');
+    description = registerOutput<String?>('description');
+    managementGroupId = registerOutput<String>('managementGroupId');
+    this.name = registerOutput<String>('name');
+    networkManagerId = registerOutput<String>('networkManagerId');
+  }
+
+  /// Creates a typed reference to an existing [NetworkManagerManagementGroupConnection] resource.
+  NetworkManagerManagementGroupConnection.reference(String urn)
+    : super(
+        'azure:network/networkManagerManagementGroupConnection:NetworkManagerManagementGroupConnection',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     connectionState = registerOutput<String>('connectionState');
     description = registerOutput<String?>('description');
     managementGroupId = registerOutput<String>('managementGroupId');

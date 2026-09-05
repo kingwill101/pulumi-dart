@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApplicationGatewayRewriteRuleSetRewriteRuleCondition {
   /// Perform a case in-sensitive comparison. Defaults to `false`
-  final pulumi.Input<bool>? ignoreCase;
+  final pulumi.Input<bool?>? ignoreCase;
   /// Negate the result of the condition evaluation. Defaults to `false`
-  final pulumi.Input<bool>? negate;
+  final pulumi.Input<bool?>? negate;
   /// The pattern, either fixed string or regular expression, that evaluates the truthfulness of the condition.
   final pulumi.Input<String> pattern;
   /// The [variable](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers#server-variables) of the condition.

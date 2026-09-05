@@ -26,7 +26,7 @@ class GetSpringCloudAppPersistentDisk {
   factory GetSpringCloudAppPersistentDisk.fromMap(Map<String, dynamic> map) {
     return GetSpringCloudAppPersistentDisk(
       mountPath: pulumi.Input.fromValue(map['mountPath'] as String),
-      sizeInGb: pulumi.Input.fromValue(map['sizeInGb'] as int),
+      sizeInGb: pulumi.Input.fromValue((map['sizeInGb'] as num).toInt()),
     );
   }
 }

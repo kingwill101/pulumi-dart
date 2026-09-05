@@ -5,7 +5,7 @@ import 'share_acl_access_policy.dart';
 
 class ShareAcl {
   /// An `accessPolicy` block as defined below.
-  final pulumi.Input<List<ShareAclAccessPolicy>>? accessPolicies;
+  final pulumi.Input<List<ShareAclAccessPolicy>?>? accessPolicies;
   /// The ID which should be used for this Shared Identifier.
   final pulumi.Input<String> id;
 

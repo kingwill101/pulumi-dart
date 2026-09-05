@@ -296,16 +296,17 @@ class ChannelSlack extends pulumi.CustomResource {
           'azure:bot/channelSlack:ChannelSlack',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['clientSecret', 'signingSecret', 'verificationToken'],
         ) {
     botName = registerOutput<String>('botName');
     clientId = registerOutput<String>('clientId');
-    clientSecret = registerOutput<String>('clientSecret');
+    clientSecret = registerOutput<String>('clientSecret', isSecret: true);
     landingPageUrl = registerOutput<String?>('landingPageUrl');
     location = registerOutput<String>('location');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    signingSecret = registerOutput<String?>('signingSecret');
-    verificationToken = registerOutput<String>('verificationToken');
+    signingSecret = registerOutput<String?>('signingSecret', isSecret: true);
+    verificationToken = registerOutput<String>('verificationToken', isSecret: true);
   }
 
   /// Gets an existing [ChannelSlack] resource's state with the given [name] and [id].
@@ -313,11 +314,12 @@ class ChannelSlack extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ChannelSlackState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ChannelSlack._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -333,11 +335,31 @@ class ChannelSlack extends pulumi.CustomResource {
         ) {
     botName = registerOutput<String>('botName');
     clientId = registerOutput<String>('clientId');
-    clientSecret = registerOutput<String>('clientSecret');
+    clientSecret = registerOutput<String>('clientSecret', isSecret: true);
     landingPageUrl = registerOutput<String?>('landingPageUrl');
     location = registerOutput<String>('location');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    signingSecret = registerOutput<String?>('signingSecret');
-    verificationToken = registerOutput<String>('verificationToken');
+    signingSecret = registerOutput<String?>('signingSecret', isSecret: true);
+    verificationToken = registerOutput<String>('verificationToken', isSecret: true);
+  }
+
+  /// Creates a typed reference to an existing [ChannelSlack] resource.
+  ChannelSlack.reference(String urn)
+    : super(
+        'azure:bot/channelSlack:ChannelSlack',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['clientSecret', 'signingSecret', 'verificationToken'],
+        isResourceReference: true,
+      ) {
+    botName = registerOutput<String>('botName');
+    clientId = registerOutput<String>('clientId');
+    clientSecret = registerOutput<String>('clientSecret', isSecret: true);
+    landingPageUrl = registerOutput<String?>('landingPageUrl');
+    location = registerOutput<String>('location');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    signingSecret = registerOutput<String?>('signingSecret', isSecret: true);
+    verificationToken = registerOutput<String>('verificationToken', isSecret: true);
   }
 }

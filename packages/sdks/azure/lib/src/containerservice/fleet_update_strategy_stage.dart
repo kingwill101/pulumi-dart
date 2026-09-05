@@ -5,7 +5,7 @@ import 'fleet_update_strategy_stage_group.dart';
 
 class FleetUpdateStrategyStage {
   /// Specifies the time in seconds to wait at the end of this stage before starting the next one.
-  final pulumi.Input<int>? afterStageWaitInSeconds;
+  final pulumi.Input<int?>? afterStageWaitInSeconds;
   /// One or more `group` blocks as defined below.
   final pulumi.Input<List<FleetUpdateStrategyStageGroup>> groups;
   /// The name which should be used for this stage.
@@ -31,7 +31,7 @@ class FleetUpdateStrategyStage {
 
   factory FleetUpdateStrategyStage.fromMap(Map<String, dynamic> map) {
     return FleetUpdateStrategyStage(
-      afterStageWaitInSeconds: (() { final guardedValue = map['afterStageWaitInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      afterStageWaitInSeconds: (() { final guardedValue = map['afterStageWaitInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       groups: pulumi.Input.fromValue(pulumi.Input.decodeList<FleetUpdateStrategyStageGroup>(map['groups']!, (value) => FleetUpdateStrategyStageGroup.fromMap((value as Map).cast<String, dynamic>()))),
       name: pulumi.Input.fromValue(map['name'] as String),
     );

@@ -8,21 +8,21 @@ import 'budget_management_group_time_period.dart';
 /// Input properties used for looking up and filtering BudgetManagementGroup resources.
 class BudgetManagementGroupState {
   /// The total amount of cost to track with the budget.
-  final pulumi.Input<double>? amount;
+  final pulumi.Input<double?>? amount;
   /// (Optional) The ETag of the Management Group Consumption Budget.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// A `filter` block as defined below.
-  final pulumi.Input<BudgetManagementGroupFilter>? filter;
+  final pulumi.Input<BudgetManagementGroupFilter?>? filter;
   /// The ID of the Management Group. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? managementGroupId;
+  final pulumi.Input<String?>? managementGroupId;
   /// The name which should be used for this Management Group Consumption Budget. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// One or more `notification` blocks as defined below.
-  final pulumi.Input<List<BudgetManagementGroupNotification>>? notifications;
+  final pulumi.Input<List<BudgetManagementGroupNotification>?>? notifications;
   /// The time covered by a budget. Tracking of the amount will be reset based on the time grain. Must be one of `BillingAnnual`, `BillingMonth`, `BillingQuarter`, `Annually`, `Monthly` and `Quarterly`. Defaults to `Monthly`. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? timeGrain;
+  final pulumi.Input<String?>? timeGrain;
   /// A `timePeriod` block as defined below.
-  final pulumi.Input<BudgetManagementGroupTimePeriod>? timePeriod;
+  final pulumi.Input<BudgetManagementGroupTimePeriod?>? timePeriod;
 
   /// Creates a new [BudgetManagementGroupState].
   /// [amount] The total amount of cost to track with the budget.
@@ -59,7 +59,7 @@ class BudgetManagementGroupState {
 
   factory BudgetManagementGroupState.fromMap(Map<String, dynamic> map) {
     return BudgetManagementGroupState(
-      amount: (() { final guardedValue = map['amount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      amount: (() { final guardedValue = map['amount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       filter: (() { final guardedValue = map['filter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BudgetManagementGroupFilter.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       managementGroupId: (() { final guardedValue = map['managementGroupId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

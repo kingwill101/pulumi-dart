@@ -5,7 +5,7 @@ import 'windows_function_app_slot_backup_schedule.dart';
 
 class WindowsFunctionAppSlotBackup {
   /// Should this backup job be enabled? Defaults to `true`.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// The name which should be used for this Backup.
   final pulumi.Input<String> name;
   /// a `schedule` block as detailed below.

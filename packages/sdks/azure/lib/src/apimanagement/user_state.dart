@@ -5,27 +5,27 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering User resources.
 class UserState {
   /// The name of the API Management Service in which the User should be created. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? apiManagementName;
+  final pulumi.Input<String?>? apiManagementName;
   /// The kind of confirmation email which will be sent to this user. Possible values are `invite` and `signup`. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? confirmation;
+  final pulumi.Input<String?>? confirmation;
   /// The email address associated with this user.
-  final pulumi.Input<String>? email;
+  final pulumi.Input<String?>? email;
   /// The first name for this user.
-  final pulumi.Input<String>? firstName;
+  final pulumi.Input<String?>? firstName;
   /// The last name for this user.
-  final pulumi.Input<String>? lastName;
+  final pulumi.Input<String?>? lastName;
   /// A note about this user.
-  final pulumi.Input<String>? note;
+  final pulumi.Input<String?>? note;
   /// The password associated with this user.
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// The name of the Resource Group in which the API Management Service exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// The state of this user. Possible values are `active`, `blocked` and `pending`.
   ///
   /// &gt; **Note:** the State can be changed from Pending &gt; Active/Blocked but not from Active/Blocked &gt; Pending.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// The Identifier for this User, which must be unique within the API Management Service. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? userId;
+  final pulumi.Input<String?>? userId;
 
   /// Creates a new [UserState].
   /// [apiManagementName] The name of the API Management Service in which the User should be created. Changing this forces a new resource to be created.

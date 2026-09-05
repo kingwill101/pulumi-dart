@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ProviderFeaturesLogAnalyticsWorkspace {
-  final pulumi.Input<bool>? permanentlyDeleteOnDestroy;
+  final pulumi.Input<bool?>? permanentlyDeleteOnDestroy;
 
   /// Creates a new [ProviderFeaturesLogAnalyticsWorkspace].
   /// [permanentlyDeleteOnDestroy] Optional.

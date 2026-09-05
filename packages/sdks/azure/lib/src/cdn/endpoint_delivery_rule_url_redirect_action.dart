@@ -4,15 +4,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EndpointDeliveryRuleUrlRedirectAction {
   /// Specifies the fragment part of the URL. This value must not start with a `#`.
-  final pulumi.Input<String>? fragment;
+  final pulumi.Input<String?>? fragment;
   /// Specifies the hostname part of the URL.
-  final pulumi.Input<String>? hostname;
+  final pulumi.Input<String?>? hostname;
   /// Specifies the path part of the URL. This value must begin with a `/`.
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? path;
   /// Specifies the protocol part of the URL. Valid values are `MatchRequest`, `Http` and `Https`. Defaults to `MatchRequest`.
-  final pulumi.Input<String>? protocol;
+  final pulumi.Input<String?>? protocol;
   /// Specifies the query string part of the URL. This value must not start with a `?` or `&` and must be in `&lt;key&gt;=&lt;value&gt;` format separated by `&`.
-  final pulumi.Input<String>? queryString;
+  final pulumi.Input<String?>? queryString;
   /// Type of the redirect. Valid values are `Found`, `Moved`, `PermanentRedirect` and `TemporaryRedirect`.
   final pulumi.Input<String> redirectType;
 

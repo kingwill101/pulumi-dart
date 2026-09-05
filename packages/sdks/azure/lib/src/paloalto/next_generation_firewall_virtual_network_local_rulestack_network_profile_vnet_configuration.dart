@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NextGenerationFirewallVirtualNetworkLocalRulestackNetworkProfileVnetConfiguration {
-  final pulumi.Input<String>? ipOfTrustForUserDefinedRoutes;
+  final pulumi.Input<String?>? ipOfTrustForUserDefinedRoutes;
   /// The ID of the Trust subnet.
-  final pulumi.Input<String>? trustedSubnetId;
+  final pulumi.Input<String?>? trustedSubnetId;
   /// The ID of the UnTrust subnet.
-  final pulumi.Input<String>? untrustedSubnetId;
+  final pulumi.Input<String?>? untrustedSubnetId;
   /// The ID of the Virtual Network.
   final pulumi.Input<String> virtualNetworkId;
 

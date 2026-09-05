@@ -6,11 +6,11 @@ class AccountConsistencyPolicy {
   /// The Consistency Level to use for this CosmosDB Account - can be either `BoundedStaleness`, `Eventual`, `Session`, `Strong` or `ConsistentPrefix`.
   final pulumi.Input<String> consistencyLevel;
   /// When used with the Bounded Staleness consistency level, this value represents the time amount of staleness (in seconds) tolerated. The accepted range for this value is `5` - `86400` (1 day). Defaults to `5`. Required when `consistencyLevel` is set to `BoundedStaleness`.
-  final pulumi.Input<int>? maxIntervalInSeconds;
+  final pulumi.Input<int?>? maxIntervalInSeconds;
   /// When used with the Bounded Staleness consistency level, this value represents the number of stale requests tolerated. The accepted range for this value is `10` – `2147483647`. Defaults to `100`. Required when `consistencyLevel` is set to `BoundedStaleness`.
   ///
   /// &gt; **Note:** `maxIntervalInSeconds` and `maxStalenessPrefix` can only be set to values other than default when the `consistencyLevel` is set to `BoundedStaleness`.
-  final pulumi.Input<int>? maxStalenessPrefix;
+  final pulumi.Input<int?>? maxStalenessPrefix;
 
   /// Creates a new [AccountConsistencyPolicy].
   /// [consistencyLevel] The Consistency Level to use for this CosmosDB Account - can be either `BoundedStaleness`, `Eventual`, `Session`, `Strong` or `ConsistentPrefix`.
@@ -33,8 +33,8 @@ class AccountConsistencyPolicy {
   factory AccountConsistencyPolicy.fromMap(Map<String, dynamic> map) {
     return AccountConsistencyPolicy(
       consistencyLevel: pulumi.Input.fromValue(map['consistencyLevel'] as String),
-      maxIntervalInSeconds: (() { final guardedValue = map['maxIntervalInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      maxStalenessPrefix: (() { final guardedValue = map['maxStalenessPrefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxIntervalInSeconds: (() { final guardedValue = map['maxIntervalInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxStalenessPrefix: (() { final guardedValue = map['maxStalenessPrefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

@@ -5,13 +5,13 @@ import 'standard_web_test_validation_rules_content.dart';
 
 class StandardWebTestValidationRules {
   /// A `content` block as defined above.
-  final pulumi.Input<StandardWebTestValidationRulesContent>? content;
+  final pulumi.Input<StandardWebTestValidationRulesContent?>? content;
   /// The expected status code of the response. Default is '200', '0' means 'response code &lt; 400'
-  final pulumi.Input<int>? expectedStatusCode;
+  final pulumi.Input<int?>? expectedStatusCode;
   /// The number of days of SSL certificate validity remaining for the checked endpoint. If the certificate has a shorter remaining lifetime left, the test will fail. This number should be between 1 and 365.
-  final pulumi.Input<int>? sslCertRemainingLifetime;
+  final pulumi.Input<int?>? sslCertRemainingLifetime;
   /// Should the SSL check be enabled?
-  final pulumi.Input<bool>? sslCheckEnabled;
+  final pulumi.Input<bool?>? sslCheckEnabled;
 
   /// Creates a new [StandardWebTestValidationRules].
   /// [content] A `content` block as defined above.
@@ -37,8 +37,8 @@ class StandardWebTestValidationRules {
   factory StandardWebTestValidationRules.fromMap(Map<String, dynamic> map) {
     return StandardWebTestValidationRules(
       content: (() { final guardedValue = map['content']; if (guardedValue == null) return null; return pulumi.Input.fromValue(StandardWebTestValidationRulesContent.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      expectedStatusCode: (() { final guardedValue = map['expectedStatusCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      sslCertRemainingLifetime: (() { final guardedValue = map['sslCertRemainingLifetime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      expectedStatusCode: (() { final guardedValue = map['expectedStatusCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      sslCertRemainingLifetime: (() { final guardedValue = map['sslCertRemainingLifetime']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       sslCheckEnabled: (() { final guardedValue = map['sslCheckEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }

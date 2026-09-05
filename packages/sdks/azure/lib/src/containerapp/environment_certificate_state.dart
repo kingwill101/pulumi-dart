@@ -8,31 +8,31 @@ class EnvironmentCertificateState {
   /// The Certificate Private Key as a base64 encoded PFX or PEM. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** One of `certificateBlobBase64` and `certificateKeyVault` must be set.
-  final pulumi.Input<String>? certificateBlobBase64;
+  final pulumi.Input<String?>? certificateBlobBase64;
   /// A `certificateKeyVault` block as defined below. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** one of `certificateBlobBase64` and `certificateKeyVault` must be set.
-  final pulumi.Input<EnvironmentCertificateCertificateKeyVault>? certificateKeyVault;
+  final pulumi.Input<EnvironmentCertificateCertificateKeyVault?>? certificateKeyVault;
   /// The password for the Certificate. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** required if `certificateBlobBase64` is specified.
-  final pulumi.Input<String>? certificatePassword;
+  final pulumi.Input<String?>? certificatePassword;
   /// The Container App Managed Environment ID to configure this Certificate on. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? containerAppEnvironmentId;
+  final pulumi.Input<String?>? containerAppEnvironmentId;
   /// The expiration date for the Certificate.
-  final pulumi.Input<String>? expirationDate;
+  final pulumi.Input<String?>? expirationDate;
   /// The date of issue for the Certificate.
-  final pulumi.Input<String>? issueDate;
+  final pulumi.Input<String?>? issueDate;
   /// The Certificate Issuer.
-  final pulumi.Input<String>? issuer;
+  final pulumi.Input<String?>? issuer;
   /// The name of the Container Apps Environment Certificate. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The Subject Name for the Certificate.
-  final pulumi.Input<String>? subjectName;
+  final pulumi.Input<String?>? subjectName;
   /// A mapping of tags to assign to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The Thumbprint of the Certificate.
-  final pulumi.Input<String>? thumbprint;
+  final pulumi.Input<String?>? thumbprint;
 
   /// Creates a new [EnvironmentCertificateState].
   /// [certificateBlobBase64] The Certificate Private Key as a base64 encoded PFX or PEM. Changing this forces a new resource to be created.

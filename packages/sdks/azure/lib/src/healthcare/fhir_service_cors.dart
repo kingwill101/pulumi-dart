@@ -10,9 +10,9 @@ class FhirServiceCors {
   /// A set of origins to be allowed via CORS.
   final pulumi.Input<List<String>> allowedOrigins;
   /// If credentials are allowed via CORS.
-  final pulumi.Input<bool>? credentialsAllowed;
+  final pulumi.Input<bool?>? credentialsAllowed;
   /// The max age to be allowed via CORS.
-  final pulumi.Input<int>? maxAgeInSeconds;
+  final pulumi.Input<int?>? maxAgeInSeconds;
 
   /// Creates a new [FhirServiceCors].
   /// [allowedHeaders] A set of headers to be allowed via CORS.
@@ -44,7 +44,7 @@ class FhirServiceCors {
       allowedMethods: pulumi.Input.fromValue((map['allowedMethods'] as List).cast<String>()),
       allowedOrigins: pulumi.Input.fromValue((map['allowedOrigins'] as List).cast<String>()),
       credentialsAllowed: (() { final guardedValue = map['credentialsAllowed']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      maxAgeInSeconds: (() { final guardedValue = map['maxAgeInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxAgeInSeconds: (() { final guardedValue = map['maxAgeInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

@@ -180,6 +180,17 @@ Future<GetBackendAddressPoolResult> getBackendAddressPool(
   return GetBackendAddressPoolResult.fromMap(result);
 }
 
+pulumi.Output<GetBackendAddressPoolResult> getBackendAddressPoolOutput(
+  GetBackendAddressPoolArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:lb/getBackendAddressPool:getBackendAddressPool',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBackendAddressPoolResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Load Balancer
 ///
 /// ## Example Usage
@@ -325,6 +336,17 @@ Future<GetLBResult> getLB(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetLBResult.fromMap(result);
+}
+
+pulumi.Output<GetLBResult> getLBOutput(
+  GetLBArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:lb/getLB:getLB',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLBResult.fromMap);
 }
 
 /// Use this data source to access information about an existing Load Balancer Outbound Rule.
@@ -474,6 +496,17 @@ Future<GetLBOutboundRuleResult> getLBOutboundRule(
   return GetLBOutboundRuleResult.fromMap(result);
 }
 
+pulumi.Output<GetLBOutboundRuleResult> getLBOutboundRuleOutput(
+  GetLBOutboundRuleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:lb/getLBOutboundRule:getLBOutboundRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLBOutboundRuleResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Load Balancer Rule.
 ///
 /// ## Example Usage
@@ -541,4 +574,15 @@ Future<GetLBRuleResult> getLBRule(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetLBRuleResult.fromMap(result);
+}
+
+pulumi.Output<GetLBRuleResult> getLBRuleOutput(
+  GetLBRuleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:lb/getLBRule:getLBRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLBRuleResult.fromMap);
 }

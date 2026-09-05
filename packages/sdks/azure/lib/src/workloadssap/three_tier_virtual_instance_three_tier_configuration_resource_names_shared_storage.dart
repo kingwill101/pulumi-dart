@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesSharedStorage {
   /// The full name of the Shared Storage Account. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? accountName;
+  final pulumi.Input<String?>? accountName;
   /// The full name of Private Endpoint for the Shared Storage Account. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? privateEndpointName;
+  final pulumi.Input<String?>? privateEndpointName;
 
   /// Creates a new [ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesSharedStorage].
   /// [accountName] The full name of the Shared Storage Account. Changing this forces a new resource to be created.

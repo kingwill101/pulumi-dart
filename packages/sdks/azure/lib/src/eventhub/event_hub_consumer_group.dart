@@ -146,7 +146,7 @@ import 'event_hub_consumer_group_state.dart';
 /// 		}
 /// 		exampleEventHub, err := eventhub.NewEventHub(ctx, "example", &eventhub.EventHubArgs{
 /// 			Name:             pulumi.String("acceptanceTestEventHub"),
-/// 			NamespaceId:      exampleEventHubNamespace.ID(),
+/// 			NamespaceId:      exampleEventHubNamespace.ID().ToIDOutput().ToStringOutput(),
 /// 			PartitionCount:   pulumi.Int(2),
 /// 			MessageRetention: pulumi.Int(2),
 /// 		})
@@ -339,7 +339,7 @@ class EventHubConsumerGroup extends pulumi.CustomResource {
           'azure:eventhub/eventHubConsumerGroup:EventHubConsumerGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     eventhubName = registerOutput<String>('eventhubName');
     this.name = registerOutput<String>('name');
@@ -353,11 +353,12 @@ class EventHubConsumerGroup extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EventHubConsumerGroupState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return EventHubConsumerGroup._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -371,6 +372,22 @@ class EventHubConsumerGroup extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    eventhubName = registerOutput<String>('eventhubName');
+    this.name = registerOutput<String>('name');
+    namespaceName = registerOutput<String>('namespaceName');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    userMetadata = registerOutput<String?>('userMetadata');
+  }
+
+  /// Creates a typed reference to an existing [EventHubConsumerGroup] resource.
+  EventHubConsumerGroup.reference(String urn)
+    : super(
+        'azure:eventhub/eventHubConsumerGroup:EventHubConsumerGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     eventhubName = registerOutput<String>('eventhubName');
     this.name = registerOutput<String>('name');
     namespaceName = registerOutput<String>('namespaceName');

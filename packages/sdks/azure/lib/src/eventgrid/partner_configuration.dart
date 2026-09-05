@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'partner_configuration_args.dart';
+import 'partner_configuration_partner_authorization.dart';
 import 'partner_configuration_state.dart';
 
 /// Manages an Event Grid Partner Configuration.
@@ -230,7 +231,7 @@ class PartnerConfiguration extends pulumi.CustomResource {
   /// Time used to validate the authorization expiration time for each authorized partner. Defaults to `7`.
   late final pulumi.Output<int?> defaultMaximumExpirationTimeInDays;
   /// One or more `partnerAuthorization` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> partnerAuthorizations;
+  late final pulumi.Output<List<PartnerConfigurationPartnerAuthorization>?> partnerAuthorizations;
   /// The name of the Resource Group where the Event Grid Partner Configuration should exist. Changing this forces a new Event Grid Partner Configuration to be created.
   late final pulumi.Output<String> resourceGroupName;
   /// A mapping of tags which should be assigned to the Event Grid Partner Configuration.
@@ -248,12 +249,12 @@ class PartnerConfiguration extends pulumi.CustomResource {
           'azure:eventgrid/partnerConfiguration:PartnerConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     defaultMaximumExpirationTimeInDays = registerOutput<int?>('defaultMaximumExpirationTimeInDays');
-    partnerAuthorizations = registerOutput<List<Map<String, dynamic>>?>('partnerAuthorizations');
+    partnerAuthorizations = registerOutput<List<PartnerConfigurationPartnerAuthorization>?>('partnerAuthorizations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PartnerConfigurationPartnerAuthorization>(guardedValue, (value) => PartnerConfigurationPartnerAuthorization.fromMap((value as Map).cast<String, dynamic>())); });
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [PartnerConfiguration] resource's state with the given [name] and [id].
@@ -261,11 +262,12 @@ class PartnerConfiguration extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PartnerConfigurationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return PartnerConfiguration._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -280,8 +282,23 @@ class PartnerConfiguration extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     defaultMaximumExpirationTimeInDays = registerOutput<int?>('defaultMaximumExpirationTimeInDays');
-    partnerAuthorizations = registerOutput<List<Map<String, dynamic>>?>('partnerAuthorizations');
+    partnerAuthorizations = registerOutput<List<PartnerConfigurationPartnerAuthorization>?>('partnerAuthorizations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PartnerConfigurationPartnerAuthorization>(guardedValue, (value) => PartnerConfigurationPartnerAuthorization.fromMap((value as Map).cast<String, dynamic>())); });
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [PartnerConfiguration] resource.
+  PartnerConfiguration.reference(String urn)
+    : super(
+        'azure:eventgrid/partnerConfiguration:PartnerConfiguration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    defaultMaximumExpirationTimeInDays = registerOutput<int?>('defaultMaximumExpirationTimeInDays');
+    partnerAuthorizations = registerOutput<List<PartnerConfigurationPartnerAuthorization>?>('partnerAuthorizations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PartnerConfigurationPartnerAuthorization>(guardedValue, (value) => PartnerConfigurationPartnerAuthorization.fromMap((value as Map).cast<String, dynamic>())); });
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

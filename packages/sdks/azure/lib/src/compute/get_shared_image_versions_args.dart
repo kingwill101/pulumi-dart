@@ -14,7 +14,7 @@ class GetSharedImageVersionsArgs {
   /// The name of the Resource Group in which the Shared Image Gallery exists.
   final pulumi.Input<String> resourceGroupName;
   /// A mapping of tags to filter the list of images against.
-  final pulumi.Input<Map<String, String>>? tagsFilter;
+  final pulumi.Input<Map<String, String>?>? tagsFilter;
 
   /// Creates a new [GetSharedImageVersionsArgs].
   /// [galleryName] The name of the Shared Image in which the Shared Image exists.

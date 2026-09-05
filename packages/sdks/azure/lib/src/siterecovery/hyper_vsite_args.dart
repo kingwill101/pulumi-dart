@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_siterecovery_hyper_vsite_hyper_vsite_args_doc}
 class HyperVSiteArgs {
   /// The name which should be used for this Recovery Service. Changing this forces a new Site to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the Recovery Services Vault where the Site created. Changing this forces a new Site to be created.
   final pulumi.Input<String> recoveryVaultId;
 

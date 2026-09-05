@@ -1,6 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'virtual_machine_availability_group_listener_args.dart';
 import 'virtual_machine_availability_group_listener_load_balancer_configuration.dart';
+import 'virtual_machine_availability_group_listener_multi_subnet_ip_configuration.dart';
+import 'virtual_machine_availability_group_listener_replica.dart';
 import 'virtual_machine_availability_group_listener_state.dart';
 
 /// Manages a Microsoft SQL Virtual Machine Availability Group Listener.
@@ -247,13 +249,13 @@ class VirtualMachineAvailabilityGroupListener extends pulumi.CustomResource {
   /// &gt; **Note:** Either one of `loadBalancerConfiguration` or `multiSubnetIpConfiguration` must be specified.
   late final pulumi.Output<VirtualMachineAvailabilityGroupListenerLoadBalancerConfiguration?> loadBalancerConfiguration;
   /// One or more `multiSubnetIpConfiguration` blocks as defined below. Changing this forces a new resource to be created.
-  late final pulumi.Output<List<Map<String, dynamic>>?> multiSubnetIpConfigurations;
+  late final pulumi.Output<List<VirtualMachineAvailabilityGroupListenerMultiSubnetIpConfiguration>?> multiSubnetIpConfigurations;
   /// The name which should be used for the Microsoft SQL Virtual Machine Availability Group Listener. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
   /// The port of the listener. Changing this forces a new resource to be created.
   late final pulumi.Output<int?> port;
   /// One or more `replica` blocks as defined below. Changing this forces a new resource to be created.
-  late final pulumi.Output<List<Map<String, dynamic>>> replicas;
+  late final pulumi.Output<List<VirtualMachineAvailabilityGroupListenerReplica>> replicas;
   /// The ID of the SQL Virtual Machine Group to create the listener. Changing this forces a new resource to be created.
   late final pulumi.Output<String> sqlVirtualMachineGroupId;
 
@@ -269,14 +271,14 @@ class VirtualMachineAvailabilityGroupListener extends pulumi.CustomResource {
           'azure:mssql/virtualMachineAvailabilityGroupListener:VirtualMachineAvailabilityGroupListener',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     availabilityGroupName = registerOutput<String?>('availabilityGroupName');
     loadBalancerConfiguration = registerOutput<VirtualMachineAvailabilityGroupListenerLoadBalancerConfiguration?>('loadBalancerConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualMachineAvailabilityGroupListenerLoadBalancerConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    multiSubnetIpConfigurations = registerOutput<List<Map<String, dynamic>>?>('multiSubnetIpConfigurations');
+    multiSubnetIpConfigurations = registerOutput<List<VirtualMachineAvailabilityGroupListenerMultiSubnetIpConfiguration>?>('multiSubnetIpConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VirtualMachineAvailabilityGroupListenerMultiSubnetIpConfiguration>(guardedValue, (value) => VirtualMachineAvailabilityGroupListenerMultiSubnetIpConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     port = registerOutput<int?>('port');
-    replicas = registerOutput<List<Map<String, dynamic>>>('replicas');
+    replicas = registerOutput<List<VirtualMachineAvailabilityGroupListenerReplica>>('replicas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VirtualMachineAvailabilityGroupListenerReplica>(guardedValue, (value) => VirtualMachineAvailabilityGroupListenerReplica.fromMap((value as Map).cast<String, dynamic>())); });
     sqlVirtualMachineGroupId = registerOutput<String>('sqlVirtualMachineGroupId');
   }
 
@@ -285,11 +287,12 @@ class VirtualMachineAvailabilityGroupListener extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VirtualMachineAvailabilityGroupListenerState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VirtualMachineAvailabilityGroupListener._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -305,10 +308,28 @@ class VirtualMachineAvailabilityGroupListener extends pulumi.CustomResource {
         ) {
     availabilityGroupName = registerOutput<String?>('availabilityGroupName');
     loadBalancerConfiguration = registerOutput<VirtualMachineAvailabilityGroupListenerLoadBalancerConfiguration?>('loadBalancerConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualMachineAvailabilityGroupListenerLoadBalancerConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    multiSubnetIpConfigurations = registerOutput<List<Map<String, dynamic>>?>('multiSubnetIpConfigurations');
+    multiSubnetIpConfigurations = registerOutput<List<VirtualMachineAvailabilityGroupListenerMultiSubnetIpConfiguration>?>('multiSubnetIpConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VirtualMachineAvailabilityGroupListenerMultiSubnetIpConfiguration>(guardedValue, (value) => VirtualMachineAvailabilityGroupListenerMultiSubnetIpConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     port = registerOutput<int?>('port');
-    replicas = registerOutput<List<Map<String, dynamic>>>('replicas');
+    replicas = registerOutput<List<VirtualMachineAvailabilityGroupListenerReplica>>('replicas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VirtualMachineAvailabilityGroupListenerReplica>(guardedValue, (value) => VirtualMachineAvailabilityGroupListenerReplica.fromMap((value as Map).cast<String, dynamic>())); });
+    sqlVirtualMachineGroupId = registerOutput<String>('sqlVirtualMachineGroupId');
+  }
+
+  /// Creates a typed reference to an existing [VirtualMachineAvailabilityGroupListener] resource.
+  VirtualMachineAvailabilityGroupListener.reference(String urn)
+    : super(
+        'azure:mssql/virtualMachineAvailabilityGroupListener:VirtualMachineAvailabilityGroupListener',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    availabilityGroupName = registerOutput<String?>('availabilityGroupName');
+    loadBalancerConfiguration = registerOutput<VirtualMachineAvailabilityGroupListenerLoadBalancerConfiguration?>('loadBalancerConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualMachineAvailabilityGroupListenerLoadBalancerConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    multiSubnetIpConfigurations = registerOutput<List<VirtualMachineAvailabilityGroupListenerMultiSubnetIpConfiguration>?>('multiSubnetIpConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VirtualMachineAvailabilityGroupListenerMultiSubnetIpConfiguration>(guardedValue, (value) => VirtualMachineAvailabilityGroupListenerMultiSubnetIpConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    port = registerOutput<int?>('port');
+    replicas = registerOutput<List<VirtualMachineAvailabilityGroupListenerReplica>>('replicas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VirtualMachineAvailabilityGroupListenerReplica>(guardedValue, (value) => VirtualMachineAvailabilityGroupListenerReplica.fromMap((value as Map).cast<String, dynamic>())); });
     sqlVirtualMachineGroupId = registerOutput<String>('sqlVirtualMachineGroupId');
   }
 }

@@ -148,3 +148,14 @@ Future<GetFirewallPolicyResult> getFirewallPolicy(
   );
   return GetFirewallPolicyResult.fromMap(result);
 }
+
+pulumi.Output<GetFirewallPolicyResult> getFirewallPolicyOutput(
+  GetFirewallPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:waf/getFirewallPolicy:getFirewallPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFirewallPolicyResult.fromMap);
+}

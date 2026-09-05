@@ -6,7 +6,7 @@ class EndpointGlobalDeliveryRuleCacheExpirationAction {
   /// The behavior of the cache. Valid values are `BypassCache`, `Override` and `SetIfMissing`.
   final pulumi.Input<String> behavior;
   /// Duration of the cache. Only allowed when `behavior` is set to `Override` or `SetIfMissing`. Format: `[d.]hh:mm:ss`
-  final pulumi.Input<String>? duration;
+  final pulumi.Input<String?>? duration;
 
   /// Creates a new [EndpointGlobalDeliveryRuleCacheExpirationAction].
   /// [behavior] The behavior of the cache. Valid values are `BypassCache`, `Override` and `SetIfMissing`.

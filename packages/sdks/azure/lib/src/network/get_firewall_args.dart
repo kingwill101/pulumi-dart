@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_network_get_firewall_get_firewall_args_doc}
 class GetFirewallArgs {
   /// Whether DNS proxy is enabled. It will forward DNS requests to the DNS servers when it is `true`.
-  final pulumi.Input<bool>? dnsProxyEnabled;
+  final pulumi.Input<bool?>? dnsProxyEnabled;
   /// The name of the Azure Firewall.
   final pulumi.Input<String> name;
   /// The name of the Resource Group in which the Azure Firewall exists.

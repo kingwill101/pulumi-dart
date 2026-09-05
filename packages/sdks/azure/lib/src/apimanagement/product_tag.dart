@@ -167,7 +167,7 @@ import 'product_tag_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleTag, err := apimanagement.NewTag(ctx, "example", &apimanagement.TagArgs{
-/// 			ApiManagementId: exampleService.ID(),
+/// 			ApiManagementId: exampleService.ID().ToIDOutput().ToStringOutput(),
 /// 			Name:            pulumi.String("example-tag"),
 /// 		})
 /// 		if err != nil {
@@ -376,7 +376,7 @@ class ProductTag extends pulumi.CustomResource {
           'azure:apimanagement/productTag:ProductTag',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     apiManagementName = registerOutput<String>('apiManagementName');
     apiManagementProductId = registerOutput<String>('apiManagementProductId');
@@ -389,11 +389,12 @@ class ProductTag extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ProductTagState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ProductTag._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -407,6 +408,21 @@ class ProductTag extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    apiManagementName = registerOutput<String>('apiManagementName');
+    apiManagementProductId = registerOutput<String>('apiManagementProductId');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+  }
+
+  /// Creates a typed reference to an existing [ProductTag] resource.
+  ProductTag.reference(String urn)
+    : super(
+        'azure:apimanagement/productTag:ProductTag',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     apiManagementName = registerOutput<String>('apiManagementName');
     apiManagementProductId = registerOutput<String>('apiManagementProductId');
     this.name = registerOutput<String>('name');

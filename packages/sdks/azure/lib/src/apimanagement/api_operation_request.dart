@@ -7,13 +7,13 @@ import 'api_operation_request_representation.dart';
 
 class ApiOperationRequest {
   /// A description of the HTTP Request, which may include HTML tags.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// One or more `header` blocks as defined above.
-  final pulumi.Input<List<ApiOperationRequestHeader>>? headers;
+  final pulumi.Input<List<ApiOperationRequestHeader>?>? headers;
   /// One or more `queryParameter` blocks as defined above.
-  final pulumi.Input<List<ApiOperationRequestQueryParameter>>? queryParameters;
+  final pulumi.Input<List<ApiOperationRequestQueryParameter>?>? queryParameters;
   /// One or more `representation` blocks as defined below.
-  final pulumi.Input<List<ApiOperationRequestRepresentation>>? representations;
+  final pulumi.Input<List<ApiOperationRequestRepresentation>?>? representations;
 
   /// Creates a new [ApiOperationRequest].
   /// [description] A description of the HTTP Request, which may include HTML tags.

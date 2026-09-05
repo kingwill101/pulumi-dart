@@ -197,13 +197,13 @@ class LicationLoadBalancer extends pulumi.CustomResource {
           'azure:appconfiguration/licationLoadBalancer:LicationLoadBalancer',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     primaryConfigurationEndpoint = registerOutput<String>('primaryConfigurationEndpoint');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [LicationLoadBalancer] resource's state with the given [name] and [id].
@@ -211,11 +211,12 @@ class LicationLoadBalancer extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LicationLoadBalancerState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LicationLoadBalancer._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -233,6 +234,22 @@ class LicationLoadBalancer extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     primaryConfigurationEndpoint = registerOutput<String>('primaryConfigurationEndpoint');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [LicationLoadBalancer] resource.
+  LicationLoadBalancer.reference(String urn)
+    : super(
+        'azure:appconfiguration/licationLoadBalancer:LicationLoadBalancer',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    primaryConfigurationEndpoint = registerOutput<String>('primaryConfigurationEndpoint');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

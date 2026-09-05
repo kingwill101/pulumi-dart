@@ -954,7 +954,7 @@ import 'portal_dashboard_state.dart';
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as azurerm from "@pulumi/azurerm";
 ///
-/// function notImplemented(message: string) {
+/// function notImplemented(message: string): any {
 ///     throw new Error(message);
 /// }
 ///
@@ -1028,7 +1028,7 @@ import 'portal_dashboard_state.dart';
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
-/// func notImplemented(message string) pulumi.AnyOutput {
+/// func notImplemented(message string) any {
 /// 	panic(message)
 /// }
 ///
@@ -1040,7 +1040,7 @@ import 'portal_dashboard_state.dart';
 /// 			Name:              "my-cool-dashboard",
 /// 			ResourceGroupName: example.Name,
 /// 			Location:          example.Location,
-/// 			Tags: map[string]interface{}{
+/// 			Tags: map[string]string{
 /// 				"source": "terraform",
 /// 			},
 /// 			DashboardProperties: dash_template.(map[string]interface{})["rendered"],
@@ -1106,13 +1106,13 @@ class PortalDashboard extends pulumi.CustomResource {
           'azure:portal/portalDashboard:PortalDashboard',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     dashboardProperties = registerOutput<String>('dashboardProperties');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [PortalDashboard] resource's state with the given [name] and [id].
@@ -1120,11 +1120,12 @@ class PortalDashboard extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PortalDashboardState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return PortalDashboard._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1142,6 +1143,22 @@ class PortalDashboard extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [PortalDashboard] resource.
+  PortalDashboard.reference(String urn)
+    : super(
+        'azure:portal/portalDashboard:PortalDashboard',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    dashboardProperties = registerOutput<String>('dashboardProperties');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

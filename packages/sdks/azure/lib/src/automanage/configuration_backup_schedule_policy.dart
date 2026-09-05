@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConfigurationBackupSchedulePolicy {
   /// The schedule policy type of the backup policy. Possible value is `SimpleSchedulePolicy`. Defaults to `SimpleSchedulePolicy`.
-  final pulumi.Input<String>? schedulePolicyType;
+  final pulumi.Input<String?>? schedulePolicyType;
   /// The schedule run days of the backup policy. Possible values are `Sunday`, `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday` and `Saturday`.
-  final pulumi.Input<List<String>>? scheduleRunDays;
+  final pulumi.Input<List<String>?>? scheduleRunDays;
   /// The schedule run frequency of the backup policy. Possible values are `Daily` and `Weekly`. Defaults to `Daily`.
-  final pulumi.Input<String>? scheduleRunFrequency;
+  final pulumi.Input<String?>? scheduleRunFrequency;
   /// The schedule run times of the backup policy.
-  final pulumi.Input<List<String>>? scheduleRunTimes;
+  final pulumi.Input<List<String>?>? scheduleRunTimes;
 
   /// Creates a new [ConfigurationBackupSchedulePolicy].
   /// [schedulePolicyType] The schedule policy type of the backup policy. Possible value is `SimpleSchedulePolicy`. Defaults to `SimpleSchedulePolicy`.

@@ -6,17 +6,17 @@ import 'arc_machine_identity.dart';
 /// Input properties used for looking up and filtering ArcMachine resources.
 class ArcMachineState {
   /// An `identity` block as defined below.
-  final pulumi.Input<ArcMachineIdentity>? identity;
+  final pulumi.Input<ArcMachineIdentity?>? identity;
   /// The kind of the Arc Machine. Possible values are `AVS`, `AWS`, `EPS`, `GCP`, `HCI`, `SCVMM` and `VMware`. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// The Azure Region where the Arc Machine should exist. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the Arc machine. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the Resource Group where the Arc Machine should exist. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// A mapping of tags to assign to the Arc Machine.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ArcMachineState].
   /// [identity] An `identity` block as defined below.

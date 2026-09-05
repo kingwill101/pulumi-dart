@@ -6,7 +6,7 @@ class ScheduledQueryRulesLogCriteriaDimension {
   /// Name of the dimension.
   final pulumi.Input<String> name;
   /// Operator for dimension values, - 'Include'. Defaults to `Include`.
-  final pulumi.Input<String>? operator;
+  final pulumi.Input<String?>? operator;
   /// List of dimension values.
   final pulumi.Input<List<String>> values;
 

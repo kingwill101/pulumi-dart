@@ -10,7 +10,7 @@ class ManagedCertificateArgs {
   /// The ID of the App Service Custom Hostname Binding for the Certificate. Changing this forces a new App Service Managed Certificate to be created.
   final pulumi.Input<String> customHostnameBindingId;
   /// A mapping of tags which should be assigned to the App Service Managed Certificate.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ManagedCertificateArgs].
   /// [customHostnameBindingId] The ID of the App Service Custom Hostname Binding for the Certificate. Changing this forces a new App Service Managed Certificate to be created.

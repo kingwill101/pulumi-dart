@@ -4,15 +4,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GroupPolicySetDefinitionPolicyDefinitionReference {
   /// Parameter values for the references Policy Definition in JSON format.
-  final pulumi.Input<String>? parameterValues;
+  final pulumi.Input<String?>? parameterValues;
   /// The ID of the Policy Definition to include in this Policy Set Definition.
   final pulumi.Input<String> policyDefinitionId;
   /// Specifies a list of Policy Definition Groups names that this Policy Definition Reference belongs to.
-  final pulumi.Input<List<String>>? policyGroupNames;
+  final pulumi.Input<List<String>?>? policyGroupNames;
   /// A unique ID within this Policy Set Definition for this Policy Definition Reference.
-  final pulumi.Input<String>? referenceId;
+  final pulumi.Input<String?>? referenceId;
   /// The version of the Policy Definition to use.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [GroupPolicySetDefinitionPolicyDefinitionReference].
   /// [parameterValues] Parameter values for the references Policy Definition in JSON format.

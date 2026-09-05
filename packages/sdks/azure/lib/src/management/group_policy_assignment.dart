@@ -1,6 +1,9 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'group_policy_assignment_args.dart';
 import 'group_policy_assignment_identity.dart';
+import 'group_policy_assignment_non_compliance_message.dart';
+import 'group_policy_assignment_override.dart';
+import 'group_policy_assignment_resource_selector.dart';
 import 'group_policy_assignment_state.dart';
 
 /// Manages a Policy Assignment to a Management Group.
@@ -131,7 +134,7 @@ import 'group_policy_assignment_state.dart';
 /// 			PolicyType:        pulumi.String("Custom"),
 /// 			Mode:              pulumi.String("All"),
 /// 			DisplayName:       pulumi.String("my-policy-definition"),
-/// 			ManagementGroupId: example.ID(),
+/// 			ManagementGroupId: example.ID().ToIDOutput().ToStringOutput(),
 /// 			PolicyRule: pulumi.String(` {
 ///     "if": {
 ///       "not": {
@@ -150,8 +153,8 @@ import 'group_policy_assignment_state.dart';
 /// 		}
 /// 		_, err = management.NewGroupPolicyAssignment(ctx, "example", &management.GroupPolicyAssignmentArgs{
 /// 			Name:               pulumi.String("example-policy"),
-/// 			PolicyDefinitionId: exampleDefinition.ID(),
-/// 			ManagementGroupId:  example.ID(),
+/// 			PolicyDefinitionId: exampleDefinition.ID().ToIDOutput().ToStringOutput(),
+/// 			ManagementGroupId:  example.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -316,17 +319,17 @@ class GroupPolicyAssignment extends pulumi.CustomResource {
   /// The name which should be used for this Policy Assignment. Cannot exceed 24 characters in length. Changing this forces a new Policy Assignment to be created.
   late final pulumi.Output<String> name;
   /// One or more `nonComplianceMessage` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> nonComplianceMessages;
+  late final pulumi.Output<List<GroupPolicyAssignmentNonComplianceMessage>?> nonComplianceMessages;
   /// Specifies a list of Resource Scopes (for example a Subscription, or a Resource Group) within this Management Group which are excluded from this Policy.
   late final pulumi.Output<List<String>?> notScopes;
   /// One or more `overrides` blocks as defined below. More detail about `overrides` and `resourceSelectors` see [policy assignment structure](https://learn.microsoft.com/en-us/azure/governance/policy/concepts/assignment-structure)
-  late final pulumi.Output<List<Map<String, dynamic>>?> overrides;
+  late final pulumi.Output<List<GroupPolicyAssignmentOverride>?> overrides;
   /// A JSON mapping of any Parameters for this Policy.
   late final pulumi.Output<String?> parameters;
   /// The ID of the Policy Definition or Policy Definition Set. Changing this forces a new Policy Assignment to be created.
   late final pulumi.Output<String> policyDefinitionId;
   /// One or more `resourceSelectors` blocks as defined below to filter polices by resource properties.
-  late final pulumi.Output<List<Map<String, dynamic>>?> resourceSelectors;
+  late final pulumi.Output<List<GroupPolicyAssignmentResourceSelector>?> resourceSelectors;
 
   /// Creates a new [GroupPolicyAssignment].
   /// [name] The Pulumi resource name.
@@ -340,7 +343,7 @@ class GroupPolicyAssignment extends pulumi.CustomResource {
           'azure:management/groupPolicyAssignment:GroupPolicyAssignment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
@@ -350,12 +353,12 @@ class GroupPolicyAssignment extends pulumi.CustomResource {
     managementGroupId = registerOutput<String>('managementGroupId');
     metadata = registerOutput<String>('metadata');
     this.name = registerOutput<String>('name');
-    nonComplianceMessages = registerOutput<List<Map<String, dynamic>>?>('nonComplianceMessages');
-    notScopes = registerOutput<List<String>?>('notScopes');
-    overrides = registerOutput<List<Map<String, dynamic>>?>('overrides');
+    nonComplianceMessages = registerOutput<List<GroupPolicyAssignmentNonComplianceMessage>?>('nonComplianceMessages', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GroupPolicyAssignmentNonComplianceMessage>(guardedValue, (value) => GroupPolicyAssignmentNonComplianceMessage.fromMap((value as Map).cast<String, dynamic>())); });
+    notScopes = registerOutput<List<String>?>('notScopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    overrides = registerOutput<List<GroupPolicyAssignmentOverride>?>('overrides', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GroupPolicyAssignmentOverride>(guardedValue, (value) => GroupPolicyAssignmentOverride.fromMap((value as Map).cast<String, dynamic>())); });
     parameters = registerOutput<String?>('parameters');
     policyDefinitionId = registerOutput<String>('policyDefinitionId');
-    resourceSelectors = registerOutput<List<Map<String, dynamic>>?>('resourceSelectors');
+    resourceSelectors = registerOutput<List<GroupPolicyAssignmentResourceSelector>?>('resourceSelectors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GroupPolicyAssignmentResourceSelector>(guardedValue, (value) => GroupPolicyAssignmentResourceSelector.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [GroupPolicyAssignment] resource's state with the given [name] and [id].
@@ -363,11 +366,12 @@ class GroupPolicyAssignment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     GroupPolicyAssignmentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return GroupPolicyAssignment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -389,11 +393,36 @@ class GroupPolicyAssignment extends pulumi.CustomResource {
     managementGroupId = registerOutput<String>('managementGroupId');
     metadata = registerOutput<String>('metadata');
     this.name = registerOutput<String>('name');
-    nonComplianceMessages = registerOutput<List<Map<String, dynamic>>?>('nonComplianceMessages');
-    notScopes = registerOutput<List<String>?>('notScopes');
-    overrides = registerOutput<List<Map<String, dynamic>>?>('overrides');
+    nonComplianceMessages = registerOutput<List<GroupPolicyAssignmentNonComplianceMessage>?>('nonComplianceMessages', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GroupPolicyAssignmentNonComplianceMessage>(guardedValue, (value) => GroupPolicyAssignmentNonComplianceMessage.fromMap((value as Map).cast<String, dynamic>())); });
+    notScopes = registerOutput<List<String>?>('notScopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    overrides = registerOutput<List<GroupPolicyAssignmentOverride>?>('overrides', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GroupPolicyAssignmentOverride>(guardedValue, (value) => GroupPolicyAssignmentOverride.fromMap((value as Map).cast<String, dynamic>())); });
     parameters = registerOutput<String?>('parameters');
     policyDefinitionId = registerOutput<String>('policyDefinitionId');
-    resourceSelectors = registerOutput<List<Map<String, dynamic>>?>('resourceSelectors');
+    resourceSelectors = registerOutput<List<GroupPolicyAssignmentResourceSelector>?>('resourceSelectors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GroupPolicyAssignmentResourceSelector>(guardedValue, (value) => GroupPolicyAssignmentResourceSelector.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [GroupPolicyAssignment] resource.
+  GroupPolicyAssignment.reference(String urn)
+    : super(
+        'azure:management/groupPolicyAssignment:GroupPolicyAssignment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String?>('displayName');
+    enforce = registerOutput<bool?>('enforce');
+    identity = registerOutput<GroupPolicyAssignmentIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GroupPolicyAssignmentIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    managementGroupId = registerOutput<String>('managementGroupId');
+    metadata = registerOutput<String>('metadata');
+    this.name = registerOutput<String>('name');
+    nonComplianceMessages = registerOutput<List<GroupPolicyAssignmentNonComplianceMessage>?>('nonComplianceMessages', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GroupPolicyAssignmentNonComplianceMessage>(guardedValue, (value) => GroupPolicyAssignmentNonComplianceMessage.fromMap((value as Map).cast<String, dynamic>())); });
+    notScopes = registerOutput<List<String>?>('notScopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    overrides = registerOutput<List<GroupPolicyAssignmentOverride>?>('overrides', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GroupPolicyAssignmentOverride>(guardedValue, (value) => GroupPolicyAssignmentOverride.fromMap((value as Map).cast<String, dynamic>())); });
+    parameters = registerOutput<String?>('parameters');
+    policyDefinitionId = registerOutput<String>('policyDefinitionId');
+    resourceSelectors = registerOutput<List<GroupPolicyAssignmentResourceSelector>?>('resourceSelectors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GroupPolicyAssignmentResourceSelector>(guardedValue, (value) => GroupPolicyAssignmentResourceSelector.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

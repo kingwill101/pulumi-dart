@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class IntegrationRuntimeSsisPipelineExternalComputeScale {
   /// Specifies the number of the external nodes, which should be greater than `0` and less than `11`.
-  final pulumi.Input<int>? numberOfExternalNodes;
+  final pulumi.Input<int?>? numberOfExternalNodes;
   /// Specifies the number of the pipeline nodes, which should be greater than `0` and less than `11`.
-  final pulumi.Input<int>? numberOfPipelineNodes;
+  final pulumi.Input<int?>? numberOfPipelineNodes;
   /// Specifies the time to live (in minutes) setting of integration runtime which will execute copy activity. Possible values are at least `5`.
-  final pulumi.Input<int>? timeToLive;
+  final pulumi.Input<int?>? timeToLive;
 
   /// Creates a new [IntegrationRuntimeSsisPipelineExternalComputeScale].
   /// [numberOfExternalNodes] Specifies the number of the external nodes, which should be greater than `0` and less than `11`.
@@ -30,9 +30,9 @@ class IntegrationRuntimeSsisPipelineExternalComputeScale {
 
   factory IntegrationRuntimeSsisPipelineExternalComputeScale.fromMap(Map<String, dynamic> map) {
     return IntegrationRuntimeSsisPipelineExternalComputeScale(
-      numberOfExternalNodes: (() { final guardedValue = map['numberOfExternalNodes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      numberOfPipelineNodes: (() { final guardedValue = map['numberOfPipelineNodes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      timeToLive: (() { final guardedValue = map['timeToLive']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      numberOfExternalNodes: (() { final guardedValue = map['numberOfExternalNodes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      numberOfPipelineNodes: (() { final guardedValue = map['numberOfPipelineNodes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      timeToLive: (() { final guardedValue = map['timeToLive']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

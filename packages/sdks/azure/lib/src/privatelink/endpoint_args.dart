@@ -11,15 +11,17 @@ import 'endpoint_private_service_connection.dart';
 /// {@macro pulumi_privatelink_endpoint_endpoint_args_doc}
 class EndpointArgs {
   /// The custom name of the network interface attached to the private endpoint. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? customNetworkInterfaceName;
+  final pulumi.Input<String?>? customNetworkInterfaceName;
+  /// Specifies the Edge Zone within the Azure Region where this Private Endpoint should exist. Changing this forces a new resource to be created.
+  final pulumi.Input<String?>? edgeZone;
   /// One or more `ipConfiguration` blocks as defined below. This allows a static IP address to be set for this Private Endpoint, otherwise an address is dynamically allocated from the Subnet.
-  final pulumi.Input<List<EndpointIpConfiguration>>? ipConfigurations;
+  final pulumi.Input<List<EndpointIpConfiguration>?>? ipConfigurations;
   /// The supported Azure location where the resource exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Specifies the Name of the Private Endpoint. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A `privateDnsZoneGroup` block as defined below.
-  final pulumi.Input<EndpointPrivateDnsZoneGroup>? privateDnsZoneGroup;
+  final pulumi.Input<EndpointPrivateDnsZoneGroup?>? privateDnsZoneGroup;
   /// A `privateServiceConnection` block as defined below.
   final pulumi.Input<EndpointPrivateServiceConnection> privateServiceConnection;
   /// Specifies the Name of the Resource Group within which the Private Endpoint should exist. Changing this forces a new resource to be created.
@@ -27,10 +29,11 @@ class EndpointArgs {
   /// The ID of the Subnet from which Private IP Addresses will be allocated for this Private Endpoint. Changing this forces a new resource to be created.
   final pulumi.Input<String> subnetId;
   /// A mapping of tags to assign to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [EndpointArgs].
   /// [customNetworkInterfaceName] The custom name of the network interface attached to the private endpoint. Changing this forces a new resource to be created.
+  /// [edgeZone] Specifies the Edge Zone within the Azure Region where this Private Endpoint should exist. Changing this forces a new resource to be created.
   /// [ipConfigurations] One or more `ipConfiguration` blocks as defined below. This allows a static IP address to be set for this Private Endpoint, otherwise an address is dynamically allocated from the Subnet.
   /// [location] The supported Azure location where the resource exists. Changing this forces a new resource to be created.
   /// [name] Specifies the Name of the Private Endpoint. Changing this forces a new resource to be created.
@@ -41,6 +44,7 @@ class EndpointArgs {
   /// [tags] A mapping of tags to assign to the resource.
   const EndpointArgs({
     this.customNetworkInterfaceName,
+    this.edgeZone,
     this.ipConfigurations,
     this.location,
     this.name,
@@ -54,6 +58,7 @@ class EndpointArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'customNetworkInterfaceName': ?customNetworkInterfaceName,
+      'edgeZone': ?edgeZone,
       'ipConfigurations': ?pulumi.Input.mapOptionalInputValue<List<EndpointIpConfiguration>, List<Map<String, dynamic>>>(ipConfigurations, (value) => pulumi.Input.encodeList<EndpointIpConfiguration, Map<String, dynamic>>(value, (value) => value.toMap())),
       'location': ?location,
       'name': ?name,
@@ -68,6 +73,7 @@ class EndpointArgs {
   factory EndpointArgs.fromMap(Map<String, dynamic> map) {
     return EndpointArgs(
       customNetworkInterfaceName: (() { final guardedValue = map['customNetworkInterfaceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      edgeZone: (() { final guardedValue = map['edgeZone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ipConfigurations: (() { final guardedValue = map['ipConfigurations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<EndpointIpConfiguration>(guardedValue, (value) => EndpointIpConfiguration.fromMap((value as Map).cast<String, dynamic>()))); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

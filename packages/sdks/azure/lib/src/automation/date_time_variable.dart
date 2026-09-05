@@ -250,7 +250,7 @@ class DateTimeVariable extends pulumi.CustomResource {
           'azure:automation/dateTimeVariable:DateTimeVariable',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     automationAccountName = registerOutput<String>('automationAccountName');
     description = registerOutput<String?>('description');
@@ -265,11 +265,12 @@ class DateTimeVariable extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DateTimeVariableState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DateTimeVariable._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -283,6 +284,23 @@ class DateTimeVariable extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    automationAccountName = registerOutput<String>('automationAccountName');
+    description = registerOutput<String?>('description');
+    encrypted = registerOutput<bool?>('encrypted');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    value = registerOutput<String?>('value');
+  }
+
+  /// Creates a typed reference to an existing [DateTimeVariable] resource.
+  DateTimeVariable.reference(String urn)
+    : super(
+        'azure:automation/dateTimeVariable:DateTimeVariable',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     automationAccountName = registerOutput<String>('automationAccountName');
     description = registerOutput<String?>('description');
     encrypted = registerOutput<bool?>('encrypted');

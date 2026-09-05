@@ -116,7 +116,7 @@ import 'project_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = devcenter.NewProject(ctx, "example", &devcenter.ProjectArgs{
-/// 			DevCenterId:       example.ID(),
+/// 			DevCenterId:       example.ID().ToIDOutput().ToStringOutput(),
 /// 			Location:          exampleResourceGroup.Location,
 /// 			Name:              pulumi.String("example"),
 /// 			ResourceGroupName: exampleResourceGroup.Name,
@@ -283,7 +283,7 @@ class Project extends pulumi.CustomResource {
           'azure:devcenter/project:Project',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     description = registerOutput<String?>('description');
     devCenterId = registerOutput<String>('devCenterId');
@@ -293,7 +293,7 @@ class Project extends pulumi.CustomResource {
     maximumDevBoxesPerUser = registerOutput<int?>('maximumDevBoxesPerUser');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Project] resource's state with the given [name] and [id].
@@ -301,11 +301,12 @@ class Project extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ProjectState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Project._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -327,6 +328,26 @@ class Project extends pulumi.CustomResource {
     maximumDevBoxesPerUser = registerOutput<int?>('maximumDevBoxesPerUser');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Project] resource.
+  Project.reference(String urn)
+    : super(
+        'azure:devcenter/project:Project',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    description = registerOutput<String?>('description');
+    devCenterId = registerOutput<String>('devCenterId');
+    devCenterUri = registerOutput<String>('devCenterUri');
+    identity = registerOutput<ProjectIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProjectIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    maximumDevBoxesPerUser = registerOutput<int?>('maximumDevBoxesPerUser');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

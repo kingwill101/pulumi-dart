@@ -6,7 +6,7 @@ class PartnerConfigurationPartnerAuthorization {
   /// Expiration time of the partner authorization. Value should be in RFC 3339 format in UTC time zone, for example: "2025-02-04T00:00:00Z".
   ///
   /// &gt; **Note:** If the time from `authorizationExpirationTimeInUtc` expires, any request from this partner to create, update or delete resources in the subscriber's context will fail. If not specified, the authorization will expire after `defaultMaximumExpirationTimeInDays`.
-  final pulumi.Input<String>? authorizationExpirationTimeInUtc;
+  final pulumi.Input<String?>? authorizationExpirationTimeInUtc;
   /// The partner name.
   final pulumi.Input<String> partnerName;
   /// The immutable id of the corresponding partner registration.

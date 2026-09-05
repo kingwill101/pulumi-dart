@@ -206,7 +206,7 @@ class ManagedHardwareSecurityModuleRoleAssignment extends pulumi.CustomResource 
           'azure:keyvault/managedHardwareSecurityModuleRoleAssignment:ManagedHardwareSecurityModuleRoleAssignment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     managedHsmId = registerOutput<String>('managedHsmId');
     this.name = registerOutput<String>('name');
@@ -221,11 +221,12 @@ class ManagedHardwareSecurityModuleRoleAssignment extends pulumi.CustomResource 
     String name,
     pulumi.Input<String> id, {
     ManagedHardwareSecurityModuleRoleAssignmentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ManagedHardwareSecurityModuleRoleAssignment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -239,6 +240,23 @@ class ManagedHardwareSecurityModuleRoleAssignment extends pulumi.CustomResource 
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    managedHsmId = registerOutput<String>('managedHsmId');
+    this.name = registerOutput<String>('name');
+    principalId = registerOutput<String>('principalId');
+    resourceId = registerOutput<String>('resourceId');
+    roleDefinitionId = registerOutput<String>('roleDefinitionId');
+    scope = registerOutput<String>('scope');
+  }
+
+  /// Creates a typed reference to an existing [ManagedHardwareSecurityModuleRoleAssignment] resource.
+  ManagedHardwareSecurityModuleRoleAssignment.reference(String urn)
+    : super(
+        'azure:keyvault/managedHardwareSecurityModuleRoleAssignment:ManagedHardwareSecurityModuleRoleAssignment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     managedHsmId = registerOutput<String>('managedHsmId');
     this.name = registerOutput<String>('name');
     principalId = registerOutput<String>('principalId');

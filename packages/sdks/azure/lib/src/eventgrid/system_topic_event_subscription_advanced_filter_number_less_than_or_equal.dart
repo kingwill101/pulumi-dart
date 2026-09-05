@@ -25,7 +25,7 @@ class SystemTopicEventSubscriptionAdvancedFilterNumberLessThanOrEqual {
   factory SystemTopicEventSubscriptionAdvancedFilterNumberLessThanOrEqual.fromMap(Map<String, dynamic> map) {
     return SystemTopicEventSubscriptionAdvancedFilterNumberLessThanOrEqual(
       key: pulumi.Input.fromValue(map['key'] as String),
-      value: pulumi.Input.fromValue(map['value'] as double),
+      value: pulumi.Input.fromValue((map['value'] as num).toDouble()),
     );
   }
 }

@@ -5,13 +5,13 @@ import 'alert_processing_rule_suppression_schedule_recurrence.dart';
 
 class AlertProcessingRuleSuppressionSchedule {
   /// Specifies the Alert Processing Rule effective start time (Y-m-d'T'H:M:S).
-  final pulumi.Input<String>? effectiveFrom;
+  final pulumi.Input<String?>? effectiveFrom;
   /// Specifies the Alert Processing Rule effective end time (Y-m-d'T'H:M:S).
-  final pulumi.Input<String>? effectiveUntil;
+  final pulumi.Input<String?>? effectiveUntil;
   /// A `recurrence` block as defined above.
-  final pulumi.Input<AlertProcessingRuleSuppressionScheduleRecurrence>? recurrence;
+  final pulumi.Input<AlertProcessingRuleSuppressionScheduleRecurrence?>? recurrence;
   /// The time zone (e.g. Pacific Standard time, Eastern Standard Time). Defaults to `UTC`. [possible values are defined here](https://docs.microsoft.com/en-us/previous-versions/windows/embedded/ms912391(v=winembedded.11)).
-  final pulumi.Input<String>? timeZone;
+  final pulumi.Input<String?>? timeZone;
 
   /// Creates a new [AlertProcessingRuleSuppressionSchedule].
   /// [effectiveFrom] Specifies the Alert Processing Rule effective start time (Y-m-d'T'H:M:S).

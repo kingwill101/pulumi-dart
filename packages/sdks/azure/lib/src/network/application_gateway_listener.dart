@@ -4,33 +4,33 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApplicationGatewayListener {
   /// The ID of the associated Frontend Configuration.
-  final pulumi.Input<String>? frontendIpConfigurationId;
+  final pulumi.Input<String?>? frontendIpConfigurationId;
   /// The Name of the Frontend IP Configuration used for this Listener.
   final pulumi.Input<String> frontendIpConfigurationName;
   /// The ID of the associated Frontend Port.
-  final pulumi.Input<String>? frontendPortId;
+  final pulumi.Input<String?>? frontendPortId;
   /// The Name of the Frontend Port use for this Listener.
   final pulumi.Input<String> frontendPortName;
   /// A list of Hostname(s) should be used for this Listener. It allows special wildcard characters.
   ///
   /// &gt; **Note:** `hostNames` cannot be set when `protocol` is set to `Tcp`.
-  final pulumi.Input<List<String>>? hostNames;
+  final pulumi.Input<List<String>?>? hostNames;
   /// The ID of the Rewrite Rule Set
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The Name of the Listener.
   final pulumi.Input<String> name;
   /// The Protocol to use for this Listener. Possible values are `Tcp`, and `Tls`.
   final pulumi.Input<String> protocol;
   /// The ID of the associated SSL Certificate.
-  final pulumi.Input<String>? sslCertificateId;
+  final pulumi.Input<String?>? sslCertificateId;
   /// The name of the associated SSL Certificate which should be used for this Listener.
   ///
   /// &gt; **Note:** `sslCertificateName` must be set when `protocol` is set to `Tls`.
-  final pulumi.Input<String>? sslCertificateName;
+  final pulumi.Input<String?>? sslCertificateName;
   /// The ID of the associated SSL Profile.
-  final pulumi.Input<String>? sslProfileId;
+  final pulumi.Input<String?>? sslProfileId;
   /// The name of the associated SSL Profile which should be used for this Listener.
-  final pulumi.Input<String>? sslProfileName;
+  final pulumi.Input<String?>? sslProfileName;
 
   /// Creates a new [ApplicationGatewayListener].
   /// [frontendIpConfigurationId] The ID of the associated Frontend Configuration.

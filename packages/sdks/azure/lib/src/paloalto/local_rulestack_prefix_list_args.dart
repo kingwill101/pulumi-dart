@@ -8,11 +8,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_paloalto_local_rulestack_prefix_list_local_rulestack_prefix_list_args_doc}
 class LocalRulestackPrefixListArgs {
   /// The comment for Audit purposes.
-  final pulumi.Input<String>? auditComment;
+  final pulumi.Input<String?>? auditComment;
   /// The description for the Prefix List.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The name which should be used for this Palo Alto Local Rulestack Prefix List.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specifies a list of Prefixes.
   final pulumi.Input<List<String>> prefixLists;
   /// The ID of the Local Rulestack on which to create this Prefix List. Changing this forces a new Palo Alto Local Rulestack Prefix List to be created.

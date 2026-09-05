@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'account_rai_policy_args.dart';
+import 'account_rai_policy_content_filter.dart';
 import 'account_rai_policy_state.dart';
 
 /// Manages a Cognitive Services Account RAI Policy.
@@ -133,7 +134,7 @@ import 'account_rai_policy_state.dart';
 /// 		}
 /// 		_, err = cognitive.NewAccountRaiPolicy(ctx, "example", &cognitive.AccountRaiPolicyArgs{
 /// 			Name:               pulumi.String("example-rai-policy"),
-/// 			CognitiveAccountId: exampleAccount.ID(),
+/// 			CognitiveAccountId: exampleAccount.ID().ToIDOutput().ToStringOutput(),
 /// 			BasePolicyName:     pulumi.String("Microsoft.Default"),
 /// 			ContentFilters: cognitive.AccountRaiPolicyContentFilterArray{
 /// 				&cognitive.AccountRaiPolicyContentFilterArgs{
@@ -292,7 +293,7 @@ class AccountRaiPolicy extends pulumi.CustomResource {
   /// The ID of the Cognitive Service Account to which this RAI Policy should be associated. Changing this forces a new resource to be created.
   late final pulumi.Output<String> cognitiveAccountId;
   /// A `contentFilter` block as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>> contentFilters;
+  late final pulumi.Output<List<AccountRaiPolicyContentFilter>> contentFilters;
   /// The mode of the RAI Policy. Possible values are `Default`, `Deferred`, `Blocking` or `Asynchronous_filter`.
   late final pulumi.Output<String?> mode;
   /// The name of the Cognitive Service Account RAI Policy. Changing this forces a new resource to be created.
@@ -312,14 +313,14 @@ class AccountRaiPolicy extends pulumi.CustomResource {
           'azure:cognitive/accountRaiPolicy:AccountRaiPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     basePolicyName = registerOutput<String>('basePolicyName');
     cognitiveAccountId = registerOutput<String>('cognitiveAccountId');
-    contentFilters = registerOutput<List<Map<String, dynamic>>>('contentFilters');
+    contentFilters = registerOutput<List<AccountRaiPolicyContentFilter>>('contentFilters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AccountRaiPolicyContentFilter>(guardedValue, (value) => AccountRaiPolicyContentFilter.fromMap((value as Map).cast<String, dynamic>())); });
     mode = registerOutput<String?>('mode');
     this.name = registerOutput<String>('name');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [AccountRaiPolicy] resource's state with the given [name] and [id].
@@ -327,11 +328,12 @@ class AccountRaiPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AccountRaiPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AccountRaiPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -347,9 +349,26 @@ class AccountRaiPolicy extends pulumi.CustomResource {
         ) {
     basePolicyName = registerOutput<String>('basePolicyName');
     cognitiveAccountId = registerOutput<String>('cognitiveAccountId');
-    contentFilters = registerOutput<List<Map<String, dynamic>>>('contentFilters');
+    contentFilters = registerOutput<List<AccountRaiPolicyContentFilter>>('contentFilters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AccountRaiPolicyContentFilter>(guardedValue, (value) => AccountRaiPolicyContentFilter.fromMap((value as Map).cast<String, dynamic>())); });
     mode = registerOutput<String?>('mode');
     this.name = registerOutput<String>('name');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [AccountRaiPolicy] resource.
+  AccountRaiPolicy.reference(String urn)
+    : super(
+        'azure:cognitive/accountRaiPolicy:AccountRaiPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    basePolicyName = registerOutput<String>('basePolicyName');
+    cognitiveAccountId = registerOutput<String>('cognitiveAccountId');
+    contentFilters = registerOutput<List<AccountRaiPolicyContentFilter>>('contentFilters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AccountRaiPolicyContentFilter>(guardedValue, (value) => AccountRaiPolicyContentFilter.fromMap((value as Map).cast<String, dynamic>())); });
+    mode = registerOutput<String?>('mode');
+    this.name = registerOutput<String>('name');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

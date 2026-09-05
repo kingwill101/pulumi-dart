@@ -12,11 +12,11 @@ class ExpressRouteCircuitConnectionArgs {
   /// The IPv6 address space from which to allocate customer addresses for global reach.
   ///
   /// &gt; **Note:** `addressPrefixIpv6` cannot be set when ExpressRoute Circuit Connection with ExpressRoute Circuit based on ExpressRoute Port.
-  final pulumi.Input<String>? addressPrefixIpv6;
+  final pulumi.Input<String?>? addressPrefixIpv6;
   /// The authorization key which is associated with the Express Route Circuit Connection.
-  final pulumi.Input<String>? authorizationKey;
+  final pulumi.Input<String?>? authorizationKey;
   /// The name which should be used for this Express Route Circuit Connection. Changing this forces a new Express Route Circuit Connection to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the peered Express Route Circuit Private Peering. Changing this forces a new Express Route Circuit Connection to be created.
   final pulumi.Input<String> peerPeeringId;
   /// The ID of the Express Route Circuit Private Peering that this Express Route Circuit Connection connects with. Changing this forces a new Express Route Circuit Connection to be created.

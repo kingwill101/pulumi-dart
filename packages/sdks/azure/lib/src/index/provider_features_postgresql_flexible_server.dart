@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ProviderFeaturesPostgresqlFlexibleServer {
-  final pulumi.Input<bool>? restartServerOnConfigurationValueChange;
+  final pulumi.Input<bool?>? restartServerOnConfigurationValueChange;
 
   /// Creates a new [ProviderFeaturesPostgresqlFlexibleServer].
   /// [restartServerOnConfigurationValueChange] Optional.

@@ -4,6 +4,7 @@ import 'gremlin_graph_autoscale_settings.dart';
 import 'gremlin_graph_conflict_resolution_policy.dart';
 import 'gremlin_graph_index_policy.dart';
 import 'gremlin_graph_state.dart';
+import 'gremlin_graph_unique_key.dart';
 
 /// Manages a Gremlin Graph within a Cosmos DB Account.
 ///
@@ -402,7 +403,7 @@ class GremlinGraph extends pulumi.CustomResource {
   /// The throughput of the Gremlin graph (RU/s). Must be set in increments of `100`. The minimum value is `400`. This must be set upon database creation otherwise it cannot be updated without a manual destroy-apply.
   late final pulumi.Output<int> throughput;
   /// One or more `uniqueKey` blocks as defined below. Changing this forces a new resource to be created.
-  late final pulumi.Output<List<Map<String, dynamic>>?> uniqueKeys;
+  late final pulumi.Output<List<GremlinGraphUniqueKey>?> uniqueKeys;
 
   /// Creates a new [GremlinGraph].
   /// [name] The Pulumi resource name.
@@ -416,7 +417,7 @@ class GremlinGraph extends pulumi.CustomResource {
           'azure:cosmosdb/gremlinGraph:GremlinGraph',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     accountName = registerOutput<String>('accountName');
     analyticalStorageTtl = registerOutput<int?>('analyticalStorageTtl');
@@ -430,7 +431,7 @@ class GremlinGraph extends pulumi.CustomResource {
     partitionKeyVersion = registerOutput<int?>('partitionKeyVersion');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     throughput = registerOutput<int>('throughput');
-    uniqueKeys = registerOutput<List<Map<String, dynamic>>?>('uniqueKeys');
+    uniqueKeys = registerOutput<List<GremlinGraphUniqueKey>?>('uniqueKeys', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GremlinGraphUniqueKey>(guardedValue, (value) => GremlinGraphUniqueKey.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [GremlinGraph] resource's state with the given [name] and [id].
@@ -438,11 +439,12 @@ class GremlinGraph extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     GremlinGraphState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return GremlinGraph._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -468,6 +470,30 @@ class GremlinGraph extends pulumi.CustomResource {
     partitionKeyVersion = registerOutput<int?>('partitionKeyVersion');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     throughput = registerOutput<int>('throughput');
-    uniqueKeys = registerOutput<List<Map<String, dynamic>>?>('uniqueKeys');
+    uniqueKeys = registerOutput<List<GremlinGraphUniqueKey>?>('uniqueKeys', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GremlinGraphUniqueKey>(guardedValue, (value) => GremlinGraphUniqueKey.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [GremlinGraph] resource.
+  GremlinGraph.reference(String urn)
+    : super(
+        'azure:cosmosdb/gremlinGraph:GremlinGraph',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    accountName = registerOutput<String>('accountName');
+    analyticalStorageTtl = registerOutput<int?>('analyticalStorageTtl');
+    autoscaleSettings = registerOutput<GremlinGraphAutoscaleSettings?>('autoscaleSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GremlinGraphAutoscaleSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    conflictResolutionPolicy = registerOutput<GremlinGraphConflictResolutionPolicy>('conflictResolutionPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GremlinGraphConflictResolutionPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    databaseName = registerOutput<String>('databaseName');
+    defaultTtl = registerOutput<int?>('defaultTtl');
+    indexPolicy = registerOutput<GremlinGraphIndexPolicy>('indexPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GremlinGraphIndexPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    partitionKeyPath = registerOutput<String>('partitionKeyPath');
+    partitionKeyVersion = registerOutput<int?>('partitionKeyVersion');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    throughput = registerOutput<int>('throughput');
+    uniqueKeys = registerOutput<List<GremlinGraphUniqueKey>?>('uniqueKeys', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GremlinGraphUniqueKey>(guardedValue, (value) => GremlinGraphUniqueKey.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

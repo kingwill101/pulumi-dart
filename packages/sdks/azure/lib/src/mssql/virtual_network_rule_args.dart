@@ -10,9 +10,9 @@ class VirtualNetworkRuleArgs {
   /// Create the virtual network rule before the subnet has the virtual network service endpoint enabled. Defaults to `false`.
   ///
   /// &gt; **Note:** If `ignoreMissingVnetServiceEndpoint` is false, and the target subnet does not contain the `Microsoft.SQL` endpoint in the `serviceEndpoints` array, the deployment will fail when it tries to create the SQL virtual network rule.
-  final pulumi.Input<bool>? ignoreMissingVnetServiceEndpoint;
+  final pulumi.Input<bool?>? ignoreMissingVnetServiceEndpoint;
   /// The name of the SQL virtual network rule. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The resource ID of the SQL Server to which this SQL virtual network rule will be applied. Changing this forces a new resource to be created.
   final pulumi.Input<String> serverId;
   /// The ID of the subnet from which the SQL server will accept communications.

@@ -128,7 +128,7 @@ import 'creator_state.dart';
 /// 		}
 /// 		_, err = maps.NewCreator(ctx, "example", &maps.CreatorArgs{
 /// 			Name:          pulumi.String("example-maps-creator"),
-/// 			MapsAccountId: exampleAccount.ID(),
+/// 			MapsAccountId: exampleAccount.ID().ToIDOutput().ToStringOutput(),
 /// 			Location:      example.Location,
 /// 			StorageUnits:  pulumi.Int(1),
 /// 			Tags: pulumi.StringMap{
@@ -288,13 +288,13 @@ class Creator extends pulumi.CustomResource {
           'azure:maps/creator:Creator',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     location = registerOutput<String>('location');
     mapsAccountId = registerOutput<String>('mapsAccountId');
     this.name = registerOutput<String>('name');
     storageUnits = registerOutput<int>('storageUnits');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Creator] resource's state with the given [name] and [id].
@@ -302,11 +302,12 @@ class Creator extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CreatorState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Creator._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -324,6 +325,22 @@ class Creator extends pulumi.CustomResource {
     mapsAccountId = registerOutput<String>('mapsAccountId');
     this.name = registerOutput<String>('name');
     storageUnits = registerOutput<int>('storageUnits');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Creator] resource.
+  Creator.reference(String urn)
+    : super(
+        'azure:maps/creator:Creator',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    location = registerOutput<String>('location');
+    mapsAccountId = registerOutput<String>('mapsAccountId');
+    this.name = registerOutput<String>('name');
+    storageUnits = registerOutput<int>('storageUnits');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

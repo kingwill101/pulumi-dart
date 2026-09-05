@@ -8,9 +8,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_loganalytics_storage_insights_storage_insights_args_doc}
 class StorageInsightsArgs {
   /// The names of the blob containers that the workspace should read.
-  final pulumi.Input<List<String>>? blobContainerNames;
+  final pulumi.Input<List<String>?>? blobContainerNames;
   /// The name which should be used for this Log Analytics Storage Insights. Changing this forces a new Log Analytics Storage Insights to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the Resource Group where the Log Analytics Storage Insights should exist. Changing this forces a new Log Analytics Storage Insights to be created.
   final pulumi.Input<String> resourceGroupName;
   /// The ID of the Storage Account used by this Log Analytics Storage Insights.
@@ -18,7 +18,7 @@ class StorageInsightsArgs {
   /// The storage access key to be used to connect to the storage account.
   final pulumi.Input<String> storageAccountKey;
   /// The names of the Azure tables that the workspace should read.
-  final pulumi.Input<List<String>>? tableNames;
+  final pulumi.Input<List<String>?>? tableNames;
   /// The ID of the Log Analytics Workspace within which the Storage Insights should exist. Changing this forces a new Log Analytics Storage Insights to be created.
   final pulumi.Input<String> workspaceId;
 

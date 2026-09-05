@@ -6,7 +6,7 @@ import 'frontdoor_custom_domain_tls.dart';
 /// Input properties used for looking up and filtering FrontdoorCustomDomain resources.
 class FrontdoorCustomDomainState {
   /// The ID of the Front Door Profile. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? cdnFrontdoorProfileId;
+  final pulumi.Input<String?>? cdnFrontdoorProfileId;
   /// The ID of the Azure DNS Zone which should be used for this Front Door Custom Domain.
   ///
   /// &gt; **Note:** If you are using Azure to host your [DNS domains](https://learn.microsoft.com/azure/dns/dns-overview), you must delegate the domain provider's domain name system (DNS) to an Azure DNS Zone. For more information, see [Delegate a domain to Azure DNS](https://learn.microsoft.com/azure/dns/dns-delegate-domain-azure-dns). Otherwise, if you're using your own domain provider to handle your DNS, you must validate the Front Door Custom Domain by creating the DNS TXT records manually.
@@ -14,21 +14,21 @@ class FrontdoorCustomDomainState {
   /// &lt;!-- * `preValidatedCdnFrontdoorCustomDomainId` - (Optional) The resource ID of the pre-validated Front Door Custom Domain. This domain type is used when you wish to onboard a validated Azure service domain, and then configure the Azure service behind an Azure Front Door.
   ///
   /// &gt; **Note:** Currently `preValidatedCdnFrontdoorCustomDomainId` only supports domains validated by Static Web App. --&gt;
-  final pulumi.Input<String>? dnsZoneId;
+  final pulumi.Input<String?>? dnsZoneId;
   /// The date and time that the token expires.
-  final pulumi.Input<String>? expirationDate;
+  final pulumi.Input<String?>? expirationDate;
   /// The host name of the domain. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** The `hostName` field must be the FQDN of your domain (e.g. `contoso.fabrikam.com`).
-  final pulumi.Input<String>? hostName;
+  final pulumi.Input<String?>? hostName;
   /// The name which should be used for this Front Door Custom Domain. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** `name` must be between 2 and 260 characters in length, must begin with a letter or number, end with a letter or number, and contain only letters, numbers, and hyphens.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A `tls` block as defined below.
-  final pulumi.Input<FrontdoorCustomDomainTls>? tls;
+  final pulumi.Input<FrontdoorCustomDomainTls?>? tls;
   /// Challenge used for DNS TXT record or file based validation.
-  final pulumi.Input<String>? validationToken;
+  final pulumi.Input<String?>? validationToken;
 
   /// Creates a new [FrontdoorCustomDomainState].
   /// [cdnFrontdoorProfileId] The ID of the Front Door Profile. Changing this forces a new resource to be created.

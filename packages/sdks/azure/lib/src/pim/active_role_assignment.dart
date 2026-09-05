@@ -440,7 +440,7 @@ import 'active_role_assignment_ticket.dart';
 /// 			return err
 /// 		}
 /// 		_, err = pim.NewActiveRoleAssignment(ctx, "example", &pim.ActiveRoleAssignmentArgs{
-/// 			Scope:            exampleGroup.ID(),
+/// 			Scope:            exampleGroup.ID().ToIDOutput().ToStringOutput(),
 /// 			RoleDefinitionId: pulumi.String(exampleGetRoleDefinition.Id),
 /// 			PrincipalId:      pulumi.String(example.ObjectId),
 /// 			Schedule: &pim.ActiveRoleAssignmentScheduleArgs{
@@ -646,7 +646,7 @@ class ActiveRoleAssignment extends pulumi.CustomResource {
           'azure:pim/activeRoleAssignment:ActiveRoleAssignment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     justification = registerOutput<String>('justification');
     principalId = registerOutput<String>('principalId');
@@ -662,11 +662,12 @@ class ActiveRoleAssignment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ActiveRoleAssignmentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ActiveRoleAssignment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -680,6 +681,24 @@ class ActiveRoleAssignment extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    justification = registerOutput<String>('justification');
+    principalId = registerOutput<String>('principalId');
+    principalType = registerOutput<String>('principalType');
+    roleDefinitionId = registerOutput<String>('roleDefinitionId');
+    schedule = registerOutput<ActiveRoleAssignmentSchedule>('schedule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ActiveRoleAssignmentSchedule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    scope = registerOutput<String>('scope');
+    ticket = registerOutput<ActiveRoleAssignmentTicket>('ticket', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ActiveRoleAssignmentTicket.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [ActiveRoleAssignment] resource.
+  ActiveRoleAssignment.reference(String urn)
+    : super(
+        'azure:pim/activeRoleAssignment:ActiveRoleAssignment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     justification = registerOutput<String>('justification');
     principalId = registerOutput<String>('principalId');
     principalType = registerOutput<String>('principalType');

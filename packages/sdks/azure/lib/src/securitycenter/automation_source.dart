@@ -9,7 +9,7 @@ class AutomationSource {
   /// A set of rules which evaluate upon event and data interception. This is defined in one or more `ruleSet` blocks as defined below.
   ///
   /// &gt; **Note:** When multiple `ruleSet` block are provided, a logical 'OR' is applied to the evaluation of them.
-  final pulumi.Input<List<AutomationSourceRuleSet>>? ruleSets;
+  final pulumi.Input<List<AutomationSourceRuleSet>?>? ruleSets;
 
   /// Creates a new [AutomationSource].
   /// [eventSource] Type of data that will trigger this automation. Must be one of `Alerts`, `Assessments`, `AssessmentsSnapshot`, `RegulatoryComplianceAssessment`, `RegulatoryComplianceAssessmentSnapshot`, `SecureScoreControls`, `SecureScoreControlsSnapshot`, `SecureScores`, `SecureScoresSnapshot`, `SubAssessments` or `SubAssessmentsSnapshot`. Note. assessments are also referred to as recommendations

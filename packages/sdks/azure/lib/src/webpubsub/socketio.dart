@@ -230,7 +230,8 @@ class Socketio extends pulumi.CustomResource {
           'azure:webpubsub/socketio:Socketio',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['primaryAccessKey', 'primaryConnectionString', 'secondaryAccessKey', 'secondaryConnectionString'],
         ) {
     aadAuthEnabled = registerOutput<bool?>('aadAuthEnabled');
     externalIp = registerOutput<String>('externalIp');
@@ -243,17 +244,17 @@ class Socketio extends pulumi.CustomResource {
     localAuthEnabled = registerOutput<bool?>('localAuthEnabled');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    primaryAccessKey = registerOutput<String>('primaryAccessKey');
-    primaryConnectionString = registerOutput<String>('primaryConnectionString');
+    primaryAccessKey = registerOutput<String>('primaryAccessKey', isSecret: true);
+    primaryConnectionString = registerOutput<String>('primaryConnectionString', isSecret: true);
     publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
     publicPort = registerOutput<int>('publicPort');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    secondaryAccessKey = registerOutput<String>('secondaryAccessKey');
-    secondaryConnectionString = registerOutput<String>('secondaryConnectionString');
+    secondaryAccessKey = registerOutput<String>('secondaryAccessKey', isSecret: true);
+    secondaryConnectionString = registerOutput<String>('secondaryConnectionString', isSecret: true);
     serverPort = registerOutput<int>('serverPort');
     serviceMode = registerOutput<String?>('serviceMode');
     sku = registerOutput<SocketioSku>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SocketioSku.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tlsClientCertEnabled = registerOutput<bool?>('tlsClientCertEnabled');
   }
 
@@ -262,11 +263,12 @@ class Socketio extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SocketioState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Socketio._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -291,17 +293,52 @@ class Socketio extends pulumi.CustomResource {
     localAuthEnabled = registerOutput<bool?>('localAuthEnabled');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    primaryAccessKey = registerOutput<String>('primaryAccessKey');
-    primaryConnectionString = registerOutput<String>('primaryConnectionString');
+    primaryAccessKey = registerOutput<String>('primaryAccessKey', isSecret: true);
+    primaryConnectionString = registerOutput<String>('primaryConnectionString', isSecret: true);
     publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
     publicPort = registerOutput<int>('publicPort');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    secondaryAccessKey = registerOutput<String>('secondaryAccessKey');
-    secondaryConnectionString = registerOutput<String>('secondaryConnectionString');
+    secondaryAccessKey = registerOutput<String>('secondaryAccessKey', isSecret: true);
+    secondaryConnectionString = registerOutput<String>('secondaryConnectionString', isSecret: true);
     serverPort = registerOutput<int>('serverPort');
     serviceMode = registerOutput<String?>('serviceMode');
     sku = registerOutput<SocketioSku>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SocketioSku.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tlsClientCertEnabled = registerOutput<bool?>('tlsClientCertEnabled');
+  }
+
+  /// Creates a typed reference to an existing [Socketio] resource.
+  Socketio.reference(String urn)
+    : super(
+        'azure:webpubsub/socketio:Socketio',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['primaryAccessKey', 'primaryConnectionString', 'secondaryAccessKey', 'secondaryConnectionString'],
+        isResourceReference: true,
+      ) {
+    aadAuthEnabled = registerOutput<bool?>('aadAuthEnabled');
+    externalIp = registerOutput<String>('externalIp');
+    hostname = registerOutput<String>('hostname');
+    identity = registerOutput<SocketioIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SocketioIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    liveTraceConnectivityLogsEnabled = registerOutput<bool?>('liveTraceConnectivityLogsEnabled');
+    liveTraceEnabled = registerOutput<bool?>('liveTraceEnabled');
+    liveTraceHttpRequestLogsEnabled = registerOutput<bool?>('liveTraceHttpRequestLogsEnabled');
+    liveTraceMessagingLogsEnabled = registerOutput<bool?>('liveTraceMessagingLogsEnabled');
+    localAuthEnabled = registerOutput<bool?>('localAuthEnabled');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    primaryAccessKey = registerOutput<String>('primaryAccessKey', isSecret: true);
+    primaryConnectionString = registerOutput<String>('primaryConnectionString', isSecret: true);
+    publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
+    publicPort = registerOutput<int>('publicPort');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    secondaryAccessKey = registerOutput<String>('secondaryAccessKey', isSecret: true);
+    secondaryConnectionString = registerOutput<String>('secondaryConnectionString', isSecret: true);
+    serverPort = registerOutput<int>('serverPort');
+    serviceMode = registerOutput<String?>('serviceMode');
+    sku = registerOutput<SocketioSku>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SocketioSku.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tlsClientCertEnabled = registerOutput<bool?>('tlsClientCertEnabled');
   }
 }

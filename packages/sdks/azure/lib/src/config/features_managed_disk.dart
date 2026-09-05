@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FeaturesManagedDisk {
-  final pulumi.Input<bool>? expandWithoutDowntime;
+  final pulumi.Input<bool?>? expandWithoutDowntime;
 
   /// Creates a new [FeaturesManagedDisk].
   /// [expandWithoutDowntime] Optional.

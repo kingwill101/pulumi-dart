@@ -160,6 +160,17 @@ Future<GetCacheResult> getCache(
   return GetCacheResult.fromMap(result);
 }
 
+pulumi.Output<GetCacheResult> getCacheOutput(
+  GetCacheArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:redis/getCache:getCache',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCacheResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Redis Enterprise Database
 ///
 /// &gt; **Note:** This data source has been deprecated in favor of azurerm_managed_redis.
@@ -223,4 +234,15 @@ Future<GetEnterpriseDatabaseResult> getEnterpriseDatabase(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetEnterpriseDatabaseResult.fromMap(result);
+}
+
+pulumi.Output<GetEnterpriseDatabaseResult> getEnterpriseDatabaseOutput(
+  GetEnterpriseDatabaseArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:redis/getEnterpriseDatabase:getEnterpriseDatabase',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEnterpriseDatabaseResult.fromMap);
 }

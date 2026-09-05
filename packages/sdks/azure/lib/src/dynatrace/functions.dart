@@ -134,3 +134,14 @@ Future<GetMonitorResult> getMonitor(
   );
   return GetMonitorResult.fromMap(result);
 }
+
+pulumi.Output<GetMonitorResult> getMonitorOutput(
+  GetMonitorArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:dynatrace/getMonitor:getMonitor',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMonitorResult.fromMap);
+}

@@ -10,11 +10,11 @@ class GetAlertRuleTemplateArgs {
   /// The display name of this Sentinel Alert Rule Template. Either `displayName` or `name` have to be specified.
   ///
   /// &gt; **Note:** As `displayName` is not unique, errors may occur when there are multiple Sentinel Alert Rule Template with same `displayName`.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The ID of the Log Analytics Workspace.
   final pulumi.Input<String> logAnalyticsWorkspaceId;
   /// The name of this Sentinel Alert Rule Template. Either `displayName` or `name` have to be specified.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [GetAlertRuleTemplateArgs].
   /// [displayName] The display name of this Sentinel Alert Rule Template. Either `displayName` or `name` have to be specified.

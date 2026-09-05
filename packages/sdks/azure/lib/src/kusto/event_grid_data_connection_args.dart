@@ -8,39 +8,39 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_kusto_event_grid_data_connection_event_grid_data_connection_args_doc}
 class EventGridDataConnectionArgs {
   /// Specifies the blob storage event type that needs to be processed. Possible Values are `Microsoft.Storage.BlobCreated` and `Microsoft.Storage.BlobRenamed`. Defaults to `Microsoft.Storage.BlobCreated`.
-  final pulumi.Input<String>? blobStorageEventType;
+  final pulumi.Input<String?>? blobStorageEventType;
   /// Specifies the name of the Kusto Cluster this data connection will be added to. Changing this forces a new resource to be created.
   final pulumi.Input<String> clusterName;
   /// Specifies the data format of the EventHub messages. Allowed values: `APACHEAVRO`, `AVRO`, `CSV`, `JSON`, `MULTIJSON`, `ORC`, `PARQUET`, `PSV`, `RAW`, `SCSV`, `SINGLEJSON`, `SOHSV`, `TSV`, `TSVE`, `TXT` and `W3CLOGFILE`.
-  final pulumi.Input<String>? dataFormat;
+  final pulumi.Input<String?>? dataFormat;
   /// Specifies the name of the Kusto Database this data connection will be added to. Changing this forces a new resource to be created.
   final pulumi.Input<String> databaseName;
   /// Indication for database routing information from the data connection, by default only database routing information is allowed. Allowed values: `Single`, `Multi`. Changing this forces a new resource to be created. Defaults to `Single`.
-  final pulumi.Input<String>? databaseRoutingType;
+  final pulumi.Input<String?>? databaseRoutingType;
   /// The resource ID of the event grid that is subscribed to the storage account events.
-  final pulumi.Input<String>? eventgridEventSubscriptionId;
-  final pulumi.Input<String>? eventgridResourceId;
+  final pulumi.Input<String?>? eventgridEventSubscriptionId;
+  final pulumi.Input<String?>? eventgridResourceId;
   /// Specifies the Event Hub consumer group this data connection will use for ingestion. Changing this forces a new resource to be created.
   final pulumi.Input<String> eventhubConsumerGroupName;
   /// Specifies the resource id of the Event Hub this data connection will use for ingestion. Changing this forces a new resource to be created.
   final pulumi.Input<String> eventhubId;
   /// The location where the Kusto Database should be created. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Empty for non-managed identity based data connection. For system assigned identity, provide cluster resource Id. For user assigned identity (UAI) provide the UAI resource Id.
-  final pulumi.Input<String>? managedIdentityId;
-  final pulumi.Input<String>? managedIdentityResourceId;
+  final pulumi.Input<String?>? managedIdentityId;
+  final pulumi.Input<String?>? managedIdentityResourceId;
   /// Specifies the mapping rule used for the message ingestion. Mapping rule must exist before resource is created.
-  final pulumi.Input<String>? mappingRuleName;
+  final pulumi.Input<String?>? mappingRuleName;
   /// The name of the Kusto Event Grid Data Connection to create. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specifies the Resource Group where the Kusto Database should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
   /// is the first record of every file ignored? Defaults to `false`.
-  final pulumi.Input<bool>? skipFirstRecord;
+  final pulumi.Input<bool?>? skipFirstRecord;
   /// Specifies the resource id of the Storage Account this data connection will use for ingestion. Changing this forces a new resource to be created.
   final pulumi.Input<String> storageAccountId;
   /// Specifies the target table name used for the message ingestion. Table must exist before resource is created.
-  final pulumi.Input<String>? tableName;
+  final pulumi.Input<String?>? tableName;
 
   /// Creates a new [EventGridDataConnectionArgs].
   /// [blobStorageEventType] Specifies the blob storage event type that needs to be processed. Possible Values are `Microsoft.Storage.BlobCreated` and `Microsoft.Storage.BlobRenamed`. Defaults to `Microsoft.Storage.BlobCreated`.

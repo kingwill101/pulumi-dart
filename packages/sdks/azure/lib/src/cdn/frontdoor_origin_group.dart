@@ -140,7 +140,7 @@ import 'frontdoor_origin_group_state.dart';
 /// 		}
 /// 		_, err = cdn.NewFrontdoorOriginGroup(ctx, "example", &cdn.FrontdoorOriginGroupArgs{
 /// 			Name:                   pulumi.String("example-origin-group"),
-/// 			CdnFrontdoorProfileId:  exampleFrontdoorProfile.ID(),
+/// 			CdnFrontdoorProfileId:  exampleFrontdoorProfile.ID().ToIDOutput().ToStringOutput(),
 /// 			SessionAffinityEnabled: pulumi.Bool(true),
 /// 			RestoreTrafficTimeToHealedOrNewEndpointInMinutes: pulumi.Int(10),
 /// 			HealthProbe: &cdn.FrontdoorOriginGroupHealthProbeArgs{
@@ -326,7 +326,7 @@ class FrontdoorOriginGroup extends pulumi.CustomResource {
           'azure:cdn/frontdoorOriginGroup:FrontdoorOriginGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     cdnFrontdoorProfileId = registerOutput<String>('cdnFrontdoorProfileId');
     healthProbe = registerOutput<FrontdoorOriginGroupHealthProbe?>('healthProbe', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FrontdoorOriginGroupHealthProbe.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -341,11 +341,12 @@ class FrontdoorOriginGroup extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FrontdoorOriginGroupState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return FrontdoorOriginGroup._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -359,6 +360,23 @@ class FrontdoorOriginGroup extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    cdnFrontdoorProfileId = registerOutput<String>('cdnFrontdoorProfileId');
+    healthProbe = registerOutput<FrontdoorOriginGroupHealthProbe?>('healthProbe', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FrontdoorOriginGroupHealthProbe.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    loadBalancing = registerOutput<FrontdoorOriginGroupLoadBalancing>('loadBalancing', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FrontdoorOriginGroupLoadBalancing.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    restoreTrafficTimeToHealedOrNewEndpointInMinutes = registerOutput<int?>('restoreTrafficTimeToHealedOrNewEndpointInMinutes');
+    sessionAffinityEnabled = registerOutput<bool?>('sessionAffinityEnabled');
+  }
+
+  /// Creates a typed reference to an existing [FrontdoorOriginGroup] resource.
+  FrontdoorOriginGroup.reference(String urn)
+    : super(
+        'azure:cdn/frontdoorOriginGroup:FrontdoorOriginGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     cdnFrontdoorProfileId = registerOutput<String>('cdnFrontdoorProfileId');
     healthProbe = registerOutput<FrontdoorOriginGroupHealthProbe?>('healthProbe', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FrontdoorOriginGroupHealthProbe.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     loadBalancing = registerOutput<FrontdoorOriginGroupLoadBalancing>('loadBalancing', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FrontdoorOriginGroupLoadBalancing.fromMap((guardedValue as Map).cast<String, dynamic>()); });

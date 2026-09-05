@@ -12,35 +12,35 @@ class StaticWebAppArgs {
   /// A key-value pair of App Settings.
   ///
   /// &gt; **Note:** If using the `apiKey` to deploy a Static Web App from a CI/CD pipeline or other source, `repositoryBranch` and `repositoryUrl` will get updated in Azure, but it is not possible to set `repositoryToken` in that case. Use a `lifecycle` block to `ignoreChanges` for `repositoryBranch` and`repositoryUrl` if that is your deployment scenario.
-  final pulumi.Input<Map<String, String>>? appSettings;
+  final pulumi.Input<Map<String, String>?>? appSettings;
   /// A `basicAuth` block as defined below.
-  final pulumi.Input<StaticWebAppBasicAuth>? basicAuth;
+  final pulumi.Input<StaticWebAppBasicAuth?>? basicAuth;
   /// Should changes to the configuration file be permitted. Defaults to `true`.
-  final pulumi.Input<bool>? configurationFileChangesEnabled;
+  final pulumi.Input<bool?>? configurationFileChangesEnabled;
   /// An `identity` block as defined below.
-  final pulumi.Input<StaticWebAppIdentity>? identity;
+  final pulumi.Input<StaticWebAppIdentity?>? identity;
   /// The Azure Region where the Static Web App should exist. Changing this forces a new Static Web App to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name which should be used for this Static Web App. Changing this forces a new Static Web App to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Are Preview (Staging) environments enabled. Defaults to `true`.
-  final pulumi.Input<bool>? previewEnvironmentsEnabled;
+  final pulumi.Input<bool?>? previewEnvironmentsEnabled;
   /// Should public network access be enabled for the Static Web App. Defaults to `true`.
-  final pulumi.Input<bool>? publicNetworkAccessEnabled;
+  final pulumi.Input<bool?>? publicNetworkAccessEnabled;
   /// Repository branch to use for the Static Web App. `repositoryUrl` and `repositoryToken` must also be set.
-  final pulumi.Input<String>? repositoryBranch;
+  final pulumi.Input<String?>? repositoryBranch;
   /// Repository Token with `admin` privileges to use for the Static Web App. `repositoryBranch` and `repositoryUrl` must also be set.
-  final pulumi.Input<String>? repositoryToken;
+  final pulumi.Input<String?>? repositoryToken;
   /// Repository URL to use for the Static Web App. `repositoryBranch` and `repositoryToken` must also be set.
-  final pulumi.Input<String>? repositoryUrl;
+  final pulumi.Input<String?>? repositoryUrl;
   /// The name of the Resource Group where the Static Web App should exist. Changing this forces a new Static Web App to be created.
   final pulumi.Input<String> resourceGroupName;
   /// Specifies the SKU size of the Static Web App. Possible values are `Free` or `Standard`. Defaults to `Free`.
-  final pulumi.Input<String>? skuSize;
+  final pulumi.Input<String?>? skuSize;
   /// Specifies the SKU tier of the Static Web App. Possible values are `Free` or `Standard`. Defaults to `Free`.
-  final pulumi.Input<String>? skuTier;
+  final pulumi.Input<String?>? skuTier;
   /// A mapping of tags to assign to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [StaticWebAppArgs].
   /// [appSettings] A key-value pair of App Settings.

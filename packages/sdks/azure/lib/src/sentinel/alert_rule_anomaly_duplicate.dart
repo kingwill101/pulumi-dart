@@ -1,6 +1,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'alert_rule_anomaly_duplicate_args.dart';
+import 'alert_rule_anomaly_duplicate_multi_select_observation.dart';
+import 'alert_rule_anomaly_duplicate_prioritized_exclude_observation.dart';
+import 'alert_rule_anomaly_duplicate_required_data_connector.dart';
+import 'alert_rule_anomaly_duplicate_single_select_observation.dart';
 import 'alert_rule_anomaly_duplicate_state.dart';
+import 'alert_rule_anomaly_duplicate_threshold_observation.dart';
 
 /// Manages a Duplicated Anomaly Alert Rule.
 ///
@@ -32,7 +37,7 @@ import 'alert_rule_anomaly_duplicate_state.dart';
 /// const exampleAlertRuleAnomalyDuplicate = new azure.sentinel.AlertRuleAnomalyDuplicate("example", {
 ///     displayName: "example duplicated UEBA Anomalous Sign In",
 ///     logAnalyticsWorkspaceId: exampleAnalyticsWorkspace.id,
-///     builtInRuleId: example.apply(example => example.id),
+///     builtInRuleId: example.id,
 ///     enabled: true,
 ///     mode: "Flighting",
 ///     thresholdObservations: [{
@@ -151,7 +156,7 @@ import 'alert_rule_anomaly_duplicate_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleLogAnalyticsWorkspaceOnboarding, err := sentinel.NewLogAnalyticsWorkspaceOnboarding(ctx, "example", &sentinel.LogAnalyticsWorkspaceOnboardingArgs{
-/// 			WorkspaceId:               exampleAnalyticsWorkspace.ID(),
+/// 			WorkspaceId:               exampleAnalyticsWorkspace.ID().ToIDOutput().ToStringOutput(),
 /// 			CustomerManagedKeyEnabled: pulumi.Bool(false),
 /// 		})
 /// 		if err != nil {
@@ -163,12 +168,10 @@ import 'alert_rule_anomaly_duplicate_state.dart';
 /// 		}, nil)
 /// 		_, err = sentinel.NewAlertRuleAnomalyDuplicate(ctx, "example", &sentinel.AlertRuleAnomalyDuplicateArgs{
 /// 			DisplayName:             pulumi.String("example duplicated UEBA Anomalous Sign In"),
-/// 			LogAnalyticsWorkspaceId: exampleAnalyticsWorkspace.ID(),
-/// 			BuiltInRuleId: pulumi.String(example.ApplyT(func(example sentinel.GetAlertRuleAnomalyResult) (*string, error) {
-/// 				return example.Id, nil
-/// 			}).(pulumi.StringPtrOutput)),
-/// 			Enabled: pulumi.Bool(true),
-/// 			Mode:    pulumi.String("Flighting"),
+/// 			LogAnalyticsWorkspaceId: exampleAnalyticsWorkspace.ID().ToIDOutput().ToStringOutput(),
+/// 			BuiltInRuleId:           example.Id(),
+/// 			Enabled:                 pulumi.Bool(true),
+/// 			Mode:                    pulumi.String("Flighting"),
 /// 			ThresholdObservations: sentinel.AlertRuleAnomalyDuplicateThresholdObservationArray{
 /// 				&sentinel.AlertRuleAnomalyDuplicateThresholdObservationArgs{
 /// 					Name:  pulumi.String("Anomaly score threshold"),
@@ -363,16 +366,16 @@ class AlertRuleAnomalyDuplicate extends pulumi.CustomResource {
   /// mode of the Duplicated Anomaly Alert Rule. Possible Values are `Production` and `Flighting`.
   late final pulumi.Output<String> mode;
   /// A list of `multiSelectObservation` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>> multiSelectObservations;
+  late final pulumi.Output<List<AlertRuleAnomalyDuplicateMultiSelectObservation>> multiSelectObservations;
   late final pulumi.Output<String> name;
   /// A list of `prioritizedExcludeObservation` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>> prioritizedExcludeObservations;
+  late final pulumi.Output<List<AlertRuleAnomalyDuplicatePrioritizedExcludeObservation>> prioritizedExcludeObservations;
   /// A `requiredDataConnector` block as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>> requiredDataConnectors;
+  late final pulumi.Output<List<AlertRuleAnomalyDuplicateRequiredDataConnector>> requiredDataConnectors;
   /// The ID of the anomaly settings definition Id.
   late final pulumi.Output<String> settingsDefinitionId;
   /// A list of `singleSelectObservation` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>> singleSelectObservations;
+  late final pulumi.Output<List<AlertRuleAnomalyDuplicateSingleSelectObservation>> singleSelectObservations;
   /// A list of categories of attacks by which to classify the rule.
   late final pulumi.Output<List<String>> tactics;
   /// A list of techniques of attacks by which to classify the rule.
@@ -380,7 +383,7 @@ class AlertRuleAnomalyDuplicate extends pulumi.CustomResource {
   /// A list of `thresholdObservation` blocks as defined below.
   ///
   /// &gt; **Note:** un-specified `multiSelectObservation`, `singleSelectObservation`, `prioritizedExcludeObservation` and `thresholdObservation` will be inherited from the built-in Anomaly Alert Rule.
-  late final pulumi.Output<List<Map<String, dynamic>>> thresholdObservations;
+  late final pulumi.Output<List<AlertRuleAnomalyDuplicateThresholdObservation>> thresholdObservations;
 
   /// Creates a new [AlertRuleAnomalyDuplicate].
   /// [name] The Pulumi resource name.
@@ -394,7 +397,7 @@ class AlertRuleAnomalyDuplicate extends pulumi.CustomResource {
           'azure:sentinel/alertRuleAnomalyDuplicate:AlertRuleAnomalyDuplicate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     anomalySettingsVersion = registerOutput<int>('anomalySettingsVersion');
     anomalyVersion = registerOutput<String>('anomalyVersion');
@@ -406,15 +409,15 @@ class AlertRuleAnomalyDuplicate extends pulumi.CustomResource {
     isDefaultSettings = registerOutput<bool>('isDefaultSettings');
     logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
     mode = registerOutput<String>('mode');
-    multiSelectObservations = registerOutput<List<Map<String, dynamic>>>('multiSelectObservations');
+    multiSelectObservations = registerOutput<List<AlertRuleAnomalyDuplicateMultiSelectObservation>>('multiSelectObservations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AlertRuleAnomalyDuplicateMultiSelectObservation>(guardedValue, (value) => AlertRuleAnomalyDuplicateMultiSelectObservation.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
-    prioritizedExcludeObservations = registerOutput<List<Map<String, dynamic>>>('prioritizedExcludeObservations');
-    requiredDataConnectors = registerOutput<List<Map<String, dynamic>>>('requiredDataConnectors');
+    prioritizedExcludeObservations = registerOutput<List<AlertRuleAnomalyDuplicatePrioritizedExcludeObservation>>('prioritizedExcludeObservations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AlertRuleAnomalyDuplicatePrioritizedExcludeObservation>(guardedValue, (value) => AlertRuleAnomalyDuplicatePrioritizedExcludeObservation.fromMap((value as Map).cast<String, dynamic>())); });
+    requiredDataConnectors = registerOutput<List<AlertRuleAnomalyDuplicateRequiredDataConnector>>('requiredDataConnectors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AlertRuleAnomalyDuplicateRequiredDataConnector>(guardedValue, (value) => AlertRuleAnomalyDuplicateRequiredDataConnector.fromMap((value as Map).cast<String, dynamic>())); });
     settingsDefinitionId = registerOutput<String>('settingsDefinitionId');
-    singleSelectObservations = registerOutput<List<Map<String, dynamic>>>('singleSelectObservations');
-    tactics = registerOutput<List<String>>('tactics');
-    techniques = registerOutput<List<String>>('techniques');
-    thresholdObservations = registerOutput<List<Map<String, dynamic>>>('thresholdObservations');
+    singleSelectObservations = registerOutput<List<AlertRuleAnomalyDuplicateSingleSelectObservation>>('singleSelectObservations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AlertRuleAnomalyDuplicateSingleSelectObservation>(guardedValue, (value) => AlertRuleAnomalyDuplicateSingleSelectObservation.fromMap((value as Map).cast<String, dynamic>())); });
+    tactics = registerOutput<List<String>>('tactics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    techniques = registerOutput<List<String>>('techniques', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    thresholdObservations = registerOutput<List<AlertRuleAnomalyDuplicateThresholdObservation>>('thresholdObservations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AlertRuleAnomalyDuplicateThresholdObservation>(guardedValue, (value) => AlertRuleAnomalyDuplicateThresholdObservation.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [AlertRuleAnomalyDuplicate] resource's state with the given [name] and [id].
@@ -422,11 +425,12 @@ class AlertRuleAnomalyDuplicate extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AlertRuleAnomalyDuplicateState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AlertRuleAnomalyDuplicate._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -450,14 +454,44 @@ class AlertRuleAnomalyDuplicate extends pulumi.CustomResource {
     isDefaultSettings = registerOutput<bool>('isDefaultSettings');
     logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
     mode = registerOutput<String>('mode');
-    multiSelectObservations = registerOutput<List<Map<String, dynamic>>>('multiSelectObservations');
+    multiSelectObservations = registerOutput<List<AlertRuleAnomalyDuplicateMultiSelectObservation>>('multiSelectObservations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AlertRuleAnomalyDuplicateMultiSelectObservation>(guardedValue, (value) => AlertRuleAnomalyDuplicateMultiSelectObservation.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
-    prioritizedExcludeObservations = registerOutput<List<Map<String, dynamic>>>('prioritizedExcludeObservations');
-    requiredDataConnectors = registerOutput<List<Map<String, dynamic>>>('requiredDataConnectors');
+    prioritizedExcludeObservations = registerOutput<List<AlertRuleAnomalyDuplicatePrioritizedExcludeObservation>>('prioritizedExcludeObservations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AlertRuleAnomalyDuplicatePrioritizedExcludeObservation>(guardedValue, (value) => AlertRuleAnomalyDuplicatePrioritizedExcludeObservation.fromMap((value as Map).cast<String, dynamic>())); });
+    requiredDataConnectors = registerOutput<List<AlertRuleAnomalyDuplicateRequiredDataConnector>>('requiredDataConnectors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AlertRuleAnomalyDuplicateRequiredDataConnector>(guardedValue, (value) => AlertRuleAnomalyDuplicateRequiredDataConnector.fromMap((value as Map).cast<String, dynamic>())); });
     settingsDefinitionId = registerOutput<String>('settingsDefinitionId');
-    singleSelectObservations = registerOutput<List<Map<String, dynamic>>>('singleSelectObservations');
-    tactics = registerOutput<List<String>>('tactics');
-    techniques = registerOutput<List<String>>('techniques');
-    thresholdObservations = registerOutput<List<Map<String, dynamic>>>('thresholdObservations');
+    singleSelectObservations = registerOutput<List<AlertRuleAnomalyDuplicateSingleSelectObservation>>('singleSelectObservations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AlertRuleAnomalyDuplicateSingleSelectObservation>(guardedValue, (value) => AlertRuleAnomalyDuplicateSingleSelectObservation.fromMap((value as Map).cast<String, dynamic>())); });
+    tactics = registerOutput<List<String>>('tactics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    techniques = registerOutput<List<String>>('techniques', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    thresholdObservations = registerOutput<List<AlertRuleAnomalyDuplicateThresholdObservation>>('thresholdObservations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AlertRuleAnomalyDuplicateThresholdObservation>(guardedValue, (value) => AlertRuleAnomalyDuplicateThresholdObservation.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [AlertRuleAnomalyDuplicate] resource.
+  AlertRuleAnomalyDuplicate.reference(String urn)
+    : super(
+        'azure:sentinel/alertRuleAnomalyDuplicate:AlertRuleAnomalyDuplicate',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    anomalySettingsVersion = registerOutput<int>('anomalySettingsVersion');
+    anomalyVersion = registerOutput<String>('anomalyVersion');
+    builtInRuleId = registerOutput<String>('builtInRuleId');
+    description = registerOutput<String>('description');
+    displayName = registerOutput<String>('displayName');
+    enabled = registerOutput<bool>('enabled');
+    frequency = registerOutput<String>('frequency');
+    isDefaultSettings = registerOutput<bool>('isDefaultSettings');
+    logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
+    mode = registerOutput<String>('mode');
+    multiSelectObservations = registerOutput<List<AlertRuleAnomalyDuplicateMultiSelectObservation>>('multiSelectObservations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AlertRuleAnomalyDuplicateMultiSelectObservation>(guardedValue, (value) => AlertRuleAnomalyDuplicateMultiSelectObservation.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    prioritizedExcludeObservations = registerOutput<List<AlertRuleAnomalyDuplicatePrioritizedExcludeObservation>>('prioritizedExcludeObservations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AlertRuleAnomalyDuplicatePrioritizedExcludeObservation>(guardedValue, (value) => AlertRuleAnomalyDuplicatePrioritizedExcludeObservation.fromMap((value as Map).cast<String, dynamic>())); });
+    requiredDataConnectors = registerOutput<List<AlertRuleAnomalyDuplicateRequiredDataConnector>>('requiredDataConnectors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AlertRuleAnomalyDuplicateRequiredDataConnector>(guardedValue, (value) => AlertRuleAnomalyDuplicateRequiredDataConnector.fromMap((value as Map).cast<String, dynamic>())); });
+    settingsDefinitionId = registerOutput<String>('settingsDefinitionId');
+    singleSelectObservations = registerOutput<List<AlertRuleAnomalyDuplicateSingleSelectObservation>>('singleSelectObservations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AlertRuleAnomalyDuplicateSingleSelectObservation>(guardedValue, (value) => AlertRuleAnomalyDuplicateSingleSelectObservation.fromMap((value as Map).cast<String, dynamic>())); });
+    tactics = registerOutput<List<String>>('tactics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    techniques = registerOutput<List<String>>('techniques', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    thresholdObservations = registerOutput<List<AlertRuleAnomalyDuplicateThresholdObservation>>('thresholdObservations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AlertRuleAnomalyDuplicateThresholdObservation>(guardedValue, (value) => AlertRuleAnomalyDuplicateThresholdObservation.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

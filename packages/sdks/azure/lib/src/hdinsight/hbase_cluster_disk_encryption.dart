@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class HBaseClusterDiskEncryption {
   /// This is an algorithm identifier for encryption. Possible values are `RSA1_5`, `RSA-OAEP`, `RSA-OAEP-256`.
-  final pulumi.Input<String>? encryptionAlgorithm;
+  final pulumi.Input<String?>? encryptionAlgorithm;
   /// This is indicator to show whether resource disk encryption is enabled.
-  final pulumi.Input<bool>? encryptionAtHostEnabled;
+  final pulumi.Input<bool?>? encryptionAtHostEnabled;
   /// The ID of the key vault key.
-  final pulumi.Input<String>? keyVaultKeyId;
+  final pulumi.Input<String?>? keyVaultKeyId;
   /// This is the resource ID of Managed Identity used to access the key vault.
-  final pulumi.Input<String>? keyVaultManagedIdentityId;
+  final pulumi.Input<String?>? keyVaultManagedIdentityId;
 
   /// Creates a new [HBaseClusterDiskEncryption].
   /// [encryptionAlgorithm] This is an algorithm identifier for encryption. Possible values are `RSA1_5`, `RSA-OAEP`, `RSA-OAEP-256`.

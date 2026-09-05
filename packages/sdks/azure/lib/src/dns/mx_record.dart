@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'mx_record_args.dart';
+import 'mx_record_record.dart';
 import 'mx_record_state.dart';
 
 /// Enables you to manage DNS MX Records within Azure DNS.
@@ -310,7 +311,7 @@ class MxRecord extends pulumi.CustomResource {
   /// The name of the DNS MX Record. Defaults to `@` (root). Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
   /// A list of values that make up the MX record. Each `record` block supports fields documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> records;
+  late final pulumi.Output<List<MxRecordRecord>> records;
   /// Specifies the resource group where the DNS Zone (parent resource) exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
   /// A mapping of tags to assign to the resource.
@@ -332,13 +333,13 @@ class MxRecord extends pulumi.CustomResource {
           'azure:dns/mxRecord:MxRecord',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     fqdn = registerOutput<String>('fqdn');
     this.name = registerOutput<String>('name');
-    records = registerOutput<List<Map<String, dynamic>>>('records');
+    records = registerOutput<List<MxRecordRecord>>('records', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MxRecordRecord>(guardedValue, (value) => MxRecordRecord.fromMap((value as Map).cast<String, dynamic>())); });
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     ttl = registerOutput<int>('ttl');
     zoneName = registerOutput<String>('zoneName');
   }
@@ -348,11 +349,12 @@ class MxRecord extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     MxRecordState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return MxRecord._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -368,9 +370,27 @@ class MxRecord extends pulumi.CustomResource {
         ) {
     fqdn = registerOutput<String>('fqdn');
     this.name = registerOutput<String>('name');
-    records = registerOutput<List<Map<String, dynamic>>>('records');
+    records = registerOutput<List<MxRecordRecord>>('records', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MxRecordRecord>(guardedValue, (value) => MxRecordRecord.fromMap((value as Map).cast<String, dynamic>())); });
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    ttl = registerOutput<int>('ttl');
+    zoneName = registerOutput<String>('zoneName');
+  }
+
+  /// Creates a typed reference to an existing [MxRecord] resource.
+  MxRecord.reference(String urn)
+    : super(
+        'azure:dns/mxRecord:MxRecord',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    fqdn = registerOutput<String>('fqdn');
+    this.name = registerOutput<String>('name');
+    records = registerOutput<List<MxRecordRecord>>('records', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MxRecordRecord>(guardedValue, (value) => MxRecordRecord.fromMap((value as Map).cast<String, dynamic>())); });
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     ttl = registerOutput<int>('ttl');
     zoneName = registerOutput<String>('zoneName');
   }

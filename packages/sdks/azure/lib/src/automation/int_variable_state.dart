@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering IntVariable resources.
 class IntVariableState {
   /// The name of the automation account in which the Variable is created. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? automationAccountName;
+  final pulumi.Input<String?>? automationAccountName;
   /// The description of the Automation Variable.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Specifies if the Automation Variable is encrypted. Defaults to `false`.
-  final pulumi.Input<bool>? encrypted;
+  final pulumi.Input<bool?>? encrypted;
   /// The name of the Automation Variable. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the resource group in which to create the Automation Variable. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// The value of the Automation Variable as a `integer`.
-  final pulumi.Input<int>? value;
+  final pulumi.Input<int?>? value;
 
   /// Creates a new [IntVariableState].
   /// [automationAccountName] The name of the automation account in which the Variable is created. Changing this forces a new resource to be created.
@@ -51,7 +51,7 @@ class IntVariableState {
       encrypted: (() { final guardedValue = map['encrypted']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceGroupName: (() { final guardedValue = map['resourceGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

@@ -10,13 +10,13 @@ class PolicyFragmentArgs {
   /// The id of the API Management Service. Changing this forces a new Api Management Policy Fragment to be created.
   final pulumi.Input<String> apiManagementId;
   /// The description for the Policy Fragment.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The format of the Policy Fragment. Possible values are `xml` or `rawxml`. Default is `xml`.
   ///
   /// &gt; **Note:** The `value` property will be updated to reflect the corresponding format when `format` is updated.
-  final pulumi.Input<String>? format;
+  final pulumi.Input<String?>? format;
   /// The name which should be used for this Api Management Policy Fragment. Changing this forces a new Api Management Policy Fragment to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The value of the Policy Fragment.
   ///
   /// &gt; **Note:** Be aware of the two format possibilities. If the `value` is not applied and continues to cause a diff the format could be wrong.

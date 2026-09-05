@@ -9,27 +9,27 @@ import 'trigger_custom_event_pipeline.dart';
 /// {@macro pulumi_datafactory_trigger_custom_event_trigger_custom_event_args_doc}
 class TriggerCustomEventArgs {
   /// Specifies if the Data Factory Custom Event Trigger is activated. Defaults to `true`.
-  final pulumi.Input<bool>? activated;
+  final pulumi.Input<bool?>? activated;
   /// A map of additional properties to associate with the Data Factory Custom Event Trigger.
-  final pulumi.Input<Map<String, String>>? additionalProperties;
+  final pulumi.Input<Map<String, String>?>? additionalProperties;
   /// List of tags that can be used for describing the Data Factory Custom Event Trigger.
-  final pulumi.Input<List<String>>? annotations;
+  final pulumi.Input<List<String>?>? annotations;
   /// The ID of Data Factory in which to associate the Trigger with. Changing this forces a new resource.
   final pulumi.Input<String> dataFactoryId;
   /// The description for the Data Factory Custom Event Trigger.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The ID of Event Grid Topic in which event will be listened. Changing this forces a new resource.
   final pulumi.Input<String> eventgridTopicId;
   /// List of events that will fire this trigger. At least one event must be specified.
   final pulumi.Input<List<String>> events;
   /// Specifies the name of the Data Factory Custom Event Trigger. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// One or more `pipeline` blocks as defined below.
   final pulumi.Input<List<TriggerCustomEventPipeline>> pipelines;
   /// The pattern that event subject starts with for trigger to fire.
-  final pulumi.Input<String>? subjectBeginsWith;
+  final pulumi.Input<String?>? subjectBeginsWith;
   /// The pattern that event subject ends with for trigger to fire.
-  final pulumi.Input<String>? subjectEndsWith;
+  final pulumi.Input<String?>? subjectEndsWith;
 
   /// Creates a new [TriggerCustomEventArgs].
   /// [activated] Specifies if the Data Factory Custom Event Trigger is activated. Defaults to `true`.

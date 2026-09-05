@@ -6,9 +6,9 @@ class HadoopClusterNetwork {
   /// The direction of the resource provider connection. Possible values include `Inbound` or `Outbound`. Defaults to `Inbound`. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** To enabled the private link the `connectionDirection` must be set to `Outbound`.
-  final pulumi.Input<String>? connectionDirection;
+  final pulumi.Input<String?>? connectionDirection;
   /// Is the private link enabled? Possible values include `true` or `false`. Defaults to `false`. Changing this forces a new resource to be created.
-  final pulumi.Input<bool>? privateLinkEnabled;
+  final pulumi.Input<bool?>? privateLinkEnabled;
 
   /// Creates a new [HadoopClusterNetwork].
   /// [connectionDirection] The direction of the resource provider connection. Possible values include `Inbound` or `Outbound`. Defaults to `Inbound`. Changing this forces a new resource to be created.

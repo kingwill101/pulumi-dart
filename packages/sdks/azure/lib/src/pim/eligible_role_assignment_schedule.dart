@@ -5,9 +5,9 @@ import 'eligible_role_assignment_schedule_expiration.dart';
 
 class EligibleRoleAssignmentSchedule {
   /// An `expiration` block as defined above.
-  final pulumi.Input<EligibleRoleAssignmentScheduleExpiration>? expiration;
+  final pulumi.Input<EligibleRoleAssignmentScheduleExpiration?>? expiration;
   /// The start date/time of the role assignment. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? startDateTime;
+  final pulumi.Input<String?>? startDateTime;
 
   /// Creates a new [EligibleRoleAssignmentSchedule].
   /// [expiration] An `expiration` block as defined above.

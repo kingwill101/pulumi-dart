@@ -141,7 +141,7 @@ import 'database_threat_detection_policy.dart';
 /// 		}
 /// 		_, err = mssql.NewDatabase(ctx, "example", &mssql.DatabaseArgs{
 /// 			Name:        pulumi.String("example-db"),
-/// 			ServerId:    exampleServer.ID(),
+/// 			ServerId:    exampleServer.ID().ToIDOutput().ToStringOutput(),
 /// 			Collation:   pulumi.String("SQL_Latin1_General_CP1_CI_AS"),
 /// 			LicenseType: pulumi.String("LicenseIncluded"),
 /// 			MaxSizeGb:   pulumi.Float64(2),
@@ -314,6 +314,7 @@ import 'database_threat_detection_policy.dart';
 ///     name: "mssqltdeexample",
 ///     location: example.location,
 ///     resourceGroupName: example.name,
+///     rbacAuthorizationEnabled: false,
 ///     enabledForDiskEncryption: true,
 ///     tenantId: exampleUserAssignedIdentity.tenantId,
 ///     softDeleteRetentionDays: 7,
@@ -406,6 +407,7 @@ import 'database_threat_detection_policy.dart';
 ///     name="mssqltdeexample",
 ///     location=example.location,
 ///     resource_group_name=example.name,
+///     rbac_authorization_enabled=False,
 ///     enabled_for_disk_encryption=True,
 ///     tenant_id=example_user_assigned_identity.tenant_id,
 ///     soft_delete_retention_days=7,
@@ -511,6 +513,7 @@ import 'database_threat_detection_policy.dart';
 ///         Name = "mssqltdeexample",
 ///         Location = example.Location,
 ///         ResourceGroupName = example.Name,
+///         RbacAuthorizationEnabled = false,
 ///         EnabledForDiskEncryption = true,
 ///         TenantId = exampleUserAssignedIdentity.TenantId,
 ///         SoftDeleteRetentionDays = 7,
@@ -650,6 +653,7 @@ import 'database_threat_detection_policy.dart';
 /// 			Name:                     pulumi.String("mssqltdeexample"),
 /// 			Location:                 example.Location,
 /// 			ResourceGroupName:        example.Name,
+/// 			RbacAuthorizationEnabled: pulumi.Bool(false),
 /// 			EnabledForDiskEncryption: pulumi.Bool(true),
 /// 			TenantId:                 exampleUserAssignedIdentity.TenantId,
 /// 			SoftDeleteRetentionDays:  pulumi.Int(7),
@@ -686,7 +690,7 @@ import 'database_threat_detection_policy.dart';
 /// 		}
 /// 		exampleKey, err := keyvault.NewKey(ctx, "example", &keyvault.KeyArgs{
 /// 			Name:       pulumi.String("example-key"),
-/// 			KeyVaultId: exampleKeyVault.ID(),
+/// 			KeyVaultId: exampleKeyVault.ID().ToIDOutput().ToStringOutput(),
 /// 			KeyType:    pulumi.String("RSA"),
 /// 			KeySize:    pulumi.Int(2048),
 /// 			KeyOpts: pulumi.StringArray{
@@ -701,7 +705,7 @@ import 'database_threat_detection_policy.dart';
 /// 		}
 /// 		_, err = mssql.NewDatabase(ctx, "example", &mssql.DatabaseArgs{
 /// 			Name:          pulumi.String("example-db"),
-/// 			ServerId:      exampleServer.ID(),
+/// 			ServerId:      exampleServer.ID().ToIDOutput().ToStringOutput(),
 /// 			Collation:     pulumi.String("SQL_Latin1_General_CP1_CI_AS"),
 /// 			LicenseType:   pulumi.String("LicenseIncluded"),
 /// 			MaxSizeGb:     pulumi.Float64(4),
@@ -715,10 +719,10 @@ import 'database_threat_detection_policy.dart';
 /// 			Identity: &mssql.DatabaseIdentityArgs{
 /// 				Type: pulumi.String("UserAssigned"),
 /// 				IdentityIds: pulumi.StringArray{
-/// 					exampleUserAssignedIdentity.ID(),
+/// 					exampleUserAssignedIdentity.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
-/// 			TransparentDataEncryptionKeyVaultKeyId: exampleKey.ID(),
+/// 			TransparentDataEncryptionKeyVaultKeyId: exampleKey.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -784,6 +788,7 @@ import 'database_threat_detection_policy.dart';
 ///   name                        = "mssqltdeexample"
 ///   location                    = azure_core_resourcegroup.example.location
 ///   resource_group_name         = azure_core_resourcegroup.example.name
+///   rbac_authorization_enabled  = false
 ///   enabled_for_disk_encryption = true
 ///   tenant_id                   = azure_authorization_userassignedidentity.example.tenant_id
 ///   soft_delete_retention_days  = 7
@@ -878,6 +883,7 @@ import 'database_threat_detection_policy.dart';
 ///             .name("mssqltdeexample")
 ///             .location(example.location())
 ///             .resourceGroupName(example.name())
+///             .rbacAuthorizationEnabled(false)
 ///             .enabledForDiskEncryption(true)
 ///             .tenantId(exampleUserAssignedIdentity.tenantId())
 ///             .softDeleteRetentionDays(7)
@@ -1001,6 +1007,7 @@ import 'database_threat_detection_policy.dart';
 ///       name: mssqltdeexample
 ///       location: ${example.location}
 ///       resourceGroupName: ${example.name}
+///       rbacAuthorizationEnabled: false
 ///       enabledForDiskEncryption: true
 ///       tenantId: ${exampleUserAssignedIdentity.tenantId}
 ///       softDeleteRetentionDays: 7
@@ -1166,7 +1173,7 @@ class Database extends pulumi.CustomResource {
           'azure:mssql/database:Database',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     autoPauseDelayInMinutes = registerOutput<int>('autoPauseDelayInMinutes');
     collation = registerOutput<String>('collation');
@@ -1197,7 +1204,7 @@ class Database extends pulumi.CustomResource {
     shortTermRetentionPolicy = registerOutput<DatabaseShortTermRetentionPolicy>('shortTermRetentionPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseShortTermRetentionPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     skuName = registerOutput<String>('skuName');
     storageAccountType = registerOutput<String?>('storageAccountType');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     threatDetectionPolicy = registerOutput<DatabaseThreatDetectionPolicy>('threatDetectionPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseThreatDetectionPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     transparentDataEncryptionEnabled = registerOutput<bool?>('transparentDataEncryptionEnabled');
     transparentDataEncryptionKeyAutomaticRotationEnabled = registerOutput<bool?>('transparentDataEncryptionKeyAutomaticRotationEnabled');
@@ -1210,11 +1217,12 @@ class Database extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DatabaseState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Database._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1257,7 +1265,53 @@ class Database extends pulumi.CustomResource {
     shortTermRetentionPolicy = registerOutput<DatabaseShortTermRetentionPolicy>('shortTermRetentionPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseShortTermRetentionPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     skuName = registerOutput<String>('skuName');
     storageAccountType = registerOutput<String?>('storageAccountType');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    threatDetectionPolicy = registerOutput<DatabaseThreatDetectionPolicy>('threatDetectionPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseThreatDetectionPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    transparentDataEncryptionEnabled = registerOutput<bool?>('transparentDataEncryptionEnabled');
+    transparentDataEncryptionKeyAutomaticRotationEnabled = registerOutput<bool?>('transparentDataEncryptionKeyAutomaticRotationEnabled');
+    transparentDataEncryptionKeyVaultKeyId = registerOutput<String?>('transparentDataEncryptionKeyVaultKeyId');
+    zoneRedundant = registerOutput<bool>('zoneRedundant');
+  }
+
+  /// Creates a typed reference to an existing [Database] resource.
+  Database.reference(String urn)
+    : super(
+        'azure:mssql/database:Database',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    autoPauseDelayInMinutes = registerOutput<int>('autoPauseDelayInMinutes');
+    collation = registerOutput<String>('collation');
+    createMode = registerOutput<String?>('createMode');
+    creationSourceDatabaseId = registerOutput<String>('creationSourceDatabaseId');
+    elasticPoolId = registerOutput<String?>('elasticPoolId');
+    enclaveType = registerOutput<String>('enclaveType');
+    geoBackupEnabled = registerOutput<bool?>('geoBackupEnabled');
+    identity = registerOutput<DatabaseIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    import = registerOutput<DatabaseImport?>('import', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseImport.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    ledgerEnabled = registerOutput<bool>('ledgerEnabled');
+    licenseType = registerOutput<String>('licenseType');
+    longTermRetentionPolicy = registerOutput<DatabaseLongTermRetentionPolicy>('longTermRetentionPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseLongTermRetentionPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    maintenanceConfigurationName = registerOutput<String>('maintenanceConfigurationName');
+    maxSizeGb = registerOutput<double>('maxSizeGb');
+    minCapacity = registerOutput<double>('minCapacity');
+    this.name = registerOutput<String>('name');
+    readReplicaCount = registerOutput<int>('readReplicaCount');
+    readScale = registerOutput<bool>('readScale');
+    recoverDatabaseId = registerOutput<String?>('recoverDatabaseId');
+    recoveryPointId = registerOutput<String?>('recoveryPointId');
+    restoreDroppedDatabaseId = registerOutput<String?>('restoreDroppedDatabaseId');
+    restoreLongTermRetentionBackupId = registerOutput<String?>('restoreLongTermRetentionBackupId');
+    restorePointInTime = registerOutput<String>('restorePointInTime');
+    sampleName = registerOutput<String>('sampleName');
+    secondaryType = registerOutput<String>('secondaryType');
+    serverId = registerOutput<String>('serverId');
+    shortTermRetentionPolicy = registerOutput<DatabaseShortTermRetentionPolicy>('shortTermRetentionPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseShortTermRetentionPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    skuName = registerOutput<String>('skuName');
+    storageAccountType = registerOutput<String?>('storageAccountType');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     threatDetectionPolicy = registerOutput<DatabaseThreatDetectionPolicy>('threatDetectionPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseThreatDetectionPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     transparentDataEncryptionEnabled = registerOutput<bool?>('transparentDataEncryptionEnabled');
     transparentDataEncryptionKeyAutomaticRotationEnabled = registerOutput<bool?>('transparentDataEncryptionKeyAutomaticRotationEnabled');

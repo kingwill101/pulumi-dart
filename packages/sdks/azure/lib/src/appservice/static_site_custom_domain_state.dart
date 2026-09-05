@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering StaticSiteCustomDomain resources.
 class StaticSiteCustomDomainState {
   /// The Domain Name which should be associated with this Static Site. Changing this forces a new Static Site Custom Domain to be created.
-  final pulumi.Input<String>? domainName;
+  final pulumi.Input<String?>? domainName;
   /// The ID of the Static Site. Changing this forces a new Static Site Custom Domain to be created.
-  final pulumi.Input<String>? staticSiteId;
+  final pulumi.Input<String?>? staticSiteId;
   /// Token to be used with `dns-txt-token` validation.
-  final pulumi.Input<String>? validationToken;
+  final pulumi.Input<String?>? validationToken;
   /// One of `cname-delegation` or `dns-txt-token`. Changing this forces a new Static Site Custom Domain to be created.
-  final pulumi.Input<String>? validationType;
+  final pulumi.Input<String?>? validationType;
 
   /// Creates a new [StaticSiteCustomDomainState].
   /// [domainName] The Domain Name which should be associated with this Static Site. Changing this forces a new Static Site Custom Domain to be created.

@@ -305,7 +305,7 @@ class GlobalSchema extends pulumi.CustomResource {
           'azure:apimanagement/globalSchema:GlobalSchema',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     apiManagementName = registerOutput<String>('apiManagementName');
     description = registerOutput<String?>('description');
@@ -320,11 +320,12 @@ class GlobalSchema extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     GlobalSchemaState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return GlobalSchema._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -338,6 +339,23 @@ class GlobalSchema extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    apiManagementName = registerOutput<String>('apiManagementName');
+    description = registerOutput<String?>('description');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    schemaId = registerOutput<String>('schemaId');
+    type = registerOutput<String>('type');
+    value = registerOutput<String>('value');
+  }
+
+  /// Creates a typed reference to an existing [GlobalSchema] resource.
+  GlobalSchema.reference(String urn)
+    : super(
+        'azure:apimanagement/globalSchema:GlobalSchema',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     apiManagementName = registerOutput<String>('apiManagementName');
     description = registerOutput<String?>('description');
     resourceGroupName = registerOutput<String>('resourceGroupName');

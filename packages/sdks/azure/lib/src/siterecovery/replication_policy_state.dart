@@ -7,15 +7,15 @@ class ReplicationPolicyState {
   /// Specifies the frequency(in minutes) at which to create application consistent recovery points.
   ///
   /// &gt; **Note:** The value of `applicationConsistentSnapshotFrequencyInMinutes` must be less than or equal to the value of `recoveryPointRetentionInMinutes`.
-  final pulumi.Input<int>? applicationConsistentSnapshotFrequencyInMinutes;
+  final pulumi.Input<int?>? applicationConsistentSnapshotFrequencyInMinutes;
   /// The name of the replication policy. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The duration in minutes for which the recovery points need to be stored.
-  final pulumi.Input<int>? recoveryPointRetentionInMinutes;
+  final pulumi.Input<int?>? recoveryPointRetentionInMinutes;
   /// The name of the vault that should be updated. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? recoveryVaultName;
+  final pulumi.Input<String?>? recoveryVaultName;
   /// Name of the resource group where the vault that should be updated is located. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
 
   /// Creates a new [ReplicationPolicyState].
   /// [applicationConsistentSnapshotFrequencyInMinutes] Specifies the frequency(in minutes) at which to create application consistent recovery points.
@@ -43,9 +43,9 @@ class ReplicationPolicyState {
 
   factory ReplicationPolicyState.fromMap(Map<String, dynamic> map) {
     return ReplicationPolicyState(
-      applicationConsistentSnapshotFrequencyInMinutes: (() { final guardedValue = map['applicationConsistentSnapshotFrequencyInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      applicationConsistentSnapshotFrequencyInMinutes: (() { final guardedValue = map['applicationConsistentSnapshotFrequencyInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      recoveryPointRetentionInMinutes: (() { final guardedValue = map['recoveryPointRetentionInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      recoveryPointRetentionInMinutes: (() { final guardedValue = map['recoveryPointRetentionInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       recoveryVaultName: (() { final guardedValue = map['recoveryVaultName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceGroupName: (() { final guardedValue = map['resourceGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

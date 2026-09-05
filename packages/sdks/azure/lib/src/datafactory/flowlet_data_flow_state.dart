@@ -8,25 +8,25 @@ import 'flowlet_data_flow_transformation.dart';
 /// Input properties used for looking up and filtering FlowletDataFlow resources.
 class FlowletDataFlowState {
   /// List of tags that can be used for describing the Data Factory Flowlet Data Flow.
-  final pulumi.Input<List<String>>? annotations;
+  final pulumi.Input<List<String>?>? annotations;
   /// The ID of Data Factory in which to associate the Data Flow with. Changing this forces a new resource.
-  final pulumi.Input<String>? dataFactoryId;
+  final pulumi.Input<String?>? dataFactoryId;
   /// The description for the Data Factory Flowlet Data Flow.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The folder that this Data Flow is in. If not specified, the Data Flow will appear at the root level.
-  final pulumi.Input<String>? folder;
+  final pulumi.Input<String?>? folder;
   /// Specifies the name of the Data Factory Flowlet Data Flow. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The script for the Data Factory Flowlet Data Flow.
-  final pulumi.Input<String>? script;
+  final pulumi.Input<String?>? script;
   /// The script lines for the Data Factory Flowlet Data Flow.
-  final pulumi.Input<List<String>>? scriptLines;
+  final pulumi.Input<List<String>?>? scriptLines;
   /// One or more `sink` blocks as defined below.
-  final pulumi.Input<List<FlowletDataFlowSink>>? sinks;
+  final pulumi.Input<List<FlowletDataFlowSink>?>? sinks;
   /// One or more `source` blocks as defined below.
-  final pulumi.Input<List<FlowletDataFlowSource>>? sources;
+  final pulumi.Input<List<FlowletDataFlowSource>?>? sources;
   /// One or more `transformation` blocks as defined below.
-  final pulumi.Input<List<FlowletDataFlowTransformation>>? transformations_;
+  final pulumi.Input<List<FlowletDataFlowTransformation>?>? transformations_;
 
   /// Creates a new [FlowletDataFlowState].
   /// [annotations] List of tags that can be used for describing the Data Factory Flowlet Data Flow.

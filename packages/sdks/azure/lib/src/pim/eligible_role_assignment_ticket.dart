@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EligibleRoleAssignmentTicket {
   /// User-supplied ticket number to be included with the request. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? number;
+  final pulumi.Input<String?>? number;
   /// User-supplied ticket system name to be included with the request. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? system;
+  final pulumi.Input<String?>? system;
 
   /// Creates a new [EligibleRoleAssignmentTicket].
   /// [number] User-supplied ticket number to be included with the request. Changing this forces a new resource to be created.

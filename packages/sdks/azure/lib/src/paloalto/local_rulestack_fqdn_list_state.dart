@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering LocalRulestackFqdnList resources.
 class LocalRulestackFqdnListState {
   /// The comment for Audit purposes.
-  final pulumi.Input<String>? auditComment;
+  final pulumi.Input<String?>? auditComment;
   /// The description for the FQDN List.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Specifies a list of Fully Qualified Domain Names.
-  final pulumi.Input<List<String>>? fullyQualifiedDomainNames;
+  final pulumi.Input<List<String>?>? fullyQualifiedDomainNames;
   /// The name which should be used for this Palo Alto Local Rulestack FQDN List.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the TODO. Changing this forces a new Palo Alto Local Rulestack FQDN List to be created.
-  final pulumi.Input<String>? rulestackId;
+  final pulumi.Input<String?>? rulestackId;
 
   /// Creates a new [LocalRulestackFqdnListState].
   /// [auditComment] The comment for Audit purposes.

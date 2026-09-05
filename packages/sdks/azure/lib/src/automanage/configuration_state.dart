@@ -8,30 +8,30 @@ import 'configuration_backup.dart';
 /// Input properties used for looking up and filtering Configuration resources.
 class ConfigurationState {
   /// A `antimalware` block as defined below.
-  final pulumi.Input<ConfigurationAntimalware>? antimalware;
+  final pulumi.Input<ConfigurationAntimalware?>? antimalware;
   /// Whether the automation account is enabled. Defaults to `false`.
-  final pulumi.Input<bool>? automationAccountEnabled;
+  final pulumi.Input<bool?>? automationAccountEnabled;
   /// A `azureSecurityBaseline` block as defined below.
-  final pulumi.Input<ConfigurationAzureSecurityBaseline>? azureSecurityBaseline;
+  final pulumi.Input<ConfigurationAzureSecurityBaseline?>? azureSecurityBaseline;
   /// A `backup` block as defined below.
-  final pulumi.Input<ConfigurationBackup>? backup;
+  final pulumi.Input<ConfigurationBackup?>? backup;
   /// Whether the boot diagnostics are enabled. Defaults to `false`.
-  final pulumi.Input<bool>? bootDiagnosticsEnabled;
+  final pulumi.Input<bool?>? bootDiagnosticsEnabled;
   /// Whether the defender for cloud is enabled. Defaults to `false`.
-  final pulumi.Input<bool>? defenderForCloudEnabled;
+  final pulumi.Input<bool?>? defenderForCloudEnabled;
   /// Whether the guest configuration is enabled. Defaults to `false`.
-  final pulumi.Input<bool>? guestConfigurationEnabled;
+  final pulumi.Input<bool?>? guestConfigurationEnabled;
   /// The Azure Region where the Automanage Configuration should exist. Changing this forces a new Automanage Configuration to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Whether log analytics are enabled. Defaults to `false`.
-  final pulumi.Input<bool>? logAnalyticsEnabled;
+  final pulumi.Input<bool?>? logAnalyticsEnabled;
   /// The name which should be used for this Automanage Configuration. Changing this forces a new Automanage Configuration to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the Resource Group where the Automanage Configuration should exist. Changing this forces a new Automanage Configuration to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// Whether the status change alert is enabled. Defaults to `false`.
-  final pulumi.Input<bool>? statusChangeAlertEnabled;
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<bool?>? statusChangeAlertEnabled;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ConfigurationState].
   /// [antimalware] A `antimalware` block as defined below.

@@ -101,7 +101,7 @@ import 'log_analytics_workspace_onboarding_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = sentinel.NewLogAnalyticsWorkspaceOnboarding(ctx, "example", &sentinel.LogAnalyticsWorkspaceOnboardingArgs{
-/// 			WorkspaceId:               exampleAnalyticsWorkspace.ID(),
+/// 			WorkspaceId:               exampleAnalyticsWorkspace.ID().ToIDOutput().ToStringOutput(),
 /// 			CustomerManagedKeyEnabled: pulumi.Bool(false),
 /// 		})
 /// 		if err != nil {
@@ -240,7 +240,7 @@ class LogAnalyticsWorkspaceOnboarding extends pulumi.CustomResource {
           'azure:sentinel/logAnalyticsWorkspaceOnboarding:LogAnalyticsWorkspaceOnboarding',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     customerManagedKeyEnabled = registerOutput<bool?>('customerManagedKeyEnabled');
     workspaceId = registerOutput<String>('workspaceId');
@@ -251,11 +251,12 @@ class LogAnalyticsWorkspaceOnboarding extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LogAnalyticsWorkspaceOnboardingState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LogAnalyticsWorkspaceOnboarding._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -269,6 +270,19 @@ class LogAnalyticsWorkspaceOnboarding extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    customerManagedKeyEnabled = registerOutput<bool?>('customerManagedKeyEnabled');
+    workspaceId = registerOutput<String>('workspaceId');
+  }
+
+  /// Creates a typed reference to an existing [LogAnalyticsWorkspaceOnboarding] resource.
+  LogAnalyticsWorkspaceOnboarding.reference(String urn)
+    : super(
+        'azure:sentinel/logAnalyticsWorkspaceOnboarding:LogAnalyticsWorkspaceOnboarding',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     customerManagedKeyEnabled = registerOutput<bool?>('customerManagedKeyEnabled');
     workspaceId = registerOutput<String>('workspaceId');
   }

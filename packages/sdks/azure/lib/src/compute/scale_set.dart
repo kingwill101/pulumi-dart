@@ -1,14 +1,18 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'scale_set_args.dart';
 import 'scale_set_boot_diagnostics.dart';
+import 'scale_set_extension.dart';
 import 'scale_set_identity.dart';
+import 'scale_set_network_profile.dart';
 import 'scale_set_os_profile.dart';
 import 'scale_set_os_profile_linux_config.dart';
+import 'scale_set_os_profile_secret.dart';
 import 'scale_set_os_profile_windows_config.dart';
 import 'scale_set_plan.dart';
 import 'scale_set_rolling_upgrade_policy.dart';
 import 'scale_set_sku.dart';
 import 'scale_set_state.dart';
+import 'scale_set_storage_profile_data_disk.dart';
 import 'scale_set_storage_profile_image_reference.dart';
 import 'scale_set_storage_profile_os_disk.dart';
 
@@ -513,7 +517,7 @@ import 'scale_set_storage_profile_os_disk.dart';
 /// 			FrontendIpConfigurations: lb.LoadBalancerFrontendIpConfigurationArray{
 /// 				&lb.LoadBalancerFrontendIpConfigurationArgs{
 /// 					Name:              pulumi.String("PublicIPAddress"),
-/// 					PublicIpAddressId: examplePublicIp.ID(),
+/// 					PublicIpAddressId: examplePublicIp.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 		})
@@ -521,7 +525,7 @@ import 'scale_set_storage_profile_os_disk.dart';
 /// 			return err
 /// 		}
 /// 		bpepool, err := lb.NewBackendAddressPool(ctx, "bpepool", &lb.BackendAddressPoolArgs{
-/// 			LoadbalancerId: exampleLoadBalancer.ID(),
+/// 			LoadbalancerId: exampleLoadBalancer.ID().ToIDOutput().ToStringOutput(),
 /// 			Name:           pulumi.String("BackEndAddressPool"),
 /// 		})
 /// 		if err != nil {
@@ -530,7 +534,7 @@ import 'scale_set_storage_profile_os_disk.dart';
 /// 		lbnatpool, err := lb.NewNatPool(ctx, "lbnatpool", &lb.NatPoolArgs{
 /// 			ResourceGroupName:           example.Name,
 /// 			Name:                        pulumi.String("ssh"),
-/// 			LoadbalancerId:              exampleLoadBalancer.ID(),
+/// 			LoadbalancerId:              exampleLoadBalancer.ID().ToIDOutput().ToStringOutput(),
 /// 			Protocol:                    pulumi.String("Tcp"),
 /// 			FrontendPortStart:           pulumi.Int(50000),
 /// 			FrontendPortEnd:             pulumi.Int(50119),
@@ -541,7 +545,7 @@ import 'scale_set_storage_profile_os_disk.dart';
 /// 			return err
 /// 		}
 /// 		exampleProbe, err := lb.NewProbe(ctx, "example", &lb.ProbeArgs{
-/// 			LoadbalancerId: exampleLoadBalancer.ID(),
+/// 			LoadbalancerId: exampleLoadBalancer.ID().ToIDOutput().ToStringOutput(),
 /// 			Name:           pulumi.String("http-probe"),
 /// 			Protocol:       pulumi.String("Http"),
 /// 			RequestPath:    pulumi.String("/health"),
@@ -568,7 +572,7 @@ import 'scale_set_storage_profile_os_disk.dart';
 /// 				MaxUnhealthyUpgradedInstancePercent: pulumi.Int(5),
 /// 				PauseTimeBetweenBatches:             pulumi.String("PT0S"),
 /// 			},
-/// 			HealthProbeId: exampleProbe.ID(),
+/// 			HealthProbeId: exampleProbe.ID().ToIDOutput().ToStringOutput(),
 /// 			Sku: &compute.ScaleSetSkuArgs{
 /// 				Name:     pulumi.String("Standard_D4_v5"),
 /// 				Tier:     pulumi.String("Standard"),
@@ -615,12 +619,12 @@ import 'scale_set_storage_profile_os_disk.dart';
 /// 						&compute.ScaleSetNetworkProfileIpConfigurationArgs{
 /// 							Name:     pulumi.String("TestIPConfiguration"),
 /// 							Primary:  pulumi.Bool(true),
-/// 							SubnetId: exampleSubnet.ID(),
+/// 							SubnetId: exampleSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 							LoadBalancerBackendAddressPoolIds: pulumi.StringArray{
-/// 								bpepool.ID(),
+/// 								bpepool.ID().ToIDOutput().ToStringOutput(),
 /// 							},
 /// 							LoadBalancerInboundNatRulesIds: pulumi.StringArray{
-/// 								lbnatpool.ID(),
+/// 								lbnatpool.ID().ToIDOutput().ToStringOutput(),
 /// 							},
 /// 						},
 /// 					},
@@ -1479,7 +1483,7 @@ import 'scale_set_storage_profile_os_disk.dart';
 /// 						&compute.ScaleSetNetworkProfileIpConfigurationArgs{
 /// 							Name:     pulumi.String("TestIPConfiguration"),
 /// 							Primary:  pulumi.Bool(true),
-/// 							SubnetId: exampleSubnet.ID(),
+/// 							SubnetId: exampleSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 						},
 /// 					},
 /// 				},
@@ -1883,7 +1887,7 @@ import 'scale_set_storage_profile_os_disk.dart';
 /// 		_, err = compute.NewScaleSet(ctx, "example", &compute.ScaleSetArgs{
 /// 			Name: pulumi.String("test"),
 /// 			StorageProfileImageReference: &compute.ScaleSetStorageProfileImageReferenceArgs{
-/// 				Id: example.ID(),
+/// 				Id: example.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -1971,7 +1975,7 @@ import 'scale_set_storage_profile_os_disk.dart';
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
-/// * `Microsoft.Compute` - 2024-11-01
+/// * `Microsoft.Compute` - 2025-04-01
 ///
 /// ## Import
 ///
@@ -1990,7 +1994,7 @@ class ScaleSet extends pulumi.CustomResource {
   /// &gt; **NOTE:** `evictionPolicy` can only be set when `priority` is set to `Low`.
   late final pulumi.Output<String?> evictionPolicy;
   /// Can be specified multiple times to add extension profiles to the scale set. Each `extension` block supports the fields documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> extensions;
+  late final pulumi.Output<List<ScaleSetExtension>?> extensions;
   /// Specifies the identifier for the load balancer health probe. Required when using `Rolling` as your `upgradePolicyMode`.
   late final pulumi.Output<String?> healthProbeId;
   /// An `identity` block as defined below.
@@ -2002,13 +2006,13 @@ class ScaleSet extends pulumi.CustomResource {
   /// Specifies the name of the virtual machine scale set resource. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
   /// A collection of `networkProfile` blocks as documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> networkProfiles;
+  late final pulumi.Output<List<ScaleSetNetworkProfile>> networkProfiles;
   /// A `osProfile` block as documented below.
   late final pulumi.Output<ScaleSetOsProfile> osProfile;
   /// A `osProfileLinuxConfig` block as documented below.
   late final pulumi.Output<ScaleSetOsProfileLinuxConfig> osProfileLinuxConfig;
   /// A collection of `osProfileSecrets` blocks as documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> osProfileSecrets;
+  late final pulumi.Output<List<ScaleSetOsProfileSecret>?> osProfileSecrets;
   /// A `osProfileWindowsConfig` block as documented below.
   late final pulumi.Output<ScaleSetOsProfileWindowsConfig?> osProfileWindowsConfig;
   /// Specifies whether the virtual machine scale set should be overprovisioned. Defaults to `true`.
@@ -2028,7 +2032,7 @@ class ScaleSet extends pulumi.CustomResource {
   /// A `sku` block as documented below.
   late final pulumi.Output<ScaleSetSku> sku;
   /// A `storageProfileDataDisk` block as documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> storageProfileDataDisks;
+  late final pulumi.Output<List<ScaleSetStorageProfileDataDisk>?> storageProfileDataDisks;
   /// A `storageProfileImageReference` block as documented below.
   late final pulumi.Output<ScaleSetStorageProfileImageReference> storageProfileImageReference;
   /// A `storageProfileOsDisk` block as documented below.
@@ -2054,21 +2058,21 @@ class ScaleSet extends pulumi.CustomResource {
           'azure:compute/scaleSet:ScaleSet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     automaticOsUpgrade = registerOutput<bool?>('automaticOsUpgrade');
     bootDiagnostics = registerOutput<ScaleSetBootDiagnostics?>('bootDiagnostics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScaleSetBootDiagnostics.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     evictionPolicy = registerOutput<String?>('evictionPolicy');
-    extensions = registerOutput<List<Map<String, dynamic>>?>('extensions');
+    extensions = registerOutput<List<ScaleSetExtension>?>('extensions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ScaleSetExtension>(guardedValue, (value) => ScaleSetExtension.fromMap((value as Map).cast<String, dynamic>())); });
     healthProbeId = registerOutput<String?>('healthProbeId');
     identity = registerOutput<ScaleSetIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScaleSetIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     licenseType = registerOutput<String>('licenseType');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    networkProfiles = registerOutput<List<Map<String, dynamic>>>('networkProfiles');
+    networkProfiles = registerOutput<List<ScaleSetNetworkProfile>>('networkProfiles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ScaleSetNetworkProfile>(guardedValue, (value) => ScaleSetNetworkProfile.fromMap((value as Map).cast<String, dynamic>())); });
     osProfile = registerOutput<ScaleSetOsProfile>('osProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScaleSetOsProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     osProfileLinuxConfig = registerOutput<ScaleSetOsProfileLinuxConfig>('osProfileLinuxConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScaleSetOsProfileLinuxConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    osProfileSecrets = registerOutput<List<Map<String, dynamic>>?>('osProfileSecrets');
+    osProfileSecrets = registerOutput<List<ScaleSetOsProfileSecret>?>('osProfileSecrets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ScaleSetOsProfileSecret>(guardedValue, (value) => ScaleSetOsProfileSecret.fromMap((value as Map).cast<String, dynamic>())); });
     osProfileWindowsConfig = registerOutput<ScaleSetOsProfileWindowsConfig?>('osProfileWindowsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScaleSetOsProfileWindowsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     overprovision = registerOutput<bool?>('overprovision');
     plan = registerOutput<ScaleSetPlan?>('plan', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScaleSetPlan.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -2078,12 +2082,12 @@ class ScaleSet extends pulumi.CustomResource {
     rollingUpgradePolicy = registerOutput<ScaleSetRollingUpgradePolicy?>('rollingUpgradePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScaleSetRollingUpgradePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     singlePlacementGroup = registerOutput<bool?>('singlePlacementGroup');
     sku = registerOutput<ScaleSetSku>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScaleSetSku.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    storageProfileDataDisks = registerOutput<List<Map<String, dynamic>>?>('storageProfileDataDisks');
+    storageProfileDataDisks = registerOutput<List<ScaleSetStorageProfileDataDisk>?>('storageProfileDataDisks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ScaleSetStorageProfileDataDisk>(guardedValue, (value) => ScaleSetStorageProfileDataDisk.fromMap((value as Map).cast<String, dynamic>())); });
     storageProfileImageReference = registerOutput<ScaleSetStorageProfileImageReference>('storageProfileImageReference', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScaleSetStorageProfileImageReference.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     storageProfileOsDisk = registerOutput<ScaleSetStorageProfileOsDisk>('storageProfileOsDisk', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScaleSetStorageProfileOsDisk.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     upgradePolicyMode = registerOutput<String>('upgradePolicyMode');
-    zones = registerOutput<List<String>?>('zones');
+    zones = registerOutput<List<String>?>('zones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [ScaleSet] resource's state with the given [name] and [id].
@@ -2091,11 +2095,12 @@ class ScaleSet extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ScaleSetState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ScaleSet._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -2112,16 +2117,16 @@ class ScaleSet extends pulumi.CustomResource {
     automaticOsUpgrade = registerOutput<bool?>('automaticOsUpgrade');
     bootDiagnostics = registerOutput<ScaleSetBootDiagnostics?>('bootDiagnostics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScaleSetBootDiagnostics.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     evictionPolicy = registerOutput<String?>('evictionPolicy');
-    extensions = registerOutput<List<Map<String, dynamic>>?>('extensions');
+    extensions = registerOutput<List<ScaleSetExtension>?>('extensions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ScaleSetExtension>(guardedValue, (value) => ScaleSetExtension.fromMap((value as Map).cast<String, dynamic>())); });
     healthProbeId = registerOutput<String?>('healthProbeId');
     identity = registerOutput<ScaleSetIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScaleSetIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     licenseType = registerOutput<String>('licenseType');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    networkProfiles = registerOutput<List<Map<String, dynamic>>>('networkProfiles');
+    networkProfiles = registerOutput<List<ScaleSetNetworkProfile>>('networkProfiles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ScaleSetNetworkProfile>(guardedValue, (value) => ScaleSetNetworkProfile.fromMap((value as Map).cast<String, dynamic>())); });
     osProfile = registerOutput<ScaleSetOsProfile>('osProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScaleSetOsProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     osProfileLinuxConfig = registerOutput<ScaleSetOsProfileLinuxConfig>('osProfileLinuxConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScaleSetOsProfileLinuxConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    osProfileSecrets = registerOutput<List<Map<String, dynamic>>?>('osProfileSecrets');
+    osProfileSecrets = registerOutput<List<ScaleSetOsProfileSecret>?>('osProfileSecrets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ScaleSetOsProfileSecret>(guardedValue, (value) => ScaleSetOsProfileSecret.fromMap((value as Map).cast<String, dynamic>())); });
     osProfileWindowsConfig = registerOutput<ScaleSetOsProfileWindowsConfig?>('osProfileWindowsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScaleSetOsProfileWindowsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     overprovision = registerOutput<bool?>('overprovision');
     plan = registerOutput<ScaleSetPlan?>('plan', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScaleSetPlan.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -2131,11 +2136,50 @@ class ScaleSet extends pulumi.CustomResource {
     rollingUpgradePolicy = registerOutput<ScaleSetRollingUpgradePolicy?>('rollingUpgradePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScaleSetRollingUpgradePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     singlePlacementGroup = registerOutput<bool?>('singlePlacementGroup');
     sku = registerOutput<ScaleSetSku>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScaleSetSku.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    storageProfileDataDisks = registerOutput<List<Map<String, dynamic>>?>('storageProfileDataDisks');
+    storageProfileDataDisks = registerOutput<List<ScaleSetStorageProfileDataDisk>?>('storageProfileDataDisks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ScaleSetStorageProfileDataDisk>(guardedValue, (value) => ScaleSetStorageProfileDataDisk.fromMap((value as Map).cast<String, dynamic>())); });
     storageProfileImageReference = registerOutput<ScaleSetStorageProfileImageReference>('storageProfileImageReference', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScaleSetStorageProfileImageReference.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     storageProfileOsDisk = registerOutput<ScaleSetStorageProfileOsDisk>('storageProfileOsDisk', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScaleSetStorageProfileOsDisk.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     upgradePolicyMode = registerOutput<String>('upgradePolicyMode');
-    zones = registerOutput<List<String>?>('zones');
+    zones = registerOutput<List<String>?>('zones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [ScaleSet] resource.
+  ScaleSet.reference(String urn)
+    : super(
+        'azure:compute/scaleSet:ScaleSet',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    automaticOsUpgrade = registerOutput<bool?>('automaticOsUpgrade');
+    bootDiagnostics = registerOutput<ScaleSetBootDiagnostics?>('bootDiagnostics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScaleSetBootDiagnostics.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    evictionPolicy = registerOutput<String?>('evictionPolicy');
+    extensions = registerOutput<List<ScaleSetExtension>?>('extensions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ScaleSetExtension>(guardedValue, (value) => ScaleSetExtension.fromMap((value as Map).cast<String, dynamic>())); });
+    healthProbeId = registerOutput<String?>('healthProbeId');
+    identity = registerOutput<ScaleSetIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScaleSetIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    licenseType = registerOutput<String>('licenseType');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    networkProfiles = registerOutput<List<ScaleSetNetworkProfile>>('networkProfiles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ScaleSetNetworkProfile>(guardedValue, (value) => ScaleSetNetworkProfile.fromMap((value as Map).cast<String, dynamic>())); });
+    osProfile = registerOutput<ScaleSetOsProfile>('osProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScaleSetOsProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    osProfileLinuxConfig = registerOutput<ScaleSetOsProfileLinuxConfig>('osProfileLinuxConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScaleSetOsProfileLinuxConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    osProfileSecrets = registerOutput<List<ScaleSetOsProfileSecret>?>('osProfileSecrets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ScaleSetOsProfileSecret>(guardedValue, (value) => ScaleSetOsProfileSecret.fromMap((value as Map).cast<String, dynamic>())); });
+    osProfileWindowsConfig = registerOutput<ScaleSetOsProfileWindowsConfig?>('osProfileWindowsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScaleSetOsProfileWindowsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    overprovision = registerOutput<bool?>('overprovision');
+    plan = registerOutput<ScaleSetPlan?>('plan', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScaleSetPlan.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    priority = registerOutput<String?>('priority');
+    proximityPlacementGroupId = registerOutput<String?>('proximityPlacementGroupId');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    rollingUpgradePolicy = registerOutput<ScaleSetRollingUpgradePolicy?>('rollingUpgradePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScaleSetRollingUpgradePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    singlePlacementGroup = registerOutput<bool?>('singlePlacementGroup');
+    sku = registerOutput<ScaleSetSku>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScaleSetSku.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    storageProfileDataDisks = registerOutput<List<ScaleSetStorageProfileDataDisk>?>('storageProfileDataDisks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ScaleSetStorageProfileDataDisk>(guardedValue, (value) => ScaleSetStorageProfileDataDisk.fromMap((value as Map).cast<String, dynamic>())); });
+    storageProfileImageReference = registerOutput<ScaleSetStorageProfileImageReference>('storageProfileImageReference', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScaleSetStorageProfileImageReference.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    storageProfileOsDisk = registerOutput<ScaleSetStorageProfileOsDisk>('storageProfileOsDisk', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScaleSetStorageProfileOsDisk.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    upgradePolicyMode = registerOutput<String>('upgradePolicyMode');
+    zones = registerOutput<List<String>?>('zones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

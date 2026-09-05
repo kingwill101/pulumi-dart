@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'environment_v3_args.dart';
+import 'environment_v3_cluster_setting.dart';
+import 'environment_v3_inbound_network_dependency.dart';
 import 'environment_v3_state.dart';
 
 /// Manages a 3rd Generation (v3) App Service Environment.
@@ -273,7 +275,7 @@ import 'environment_v3_state.dart';
 /// 		exampleEnvironmentV3, err := appservice.NewEnvironmentV3(ctx, "example", &appservice.EnvironmentV3Args{
 /// 			Name:                      pulumi.String("example-asev3"),
 /// 			ResourceGroupName:         example.Name,
-/// 			SubnetId:                  exampleSubnet.ID(),
+/// 			SubnetId:                  exampleSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 			InternalLoadBalancingMode: pulumi.String("Web, Publishing"),
 /// 			ClusterSettings: appservice.EnvironmentV3ClusterSettingArray{
 /// 				&appservice.EnvironmentV3ClusterSettingArgs{
@@ -303,7 +305,7 @@ import 'environment_v3_state.dart';
 /// 			Location:                example.Location,
 /// 			OsType:                  pulumi.String("Linux"),
 /// 			SkuName:                 pulumi.String("I1v2"),
-/// 			AppServiceEnvironmentId: exampleEnvironmentV3.ID(),
+/// 			AppServiceEnvironmentId: exampleEnvironmentV3.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -551,7 +553,7 @@ class EnvironmentV3 extends pulumi.CustomResource {
   /// Should new Private Endpoint Connections be allowed. Defaults to `true`.
   late final pulumi.Output<bool?> allowNewPrivateEndpointConnections;
   /// Zero or more `clusterSetting` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>> clusterSettings;
+  late final pulumi.Output<List<EnvironmentV3ClusterSetting>> clusterSettings;
   /// This ASEv3 should use dedicated Hosts. Possible values are `2`. Changing this forces a new resource to be created.
   late final pulumi.Output<int?> dedicatedHostCount;
   /// the DNS suffix for this App Service Environment V3.
@@ -559,7 +561,7 @@ class EnvironmentV3 extends pulumi.CustomResource {
   /// The external inbound IP addresses of the App Service Environment V3.
   late final pulumi.Output<List<String>> externalInboundIpAddresses;
   /// An `inboundNetworkDependencies` block as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>> inboundNetworkDependencies;
+  late final pulumi.Output<List<EnvironmentV3InboundNetworkDependency>> inboundNetworkDependencies;
   /// The internal inbound IP addresses of the App Service Environment V3.
   late final pulumi.Output<List<String>> internalInboundIpAddresses;
   /// Specifies which endpoints to serve internally in the Virtual Network for the App Service Environment. Possible values are `None` (for an External VIP Type), and `"Web, Publishing"` (for an Internal VIP Type). Defaults to `None`. Changing this forces a new resource to be created.
@@ -607,26 +609,26 @@ class EnvironmentV3 extends pulumi.CustomResource {
           'azure:appservice/environmentV3:EnvironmentV3',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     allowNewPrivateEndpointConnections = registerOutput<bool?>('allowNewPrivateEndpointConnections');
-    clusterSettings = registerOutput<List<Map<String, dynamic>>>('clusterSettings');
+    clusterSettings = registerOutput<List<EnvironmentV3ClusterSetting>>('clusterSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EnvironmentV3ClusterSetting>(guardedValue, (value) => EnvironmentV3ClusterSetting.fromMap((value as Map).cast<String, dynamic>())); });
     dedicatedHostCount = registerOutput<int?>('dedicatedHostCount');
     dnsSuffix = registerOutput<String>('dnsSuffix');
-    externalInboundIpAddresses = registerOutput<List<String>>('externalInboundIpAddresses');
-    inboundNetworkDependencies = registerOutput<List<Map<String, dynamic>>>('inboundNetworkDependencies');
-    internalInboundIpAddresses = registerOutput<List<String>>('internalInboundIpAddresses');
+    externalInboundIpAddresses = registerOutput<List<String>>('externalInboundIpAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    inboundNetworkDependencies = registerOutput<List<EnvironmentV3InboundNetworkDependency>>('inboundNetworkDependencies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EnvironmentV3InboundNetworkDependency>(guardedValue, (value) => EnvironmentV3InboundNetworkDependency.fromMap((value as Map).cast<String, dynamic>())); });
+    internalInboundIpAddresses = registerOutput<List<String>>('internalInboundIpAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     internalLoadBalancingMode = registerOutput<String?>('internalLoadBalancingMode');
     ipSslAddressCount = registerOutput<int>('ipSslAddressCount');
-    linuxOutboundIpAddresses = registerOutput<List<String>>('linuxOutboundIpAddresses');
+    linuxOutboundIpAddresses = registerOutput<List<String>>('linuxOutboundIpAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     pricingTier = registerOutput<String>('pricingTier');
     remoteDebuggingEnabled = registerOutput<bool?>('remoteDebuggingEnabled');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     subnetId = registerOutput<String>('subnetId');
-    tags = registerOutput<Map<String, String>?>('tags');
-    windowsOutboundIpAddresses = registerOutput<List<String>>('windowsOutboundIpAddresses');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    windowsOutboundIpAddresses = registerOutput<List<String>>('windowsOutboundIpAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     zoneRedundant = registerOutput<bool?>('zoneRedundant');
   }
 
@@ -635,11 +637,12 @@ class EnvironmentV3 extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EnvironmentV3State? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return EnvironmentV3._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -654,23 +657,53 @@ class EnvironmentV3 extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     allowNewPrivateEndpointConnections = registerOutput<bool?>('allowNewPrivateEndpointConnections');
-    clusterSettings = registerOutput<List<Map<String, dynamic>>>('clusterSettings');
+    clusterSettings = registerOutput<List<EnvironmentV3ClusterSetting>>('clusterSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EnvironmentV3ClusterSetting>(guardedValue, (value) => EnvironmentV3ClusterSetting.fromMap((value as Map).cast<String, dynamic>())); });
     dedicatedHostCount = registerOutput<int?>('dedicatedHostCount');
     dnsSuffix = registerOutput<String>('dnsSuffix');
-    externalInboundIpAddresses = registerOutput<List<String>>('externalInboundIpAddresses');
-    inboundNetworkDependencies = registerOutput<List<Map<String, dynamic>>>('inboundNetworkDependencies');
-    internalInboundIpAddresses = registerOutput<List<String>>('internalInboundIpAddresses');
+    externalInboundIpAddresses = registerOutput<List<String>>('externalInboundIpAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    inboundNetworkDependencies = registerOutput<List<EnvironmentV3InboundNetworkDependency>>('inboundNetworkDependencies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EnvironmentV3InboundNetworkDependency>(guardedValue, (value) => EnvironmentV3InboundNetworkDependency.fromMap((value as Map).cast<String, dynamic>())); });
+    internalInboundIpAddresses = registerOutput<List<String>>('internalInboundIpAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     internalLoadBalancingMode = registerOutput<String?>('internalLoadBalancingMode');
     ipSslAddressCount = registerOutput<int>('ipSslAddressCount');
-    linuxOutboundIpAddresses = registerOutput<List<String>>('linuxOutboundIpAddresses');
+    linuxOutboundIpAddresses = registerOutput<List<String>>('linuxOutboundIpAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     pricingTier = registerOutput<String>('pricingTier');
     remoteDebuggingEnabled = registerOutput<bool?>('remoteDebuggingEnabled');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     subnetId = registerOutput<String>('subnetId');
-    tags = registerOutput<Map<String, String>?>('tags');
-    windowsOutboundIpAddresses = registerOutput<List<String>>('windowsOutboundIpAddresses');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    windowsOutboundIpAddresses = registerOutput<List<String>>('windowsOutboundIpAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    zoneRedundant = registerOutput<bool?>('zoneRedundant');
+  }
+
+  /// Creates a typed reference to an existing [EnvironmentV3] resource.
+  EnvironmentV3.reference(String urn)
+    : super(
+        'azure:appservice/environmentV3:EnvironmentV3',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    allowNewPrivateEndpointConnections = registerOutput<bool?>('allowNewPrivateEndpointConnections');
+    clusterSettings = registerOutput<List<EnvironmentV3ClusterSetting>>('clusterSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EnvironmentV3ClusterSetting>(guardedValue, (value) => EnvironmentV3ClusterSetting.fromMap((value as Map).cast<String, dynamic>())); });
+    dedicatedHostCount = registerOutput<int?>('dedicatedHostCount');
+    dnsSuffix = registerOutput<String>('dnsSuffix');
+    externalInboundIpAddresses = registerOutput<List<String>>('externalInboundIpAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    inboundNetworkDependencies = registerOutput<List<EnvironmentV3InboundNetworkDependency>>('inboundNetworkDependencies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EnvironmentV3InboundNetworkDependency>(guardedValue, (value) => EnvironmentV3InboundNetworkDependency.fromMap((value as Map).cast<String, dynamic>())); });
+    internalInboundIpAddresses = registerOutput<List<String>>('internalInboundIpAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    internalLoadBalancingMode = registerOutput<String?>('internalLoadBalancingMode');
+    ipSslAddressCount = registerOutput<int>('ipSslAddressCount');
+    linuxOutboundIpAddresses = registerOutput<List<String>>('linuxOutboundIpAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    pricingTier = registerOutput<String>('pricingTier');
+    remoteDebuggingEnabled = registerOutput<bool?>('remoteDebuggingEnabled');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    subnetId = registerOutput<String>('subnetId');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    windowsOutboundIpAddresses = registerOutput<List<String>>('windowsOutboundIpAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     zoneRedundant = registerOutput<bool?>('zoneRedundant');
   }
 }

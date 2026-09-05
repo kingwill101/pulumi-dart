@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_iot_endpoint_cosmosdb_account_endpoint_cosmosdb_account_args_doc}
 class EndpointCosmosdbAccountArgs {
   /// The type used to authenticate against the Cosmos DB Account endpoint. Possible values are `keyBased` and `identityBased`. Defaults to `keyBased`.
-  final pulumi.Input<String>? authenticationType;
+  final pulumi.Input<String?>? authenticationType;
   /// The name of the Cosmos DB Container in the Cosmos DB Database. Changing this forces a new resource to be created.
   final pulumi.Input<String> containerName;
   /// The name of the Cosmos DB Database in the Cosmos DB Account. Changing this forces a new resource to be created.
@@ -18,29 +18,29 @@ class EndpointCosmosdbAccountArgs {
   /// The ID of the User Managed Identity used to authenticate against the Cosmos DB Account endpoint.
   ///
   /// &gt; **Note:** `identityId` can only be specified when `authenticationType` is `identityBased`. It must be one of the `identityIds` of the Iot Hub. If not specified when `authenticationType` is `identityBased`, System Assigned Managed Identity of the Iot Hub will be used.
-  final pulumi.Input<String>? identityId;
+  final pulumi.Input<String?>? identityId;
   /// The ID of the IoT Hub to create the endpoint. Changing this forces a new resource to be created.
   final pulumi.Input<String> iothubId;
   /// The name of the endpoint. The name must be unique across endpoint types. The following names are reserved: `events`, `operationsMonitoringEvents`, `fileNotifications` and `$default`. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the partition key associated with the Cosmos DB Container.
-  final pulumi.Input<String>? partitionKeyName;
+  final pulumi.Input<String?>? partitionKeyName;
   /// The template for generating a synthetic partition key value for use within the Cosmos DB Container.
-  final pulumi.Input<String>? partitionKeyTemplate;
+  final pulumi.Input<String?>? partitionKeyTemplate;
   /// The primary key of the Cosmos DB Account.
   ///
   /// &gt; **Note:** `primaryKey` must and can only be specified when `authenticationType` is `keyBased`.
-  final pulumi.Input<String>? primaryKey;
+  final pulumi.Input<String?>? primaryKey;
   /// The name of the resource group under which the Cosmos DB Account has been created. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
   /// The secondary key of the Cosmos DB Account.
   ///
   /// &gt; **Note:** `secondaryKey` must and can only be specified when `authenticationType` is `keyBased`.
-  final pulumi.Input<String>? secondaryKey;
+  final pulumi.Input<String?>? secondaryKey;
   /// The subscription ID for the endpoint.
   ///
   /// &gt; **Note:** When `subscriptionId` isn't specified it will be set to the subscription ID of the IoT Hub resource.
-  final pulumi.Input<String>? subscriptionId;
+  final pulumi.Input<String?>? subscriptionId;
 
   /// Creates a new [EndpointCosmosdbAccountArgs].
   /// [authenticationType] The type used to authenticate against the Cosmos DB Account endpoint. Possible values are `keyBased` and `identityBased`. Defaults to `keyBased`.

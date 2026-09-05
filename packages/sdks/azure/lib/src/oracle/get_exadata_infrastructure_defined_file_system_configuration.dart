@@ -36,7 +36,7 @@ class GetExadataInfrastructureDefinedFileSystemConfiguration {
   factory GetExadataInfrastructureDefinedFileSystemConfiguration.fromMap(Map<String, dynamic> map) {
     return GetExadataInfrastructureDefinedFileSystemConfiguration(
       backupPartitionEnabled: pulumi.Input.fromValue(map['backupPartitionEnabled'] as bool),
-      minimumSizeInGb: pulumi.Input.fromValue(map['minimumSizeInGb'] as int),
+      minimumSizeInGb: pulumi.Input.fromValue((map['minimumSizeInGb'] as num).toInt()),
       mountPoint: pulumi.Input.fromValue(map['mountPoint'] as String),
       resizableEnabled: pulumi.Input.fromValue(map['resizableEnabled'] as bool),
     );

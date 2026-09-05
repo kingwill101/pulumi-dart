@@ -9,47 +9,47 @@ import 'metric_alert_dynamic_criteria.dart';
 /// Input properties used for looking up and filtering MetricAlert resources.
 class MetricAlertState {
   /// One or more `action` blocks as defined below.
-  final pulumi.Input<List<MetricAlertAction>>? actions;
+  final pulumi.Input<List<MetricAlertAction>?>? actions;
   /// A `applicationInsightsWebTestLocationAvailabilityCriteria` block as defined below.
   ///
   /// &gt; **Note:** One of either `criteria`, `dynamicCriteria` or `applicationInsightsWebTestLocationAvailabilityCriteria` must be specified.
-  final pulumi.Input<MetricAlertApplicationInsightsWebTestLocationAvailabilityCriteria>? applicationInsightsWebTestLocationAvailabilityCriteria;
+  final pulumi.Input<MetricAlertApplicationInsightsWebTestLocationAvailabilityCriteria?>? applicationInsightsWebTestLocationAvailabilityCriteria;
   /// Should the alerts in this Metric Alert be auto resolved? Defaults to `true`.
-  final pulumi.Input<bool>? autoMitigate;
+  final pulumi.Input<bool?>? autoMitigate;
   /// One or more (static) `criteria` blocks as defined below.
   ///
   /// &gt; **Note:** One of either `criteria`, `dynamicCriteria` or `applicationInsightsWebTestLocationAvailabilityCriteria` must be specified.
-  final pulumi.Input<List<MetricAlertCriteria>>? criterias;
+  final pulumi.Input<List<MetricAlertCriteria>?>? criterias;
   /// The description of this Metric Alert.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// A `dynamicCriteria` block as defined below.
   ///
   /// &gt; **Note:** One of either `criteria`, `dynamicCriteria` or `applicationInsightsWebTestLocationAvailabilityCriteria` must be specified.
-  final pulumi.Input<MetricAlertDynamicCriteria>? dynamicCriteria;
+  final pulumi.Input<MetricAlertDynamicCriteria?>? dynamicCriteria;
   /// Should this Metric Alert be enabled? Defaults to `true`.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// The evaluation frequency of this Metric Alert, represented in ISO 8601 duration format. Possible values are `PT1M`, `PT5M`, `PT15M`, `PT30M` and `PT1H`. Defaults to `PT1M`.
-  final pulumi.Input<String>? frequency;
+  final pulumi.Input<String?>? frequency;
   /// The name of the Metric Alert. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the resource group in which to create the Metric Alert instance. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// A set of strings of resource IDs at which the metric criteria should be applied.
-  final pulumi.Input<List<String>>? scopes;
+  final pulumi.Input<List<String>?>? scopes;
   /// The severity of this Metric Alert. Possible values are `0`, `1`, `2`, `3` and `4`. Defaults to `3`.
-  final pulumi.Input<int>? severity;
+  final pulumi.Input<int?>? severity;
   /// A mapping of tags to assign to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The location of the target resource.
   ///
   /// &gt; **Note:** This is Required when using a Subscription as scope, a Resource Group as scope or Multiple Scopes.
-  final pulumi.Input<String>? targetResourceLocation;
+  final pulumi.Input<String?>? targetResourceLocation;
   /// The resource type (e.g. `Microsoft.Compute/virtualMachines`) of the target resource.
   ///
   /// &gt; **Note:** This is Required when using a Subscription as scope, a Resource Group as scope or Multiple Scopes.
-  final pulumi.Input<String>? targetResourceType;
+  final pulumi.Input<String?>? targetResourceType;
   /// The period of time that is used to monitor alert activity, represented in ISO 8601 duration format. This value must be greater than `frequency`. Possible values are `PT1M`, `PT5M`, `PT15M`, `PT30M`, `PT1H`, `PT6H`, `PT12H` and `P1D`. Defaults to `PT5M`.
-  final pulumi.Input<String>? windowSize;
+  final pulumi.Input<String?>? windowSize;
 
   /// Creates a new [MetricAlertState].
   /// [actions] One or more `action` blocks as defined below.
@@ -121,7 +121,7 @@ class MetricAlertState {
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceGroupName: (() { final guardedValue = map['resourceGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       scopes: (() { final guardedValue = map['scopes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      severity: (() { final guardedValue = map['severity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      severity: (() { final guardedValue = map['severity']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       targetResourceLocation: (() { final guardedValue = map['targetResourceLocation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       targetResourceType: (() { final guardedValue = map['targetResourceType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

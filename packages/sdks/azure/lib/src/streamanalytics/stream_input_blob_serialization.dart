@@ -6,11 +6,11 @@ class StreamInputBlobSerialization {
   /// The encoding of the incoming data in the case of input and the encoding of outgoing data in the case of output. It currently can only be set to `UTF8`.
   ///
   /// &gt; **Note:** This is required when `type` is set to `Csv` or `Json`.
-  final pulumi.Input<String>? encoding;
+  final pulumi.Input<String?>? encoding;
   /// The delimiter that will be used to separate comma-separated value (CSV) records. Possible values are ` ` (space), `,` (comma), `	` (tab), `|` (pipe) and `;`.
   ///
   /// &gt; **Note:** This is required when `type` is set to `Csv`.
-  final pulumi.Input<String>? fieldDelimiter;
+  final pulumi.Input<String?>? fieldDelimiter;
   /// The serialization format used for incoming data streams. Possible values are `Avro`, `Csv` and `Json`.
   final pulumi.Input<String> type;
 

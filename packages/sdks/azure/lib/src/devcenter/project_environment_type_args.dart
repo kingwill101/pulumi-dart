@@ -10,7 +10,7 @@ import 'project_environment_type_user_role_assignment.dart';
 /// {@macro pulumi_devcenter_project_environment_type_project_environment_type_args_doc}
 class ProjectEnvironmentTypeArgs {
   /// A list of roles to assign to the environment creator.
-  final pulumi.Input<List<String>>? creatorRoleAssignmentRoles;
+  final pulumi.Input<List<String>?>? creatorRoleAssignmentRoles;
   /// The ID of the subscription that the Environment Type will be mapped to. The environment's resources will be deployed into this subscription.
   final pulumi.Input<String> deploymentTargetId;
   /// The ID of the associated Dev Center Project. Changing this forces a new resource to be created.
@@ -18,13 +18,13 @@ class ProjectEnvironmentTypeArgs {
   /// An `identity` block as defined below.
   final pulumi.Input<ProjectEnvironmentTypeIdentity> identity;
   /// The Azure Region where the Dev Center Project Environment Type should exist. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Specifies the name of this Dev Center Project Environment Type. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A mapping of tags which should be assigned to the Dev Center Project Environment Type.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A `userRoleAssignment` block as defined below.
-  final pulumi.Input<List<ProjectEnvironmentTypeUserRoleAssignment>>? userRoleAssignments;
+  final pulumi.Input<List<ProjectEnvironmentTypeUserRoleAssignment>?>? userRoleAssignments;
 
   /// Creates a new [ProjectEnvironmentTypeArgs].
   /// [creatorRoleAssignmentRoles] A list of roles to assign to the environment creator.

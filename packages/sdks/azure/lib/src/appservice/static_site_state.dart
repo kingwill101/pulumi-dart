@@ -6,25 +6,25 @@ import 'static_site_identity.dart';
 /// Input properties used for looking up and filtering StaticSite resources.
 class StaticSiteState {
   /// The API key of this Static Web App, which is used for later interacting with this Static Web App from other clients, e.g. GitHub Action.
-  final pulumi.Input<String>? apiKey;
+  final pulumi.Input<String?>? apiKey;
   /// A key-value pair of App Settings.
-  final pulumi.Input<Map<String, String>>? appSettings;
+  final pulumi.Input<Map<String, String>?>? appSettings;
   /// The default host name of the Static Web App.
-  final pulumi.Input<String>? defaultHostName;
+  final pulumi.Input<String?>? defaultHostName;
   /// An `identity` block as defined below.
-  final pulumi.Input<StaticSiteIdentity>? identity;
+  final pulumi.Input<StaticSiteIdentity?>? identity;
   /// The Azure Region where the Static Web App should exist. Changing this forces a new Static Web App to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name which should be used for this Static Web App. Changing this forces a new Static Web App to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the Resource Group where the Static Web App should exist. Changing this forces a new Static Web App to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// Specifies the SKU size of the Static Web App. Possible values are `Free` or `Standard`. Defaults to `Free`.
-  final pulumi.Input<String>? skuSize;
+  final pulumi.Input<String?>? skuSize;
   /// Specifies the SKU tier of the Static Web App. Possible values are `Free` or `Standard`. Defaults to `Free`.
-  final pulumi.Input<String>? skuTier;
+  final pulumi.Input<String?>? skuTier;
   /// A mapping of tags to assign to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [StaticSiteState].
   /// [apiKey] The API key of this Static Web App, which is used for later interacting with this Static Web App from other clients, e.g. GitHub Action.

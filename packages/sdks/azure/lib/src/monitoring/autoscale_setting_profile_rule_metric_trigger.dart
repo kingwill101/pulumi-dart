@@ -5,15 +5,15 @@ import 'autoscale_setting_profile_rule_metric_trigger_dimension.dart';
 
 class AutoscaleSettingProfileRuleMetricTrigger {
   /// One or more `dimensions` block as defined below.
-  final pulumi.Input<List<AutoscaleSettingProfileRuleMetricTriggerDimension>>? dimensions;
+  final pulumi.Input<List<AutoscaleSettingProfileRuleMetricTriggerDimension>?>? dimensions;
   /// Whether to enable metric divide by instance count.
-  final pulumi.Input<bool>? divideByInstanceCount;
+  final pulumi.Input<bool?>? divideByInstanceCount;
   /// The name of the metric that defines what the rule monitors, such as `Percentage CPU` for `Virtual Machine Scale Sets` and `CpuPercentage` for `App Service Plan`.
   ///
   /// &gt; **Note:** The allowed value of `metricName` highly depends on the targeting resource type, please visit [Supported metrics with Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported) for more details.
   final pulumi.Input<String> metricName;
   /// The namespace of the metric that defines what the rule monitors, such as `microsoft.compute/virtualmachinescalesets` for `Virtual Machine Scale Sets`.
-  final pulumi.Input<String>? metricNamespace;
+  final pulumi.Input<String?>? metricNamespace;
   /// The ID of the Resource which the Rule monitors.
   final pulumi.Input<String> metricResourceId;
   /// Specifies the operator used to compare the metric data and threshold. Possible values are: `Equals`, `NotEquals`, `GreaterThan`, `GreaterThanOrEqual`, `LessThan`, `LessThanOrEqual`.
@@ -80,7 +80,7 @@ class AutoscaleSettingProfileRuleMetricTrigger {
       metricResourceId: pulumi.Input.fromValue(map['metricResourceId'] as String),
       operator: pulumi.Input.fromValue(map['operator'] as String),
       statistic: pulumi.Input.fromValue(map['statistic'] as String),
-      threshold: pulumi.Input.fromValue(map['threshold'] as double),
+      threshold: pulumi.Input.fromValue((map['threshold'] as num).toDouble()),
       timeAggregation: pulumi.Input.fromValue(map['timeAggregation'] as String),
       timeGrain: pulumi.Input.fromValue(map['timeGrain'] as String),
       timeWindow: pulumi.Input.fromValue(map['timeWindow'] as String),

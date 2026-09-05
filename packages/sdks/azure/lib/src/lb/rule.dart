@@ -153,7 +153,7 @@ import 'rule_state.dart';
 /// 			FrontendIpConfigurations: lb.LoadBalancerFrontendIpConfigurationArray{
 /// 				&lb.LoadBalancerFrontendIpConfigurationArgs{
 /// 					Name:              pulumi.String("PublicIPAddress"),
-/// 					PublicIpAddressId: examplePublicIp.ID(),
+/// 					PublicIpAddressId: examplePublicIp.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 		})
@@ -161,7 +161,7 @@ import 'rule_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = lb.NewRule(ctx, "example", &lb.RuleArgs{
-/// 			LoadbalancerId:              exampleLoadBalancer.ID(),
+/// 			LoadbalancerId:              exampleLoadBalancer.ID().ToIDOutput().ToStringOutput(),
 /// 			Name:                        pulumi.String("LBRule"),
 /// 			Protocol:                    pulumi.String("Tcp"),
 /// 			FrontendPort:                pulumi.Int(3389),
@@ -376,9 +376,9 @@ class Rule extends pulumi.CustomResource {
           'azure:lb/rule:Rule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
-    backendAddressPoolIds = registerOutput<List<String>?>('backendAddressPoolIds');
+    backendAddressPoolIds = registerOutput<List<String>?>('backendAddressPoolIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     backendPort = registerOutput<int>('backendPort');
     disableOutboundSnat = registerOutput<bool?>('disableOutboundSnat');
     enableFloatingIp = registerOutput<bool>('enableFloatingIp');
@@ -401,11 +401,12 @@ class Rule extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RuleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Rule._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -419,7 +420,34 @@ class Rule extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    backendAddressPoolIds = registerOutput<List<String>?>('backendAddressPoolIds');
+    backendAddressPoolIds = registerOutput<List<String>?>('backendAddressPoolIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    backendPort = registerOutput<int>('backendPort');
+    disableOutboundSnat = registerOutput<bool?>('disableOutboundSnat');
+    enableFloatingIp = registerOutput<bool>('enableFloatingIp');
+    enableTcpReset = registerOutput<bool>('enableTcpReset');
+    floatingIpEnabled = registerOutput<bool>('floatingIpEnabled');
+    frontendIpConfigurationId = registerOutput<String>('frontendIpConfigurationId');
+    frontendIpConfigurationName = registerOutput<String>('frontendIpConfigurationName');
+    frontendPort = registerOutput<int>('frontendPort');
+    idleTimeoutInMinutes = registerOutput<int?>('idleTimeoutInMinutes');
+    loadDistribution = registerOutput<String?>('loadDistribution');
+    loadbalancerId = registerOutput<String>('loadbalancerId');
+    this.name = registerOutput<String>('name');
+    probeId = registerOutput<String?>('probeId');
+    protocol = registerOutput<String>('protocol');
+    tcpResetEnabled = registerOutput<bool>('tcpResetEnabled');
+  }
+
+  /// Creates a typed reference to an existing [Rule] resource.
+  Rule.reference(String urn)
+    : super(
+        'azure:lb/rule:Rule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    backendAddressPoolIds = registerOutput<List<String>?>('backendAddressPoolIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     backendPort = registerOutput<int>('backendPort');
     disableOutboundSnat = registerOutput<bool?>('disableOutboundSnat');
     enableFloatingIp = registerOutput<bool>('enableFloatingIp');

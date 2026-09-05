@@ -108,7 +108,7 @@ import 'get_host_pool_registration_info_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = desktopvirtualization.NewGetHostPoolRegistrationInfo(ctx, "example", &desktopvirtualization.GetHostPoolRegistrationInfoArgs{
-/// 			HostpoolId:     exampleHostPool.ID(),
+/// 			HostpoolId:     exampleHostPool.ID().ToIDOutput().ToStringOutput(),
 /// 			ExpirationDate: pulumi.String("2022-01-01T23:40:52Z"),
 /// 		})
 /// 		if err != nil {
@@ -251,11 +251,12 @@ class GetHostPoolRegistrationInfo extends pulumi.CustomResource {
           'azure:desktopvirtualization/getHostPoolRegistrationInfo:getHostPoolRegistrationInfo',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['token'],
         ) {
     expirationDate = registerOutput<String>('expirationDate');
     hostpoolId = registerOutput<String>('hostpoolId');
-    token = registerOutput<String>('token');
+    token = registerOutput<String>('token', isSecret: true);
   }
 
   /// Gets an existing [GetHostPoolRegistrationInfo] resource's state with the given [name] and [id].
@@ -263,11 +264,12 @@ class GetHostPoolRegistrationInfo extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     GetHostPoolRegistrationInfoState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return GetHostPoolRegistrationInfo._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -283,6 +285,21 @@ class GetHostPoolRegistrationInfo extends pulumi.CustomResource {
         ) {
     expirationDate = registerOutput<String>('expirationDate');
     hostpoolId = registerOutput<String>('hostpoolId');
-    token = registerOutput<String>('token');
+    token = registerOutput<String>('token', isSecret: true);
+  }
+
+  /// Creates a typed reference to an existing [GetHostPoolRegistrationInfo] resource.
+  GetHostPoolRegistrationInfo.reference(String urn)
+    : super(
+        'azure:desktopvirtualization/getHostPoolRegistrationInfo:getHostPoolRegistrationInfo',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['token'],
+        isResourceReference: true,
+      ) {
+    expirationDate = registerOutput<String>('expirationDate');
+    hostpoolId = registerOutput<String>('hostpoolId');
+    token = registerOutput<String>('token', isSecret: true);
   }
 }

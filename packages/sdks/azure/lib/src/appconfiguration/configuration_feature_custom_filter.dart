@@ -6,7 +6,7 @@ class ConfigurationFeatureCustomFilter {
   /// The name of the parameter, this could be any string.
   final pulumi.Input<String> name;
   /// One or more `parameters` blocks as defined below.
-  final pulumi.Input<Map<String, String>>? parameters;
+  final pulumi.Input<Map<String, String>?>? parameters;
 
   /// Creates a new [ConfigurationFeatureCustomFilter].
   /// [name] The name of the parameter, this could be any string.

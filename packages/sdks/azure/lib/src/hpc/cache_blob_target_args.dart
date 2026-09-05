@@ -8,11 +8,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_hpc_cache_blob_target_cache_blob_target_args_doc}
 class CacheBlobTargetArgs {
   /// The name of the access policy applied to this target. Defaults to `default`.
-  final pulumi.Input<String>? accessPolicyName;
+  final pulumi.Input<String?>? accessPolicyName;
   /// The name HPC Cache, which the HPC Cache Blob Target will be added to. Changing this forces a new resource to be created.
   final pulumi.Input<String> cacheName;
   /// The name of the HPC Cache Blob Target. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The client-facing file path of the HPC Cache Blob Target.
   final pulumi.Input<String> namespacePath;
   /// The name of the Resource Group in which to create the HPC Cache Blob Target. Changing this forces a new resource to be created.

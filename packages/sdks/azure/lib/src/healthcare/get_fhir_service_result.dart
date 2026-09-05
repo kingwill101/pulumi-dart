@@ -8,27 +8,27 @@ import 'get_fhir_service_identity.dart';
 /// Result data returned by getFhirService.
 class GetFhirServiceResult {
   /// The list of the access policies of the service instance.
-  final List<String> accessPolicyObjectIds;
+  final List<String>? accessPolicyObjectIds;
   /// The `authentication` block as defined below.
-  final List<GetFhirServiceAuthentication> authentications;
+  final List<GetFhirServiceAuthentication>? authentications;
   /// The name of the storage account which the operation configuration information is exported to.
-  final String configurationExportStorageAccountName;
+  final String? configurationExportStorageAccountName;
   /// The list of azure container registry settings used for convert data operation of the service instance.
-  final List<String> containerRegistryLoginServerUrls;
+  final List<String>? containerRegistryLoginServerUrls;
   /// The `cors` block as defined below.
-  final List<GetFhirServiceCor> cors;
+  final List<GetFhirServiceCor>? cors;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// The `identity` block as defined below.
-  final List<GetFhirServiceIdentity> identities;
+  final List<GetFhirServiceIdentity>? identities;
   /// The kind of the Healthcare FHIR Service.
-  final String kind;
+  final String? kind;
   /// The Azure Region where the Healthcare FHIR Service is located.
-  final String location;
-  final String name;
+  final String? location;
+  final String? name;
   /// The map of tags assigned to the Healthcare FHIR Service.
   final Map<String, String>? tags;
-  final String workspaceId;
+  final String? workspaceId;
 
   /// Creates a new [GetFhirServiceResult].
   /// [accessPolicyObjectIds] The list of the access policies of the service instance.
@@ -40,55 +40,55 @@ class GetFhirServiceResult {
   /// [identities] The `identity` block as defined below.
   /// [kind] The kind of the Healthcare FHIR Service.
   /// [location] The Azure Region where the Healthcare FHIR Service is located.
-  /// [name] Required.
+  /// [name] Optional.
   /// [tags] The map of tags assigned to the Healthcare FHIR Service.
-  /// [workspaceId] Required.
+  /// [workspaceId] Optional.
   const GetFhirServiceResult({
-    required this.accessPolicyObjectIds,
-    required this.authentications,
-    required this.configurationExportStorageAccountName,
-    required this.containerRegistryLoginServerUrls,
-    required this.cors,
-    required this.id,
-    required this.identities,
-    required this.kind,
-    required this.location,
-    required this.name,
+    this.accessPolicyObjectIds,
+    this.authentications,
+    this.configurationExportStorageAccountName,
+    this.containerRegistryLoginServerUrls,
+    this.cors,
+    this.id,
+    this.identities,
+    this.kind,
+    this.location,
+    this.name,
     this.tags,
-    required this.workspaceId,
+    this.workspaceId,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accessPolicyObjectIds': accessPolicyObjectIds,
-      'authentications': pulumi.Input.encodeList<GetFhirServiceAuthentication, Map<String, dynamic>>(authentications, (value) => value.toMap()),
-      'configurationExportStorageAccountName': configurationExportStorageAccountName,
-      'containerRegistryLoginServerUrls': containerRegistryLoginServerUrls,
-      'cors': pulumi.Input.encodeList<GetFhirServiceCor, Map<String, dynamic>>(cors, (value) => value.toMap()),
-      'id': id,
-      'identities': pulumi.Input.encodeList<GetFhirServiceIdentity, Map<String, dynamic>>(identities, (value) => value.toMap()),
-      'kind': kind,
-      'location': location,
-      'name': name,
+      'accessPolicyObjectIds': ?accessPolicyObjectIds,
+      'authentications': ?(() { final guardedValue = authentications; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetFhirServiceAuthentication, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'configurationExportStorageAccountName': ?configurationExportStorageAccountName,
+      'containerRegistryLoginServerUrls': ?containerRegistryLoginServerUrls,
+      'cors': ?(() { final guardedValue = cors; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetFhirServiceCor, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'id': ?id,
+      'identities': ?(() { final guardedValue = identities; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetFhirServiceIdentity, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'kind': ?kind,
+      'location': ?location,
+      'name': ?name,
       'tags': ?tags,
-      'workspaceId': workspaceId,
+      'workspaceId': ?workspaceId,
     };
   }
 
   factory GetFhirServiceResult.fromMap(Map<String, dynamic> map) {
     return GetFhirServiceResult(
-      accessPolicyObjectIds: (map['accessPolicyObjectIds'] as List).cast<String>(),
-      authentications: pulumi.Input.decodeList<GetFhirServiceAuthentication>(map['authentications']!, (value) => GetFhirServiceAuthentication.fromMap((value as Map).cast<String, dynamic>())),
-      configurationExportStorageAccountName: map['configurationExportStorageAccountName'] as String,
-      containerRegistryLoginServerUrls: (map['containerRegistryLoginServerUrls'] as List).cast<String>(),
-      cors: pulumi.Input.decodeList<GetFhirServiceCor>(map['cors']!, (value) => GetFhirServiceCor.fromMap((value as Map).cast<String, dynamic>())),
-      id: map['id'] as String,
-      identities: pulumi.Input.decodeList<GetFhirServiceIdentity>(map['identities']!, (value) => GetFhirServiceIdentity.fromMap((value as Map).cast<String, dynamic>())),
-      kind: map['kind'] as String,
-      location: map['location'] as String,
-      name: map['name'] as String,
+      accessPolicyObjectIds: (() { final guardedValue = map['accessPolicyObjectIds']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      authentications: (() { final guardedValue = map['authentications']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetFhirServiceAuthentication>(guardedValue, (value) => GetFhirServiceAuthentication.fromMap((value as Map).cast<String, dynamic>())); })(),
+      configurationExportStorageAccountName: (() { final guardedValue = map['configurationExportStorageAccountName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      containerRegistryLoginServerUrls: (() { final guardedValue = map['containerRegistryLoginServerUrls']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      cors: (() { final guardedValue = map['cors']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetFhirServiceCor>(guardedValue, (value) => GetFhirServiceCor.fromMap((value as Map).cast<String, dynamic>())); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      identities: (() { final guardedValue = map['identities']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetFhirServiceIdentity>(guardedValue, (value) => GetFhirServiceIdentity.fromMap((value as Map).cast<String, dynamic>())); })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      workspaceId: map['workspaceId'] as String,
+      workspaceId: (() { final guardedValue = map['workspaceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

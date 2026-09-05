@@ -5,21 +5,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering CustomHostnameBinding resources.
 class CustomHostnameBindingState {
   /// The name of the App Service in which to add the Custom Hostname Binding. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? appServiceName;
+  final pulumi.Input<String?>? appServiceName;
   /// Specifies the Custom Hostname to use for the App Service, example `www.example.com`. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** A CNAME needs to be configured from this Hostname to the Azure Website - otherwise Azure will reject the Hostname Binding.
-  final pulumi.Input<String>? hostname;
+  final pulumi.Input<String?>? hostname;
   /// The name of the resource group in which the App Service exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// The SSL type. Possible values are `IpBasedEnabled` and `SniEnabled`. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? sslState;
+  final pulumi.Input<String?>? sslState;
   /// The SSL certificate thumbprint. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** `thumbprint` must be specified when `sslState` is set.
-  final pulumi.Input<String>? thumbprint;
+  final pulumi.Input<String?>? thumbprint;
   /// The virtual IP address assigned to the hostname if IP based SSL is enabled.
-  final pulumi.Input<String>? virtualIp;
+  final pulumi.Input<String?>? virtualIp;
 
   /// Creates a new [CustomHostnameBindingState].
   /// [appServiceName] The name of the App Service in which to add the Custom Hostname Binding. Changing this forces a new resource to be created.

@@ -4,85 +4,85 @@
 /// Result data returned by getManagedHardwareSecurityModuleKey.
 class GetManagedHardwareSecurityModuleKeyResult {
   /// The EC Curve name of this Managed Hardware Security Module Key.
-  final String curve;
-  final String expirationDate;
+  final String? curve;
+  final String? expirationDate;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// A list of JSON web key operations assigned to this Managed Hardware Security Module Key
-  final List<String> keyOpts;
+  final List<String>? keyOpts;
   /// Specifies the Size of this Managed Hardware Security Module Key.
-  final int keySize;
+  final int? keySize;
   /// Specifies the Key Type of this Managed Hardware Security Module Key
-  final String keyType;
-  final String managedHsmId;
-  final String name;
-  final String notBeforeDate;
+  final String? keyType;
+  final String? managedHsmId;
+  final String? name;
+  final String? notBeforeDate;
   /// A mapping of tags assigned to this Managed Hardware Security Module Key.
-  final Map<String, String> tags;
+  final Map<String, String>? tags;
   /// The current version of the Managed Hardware Security Module Key.
-  final String version;
+  final String? version;
   /// The versioned ID of the Managed Hardware Security Module Key.
-  final String versionedId;
+  final String? versionedId;
 
   /// Creates a new [GetManagedHardwareSecurityModuleKeyResult].
   /// [curve] The EC Curve name of this Managed Hardware Security Module Key.
-  /// [expirationDate] Required.
+  /// [expirationDate] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [keyOpts] A list of JSON web key operations assigned to this Managed Hardware Security Module Key
   /// [keySize] Specifies the Size of this Managed Hardware Security Module Key.
   /// [keyType] Specifies the Key Type of this Managed Hardware Security Module Key
-  /// [managedHsmId] Required.
-  /// [name] Required.
-  /// [notBeforeDate] Required.
+  /// [managedHsmId] Optional.
+  /// [name] Optional.
+  /// [notBeforeDate] Optional.
   /// [tags] A mapping of tags assigned to this Managed Hardware Security Module Key.
   /// [version] The current version of the Managed Hardware Security Module Key.
   /// [versionedId] The versioned ID of the Managed Hardware Security Module Key.
   const GetManagedHardwareSecurityModuleKeyResult({
-    required this.curve,
-    required this.expirationDate,
-    required this.id,
-    required this.keyOpts,
-    required this.keySize,
-    required this.keyType,
-    required this.managedHsmId,
-    required this.name,
-    required this.notBeforeDate,
-    required this.tags,
-    required this.version,
-    required this.versionedId,
+    this.curve,
+    this.expirationDate,
+    this.id,
+    this.keyOpts,
+    this.keySize,
+    this.keyType,
+    this.managedHsmId,
+    this.name,
+    this.notBeforeDate,
+    this.tags,
+    this.version,
+    this.versionedId,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'curve': curve,
-      'expirationDate': expirationDate,
-      'id': id,
-      'keyOpts': keyOpts,
-      'keySize': keySize,
-      'keyType': keyType,
-      'managedHsmId': managedHsmId,
-      'name': name,
-      'notBeforeDate': notBeforeDate,
-      'tags': tags,
-      'version': version,
-      'versionedId': versionedId,
+      'curve': ?curve,
+      'expirationDate': ?expirationDate,
+      'id': ?id,
+      'keyOpts': ?keyOpts,
+      'keySize': ?keySize,
+      'keyType': ?keyType,
+      'managedHsmId': ?managedHsmId,
+      'name': ?name,
+      'notBeforeDate': ?notBeforeDate,
+      'tags': ?tags,
+      'version': ?version,
+      'versionedId': ?versionedId,
     };
   }
 
   factory GetManagedHardwareSecurityModuleKeyResult.fromMap(Map<String, dynamic> map) {
     return GetManagedHardwareSecurityModuleKeyResult(
-      curve: map['curve'] as String,
-      expirationDate: map['expirationDate'] as String,
-      id: map['id'] as String,
-      keyOpts: (map['keyOpts'] as List).cast<String>(),
-      keySize: map['keySize'] as int,
-      keyType: map['keyType'] as String,
-      managedHsmId: map['managedHsmId'] as String,
-      name: map['name'] as String,
-      notBeforeDate: map['notBeforeDate'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
-      version: map['version'] as String,
-      versionedId: map['versionedId'] as String,
+      curve: (() { final guardedValue = map['curve']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      expirationDate: (() { final guardedValue = map['expirationDate']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      keyOpts: (() { final guardedValue = map['keyOpts']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      keySize: (() { final guardedValue = map['keySize']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      keyType: (() { final guardedValue = map['keyType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      managedHsmId: (() { final guardedValue = map['managedHsmId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      notBeforeDate: (() { final guardedValue = map['notBeforeDate']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      versionedId: (() { final guardedValue = map['versionedId']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

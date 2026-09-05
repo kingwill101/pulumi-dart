@@ -140,14 +140,14 @@ import 'workspace_policy_state.dart';
 /// 		}
 /// 		exampleWorkspace, err := apimanagement.NewWorkspace(ctx, "example", &apimanagement.WorkspaceArgs{
 /// 			Name:            pulumi.String("example-workspace"),
-/// 			ApiManagementId: exampleService.ID(),
+/// 			ApiManagementId: exampleService.ID().ToIDOutput().ToStringOutput(),
 /// 			DisplayName:     pulumi.String("my workspace"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = apimanagement.NewWorkspacePolicy(ctx, "example", &apimanagement.WorkspacePolicyArgs{
-/// 			ApiManagementWorkspaceId: exampleWorkspace.ID(),
+/// 			ApiManagementWorkspaceId: exampleWorkspace.ID().ToIDOutput().ToStringOutput(),
 /// 			XmlContent: pulumi.String(`<policies>
 ///   <inbound>
 ///     <find-and-replace from=\"abc\" to=\"xyz\" />
@@ -328,7 +328,7 @@ class WorkspacePolicy extends pulumi.CustomResource {
           'azure:apimanagement/workspacePolicy:WorkspacePolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     apiManagementWorkspaceId = registerOutput<String>('apiManagementWorkspaceId');
     xmlContent = registerOutput<String>('xmlContent');
@@ -340,11 +340,12 @@ class WorkspacePolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     WorkspacePolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return WorkspacePolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -358,6 +359,20 @@ class WorkspacePolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    apiManagementWorkspaceId = registerOutput<String>('apiManagementWorkspaceId');
+    xmlContent = registerOutput<String>('xmlContent');
+    xmlLink = registerOutput<String?>('xmlLink');
+  }
+
+  /// Creates a typed reference to an existing [WorkspacePolicy] resource.
+  WorkspacePolicy.reference(String urn)
+    : super(
+        'azure:apimanagement/workspacePolicy:WorkspacePolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     apiManagementWorkspaceId = registerOutput<String>('apiManagementWorkspaceId');
     xmlContent = registerOutput<String>('xmlContent');
     xmlLink = registerOutput<String?>('xmlLink');

@@ -100,7 +100,7 @@ import 'integration_runtime_rule_state.dart';
 /// 		}
 /// 		_, err = datafactory.NewIntegrationRuntimeRule(ctx, "example", &datafactory.IntegrationRuntimeRuleArgs{
 /// 			Name:          pulumi.String("example"),
-/// 			DataFactoryId: exampleFactory.ID(),
+/// 			DataFactoryId: exampleFactory.ID().ToIDOutput().ToStringOutput(),
 /// 			Location:      example.Location,
 /// 		})
 /// 		if err != nil {
@@ -253,7 +253,7 @@ class IntegrationRuntimeRule extends pulumi.CustomResource {
           'azure:datafactory/integrationRuntimeRule:IntegrationRuntimeRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     cleanupEnabled = registerOutput<bool?>('cleanupEnabled');
     computeType = registerOutput<String?>('computeType');
@@ -272,11 +272,12 @@ class IntegrationRuntimeRule extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     IntegrationRuntimeRuleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return IntegrationRuntimeRule._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -290,6 +291,27 @@ class IntegrationRuntimeRule extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    cleanupEnabled = registerOutput<bool?>('cleanupEnabled');
+    computeType = registerOutput<String?>('computeType');
+    coreCount = registerOutput<int?>('coreCount');
+    dataFactoryId = registerOutput<String>('dataFactoryId');
+    description = registerOutput<String?>('description');
+    interactiveAuthoringTimeToLiveInMinutes = registerOutput<int?>('interactiveAuthoringTimeToLiveInMinutes');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    timeToLiveMin = registerOutput<int?>('timeToLiveMin');
+    virtualNetworkEnabled = registerOutput<bool?>('virtualNetworkEnabled');
+  }
+
+  /// Creates a typed reference to an existing [IntegrationRuntimeRule] resource.
+  IntegrationRuntimeRule.reference(String urn)
+    : super(
+        'azure:datafactory/integrationRuntimeRule:IntegrationRuntimeRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     cleanupEnabled = registerOutput<bool?>('cleanupEnabled');
     computeType = registerOutput<String?>('computeType');
     coreCount = registerOutput<int?>('coreCount');

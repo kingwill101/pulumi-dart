@@ -108,7 +108,7 @@ import 'data_connector_threat_intelligence_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleLogAnalyticsWorkspaceOnboarding, err := sentinel.NewLogAnalyticsWorkspaceOnboarding(ctx, "example", &sentinel.LogAnalyticsWorkspaceOnboardingArgs{
-/// 			WorkspaceId: exampleAnalyticsWorkspace.ID(),
+/// 			WorkspaceId: exampleAnalyticsWorkspace.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -262,7 +262,7 @@ class DataConnectorThreatIntelligence extends pulumi.CustomResource {
           'azure:sentinel/dataConnectorThreatIntelligence:DataConnectorThreatIntelligence',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
     lookbackDate = registerOutput<String?>('lookbackDate');
@@ -275,11 +275,12 @@ class DataConnectorThreatIntelligence extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DataConnectorThreatIntelligenceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DataConnectorThreatIntelligence._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -293,6 +294,21 @@ class DataConnectorThreatIntelligence extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
+    lookbackDate = registerOutput<String?>('lookbackDate');
+    this.name = registerOutput<String>('name');
+    tenantId = registerOutput<String>('tenantId');
+  }
+
+  /// Creates a typed reference to an existing [DataConnectorThreatIntelligence] resource.
+  DataConnectorThreatIntelligence.reference(String urn)
+    : super(
+        'azure:sentinel/dataConnectorThreatIntelligence:DataConnectorThreatIntelligence',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
     lookbackDate = registerOutput<String?>('lookbackDate');
     this.name = registerOutput<String>('name');

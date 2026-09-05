@@ -5,15 +5,15 @@ import 'trigger_schedule_schedule_monthly.dart';
 
 class TriggerScheduleSchedule {
   /// Day(s) of the month on which the trigger is scheduled. This value can be specified with a monthly frequency only.
-  final pulumi.Input<List<int>>? daysOfMonths;
+  final pulumi.Input<List<int>?>? daysOfMonths;
   /// Days of the week on which the trigger is scheduled. This value can be specified only with a weekly frequency.
-  final pulumi.Input<List<String>>? daysOfWeeks;
+  final pulumi.Input<List<String>?>? daysOfWeeks;
   /// Hours of the day on which the trigger is scheduled.
-  final pulumi.Input<List<int>>? hours;
+  final pulumi.Input<List<int>?>? hours;
   /// Minutes of the hour on which the trigger is scheduled.
-  final pulumi.Input<List<int>>? minutes;
+  final pulumi.Input<List<int>?>? minutes;
   /// A `monthly` block as documented below, which specifies the days of the month on which the trigger is scheduled. The value can be specified only with a monthly frequency.
-  final pulumi.Input<List<TriggerScheduleScheduleMonthly>>? monthlies;
+  final pulumi.Input<List<TriggerScheduleScheduleMonthly>?>? monthlies;
 
   /// Creates a new [TriggerScheduleSchedule].
   /// [daysOfMonths] Day(s) of the month on which the trigger is scheduled. This value can be specified with a monthly frequency only.

@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NetworkManagerRoutingRuleNextHop {
   /// The address of the next hop. This is required if the next hop type is `VirtualAppliance`.
-  final pulumi.Input<String>? address;
+  final pulumi.Input<String?>? address;
   /// The type of next hop. Possible values are `Internet`, `NoNextHop`, `VirtualAppliance`, `VirtualNetworkGateway` and `VnetLocal`.
   final pulumi.Input<String> type;
 

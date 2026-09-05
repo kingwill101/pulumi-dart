@@ -259,7 +259,7 @@ class ResourceBridgeAppliance extends pulumi.CustomResource {
           'azure:arc/resourceBridgeAppliance:ResourceBridgeAppliance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     distro = registerOutput<String>('distro');
     identity = registerOutput<ResourceBridgeApplianceIdentity>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceBridgeApplianceIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -268,7 +268,7 @@ class ResourceBridgeAppliance extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     publicKeyBase64 = registerOutput<String?>('publicKeyBase64');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [ResourceBridgeAppliance] resource's state with the given [name] and [id].
@@ -276,11 +276,12 @@ class ResourceBridgeAppliance extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ResourceBridgeApplianceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ResourceBridgeAppliance._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -301,6 +302,25 @@ class ResourceBridgeAppliance extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     publicKeyBase64 = registerOutput<String?>('publicKeyBase64');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [ResourceBridgeAppliance] resource.
+  ResourceBridgeAppliance.reference(String urn)
+    : super(
+        'azure:arc/resourceBridgeAppliance:ResourceBridgeAppliance',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    distro = registerOutput<String>('distro');
+    identity = registerOutput<ResourceBridgeApplianceIdentity>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceBridgeApplianceIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    infrastructureProvider = registerOutput<String>('infrastructureProvider');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    publicKeyBase64 = registerOutput<String?>('publicKeyBase64');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

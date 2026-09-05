@@ -12,7 +12,7 @@ class ServiceUpstreamEndpoint {
   /// The upstream URL Template. This can be a url or a template such as `http://host.com/{hub}/api/{category}/{event}`.
   final pulumi.Input<String> urlTemplate;
   /// Specifies the Managed Identity IDs to be assigned to this signalR upstream setting by using resource uuid as both system assigned and user assigned identity is supported.
-  final pulumi.Input<String>? userAssignedIdentityId;
+  final pulumi.Input<String?>? userAssignedIdentityId;
 
   /// Creates a new [ServiceUpstreamEndpoint].
   /// [categoryPatterns] The categories to match on, or `*` for all.

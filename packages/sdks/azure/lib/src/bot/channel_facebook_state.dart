@@ -6,17 +6,17 @@ import 'channel_facebook_page.dart';
 /// Input properties used for looking up and filtering ChannelFacebook resources.
 class ChannelFacebookState {
   /// The name of the Bot Resource this channel will be associated with. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? botName;
+  final pulumi.Input<String?>? botName;
   /// The Facebook Application ID for the Facebook Channel.
-  final pulumi.Input<String>? facebookApplicationId;
+  final pulumi.Input<String?>? facebookApplicationId;
   /// The Facebook Application Secret for the Facebook Channel.
-  final pulumi.Input<String>? facebookApplicationSecret;
+  final pulumi.Input<String?>? facebookApplicationSecret;
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// One or more `page` blocks as defined below.
-  final pulumi.Input<List<ChannelFacebookPage>>? pages;
+  final pulumi.Input<List<ChannelFacebookPage>?>? pages;
   /// The name of the resource group where the Facebook Channel should be created. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
 
   /// Creates a new [ChannelFacebookState].
   /// [botName] The name of the Bot Resource this channel will be associated with. Changing this forces a new resource to be created.

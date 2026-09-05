@@ -151,6 +151,17 @@ Future<AzurermPortalDashboardResult> azurermPortalDashboard(
   return AzurermPortalDashboardResult.fromMap(result);
 }
 
+pulumi.Output<AzurermPortalDashboardResult> azurermPortalDashboardOutput(
+  AzurermPortalDashboardArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:dashboard/azurerm_portal_dashboard:azurerm_portal_dashboard',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(AzurermPortalDashboardResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Grafana Dashboard.
 ///
 /// ## Example Usage
@@ -296,4 +307,15 @@ Future<GetGrafanaResult> getGrafana(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetGrafanaResult.fromMap(result);
+}
+
+pulumi.Output<GetGrafanaResult> getGrafanaOutput(
+  GetGrafanaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:dashboard/getGrafana:getGrafana',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGrafanaResult.fromMap);
 }

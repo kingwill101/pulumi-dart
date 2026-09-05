@@ -123,7 +123,7 @@ import 'share_directory_state.dart';
 /// 		}
 /// 		exampleShare, err := storage.NewShare(ctx, "example", &storage.ShareArgs{
 /// 			Name:             pulumi.String("sharename"),
-/// 			StorageAccountId: exampleAccount.ID(),
+/// 			StorageAccountId: exampleAccount.ID().ToIDOutput().ToStringOutput(),
 /// 			Quota:            pulumi.Int(50),
 /// 		})
 /// 		if err != nil {
@@ -284,9 +284,9 @@ class ShareDirectory extends pulumi.CustomResource {
           'azure:storage/shareDirectory:ShareDirectory',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
-    metadata = registerOutput<Map<String, String>?>('metadata');
+    metadata = registerOutput<Map<String, String>?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     storageShareId = registerOutput<String>('storageShareId');
     storageShareUrl = registerOutput<String>('storageShareUrl');
@@ -297,11 +297,12 @@ class ShareDirectory extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ShareDirectoryState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ShareDirectory._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -315,7 +316,22 @@ class ShareDirectory extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    metadata = registerOutput<Map<String, String>?>('metadata');
+    metadata = registerOutput<Map<String, String>?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    this.name = registerOutput<String>('name');
+    storageShareId = registerOutput<String>('storageShareId');
+    storageShareUrl = registerOutput<String>('storageShareUrl');
+  }
+
+  /// Creates a typed reference to an existing [ShareDirectory] resource.
+  ShareDirectory.reference(String urn)
+    : super(
+        'azure:storage/shareDirectory:ShareDirectory',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    metadata = registerOutput<Map<String, String>?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     storageShareId = registerOutput<String>('storageShareId');
     storageShareUrl = registerOutput<String>('storageShareUrl');

@@ -523,7 +523,7 @@ class IntegrationAccountAgreement extends pulumi.CustomResource {
           'azure:logicapps/integrationAccountAgreement:IntegrationAccountAgreement',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     agreementType = registerOutput<String>('agreementType');
     content = registerOutput<String>('content');
@@ -532,7 +532,7 @@ class IntegrationAccountAgreement extends pulumi.CustomResource {
     hostIdentity = registerOutput<IntegrationAccountAgreementHostIdentity>('hostIdentity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IntegrationAccountAgreementHostIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     hostPartnerName = registerOutput<String>('hostPartnerName');
     integrationAccountName = registerOutput<String>('integrationAccountName');
-    metadata = registerOutput<Map<String, String>?>('metadata');
+    metadata = registerOutput<Map<String, String>?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
   }
@@ -542,11 +542,12 @@ class IntegrationAccountAgreement extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     IntegrationAccountAgreementState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return IntegrationAccountAgreement._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -567,7 +568,28 @@ class IntegrationAccountAgreement extends pulumi.CustomResource {
     hostIdentity = registerOutput<IntegrationAccountAgreementHostIdentity>('hostIdentity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IntegrationAccountAgreementHostIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     hostPartnerName = registerOutput<String>('hostPartnerName');
     integrationAccountName = registerOutput<String>('integrationAccountName');
-    metadata = registerOutput<Map<String, String>?>('metadata');
+    metadata = registerOutput<Map<String, String>?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+  }
+
+  /// Creates a typed reference to an existing [IntegrationAccountAgreement] resource.
+  IntegrationAccountAgreement.reference(String urn)
+    : super(
+        'azure:logicapps/integrationAccountAgreement:IntegrationAccountAgreement',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    agreementType = registerOutput<String>('agreementType');
+    content = registerOutput<String>('content');
+    guestIdentity = registerOutput<IntegrationAccountAgreementGuestIdentity>('guestIdentity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IntegrationAccountAgreementGuestIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    guestPartnerName = registerOutput<String>('guestPartnerName');
+    hostIdentity = registerOutput<IntegrationAccountAgreementHostIdentity>('hostIdentity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IntegrationAccountAgreementHostIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    hostPartnerName = registerOutput<String>('hostPartnerName');
+    integrationAccountName = registerOutput<String>('integrationAccountName');
+    metadata = registerOutput<Map<String, String>?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
   }

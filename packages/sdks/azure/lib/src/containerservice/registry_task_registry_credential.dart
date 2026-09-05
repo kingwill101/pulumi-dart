@@ -6,9 +6,9 @@ import 'registry_task_registry_credential_source.dart';
 
 class RegistryTaskRegistryCredential {
   /// One or more `custom` blocks as defined above.
-  final pulumi.Input<List<RegistryTaskRegistryCredentialCustom>>? customs;
+  final pulumi.Input<List<RegistryTaskRegistryCredentialCustom>?>? customs;
   /// One `source` block as defined below.
-  final pulumi.Input<RegistryTaskRegistryCredentialSource>? source;
+  final pulumi.Input<RegistryTaskRegistryCredentialSource?>? source;
 
   /// Creates a new [RegistryTaskRegistryCredential].
   /// [customs] One or more `custom` blocks as defined above.

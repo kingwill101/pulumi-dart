@@ -279,44 +279,44 @@ import 'virtual_machine_manager_virtual_machine_instance_guest_agent_state.dart'
 /// 		}
 /// 		example := systemcenter.GetVirtualMachineManagerInventoryItemsOutput(ctx, systemcenter.GetVirtualMachineManagerInventoryItemsOutputArgs{
 /// 			InventoryType: pulumi.String("Cloud"),
-/// 			SystemCenterVirtualMachineManagerServerId: exampleVirtualMachineManagerServer.ID(),
+/// 			SystemCenterVirtualMachineManagerServerId: exampleVirtualMachineManagerServer.ID().ToIDOutput().ToStringOutput(),
 /// 		}, nil)
 /// 		exampleVirtualMachineManagerCloud, err := systemcenter.NewVirtualMachineManagerCloud(ctx, "example", &systemcenter.VirtualMachineManagerCloudArgs{
 /// 			Name:              pulumi.String("example-scvmmc"),
 /// 			Location:          exampleResourceGroup.Location,
 /// 			ResourceGroupName: exampleResourceGroup.Name,
 /// 			CustomLocationId:  exampleVirtualMachineManagerServer.CustomLocationId,
-/// 			SystemCenterVirtualMachineManagerServerInventoryItemId: pulumi.String(example.ApplyT(func(example systemcenter.GetVirtualMachineManagerInventoryItemsResult) (*string, error) {
+/// 			SystemCenterVirtualMachineManagerServerInventoryItemId: example.ApplyT(func(example systemcenter.GetVirtualMachineManagerInventoryItemsResult) (*string, error) {
 /// 				return example.InventoryItems[0].Id, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			}).(pulumi.StringPtrOutput),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		example2 := systemcenter.GetVirtualMachineManagerInventoryItemsOutput(ctx, systemcenter.GetVirtualMachineManagerInventoryItemsOutputArgs{
 /// 			InventoryType: pulumi.String("VirtualMachineTemplate"),
-/// 			SystemCenterVirtualMachineManagerServerId: exampleVirtualMachineManagerServer.ID(),
+/// 			SystemCenterVirtualMachineManagerServerId: exampleVirtualMachineManagerServer.ID().ToIDOutput().ToStringOutput(),
 /// 		}, nil)
 /// 		exampleVirtualMachineManagerVirtualMachineTemplate, err := systemcenter.NewVirtualMachineManagerVirtualMachineTemplate(ctx, "example", &systemcenter.VirtualMachineManagerVirtualMachineTemplateArgs{
 /// 			Name:              pulumi.String("example-scvmmvmt"),
 /// 			Location:          exampleResourceGroup.Location,
 /// 			ResourceGroupName: exampleResourceGroup.Name,
 /// 			CustomLocationId:  exampleVirtualMachineManagerServer.CustomLocationId,
-/// 			SystemCenterVirtualMachineManagerServerInventoryItemId: pulumi.String(example2.ApplyT(func(example2 systemcenter.GetVirtualMachineManagerInventoryItemsResult) (*string, error) {
+/// 			SystemCenterVirtualMachineManagerServerInventoryItemId: example2.ApplyT(func(example2 systemcenter.GetVirtualMachineManagerInventoryItemsResult) (*string, error) {
 /// 				return example2.InventoryItems[0].Id, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			}).(pulumi.StringPtrOutput),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		exampleVirtualMachineManagerVirtualMachineInstance, err := systemcenter.NewVirtualMachineManagerVirtualMachineInstance(ctx, "example", &systemcenter.VirtualMachineManagerVirtualMachineInstanceArgs{
-/// 			ScopedResourceId: exampleArcMachine.ID(),
+/// 			ScopedResourceId: exampleArcMachine.ID().ToIDOutput().ToStringOutput(),
 /// 			CustomLocationId: exampleVirtualMachineManagerServer.CustomLocationId,
 /// 			Infrastructure: &systemcenter.VirtualMachineManagerVirtualMachineInstanceInfrastructureArgs{
 /// 				CheckpointType:                                          pulumi.String("Standard"),
-/// 				SystemCenterVirtualMachineManagerCloudId:                exampleVirtualMachineManagerCloud.ID(),
-/// 				SystemCenterVirtualMachineManagerTemplateId:             exampleVirtualMachineManagerVirtualMachineTemplate.ID(),
-/// 				SystemCenterVirtualMachineManagerVirtualMachineServerId: exampleVirtualMachineManagerServer.ID(),
+/// 				SystemCenterVirtualMachineManagerCloudId:                exampleVirtualMachineManagerCloud.ID().ToIDOutput().ToStringOutput(),
+/// 				SystemCenterVirtualMachineManagerTemplateId:             exampleVirtualMachineManagerVirtualMachineTemplate.ID().ToIDOutput().ToStringOutput(),
+/// 				SystemCenterVirtualMachineManagerVirtualMachineServerId: exampleVirtualMachineManagerServer.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			OperatingSystem: &systemcenter.VirtualMachineManagerVirtualMachineInstanceOperatingSystemArgs{
 /// 				AdminPassword: pulumi.String("AdminPassword123!"),
@@ -326,7 +326,7 @@ import 'virtual_machine_manager_virtual_machine_instance_guest_agent_state.dart'
 /// 			return err
 /// 		}
 /// 		_, err = systemcenter.NewVirtualMachineManagerVirtualMachineInstanceGuestAgent(ctx, "example", &systemcenter.VirtualMachineManagerVirtualMachineInstanceGuestAgentArgs{
-/// 			ScopedResourceId: exampleArcMachine.ID(),
+/// 			ScopedResourceId: exampleArcMachine.ID().ToIDOutput().ToStringOutput(),
 /// 			Username:         pulumi.String("Administrator"),
 /// 			Password:         pulumi.String("AdminPassword123!"),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
@@ -650,9 +650,10 @@ class VirtualMachineManagerVirtualMachineInstanceGuestAgent extends pulumi.Custo
           'azure:systemcenter/virtualMachineManagerVirtualMachineInstanceGuestAgent:VirtualMachineManagerVirtualMachineInstanceGuestAgent',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['password'],
         ) {
-    password = registerOutput<String>('password');
+    password = registerOutput<String>('password', isSecret: true);
     provisioningAction = registerOutput<String?>('provisioningAction');
     scopedResourceId = registerOutput<String>('scopedResourceId');
     username = registerOutput<String>('username');
@@ -663,11 +664,12 @@ class VirtualMachineManagerVirtualMachineInstanceGuestAgent extends pulumi.Custo
     String name,
     pulumi.Input<String> id, {
     VirtualMachineManagerVirtualMachineInstanceGuestAgentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VirtualMachineManagerVirtualMachineInstanceGuestAgent._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -681,7 +683,23 @@ class VirtualMachineManagerVirtualMachineInstanceGuestAgent extends pulumi.Custo
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    password = registerOutput<String>('password');
+    password = registerOutput<String>('password', isSecret: true);
+    provisioningAction = registerOutput<String?>('provisioningAction');
+    scopedResourceId = registerOutput<String>('scopedResourceId');
+    username = registerOutput<String>('username');
+  }
+
+  /// Creates a typed reference to an existing [VirtualMachineManagerVirtualMachineInstanceGuestAgent] resource.
+  VirtualMachineManagerVirtualMachineInstanceGuestAgent.reference(String urn)
+    : super(
+        'azure:systemcenter/virtualMachineManagerVirtualMachineInstanceGuestAgent:VirtualMachineManagerVirtualMachineInstanceGuestAgent',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['password'],
+        isResourceReference: true,
+      ) {
+    password = registerOutput<String>('password', isSecret: true);
     provisioningAction = registerOutput<String?>('provisioningAction');
     scopedResourceId = registerOutput<String>('scopedResourceId');
     username = registerOutput<String>('username');

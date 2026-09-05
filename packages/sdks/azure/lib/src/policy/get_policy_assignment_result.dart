@@ -7,29 +7,29 @@ import 'get_policy_assignment_non_compliance_message.dart';
 /// Result data returned by getPolicyAssignment.
 class GetPolicyAssignmentResult {
   /// The description of this Policy Assignment.
-  final String description;
+  final String? description;
   /// The display name of this Policy Assignment.
-  final String displayName;
+  final String? displayName;
   /// Whether this Policy is enforced or not?
-  final bool enforce;
+  final bool? enforce;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// A `identity` block as defined below.
-  final List<GetPolicyAssignmentIdentity> identities;
+  final List<GetPolicyAssignmentIdentity>? identities;
   /// The Azure Region where the Policy Assignment exists.
-  final String location;
+  final String? location;
   /// A JSON mapping of any Metadata for this Policy.
-  final String metadata;
-  final String name;
+  final String? metadata;
+  final String? name;
   /// A `nonComplianceMessage` block as defined below.
-  final List<GetPolicyAssignmentNonComplianceMessage> nonComplianceMessages;
+  final List<GetPolicyAssignmentNonComplianceMessage>? nonComplianceMessages;
   /// A `notScopes` block as defined below.
-  final List<String> notScopes;
+  final List<String>? notScopes;
   /// A JSON mapping of any Parameters for this Policy.
-  final String parameters;
+  final String? parameters;
   /// The ID of the assigned Policy Definition.
-  final String policyDefinitionId;
-  final String scopeId;
+  final String? policyDefinitionId;
+  final String? scopeId;
 
   /// Creates a new [GetPolicyAssignmentResult].
   /// [description] The description of this Policy Assignment.
@@ -39,61 +39,61 @@ class GetPolicyAssignmentResult {
   /// [identities] A `identity` block as defined below.
   /// [location] The Azure Region where the Policy Assignment exists.
   /// [metadata] A JSON mapping of any Metadata for this Policy.
-  /// [name] Required.
+  /// [name] Optional.
   /// [nonComplianceMessages] A `nonComplianceMessage` block as defined below.
   /// [notScopes] A `notScopes` block as defined below.
   /// [parameters] A JSON mapping of any Parameters for this Policy.
   /// [policyDefinitionId] The ID of the assigned Policy Definition.
-  /// [scopeId] Required.
+  /// [scopeId] Optional.
   const GetPolicyAssignmentResult({
-    required this.description,
-    required this.displayName,
-    required this.enforce,
-    required this.id,
-    required this.identities,
-    required this.location,
-    required this.metadata,
-    required this.name,
-    required this.nonComplianceMessages,
-    required this.notScopes,
-    required this.parameters,
-    required this.policyDefinitionId,
-    required this.scopeId,
+    this.description,
+    this.displayName,
+    this.enforce,
+    this.id,
+    this.identities,
+    this.location,
+    this.metadata,
+    this.name,
+    this.nonComplianceMessages,
+    this.notScopes,
+    this.parameters,
+    this.policyDefinitionId,
+    this.scopeId,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'description': description,
-      'displayName': displayName,
-      'enforce': enforce,
-      'id': id,
-      'identities': pulumi.Input.encodeList<GetPolicyAssignmentIdentity, Map<String, dynamic>>(identities, (value) => value.toMap()),
-      'location': location,
-      'metadata': metadata,
-      'name': name,
-      'nonComplianceMessages': pulumi.Input.encodeList<GetPolicyAssignmentNonComplianceMessage, Map<String, dynamic>>(nonComplianceMessages, (value) => value.toMap()),
-      'notScopes': notScopes,
-      'parameters': parameters,
-      'policyDefinitionId': policyDefinitionId,
-      'scopeId': scopeId,
+      'description': ?description,
+      'displayName': ?displayName,
+      'enforce': ?enforce,
+      'id': ?id,
+      'identities': ?(() { final guardedValue = identities; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetPolicyAssignmentIdentity, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'location': ?location,
+      'metadata': ?metadata,
+      'name': ?name,
+      'nonComplianceMessages': ?(() { final guardedValue = nonComplianceMessages; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetPolicyAssignmentNonComplianceMessage, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'notScopes': ?notScopes,
+      'parameters': ?parameters,
+      'policyDefinitionId': ?policyDefinitionId,
+      'scopeId': ?scopeId,
     };
   }
 
   factory GetPolicyAssignmentResult.fromMap(Map<String, dynamic> map) {
     return GetPolicyAssignmentResult(
-      description: map['description'] as String,
-      displayName: map['displayName'] as String,
-      enforce: map['enforce'] as bool,
-      id: map['id'] as String,
-      identities: pulumi.Input.decodeList<GetPolicyAssignmentIdentity>(map['identities']!, (value) => GetPolicyAssignmentIdentity.fromMap((value as Map).cast<String, dynamic>())),
-      location: map['location'] as String,
-      metadata: map['metadata'] as String,
-      name: map['name'] as String,
-      nonComplianceMessages: pulumi.Input.decodeList<GetPolicyAssignmentNonComplianceMessage>(map['nonComplianceMessages']!, (value) => GetPolicyAssignmentNonComplianceMessage.fromMap((value as Map).cast<String, dynamic>())),
-      notScopes: (map['notScopes'] as List).cast<String>(),
-      parameters: map['parameters'] as String,
-      policyDefinitionId: map['policyDefinitionId'] as String,
-      scopeId: map['scopeId'] as String,
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      enforce: (() { final guardedValue = map['enforce']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      identities: (() { final guardedValue = map['identities']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetPolicyAssignmentIdentity>(guardedValue, (value) => GetPolicyAssignmentIdentity.fromMap((value as Map).cast<String, dynamic>())); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      metadata: (() { final guardedValue = map['metadata']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      nonComplianceMessages: (() { final guardedValue = map['nonComplianceMessages']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetPolicyAssignmentNonComplianceMessage>(guardedValue, (value) => GetPolicyAssignmentNonComplianceMessage.fromMap((value as Map).cast<String, dynamic>())); })(),
+      notScopes: (() { final guardedValue = map['notScopes']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      policyDefinitionId: (() { final guardedValue = map['policyDefinitionId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      scopeId: (() { final guardedValue = map['scopeId']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

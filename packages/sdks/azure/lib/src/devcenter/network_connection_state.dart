@@ -5,25 +5,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering NetworkConnection resources.
 class NetworkConnectionState {
   /// The Azure Active Directory Join type. Possible values are `AzureADJoin`, `HybridAzureADJoin` and `None`. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? domainJoinType;
+  final pulumi.Input<String?>? domainJoinType;
   /// The name of the Azure Active Directory domain.
-  final pulumi.Input<String>? domainName;
+  final pulumi.Input<String?>? domainName;
   /// The password for the account used to join domain.
-  final pulumi.Input<String>? domainPassword;
+  final pulumi.Input<String?>? domainPassword;
   /// The username of the Azure Active Directory account (user or service account) that has permissions to create computer objects in Active Directory.
-  final pulumi.Input<String>? domainUsername;
+  final pulumi.Input<String?>? domainUsername;
   /// The Azure Region where the Dev Center Network Connection should exist. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Specifies the name of this Dev Center Network Connection. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The Azure Active Directory domain Organization Unit (OU).
-  final pulumi.Input<String>? organizationUnit;
+  final pulumi.Input<String?>? organizationUnit;
   /// Specifies the name of the Resource Group within which this Dev Center Network Connection should exist. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// The ID of the Subnet that is used to attach Virtual Machines.
-  final pulumi.Input<String>? subnetId;
+  final pulumi.Input<String?>? subnetId;
   /// A mapping of tags which should be assigned to the Dev Center Network Connection.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [NetworkConnectionState].
   /// [domainJoinType] The Azure Active Directory Join type. Possible values are `AzureADJoin`, `HybridAzureADJoin` and `None`. Changing this forces a new resource to be created.

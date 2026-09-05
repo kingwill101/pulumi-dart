@@ -134,7 +134,7 @@ import 'subscription_state.dart';
 /// 		}
 /// 		exampleTopic, err := servicebus.NewTopic(ctx, "example", &servicebus.TopicArgs{
 /// 			Name:                pulumi.String("tfex_servicebus_topic"),
-/// 			NamespaceId:         exampleNamespace.ID(),
+/// 			NamespaceId:         exampleNamespace.ID().ToIDOutput().ToStringOutput(),
 /// 			PartitioningEnabled: pulumi.Bool(true),
 /// 		})
 /// 		if err != nil {
@@ -142,7 +142,7 @@ import 'subscription_state.dart';
 /// 		}
 /// 		_, err = servicebus.NewSubscription(ctx, "example", &servicebus.SubscriptionArgs{
 /// 			Name:             pulumi.String("tfex_servicebus_subscription"),
-/// 			TopicId:          exampleTopic.ID(),
+/// 			TopicId:          exampleTopic.ID().ToIDOutput().ToStringOutput(),
 /// 			MaxDeliveryCount: pulumi.Int(1),
 /// 		})
 /// 		if err != nil {
@@ -334,7 +334,7 @@ class Subscription extends pulumi.CustomResource {
           'azure:eventhub/subscription:Subscription',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     autoDeleteOnIdle = registerOutput<String?>('autoDeleteOnIdle');
     batchedOperationsEnabled = registerOutput<bool?>('batchedOperationsEnabled');
@@ -358,11 +358,12 @@ class Subscription extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SubscriptionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Subscription._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -376,6 +377,32 @@ class Subscription extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    autoDeleteOnIdle = registerOutput<String?>('autoDeleteOnIdle');
+    batchedOperationsEnabled = registerOutput<bool?>('batchedOperationsEnabled');
+    clientScopedSubscription = registerOutput<SubscriptionClientScopedSubscription?>('clientScopedSubscription', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubscriptionClientScopedSubscription.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    clientScopedSubscriptionEnabled = registerOutput<bool?>('clientScopedSubscriptionEnabled');
+    deadLetteringOnFilterEvaluationError = registerOutput<bool?>('deadLetteringOnFilterEvaluationError');
+    deadLetteringOnMessageExpiration = registerOutput<bool?>('deadLetteringOnMessageExpiration');
+    defaultMessageTtl = registerOutput<String?>('defaultMessageTtl');
+    forwardDeadLetteredMessagesTo = registerOutput<String?>('forwardDeadLetteredMessagesTo');
+    forwardTo = registerOutput<String?>('forwardTo');
+    lockDuration = registerOutput<String?>('lockDuration');
+    maxDeliveryCount = registerOutput<int>('maxDeliveryCount');
+    this.name = registerOutput<String>('name');
+    requiresSession = registerOutput<bool?>('requiresSession');
+    status = registerOutput<String?>('status');
+    topicId = registerOutput<String>('topicId');
+  }
+
+  /// Creates a typed reference to an existing [Subscription] resource.
+  Subscription.reference(String urn)
+    : super(
+        'azure:eventhub/subscription:Subscription',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     autoDeleteOnIdle = registerOutput<String?>('autoDeleteOnIdle');
     batchedOperationsEnabled = registerOutput<bool?>('batchedOperationsEnabled');
     clientScopedSubscription = registerOutput<SubscriptionClientScopedSubscription?>('clientScopedSubscription', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubscriptionClientScopedSubscription.fromMap((guardedValue as Map).cast<String, dynamic>()); });

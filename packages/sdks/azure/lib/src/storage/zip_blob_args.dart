@@ -7,21 +7,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_storage_zip_blob_zip_blob_args_doc}
 class ZipBlobArgs {
-  final pulumi.Input<String>? accessTier;
-  final pulumi.Input<String>? cacheControl;
+  final pulumi.Input<String?>? accessTier;
+  final pulumi.Input<String?>? cacheControl;
   final pulumi.Input<dynamic>? content;
-  final pulumi.Input<String>? contentMd5;
-  final pulumi.Input<String>? contentType;
-  final pulumi.Input<String>? encryptionScope;
-  final pulumi.Input<Map<String, String>>? metadata;
-  final pulumi.Input<String>? name;
-  final pulumi.Input<int>? parallelism;
-  final pulumi.Input<int>? size;
-  final pulumi.Input<String>? sourceContent;
-  final pulumi.Input<String>? sourceUri;
-  final pulumi.Input<String>? storageAccountName;
-  final pulumi.Input<String>? storageContainerId;
-  final pulumi.Input<String>? storageContainerName;
+  final pulumi.Input<String?>? contentMd5;
+  final pulumi.Input<String?>? contentType;
+  final pulumi.Input<String?>? encryptionScope;
+  final pulumi.Input<Map<String, String>?>? metadata;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<int?>? parallelism;
+  final pulumi.Input<int?>? size;
+  final pulumi.Input<String?>? sourceContent;
+  final pulumi.Input<String?>? sourceUri;
+  final pulumi.Input<String?>? storageAccountName;
+  final pulumi.Input<String?>? storageContainerId;
+  final pulumi.Input<String?>? storageContainerName;
   final pulumi.Input<String> type;
 
   /// Creates a new [ZipBlobArgs].
@@ -91,8 +91,8 @@ class ZipBlobArgs {
       encryptionScope: (() { final guardedValue = map['encryptionScope']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       metadata: (() { final guardedValue = map['metadata']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      parallelism: (() { final guardedValue = map['parallelism']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      size: (() { final guardedValue = map['size']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      parallelism: (() { final guardedValue = map['parallelism']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      size: (() { final guardedValue = map['size']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       sourceContent: (() { final guardedValue = map['sourceContent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sourceUri: (() { final guardedValue = map['sourceUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       storageAccountName: (() { final guardedValue = map['storageAccountName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

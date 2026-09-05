@@ -17,13 +17,13 @@ class MedtechServiceArgs {
   /// Specifies the namespace name of the Event Hub to connect to.
   final pulumi.Input<String> eventhubNamespaceName;
   /// An `identity` block as defined below.
-  final pulumi.Input<MedtechServiceIdentity>? identity;
+  final pulumi.Input<MedtechServiceIdentity?>? identity;
   /// Specifies the Azure Region where the Healthcare Med Tech Service should be created. Changing this forces a new Healthcare Med Tech Service to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Specifies the name of the Healthcare Med Tech Service. Changing this forces a new Healthcare Med Tech Service to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A mapping of tags to assign to the Healthcare Med Tech Service.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Specifies the id of the Healthcare Workspace where the Healthcare Med Tech Service should exist. Changing this forces a new Healthcare Med Tech Service to be created.
   final pulumi.Input<String> workspaceId;
 

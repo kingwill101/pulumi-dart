@@ -6,29 +6,29 @@ import 'output_servicebus_topic_serialization.dart';
 /// Input properties used for looking up and filtering OutputServicebusTopic resources.
 class OutputServicebusTopicState {
   /// The authentication mode for the Stream Output. Possible values are `Msi` and `ConnectionString`. Defaults to `ConnectionString`.
-  final pulumi.Input<String>? authenticationMode;
+  final pulumi.Input<String?>? authenticationMode;
   /// The name of the Stream Output. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A list of property columns to add to the Service Bus Topic output.
-  final pulumi.Input<List<String>>? propertyColumns;
+  final pulumi.Input<List<String>?>? propertyColumns;
   /// The name of the Resource Group where the Stream Analytics Job exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// A `serialization` block as defined below.
-  final pulumi.Input<OutputServicebusTopicSerialization>? serialization;
+  final pulumi.Input<OutputServicebusTopicSerialization?>? serialization;
   /// The namespace that is associated with the desired Event Hub, Service Bus Topic, Service Bus Topic, etc.
-  final pulumi.Input<String>? servicebusNamespace;
+  final pulumi.Input<String?>? servicebusNamespace;
   /// The shared access policy key for the specified shared access policy. Required if `authenticationMode` is `ConnectionString`.
-  final pulumi.Input<String>? sharedAccessPolicyKey;
+  final pulumi.Input<String?>? sharedAccessPolicyKey;
   /// The shared access policy name for the Event Hub, Service Bus Queue, Service Bus Topic, etc. Required if `authenticationMode` is `ConnectionString`.
-  final pulumi.Input<String>? sharedAccessPolicyName;
+  final pulumi.Input<String?>? sharedAccessPolicyName;
   /// The name of the Stream Analytics Job. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? streamAnalyticsJobName;
+  final pulumi.Input<String?>? streamAnalyticsJobName;
   /// A key-value pair of system property columns that will be attached to the outgoing messages for the Service Bus Topic Output.
   ///
   /// &gt; **Note:** The acceptable keys are `ContentType`, `CorrelationId`, `Label`, `MessageId`, `PartitionKey`, `ReplyTo`, `ReplyToSessionId`, `ScheduledEnqueueTimeUtc`, `SessionId`, `TimeToLive` and `To`.
-  final pulumi.Input<Map<String, String>>? systemPropertyColumns;
+  final pulumi.Input<Map<String, String>?>? systemPropertyColumns;
   /// The name of the Service Bus Topic.
-  final pulumi.Input<String>? topicName;
+  final pulumi.Input<String?>? topicName;
 
   /// Creates a new [OutputServicebusTopicState].
   /// [authenticationMode] The authentication mode for the Stream Output. Possible values are `Msi` and `ConnectionString`. Defaults to `ConnectionString`.

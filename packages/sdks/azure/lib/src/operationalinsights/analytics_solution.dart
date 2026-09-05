@@ -138,7 +138,7 @@ import 'analytics_solution_state.dart';
 /// 			return err
 /// 		}
 /// 		workspace, err := random.NewId(ctx, "workspace", &random.IdArgs{
-/// 			Keepers: map[string]interface{}{
+/// 			Keepers: map[string]pulumi.String{
 /// 				"groupName": example.Name,
 /// 			},
 /// 			ByteLength: 8,
@@ -159,7 +159,7 @@ import 'analytics_solution_state.dart';
 /// 			SolutionName:        pulumi.String("ContainerInsights"),
 /// 			Location:            example.Location,
 /// 			ResourceGroupName:   example.Name,
-/// 			WorkspaceResourceId: exampleAnalyticsWorkspace.ID(),
+/// 			WorkspaceResourceId: exampleAnalyticsWorkspace.ID().ToIDOutput().ToStringOutput(),
 /// 			WorkspaceName:       exampleAnalyticsWorkspace.Name,
 /// 			Plan: &operationalinsights.AnalyticsSolutionPlanArgs{
 /// 				Publisher: pulumi.String("Microsoft"),
@@ -351,13 +351,13 @@ class AnalyticsSolution extends pulumi.CustomResource {
           'azure:operationalinsights/analyticsSolution:AnalyticsSolution',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     location = registerOutput<String>('location');
     plan = registerOutput<AnalyticsSolutionPlan>('plan', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AnalyticsSolutionPlan.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     resourceGroupName = registerOutput<String>('resourceGroupName');
     solutionName = registerOutput<String>('solutionName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     workspaceName = registerOutput<String>('workspaceName');
     workspaceResourceId = registerOutput<String>('workspaceResourceId');
   }
@@ -367,11 +367,12 @@ class AnalyticsSolution extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AnalyticsSolutionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AnalyticsSolution._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -389,7 +390,25 @@ class AnalyticsSolution extends pulumi.CustomResource {
     plan = registerOutput<AnalyticsSolutionPlan>('plan', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AnalyticsSolutionPlan.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     resourceGroupName = registerOutput<String>('resourceGroupName');
     solutionName = registerOutput<String>('solutionName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    workspaceName = registerOutput<String>('workspaceName');
+    workspaceResourceId = registerOutput<String>('workspaceResourceId');
+  }
+
+  /// Creates a typed reference to an existing [AnalyticsSolution] resource.
+  AnalyticsSolution.reference(String urn)
+    : super(
+        'azure:operationalinsights/analyticsSolution:AnalyticsSolution',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    location = registerOutput<String>('location');
+    plan = registerOutput<AnalyticsSolutionPlan>('plan', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AnalyticsSolutionPlan.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    solutionName = registerOutput<String>('solutionName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     workspaceName = registerOutput<String>('workspaceName');
     workspaceResourceId = registerOutput<String>('workspaceResourceId');
   }

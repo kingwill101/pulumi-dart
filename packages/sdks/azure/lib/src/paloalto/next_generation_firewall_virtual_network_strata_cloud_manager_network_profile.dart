@@ -5,15 +5,15 @@ import 'next_generation_firewall_virtual_network_strata_cloud_manager_network_pr
 
 class NextGenerationFirewallVirtualNetworkStrataCloudManagerNetworkProfile {
   /// A list of Azure Public IP Address IDs that can be used for Egress (Source) Network Address Translation.
-  final pulumi.Input<List<String>>? egressNatIpAddressIds;
+  final pulumi.Input<List<String>?>? egressNatIpAddressIds;
   /// A list of Egress NAT IP addresses.
-  final pulumi.Input<List<String>>? egressNatIpAddresses;
+  final pulumi.Input<List<String>?>? egressNatIpAddresses;
   /// A list of Azure Public IP Address IDs.
   final pulumi.Input<List<String>> publicIpAddressIds;
   /// A list of public IPs associated with this Next Generation Firewall.
-  final pulumi.Input<List<String>>? publicIpAddresses;
+  final pulumi.Input<List<String>?>? publicIpAddresses;
   /// A list of trusted ranges to use for the Network.
-  final pulumi.Input<List<String>>? trustedAddressRanges;
+  final pulumi.Input<List<String>?>? trustedAddressRanges;
   /// A `vnetConfiguration` block as defined below.
   final pulumi.Input<NextGenerationFirewallVirtualNetworkStrataCloudManagerNetworkProfileVnetConfiguration> vnetConfiguration;
 

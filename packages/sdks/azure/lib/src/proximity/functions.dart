@@ -148,3 +148,14 @@ Future<GetPlacementGroupResult> getPlacementGroup(
   );
   return GetPlacementGroupResult.fromMap(result);
 }
+
+pulumi.Output<GetPlacementGroupResult> getPlacementGroupOutput(
+  GetPlacementGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:proximity/getPlacementGroup:getPlacementGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPlacementGroupResult.fromMap);
+}

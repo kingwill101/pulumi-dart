@@ -299,9 +299,10 @@ class ManagedHardwareSecurityModule extends pulumi.CustomResource {
           'azure:keyvault/managedHardwareSecurityModule:ManagedHardwareSecurityModule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['securityDomainEncryptedData'],
         ) {
-    adminObjectIds = registerOutput<List<String>>('adminObjectIds');
+    adminObjectIds = registerOutput<List<String>>('adminObjectIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     hsmUri = registerOutput<String>('hsmUri');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -309,12 +310,12 @@ class ManagedHardwareSecurityModule extends pulumi.CustomResource {
     publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
     purgeProtectionEnabled = registerOutput<bool?>('purgeProtectionEnabled');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    securityDomainEncryptedData = registerOutput<String>('securityDomainEncryptedData');
-    securityDomainKeyVaultCertificateIds = registerOutput<List<String>?>('securityDomainKeyVaultCertificateIds');
+    securityDomainEncryptedData = registerOutput<String>('securityDomainEncryptedData', isSecret: true);
+    securityDomainKeyVaultCertificateIds = registerOutput<List<String>?>('securityDomainKeyVaultCertificateIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     securityDomainQuorum = registerOutput<int?>('securityDomainQuorum');
     skuName = registerOutput<String>('skuName');
     softDeleteRetentionDays = registerOutput<int?>('softDeleteRetentionDays');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tenantId = registerOutput<String>('tenantId');
   }
 
@@ -323,11 +324,12 @@ class ManagedHardwareSecurityModule extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ManagedHardwareSecurityModuleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ManagedHardwareSecurityModule._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -341,7 +343,7 @@ class ManagedHardwareSecurityModule extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    adminObjectIds = registerOutput<List<String>>('adminObjectIds');
+    adminObjectIds = registerOutput<List<String>>('adminObjectIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     hsmUri = registerOutput<String>('hsmUri');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -349,12 +351,39 @@ class ManagedHardwareSecurityModule extends pulumi.CustomResource {
     publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
     purgeProtectionEnabled = registerOutput<bool?>('purgeProtectionEnabled');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    securityDomainEncryptedData = registerOutput<String>('securityDomainEncryptedData');
-    securityDomainKeyVaultCertificateIds = registerOutput<List<String>?>('securityDomainKeyVaultCertificateIds');
+    securityDomainEncryptedData = registerOutput<String>('securityDomainEncryptedData', isSecret: true);
+    securityDomainKeyVaultCertificateIds = registerOutput<List<String>?>('securityDomainKeyVaultCertificateIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     securityDomainQuorum = registerOutput<int?>('securityDomainQuorum');
     skuName = registerOutput<String>('skuName');
     softDeleteRetentionDays = registerOutput<int?>('softDeleteRetentionDays');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tenantId = registerOutput<String>('tenantId');
+  }
+
+  /// Creates a typed reference to an existing [ManagedHardwareSecurityModule] resource.
+  ManagedHardwareSecurityModule.reference(String urn)
+    : super(
+        'azure:keyvault/managedHardwareSecurityModule:ManagedHardwareSecurityModule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['securityDomainEncryptedData'],
+        isResourceReference: true,
+      ) {
+    adminObjectIds = registerOutput<List<String>>('adminObjectIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    hsmUri = registerOutput<String>('hsmUri');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    networkAcls = registerOutput<ManagedHardwareSecurityModuleNetworkAcls>('networkAcls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedHardwareSecurityModuleNetworkAcls.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
+    purgeProtectionEnabled = registerOutput<bool?>('purgeProtectionEnabled');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    securityDomainEncryptedData = registerOutput<String>('securityDomainEncryptedData', isSecret: true);
+    securityDomainKeyVaultCertificateIds = registerOutput<List<String>?>('securityDomainKeyVaultCertificateIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    securityDomainQuorum = registerOutput<int?>('securityDomainQuorum');
+    skuName = registerOutput<String>('skuName');
+    softDeleteRetentionDays = registerOutput<int?>('softDeleteRetentionDays');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tenantId = registerOutput<String>('tenantId');
   }
 }

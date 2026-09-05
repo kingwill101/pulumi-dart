@@ -311,7 +311,7 @@ class ActiveDirectoryAdministrator extends pulumi.CustomResource {
           'azure:postgresql/activeDirectoryAdministrator:ActiveDirectoryAdministrator',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     login = registerOutput<String>('login');
     objectId = registerOutput<String>('objectId');
@@ -325,11 +325,12 @@ class ActiveDirectoryAdministrator extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ActiveDirectoryAdministratorState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ActiveDirectoryAdministrator._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -343,6 +344,22 @@ class ActiveDirectoryAdministrator extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    login = registerOutput<String>('login');
+    objectId = registerOutput<String>('objectId');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    serverName = registerOutput<String>('serverName');
+    tenantId = registerOutput<String>('tenantId');
+  }
+
+  /// Creates a typed reference to an existing [ActiveDirectoryAdministrator] resource.
+  ActiveDirectoryAdministrator.reference(String urn)
+    : super(
+        'azure:postgresql/activeDirectoryAdministrator:ActiveDirectoryAdministrator',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     login = registerOutput<String>('login');
     objectId = registerOutput<String>('objectId');
     resourceGroupName = registerOutput<String>('resourceGroupName');

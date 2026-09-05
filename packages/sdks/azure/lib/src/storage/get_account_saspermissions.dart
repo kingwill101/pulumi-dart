@@ -4,27 +4,27 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAccountSASPermissions {
   /// Should Add permissions be enabled for this SAS?
-  final pulumi.Input<bool>? add;
+  final pulumi.Input<bool?>? add;
   /// Should Create permissions be enabled for this SAS?
-  final pulumi.Input<bool>? create;
+  final pulumi.Input<bool?>? create;
   /// Should Delete permissions be enabled for this SAS?
-  final pulumi.Input<bool>? delete;
+  final pulumi.Input<bool?>? delete;
   /// Should Filter by Index Tags permissions be enabled for this SAS?
-  final pulumi.Input<bool>? filter;
+  final pulumi.Input<bool?>? filter;
   /// Should List permissions be enabled for this SAS?
-  final pulumi.Input<bool>? list;
+  final pulumi.Input<bool?>? list;
   /// Should Process permissions be enabled for this SAS?
-  final pulumi.Input<bool>? process;
+  final pulumi.Input<bool?>? process;
   /// Should Read permissions be enabled for this SAS?
-  final pulumi.Input<bool>? read;
+  final pulumi.Input<bool?>? read;
   /// Should Get / Set Index Tags permissions be enabled for this SAS?
-  final pulumi.Input<bool>? tag;
+  final pulumi.Input<bool?>? tag;
   /// Should Update permissions be enabled for this SAS?
-  final pulumi.Input<bool>? update;
+  final pulumi.Input<bool?>? update;
   /// Should Write permissions be enabled for this SAS?
   ///
   /// &gt; **Note:** Refer to the [SAS creation reference from Azure](https://docs.microsoft.com/rest/api/storageservices/constructing-an-account-sas) for additional details on the fields above.
-  final pulumi.Input<bool>? write;
+  final pulumi.Input<bool?>? write;
 
   /// Creates a new [GetAccountSASPermissions].
   /// [add] Should Add permissions be enabled for this SAS?

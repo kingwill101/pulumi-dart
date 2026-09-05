@@ -10,31 +10,31 @@ import 'policy_file_share_retention_yearly.dart';
 /// Input properties used for looking up and filtering PolicyFileShare resources.
 class PolicyFileShareState {
   /// Configures the Policy backup frequency and times as documented in the `backup` block below.
-  final pulumi.Input<PolicyFileShareBackup>? backup;
+  final pulumi.Input<PolicyFileShareBackup?>? backup;
   /// The backup tier to use. Possible values are `vault-standard` and `snapshot`. Defaults to `snapshot`.
   ///
   /// &gt; **Note:** When `backupTier` is set to `vault-standard`, the `snapshotRetentionInDays` value must be less than the `retentionDaily` count.
-  final pulumi.Input<String>? backupTier;
+  final pulumi.Input<String?>? backupTier;
   /// Specifies the name of the policy. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specifies the name of the Recovery Services Vault to use. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? recoveryVaultName;
+  final pulumi.Input<String?>? recoveryVaultName;
   /// The name of the resource group in which to create the policy. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// Configures the policy daily retention as documented in the `retentionDaily` block below.
-  final pulumi.Input<PolicyFileShareRetentionDaily>? retentionDaily;
+  final pulumi.Input<PolicyFileShareRetentionDaily?>? retentionDaily;
   /// Configures the policy monthly retention as documented in the `retentionMonthly` block below.
-  final pulumi.Input<PolicyFileShareRetentionMonthly>? retentionMonthly;
+  final pulumi.Input<PolicyFileShareRetentionMonthly?>? retentionMonthly;
   /// Configures the policy weekly retention as documented in the `retentionWeekly` block below.
-  final pulumi.Input<PolicyFileShareRetentionWeekly>? retentionWeekly;
+  final pulumi.Input<PolicyFileShareRetentionWeekly?>? retentionWeekly;
   /// Configures the policy yearly retention as documented in the `retentionYearly` block below.
-  final pulumi.Input<PolicyFileShareRetentionYearly>? retentionYearly;
+  final pulumi.Input<PolicyFileShareRetentionYearly?>? retentionYearly;
   /// The number of days to retain the snapshots. Defaults to `0`.
-  final pulumi.Input<int>? snapshotRetentionInDays;
+  final pulumi.Input<int?>? snapshotRetentionInDays;
   /// Specifies the timezone. [the possible values are defined here](https://jackstromberg.com/2017/01/list-of-time-zones-consumed-by-azure/). Defaults to `UTC`
   ///
   /// &gt; **Note:** The maximum number of snapshots that Azure Files can retain is 200. If your combined snapshot count exceeds 200 based on your retention policies, it will result in an error. See [this](https://docs.microsoft.com/azure/backup/backup-azure-files-faq#what-is-the-maximum-retention-i-can-configure-for-backups) article for more information.
-  final pulumi.Input<String>? timezone;
+  final pulumi.Input<String?>? timezone;
 
   /// Creates a new [PolicyFileShareState].
   /// [backup] Configures the Policy backup frequency and times as documented in the `backup` block below.
@@ -89,7 +89,7 @@ class PolicyFileShareState {
       retentionMonthly: (() { final guardedValue = map['retentionMonthly']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PolicyFileShareRetentionMonthly.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       retentionWeekly: (() { final guardedValue = map['retentionWeekly']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PolicyFileShareRetentionWeekly.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       retentionYearly: (() { final guardedValue = map['retentionYearly']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PolicyFileShareRetentionYearly.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      snapshotRetentionInDays: (() { final guardedValue = map['snapshotRetentionInDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      snapshotRetentionInDays: (() { final guardedValue = map['snapshotRetentionInDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       timezone: (() { final guardedValue = map['timezone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

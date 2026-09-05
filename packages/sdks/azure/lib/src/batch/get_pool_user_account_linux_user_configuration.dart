@@ -30,9 +30,9 @@ class GetPoolUserAccountLinuxUserConfiguration {
 
   factory GetPoolUserAccountLinuxUserConfiguration.fromMap(Map<String, dynamic> map) {
     return GetPoolUserAccountLinuxUserConfiguration(
-      gid: pulumi.Input.fromValue(map['gid'] as int),
+      gid: pulumi.Input.fromValue((map['gid'] as num).toInt()),
       sshPrivateKey: pulumi.Input.fromValue(map['sshPrivateKey'] as String),
-      uid: pulumi.Input.fromValue(map['uid'] as int),
+      uid: pulumi.Input.fromValue((map['uid'] as num).toInt()),
     );
   }
 }

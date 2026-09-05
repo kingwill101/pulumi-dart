@@ -269,7 +269,7 @@ class IntegrationAccountSession extends pulumi.CustomResource {
           'azure:logicapps/integrationAccountSession:IntegrationAccountSession',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     content = registerOutput<String>('content');
     integrationAccountName = registerOutput<String>('integrationAccountName');
@@ -282,11 +282,12 @@ class IntegrationAccountSession extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     IntegrationAccountSessionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return IntegrationAccountSession._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -300,6 +301,21 @@ class IntegrationAccountSession extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    content = registerOutput<String>('content');
+    integrationAccountName = registerOutput<String>('integrationAccountName');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+  }
+
+  /// Creates a typed reference to an existing [IntegrationAccountSession] resource.
+  IntegrationAccountSession.reference(String urn)
+    : super(
+        'azure:logicapps/integrationAccountSession:IntegrationAccountSession',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     content = registerOutput<String>('content');
     integrationAccountName = registerOutput<String>('integrationAccountName');
     this.name = registerOutput<String>('name');

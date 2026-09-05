@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class KubernetesClusterAciConnectorLinuxConnectorIdentity {
   /// The Client ID of the user-defined Managed Identity used for Web App Routing.
-  final pulumi.Input<String>? clientId;
+  final pulumi.Input<String?>? clientId;
   /// The Object ID of the user-defined Managed Identity used for Web App Routing
-  final pulumi.Input<String>? objectId;
+  final pulumi.Input<String?>? objectId;
   /// The ID of the User Assigned Identity used for Web App Routing.
-  final pulumi.Input<String>? userAssignedIdentityId;
+  final pulumi.Input<String?>? userAssignedIdentityId;
 
   /// Creates a new [KubernetesClusterAciConnectorLinuxConnectorIdentity].
   /// [clientId] The Client ID of the user-defined Managed Identity used for Web App Routing.

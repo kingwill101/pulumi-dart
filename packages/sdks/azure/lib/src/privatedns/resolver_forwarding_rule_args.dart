@@ -13,11 +13,11 @@ class ResolverForwardingRuleArgs {
   /// Specifies the domain name for the Private DNS Resolver Forwarding Rule. Changing this forces a new Private DNS Resolver Forwarding Rule to be created.
   final pulumi.Input<String> domainName;
   /// Specifies the state of the Private DNS Resolver Forwarding Rule. Defaults to `true`.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// Metadata attached to the Private DNS Resolver Forwarding Rule.
-  final pulumi.Input<Map<String, String>>? metadata;
+  final pulumi.Input<Map<String, String>?>? metadata;
   /// Specifies the name which should be used for this Private DNS Resolver Forwarding Rule. Changing this forces a new Private DNS Resolver Forwarding Rule to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Can be specified multiple times to define multiple target DNS servers. Each `targetDnsServers` block as defined below.
   final pulumi.Input<List<ResolverForwardingRuleTargetDnsServer>> targetDnsServers;
 

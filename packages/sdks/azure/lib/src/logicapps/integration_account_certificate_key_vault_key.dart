@@ -8,7 +8,7 @@ class IntegrationAccountCertificateKeyVaultKey {
   /// The ID of the Key Vault.
   final pulumi.Input<String> keyVaultId;
   /// The version of Key Vault Key.
-  final pulumi.Input<String>? keyVersion;
+  final pulumi.Input<String?>? keyVersion;
 
   /// Creates a new [IntegrationAccountCertificateKeyVaultKey].
   /// [keyName] The name of Key Vault Key.

@@ -14,45 +14,45 @@ import 'integration_runtime_ssis_vnet_integration.dart';
 /// Input properties used for looking up and filtering IntegrationRuntimeSsis resources.
 class IntegrationRuntimeSsisState {
   /// A `catalogInfo` block as defined below.
-  final pulumi.Input<IntegrationRuntimeSsisCatalogInfo>? catalogInfo;
+  final pulumi.Input<IntegrationRuntimeSsisCatalogInfo?>? catalogInfo;
   /// One `copyComputeScale` block as defined below.
-  final pulumi.Input<IntegrationRuntimeSsisCopyComputeScale>? copyComputeScale;
+  final pulumi.Input<IntegrationRuntimeSsisCopyComputeScale?>? copyComputeScale;
   /// The name of a Data Factory Credential that the SSIS integration will use to access data sources. For example, `azure.datafactory.CredentialUserManagedIdentity`
   ///
   /// &gt; **Note:** If `credentialName` is omitted, the integration runtime will use the Data Factory assigned identity.
-  final pulumi.Input<String>? credentialName;
+  final pulumi.Input<String?>? credentialName;
   /// A `customSetupScript` block as defined below.
-  final pulumi.Input<IntegrationRuntimeSsisCustomSetupScript>? customSetupScript;
+  final pulumi.Input<IntegrationRuntimeSsisCustomSetupScript?>? customSetupScript;
   /// The Data Factory ID in which to associate the Linked Service with. Changing this forces a new resource.
-  final pulumi.Input<String>? dataFactoryId;
+  final pulumi.Input<String?>? dataFactoryId;
   /// Integration runtime description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The Azure-SSIS Integration Runtime edition. Valid values are `Standard` and `Enterprise`. Defaults to `Standard`.
-  final pulumi.Input<String>? edition;
+  final pulumi.Input<String?>? edition;
   /// An `expressCustomSetup` block as defined below.
-  final pulumi.Input<IntegrationRuntimeSsisExpressCustomSetup>? expressCustomSetup;
+  final pulumi.Input<IntegrationRuntimeSsisExpressCustomSetup?>? expressCustomSetup;
   /// A `expressVnetIntegration` block as defined below.
-  final pulumi.Input<IntegrationRuntimeSsisExpressVnetIntegration>? expressVnetIntegration;
+  final pulumi.Input<IntegrationRuntimeSsisExpressVnetIntegration?>? expressVnetIntegration;
   /// The type of the license that is used. Valid values are `LicenseIncluded` and `BasePrice`. Defaults to `LicenseIncluded`.
-  final pulumi.Input<String>? licenseType;
+  final pulumi.Input<String?>? licenseType;
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Defines the maximum parallel executions per node. Defaults to `1`. Max is `1`.
-  final pulumi.Input<int>? maxParallelExecutionsPerNode;
+  final pulumi.Input<int?>? maxParallelExecutionsPerNode;
   /// Specifies the name of the Azure-SSIS Integration Runtime. Changing this forces a new resource to be created. Must be globally unique. See the [Microsoft documentation](https://docs.microsoft.com/azure/data-factory/naming-rules) for all restrictions.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The size of the nodes on which the Azure-SSIS Integration Runtime runs. Valid values are: `Standard_D2_v3`, `Standard_D4_v3`, `Standard_D8_v3`, `Standard_D16_v3`, `Standard_D32_v3`, `Standard_D64_v3`, `Standard_E2_v3`, `Standard_E4_v3`, `Standard_E8_v3`, `Standard_E16_v3`, `Standard_E32_v3`, `Standard_E64_v3`, `Standard_D1_v2`, `Standard_D2_v2`, `Standard_D3_v2`, `Standard_D4_v2`, `Standard_A4_v2` and `Standard_A8_v2`
-  final pulumi.Input<String>? nodeSize;
+  final pulumi.Input<String?>? nodeSize;
   /// Number of nodes for the Azure-SSIS Integration Runtime. Max is `10`. Defaults to `1`.
-  final pulumi.Input<int>? numberOfNodes;
+  final pulumi.Input<int?>? numberOfNodes;
   /// One or more `packageStore` block as defined below.
-  final pulumi.Input<List<IntegrationRuntimeSsisPackageStore>>? packageStores;
+  final pulumi.Input<List<IntegrationRuntimeSsisPackageStore>?>? packageStores;
   /// One `pipelineExternalComputeScale` block as defined below.
-  final pulumi.Input<IntegrationRuntimeSsisPipelineExternalComputeScale>? pipelineExternalComputeScale;
+  final pulumi.Input<IntegrationRuntimeSsisPipelineExternalComputeScale?>? pipelineExternalComputeScale;
   /// A `proxy` block as defined below.
-  final pulumi.Input<IntegrationRuntimeSsisProxy>? proxy;
+  final pulumi.Input<IntegrationRuntimeSsisProxy?>? proxy;
   /// A `vnetIntegration` block as defined below.
-  final pulumi.Input<IntegrationRuntimeSsisVnetIntegration>? vnetIntegration;
+  final pulumi.Input<IntegrationRuntimeSsisVnetIntegration?>? vnetIntegration;
 
   /// Creates a new [IntegrationRuntimeSsisState].
   /// [catalogInfo] A `catalogInfo` block as defined below.
@@ -133,10 +133,10 @@ class IntegrationRuntimeSsisState {
       expressVnetIntegration: (() { final guardedValue = map['expressVnetIntegration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(IntegrationRuntimeSsisExpressVnetIntegration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       licenseType: (() { final guardedValue = map['licenseType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      maxParallelExecutionsPerNode: (() { final guardedValue = map['maxParallelExecutionsPerNode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxParallelExecutionsPerNode: (() { final guardedValue = map['maxParallelExecutionsPerNode']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       nodeSize: (() { final guardedValue = map['nodeSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      numberOfNodes: (() { final guardedValue = map['numberOfNodes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      numberOfNodes: (() { final guardedValue = map['numberOfNodes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       packageStores: (() { final guardedValue = map['packageStores']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<IntegrationRuntimeSsisPackageStore>(guardedValue, (value) => IntegrationRuntimeSsisPackageStore.fromMap((value as Map).cast<String, dynamic>()))); })(),
       pipelineExternalComputeScale: (() { final guardedValue = map['pipelineExternalComputeScale']; if (guardedValue == null) return null; return pulumi.Input.fromValue(IntegrationRuntimeSsisPipelineExternalComputeScale.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       proxy: (() { final guardedValue = map['proxy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(IntegrationRuntimeSsisProxy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

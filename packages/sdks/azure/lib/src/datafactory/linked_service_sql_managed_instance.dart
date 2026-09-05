@@ -104,7 +104,7 @@ import 'linked_service_sql_managed_instance_state.dart';
 /// 		}
 /// 		_, err = datafactory.NewLinkedServiceSqlManagedInstance(ctx, "example", &datafactory.LinkedServiceSqlManagedInstanceArgs{
 /// 			Name:             pulumi.String("example"),
-/// 			DataFactoryId:    exampleFactory.ID(),
+/// 			DataFactoryId:    exampleFactory.ID().ToIDOutput().ToStringOutput(),
 /// 			ConnectionString: pulumi.String("Server=myserver.database.windows.net;Database=mydatabase;User ID=myuser;Password=mypassword;"),
 /// 		})
 /// 		if err != nil {
@@ -261,19 +261,20 @@ class LinkedServiceSqlManagedInstance extends pulumi.CustomResource {
           'azure:datafactory/linkedServiceSqlManagedInstance:LinkedServiceSqlManagedInstance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['connectionString', 'servicePrincipalKey'],
         ) {
-    annotations = registerOutput<List<String>?>('annotations');
-    connectionString = registerOutput<String?>('connectionString');
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    connectionString = registerOutput<String?>('connectionString', isSecret: true);
     dataFactoryId = registerOutput<String>('dataFactoryId');
     description = registerOutput<String?>('description');
     integrationRuntimeName = registerOutput<String?>('integrationRuntimeName');
     keyVaultConnectionString = registerOutput<LinkedServiceSqlManagedInstanceKeyVaultConnectionString?>('keyVaultConnectionString', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinkedServiceSqlManagedInstanceKeyVaultConnectionString.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     keyVaultPassword = registerOutput<LinkedServiceSqlManagedInstanceKeyVaultPassword?>('keyVaultPassword', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinkedServiceSqlManagedInstanceKeyVaultPassword.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    parameters = registerOutput<Map<String, String>?>('parameters');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     servicePrincipalId = registerOutput<String?>('servicePrincipalId');
-    servicePrincipalKey = registerOutput<String?>('servicePrincipalKey');
+    servicePrincipalKey = registerOutput<String?>('servicePrincipalKey', isSecret: true);
     tenant = registerOutput<String?>('tenant');
   }
 
@@ -282,11 +283,12 @@ class LinkedServiceSqlManagedInstance extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LinkedServiceSqlManagedInstanceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LinkedServiceSqlManagedInstance._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -300,17 +302,41 @@ class LinkedServiceSqlManagedInstance extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    annotations = registerOutput<List<String>?>('annotations');
-    connectionString = registerOutput<String?>('connectionString');
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    connectionString = registerOutput<String?>('connectionString', isSecret: true);
     dataFactoryId = registerOutput<String>('dataFactoryId');
     description = registerOutput<String?>('description');
     integrationRuntimeName = registerOutput<String?>('integrationRuntimeName');
     keyVaultConnectionString = registerOutput<LinkedServiceSqlManagedInstanceKeyVaultConnectionString?>('keyVaultConnectionString', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinkedServiceSqlManagedInstanceKeyVaultConnectionString.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     keyVaultPassword = registerOutput<LinkedServiceSqlManagedInstanceKeyVaultPassword?>('keyVaultPassword', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinkedServiceSqlManagedInstanceKeyVaultPassword.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    parameters = registerOutput<Map<String, String>?>('parameters');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     servicePrincipalId = registerOutput<String?>('servicePrincipalId');
-    servicePrincipalKey = registerOutput<String?>('servicePrincipalKey');
+    servicePrincipalKey = registerOutput<String?>('servicePrincipalKey', isSecret: true);
+    tenant = registerOutput<String?>('tenant');
+  }
+
+  /// Creates a typed reference to an existing [LinkedServiceSqlManagedInstance] resource.
+  LinkedServiceSqlManagedInstance.reference(String urn)
+    : super(
+        'azure:datafactory/linkedServiceSqlManagedInstance:LinkedServiceSqlManagedInstance',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['connectionString', 'servicePrincipalKey'],
+        isResourceReference: true,
+      ) {
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    connectionString = registerOutput<String?>('connectionString', isSecret: true);
+    dataFactoryId = registerOutput<String>('dataFactoryId');
+    description = registerOutput<String?>('description');
+    integrationRuntimeName = registerOutput<String?>('integrationRuntimeName');
+    keyVaultConnectionString = registerOutput<LinkedServiceSqlManagedInstanceKeyVaultConnectionString?>('keyVaultConnectionString', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinkedServiceSqlManagedInstanceKeyVaultConnectionString.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    keyVaultPassword = registerOutput<LinkedServiceSqlManagedInstanceKeyVaultPassword?>('keyVaultPassword', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinkedServiceSqlManagedInstanceKeyVaultPassword.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    servicePrincipalId = registerOutput<String?>('servicePrincipalId');
+    servicePrincipalKey = registerOutput<String?>('servicePrincipalKey', isSecret: true);
     tenant = registerOutput<String?>('tenant');
   }
 }

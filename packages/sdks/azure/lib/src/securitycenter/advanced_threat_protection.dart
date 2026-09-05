@@ -118,7 +118,7 @@ import 'advanced_threat_protection_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = securitycenter.NewAdvancedThreatProtection(ctx, "example", &securitycenter.AdvancedThreatProtectionArgs{
-/// 			TargetResourceId: exampleAccount.ID(),
+/// 			TargetResourceId: exampleAccount.ID().ToIDOutput().ToStringOutput(),
 /// 			Enabled:          pulumi.Bool(true),
 /// 		})
 /// 		if err != nil {
@@ -255,7 +255,7 @@ class AdvancedThreatProtection extends pulumi.CustomResource {
           'azure:securitycenter/advancedThreatProtection:AdvancedThreatProtection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     enabled = registerOutput<bool>('enabled');
     targetResourceId = registerOutput<String>('targetResourceId');
@@ -266,11 +266,12 @@ class AdvancedThreatProtection extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AdvancedThreatProtectionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AdvancedThreatProtection._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -284,6 +285,19 @@ class AdvancedThreatProtection extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    enabled = registerOutput<bool>('enabled');
+    targetResourceId = registerOutput<String>('targetResourceId');
+  }
+
+  /// Creates a typed reference to an existing [AdvancedThreatProtection] resource.
+  AdvancedThreatProtection.reference(String urn)
+    : super(
+        'azure:securitycenter/advancedThreatProtection:AdvancedThreatProtection',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     enabled = registerOutput<bool>('enabled');
     targetResourceId = registerOutput<String>('targetResourceId');
   }

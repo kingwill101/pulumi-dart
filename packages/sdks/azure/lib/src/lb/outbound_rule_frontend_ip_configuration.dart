@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class OutboundRuleFrontendIpConfiguration {
   /// The ID of the Load Balancer Outbound Rule.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The name of the Frontend IP Configuration.
   final pulumi.Input<String> name;
 

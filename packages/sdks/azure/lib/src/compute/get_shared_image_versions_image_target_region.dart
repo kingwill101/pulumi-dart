@@ -31,7 +31,7 @@ class GetSharedImageVersionsImageTargetRegion {
   factory GetSharedImageVersionsImageTargetRegion.fromMap(Map<String, dynamic> map) {
     return GetSharedImageVersionsImageTargetRegion(
       name: pulumi.Input.fromValue(map['name'] as String),
-      regionalReplicaCount: pulumi.Input.fromValue(map['regionalReplicaCount'] as int),
+      regionalReplicaCount: pulumi.Input.fromValue((map['regionalReplicaCount'] as num).toInt()),
       storageAccountType: pulumi.Input.fromValue(map['storageAccountType'] as String),
     );
   }

@@ -4,29 +4,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ExpressRoutePortLink2 {
   /// Whether enable administration state on the Express Route Port Link? Defaults to `false`.
-  final pulumi.Input<bool>? adminEnabled;
+  final pulumi.Input<bool?>? adminEnabled;
   /// The connector type of the Express Route Port Link.
-  final pulumi.Input<String>? connectorType;
+  final pulumi.Input<String?>? connectorType;
   /// The ID of this Express Route Port Link.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The interface name of the Azure router associated with the Express Route Port Link.
-  final pulumi.Input<String>? interfaceName;
+  final pulumi.Input<String?>? interfaceName;
   /// The ID of the Key Vault Secret that contains the Mac security CAK key for this Express Route Port Link.
-  final pulumi.Input<String>? macsecCakKeyvaultSecretId;
+  final pulumi.Input<String?>? macsecCakKeyvaultSecretId;
   /// The MACSec cipher used for this Express Route Port Link. Possible values are `GcmAes128`, `GcmAes256`, `GcmAesXpn128` and `GcmAesXpn256`. Defaults to `GcmAes128`.
-  final pulumi.Input<String>? macsecCipher;
+  final pulumi.Input<String?>? macsecCipher;
   /// The ID of the Key Vault Secret that contains the MACSec CKN key for this Express Route Port Link.
-  final pulumi.Input<String>? macsecCknKeyvaultSecretId;
+  final pulumi.Input<String?>? macsecCknKeyvaultSecretId;
   /// Should Secure Channel Identifier on the Express Route Port Link be enabled? Defaults to `false`.
   ///
   /// &gt; **Note:** `macsecCknKeyvaultSecretId` and `macsecCakKeyvaultSecretId` should be used together with `identity`, so that the Express Route Port instance have the right permission to access the Key Vault.
-  final pulumi.Input<bool>? macsecSciEnabled;
+  final pulumi.Input<bool?>? macsecSciEnabled;
   /// The ID that maps from the Express Route Port Link to the patch panel port.
-  final pulumi.Input<String>? patchPanelId;
+  final pulumi.Input<String?>? patchPanelId;
   /// The ID that maps from the patch panel port to the rack.
-  final pulumi.Input<String>? rackId;
+  final pulumi.Input<String?>? rackId;
   /// The name of the Azure router associated with the Express Route Port Link.
-  final pulumi.Input<String>? routerName;
+  final pulumi.Input<String?>? routerName;
 
   /// Creates a new [ExpressRoutePortLink2].
   /// [adminEnabled] Whether enable administration state on the Express Route Port Link? Defaults to `false`.

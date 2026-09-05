@@ -341,7 +341,7 @@ import 'network_manager_verifier_workspace_reachability_analysis_intent_state.da
 /// 		}
 /// 		exampleNetworkManagerVerifierWorkspace, err := network.NewNetworkManagerVerifierWorkspace(ctx, "example", &network.NetworkManagerVerifierWorkspaceArgs{
 /// 			Name:             pulumi.String("example"),
-/// 			NetworkManagerId: exampleNetworkManager.ID(),
+/// 			NetworkManagerId: exampleNetworkManager.ID().ToIDOutput().ToStringOutput(),
 /// 			Location:         example.Location,
 /// 		})
 /// 		if err != nil {
@@ -376,7 +376,7 @@ import 'network_manager_verifier_workspace_reachability_analysis_intent_state.da
 /// 			IpConfigurations: network.NetworkInterfaceIpConfigurationArray{
 /// 				&network.NetworkInterfaceIpConfigurationArgs{
 /// 					Name:                       pulumi.String("internal"),
-/// 					SubnetId:                   exampleSubnet.ID(),
+/// 					SubnetId:                   exampleSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 					PrivateIpAddressAllocation: pulumi.String("Dynamic"),
 /// 				},
 /// 			},
@@ -393,7 +393,7 @@ import 'network_manager_verifier_workspace_reachability_analysis_intent_state.da
 /// 			AdminPassword:                 pulumi.String("P@ssw0rd1234!"),
 /// 			DisablePasswordAuthentication: pulumi.Bool(false),
 /// 			NetworkInterfaceIds: pulumi.StringArray{
-/// 				exampleNetworkInterface.ID(),
+/// 				exampleNetworkInterface.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			OsDisk: &compute.LinuxVirtualMachineOsDiskArgs{
 /// 				Caching:            pulumi.String("ReadWrite"),
@@ -411,9 +411,9 @@ import 'network_manager_verifier_workspace_reachability_analysis_intent_state.da
 /// 		}
 /// 		_, err = network.NewNetworkManagerVerifierWorkspaceReachabilityAnalysisIntent(ctx, "example", &network.NetworkManagerVerifierWorkspaceReachabilityAnalysisIntentArgs{
 /// 			Name:                  pulumi.String("example-intent"),
-/// 			VerifierWorkspaceId:   exampleNetworkManagerVerifierWorkspace.ID(),
-/// 			SourceResourceId:      exampleLinuxVirtualMachine.ID(),
-/// 			DestinationResourceId: exampleLinuxVirtualMachine.ID(),
+/// 			VerifierWorkspaceId:   exampleNetworkManagerVerifierWorkspace.ID().ToIDOutput().ToStringOutput(),
+/// 			SourceResourceId:      exampleLinuxVirtualMachine.ID().ToIDOutput().ToStringOutput(),
+/// 			DestinationResourceId: exampleLinuxVirtualMachine.ID().ToIDOutput().ToStringOutput(),
 /// 			Description:           pulumi.String("example"),
 /// 			IpTraffic: &network.NetworkManagerVerifierWorkspaceReachabilityAnalysisIntentIpTrafficArgs{
 /// 				SourceIps: pulumi.StringArray{
@@ -801,7 +801,7 @@ class NetworkManagerVerifierWorkspaceReachabilityAnalysisIntent extends pulumi.C
           'azure:network/networkManagerVerifierWorkspaceReachabilityAnalysisIntent:NetworkManagerVerifierWorkspaceReachabilityAnalysisIntent',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     description = registerOutput<String?>('description');
     destinationResourceId = registerOutput<String>('destinationResourceId');
@@ -816,11 +816,12 @@ class NetworkManagerVerifierWorkspaceReachabilityAnalysisIntent extends pulumi.C
     String name,
     pulumi.Input<String> id, {
     NetworkManagerVerifierWorkspaceReachabilityAnalysisIntentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return NetworkManagerVerifierWorkspaceReachabilityAnalysisIntent._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -834,6 +835,23 @@ class NetworkManagerVerifierWorkspaceReachabilityAnalysisIntent extends pulumi.C
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    description = registerOutput<String?>('description');
+    destinationResourceId = registerOutput<String>('destinationResourceId');
+    ipTraffic = registerOutput<NetworkManagerVerifierWorkspaceReachabilityAnalysisIntentIpTraffic>('ipTraffic', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkManagerVerifierWorkspaceReachabilityAnalysisIntentIpTraffic.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    sourceResourceId = registerOutput<String>('sourceResourceId');
+    verifierWorkspaceId = registerOutput<String>('verifierWorkspaceId');
+  }
+
+  /// Creates a typed reference to an existing [NetworkManagerVerifierWorkspaceReachabilityAnalysisIntent] resource.
+  NetworkManagerVerifierWorkspaceReachabilityAnalysisIntent.reference(String urn)
+    : super(
+        'azure:network/networkManagerVerifierWorkspaceReachabilityAnalysisIntent:NetworkManagerVerifierWorkspaceReachabilityAnalysisIntent',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     description = registerOutput<String?>('description');
     destinationResourceId = registerOutput<String>('destinationResourceId');
     ipTraffic = registerOutput<NetworkManagerVerifierWorkspaceReachabilityAnalysisIntentIpTraffic>('ipTraffic', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkManagerVerifierWorkspaceReachabilityAnalysisIntentIpTraffic.fromMap((guardedValue as Map).cast<String, dynamic>()); });

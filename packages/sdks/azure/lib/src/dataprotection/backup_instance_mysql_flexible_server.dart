@@ -266,28 +266,24 @@ import 'backup_instance_mysql_flexible_server_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleAssignment, err := authorization.NewAssignment(ctx, "example", &authorization.AssignmentArgs{
-/// 			Scope:              example.ID(),
+/// 			Scope:              example.ID().ToIDOutput().ToStringOutput(),
 /// 			RoleDefinitionName: pulumi.String("Reader"),
-/// 			PrincipalId: pulumi.String(exampleBackupVault.Identity.ApplyT(func(identity dataprotection.BackupVaultIdentity) (*string, error) {
-/// 				return identity.PrincipalId, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			PrincipalId:        exampleBackupVault.Identity.PrincipalId(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		example2, err := authorization.NewAssignment(ctx, "example2", &authorization.AssignmentArgs{
-/// 			Scope:              exampleFlexibleServer.ID(),
+/// 			Scope:              exampleFlexibleServer.ID().ToIDOutput().ToStringOutput(),
 /// 			RoleDefinitionName: pulumi.String("MySQL Backup And Export Operator"),
-/// 			PrincipalId: pulumi.String(exampleBackupVault.Identity.ApplyT(func(identity dataprotection.BackupVaultIdentity) (*string, error) {
-/// 				return identity.PrincipalId, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			PrincipalId:        exampleBackupVault.Identity.PrincipalId(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		exampleBackupPolicyMysqlFlexibleServer, err := dataprotection.NewBackupPolicyMysqlFlexibleServer(ctx, "example", &dataprotection.BackupPolicyMysqlFlexibleServerArgs{
 /// 			Name:    pulumi.String("example-dp"),
-/// 			VaultId: exampleBackupVault.ID(),
+/// 			VaultId: exampleBackupVault.ID().ToIDOutput().ToStringOutput(),
 /// 			BackupRepeatingTimeIntervals: pulumi.StringArray{
 /// 				pulumi.String("R/2021-05-23T02:30:00+00:00/P1W"),
 /// 			},
@@ -309,9 +305,9 @@ import 'backup_instance_mysql_flexible_server_state.dart';
 /// 		_, err = dataprotection.NewBackupInstanceMysqlFlexibleServer(ctx, "example", &dataprotection.BackupInstanceMysqlFlexibleServerArgs{
 /// 			Name:           pulumi.String("example-dbi"),
 /// 			Location:       example.Location,
-/// 			VaultId:        exampleBackupVault.ID(),
-/// 			ServerId:       exampleFlexibleServer.ID(),
-/// 			BackupPolicyId: exampleBackupPolicyMysqlFlexibleServer.ID(),
+/// 			VaultId:        exampleBackupVault.ID().ToIDOutput().ToStringOutput(),
+/// 			ServerId:       exampleFlexibleServer.ID().ToIDOutput().ToStringOutput(),
+/// 			BackupPolicyId: exampleBackupPolicyMysqlFlexibleServer.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -598,7 +594,7 @@ class BackupInstanceMysqlFlexibleServer extends pulumi.CustomResource {
           'azure:dataprotection/backupInstanceMysqlFlexibleServer:BackupInstanceMysqlFlexibleServer',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     backupPolicyId = registerOutput<String>('backupPolicyId');
     location = registerOutput<String>('location');
@@ -613,11 +609,12 @@ class BackupInstanceMysqlFlexibleServer extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     BackupInstanceMysqlFlexibleServerState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return BackupInstanceMysqlFlexibleServer._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -631,6 +628,23 @@ class BackupInstanceMysqlFlexibleServer extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    backupPolicyId = registerOutput<String>('backupPolicyId');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    protectionState = registerOutput<String>('protectionState');
+    serverId = registerOutput<String>('serverId');
+    vaultId = registerOutput<String>('vaultId');
+  }
+
+  /// Creates a typed reference to an existing [BackupInstanceMysqlFlexibleServer] resource.
+  BackupInstanceMysqlFlexibleServer.reference(String urn)
+    : super(
+        'azure:dataprotection/backupInstanceMysqlFlexibleServer:BackupInstanceMysqlFlexibleServer',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     backupPolicyId = registerOutput<String>('backupPolicyId');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

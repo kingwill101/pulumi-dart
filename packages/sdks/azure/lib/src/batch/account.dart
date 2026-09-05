@@ -135,7 +135,7 @@ import 'account_state.dart';
 /// 			ResourceGroupName:                example.Name,
 /// 			Location:                         example.Location,
 /// 			PoolAllocationMode:               pulumi.String("BatchService"),
-/// 			StorageAccountId:                 exampleAccount.ID(),
+/// 			StorageAccountId:                 exampleAccount.ID().ToIDOutput().ToStringOutput(),
 /// 			StorageAccountAuthenticationMode: pulumi.String("StorageKeys"),
 /// 			Tags: pulumi.StringMap{
 /// 				"env": pulumi.String("test"),
@@ -330,10 +330,11 @@ class Account extends pulumi.CustomResource {
           'azure:batch/account:Account',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['primaryAccessKey', 'secondaryAccessKey'],
         ) {
     accountEndpoint = registerOutput<String>('accountEndpoint');
-    allowedAuthenticationModes = registerOutput<List<String>>('allowedAuthenticationModes');
+    allowedAuthenticationModes = registerOutput<List<String>>('allowedAuthenticationModes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     encryption = registerOutput<AccountEncryption?>('encryption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountEncryption.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     identity = registerOutput<AccountIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     keyVaultReference = registerOutput<AccountKeyVaultReference?>('keyVaultReference', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountKeyVaultReference.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -341,14 +342,14 @@ class Account extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     networkProfile = registerOutput<AccountNetworkProfile?>('networkProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountNetworkProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     poolAllocationMode = registerOutput<String?>('poolAllocationMode');
-    primaryAccessKey = registerOutput<String>('primaryAccessKey');
+    primaryAccessKey = registerOutput<String>('primaryAccessKey', isSecret: true);
     publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    secondaryAccessKey = registerOutput<String>('secondaryAccessKey');
+    secondaryAccessKey = registerOutput<String>('secondaryAccessKey', isSecret: true);
     storageAccountAuthenticationMode = registerOutput<String?>('storageAccountAuthenticationMode');
     storageAccountId = registerOutput<String?>('storageAccountId');
     storageAccountNodeIdentity = registerOutput<String?>('storageAccountNodeIdentity');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Account] resource's state with the given [name] and [id].
@@ -356,11 +357,12 @@ class Account extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AccountState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Account._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -375,7 +377,7 @@ class Account extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     accountEndpoint = registerOutput<String>('accountEndpoint');
-    allowedAuthenticationModes = registerOutput<List<String>>('allowedAuthenticationModes');
+    allowedAuthenticationModes = registerOutput<List<String>>('allowedAuthenticationModes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     encryption = registerOutput<AccountEncryption?>('encryption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountEncryption.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     identity = registerOutput<AccountIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     keyVaultReference = registerOutput<AccountKeyVaultReference?>('keyVaultReference', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountKeyVaultReference.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -383,13 +385,42 @@ class Account extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     networkProfile = registerOutput<AccountNetworkProfile?>('networkProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountNetworkProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     poolAllocationMode = registerOutput<String?>('poolAllocationMode');
-    primaryAccessKey = registerOutput<String>('primaryAccessKey');
+    primaryAccessKey = registerOutput<String>('primaryAccessKey', isSecret: true);
     publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    secondaryAccessKey = registerOutput<String>('secondaryAccessKey');
+    secondaryAccessKey = registerOutput<String>('secondaryAccessKey', isSecret: true);
     storageAccountAuthenticationMode = registerOutput<String?>('storageAccountAuthenticationMode');
     storageAccountId = registerOutput<String?>('storageAccountId');
     storageAccountNodeIdentity = registerOutput<String?>('storageAccountNodeIdentity');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Account] resource.
+  Account.reference(String urn)
+    : super(
+        'azure:batch/account:Account',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['primaryAccessKey', 'secondaryAccessKey'],
+        isResourceReference: true,
+      ) {
+    accountEndpoint = registerOutput<String>('accountEndpoint');
+    allowedAuthenticationModes = registerOutput<List<String>>('allowedAuthenticationModes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    encryption = registerOutput<AccountEncryption?>('encryption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountEncryption.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    identity = registerOutput<AccountIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    keyVaultReference = registerOutput<AccountKeyVaultReference?>('keyVaultReference', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountKeyVaultReference.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    networkProfile = registerOutput<AccountNetworkProfile?>('networkProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountNetworkProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    poolAllocationMode = registerOutput<String?>('poolAllocationMode');
+    primaryAccessKey = registerOutput<String>('primaryAccessKey', isSecret: true);
+    publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    secondaryAccessKey = registerOutput<String>('secondaryAccessKey', isSecret: true);
+    storageAccountAuthenticationMode = registerOutput<String?>('storageAccountAuthenticationMode');
+    storageAccountId = registerOutput<String?>('storageAccountId');
+    storageAccountNodeIdentity = registerOutput<String?>('storageAccountNodeIdentity');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

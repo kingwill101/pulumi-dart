@@ -14,17 +14,17 @@ class ProfileArgs {
   /// The amount of endpoints to return for DNS queries to this Profile. Possible values range from `1` to `8`.
   ///
   /// &gt; **Note:** `maxReturn` must be set when the `trafficRoutingMethod` is `MultiValue`.
-  final pulumi.Input<int>? maxReturn;
+  final pulumi.Input<int?>? maxReturn;
   /// This block specifies the Endpoint monitoring configuration for the Profile. One `monitorConfig` block as defined below.
   final pulumi.Input<ProfileMonitorConfig> monitorConfig;
   /// The name of the Traffic Manager profile. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The status of the profile, can be set to either `Enabled` or `Disabled`. Defaults to `Enabled`.
-  final pulumi.Input<String>? profileStatus;
+  final pulumi.Input<String?>? profileStatus;
   /// The name of the resource group in which to create the Traffic Manager profile. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
   /// A mapping of tags to assign to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Specifies the algorithm used to route traffic. Possible values are `Geographic`, `Weighted`, `Performance`, `Priority`, `Subnet` and `MultiValue`.
   /// * `Geographic` - Traffic is routed based on Geographic regions specified in the Endpoint.
   /// * `MultiValue` - All healthy Endpoints are returned.  MultiValue routing method works only if all the endpoints of type `External` and are specified as IPv4 or IPv6 addresses.
@@ -34,7 +34,7 @@ class ProfileArgs {
   /// * `Weighted` - Traffic is spread across Endpoints proportional to their `weight` value.
   final pulumi.Input<String> trafficRoutingMethod;
   /// Indicates whether Traffic View is enabled for the Traffic Manager profile.
-  final pulumi.Input<bool>? trafficViewEnabled;
+  final pulumi.Input<bool?>? trafficViewEnabled;
 
   /// Creates a new [ProfileArgs].
   /// [dnsConfig] This block specifies the DNS configuration of the Profile. One `dnsConfig` block as defined below.
@@ -75,7 +75,7 @@ class ProfileArgs {
   factory ProfileArgs.fromMap(Map<String, dynamic> map) {
     return ProfileArgs(
       dnsConfig: pulumi.Input.fromValue(ProfileDnsConfig.fromMap((map['dnsConfig']! as Map).cast<String, dynamic>())),
-      maxReturn: (() { final guardedValue = map['maxReturn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxReturn: (() { final guardedValue = map['maxReturn']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       monitorConfig: pulumi.Input.fromValue(ProfileMonitorConfig.fromMap((map['monitorConfig']! as Map).cast<String, dynamic>())),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       profileStatus: (() { final guardedValue = map['profileStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'connected_registry_args.dart';
+import 'connected_registry_notification.dart';
 import 'connected_registry_state.dart';
 
 /// Manages a Container Connected Registry.
@@ -198,15 +199,15 @@ import 'connected_registry_state.dart';
 /// 			Name:                  pulumi.String("exampletoken"),
 /// 			ContainerRegistryName: exampleRegistry.Name,
 /// 			ResourceGroupName:     exampleRegistry.ResourceGroupName,
-/// 			ScopeMapId:            exampleRegistryScopeMap.ID(),
+/// 			ScopeMapId:            exampleRegistryScopeMap.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = containerservice.NewConnectedRegistry(ctx, "example", &containerservice.ConnectedRegistryArgs{
 /// 			Name:                pulumi.String("examplecr"),
-/// 			ContainerRegistryId: exampleRegistry.ID(),
-/// 			SyncTokenId:         exampleRegistryToken.ID(),
+/// 			ContainerRegistryId: exampleRegistry.ID().ToIDOutput().ToStringOutput(),
+/// 			SyncTokenId:         exampleRegistryToken.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -408,7 +409,7 @@ class ConnectedRegistry extends pulumi.CustomResource {
   /// The name which should be used for this Container Connected Registry. Changing this forces a new Container Connected Registry to be created.
   late final pulumi.Output<String> name;
   /// One or more `notification` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> notifications;
+  late final pulumi.Output<List<ConnectedRegistryNotification>?> notifications;
   /// The ID of the parent registry. This can be either a Container Registry ID or a Connected Registry ID. Changing this forces a new Container Connected Registry to be created.
   late final pulumi.Output<String?> parentRegistryId;
   /// The period of time (in form of ISO8601) for which a message is available to sync before it is expired. Allowed range is from `P1D` to `P90D`. Defaults to `P1D`.
@@ -432,15 +433,15 @@ class ConnectedRegistry extends pulumi.CustomResource {
           'azure:containerservice/connectedRegistry:ConnectedRegistry',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     auditLogEnabled = registerOutput<bool?>('auditLogEnabled');
-    clientTokenIds = registerOutput<List<String>?>('clientTokenIds');
+    clientTokenIds = registerOutput<List<String>?>('clientTokenIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     containerRegistryId = registerOutput<String>('containerRegistryId');
     logLevel = registerOutput<String?>('logLevel');
     mode = registerOutput<String?>('mode');
     this.name = registerOutput<String>('name');
-    notifications = registerOutput<List<Map<String, dynamic>>?>('notifications');
+    notifications = registerOutput<List<ConnectedRegistryNotification>?>('notifications', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ConnectedRegistryNotification>(guardedValue, (value) => ConnectedRegistryNotification.fromMap((value as Map).cast<String, dynamic>())); });
     parentRegistryId = registerOutput<String?>('parentRegistryId');
     syncMessageTtl = registerOutput<String?>('syncMessageTtl');
     syncSchedule = registerOutput<String?>('syncSchedule');
@@ -453,11 +454,12 @@ class ConnectedRegistry extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ConnectedRegistryState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ConnectedRegistry._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -472,12 +474,35 @@ class ConnectedRegistry extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     auditLogEnabled = registerOutput<bool?>('auditLogEnabled');
-    clientTokenIds = registerOutput<List<String>?>('clientTokenIds');
+    clientTokenIds = registerOutput<List<String>?>('clientTokenIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     containerRegistryId = registerOutput<String>('containerRegistryId');
     logLevel = registerOutput<String?>('logLevel');
     mode = registerOutput<String?>('mode');
     this.name = registerOutput<String>('name');
-    notifications = registerOutput<List<Map<String, dynamic>>?>('notifications');
+    notifications = registerOutput<List<ConnectedRegistryNotification>?>('notifications', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ConnectedRegistryNotification>(guardedValue, (value) => ConnectedRegistryNotification.fromMap((value as Map).cast<String, dynamic>())); });
+    parentRegistryId = registerOutput<String?>('parentRegistryId');
+    syncMessageTtl = registerOutput<String?>('syncMessageTtl');
+    syncSchedule = registerOutput<String?>('syncSchedule');
+    syncTokenId = registerOutput<String>('syncTokenId');
+    syncWindow = registerOutput<String?>('syncWindow');
+  }
+
+  /// Creates a typed reference to an existing [ConnectedRegistry] resource.
+  ConnectedRegistry.reference(String urn)
+    : super(
+        'azure:containerservice/connectedRegistry:ConnectedRegistry',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    auditLogEnabled = registerOutput<bool?>('auditLogEnabled');
+    clientTokenIds = registerOutput<List<String>?>('clientTokenIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    containerRegistryId = registerOutput<String>('containerRegistryId');
+    logLevel = registerOutput<String?>('logLevel');
+    mode = registerOutput<String?>('mode');
+    this.name = registerOutput<String>('name');
+    notifications = registerOutput<List<ConnectedRegistryNotification>?>('notifications', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ConnectedRegistryNotification>(guardedValue, (value) => ConnectedRegistryNotification.fromMap((value as Map).cast<String, dynamic>())); });
     parentRegistryId = registerOutput<String?>('parentRegistryId');
     syncMessageTtl = registerOutput<String?>('syncMessageTtl');
     syncSchedule = registerOutput<String?>('syncSchedule');

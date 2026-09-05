@@ -385,7 +385,7 @@ class ElasticPool extends pulumi.CustomResource {
           'azure:mssql/elasticPool:ElasticPool',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     enclaveType = registerOutput<String>('enclaveType');
     highAvailabilityReplicaCount = registerOutput<int>('highAvailabilityReplicaCount');
@@ -399,7 +399,7 @@ class ElasticPool extends pulumi.CustomResource {
     resourceGroupName = registerOutput<String>('resourceGroupName');
     serverName = registerOutput<String>('serverName');
     sku = registerOutput<ElasticPoolSku>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ElasticPoolSku.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     zoneRedundant = registerOutput<bool?>('zoneRedundant');
   }
 
@@ -408,11 +408,12 @@ class ElasticPool extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ElasticPoolState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ElasticPool._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -438,7 +439,32 @@ class ElasticPool extends pulumi.CustomResource {
     resourceGroupName = registerOutput<String>('resourceGroupName');
     serverName = registerOutput<String>('serverName');
     sku = registerOutput<ElasticPoolSku>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ElasticPoolSku.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    zoneRedundant = registerOutput<bool?>('zoneRedundant');
+  }
+
+  /// Creates a typed reference to an existing [ElasticPool] resource.
+  ElasticPool.reference(String urn)
+    : super(
+        'azure:mssql/elasticPool:ElasticPool',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    enclaveType = registerOutput<String>('enclaveType');
+    highAvailabilityReplicaCount = registerOutput<int>('highAvailabilityReplicaCount');
+    licenseType = registerOutput<String>('licenseType');
+    location = registerOutput<String>('location');
+    maintenanceConfigurationName = registerOutput<String?>('maintenanceConfigurationName');
+    maxSizeBytes = registerOutput<int>('maxSizeBytes');
+    maxSizeGb = registerOutput<double>('maxSizeGb');
+    this.name = registerOutput<String>('name');
+    perDatabaseSettings = registerOutput<ElasticPoolPerDatabaseSettings>('perDatabaseSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ElasticPoolPerDatabaseSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    serverName = registerOutput<String>('serverName');
+    sku = registerOutput<ElasticPoolSku>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ElasticPoolSku.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     zoneRedundant = registerOutput<bool?>('zoneRedundant');
   }
 }

@@ -10,27 +10,27 @@ import 'virtual_machine_manager_virtual_machine_instance_storage_disk.dart';
 /// Input properties used for looking up and filtering VirtualMachineManagerVirtualMachineInstance resources.
 class VirtualMachineManagerVirtualMachineInstanceState {
   /// The ID of the Custom Location for the System Center Virtual Machine Manager Virtual Machine Instance. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? customLocationId;
+  final pulumi.Input<String?>? customLocationId;
   /// A `hardware` block as defined below. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** This resource will be restarted while updating `hardware`.
-  final pulumi.Input<VirtualMachineManagerVirtualMachineInstanceHardware>? hardware;
+  final pulumi.Input<VirtualMachineManagerVirtualMachineInstanceHardware?>? hardware;
   /// An `infrastructure` block as defined below.
-  final pulumi.Input<VirtualMachineManagerVirtualMachineInstanceInfrastructure>? infrastructure;
+  final pulumi.Input<VirtualMachineManagerVirtualMachineInstanceInfrastructure?>? infrastructure;
   /// A `networkInterface` block as defined below.
   ///
   /// &gt; **Note:** This resource will be restarted while updating `networkInterface`.
-  final pulumi.Input<List<VirtualMachineManagerVirtualMachineInstanceNetworkInterface>>? networkInterfaces;
+  final pulumi.Input<List<VirtualMachineManagerVirtualMachineInstanceNetworkInterface>?>? networkInterfaces;
   /// An `operatingSystem` block as defined below. Changing this forces a new resource to be created.
-  final pulumi.Input<VirtualMachineManagerVirtualMachineInstanceOperatingSystem>? operatingSystem;
+  final pulumi.Input<VirtualMachineManagerVirtualMachineInstanceOperatingSystem?>? operatingSystem;
   /// The ID of the Hybrid Compute Machine where this System Center Virtual Machine Manager Virtual Machine Instance is stored. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? scopedResourceId;
+  final pulumi.Input<String?>? scopedResourceId;
   /// A `storageDisk` block as defined below.
   ///
   /// &gt; **Note:** This resource will be restarted while updating `storageDisk`.
-  final pulumi.Input<List<VirtualMachineManagerVirtualMachineInstanceStorageDisk>>? storageDisks;
+  final pulumi.Input<List<VirtualMachineManagerVirtualMachineInstanceStorageDisk>?>? storageDisks;
   /// A list of IDs of System Center Virtual Machine Manager Availability Set.
-  final pulumi.Input<List<String>>? systemCenterVirtualMachineManagerAvailabilitySetIds;
+  final pulumi.Input<List<String>?>? systemCenterVirtualMachineManagerAvailabilitySetIds;
 
   /// Creates a new [VirtualMachineManagerVirtualMachineInstanceState].
   /// [customLocationId] The ID of the Custom Location for the System Center Virtual Machine Manager Virtual Machine Instance. Changing this forces a new resource to be created.

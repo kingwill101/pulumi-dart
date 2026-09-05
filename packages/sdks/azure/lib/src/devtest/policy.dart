@@ -315,7 +315,7 @@ class Policy extends pulumi.CustomResource {
           'azure:devtest/policy:Policy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     description = registerOutput<String?>('description');
     evaluatorType = registerOutput<String>('evaluatorType');
@@ -324,7 +324,7 @@ class Policy extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     policySetName = registerOutput<String>('policySetName');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     threshold = registerOutput<String>('threshold');
   }
 
@@ -333,11 +333,12 @@ class Policy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Policy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -358,7 +359,27 @@ class Policy extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     policySetName = registerOutput<String>('policySetName');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    threshold = registerOutput<String>('threshold');
+  }
+
+  /// Creates a typed reference to an existing [Policy] resource.
+  Policy.reference(String urn)
+    : super(
+        'azure:devtest/policy:Policy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    description = registerOutput<String?>('description');
+    evaluatorType = registerOutput<String>('evaluatorType');
+    factData = registerOutput<String?>('factData');
+    labName = registerOutput<String>('labName');
+    this.name = registerOutput<String>('name');
+    policySetName = registerOutput<String>('policySetName');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     threshold = registerOutput<String>('threshold');
   }
 }

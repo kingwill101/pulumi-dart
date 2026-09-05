@@ -8,43 +8,43 @@ import 'hub_managed_network.dart';
 /// Input properties used for looking up and filtering Hub resources.
 class HubState {
   /// The Application Insights ID that should be used by this AI Foundry Hub.
-  final pulumi.Input<String>? applicationInsightsId;
+  final pulumi.Input<String?>? applicationInsightsId;
   /// The Container Registry ID that should be used by this AI Foundry Hub.
-  final pulumi.Input<String>? containerRegistryId;
+  final pulumi.Input<String?>? containerRegistryId;
   /// The description of this AI Foundry Hub.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The URL for the discovery service to identify regional endpoints for AI Foundry Hub services.
-  final pulumi.Input<String>? discoveryUrl;
+  final pulumi.Input<String?>? discoveryUrl;
   /// An `encryption` block as defined below. Changing this forces a new AI Foundry Hub to be created.
-  final pulumi.Input<HubEncryption>? encryption;
+  final pulumi.Input<HubEncryption?>? encryption;
   /// The display name of this AI Foundry Hub.
-  final pulumi.Input<String>? friendlyName;
+  final pulumi.Input<String?>? friendlyName;
   /// Whether High Business Impact (HBI) should be enabled or not. Enabling this setting will reduce diagnostic data collected by the service. Changing this forces a new AI Foundry Hub to be created. Defaults to `false`.
   ///
   /// &gt; **Note:** `highBusinessImpactEnabled` will be enabled by default when creating an AI Foundry Hub with `encryption` enabled.
-  final pulumi.Input<bool>? highBusinessImpactEnabled;
+  final pulumi.Input<bool?>? highBusinessImpactEnabled;
   /// A `identity` block as defined below.
-  final pulumi.Input<HubIdentity>? identity;
+  final pulumi.Input<HubIdentity?>? identity;
   /// The Key Vault ID that should be used by this AI Foundry Hub. Changing this forces a new AI Foundry Hub to be created.
-  final pulumi.Input<String>? keyVaultId;
+  final pulumi.Input<String?>? keyVaultId;
   /// The Azure Region where the AI Foundry Hub should exist. Changing this forces a new AI Foundry Hub to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// A `managedNetwork` block as defined below.
-  final pulumi.Input<HubManagedNetwork>? managedNetwork;
+  final pulumi.Input<HubManagedNetwork?>? managedNetwork;
   /// The name which should be used for this AI Foundry Hub. Changing this forces a new AI Foundry Hub to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The user assigned identity ID that represents the AI Foundry Hub identity. This must be set when enabling encryption with a user assigned identity.
-  final pulumi.Input<String>? primaryUserAssignedIdentity;
+  final pulumi.Input<String?>? primaryUserAssignedIdentity;
   /// Whether public network access for this AI Service Hub should be enabled. Possible values include `Enabled` and `Disabled`. Defaults to `Enabled`.
-  final pulumi.Input<String>? publicNetworkAccess;
+  final pulumi.Input<String?>? publicNetworkAccess;
   /// The name of the Resource Group where the AI Foundry Hub should exist. Changing this forces a new AI Foundry Hub to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// The Storage Account ID that should be used by this AI Foundry Hub. Changing this forces a new AI Foundry Hub to be created.
-  final pulumi.Input<String>? storageAccountId;
+  final pulumi.Input<String?>? storageAccountId;
   /// A mapping of tags which should be assigned to the AI Foundry Hub.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The immutable ID associated with this AI Foundry Hub.
-  final pulumi.Input<String>? workspaceId;
+  final pulumi.Input<String?>? workspaceId;
 
   /// Creates a new [HubState].
   /// [applicationInsightsId] The Application Insights ID that should be used by this AI Foundry Hub.

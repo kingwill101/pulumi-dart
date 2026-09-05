@@ -169,6 +169,17 @@ Future<GetResult> get(
   return GetResult.fromMap(result);
 }
 
+pulumi.Output<GetResult> getOutput(
+  GetArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:managedredis/get:get',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Managed Redis Access Policy Assignment.
 ///
 /// ## Example Usage
@@ -321,4 +332,15 @@ Future<GetAccessPolicyAssignmentResult> getAccessPolicyAssignment(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetAccessPolicyAssignmentResult.fromMap(result);
+}
+
+pulumi.Output<GetAccessPolicyAssignmentResult> getAccessPolicyAssignmentOutput(
+  GetAccessPolicyAssignmentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:managedredis/getAccessPolicyAssignment:getAccessPolicyAssignment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAccessPolicyAssignmentResult.fromMap);
 }

@@ -10,9 +10,9 @@ class GetNatGatewayArgs {
   /// Specifies the Name of the NAT Gateway.
   final pulumi.Input<String> name;
   /// A list of existing Public IP Address resource IDs which the NAT Gateway is using.
-  final pulumi.Input<List<String>>? publicIpAddressIds;
+  final pulumi.Input<List<String>?>? publicIpAddressIds;
   /// A list of existing Public IP Prefix resource IDs which the NAT Gateway is using.
-  final pulumi.Input<List<String>>? publicIpPrefixIds;
+  final pulumi.Input<List<String>?>? publicIpPrefixIds;
   /// Specifies the name of the Resource Group where the NAT Gateway exists.
   final pulumi.Input<String> resourceGroupName;
 

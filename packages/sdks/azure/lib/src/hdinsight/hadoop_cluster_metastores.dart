@@ -7,11 +7,11 @@ import 'hadoop_cluster_metastores_oozie.dart';
 
 class HadoopClusterMetastores {
   /// An `ambari` block as defined below.
-  final pulumi.Input<HadoopClusterMetastoresAmbari>? ambari;
+  final pulumi.Input<HadoopClusterMetastoresAmbari?>? ambari;
   /// A `hive` block as defined below.
-  final pulumi.Input<HadoopClusterMetastoresHive>? hive;
+  final pulumi.Input<HadoopClusterMetastoresHive?>? hive;
   /// An `oozie` block as defined below.
-  final pulumi.Input<HadoopClusterMetastoresOozie>? oozie;
+  final pulumi.Input<HadoopClusterMetastoresOozie?>? oozie;
 
   /// Creates a new [HadoopClusterMetastores].
   /// [ambari] An `ambari` block as defined below.

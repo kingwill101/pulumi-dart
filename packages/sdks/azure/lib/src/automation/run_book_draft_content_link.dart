@@ -5,11 +5,11 @@ import 'run_book_draft_content_link_hash.dart';
 
 class RunBookDraftContentLink {
   /// A `hash` block as defined below.
-  final pulumi.Input<RunBookDraftContentLinkHash>? hash;
+  final pulumi.Input<RunBookDraftContentLinkHash?>? hash;
   /// The URI of the runbook content.
   final pulumi.Input<String> uri;
   /// Specifies the version of the content
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [RunBookDraftContentLink].
   /// [hash] A `hash` block as defined below.

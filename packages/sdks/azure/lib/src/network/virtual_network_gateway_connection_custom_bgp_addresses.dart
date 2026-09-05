@@ -6,7 +6,7 @@ class VirtualNetworkGatewayConnectionCustomBgpAddresses {
   /// single IP address that is part of the `azure.network.VirtualNetworkGateway` ipConfiguration (first one)
   final pulumi.Input<String> primary;
   /// single IP address that is part of the `azure.network.VirtualNetworkGateway` ipConfiguration (second one)
-  final pulumi.Input<String>? secondary;
+  final pulumi.Input<String?>? secondary;
 
   /// Creates a new [VirtualNetworkGatewayConnectionCustomBgpAddresses].
   /// [primary] single IP address that is part of the `azure.network.VirtualNetworkGateway` ipConfiguration (first one)

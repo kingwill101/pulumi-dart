@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering TriggerCustom resources.
 class TriggerCustomState {
   /// Specifies the JSON Blob defining the Body of this Custom Trigger.
-  final pulumi.Input<String>? body;
+  final pulumi.Input<String?>? body;
   /// The URL of the Trigger within the Logic App Workflow. For use with certain resources like monitorActionGroup and security_center_automation.
-  final pulumi.Input<String>? callbackUrl;
+  final pulumi.Input<String?>? callbackUrl;
   /// Specifies the ID of the Logic App Workflow. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? logicAppId;
+  final pulumi.Input<String?>? logicAppId;
   /// Specifies the name of the HTTP Trigger to be created within the Logic App Workflow. Changing this forces a new resource to be created.
   ///
   /// &gt; **NOTE:** This name must be unique across all Triggers within the Logic App Workflow.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [TriggerCustomState].
   /// [body] Specifies the JSON Blob defining the Body of this Custom Trigger.

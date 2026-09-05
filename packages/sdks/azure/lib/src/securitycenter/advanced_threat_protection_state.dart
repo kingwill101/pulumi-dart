@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering AdvancedThreatProtection resources.
 class AdvancedThreatProtectionState {
   /// Should Advanced Threat Protection be enabled on this resource?
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// The ID of the Azure Resource which to enable Advanced Threat Protection on. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? targetResourceId;
+  final pulumi.Input<String?>? targetResourceId;
 
   /// Creates a new [AdvancedThreatProtectionState].
   /// [enabled] Should Advanced Threat Protection be enabled on this resource?

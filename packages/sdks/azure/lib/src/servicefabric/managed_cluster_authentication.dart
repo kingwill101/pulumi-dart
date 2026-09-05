@@ -6,9 +6,9 @@ import 'managed_cluster_authentication_certificate.dart';
 
 class ManagedClusterAuthentication {
   /// A `activeDirectory` block as defined above.
-  final pulumi.Input<ManagedClusterAuthenticationActiveDirectory>? activeDirectory;
+  final pulumi.Input<ManagedClusterAuthenticationActiveDirectory?>? activeDirectory;
   /// One or more `certificate` blocks as defined below.
-  final pulumi.Input<List<ManagedClusterAuthenticationCertificate>>? certificates;
+  final pulumi.Input<List<ManagedClusterAuthenticationCertificate>?>? certificates;
 
   /// Creates a new [ManagedClusterAuthentication].
   /// [activeDirectory] A `activeDirectory` block as defined above.

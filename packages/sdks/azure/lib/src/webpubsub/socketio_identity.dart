@@ -6,9 +6,9 @@ class SocketioIdentity {
   /// Specifies a list of User Assigned Managed Identity IDs for this Web PubSub Service.
   ///
   /// &gt; **Note:** `identityIds` is required when `type` is `UserAssigned`.
-  final pulumi.Input<List<String>>? identityIds;
-  final pulumi.Input<String>? principalId;
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<List<String>?>? identityIds;
+  final pulumi.Input<String?>? principalId;
+  final pulumi.Input<String?>? tenantId;
   /// The type of Managed Identity for this Web PubSub Service. Possible Values are `SystemAssigned` and `UserAssigned`.
   final pulumi.Input<String> type;
 

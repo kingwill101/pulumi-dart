@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering ApiRelease resources.
 class ApiReleaseState {
   /// The ID of the API Management API. Changing this forces a new API Management API Release to be created.
-  final pulumi.Input<String>? apiId;
+  final pulumi.Input<String?>? apiId;
   /// The name which should be used for this API Management API Release. Changing this forces a new API Management API Release to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The Release Notes.
-  final pulumi.Input<String>? notes;
+  final pulumi.Input<String?>? notes;
 
   /// Creates a new [ApiReleaseState].
   /// [apiId] The ID of the API Management API. Changing this forces a new API Management API Release to be created.

@@ -12,15 +12,15 @@ import 'account_queue_properties_minute_metrics.dart';
 /// {@macro pulumi_storage_account_queue_properties_account_queue_properties_args_doc}
 class AccountQueuePropertiesArgs {
   /// A `corsRule` block as defined above.
-  final pulumi.Input<List<AccountQueuePropertiesCorsRule>>? corsRules;
+  final pulumi.Input<List<AccountQueuePropertiesCorsRule>?>? corsRules;
   /// A `hourMetrics` block as defined below.
   ///
   /// &gt; **Note:** At least one of `corsRule`, `logging`, `minuteMetrics`, or `hourMetrics` must be specified.
-  final pulumi.Input<AccountQueuePropertiesHourMetrics>? hourMetrics;
+  final pulumi.Input<AccountQueuePropertiesHourMetrics?>? hourMetrics;
   /// A `logging` block as defined below.
-  final pulumi.Input<AccountQueuePropertiesLogging>? logging;
+  final pulumi.Input<AccountQueuePropertiesLogging?>? logging;
   /// A `minuteMetrics` block as defined below.
-  final pulumi.Input<AccountQueuePropertiesMinuteMetrics>? minuteMetrics;
+  final pulumi.Input<AccountQueuePropertiesMinuteMetrics?>? minuteMetrics;
   /// The ID of the Storage Account to set Queue Properties on. Changing this forces a new resource to be created.
   final pulumi.Input<String> storageAccountId;
 

@@ -217,7 +217,7 @@ import 'watcher_state.dart';
 /// 		}
 /// 		_, err = automation.NewWatcher(ctx, "example", &automation.WatcherArgs{
 /// 			Name:                        pulumi.String("example"),
-/// 			AutomationAccountId:         exampleAccount.ID(),
+/// 			AutomationAccountId:         exampleAccount.ID().ToIDOutput().ToStringOutput(),
 /// 			Location:                    pulumi.String("West Europe"),
 /// 			ScriptName:                  exampleRunBook.Name,
 /// 			ScriptRunOn:                 exampleHybridRunbookWorkerGroup.Name,
@@ -471,7 +471,7 @@ class Watcher extends pulumi.CustomResource {
           'azure:automation/watcher:Watcher',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     automationAccountId = registerOutput<String>('automationAccountId');
     description = registerOutput<String?>('description');
@@ -480,10 +480,10 @@ class Watcher extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     scriptName = registerOutput<String>('scriptName');
-    scriptParameters = registerOutput<Map<String, String>?>('scriptParameters');
+    scriptParameters = registerOutput<Map<String, String>?>('scriptParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     scriptRunOn = registerOutput<String>('scriptRunOn');
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Watcher] resource's state with the given [name] and [id].
@@ -491,11 +491,12 @@ class Watcher extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     WatcherState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Watcher._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -516,9 +517,31 @@ class Watcher extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     scriptName = registerOutput<String>('scriptName');
-    scriptParameters = registerOutput<Map<String, String>?>('scriptParameters');
+    scriptParameters = registerOutput<Map<String, String>?>('scriptParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     scriptRunOn = registerOutput<String>('scriptRunOn');
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Watcher] resource.
+  Watcher.reference(String urn)
+    : super(
+        'azure:automation/watcher:Watcher',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    automationAccountId = registerOutput<String>('automationAccountId');
+    description = registerOutput<String?>('description');
+    etag = registerOutput<String?>('etag');
+    executionFrequencyInSeconds = registerOutput<int>('executionFrequencyInSeconds');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    scriptName = registerOutput<String>('scriptName');
+    scriptParameters = registerOutput<Map<String, String>?>('scriptParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    scriptRunOn = registerOutput<String>('scriptRunOn');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

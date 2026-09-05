@@ -457,7 +457,7 @@ class DscNodeConfiguration extends pulumi.CustomResource {
           'azure:automation/dscNodeConfiguration:DscNodeConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     automationAccountName = registerOutput<String>('automationAccountName');
     configurationName = registerOutput<String>('configurationName');
@@ -471,11 +471,12 @@ class DscNodeConfiguration extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DscNodeConfigurationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DscNodeConfiguration._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -489,6 +490,22 @@ class DscNodeConfiguration extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    automationAccountName = registerOutput<String>('automationAccountName');
+    configurationName = registerOutput<String>('configurationName');
+    contentEmbedded = registerOutput<String>('contentEmbedded');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+  }
+
+  /// Creates a typed reference to an existing [DscNodeConfiguration] resource.
+  DscNodeConfiguration.reference(String urn)
+    : super(
+        'azure:automation/dscNodeConfiguration:DscNodeConfiguration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     automationAccountName = registerOutput<String>('automationAccountName');
     configurationName = registerOutput<String>('configurationName');
     contentEmbedded = registerOutput<String>('contentEmbedded');

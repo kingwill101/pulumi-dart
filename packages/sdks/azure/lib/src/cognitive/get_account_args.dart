@@ -12,7 +12,7 @@ class GetAccountArgs {
   /// Specifies the name of the resource group where the Cognitive Services Account resides.
   final pulumi.Input<String> resourceGroupName;
   /// A mapping of tags to assigned to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetAccountArgs].
   /// [name] Specifies the name of the Cognitive Services Account.

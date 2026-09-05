@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'registry_args.dart';
 import 'registry_encryption.dart';
+import 'registry_georeplication.dart';
 import 'registry_identity.dart';
 import 'registry_network_rule_set.dart';
 import 'registry_state.dart';
@@ -413,7 +414,7 @@ import 'registry_state.dart';
 /// 			Identity: &containerservice.RegistryIdentityArgs{
 /// 				Type: pulumi.String("UserAssigned"),
 /// 				IdentityIds: pulumi.StringArray{
-/// 					exampleUserAssignedIdentity.ID(),
+/// 					exampleUserAssignedIdentity.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 			Encryption: &containerservice.RegistryEncryptionArgs{
@@ -604,7 +605,7 @@ import 'registry_state.dart';
 ///     },
 /// });
 /// const exampleAssignment = new azure.authorization.Assignment("example", {
-///     principalId: exampleKubernetesCluster.kubeletIdentity.apply(kubeletIdentity => kubeletIdentity.objectId),
+///     principalId: exampleKubernetesCluster.kubeletIdentity.objectId,
 ///     roleDefinitionName: "AcrPull",
 ///     scope: exampleRegistry.id,
 ///     skipServicePrincipalAadCheck: true,
@@ -747,11 +748,9 @@ import 'registry_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = authorization.NewAssignment(ctx, "example", &authorization.AssignmentArgs{
-/// 			PrincipalId: pulumi.String(exampleKubernetesCluster.KubeletIdentity.ApplyT(func(kubeletIdentity containerservice.KubernetesClusterKubeletIdentity) (*string, error) {
-/// 				return kubeletIdentity.ObjectId, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			PrincipalId:                  exampleKubernetesCluster.KubeletIdentity.ObjectId(),
 /// 			RoleDefinitionName:           pulumi.String("AcrPull"),
-/// 			Scope:                        exampleRegistry.ID(),
+/// 			Scope:                        exampleRegistry.ID().ToIDOutput().ToStringOutput(),
 /// 			SkipServicePrincipalAadCheck: pulumi.Bool(true),
 /// 		})
 /// 		if err != nil {
@@ -936,6 +935,10 @@ class Registry extends pulumi.CustomResource {
   late final pulumi.Output<String> adminUsername;
   /// Whether to allow anonymous (unauthenticated) pull access to this Container Registry. This is only supported on resources with the `Standard` or `Premium` SKU.
   late final pulumi.Output<bool?> anonymousPullEnabled;
+  /// Whether to use Azure Resource Manager audience token for this Container Registry? Defaults to `true`.
+  ///
+  /// &gt; **Note:** `quarantinePolicyEnabled`, `retentionPolicyInDays`, `trustPolicyEnabled`, `exportPolicyEnabled` and `zoneRedundancyEnabled` are only supported on resources with the `Premium` SKU.
+  late final pulumi.Output<bool?> azureadAuthenticationAsArmPolicyEnabled;
   /// Whether to enable dedicated data endpoints for this Container Registry? This is only supported on resources with the `Premium` SKU.
   late final pulumi.Output<bool?> dataEndpointEnabled;
   /// A set of data endpoint hostnames associated with the container registry if data endpoints are enabled.
@@ -943,8 +946,6 @@ class Registry extends pulumi.CustomResource {
   /// An `encryption` block as documented below.
   late final pulumi.Output<RegistryEncryption> encryption;
   /// Boolean value that indicates whether export policy is enabled. Defaults to `true`. In order to set it to `false`, make sure the `publicNetworkAccessEnabled` is also set to `false`.
-  ///
-  /// &gt; **Note:** `quarantinePolicyEnabled`, `retentionPolicyInDays`, `trustPolicyEnabled`, `exportPolicyEnabled` and `zoneRedundancyEnabled` are only supported on resources with the `Premium` SKU.
   late final pulumi.Output<bool?> exportPolicyEnabled;
   /// One or more `georeplications` blocks as documented below.
   ///
@@ -953,7 +954,7 @@ class Registry extends pulumi.CustomResource {
   /// &gt; **Note:** The `georeplications` list cannot contain the location where the Container Registry exists.
   ///
   /// &gt; **Note:** If more than one `georeplications` block is specified, they are expected to follow the alphabetic order on the `location` property.
-  late final pulumi.Output<List<Map<String, dynamic>>?> georeplications;
+  late final pulumi.Output<List<RegistryGeoreplication>?> georeplications;
   /// An `identity` block as defined below.
   late final pulumi.Output<RegistryIdentity?> identity;
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
@@ -962,6 +963,8 @@ class Registry extends pulumi.CustomResource {
   late final pulumi.Output<String> loginServer;
   /// Specifies the name of the Container Registry. Only Alphanumeric characters allowed. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
+  /// Whether to allow Container Registry Tasks to access a network-restricted Container Registry? Defaults to `false`.
+  late final pulumi.Output<bool?> networkRuleBypassForTasksEnabled;
   /// Whether to allow trusted Azure services to access a network-restricted Container Registry? Possible values are `None` and `AzureServices`. Defaults to `AzureServices`.
   late final pulumi.Output<String?> networkRuleBypassOption;
   /// A `networkRuleSet` block as documented below.
@@ -974,6 +977,8 @@ class Registry extends pulumi.CustomResource {
   late final pulumi.Output<String> resourceGroupName;
   /// The number of days to retain and untagged manifest after which it gets purged.
   late final pulumi.Output<int?> retentionPolicyInDays;
+  /// The role assignment mode of this Container Registry. Possible values are `AbacRepositoryPermissions` and `LegacyRegistryPermissions`. Defaults to `LegacyRegistryPermissions`.
+  late final pulumi.Output<String?> roleAssignmentMode;
   /// The SKU name of the container registry. Possible values are `Basic`, `Standard` and `Premium`.
   late final pulumi.Output<String> sku;
   /// A mapping of tags to assign to the resource.
@@ -995,29 +1000,33 @@ class Registry extends pulumi.CustomResource {
           'azure:containerservice/registry:Registry',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['adminPassword'],
         ) {
     adminEnabled = registerOutput<bool?>('adminEnabled');
-    adminPassword = registerOutput<String>('adminPassword');
+    adminPassword = registerOutput<String>('adminPassword', isSecret: true);
     adminUsername = registerOutput<String>('adminUsername');
     anonymousPullEnabled = registerOutput<bool?>('anonymousPullEnabled');
+    azureadAuthenticationAsArmPolicyEnabled = registerOutput<bool?>('azureadAuthenticationAsArmPolicyEnabled');
     dataEndpointEnabled = registerOutput<bool?>('dataEndpointEnabled');
-    dataEndpointHostNames = registerOutput<List<String>>('dataEndpointHostNames');
+    dataEndpointHostNames = registerOutput<List<String>>('dataEndpointHostNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     encryption = registerOutput<RegistryEncryption>('encryption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegistryEncryption.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     exportPolicyEnabled = registerOutput<bool?>('exportPolicyEnabled');
-    georeplications = registerOutput<List<Map<String, dynamic>>?>('georeplications');
+    georeplications = registerOutput<List<RegistryGeoreplication>?>('georeplications', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegistryGeoreplication>(guardedValue, (value) => RegistryGeoreplication.fromMap((value as Map).cast<String, dynamic>())); });
     identity = registerOutput<RegistryIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegistryIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     loginServer = registerOutput<String>('loginServer');
     this.name = registerOutput<String>('name');
+    networkRuleBypassForTasksEnabled = registerOutput<bool?>('networkRuleBypassForTasksEnabled');
     networkRuleBypassOption = registerOutput<String?>('networkRuleBypassOption');
     networkRuleSet = registerOutput<RegistryNetworkRuleSet>('networkRuleSet', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegistryNetworkRuleSet.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
     quarantinePolicyEnabled = registerOutput<bool?>('quarantinePolicyEnabled');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     retentionPolicyInDays = registerOutput<int?>('retentionPolicyInDays');
+    roleAssignmentMode = registerOutput<String?>('roleAssignmentMode');
     sku = registerOutput<String>('sku');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     trustPolicyEnabled = registerOutput<bool?>('trustPolicyEnabled');
     zoneRedundancyEnabled = registerOutput<bool?>('zoneRedundancyEnabled');
   }
@@ -1027,11 +1036,12 @@ class Registry extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RegistryState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Registry._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1046,26 +1056,67 @@ class Registry extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     adminEnabled = registerOutput<bool?>('adminEnabled');
-    adminPassword = registerOutput<String>('adminPassword');
+    adminPassword = registerOutput<String>('adminPassword', isSecret: true);
     adminUsername = registerOutput<String>('adminUsername');
     anonymousPullEnabled = registerOutput<bool?>('anonymousPullEnabled');
+    azureadAuthenticationAsArmPolicyEnabled = registerOutput<bool?>('azureadAuthenticationAsArmPolicyEnabled');
     dataEndpointEnabled = registerOutput<bool?>('dataEndpointEnabled');
-    dataEndpointHostNames = registerOutput<List<String>>('dataEndpointHostNames');
+    dataEndpointHostNames = registerOutput<List<String>>('dataEndpointHostNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     encryption = registerOutput<RegistryEncryption>('encryption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegistryEncryption.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     exportPolicyEnabled = registerOutput<bool?>('exportPolicyEnabled');
-    georeplications = registerOutput<List<Map<String, dynamic>>?>('georeplications');
+    georeplications = registerOutput<List<RegistryGeoreplication>?>('georeplications', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegistryGeoreplication>(guardedValue, (value) => RegistryGeoreplication.fromMap((value as Map).cast<String, dynamic>())); });
     identity = registerOutput<RegistryIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegistryIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     loginServer = registerOutput<String>('loginServer');
     this.name = registerOutput<String>('name');
+    networkRuleBypassForTasksEnabled = registerOutput<bool?>('networkRuleBypassForTasksEnabled');
     networkRuleBypassOption = registerOutput<String?>('networkRuleBypassOption');
     networkRuleSet = registerOutput<RegistryNetworkRuleSet>('networkRuleSet', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegistryNetworkRuleSet.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
     quarantinePolicyEnabled = registerOutput<bool?>('quarantinePolicyEnabled');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     retentionPolicyInDays = registerOutput<int?>('retentionPolicyInDays');
+    roleAssignmentMode = registerOutput<String?>('roleAssignmentMode');
     sku = registerOutput<String>('sku');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    trustPolicyEnabled = registerOutput<bool?>('trustPolicyEnabled');
+    zoneRedundancyEnabled = registerOutput<bool?>('zoneRedundancyEnabled');
+  }
+
+  /// Creates a typed reference to an existing [Registry] resource.
+  Registry.reference(String urn)
+    : super(
+        'azure:containerservice/registry:Registry',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['adminPassword'],
+        isResourceReference: true,
+      ) {
+    adminEnabled = registerOutput<bool?>('adminEnabled');
+    adminPassword = registerOutput<String>('adminPassword', isSecret: true);
+    adminUsername = registerOutput<String>('adminUsername');
+    anonymousPullEnabled = registerOutput<bool?>('anonymousPullEnabled');
+    azureadAuthenticationAsArmPolicyEnabled = registerOutput<bool?>('azureadAuthenticationAsArmPolicyEnabled');
+    dataEndpointEnabled = registerOutput<bool?>('dataEndpointEnabled');
+    dataEndpointHostNames = registerOutput<List<String>>('dataEndpointHostNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    encryption = registerOutput<RegistryEncryption>('encryption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegistryEncryption.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    exportPolicyEnabled = registerOutput<bool?>('exportPolicyEnabled');
+    georeplications = registerOutput<List<RegistryGeoreplication>?>('georeplications', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegistryGeoreplication>(guardedValue, (value) => RegistryGeoreplication.fromMap((value as Map).cast<String, dynamic>())); });
+    identity = registerOutput<RegistryIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegistryIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    loginServer = registerOutput<String>('loginServer');
+    this.name = registerOutput<String>('name');
+    networkRuleBypassForTasksEnabled = registerOutput<bool?>('networkRuleBypassForTasksEnabled');
+    networkRuleBypassOption = registerOutput<String?>('networkRuleBypassOption');
+    networkRuleSet = registerOutput<RegistryNetworkRuleSet>('networkRuleSet', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegistryNetworkRuleSet.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
+    quarantinePolicyEnabled = registerOutput<bool?>('quarantinePolicyEnabled');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    retentionPolicyInDays = registerOutput<int?>('retentionPolicyInDays');
+    roleAssignmentMode = registerOutput<String?>('roleAssignmentMode');
+    sku = registerOutput<String>('sku');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     trustPolicyEnabled = registerOutput<bool?>('trustPolicyEnabled');
     zoneRedundancyEnabled = registerOutput<bool?>('zoneRedundancyEnabled');
   }

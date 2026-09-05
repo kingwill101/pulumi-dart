@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_dns_get_soa_record_get_soa_record_args_doc}
 class GetSoaRecordArgs {
   /// The name of the DNS SOA Record.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specifies the resource group where the DNS Zone (parent resource) exists.
   final pulumi.Input<String> resourceGroupName;
   /// Specifies the DNS Zone where the resource exists.

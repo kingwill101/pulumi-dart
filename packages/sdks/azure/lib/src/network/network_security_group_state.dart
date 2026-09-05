@@ -6,17 +6,17 @@ import 'network_security_group_security_rule.dart';
 /// Input properties used for looking up and filtering NetworkSecurityGroup resources.
 class NetworkSecurityGroupState {
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the security rule.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the resource group in which to create the network security group. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// A list of objects representing security rules, as defined below.
   ///
   /// &gt; **NOTE** Since `securityRule` can be configured both inline and via the separate `azure.network.NetworkSecurityRule` resource, we have to explicitly set it to empty slice (`[]`) to remove it.
-  final pulumi.Input<List<NetworkSecurityGroupSecurityRule>>? securityRules;
+  final pulumi.Input<List<NetworkSecurityGroupSecurityRule>?>? securityRules;
   /// A mapping of tags to assign to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [NetworkSecurityGroupState].
   /// [location] Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.

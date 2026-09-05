@@ -189,14 +189,14 @@ import 'api_tag_description_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleTag, err := apimanagement.NewTag(ctx, "example", &apimanagement.TagArgs{
-/// 			ApiManagementId: exampleService.ID(),
+/// 			ApiManagementId: exampleService.ID().ToIDOutput().ToStringOutput(),
 /// 			Name:            pulumi.String("example-Tag"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = apimanagement.NewApiTagDescription(ctx, "example", &apimanagement.ApiTagDescriptionArgs{
-/// 			ApiTagId:                exampleTag.ID(),
+/// 			ApiTagId:                exampleTag.ID().ToIDOutput().ToStringOutput(),
 /// 			Description:             pulumi.String("This is an example description"),
 /// 			ExternalDocsUrl:         "https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs",
 /// 			ExternalDocsDescription: "This is an example external docs description",
@@ -411,7 +411,7 @@ class ApiTagDescription extends pulumi.CustomResource {
           'azure:apimanagement/apiTagDescription:ApiTagDescription',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     apiTagId = registerOutput<String>('apiTagId');
     description = registerOutput<String?>('description');
@@ -424,11 +424,12 @@ class ApiTagDescription extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ApiTagDescriptionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ApiTagDescription._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -442,6 +443,21 @@ class ApiTagDescription extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    apiTagId = registerOutput<String>('apiTagId');
+    description = registerOutput<String?>('description');
+    externalDocumentationDescription = registerOutput<String?>('externalDocumentationDescription');
+    externalDocumentationUrl = registerOutput<String?>('externalDocumentationUrl');
+  }
+
+  /// Creates a typed reference to an existing [ApiTagDescription] resource.
+  ApiTagDescription.reference(String urn)
+    : super(
+        'azure:apimanagement/apiTagDescription:ApiTagDescription',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     apiTagId = registerOutput<String>('apiTagId');
     description = registerOutput<String?>('description');
     externalDocumentationDescription = registerOutput<String?>('externalDocumentationDescription');

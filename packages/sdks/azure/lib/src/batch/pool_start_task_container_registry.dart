@@ -3,12 +3,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PoolStartTaskContainerRegistry {
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// The container registry URL. Changing this forces a new resource to be created.
   final pulumi.Input<String> registryServer;
   /// The User Assigned Identity to use for Container Registry access.
-  final pulumi.Input<String>? userAssignedIdentityId;
-  final pulumi.Input<String>? userName;
+  final pulumi.Input<String?>? userAssignedIdentityId;
+  final pulumi.Input<String?>? userName;
 
   /// Creates a new [PoolStartTaskContainerRegistry].
   /// [password] Optional.

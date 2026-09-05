@@ -6,7 +6,7 @@ class AccountStorage {
   /// The ID of the storage account to be associated with the Video Indexer Account. Changing this forces a new Video Indexer Account to be created.
   final pulumi.Input<String> storageAccountId;
   /// The reference to the user assigned identity to use to access the Storage Account.
-  final pulumi.Input<String>? userAssignedIdentityId;
+  final pulumi.Input<String?>? userAssignedIdentityId;
 
   /// Creates a new [AccountStorage].
   /// [storageAccountId] The ID of the storage account to be associated with the Video Indexer Account. Changing this forces a new Video Indexer Account to be created.

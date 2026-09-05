@@ -5,11 +5,11 @@ import 'io_thub_cloud_to_device_feedback.dart';
 
 class IoTHubCloudToDevice {
   /// The default time to live for cloud-to-device messages, specified as an [ISO 8601 timespan duration](https://en.wikipedia.org/wiki/ISO_8601#Durations). This value must be between 1 minute and 48 hours. Defaults to `PT1H`.
-  final pulumi.Input<String>? defaultTtl;
+  final pulumi.Input<String?>? defaultTtl;
   /// A `feedback` block as defined below.
-  final pulumi.Input<List<IoTHubCloudToDeviceFeedback>>? feedbacks;
+  final pulumi.Input<List<IoTHubCloudToDeviceFeedback>?>? feedbacks;
   /// The maximum delivery count for cloud-to-device per-device queues. This value must be between `1` and `100`. Defaults to `10`.
-  final pulumi.Input<int>? maxDeliveryCount;
+  final pulumi.Input<int?>? maxDeliveryCount;
 
   /// Creates a new [IoTHubCloudToDevice].
   /// [defaultTtl] The default time to live for cloud-to-device messages, specified as an [ISO 8601 timespan duration](https://en.wikipedia.org/wiki/ISO_8601#Durations). This value must be between 1 minute and 48 hours. Defaults to `PT1H`.
@@ -33,7 +33,7 @@ class IoTHubCloudToDevice {
     return IoTHubCloudToDevice(
       defaultTtl: (() { final guardedValue = map['defaultTtl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       feedbacks: (() { final guardedValue = map['feedbacks']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<IoTHubCloudToDeviceFeedback>(guardedValue, (value) => IoTHubCloudToDeviceFeedback.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      maxDeliveryCount: (() { final guardedValue = map['maxDeliveryCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxDeliveryCount: (() { final guardedValue = map['maxDeliveryCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

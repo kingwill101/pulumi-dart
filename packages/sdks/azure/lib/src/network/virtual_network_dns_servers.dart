@@ -143,7 +143,7 @@ import 'virtual_network_dns_servers_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = network.NewVirtualNetworkDnsServers(ctx, "example", &network.VirtualNetworkDnsServersArgs{
-/// 			VirtualNetworkId: exampleVirtualNetwork.ID(),
+/// 			VirtualNetworkId: exampleVirtualNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 			DnsServers: pulumi.StringArray{
 /// 				pulumi.String("10.7.7.2"),
 /// 				pulumi.String("10.7.7.7"),
@@ -301,9 +301,9 @@ class VirtualNetworkDnsServers extends pulumi.CustomResource {
           'azure:network/virtualNetworkDnsServers:VirtualNetworkDnsServers',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
-    dnsServers = registerOutput<List<String>?>('dnsServers');
+    dnsServers = registerOutput<List<String>?>('dnsServers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     virtualNetworkId = registerOutput<String>('virtualNetworkId');
   }
 
@@ -312,11 +312,12 @@ class VirtualNetworkDnsServers extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VirtualNetworkDnsServersState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VirtualNetworkDnsServers._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -330,7 +331,20 @@ class VirtualNetworkDnsServers extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    dnsServers = registerOutput<List<String>?>('dnsServers');
+    dnsServers = registerOutput<List<String>?>('dnsServers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    virtualNetworkId = registerOutput<String>('virtualNetworkId');
+  }
+
+  /// Creates a typed reference to an existing [VirtualNetworkDnsServers] resource.
+  VirtualNetworkDnsServers.reference(String urn)
+    : super(
+        'azure:network/virtualNetworkDnsServers:VirtualNetworkDnsServers',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    dnsServers = registerOutput<List<String>?>('dnsServers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     virtualNetworkId = registerOutput<String>('virtualNetworkId');
   }
 }

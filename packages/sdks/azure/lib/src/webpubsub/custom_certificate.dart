@@ -34,6 +34,7 @@ import 'custom_certificate_state.dart';
 ///     name: "examplekeyvault",
 ///     location: example.location,
 ///     resourceGroupName: example.name,
+///     rbacAuthorizationEnabled: false,
 ///     tenantId: current.then(current => current.tenantId),
 ///     skuName: "premium",
 ///     accessPolicies: [
@@ -108,6 +109,7 @@ import 'custom_certificate_state.dart';
 ///     name="examplekeyvault",
 ///     location=example.location,
 ///     resource_group_name=example.name,
+///     rbac_authorization_enabled=False,
 ///     tenant_id=current.tenant_id,
 ///     sku_name="premium",
 ///     access_policies=[
@@ -196,6 +198,7 @@ import 'custom_certificate_state.dart';
 ///         Name = "examplekeyvault",
 ///         Location = example.Location,
 ///         ResourceGroupName = example.Name,
+///         RbacAuthorizationEnabled = false,
 ///         TenantId = current.Apply(getClientConfigResult => getClientConfigResult.TenantId),
 ///         SkuName = "premium",
 ///         AccessPolicies = new[]
@@ -299,8 +302,8 @@ import 'custom_certificate_state.dart';
 /// 					"capacity": 1,
 /// 				},
 /// 			},
-/// 			Identity: []map[string]interface{}{
-/// 				map[string]interface{}{
+/// 			Identity: []map[string]string{
+/// 				{
 /// 					"type": "SystemAssigned",
 /// 				},
 /// 			},
@@ -309,11 +312,12 @@ import 'custom_certificate_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleKeyVault, err := keyvault.NewKeyVault(ctx, "example", &keyvault.KeyVaultArgs{
-/// 			Name:              pulumi.String("examplekeyvault"),
-/// 			Location:          example.Location,
-/// 			ResourceGroupName: example.Name,
-/// 			TenantId:          pulumi.String(current.TenantId),
-/// 			SkuName:           pulumi.String("premium"),
+/// 			Name:                     pulumi.String("examplekeyvault"),
+/// 			Location:                 example.Location,
+/// 			ResourceGroupName:        example.Name,
+/// 			RbacAuthorizationEnabled: pulumi.Bool(false),
+/// 			TenantId:                 pulumi.String(current.TenantId),
+/// 			SkuName:                  pulumi.String("premium"),
 /// 			AccessPolicies: keyvault.KeyVaultAccessPolicyArray{
 /// 				&keyvault.KeyVaultAccessPolicyArgs{
 /// 					TenantId: pulumi.String(current.TenantId),
@@ -354,7 +358,7 @@ import 'custom_certificate_state.dart';
 /// 		}
 /// 		exampleCertificate, err := keyvault.NewCertificate(ctx, "example", &keyvault.CertificateArgs{
 /// 			Name:       pulumi.String("imported-cert"),
-/// 			KeyVaultId: exampleKeyVault.ID(),
+/// 			KeyVaultId: exampleKeyVault.ID().ToIDOutput().ToStringOutput(),
 /// 			Certificate: &keyvault.CertificateCertificateArgs{
 /// 				Contents: pulumi.String(invokeFilebase64.Result),
 /// 				Password: pulumi.String(""),
@@ -366,7 +370,7 @@ import 'custom_certificate_state.dart';
 /// 		_, err = webpubsub.NewCustomCertificate(ctx, "test", &webpubsub.CustomCertificateArgs{
 /// 			Name:                pulumi.String("example-cert"),
 /// 			WebPubsubId:         exampleWebPubsubService.Id,
-/// 			CustomCertificateId: exampleCertificate.ID(),
+/// 			CustomCertificateId: exampleCertificate.ID().ToIDOutput().ToStringOutput(),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			exampleAzurermKeyVaultAccessPolicy,
 /// 		}))
@@ -409,11 +413,12 @@ import 'custom_certificate_state.dart';
 ///   }]
 /// }
 /// resource "azure_keyvault_keyvault" "example" {
-///   name                = "examplekeyvault"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   tenant_id           = data.azure_core_getclientconfig.current.tenant_id
-///   sku_name            = "premium"
+///   name                       = "examplekeyvault"
+///   location                   = azure_core_resourcegroup.example.location
+///   resource_group_name        = azure_core_resourcegroup.example.name
+///   rbac_authorization_enabled = false
+///   tenant_id                  = data.azure_core_getclientconfig.current.tenant_id
+///   sku_name                   = "premium"
 ///   access_policies {
 ///     tenant_id               = data.azure_core_getclientconfig.current.tenant_id
 ///     object_id               = data.azure_core_getclientconfig.current.object_id
@@ -499,6 +504,7 @@ import 'custom_certificate_state.dart';
 ///             .name("examplekeyvault")
 ///             .location(example.location())
 ///             .resourceGroupName(example.name())
+///             .rbacAuthorizationEnabled(false)
 ///             .tenantId(current.tenantId())
 ///             .skuName("premium")
 ///             .accessPolicies(
@@ -574,6 +580,7 @@ import 'custom_certificate_state.dart';
 ///       name: examplekeyvault
 ///       location: ${example.location}
 ///       resourceGroupName: ${example.name}
+///       rbacAuthorizationEnabled: false
 ///       tenantId: ${current.tenantId}
 ///       skuName: premium
 ///       accessPolicies:
@@ -666,7 +673,7 @@ class CustomCertificate extends pulumi.CustomResource {
           'azure:webpubsub/customCertificate:CustomCertificate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     certificateVersion = registerOutput<String>('certificateVersion');
     customCertificateId = registerOutput<String>('customCertificateId');
@@ -679,11 +686,12 @@ class CustomCertificate extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CustomCertificateState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return CustomCertificate._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -697,6 +705,21 @@ class CustomCertificate extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    certificateVersion = registerOutput<String>('certificateVersion');
+    customCertificateId = registerOutput<String>('customCertificateId');
+    this.name = registerOutput<String>('name');
+    webPubsubId = registerOutput<String>('webPubsubId');
+  }
+
+  /// Creates a typed reference to an existing [CustomCertificate] resource.
+  CustomCertificate.reference(String urn)
+    : super(
+        'azure:webpubsub/customCertificate:CustomCertificate',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     certificateVersion = registerOutput<String>('certificateVersion');
     customCertificateId = registerOutput<String>('customCertificateId');
     this.name = registerOutput<String>('name');

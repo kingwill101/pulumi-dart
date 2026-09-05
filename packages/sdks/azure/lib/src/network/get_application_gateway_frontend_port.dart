@@ -32,7 +32,7 @@ class GetApplicationGatewayFrontendPort {
     return GetApplicationGatewayFrontendPort(
       id: pulumi.Input.fromValue(map['id'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
-      port: pulumi.Input.fromValue(map['port'] as int),
+      port: pulumi.Input.fromValue((map['port'] as num).toInt()),
     );
   }
 }

@@ -6,9 +6,9 @@ class EndpointDeliveryRuleRequestSchemeCondition {
   /// Valid values are `HTTP` and `HTTPS`.
   final pulumi.Input<List<String>> matchValues;
   /// Defaults to `false`.
-  final pulumi.Input<bool>? negateCondition;
+  final pulumi.Input<bool?>? negateCondition;
   /// Valid values are `Equal`. Defaults to `Equal`.
-  final pulumi.Input<String>? operator;
+  final pulumi.Input<String?>? operator;
 
   /// Creates a new [EndpointDeliveryRuleRequestSchemeCondition].
   /// [matchValues] Valid values are `HTTP` and `HTTPS`.

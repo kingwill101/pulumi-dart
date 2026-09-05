@@ -6,11 +6,11 @@ import 'replication_recovery_plan_boot_recovery_group_pre_action.dart';
 
 class ReplicationRecoveryPlanBootRecoveryGroup {
   /// one or more `action` block as defined below. which will be executed after the group recovery.
-  final pulumi.Input<List<ReplicationRecoveryPlanBootRecoveryGroupPostAction>>? postActions;
+  final pulumi.Input<List<ReplicationRecoveryPlanBootRecoveryGroupPostAction>?>? postActions;
   /// one or more `action` block as defined below. which will be executed before the group recovery.
-  final pulumi.Input<List<ReplicationRecoveryPlanBootRecoveryGroupPreAction>>? preActions;
+  final pulumi.Input<List<ReplicationRecoveryPlanBootRecoveryGroupPreAction>?>? preActions;
   /// One or more protected VM IDs.
-  final pulumi.Input<List<String>>? replicatedProtectedItems;
+  final pulumi.Input<List<String>?>? replicatedProtectedItems;
 
   /// Creates a new [ReplicationRecoveryPlanBootRecoveryGroup].
   /// [postActions] one or more `action` block as defined below. which will be executed after the group recovery.

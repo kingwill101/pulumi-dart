@@ -206,7 +206,7 @@ import 'resolver_inbound_endpoint_state.dart';
 /// 			Name:              pulumi.String("example"),
 /// 			ResourceGroupName: example.Name,
 /// 			Location:          example.Location,
-/// 			VirtualNetworkId:  exampleVirtualNetwork.ID(),
+/// 			VirtualNetworkId:  exampleVirtualNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -235,11 +235,11 @@ import 'resolver_inbound_endpoint_state.dart';
 /// 		}
 /// 		_, err = privatedns.NewResolverInboundEndpoint(ctx, "example", &privatedns.ResolverInboundEndpointArgs{
 /// 			Name:                 pulumi.String("example-drie"),
-/// 			PrivateDnsResolverId: exampleResolver.ID(),
+/// 			PrivateDnsResolverId: exampleResolver.ID().ToIDOutput().ToStringOutput(),
 /// 			Location:             exampleResolver.Location,
 /// 			IpConfigurations: &privatedns.ResolverInboundEndpointIpConfigurationsArgs{
 /// 				PrivateIpAllocationMethod: pulumi.String("Dynamic"),
-/// 				SubnetId:                  exampleSubnet.ID(),
+/// 				SubnetId:                  exampleSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			Tags: pulumi.StringMap{
 /// 				"key": pulumi.String("value"),
@@ -474,13 +474,13 @@ class ResolverInboundEndpoint extends pulumi.CustomResource {
           'azure:privatedns/resolverInboundEndpoint:ResolverInboundEndpoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     ipConfigurations = registerOutput<ResolverInboundEndpointIpConfigurations>('ipConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResolverInboundEndpointIpConfigurations.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     privateDnsResolverId = registerOutput<String>('privateDnsResolverId');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [ResolverInboundEndpoint] resource's state with the given [name] and [id].
@@ -488,11 +488,12 @@ class ResolverInboundEndpoint extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ResolverInboundEndpointState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ResolverInboundEndpoint._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -510,6 +511,22 @@ class ResolverInboundEndpoint extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     privateDnsResolverId = registerOutput<String>('privateDnsResolverId');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [ResolverInboundEndpoint] resource.
+  ResolverInboundEndpoint.reference(String urn)
+    : super(
+        'azure:privatedns/resolverInboundEndpoint:ResolverInboundEndpoint',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    ipConfigurations = registerOutput<ResolverInboundEndpointIpConfigurations>('ipConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResolverInboundEndpointIpConfigurations.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    privateDnsResolverId = registerOutput<String>('privateDnsResolverId');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

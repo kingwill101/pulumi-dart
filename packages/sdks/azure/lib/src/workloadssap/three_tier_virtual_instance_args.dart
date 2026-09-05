@@ -14,15 +14,15 @@ class ThreeTierVirtualInstanceArgs {
   /// The environment type for the SAP Three Tier Virtual Instance. Possible values are `NonProd` and `Prod`. Changing this forces a new resource to be created.
   final pulumi.Input<String> environment;
   /// An `identity` block as defined below.
-  final pulumi.Input<ThreeTierVirtualInstanceIdentity>? identity;
+  final pulumi.Input<ThreeTierVirtualInstanceIdentity?>? identity;
   /// The Azure Region where the SAP Three Tier Virtual Instance should exist. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the managed Resource Group for the SAP Three Tier Virtual Instance. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? managedResourceGroupName;
+  final pulumi.Input<String?>? managedResourceGroupName;
   /// The network access type for managed resources. Possible values are `Private` and `Public`. Defaults to `Public`.
-  final pulumi.Input<String>? managedResourcesNetworkAccessType;
+  final pulumi.Input<String?>? managedResourcesNetworkAccessType;
   /// Specifies the name of this SAP Three Tier Virtual Instance. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the Resource Group where the SAP Three Tier Virtual Instance should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
   /// The FQDN of the SAP system. Changing this forces a new resource to be created.
@@ -30,7 +30,7 @@ class ThreeTierVirtualInstanceArgs {
   /// The SAP Product type for the SAP Three Tier Virtual Instance. Possible values are `ECC`, `Other` and `S4HANA`. Changing this forces a new resource to be created.
   final pulumi.Input<String> sapProduct;
   /// A mapping of tags which should be assigned to the SAP Three Tier Virtual Instance.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A `threeTierConfiguration` block as defined below. Changing this forces a new resource to be created.
   final pulumi.Input<ThreeTierVirtualInstanceThreeTierConfiguration> threeTierConfiguration;
 

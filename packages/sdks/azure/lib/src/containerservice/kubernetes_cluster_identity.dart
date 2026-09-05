@@ -6,11 +6,11 @@ class KubernetesClusterIdentity {
   /// Specifies a list of User Assigned Managed Identity IDs to be assigned to this Kubernetes Cluster.
   ///
   /// &gt; **Note:** This is required when `type` is set to `UserAssigned`. Currently only one User Assigned Identity is supported.
-  final pulumi.Input<List<String>>? identityIds;
+  final pulumi.Input<List<String>?>? identityIds;
   /// The Principal ID associated with this Managed Service Identity.
-  final pulumi.Input<String>? principalId;
+  final pulumi.Input<String?>? principalId;
   /// The Tenant ID associated with this Managed Service Identity.
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
   /// Specifies the type of Managed Service Identity that should be configured on this Kubernetes Cluster. Possible values are `SystemAssigned` or `UserAssigned`.
   final pulumi.Input<String> type;
 

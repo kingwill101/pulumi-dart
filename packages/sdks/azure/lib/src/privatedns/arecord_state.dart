@@ -5,19 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering ARecord resources.
 class ARecordState {
   /// The FQDN of the DNS A Record.
-  final pulumi.Input<String>? fqdn;
+  final pulumi.Input<String?>? fqdn;
   /// The name of the DNS A Record. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// List of IPv4 Addresses.
-  final pulumi.Input<List<String>>? records;
+  final pulumi.Input<List<String>?>? records;
   /// Specifies the resource group where the Private DNS Zone exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// A mapping of tags to assign to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The Time To Live (TTL) of the DNS record in seconds.
-  final pulumi.Input<int>? ttl;
+  final pulumi.Input<int?>? ttl;
   /// Specifies the Private DNS Zone where the resource exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? zoneName;
+  final pulumi.Input<String?>? zoneName;
 
   /// Creates a new [ARecordState].
   /// [fqdn] The FQDN of the DNS A Record.
@@ -56,7 +56,7 @@ class ARecordState {
       records: (() { final guardedValue = map['records']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       resourceGroupName: (() { final guardedValue = map['resourceGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-      ttl: (() { final guardedValue = map['ttl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      ttl: (() { final guardedValue = map['ttl']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       zoneName: (() { final guardedValue = map['zoneName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

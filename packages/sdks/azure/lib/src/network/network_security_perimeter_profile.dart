@@ -97,7 +97,7 @@ import 'network_security_perimeter_profile_state.dart';
 /// 		}
 /// 		_, err = network.NewNetworkSecurityPerimeterProfile(ctx, "example", &network.NetworkSecurityPerimeterProfileArgs{
 /// 			Name:                       pulumi.String("example"),
-/// 			NetworkSecurityPerimeterId: exampleNetworkSecurityPerimeter.ID(),
+/// 			NetworkSecurityPerimeterId: exampleNetworkSecurityPerimeter.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -228,7 +228,7 @@ class NetworkSecurityPerimeterProfile extends pulumi.CustomResource {
           'azure:network/networkSecurityPerimeterProfile:NetworkSecurityPerimeterProfile',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     this.name = registerOutput<String>('name');
     networkSecurityPerimeterId = registerOutput<String>('networkSecurityPerimeterId');
@@ -239,11 +239,12 @@ class NetworkSecurityPerimeterProfile extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     NetworkSecurityPerimeterProfileState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return NetworkSecurityPerimeterProfile._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -257,6 +258,19 @@ class NetworkSecurityPerimeterProfile extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    this.name = registerOutput<String>('name');
+    networkSecurityPerimeterId = registerOutput<String>('networkSecurityPerimeterId');
+  }
+
+  /// Creates a typed reference to an existing [NetworkSecurityPerimeterProfile] resource.
+  NetworkSecurityPerimeterProfile.reference(String urn)
+    : super(
+        'azure:network/networkSecurityPerimeterProfile:NetworkSecurityPerimeterProfile',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     this.name = registerOutput<String>('name');
     networkSecurityPerimeterId = registerOutput<String>('networkSecurityPerimeterId');
   }

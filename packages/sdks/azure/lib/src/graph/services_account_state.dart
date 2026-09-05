@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering ServicesAccount resources.
 class ServicesAccountState {
   /// Customer owned application ID. Changing this forces a new Account to be created.
-  final pulumi.Input<String>? applicationId;
+  final pulumi.Input<String?>? applicationId;
   /// Billing Plan Id.
-  final pulumi.Input<String>? billingPlanId;
+  final pulumi.Input<String?>? billingPlanId;
   /// Specifies the name of this Account. Changing this forces a new Account to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specifies the name of the Resource Group within which this Account should exist. Changing this forces a new Account to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// A mapping of tags which should be assigned to the Account.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ServicesAccountState].
   /// [applicationId] Customer owned application ID. Changing this forces a new Account to be created.

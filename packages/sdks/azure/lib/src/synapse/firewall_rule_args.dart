@@ -14,7 +14,7 @@ class FirewallRuleArgs {
   /// &gt; **Note:** The Azure feature `Allow access to Azure services` requires the `name` to be `AllowAllWindowsAzureIps`.
   final pulumi.Input<String> endIpAddress;
   /// The Name of the firewall rule. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The starting IP address to allow through the firewall for this rule.
   final pulumi.Input<String> startIpAddress;
   /// The ID of the Synapse Workspace on which to create the Firewall Rule. Changing this forces a new resource to be created.

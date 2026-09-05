@@ -8,19 +8,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_paloalto_local_rulestack_certificate_local_rulestack_certificate_args_doc}
 class LocalRulestackCertificateArgs {
   /// The comment for Audit purposes.
-  final pulumi.Input<String>? auditComment;
+  final pulumi.Input<String?>? auditComment;
   /// The description for the Certificate.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The `versionlesId` of the Key Vault Certificate to use. Changing this forces a new Palo Alto Networks Rulestack Certificate to be created.
-  final pulumi.Input<String>? keyVaultCertificateId;
+  final pulumi.Input<String?>? keyVaultCertificateId;
   /// The name which should be used for this Palo Alto Networks Rulestack Certificate.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the TODO. Changing this forces a new Palo Alto Networks Rulestack Certificate to be created.
   final pulumi.Input<String> rulestackId;
   /// Should a Self Signed Certificate be used. Defaults to `false`. Changing this forces a new Palo Alto Networks Rulestack Certificate to be created.
   ///
   /// &gt; **Note:** One and only one of `selfSigned` or `keyVaultCertificateId` must be specified.
-  final pulumi.Input<bool>? selfSigned;
+  final pulumi.Input<bool?>? selfSigned;
 
   /// Creates a new [LocalRulestackCertificateArgs].
   /// [auditComment] The comment for Audit purposes.

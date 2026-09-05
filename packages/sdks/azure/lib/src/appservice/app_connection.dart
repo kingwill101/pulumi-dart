@@ -639,7 +639,7 @@ class AppConnection extends pulumi.CustomResource {
           'azure:appservice/appConnection:AppConnection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     authentication = registerOutput<AppConnectionAuthentication>('authentication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppConnectionAuthentication.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     clientType = registerOutput<String?>('clientType');
@@ -655,11 +655,12 @@ class AppConnection extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AppConnectionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AppConnection._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -673,6 +674,24 @@ class AppConnection extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    authentication = registerOutput<AppConnectionAuthentication>('authentication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppConnectionAuthentication.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    clientType = registerOutput<String?>('clientType');
+    functionAppId = registerOutput<String>('functionAppId');
+    this.name = registerOutput<String>('name');
+    secretStore = registerOutput<AppConnectionSecretStore?>('secretStore', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppConnectionSecretStore.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    targetResourceId = registerOutput<String>('targetResourceId');
+    vnetSolution = registerOutput<String?>('vnetSolution');
+  }
+
+  /// Creates a typed reference to an existing [AppConnection] resource.
+  AppConnection.reference(String urn)
+    : super(
+        'azure:appservice/appConnection:AppConnection',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     authentication = registerOutput<AppConnectionAuthentication>('authentication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppConnectionAuthentication.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     clientType = registerOutput<String?>('clientType');
     functionAppId = registerOutput<String>('functionAppId');

@@ -148,3 +148,14 @@ Future<GetResult> get(
   );
   return GetResult.fromMap(result);
 }
+
+pulumi.Output<GetResult> getOutput(
+  GetArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:loadtest/get:get',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetResult.fromMap);
+}

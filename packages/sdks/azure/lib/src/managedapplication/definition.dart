@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'definition_args.dart';
+import 'definition_authorization.dart';
 import 'definition_state.dart';
 
 /// Manages a Managed Application Definition.
@@ -256,7 +257,7 @@ import 'definition_state.dart';
 /// ```
 class Definition extends pulumi.CustomResource {
   /// One or more `authorization` block defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> authorizations;
+  late final pulumi.Output<List<DefinitionAuthorization>?> authorizations;
   /// Specifies the `createUiDefinition` JSON for the backing template with `Microsoft.Solutions/applications` resource.
   late final pulumi.Output<String?> createUiDefinition;
   /// Specifies the managed application definition description.
@@ -294,9 +295,9 @@ class Definition extends pulumi.CustomResource {
           'azure:managedapplication/definition:Definition',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
-    authorizations = registerOutput<List<Map<String, dynamic>>?>('authorizations');
+    authorizations = registerOutput<List<DefinitionAuthorization>?>('authorizations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DefinitionAuthorization>(guardedValue, (value) => DefinitionAuthorization.fromMap((value as Map).cast<String, dynamic>())); });
     createUiDefinition = registerOutput<String?>('createUiDefinition');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
@@ -307,7 +308,7 @@ class Definition extends pulumi.CustomResource {
     packageEnabled = registerOutput<bool?>('packageEnabled');
     packageFileUri = registerOutput<String?>('packageFileUri');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Definition] resource's state with the given [name] and [id].
@@ -315,11 +316,12 @@ class Definition extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DefinitionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Definition._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -333,7 +335,7 @@ class Definition extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    authorizations = registerOutput<List<Map<String, dynamic>>?>('authorizations');
+    authorizations = registerOutput<List<DefinitionAuthorization>?>('authorizations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DefinitionAuthorization>(guardedValue, (value) => DefinitionAuthorization.fromMap((value as Map).cast<String, dynamic>())); });
     createUiDefinition = registerOutput<String?>('createUiDefinition');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
@@ -344,6 +346,29 @@ class Definition extends pulumi.CustomResource {
     packageEnabled = registerOutput<bool?>('packageEnabled');
     packageFileUri = registerOutput<String?>('packageFileUri');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Definition] resource.
+  Definition.reference(String urn)
+    : super(
+        'azure:managedapplication/definition:Definition',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    authorizations = registerOutput<List<DefinitionAuthorization>?>('authorizations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DefinitionAuthorization>(guardedValue, (value) => DefinitionAuthorization.fromMap((value as Map).cast<String, dynamic>())); });
+    createUiDefinition = registerOutput<String?>('createUiDefinition');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    location = registerOutput<String>('location');
+    lockLevel = registerOutput<String>('lockLevel');
+    mainTemplate = registerOutput<String?>('mainTemplate');
+    this.name = registerOutput<String>('name');
+    packageEnabled = registerOutput<bool?>('packageEnabled');
+    packageFileUri = registerOutput<String?>('packageFileUri');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

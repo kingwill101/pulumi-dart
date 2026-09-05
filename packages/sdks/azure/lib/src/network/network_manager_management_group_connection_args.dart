@@ -8,11 +8,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_network_network_manager_management_group_connection_network_manager_management_group_connection_args_doc}
 class NetworkManagerManagementGroupConnectionArgs {
   /// A description of the Network Manager Management Group Connection.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Specifies the ID of the target Management Group. Changing this forces a new resource to be created.
   final pulumi.Input<String> managementGroupId;
   /// Specifies the name which should be used for this Network Manager Management Group Connection. Changing this forces a new Network Manager Management Group Connection to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specifies the ID of the Network Manager which the Management Group is connected to. Changing this forces a new resource to be created.
   final pulumi.Input<String> networkManagerId;
 

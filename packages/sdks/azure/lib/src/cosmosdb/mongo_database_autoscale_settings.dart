@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MongoDatabaseAutoscaleSettings {
   /// The maximum throughput of the MongoDB database (RU/s). Must be between `1,000` and `1,000,000`. Must be set in increments of `1,000`. Conflicts with `throughput`.
-  final pulumi.Input<int>? maxThroughput;
+  final pulumi.Input<int?>? maxThroughput;
 
   /// Creates a new [MongoDatabaseAutoscaleSettings].
   /// [maxThroughput] The maximum throughput of the MongoDB database (RU/s). Must be between `1,000` and `1,000,000`. Must be set in increments of `1,000`. Conflicts with `throughput`.
@@ -20,7 +20,7 @@ class MongoDatabaseAutoscaleSettings {
 
   factory MongoDatabaseAutoscaleSettings.fromMap(Map<String, dynamic> map) {
     return MongoDatabaseAutoscaleSettings(
-      maxThroughput: (() { final guardedValue = map['maxThroughput']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxThroughput: (() { final guardedValue = map['maxThroughput']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

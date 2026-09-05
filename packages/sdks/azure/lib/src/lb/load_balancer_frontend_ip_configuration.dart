@@ -4,33 +4,33 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LoadBalancerFrontendIpConfiguration {
   /// The Frontend IP Configuration ID of a Gateway SKU Load Balancer.
-  final pulumi.Input<String>? gatewayLoadBalancerFrontendIpConfigurationId;
+  final pulumi.Input<String?>? gatewayLoadBalancerFrontendIpConfigurationId;
   /// The id of the Frontend IP Configuration.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The list of IDs of inbound rules that use this frontend IP.
-  final pulumi.Input<List<String>>? inboundNatRules;
+  final pulumi.Input<List<String>?>? inboundNatRules;
   /// The list of IDs of load balancing rules that use this frontend IP.
-  final pulumi.Input<List<String>>? loadBalancerRules;
+  final pulumi.Input<List<String>?>? loadBalancerRules;
   /// Specifies the name of the frontend IP configuration.
   final pulumi.Input<String> name;
   /// The list of IDs outbound rules that use this frontend IP.
-  final pulumi.Input<List<String>>? outboundRules;
+  final pulumi.Input<List<String>?>? outboundRules;
   /// Private IP Address to assign to the Load Balancer. The last one and first four IPs in any range are reserved and cannot be manually assigned.
-  final pulumi.Input<String>? privateIpAddress;
+  final pulumi.Input<String?>? privateIpAddress;
   /// The allocation method for the Private IP Address used by this Load Balancer. Possible values as `Dynamic` and `Static`.
-  final pulumi.Input<String>? privateIpAddressAllocation;
+  final pulumi.Input<String?>? privateIpAddressAllocation;
   /// The version of IP that the Private IP Address is. Possible values are `IPv4` or `IPv6`.
-  final pulumi.Input<String>? privateIpAddressVersion;
+  final pulumi.Input<String?>? privateIpAddressVersion;
   /// The ID of a Public IP Address which should be associated with the Load Balancer.
-  final pulumi.Input<String>? publicIpAddressId;
+  final pulumi.Input<String?>? publicIpAddressId;
   /// The ID of a Public IP Prefix which should be associated with the Load Balancer. Public IP Prefix can only be used with outbound rules.
-  final pulumi.Input<String>? publicIpPrefixId;
+  final pulumi.Input<String?>? publicIpPrefixId;
   /// The ID of the Subnet which should be associated with the IP Configuration.
-  final pulumi.Input<String>? subnetId;
+  final pulumi.Input<String?>? subnetId;
   /// Specifies a list of Availability Zones in which the IP Address for this Load Balancer should be located.
   ///
   /// &gt; **Note:** Availability Zones are only supported with a [Standard SKU](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones) and [in select regions](https://docs.microsoft.com/azure/availability-zones/az-overview) at this time.
-  final pulumi.Input<List<String>>? zones;
+  final pulumi.Input<List<String>?>? zones;
 
   /// Creates a new [LoadBalancerFrontendIpConfiguration].
   /// [gatewayLoadBalancerFrontendIpConfigurationId] The Frontend IP Configuration ID of a Gateway SKU Load Balancer.

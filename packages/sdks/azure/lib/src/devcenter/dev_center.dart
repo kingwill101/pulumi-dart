@@ -267,7 +267,7 @@ class DevCenter extends pulumi.CustomResource {
           'azure:devcenter/devCenter:DevCenter',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     devCenterUri = registerOutput<String>('devCenterUri');
     identity = registerOutput<DevCenterIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DevCenterIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -275,7 +275,7 @@ class DevCenter extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     projectCatalogItemSyncEnabled = registerOutput<bool?>('projectCatalogItemSyncEnabled');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [DevCenter] resource's state with the given [name] and [id].
@@ -283,11 +283,12 @@ class DevCenter extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DevCenterState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DevCenter._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -307,6 +308,24 @@ class DevCenter extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     projectCatalogItemSyncEnabled = registerOutput<bool?>('projectCatalogItemSyncEnabled');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [DevCenter] resource.
+  DevCenter.reference(String urn)
+    : super(
+        'azure:devcenter/devCenter:DevCenter',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    devCenterUri = registerOutput<String>('devCenterUri');
+    identity = registerOutput<DevCenterIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DevCenterIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    projectCatalogItemSyncEnabled = registerOutput<bool?>('projectCatalogItemSyncEnabled');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

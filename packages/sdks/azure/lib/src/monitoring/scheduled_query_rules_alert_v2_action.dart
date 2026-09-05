@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ScheduledQueryRulesAlertV2Action {
   /// List of Action Group resource IDs to invoke when the alert fires.
-  final pulumi.Input<List<String>>? actionGroups;
+  final pulumi.Input<List<String>?>? actionGroups;
   /// Specifies the properties of an alert payload.
-  final pulumi.Input<Map<String, String>>? customProperties;
+  final pulumi.Input<Map<String, String>?>? customProperties;
   /// Custom subject override for all email ids in Azure action group.
-  final pulumi.Input<String>? emailSubject;
+  final pulumi.Input<String?>? emailSubject;
 
   /// Creates a new [ScheduledQueryRulesAlertV2Action].
   /// [actionGroups] List of Action Group resource IDs to invoke when the alert fires.

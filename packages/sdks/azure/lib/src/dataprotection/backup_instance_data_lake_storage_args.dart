@@ -12,9 +12,9 @@ class BackupInstanceDataLakeStorageArgs {
   /// The ID of the Backup Vault within which the Backup Instance Data Lake Storage should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String> dataProtectionBackupVaultId;
   /// The location of the source Storage Account. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name which should be used for this Backup Instance Data Lake Storage. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the source Storage Account. The Storage Account must have Hierarchical Namespace enabled. Changing this forces a new resource to be created.
   final pulumi.Input<String> storageAccountId;
   /// The names of the storage containers of the source Storage Account.

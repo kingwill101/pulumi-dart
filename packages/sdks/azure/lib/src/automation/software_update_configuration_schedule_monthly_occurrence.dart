@@ -26,7 +26,7 @@ class SoftwareUpdateConfigurationScheduleMonthlyOccurrence {
   factory SoftwareUpdateConfigurationScheduleMonthlyOccurrence.fromMap(Map<String, dynamic> map) {
     return SoftwareUpdateConfigurationScheduleMonthlyOccurrence(
       day: pulumi.Input.fromValue(map['day'] as String),
-      occurrence: pulumi.Input.fromValue(map['occurrence'] as int),
+      occurrence: pulumi.Input.fromValue((map['occurrence'] as num).toInt()),
     );
   }
 }

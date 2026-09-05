@@ -350,7 +350,7 @@ import 'managed_disk_state.dart';
 /// 			ResourceGroupName:  example.Name,
 /// 			StorageAccountType: pulumi.String("Standard_LRS"),
 /// 			CreateOption:       pulumi.String("Copy"),
-/// 			SourceResourceId:   source.ID(),
+/// 			SourceResourceId:   source.ID().ToIDOutput().ToStringOutput(),
 /// 			DiskSizeGb:         pulumi.Int(1),
 /// 			Tags: pulumi.StringMap{
 /// 				"environment": pulumi.String("staging"),
@@ -633,7 +633,7 @@ class ManagedDisk extends pulumi.CustomResource {
           'azure:compute/managedDisk:ManagedDisk',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     createOption = registerOutput<String>('createOption');
     diskAccessId = registerOutput<String?>('diskAccessId');
@@ -665,7 +665,7 @@ class ManagedDisk extends pulumi.CustomResource {
     sourceUri = registerOutput<String>('sourceUri');
     storageAccountId = registerOutput<String?>('storageAccountId');
     storageAccountType = registerOutput<String>('storageAccountType');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tier = registerOutput<String>('tier');
     trustedLaunchEnabled = registerOutput<bool?>('trustedLaunchEnabled');
     uploadSizeBytes = registerOutput<int?>('uploadSizeBytes');
@@ -677,11 +677,12 @@ class ManagedDisk extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ManagedDiskState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ManagedDisk._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -725,7 +726,53 @@ class ManagedDisk extends pulumi.CustomResource {
     sourceUri = registerOutput<String>('sourceUri');
     storageAccountId = registerOutput<String?>('storageAccountId');
     storageAccountType = registerOutput<String>('storageAccountType');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tier = registerOutput<String>('tier');
+    trustedLaunchEnabled = registerOutput<bool?>('trustedLaunchEnabled');
+    uploadSizeBytes = registerOutput<int?>('uploadSizeBytes');
+    zone = registerOutput<String?>('zone');
+  }
+
+  /// Creates a typed reference to an existing [ManagedDisk] resource.
+  ManagedDisk.reference(String urn)
+    : super(
+        'azure:compute/managedDisk:ManagedDisk',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createOption = registerOutput<String>('createOption');
+    diskAccessId = registerOutput<String?>('diskAccessId');
+    diskEncryptionSetId = registerOutput<String?>('diskEncryptionSetId');
+    diskIopsReadOnly = registerOutput<int>('diskIopsReadOnly');
+    diskIopsReadWrite = registerOutput<int>('diskIopsReadWrite');
+    diskMbpsReadOnly = registerOutput<int>('diskMbpsReadOnly');
+    diskMbpsReadWrite = registerOutput<int>('diskMbpsReadWrite');
+    diskSizeGb = registerOutput<int>('diskSizeGb');
+    edgeZone = registerOutput<String?>('edgeZone');
+    encryptionSettings = registerOutput<ManagedDiskEncryptionSettings?>('encryptionSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedDiskEncryptionSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    galleryImageReferenceId = registerOutput<String?>('galleryImageReferenceId');
+    hyperVGeneration = registerOutput<String?>('hyperVGeneration');
+    imageReferenceId = registerOutput<String?>('imageReferenceId');
+    location = registerOutput<String>('location');
+    logicalSectorSize = registerOutput<int>('logicalSectorSize');
+    maxShares = registerOutput<int>('maxShares');
+    this.name = registerOutput<String>('name');
+    networkAccessPolicy = registerOutput<String?>('networkAccessPolicy');
+    onDemandBurstingEnabled = registerOutput<bool?>('onDemandBurstingEnabled');
+    optimizedFrequentAttachEnabled = registerOutput<bool?>('optimizedFrequentAttachEnabled');
+    osType = registerOutput<String?>('osType');
+    performancePlusEnabled = registerOutput<bool?>('performancePlusEnabled');
+    publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    secureVmDiskEncryptionSetId = registerOutput<String?>('secureVmDiskEncryptionSetId');
+    securityType = registerOutput<String?>('securityType');
+    sourceResourceId = registerOutput<String?>('sourceResourceId');
+    sourceUri = registerOutput<String>('sourceUri');
+    storageAccountId = registerOutput<String?>('storageAccountId');
+    storageAccountType = registerOutput<String>('storageAccountType');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tier = registerOutput<String>('tier');
     trustedLaunchEnabled = registerOutput<bool?>('trustedLaunchEnabled');
     uploadSizeBytes = registerOutput<int?>('uploadSizeBytes');

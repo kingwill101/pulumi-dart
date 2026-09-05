@@ -226,7 +226,7 @@ class AvailabilitySet extends pulumi.CustomResource {
           'azure:compute/availabilitySet:AvailabilitySet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     location = registerOutput<String>('location');
     managed = registerOutput<bool?>('managed');
@@ -235,7 +235,7 @@ class AvailabilitySet extends pulumi.CustomResource {
     platformUpdateDomainCount = registerOutput<int?>('platformUpdateDomainCount');
     proximityPlacementGroupId = registerOutput<String?>('proximityPlacementGroupId');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [AvailabilitySet] resource's state with the given [name] and [id].
@@ -243,11 +243,12 @@ class AvailabilitySet extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AvailabilitySetState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AvailabilitySet._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -268,6 +269,25 @@ class AvailabilitySet extends pulumi.CustomResource {
     platformUpdateDomainCount = registerOutput<int?>('platformUpdateDomainCount');
     proximityPlacementGroupId = registerOutput<String?>('proximityPlacementGroupId');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [AvailabilitySet] resource.
+  AvailabilitySet.reference(String urn)
+    : super(
+        'azure:compute/availabilitySet:AvailabilitySet',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    location = registerOutput<String>('location');
+    managed = registerOutput<bool?>('managed');
+    this.name = registerOutput<String>('name');
+    platformFaultDomainCount = registerOutput<int?>('platformFaultDomainCount');
+    platformUpdateDomainCount = registerOutput<int?>('platformUpdateDomainCount');
+    proximityPlacementGroupId = registerOutput<String?>('proximityPlacementGroupId');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

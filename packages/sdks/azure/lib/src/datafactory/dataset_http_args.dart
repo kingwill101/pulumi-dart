@@ -11,29 +11,29 @@ class DatasetHttpArgs {
   /// A map of additional properties to associate with the Data Factory Dataset.
   ///
   /// The following supported arguments are specific to HTTP Dataset:
-  final pulumi.Input<Map<String, String>>? additionalProperties;
+  final pulumi.Input<Map<String, String>?>? additionalProperties;
   /// List of tags that can be used for describing the Data Factory Dataset.
-  final pulumi.Input<List<String>>? annotations;
+  final pulumi.Input<List<String>?>? annotations;
   /// The Data Factory ID in which to associate the Linked Service with. Changing this forces a new resource.
   final pulumi.Input<String> dataFactoryId;
   /// The description for the Data Factory Dataset.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The folder that this Dataset is in. If not specified, the Dataset will appear at the root level.
-  final pulumi.Input<String>? folder;
+  final pulumi.Input<String?>? folder;
   /// The Data Factory Linked Service name in which to associate the Dataset with.
   final pulumi.Input<String> linkedServiceName;
   /// Specifies the name of the Data Factory Dataset. Changing this forces a new resource to be created. Must be globally unique. See the [Microsoft documentation](https://docs.microsoft.com/azure/data-factory/naming-rules) for all restrictions.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A map of parameters to associate with the Data Factory Dataset.
-  final pulumi.Input<Map<String, String>>? parameters;
+  final pulumi.Input<Map<String, String>?>? parameters;
   /// The relative URL based on the URL in the HTTP Linked Service.
-  final pulumi.Input<String>? relativeUrl;
+  final pulumi.Input<String?>? relativeUrl;
   /// The body for the HTTP request.
-  final pulumi.Input<String>? requestBody;
+  final pulumi.Input<String?>? requestBody;
   /// The HTTP method for the HTTP request. (e.g. GET, POST)
-  final pulumi.Input<String>? requestMethod;
+  final pulumi.Input<String?>? requestMethod;
   /// A `schemaColumn` block as defined below.
-  final pulumi.Input<List<DatasetHttpSchemaColumn>>? schemaColumns;
+  final pulumi.Input<List<DatasetHttpSchemaColumn>?>? schemaColumns;
 
   /// Creates a new [DatasetHttpArgs].
   /// [additionalProperties] A map of additional properties to associate with the Data Factory Dataset.

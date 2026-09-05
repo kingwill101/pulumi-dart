@@ -11,17 +11,17 @@ class AccountProjectArgs {
   /// The ID of the Cognitive Account where the Project should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String> cognitiveAccountId;
   /// A description of the Cognitive Account Project.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The display name of the Cognitive Account Project.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// An `identity` block as defined below.
   final pulumi.Input<AccountProjectIdentity> identity;
   /// The Azure Region where the Cognitive Account Project should exist. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the Cognitive Account Project. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A mapping of tags to assign to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [AccountProjectArgs].
   /// [cognitiveAccountId] The ID of the Cognitive Account where the Project should exist. Changing this forces a new resource to be created.

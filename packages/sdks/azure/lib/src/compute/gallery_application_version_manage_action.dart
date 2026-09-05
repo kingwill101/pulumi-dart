@@ -8,7 +8,7 @@ class GalleryApplicationVersionManageAction {
   /// The command to remove the Gallery Application. Changing this forces a new resource to be created.
   final pulumi.Input<String> remove;
   /// The command to update the Gallery Application. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? update;
+  final pulumi.Input<String?>? update;
 
   /// Creates a new [GalleryApplicationVersionManageAction].
   /// [install] The command to install the Gallery Application. Changing this forces a new resource to be created.

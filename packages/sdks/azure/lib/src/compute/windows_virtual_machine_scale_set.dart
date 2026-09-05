@@ -1,18 +1,25 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'windows_virtual_machine_scale_set_additional_capabilities.dart';
+import 'windows_virtual_machine_scale_set_additional_unattend_content.dart';
 import 'windows_virtual_machine_scale_set_args.dart';
 import 'windows_virtual_machine_scale_set_automatic_instance_repair.dart';
 import 'windows_virtual_machine_scale_set_automatic_os_upgrade_policy.dart';
 import 'windows_virtual_machine_scale_set_boot_diagnostics.dart';
+import 'windows_virtual_machine_scale_set_data_disk.dart';
+import 'windows_virtual_machine_scale_set_extension.dart';
+import 'windows_virtual_machine_scale_set_gallery_application.dart';
 import 'windows_virtual_machine_scale_set_identity.dart';
+import 'windows_virtual_machine_scale_set_network_interface.dart';
 import 'windows_virtual_machine_scale_set_os_disk.dart';
 import 'windows_virtual_machine_scale_set_plan.dart';
 import 'windows_virtual_machine_scale_set_rolling_upgrade_policy.dart';
 import 'windows_virtual_machine_scale_set_scale_in.dart';
+import 'windows_virtual_machine_scale_set_secret.dart';
 import 'windows_virtual_machine_scale_set_source_image_reference.dart';
 import 'windows_virtual_machine_scale_set_spot_restore.dart';
 import 'windows_virtual_machine_scale_set_state.dart';
 import 'windows_virtual_machine_scale_set_termination_notification.dart';
+import 'windows_virtual_machine_scale_set_winrm_listener.dart';
 
 /// Manages a Windows Virtual Machine Scale Set.
 ///
@@ -274,7 +281,7 @@ import 'windows_virtual_machine_scale_set_termination_notification.dart';
 /// 						&compute.WindowsVirtualMachineScaleSetNetworkInterfaceIpConfigurationArgs{
 /// 							Name:     pulumi.String("internal"),
 /// 							Primary:  pulumi.Bool(true),
-/// 							SubnetId: internal.ID(),
+/// 							SubnetId: internal.ID().ToIDOutput().ToStringOutput(),
 /// 						},
 /// 					},
 /// 				},
@@ -484,7 +491,7 @@ import 'windows_virtual_machine_scale_set_termination_notification.dart';
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
-/// * `Microsoft.Compute` - 2024-11-01
+/// * `Microsoft.Compute` - 2025-04-01
 ///
 /// ## Import
 ///
@@ -497,7 +504,7 @@ class WindowsVirtualMachineScaleSet extends pulumi.CustomResource {
   /// An `additionalCapabilities` block as defined below.
   late final pulumi.Output<WindowsVirtualMachineScaleSetAdditionalCapabilities?> additionalCapabilities;
   /// One or more `additionalUnattendContent` blocks as defined below. Changing this forces a new resource to be created.
-  late final pulumi.Output<List<Map<String, dynamic>>?> additionalUnattendContents;
+  late final pulumi.Output<List<WindowsVirtualMachineScaleSetAdditionalUnattendContent>?> additionalUnattendContents;
   /// The Password which should be used for the local-administrator on this Virtual Machine. Changing this forces a new resource to be created.
   late final pulumi.Output<String> adminPassword;
   /// The username of the local administrator on each Virtual Machine Scale Set instance. Changing this forces a new resource to be created.
@@ -523,7 +530,7 @@ class WindowsVirtualMachineScaleSet extends pulumi.CustomResource {
   /// &gt; **Note:** When Custom Data has been configured, it's not possible to remove it without tainting the Virtual Machine Scale Set, due to a limitation of the Azure API.
   late final pulumi.Output<String?> customData;
   /// One or more `dataDisk` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> dataDisks;
+  late final pulumi.Output<List<WindowsVirtualMachineScaleSetDataDisk>?> dataDisks;
   /// Should Virtual Machine Extensions be run on Overprovisioned Virtual Machines in the Scale Set? Defaults to `false`.
   late final pulumi.Output<bool?> doNotRunExtensionsOnOverprovisionedMachines;
   /// Specifies the Edge Zone within the Azure Region where this Windows Virtual Machine Scale Set should exist. Changing this forces a new Windows Virtual Machine Scale Set to be created.
@@ -541,11 +548,11 @@ class WindowsVirtualMachineScaleSet extends pulumi.CustomResource {
   /// &gt; **Note:** `extensionOperationsEnabled` may only be set to `false` if there are no extensions defined in the `extension` field.
   late final pulumi.Output<bool?> extensionOperationsEnabled;
   /// One or more `extension` blocks as defined below
-  late final pulumi.Output<List<Map<String, dynamic>>> extensions;
+  late final pulumi.Output<List<WindowsVirtualMachineScaleSetExtension>> extensions;
   /// Specifies the duration allocated for all extensions to start. The time duration should be between `15` minutes and `120` minutes (inclusive) and should be specified in ISO 8601 format. Defaults to `PT1H30M`.
   late final pulumi.Output<String?> extensionsTimeBudget;
   /// One or more `galleryApplication` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> galleryApplications;
+  late final pulumi.Output<List<WindowsVirtualMachineScaleSetGalleryApplication>?> galleryApplications;
   /// The ID of a Load Balancer Probe which should be used to determine the health of an instance. This is Required and can only be specified when `upgradeMode` is set to `Automatic` or `Rolling`.
   late final pulumi.Output<String?> healthProbeId;
   /// Specifies the ID of the dedicated host group that the virtual machine scale set resides in. Changing this forces a new resource to be created.
@@ -567,7 +574,7 @@ class WindowsVirtualMachineScaleSet extends pulumi.CustomResource {
   /// The name of the Windows Virtual Machine Scale Set. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
   /// One or more `networkInterface` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>> networkInterfaces;
+  late final pulumi.Output<List<WindowsVirtualMachineScaleSetNetworkInterface>> networkInterfaces;
   /// An `osDisk` block as defined below.
   late final pulumi.Output<WindowsVirtualMachineScaleSetOsDisk> osDisk;
   /// Should Azure over-provision Virtual Machines in this Scale Set? This means that multiple Virtual Machines will be provisioned and Azure will keep the instances which become available first - which improves provisioning success rates and improves deployment time. You're not billed for these over-provisioned VM's and they don't count towards the Subscription Quota. Defaults to `true`.
@@ -601,7 +608,7 @@ class WindowsVirtualMachineScaleSet extends pulumi.CustomResource {
   /// A `scaleIn` block as defined below.
   late final pulumi.Output<WindowsVirtualMachineScaleSetScaleIn?> scaleIn;
   /// One or more `secret` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> secrets;
+  late final pulumi.Output<List<WindowsVirtualMachineScaleSetSecret>?> secrets;
   /// Specifies if Secure Boot and Trusted Launch is enabled for the Virtual Machine. Changing this forces a new resource to be created.
   late final pulumi.Output<bool?> secureBootEnabled;
   /// Should this Virtual Machine Scale Set be limited to a Single Placement Group, which means the number of instances will be capped at 100 Virtual Machines. Defaults to `true`.
@@ -635,7 +642,7 @@ class WindowsVirtualMachineScaleSet extends pulumi.CustomResource {
   /// Specifies if vTPM (Virtual Trusted Platform Module) and Trusted Launch is enabled for the Virtual Machine. Changing this forces a new resource to be created.
   late final pulumi.Output<bool?> vtpmEnabled;
   /// One or more `winrmListener` blocks as defined below. Changing this forces a new resource to be created.
-  late final pulumi.Output<List<Map<String, dynamic>>?> winrmListeners;
+  late final pulumi.Output<List<WindowsVirtualMachineScaleSetWinrmListener>?> winrmListeners;
   /// Should the Virtual Machines in this Scale Set be strictly evenly distributed across Availability Zones? Defaults to `false`. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** This can only be set to `true` when one or more `zones` are configured.
@@ -657,28 +664,29 @@ class WindowsVirtualMachineScaleSet extends pulumi.CustomResource {
           'azure:compute/windowsVirtualMachineScaleSet:WindowsVirtualMachineScaleSet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['adminPassword', 'customData'],
         ) {
     additionalCapabilities = registerOutput<WindowsVirtualMachineScaleSetAdditionalCapabilities?>('additionalCapabilities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WindowsVirtualMachineScaleSetAdditionalCapabilities.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    additionalUnattendContents = registerOutput<List<Map<String, dynamic>>?>('additionalUnattendContents');
-    adminPassword = registerOutput<String>('adminPassword');
+    additionalUnattendContents = registerOutput<List<WindowsVirtualMachineScaleSetAdditionalUnattendContent>?>('additionalUnattendContents', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WindowsVirtualMachineScaleSetAdditionalUnattendContent>(guardedValue, (value) => WindowsVirtualMachineScaleSetAdditionalUnattendContent.fromMap((value as Map).cast<String, dynamic>())); });
+    adminPassword = registerOutput<String>('adminPassword', isSecret: true);
     adminUsername = registerOutput<String>('adminUsername');
     automaticInstanceRepair = registerOutput<WindowsVirtualMachineScaleSetAutomaticInstanceRepair>('automaticInstanceRepair', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WindowsVirtualMachineScaleSetAutomaticInstanceRepair.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     automaticOsUpgradePolicy = registerOutput<WindowsVirtualMachineScaleSetAutomaticOsUpgradePolicy?>('automaticOsUpgradePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WindowsVirtualMachineScaleSetAutomaticOsUpgradePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     bootDiagnostics = registerOutput<WindowsVirtualMachineScaleSetBootDiagnostics?>('bootDiagnostics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WindowsVirtualMachineScaleSetBootDiagnostics.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     capacityReservationGroupId = registerOutput<String?>('capacityReservationGroupId');
     computerNamePrefix = registerOutput<String>('computerNamePrefix');
-    customData = registerOutput<String?>('customData');
-    dataDisks = registerOutput<List<Map<String, dynamic>>?>('dataDisks');
+    customData = registerOutput<String?>('customData', isSecret: true);
+    dataDisks = registerOutput<List<WindowsVirtualMachineScaleSetDataDisk>?>('dataDisks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WindowsVirtualMachineScaleSetDataDisk>(guardedValue, (value) => WindowsVirtualMachineScaleSetDataDisk.fromMap((value as Map).cast<String, dynamic>())); });
     doNotRunExtensionsOnOverprovisionedMachines = registerOutput<bool?>('doNotRunExtensionsOnOverprovisionedMachines');
     edgeZone = registerOutput<String?>('edgeZone');
     enableAutomaticUpdates = registerOutput<bool?>('enableAutomaticUpdates');
     encryptionAtHostEnabled = registerOutput<bool?>('encryptionAtHostEnabled');
     evictionPolicy = registerOutput<String?>('evictionPolicy');
     extensionOperationsEnabled = registerOutput<bool?>('extensionOperationsEnabled');
-    extensions = registerOutput<List<Map<String, dynamic>>>('extensions');
+    extensions = registerOutput<List<WindowsVirtualMachineScaleSetExtension>>('extensions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WindowsVirtualMachineScaleSetExtension>(guardedValue, (value) => WindowsVirtualMachineScaleSetExtension.fromMap((value as Map).cast<String, dynamic>())); });
     extensionsTimeBudget = registerOutput<String?>('extensionsTimeBudget');
-    galleryApplications = registerOutput<List<Map<String, dynamic>>?>('galleryApplications');
+    galleryApplications = registerOutput<List<WindowsVirtualMachineScaleSetGalleryApplication>?>('galleryApplications', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WindowsVirtualMachineScaleSetGalleryApplication>(guardedValue, (value) => WindowsVirtualMachineScaleSetGalleryApplication.fromMap((value as Map).cast<String, dynamic>())); });
     healthProbeId = registerOutput<String?>('healthProbeId');
     hostGroupId = registerOutput<String?>('hostGroupId');
     identity = registerOutput<WindowsVirtualMachineScaleSetIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WindowsVirtualMachineScaleSetIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -687,7 +695,7 @@ class WindowsVirtualMachineScaleSet extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     maxBidPrice = registerOutput<double?>('maxBidPrice');
     this.name = registerOutput<String>('name');
-    networkInterfaces = registerOutput<List<Map<String, dynamic>>>('networkInterfaces');
+    networkInterfaces = registerOutput<List<WindowsVirtualMachineScaleSetNetworkInterface>>('networkInterfaces', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WindowsVirtualMachineScaleSetNetworkInterface>(guardedValue, (value) => WindowsVirtualMachineScaleSetNetworkInterface.fromMap((value as Map).cast<String, dynamic>())); });
     osDisk = registerOutput<WindowsVirtualMachineScaleSetOsDisk>('osDisk', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WindowsVirtualMachineScaleSetOsDisk.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     overprovision = registerOutput<bool?>('overprovision');
     plan = registerOutput<WindowsVirtualMachineScaleSetPlan?>('plan', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WindowsVirtualMachineScaleSetPlan.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -700,23 +708,23 @@ class WindowsVirtualMachineScaleSet extends pulumi.CustomResource {
     resourceGroupName = registerOutput<String>('resourceGroupName');
     rollingUpgradePolicy = registerOutput<WindowsVirtualMachineScaleSetRollingUpgradePolicy?>('rollingUpgradePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WindowsVirtualMachineScaleSetRollingUpgradePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     scaleIn = registerOutput<WindowsVirtualMachineScaleSetScaleIn?>('scaleIn', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WindowsVirtualMachineScaleSetScaleIn.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    secrets = registerOutput<List<Map<String, dynamic>>?>('secrets');
+    secrets = registerOutput<List<WindowsVirtualMachineScaleSetSecret>?>('secrets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WindowsVirtualMachineScaleSetSecret>(guardedValue, (value) => WindowsVirtualMachineScaleSetSecret.fromMap((value as Map).cast<String, dynamic>())); });
     secureBootEnabled = registerOutput<bool?>('secureBootEnabled');
     singlePlacementGroup = registerOutput<bool?>('singlePlacementGroup');
     sku = registerOutput<String>('sku');
     sourceImageId = registerOutput<String?>('sourceImageId');
     sourceImageReference = registerOutput<WindowsVirtualMachineScaleSetSourceImageReference?>('sourceImageReference', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WindowsVirtualMachineScaleSetSourceImageReference.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     spotRestore = registerOutput<WindowsVirtualMachineScaleSetSpotRestore>('spotRestore', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WindowsVirtualMachineScaleSetSpotRestore.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     terminationNotification = registerOutput<WindowsVirtualMachineScaleSetTerminationNotification>('terminationNotification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WindowsVirtualMachineScaleSetTerminationNotification.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     timezone = registerOutput<String?>('timezone');
     uniqueId = registerOutput<String>('uniqueId');
     upgradeMode = registerOutput<String?>('upgradeMode');
     userData = registerOutput<String?>('userData');
     vtpmEnabled = registerOutput<bool?>('vtpmEnabled');
-    winrmListeners = registerOutput<List<Map<String, dynamic>>?>('winrmListeners');
+    winrmListeners = registerOutput<List<WindowsVirtualMachineScaleSetWinrmListener>?>('winrmListeners', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WindowsVirtualMachineScaleSetWinrmListener>(guardedValue, (value) => WindowsVirtualMachineScaleSetWinrmListener.fromMap((value as Map).cast<String, dynamic>())); });
     zoneBalance = registerOutput<bool?>('zoneBalance');
-    zones = registerOutput<List<String>?>('zones');
+    zones = registerOutput<List<String>?>('zones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [WindowsVirtualMachineScaleSet] resource's state with the given [name] and [id].
@@ -724,11 +732,12 @@ class WindowsVirtualMachineScaleSet extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     WindowsVirtualMachineScaleSetState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return WindowsVirtualMachineScaleSet._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -743,25 +752,25 @@ class WindowsVirtualMachineScaleSet extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     additionalCapabilities = registerOutput<WindowsVirtualMachineScaleSetAdditionalCapabilities?>('additionalCapabilities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WindowsVirtualMachineScaleSetAdditionalCapabilities.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    additionalUnattendContents = registerOutput<List<Map<String, dynamic>>?>('additionalUnattendContents');
-    adminPassword = registerOutput<String>('adminPassword');
+    additionalUnattendContents = registerOutput<List<WindowsVirtualMachineScaleSetAdditionalUnattendContent>?>('additionalUnattendContents', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WindowsVirtualMachineScaleSetAdditionalUnattendContent>(guardedValue, (value) => WindowsVirtualMachineScaleSetAdditionalUnattendContent.fromMap((value as Map).cast<String, dynamic>())); });
+    adminPassword = registerOutput<String>('adminPassword', isSecret: true);
     adminUsername = registerOutput<String>('adminUsername');
     automaticInstanceRepair = registerOutput<WindowsVirtualMachineScaleSetAutomaticInstanceRepair>('automaticInstanceRepair', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WindowsVirtualMachineScaleSetAutomaticInstanceRepair.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     automaticOsUpgradePolicy = registerOutput<WindowsVirtualMachineScaleSetAutomaticOsUpgradePolicy?>('automaticOsUpgradePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WindowsVirtualMachineScaleSetAutomaticOsUpgradePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     bootDiagnostics = registerOutput<WindowsVirtualMachineScaleSetBootDiagnostics?>('bootDiagnostics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WindowsVirtualMachineScaleSetBootDiagnostics.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     capacityReservationGroupId = registerOutput<String?>('capacityReservationGroupId');
     computerNamePrefix = registerOutput<String>('computerNamePrefix');
-    customData = registerOutput<String?>('customData');
-    dataDisks = registerOutput<List<Map<String, dynamic>>?>('dataDisks');
+    customData = registerOutput<String?>('customData', isSecret: true);
+    dataDisks = registerOutput<List<WindowsVirtualMachineScaleSetDataDisk>?>('dataDisks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WindowsVirtualMachineScaleSetDataDisk>(guardedValue, (value) => WindowsVirtualMachineScaleSetDataDisk.fromMap((value as Map).cast<String, dynamic>())); });
     doNotRunExtensionsOnOverprovisionedMachines = registerOutput<bool?>('doNotRunExtensionsOnOverprovisionedMachines');
     edgeZone = registerOutput<String?>('edgeZone');
     enableAutomaticUpdates = registerOutput<bool?>('enableAutomaticUpdates');
     encryptionAtHostEnabled = registerOutput<bool?>('encryptionAtHostEnabled');
     evictionPolicy = registerOutput<String?>('evictionPolicy');
     extensionOperationsEnabled = registerOutput<bool?>('extensionOperationsEnabled');
-    extensions = registerOutput<List<Map<String, dynamic>>>('extensions');
+    extensions = registerOutput<List<WindowsVirtualMachineScaleSetExtension>>('extensions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WindowsVirtualMachineScaleSetExtension>(guardedValue, (value) => WindowsVirtualMachineScaleSetExtension.fromMap((value as Map).cast<String, dynamic>())); });
     extensionsTimeBudget = registerOutput<String?>('extensionsTimeBudget');
-    galleryApplications = registerOutput<List<Map<String, dynamic>>?>('galleryApplications');
+    galleryApplications = registerOutput<List<WindowsVirtualMachineScaleSetGalleryApplication>?>('galleryApplications', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WindowsVirtualMachineScaleSetGalleryApplication>(guardedValue, (value) => WindowsVirtualMachineScaleSetGalleryApplication.fromMap((value as Map).cast<String, dynamic>())); });
     healthProbeId = registerOutput<String?>('healthProbeId');
     hostGroupId = registerOutput<String?>('hostGroupId');
     identity = registerOutput<WindowsVirtualMachineScaleSetIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WindowsVirtualMachineScaleSetIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -770,7 +779,7 @@ class WindowsVirtualMachineScaleSet extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     maxBidPrice = registerOutput<double?>('maxBidPrice');
     this.name = registerOutput<String>('name');
-    networkInterfaces = registerOutput<List<Map<String, dynamic>>>('networkInterfaces');
+    networkInterfaces = registerOutput<List<WindowsVirtualMachineScaleSetNetworkInterface>>('networkInterfaces', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WindowsVirtualMachineScaleSetNetworkInterface>(guardedValue, (value) => WindowsVirtualMachineScaleSetNetworkInterface.fromMap((value as Map).cast<String, dynamic>())); });
     osDisk = registerOutput<WindowsVirtualMachineScaleSetOsDisk>('osDisk', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WindowsVirtualMachineScaleSetOsDisk.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     overprovision = registerOutput<bool?>('overprovision');
     plan = registerOutput<WindowsVirtualMachineScaleSetPlan?>('plan', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WindowsVirtualMachineScaleSetPlan.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -783,22 +792,92 @@ class WindowsVirtualMachineScaleSet extends pulumi.CustomResource {
     resourceGroupName = registerOutput<String>('resourceGroupName');
     rollingUpgradePolicy = registerOutput<WindowsVirtualMachineScaleSetRollingUpgradePolicy?>('rollingUpgradePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WindowsVirtualMachineScaleSetRollingUpgradePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     scaleIn = registerOutput<WindowsVirtualMachineScaleSetScaleIn?>('scaleIn', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WindowsVirtualMachineScaleSetScaleIn.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    secrets = registerOutput<List<Map<String, dynamic>>?>('secrets');
+    secrets = registerOutput<List<WindowsVirtualMachineScaleSetSecret>?>('secrets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WindowsVirtualMachineScaleSetSecret>(guardedValue, (value) => WindowsVirtualMachineScaleSetSecret.fromMap((value as Map).cast<String, dynamic>())); });
     secureBootEnabled = registerOutput<bool?>('secureBootEnabled');
     singlePlacementGroup = registerOutput<bool?>('singlePlacementGroup');
     sku = registerOutput<String>('sku');
     sourceImageId = registerOutput<String?>('sourceImageId');
     sourceImageReference = registerOutput<WindowsVirtualMachineScaleSetSourceImageReference?>('sourceImageReference', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WindowsVirtualMachineScaleSetSourceImageReference.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     spotRestore = registerOutput<WindowsVirtualMachineScaleSetSpotRestore>('spotRestore', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WindowsVirtualMachineScaleSetSpotRestore.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     terminationNotification = registerOutput<WindowsVirtualMachineScaleSetTerminationNotification>('terminationNotification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WindowsVirtualMachineScaleSetTerminationNotification.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     timezone = registerOutput<String?>('timezone');
     uniqueId = registerOutput<String>('uniqueId');
     upgradeMode = registerOutput<String?>('upgradeMode');
     userData = registerOutput<String?>('userData');
     vtpmEnabled = registerOutput<bool?>('vtpmEnabled');
-    winrmListeners = registerOutput<List<Map<String, dynamic>>?>('winrmListeners');
+    winrmListeners = registerOutput<List<WindowsVirtualMachineScaleSetWinrmListener>?>('winrmListeners', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WindowsVirtualMachineScaleSetWinrmListener>(guardedValue, (value) => WindowsVirtualMachineScaleSetWinrmListener.fromMap((value as Map).cast<String, dynamic>())); });
     zoneBalance = registerOutput<bool?>('zoneBalance');
-    zones = registerOutput<List<String>?>('zones');
+    zones = registerOutput<List<String>?>('zones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [WindowsVirtualMachineScaleSet] resource.
+  WindowsVirtualMachineScaleSet.reference(String urn)
+    : super(
+        'azure:compute/windowsVirtualMachineScaleSet:WindowsVirtualMachineScaleSet',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['adminPassword', 'customData'],
+        isResourceReference: true,
+      ) {
+    additionalCapabilities = registerOutput<WindowsVirtualMachineScaleSetAdditionalCapabilities?>('additionalCapabilities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WindowsVirtualMachineScaleSetAdditionalCapabilities.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    additionalUnattendContents = registerOutput<List<WindowsVirtualMachineScaleSetAdditionalUnattendContent>?>('additionalUnattendContents', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WindowsVirtualMachineScaleSetAdditionalUnattendContent>(guardedValue, (value) => WindowsVirtualMachineScaleSetAdditionalUnattendContent.fromMap((value as Map).cast<String, dynamic>())); });
+    adminPassword = registerOutput<String>('adminPassword', isSecret: true);
+    adminUsername = registerOutput<String>('adminUsername');
+    automaticInstanceRepair = registerOutput<WindowsVirtualMachineScaleSetAutomaticInstanceRepair>('automaticInstanceRepair', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WindowsVirtualMachineScaleSetAutomaticInstanceRepair.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    automaticOsUpgradePolicy = registerOutput<WindowsVirtualMachineScaleSetAutomaticOsUpgradePolicy?>('automaticOsUpgradePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WindowsVirtualMachineScaleSetAutomaticOsUpgradePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    bootDiagnostics = registerOutput<WindowsVirtualMachineScaleSetBootDiagnostics?>('bootDiagnostics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WindowsVirtualMachineScaleSetBootDiagnostics.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    capacityReservationGroupId = registerOutput<String?>('capacityReservationGroupId');
+    computerNamePrefix = registerOutput<String>('computerNamePrefix');
+    customData = registerOutput<String?>('customData', isSecret: true);
+    dataDisks = registerOutput<List<WindowsVirtualMachineScaleSetDataDisk>?>('dataDisks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WindowsVirtualMachineScaleSetDataDisk>(guardedValue, (value) => WindowsVirtualMachineScaleSetDataDisk.fromMap((value as Map).cast<String, dynamic>())); });
+    doNotRunExtensionsOnOverprovisionedMachines = registerOutput<bool?>('doNotRunExtensionsOnOverprovisionedMachines');
+    edgeZone = registerOutput<String?>('edgeZone');
+    enableAutomaticUpdates = registerOutput<bool?>('enableAutomaticUpdates');
+    encryptionAtHostEnabled = registerOutput<bool?>('encryptionAtHostEnabled');
+    evictionPolicy = registerOutput<String?>('evictionPolicy');
+    extensionOperationsEnabled = registerOutput<bool?>('extensionOperationsEnabled');
+    extensions = registerOutput<List<WindowsVirtualMachineScaleSetExtension>>('extensions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WindowsVirtualMachineScaleSetExtension>(guardedValue, (value) => WindowsVirtualMachineScaleSetExtension.fromMap((value as Map).cast<String, dynamic>())); });
+    extensionsTimeBudget = registerOutput<String?>('extensionsTimeBudget');
+    galleryApplications = registerOutput<List<WindowsVirtualMachineScaleSetGalleryApplication>?>('galleryApplications', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WindowsVirtualMachineScaleSetGalleryApplication>(guardedValue, (value) => WindowsVirtualMachineScaleSetGalleryApplication.fromMap((value as Map).cast<String, dynamic>())); });
+    healthProbeId = registerOutput<String?>('healthProbeId');
+    hostGroupId = registerOutput<String?>('hostGroupId');
+    identity = registerOutput<WindowsVirtualMachineScaleSetIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WindowsVirtualMachineScaleSetIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    instances = registerOutput<int>('instances');
+    licenseType = registerOutput<String?>('licenseType');
+    location = registerOutput<String>('location');
+    maxBidPrice = registerOutput<double?>('maxBidPrice');
+    this.name = registerOutput<String>('name');
+    networkInterfaces = registerOutput<List<WindowsVirtualMachineScaleSetNetworkInterface>>('networkInterfaces', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WindowsVirtualMachineScaleSetNetworkInterface>(guardedValue, (value) => WindowsVirtualMachineScaleSetNetworkInterface.fromMap((value as Map).cast<String, dynamic>())); });
+    osDisk = registerOutput<WindowsVirtualMachineScaleSetOsDisk>('osDisk', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WindowsVirtualMachineScaleSetOsDisk.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    overprovision = registerOutput<bool?>('overprovision');
+    plan = registerOutput<WindowsVirtualMachineScaleSetPlan?>('plan', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WindowsVirtualMachineScaleSetPlan.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    platformFaultDomainCount = registerOutput<int>('platformFaultDomainCount');
+    priority = registerOutput<String?>('priority');
+    provisionVmAgent = registerOutput<bool?>('provisionVmAgent');
+    proximityPlacementGroupId = registerOutput<String?>('proximityPlacementGroupId');
+    resilientVmCreationEnabled = registerOutput<bool?>('resilientVmCreationEnabled');
+    resilientVmDeletionEnabled = registerOutput<bool?>('resilientVmDeletionEnabled');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    rollingUpgradePolicy = registerOutput<WindowsVirtualMachineScaleSetRollingUpgradePolicy?>('rollingUpgradePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WindowsVirtualMachineScaleSetRollingUpgradePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    scaleIn = registerOutput<WindowsVirtualMachineScaleSetScaleIn?>('scaleIn', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WindowsVirtualMachineScaleSetScaleIn.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    secrets = registerOutput<List<WindowsVirtualMachineScaleSetSecret>?>('secrets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WindowsVirtualMachineScaleSetSecret>(guardedValue, (value) => WindowsVirtualMachineScaleSetSecret.fromMap((value as Map).cast<String, dynamic>())); });
+    secureBootEnabled = registerOutput<bool?>('secureBootEnabled');
+    singlePlacementGroup = registerOutput<bool?>('singlePlacementGroup');
+    sku = registerOutput<String>('sku');
+    sourceImageId = registerOutput<String?>('sourceImageId');
+    sourceImageReference = registerOutput<WindowsVirtualMachineScaleSetSourceImageReference?>('sourceImageReference', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WindowsVirtualMachineScaleSetSourceImageReference.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    spotRestore = registerOutput<WindowsVirtualMachineScaleSetSpotRestore>('spotRestore', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WindowsVirtualMachineScaleSetSpotRestore.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    terminationNotification = registerOutput<WindowsVirtualMachineScaleSetTerminationNotification>('terminationNotification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WindowsVirtualMachineScaleSetTerminationNotification.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    timezone = registerOutput<String?>('timezone');
+    uniqueId = registerOutput<String>('uniqueId');
+    upgradeMode = registerOutput<String?>('upgradeMode');
+    userData = registerOutput<String?>('userData');
+    vtpmEnabled = registerOutput<bool?>('vtpmEnabled');
+    winrmListeners = registerOutput<List<WindowsVirtualMachineScaleSetWinrmListener>?>('winrmListeners', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WindowsVirtualMachineScaleSetWinrmListener>(guardedValue, (value) => WindowsVirtualMachineScaleSetWinrmListener.fromMap((value as Map).cast<String, dynamic>())); });
+    zoneBalance = registerOutput<bool?>('zoneBalance');
+    zones = registerOutput<List<String>?>('zones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

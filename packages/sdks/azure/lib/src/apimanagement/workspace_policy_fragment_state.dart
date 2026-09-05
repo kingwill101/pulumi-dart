@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering WorkspacePolicyFragment resources.
 class WorkspacePolicyFragmentState {
   /// Specifies the ID of the API Management Workspace. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? apiManagementWorkspaceId;
+  final pulumi.Input<String?>? apiManagementWorkspaceId;
   /// Specifies the description for the API Management Workspace Policy Fragment.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Specifies the name of the API Management Workspace Policy Fragment. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specifies the XML content of the API Management Workspace Policy Fragment.
-  final pulumi.Input<String>? xmlContent;
+  final pulumi.Input<String?>? xmlContent;
   /// Specifies the XML format of the API Management Workspace Policy Fragment. Possible values are `xml` or `rawxml`. Defaults to `xml`.
-  final pulumi.Input<String>? xmlFormat;
+  final pulumi.Input<String?>? xmlFormat;
 
   /// Creates a new [WorkspacePolicyFragmentState].
   /// [apiManagementWorkspaceId] Specifies the ID of the API Management Workspace. Changing this forces a new resource to be created.

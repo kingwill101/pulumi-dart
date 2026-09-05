@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'load_balancer_args.dart';
+import 'load_balancer_frontend_ip_configuration.dart';
 import 'load_balancer_state.dart';
 
 /// Manages a Load Balancer Resource.
@@ -126,7 +127,7 @@ import 'load_balancer_state.dart';
 /// 			FrontendIpConfigurations: lb.LoadBalancerFrontendIpConfigurationArray{
 /// 				&lb.LoadBalancerFrontendIpConfigurationArgs{
 /// 					Name:              pulumi.String("PublicIPAddress"),
-/// 					PublicIpAddressId: examplePublicIp.ID(),
+/// 					PublicIpAddressId: examplePublicIp.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 		})
@@ -265,7 +266,7 @@ class LoadBalancer extends pulumi.CustomResource {
   /// One or more `frontendIpConfiguration` blocks as documented below.
   ///
   /// &gt; **Note:** Azure Load Balancer does not allow the complete removal of all previously attached frontend configurations. If you have previously applied with one or more `frontendIpConfiguration` arguments, the removal of them all will result in a replacement  (destroy/create) of the Load Balancer.
-  late final pulumi.Output<List<Map<String, dynamic>>?> frontendIpConfigurations;
+  late final pulumi.Output<List<LoadBalancerFrontendIpConfiguration>?> frontendIpConfigurations;
   /// Specifies the supported Azure Region where the Load Balancer should be created. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
   /// Specifies the name of the Load Balancer. Changing this forces a new resource to be created.
@@ -301,20 +302,20 @@ class LoadBalancer extends pulumi.CustomResource {
           'azure:lb/loadBalancer:LoadBalancer',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     edgeZone = registerOutput<String?>('edgeZone');
-    frontendIpConfigurations = registerOutput<List<Map<String, dynamic>>?>('frontendIpConfigurations');
+    frontendIpConfigurations = registerOutput<List<LoadBalancerFrontendIpConfiguration>?>('frontendIpConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LoadBalancerFrontendIpConfiguration>(guardedValue, (value) => LoadBalancerFrontendIpConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     privateIpAddress = registerOutput<String>('privateIpAddress');
-    privateIpAddresses = registerOutput<List<String>>('privateIpAddresses');
+    privateIpAddresses = registerOutput<List<String>>('privateIpAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     publicIpAddressId = registerOutput<String>('publicIpAddressId');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     sku = registerOutput<String?>('sku');
     skuTier = registerOutput<String?>('skuTier');
     subnetId = registerOutput<String>('subnetId');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [LoadBalancer] resource's state with the given [name] and [id].
@@ -322,11 +323,12 @@ class LoadBalancer extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LoadBalancerState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LoadBalancer._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -341,16 +343,39 @@ class LoadBalancer extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     edgeZone = registerOutput<String?>('edgeZone');
-    frontendIpConfigurations = registerOutput<List<Map<String, dynamic>>?>('frontendIpConfigurations');
+    frontendIpConfigurations = registerOutput<List<LoadBalancerFrontendIpConfiguration>?>('frontendIpConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LoadBalancerFrontendIpConfiguration>(guardedValue, (value) => LoadBalancerFrontendIpConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     privateIpAddress = registerOutput<String>('privateIpAddress');
-    privateIpAddresses = registerOutput<List<String>>('privateIpAddresses');
+    privateIpAddresses = registerOutput<List<String>>('privateIpAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     publicIpAddressId = registerOutput<String>('publicIpAddressId');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     sku = registerOutput<String?>('sku');
     skuTier = registerOutput<String?>('skuTier');
     subnetId = registerOutput<String>('subnetId');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [LoadBalancer] resource.
+  LoadBalancer.reference(String urn)
+    : super(
+        'azure:lb/loadBalancer:LoadBalancer',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    edgeZone = registerOutput<String?>('edgeZone');
+    frontendIpConfigurations = registerOutput<List<LoadBalancerFrontendIpConfiguration>?>('frontendIpConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LoadBalancerFrontendIpConfiguration>(guardedValue, (value) => LoadBalancerFrontendIpConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    privateIpAddress = registerOutput<String>('privateIpAddress');
+    privateIpAddresses = registerOutput<List<String>>('privateIpAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    publicIpAddressId = registerOutput<String>('publicIpAddressId');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    sku = registerOutput<String?>('sku');
+    skuTier = registerOutput<String?>('skuTier');
+    subnetId = registerOutput<String>('subnetId');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

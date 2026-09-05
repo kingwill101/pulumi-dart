@@ -10,21 +10,21 @@ import 'alert_processing_rule_suppression_schedule.dart';
 /// {@macro pulumi_monitoring_alert_processing_rule_suppression_alert_processing_rule_suppression_args_doc}
 class AlertProcessingRuleSuppressionArgs {
   /// A `condition` block as defined below.
-  final pulumi.Input<AlertProcessingRuleSuppressionCondition>? condition;
+  final pulumi.Input<AlertProcessingRuleSuppressionCondition?>? condition;
   /// Specifies a description for the Alert Processing Rule.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Should the Alert Processing Rule be enabled? Defaults to `true`.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// The name which should be used for this Alert Processing Rule. Changing this forces a new Alert Processing Rule to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the Resource Group where the Alert Processing Rule should exist. Changing this forces a new Alert Processing Rule to be created.
   final pulumi.Input<String> resourceGroupName;
   /// A `schedule` block as defined below.
-  final pulumi.Input<AlertProcessingRuleSuppressionSchedule>? schedule;
+  final pulumi.Input<AlertProcessingRuleSuppressionSchedule?>? schedule;
   /// A list of resource IDs which will be the target of Alert Processing Rule.
   final pulumi.Input<List<String>> scopes;
   /// A mapping of tags which should be assigned to the Alert Processing Rule.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [AlertProcessingRuleSuppressionArgs].
   /// [condition] A `condition` block as defined below.

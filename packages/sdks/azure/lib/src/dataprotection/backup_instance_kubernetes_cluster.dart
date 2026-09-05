@@ -81,7 +81,7 @@ import 'backup_instance_kubernetes_cluster_state.dart';
 /// const testExtensionAndStorageAccountPermission = new azure.authorization.Assignment("test_extension_and_storage_account_permission", {
 ///     scope: exampleAccount.id,
 ///     roleDefinitionName: "Storage Account Contributor",
-///     principalId: exampleKubernetesClusterExtension.aksAssignedIdentities.apply(aksAssignedIdentities => aksAssignedIdentities[0].principalId),
+///     principalId: exampleKubernetesClusterExtension.aksAssignedIdentities[0].principalId,
 /// });
 /// const testVaultMsiReadOnCluster = new azure.authorization.Assignment("test_vault_msi_read_on_cluster", {
 ///     scope: exampleKubernetesCluster.id,
@@ -625,12 +625,12 @@ import 'backup_instance_kubernetes_cluster_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = containerservice.NewClusterTrustedAccessRoleBinding(ctx, "aks_cluster_trusted_access", &containerservice.ClusterTrustedAccessRoleBindingArgs{
-/// 			KubernetesClusterId: exampleKubernetesCluster.ID(),
+/// 			KubernetesClusterId: exampleKubernetesCluster.ID().ToIDOutput().ToStringOutput(),
 /// 			Name:                pulumi.String("example"),
 /// 			Roles: pulumi.StringArray{
 /// 				pulumi.String("Microsoft.DataProtection/backupVaults/backup-operator"),
 /// 			},
-/// 			SourceResourceId: exampleBackupVault.ID(),
+/// 			SourceResourceId: exampleBackupVault.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -655,7 +655,7 @@ import 'backup_instance_kubernetes_cluster_state.dart';
 /// 		}
 /// 		exampleKubernetesClusterExtension, err := containerservice.NewKubernetesClusterExtension(ctx, "example", &containerservice.KubernetesClusterExtensionArgs{
 /// 			Name:             pulumi.String("example"),
-/// 			ClusterId:        exampleKubernetesCluster.ID(),
+/// 			ClusterId:        exampleKubernetesCluster.ID().ToIDOutput().ToStringOutput(),
 /// 			ExtensionType:    pulumi.String("Microsoft.DataProtection.Kubernetes"),
 /// 			ReleaseTrain:     pulumi.String("stable"),
 /// 			ReleaseNamespace: pulumi.String("dataprotection-microsoft"),
@@ -671,71 +671,59 @@ import 'backup_instance_kubernetes_cluster_state.dart';
 /// 			return err
 /// 		}
 /// 		testExtensionAndStorageAccountPermission, err := authorization.NewAssignment(ctx, "test_extension_and_storage_account_permission", &authorization.AssignmentArgs{
-/// 			Scope:              exampleAccount.ID(),
+/// 			Scope:              exampleAccount.ID().ToIDOutput().ToStringOutput(),
 /// 			RoleDefinitionName: pulumi.String("Storage Account Contributor"),
-/// 			PrincipalId: pulumi.String(exampleKubernetesClusterExtension.AksAssignedIdentities.ApplyT(func(aksAssignedIdentities []containerservice.KubernetesClusterExtensionAksAssignedIdentity) (*string, error) {
+/// 			PrincipalId: exampleKubernetesClusterExtension.AksAssignedIdentities.ApplyT(func(aksAssignedIdentities []containerservice.KubernetesClusterExtensionAksAssignedIdentity) (*string, error) {
 /// 				return aksAssignedIdentities[0].PrincipalId, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			}).(pulumi.StringPtrOutput),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		testVaultMsiReadOnCluster, err := authorization.NewAssignment(ctx, "test_vault_msi_read_on_cluster", &authorization.AssignmentArgs{
-/// 			Scope:              exampleKubernetesCluster.ID(),
+/// 			Scope:              exampleKubernetesCluster.ID().ToIDOutput().ToStringOutput(),
 /// 			RoleDefinitionName: pulumi.String("Reader"),
-/// 			PrincipalId: pulumi.String(exampleBackupVault.Identity.ApplyT(func(identity dataprotection.BackupVaultIdentity) (*string, error) {
-/// 				return identity.PrincipalId, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			PrincipalId:        exampleBackupVault.Identity.PrincipalId(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		testVaultMsiReadOnSnapRg, err := authorization.NewAssignment(ctx, "test_vault_msi_read_on_snap_rg", &authorization.AssignmentArgs{
-/// 			Scope:              snap.ID(),
+/// 			Scope:              snap.ID().ToIDOutput().ToStringOutput(),
 /// 			RoleDefinitionName: pulumi.String("Reader"),
-/// 			PrincipalId: pulumi.String(exampleBackupVault.Identity.ApplyT(func(identity dataprotection.BackupVaultIdentity) (*string, error) {
-/// 				return identity.PrincipalId, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			PrincipalId:        exampleBackupVault.Identity.PrincipalId(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		testVaultMsiSnapshotContributorOnSnapRg, err := authorization.NewAssignment(ctx, "test_vault_msi_snapshot_contributor_on_snap_rg", &authorization.AssignmentArgs{
-/// 			Scope:              snap.ID(),
+/// 			Scope:              snap.ID().ToIDOutput().ToStringOutput(),
 /// 			RoleDefinitionName: pulumi.String("Disk Snapshot Contributor"),
-/// 			PrincipalId: pulumi.String(exampleBackupVault.Identity.ApplyT(func(identity dataprotection.BackupVaultIdentity) (*string, error) {
-/// 				return identity.PrincipalId, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			PrincipalId:        exampleBackupVault.Identity.PrincipalId(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		testVaultDataOperatorOnSnapRg, err := authorization.NewAssignment(ctx, "test_vault_data_operator_on_snap_rg", &authorization.AssignmentArgs{
-/// 			Scope:              snap.ID(),
+/// 			Scope:              snap.ID().ToIDOutput().ToStringOutput(),
 /// 			RoleDefinitionName: pulumi.String("Data Operator for Managed Disks"),
-/// 			PrincipalId: pulumi.String(exampleBackupVault.Identity.ApplyT(func(identity dataprotection.BackupVaultIdentity) (*string, error) {
-/// 				return identity.PrincipalId, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			PrincipalId:        exampleBackupVault.Identity.PrincipalId(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		testVaultDataContributorOnStorage, err := authorization.NewAssignment(ctx, "test_vault_data_contributor_on_storage", &authorization.AssignmentArgs{
-/// 			Scope:              exampleAccount.ID(),
+/// 			Scope:              exampleAccount.ID().ToIDOutput().ToStringOutput(),
 /// 			RoleDefinitionName: pulumi.String("Storage Blob Data Contributor"),
-/// 			PrincipalId: pulumi.String(exampleBackupVault.Identity.ApplyT(func(identity dataprotection.BackupVaultIdentity) (*string, error) {
-/// 				return identity.PrincipalId, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			PrincipalId:        exampleBackupVault.Identity.PrincipalId(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		testClusterMsiContributorOnSnapRg, err := authorization.NewAssignment(ctx, "test_cluster_msi_contributor_on_snap_rg", &authorization.AssignmentArgs{
-/// 			Scope:              snap.ID(),
+/// 			Scope:              snap.ID().ToIDOutput().ToStringOutput(),
 /// 			RoleDefinitionName: pulumi.String("Contributor"),
-/// 			PrincipalId: pulumi.String(exampleKubernetesCluster.Identity.ApplyT(func(identity containerservice.KubernetesClusterIdentity) (*string, error) {
-/// 				return identity.PrincipalId, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			PrincipalId:        exampleKubernetesCluster.Identity.PrincipalId(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -788,10 +776,10 @@ import 'backup_instance_kubernetes_cluster_state.dart';
 /// 		_, err = dataprotection.NewBackupInstanceKubernetesCluster(ctx, "example", &dataprotection.BackupInstanceKubernetesClusterArgs{
 /// 			Name:                      pulumi.String("example"),
 /// 			Location:                  example.Location,
-/// 			VaultId:                   exampleBackupVault.ID(),
-/// 			KubernetesClusterId:       exampleKubernetesCluster.ID(),
+/// 			VaultId:                   exampleBackupVault.ID().ToIDOutput().ToStringOutput(),
+/// 			KubernetesClusterId:       exampleKubernetesCluster.ID().ToIDOutput().ToStringOutput(),
 /// 			SnapshotResourceGroupName: snap.Name,
-/// 			BackupPolicyId:            exampleBackupPolicyKubernetesCluster.ID(),
+/// 			BackupPolicyId:            exampleBackupPolicyKubernetesCluster.ID().ToIDOutput().ToStringOutput(),
 /// 			BackupDatasourceParameters: &dataprotection.BackupInstanceKubernetesClusterBackupDatasourceParametersArgs{
 /// 				ExcludedNamespaces: pulumi.StringArray{
 /// 					pulumi.String("test-excluded-namespaces"),
@@ -1447,7 +1435,7 @@ class BackupInstanceKubernetesCluster extends pulumi.CustomResource {
           'azure:dataprotection/backupInstanceKubernetesCluster:BackupInstanceKubernetesCluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     backupDatasourceParameters = registerOutput<BackupInstanceKubernetesClusterBackupDatasourceParameters?>('backupDatasourceParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackupInstanceKubernetesClusterBackupDatasourceParameters.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     backupPolicyId = registerOutput<String>('backupPolicyId');
@@ -1464,11 +1452,12 @@ class BackupInstanceKubernetesCluster extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     BackupInstanceKubernetesClusterState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return BackupInstanceKubernetesCluster._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1482,6 +1471,25 @@ class BackupInstanceKubernetesCluster extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    backupDatasourceParameters = registerOutput<BackupInstanceKubernetesClusterBackupDatasourceParameters?>('backupDatasourceParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackupInstanceKubernetesClusterBackupDatasourceParameters.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    backupPolicyId = registerOutput<String>('backupPolicyId');
+    kubernetesClusterId = registerOutput<String>('kubernetesClusterId');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    protectionState = registerOutput<String>('protectionState');
+    snapshotResourceGroupName = registerOutput<String>('snapshotResourceGroupName');
+    vaultId = registerOutput<String>('vaultId');
+  }
+
+  /// Creates a typed reference to an existing [BackupInstanceKubernetesCluster] resource.
+  BackupInstanceKubernetesCluster.reference(String urn)
+    : super(
+        'azure:dataprotection/backupInstanceKubernetesCluster:BackupInstanceKubernetesCluster',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     backupDatasourceParameters = registerOutput<BackupInstanceKubernetesClusterBackupDatasourceParameters?>('backupDatasourceParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackupInstanceKubernetesClusterBackupDatasourceParameters.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     backupPolicyId = registerOutput<String>('backupPolicyId');
     kubernetesClusterId = registerOutput<String>('kubernetesClusterId');

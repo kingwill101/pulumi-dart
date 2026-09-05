@@ -12,20 +12,20 @@ class DatabaseExtendedAuditingPolicyArgs {
   /// Whether to enable the extended auditing policy. Possible values are `true` and `false`. Defaults to `true`.
   ///
   /// &gt; **Note:** If `enabled` is `true`, `storageEndpoint` or `logMonitoringEnabled` are required.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// Enable audit events to Azure Monitor? Defaults to `true`.
   ///
   /// &gt; **Note:** To enable sending audit events to Log Analytics, please refer to the example which can be found in the `./examples/sql-azure/sql_auditing_log_analytics` directory within the GitHub Repository.  To enable sending server audit events to Log Analytics, please enable the master database to send audit events to Log Analytics.
   /// To enable audit events to Eventhub, please refer to the example which can be found in the `./examples/sql-azure/sql_auditing_eventhub` directory within the GitHub Repository.
-  final pulumi.Input<bool>? logMonitoringEnabled;
+  final pulumi.Input<bool?>? logMonitoringEnabled;
   /// The number of days to retain logs for in the storage account. Defaults to `0`.
-  final pulumi.Input<int>? retentionInDays;
+  final pulumi.Input<int?>? retentionInDays;
   /// The access key to use for the auditing storage account.
-  final pulumi.Input<String>? storageAccountAccessKey;
+  final pulumi.Input<String?>? storageAccountAccessKey;
   /// Is `storageAccountAccessKey` value the storage's secondary key?
-  final pulumi.Input<bool>? storageAccountAccessKeyIsSecondary;
+  final pulumi.Input<bool?>? storageAccountAccessKeyIsSecondary;
   /// The blob storage endpoint (e.g. &lt;https://example.blob.core.windows.net&gt;). This blob storage will hold all extended auditing logs.
-  final pulumi.Input<String>? storageEndpoint;
+  final pulumi.Input<String?>? storageEndpoint;
 
   /// Creates a new [DatabaseExtendedAuditingPolicyArgs].
   /// [databaseId] The ID of the SQL database to set the extended auditing policy. Changing this forces a new resource to be created.
@@ -62,7 +62,7 @@ class DatabaseExtendedAuditingPolicyArgs {
       databaseId: pulumi.Input.fromValue(map['databaseId'] as String),
       enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       logMonitoringEnabled: (() { final guardedValue = map['logMonitoringEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      retentionInDays: (() { final guardedValue = map['retentionInDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      retentionInDays: (() { final guardedValue = map['retentionInDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       storageAccountAccessKey: (() { final guardedValue = map['storageAccountAccessKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       storageAccountAccessKeyIsSecondary: (() { final guardedValue = map['storageAccountAccessKeyIsSecondary']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       storageEndpoint: (() { final guardedValue = map['storageEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

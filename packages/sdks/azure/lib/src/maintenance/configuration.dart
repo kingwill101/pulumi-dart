@@ -237,16 +237,16 @@ class Configuration extends pulumi.CustomResource {
           'azure:maintenance/configuration:Configuration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     inGuestUserPatchMode = registerOutput<String?>('inGuestUserPatchMode');
     installPatches = registerOutput<ConfigurationInstallPatches?>('installPatches', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfigurationInstallPatches.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    properties = registerOutput<Map<String, String>?>('properties');
+    properties = registerOutput<Map<String, String>?>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     resourceGroupName = registerOutput<String>('resourceGroupName');
     scope = registerOutput<String>('scope');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     visibility = registerOutput<String?>('visibility');
     window = registerOutput<ConfigurationWindow?>('window', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfigurationWindow.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
@@ -256,11 +256,12 @@ class Configuration extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ConfigurationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Configuration._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -278,10 +279,31 @@ class Configuration extends pulumi.CustomResource {
     installPatches = registerOutput<ConfigurationInstallPatches?>('installPatches', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfigurationInstallPatches.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    properties = registerOutput<Map<String, String>?>('properties');
+    properties = registerOutput<Map<String, String>?>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     resourceGroupName = registerOutput<String>('resourceGroupName');
     scope = registerOutput<String>('scope');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    visibility = registerOutput<String?>('visibility');
+    window = registerOutput<ConfigurationWindow?>('window', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfigurationWindow.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Configuration] resource.
+  Configuration.reference(String urn)
+    : super(
+        'azure:maintenance/configuration:Configuration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    inGuestUserPatchMode = registerOutput<String?>('inGuestUserPatchMode');
+    installPatches = registerOutput<ConfigurationInstallPatches?>('installPatches', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfigurationInstallPatches.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    properties = registerOutput<Map<String, String>?>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    scope = registerOutput<String>('scope');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     visibility = registerOutput<String?>('visibility');
     window = registerOutput<ConfigurationWindow?>('window', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfigurationWindow.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }

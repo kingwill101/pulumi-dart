@@ -273,11 +273,12 @@ class ChannelsRegistration extends pulumi.CustomResource {
           'azure:bot/channelsRegistration:ChannelsRegistration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['developerAppInsightsApiKey'],
         ) {
     cmkKeyVaultUrl = registerOutput<String?>('cmkKeyVaultUrl');
     description = registerOutput<String?>('description');
-    developerAppInsightsApiKey = registerOutput<String?>('developerAppInsightsApiKey');
+    developerAppInsightsApiKey = registerOutput<String?>('developerAppInsightsApiKey', isSecret: true);
     developerAppInsightsApplicationId = registerOutput<String?>('developerAppInsightsApplicationId');
     developerAppInsightsKey = registerOutput<String?>('developerAppInsightsKey');
     displayName = registerOutput<String>('displayName');
@@ -293,7 +294,7 @@ class ChannelsRegistration extends pulumi.CustomResource {
     resourceGroupName = registerOutput<String>('resourceGroupName');
     sku = registerOutput<String>('sku');
     streamingEndpointEnabled = registerOutput<bool?>('streamingEndpointEnabled');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [ChannelsRegistration] resource's state with the given [name] and [id].
@@ -301,11 +302,12 @@ class ChannelsRegistration extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ChannelsRegistrationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ChannelsRegistration._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -321,7 +323,7 @@ class ChannelsRegistration extends pulumi.CustomResource {
         ) {
     cmkKeyVaultUrl = registerOutput<String?>('cmkKeyVaultUrl');
     description = registerOutput<String?>('description');
-    developerAppInsightsApiKey = registerOutput<String?>('developerAppInsightsApiKey');
+    developerAppInsightsApiKey = registerOutput<String?>('developerAppInsightsApiKey', isSecret: true);
     developerAppInsightsApplicationId = registerOutput<String?>('developerAppInsightsApplicationId');
     developerAppInsightsKey = registerOutput<String?>('developerAppInsightsKey');
     displayName = registerOutput<String>('displayName');
@@ -337,6 +339,37 @@ class ChannelsRegistration extends pulumi.CustomResource {
     resourceGroupName = registerOutput<String>('resourceGroupName');
     sku = registerOutput<String>('sku');
     streamingEndpointEnabled = registerOutput<bool?>('streamingEndpointEnabled');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [ChannelsRegistration] resource.
+  ChannelsRegistration.reference(String urn)
+    : super(
+        'azure:bot/channelsRegistration:ChannelsRegistration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['developerAppInsightsApiKey'],
+        isResourceReference: true,
+      ) {
+    cmkKeyVaultUrl = registerOutput<String?>('cmkKeyVaultUrl');
+    description = registerOutput<String?>('description');
+    developerAppInsightsApiKey = registerOutput<String?>('developerAppInsightsApiKey', isSecret: true);
+    developerAppInsightsApplicationId = registerOutput<String?>('developerAppInsightsApplicationId');
+    developerAppInsightsKey = registerOutput<String?>('developerAppInsightsKey');
+    displayName = registerOutput<String>('displayName');
+    endpoint = registerOutput<String?>('endpoint');
+    iconUrl = registerOutput<String?>('iconUrl');
+    location = registerOutput<String>('location');
+    microsoftAppId = registerOutput<String>('microsoftAppId');
+    microsoftAppTenantId = registerOutput<String?>('microsoftAppTenantId');
+    microsoftAppType = registerOutput<String>('microsoftAppType');
+    microsoftAppUserAssignedIdentityId = registerOutput<String?>('microsoftAppUserAssignedIdentityId');
+    this.name = registerOutput<String>('name');
+    publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    sku = registerOutput<String>('sku');
+    streamingEndpointEnabled = registerOutput<bool?>('streamingEndpointEnabled');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

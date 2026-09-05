@@ -6,9 +6,9 @@ import 'autoscale_setting_notification_webhook.dart';
 
 class AutoscaleSettingNotification {
   /// A `email` block as defined below.
-  final pulumi.Input<AutoscaleSettingNotificationEmail>? email;
+  final pulumi.Input<AutoscaleSettingNotificationEmail?>? email;
   /// One or more `webhook` blocks as defined below.
-  final pulumi.Input<List<AutoscaleSettingNotificationWebhook>>? webhooks;
+  final pulumi.Input<List<AutoscaleSettingNotificationWebhook>?>? webhooks;
 
   /// Creates a new [AutoscaleSettingNotification].
   /// [email] A `email` block as defined below.

@@ -20,7 +20,7 @@ class SparkPoolAutoPause {
 
   factory SparkPoolAutoPause.fromMap(Map<String, dynamic> map) {
     return SparkPoolAutoPause(
-      delayInMinutes: pulumi.Input.fromValue(map['delayInMinutes'] as int),
+      delayInMinutes: pulumi.Input.fromValue((map['delayInMinutes'] as num).toInt()),
     );
   }
 }

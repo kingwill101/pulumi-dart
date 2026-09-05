@@ -150,7 +150,7 @@ import 'job_credential_state.dart';
 /// 		}
 /// 		exampleDatabase, err := mssql.NewDatabase(ctx, "example", &mssql.DatabaseArgs{
 /// 			Name:      pulumi.String("example-db"),
-/// 			ServerId:  exampleServer.ID(),
+/// 			ServerId:  exampleServer.ID().ToIDOutput().ToStringOutput(),
 /// 			Collation: pulumi.String("SQL_Latin1_General_CP1_CI_AS"),
 /// 			SkuName:   pulumi.String("S1"),
 /// 		})
@@ -160,14 +160,14 @@ import 'job_credential_state.dart';
 /// 		exampleJobAgent, err := mssql.NewJobAgent(ctx, "example", &mssql.JobAgentArgs{
 /// 			Name:       pulumi.String("example-job-agent"),
 /// 			Location:   example.Location,
-/// 			DatabaseId: exampleDatabase.ID(),
+/// 			DatabaseId: exampleDatabase.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = mssql.NewJobCredential(ctx, "example", &mssql.JobCredentialArgs{
 /// 			Name:       pulumi.String("example-credential"),
-/// 			JobAgentId: exampleJobAgent.ID(),
+/// 			JobAgentId: exampleJobAgent.ID().ToIDOutput().ToStringOutput(),
 /// 			Username:   pulumi.String("my-username"),
 /// 			Password:   pulumi.String("MyP4ssw0rd!!!"),
 /// 		})
@@ -364,11 +364,12 @@ class JobCredential extends pulumi.CustomResource {
           'azure:mssql/jobCredential:JobCredential',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['password'],
         ) {
     jobAgentId = registerOutput<String>('jobAgentId');
     this.name = registerOutput<String>('name');
-    password = registerOutput<String?>('password');
+    password = registerOutput<String?>('password', isSecret: true);
     passwordWoVersion = registerOutput<int?>('passwordWoVersion');
     username = registerOutput<String>('username');
   }
@@ -378,11 +379,12 @@ class JobCredential extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     JobCredentialState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return JobCredential._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -398,7 +400,24 @@ class JobCredential extends pulumi.CustomResource {
         ) {
     jobAgentId = registerOutput<String>('jobAgentId');
     this.name = registerOutput<String>('name');
-    password = registerOutput<String?>('password');
+    password = registerOutput<String?>('password', isSecret: true);
+    passwordWoVersion = registerOutput<int?>('passwordWoVersion');
+    username = registerOutput<String>('username');
+  }
+
+  /// Creates a typed reference to an existing [JobCredential] resource.
+  JobCredential.reference(String urn)
+    : super(
+        'azure:mssql/jobCredential:JobCredential',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['password'],
+        isResourceReference: true,
+      ) {
+    jobAgentId = registerOutput<String>('jobAgentId');
+    this.name = registerOutput<String>('name');
+    password = registerOutput<String?>('password', isSecret: true);
     passwordWoVersion = registerOutput<int?>('passwordWoVersion');
     username = registerOutput<String>('username');
   }

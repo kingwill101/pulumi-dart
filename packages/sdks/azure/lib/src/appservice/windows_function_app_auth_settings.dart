@@ -10,39 +10,39 @@ import 'windows_function_app_auth_settings_twitter.dart';
 
 class WindowsFunctionAppAuthSettings {
   /// An `activeDirectory` block as defined above.
-  final pulumi.Input<WindowsFunctionAppAuthSettingsActiveDirectory>? activeDirectory;
+  final pulumi.Input<WindowsFunctionAppAuthSettingsActiveDirectory?>? activeDirectory;
   /// Specifies a map of login Parameters to send to the OpenID Connect authorization endpoint when a user logs in.
-  final pulumi.Input<Map<String, String>>? additionalLoginParameters;
+  final pulumi.Input<Map<String, String>?>? additionalLoginParameters;
   /// Specifies a list of External URLs that can be redirected to as part of logging in or logging out of the Windows Function App.
-  final pulumi.Input<List<String>>? allowedExternalRedirectUrls;
+  final pulumi.Input<List<String>?>? allowedExternalRedirectUrls;
   /// The default authentication provider to use when multiple providers are configured. Possible values include: `AzureActiveDirectory`, `Facebook`, `Google`, `MicrosoftAccount`, `Twitter`, `Github`
   ///
   /// &gt; **Note:** This setting is only needed if multiple providers are configured, and the `unauthenticatedClientAction` is set to "RedirectToLoginPage".
-  final pulumi.Input<String>? defaultProvider;
+  final pulumi.Input<String?>? defaultProvider;
   /// Should the Authentication / Authorization feature be enabled for the Windows Function App?
   final pulumi.Input<bool> enabled;
   /// A `facebook` block as defined below.
-  final pulumi.Input<WindowsFunctionAppAuthSettingsFacebook>? facebook;
+  final pulumi.Input<WindowsFunctionAppAuthSettingsFacebook?>? facebook;
   /// A `github` block as defined below.
-  final pulumi.Input<WindowsFunctionAppAuthSettingsGithub>? github;
+  final pulumi.Input<WindowsFunctionAppAuthSettingsGithub?>? github;
   /// A `google` block as defined below.
-  final pulumi.Input<WindowsFunctionAppAuthSettingsGoogle>? google;
+  final pulumi.Input<WindowsFunctionAppAuthSettingsGoogle?>? google;
   /// The OpenID Connect Issuer URI that represents the entity which issues access tokens for this Windows Function App.
   ///
   /// &gt; **Note:** When using Azure Active Directory, this value is the URI of the directory tenant, e.g. &lt;https://sts.windows.net/{tenant-guid}/&gt;.
-  final pulumi.Input<String>? issuer;
+  final pulumi.Input<String?>? issuer;
   /// A `microsoft` block as defined below.
-  final pulumi.Input<WindowsFunctionAppAuthSettingsMicrosoft>? microsoft;
+  final pulumi.Input<WindowsFunctionAppAuthSettingsMicrosoft?>? microsoft;
   /// The Runtime Version of the Authentication / Authorization feature in use for the Windows Function App.
-  final pulumi.Input<String>? runtimeVersion;
+  final pulumi.Input<String?>? runtimeVersion;
   /// The number of hours after session token expiration that a session token can be used to call the token refresh API. Defaults to `72` hours.
-  final pulumi.Input<double>? tokenRefreshExtensionHours;
+  final pulumi.Input<double?>? tokenRefreshExtensionHours;
   /// Should the Windows Function App durably store platform-specific security tokens that are obtained during login flows? Defaults to `false`.
-  final pulumi.Input<bool>? tokenStoreEnabled;
+  final pulumi.Input<bool?>? tokenStoreEnabled;
   /// A `twitter` block as defined below.
-  final pulumi.Input<WindowsFunctionAppAuthSettingsTwitter>? twitter;
+  final pulumi.Input<WindowsFunctionAppAuthSettingsTwitter?>? twitter;
   /// The action to take when an unauthenticated client attempts to access the app. Possible values include: `RedirectToLoginPage`, `AllowAnonymous`.
-  final pulumi.Input<String>? unauthenticatedClientAction;
+  final pulumi.Input<String?>? unauthenticatedClientAction;
 
   /// Creates a new [WindowsFunctionAppAuthSettings].
   /// [activeDirectory] An `activeDirectory` block as defined above.
@@ -111,7 +111,7 @@ class WindowsFunctionAppAuthSettings {
       issuer: (() { final guardedValue = map['issuer']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       microsoft: (() { final guardedValue = map['microsoft']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WindowsFunctionAppAuthSettingsMicrosoft.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       runtimeVersion: (() { final guardedValue = map['runtimeVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      tokenRefreshExtensionHours: (() { final guardedValue = map['tokenRefreshExtensionHours']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      tokenRefreshExtensionHours: (() { final guardedValue = map['tokenRefreshExtensionHours']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       tokenStoreEnabled: (() { final guardedValue = map['tokenStoreEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       twitter: (() { final guardedValue = map['twitter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WindowsFunctionAppAuthSettingsTwitter.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       unauthenticatedClientAction: (() { final guardedValue = map['unauthenticatedClientAction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

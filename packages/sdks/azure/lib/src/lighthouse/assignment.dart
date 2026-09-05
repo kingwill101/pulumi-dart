@@ -170,7 +170,7 @@ class Assignment extends pulumi.CustomResource {
           'azure:lighthouse/assignment:Assignment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     lighthouseDefinitionId = registerOutput<String>('lighthouseDefinitionId');
     this.name = registerOutput<String>('name');
@@ -182,11 +182,12 @@ class Assignment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AssignmentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Assignment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -200,6 +201,20 @@ class Assignment extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    lighthouseDefinitionId = registerOutput<String>('lighthouseDefinitionId');
+    this.name = registerOutput<String>('name');
+    scope = registerOutput<String>('scope');
+  }
+
+  /// Creates a typed reference to an existing [Assignment] resource.
+  Assignment.reference(String urn)
+    : super(
+        'azure:lighthouse/assignment:Assignment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     lighthouseDefinitionId = registerOutput<String>('lighthouseDefinitionId');
     this.name = registerOutput<String>('name');
     scope = registerOutput<String>('scope');

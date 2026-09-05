@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PoolAutoScale {
   /// The interval to wait before evaluating if the pool needs to be scaled. Defaults to `PT15M`.
-  final pulumi.Input<String>? evaluationInterval;
+  final pulumi.Input<String?>? evaluationInterval;
   /// The autoscale formula that needs to be used for scaling the Batch pool.
   final pulumi.Input<String> formula;
 

@@ -6,9 +6,9 @@ class FrontdoorRuleConditionsRequestMethodCondition {
   /// A list of one or more HTTP methods. Possible values include `GET`, `POST`, `PUT`, `DELETE`, `HEAD`, `OPTIONS` or `TRACE`. If multiple values are specified, they're evaluated using `OR` logic.
   final pulumi.Input<List<String>> matchValues;
   /// If `true` operator becomes the opposite of its value. Possible values `true` or `false`. Defaults to `false`. Details can be found in the `Condition Operator List` below.
-  final pulumi.Input<bool>? negateCondition;
+  final pulumi.Input<bool?>? negateCondition;
   /// Possible value `Equal`. Defaults to `Equal`.
-  final pulumi.Input<String>? operator;
+  final pulumi.Input<String?>? operator;
 
   /// Creates a new [FrontdoorRuleConditionsRequestMethodCondition].
   /// [matchValues] A list of one or more HTTP methods. Possible values include `GET`, `POST`, `PUT`, `DELETE`, `HEAD`, `OPTIONS` or `TRACE`. If multiple values are specified, they're evaluated using `OR` logic.

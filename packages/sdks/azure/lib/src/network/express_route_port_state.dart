@@ -8,33 +8,33 @@ import 'express_route_port_link2.dart';
 /// Input properties used for looking up and filtering ExpressRoutePort resources.
 class ExpressRoutePortState {
   /// Bandwidth of the Express Route Port in Gbps. Changing this forces a new Express Route Port to be created.
-  final pulumi.Input<int>? bandwidthInGbps;
+  final pulumi.Input<int?>? bandwidthInGbps;
   /// The billing type of the Express Route Port. Possible values are `MeteredData` and `UnlimitedData`. Defaults to `MeteredData`.
-  final pulumi.Input<String>? billingType;
+  final pulumi.Input<String?>? billingType;
   /// The encapsulation method used for the Express Route Port. Changing this forces a new Express Route Port to be created. Possible values are: `Dot1Q`, `QinQ`.
-  final pulumi.Input<String>? encapsulation;
+  final pulumi.Input<String?>? encapsulation;
   /// The EtherType of the Express Route Port.
-  final pulumi.Input<String>? ethertype;
+  final pulumi.Input<String?>? ethertype;
   /// The resource GUID of the Express Route Port.
-  final pulumi.Input<String>? guid;
+  final pulumi.Input<String?>? guid;
   /// An `identity` block as defined below.
-  final pulumi.Input<ExpressRoutePortIdentity>? identity;
+  final pulumi.Input<ExpressRoutePortIdentity?>? identity;
   /// A list of `link` blocks as defined below.
-  final pulumi.Input<ExpressRoutePortLink1>? link1;
+  final pulumi.Input<ExpressRoutePortLink1?>? link1;
   /// A list of `link` blocks as defined below.
-  final pulumi.Input<ExpressRoutePortLink2>? link2;
+  final pulumi.Input<ExpressRoutePortLink2?>? link2;
   /// The Azure Region where the Express Route Port should exist. Changing this forces a new Express Route Port to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The maximum transmission unit of the Express Route Port.
-  final pulumi.Input<String>? mtu;
+  final pulumi.Input<String?>? mtu;
   /// The name which should be used for this Express Route Port. Changing this forces a new Express Route Port to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the peering location that this Express Route Port is physically mapped to. Changing this forces a new Express Route Port to be created.
-  final pulumi.Input<String>? peeringLocation;
+  final pulumi.Input<String?>? peeringLocation;
   /// The name of the Resource Group where the Express Route Port should exist. Changing this forces a new Express Route Port to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// A mapping of tags which should be assigned to the Express Route Port.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ExpressRoutePortState].
   /// [bandwidthInGbps] Bandwidth of the Express Route Port in Gbps. Changing this forces a new Express Route Port to be created.
@@ -89,7 +89,7 @@ class ExpressRoutePortState {
 
   factory ExpressRoutePortState.fromMap(Map<String, dynamic> map) {
     return ExpressRoutePortState(
-      bandwidthInGbps: (() { final guardedValue = map['bandwidthInGbps']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      bandwidthInGbps: (() { final guardedValue = map['bandwidthInGbps']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       billingType: (() { final guardedValue = map['billingType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       encapsulation: (() { final guardedValue = map['encapsulation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ethertype: (() { final guardedValue = map['ethertype']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

@@ -8,11 +8,11 @@ class VmwareReplicatedVmNetworkInterface {
   /// Mac address of the network interface of source VM.
   final pulumi.Input<String> sourceMacAddress;
   /// Static IP to assign when a failover is done.
-  final pulumi.Input<String>? targetStaticIp;
+  final pulumi.Input<String?>? targetStaticIp;
   /// Name of the subnet to use when a failover is done.
-  final pulumi.Input<String>? targetSubnetName;
+  final pulumi.Input<String?>? targetSubnetName;
   /// Name of the subnet to use when a test failover is done.
-  final pulumi.Input<String>? testSubnetName;
+  final pulumi.Input<String?>? testSubnetName;
 
   /// Creates a new [VmwareReplicatedVmNetworkInterface].
   /// [isPrimary] Whether this `networkInterface` is primary for the replicated VM.

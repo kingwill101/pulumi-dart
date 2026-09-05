@@ -5,14 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering LinkedStorageAccount resources.
 class LinkedStorageAccountState {
   /// The data source type which should be used for this Log Analytics Linked Storage Account. Possible values are `CustomLogs`, `AzureWatson`, `Query`, `Ingestion` and `Alerts`. Changing this forces a new Log Analytics Linked Storage Account to be created.
-  final pulumi.Input<String>? dataSourceType;
+  final pulumi.Input<String?>? dataSourceType;
   /// The name of the Resource Group where the Log Analytics Linked Storage Account should exist. Changing this forces a new Log Analytics Linked Storage Account to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// The storage account resource ids to be linked.
-  final pulumi.Input<List<String>>? storageAccountIds;
+  final pulumi.Input<List<String>?>? storageAccountIds;
   /// The resource ID of the Log Analytics Workspace. Changing this forces a new Log Analytics Linked Storage Account to be created.
-  final pulumi.Input<String>? workspaceId;
-  final pulumi.Input<String>? workspaceResourceId;
+  final pulumi.Input<String?>? workspaceId;
+  final pulumi.Input<String?>? workspaceResourceId;
 
   /// Creates a new [LinkedStorageAccountState].
   /// [dataSourceType] The data source type which should be used for this Log Analytics Linked Storage Account. Possible values are `CustomLogs`, `AzureWatson`, `Query`, `Ingestion` and `Alerts`. Changing this forces a new Log Analytics Linked Storage Account to be created.

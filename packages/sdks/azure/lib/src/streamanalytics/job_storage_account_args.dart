@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class JobStorageAccountArgs {
   /// The authentication mode for the Stream Analytics Job's Storage Account. Possible values are `ConnectionString`, and `Msi`.
   final pulumi.Input<String> authenticationMode;
-  final pulumi.Input<String>? storageAccountKey;
+  final pulumi.Input<String?>? storageAccountKey;
   final pulumi.Input<String> storageAccountName;
   /// The ID of the Stream Analytics Job. Changing this forces a new resource to be created.
   final pulumi.Input<String> streamAnalyticsJobId;

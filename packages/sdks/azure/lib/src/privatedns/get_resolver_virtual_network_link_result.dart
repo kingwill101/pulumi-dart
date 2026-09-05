@@ -3,46 +3,46 @@
 
 /// Result data returned by getResolverVirtualNetworkLink.
 class GetResolverVirtualNetworkLinkResult {
-  final String dnsForwardingRulesetId;
+  final String? dnsForwardingRulesetId;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// The metadata attached to the Private DNS Resolver Virtual Network Link.
-  final Map<String, String> metadata;
-  final String name;
+  final Map<String, String>? metadata;
+  final String? name;
   /// The ID of the Virtual Network that is linked to the Private DNS Resolver Virtual Network Link.
-  final String virtualNetworkId;
+  final String? virtualNetworkId;
 
   /// Creates a new [GetResolverVirtualNetworkLinkResult].
-  /// [dnsForwardingRulesetId] Required.
+  /// [dnsForwardingRulesetId] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [metadata] The metadata attached to the Private DNS Resolver Virtual Network Link.
-  /// [name] Required.
+  /// [name] Optional.
   /// [virtualNetworkId] The ID of the Virtual Network that is linked to the Private DNS Resolver Virtual Network Link.
   const GetResolverVirtualNetworkLinkResult({
-    required this.dnsForwardingRulesetId,
-    required this.id,
-    required this.metadata,
-    required this.name,
-    required this.virtualNetworkId,
+    this.dnsForwardingRulesetId,
+    this.id,
+    this.metadata,
+    this.name,
+    this.virtualNetworkId,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'dnsForwardingRulesetId': dnsForwardingRulesetId,
-      'id': id,
-      'metadata': metadata,
-      'name': name,
-      'virtualNetworkId': virtualNetworkId,
+      'dnsForwardingRulesetId': ?dnsForwardingRulesetId,
+      'id': ?id,
+      'metadata': ?metadata,
+      'name': ?name,
+      'virtualNetworkId': ?virtualNetworkId,
     };
   }
 
   factory GetResolverVirtualNetworkLinkResult.fromMap(Map<String, dynamic> map) {
     return GetResolverVirtualNetworkLinkResult(
-      dnsForwardingRulesetId: map['dnsForwardingRulesetId'] as String,
-      id: map['id'] as String,
-      metadata: (map['metadata'] as Map).cast<String, String>(),
-      name: map['name'] as String,
-      virtualNetworkId: map['virtualNetworkId'] as String,
+      dnsForwardingRulesetId: (() { final guardedValue = map['dnsForwardingRulesetId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      metadata: (() { final guardedValue = map['metadata']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      virtualNetworkId: (() { final guardedValue = map['virtualNetworkId']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

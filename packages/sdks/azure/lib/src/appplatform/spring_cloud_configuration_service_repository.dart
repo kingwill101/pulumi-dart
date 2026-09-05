@@ -4,29 +4,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SpringCloudConfigurationServiceRepository {
   /// Specifies the ID of the Certificate Authority used when retrieving the Git Repository via HTTPS.
-  final pulumi.Input<String>? caCertificateId;
+  final pulumi.Input<String?>? caCertificateId;
   /// Specifies the SSH public key of git repository.
-  final pulumi.Input<String>? hostKey;
+  final pulumi.Input<String?>? hostKey;
   /// Specifies the SSH key algorithm of git repository.
-  final pulumi.Input<String>? hostKeyAlgorithm;
+  final pulumi.Input<String?>? hostKeyAlgorithm;
   /// Specifies the label of the repository.
   final pulumi.Input<String> label;
   /// Specifies the name which should be used for this repository.
   final pulumi.Input<String> name;
   /// Specifies the password of git repository basic auth.
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// Specifies the collection of patterns of the repository.
   final pulumi.Input<List<String>> patterns;
   /// Specifies the SSH private key of git repository.
-  final pulumi.Input<String>? privateKey;
+  final pulumi.Input<String?>? privateKey;
   /// Specifies a list of searching path of the repository
-  final pulumi.Input<List<String>>? searchPaths;
+  final pulumi.Input<List<String>?>? searchPaths;
   /// Specifies whether enable the strict host key checking.
-  final pulumi.Input<bool>? strictHostKeyChecking;
+  final pulumi.Input<bool?>? strictHostKeyChecking;
   /// Specifies the URI of the repository.
   final pulumi.Input<String> uri;
   /// Specifies the username of git repository basic auth.
-  final pulumi.Input<String>? username;
+  final pulumi.Input<String?>? username;
 
   /// Creates a new [SpringCloudConfigurationServiceRepository].
   /// [caCertificateId] Specifies the ID of the Certificate Authority used when retrieving the Git Repository via HTTPS.

@@ -7,11 +7,11 @@ import 'role_management_policy_notification_rules_eligible_assignments.dart';
 
 class RoleManagementPolicyNotificationRules {
   /// A `notificationTarget` block as defined below to configure notfications on active role assignments.
-  final pulumi.Input<RoleManagementPolicyNotificationRulesActiveAssignments>? activeAssignments;
+  final pulumi.Input<RoleManagementPolicyNotificationRulesActiveAssignments?>? activeAssignments;
   /// A `notificationTarget` block as defined below for configuring notifications on activation of eligible role.
-  final pulumi.Input<RoleManagementPolicyNotificationRulesEligibleActivations>? eligibleActivations;
+  final pulumi.Input<RoleManagementPolicyNotificationRulesEligibleActivations?>? eligibleActivations;
   /// A `notificationTarget` block as defined below to configure notification on eligible role assignments.
-  final pulumi.Input<RoleManagementPolicyNotificationRulesEligibleAssignments>? eligibleAssignments;
+  final pulumi.Input<RoleManagementPolicyNotificationRulesEligibleAssignments?>? eligibleAssignments;
 
   /// Creates a new [RoleManagementPolicyNotificationRules].
   /// [activeAssignments] A `notificationTarget` block as defined below to configure notfications on active role assignments.

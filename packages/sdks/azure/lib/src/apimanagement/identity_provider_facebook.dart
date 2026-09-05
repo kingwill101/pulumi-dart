@@ -267,11 +267,12 @@ class IdentityProviderFacebook extends pulumi.CustomResource {
           'azure:apimanagement/identityProviderFacebook:IdentityProviderFacebook',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['appSecret'],
         ) {
     apiManagementName = registerOutput<String>('apiManagementName');
     appId = registerOutput<String>('appId');
-    appSecret = registerOutput<String>('appSecret');
+    appSecret = registerOutput<String>('appSecret', isSecret: true);
     resourceGroupName = registerOutput<String>('resourceGroupName');
   }
 
@@ -280,11 +281,12 @@ class IdentityProviderFacebook extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     IdentityProviderFacebookState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return IdentityProviderFacebook._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -300,7 +302,23 @@ class IdentityProviderFacebook extends pulumi.CustomResource {
         ) {
     apiManagementName = registerOutput<String>('apiManagementName');
     appId = registerOutput<String>('appId');
-    appSecret = registerOutput<String>('appSecret');
+    appSecret = registerOutput<String>('appSecret', isSecret: true);
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+  }
+
+  /// Creates a typed reference to an existing [IdentityProviderFacebook] resource.
+  IdentityProviderFacebook.reference(String urn)
+    : super(
+        'azure:apimanagement/identityProviderFacebook:IdentityProviderFacebook',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['appSecret'],
+        isResourceReference: true,
+      ) {
+    apiManagementName = registerOutput<String>('apiManagementName');
+    appId = registerOutput<String>('appId');
+    appSecret = registerOutput<String>('appSecret', isSecret: true);
     resourceGroupName = registerOutput<String>('resourceGroupName');
   }
 }

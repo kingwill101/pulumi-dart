@@ -163,7 +163,7 @@ import 'web_test_state.dart';
 /// 			Name:                  pulumi.String("tf-test-appinsights-webtest"),
 /// 			Location:              exampleInsights.Location,
 /// 			ResourceGroupName:     example.Name,
-/// 			ApplicationInsightsId: exampleInsights.ID(),
+/// 			ApplicationInsightsId: exampleInsights.ID().ToIDOutput().ToStringOutput(),
 /// 			Kind:                  pulumi.String("ping"),
 /// 			Frequency:             pulumi.Int(300),
 /// 			Timeout:               pulumi.Int(60),
@@ -388,21 +388,21 @@ class WebTest extends pulumi.CustomResource {
           'azure:appinsights/webTest:WebTest',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     applicationInsightsId = registerOutput<String>('applicationInsightsId');
     configuration = registerOutput<String>('configuration');
     description = registerOutput<String?>('description');
     enabled = registerOutput<bool?>('enabled');
     frequency = registerOutput<int?>('frequency');
-    geoLocations = registerOutput<List<String>>('geoLocations');
+    geoLocations = registerOutput<List<String>>('geoLocations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     kind = registerOutput<String>('kind');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     retryEnabled = registerOutput<bool?>('retryEnabled');
     syntheticMonitorId = registerOutput<String>('syntheticMonitorId');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeout = registerOutput<int?>('timeout');
   }
 
@@ -411,11 +411,12 @@ class WebTest extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     WebTestState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return WebTest._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -434,14 +435,39 @@ class WebTest extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     enabled = registerOutput<bool?>('enabled');
     frequency = registerOutput<int?>('frequency');
-    geoLocations = registerOutput<List<String>>('geoLocations');
+    geoLocations = registerOutput<List<String>>('geoLocations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     kind = registerOutput<String>('kind');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     retryEnabled = registerOutput<bool?>('retryEnabled');
     syntheticMonitorId = registerOutput<String>('syntheticMonitorId');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeout = registerOutput<int?>('timeout');
+  }
+
+  /// Creates a typed reference to an existing [WebTest] resource.
+  WebTest.reference(String urn)
+    : super(
+        'azure:appinsights/webTest:WebTest',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    applicationInsightsId = registerOutput<String>('applicationInsightsId');
+    configuration = registerOutput<String>('configuration');
+    description = registerOutput<String?>('description');
+    enabled = registerOutput<bool?>('enabled');
+    frequency = registerOutput<int?>('frequency');
+    geoLocations = registerOutput<List<String>>('geoLocations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    kind = registerOutput<String>('kind');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    retryEnabled = registerOutput<bool?>('retryEnabled');
+    syntheticMonitorId = registerOutput<String>('syntheticMonitorId');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeout = registerOutput<int?>('timeout');
   }
 }

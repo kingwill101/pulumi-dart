@@ -12,7 +12,7 @@ class PostgresqlFirewallRuleArgs {
   /// The end IP address of the Azure Cosmos DB for PostgreSQL Firewall Rule.
   final pulumi.Input<String> endIpAddress;
   /// The name which should be used for the Azure Cosmos DB for PostgreSQL Firewall Rule. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The start IP address of the Azure Cosmos DB for PostgreSQL Firewall Rule.
   final pulumi.Input<String> startIpAddress;
 

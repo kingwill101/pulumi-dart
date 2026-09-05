@@ -10,7 +10,7 @@ class HyperVReplicationPolicyArgs {
   /// Specifies the frequency at which to create application consistent recovery points.
   final pulumi.Input<int> applicationConsistentSnapshotFrequencyInHours;
   /// The name of the replication policy. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The duration in hours for which the recovery points need to be stored.
   final pulumi.Input<int> recoveryPointRetentionInHours;
   /// The id of the vault that should be updated. Changing this forces a new resource to be created.
@@ -44,11 +44,11 @@ class HyperVReplicationPolicyArgs {
 
   factory HyperVReplicationPolicyArgs.fromMap(Map<String, dynamic> map) {
     return HyperVReplicationPolicyArgs(
-      applicationConsistentSnapshotFrequencyInHours: pulumi.Input.fromValue(map['applicationConsistentSnapshotFrequencyInHours'] as int),
+      applicationConsistentSnapshotFrequencyInHours: pulumi.Input.fromValue((map['applicationConsistentSnapshotFrequencyInHours'] as num).toInt()),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      recoveryPointRetentionInHours: pulumi.Input.fromValue(map['recoveryPointRetentionInHours'] as int),
+      recoveryPointRetentionInHours: pulumi.Input.fromValue((map['recoveryPointRetentionInHours'] as num).toInt()),
       recoveryVaultId: pulumi.Input.fromValue(map['recoveryVaultId'] as String),
-      replicationIntervalInSeconds: pulumi.Input.fromValue(map['replicationIntervalInSeconds'] as int),
+      replicationIntervalInSeconds: pulumi.Input.fromValue((map['replicationIntervalInSeconds'] as num).toInt()),
     );
   }
 }

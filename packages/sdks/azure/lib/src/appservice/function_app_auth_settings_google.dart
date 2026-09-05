@@ -8,7 +8,7 @@ class FunctionAppAuthSettingsGoogle {
   /// The client secret associated with the Google web application.
   final pulumi.Input<String> clientSecret;
   /// The OAuth 2.0 scopes that will be requested as part of Google Sign-In authentication. &lt;https://developers.google.com/identity/sign-in/web/&gt;
-  final pulumi.Input<List<String>>? oauthScopes;
+  final pulumi.Input<List<String>?>? oauthScopes;
 
   /// Creates a new [FunctionAppAuthSettingsGoogle].
   /// [clientId] The OpenID Connect Client ID for the Google web application.

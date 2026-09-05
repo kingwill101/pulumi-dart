@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering RestorePoint resources.
 class RestorePointState {
   /// Whether the Consistency Mode of the Virtual Machine Restore Point is set to `CrashConsistent`. Defaults to `false`. Changing this forces a new resource to be created.
-  final pulumi.Input<bool>? crashConsistencyModeEnabled;
+  final pulumi.Input<bool?>? crashConsistencyModeEnabled;
   /// A list of disks that will be excluded from the Virtual Machine Restore Point. Changing this forces a new resource to be created.
-  final pulumi.Input<List<String>>? excludedDisks;
+  final pulumi.Input<List<String>?>? excludedDisks;
   /// Specifies the name of the Virtual Machine Restore Point. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specifies the ID of the Virtual Machine Restore Point Collection the Virtual Machine Restore Point will be associated with. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? virtualMachineRestorePointCollectionId;
+  final pulumi.Input<String?>? virtualMachineRestorePointCollectionId;
 
   /// Creates a new [RestorePointState].
   /// [crashConsistencyModeEnabled] Whether the Consistency Mode of the Virtual Machine Restore Point is set to `CrashConsistent`. Defaults to `false`. Changing this forces a new resource to be created.

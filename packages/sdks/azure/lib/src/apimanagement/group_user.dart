@@ -210,7 +210,7 @@ class GroupUser extends pulumi.CustomResource {
           'azure:apimanagement/groupUser:GroupUser',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     apiManagementName = registerOutput<String>('apiManagementName');
     groupName = registerOutput<String>('groupName');
@@ -223,11 +223,12 @@ class GroupUser extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     GroupUserState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return GroupUser._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -241,6 +242,21 @@ class GroupUser extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    apiManagementName = registerOutput<String>('apiManagementName');
+    groupName = registerOutput<String>('groupName');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    userId = registerOutput<String>('userId');
+  }
+
+  /// Creates a typed reference to an existing [GroupUser] resource.
+  GroupUser.reference(String urn)
+    : super(
+        'azure:apimanagement/groupUser:GroupUser',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     apiManagementName = registerOutput<String>('apiManagementName');
     groupName = registerOutput<String>('groupName');
     resourceGroupName = registerOutput<String>('resourceGroupName');

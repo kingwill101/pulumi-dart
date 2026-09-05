@@ -197,7 +197,7 @@ import 'role_assignment_state.dart';
 /// 		}
 /// 		exampleDataLakeGen2Filesystem, err := storage.NewDataLakeGen2Filesystem(ctx, "example", &storage.DataLakeGen2FilesystemArgs{
 /// 			Name:             pulumi.String("example"),
-/// 			StorageAccountId: exampleAccount.ID(),
+/// 			StorageAccountId: exampleAccount.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -206,7 +206,7 @@ import 'role_assignment_state.dart';
 /// 			Name:                            pulumi.String("example"),
 /// 			ResourceGroupName:               example.Name,
 /// 			Location:                        example.Location,
-/// 			StorageDataLakeGen2FilesystemId: exampleDataLakeGen2Filesystem.ID(),
+/// 			StorageDataLakeGen2FilesystemId: exampleDataLakeGen2Filesystem.ID().ToIDOutput().ToStringOutput(),
 /// 			SqlAdministratorLogin:           pulumi.String("sqladminuser"),
 /// 			SqlAdministratorLoginPassword:   pulumi.String("H@Sh1CoR3!"),
 /// 			Identity: &synapse.WorkspaceIdentityArgs{
@@ -218,7 +218,7 @@ import 'role_assignment_state.dart';
 /// 		}
 /// 		exampleFirewallRule, err := synapse.NewFirewallRule(ctx, "example", &synapse.FirewallRuleArgs{
 /// 			Name:               pulumi.String("AllowAll"),
-/// 			SynapseWorkspaceId: exampleWorkspace.ID(),
+/// 			SynapseWorkspaceId: exampleWorkspace.ID().ToIDOutput().ToStringOutput(),
 /// 			StartIpAddress:     pulumi.String("0.0.0.0"),
 /// 			EndIpAddress:       pulumi.String("255.255.255.255"),
 /// 		})
@@ -230,7 +230,7 @@ import 'role_assignment_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = synapse.NewRoleAssignment(ctx, "example", &synapse.RoleAssignmentArgs{
-/// 			SynapseWorkspaceId: exampleWorkspace.ID(),
+/// 			SynapseWorkspaceId: exampleWorkspace.ID().ToIDOutput().ToStringOutput(),
 /// 			RoleName:           pulumi.String("Synapse SQL Administrator"),
 /// 			PrincipalId:        pulumi.String(current.ObjectId),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
@@ -485,7 +485,7 @@ class RoleAssignment extends pulumi.CustomResource {
           'azure:synapse/roleAssignment:RoleAssignment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     principalId = registerOutput<String>('principalId');
     principalType = registerOutput<String?>('principalType');
@@ -499,11 +499,12 @@ class RoleAssignment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RoleAssignmentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RoleAssignment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -517,6 +518,22 @@ class RoleAssignment extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    principalId = registerOutput<String>('principalId');
+    principalType = registerOutput<String?>('principalType');
+    roleName = registerOutput<String>('roleName');
+    synapseSparkPoolId = registerOutput<String?>('synapseSparkPoolId');
+    synapseWorkspaceId = registerOutput<String?>('synapseWorkspaceId');
+  }
+
+  /// Creates a typed reference to an existing [RoleAssignment] resource.
+  RoleAssignment.reference(String urn)
+    : super(
+        'azure:synapse/roleAssignment:RoleAssignment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     principalId = registerOutput<String>('principalId');
     principalType = registerOutput<String?>('principalType');
     roleName = registerOutput<String>('roleName');

@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'partner_namespace_args.dart';
+import 'partner_namespace_inbound_ip_rule.dart';
 import 'partner_namespace_state.dart';
 
 /// Manages an Event Grid Partner Namespace.
@@ -101,7 +102,7 @@ import 'partner_namespace_state.dart';
 /// 			Name:                  pulumi.String("example-partner-namespace"),
 /// 			Location:              example.Location,
 /// 			ResourceGroupName:     example.Name,
-/// 			PartnerRegistrationId: examplePartnerRegistration.ID(),
+/// 			PartnerRegistrationId: examplePartnerRegistration.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -221,7 +222,7 @@ class PartnerNamespace extends pulumi.CustomResource {
   /// The endpoint for the Event Grid Partner Namespace.
   late final pulumi.Output<String> endpoint;
   /// One or more `inboundIpRule` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> inboundIpRules;
+  late final pulumi.Output<List<PartnerNamespaceInboundIpRule>?> inboundIpRules;
   /// Whether local authentication methods are enabled for the Event Grid Partner Namespace. Defaults to `true`.
   late final pulumi.Output<bool?> localAuthenticationEnabled;
   /// Specifies the Azure Region where the Event Grid Partner Namespace exists. Changing this forces a new resource to be created.
@@ -251,10 +252,10 @@ class PartnerNamespace extends pulumi.CustomResource {
           'azure:eventgrid/partnerNamespace:PartnerNamespace',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     endpoint = registerOutput<String>('endpoint');
-    inboundIpRules = registerOutput<List<Map<String, dynamic>>?>('inboundIpRules');
+    inboundIpRules = registerOutput<List<PartnerNamespaceInboundIpRule>?>('inboundIpRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PartnerNamespaceInboundIpRule>(guardedValue, (value) => PartnerNamespaceInboundIpRule.fromMap((value as Map).cast<String, dynamic>())); });
     localAuthenticationEnabled = registerOutput<bool?>('localAuthenticationEnabled');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -262,7 +263,7 @@ class PartnerNamespace extends pulumi.CustomResource {
     partnerTopicRoutingMode = registerOutput<String?>('partnerTopicRoutingMode');
     publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [PartnerNamespace] resource's state with the given [name] and [id].
@@ -270,11 +271,12 @@ class PartnerNamespace extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PartnerNamespaceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return PartnerNamespace._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -289,7 +291,7 @@ class PartnerNamespace extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     endpoint = registerOutput<String>('endpoint');
-    inboundIpRules = registerOutput<List<Map<String, dynamic>>?>('inboundIpRules');
+    inboundIpRules = registerOutput<List<PartnerNamespaceInboundIpRule>?>('inboundIpRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PartnerNamespaceInboundIpRule>(guardedValue, (value) => PartnerNamespaceInboundIpRule.fromMap((value as Map).cast<String, dynamic>())); });
     localAuthenticationEnabled = registerOutput<bool?>('localAuthenticationEnabled');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -297,6 +299,27 @@ class PartnerNamespace extends pulumi.CustomResource {
     partnerTopicRoutingMode = registerOutput<String?>('partnerTopicRoutingMode');
     publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [PartnerNamespace] resource.
+  PartnerNamespace.reference(String urn)
+    : super(
+        'azure:eventgrid/partnerNamespace:PartnerNamespace',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    endpoint = registerOutput<String>('endpoint');
+    inboundIpRules = registerOutput<List<PartnerNamespaceInboundIpRule>?>('inboundIpRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PartnerNamespaceInboundIpRule>(guardedValue, (value) => PartnerNamespaceInboundIpRule.fromMap((value as Map).cast<String, dynamic>())); });
+    localAuthenticationEnabled = registerOutput<bool?>('localAuthenticationEnabled');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    partnerRegistrationId = registerOutput<String>('partnerRegistrationId');
+    partnerTopicRoutingMode = registerOutput<String?>('partnerTopicRoutingMode');
+    publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

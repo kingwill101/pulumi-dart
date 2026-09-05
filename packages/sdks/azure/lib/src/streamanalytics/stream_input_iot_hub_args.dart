@@ -15,7 +15,7 @@ class StreamInputIotHubArgs {
   /// The name or the URI of the IoT Hub.
   final pulumi.Input<String> iothubNamespace;
   /// The name of the Stream Input IoTHub. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the Resource Group where the Stream Analytics Job exists. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
   /// A `serialization` block as defined below.

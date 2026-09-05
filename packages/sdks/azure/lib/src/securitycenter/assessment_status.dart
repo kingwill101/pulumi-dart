@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AssessmentStatus {
   /// Specifies the cause of the assessment status.
-  final pulumi.Input<String>? cause;
+  final pulumi.Input<String?>? cause;
   /// Specifies the programmatic code of the assessment status. Possible values are `Healthy`, `Unhealthy` and `NotApplicable`.
   final pulumi.Input<String> code;
   /// Specifies the human readable description of the assessment status.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
 
   /// Creates a new [AssessmentStatus].
   /// [cause] Specifies the cause of the assessment status.

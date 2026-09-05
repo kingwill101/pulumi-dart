@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConfigurationFeatureTimewindowFilter {
   /// The latest timestamp the feature is enabled. The timestamp must be in RFC3339 format.
-  final pulumi.Input<String>? end;
+  final pulumi.Input<String?>? end;
   /// The earliest timestamp the feature is enabled. The timestamp must be in RFC3339 format.
-  final pulumi.Input<String>? start;
+  final pulumi.Input<String?>? start;
 
   /// Creates a new [ConfigurationFeatureTimewindowFilter].
   /// [end] The latest timestamp the feature is enabled. The timestamp must be in RFC3339 format.

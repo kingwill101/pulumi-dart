@@ -106,7 +106,7 @@ import 'hyper_vsite_state.dart';
 /// 		}
 /// 		_, err = siterecovery.NewHyperVSite(ctx, "example", &siterecovery.HyperVSiteArgs{
 /// 			Name:            pulumi.String("example-site"),
-/// 			RecoveryVaultId: exampleVault.ID(),
+/// 			RecoveryVaultId: exampleVault.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -243,7 +243,7 @@ class HyperVSite extends pulumi.CustomResource {
           'azure:siterecovery/hyperVSite:HyperVSite',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     this.name = registerOutput<String>('name');
     recoveryVaultId = registerOutput<String>('recoveryVaultId');
@@ -254,11 +254,12 @@ class HyperVSite extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     HyperVSiteState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return HyperVSite._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -272,6 +273,19 @@ class HyperVSite extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    this.name = registerOutput<String>('name');
+    recoveryVaultId = registerOutput<String>('recoveryVaultId');
+  }
+
+  /// Creates a typed reference to an existing [HyperVSite] resource.
+  HyperVSite.reference(String urn)
+    : super(
+        'azure:siterecovery/hyperVSite:HyperVSite',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     this.name = registerOutput<String>('name');
     recoveryVaultId = registerOutput<String>('recoveryVaultId');
   }

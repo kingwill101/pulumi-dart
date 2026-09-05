@@ -6,17 +6,17 @@ import 'spring_cloud_dev_tool_portal_sso.dart';
 /// Input properties used for looking up and filtering SpringCloudDevToolPortal resources.
 class SpringCloudDevToolPortalState {
   /// Should the Accelerator plugin be enabled?
-  final pulumi.Input<bool>? applicationAcceleratorEnabled;
+  final pulumi.Input<bool?>? applicationAcceleratorEnabled;
   /// Should the Application Live View be enabled?
-  final pulumi.Input<bool>? applicationLiveViewEnabled;
+  final pulumi.Input<bool?>? applicationLiveViewEnabled;
   /// The name which should be used for this Spring Cloud Dev Tool Portal. The only possible value is `default`. Changing this forces a new Spring Cloud Dev Tool Portal to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Is public network access enabled?
-  final pulumi.Input<bool>? publicNetworkAccessEnabled;
+  final pulumi.Input<bool?>? publicNetworkAccessEnabled;
   /// The ID of the Spring Cloud Service. Changing this forces a new Spring Cloud Dev Tool Portal to be created.
-  final pulumi.Input<String>? springCloudServiceId;
+  final pulumi.Input<String?>? springCloudServiceId;
   /// A `sso` block as defined below.
-  final pulumi.Input<SpringCloudDevToolPortalSso>? sso;
+  final pulumi.Input<SpringCloudDevToolPortalSso?>? sso;
 
   /// Creates a new [SpringCloudDevToolPortalState].
   /// [applicationAcceleratorEnabled] Should the Accelerator plugin be enabled?

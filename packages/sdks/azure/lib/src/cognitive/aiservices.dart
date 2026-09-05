@@ -4,6 +4,7 @@ import 'aiservices_customer_managed_key.dart';
 import 'aiservices_identity.dart';
 import 'aiservices_network_acls.dart';
 import 'aiservices_state.dart';
+import 'aiservices_storage.dart';
 
 /// Manages an AI Services Account.
 ///
@@ -254,7 +255,7 @@ class AIServices extends pulumi.CustomResource {
   /// &gt; **Note:** SKU `DC0` is the commitment tier for AI Services Account containers running in disconnected environments. You must obtain approval from Microsoft by submitting the [request form](https://aka.ms/csdisconnectedcontainers) first, before you can use this SKU. More information on [Purchase a commitment plan to use containers in disconnected environments](https://learn.microsoft.com/en-us/azure/cognitive-services/containers/disconnected-containers?tabs=stt#purchase-a-commitment-plan-to-use-containers-in-disconnected-environments).
   late final pulumi.Output<String> skuName;
   /// A `storage` block as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> storages;
+  late final pulumi.Output<List<AIServicesStorage>?> storages;
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
 
@@ -270,25 +271,26 @@ class AIServices extends pulumi.CustomResource {
           'azure:cognitive/aIServices:AIServices',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['primaryAccessKey', 'secondaryAccessKey'],
         ) {
     customSubdomainName = registerOutput<String?>('customSubdomainName');
     customerManagedKey = registerOutput<AIServicesCustomerManagedKey?>('customerManagedKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AIServicesCustomerManagedKey.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     endpoint = registerOutput<String>('endpoint');
-    fqdns = registerOutput<List<String>?>('fqdns');
+    fqdns = registerOutput<List<String>?>('fqdns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     identity = registerOutput<AIServicesIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AIServicesIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     localAuthenticationEnabled = registerOutput<bool?>('localAuthenticationEnabled');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     networkAcls = registerOutput<AIServicesNetworkAcls?>('networkAcls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AIServicesNetworkAcls.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     outboundNetworkAccessRestricted = registerOutput<bool?>('outboundNetworkAccessRestricted');
-    primaryAccessKey = registerOutput<String>('primaryAccessKey');
+    primaryAccessKey = registerOutput<String>('primaryAccessKey', isSecret: true);
     publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    secondaryAccessKey = registerOutput<String>('secondaryAccessKey');
+    secondaryAccessKey = registerOutput<String>('secondaryAccessKey', isSecret: true);
     skuName = registerOutput<String>('skuName');
-    storages = registerOutput<List<Map<String, dynamic>>?>('storages');
-    tags = registerOutput<Map<String, String>?>('tags');
+    storages = registerOutput<List<AIServicesStorage>?>('storages', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AIServicesStorage>(guardedValue, (value) => AIServicesStorage.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [AIServices] resource's state with the given [name] and [id].
@@ -296,11 +298,12 @@ class AIServices extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AIServicesState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AIServices._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -317,19 +320,48 @@ class AIServices extends pulumi.CustomResource {
     customSubdomainName = registerOutput<String?>('customSubdomainName');
     customerManagedKey = registerOutput<AIServicesCustomerManagedKey?>('customerManagedKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AIServicesCustomerManagedKey.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     endpoint = registerOutput<String>('endpoint');
-    fqdns = registerOutput<List<String>?>('fqdns');
+    fqdns = registerOutput<List<String>?>('fqdns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     identity = registerOutput<AIServicesIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AIServicesIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     localAuthenticationEnabled = registerOutput<bool?>('localAuthenticationEnabled');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     networkAcls = registerOutput<AIServicesNetworkAcls?>('networkAcls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AIServicesNetworkAcls.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     outboundNetworkAccessRestricted = registerOutput<bool?>('outboundNetworkAccessRestricted');
-    primaryAccessKey = registerOutput<String>('primaryAccessKey');
+    primaryAccessKey = registerOutput<String>('primaryAccessKey', isSecret: true);
     publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    secondaryAccessKey = registerOutput<String>('secondaryAccessKey');
+    secondaryAccessKey = registerOutput<String>('secondaryAccessKey', isSecret: true);
     skuName = registerOutput<String>('skuName');
-    storages = registerOutput<List<Map<String, dynamic>>?>('storages');
-    tags = registerOutput<Map<String, String>?>('tags');
+    storages = registerOutput<List<AIServicesStorage>?>('storages', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AIServicesStorage>(guardedValue, (value) => AIServicesStorage.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [AIServices] resource.
+  AIServices.reference(String urn)
+    : super(
+        'azure:cognitive/aIServices:AIServices',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['primaryAccessKey', 'secondaryAccessKey'],
+        isResourceReference: true,
+      ) {
+    customSubdomainName = registerOutput<String?>('customSubdomainName');
+    customerManagedKey = registerOutput<AIServicesCustomerManagedKey?>('customerManagedKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AIServicesCustomerManagedKey.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    endpoint = registerOutput<String>('endpoint');
+    fqdns = registerOutput<List<String>?>('fqdns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    identity = registerOutput<AIServicesIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AIServicesIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    localAuthenticationEnabled = registerOutput<bool?>('localAuthenticationEnabled');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    networkAcls = registerOutput<AIServicesNetworkAcls?>('networkAcls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AIServicesNetworkAcls.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    outboundNetworkAccessRestricted = registerOutput<bool?>('outboundNetworkAccessRestricted');
+    primaryAccessKey = registerOutput<String>('primaryAccessKey', isSecret: true);
+    publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    secondaryAccessKey = registerOutput<String>('secondaryAccessKey', isSecret: true);
+    skuName = registerOutput<String>('skuName');
+    storages = registerOutput<List<AIServicesStorage>?>('storages', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AIServicesStorage>(guardedValue, (value) => AIServicesStorage.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

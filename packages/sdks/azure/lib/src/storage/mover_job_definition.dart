@@ -228,8 +228,8 @@ import 'mover_job_definition_state.dart';
 /// 		}
 /// 		exampleMoverAgent, err := storage.NewMoverAgent(ctx, "example", &storage.MoverAgentArgs{
 /// 			Name:           pulumi.String("example-agent"),
-/// 			StorageMoverId: exampleMover.ID(),
-/// 			ArcVirtualMachineId: example.ID().ApplyT(func(id string) (string, error) {
+/// 			StorageMoverId: exampleMover.ID().ToIDOutput().ToStringOutput(),
+/// 			ArcVirtualMachineId: example.ID().ApplyT(func(id pulumi.ID) (string, error) {
 /// 				return fmt.Sprintf("%v/providers/Microsoft.HybridCompute/machines/examples-hybridComputeName", id), nil
 /// 			}).(pulumi.StringOutput),
 /// 			ArcVirtualMachineUuid: pulumi.String("3bb2c024-eba9-4d18-9e7a-1d772fcc5fe9"),
@@ -258,8 +258,8 @@ import 'mover_job_definition_state.dart';
 /// 		}
 /// 		exampleMoverTargetEndpoint, err := storage.NewMoverTargetEndpoint(ctx, "example", &storage.MoverTargetEndpointArgs{
 /// 			Name:                 pulumi.String("example-smte"),
-/// 			StorageMoverId:       exampleMover.ID(),
-/// 			StorageAccountId:     exampleAccount.ID(),
+/// 			StorageMoverId:       exampleMover.ID().ToIDOutput().ToStringOutput(),
+/// 			StorageAccountId:     exampleAccount.ID().ToIDOutput().ToStringOutput(),
 /// 			StorageContainerName: exampleContainer.Name,
 /// 		})
 /// 		if err != nil {
@@ -267,7 +267,7 @@ import 'mover_job_definition_state.dart';
 /// 		}
 /// 		exampleMoverSourceEndpoint, err := storage.NewMoverSourceEndpoint(ctx, "example", &storage.MoverSourceEndpointArgs{
 /// 			Name:           pulumi.String("example-smse"),
-/// 			StorageMoverId: exampleMover.ID(),
+/// 			StorageMoverId: exampleMover.ID().ToIDOutput().ToStringOutput(),
 /// 			Host:           pulumi.String("192.168.0.1"),
 /// 		})
 /// 		if err != nil {
@@ -275,14 +275,14 @@ import 'mover_job_definition_state.dart';
 /// 		}
 /// 		exampleMoverProject, err := storage.NewMoverProject(ctx, "example", &storage.MoverProjectArgs{
 /// 			Name:           pulumi.String("example-sp"),
-/// 			StorageMoverId: exampleMover.ID(),
+/// 			StorageMoverId: exampleMover.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = storage.NewMoverJobDefinition(ctx, "example", &storage.MoverJobDefinitionArgs{
 /// 			Name:                  pulumi.String("example-sjd"),
-/// 			StorageMoverProjectId: exampleMoverProject.ID(),
+/// 			StorageMoverProjectId: exampleMoverProject.ID().ToIDOutput().ToStringOutput(),
 /// 			AgentName:             exampleMoverAgent.Name,
 /// 			CopyMode:              pulumi.String("Additive"),
 /// 			SourceName:            exampleMoverSourceEndpoint.Name,
@@ -587,7 +587,7 @@ class MoverJobDefinition extends pulumi.CustomResource {
           'azure:storage/moverJobDefinition:MoverJobDefinition',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     agentName = registerOutput<String?>('agentName');
     copyMode = registerOutput<String>('copyMode');
@@ -605,11 +605,12 @@ class MoverJobDefinition extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     MoverJobDefinitionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return MoverJobDefinition._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -623,6 +624,26 @@ class MoverJobDefinition extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    agentName = registerOutput<String?>('agentName');
+    copyMode = registerOutput<String>('copyMode');
+    description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    sourceName = registerOutput<String>('sourceName');
+    sourceSubPath = registerOutput<String?>('sourceSubPath');
+    storageMoverProjectId = registerOutput<String>('storageMoverProjectId');
+    targetName = registerOutput<String>('targetName');
+    targetSubPath = registerOutput<String?>('targetSubPath');
+  }
+
+  /// Creates a typed reference to an existing [MoverJobDefinition] resource.
+  MoverJobDefinition.reference(String urn)
+    : super(
+        'azure:storage/moverJobDefinition:MoverJobDefinition',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     agentName = registerOutput<String?>('agentName');
     copyMode = registerOutput<String>('copyMode');
     description = registerOutput<String?>('description');

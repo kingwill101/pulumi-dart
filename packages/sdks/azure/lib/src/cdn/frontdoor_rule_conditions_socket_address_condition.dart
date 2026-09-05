@@ -6,13 +6,13 @@ class FrontdoorRuleConditionsSocketAddressCondition {
   /// Specify one or more IP address ranges. If multiple IP address ranges are specified, they're evaluated using `OR` logic.
   ///
   /// &gt; **Note:** See the `Specifying IP Address Ranges` section below on how to correctly define the `matchValues` field.
-  final pulumi.Input<List<String>>? matchValues;
+  final pulumi.Input<List<String>?>? matchValues;
   /// If `true` operator becomes the opposite of its value. Possible values `true` or `false`. Defaults to `false`. Details can be found in the `Condition Operator List` below.
-  final pulumi.Input<bool>? negateCondition;
+  final pulumi.Input<bool?>? negateCondition;
   /// The type of match. The Possible values are `IpMatch` or `Any`. Defaults to `IPMatch`.
   ///
   /// &gt; **Note:** If the value of the `operator` field is set to `IpMatch` then the `matchValues` field is also required.
-  final pulumi.Input<String>? operator;
+  final pulumi.Input<String?>? operator;
 
   /// Creates a new [FrontdoorRuleConditionsSocketAddressCondition].
   /// [matchValues] Specify one or more IP address ranges. If multiple IP address ranges are specified, they're evaluated using `OR` logic.

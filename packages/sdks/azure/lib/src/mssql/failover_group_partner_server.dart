@@ -6,9 +6,9 @@ class FailoverGroupPartnerServer {
   /// The ID of a partner SQL server to include in the failover group.
   final pulumi.Input<String> id;
   /// The location of the partner server.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The replication role of the partner server. Possible values include `Primary` or `Secondary`.
-  final pulumi.Input<String>? role;
+  final pulumi.Input<String?>? role;
 
   /// Creates a new [FailoverGroupPartnerServer].
   /// [id] The ID of a partner SQL server to include in the failover group.

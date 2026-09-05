@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VirtualNetworkGatewayCustomRoute {
   /// A list of address blocks reserved for this virtual network in CIDR notation.
-  final pulumi.Input<List<String>>? addressPrefixes;
+  final pulumi.Input<List<String>?>? addressPrefixes;
 
   /// Creates a new [VirtualNetworkGatewayCustomRoute].
   /// [addressPrefixes] A list of address blocks reserved for this virtual network in CIDR notation.

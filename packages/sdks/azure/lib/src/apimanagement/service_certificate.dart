@@ -4,17 +4,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServiceCertificate {
   /// The password for the certificate.
-  final pulumi.Input<String>? certificatePassword;
+  final pulumi.Input<String?>? certificatePassword;
   /// The Base64 Encoded PFX or Base64 Encoded X.509 Certificate.
   final pulumi.Input<String> encodedCertificate;
   /// The expiration date of the certificate in RFC3339 format: `2000-01-02T03:04:05Z`.
-  final pulumi.Input<String>? expiry;
+  final pulumi.Input<String?>? expiry;
   /// The name of the Certificate Store where this certificate should be stored. Possible values are `CertificateAuthority` and `Root`.
   final pulumi.Input<String> storeName;
   /// The subject of the certificate.
-  final pulumi.Input<String>? subject;
+  final pulumi.Input<String?>? subject;
   /// The thumbprint of the certificate.
-  final pulumi.Input<String>? thumbprint;
+  final pulumi.Input<String?>? thumbprint;
 
   /// Creates a new [ServiceCertificate].
   /// [certificatePassword] The password for the certificate.

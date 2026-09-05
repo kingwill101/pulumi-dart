@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PrivateCloudCircuit {
   /// The ID of the ExpressRoute Circuit.
-  final pulumi.Input<String>? expressRouteId;
+  final pulumi.Input<String?>? expressRouteId;
   /// The ID of the ExpressRoute Circuit private peering.
-  final pulumi.Input<String>? expressRoutePrivatePeeringId;
+  final pulumi.Input<String?>? expressRoutePrivatePeeringId;
   /// The CIDR of the primary subnet.
-  final pulumi.Input<String>? primarySubnetCidr;
+  final pulumi.Input<String?>? primarySubnetCidr;
   /// The CIDR of the secondary subnet.
-  final pulumi.Input<String>? secondarySubnetCidr;
+  final pulumi.Input<String?>? secondarySubnetCidr;
 
   /// Creates a new [PrivateCloudCircuit].
   /// [expressRouteId] The ID of the ExpressRoute Circuit.

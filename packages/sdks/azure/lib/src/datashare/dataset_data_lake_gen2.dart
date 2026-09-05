@@ -39,7 +39,7 @@ class DatasetDataLakeGen2 extends pulumi.CustomResource {
           'azure:datashare/datasetDataLakeGen2:DatasetDataLakeGen2',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     displayName = registerOutput<String>('displayName');
     filePath = registerOutput<String?>('filePath');
@@ -55,11 +55,12 @@ class DatasetDataLakeGen2 extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DatasetDataLakeGen2State? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DatasetDataLakeGen2._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -73,6 +74,24 @@ class DatasetDataLakeGen2 extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    displayName = registerOutput<String>('displayName');
+    filePath = registerOutput<String?>('filePath');
+    fileSystemName = registerOutput<String>('fileSystemName');
+    folderPath = registerOutput<String?>('folderPath');
+    this.name = registerOutput<String>('name');
+    shareId = registerOutput<String>('shareId');
+    storageAccountId = registerOutput<String>('storageAccountId');
+  }
+
+  /// Creates a typed reference to an existing [DatasetDataLakeGen2] resource.
+  DatasetDataLakeGen2.reference(String urn)
+    : super(
+        'azure:datashare/datasetDataLakeGen2:DatasetDataLakeGen2',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     displayName = registerOutput<String>('displayName');
     filePath = registerOutput<String?>('filePath');
     fileSystemName = registerOutput<String>('fileSystemName');

@@ -8,11 +8,11 @@ class FactoryGithubConfiguration {
   /// Specifies the branch of the repository to get code from.
   final pulumi.Input<String> branchName;
   /// Specifies the GitHub Enterprise host name. For example: &lt;https://github.mydomain.com&gt;. Use &lt;https://github.com&gt; for open source repositories.
-  final pulumi.Input<String>? gitUrl;
+  final pulumi.Input<String?>? gitUrl;
   /// Is automated publishing enabled? Defaults to `true`.
   ///
   /// &gt; **Note:** You must log in to the Data Factory management UI to complete the authentication to the GitHub repository.
-  final pulumi.Input<bool>? publishingEnabled;
+  final pulumi.Input<bool?>? publishingEnabled;
   /// Specifies the name of the git repository.
   final pulumi.Input<String> repositoryName;
   /// Specifies the root folder within the repository. Set to `/` for the top level.

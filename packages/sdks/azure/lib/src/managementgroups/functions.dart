@@ -141,3 +141,14 @@ Future<GetManagementGroupResult> getManagementGroup(
   );
   return GetManagementGroupResult.fromMap(result);
 }
+
+pulumi.Output<GetManagementGroupResult> getManagementGroupOutput(
+  GetManagementGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:managementgroups/getManagementGroup:getManagementGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetManagementGroupResult.fromMap);
+}

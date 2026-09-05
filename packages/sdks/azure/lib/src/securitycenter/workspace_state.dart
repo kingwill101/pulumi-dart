@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering Workspace resources.
 class WorkspaceState {
   /// The scope of VMs to send their security data to the desired workspace, unless overridden by a setting with more specific scope.
-  final pulumi.Input<String>? scope;
+  final pulumi.Input<String?>? scope;
   /// The ID of the Log Analytics Workspace to save the data in.
-  final pulumi.Input<String>? workspaceId;
+  final pulumi.Input<String?>? workspaceId;
 
   /// Creates a new [WorkspaceState].
   /// [scope] The scope of VMs to send their security data to the desired workspace, unless overridden by a setting with more specific scope.

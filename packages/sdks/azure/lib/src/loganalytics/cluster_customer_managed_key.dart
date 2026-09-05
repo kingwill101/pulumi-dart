@@ -28,6 +28,7 @@ import 'cluster_customer_managed_key_state.dart';
 ///     name: "keyvaultkeyexample",
 ///     location: example.location,
 ///     resourceGroupName: example.name,
+///     rbacAuthorizationEnabled: false,
 ///     tenantId: current.then(current => current.tenantId),
 ///     skuName: "premium",
 ///     accessPolicies: [
@@ -42,8 +43,8 @@ import 'cluster_customer_managed_key_state.dart';
 ///             secretPermissions: ["Set"],
 ///         },
 ///         {
-///             tenantId: exampleCluster.identity.apply(identity => identity.tenantId),
-///             objectId: exampleCluster.identity.apply(identity => identity.principalId),
+///             tenantId: exampleCluster.identity.tenantId,
+///             objectId: exampleCluster.identity.principalId,
 ///             keyPermissions: [
 ///                 "Get",
 ///                 "Unwrapkey",
@@ -93,6 +94,7 @@ import 'cluster_customer_managed_key_state.dart';
 ///     name="keyvaultkeyexample",
 ///     location=example.location,
 ///     resource_group_name=example.name,
+///     rbac_authorization_enabled=False,
 ///     tenant_id=current.tenant_id,
 ///     sku_name="premium",
 ///     access_policies=[
@@ -168,6 +170,7 @@ import 'cluster_customer_managed_key_state.dart';
 ///         Name = "keyvaultkeyexample",
 ///         Location = example.Location,
 ///         ResourceGroupName = example.Name,
+///         RbacAuthorizationEnabled = false,
 ///         TenantId = current.Apply(getClientConfigResult => getClientConfigResult.TenantId),
 ///         SkuName = "premium",
 ///         AccessPolicies = new[]
@@ -265,11 +268,12 @@ import 'cluster_customer_managed_key_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleKeyVault, err := keyvault.NewKeyVault(ctx, "example", &keyvault.KeyVaultArgs{
-/// 			Name:              pulumi.String("keyvaultkeyexample"),
-/// 			Location:          example.Location,
-/// 			ResourceGroupName: example.Name,
-/// 			TenantId:          pulumi.String(current.TenantId),
-/// 			SkuName:           pulumi.String("premium"),
+/// 			Name:                     pulumi.String("keyvaultkeyexample"),
+/// 			Location:                 example.Location,
+/// 			ResourceGroupName:        example.Name,
+/// 			RbacAuthorizationEnabled: pulumi.Bool(false),
+/// 			TenantId:                 pulumi.String(current.TenantId),
+/// 			SkuName:                  pulumi.String("premium"),
 /// 			AccessPolicies: keyvault.KeyVaultAccessPolicyArray{
 /// 				&keyvault.KeyVaultAccessPolicyArgs{
 /// 					TenantId: pulumi.String(current.TenantId),
@@ -284,12 +288,8 @@ import 'cluster_customer_managed_key_state.dart';
 /// 					},
 /// 				},
 /// 				&keyvault.KeyVaultAccessPolicyArgs{
-/// 					TenantId: exampleCluster.Identity.ApplyT(func(identity loganalytics.ClusterIdentity) (*string, error) {
-/// 						return identity.TenantId, nil
-/// 					}).(pulumi.StringPtrOutput),
-/// 					ObjectId: exampleCluster.Identity.ApplyT(func(identity loganalytics.ClusterIdentity) (*string, error) {
-/// 						return identity.PrincipalId, nil
-/// 					}).(pulumi.StringPtrOutput),
+/// 					TenantId: exampleCluster.Identity.TenantId(),
+/// 					ObjectId: exampleCluster.Identity.PrincipalId(),
 /// 					KeyPermissions: pulumi.StringArray{
 /// 						pulumi.String("Get"),
 /// 						pulumi.String("Unwrapkey"),
@@ -306,7 +306,7 @@ import 'cluster_customer_managed_key_state.dart';
 /// 		}
 /// 		exampleKey, err := keyvault.NewKey(ctx, "example", &keyvault.KeyArgs{
 /// 			Name:       pulumi.String("generated-certificate"),
-/// 			KeyVaultId: exampleKeyVault.ID(),
+/// 			KeyVaultId: exampleKeyVault.ID().ToIDOutput().ToStringOutput(),
 /// 			KeyType:    pulumi.String("RSA"),
 /// 			KeySize:    pulumi.Int(2048),
 /// 			KeyOpts: pulumi.StringArray{
@@ -322,8 +322,8 @@ import 'cluster_customer_managed_key_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = loganalytics.NewClusterCustomerManagedKey(ctx, "example", &loganalytics.ClusterCustomerManagedKeyArgs{
-/// 			LogAnalyticsClusterId: exampleCluster.ID(),
-/// 			KeyVaultKeyId:         exampleKey.ID(),
+/// 			LogAnalyticsClusterId: exampleCluster.ID().ToIDOutput().ToStringOutput(),
+/// 			KeyVaultKeyId:         exampleKey.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -357,11 +357,12 @@ import 'cluster_customer_managed_key_state.dart';
 ///   }
 /// }
 /// resource "azure_keyvault_keyvault" "example" {
-///   name                = "keyvaultkeyexample"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   tenant_id           = data.azure_core_getclientconfig.current.tenant_id
-///   sku_name            = "premium"
+///   name                       = "keyvaultkeyexample"
+///   location                   = azure_core_resourcegroup.example.location
+///   resource_group_name        = azure_core_resourcegroup.example.name
+///   rbac_authorization_enabled = false
+///   tenant_id                  = data.azure_core_getclientconfig.current.tenant_id
+///   sku_name                   = "premium"
 ///   access_policies {
 ///     tenant_id          = data.azure_core_getclientconfig.current.tenant_id
 ///     object_id          = data.azure_core_getclientconfig.current.object_id
@@ -441,6 +442,7 @@ import 'cluster_customer_managed_key_state.dart';
 ///             .name("keyvaultkeyexample")
 ///             .location(example.location())
 ///             .resourceGroupName(example.name())
+///             .rbacAuthorizationEnabled(false)
 ///             .tenantId(current.tenantId())
 ///             .skuName("premium")
 ///             .accessPolicies(
@@ -509,6 +511,7 @@ import 'cluster_customer_managed_key_state.dart';
 ///       name: keyvaultkeyexample
 ///       location: ${example.location}
 ///       resourceGroupName: ${example.name}
+///       rbacAuthorizationEnabled: false
 ///       tenantId: ${current.tenantId}
 ///       skuName: premium
 ///       accessPolicies:
@@ -589,7 +592,7 @@ class ClusterCustomerManagedKey extends pulumi.CustomResource {
           'azure:loganalytics/clusterCustomerManagedKey:ClusterCustomerManagedKey',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     keyVaultKeyId = registerOutput<String>('keyVaultKeyId');
     logAnalyticsClusterId = registerOutput<String>('logAnalyticsClusterId');
@@ -600,11 +603,12 @@ class ClusterCustomerManagedKey extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ClusterCustomerManagedKeyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ClusterCustomerManagedKey._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -618,6 +622,19 @@ class ClusterCustomerManagedKey extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    keyVaultKeyId = registerOutput<String>('keyVaultKeyId');
+    logAnalyticsClusterId = registerOutput<String>('logAnalyticsClusterId');
+  }
+
+  /// Creates a typed reference to an existing [ClusterCustomerManagedKey] resource.
+  ClusterCustomerManagedKey.reference(String urn)
+    : super(
+        'azure:loganalytics/clusterCustomerManagedKey:ClusterCustomerManagedKey',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     keyVaultKeyId = registerOutput<String>('keyVaultKeyId');
     logAnalyticsClusterId = registerOutput<String>('logAnalyticsClusterId');
   }

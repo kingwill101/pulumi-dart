@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FirewallPolicyThreatIntelligenceAllowlist {
   /// A list of FQDNs that will be skipped for threat detection.
-  final pulumi.Input<List<String>>? fqdns;
+  final pulumi.Input<List<String>?>? fqdns;
   /// A list of IP addresses or CIDR ranges that will be skipped for threat detection.
-  final pulumi.Input<List<String>>? ipAddresses;
+  final pulumi.Input<List<String>?>? ipAddresses;
 
   /// Creates a new [FirewallPolicyThreatIntelligenceAllowlist].
   /// [fqdns] A list of FQDNs that will be skipped for threat detection.

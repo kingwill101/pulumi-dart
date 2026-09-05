@@ -25,8 +25,8 @@ class ClusterOptimizedAutoScale {
 
   factory ClusterOptimizedAutoScale.fromMap(Map<String, dynamic> map) {
     return ClusterOptimizedAutoScale(
-      maximumInstances: pulumi.Input.fromValue(map['maximumInstances'] as int),
-      minimumInstances: pulumi.Input.fromValue(map['minimumInstances'] as int),
+      maximumInstances: pulumi.Input.fromValue((map['maximumInstances'] as num).toInt()),
+      minimumInstances: pulumi.Input.fromValue((map['minimumInstances'] as num).toInt()),
     );
   }
 }

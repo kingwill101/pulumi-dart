@@ -221,7 +221,7 @@ class Namespace extends pulumi.CustomResource {
           'azure:notificationhub/namespace:Namespace',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     enabled = registerOutput<bool?>('enabled');
     location = registerOutput<String>('location');
@@ -231,7 +231,7 @@ class Namespace extends pulumi.CustomResource {
     resourceGroupName = registerOutput<String>('resourceGroupName');
     servicebusEndpoint = registerOutput<String>('servicebusEndpoint');
     skuName = registerOutput<String>('skuName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     zoneRedundancyEnabled = registerOutput<bool?>('zoneRedundancyEnabled');
   }
 
@@ -240,11 +240,12 @@ class Namespace extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     NamespaceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Namespace._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -266,7 +267,28 @@ class Namespace extends pulumi.CustomResource {
     resourceGroupName = registerOutput<String>('resourceGroupName');
     servicebusEndpoint = registerOutput<String>('servicebusEndpoint');
     skuName = registerOutput<String>('skuName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    zoneRedundancyEnabled = registerOutput<bool?>('zoneRedundancyEnabled');
+  }
+
+  /// Creates a typed reference to an existing [Namespace] resource.
+  Namespace.reference(String urn)
+    : super(
+        'azure:notificationhub/namespace:Namespace',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    enabled = registerOutput<bool?>('enabled');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    namespaceType = registerOutput<String>('namespaceType');
+    replicationRegion = registerOutput<String?>('replicationRegion');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    servicebusEndpoint = registerOutput<String>('servicebusEndpoint');
+    skuName = registerOutput<String>('skuName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     zoneRedundancyEnabled = registerOutput<bool?>('zoneRedundancyEnabled');
   }
 }

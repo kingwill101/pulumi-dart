@@ -6,62 +6,62 @@ import 'get_mx_record_record.dart';
 /// Result data returned by getMxRecord.
 class GetMxRecordResult {
   /// The FQDN of the Private DNS MX Record.
-  final String fqdn;
+  final String? fqdn;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   final String? name;
   /// A list of values that make up the MX record. Each `record` block supports fields documented below.
-  final List<GetMxRecordRecord> records;
-  final String resourceGroupName;
+  final List<GetMxRecordRecord>? records;
+  final String? resourceGroupName;
   /// A mapping of tags assigned to the resource.
-  final Map<String, String> tags;
+  final Map<String, String>? tags;
   /// The Time To Live (TTL) of the Private DNS record in seconds.
-  final int ttl;
-  final String zoneName;
+  final int? ttl;
+  final String? zoneName;
 
   /// Creates a new [GetMxRecordResult].
   /// [fqdn] The FQDN of the Private DNS MX Record.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [name] Optional.
   /// [records] A list of values that make up the MX record. Each `record` block supports fields documented below.
-  /// [resourceGroupName] Required.
+  /// [resourceGroupName] Optional.
   /// [tags] A mapping of tags assigned to the resource.
   /// [ttl] The Time To Live (TTL) of the Private DNS record in seconds.
-  /// [zoneName] Required.
+  /// [zoneName] Optional.
   const GetMxRecordResult({
-    required this.fqdn,
-    required this.id,
+    this.fqdn,
+    this.id,
     this.name,
-    required this.records,
-    required this.resourceGroupName,
-    required this.tags,
-    required this.ttl,
-    required this.zoneName,
+    this.records,
+    this.resourceGroupName,
+    this.tags,
+    this.ttl,
+    this.zoneName,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'fqdn': fqdn,
-      'id': id,
+      'fqdn': ?fqdn,
+      'id': ?id,
       'name': ?name,
-      'records': pulumi.Input.encodeList<GetMxRecordRecord, Map<String, dynamic>>(records, (value) => value.toMap()),
-      'resourceGroupName': resourceGroupName,
-      'tags': tags,
-      'ttl': ttl,
-      'zoneName': zoneName,
+      'records': ?(() { final guardedValue = records; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetMxRecordRecord, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'resourceGroupName': ?resourceGroupName,
+      'tags': ?tags,
+      'ttl': ?ttl,
+      'zoneName': ?zoneName,
     };
   }
 
   factory GetMxRecordResult.fromMap(Map<String, dynamic> map) {
     return GetMxRecordResult(
-      fqdn: map['fqdn'] as String,
-      id: map['id'] as String,
+      fqdn: (() { final guardedValue = map['fqdn']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      records: pulumi.Input.decodeList<GetMxRecordRecord>(map['records']!, (value) => GetMxRecordRecord.fromMap((value as Map).cast<String, dynamic>())),
-      resourceGroupName: map['resourceGroupName'] as String,
-      tags: (map['tags'] as Map).cast<String, String>(),
-      ttl: map['ttl'] as int,
-      zoneName: map['zoneName'] as String,
+      records: (() { final guardedValue = map['records']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetMxRecordRecord>(guardedValue, (value) => GetMxRecordRecord.fromMap((value as Map).cast<String, dynamic>())); })(),
+      resourceGroupName: (() { final guardedValue = map['resourceGroupName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      ttl: (() { final guardedValue = map['ttl']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      zoneName: (() { final guardedValue = map['zoneName']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

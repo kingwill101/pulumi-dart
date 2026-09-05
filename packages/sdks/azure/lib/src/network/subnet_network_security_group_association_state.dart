@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering SubnetNetworkSecurityGroupAssociation resources.
 class SubnetNetworkSecurityGroupAssociationState {
   /// The ID of the Network Security Group which should be associated with the Subnet. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? networkSecurityGroupId;
+  final pulumi.Input<String?>? networkSecurityGroupId;
   /// The ID of the Subnet. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? subnetId;
+  final pulumi.Input<String?>? subnetId;
 
   /// Creates a new [SubnetNetworkSecurityGroupAssociationState].
   /// [networkSecurityGroupId] The ID of the Network Security Group which should be associated with the Subnet. Changing this forces a new resource to be created.

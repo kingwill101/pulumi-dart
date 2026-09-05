@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering SpringCloudActiveDeployment resources.
 class SpringCloudActiveDeploymentState {
   /// Specifies the name of Spring Cloud Deployment which is going to be active.
-  final pulumi.Input<String>? deploymentName;
+  final pulumi.Input<String?>? deploymentName;
   /// Specifies the id of the Spring Cloud Application. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? springCloudAppId;
+  final pulumi.Input<String?>? springCloudAppId;
 
   /// Creates a new [SpringCloudActiveDeploymentState].
   /// [deploymentName] Specifies the name of Spring Cloud Deployment which is going to be active.

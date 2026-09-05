@@ -144,6 +144,17 @@ Future<GetGroupResult> getGroup(
   return GetGroupResult.fromMap(result);
 }
 
+pulumi.Output<GetGroupResult> getGroupOutput(
+  GetGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:management/getGroup:getGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGroupResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Management Group Template Deployment.
 ///
 /// ## Example Usage
@@ -313,4 +324,15 @@ Future<GetGroupTemplateDeploymentResult> getGroupTemplateDeployment(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetGroupTemplateDeploymentResult.fromMap(result);
+}
+
+pulumi.Output<GetGroupTemplateDeploymentResult> getGroupTemplateDeploymentOutput(
+  GetGroupTemplateDeploymentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:management/getGroupTemplateDeployment:getGroupTemplateDeployment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGroupTemplateDeploymentResult.fromMap);
 }

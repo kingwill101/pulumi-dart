@@ -2,6 +2,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'configuration_store_args.dart';
 import 'configuration_store_encryption.dart';
 import 'configuration_store_identity.dart';
+import 'configuration_store_primary_read_key.dart';
+import 'configuration_store_primary_write_key.dart';
+import 'configuration_store_replica.dart';
+import 'configuration_store_secondary_read_key.dart';
+import 'configuration_store_secondary_write_key.dart';
 import 'configuration_store_state.dart';
 
 /// Manages an Azure App Configuration.
@@ -188,6 +193,7 @@ import 'configuration_store_state.dart';
 ///     name: "exampleKVt123",
 ///     location: example.location,
 ///     resourceGroupName: example.name,
+///     rbacAuthorizationEnabled: false,
 ///     tenantId: current.then(current => current.tenantId),
 ///     skuName: "standard",
 ///     softDeleteRetentionDays: 7,
@@ -292,6 +298,7 @@ import 'configuration_store_state.dart';
 ///     name="exampleKVt123",
 ///     location=example.location,
 ///     resource_group_name=example.name,
+///     rbac_authorization_enabled=False,
 ///     tenant_id=current.tenant_id,
 ///     sku_name="standard",
 ///     soft_delete_retention_days=7,
@@ -401,6 +408,7 @@ import 'configuration_store_state.dart';
 ///         Name = "exampleKVt123",
 ///         Location = example.Location,
 ///         ResourceGroupName = example.Name,
+///         RbacAuthorizationEnabled = false,
 ///         TenantId = current.Apply(getClientConfigResult => getClientConfigResult.TenantId),
 ///         SkuName = "standard",
 ///         SoftDeleteRetentionDays = 7,
@@ -555,19 +563,20 @@ import 'configuration_store_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleKeyVault, err := keyvault.NewKeyVault(ctx, "example", &keyvault.KeyVaultArgs{
-/// 			Name:                    pulumi.String("exampleKVt123"),
-/// 			Location:                example.Location,
-/// 			ResourceGroupName:       example.Name,
-/// 			TenantId:                pulumi.String(current.TenantId),
-/// 			SkuName:                 pulumi.String("standard"),
-/// 			SoftDeleteRetentionDays: pulumi.Int(7),
-/// 			PurgeProtectionEnabled:  pulumi.Bool(true),
+/// 			Name:                     pulumi.String("exampleKVt123"),
+/// 			Location:                 example.Location,
+/// 			ResourceGroupName:        example.Name,
+/// 			RbacAuthorizationEnabled: pulumi.Bool(false),
+/// 			TenantId:                 pulumi.String(current.TenantId),
+/// 			SkuName:                  pulumi.String("standard"),
+/// 			SoftDeleteRetentionDays:  pulumi.Int(7),
+/// 			PurgeProtectionEnabled:   pulumi.Bool(true),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		server, err := keyvault.NewAccessPolicy(ctx, "server", &keyvault.AccessPolicyArgs{
-/// 			KeyVaultId: exampleKeyVault.ID(),
+/// 			KeyVaultId: exampleKeyVault.ID().ToIDOutput().ToStringOutput(),
 /// 			TenantId:   pulumi.String(current.TenantId),
 /// 			ObjectId:   exampleUserAssignedIdentity.PrincipalId,
 /// 			KeyPermissions: pulumi.StringArray{
@@ -583,7 +592,7 @@ import 'configuration_store_state.dart';
 /// 			return err
 /// 		}
 /// 		client, err := keyvault.NewAccessPolicy(ctx, "client", &keyvault.AccessPolicyArgs{
-/// 			KeyVaultId: exampleKeyVault.ID(),
+/// 			KeyVaultId: exampleKeyVault.ID().ToIDOutput().ToStringOutput(),
 /// 			TenantId:   pulumi.String(current.TenantId),
 /// 			ObjectId:   pulumi.String(current.ObjectId),
 /// 			KeyPermissions: pulumi.StringArray{
@@ -611,7 +620,7 @@ import 'configuration_store_state.dart';
 /// 		}
 /// 		exampleKey, err := keyvault.NewKey(ctx, "example", &keyvault.KeyArgs{
 /// 			Name:       pulumi.String("exampleKVkey"),
-/// 			KeyVaultId: exampleKeyVault.ID(),
+/// 			KeyVaultId: exampleKeyVault.ID().ToIDOutput().ToStringOutput(),
 /// 			KeyType:    pulumi.String("RSA"),
 /// 			KeySize:    pulumi.Int(2048),
 /// 			KeyOpts: pulumi.StringArray{
@@ -641,11 +650,11 @@ import 'configuration_store_state.dart';
 /// 			Identity: &appconfiguration.ConfigurationStoreIdentityArgs{
 /// 				Type: pulumi.String("UserAssigned"),
 /// 				IdentityIds: pulumi.StringArray{
-/// 					exampleUserAssignedIdentity.ID(),
+/// 					exampleUserAssignedIdentity.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 			Encryption: &appconfiguration.ConfigurationStoreEncryptionArgs{
-/// 				KeyVaultKeyIdentifier: exampleKey.ID(),
+/// 				KeyVaultKeyIdentifier: exampleKey.ID().ToIDOutput().ToStringOutput(),
 /// 				IdentityClientId:      exampleUserAssignedIdentity.ClientId,
 /// 			},
 /// 			Replicas: appconfiguration.ConfigurationStoreReplicaArray{
@@ -693,6 +702,7 @@ import 'configuration_store_state.dart';
 ///   name                       = "exampleKVt123"
 ///   location                   = azure_core_resourcegroup.example.location
 ///   resource_group_name        = azure_core_resourcegroup.example.name
+///   rbac_authorization_enabled = false
 ///   tenant_id                  = data.azure_core_getclientconfig.current.tenant_id
 ///   sku_name                   = "standard"
 ///   soft_delete_retention_days = 7
@@ -800,6 +810,7 @@ import 'configuration_store_state.dart';
 ///             .name("exampleKVt123")
 ///             .location(example.location())
 ///             .resourceGroupName(example.name())
+///             .rbacAuthorizationEnabled(false)
 ///             .tenantId(current.tenantId())
 ///             .skuName("standard")
 ///             .softDeleteRetentionDays(7)
@@ -909,6 +920,7 @@ import 'configuration_store_state.dart';
 ///       name: exampleKVt123
 ///       location: ${example.location}
 ///       resourceGroupName: ${example.name}
+///       rbacAuthorizationEnabled: false
 ///       tenantId: ${current.tenantId}
 ///       skuName: standard
 ///       softDeleteRetentionDays: 7
@@ -1037,9 +1049,9 @@ class ConfigurationStore extends pulumi.CustomResource {
   /// Specifies the name of the App Configuration. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
   /// A `primaryReadKey` block as defined below containing the primary read access key.
-  late final pulumi.Output<List<Map<String, dynamic>>> primaryReadKeys;
+  late final pulumi.Output<List<ConfigurationStorePrimaryReadKey>> primaryReadKeys;
   /// A `primaryWriteKey` block as defined below containing the primary write access key.
-  late final pulumi.Output<List<Map<String, dynamic>>> primaryWriteKeys;
+  late final pulumi.Output<List<ConfigurationStorePrimaryWriteKey>> primaryWriteKeys;
   /// The Public Network Access setting of the App Configuration. Possible values are `Enabled` and `Disabled`.
   ///
   /// &gt; **Note:** If `publicNetworkAccess` is not specified, the App Configuration will be created as  `Automatic`. However, once a different value is defined, can not be set again as automatic.
@@ -1049,13 +1061,13 @@ class ConfigurationStore extends pulumi.CustomResource {
   /// &gt; **Note:** Once Purge Protection has been enabled it's not possible to disable it. Deleting the App Configuration with Purge Protection enabled will schedule the App Configuration to be deleted (which will happen by Azure in the configured number of days).
   late final pulumi.Output<bool?> purgeProtectionEnabled;
   /// One or more `replica` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> replicas;
+  late final pulumi.Output<List<ConfigurationStoreReplica>?> replicas;
   /// The name of the resource group in which to create the App Configuration. Changing this forces a new resource to be created.
   late final pulumi.Output<String> resourceGroupName;
   /// A `secondaryReadKey` block as defined below containing the secondary read access key.
-  late final pulumi.Output<List<Map<String, dynamic>>> secondaryReadKeys;
+  late final pulumi.Output<List<ConfigurationStoreSecondaryReadKey>> secondaryReadKeys;
   /// A `secondaryWriteKey` block as defined below containing the secondary write access key.
-  late final pulumi.Output<List<Map<String, dynamic>>> secondaryWriteKeys;
+  late final pulumi.Output<List<ConfigurationStoreSecondaryWriteKey>> secondaryWriteKeys;
   /// The SKU name of the App Configuration. Possible values are `free`, `developer`, `standard` and `premium`. Defaults to `free`.
   ///
   /// &gt; **Note:** Azure does not support downgrading `sku` to a lower tier, except from `premium` to `standard`. Downgrading will force a new resource to be created.
@@ -1079,7 +1091,7 @@ class ConfigurationStore extends pulumi.CustomResource {
           'azure:appconfiguration/configurationStore:ConfigurationStore',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     dataPlaneProxyAuthenticationMode = registerOutput<String?>('dataPlaneProxyAuthenticationMode');
     dataPlaneProxyPrivateLinkDelegationEnabled = registerOutput<bool?>('dataPlaneProxyPrivateLinkDelegationEnabled');
@@ -1089,17 +1101,17 @@ class ConfigurationStore extends pulumi.CustomResource {
     localAuthEnabled = registerOutput<bool?>('localAuthEnabled');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    primaryReadKeys = registerOutput<List<Map<String, dynamic>>>('primaryReadKeys');
-    primaryWriteKeys = registerOutput<List<Map<String, dynamic>>>('primaryWriteKeys');
+    primaryReadKeys = registerOutput<List<ConfigurationStorePrimaryReadKey>>('primaryReadKeys', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ConfigurationStorePrimaryReadKey>(guardedValue, (value) => ConfigurationStorePrimaryReadKey.fromMap((value as Map).cast<String, dynamic>())); });
+    primaryWriteKeys = registerOutput<List<ConfigurationStorePrimaryWriteKey>>('primaryWriteKeys', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ConfigurationStorePrimaryWriteKey>(guardedValue, (value) => ConfigurationStorePrimaryWriteKey.fromMap((value as Map).cast<String, dynamic>())); });
     publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
     purgeProtectionEnabled = registerOutput<bool?>('purgeProtectionEnabled');
-    replicas = registerOutput<List<Map<String, dynamic>>?>('replicas');
+    replicas = registerOutput<List<ConfigurationStoreReplica>?>('replicas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ConfigurationStoreReplica>(guardedValue, (value) => ConfigurationStoreReplica.fromMap((value as Map).cast<String, dynamic>())); });
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    secondaryReadKeys = registerOutput<List<Map<String, dynamic>>>('secondaryReadKeys');
-    secondaryWriteKeys = registerOutput<List<Map<String, dynamic>>>('secondaryWriteKeys');
+    secondaryReadKeys = registerOutput<List<ConfigurationStoreSecondaryReadKey>>('secondaryReadKeys', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ConfigurationStoreSecondaryReadKey>(guardedValue, (value) => ConfigurationStoreSecondaryReadKey.fromMap((value as Map).cast<String, dynamic>())); });
+    secondaryWriteKeys = registerOutput<List<ConfigurationStoreSecondaryWriteKey>>('secondaryWriteKeys', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ConfigurationStoreSecondaryWriteKey>(guardedValue, (value) => ConfigurationStoreSecondaryWriteKey.fromMap((value as Map).cast<String, dynamic>())); });
     sku = registerOutput<String?>('sku');
     softDeleteRetentionDays = registerOutput<int?>('softDeleteRetentionDays');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [ConfigurationStore] resource's state with the given [name] and [id].
@@ -1107,11 +1119,12 @@ class ConfigurationStore extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ConfigurationStoreState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ConfigurationStore._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -1133,16 +1146,46 @@ class ConfigurationStore extends pulumi.CustomResource {
     localAuthEnabled = registerOutput<bool?>('localAuthEnabled');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    primaryReadKeys = registerOutput<List<Map<String, dynamic>>>('primaryReadKeys');
-    primaryWriteKeys = registerOutput<List<Map<String, dynamic>>>('primaryWriteKeys');
+    primaryReadKeys = registerOutput<List<ConfigurationStorePrimaryReadKey>>('primaryReadKeys', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ConfigurationStorePrimaryReadKey>(guardedValue, (value) => ConfigurationStorePrimaryReadKey.fromMap((value as Map).cast<String, dynamic>())); });
+    primaryWriteKeys = registerOutput<List<ConfigurationStorePrimaryWriteKey>>('primaryWriteKeys', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ConfigurationStorePrimaryWriteKey>(guardedValue, (value) => ConfigurationStorePrimaryWriteKey.fromMap((value as Map).cast<String, dynamic>())); });
     publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
     purgeProtectionEnabled = registerOutput<bool?>('purgeProtectionEnabled');
-    replicas = registerOutput<List<Map<String, dynamic>>?>('replicas');
+    replicas = registerOutput<List<ConfigurationStoreReplica>?>('replicas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ConfigurationStoreReplica>(guardedValue, (value) => ConfigurationStoreReplica.fromMap((value as Map).cast<String, dynamic>())); });
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    secondaryReadKeys = registerOutput<List<Map<String, dynamic>>>('secondaryReadKeys');
-    secondaryWriteKeys = registerOutput<List<Map<String, dynamic>>>('secondaryWriteKeys');
+    secondaryReadKeys = registerOutput<List<ConfigurationStoreSecondaryReadKey>>('secondaryReadKeys', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ConfigurationStoreSecondaryReadKey>(guardedValue, (value) => ConfigurationStoreSecondaryReadKey.fromMap((value as Map).cast<String, dynamic>())); });
+    secondaryWriteKeys = registerOutput<List<ConfigurationStoreSecondaryWriteKey>>('secondaryWriteKeys', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ConfigurationStoreSecondaryWriteKey>(guardedValue, (value) => ConfigurationStoreSecondaryWriteKey.fromMap((value as Map).cast<String, dynamic>())); });
     sku = registerOutput<String?>('sku');
     softDeleteRetentionDays = registerOutput<int?>('softDeleteRetentionDays');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [ConfigurationStore] resource.
+  ConfigurationStore.reference(String urn)
+    : super(
+        'azure:appconfiguration/configurationStore:ConfigurationStore',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    dataPlaneProxyAuthenticationMode = registerOutput<String?>('dataPlaneProxyAuthenticationMode');
+    dataPlaneProxyPrivateLinkDelegationEnabled = registerOutput<bool?>('dataPlaneProxyPrivateLinkDelegationEnabled');
+    encryption = registerOutput<ConfigurationStoreEncryption?>('encryption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfigurationStoreEncryption.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    endpoint = registerOutput<String>('endpoint');
+    identity = registerOutput<ConfigurationStoreIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfigurationStoreIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    localAuthEnabled = registerOutput<bool?>('localAuthEnabled');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    primaryReadKeys = registerOutput<List<ConfigurationStorePrimaryReadKey>>('primaryReadKeys', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ConfigurationStorePrimaryReadKey>(guardedValue, (value) => ConfigurationStorePrimaryReadKey.fromMap((value as Map).cast<String, dynamic>())); });
+    primaryWriteKeys = registerOutput<List<ConfigurationStorePrimaryWriteKey>>('primaryWriteKeys', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ConfigurationStorePrimaryWriteKey>(guardedValue, (value) => ConfigurationStorePrimaryWriteKey.fromMap((value as Map).cast<String, dynamic>())); });
+    publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
+    purgeProtectionEnabled = registerOutput<bool?>('purgeProtectionEnabled');
+    replicas = registerOutput<List<ConfigurationStoreReplica>?>('replicas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ConfigurationStoreReplica>(guardedValue, (value) => ConfigurationStoreReplica.fromMap((value as Map).cast<String, dynamic>())); });
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    secondaryReadKeys = registerOutput<List<ConfigurationStoreSecondaryReadKey>>('secondaryReadKeys', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ConfigurationStoreSecondaryReadKey>(guardedValue, (value) => ConfigurationStoreSecondaryReadKey.fromMap((value as Map).cast<String, dynamic>())); });
+    secondaryWriteKeys = registerOutput<List<ConfigurationStoreSecondaryWriteKey>>('secondaryWriteKeys', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ConfigurationStoreSecondaryWriteKey>(guardedValue, (value) => ConfigurationStoreSecondaryWriteKey.fromMap((value as Map).cast<String, dynamic>())); });
+    sku = registerOutput<String?>('sku');
+    softDeleteRetentionDays = registerOutput<int?>('softDeleteRetentionDays');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

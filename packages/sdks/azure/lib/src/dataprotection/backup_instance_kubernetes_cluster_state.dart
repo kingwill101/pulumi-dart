@@ -6,21 +6,21 @@ import 'backup_instance_kubernetes_cluster_backup_datasource_parameters.dart';
 /// Input properties used for looking up and filtering BackupInstanceKubernetesCluster resources.
 class BackupInstanceKubernetesClusterState {
   /// A `backupDatasourceParameters` block as defined below. Changing this forces a new resource to be created.
-  final pulumi.Input<BackupInstanceKubernetesClusterBackupDatasourceParameters>? backupDatasourceParameters;
+  final pulumi.Input<BackupInstanceKubernetesClusterBackupDatasourceParameters?>? backupDatasourceParameters;
   /// The ID of the Backup Policy. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? backupPolicyId;
+  final pulumi.Input<String?>? backupPolicyId;
   /// The ID of the Kubernetes Cluster. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? kubernetesClusterId;
+  final pulumi.Input<String?>? kubernetesClusterId;
   /// The location of the Backup Instance Kubernetes Cluster. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name which should be used for this Backup Instance Kubernetes Cluster. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The protection state of the Backup Instance Kubernetes Cluster.
-  final pulumi.Input<String>? protectionState;
+  final pulumi.Input<String?>? protectionState;
   /// The name of the Resource Group where snapshots are stored. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? snapshotResourceGroupName;
+  final pulumi.Input<String?>? snapshotResourceGroupName;
   /// The ID of the Backup Vault within which the Backup Instance Kubernetes Cluster should exist. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? vaultId;
+  final pulumi.Input<String?>? vaultId;
 
   /// Creates a new [BackupInstanceKubernetesClusterState].
   /// [backupDatasourceParameters] A `backupDatasourceParameters` block as defined below. Changing this forces a new resource to be created.

@@ -142,7 +142,7 @@ import 'workbook_state.dart';
 /// 			"items": []map[string]interface{}{
 /// 				map[string]interface{}{
 /// 					"type": 1,
-/// 					"content": map[string]interface{}{
+/// 					"content": map[string]string{
 /// 						"json": "Test2022",
 /// 					},
 /// 					"name": "text - 0",
@@ -345,7 +345,7 @@ class Workbook extends pulumi.CustomResource {
           'azure:appinsights/workbook:Workbook',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     category = registerOutput<String?>('category');
     dataJson = registerOutput<String>('dataJson');
@@ -357,7 +357,7 @@ class Workbook extends pulumi.CustomResource {
     resourceGroupName = registerOutput<String>('resourceGroupName');
     sourceId = registerOutput<String?>('sourceId');
     storageContainerId = registerOutput<String?>('storageContainerId');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Workbook] resource's state with the given [name] and [id].
@@ -365,11 +365,12 @@ class Workbook extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     WorkbookState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Workbook._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -393,6 +394,28 @@ class Workbook extends pulumi.CustomResource {
     resourceGroupName = registerOutput<String>('resourceGroupName');
     sourceId = registerOutput<String?>('sourceId');
     storageContainerId = registerOutput<String?>('storageContainerId');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Workbook] resource.
+  Workbook.reference(String urn)
+    : super(
+        'azure:appinsights/workbook:Workbook',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    category = registerOutput<String?>('category');
+    dataJson = registerOutput<String>('dataJson');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    identity = registerOutput<WorkbookIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkbookIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    sourceId = registerOutput<String?>('sourceId');
+    storageContainerId = registerOutput<String?>('storageContainerId');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

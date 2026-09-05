@@ -20,11 +20,11 @@ class GetDataCollectionRuleDataSource {
   /// One or more `iisLog` blocks as defined below.
   final pulumi.Input<List<GetDataCollectionRuleDataSourceIisLog>> iisLogs;
   /// One or more `logFile` blocks as defined below.
-  final pulumi.Input<List<GetDataCollectionRuleDataSourceLogFile>>? logFiles;
+  final pulumi.Input<List<GetDataCollectionRuleDataSourceLogFile>?>? logFiles;
   /// One or more `performanceCounter` blocks as defined below.
   final pulumi.Input<List<GetDataCollectionRuleDataSourcePerformanceCounter>> performanceCounters;
   /// One or more `platformTelemetry` blocks as defined below.
-  final pulumi.Input<List<GetDataCollectionRuleDataSourcePlatformTelemetry>>? platformTelemetries;
+  final pulumi.Input<List<GetDataCollectionRuleDataSourcePlatformTelemetry>?>? platformTelemetries;
   /// One or more `prometheusForwarder` blocks as defined below.
   final pulumi.Input<List<GetDataCollectionRuleDataSourcePrometheusForwarder>> prometheusForwarders;
   /// One or more `syslog` blocks as defined below.

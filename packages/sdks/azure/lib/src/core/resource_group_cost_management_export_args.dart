@@ -10,15 +10,15 @@ import 'resource_group_cost_management_export_export_data_storage_location.dart'
 /// {@macro pulumi_core_resource_group_cost_management_export_resource_group_cost_management_export_args_doc}
 class ResourceGroupCostManagementExportArgs {
   /// Is the cost management export active? Default is `true`.
-  final pulumi.Input<bool>? active;
+  final pulumi.Input<bool?>? active;
   /// A `exportDataOptions` block as defined below.
   final pulumi.Input<ResourceGroupCostManagementExportExportDataOptions> exportDataOptions;
   /// A `exportDataStorageLocation` block as defined below.
   final pulumi.Input<ResourceGroupCostManagementExportExportDataStorageLocation> exportDataStorageLocation;
   /// Format for export. Valid values are `Csv` only. Default is `Csv`.
-  final pulumi.Input<String>? fileFormat;
+  final pulumi.Input<String?>? fileFormat;
   /// Specifies the name of the Cost Management Export. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The date the export will stop capturing information.
   final pulumi.Input<String> recurrencePeriodEndDate;
   /// The date the export will start capturing information.

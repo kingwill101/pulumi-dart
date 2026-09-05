@@ -11,7 +11,7 @@ class FleetUpdateStrategyArgs {
   /// The ID of the Fleet Manager. Changing this forces a new Kubernetes Fleet Update Strategy to be created.
   final pulumi.Input<String> kubernetesFleetManagerId;
   /// The name which should be used for this Kubernetes Fleet Update Strategy. Changing this forces a new Kubernetes Fleet Update Strategy to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// One or more `stage` blocks as defined below.
   final pulumi.Input<List<FleetUpdateStrategyStage>> stages;
 

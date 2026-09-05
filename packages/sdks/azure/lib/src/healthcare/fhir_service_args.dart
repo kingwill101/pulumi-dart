@@ -12,29 +12,29 @@ import 'fhir_service_oci_artifact.dart';
 /// {@macro pulumi_healthcare_fhir_service_fhir_service_args_doc}
 class FhirServiceArgs {
   /// A list of the access policies of the service instance.
-  final pulumi.Input<List<String>>? accessPolicyObjectIds;
+  final pulumi.Input<List<String>?>? accessPolicyObjectIds;
   /// An `authentication` block as defined below.
   final pulumi.Input<FhirServiceAuthentication> authentication;
   /// Specifies the name of the storage account which the operation configuration information is exported to.
-  final pulumi.Input<String>? configurationExportStorageAccountName;
+  final pulumi.Input<String?>? configurationExportStorageAccountName;
   /// A list of azure container registry settings used for convert data operation of the service instance.
-  final pulumi.Input<List<String>>? containerRegistryLoginServerUrls;
+  final pulumi.Input<List<String>?>? containerRegistryLoginServerUrls;
   /// A `cors` block as defined below.
-  final pulumi.Input<FhirServiceCors>? cors;
+  final pulumi.Input<FhirServiceCors?>? cors;
   /// An `identity` block as defined below.
-  final pulumi.Input<FhirServiceIdentity>? identity;
+  final pulumi.Input<FhirServiceIdentity?>? identity;
   /// Specifies the kind of the Healthcare FHIR Service. Possible values are: `fhir-Stu3` and `fhir-R4`. Defaults to `fhir-R4`. Changing this forces a new Healthcare FHIR Service to be created.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// Specifies the Azure Region where the Healthcare FHIR Service should be created. Changing this forces a new Healthcare FHIR Service to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Specifies the name of the Healthcare FHIR Service. Changing this forces a new Healthcare FHIR Service to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// [A list](https://www.terraform.io/docs/configuration/attr-as-blocks.html) of `ociArtifact` objects as defined below to describe [OCI artifacts for export](https://learn.microsoft.com/en-gb/azure/healthcare-apis/fhir/de-identified-export).
-  final pulumi.Input<List<FhirServiceOciArtifact>>? ociArtifacts;
+  final pulumi.Input<List<FhirServiceOciArtifact>?>? ociArtifacts;
   /// Specifies the name of the Resource Group in which to create the Healthcare FHIR Service. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
   /// A mapping of tags to assign to the Healthcare FHIR Service.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Specifies the id of the Healthcare Workspace where the Healthcare FHIR Service should exist. Changing this forces a new Healthcare FHIR Service to be created.
   final pulumi.Input<String> workspaceId;
 

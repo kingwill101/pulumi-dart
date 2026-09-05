@@ -11,25 +11,25 @@ import 'namespace_topic_spaces_configuration.dart';
 /// {@macro pulumi_eventgrid_namespace_namespace_args_doc}
 class NamespaceArgs {
   /// Specifies the Capacity / Throughput Units for an Eventgrid Namespace. Valid values can be between `1` and `40`.
-  final pulumi.Input<int>? capacity;
+  final pulumi.Input<int?>? capacity;
   /// An `identity` block as defined below.
-  final pulumi.Input<NamespaceIdentity>? identity;
+  final pulumi.Input<NamespaceIdentity?>? identity;
   /// One or more `inboundIpRule` blocks as defined below.
-  final pulumi.Input<List<NamespaceInboundIpRule>>? inboundIpRules;
+  final pulumi.Input<List<NamespaceInboundIpRule>?>? inboundIpRules;
   /// Specifies the supported Azure location where the resource should exist. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Specifies the name of the Event Grid Namespace resource. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Whether or not public network access is allowed for this server. Possible values are `Enabled` and `Disabled`. Defaults to `Enabled`.
-  final pulumi.Input<String>? publicNetworkAccess;
+  final pulumi.Input<String?>? publicNetworkAccess;
   /// The name of the resource group in which the Event Grid Namespace should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
   /// Defines which tier to use. The only possible value is `Standard`. Defaults to `Standard`.
-  final pulumi.Input<String>? sku;
+  final pulumi.Input<String?>? sku;
   /// A mapping of tags to assign to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A `topicSpacesConfiguration` block as defined below. Changing this forces a new resource to be created.
-  final pulumi.Input<List<NamespaceTopicSpacesConfiguration>>? topicSpacesConfigurations;
+  final pulumi.Input<List<NamespaceTopicSpacesConfiguration>?>? topicSpacesConfigurations;
 
   /// Creates a new [NamespaceArgs].
   /// [capacity] Specifies the Capacity / Throughput Units for an Eventgrid Namespace. Valid values can be between `1` and `40`.
@@ -72,7 +72,7 @@ class NamespaceArgs {
 
   factory NamespaceArgs.fromMap(Map<String, dynamic> map) {
     return NamespaceArgs(
-      capacity: (() { final guardedValue = map['capacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      capacity: (() { final guardedValue = map['capacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NamespaceIdentity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       inboundIpRules: (() { final guardedValue = map['inboundIpRules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<NamespaceInboundIpRule>(guardedValue, (value) => NamespaceInboundIpRule.fromMap((value as Map).cast<String, dynamic>()))); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

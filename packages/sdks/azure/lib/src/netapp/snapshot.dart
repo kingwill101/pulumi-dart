@@ -300,7 +300,7 @@ import 'snapshot_state.dart';
 /// 			PoolName:          examplePool.Name,
 /// 			VolumePath:        pulumi.String("my-unique-file-path"),
 /// 			ServiceLevel:      pulumi.String("Premium"),
-/// 			SubnetId:          exampleSubnet.ID(),
+/// 			SubnetId:          exampleSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 			StorageQuotaInGb:  pulumi.Int(100),
 /// 		})
 /// 		if err != nil {
@@ -603,7 +603,7 @@ class Snapshot extends pulumi.CustomResource {
           'azure:netapp/snapshot:Snapshot',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     accountName = registerOutput<String>('accountName');
     location = registerOutput<String>('location');
@@ -618,11 +618,12 @@ class Snapshot extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SnapshotState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Snapshot._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -636,6 +637,23 @@ class Snapshot extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    accountName = registerOutput<String>('accountName');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    poolName = registerOutput<String>('poolName');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    volumeName = registerOutput<String>('volumeName');
+  }
+
+  /// Creates a typed reference to an existing [Snapshot] resource.
+  Snapshot.reference(String urn)
+    : super(
+        'azure:netapp/snapshot:Snapshot',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     accountName = registerOutput<String>('accountName');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

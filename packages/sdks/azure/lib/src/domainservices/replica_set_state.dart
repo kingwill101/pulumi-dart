@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering ReplicaSet resources.
 class ReplicaSetState {
   /// A list of subnet IP addresses for the domain controllers in this Replica Set, typically two.
-  final pulumi.Input<List<String>>? domainControllerIpAddresses;
+  final pulumi.Input<List<String>?>? domainControllerIpAddresses;
   /// The ID of the Domain Service for which to create this Replica Set. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? domainServiceId;
+  final pulumi.Input<String?>? domainServiceId;
   /// The publicly routable IP address for the domain controllers in this Replica Set.
-  final pulumi.Input<String>? externalAccessIpAddress;
+  final pulumi.Input<String?>? externalAccessIpAddress;
   /// The Azure location where this Replica Set should exist. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The current service status for the replica set.
-  final pulumi.Input<String>? serviceStatus;
+  final pulumi.Input<String?>? serviceStatus;
   /// The ID of the subnet in which to place this Replica Set. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? subnetId;
+  final pulumi.Input<String?>? subnetId;
 
   /// Creates a new [ReplicaSetState].
   /// [domainControllerIpAddresses] A list of subnet IP addresses for the domain controllers in this Replica Set, typically two.

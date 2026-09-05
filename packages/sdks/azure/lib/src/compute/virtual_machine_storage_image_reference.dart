@@ -4,17 +4,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VirtualMachineStorageImageReference {
   /// Specifies the ID of the Custom Image which the Virtual Machine should be created from. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Specifies the offer of the image used to create the virtual machine. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? offer;
+  final pulumi.Input<String?>? offer;
   /// Specifies the publisher of the image used to create the virtual machine. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? publisher;
+  final pulumi.Input<String?>? publisher;
   /// Specifies the SKU of the image used to create the virtual machine. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? sku;
+  final pulumi.Input<String?>? sku;
   /// Specifies the version of the image used to create the virtual machine. Changing this forces a new resource to be created.
   ///
   /// To provision a Custom Image, the following fields are applicable:
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [VirtualMachineStorageImageReference].
   /// [id] Specifies the ID of the Custom Image which the Virtual Machine should be created from. Changing this forces a new resource to be created.

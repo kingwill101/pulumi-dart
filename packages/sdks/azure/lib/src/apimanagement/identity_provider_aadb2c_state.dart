@@ -5,29 +5,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering IdentityProviderAadb2c resources.
 class IdentityProviderAadb2cState {
   /// The allowed AAD tenant, usually your B2C tenant domain.
-  final pulumi.Input<String>? allowedTenant;
+  final pulumi.Input<String?>? allowedTenant;
   /// The Name of the API Management Service where this AAD Identity Provider should be created. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? apiManagementName;
+  final pulumi.Input<String?>? apiManagementName;
   /// OpenID Connect discovery endpoint hostname, usually your b2clogin.com domain.
-  final pulumi.Input<String>? authority;
+  final pulumi.Input<String?>? authority;
   /// Client ID of the Application in your B2C tenant.
-  final pulumi.Input<String>? clientId;
+  final pulumi.Input<String?>? clientId;
   /// The client library to be used in the Azure AD B2C Identity Provider.
-  final pulumi.Input<String>? clientLibrary;
+  final pulumi.Input<String?>? clientLibrary;
   /// Client secret of the Application in your B2C tenant.
-  final pulumi.Input<String>? clientSecret;
+  final pulumi.Input<String?>? clientSecret;
   /// Password reset Policy Name.
-  final pulumi.Input<String>? passwordResetPolicy;
+  final pulumi.Input<String?>? passwordResetPolicy;
   /// Profile editing Policy Name.
-  final pulumi.Input<String>? profileEditingPolicy;
+  final pulumi.Input<String?>? profileEditingPolicy;
   /// The Name of the Resource Group where the API Management Service exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// Signin Policy Name.
-  final pulumi.Input<String>? signinPolicy;
+  final pulumi.Input<String?>? signinPolicy;
   /// The tenant to use instead of Common when logging into Active Directory, usually your B2C tenant domain.
-  final pulumi.Input<String>? signinTenant;
+  final pulumi.Input<String?>? signinTenant;
   /// Signup Policy Name.
-  final pulumi.Input<String>? signupPolicy;
+  final pulumi.Input<String?>? signupPolicy;
 
   /// Creates a new [IdentityProviderAadb2cState].
   /// [allowedTenant] The allowed AAD tenant, usually your B2C tenant domain.

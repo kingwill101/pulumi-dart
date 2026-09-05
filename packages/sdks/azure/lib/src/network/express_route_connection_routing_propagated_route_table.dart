@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ExpressRouteConnectionRoutingPropagatedRouteTable {
   /// The list of labels to logically group route tables.
-  final pulumi.Input<List<String>>? labels;
+  final pulumi.Input<List<String>?>? labels;
   /// A list of IDs of the Virtual Hub Route Table to propagate routes from Express Route Connection to the route table.
-  final pulumi.Input<List<String>>? routeTableIds;
+  final pulumi.Input<List<String>?>? routeTableIds;
 
   /// Creates a new [ExpressRouteConnectionRoutingPropagatedRouteTable].
   /// [labels] The list of labels to logically group route tables.

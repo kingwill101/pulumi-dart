@@ -1,5 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'firewall_policy_rule_collection_group_application_rule_collection.dart';
 import 'firewall_policy_rule_collection_group_args.dart';
+import 'firewall_policy_rule_collection_group_nat_rule_collection.dart';
+import 'firewall_policy_rule_collection_group_network_rule_collection.dart';
 import 'firewall_policy_rule_collection_group_state.dart';
 
 /// Manages a Firewall Policy Rule Collection Group.
@@ -324,7 +327,7 @@ import 'firewall_policy_rule_collection_group_state.dart';
 /// 		}
 /// 		_, err = network.NewFirewallPolicyRuleCollectionGroup(ctx, "example", &network.FirewallPolicyRuleCollectionGroupArgs{
 /// 			Name:             pulumi.String("example-fwpolicy-rcg"),
-/// 			FirewallPolicyId: exampleFirewallPolicy.ID(),
+/// 			FirewallPolicyId: exampleFirewallPolicy.ID().ToIDOutput().ToStringOutput(),
 /// 			Priority:         pulumi.Int(500),
 /// 			ApplicationRuleCollections: network.FirewallPolicyRuleCollectionGroupApplicationRuleCollectionArray{
 /// 				&network.FirewallPolicyRuleCollectionGroupApplicationRuleCollectionArgs{
@@ -676,15 +679,15 @@ import 'firewall_policy_rule_collection_group_state.dart';
 /// ```
 class FirewallPolicyRuleCollectionGroup extends pulumi.CustomResource {
   /// One or more `applicationRuleCollection` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> applicationRuleCollections;
+  late final pulumi.Output<List<FirewallPolicyRuleCollectionGroupApplicationRuleCollection>?> applicationRuleCollections;
   /// The ID of the Firewall Policy where the Firewall Policy Rule Collection Group should exist. Changing this forces a new Firewall Policy Rule Collection Group to be created.
   late final pulumi.Output<String> firewallPolicyId;
   /// The name which should be used for this Firewall Policy Rule Collection Group. Changing this forces a new Firewall Policy Rule Collection Group to be created.
   late final pulumi.Output<String> name;
   /// One or more `natRuleCollection` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> natRuleCollections;
+  late final pulumi.Output<List<FirewallPolicyRuleCollectionGroupNatRuleCollection>?> natRuleCollections;
   /// One or more `networkRuleCollection` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> networkRuleCollections;
+  late final pulumi.Output<List<FirewallPolicyRuleCollectionGroupNetworkRuleCollection>?> networkRuleCollections;
   /// The priority of the Firewall Policy Rule Collection Group. The range is 100-65000.
   late final pulumi.Output<int> priority;
 
@@ -700,13 +703,13 @@ class FirewallPolicyRuleCollectionGroup extends pulumi.CustomResource {
           'azure:network/firewallPolicyRuleCollectionGroup:FirewallPolicyRuleCollectionGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
-    applicationRuleCollections = registerOutput<List<Map<String, dynamic>>?>('applicationRuleCollections');
+    applicationRuleCollections = registerOutput<List<FirewallPolicyRuleCollectionGroupApplicationRuleCollection>?>('applicationRuleCollections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FirewallPolicyRuleCollectionGroupApplicationRuleCollection>(guardedValue, (value) => FirewallPolicyRuleCollectionGroupApplicationRuleCollection.fromMap((value as Map).cast<String, dynamic>())); });
     firewallPolicyId = registerOutput<String>('firewallPolicyId');
     this.name = registerOutput<String>('name');
-    natRuleCollections = registerOutput<List<Map<String, dynamic>>?>('natRuleCollections');
-    networkRuleCollections = registerOutput<List<Map<String, dynamic>>?>('networkRuleCollections');
+    natRuleCollections = registerOutput<List<FirewallPolicyRuleCollectionGroupNatRuleCollection>?>('natRuleCollections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FirewallPolicyRuleCollectionGroupNatRuleCollection>(guardedValue, (value) => FirewallPolicyRuleCollectionGroupNatRuleCollection.fromMap((value as Map).cast<String, dynamic>())); });
+    networkRuleCollections = registerOutput<List<FirewallPolicyRuleCollectionGroupNetworkRuleCollection>?>('networkRuleCollections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FirewallPolicyRuleCollectionGroupNetworkRuleCollection>(guardedValue, (value) => FirewallPolicyRuleCollectionGroupNetworkRuleCollection.fromMap((value as Map).cast<String, dynamic>())); });
     priority = registerOutput<int>('priority');
   }
 
@@ -715,11 +718,12 @@ class FirewallPolicyRuleCollectionGroup extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FirewallPolicyRuleCollectionGroupState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return FirewallPolicyRuleCollectionGroup._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -733,11 +737,28 @@ class FirewallPolicyRuleCollectionGroup extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    applicationRuleCollections = registerOutput<List<Map<String, dynamic>>?>('applicationRuleCollections');
+    applicationRuleCollections = registerOutput<List<FirewallPolicyRuleCollectionGroupApplicationRuleCollection>?>('applicationRuleCollections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FirewallPolicyRuleCollectionGroupApplicationRuleCollection>(guardedValue, (value) => FirewallPolicyRuleCollectionGroupApplicationRuleCollection.fromMap((value as Map).cast<String, dynamic>())); });
     firewallPolicyId = registerOutput<String>('firewallPolicyId');
     this.name = registerOutput<String>('name');
-    natRuleCollections = registerOutput<List<Map<String, dynamic>>?>('natRuleCollections');
-    networkRuleCollections = registerOutput<List<Map<String, dynamic>>?>('networkRuleCollections');
+    natRuleCollections = registerOutput<List<FirewallPolicyRuleCollectionGroupNatRuleCollection>?>('natRuleCollections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FirewallPolicyRuleCollectionGroupNatRuleCollection>(guardedValue, (value) => FirewallPolicyRuleCollectionGroupNatRuleCollection.fromMap((value as Map).cast<String, dynamic>())); });
+    networkRuleCollections = registerOutput<List<FirewallPolicyRuleCollectionGroupNetworkRuleCollection>?>('networkRuleCollections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FirewallPolicyRuleCollectionGroupNetworkRuleCollection>(guardedValue, (value) => FirewallPolicyRuleCollectionGroupNetworkRuleCollection.fromMap((value as Map).cast<String, dynamic>())); });
+    priority = registerOutput<int>('priority');
+  }
+
+  /// Creates a typed reference to an existing [FirewallPolicyRuleCollectionGroup] resource.
+  FirewallPolicyRuleCollectionGroup.reference(String urn)
+    : super(
+        'azure:network/firewallPolicyRuleCollectionGroup:FirewallPolicyRuleCollectionGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    applicationRuleCollections = registerOutput<List<FirewallPolicyRuleCollectionGroupApplicationRuleCollection>?>('applicationRuleCollections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FirewallPolicyRuleCollectionGroupApplicationRuleCollection>(guardedValue, (value) => FirewallPolicyRuleCollectionGroupApplicationRuleCollection.fromMap((value as Map).cast<String, dynamic>())); });
+    firewallPolicyId = registerOutput<String>('firewallPolicyId');
+    this.name = registerOutput<String>('name');
+    natRuleCollections = registerOutput<List<FirewallPolicyRuleCollectionGroupNatRuleCollection>?>('natRuleCollections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FirewallPolicyRuleCollectionGroupNatRuleCollection>(guardedValue, (value) => FirewallPolicyRuleCollectionGroupNatRuleCollection.fromMap((value as Map).cast<String, dynamic>())); });
+    networkRuleCollections = registerOutput<List<FirewallPolicyRuleCollectionGroupNetworkRuleCollection>?>('networkRuleCollections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FirewallPolicyRuleCollectionGroupNetworkRuleCollection>(guardedValue, (value) => FirewallPolicyRuleCollectionGroupNetworkRuleCollection.fromMap((value as Map).cast<String, dynamic>())); });
     priority = registerOutput<int>('priority');
   }
 }

@@ -3,63 +3,63 @@
 
 /// Result data returned by getCertificate.
 class GetCertificateResult {
-  final String accountName;
+  final String? accountName;
   /// The format of the certificate, such as `Cer` or `Pfx`.
-  final String format;
+  final String? format;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final String name;
+  final String? id;
+  final String? name;
   /// The public key of the certificate.
-  final String publicData;
-  final String resourceGroupName;
+  final String? publicData;
+  final String? resourceGroupName;
   /// The thumbprint of the certificate.
-  final String thumbprint;
+  final String? thumbprint;
   /// The algorithm of the certificate thumbprint.
-  final String thumbprintAlgorithm;
+  final String? thumbprintAlgorithm;
 
   /// Creates a new [GetCertificateResult].
-  /// [accountName] Required.
+  /// [accountName] Optional.
   /// [format] The format of the certificate, such as `Cer` or `Pfx`.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [name] Required.
+  /// [name] Optional.
   /// [publicData] The public key of the certificate.
-  /// [resourceGroupName] Required.
+  /// [resourceGroupName] Optional.
   /// [thumbprint] The thumbprint of the certificate.
   /// [thumbprintAlgorithm] The algorithm of the certificate thumbprint.
   const GetCertificateResult({
-    required this.accountName,
-    required this.format,
-    required this.id,
-    required this.name,
-    required this.publicData,
-    required this.resourceGroupName,
-    required this.thumbprint,
-    required this.thumbprintAlgorithm,
+    this.accountName,
+    this.format,
+    this.id,
+    this.name,
+    this.publicData,
+    this.resourceGroupName,
+    this.thumbprint,
+    this.thumbprintAlgorithm,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accountName': accountName,
-      'format': format,
-      'id': id,
-      'name': name,
-      'publicData': publicData,
-      'resourceGroupName': resourceGroupName,
-      'thumbprint': thumbprint,
-      'thumbprintAlgorithm': thumbprintAlgorithm,
+      'accountName': ?accountName,
+      'format': ?format,
+      'id': ?id,
+      'name': ?name,
+      'publicData': ?publicData,
+      'resourceGroupName': ?resourceGroupName,
+      'thumbprint': ?thumbprint,
+      'thumbprintAlgorithm': ?thumbprintAlgorithm,
     };
   }
 
   factory GetCertificateResult.fromMap(Map<String, dynamic> map) {
     return GetCertificateResult(
-      accountName: map['accountName'] as String,
-      format: map['format'] as String,
-      id: map['id'] as String,
-      name: map['name'] as String,
-      publicData: map['publicData'] as String,
-      resourceGroupName: map['resourceGroupName'] as String,
-      thumbprint: map['thumbprint'] as String,
-      thumbprintAlgorithm: map['thumbprintAlgorithm'] as String,
+      accountName: (() { final guardedValue = map['accountName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      format: (() { final guardedValue = map['format']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      publicData: (() { final guardedValue = map['publicData']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      resourceGroupName: (() { final guardedValue = map['resourceGroupName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      thumbprint: (() { final guardedValue = map['thumbprint']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      thumbprintAlgorithm: (() { final guardedValue = map['thumbprintAlgorithm']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

@@ -9,21 +9,21 @@ import 'replication_recovery_plan_shutdown_recovery_group.dart';
 /// Input properties used for looking up and filtering ReplicationRecoveryPlan resources.
 class ReplicationRecoveryPlanState {
   /// An `azureToAzureSettings` block as defined below.
-  final pulumi.Input<ReplicationRecoveryPlanAzureToAzureSettings>? azureToAzureSettings;
+  final pulumi.Input<ReplicationRecoveryPlanAzureToAzureSettings?>? azureToAzureSettings;
   /// One or more `bootRecoveryGroup` blocks as defined below.
-  final pulumi.Input<List<ReplicationRecoveryPlanBootRecoveryGroup>>? bootRecoveryGroups;
+  final pulumi.Input<List<ReplicationRecoveryPlanBootRecoveryGroup>?>? bootRecoveryGroups;
   /// One `failoverRecoveryGroup` block as defined below.
-  final pulumi.Input<ReplicationRecoveryPlanFailoverRecoveryGroup>? failoverRecoveryGroup;
+  final pulumi.Input<ReplicationRecoveryPlanFailoverRecoveryGroup?>? failoverRecoveryGroup;
   /// The name of the Replication Plan. The name can contain only letters, numbers, and hyphens. It should start with a letter and end with a letter or a number. Can be a maximum of 63 characters. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the vault that should be updated. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? recoveryVaultId;
+  final pulumi.Input<String?>? recoveryVaultId;
   /// One `shutdownRecoveryGroup` block as defined below.
-  final pulumi.Input<ReplicationRecoveryPlanShutdownRecoveryGroup>? shutdownRecoveryGroup;
+  final pulumi.Input<ReplicationRecoveryPlanShutdownRecoveryGroup?>? shutdownRecoveryGroup;
   /// ID of source fabric to be recovered from. Changing this forces a new Replication Plan to be created.
-  final pulumi.Input<String>? sourceRecoveryFabricId;
+  final pulumi.Input<String?>? sourceRecoveryFabricId;
   /// ID of target fabric to recover. Changing this forces a new Replication Plan to be created.
-  final pulumi.Input<String>? targetRecoveryFabricId;
+  final pulumi.Input<String?>? targetRecoveryFabricId;
 
   /// Creates a new [ReplicationRecoveryPlanState].
   /// [azureToAzureSettings] An `azureToAzureSettings` block as defined below.

@@ -275,8 +275,8 @@ import 'network_mapping_state.dart';
 /// 			RecoveryVaultName:        vault.Name,
 /// 			SourceRecoveryFabricName: pulumi.String("primary-fabric"),
 /// 			TargetRecoveryFabricName: pulumi.String("secondary-fabric"),
-/// 			SourceNetworkId:          primaryVirtualNetwork.ID(),
-/// 			TargetNetworkId:          secondaryVirtualNetwork.ID(),
+/// 			SourceNetworkId:          primaryVirtualNetwork.ID().ToIDOutput().ToStringOutput(),
+/// 			TargetNetworkId:          secondaryVirtualNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -544,7 +544,7 @@ class NetworkMapping extends pulumi.CustomResource {
           'azure:siterecovery/networkMapping:NetworkMapping',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     this.name = registerOutput<String>('name');
     recoveryVaultName = registerOutput<String>('recoveryVaultName');
@@ -560,11 +560,12 @@ class NetworkMapping extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     NetworkMappingState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return NetworkMapping._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -578,6 +579,24 @@ class NetworkMapping extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    this.name = registerOutput<String>('name');
+    recoveryVaultName = registerOutput<String>('recoveryVaultName');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    sourceNetworkId = registerOutput<String>('sourceNetworkId');
+    sourceRecoveryFabricName = registerOutput<String>('sourceRecoveryFabricName');
+    targetNetworkId = registerOutput<String>('targetNetworkId');
+    targetRecoveryFabricName = registerOutput<String>('targetRecoveryFabricName');
+  }
+
+  /// Creates a typed reference to an existing [NetworkMapping] resource.
+  NetworkMapping.reference(String urn)
+    : super(
+        'azure:siterecovery/networkMapping:NetworkMapping',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     this.name = registerOutput<String>('name');
     recoveryVaultName = registerOutput<String>('recoveryVaultName');
     resourceGroupName = registerOutput<String>('resourceGroupName');

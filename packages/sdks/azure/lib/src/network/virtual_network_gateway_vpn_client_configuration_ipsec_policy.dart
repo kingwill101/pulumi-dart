@@ -61,8 +61,8 @@ class VirtualNetworkGatewayVpnClientConfigurationIpsecPolicy {
       ipsecEncryption: pulumi.Input.fromValue(map['ipsecEncryption'] as String),
       ipsecIntegrity: pulumi.Input.fromValue(map['ipsecIntegrity'] as String),
       pfsGroup: pulumi.Input.fromValue(map['pfsGroup'] as String),
-      saDataSizeInKilobytes: pulumi.Input.fromValue(map['saDataSizeInKilobytes'] as int),
-      saLifetimeInSeconds: pulumi.Input.fromValue(map['saLifetimeInSeconds'] as int),
+      saDataSizeInKilobytes: pulumi.Input.fromValue((map['saDataSizeInKilobytes'] as num).toInt()),
+      saLifetimeInSeconds: pulumi.Input.fromValue((map['saLifetimeInSeconds'] as num).toInt()),
     );
   }
 }

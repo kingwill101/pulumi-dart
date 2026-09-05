@@ -43,7 +43,7 @@ class GetVariablesInt {
       encrypted: pulumi.Input.fromValue(map['encrypted'] as bool),
       id: pulumi.Input.fromValue(map['id'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
-      value: pulumi.Input.fromValue(map['value'] as int),
+      value: pulumi.Input.fromValue((map['value'] as num).toInt()),
     );
   }
 }

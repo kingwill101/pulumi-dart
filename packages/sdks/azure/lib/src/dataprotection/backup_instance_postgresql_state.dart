@@ -5,19 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering BackupInstancePostgresql resources.
 class BackupInstancePostgresqlState {
   /// The ID of the Backup Policy.
-  final pulumi.Input<String>? backupPolicyId;
+  final pulumi.Input<String?>? backupPolicyId;
   /// The ID or versionless ID of the key vault secret which stores the connection string of the database.
-  final pulumi.Input<String>? databaseCredentialKeyVaultSecretId;
+  final pulumi.Input<String?>? databaseCredentialKeyVaultSecretId;
   /// The ID of the source database. Changing this forces a new Backup Instance PostgreSQL to be created.
-  final pulumi.Input<String>? databaseId;
+  final pulumi.Input<String?>? databaseId;
   /// The location of the source database. Changing this forces a new Backup Instance PostgreSQL to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name which should be used for this Backup Instance PostgreSQL. Changing this forces a new Backup Instance PostgreSQL to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The protection state of the Backup Instance PostgreSQL.
-  final pulumi.Input<String>? protectionState;
+  final pulumi.Input<String?>? protectionState;
   /// The ID of the Backup Vault within which the PostgreSQL Backup Instance should exist. Changing this forces a new Backup Instance PostgreSQL to be created.
-  final pulumi.Input<String>? vaultId;
+  final pulumi.Input<String?>? vaultId;
 
   /// Creates a new [BackupInstancePostgresqlState].
   /// [backupPolicyId] The ID of the Backup Policy.

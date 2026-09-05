@@ -265,7 +265,7 @@ import 'prefix_state.dart';
 ///         input: global.cidr,
 ///         newbits: 16,
 ///         netnum: 1,
-///     }).apply(invoke => invoke.result),
+///     }).result,
 ///     zones: ["1"],
 /// });
 /// ```
@@ -291,7 +291,7 @@ import 'prefix_state.dart';
 ///     parent_custom_ip_prefix_id=global_.id,
 ///     cidr=std.cidrsubnet_output(input=global_.cidr,
 ///         newbits=16,
-///         netnum=1).apply(lambda invoke: invoke.result),
+///         netnum=1).result,
 ///     zones=["1"])
 /// ```
 /// ```csharp
@@ -373,15 +373,12 @@ import 'prefix_state.dart';
 /// 			Name:                   pulumi.String("example-Regional-CustomIPPrefix"),
 /// 			Location:               pulumi.Any(test.Location),
 /// 			ResourceGroupName:      pulumi.Any(test.Name),
-/// 			ParentCustomIpPrefixId: global.ID(),
-/// 			Cidr: pulumi.String(std.CidrsubnetOutput(ctx, std.CidrsubnetOutputArgs{
+/// 			ParentCustomIpPrefixId: global.ID().ToIDOutput().ToStringOutput(),
+/// 			Cidr: std.CidrsubnetOutput(ctx, std.CidrsubnetOutputArgs{
 /// 				Input:   global.Cidr,
 /// 				Newbits: pulumi.Int(16),
 /// 				Netnum:  pulumi.Int(1),
-/// 			}, nil).ApplyT(func(invoke std.CidrsubnetResult) (*string, error) {
-/// 				val := invoke.Result
-/// 				return &val, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			}, nil).Result(),
 /// 			Zones: pulumi.StringArray{
 /// 				pulumi.String("1"),
 /// 			},
@@ -566,7 +563,7 @@ class Prefix extends pulumi.CustomResource {
           'azure:customip/prefix:Prefix',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     cidr = registerOutput<String>('cidr');
     commissioningEnabled = registerOutput<bool?>('commissioningEnabled');
@@ -576,9 +573,9 @@ class Prefix extends pulumi.CustomResource {
     parentCustomIpPrefixId = registerOutput<String?>('parentCustomIpPrefixId');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     roaValidityEndDate = registerOutput<String?>('roaValidityEndDate');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     wanValidationSignedMessage = registerOutput<String?>('wanValidationSignedMessage');
-    zones = registerOutput<List<String>?>('zones');
+    zones = registerOutput<List<String>?>('zones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [Prefix] resource's state with the given [name] and [id].
@@ -586,11 +583,12 @@ class Prefix extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PrefixState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Prefix._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -612,8 +610,30 @@ class Prefix extends pulumi.CustomResource {
     parentCustomIpPrefixId = registerOutput<String?>('parentCustomIpPrefixId');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     roaValidityEndDate = registerOutput<String?>('roaValidityEndDate');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     wanValidationSignedMessage = registerOutput<String?>('wanValidationSignedMessage');
-    zones = registerOutput<List<String>?>('zones');
+    zones = registerOutput<List<String>?>('zones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Prefix] resource.
+  Prefix.reference(String urn)
+    : super(
+        'azure:customip/prefix:Prefix',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    cidr = registerOutput<String>('cidr');
+    commissioningEnabled = registerOutput<bool?>('commissioningEnabled');
+    internetAdvertisingDisabled = registerOutput<bool?>('internetAdvertisingDisabled');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    parentCustomIpPrefixId = registerOutput<String?>('parentCustomIpPrefixId');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    roaValidityEndDate = registerOutput<String?>('roaValidityEndDate');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    wanValidationSignedMessage = registerOutput<String?>('wanValidationSignedMessage');
+    zones = registerOutput<List<String>?>('zones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

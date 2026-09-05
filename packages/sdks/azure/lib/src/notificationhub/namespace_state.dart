@@ -5,25 +5,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering Namespace resources.
 class NamespaceState {
   /// Is this Notification Hub Namespace enabled? Defaults to `true`. Changing this forces a new resource to be created.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// The Azure Region in which this Notification Hub Namespace should be created. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name to use for this Notification Hub Namespace. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The Type of Namespace - possible values are `Messaging` or `NotificationHub`. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? namespaceType;
+  final pulumi.Input<String?>? namespaceType;
   /// The allowed Replication Region for the Notification Hub Namespace. Possible values are `Default`, `None`, `AustraliaEast`, `BrazilSouth`, `NorthEurope`, `SouthAfricaNorth`, `SouthEastAsia`, `WestUs2`. Changing this forces a new resource to be created. Defaults to `Default`.
-  final pulumi.Input<String>? replicationRegion;
+  final pulumi.Input<String?>? replicationRegion;
   /// The name of the Resource Group in which the Notification Hub Namespace should exist. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// The ServiceBus Endpoint for this Notification Hub Namespace.
-  final pulumi.Input<String>? servicebusEndpoint;
+  final pulumi.Input<String?>? servicebusEndpoint;
   /// The name of the SKU to use for this Notification Hub Namespace. Possible values are `Free`, `Basic` or `Standard`.
-  final pulumi.Input<String>? skuName;
+  final pulumi.Input<String?>? skuName;
   /// A mapping of tags to assign to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Is Zone Redundancy Enabled for the Notification Hub Namespace. Defaults to `false`. Changing this forces a new resource to be created.
-  final pulumi.Input<bool>? zoneRedundancyEnabled;
+  final pulumi.Input<bool?>? zoneRedundancyEnabled;
 
   /// Creates a new [NamespaceState].
   /// [enabled] Is this Notification Hub Namespace enabled? Defaults to `true`. Changing this forces a new resource to be created.

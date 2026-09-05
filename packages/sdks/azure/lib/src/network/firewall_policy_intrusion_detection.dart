@@ -6,13 +6,13 @@ import 'firewall_policy_intrusion_detection_traffic_bypass.dart';
 
 class FirewallPolicyIntrusionDetection {
   /// In which mode you want to run intrusion detection: `Off`, `Alert` or `Deny`.
-  final pulumi.Input<String>? mode;
+  final pulumi.Input<String?>? mode;
   /// A list of Private IP address ranges to identify traffic direction. By default, only ranges defined by IANA RFC 1918 are considered private IP addresses.
-  final pulumi.Input<List<String>>? privateRanges;
+  final pulumi.Input<List<String>?>? privateRanges;
   /// One or more `signatureOverrides` blocks as defined below.
-  final pulumi.Input<List<FirewallPolicyIntrusionDetectionSignatureOverride>>? signatureOverrides;
+  final pulumi.Input<List<FirewallPolicyIntrusionDetectionSignatureOverride>?>? signatureOverrides;
   /// One or more `trafficBypass` blocks as defined below.
-  final pulumi.Input<List<FirewallPolicyIntrusionDetectionTrafficBypass>>? trafficBypasses;
+  final pulumi.Input<List<FirewallPolicyIntrusionDetectionTrafficBypass>?>? trafficBypasses;
 
   /// Creates a new [FirewallPolicyIntrusionDetection].
   /// [mode] In which mode you want to run intrusion detection: `Off`, `Alert` or `Deny`.

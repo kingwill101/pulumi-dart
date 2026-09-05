@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'scaling_plan_args.dart';
+import 'scaling_plan_host_pool.dart';
+import 'scaling_plan_schedule.dart';
 import 'scaling_plan_state.dart';
 
 /// Manages a Virtual Desktop Scaling Plan.
@@ -25,7 +27,7 @@ class ScalingPlan extends pulumi.CustomResource {
   /// Friendly name of the Scaling Plan.
   late final pulumi.Output<String?> friendlyName;
   /// One or more `hostPool` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>> hostPools;
+  late final pulumi.Output<List<ScalingPlanHostPool>> hostPools;
   /// The Azure Region where the Virtual Desktop Scaling Plan should exist. Changing this forces a new Virtual Desktop Scaling Plan to be created.
   late final pulumi.Output<String> location;
   /// The name which should be used for this Virtual Desktop Scaling Plan . Changing this forces a new Virtual Desktop Scaling Plan to be created.
@@ -33,7 +35,7 @@ class ScalingPlan extends pulumi.CustomResource {
   /// The name of the Resource Group where the Virtual Desktop Scaling Plan should exist. Changing this forces a new Virtual Desktop Scaling Plan to be created.
   late final pulumi.Output<String> resourceGroupName;
   /// One or more `schedule` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>> schedules;
+  late final pulumi.Output<List<ScalingPlanSchedule>> schedules;
   /// A mapping of tags which should be assigned to the Virtual Desktop Scaling Plan .
   late final pulumi.Output<Map<String, String>?> tags;
   /// Specifies the Time Zone which should be used by the Scaling Plan for time based events, [the possible values are defined here](https://jackstromberg.com/2017/01/list-of-time-zones-consumed-by-azure/).
@@ -51,17 +53,17 @@ class ScalingPlan extends pulumi.CustomResource {
           'azure:desktopvirtualization/scalingPlan:ScalingPlan',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     description = registerOutput<String?>('description');
     exclusionTag = registerOutput<String?>('exclusionTag');
     friendlyName = registerOutput<String?>('friendlyName');
-    hostPools = registerOutput<List<Map<String, dynamic>>>('hostPools');
+    hostPools = registerOutput<List<ScalingPlanHostPool>>('hostPools', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ScalingPlanHostPool>(guardedValue, (value) => ScalingPlanHostPool.fromMap((value as Map).cast<String, dynamic>())); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    schedules = registerOutput<List<Map<String, dynamic>>>('schedules');
-    tags = registerOutput<Map<String, String>?>('tags');
+    schedules = registerOutput<List<ScalingPlanSchedule>>('schedules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ScalingPlanSchedule>(guardedValue, (value) => ScalingPlanSchedule.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeZone = registerOutput<String>('timeZone');
   }
 
@@ -70,11 +72,12 @@ class ScalingPlan extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ScalingPlanState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ScalingPlan._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -91,12 +94,33 @@ class ScalingPlan extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     exclusionTag = registerOutput<String?>('exclusionTag');
     friendlyName = registerOutput<String?>('friendlyName');
-    hostPools = registerOutput<List<Map<String, dynamic>>>('hostPools');
+    hostPools = registerOutput<List<ScalingPlanHostPool>>('hostPools', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ScalingPlanHostPool>(guardedValue, (value) => ScalingPlanHostPool.fromMap((value as Map).cast<String, dynamic>())); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    schedules = registerOutput<List<Map<String, dynamic>>>('schedules');
-    tags = registerOutput<Map<String, String>?>('tags');
+    schedules = registerOutput<List<ScalingPlanSchedule>>('schedules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ScalingPlanSchedule>(guardedValue, (value) => ScalingPlanSchedule.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeZone = registerOutput<String>('timeZone');
+  }
+
+  /// Creates a typed reference to an existing [ScalingPlan] resource.
+  ScalingPlan.reference(String urn)
+    : super(
+        'azure:desktopvirtualization/scalingPlan:ScalingPlan',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    description = registerOutput<String?>('description');
+    exclusionTag = registerOutput<String?>('exclusionTag');
+    friendlyName = registerOutput<String?>('friendlyName');
+    hostPools = registerOutput<List<ScalingPlanHostPool>>('hostPools', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ScalingPlanHostPool>(guardedValue, (value) => ScalingPlanHostPool.fromMap((value as Map).cast<String, dynamic>())); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    schedules = registerOutput<List<ScalingPlanSchedule>>('schedules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ScalingPlanSchedule>(guardedValue, (value) => ScalingPlanSchedule.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeZone = registerOutput<String>('timeZone');
   }
 }

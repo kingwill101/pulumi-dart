@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AlertPrometheusRuleGroupRuleAlertResolution {
   /// Is the alert auto-resolution? Possible values are `true` and `false`.
-  final pulumi.Input<bool>? autoResolved;
+  final pulumi.Input<bool?>? autoResolved;
   /// Specifies the alert auto-resolution interval, represented in ISO 8601 duration format.
-  final pulumi.Input<String>? timeToResolve;
+  final pulumi.Input<String?>? timeToResolve;
 
   /// Creates a new [AlertPrometheusRuleGroupRuleAlertResolution].
   /// [autoResolved] Is the alert auto-resolution? Possible values are `true` and `false`.

@@ -141,3 +141,14 @@ Future<GetCircuitPeeringResult> getCircuitPeering(
   );
   return GetCircuitPeeringResult.fromMap(result);
 }
+
+pulumi.Output<GetCircuitPeeringResult> getCircuitPeeringOutput(
+  GetCircuitPeeringArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:expressroute/getCircuitPeering:getCircuitPeering',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCircuitPeeringResult.fromMap);
+}

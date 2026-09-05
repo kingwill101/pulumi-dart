@@ -185,10 +185,10 @@ class AnomalyAlert extends pulumi.CustomResource {
           'azure:costmanagement/anomalyAlert:AnomalyAlert',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     displayName = registerOutput<String>('displayName');
-    emailAddresses = registerOutput<List<String>>('emailAddresses');
+    emailAddresses = registerOutput<List<String>>('emailAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     emailSubject = registerOutput<String>('emailSubject');
     message = registerOutput<String?>('message');
     this.name = registerOutput<String>('name');
@@ -201,11 +201,12 @@ class AnomalyAlert extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AnomalyAlertState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AnomalyAlert._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -220,7 +221,25 @@ class AnomalyAlert extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     displayName = registerOutput<String>('displayName');
-    emailAddresses = registerOutput<List<String>>('emailAddresses');
+    emailAddresses = registerOutput<List<String>>('emailAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    emailSubject = registerOutput<String>('emailSubject');
+    message = registerOutput<String?>('message');
+    this.name = registerOutput<String>('name');
+    notificationEmail = registerOutput<String>('notificationEmail');
+    subscriptionId = registerOutput<String>('subscriptionId');
+  }
+
+  /// Creates a typed reference to an existing [AnomalyAlert] resource.
+  AnomalyAlert.reference(String urn)
+    : super(
+        'azure:costmanagement/anomalyAlert:AnomalyAlert',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    displayName = registerOutput<String>('displayName');
+    emailAddresses = registerOutput<List<String>>('emailAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     emailSubject = registerOutput<String>('emailSubject');
     message = registerOutput<String?>('message');
     this.name = registerOutput<String>('name');

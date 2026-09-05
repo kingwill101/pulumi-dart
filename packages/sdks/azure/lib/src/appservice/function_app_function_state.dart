@@ -6,35 +6,35 @@ import 'function_app_function_file.dart';
 /// Input properties used for looking up and filtering FunctionAppFunction resources.
 class FunctionAppFunctionState {
   /// The config for this Function in JSON format.
-  final pulumi.Input<String>? configJson;
+  final pulumi.Input<String?>? configJson;
   /// The URL of the configuration JSON.
-  final pulumi.Input<String>? configUrl;
+  final pulumi.Input<String?>? configUrl;
   /// Should this function be enabled. Defaults to `true`.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// A `file` block as detailed below. Changing this forces a new resource to be created.
-  final pulumi.Input<List<FunctionAppFunctionFile>>? files;
+  final pulumi.Input<List<FunctionAppFunctionFile>?>? files;
   /// The ID of the Function App in which this function should reside. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? functionAppId;
+  final pulumi.Input<String?>? functionAppId;
   /// The invocation URL.
-  final pulumi.Input<String>? invocationUrl;
+  final pulumi.Input<String?>? invocationUrl;
   /// The language the Function is written in. Possible values are `CSharp`, `Custom`, `Java`, `Javascript`, `Python`, `PowerShell`, and `TypeScript`.
   ///
   /// &gt; **Note:** when using `Custom` language, you must specify the code handler in the `host.json` file for your function. See the [official docs](https://docs.microsoft.com/azure/azure-functions/functions-custom-handlers#hostjson) for more information.
-  final pulumi.Input<String>? language;
+  final pulumi.Input<String?>? language;
   /// The name of the function. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The Script root path URL.
-  final pulumi.Input<String>? scriptRootPathUrl;
+  final pulumi.Input<String?>? scriptRootPathUrl;
   /// The script URL.
-  final pulumi.Input<String>? scriptUrl;
+  final pulumi.Input<String?>? scriptUrl;
   /// The URL for the Secrets File.
-  final pulumi.Input<String>? secretsFileUrl;
+  final pulumi.Input<String?>? secretsFileUrl;
   /// The test data for the function.
-  final pulumi.Input<String>? testData;
+  final pulumi.Input<String?>? testData;
   /// The Test data URL.
-  final pulumi.Input<String>? testDataUrl;
+  final pulumi.Input<String?>? testDataUrl;
   /// The function URL.
-  final pulumi.Input<String>? url;
+  final pulumi.Input<String?>? url;
 
   /// Creates a new [FunctionAppFunctionState].
   /// [configJson] The config for this Function in JSON format.

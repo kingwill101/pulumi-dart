@@ -9,7 +9,7 @@ import 'custom_https_configuration_custom_https_configuration.dart';
 /// {@macro pulumi_frontdoor_custom_https_configuration_custom_https_configuration_args_doc}
 class CustomHttpsConfigurationArgs {
   /// A `customHttpsConfiguration` block as defined above.
-  final pulumi.Input<CustomHttpsConfigurationCustomHttpsConfiguration>? customHttpsConfiguration;
+  final pulumi.Input<CustomHttpsConfigurationCustomHttpsConfiguration?>? customHttpsConfiguration;
   /// Should the HTTPS protocol be enabled for this custom domain associated with the Front Door?
   final pulumi.Input<bool> customHttpsProvisioningEnabled;
   /// The ID of the Front Door Frontend Endpoint which this configuration refers to. Changing this forces a new resource to be created.

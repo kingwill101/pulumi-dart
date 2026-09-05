@@ -8,7 +8,7 @@ class CustomProviderResourceType {
   /// Specifies the name of the route definition.
   final pulumi.Input<String> name;
   /// The routing type that is supported for the resource request. Valid values are `Proxy` and `Proxy,Cache`. Defaults to `Proxy`.
-  final pulumi.Input<String>? routingType;
+  final pulumi.Input<String?>? routingType;
 
   /// Creates a new [CustomProviderResourceType].
   /// [endpoint] Specifies the endpoint of the route definition.

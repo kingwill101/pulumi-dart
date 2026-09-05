@@ -6,29 +6,29 @@ import 'server_ipv4_firewall_rule.dart';
 /// Input properties used for looking up and filtering Server resources.
 class ServerState {
   /// List of email addresses of admin users.
-  final pulumi.Input<List<String>>? adminUsers;
+  final pulumi.Input<List<String>?>? adminUsers;
   /// URI and SAS token for a blob container to store backups.
-  final pulumi.Input<String>? backupBlobContainerUri;
+  final pulumi.Input<String?>? backupBlobContainerUri;
   /// One or more `ipv4FirewallRule` block(s) as defined below.
-  final pulumi.Input<List<ServerIpv4FirewallRule>>? ipv4FirewallRules;
+  final pulumi.Input<List<ServerIpv4FirewallRule>?>? ipv4FirewallRules;
   /// The Azure location where the Analysis Services Server exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the Analysis Services Server. Only lowercase Alphanumeric characters allowed, starting with a letter. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Indicates if the Power BI service is allowed to access or not.
   ///
   /// &gt; **Note:** `powerBiServiceEnabled` is required when `ipv4FirewallRule` is defined.
-  final pulumi.Input<bool>? powerBiServiceEnabled;
+  final pulumi.Input<bool?>? powerBiServiceEnabled;
   /// Controls how the read-write server is used in the query pool. If this value is set to `All` then read-write servers are also used for queries. Otherwise with `ReadOnly` these servers do not participate in query operations. Defaults to `All`.
-  final pulumi.Input<String>? querypoolConnectionMode;
+  final pulumi.Input<String?>? querypoolConnectionMode;
   /// The name of the Resource Group in which the Analysis Services Server should be exist. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// The full name of the Analysis Services Server.
-  final pulumi.Input<String>? serverFullName;
+  final pulumi.Input<String?>? serverFullName;
   /// SKU for the Analysis Services Server. Possible values are: `D1`, `B1`, `B2`, `S0`, `S1`, `S2`, `S4`, `S8`, `S9`, `S8v2` and `S9v2`.
-  final pulumi.Input<String>? sku;
+  final pulumi.Input<String?>? sku;
   /// A mapping of tags to assign to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ServerState].
   /// [adminUsers] List of email addresses of admin users.

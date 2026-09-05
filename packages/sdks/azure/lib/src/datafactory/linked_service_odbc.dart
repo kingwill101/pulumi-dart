@@ -132,7 +132,7 @@ import 'linked_service_odbc_state.dart';
 /// 		}
 /// 		_, err = datafactory.NewLinkedServiceOdbc(ctx, "anonymous", &datafactory.LinkedServiceOdbcArgs{
 /// 			Name:             pulumi.String("anonymous"),
-/// 			DataFactoryId:    exampleFactory.ID(),
+/// 			DataFactoryId:    exampleFactory.ID().ToIDOutput().ToStringOutput(),
 /// 			ConnectionString: pulumi.String("Driver={SQL Server};Server=test;Database=test;Uid=test;Pwd=test;"),
 /// 		})
 /// 		if err != nil {
@@ -140,7 +140,7 @@ import 'linked_service_odbc_state.dart';
 /// 		}
 /// 		_, err = datafactory.NewLinkedServiceOdbc(ctx, "basic_auth", &datafactory.LinkedServiceOdbcArgs{
 /// 			Name:             pulumi.String("basic_auth"),
-/// 			DataFactoryId:    exampleFactory.ID(),
+/// 			DataFactoryId:    exampleFactory.ID().ToIDOutput().ToStringOutput(),
 /// 			ConnectionString: pulumi.String("Driver={SQL Server};Server=test;Database=test;Uid=test;Pwd=test;"),
 /// 			BasicAuthentication: &datafactory.LinkedServiceOdbcBasicAuthenticationArgs{
 /// 				Username: pulumi.String("onrylmz"),
@@ -315,17 +315,17 @@ class LinkedServiceOdbc extends pulumi.CustomResource {
           'azure:datafactory/linkedServiceOdbc:LinkedServiceOdbc',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
-    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
-    annotations = registerOutput<List<String>?>('annotations');
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     basicAuthentication = registerOutput<LinkedServiceOdbcBasicAuthentication?>('basicAuthentication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinkedServiceOdbcBasicAuthentication.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     connectionString = registerOutput<String>('connectionString');
     dataFactoryId = registerOutput<String>('dataFactoryId');
     description = registerOutput<String?>('description');
     integrationRuntimeName = registerOutput<String?>('integrationRuntimeName');
     this.name = registerOutput<String>('name');
-    parameters = registerOutput<Map<String, String>?>('parameters');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [LinkedServiceOdbc] resource's state with the given [name] and [id].
@@ -333,11 +333,12 @@ class LinkedServiceOdbc extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LinkedServiceOdbcState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LinkedServiceOdbc._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -351,14 +352,34 @@ class LinkedServiceOdbc extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
-    annotations = registerOutput<List<String>?>('annotations');
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     basicAuthentication = registerOutput<LinkedServiceOdbcBasicAuthentication?>('basicAuthentication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinkedServiceOdbcBasicAuthentication.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     connectionString = registerOutput<String>('connectionString');
     dataFactoryId = registerOutput<String>('dataFactoryId');
     description = registerOutput<String?>('description');
     integrationRuntimeName = registerOutput<String?>('integrationRuntimeName');
     this.name = registerOutput<String>('name');
-    parameters = registerOutput<Map<String, String>?>('parameters');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [LinkedServiceOdbc] resource.
+  LinkedServiceOdbc.reference(String urn)
+    : super(
+        'azure:datafactory/linkedServiceOdbc:LinkedServiceOdbc',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    basicAuthentication = registerOutput<LinkedServiceOdbcBasicAuthentication?>('basicAuthentication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinkedServiceOdbcBasicAuthentication.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    connectionString = registerOutput<String>('connectionString');
+    dataFactoryId = registerOutput<String>('dataFactoryId');
+    description = registerOutput<String?>('description');
+    integrationRuntimeName = registerOutput<String?>('integrationRuntimeName');
+    this.name = registerOutput<String>('name');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

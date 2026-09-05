@@ -25,43 +25,43 @@ class HadoopClusterArgs {
   /// A `componentVersion` block as defined below.
   final pulumi.Input<HadoopClusterComponentVersion> componentVersion;
   /// A `computeIsolation` block as defined below.
-  final pulumi.Input<HadoopClusterComputeIsolation>? computeIsolation;
+  final pulumi.Input<HadoopClusterComputeIsolation?>? computeIsolation;
   /// One or more `diskEncryption` block as defined below.
-  final pulumi.Input<List<HadoopClusterDiskEncryption>>? diskEncryptions;
+  final pulumi.Input<List<HadoopClusterDiskEncryption>?>? diskEncryptions;
   /// An `extension` block as defined below.
-  final pulumi.Input<HadoopClusterExtension>? extension;
+  final pulumi.Input<HadoopClusterExtension?>? extension;
   /// A `gateway` block as defined below.
   final pulumi.Input<HadoopClusterGateway> gateway;
   /// Specifies the Azure Region which this HDInsight Hadoop Cluster should exist. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// A `metastores` block as defined below.
-  final pulumi.Input<HadoopClusterMetastores>? metastores;
+  final pulumi.Input<HadoopClusterMetastores?>? metastores;
   /// A `monitor` block as defined below.
-  final pulumi.Input<HadoopClusterMonitor>? monitor;
+  final pulumi.Input<HadoopClusterMonitor?>? monitor;
   /// Specifies the name for this HDInsight Hadoop Cluster. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A `network` block as defined below.
-  final pulumi.Input<HadoopClusterNetwork>? network;
+  final pulumi.Input<HadoopClusterNetwork?>? network;
   /// A `privateLinkConfiguration` block as defined below.
-  final pulumi.Input<HadoopClusterPrivateLinkConfiguration>? privateLinkConfiguration;
+  final pulumi.Input<HadoopClusterPrivateLinkConfiguration?>? privateLinkConfiguration;
   /// Specifies the name of the Resource Group in which this HDInsight Hadoop Cluster should exist. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
   /// A `roles` block as defined below.
   final pulumi.Input<HadoopClusterRoles> roles;
   /// A `securityProfile` block as defined below. Changing this forces a new resource to be created.
-  final pulumi.Input<HadoopClusterSecurityProfile>? securityProfile;
+  final pulumi.Input<HadoopClusterSecurityProfile?>? securityProfile;
   /// A `storageAccountGen2` block as defined below.
-  final pulumi.Input<HadoopClusterStorageAccountGen2>? storageAccountGen2;
+  final pulumi.Input<HadoopClusterStorageAccountGen2?>? storageAccountGen2;
   /// One or more `storageAccount` block as defined below.
-  final pulumi.Input<List<HadoopClusterStorageAccount>>? storageAccounts;
+  final pulumi.Input<List<HadoopClusterStorageAccount>?>? storageAccounts;
   /// A map of Tags which should be assigned to this HDInsight Hadoop Cluster.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Specifies the Tier which should be used for this HDInsight Hadoop Cluster. Possible values are `Standard` or `Premium`. Changing this forces a new resource to be created.
   final pulumi.Input<String> tier;
   /// The minimal supported TLS version. Possible values are 1.0, 1.1 or 1.2. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** Starting on June 30, 2020, Azure HDInsight will enforce TLS 1.2 or later versions for all HTTPS connections. For more information, see [Azure HDInsight TLS 1.2 Enforcement](https://azure.microsoft.com/en-us/updates/azure-hdinsight-tls-12-enforcement/).
-  final pulumi.Input<String>? tlsMinVersion;
+  final pulumi.Input<String?>? tlsMinVersion;
 
   /// Creates a new [HadoopClusterArgs].
   /// [clusterVersion] Specifies the Version of HDInsights which should be used for this Cluster. Changing this forces a new resource to be created.

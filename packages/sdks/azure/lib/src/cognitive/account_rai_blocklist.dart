@@ -108,7 +108,7 @@ import 'account_rai_blocklist_state.dart';
 /// 		}
 /// 		_, err = cognitive.NewAccountRaiBlocklist(ctx, "example", &cognitive.AccountRaiBlocklistArgs{
 /// 			Name:               pulumi.String("example-crb"),
-/// 			CognitiveAccountId: exampleAccount.ID(),
+/// 			CognitiveAccountId: exampleAccount.ID().ToIDOutput().ToStringOutput(),
 /// 			Description:        pulumi.String("Azure OpenAI Rai Blocklist"),
 /// 		})
 /// 		if err != nil {
@@ -253,12 +253,12 @@ class AccountRaiBlocklist extends pulumi.CustomResource {
           'azure:cognitive/accountRaiBlocklist:AccountRaiBlocklist',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     cognitiveAccountId = registerOutput<String>('cognitiveAccountId');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [AccountRaiBlocklist] resource's state with the given [name] and [id].
@@ -266,11 +266,12 @@ class AccountRaiBlocklist extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AccountRaiBlocklistState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AccountRaiBlocklist._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -287,6 +288,21 @@ class AccountRaiBlocklist extends pulumi.CustomResource {
     cognitiveAccountId = registerOutput<String>('cognitiveAccountId');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [AccountRaiBlocklist] resource.
+  AccountRaiBlocklist.reference(String urn)
+    : super(
+        'azure:cognitive/accountRaiBlocklist:AccountRaiBlocklist',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    cognitiveAccountId = registerOutput<String>('cognitiveAccountId');
+    description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

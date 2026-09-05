@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LinuxVirtualMachineAdditionalCapabilities {
   /// Whether to enable the hibernation capability or not.
-  final pulumi.Input<bool>? hibernationEnabled;
+  final pulumi.Input<bool?>? hibernationEnabled;
   /// Should the capacity to enable Data Disks of the `UltraSSD_LRS` storage account type be supported on this Virtual Machine? Defaults to `false`.
-  final pulumi.Input<bool>? ultraSsdEnabled;
+  final pulumi.Input<bool?>? ultraSsdEnabled;
 
   /// Creates a new [LinuxVirtualMachineAdditionalCapabilities].
   /// [hibernationEnabled] Whether to enable the hibernation capability or not.

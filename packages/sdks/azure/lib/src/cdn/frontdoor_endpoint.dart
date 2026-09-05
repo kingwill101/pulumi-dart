@@ -107,7 +107,7 @@ import 'frontdoor_endpoint_state.dart';
 /// 		}
 /// 		_, err = cdn.NewFrontdoorEndpoint(ctx, "example", &cdn.FrontdoorEndpointArgs{
 /// 			Name:                  pulumi.String("example-endpoint"),
-/// 			CdnFrontdoorProfileId: exampleFrontdoorProfile.ID(),
+/// 			CdnFrontdoorProfileId: exampleFrontdoorProfile.ID().ToIDOutput().ToStringOutput(),
 /// 			Tags: pulumi.StringMap{
 /// 				"ENV": pulumi.String("example"),
 /// 			},
@@ -215,6 +215,13 @@ import 'frontdoor_endpoint_state.dart';
 /// ```
 ///
 ///
+/// ## API Providers
+///
+/// &lt;!-- This section is generated, changes will be overwritten --&gt;
+/// This resource uses the following Azure API Providers:
+///
+/// * `Microsoft.Cdn` - 2025-12-01
+///
 /// ## Import
 ///
 /// Front Door Endpoints can be imported using the `resource id`, e.g.
@@ -246,13 +253,13 @@ class FrontdoorEndpoint extends pulumi.CustomResource {
           'azure:cdn/frontdoorEndpoint:FrontdoorEndpoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     cdnFrontdoorProfileId = registerOutput<String>('cdnFrontdoorProfileId');
     enabled = registerOutput<bool?>('enabled');
     hostName = registerOutput<String>('hostName');
     this.name = registerOutput<String>('name');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [FrontdoorEndpoint] resource's state with the given [name] and [id].
@@ -260,11 +267,12 @@ class FrontdoorEndpoint extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FrontdoorEndpointState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return FrontdoorEndpoint._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -282,6 +290,22 @@ class FrontdoorEndpoint extends pulumi.CustomResource {
     enabled = registerOutput<bool?>('enabled');
     hostName = registerOutput<String>('hostName');
     this.name = registerOutput<String>('name');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [FrontdoorEndpoint] resource.
+  FrontdoorEndpoint.reference(String urn)
+    : super(
+        'azure:cdn/frontdoorEndpoint:FrontdoorEndpoint',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    cdnFrontdoorProfileId = registerOutput<String>('cdnFrontdoorProfileId');
+    enabled = registerOutput<bool?>('enabled');
+    hostName = registerOutput<String>('hostName');
+    this.name = registerOutput<String>('name');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

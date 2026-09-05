@@ -8,9 +8,9 @@ class KeyVaultNetworkAcls {
   /// The Default Action to use when no rules match from `ipRules` / `virtualNetworkSubnetIds`. Possible values are `Allow` and `Deny`.
   final pulumi.Input<String> defaultAction;
   /// One or more IP Addresses, or CIDR Blocks which should be able to access the Key Vault.
-  final pulumi.Input<List<String>>? ipRules;
+  final pulumi.Input<List<String>?>? ipRules;
   /// One or more Subnet IDs which should be able to access this Key Vault.
-  final pulumi.Input<List<String>>? virtualNetworkSubnetIds;
+  final pulumi.Input<List<String>?>? virtualNetworkSubnetIds;
 
   /// Creates a new [KeyVaultNetworkAcls].
   /// [bypass] Specifies which traffic can bypass the network rules. Possible values are `AzureServices` and `None`.

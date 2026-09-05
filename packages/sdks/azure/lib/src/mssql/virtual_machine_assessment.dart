@@ -5,11 +5,11 @@ import 'virtual_machine_assessment_schedule.dart';
 
 class VirtualMachineAssessment {
   /// Should Assessment be enabled? Defaults to `true`.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// Should Assessment be run immediately? Defaults to `false`.
-  final pulumi.Input<bool>? runImmediately;
+  final pulumi.Input<bool?>? runImmediately;
   /// An `schedule` block as defined below.
-  final pulumi.Input<VirtualMachineAssessmentSchedule>? schedule;
+  final pulumi.Input<VirtualMachineAssessmentSchedule?>? schedule;
 
   /// Creates a new [VirtualMachineAssessment].
   /// [enabled] Should Assessment be enabled? Defaults to `true`.

@@ -14,93 +14,93 @@ import 'windows_web_app_slot_storage_account.dart';
 /// Input properties used for looking up and filtering WindowsWebAppSlot resources.
 class WindowsWebAppSlotState {
   /// The ID of the Windows Web App this Deployment Slot will be part of. Changing this forces a new Windows Web App to be created.
-  final pulumi.Input<String>? appServiceId;
+  final pulumi.Input<String?>? appServiceId;
   /// A map of key-value pairs of App Settings.
-  final pulumi.Input<Map<String, String>>? appSettings;
+  final pulumi.Input<Map<String, String>?>? appSettings;
   /// An `authSettings` block as defined below.
-  final pulumi.Input<WindowsWebAppSlotAuthSettings>? authSettings;
+  final pulumi.Input<WindowsWebAppSlotAuthSettings?>? authSettings;
   /// An `authSettingsV2` block as defined below.
-  final pulumi.Input<WindowsWebAppSlotAuthSettingsV2>? authSettingsV2;
+  final pulumi.Input<WindowsWebAppSlotAuthSettingsV2?>? authSettingsV2;
   /// A `backup` block as defined below.
-  final pulumi.Input<WindowsWebAppSlotBackup>? backup;
+  final pulumi.Input<WindowsWebAppSlotBackup?>? backup;
   /// Should Client Affinity be enabled?
-  final pulumi.Input<bool>? clientAffinityEnabled;
+  final pulumi.Input<bool?>? clientAffinityEnabled;
   /// Should Client Certificates be enabled?
-  final pulumi.Input<bool>? clientCertificateEnabled;
+  final pulumi.Input<bool?>? clientCertificateEnabled;
   /// Paths to exclude when using client certificates, separated by ;
   ///
   /// &gt; **Note:** TLS 1.3 and HTTP 2.0 don't support TLS renegotiation. These protocols will not work if your app is configured with client certificate settings that use TLS renegotiation. Either set `clientCertificateEnabled` to `false`, or set `clientCertificateMode` to `Optional` or `Required` and remove all `clientCertificateExclusionPaths`.
-  final pulumi.Input<String>? clientCertificateExclusionPaths;
+  final pulumi.Input<String?>? clientCertificateExclusionPaths;
   /// The Client Certificate mode. Possible values are `Required`, `Optional`, and `OptionalInteractiveUser`. This property has no effect when `clientCertificateEnabled` is `false`. Defaults to `Required`.
-  final pulumi.Input<String>? clientCertificateMode;
+  final pulumi.Input<String?>? clientCertificateMode;
   /// One or more `connectionString` blocks as defined below.
-  final pulumi.Input<List<WindowsWebAppSlotConnectionString>>? connectionStrings;
+  final pulumi.Input<List<WindowsWebAppSlotConnectionString>?>? connectionStrings;
   /// The identifier used by App Service to perform domain ownership verification via DNS TXT record.
-  final pulumi.Input<String>? customDomainVerificationId;
+  final pulumi.Input<String?>? customDomainVerificationId;
   /// The default hostname of the Windows Web App Slot.
-  final pulumi.Input<String>? defaultHostname;
+  final pulumi.Input<String?>? defaultHostname;
   /// Should the Windows Web App Slot be enabled? Defaults to `true`.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// Should the default FTP Basic Authentication publishing profile be enabled. Defaults to `true`.
-  final pulumi.Input<bool>? ftpPublishBasicAuthenticationEnabled;
+  final pulumi.Input<bool?>? ftpPublishBasicAuthenticationEnabled;
   /// The ID of the App Service Environment used by App Service Slot.
-  final pulumi.Input<String>? hostingEnvironmentId;
+  final pulumi.Input<String?>? hostingEnvironmentId;
   /// Should the Windows Web App Slot require HTTPS connections. Defaults to `false`.
-  final pulumi.Input<bool>? httpsOnly;
+  final pulumi.Input<bool?>? httpsOnly;
   /// An `identity` block as defined below.
-  final pulumi.Input<WindowsWebAppSlotIdentity>? identity;
+  final pulumi.Input<WindowsWebAppSlotIdentity?>? identity;
   /// The User Assigned Identity ID used for accessing KeyVault secrets. The identity must be assigned to the application in the `identity` block. [For more information see - Access vaults with a user-assigned identity](https://docs.microsoft.com/azure/app-service/app-service-key-vault-references#access-vaults-with-a-user-assigned-identity)
-  final pulumi.Input<String>? keyVaultReferenceIdentityId;
+  final pulumi.Input<String?>? keyVaultReferenceIdentityId;
   /// The Kind value for this Windows Web App Slot.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// A `logs` block as defined below.
-  final pulumi.Input<WindowsWebAppSlotLogs>? logs;
+  final pulumi.Input<WindowsWebAppSlotLogs?>? logs;
   /// The name which should be used for this Windows Web App Slot. Changing this forces a new Windows Web App Slot to be created.
   ///
   /// &gt; **Note:** Terraform will perform a name availability check as part of the creation progress, if this Web App is part of an App Service Environment terraform will require Read permission on the App Service Environment for this to complete reliably.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A list of outbound IP addresses - such as `["52.23.25.3", "52.143.43.12"]`
-  final pulumi.Input<List<String>>? outboundIpAddressLists;
+  final pulumi.Input<List<String>?>? outboundIpAddressLists;
   /// A comma separated list of outbound IP addresses - such as `52.23.25.3,52.143.43.12`.
-  final pulumi.Input<String>? outboundIpAddresses;
+  final pulumi.Input<String?>? outboundIpAddresses;
   /// A list of possible outbound ip address.
-  final pulumi.Input<List<String>>? possibleOutboundIpAddressLists;
+  final pulumi.Input<List<String>?>? possibleOutboundIpAddressLists;
   /// A comma separated list of outbound IP addresses - such as `52.23.25.3,52.143.43.12,52.143.43.17` - not all of which are necessarily in use. Superset of `outboundIpAddresses`.
-  final pulumi.Input<String>? possibleOutboundIpAddresses;
+  final pulumi.Input<String?>? possibleOutboundIpAddresses;
   /// Should public network access be enabled for the Web App. Defaults to `true`.
-  final pulumi.Input<bool>? publicNetworkAccessEnabled;
+  final pulumi.Input<bool?>? publicNetworkAccessEnabled;
   /// The ID of the Service Plan in which to run this slot. If not specified the same Service Plan as the Windows Web App will be used.
   ///
   /// &gt; **Note:** `servicePlanId` should only be specified if it differs from the Service Plan of the associated Windows Web App.
-  final pulumi.Input<String>? servicePlanId;
+  final pulumi.Input<String?>? servicePlanId;
   /// A `siteConfig` block as defined below.
-  final pulumi.Input<WindowsWebAppSlotSiteConfig>? siteConfig;
+  final pulumi.Input<WindowsWebAppSlotSiteConfig?>? siteConfig;
   /// A `siteCredential` block as defined below.
-  final pulumi.Input<List<WindowsWebAppSlotSiteCredential>>? siteCredentials;
+  final pulumi.Input<List<WindowsWebAppSlotSiteCredential>?>? siteCredentials;
   /// One or more `storageAccount` blocks as defined below.
   ///
   /// &gt; **Note:** Using this value requires `WEBSITE_RUN_FROM_PACKAGE=1` to be set on the App in `appSettings`. Refer to the [Azure docs](https://docs.microsoft.com/en-us/azure/app-service/deploy-run-package) for further details.
-  final pulumi.Input<List<WindowsWebAppSlotStorageAccount>>? storageAccounts;
+  final pulumi.Input<List<WindowsWebAppSlotStorageAccount>?>? storageAccounts;
   /// A mapping of tags which should be assigned to the Windows Web App Slot.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Whether backup and restore operations over the linked virtual network are enabled. Defaults to `false`.
-  final pulumi.Input<bool>? virtualNetworkBackupRestoreEnabled;
+  final pulumi.Input<bool?>? virtualNetworkBackupRestoreEnabled;
   /// Whether traffic for the image pull should be routed over the virtual network.
   ///
   /// &gt; **Note:** `virtualNetworkImagePullEnabled` must be set to `true` when running in an App Service Environment.
-  final pulumi.Input<bool>? virtualNetworkImagePullEnabled;
+  final pulumi.Input<bool?>? virtualNetworkImagePullEnabled;
   /// The subnet id which will be used by this Web App Slot for [regional virtual network integration](https://docs.microsoft.com/en-us/azure/app-service/overview-vnet-integration#regional-virtual-network-integration).
   ///
   /// &gt; **Note:** The AzureRM Terraform provider provides regional virtual network integration via the standalone resource appServiceVirtualNetworkSwiftConnection and in-line within this resource using the `virtualNetworkSubnetId` property. You cannot use both methods simultaneously. If the virtual network is set via the resource `appServiceVirtualNetworkSwiftConnection` then `ignoreChanges` should be used in the web app slot configuration.
   ///
   /// &gt; **Note:** Assigning the `virtualNetworkSubnetId` property requires [RBAC permissions on the subnet](https://docs.microsoft.com/en-us/azure/app-service/overview-vnet-integration#permissions)
-  final pulumi.Input<String>? virtualNetworkSubnetId;
+  final pulumi.Input<String?>? virtualNetworkSubnetId;
   /// Should the default WebDeploy Basic Authentication publishing credentials enabled. Defaults to `true`.
   ///
   /// &gt; **Note:** Setting this value to true will disable the ability to use `zipDeployFile` which currently relies on the default publishing profile.
-  final pulumi.Input<bool>? webdeployPublishBasicAuthenticationEnabled;
+  final pulumi.Input<bool?>? webdeployPublishBasicAuthenticationEnabled;
   /// The local path and filename of the Zip packaged application to deploy to this Windows Web App.
-  final pulumi.Input<String>? zipDeployFile;
+  final pulumi.Input<String?>? zipDeployFile;
 
   /// Creates a new [WindowsWebAppSlotState].
   /// [appServiceId] The ID of the Windows Web App this Deployment Slot will be part of. Changing this forces a new Windows Web App to be created.

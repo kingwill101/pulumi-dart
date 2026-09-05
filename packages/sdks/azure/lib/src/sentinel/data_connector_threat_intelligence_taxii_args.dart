@@ -16,19 +16,19 @@ class DataConnectorThreatIntelligenceTaxiiArgs {
   /// The ID of the Log Analytics Workspace that this Threat Intelligence TAXII Data Connector resides in. Changing this forces a new Threat Intelligence TAXII Data Connector to be created.
   final pulumi.Input<String> logAnalyticsWorkspaceId;
   /// The lookback date for the TAXII server in RFC3339. Defaults to `1970-01-01T00:00:00Z`.
-  final pulumi.Input<String>? lookbackDate;
+  final pulumi.Input<String?>? lookbackDate;
   /// The name which should be used for this Threat Intelligence TAXII Data Connector. Changing this forces a new Threat Intelligence TAXII Data Connector to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The password for the TAXII server.
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// The polling frequency for the TAXII server. Possible values are `OnceAMinute`, `OnceAnHour` and `OnceADay`. Defaults to `OnceAnHour`.
-  final pulumi.Input<String>? pollingFrequency;
+  final pulumi.Input<String?>? pollingFrequency;
   /// The ID of the tenant that this Threat Intelligence TAXII Data Connector connects to. Changing this forces a new Threat Intelligence TAXII Data Connector to be created.
   ///
   /// &gt; **Note:** Currently, only the same tenant as the running account is allowed. Cross-tenant scenario is not supported yet.
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
   /// The user name for the TAXII server.
-  final pulumi.Input<String>? userName;
+  final pulumi.Input<String?>? userName;
 
   /// Creates a new [DataConnectorThreatIntelligenceTaxiiArgs].
   /// [apiRootUrl] The API root URI of the TAXII server.

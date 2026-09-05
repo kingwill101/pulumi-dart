@@ -442,9 +442,10 @@ class FileSystem extends pulumi.CustomResource {
           'azure:qumulo/fileSystem:FileSystem',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['adminPassword'],
         ) {
-    adminPassword = registerOutput<String>('adminPassword');
+    adminPassword = registerOutput<String>('adminPassword', isSecret: true);
     email = registerOutput<String>('email');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -454,7 +455,7 @@ class FileSystem extends pulumi.CustomResource {
     resourceGroupName = registerOutput<String>('resourceGroupName');
     storageSku = registerOutput<String>('storageSku');
     subnetId = registerOutput<String>('subnetId');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     zone = registerOutput<String>('zone');
   }
 
@@ -463,11 +464,12 @@ class FileSystem extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FileSystemState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return FileSystem._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -481,7 +483,7 @@ class FileSystem extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    adminPassword = registerOutput<String>('adminPassword');
+    adminPassword = registerOutput<String>('adminPassword', isSecret: true);
     email = registerOutput<String>('email');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -491,7 +493,31 @@ class FileSystem extends pulumi.CustomResource {
     resourceGroupName = registerOutput<String>('resourceGroupName');
     storageSku = registerOutput<String>('storageSku');
     subnetId = registerOutput<String>('subnetId');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    zone = registerOutput<String>('zone');
+  }
+
+  /// Creates a typed reference to an existing [FileSystem] resource.
+  FileSystem.reference(String urn)
+    : super(
+        'azure:qumulo/fileSystem:FileSystem',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['adminPassword'],
+        isResourceReference: true,
+      ) {
+    adminPassword = registerOutput<String>('adminPassword', isSecret: true);
+    email = registerOutput<String>('email');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    offerId = registerOutput<String?>('offerId');
+    planId = registerOutput<String?>('planId');
+    publisherId = registerOutput<String?>('publisherId');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    storageSku = registerOutput<String>('storageSku');
+    subnetId = registerOutput<String>('subnetId');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     zone = registerOutput<String>('zone');
   }
 }

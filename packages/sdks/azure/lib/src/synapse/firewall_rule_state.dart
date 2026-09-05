@@ -9,13 +9,13 @@ class FirewallRuleState {
   /// &gt; **Note:** The Azure feature `Allow access to Azure services` can be enabled by setting `startIpAddress` and `endIpAddress` to `0.0.0.0`.
   ///
   /// &gt; **Note:** The Azure feature `Allow access to Azure services` requires the `name` to be `AllowAllWindowsAzureIps`.
-  final pulumi.Input<String>? endIpAddress;
+  final pulumi.Input<String?>? endIpAddress;
   /// The Name of the firewall rule. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The starting IP address to allow through the firewall for this rule.
-  final pulumi.Input<String>? startIpAddress;
+  final pulumi.Input<String?>? startIpAddress;
   /// The ID of the Synapse Workspace on which to create the Firewall Rule. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? synapseWorkspaceId;
+  final pulumi.Input<String?>? synapseWorkspaceId;
 
   /// Creates a new [FirewallRuleState].
   /// [endIpAddress] The ending IP address to allow through the firewall for this rule.

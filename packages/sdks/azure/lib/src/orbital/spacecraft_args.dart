@@ -11,15 +11,15 @@ class SpacecraftArgs {
   /// A `links` block as defined below. Changing this forces a new resource to be created.
   final pulumi.Input<List<SpacecraftLink>> links;
   /// The location where the Spacecraft exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the Spacecraft. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// NORAD ID of the Spacecraft.
   final pulumi.Input<String> noradId;
   /// The name of the Resource Group where the Spacecraft exists. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
   /// A mapping of tags to assign to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Title of the two line elements (TLE).
   final pulumi.Input<String> titleLine;
   /// A list of the two line elements (TLE), the first string being the first of the TLE, the second string being the second line of the TLE. Changing this forces a new resource to be created.

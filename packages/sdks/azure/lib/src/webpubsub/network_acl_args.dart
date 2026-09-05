@@ -10,9 +10,9 @@ import 'network_acl_public_network.dart';
 /// {@macro pulumi_webpubsub_network_acl_network_acl_args_doc}
 class NetworkAclArgs {
   /// The default action to control the network access when no other rule matches. Possible values are `Allow` and `Deny`. Defaults to `Deny`.
-  final pulumi.Input<String>? defaultAction;
+  final pulumi.Input<String?>? defaultAction;
   /// A `privateEndpoint` block as defined below.
-  final pulumi.Input<List<NetworkAclPrivateEndpoint>>? privateEndpoints;
+  final pulumi.Input<List<NetworkAclPrivateEndpoint>?>? privateEndpoints;
   /// A `publicNetwork` block as defined below.
   final pulumi.Input<NetworkAclPublicNetwork> publicNetwork;
   /// The ID of the Web Pubsub service. Changing this forces a new resource to be created.

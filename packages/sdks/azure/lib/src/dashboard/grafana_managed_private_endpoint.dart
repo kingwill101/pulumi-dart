@@ -160,7 +160,7 @@ import 'grafana_managed_private_endpoint_state.dart';
 /// 			PublicNetworkAccessEnabled: pulumi.Bool(false),
 /// 			AzureMonitorWorkspaceIntegrations: dashboard.GrafanaAzureMonitorWorkspaceIntegrationArray{
 /// 				&dashboard.GrafanaAzureMonitorWorkspaceIntegrationArgs{
-/// 					ResourceId: exampleWorkspace.ID(),
+/// 					ResourceId: exampleWorkspace.ID().ToIDOutput().ToStringOutput(),
 /// 				},
 /// 			},
 /// 		})
@@ -168,10 +168,10 @@ import 'grafana_managed_private_endpoint_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = dashboard.NewGrafanaManagedPrivateEndpoint(ctx, "example", &dashboard.GrafanaManagedPrivateEndpointArgs{
-/// 			GrafanaId:             exampleGrafana.ID(),
+/// 			GrafanaId:             exampleGrafana.ID().ToIDOutput().ToStringOutput(),
 /// 			Name:                  pulumi.String("example-mpe"),
 /// 			Location:              exampleGrafana.Location,
-/// 			PrivateLinkResourceId: exampleWorkspace.ID(),
+/// 			PrivateLinkResourceId: exampleWorkspace.ID().ToIDOutput().ToStringOutput(),
 /// 			GroupIds: pulumi.StringArray{
 /// 				pulumi.String("prometheusMetrics"),
 /// 			},
@@ -371,17 +371,17 @@ class GrafanaManagedPrivateEndpoint extends pulumi.CustomResource {
           'azure:dashboard/grafanaManagedPrivateEndpoint:GrafanaManagedPrivateEndpoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     grafanaId = registerOutput<String>('grafanaId');
-    groupIds = registerOutput<List<String>?>('groupIds');
+    groupIds = registerOutput<List<String>?>('groupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     privateLinkResourceId = registerOutput<String>('privateLinkResourceId');
     privateLinkResourceRegion = registerOutput<String?>('privateLinkResourceRegion');
     privateLinkServiceUrl = registerOutput<String?>('privateLinkServiceUrl');
     requestMessage = registerOutput<String?>('requestMessage');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [GrafanaManagedPrivateEndpoint] resource's state with the given [name] and [id].
@@ -389,11 +389,12 @@ class GrafanaManagedPrivateEndpoint extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     GrafanaManagedPrivateEndpointState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return GrafanaManagedPrivateEndpoint._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -408,13 +409,33 @@ class GrafanaManagedPrivateEndpoint extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     grafanaId = registerOutput<String>('grafanaId');
-    groupIds = registerOutput<List<String>?>('groupIds');
+    groupIds = registerOutput<List<String>?>('groupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     privateLinkResourceId = registerOutput<String>('privateLinkResourceId');
     privateLinkResourceRegion = registerOutput<String?>('privateLinkResourceRegion');
     privateLinkServiceUrl = registerOutput<String?>('privateLinkServiceUrl');
     requestMessage = registerOutput<String?>('requestMessage');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [GrafanaManagedPrivateEndpoint] resource.
+  GrafanaManagedPrivateEndpoint.reference(String urn)
+    : super(
+        'azure:dashboard/grafanaManagedPrivateEndpoint:GrafanaManagedPrivateEndpoint',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    grafanaId = registerOutput<String>('grafanaId');
+    groupIds = registerOutput<List<String>?>('groupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    privateLinkResourceId = registerOutput<String>('privateLinkResourceId');
+    privateLinkResourceRegion = registerOutput<String?>('privateLinkResourceRegion');
+    privateLinkServiceUrl = registerOutput<String?>('privateLinkServiceUrl');
+    requestMessage = registerOutput<String?>('requestMessage');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

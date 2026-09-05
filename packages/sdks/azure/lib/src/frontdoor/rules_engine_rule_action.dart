@@ -6,9 +6,9 @@ import 'rules_engine_rule_action_response_header.dart';
 
 class RulesEngineRuleAction {
   /// A `requestHeader` block as defined below.
-  final pulumi.Input<List<RulesEngineRuleActionRequestHeader>>? requestHeaders;
+  final pulumi.Input<List<RulesEngineRuleActionRequestHeader>?>? requestHeaders;
   /// A `responseHeader` block as defined below.
-  final pulumi.Input<List<RulesEngineRuleActionResponseHeader>>? responseHeaders;
+  final pulumi.Input<List<RulesEngineRuleActionResponseHeader>?>? responseHeaders;
 
   /// Creates a new [RulesEngineRuleAction].
   /// [requestHeaders] A `requestHeader` block as defined below.

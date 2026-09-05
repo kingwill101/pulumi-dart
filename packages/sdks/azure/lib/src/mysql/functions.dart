@@ -148,3 +148,14 @@ Future<GetFlexibleServerResult> getFlexibleServer(
   );
   return GetFlexibleServerResult.fromMap(result);
 }
+
+pulumi.Output<GetFlexibleServerResult> getFlexibleServerOutput(
+  GetFlexibleServerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:mysql/getFlexibleServer:getFlexibleServer',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFlexibleServerResult.fromMap);
+}

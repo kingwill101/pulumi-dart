@@ -239,7 +239,7 @@ class ExpressRoutePort extends pulumi.CustomResource {
           'azure:network/expressRoutePort:ExpressRoutePort',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     bandwidthInGbps = registerOutput<int>('bandwidthInGbps');
     billingType = registerOutput<String?>('billingType');
@@ -254,7 +254,7 @@ class ExpressRoutePort extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     peeringLocation = registerOutput<String>('peeringLocation');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [ExpressRoutePort] resource's state with the given [name] and [id].
@@ -262,11 +262,12 @@ class ExpressRoutePort extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ExpressRoutePortState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ExpressRoutePort._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -293,6 +294,31 @@ class ExpressRoutePort extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     peeringLocation = registerOutput<String>('peeringLocation');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [ExpressRoutePort] resource.
+  ExpressRoutePort.reference(String urn)
+    : super(
+        'azure:network/expressRoutePort:ExpressRoutePort',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    bandwidthInGbps = registerOutput<int>('bandwidthInGbps');
+    billingType = registerOutput<String?>('billingType');
+    encapsulation = registerOutput<String>('encapsulation');
+    ethertype = registerOutput<String>('ethertype');
+    guid = registerOutput<String>('guid');
+    identity = registerOutput<ExpressRoutePortIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExpressRoutePortIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    link1 = registerOutput<ExpressRoutePortLink1>('link1', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExpressRoutePortLink1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    link2 = registerOutput<ExpressRoutePortLink2>('link2', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExpressRoutePortLink2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    mtu = registerOutput<String>('mtu');
+    this.name = registerOutput<String>('name');
+    peeringLocation = registerOutput<String>('peeringLocation');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

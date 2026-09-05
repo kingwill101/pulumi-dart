@@ -151,6 +151,17 @@ Future<GetFlexibleServerResult> getFlexibleServer(
   return GetFlexibleServerResult.fromMap(result);
 }
 
+pulumi.Output<GetFlexibleServerResult> getFlexibleServerOutput(
+  GetFlexibleServerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:postgresql/getFlexibleServer:getFlexibleServer',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFlexibleServerResult.fromMap);
+}
+
 /// Use this data source to access information about an existing PostgreSQL Azure Database Server.
 ///
 /// &gt; **Note:** The `azure.postgresql.Server` data source is deprecated and will be removed in v5.0 of the AzureRM Provider. Azure Database for PostgreSQL Single Server and its sub resources have been retired as of 2025-03-28, please use the `azure.postgresql.FlexibleServer` data source instead. For more information, see https://techcommunity.microsoft.com/blog/adforpostgresql/retiring-azure-database-for-postgresql-single-server-in-2025/3783783.
@@ -298,4 +309,15 @@ Future<GetServerResult> getServer(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetServerResult.fromMap(result);
+}
+
+pulumi.Output<GetServerResult> getServerOutput(
+  GetServerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:postgresql/getServer:getServer',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServerResult.fromMap);
 }

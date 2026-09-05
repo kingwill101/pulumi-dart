@@ -40,7 +40,7 @@ import 'protected_vmstate.dart';
 /// const vm1 = new azure.backup.ProtectedVM("vm1", {
 ///     resourceGroupName: exampleResourceGroup.name,
 ///     recoveryVaultName: exampleVault.name,
-///     sourceVmId: example.apply(example => example.id),
+///     sourceVmId: example.id,
 ///     backupPolicyId: examplePolicyVM.id,
 /// });
 /// ```
@@ -180,10 +180,8 @@ import 'protected_vmstate.dart';
 /// 		_, err = backup.NewProtectedVM(ctx, "vm1", &backup.ProtectedVMArgs{
 /// 			ResourceGroupName: exampleResourceGroup.Name,
 /// 			RecoveryVaultName: exampleVault.Name,
-/// 			SourceVmId: pulumi.String(example.ApplyT(func(example compute.GetVirtualMachineResult) (*string, error) {
-/// 				return example.Id, nil
-/// 			}).(pulumi.StringPtrOutput)),
-/// 			BackupPolicyId: examplePolicyVM.ID(),
+/// 			SourceVmId:        example.Id(),
+/// 			BackupPolicyId:    examplePolicyVM.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -401,11 +399,11 @@ class ProtectedVM extends pulumi.CustomResource {
           'azure:backup/protectedVM:ProtectedVM',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     backupPolicyId = registerOutput<String?>('backupPolicyId');
-    excludeDiskLuns = registerOutput<List<int>?>('excludeDiskLuns');
-    includeDiskLuns = registerOutput<List<int>?>('includeDiskLuns');
+    excludeDiskLuns = registerOutput<List<int>?>('excludeDiskLuns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<int>(); });
+    includeDiskLuns = registerOutput<List<int>?>('includeDiskLuns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<int>(); });
     protectionState = registerOutput<String>('protectionState');
     recoveryVaultName = registerOutput<String>('recoveryVaultName');
     resourceGroupName = registerOutput<String>('resourceGroupName');
@@ -417,11 +415,12 @@ class ProtectedVM extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ProtectedVMState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ProtectedVM._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -436,8 +435,26 @@ class ProtectedVM extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     backupPolicyId = registerOutput<String?>('backupPolicyId');
-    excludeDiskLuns = registerOutput<List<int>?>('excludeDiskLuns');
-    includeDiskLuns = registerOutput<List<int>?>('includeDiskLuns');
+    excludeDiskLuns = registerOutput<List<int>?>('excludeDiskLuns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<int>(); });
+    includeDiskLuns = registerOutput<List<int>?>('includeDiskLuns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<int>(); });
+    protectionState = registerOutput<String>('protectionState');
+    recoveryVaultName = registerOutput<String>('recoveryVaultName');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    sourceVmId = registerOutput<String>('sourceVmId');
+  }
+
+  /// Creates a typed reference to an existing [ProtectedVM] resource.
+  ProtectedVM.reference(String urn)
+    : super(
+        'azure:backup/protectedVM:ProtectedVM',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    backupPolicyId = registerOutput<String?>('backupPolicyId');
+    excludeDiskLuns = registerOutput<List<int>?>('excludeDiskLuns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<int>(); });
+    includeDiskLuns = registerOutput<List<int>?>('includeDiskLuns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<int>(); });
     protectionState = registerOutput<String>('protectionState');
     recoveryVaultName = registerOutput<String>('recoveryVaultName');
     resourceGroupName = registerOutput<String>('resourceGroupName');

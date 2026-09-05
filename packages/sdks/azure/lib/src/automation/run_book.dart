@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'run_book_args.dart';
 import 'run_book_draft.dart';
+import 'run_book_job_schedule.dart';
 import 'run_book_publish_content_link.dart';
 import 'run_book_state.dart';
 
@@ -290,7 +291,7 @@ class RunBook extends pulumi.CustomResource {
   /// One or more `jobSchedule` block as defined below.
   ///
   /// &gt; **Note:** AzureRM provides a stand-alone azure.automation.JobSchedule and this inlined `jobSchedule` property to manage the job schedules. At this time you should choose one of them to manage the job schedule resources.
-  late final pulumi.Output<List<Map<String, dynamic>>> jobSchedules;
+  late final pulumi.Output<List<RunBookJobSchedule>> jobSchedules;
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   late final pulumi.Output<String> location;
   /// Specifies the activity-level tracing options of the runbook, available only for Graphical runbooks. Possible values are `0` for None, `9` for Basic, and `15` for Detailed. Must turn on Verbose logging in order to see the tracing.
@@ -326,13 +327,13 @@ class RunBook extends pulumi.CustomResource {
           'azure:automation/runBook:RunBook',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     automationAccountName = registerOutput<String>('automationAccountName');
     content = registerOutput<String>('content');
     description = registerOutput<String?>('description');
     draft = registerOutput<RunBookDraft?>('draft', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RunBookDraft.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    jobSchedules = registerOutput<List<Map<String, dynamic>>>('jobSchedules');
+    jobSchedules = registerOutput<List<RunBookJobSchedule>>('jobSchedules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RunBookJobSchedule>(guardedValue, (value) => RunBookJobSchedule.fromMap((value as Map).cast<String, dynamic>())); });
     location = registerOutput<String>('location');
     logActivityTraceLevel = registerOutput<int?>('logActivityTraceLevel');
     logProgress = registerOutput<bool>('logProgress');
@@ -342,7 +343,7 @@ class RunBook extends pulumi.CustomResource {
     resourceGroupName = registerOutput<String>('resourceGroupName');
     runbookType = registerOutput<String>('runbookType');
     runtimeEnvironmentName = registerOutput<String?>('runtimeEnvironmentName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [RunBook] resource's state with the given [name] and [id].
@@ -350,11 +351,12 @@ class RunBook extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RunBookState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RunBook._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -372,7 +374,7 @@ class RunBook extends pulumi.CustomResource {
     content = registerOutput<String>('content');
     description = registerOutput<String?>('description');
     draft = registerOutput<RunBookDraft?>('draft', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RunBookDraft.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    jobSchedules = registerOutput<List<Map<String, dynamic>>>('jobSchedules');
+    jobSchedules = registerOutput<List<RunBookJobSchedule>>('jobSchedules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RunBookJobSchedule>(guardedValue, (value) => RunBookJobSchedule.fromMap((value as Map).cast<String, dynamic>())); });
     location = registerOutput<String>('location');
     logActivityTraceLevel = registerOutput<int?>('logActivityTraceLevel');
     logProgress = registerOutput<bool>('logProgress');
@@ -382,6 +384,32 @@ class RunBook extends pulumi.CustomResource {
     resourceGroupName = registerOutput<String>('resourceGroupName');
     runbookType = registerOutput<String>('runbookType');
     runtimeEnvironmentName = registerOutput<String?>('runtimeEnvironmentName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [RunBook] resource.
+  RunBook.reference(String urn)
+    : super(
+        'azure:automation/runBook:RunBook',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    automationAccountName = registerOutput<String>('automationAccountName');
+    content = registerOutput<String>('content');
+    description = registerOutput<String?>('description');
+    draft = registerOutput<RunBookDraft?>('draft', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RunBookDraft.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    jobSchedules = registerOutput<List<RunBookJobSchedule>>('jobSchedules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RunBookJobSchedule>(guardedValue, (value) => RunBookJobSchedule.fromMap((value as Map).cast<String, dynamic>())); });
+    location = registerOutput<String>('location');
+    logActivityTraceLevel = registerOutput<int?>('logActivityTraceLevel');
+    logProgress = registerOutput<bool>('logProgress');
+    logVerbose = registerOutput<bool>('logVerbose');
+    this.name = registerOutput<String>('name');
+    publishContentLink = registerOutput<RunBookPublishContentLink?>('publishContentLink', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RunBookPublishContentLink.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    runbookType = registerOutput<String>('runbookType');
+    runtimeEnvironmentName = registerOutput<String?>('runtimeEnvironmentName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

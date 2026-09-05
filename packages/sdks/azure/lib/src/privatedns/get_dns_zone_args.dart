@@ -12,9 +12,9 @@ class GetDnsZoneArgs {
   /// The Name of the Resource Group where the Private DNS Zone exists.
   /// If the Name of the Resource Group is not provided, the first Private DNS Zone from the list of Private
   /// DNS Zones in your subscription that matches `name` will be returned.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// A mapping of tags for the zone.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetDnsZoneArgs].
   /// [name] The name of the Private DNS Zone.

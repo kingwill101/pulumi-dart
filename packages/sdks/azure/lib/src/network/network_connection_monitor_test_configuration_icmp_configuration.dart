@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NetworkConnectionMonitorTestConfigurationIcmpConfiguration {
   /// Should path evaluation with trace route be enabled? Defaults to `true`.
-  final pulumi.Input<bool>? traceRouteEnabled;
+  final pulumi.Input<bool?>? traceRouteEnabled;
 
   /// Creates a new [NetworkConnectionMonitorTestConfigurationIcmpConfiguration].
   /// [traceRouteEnabled] Should path evaluation with trace route be enabled? Defaults to `true`.

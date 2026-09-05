@@ -7,13 +7,13 @@ class CustomDomainState {
   /// Specifies the custom domain name of the Web PubSub Custom Domain. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** Please ensure the custom domain name is included in the Subject Alternative Names of the selected Web PubSub Custom Certificate.
-  final pulumi.Input<String>? domainName;
+  final pulumi.Input<String?>? domainName;
   /// Specifies the name of the Web PubSub Custom Domain. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specifies the Web PubSub Custom Certificate ID of the Web PubSub Custom Domain. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? webPubsubCustomCertificateId;
+  final pulumi.Input<String?>? webPubsubCustomCertificateId;
   /// Specifies the Web PubSub ID of the Web PubSub Custom Domain. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? webPubsubId;
+  final pulumi.Input<String?>? webPubsubId;
 
   /// Creates a new [CustomDomainState].
   /// [domainName] Specifies the custom domain name of the Web PubSub Custom Domain. Changing this forces a new resource to be created.

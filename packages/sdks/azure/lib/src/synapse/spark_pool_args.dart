@@ -12,34 +12,34 @@ import 'spark_pool_spark_config.dart';
 /// {@macro pulumi_synapse_spark_pool_spark_pool_args_doc}
 class SparkPoolArgs {
   /// An `autoPause` block as defined below.
-  final pulumi.Input<SparkPoolAutoPause>? autoPause;
+  final pulumi.Input<SparkPoolAutoPause?>? autoPause;
   /// An `autoScale` block as defined below. Exactly one of `nodeCount` or `autoScale` must be specified.
-  final pulumi.Input<SparkPoolAutoScale>? autoScale;
+  final pulumi.Input<SparkPoolAutoScale?>? autoScale;
   /// The cache size in the Spark Pool.
-  final pulumi.Input<int>? cacheSize;
+  final pulumi.Input<int?>? cacheSize;
   /// Indicates whether compute isolation is enabled or not. Defaults to `false`.
-  final pulumi.Input<bool>? computeIsolationEnabled;
-  final pulumi.Input<bool>? dynamicExecutorAllocationEnabled;
-  final pulumi.Input<SparkPoolLibraryRequirement>? libraryRequirement;
-  final pulumi.Input<int>? maxExecutors;
-  final pulumi.Input<int>? minExecutors;
+  final pulumi.Input<bool?>? computeIsolationEnabled;
+  final pulumi.Input<bool?>? dynamicExecutorAllocationEnabled;
+  final pulumi.Input<SparkPoolLibraryRequirement?>? libraryRequirement;
+  final pulumi.Input<int?>? maxExecutors;
+  final pulumi.Input<int?>? minExecutors;
   /// The name which should be used for this Synapse Spark Pool. Changing this forces a new Synapse Spark Pool to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The number of nodes in the Spark Pool. Exactly one of `nodeCount` or `autoScale` must be specified.
-  final pulumi.Input<int>? nodeCount;
+  final pulumi.Input<int?>? nodeCount;
   /// The level of node in the Spark Pool. Possible values are `Small`, `Medium`, `Large`, `None`, `XLarge`, `XXLarge` and `XXXLarge`.
   final pulumi.Input<String> nodeSize;
   /// The kind of nodes that the Spark Pool provides. Possible values are `HardwareAcceleratedFPGA`, `HardwareAcceleratedGPU`, `MemoryOptimized`, and `None`.
   final pulumi.Input<String> nodeSizeFamily;
-  final pulumi.Input<bool>? sessionLevelPackagesEnabled;
-  final pulumi.Input<SparkPoolSparkConfig>? sparkConfig;
-  final pulumi.Input<String>? sparkEventsFolder;
-  final pulumi.Input<String>? sparkLogFolder;
+  final pulumi.Input<bool?>? sessionLevelPackagesEnabled;
+  final pulumi.Input<SparkPoolSparkConfig?>? sparkConfig;
+  final pulumi.Input<String?>? sparkEventsFolder;
+  final pulumi.Input<String?>? sparkLogFolder;
   /// The Apache Spark version. Possible values are `3.4` and `3.5`.
   final pulumi.Input<String> sparkVersion;
   /// The ID of the Synapse Workspace where the Synapse Spark Pool should exist. Changing this forces a new Synapse Spark Pool to be created.
   final pulumi.Input<String> synapseWorkspaceId;
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [SparkPoolArgs].
   /// [autoPause] An `autoPause` block as defined below.
@@ -111,14 +111,14 @@ class SparkPoolArgs {
     return SparkPoolArgs(
       autoPause: (() { final guardedValue = map['autoPause']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SparkPoolAutoPause.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       autoScale: (() { final guardedValue = map['autoScale']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SparkPoolAutoScale.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      cacheSize: (() { final guardedValue = map['cacheSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      cacheSize: (() { final guardedValue = map['cacheSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       computeIsolationEnabled: (() { final guardedValue = map['computeIsolationEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       dynamicExecutorAllocationEnabled: (() { final guardedValue = map['dynamicExecutorAllocationEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       libraryRequirement: (() { final guardedValue = map['libraryRequirement']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SparkPoolLibraryRequirement.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      maxExecutors: (() { final guardedValue = map['maxExecutors']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      minExecutors: (() { final guardedValue = map['minExecutors']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxExecutors: (() { final guardedValue = map['maxExecutors']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      minExecutors: (() { final guardedValue = map['minExecutors']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      nodeCount: (() { final guardedValue = map['nodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      nodeCount: (() { final guardedValue = map['nodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       nodeSize: pulumi.Input.fromValue(map['nodeSize'] as String),
       nodeSizeFamily: pulumi.Input.fromValue(map['nodeSizeFamily'] as String),
       sessionLevelPackagesEnabled: (() { final guardedValue = map['sessionLevelPackagesEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),

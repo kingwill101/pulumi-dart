@@ -31,7 +31,7 @@ class MetricAlertApplicationInsightsWebTestLocationAvailabilityCriteria {
   factory MetricAlertApplicationInsightsWebTestLocationAvailabilityCriteria.fromMap(Map<String, dynamic> map) {
     return MetricAlertApplicationInsightsWebTestLocationAvailabilityCriteria(
       componentId: pulumi.Input.fromValue(map['componentId'] as String),
-      failedLocationCount: pulumi.Input.fromValue(map['failedLocationCount'] as int),
+      failedLocationCount: pulumi.Input.fromValue((map['failedLocationCount'] as num).toInt()),
       webTestId: pulumi.Input.fromValue(map['webTestId'] as String),
     );
   }

@@ -5,6 +5,7 @@ import 'volume_data_protection_advanced_ransomware.dart';
 import 'volume_data_protection_backup_policy.dart';
 import 'volume_data_protection_replication.dart';
 import 'volume_data_protection_snapshot_policy.dart';
+import 'volume_export_policy_rule.dart';
 import 'volume_state.dart';
 
 /// Manages a NetApp Volume.
@@ -42,7 +43,7 @@ class Volume extends pulumi.CustomResource {
   /// The encryption key source, it can be `Microsoft.NetApp` for platform managed keys or `Microsoft.KeyVault` for customer-managed keys. This is required with `keyVaultPrivateEndpointId`. Changing this forces a new resource to be created.
   late final pulumi.Output<String> encryptionKeySource;
   /// One or more `exportPolicyRule` block defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> exportPolicyRules;
+  late final pulumi.Output<List<VolumeExportPolicyRule>?> exportPolicyRules;
   /// Enable to allow Kerberos secured volumes. Requires appropriate export rules. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** `kerberosEnabled` requires that the parent `azure.netapp.Account` has a *valid* AD connection defined. If the configuration is invalid, the volume will still be created but in a failed state. This requires manually deleting the volume and recreating it again via Terraform once the AD configuration has been corrected.
@@ -114,7 +115,7 @@ class Volume extends pulumi.CustomResource {
           'azure:netapp/volume:Volume',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     acceptGrowCapacityPoolForShortTermCloneSplit = registerOutput<String?>('acceptGrowCapacityPoolForShortTermCloneSplit');
     accountName = registerOutput<String>('accountName');
@@ -126,16 +127,16 @@ class Volume extends pulumi.CustomResource {
     dataProtectionReplication = registerOutput<VolumeDataProtectionReplication?>('dataProtectionReplication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VolumeDataProtectionReplication.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     dataProtectionSnapshotPolicy = registerOutput<VolumeDataProtectionSnapshotPolicy?>('dataProtectionSnapshotPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VolumeDataProtectionSnapshotPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     encryptionKeySource = registerOutput<String>('encryptionKeySource');
-    exportPolicyRules = registerOutput<List<Map<String, dynamic>>?>('exportPolicyRules');
+    exportPolicyRules = registerOutput<List<VolumeExportPolicyRule>?>('exportPolicyRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VolumeExportPolicyRule>(guardedValue, (value) => VolumeExportPolicyRule.fromMap((value as Map).cast<String, dynamic>())); });
     kerberosEnabled = registerOutput<bool?>('kerberosEnabled');
     keyVaultPrivateEndpointId = registerOutput<String>('keyVaultPrivateEndpointId');
     largeVolumeEnabled = registerOutput<bool?>('largeVolumeEnabled');
     location = registerOutput<String>('location');
-    mountIpAddresses = registerOutput<List<String>>('mountIpAddresses');
+    mountIpAddresses = registerOutput<List<String>>('mountIpAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     networkFeatures = registerOutput<String>('networkFeatures');
     poolName = registerOutput<String>('poolName');
-    protocols = registerOutput<List<String>>('protocols');
+    protocols = registerOutput<List<String>>('protocols', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     resourceGroupName = registerOutput<String>('resourceGroupName');
     securityStyle = registerOutput<String>('securityStyle');
     serviceLevel = registerOutput<String>('serviceLevel');
@@ -146,7 +147,7 @@ class Volume extends pulumi.CustomResource {
     snapshotDirectoryVisible = registerOutput<bool?>('snapshotDirectoryVisible');
     storageQuotaInGb = registerOutput<int>('storageQuotaInGb');
     subnetId = registerOutput<String>('subnetId');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     throughputInMibps = registerOutput<double>('throughputInMibps');
     volumePath = registerOutput<String>('volumePath');
     zone = registerOutput<String?>('zone');
@@ -157,11 +158,12 @@ class Volume extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VolumeState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Volume._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -185,16 +187,16 @@ class Volume extends pulumi.CustomResource {
     dataProtectionReplication = registerOutput<VolumeDataProtectionReplication?>('dataProtectionReplication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VolumeDataProtectionReplication.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     dataProtectionSnapshotPolicy = registerOutput<VolumeDataProtectionSnapshotPolicy?>('dataProtectionSnapshotPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VolumeDataProtectionSnapshotPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     encryptionKeySource = registerOutput<String>('encryptionKeySource');
-    exportPolicyRules = registerOutput<List<Map<String, dynamic>>?>('exportPolicyRules');
+    exportPolicyRules = registerOutput<List<VolumeExportPolicyRule>?>('exportPolicyRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VolumeExportPolicyRule>(guardedValue, (value) => VolumeExportPolicyRule.fromMap((value as Map).cast<String, dynamic>())); });
     kerberosEnabled = registerOutput<bool?>('kerberosEnabled');
     keyVaultPrivateEndpointId = registerOutput<String>('keyVaultPrivateEndpointId');
     largeVolumeEnabled = registerOutput<bool?>('largeVolumeEnabled');
     location = registerOutput<String>('location');
-    mountIpAddresses = registerOutput<List<String>>('mountIpAddresses');
+    mountIpAddresses = registerOutput<List<String>>('mountIpAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     networkFeatures = registerOutput<String>('networkFeatures');
     poolName = registerOutput<String>('poolName');
-    protocols = registerOutput<List<String>>('protocols');
+    protocols = registerOutput<List<String>>('protocols', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     resourceGroupName = registerOutput<String>('resourceGroupName');
     securityStyle = registerOutput<String>('securityStyle');
     serviceLevel = registerOutput<String>('serviceLevel');
@@ -205,7 +207,52 @@ class Volume extends pulumi.CustomResource {
     snapshotDirectoryVisible = registerOutput<bool?>('snapshotDirectoryVisible');
     storageQuotaInGb = registerOutput<int>('storageQuotaInGb');
     subnetId = registerOutput<String>('subnetId');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    throughputInMibps = registerOutput<double>('throughputInMibps');
+    volumePath = registerOutput<String>('volumePath');
+    zone = registerOutput<String?>('zone');
+  }
+
+  /// Creates a typed reference to an existing [Volume] resource.
+  Volume.reference(String urn)
+    : super(
+        'azure:netapp/volume:Volume',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    acceptGrowCapacityPoolForShortTermCloneSplit = registerOutput<String?>('acceptGrowCapacityPoolForShortTermCloneSplit');
+    accountName = registerOutput<String>('accountName');
+    azureVmwareDataStoreEnabled = registerOutput<bool?>('azureVmwareDataStoreEnabled');
+    coolAccess = registerOutput<VolumeCoolAccess?>('coolAccess', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VolumeCoolAccess.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createFromSnapshotResourceId = registerOutput<String?>('createFromSnapshotResourceId');
+    dataProtectionAdvancedRansomware = registerOutput<VolumeDataProtectionAdvancedRansomware?>('dataProtectionAdvancedRansomware', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VolumeDataProtectionAdvancedRansomware.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dataProtectionBackupPolicy = registerOutput<VolumeDataProtectionBackupPolicy?>('dataProtectionBackupPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VolumeDataProtectionBackupPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dataProtectionReplication = registerOutput<VolumeDataProtectionReplication?>('dataProtectionReplication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VolumeDataProtectionReplication.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dataProtectionSnapshotPolicy = registerOutput<VolumeDataProtectionSnapshotPolicy?>('dataProtectionSnapshotPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VolumeDataProtectionSnapshotPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    encryptionKeySource = registerOutput<String>('encryptionKeySource');
+    exportPolicyRules = registerOutput<List<VolumeExportPolicyRule>?>('exportPolicyRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VolumeExportPolicyRule>(guardedValue, (value) => VolumeExportPolicyRule.fromMap((value as Map).cast<String, dynamic>())); });
+    kerberosEnabled = registerOutput<bool?>('kerberosEnabled');
+    keyVaultPrivateEndpointId = registerOutput<String>('keyVaultPrivateEndpointId');
+    largeVolumeEnabled = registerOutput<bool?>('largeVolumeEnabled');
+    location = registerOutput<String>('location');
+    mountIpAddresses = registerOutput<List<String>>('mountIpAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    this.name = registerOutput<String>('name');
+    networkFeatures = registerOutput<String>('networkFeatures');
+    poolName = registerOutput<String>('poolName');
+    protocols = registerOutput<List<String>>('protocols', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    securityStyle = registerOutput<String>('securityStyle');
+    serviceLevel = registerOutput<String>('serviceLevel');
+    smb3ProtocolEncryptionEnabled = registerOutput<bool?>('smb3ProtocolEncryptionEnabled');
+    smbAccessBasedEnumerationEnabled = registerOutput<bool?>('smbAccessBasedEnumerationEnabled');
+    smbContinuousAvailabilityEnabled = registerOutput<bool?>('smbContinuousAvailabilityEnabled');
+    smbNonBrowsableEnabled = registerOutput<bool?>('smbNonBrowsableEnabled');
+    snapshotDirectoryVisible = registerOutput<bool?>('snapshotDirectoryVisible');
+    storageQuotaInGb = registerOutput<int>('storageQuotaInGb');
+    subnetId = registerOutput<String>('subnetId');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     throughputInMibps = registerOutput<double>('throughputInMibps');
     volumePath = registerOutput<String>('volumePath');
     zone = registerOutput<String?>('zone');

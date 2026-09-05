@@ -6,7 +6,7 @@ class LinkedCustomServiceIntegrationRuntime {
   /// The integration runtime reference to associate with the Data Factory Linked Service.
   final pulumi.Input<String> name;
   /// A map of parameters to associate with the integration runtime.
-  final pulumi.Input<Map<String, String>>? parameters;
+  final pulumi.Input<Map<String, String>?>? parameters;
 
   /// Creates a new [LinkedCustomServiceIntegrationRuntime].
   /// [name] The integration runtime reference to associate with the Data Factory Linked Service.

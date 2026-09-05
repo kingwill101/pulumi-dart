@@ -243,7 +243,7 @@ class PublicIpPrefix extends pulumi.CustomResource {
           'azure:network/publicIpPrefix:PublicIpPrefix',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     customIpPrefixId = registerOutput<String?>('customIpPrefixId');
     ipPrefix = registerOutput<String>('ipPrefix');
@@ -254,8 +254,8 @@ class PublicIpPrefix extends pulumi.CustomResource {
     resourceGroupName = registerOutput<String>('resourceGroupName');
     sku = registerOutput<String?>('sku');
     skuTier = registerOutput<String?>('skuTier');
-    tags = registerOutput<Map<String, String>?>('tags');
-    zones = registerOutput<List<String>?>('zones');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    zones = registerOutput<List<String>?>('zones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [PublicIpPrefix] resource's state with the given [name] and [id].
@@ -263,11 +263,12 @@ class PublicIpPrefix extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PublicIpPrefixState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return PublicIpPrefix._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -290,7 +291,29 @@ class PublicIpPrefix extends pulumi.CustomResource {
     resourceGroupName = registerOutput<String>('resourceGroupName');
     sku = registerOutput<String?>('sku');
     skuTier = registerOutput<String?>('skuTier');
-    tags = registerOutput<Map<String, String>?>('tags');
-    zones = registerOutput<List<String>?>('zones');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    zones = registerOutput<List<String>?>('zones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [PublicIpPrefix] resource.
+  PublicIpPrefix.reference(String urn)
+    : super(
+        'azure:network/publicIpPrefix:PublicIpPrefix',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    customIpPrefixId = registerOutput<String?>('customIpPrefixId');
+    ipPrefix = registerOutput<String>('ipPrefix');
+    ipVersion = registerOutput<String?>('ipVersion');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    prefixLength = registerOutput<int?>('prefixLength');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    sku = registerOutput<String?>('sku');
+    skuTier = registerOutput<String?>('skuTier');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    zones = registerOutput<List<String>?>('zones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

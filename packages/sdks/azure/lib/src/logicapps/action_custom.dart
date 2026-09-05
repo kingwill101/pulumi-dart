@@ -142,7 +142,7 @@ import 'action_custom_state.dart';
 /// 		}
 /// 		_, err = logicapps.NewActionCustom(ctx, "example", &logicapps.ActionCustomArgs{
 /// 			Name:       pulumi.String("example-action"),
-/// 			LogicAppId: exampleWorkflow.ID(),
+/// 			LogicAppId: exampleWorkflow.ID().ToIDOutput().ToStringOutput(),
 /// 			Body: pulumi.String(`{
 ///     \"description\": \"A variable to configure the auto expiration age in days. Configured in negative number. Default is -30 (30 days old).\",
 ///     \"inputs\": {
@@ -319,7 +319,7 @@ class ActionCustom extends pulumi.CustomResource {
           'azure:logicapps/actionCustom:ActionCustom',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     body = registerOutput<String>('body');
     logicAppId = registerOutput<String>('logicAppId');
@@ -331,11 +331,12 @@ class ActionCustom extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ActionCustomState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ActionCustom._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -349,6 +350,20 @@ class ActionCustom extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    body = registerOutput<String>('body');
+    logicAppId = registerOutput<String>('logicAppId');
+    this.name = registerOutput<String>('name');
+  }
+
+  /// Creates a typed reference to an existing [ActionCustom] resource.
+  ActionCustom.reference(String urn)
+    : super(
+        'azure:logicapps/actionCustom:ActionCustom',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     body = registerOutput<String>('body');
     logicAppId = registerOutput<String>('logicAppId');
     this.name = registerOutput<String>('name');

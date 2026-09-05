@@ -7,11 +7,11 @@ class VpnGatewayConnectionRouting {
   /// The ID of the Route Table associated with this VPN Connection.
   final pulumi.Input<String> associatedRouteTable;
   /// The resource ID of the Route Map associated with this Routing Configuration for inbound learned routes.
-  final pulumi.Input<String>? inboundRouteMapId;
+  final pulumi.Input<String?>? inboundRouteMapId;
   /// The resource ID of the Route Map associated with this Routing Configuration for outbound advertised routes.
-  final pulumi.Input<String>? outboundRouteMapId;
+  final pulumi.Input<String?>? outboundRouteMapId;
   /// A `propagatedRouteTable` block as defined below.
-  final pulumi.Input<VpnGatewayConnectionRoutingPropagatedRouteTable>? propagatedRouteTable;
+  final pulumi.Input<VpnGatewayConnectionRoutingPropagatedRouteTable?>? propagatedRouteTable;
 
   /// Creates a new [VpnGatewayConnectionRouting].
   /// [associatedRouteTable] The ID of the Route Table associated with this VPN Connection.

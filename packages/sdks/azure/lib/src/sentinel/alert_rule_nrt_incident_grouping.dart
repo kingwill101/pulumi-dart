@@ -4,19 +4,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AlertRuleNrtIncidentGrouping {
   /// A list of alert details to group by, only when the `entityMatchingMethod` is `Selected`. Possible values are `DisplayName` and `Severity`.
-  final pulumi.Input<List<String>>? byAlertDetails;
+  final pulumi.Input<List<String>?>? byAlertDetails;
   /// A list of custom details keys to group by, only when the `entityMatchingMethod` is `Selected`. Only keys defined in the `customDetails` may be used.
-  final pulumi.Input<List<String>>? byCustomDetails;
+  final pulumi.Input<List<String>?>? byCustomDetails;
   /// A list of entity types to group by, only when the `entityMatchingMethod` is `Selected`. Possible values are `Account`, `AzureResource`, `CloudApplication`, `DNS`, `File`, `FileHash`, `Host`, `IP`, `Mailbox`, `MailCluster`, `MailMessage`, `Malware`, `Process`, `RegistryKey`, `RegistryValue`, `SecurityGroup`, `SubmissionMail`, `URL`.
-  final pulumi.Input<List<String>>? byEntities;
+  final pulumi.Input<List<String>?>? byEntities;
   /// Enable grouping incidents created from alerts triggered by this Sentinel NRT Alert Rule. Defaults to `true`.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// The method used to group incidents. Possible values are `AnyAlert`, `Selected` and `AllEntities`. Defaults to `AnyAlert`.
-  final pulumi.Input<String>? entityMatchingMethod;
+  final pulumi.Input<String?>? entityMatchingMethod;
   /// Limit the group to alerts created within the lookback duration (in ISO 8601 duration format). Defaults to `PT5M`.
-  final pulumi.Input<String>? lookbackDuration;
+  final pulumi.Input<String?>? lookbackDuration;
   /// Whether to re-open closed matching incidents? Defaults to `false`.
-  final pulumi.Input<bool>? reopenClosedIncidents;
+  final pulumi.Input<bool?>? reopenClosedIncidents;
 
   /// Creates a new [AlertRuleNrtIncidentGrouping].
   /// [byAlertDetails] A list of alert details to group by, only when the `entityMatchingMethod` is `Selected`. Possible values are `DisplayName` and `Severity`.

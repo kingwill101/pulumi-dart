@@ -11,7 +11,7 @@ class PoolNetworkConfigurationEndpointConfiguration {
   /// The name of the endpoint. The name must be unique within a Batch pool, can contain letters, numbers, underscores, periods, and hyphens. Names must start with a letter or number, must end with a letter, number, or underscore, and cannot exceed 77 characters. Changing this forces a new resource to be created.
   final pulumi.Input<String> name;
   /// A list of `networkSecurityGroupRules` blocks as defined below that will be applied to the endpoint. The maximum number of rules that can be specified across all the endpoints on a Batch pool is `25`. If no network security group rules are specified, a default rule will be created to allow inbound access to the specified backendPort. Set as documented in the networkSecurityGroupRules block below. Changing this forces a new resource to be created.
-  final pulumi.Input<List<PoolNetworkConfigurationEndpointConfigurationNetworkSecurityGroupRule>>? networkSecurityGroupRules;
+  final pulumi.Input<List<PoolNetworkConfigurationEndpointConfigurationNetworkSecurityGroupRule>?>? networkSecurityGroupRules;
   /// The protocol of the endpoint. Acceptable values are `TCP` and `UDP`. Changing this forces a new resource to be created.
   final pulumi.Input<String> protocol;
 
@@ -41,7 +41,7 @@ class PoolNetworkConfigurationEndpointConfiguration {
 
   factory PoolNetworkConfigurationEndpointConfiguration.fromMap(Map<String, dynamic> map) {
     return PoolNetworkConfigurationEndpointConfiguration(
-      backendPort: pulumi.Input.fromValue(map['backendPort'] as int),
+      backendPort: pulumi.Input.fromValue((map['backendPort'] as num).toInt()),
       frontendPortRange: pulumi.Input.fromValue(map['frontendPortRange'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
       networkSecurityGroupRules: (() { final guardedValue = map['networkSecurityGroupRules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PoolNetworkConfigurationEndpointConfigurationNetworkSecurityGroupRule>(guardedValue, (value) => PoolNetworkConfigurationEndpointConfigurationNetworkSecurityGroupRule.fromMap((value as Map).cast<String, dynamic>()))); })(),

@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GremlinDatabaseAutoscaleSettings {
   /// The maximum throughput of the Gremlin database (RU/s). Must be between `1,000` and `1,000,000`. Must be set in increments of `1,000`. Conflicts with `throughput`.
-  final pulumi.Input<int>? maxThroughput;
+  final pulumi.Input<int?>? maxThroughput;
 
   /// Creates a new [GremlinDatabaseAutoscaleSettings].
   /// [maxThroughput] The maximum throughput of the Gremlin database (RU/s). Must be between `1,000` and `1,000,000`. Must be set in increments of `1,000`. Conflicts with `throughput`.
@@ -20,7 +20,7 @@ class GremlinDatabaseAutoscaleSettings {
 
   factory GremlinDatabaseAutoscaleSettings.fromMap(Map<String, dynamic> map) {
     return GremlinDatabaseAutoscaleSettings(
-      maxThroughput: (() { final guardedValue = map['maxThroughput']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxThroughput: (() { final guardedValue = map['maxThroughput']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

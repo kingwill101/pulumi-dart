@@ -7,9 +7,9 @@ class FirewallPolicyManagedRuleOverrideRule {
   /// The action to be applied when the rule matches. Possible values are `Allow`, `Block`, `Log`, or `Redirect`.
   final pulumi.Input<String> action;
   /// Is the managed rule override enabled or disabled. Defaults to `false`
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// One or more `exclusion` blocks as defined below.
-  final pulumi.Input<List<FirewallPolicyManagedRuleOverrideRuleExclusion>>? exclusions;
+  final pulumi.Input<List<FirewallPolicyManagedRuleOverrideRuleExclusion>?>? exclusions;
   /// Identifier for the managed rule.
   final pulumi.Input<String> ruleId;
 

@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_eventhub_eventhub_namespace_disaster_recovery_config_eventhub_namespace_disaster_recovery_config_args_doc}
 class EventhubNamespaceDisasterRecoveryConfigArgs {
   /// Specifies the name of the Disaster Recovery Config. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specifies the name of the primary EventHub Namespace to replicate. Changing this forces a new resource to be created.
   final pulumi.Input<String> namespaceName;
   /// The ID of the EventHub Namespace to replicate to.

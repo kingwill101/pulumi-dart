@@ -37,15 +37,15 @@ import 'certificate_binding_state.dart';
 /// });
 /// const exampleCNameRecord = new azure.dns.CNameRecord("example", {
 ///     name: "www",
-///     zoneName: example.apply(example => example.name),
-///     resourceGroupName: example.apply(example => example.resourceGroupName),
+///     zoneName: example.name,
+///     resourceGroupName: example.resourceGroupName,
 ///     ttl: 300,
 ///     record: exampleAppService.defaultSiteHostname,
 /// });
 /// const exampleTxtRecord = new azure.dns.TxtRecord("example", {
 ///     name: pulumi.interpolate`asuid.${exampleCNameRecord.name}`,
-///     zoneName: example.apply(example => example.name),
-///     resourceGroupName: example.apply(example => example.resourceGroupName),
+///     zoneName: example.name,
+///     resourceGroupName: example.resourceGroupName,
 ///     ttl: 300,
 ///     records: [{
 ///         value: exampleAppService.customDomainVerificationId,
@@ -55,7 +55,7 @@ import 'certificate_binding_state.dart';
 ///     hostname: std.trimOutput({
 ///         input: exampleCNameRecord.fqdn,
 ///         cutset: ".",
-///     }).apply(invoke => invoke.result),
+///     }).result,
 ///     appServiceName: exampleAppService.name,
 ///     resourceGroupName: exampleResourceGroup.name,
 /// }, {
@@ -107,7 +107,7 @@ import 'certificate_binding_state.dart';
 ///     }])
 /// example_custom_hostname_binding = azure.appservice.CustomHostnameBinding("example",
 ///     hostname=std.trim_output(input=example_c_name_record.fqdn,
-///         cutset=".").apply(lambda invoke: invoke.result),
+///         cutset=".").result,
 ///     app_service_name=example_app_service.name,
 ///     resource_group_name=example_resource_group.name,
 ///     opts = pulumi.ResourceOptions(depends_on=[example_txt_record]))
@@ -251,7 +251,7 @@ import 'certificate_binding_state.dart';
 /// 			Name:              pulumi.String("mywebapp"),
 /// 			Location:          exampleResourceGroup.Location,
 /// 			ResourceGroupName: exampleResourceGroup.Name,
-/// 			AppServicePlanId:  examplePlan.ID(),
+/// 			AppServicePlanId:  examplePlan.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -261,15 +261,11 @@ import 'certificate_binding_state.dart';
 /// 			ResourceGroupName: exampleResourceGroup.Name,
 /// 		}, nil)
 /// 		exampleCNameRecord, err := dns.NewCNameRecord(ctx, "example", &dns.CNameRecordArgs{
-/// 			Name: pulumi.String("www"),
-/// 			ZoneName: pulumi.String(example.ApplyT(func(example dns.GetZoneResult) (*string, error) {
-/// 				return example.Name, nil
-/// 			}).(pulumi.StringPtrOutput)),
-/// 			ResourceGroupName: pulumi.String(example.ApplyT(func(example dns.GetZoneResult) (*string, error) {
-/// 				return example.ResourceGroupName, nil
-/// 			}).(pulumi.StringPtrOutput)),
-/// 			Ttl:    pulumi.Int(300),
-/// 			Record: exampleAppService.DefaultSiteHostname,
+/// 			Name:              pulumi.String("www"),
+/// 			ZoneName:          example.Name(),
+/// 			ResourceGroupName: example.ResourceGroupName(),
+/// 			Ttl:               pulumi.Int(300),
+/// 			Record:            exampleAppService.DefaultSiteHostname,
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -278,13 +274,9 @@ import 'certificate_binding_state.dart';
 /// 			Name: exampleCNameRecord.Name.ApplyT(func(name string) (string, error) {
 /// 				return fmt.Sprintf("asuid.%v", name), nil
 /// 			}).(pulumi.StringOutput),
-/// 			ZoneName: pulumi.String(example.ApplyT(func(example dns.GetZoneResult) (*string, error) {
-/// 				return example.Name, nil
-/// 			}).(pulumi.StringPtrOutput)),
-/// 			ResourceGroupName: pulumi.String(example.ApplyT(func(example dns.GetZoneResult) (*string, error) {
-/// 				return example.ResourceGroupName, nil
-/// 			}).(pulumi.StringPtrOutput)),
-/// 			Ttl: pulumi.Int(300),
+/// 			ZoneName:          example.Name(),
+/// 			ResourceGroupName: example.ResourceGroupName(),
+/// 			Ttl:               pulumi.Int(300),
 /// 			Records: dns.TxtRecordRecordArray{
 /// 				&dns.TxtRecordRecordArgs{
 /// 					Value: exampleAppService.CustomDomainVerificationId,
@@ -295,13 +287,10 @@ import 'certificate_binding_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleCustomHostnameBinding, err := appservice.NewCustomHostnameBinding(ctx, "example", &appservice.CustomHostnameBindingArgs{
-/// 			Hostname: pulumi.String(std.TrimOutput(ctx, std.TrimOutputArgs{
+/// 			Hostname: std.TrimOutput(ctx, std.TrimOutputArgs{
 /// 				Input:  exampleCNameRecord.Fqdn,
 /// 				Cutset: pulumi.String("."),
-/// 			}, nil).ApplyT(func(invoke std.TrimResult) (*string, error) {
-/// 				val := invoke.Result
-/// 				return &val, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			}, nil).Result(),
 /// 			AppServiceName:    exampleAppService.Name,
 /// 			ResourceGroupName: exampleResourceGroup.Name,
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
@@ -311,14 +300,14 @@ import 'certificate_binding_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleManagedCertificate, err := appservice.NewManagedCertificate(ctx, "example", &appservice.ManagedCertificateArgs{
-/// 			CustomHostnameBindingId: exampleCustomHostnameBinding.ID(),
+/// 			CustomHostnameBindingId: exampleCustomHostnameBinding.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = appservice.NewCertificateBinding(ctx, "example", &appservice.CertificateBindingArgs{
-/// 			HostnameBindingId: exampleCustomHostnameBinding.ID(),
-/// 			CertificateId:     exampleManagedCertificate.ID(),
+/// 			HostnameBindingId: exampleCustomHostnameBinding.ID().ToIDOutput().ToStringOutput(),
+/// 			CertificateId:     exampleManagedCertificate.ID().ToIDOutput().ToStringOutput(),
 /// 			SslState:          pulumi.String("SniEnabled"),
 /// 		})
 /// 		if err != nil {
@@ -629,7 +618,7 @@ class CertificateBinding extends pulumi.CustomResource {
           'azure:appservice/certificateBinding:CertificateBinding',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     appServiceName = registerOutput<String>('appServiceName');
     certificateId = registerOutput<String>('certificateId');
@@ -644,11 +633,12 @@ class CertificateBinding extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CertificateBindingState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return CertificateBinding._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -662,6 +652,23 @@ class CertificateBinding extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    appServiceName = registerOutput<String>('appServiceName');
+    certificateId = registerOutput<String>('certificateId');
+    hostname = registerOutput<String>('hostname');
+    hostnameBindingId = registerOutput<String>('hostnameBindingId');
+    sslState = registerOutput<String>('sslState');
+    thumbprint = registerOutput<String>('thumbprint');
+  }
+
+  /// Creates a typed reference to an existing [CertificateBinding] resource.
+  CertificateBinding.reference(String urn)
+    : super(
+        'azure:appservice/certificateBinding:CertificateBinding',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     appServiceName = registerOutput<String>('appServiceName');
     certificateId = registerOutput<String>('certificateId');
     hostname = registerOutput<String>('hostname');

@@ -14,7 +14,7 @@ class ActionGroupAutomationRunbookReceiver {
   /// The URI where webhooks should be sent.
   final pulumi.Input<String> serviceUri;
   /// Enables or disables the common alert schema.
-  final pulumi.Input<bool>? useCommonAlertSchema;
+  final pulumi.Input<bool?>? useCommonAlertSchema;
   /// The resource id for webhook linked to this runbook.
   final pulumi.Input<String> webhookResourceId;
 

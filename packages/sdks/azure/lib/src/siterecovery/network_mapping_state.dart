@@ -5,19 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering NetworkMapping resources.
 class NetworkMappingState {
   /// The name of the network mapping. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the vault that should be updated. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? recoveryVaultName;
+  final pulumi.Input<String?>? recoveryVaultName;
   /// Name of the resource group where the vault that should be updated is located. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// The id of the primary network. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? sourceNetworkId;
+  final pulumi.Input<String?>? sourceNetworkId;
   /// Specifies the ASR fabric where mapping should be created. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? sourceRecoveryFabricName;
+  final pulumi.Input<String?>? sourceRecoveryFabricName;
   /// The id of the recovery network. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? targetNetworkId;
+  final pulumi.Input<String?>? targetNetworkId;
   /// The Azure Site Recovery fabric object corresponding to the recovery Azure region. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? targetRecoveryFabricName;
+  final pulumi.Input<String?>? targetRecoveryFabricName;
 
   /// Creates a new [NetworkMappingState].
   /// [name] The name of the network mapping. Changing this forces a new resource to be created.

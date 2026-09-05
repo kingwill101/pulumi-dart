@@ -8,11 +8,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_hpc_cache_blob_nfs_target_cache_blob_nfs_target_args_doc}
 class CacheBlobNfsTargetArgs {
   /// The name of the access policy applied to this target. Defaults to `default`.
-  final pulumi.Input<String>? accessPolicyName;
+  final pulumi.Input<String?>? accessPolicyName;
   /// The name of the HPC Cache, which the HPC Cache Blob NFS Target will be added to. Changing this forces a new HPC Cache Blob NFS Target to be created.
   final pulumi.Input<String> cacheName;
   /// The name which should be used for this HPC Cache Blob NFS Target. Changing this forces a new HPC Cache Blob NFS Target to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The client-facing file path of the HPC Cache Blob NFS Target.
   final pulumi.Input<String> namespacePath;
   /// The name of the Resource Group where the HPC Cache Blob NFS Target should exist. Changing this forces a new HPC Cache Blob NFS Target to be created.
@@ -24,9 +24,9 @@ class CacheBlobNfsTargetArgs {
   /// The type of usage of the HPC Cache Blob NFS Target. Possible values are: `READ_HEAVY_INFREQ`, `READ_HEAVY_CHECK_180`, `READ_ONLY`, `READ_WRITE`, `WRITE_WORKLOAD_15`, `WRITE_AROUND`, `WRITE_WORKLOAD_CHECK_30`, `WRITE_WORKLOAD_CHECK_60` and `WRITE_WORKLOAD_CLOUDWS`.
   final pulumi.Input<String> usageModel;
   /// The amount of time the cache waits before it checks the back-end storage for file updates. Possible values are between `1` and `31536000`.
-  final pulumi.Input<int>? verificationTimerInSeconds;
+  final pulumi.Input<int?>? verificationTimerInSeconds;
   /// The amount of time the cache waits after the last file change before it copies the changed file to back-end storage. Possible values are between `1` and `31536000`.
-  final pulumi.Input<int>? writeBackTimerInSeconds;
+  final pulumi.Input<int?>? writeBackTimerInSeconds;
 
   /// Creates a new [CacheBlobNfsTargetArgs].
   /// [accessPolicyName] The name of the access policy applied to this target. Defaults to `default`.
@@ -73,8 +73,8 @@ class CacheBlobNfsTargetArgs {
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       storageContainerId: pulumi.Input.fromValue(map['storageContainerId'] as String),
       usageModel: pulumi.Input.fromValue(map['usageModel'] as String),
-      verificationTimerInSeconds: (() { final guardedValue = map['verificationTimerInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      writeBackTimerInSeconds: (() { final guardedValue = map['writeBackTimerInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      verificationTimerInSeconds: (() { final guardedValue = map['verificationTimerInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      writeBackTimerInSeconds: (() { final guardedValue = map['writeBackTimerInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

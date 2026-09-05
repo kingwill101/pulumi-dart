@@ -152,7 +152,7 @@ import 'spring_cloud_application_insights_application_performance_monitoring_sta
 /// 		}
 /// 		_, err = appplatform.NewSpringCloudApplicationInsightsApplicationPerformanceMonitoring(ctx, "example", &appplatform.SpringCloudApplicationInsightsApplicationPerformanceMonitoringArgs{
 /// 			Name:                      pulumi.String("example"),
-/// 			SpringCloudServiceId:      exampleSpringCloudService.ID(),
+/// 			SpringCloudServiceId:      exampleSpringCloudService.ID().ToIDOutput().ToStringOutput(),
 /// 			ConnectionString:          exampleInsights.InstrumentationKey,
 /// 			GloballyEnabled:           pulumi.Bool(true),
 /// 			RoleName:                  pulumi.String("test-role"),
@@ -345,7 +345,7 @@ class SpringCloudApplicationInsightsApplicationPerformanceMonitoring extends pul
           'azure:appplatform/springCloudApplicationInsightsApplicationPerformanceMonitoring:SpringCloudApplicationInsightsApplicationPerformanceMonitoring',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     connectionString = registerOutput<String?>('connectionString');
     globallyEnabled = registerOutput<bool?>('globallyEnabled');
@@ -362,11 +362,12 @@ class SpringCloudApplicationInsightsApplicationPerformanceMonitoring extends pul
     String name,
     pulumi.Input<String> id, {
     SpringCloudApplicationInsightsApplicationPerformanceMonitoringState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SpringCloudApplicationInsightsApplicationPerformanceMonitoring._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -380,6 +381,25 @@ class SpringCloudApplicationInsightsApplicationPerformanceMonitoring extends pul
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    connectionString = registerOutput<String?>('connectionString');
+    globallyEnabled = registerOutput<bool?>('globallyEnabled');
+    this.name = registerOutput<String>('name');
+    roleInstance = registerOutput<String?>('roleInstance');
+    roleName = registerOutput<String?>('roleName');
+    samplingPercentage = registerOutput<int?>('samplingPercentage');
+    samplingRequestsPerSecond = registerOutput<int?>('samplingRequestsPerSecond');
+    springCloudServiceId = registerOutput<String>('springCloudServiceId');
+  }
+
+  /// Creates a typed reference to an existing [SpringCloudApplicationInsightsApplicationPerformanceMonitoring] resource.
+  SpringCloudApplicationInsightsApplicationPerformanceMonitoring.reference(String urn)
+    : super(
+        'azure:appplatform/springCloudApplicationInsightsApplicationPerformanceMonitoring:SpringCloudApplicationInsightsApplicationPerformanceMonitoring',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     connectionString = registerOutput<String?>('connectionString');
     globallyEnabled = registerOutput<bool?>('globallyEnabled');
     this.name = registerOutput<String>('name');

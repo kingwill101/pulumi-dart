@@ -3,7 +3,9 @@ import 'job_args.dart';
 import 'job_event_trigger_config.dart';
 import 'job_identity.dart';
 import 'job_manual_trigger_config.dart';
+import 'job_registry.dart';
 import 'job_schedule_trigger_config.dart';
+import 'job_secret.dart';
 import 'job_state.dart';
 import 'job_template.dart';
 
@@ -265,7 +267,7 @@ import 'job_template.dart';
 /// 			Name:                    pulumi.String("example-container-app-environment"),
 /// 			Location:                example.Location,
 /// 			ResourceGroupName:       example.Name,
-/// 			LogAnalyticsWorkspaceId: exampleAnalyticsWorkspace.ID(),
+/// 			LogAnalyticsWorkspaceId: exampleAnalyticsWorkspace.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -274,7 +276,7 @@ import 'job_template.dart';
 /// 			Name:                      pulumi.String("example-container-app-job"),
 /// 			Location:                  example.Location,
 /// 			ResourceGroupName:         example.Name,
-/// 			ContainerAppEnvironmentId: exampleEnvironment.ID(),
+/// 			ContainerAppEnvironmentId: exampleEnvironment.ID().ToIDOutput().ToStringOutput(),
 /// 			ReplicaTimeoutInSeconds:   pulumi.Int(10),
 /// 			ReplicaRetryLimit:         pulumi.Int(10),
 /// 			ManualTriggerConfig: &containerapp.JobManualTriggerConfigArgs{
@@ -590,7 +592,7 @@ class Job extends pulumi.CustomResource {
   /// A list of the Public IP Addresses which the Container App uses for outbound network access.
   late final pulumi.Output<List<String>> outboundIpAddresses;
   /// One or more `registry` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> registries;
+  late final pulumi.Output<List<JobRegistry>?> registries;
   /// The maximum number of times a replica is allowed to retry.
   late final pulumi.Output<int?> replicaRetryLimit;
   /// The maximum number of seconds a replica is allowed to run.
@@ -602,7 +604,7 @@ class Job extends pulumi.CustomResource {
   /// &gt; **Note:** Only one of `manualTriggerConfig`, `eventTriggerConfig` or `scheduleTriggerConfig` can be specified.
   late final pulumi.Output<JobScheduleTriggerConfig?> scheduleTriggerConfig;
   /// One or more `secret` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> secrets;
+  late final pulumi.Output<List<JobSecret>?> secrets;
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
   /// A `template` block as defined below.
@@ -622,7 +624,8 @@ class Job extends pulumi.CustomResource {
           'azure:containerapp/job:Job',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['secrets'],
         ) {
     containerAppEnvironmentId = registerOutput<String>('containerAppEnvironmentId');
     eventStreamEndpoint = registerOutput<String>('eventStreamEndpoint');
@@ -631,14 +634,14 @@ class Job extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     manualTriggerConfig = registerOutput<JobManualTriggerConfig?>('manualTriggerConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobManualTriggerConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    outboundIpAddresses = registerOutput<List<String>>('outboundIpAddresses');
-    registries = registerOutput<List<Map<String, dynamic>>?>('registries');
+    outboundIpAddresses = registerOutput<List<String>>('outboundIpAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    registries = registerOutput<List<JobRegistry>?>('registries', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<JobRegistry>(guardedValue, (value) => JobRegistry.fromMap((value as Map).cast<String, dynamic>())); });
     replicaRetryLimit = registerOutput<int?>('replicaRetryLimit');
     replicaTimeoutInSeconds = registerOutput<int>('replicaTimeoutInSeconds');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     scheduleTriggerConfig = registerOutput<JobScheduleTriggerConfig?>('scheduleTriggerConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobScheduleTriggerConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    secrets = registerOutput<List<Map<String, dynamic>>?>('secrets');
-    tags = registerOutput<Map<String, String>?>('tags');
+    secrets = registerOutput<List<JobSecret>?>('secrets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<JobSecret>(guardedValue, (value) => JobSecret.fromMap((value as Map).cast<String, dynamic>())); }, isSecret: true);
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     template = registerOutput<JobTemplate>('template', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobTemplate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     workloadProfileName = registerOutput<String?>('workloadProfileName');
   }
@@ -648,11 +651,12 @@ class Job extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     JobState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Job._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -673,14 +677,43 @@ class Job extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     manualTriggerConfig = registerOutput<JobManualTriggerConfig?>('manualTriggerConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobManualTriggerConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    outboundIpAddresses = registerOutput<List<String>>('outboundIpAddresses');
-    registries = registerOutput<List<Map<String, dynamic>>?>('registries');
+    outboundIpAddresses = registerOutput<List<String>>('outboundIpAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    registries = registerOutput<List<JobRegistry>?>('registries', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<JobRegistry>(guardedValue, (value) => JobRegistry.fromMap((value as Map).cast<String, dynamic>())); });
     replicaRetryLimit = registerOutput<int?>('replicaRetryLimit');
     replicaTimeoutInSeconds = registerOutput<int>('replicaTimeoutInSeconds');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     scheduleTriggerConfig = registerOutput<JobScheduleTriggerConfig?>('scheduleTriggerConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobScheduleTriggerConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    secrets = registerOutput<List<Map<String, dynamic>>?>('secrets');
-    tags = registerOutput<Map<String, String>?>('tags');
+    secrets = registerOutput<List<JobSecret>?>('secrets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<JobSecret>(guardedValue, (value) => JobSecret.fromMap((value as Map).cast<String, dynamic>())); }, isSecret: true);
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    template = registerOutput<JobTemplate>('template', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobTemplate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    workloadProfileName = registerOutput<String?>('workloadProfileName');
+  }
+
+  /// Creates a typed reference to an existing [Job] resource.
+  Job.reference(String urn)
+    : super(
+        'azure:containerapp/job:Job',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['secrets'],
+        isResourceReference: true,
+      ) {
+    containerAppEnvironmentId = registerOutput<String>('containerAppEnvironmentId');
+    eventStreamEndpoint = registerOutput<String>('eventStreamEndpoint');
+    eventTriggerConfig = registerOutput<JobEventTriggerConfig?>('eventTriggerConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobEventTriggerConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    identity = registerOutput<JobIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    manualTriggerConfig = registerOutput<JobManualTriggerConfig?>('manualTriggerConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobManualTriggerConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    outboundIpAddresses = registerOutput<List<String>>('outboundIpAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    registries = registerOutput<List<JobRegistry>?>('registries', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<JobRegistry>(guardedValue, (value) => JobRegistry.fromMap((value as Map).cast<String, dynamic>())); });
+    replicaRetryLimit = registerOutput<int?>('replicaRetryLimit');
+    replicaTimeoutInSeconds = registerOutput<int>('replicaTimeoutInSeconds');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    scheduleTriggerConfig = registerOutput<JobScheduleTriggerConfig?>('scheduleTriggerConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobScheduleTriggerConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    secrets = registerOutput<List<JobSecret>?>('secrets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<JobSecret>(guardedValue, (value) => JobSecret.fromMap((value as Map).cast<String, dynamic>())); }, isSecret: true);
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     template = registerOutput<JobTemplate>('template', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobTemplate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     workloadProfileName = registerOutput<String?>('workloadProfileName');
   }

@@ -13,46 +13,46 @@ import 'service_upstream_endpoint.dart';
 /// {@macro pulumi_signalr_service_service_args_doc}
 class ServiceArgs {
   /// Whether to enable AAD auth? Defaults to `true`.
-  final pulumi.Input<bool>? aadAuthEnabled;
+  final pulumi.Input<bool?>? aadAuthEnabled;
   /// Specifies if Connectivity Logs are enabled or not. Defaults to `false`.
-  final pulumi.Input<bool>? connectivityLogsEnabled;
+  final pulumi.Input<bool?>? connectivityLogsEnabled;
   /// A `cors` block as documented below.
-  final pulumi.Input<List<ServiceCor>>? cors;
+  final pulumi.Input<List<ServiceCor>?>? cors;
   /// Specifies if Http Request Logs are enabled or not. Defaults to `false`.
-  final pulumi.Input<bool>? httpRequestLogsEnabled;
+  final pulumi.Input<bool?>? httpRequestLogsEnabled;
   /// An `identity` block as defined below.
-  final pulumi.Input<ServiceIdentity>? identity;
+  final pulumi.Input<ServiceIdentity?>? identity;
   /// A `liveTrace` block as defined below.
-  final pulumi.Input<ServiceLiveTrace>? liveTrace;
-  final pulumi.Input<bool>? liveTraceEnabled;
+  final pulumi.Input<ServiceLiveTrace?>? liveTrace;
+  final pulumi.Input<bool?>? liveTraceEnabled;
   /// Whether to enable local auth? Defaults to `true`.
-  final pulumi.Input<bool>? localAuthEnabled;
+  final pulumi.Input<bool?>? localAuthEnabled;
   /// Specifies the supported Azure location where the SignalR service exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Specifies if Messaging Logs are enabled or not. Defaults to `false`.
-  final pulumi.Input<bool>? messagingLogsEnabled;
+  final pulumi.Input<bool?>? messagingLogsEnabled;
   /// The name of the SignalR service. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Whether to enable public network access? Defaults to `true`.
   ///
   /// &gt; **Note:** `publicNetworkAccessEnabled` cannot be set to `false` in `Free` sku tier.
-  final pulumi.Input<bool>? publicNetworkAccessEnabled;
+  final pulumi.Input<bool?>? publicNetworkAccessEnabled;
   /// The name of the resource group in which to create the SignalR service. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
   /// Specifies the client connection timeout. Defaults to `30`.
-  final pulumi.Input<int>? serverlessConnectionTimeoutInSeconds;
+  final pulumi.Input<int?>? serverlessConnectionTimeoutInSeconds;
   /// Specifies the service mode. Possible values are `Classic`, `Default` and `Serverless`. Defaults to `Default`.
-  final pulumi.Input<String>? serviceMode;
+  final pulumi.Input<String?>? serviceMode;
   /// A `sku` block as documented below.
   final pulumi.Input<ServiceSku> sku;
   /// A mapping of tags to assign to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Whether to request client certificate during TLS handshake? Defaults to `false`.
   ///
   /// &gt; **Note:** `tlsClientCertEnabled` cannot be set to `true` in `Free` sku tier.
-  final pulumi.Input<bool>? tlsClientCertEnabled;
+  final pulumi.Input<bool?>? tlsClientCertEnabled;
   /// An `upstreamEndpoint` block as documented below. Using this block requires the SignalR service to be Serverless. When creating multiple blocks they will be processed in the order they are defined in.
-  final pulumi.Input<List<ServiceUpstreamEndpoint>>? upstreamEndpoints;
+  final pulumi.Input<List<ServiceUpstreamEndpoint>?>? upstreamEndpoints;
 
   /// Creates a new [ServiceArgs].
   /// [aadAuthEnabled] Whether to enable AAD auth? Defaults to `true`.
@@ -135,7 +135,7 @@ class ServiceArgs {
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       publicNetworkAccessEnabled: (() { final guardedValue = map['publicNetworkAccessEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
-      serverlessConnectionTimeoutInSeconds: (() { final guardedValue = map['serverlessConnectionTimeoutInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      serverlessConnectionTimeoutInSeconds: (() { final guardedValue = map['serverlessConnectionTimeoutInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       serviceMode: (() { final guardedValue = map['serviceMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sku: pulumi.Input.fromValue(ServiceSku.fromMap((map['sku']! as Map).cast<String, dynamic>())),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),

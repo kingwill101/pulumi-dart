@@ -131,7 +131,7 @@ class AutoProvisioning extends pulumi.CustomResource {
           'azure:securitycenter/autoProvisioning:AutoProvisioning',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     autoProvision = registerOutput<String>('autoProvision');
   }
@@ -141,11 +141,12 @@ class AutoProvisioning extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AutoProvisioningState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AutoProvisioning._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -159,6 +160,18 @@ class AutoProvisioning extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    autoProvision = registerOutput<String>('autoProvision');
+  }
+
+  /// Creates a typed reference to an existing [AutoProvisioning] resource.
+  AutoProvisioning.reference(String urn)
+    : super(
+        'azure:securitycenter/autoProvisioning:AutoProvisioning',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     autoProvision = registerOutput<String>('autoProvision');
   }
 }

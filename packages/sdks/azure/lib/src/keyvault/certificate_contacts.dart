@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'certificate_contacts_args.dart';
+import 'certificate_contacts_contact.dart';
 import 'certificate_contacts_state.dart';
 
 /// Manages Key Vault Certificate Contacts.
@@ -20,6 +21,7 @@ import 'certificate_contacts_state.dart';
 ///     name: "examplekeyvault",
 ///     location: example.location,
 ///     resourceGroupName: example.name,
+///     rbacAuthorizationEnabled: false,
 ///     tenantId: current.then(current => current.tenantId),
 ///     skuName: "premium",
 /// });
@@ -59,6 +61,7 @@ import 'certificate_contacts_state.dart';
 ///     name="examplekeyvault",
 ///     location=example.location,
 ///     resource_group_name=example.name,
+///     rbac_authorization_enabled=False,
 ///     tenant_id=current.tenant_id,
 ///     sku_name="premium")
 /// example_access_policy = azure.keyvault.AccessPolicy("example",
@@ -103,6 +106,7 @@ import 'certificate_contacts_state.dart';
 ///         Name = "examplekeyvault",
 ///         Location = example.Location,
 ///         ResourceGroupName = example.Name,
+///         RbacAuthorizationEnabled = false,
 ///         TenantId = current.Apply(getClientConfigResult => getClientConfigResult.TenantId),
 ///         SkuName = "premium",
 ///     });
@@ -175,17 +179,18 @@ import 'certificate_contacts_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleKeyVault, err := keyvault.NewKeyVault(ctx, "example", &keyvault.KeyVaultArgs{
-/// 			Name:              pulumi.String("examplekeyvault"),
-/// 			Location:          example.Location,
-/// 			ResourceGroupName: example.Name,
-/// 			TenantId:          pulumi.String(current.TenantId),
-/// 			SkuName:           pulumi.String("premium"),
+/// 			Name:                     pulumi.String("examplekeyvault"),
+/// 			Location:                 example.Location,
+/// 			ResourceGroupName:        example.Name,
+/// 			RbacAuthorizationEnabled: pulumi.Bool(false),
+/// 			TenantId:                 pulumi.String(current.TenantId),
+/// 			SkuName:                  pulumi.String("premium"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		exampleAccessPolicy, err := keyvault.NewAccessPolicy(ctx, "example", &keyvault.AccessPolicyArgs{
-/// 			KeyVaultId: exampleKeyVault.ID(),
+/// 			KeyVaultId: exampleKeyVault.ID().ToIDOutput().ToStringOutput(),
 /// 			TenantId:   pulumi.String(current.TenantId),
 /// 			ObjectId:   pulumi.String(current.ObjectId),
 /// 			CertificatePermissions: pulumi.StringArray{
@@ -202,7 +207,7 @@ import 'certificate_contacts_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = keyvault.NewCertificateContacts(ctx, "example", &keyvault.CertificateContactsArgs{
-/// 			KeyVaultId: exampleKeyVault.ID(),
+/// 			KeyVaultId: exampleKeyVault.ID().ToIDOutput().ToStringOutput(),
 /// 			Contacts: keyvault.CertificateContactsContactArray{
 /// 				&keyvault.CertificateContactsContactArgs{
 /// 					Email: pulumi.String("example@example.com"),
@@ -240,11 +245,12 @@ import 'certificate_contacts_state.dart';
 ///   location = "West Europe"
 /// }
 /// resource "azure_keyvault_keyvault" "example" {
-///   name                = "examplekeyvault"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   tenant_id           = data.azure_core_getclientconfig.current.tenant_id
-///   sku_name            = "premium"
+///   name                       = "examplekeyvault"
+///   location                   = azure_core_resourcegroup.example.location
+///   resource_group_name        = azure_core_resourcegroup.example.name
+///   rbac_authorization_enabled = false
+///   tenant_id                  = data.azure_core_getclientconfig.current.tenant_id
+///   sku_name                   = "premium"
 /// }
 /// resource "azure_keyvault_accesspolicy" "example" {
 ///   key_vault_id            = azure_keyvault_keyvault.example.id
@@ -308,6 +314,7 @@ import 'certificate_contacts_state.dart';
 ///             .name("examplekeyvault")
 ///             .location(example.location())
 ///             .resourceGroupName(example.name())
+///             .rbacAuthorizationEnabled(false)
 ///             .tenantId(current.tenantId())
 ///             .skuName("premium")
 ///             .build());
@@ -353,6 +360,7 @@ import 'certificate_contacts_state.dart';
 ///       name: examplekeyvault
 ///       location: ${example.location}
 ///       resourceGroupName: ${example.name}
+///       rbacAuthorizationEnabled: false
 ///       tenantId: ${current.tenantId}
 ///       skuName: premium
 ///   exampleAccessPolicy:
@@ -398,7 +406,7 @@ import 'certificate_contacts_state.dart';
 /// ```
 class CertificateContacts extends pulumi.CustomResource {
   /// One or more `contact` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> contacts;
+  late final pulumi.Output<List<CertificateContactsContact>?> contacts;
   /// The ID of the Key Vault. Changing this forces a new resource to be created.
   late final pulumi.Output<String> keyVaultId;
 
@@ -414,9 +422,9 @@ class CertificateContacts extends pulumi.CustomResource {
           'azure:keyvault/certificateContacts:CertificateContacts',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
-    contacts = registerOutput<List<Map<String, dynamic>>?>('contacts');
+    contacts = registerOutput<List<CertificateContactsContact>?>('contacts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CertificateContactsContact>(guardedValue, (value) => CertificateContactsContact.fromMap((value as Map).cast<String, dynamic>())); });
     keyVaultId = registerOutput<String>('keyVaultId');
   }
 
@@ -425,11 +433,12 @@ class CertificateContacts extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CertificateContactsState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return CertificateContacts._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -443,7 +452,20 @@ class CertificateContacts extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    contacts = registerOutput<List<Map<String, dynamic>>?>('contacts');
+    contacts = registerOutput<List<CertificateContactsContact>?>('contacts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CertificateContactsContact>(guardedValue, (value) => CertificateContactsContact.fromMap((value as Map).cast<String, dynamic>())); });
+    keyVaultId = registerOutput<String>('keyVaultId');
+  }
+
+  /// Creates a typed reference to an existing [CertificateContacts] resource.
+  CertificateContacts.reference(String urn)
+    : super(
+        'azure:keyvault/certificateContacts:CertificateContacts',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    contacts = registerOutput<List<CertificateContactsContact>?>('contacts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CertificateContactsContact>(guardedValue, (value) => CertificateContactsContact.fromMap((value as Map).cast<String, dynamic>())); });
     keyVaultId = registerOutput<String>('keyVaultId');
   }
 }

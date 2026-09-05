@@ -11,15 +11,15 @@ import 'vpn_gateway_connection_vpn_link.dart';
 /// {@macro pulumi_network_vpn_gateway_connection_vpn_gateway_connection_args_doc}
 class VpnGatewayConnectionArgs {
   /// Whether Internet Security is enabled for this VPN Connection. Defaults to `false`.
-  final pulumi.Input<bool>? internetSecurityEnabled;
+  final pulumi.Input<bool?>? internetSecurityEnabled;
   /// The name which should be used for this VPN Gateway Connection. Changing this forces a new VPN Gateway Connection to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the remote VPN Site, which will connect to the VPN Gateway. Changing this forces a new VPN Gateway Connection to be created.
   final pulumi.Input<String> remoteVpnSiteId;
   /// A `routing` block as defined below. If this is not specified, there will be a default route table created implicitly.
-  final pulumi.Input<VpnGatewayConnectionRouting>? routing;
+  final pulumi.Input<VpnGatewayConnectionRouting?>? routing;
   /// One or more `trafficSelectorPolicy` blocks as defined below.
-  final pulumi.Input<List<VpnGatewayConnectionTrafficSelectorPolicy>>? trafficSelectorPolicies;
+  final pulumi.Input<List<VpnGatewayConnectionTrafficSelectorPolicy>?>? trafficSelectorPolicies;
   /// The ID of the VPN Gateway that this VPN Gateway Connection belongs to. Changing this forces a new VPN Gateway Connection to be created.
   final pulumi.Input<String> vpnGatewayId;
   /// One or more `vpnLink` blocks as defined below.

@@ -302,7 +302,7 @@ import 'extension_state.dart';
 /// 			IpConfigurations: network.NetworkInterfaceIpConfigurationArray{
 /// 				&network.NetworkInterfaceIpConfigurationArgs{
 /// 					Name:                       pulumi.String("testconfiguration1"),
-/// 					SubnetId:                   exampleSubnet.ID(),
+/// 					SubnetId:                   exampleSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 					PrivateIpAddressAllocation: pulumi.String("Dynamic"),
 /// 				},
 /// 			},
@@ -323,7 +323,7 @@ import 'extension_state.dart';
 /// 			Size:              pulumi.String("Standard_D4_v5"),
 /// 			AdminUsername:     pulumi.String("adminuser"),
 /// 			NetworkInterfaceIds: pulumi.StringArray{
-/// 				exampleNetworkInterface.ID(),
+/// 				exampleNetworkInterface.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			AdminSshKeys: compute.LinuxVirtualMachineAdminSshKeyArray{
 /// 				&compute.LinuxVirtualMachineAdminSshKeyArgs{
@@ -347,7 +347,7 @@ import 'extension_state.dart';
 /// 		}
 /// 		_, err = compute.NewExtension(ctx, "example", &compute.ExtensionArgs{
 /// 			Name:               pulumi.String("hostname"),
-/// 			VirtualMachineId:   exampleLinuxVirtualMachine.ID(),
+/// 			VirtualMachineId:   exampleLinuxVirtualMachine.ID().ToIDOutput().ToStringOutput(),
 /// 			Publisher:          pulumi.String("Microsoft.Azure.Extensions"),
 /// 			Type:               pulumi.String("CustomScript"),
 /// 			TypeHandlerVersion: pulumi.String("2.0"),
@@ -693,18 +693,19 @@ class Extension extends pulumi.CustomResource {
           'azure:compute/extension:Extension',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['protectedSettings'],
         ) {
     autoUpgradeMinorVersion = registerOutput<bool?>('autoUpgradeMinorVersion');
     automaticUpgradeEnabled = registerOutput<bool?>('automaticUpgradeEnabled');
     failureSuppressionEnabled = registerOutput<bool?>('failureSuppressionEnabled');
     this.name = registerOutput<String>('name');
-    protectedSettings = registerOutput<String?>('protectedSettings');
+    protectedSettings = registerOutput<String?>('protectedSettings', isSecret: true);
     protectedSettingsFromKeyVault = registerOutput<ExtensionProtectedSettingsFromKeyVault?>('protectedSettingsFromKeyVault', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtensionProtectedSettingsFromKeyVault.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    provisionAfterExtensions = registerOutput<List<String>?>('provisionAfterExtensions');
+    provisionAfterExtensions = registerOutput<List<String>?>('provisionAfterExtensions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     publisher = registerOutput<String>('publisher');
     settings = registerOutput<String?>('settings');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
     typeHandlerVersion = registerOutput<String>('typeHandlerVersion');
     virtualMachineId = registerOutput<String>('virtualMachineId');
@@ -715,11 +716,12 @@ class Extension extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ExtensionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Extension._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -737,12 +739,37 @@ class Extension extends pulumi.CustomResource {
     automaticUpgradeEnabled = registerOutput<bool?>('automaticUpgradeEnabled');
     failureSuppressionEnabled = registerOutput<bool?>('failureSuppressionEnabled');
     this.name = registerOutput<String>('name');
-    protectedSettings = registerOutput<String?>('protectedSettings');
+    protectedSettings = registerOutput<String?>('protectedSettings', isSecret: true);
     protectedSettingsFromKeyVault = registerOutput<ExtensionProtectedSettingsFromKeyVault?>('protectedSettingsFromKeyVault', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtensionProtectedSettingsFromKeyVault.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    provisionAfterExtensions = registerOutput<List<String>?>('provisionAfterExtensions');
+    provisionAfterExtensions = registerOutput<List<String>?>('provisionAfterExtensions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     publisher = registerOutput<String>('publisher');
     settings = registerOutput<String?>('settings');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    typeHandlerVersion = registerOutput<String>('typeHandlerVersion');
+    virtualMachineId = registerOutput<String>('virtualMachineId');
+  }
+
+  /// Creates a typed reference to an existing [Extension] resource.
+  Extension.reference(String urn)
+    : super(
+        'azure:compute/extension:Extension',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['protectedSettings'],
+        isResourceReference: true,
+      ) {
+    autoUpgradeMinorVersion = registerOutput<bool?>('autoUpgradeMinorVersion');
+    automaticUpgradeEnabled = registerOutput<bool?>('automaticUpgradeEnabled');
+    failureSuppressionEnabled = registerOutput<bool?>('failureSuppressionEnabled');
+    this.name = registerOutput<String>('name');
+    protectedSettings = registerOutput<String?>('protectedSettings', isSecret: true);
+    protectedSettingsFromKeyVault = registerOutput<ExtensionProtectedSettingsFromKeyVault?>('protectedSettingsFromKeyVault', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtensionProtectedSettingsFromKeyVault.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    provisionAfterExtensions = registerOutput<List<String>?>('provisionAfterExtensions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    publisher = registerOutput<String>('publisher');
+    settings = registerOutput<String?>('settings');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
     typeHandlerVersion = registerOutput<String>('typeHandlerVersion');
     virtualMachineId = registerOutput<String>('virtualMachineId');

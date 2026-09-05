@@ -8,7 +8,7 @@ class ReplicatedVMManagedDiskTargetDiskEncryption {
   /// A `diskEncryptionKey` block as defined below.
   final pulumi.Input<ReplicatedVMManagedDiskTargetDiskEncryptionDiskEncryptionKey> diskEncryptionKey;
   /// A `keyEncryptionKey` block as defined below.
-  final pulumi.Input<ReplicatedVMManagedDiskTargetDiskEncryptionKeyEncryptionKey>? keyEncryptionKey;
+  final pulumi.Input<ReplicatedVMManagedDiskTargetDiskEncryptionKeyEncryptionKey?>? keyEncryptionKey;
 
   /// Creates a new [ReplicatedVMManagedDiskTargetDiskEncryption].
   /// [diskEncryptionKey] A `diskEncryptionKey` block as defined below.

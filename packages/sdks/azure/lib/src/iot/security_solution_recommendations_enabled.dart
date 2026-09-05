@@ -4,37 +4,37 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SecuritySolutionRecommendationsEnabled {
   /// Is Principal Authentication enabled for the ACR repository? Defaults to `true`.
-  final pulumi.Input<bool>? acrAuthentication;
+  final pulumi.Input<bool?>? acrAuthentication;
   /// Is Agent send underutilized messages enabled? Defaults to `true`.
-  final pulumi.Input<bool>? agentSendUnutilizedMsg;
+  final pulumi.Input<bool?>? agentSendUnutilizedMsg;
   /// Is Security related system configuration issues identified? Defaults to `true`.
-  final pulumi.Input<bool>? baseline;
+  final pulumi.Input<bool?>? baseline;
   /// Is IoT Edge Hub memory optimized? Defaults to `true`.
-  final pulumi.Input<bool>? edgeHubMemOptimize;
+  final pulumi.Input<bool?>? edgeHubMemOptimize;
   /// Is logging configured for IoT Edge module? Defaults to `true`.
-  final pulumi.Input<bool>? edgeLoggingOption;
+  final pulumi.Input<bool?>? edgeLoggingOption;
   /// Is inconsistent module settings enabled for SecurityGroup? Defaults to `true`.
-  final pulumi.Input<bool>? inconsistentModuleSettings;
+  final pulumi.Input<bool?>? inconsistentModuleSettings;
   /// is Azure IoT Security agent installed? Defaults to `true`.
-  final pulumi.Input<bool>? installAgent;
+  final pulumi.Input<bool?>? installAgent;
   /// Is Default IP filter policy denied? Defaults to `true`.
-  final pulumi.Input<bool>? ipFilterDenyAll;
+  final pulumi.Input<bool?>? ipFilterDenyAll;
   /// Is IP filter rule source allowable IP range too large? Defaults to `true`.
-  final pulumi.Input<bool>? ipFilterPermissiveRule;
+  final pulumi.Input<bool?>? ipFilterPermissiveRule;
   /// Is any ports open on the device? Defaults to `true`.
-  final pulumi.Input<bool>? openPorts;
+  final pulumi.Input<bool?>? openPorts;
   /// Does firewall policy exist which allow necessary communication to/from the device? Defaults to `true`.
-  final pulumi.Input<bool>? permissiveFirewallPolicy;
+  final pulumi.Input<bool?>? permissiveFirewallPolicy;
   /// Is only necessary addresses or ports are permitted in? Defaults to `true`.
-  final pulumi.Input<bool>? permissiveInputFirewallRules;
+  final pulumi.Input<bool?>? permissiveInputFirewallRules;
   /// Is only necessary addresses or ports are permitted out? Defaults to `true`.
-  final pulumi.Input<bool>? permissiveOutputFirewallRules;
+  final pulumi.Input<bool?>? permissiveOutputFirewallRules;
   /// Is high level permissions are needed for the module? Defaults to `true`.
-  final pulumi.Input<bool>? privilegedDockerOptions;
+  final pulumi.Input<bool?>? privilegedDockerOptions;
   /// Is any credentials shared among devices? Defaults to `true`.
-  final pulumi.Input<bool>? sharedCredentials;
+  final pulumi.Input<bool?>? sharedCredentials;
   /// Does TLS cipher suite need to be updated? Defaults to `true`.
-  final pulumi.Input<bool>? vulnerableTlsCipherSuite;
+  final pulumi.Input<bool?>? vulnerableTlsCipherSuite;
 
   /// Creates a new [SecuritySolutionRecommendationsEnabled].
   /// [acrAuthentication] Is Principal Authentication enabled for the ACR repository? Defaults to `true`.

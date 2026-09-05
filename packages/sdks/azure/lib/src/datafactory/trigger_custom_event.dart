@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'trigger_custom_event_args.dart';
+import 'trigger_custom_event_pipeline.dart';
 import 'trigger_custom_event_state.dart';
 
 /// Manages a Custom Event Trigger inside an Azure Data Factory.
@@ -204,7 +205,7 @@ import 'trigger_custom_event_state.dart';
 /// 		}
 /// 		examplePipeline, err := datafactory.NewPipeline(ctx, "example", &datafactory.PipelineArgs{
 /// 			Name:          pulumi.String("example"),
-/// 			DataFactoryId: exampleFactory.ID(),
+/// 			DataFactoryId: exampleFactory.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -219,8 +220,8 @@ import 'trigger_custom_event_state.dart';
 /// 		}
 /// 		_, err = datafactory.NewTriggerCustomEvent(ctx, "example", &datafactory.TriggerCustomEventArgs{
 /// 			Name:             pulumi.String("example"),
-/// 			DataFactoryId:    exampleFactory.ID(),
-/// 			EventgridTopicId: exampleTopic.ID(),
+/// 			DataFactoryId:    exampleFactory.ID().ToIDOutput().ToStringOutput(),
+/// 			EventgridTopicId: exampleTopic.ID().ToIDOutput().ToStringOutput(),
 /// 			Events: pulumi.StringArray{
 /// 				pulumi.String("event1"),
 /// 				pulumi.String("event2"),
@@ -459,7 +460,7 @@ class TriggerCustomEvent extends pulumi.CustomResource {
   /// Specifies the name of the Data Factory Custom Event Trigger. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
   /// One or more `pipeline` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>> pipelines;
+  late final pulumi.Output<List<TriggerCustomEventPipeline>> pipelines;
   /// The pattern that event subject starts with for trigger to fire.
   late final pulumi.Output<String?> subjectBeginsWith;
   /// The pattern that event subject ends with for trigger to fire.
@@ -477,17 +478,17 @@ class TriggerCustomEvent extends pulumi.CustomResource {
           'azure:datafactory/triggerCustomEvent:TriggerCustomEvent',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     activated = registerOutput<bool?>('activated');
-    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
-    annotations = registerOutput<List<String>?>('annotations');
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     dataFactoryId = registerOutput<String>('dataFactoryId');
     description = registerOutput<String?>('description');
     eventgridTopicId = registerOutput<String>('eventgridTopicId');
-    events = registerOutput<List<String>>('events');
+    events = registerOutput<List<String>>('events', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
-    pipelines = registerOutput<List<Map<String, dynamic>>>('pipelines');
+    pipelines = registerOutput<List<TriggerCustomEventPipeline>>('pipelines', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TriggerCustomEventPipeline>(guardedValue, (value) => TriggerCustomEventPipeline.fromMap((value as Map).cast<String, dynamic>())); });
     subjectBeginsWith = registerOutput<String?>('subjectBeginsWith');
     subjectEndsWith = registerOutput<String?>('subjectEndsWith');
   }
@@ -497,11 +498,12 @@ class TriggerCustomEvent extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     TriggerCustomEventState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return TriggerCustomEvent._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -516,14 +518,36 @@ class TriggerCustomEvent extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     activated = registerOutput<bool?>('activated');
-    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
-    annotations = registerOutput<List<String>?>('annotations');
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     dataFactoryId = registerOutput<String>('dataFactoryId');
     description = registerOutput<String?>('description');
     eventgridTopicId = registerOutput<String>('eventgridTopicId');
-    events = registerOutput<List<String>>('events');
+    events = registerOutput<List<String>>('events', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
-    pipelines = registerOutput<List<Map<String, dynamic>>>('pipelines');
+    pipelines = registerOutput<List<TriggerCustomEventPipeline>>('pipelines', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TriggerCustomEventPipeline>(guardedValue, (value) => TriggerCustomEventPipeline.fromMap((value as Map).cast<String, dynamic>())); });
+    subjectBeginsWith = registerOutput<String?>('subjectBeginsWith');
+    subjectEndsWith = registerOutput<String?>('subjectEndsWith');
+  }
+
+  /// Creates a typed reference to an existing [TriggerCustomEvent] resource.
+  TriggerCustomEvent.reference(String urn)
+    : super(
+        'azure:datafactory/triggerCustomEvent:TriggerCustomEvent',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    activated = registerOutput<bool?>('activated');
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    dataFactoryId = registerOutput<String>('dataFactoryId');
+    description = registerOutput<String?>('description');
+    eventgridTopicId = registerOutput<String>('eventgridTopicId');
+    events = registerOutput<List<String>>('events', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    this.name = registerOutput<String>('name');
+    pipelines = registerOutput<List<TriggerCustomEventPipeline>>('pipelines', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TriggerCustomEventPipeline>(guardedValue, (value) => TriggerCustomEventPipeline.fromMap((value as Map).cast<String, dynamic>())); });
     subjectBeginsWith = registerOutput<String?>('subjectBeginsWith');
     subjectEndsWith = registerOutput<String?>('subjectEndsWith');
   }

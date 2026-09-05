@@ -5,17 +5,17 @@ import 'network_connection_monitor_test_configuration_http_configuration_request
 
 class NetworkConnectionMonitorTestConfigurationHttpConfiguration {
   /// The HTTP method for the HTTP request. Possible values are `Get` and `Post`. Defaults to `Get`.
-  final pulumi.Input<String>? method;
+  final pulumi.Input<String?>? method;
   /// The path component of the URI. It only accepts the absolute path.
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? path;
   /// The port for the HTTP connection.
-  final pulumi.Input<int>? port;
+  final pulumi.Input<int?>? port;
   /// Should HTTPS be preferred over HTTP in cases where the choice is not explicit? Defaults to `false`.
-  final pulumi.Input<bool>? preferHttps;
+  final pulumi.Input<bool?>? preferHttps;
   /// A `requestHeader` block as defined below.
-  final pulumi.Input<List<NetworkConnectionMonitorTestConfigurationHttpConfigurationRequestHeader>>? requestHeaders;
+  final pulumi.Input<List<NetworkConnectionMonitorTestConfigurationHttpConfigurationRequestHeader>?>? requestHeaders;
   /// The HTTP status codes to consider successful. For instance, `2xx`, `301-304` and `418`.
-  final pulumi.Input<List<String>>? validStatusCodeRanges;
+  final pulumi.Input<List<String>?>? validStatusCodeRanges;
 
   /// Creates a new [NetworkConnectionMonitorTestConfigurationHttpConfiguration].
   /// [method] The HTTP method for the HTTP request. Possible values are `Get` and `Post`. Defaults to `Get`.
@@ -48,7 +48,7 @@ class NetworkConnectionMonitorTestConfigurationHttpConfiguration {
     return NetworkConnectionMonitorTestConfigurationHttpConfiguration(
       method: (() { final guardedValue = map['method']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       path: (() { final guardedValue = map['path']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       preferHttps: (() { final guardedValue = map['preferHttps']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       requestHeaders: (() { final guardedValue = map['requestHeaders']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<NetworkConnectionMonitorTestConfigurationHttpConfigurationRequestHeader>(guardedValue, (value) => NetworkConnectionMonitorTestConfigurationHttpConfigurationRequestHeader.fromMap((value as Map).cast<String, dynamic>()))); })(),
       validStatusCodeRanges: (() { final guardedValue = map['validStatusCodeRanges']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),

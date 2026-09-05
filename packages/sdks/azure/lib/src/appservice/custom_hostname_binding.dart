@@ -140,7 +140,7 @@ import 'custom_hostname_binding_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		server, err := random.NewId(ctx, "server", &random.IdArgs{
-/// 			Keepers: map[string]interface{}{
+/// 			Keepers: map[string]int{
 /// 				"aziId": 1,
 /// 			},
 /// 			ByteLength: 8,
@@ -171,7 +171,7 @@ import 'custom_hostname_binding_state.dart';
 /// 			Name:              server.Hex,
 /// 			Location:          example.Location,
 /// 			ResourceGroupName: example.Name,
-/// 			AppServicePlanId:  examplePlan.ID(),
+/// 			AppServicePlanId:  examplePlan.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -382,7 +382,7 @@ class CustomHostnameBinding extends pulumi.CustomResource {
           'azure:appservice/customHostnameBinding:CustomHostnameBinding',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     appServiceName = registerOutput<String>('appServiceName');
     hostname = registerOutput<String>('hostname');
@@ -397,11 +397,12 @@ class CustomHostnameBinding extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CustomHostnameBindingState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return CustomHostnameBinding._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -415,6 +416,23 @@ class CustomHostnameBinding extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    appServiceName = registerOutput<String>('appServiceName');
+    hostname = registerOutput<String>('hostname');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    sslState = registerOutput<String>('sslState');
+    thumbprint = registerOutput<String>('thumbprint');
+    virtualIp = registerOutput<String>('virtualIp');
+  }
+
+  /// Creates a typed reference to an existing [CustomHostnameBinding] resource.
+  CustomHostnameBinding.reference(String urn)
+    : super(
+        'azure:appservice/customHostnameBinding:CustomHostnameBinding',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     appServiceName = registerOutput<String>('appServiceName');
     hostname = registerOutput<String>('hostname');
     resourceGroupName = registerOutput<String>('resourceGroupName');

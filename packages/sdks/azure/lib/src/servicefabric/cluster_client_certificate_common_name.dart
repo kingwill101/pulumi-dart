@@ -10,7 +10,7 @@ class ClusterClientCertificateCommonName {
   /// The Issuer Thumbprint of the Certificate.
   ///
   /// &gt; **Note:** Certificate Issuer Thumbprint may become required in the future, `https://docs.microsoft.com/azure/service-fabric/service-fabric-create-cluster-using-cert-cn#download-and-update-a-sample-template`.
-  final pulumi.Input<String>? issuerThumbprint;
+  final pulumi.Input<String?>? issuerThumbprint;
 
   /// Creates a new [ClusterClientCertificateCommonName].
   /// [commonName] The common or subject name of the certificate.

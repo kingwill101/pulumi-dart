@@ -6,17 +6,17 @@ import 'network_manager_verifier_workspace_reachability_analysis_intent_ip_traff
 /// Input properties used for looking up and filtering NetworkManagerVerifierWorkspaceReachabilityAnalysisIntent resources.
 class NetworkManagerVerifierWorkspaceReachabilityAnalysisIntentState {
   /// The description of the resource. Changing this forces a new Network Manager Verifier Workspace Reachability Analysis Intent to be created.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The ID of the destination resource. The value can be the ID of either Public internet, Cosmos DB, Storage Account, SQL Server, Virtual machines, or Subnet. Changing this forces a new Network Manager Verifier Workspace Reachability Analysis Intent to be created.
-  final pulumi.Input<String>? destinationResourceId;
+  final pulumi.Input<String?>? destinationResourceId;
   /// An `ipTraffic` block as defined below. Changing this forces a new Network Manager Verifier Workspace Reachability Analysis Intent to be created.
-  final pulumi.Input<NetworkManagerVerifierWorkspaceReachabilityAnalysisIntentIpTraffic>? ipTraffic;
+  final pulumi.Input<NetworkManagerVerifierWorkspaceReachabilityAnalysisIntentIpTraffic?>? ipTraffic;
   /// The name which should be used for this Network Manager Verifier Workspace Reachability Analysis Intent. Changing this forces a new Network Manager Verifier Workspace Reachability Analysis Intent to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the source resource. The value can be the ID of either Public internet, Virtual machines, or Subnet. Changing this forces a new Network Manager Verifier Workspace Reachability Analysis Intent to be created.
-  final pulumi.Input<String>? sourceResourceId;
+  final pulumi.Input<String?>? sourceResourceId;
   /// The ID of the Network Manager Verifier Workspace. Changing this forces a new Network Manager Verifier Workspace Reachability Analysis Intent to be created.
-  final pulumi.Input<String>? verifierWorkspaceId;
+  final pulumi.Input<String?>? verifierWorkspaceId;
 
   /// Creates a new [NetworkManagerVerifierWorkspaceReachabilityAnalysisIntentState].
   /// [description] The description of the resource. Changing this forces a new Network Manager Verifier Workspace Reachability Analysis Intent to be created.

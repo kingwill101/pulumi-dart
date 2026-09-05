@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ThreeTierVirtualInstanceThreeTierConfigurationTransportCreateAndMount {
   /// The ID of the Resource Group of the transport File Share. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupId;
+  final pulumi.Input<String?>? resourceGroupId;
   /// The name of the Storage Account of the File Share. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? storageAccountName;
+  final pulumi.Input<String?>? storageAccountName;
 
   /// Creates a new [ThreeTierVirtualInstanceThreeTierConfigurationTransportCreateAndMount].
   /// [resourceGroupId] The ID of the Resource Group of the transport File Share. Changing this forces a new resource to be created.

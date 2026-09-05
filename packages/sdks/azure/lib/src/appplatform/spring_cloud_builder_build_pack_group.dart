@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SpringCloudBuilderBuildPackGroup {
   /// Specifies a list of the build pack's ID.
-  final pulumi.Input<List<String>>? buildPackIds;
+  final pulumi.Input<List<String>?>? buildPackIds;
   /// The name which should be used for this build pack group.
   final pulumi.Input<String> name;
 

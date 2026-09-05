@@ -127,7 +127,7 @@ import 'source_control_state.dart';
 /// 		}
 /// 		_, err = automation.NewSourceControl(ctx, "example", &automation.SourceControlArgs{
 /// 			Name:                pulumi.String("example"),
-/// 			AutomationAccountId: exampleAccount.ID(),
+/// 			AutomationAccountId: exampleAccount.ID().ToIDOutput().ToStringOutput(),
 /// 			FolderPath:          pulumi.String("runbook"),
 /// 			Security: &automation.SourceControlSecurityArgs{
 /// 				Token:     pulumi.String("ghp_xxx"),
@@ -309,7 +309,7 @@ class SourceControl extends pulumi.CustomResource {
           'azure:automation/sourceControl:SourceControl',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     automaticSync = registerOutput<bool?>('automaticSync');
     automationAccountId = registerOutput<String>('automationAccountId');
@@ -328,11 +328,12 @@ class SourceControl extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SourceControlState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SourceControl._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -346,6 +347,27 @@ class SourceControl extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    automaticSync = registerOutput<bool?>('automaticSync');
+    automationAccountId = registerOutput<String>('automationAccountId');
+    branch = registerOutput<String?>('branch');
+    description = registerOutput<String?>('description');
+    folderPath = registerOutput<String>('folderPath');
+    this.name = registerOutput<String>('name');
+    publishRunbookEnabled = registerOutput<bool?>('publishRunbookEnabled');
+    repositoryUrl = registerOutput<String>('repositoryUrl');
+    security = registerOutput<SourceControlSecurity>('security', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SourceControlSecurity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sourceControlType = registerOutput<String>('sourceControlType');
+  }
+
+  /// Creates a typed reference to an existing [SourceControl] resource.
+  SourceControl.reference(String urn)
+    : super(
+        'azure:automation/sourceControl:SourceControl',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     automaticSync = registerOutput<bool?>('automaticSync');
     automationAccountId = registerOutput<String>('automationAccountId');
     branch = registerOutput<String?>('branch');

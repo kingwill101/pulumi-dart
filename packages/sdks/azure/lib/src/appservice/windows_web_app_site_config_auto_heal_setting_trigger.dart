@@ -8,15 +8,15 @@ import 'windows_web_app_site_config_auto_heal_setting_trigger_status_code.dart';
 
 class WindowsWebAppSiteConfigAutoHealSettingTrigger {
   /// The amount of Private Memory to be consumed for this rule to trigger. Possible values are between `102400` and `13631488`.
-  final pulumi.Input<int>? privateMemoryKb;
+  final pulumi.Input<int?>? privateMemoryKb;
   /// A `requests` block as defined above.
-  final pulumi.Input<WindowsWebAppSiteConfigAutoHealSettingTriggerRequests>? requests;
+  final pulumi.Input<WindowsWebAppSiteConfigAutoHealSettingTriggerRequests?>? requests;
   /// A `slowRequest` block as defined above.
-  final pulumi.Input<WindowsWebAppSiteConfigAutoHealSettingTriggerSlowRequest>? slowRequest;
+  final pulumi.Input<WindowsWebAppSiteConfigAutoHealSettingTriggerSlowRequest?>? slowRequest;
   /// One or more `slowRequestWithPath` blocks as defined above.
-  final pulumi.Input<List<WindowsWebAppSiteConfigAutoHealSettingTriggerSlowRequestWithPath>>? slowRequestWithPaths;
+  final pulumi.Input<List<WindowsWebAppSiteConfigAutoHealSettingTriggerSlowRequestWithPath>?>? slowRequestWithPaths;
   /// One or more `statusCode` blocks as defined above.
-  final pulumi.Input<List<WindowsWebAppSiteConfigAutoHealSettingTriggerStatusCode>>? statusCodes;
+  final pulumi.Input<List<WindowsWebAppSiteConfigAutoHealSettingTriggerStatusCode>?>? statusCodes;
 
   /// Creates a new [WindowsWebAppSiteConfigAutoHealSettingTrigger].
   /// [privateMemoryKb] The amount of Private Memory to be consumed for this rule to trigger. Possible values are between `102400` and `13631488`.
@@ -44,7 +44,7 @@ class WindowsWebAppSiteConfigAutoHealSettingTrigger {
 
   factory WindowsWebAppSiteConfigAutoHealSettingTrigger.fromMap(Map<String, dynamic> map) {
     return WindowsWebAppSiteConfigAutoHealSettingTrigger(
-      privateMemoryKb: (() { final guardedValue = map['privateMemoryKb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      privateMemoryKb: (() { final guardedValue = map['privateMemoryKb']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       requests: (() { final guardedValue = map['requests']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WindowsWebAppSiteConfigAutoHealSettingTriggerRequests.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       slowRequest: (() { final guardedValue = map['slowRequest']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WindowsWebAppSiteConfigAutoHealSettingTriggerSlowRequest.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       slowRequestWithPaths: (() { final guardedValue = map['slowRequestWithPaths']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<WindowsWebAppSiteConfigAutoHealSettingTriggerSlowRequestWithPath>(guardedValue, (value) => WindowsWebAppSiteConfigAutoHealSettingTriggerSlowRequestWithPath.fromMap((value as Map).cast<String, dynamic>()))); })(),

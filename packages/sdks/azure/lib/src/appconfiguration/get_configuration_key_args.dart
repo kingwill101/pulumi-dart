@@ -12,7 +12,7 @@ class GetConfigurationKeyArgs {
   /// The name of the App Configuration Key.
   final pulumi.Input<String> key;
   /// The label of the App Configuration Key.
-  final pulumi.Input<String>? label;
+  final pulumi.Input<String?>? label;
 
   /// Creates a new [GetConfigurationKeyArgs].
   /// [configurationStoreId] Specifies the id of the App Configuration.

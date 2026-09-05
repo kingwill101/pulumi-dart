@@ -11,31 +11,31 @@ import 'app_template_volume.dart';
 
 class AppTemplate {
   /// One or more `azureQueueScaleRule` blocks as defined below.
-  final pulumi.Input<List<AppTemplateAzureQueueScaleRule>>? azureQueueScaleRules;
+  final pulumi.Input<List<AppTemplateAzureQueueScaleRule>?>? azureQueueScaleRules;
   /// One or more `container` blocks as detailed below.
   final pulumi.Input<List<AppTemplateContainer>> containers;
   /// The number of seconds to wait before scaling down the number of instances again. Defaults to `300`.
-  final pulumi.Input<int>? cooldownPeriodInSeconds;
+  final pulumi.Input<int?>? cooldownPeriodInSeconds;
   /// One or more `customScaleRule` blocks as defined below.
-  final pulumi.Input<List<AppTemplateCustomScaleRule>>? customScaleRules;
+  final pulumi.Input<List<AppTemplateCustomScaleRule>?>? customScaleRules;
   /// One or more `httpScaleRule` blocks as defined below.
-  final pulumi.Input<List<AppTemplateHttpScaleRule>>? httpScaleRules;
+  final pulumi.Input<List<AppTemplateHttpScaleRule>?>? httpScaleRules;
   /// The definition of an init container that is part of the group as documented in the `initContainer` block below.
-  final pulumi.Input<List<AppTemplateInitContainer>>? initContainers;
+  final pulumi.Input<List<AppTemplateInitContainer>?>? initContainers;
   /// The maximum number of replicas for this container.
-  final pulumi.Input<int>? maxReplicas;
+  final pulumi.Input<int?>? maxReplicas;
   /// The minimum number of replicas for this container.
-  final pulumi.Input<int>? minReplicas;
+  final pulumi.Input<int?>? minReplicas;
   /// The interval in seconds used for polling KEDA. Defaults to `30`.
-  final pulumi.Input<int>? pollingIntervalInSeconds;
+  final pulumi.Input<int?>? pollingIntervalInSeconds;
   /// The suffix for the revision. This value must be unique for the lifetime of the Resource. If omitted the service will use a hash function to create one.
-  final pulumi.Input<String>? revisionSuffix;
+  final pulumi.Input<String?>? revisionSuffix;
   /// One or more `tcpScaleRule` blocks as defined below.
-  final pulumi.Input<List<AppTemplateTcpScaleRule>>? tcpScaleRules;
+  final pulumi.Input<List<AppTemplateTcpScaleRule>?>? tcpScaleRules;
   /// The time in seconds after the container is sent the termination signal before the process if forcibly killed.
-  final pulumi.Input<int>? terminationGracePeriodSeconds;
+  final pulumi.Input<int?>? terminationGracePeriodSeconds;
   /// A `volume` block as detailed below.
-  final pulumi.Input<List<AppTemplateVolume>>? volumes;
+  final pulumi.Input<List<AppTemplateVolume>?>? volumes;
 
   /// Creates a new [AppTemplate].
   /// [azureQueueScaleRules] One or more `azureQueueScaleRule` blocks as defined below.
@@ -89,16 +89,16 @@ class AppTemplate {
     return AppTemplate(
       azureQueueScaleRules: (() { final guardedValue = map['azureQueueScaleRules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AppTemplateAzureQueueScaleRule>(guardedValue, (value) => AppTemplateAzureQueueScaleRule.fromMap((value as Map).cast<String, dynamic>()))); })(),
       containers: pulumi.Input.fromValue(pulumi.Input.decodeList<AppTemplateContainer>(map['containers']!, (value) => AppTemplateContainer.fromMap((value as Map).cast<String, dynamic>()))),
-      cooldownPeriodInSeconds: (() { final guardedValue = map['cooldownPeriodInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      cooldownPeriodInSeconds: (() { final guardedValue = map['cooldownPeriodInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       customScaleRules: (() { final guardedValue = map['customScaleRules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AppTemplateCustomScaleRule>(guardedValue, (value) => AppTemplateCustomScaleRule.fromMap((value as Map).cast<String, dynamic>()))); })(),
       httpScaleRules: (() { final guardedValue = map['httpScaleRules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AppTemplateHttpScaleRule>(guardedValue, (value) => AppTemplateHttpScaleRule.fromMap((value as Map).cast<String, dynamic>()))); })(),
       initContainers: (() { final guardedValue = map['initContainers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AppTemplateInitContainer>(guardedValue, (value) => AppTemplateInitContainer.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      maxReplicas: (() { final guardedValue = map['maxReplicas']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      minReplicas: (() { final guardedValue = map['minReplicas']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      pollingIntervalInSeconds: (() { final guardedValue = map['pollingIntervalInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxReplicas: (() { final guardedValue = map['maxReplicas']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      minReplicas: (() { final guardedValue = map['minReplicas']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      pollingIntervalInSeconds: (() { final guardedValue = map['pollingIntervalInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       revisionSuffix: (() { final guardedValue = map['revisionSuffix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tcpScaleRules: (() { final guardedValue = map['tcpScaleRules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AppTemplateTcpScaleRule>(guardedValue, (value) => AppTemplateTcpScaleRule.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      terminationGracePeriodSeconds: (() { final guardedValue = map['terminationGracePeriodSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      terminationGracePeriodSeconds: (() { final guardedValue = map['terminationGracePeriodSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       volumes: (() { final guardedValue = map['volumes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AppTemplateVolume>(guardedValue, (value) => AppTemplateVolume.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }

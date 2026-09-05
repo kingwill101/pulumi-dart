@@ -4,15 +4,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VaultMonitoring {
   /// Enabling/Disabling built-in Azure Monitor alerts for all failover issues. Defaults to `true`.
-  final pulumi.Input<bool>? alertsForAllFailoverIssuesEnabled;
+  final pulumi.Input<bool?>? alertsForAllFailoverIssuesEnabled;
   /// Enabling/Disabling built-in Azure Monitor alerts for security scenarios and job failure scenarios. Defaults to `true`.
-  final pulumi.Input<bool>? alertsForAllJobFailuresEnabled;
+  final pulumi.Input<bool?>? alertsForAllJobFailuresEnabled;
   /// Enabling/Disabling built-in Azure Monitor alerts for all replication issues. Defaults to `true`.
-  final pulumi.Input<bool>? alertsForAllReplicationIssuesEnabled;
+  final pulumi.Input<bool?>? alertsForAllReplicationIssuesEnabled;
   /// Enabling/Disabling alerts from the older (classic alerts) solution. Defaults to `true`. More details could be found [here](https://learn.microsoft.com/en-us/azure/backup/monitoring-and-alerts-overview).
-  final pulumi.Input<bool>? alertsForCriticalOperationFailuresEnabled;
+  final pulumi.Input<bool?>? alertsForCriticalOperationFailuresEnabled;
   /// Enabling/Disabling email notifications for site recovery (classic alerts) solution. Defaults to `true`.
-  final pulumi.Input<bool>? emailNotificationsForSiteRecoveryEnabled;
+  final pulumi.Input<bool?>? emailNotificationsForSiteRecoveryEnabled;
 
   /// Creates a new [VaultMonitoring].
   /// [alertsForAllFailoverIssuesEnabled] Enabling/Disabling built-in Azure Monitor alerts for all failover issues. Defaults to `true`.

@@ -140,7 +140,7 @@ import 'express_route_gateway_state.dart';
 /// 			Name:              pulumi.String("example-virtualhub"),
 /// 			ResourceGroupName: example.Name,
 /// 			Location:          example.Location,
-/// 			VirtualWanId:      exampleVirtualWan.ID(),
+/// 			VirtualWanId:      exampleVirtualWan.ID().ToIDOutput().ToStringOutput(),
 /// 			AddressPrefix:     pulumi.String("10.0.1.0/24"),
 /// 		})
 /// 		if err != nil {
@@ -150,7 +150,7 @@ import 'express_route_gateway_state.dart';
 /// 			Name:              pulumi.String("expressRoute1"),
 /// 			ResourceGroupName: example.Name,
 /// 			Location:          example.Location,
-/// 			VirtualHubId:      exampleVirtualHub.ID(),
+/// 			VirtualHubId:      exampleVirtualHub.ID().ToIDOutput().ToStringOutput(),
 /// 			ScaleUnits:        pulumi.Int(1),
 /// 			Tags: pulumi.StringMap{
 /// 				"environment": pulumi.String("Production"),
@@ -336,14 +336,14 @@ class ExpressRouteGateway extends pulumi.CustomResource {
           'azure:network/expressRouteGateway:ExpressRouteGateway',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     allowNonVirtualWanTraffic = registerOutput<bool?>('allowNonVirtualWanTraffic');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     scaleUnits = registerOutput<int>('scaleUnits');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     virtualHubId = registerOutput<String>('virtualHubId');
   }
 
@@ -352,11 +352,12 @@ class ExpressRouteGateway extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ExpressRouteGatewayState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ExpressRouteGateway._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -375,7 +376,25 @@ class ExpressRouteGateway extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     scaleUnits = registerOutput<int>('scaleUnits');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    virtualHubId = registerOutput<String>('virtualHubId');
+  }
+
+  /// Creates a typed reference to an existing [ExpressRouteGateway] resource.
+  ExpressRouteGateway.reference(String urn)
+    : super(
+        'azure:network/expressRouteGateway:ExpressRouteGateway',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    allowNonVirtualWanTraffic = registerOutput<bool?>('allowNonVirtualWanTraffic');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    scaleUnits = registerOutput<int>('scaleUnits');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     virtualHubId = registerOutput<String>('virtualHubId');
   }
 }

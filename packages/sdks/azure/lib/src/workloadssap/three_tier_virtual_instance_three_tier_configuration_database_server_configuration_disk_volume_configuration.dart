@@ -35,8 +35,8 @@ class ThreeTierVirtualInstanceThreeTierConfigurationDatabaseServerConfigurationD
 
   factory ThreeTierVirtualInstanceThreeTierConfigurationDatabaseServerConfigurationDiskVolumeConfiguration.fromMap(Map<String, dynamic> map) {
     return ThreeTierVirtualInstanceThreeTierConfigurationDatabaseServerConfigurationDiskVolumeConfiguration(
-      numberOfDisks: pulumi.Input.fromValue(map['numberOfDisks'] as int),
-      sizeInGb: pulumi.Input.fromValue(map['sizeInGb'] as int),
+      numberOfDisks: pulumi.Input.fromValue((map['numberOfDisks'] as num).toInt()),
+      sizeInGb: pulumi.Input.fromValue((map['sizeInGb'] as num).toInt()),
       skuName: pulumi.Input.fromValue(map['skuName'] as String),
       volumeName: pulumi.Input.fromValue(map['volumeName'] as String),
     );

@@ -25,7 +25,7 @@ class IotHubDpsSku {
 
   factory IotHubDpsSku.fromMap(Map<String, dynamic> map) {
     return IotHubDpsSku(
-      capacity: pulumi.Input.fromValue(map['capacity'] as int),
+      capacity: pulumi.Input.fromValue((map['capacity'] as num).toInt()),
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }

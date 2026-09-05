@@ -9,15 +9,15 @@ import 'output_event_hub_serialization.dart';
 /// {@macro pulumi_streamanalytics_output_event_hub_output_event_hub_args_doc}
 class OutputEventHubArgs {
   /// The authentication mode for the Stream Output. Possible values are `Msi` and `ConnectionString`. Defaults to `ConnectionString`.
-  final pulumi.Input<String>? authenticationMode;
+  final pulumi.Input<String?>? authenticationMode;
   /// The name of the Event Hub.
   final pulumi.Input<String> eventhubName;
   /// The name of the Stream Output. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The column that is used for the Event Hub partition key.
-  final pulumi.Input<String>? partitionKey;
+  final pulumi.Input<String?>? partitionKey;
   /// A list of property columns to add to the Event Hub output.
-  final pulumi.Input<List<String>>? propertyColumns;
+  final pulumi.Input<List<String>?>? propertyColumns;
   /// The name of the Resource Group where the Stream Analytics Job exists. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
   /// A `serialization` block as defined below.
@@ -25,9 +25,9 @@ class OutputEventHubArgs {
   /// The namespace that is associated with the desired Event Hub, Service Bus Queue, Service Bus Topic, etc.
   final pulumi.Input<String> servicebusNamespace;
   /// The shared access policy key for the specified shared access policy. Required when `authenticationMode` is set to `ConnectionString`.
-  final pulumi.Input<String>? sharedAccessPolicyKey;
+  final pulumi.Input<String?>? sharedAccessPolicyKey;
   /// The shared access policy name for the Event Hub, Service Bus Queue, Service Bus Topic, etc. Required when `authenticationMode` is set to `ConnectionString`.
-  final pulumi.Input<String>? sharedAccessPolicyName;
+  final pulumi.Input<String?>? sharedAccessPolicyName;
   /// The name of the Stream Analytics Job. Changing this forces a new resource to be created.
   final pulumi.Input<String> streamAnalyticsJobName;
 

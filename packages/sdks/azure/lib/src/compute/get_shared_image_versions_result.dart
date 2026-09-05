@@ -5,49 +5,49 @@ import 'get_shared_image_versions_image.dart';
 
 /// Result data returned by getSharedImageVersions.
 class GetSharedImageVersionsResult {
-  final String galleryName;
+  final String? galleryName;
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
-  final String imageName;
+  final String? id;
+  final String? imageName;
   /// An `images` block as defined below:
-  final List<GetSharedImageVersionsImage> images;
-  final String resourceGroupName;
+  final List<GetSharedImageVersionsImage>? images;
+  final String? resourceGroupName;
   final Map<String, String>? tagsFilter;
 
   /// Creates a new [GetSharedImageVersionsResult].
-  /// [galleryName] Required.
+  /// [galleryName] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [imageName] Required.
+  /// [imageName] Optional.
   /// [images] An `images` block as defined below:
-  /// [resourceGroupName] Required.
+  /// [resourceGroupName] Optional.
   /// [tagsFilter] Optional.
   const GetSharedImageVersionsResult({
-    required this.galleryName,
-    required this.id,
-    required this.imageName,
-    required this.images,
-    required this.resourceGroupName,
+    this.galleryName,
+    this.id,
+    this.imageName,
+    this.images,
+    this.resourceGroupName,
     this.tagsFilter,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'galleryName': galleryName,
-      'id': id,
-      'imageName': imageName,
-      'images': pulumi.Input.encodeList<GetSharedImageVersionsImage, Map<String, dynamic>>(images, (value) => value.toMap()),
-      'resourceGroupName': resourceGroupName,
+      'galleryName': ?galleryName,
+      'id': ?id,
+      'imageName': ?imageName,
+      'images': ?(() { final guardedValue = images; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetSharedImageVersionsImage, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'resourceGroupName': ?resourceGroupName,
       'tagsFilter': ?tagsFilter,
     };
   }
 
   factory GetSharedImageVersionsResult.fromMap(Map<String, dynamic> map) {
     return GetSharedImageVersionsResult(
-      galleryName: map['galleryName'] as String,
-      id: map['id'] as String,
-      imageName: map['imageName'] as String,
-      images: pulumi.Input.decodeList<GetSharedImageVersionsImage>(map['images']!, (value) => GetSharedImageVersionsImage.fromMap((value as Map).cast<String, dynamic>())),
-      resourceGroupName: map['resourceGroupName'] as String,
+      galleryName: (() { final guardedValue = map['galleryName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      imageName: (() { final guardedValue = map['imageName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      images: (() { final guardedValue = map['images']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetSharedImageVersionsImage>(guardedValue, (value) => GetSharedImageVersionsImage.fromMap((value as Map).cast<String, dynamic>())); })(),
+      resourceGroupName: (() { final guardedValue = map['resourceGroupName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       tagsFilter: (() { final guardedValue = map['tagsFilter']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
     );
   }

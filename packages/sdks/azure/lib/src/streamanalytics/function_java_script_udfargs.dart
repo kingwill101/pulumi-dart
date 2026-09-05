@@ -12,7 +12,7 @@ class FunctionJavaScriptUDFArgs {
   /// One or more `input` blocks as defined below.
   final pulumi.Input<List<FunctionJavaScriptUDFInput>> inputs;
   /// The name of the JavaScript UDF Function. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// An `output` blocks as defined below.
   final pulumi.Input<FunctionJavaScriptUDFOutput> output;
   /// The name of the Resource Group where the Stream Analytics Job exists. Changing this forces a new resource to be created.

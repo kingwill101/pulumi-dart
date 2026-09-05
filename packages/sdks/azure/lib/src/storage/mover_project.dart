@@ -100,7 +100,7 @@ import 'mover_project_state.dart';
 /// 		}
 /// 		_, err = storage.NewMoverProject(ctx, "example", &storage.MoverProjectArgs{
 /// 			Name:           pulumi.String("example-sp"),
-/// 			StorageMoverId: exampleMover.ID(),
+/// 			StorageMoverId: exampleMover.ID().ToIDOutput().ToStringOutput(),
 /// 			Description:    pulumi.String("Example Project Description"),
 /// 		})
 /// 		if err != nil {
@@ -237,7 +237,7 @@ class MoverProject extends pulumi.CustomResource {
           'azure:storage/moverProject:MoverProject',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
@@ -249,11 +249,12 @@ class MoverProject extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     MoverProjectState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return MoverProject._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -267,6 +268,20 @@ class MoverProject extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    storageMoverId = registerOutput<String>('storageMoverId');
+  }
+
+  /// Creates a typed reference to an existing [MoverProject] resource.
+  MoverProject.reference(String urn)
+    : super(
+        'azure:storage/moverProject:MoverProject',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     storageMoverId = registerOutput<String>('storageMoverId');

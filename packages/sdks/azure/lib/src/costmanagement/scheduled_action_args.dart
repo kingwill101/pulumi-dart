@@ -8,9 +8,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_costmanagement_scheduled_action_scheduled_action_args_doc}
 class ScheduledActionArgs {
   /// UTC day on which cost analysis data will be emailed. Must be between `1` and `31`. This property is applicable when `frequency` is `Monthly`.
-  final pulumi.Input<int>? dayOfMonth;
+  final pulumi.Input<int?>? dayOfMonth;
   /// Specifies a list of day names on which cost analysis data will be emailed. This property is applicable when frequency is `Weekly` or `Monthly`. Possible values are `Friday`, `Monday`, `Saturday`, `Sunday`, `Thursday`, `Tuesday` and `Wednesday`.
-  final pulumi.Input<List<String>>? daysOfWeeks;
+  final pulumi.Input<List<String>?>? daysOfWeeks;
   /// User visible input name of the Cost Management Scheduled Action.
   final pulumi.Input<String> displayName;
   /// Email address of the point of contact that should get the unsubscribe requests of Scheduled Action notification emails.
@@ -24,17 +24,17 @@ class ScheduledActionArgs {
   /// Frequency of the schedule. Possible values are `Daily`, `Monthly` and `Weekly`. Value `Monthly` requires either `weeksOfMonth` and `daysOfWeek` or `dayOfMonth` to be specified. Value `Weekly` requires `daysOfWeek` to be specified.
   final pulumi.Input<String> frequency;
   /// UTC time at which cost analysis data will be emailed. Must be between `0` and `23`.
-  final pulumi.Input<int>? hourOfDay;
+  final pulumi.Input<int?>? hourOfDay;
   /// Message to be added in the email. Length is limited to 250 characters.
-  final pulumi.Input<String>? message;
+  final pulumi.Input<String?>? message;
   /// The name which should be used for this Azure Cost Management Scheduled Action. Changing this forces a new Azure Cost Management Scheduled Action to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The start date and time of the Scheduled Action (UTC).
   final pulumi.Input<String> startDate;
   /// The ID of the Cost Management View that is used by the Scheduled Action. Changing this forces a new resource to be created.
   final pulumi.Input<String> viewId;
   /// Specifies a list of weeks in which cost analysis data will be emailed. This property is applicable when `frequency` is `Monthly` and used in combination with `daysOfWeek`. Possible values are `First`, `Fourth`, `Last`, `Second` and `Third`.
-  final pulumi.Input<List<String>>? weeksOfMonths;
+  final pulumi.Input<List<String>?>? weeksOfMonths;
 
   /// Creates a new [ScheduledActionArgs].
   /// [dayOfMonth] UTC day on which cost analysis data will be emailed. Must be between `1` and `31`. This property is applicable when `frequency` is `Monthly`.
@@ -89,7 +89,7 @@ class ScheduledActionArgs {
 
   factory ScheduledActionArgs.fromMap(Map<String, dynamic> map) {
     return ScheduledActionArgs(
-      dayOfMonth: (() { final guardedValue = map['dayOfMonth']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      dayOfMonth: (() { final guardedValue = map['dayOfMonth']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       daysOfWeeks: (() { final guardedValue = map['daysOfWeeks']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
       emailAddressSender: pulumi.Input.fromValue(map['emailAddressSender'] as String),
@@ -97,7 +97,7 @@ class ScheduledActionArgs {
       emailSubject: pulumi.Input.fromValue(map['emailSubject'] as String),
       endDate: pulumi.Input.fromValue(map['endDate'] as String),
       frequency: pulumi.Input.fromValue(map['frequency'] as String),
-      hourOfDay: (() { final guardedValue = map['hourOfDay']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      hourOfDay: (() { final guardedValue = map['hourOfDay']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       message: (() { final guardedValue = map['message']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       startDate: pulumi.Input.fromValue(map['startDate'] as String),

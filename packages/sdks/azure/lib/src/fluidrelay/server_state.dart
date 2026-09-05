@@ -7,31 +7,31 @@ import 'server_identity.dart';
 /// Input properties used for looking up and filtering Server resources.
 class ServerState {
   /// A `customerManagedKey` block as defined below. Changing this forces a new resource to be created.
-  final pulumi.Input<ServerCustomerManagedKey>? customerManagedKey;
+  final pulumi.Input<ServerCustomerManagedKey?>? customerManagedKey;
   /// The Fluid tenantId for this server.
-  final pulumi.Input<String>? frsTenantId;
+  final pulumi.Input<String?>? frsTenantId;
   /// An `identity` block as defined below.
-  final pulumi.Input<ServerIdentity>? identity;
+  final pulumi.Input<ServerIdentity?>? identity;
   /// The Azure Region where the Fluid Relay Server should exist. Changing this forces a new Fluid Relay Server to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name which should be used for this Fluid Relay Server. Changing this forces a new Fluid Relay Server to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// An array of the Fluid Relay Orderer endpoints. This will be deprecated in future version of fluid relay server and will always be empty, [more details](https://learn.microsoft.com/en-us/azure/azure-fluid-relay/concepts/version-compatibility).
-  final pulumi.Input<List<String>>? ordererEndpoints;
+  final pulumi.Input<List<String>?>? ordererEndpoints;
   /// The primary key for this server.
-  final pulumi.Input<String>? primaryKey;
+  final pulumi.Input<String?>? primaryKey;
   /// The name of the Resource Group where the Fluid Relay Server should exist. Changing this forces a new Fluid Relay Server to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// The secondary key for this server.
-  final pulumi.Input<String>? secondaryKey;
+  final pulumi.Input<String?>? secondaryKey;
   /// An array of service endpoints for this Fluid Relay Server.
-  final pulumi.Input<List<String>>? serviceEndpoints;
+  final pulumi.Input<List<String>?>? serviceEndpoints;
   /// An array of storage endpoints for this Fluid Relay Server. This will be deprecated in future version of fluid relay server and will always be empty, [more details](https://learn.microsoft.com/en-us/azure/azure-fluid-relay/concepts/version-compatibility).
-  final pulumi.Input<List<String>>? storageEndpoints;
+  final pulumi.Input<List<String>?>? storageEndpoints;
   /// Sku of the storage associated with the resource, Possible values are `standard` and `basic`. Changing this forces a new Fluid Relay Server to be created.
-  final pulumi.Input<String>? storageSku;
+  final pulumi.Input<String?>? storageSku;
   /// A mapping of tags which should be assigned to the Fluid Relay Server.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ServerState].
   /// [customerManagedKey] A `customerManagedKey` block as defined below. Changing this forces a new resource to be created.

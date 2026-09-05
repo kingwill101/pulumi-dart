@@ -1,6 +1,17 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'action_group_args.dart';
+import 'action_group_arm_role_receiver.dart';
+import 'action_group_automation_runbook_receiver.dart';
+import 'action_group_azure_app_push_receiver.dart';
+import 'action_group_azure_function_receiver.dart';
+import 'action_group_email_receiver.dart';
+import 'action_group_event_hub_receiver.dart';
+import 'action_group_itsm_receiver.dart';
+import 'action_group_logic_app_receiver.dart';
+import 'action_group_sms_receiver.dart';
 import 'action_group_state.dart';
+import 'action_group_voice_receiver.dart';
+import 'action_group_webhook_receiver.dart';
 
 /// Manages an Action Group within Azure Monitor.
 ///
@@ -801,25 +812,25 @@ import 'action_group_state.dart';
 /// ```
 class ActionGroup extends pulumi.CustomResource {
   /// One or more `armRoleReceiver` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> armRoleReceivers;
+  late final pulumi.Output<List<ActionGroupArmRoleReceiver>?> armRoleReceivers;
   /// One or more `automationRunbookReceiver` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> automationRunbookReceivers;
+  late final pulumi.Output<List<ActionGroupAutomationRunbookReceiver>?> automationRunbookReceivers;
   /// One or more `azureAppPushReceiver` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> azureAppPushReceivers;
+  late final pulumi.Output<List<ActionGroupAzureAppPushReceiver>?> azureAppPushReceivers;
   /// One or more `azureFunctionReceiver` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> azureFunctionReceivers;
+  late final pulumi.Output<List<ActionGroupAzureFunctionReceiver>?> azureFunctionReceivers;
   /// One or more `emailReceiver` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> emailReceivers;
+  late final pulumi.Output<List<ActionGroupEmailReceiver>?> emailReceivers;
   /// Whether this action group is enabled. If an action group is not enabled, then none of its receivers will receive communications. Defaults to `true`.
   late final pulumi.Output<bool?> enabled;
   /// One or more `eventHubReceiver` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> eventHubReceivers;
+  late final pulumi.Output<List<ActionGroupEventHubReceiver>?> eventHubReceivers;
   /// One or more `itsmReceiver` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> itsmReceivers;
+  late final pulumi.Output<List<ActionGroupItsmReceiver>?> itsmReceivers;
   /// The Azure Region where the Action Group should exist. Changing this forces a new Action Group to be created. Defaults to `global`.
   late final pulumi.Output<String> location;
   /// One or more `logicAppReceiver` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> logicAppReceivers;
+  late final pulumi.Output<List<ActionGroupLogicAppReceiver>?> logicAppReceivers;
   /// The name of the Action Group. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
   /// The name of the resource group in which to create the Action Group instance. Changing this forces a new resource to be created.
@@ -827,13 +838,13 @@ class ActionGroup extends pulumi.CustomResource {
   /// The short name of the action group. This will be used in SMS messages.
   late final pulumi.Output<String> shortName;
   /// One or more `smsReceiver` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> smsReceivers;
+  late final pulumi.Output<List<ActionGroupSmsReceiver>?> smsReceivers;
   /// A mapping of tags to assign to the resource.
   late final pulumi.Output<Map<String, String>?> tags;
   /// One or more `voiceReceiver` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> voiceReceivers;
+  late final pulumi.Output<List<ActionGroupVoiceReceiver>?> voiceReceivers;
   /// One or more `webhookReceiver` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> webhookReceivers;
+  late final pulumi.Output<List<ActionGroupWebhookReceiver>?> webhookReceivers;
 
   /// Creates a new [ActionGroup].
   /// [name] The Pulumi resource name.
@@ -847,25 +858,25 @@ class ActionGroup extends pulumi.CustomResource {
           'azure:monitoring/actionGroup:ActionGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
-    armRoleReceivers = registerOutput<List<Map<String, dynamic>>?>('armRoleReceivers');
-    automationRunbookReceivers = registerOutput<List<Map<String, dynamic>>?>('automationRunbookReceivers');
-    azureAppPushReceivers = registerOutput<List<Map<String, dynamic>>?>('azureAppPushReceivers');
-    azureFunctionReceivers = registerOutput<List<Map<String, dynamic>>?>('azureFunctionReceivers');
-    emailReceivers = registerOutput<List<Map<String, dynamic>>?>('emailReceivers');
+    armRoleReceivers = registerOutput<List<ActionGroupArmRoleReceiver>?>('armRoleReceivers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ActionGroupArmRoleReceiver>(guardedValue, (value) => ActionGroupArmRoleReceiver.fromMap((value as Map).cast<String, dynamic>())); });
+    automationRunbookReceivers = registerOutput<List<ActionGroupAutomationRunbookReceiver>?>('automationRunbookReceivers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ActionGroupAutomationRunbookReceiver>(guardedValue, (value) => ActionGroupAutomationRunbookReceiver.fromMap((value as Map).cast<String, dynamic>())); });
+    azureAppPushReceivers = registerOutput<List<ActionGroupAzureAppPushReceiver>?>('azureAppPushReceivers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ActionGroupAzureAppPushReceiver>(guardedValue, (value) => ActionGroupAzureAppPushReceiver.fromMap((value as Map).cast<String, dynamic>())); });
+    azureFunctionReceivers = registerOutput<List<ActionGroupAzureFunctionReceiver>?>('azureFunctionReceivers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ActionGroupAzureFunctionReceiver>(guardedValue, (value) => ActionGroupAzureFunctionReceiver.fromMap((value as Map).cast<String, dynamic>())); });
+    emailReceivers = registerOutput<List<ActionGroupEmailReceiver>?>('emailReceivers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ActionGroupEmailReceiver>(guardedValue, (value) => ActionGroupEmailReceiver.fromMap((value as Map).cast<String, dynamic>())); });
     enabled = registerOutput<bool?>('enabled');
-    eventHubReceivers = registerOutput<List<Map<String, dynamic>>?>('eventHubReceivers');
-    itsmReceivers = registerOutput<List<Map<String, dynamic>>?>('itsmReceivers');
+    eventHubReceivers = registerOutput<List<ActionGroupEventHubReceiver>?>('eventHubReceivers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ActionGroupEventHubReceiver>(guardedValue, (value) => ActionGroupEventHubReceiver.fromMap((value as Map).cast<String, dynamic>())); });
+    itsmReceivers = registerOutput<List<ActionGroupItsmReceiver>?>('itsmReceivers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ActionGroupItsmReceiver>(guardedValue, (value) => ActionGroupItsmReceiver.fromMap((value as Map).cast<String, dynamic>())); });
     location = registerOutput<String>('location');
-    logicAppReceivers = registerOutput<List<Map<String, dynamic>>?>('logicAppReceivers');
+    logicAppReceivers = registerOutput<List<ActionGroupLogicAppReceiver>?>('logicAppReceivers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ActionGroupLogicAppReceiver>(guardedValue, (value) => ActionGroupLogicAppReceiver.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     shortName = registerOutput<String>('shortName');
-    smsReceivers = registerOutput<List<Map<String, dynamic>>?>('smsReceivers');
-    tags = registerOutput<Map<String, String>?>('tags');
-    voiceReceivers = registerOutput<List<Map<String, dynamic>>?>('voiceReceivers');
-    webhookReceivers = registerOutput<List<Map<String, dynamic>>?>('webhookReceivers');
+    smsReceivers = registerOutput<List<ActionGroupSmsReceiver>?>('smsReceivers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ActionGroupSmsReceiver>(guardedValue, (value) => ActionGroupSmsReceiver.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    voiceReceivers = registerOutput<List<ActionGroupVoiceReceiver>?>('voiceReceivers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ActionGroupVoiceReceiver>(guardedValue, (value) => ActionGroupVoiceReceiver.fromMap((value as Map).cast<String, dynamic>())); });
+    webhookReceivers = registerOutput<List<ActionGroupWebhookReceiver>?>('webhookReceivers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ActionGroupWebhookReceiver>(guardedValue, (value) => ActionGroupWebhookReceiver.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [ActionGroup] resource's state with the given [name] and [id].
@@ -873,11 +884,12 @@ class ActionGroup extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ActionGroupState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ActionGroup._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -891,22 +903,50 @@ class ActionGroup extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    armRoleReceivers = registerOutput<List<Map<String, dynamic>>?>('armRoleReceivers');
-    automationRunbookReceivers = registerOutput<List<Map<String, dynamic>>?>('automationRunbookReceivers');
-    azureAppPushReceivers = registerOutput<List<Map<String, dynamic>>?>('azureAppPushReceivers');
-    azureFunctionReceivers = registerOutput<List<Map<String, dynamic>>?>('azureFunctionReceivers');
-    emailReceivers = registerOutput<List<Map<String, dynamic>>?>('emailReceivers');
+    armRoleReceivers = registerOutput<List<ActionGroupArmRoleReceiver>?>('armRoleReceivers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ActionGroupArmRoleReceiver>(guardedValue, (value) => ActionGroupArmRoleReceiver.fromMap((value as Map).cast<String, dynamic>())); });
+    automationRunbookReceivers = registerOutput<List<ActionGroupAutomationRunbookReceiver>?>('automationRunbookReceivers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ActionGroupAutomationRunbookReceiver>(guardedValue, (value) => ActionGroupAutomationRunbookReceiver.fromMap((value as Map).cast<String, dynamic>())); });
+    azureAppPushReceivers = registerOutput<List<ActionGroupAzureAppPushReceiver>?>('azureAppPushReceivers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ActionGroupAzureAppPushReceiver>(guardedValue, (value) => ActionGroupAzureAppPushReceiver.fromMap((value as Map).cast<String, dynamic>())); });
+    azureFunctionReceivers = registerOutput<List<ActionGroupAzureFunctionReceiver>?>('azureFunctionReceivers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ActionGroupAzureFunctionReceiver>(guardedValue, (value) => ActionGroupAzureFunctionReceiver.fromMap((value as Map).cast<String, dynamic>())); });
+    emailReceivers = registerOutput<List<ActionGroupEmailReceiver>?>('emailReceivers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ActionGroupEmailReceiver>(guardedValue, (value) => ActionGroupEmailReceiver.fromMap((value as Map).cast<String, dynamic>())); });
     enabled = registerOutput<bool?>('enabled');
-    eventHubReceivers = registerOutput<List<Map<String, dynamic>>?>('eventHubReceivers');
-    itsmReceivers = registerOutput<List<Map<String, dynamic>>?>('itsmReceivers');
+    eventHubReceivers = registerOutput<List<ActionGroupEventHubReceiver>?>('eventHubReceivers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ActionGroupEventHubReceiver>(guardedValue, (value) => ActionGroupEventHubReceiver.fromMap((value as Map).cast<String, dynamic>())); });
+    itsmReceivers = registerOutput<List<ActionGroupItsmReceiver>?>('itsmReceivers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ActionGroupItsmReceiver>(guardedValue, (value) => ActionGroupItsmReceiver.fromMap((value as Map).cast<String, dynamic>())); });
     location = registerOutput<String>('location');
-    logicAppReceivers = registerOutput<List<Map<String, dynamic>>?>('logicAppReceivers');
+    logicAppReceivers = registerOutput<List<ActionGroupLogicAppReceiver>?>('logicAppReceivers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ActionGroupLogicAppReceiver>(guardedValue, (value) => ActionGroupLogicAppReceiver.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     shortName = registerOutput<String>('shortName');
-    smsReceivers = registerOutput<List<Map<String, dynamic>>?>('smsReceivers');
-    tags = registerOutput<Map<String, String>?>('tags');
-    voiceReceivers = registerOutput<List<Map<String, dynamic>>?>('voiceReceivers');
-    webhookReceivers = registerOutput<List<Map<String, dynamic>>?>('webhookReceivers');
+    smsReceivers = registerOutput<List<ActionGroupSmsReceiver>?>('smsReceivers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ActionGroupSmsReceiver>(guardedValue, (value) => ActionGroupSmsReceiver.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    voiceReceivers = registerOutput<List<ActionGroupVoiceReceiver>?>('voiceReceivers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ActionGroupVoiceReceiver>(guardedValue, (value) => ActionGroupVoiceReceiver.fromMap((value as Map).cast<String, dynamic>())); });
+    webhookReceivers = registerOutput<List<ActionGroupWebhookReceiver>?>('webhookReceivers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ActionGroupWebhookReceiver>(guardedValue, (value) => ActionGroupWebhookReceiver.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [ActionGroup] resource.
+  ActionGroup.reference(String urn)
+    : super(
+        'azure:monitoring/actionGroup:ActionGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    armRoleReceivers = registerOutput<List<ActionGroupArmRoleReceiver>?>('armRoleReceivers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ActionGroupArmRoleReceiver>(guardedValue, (value) => ActionGroupArmRoleReceiver.fromMap((value as Map).cast<String, dynamic>())); });
+    automationRunbookReceivers = registerOutput<List<ActionGroupAutomationRunbookReceiver>?>('automationRunbookReceivers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ActionGroupAutomationRunbookReceiver>(guardedValue, (value) => ActionGroupAutomationRunbookReceiver.fromMap((value as Map).cast<String, dynamic>())); });
+    azureAppPushReceivers = registerOutput<List<ActionGroupAzureAppPushReceiver>?>('azureAppPushReceivers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ActionGroupAzureAppPushReceiver>(guardedValue, (value) => ActionGroupAzureAppPushReceiver.fromMap((value as Map).cast<String, dynamic>())); });
+    azureFunctionReceivers = registerOutput<List<ActionGroupAzureFunctionReceiver>?>('azureFunctionReceivers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ActionGroupAzureFunctionReceiver>(guardedValue, (value) => ActionGroupAzureFunctionReceiver.fromMap((value as Map).cast<String, dynamic>())); });
+    emailReceivers = registerOutput<List<ActionGroupEmailReceiver>?>('emailReceivers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ActionGroupEmailReceiver>(guardedValue, (value) => ActionGroupEmailReceiver.fromMap((value as Map).cast<String, dynamic>())); });
+    enabled = registerOutput<bool?>('enabled');
+    eventHubReceivers = registerOutput<List<ActionGroupEventHubReceiver>?>('eventHubReceivers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ActionGroupEventHubReceiver>(guardedValue, (value) => ActionGroupEventHubReceiver.fromMap((value as Map).cast<String, dynamic>())); });
+    itsmReceivers = registerOutput<List<ActionGroupItsmReceiver>?>('itsmReceivers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ActionGroupItsmReceiver>(guardedValue, (value) => ActionGroupItsmReceiver.fromMap((value as Map).cast<String, dynamic>())); });
+    location = registerOutput<String>('location');
+    logicAppReceivers = registerOutput<List<ActionGroupLogicAppReceiver>?>('logicAppReceivers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ActionGroupLogicAppReceiver>(guardedValue, (value) => ActionGroupLogicAppReceiver.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    shortName = registerOutput<String>('shortName');
+    smsReceivers = registerOutput<List<ActionGroupSmsReceiver>?>('smsReceivers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ActionGroupSmsReceiver>(guardedValue, (value) => ActionGroupSmsReceiver.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    voiceReceivers = registerOutput<List<ActionGroupVoiceReceiver>?>('voiceReceivers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ActionGroupVoiceReceiver>(guardedValue, (value) => ActionGroupVoiceReceiver.fromMap((value as Map).cast<String, dynamic>())); });
+    webhookReceivers = registerOutput<List<ActionGroupWebhookReceiver>?>('webhookReceivers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ActionGroupWebhookReceiver>(guardedValue, (value) => ActionGroupWebhookReceiver.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

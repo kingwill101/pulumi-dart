@@ -6,7 +6,7 @@ import 'fleet_update_run_managed_cluster_update_upgrade.dart';
 
 class FleetUpdateRunManagedClusterUpdate {
   /// A `nodeImageSelection` block as defined below.
-  final pulumi.Input<FleetUpdateRunManagedClusterUpdateNodeImageSelection>? nodeImageSelection;
+  final pulumi.Input<FleetUpdateRunManagedClusterUpdateNodeImageSelection?>? nodeImageSelection;
   /// A `upgrade` block as defined below.
   final pulumi.Input<FleetUpdateRunManagedClusterUpdateUpgrade> upgrade;
 

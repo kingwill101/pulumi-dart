@@ -152,6 +152,17 @@ Future<GetSpringCloudAppResult> getSpringCloudApp(
   return GetSpringCloudAppResult.fromMap(result);
 }
 
+pulumi.Output<GetSpringCloudAppResult> getSpringCloudAppOutput(
+  GetSpringCloudAppArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:appplatform/getSpringCloudApp:getSpringCloudApp',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSpringCloudAppResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Spring Cloud Service.
 ///
 /// &gt; **Note:** Azure Spring Apps is now deprecated and will be retired on 2028-05-31 - as such the `azure.appplatform.SpringCloudService` data source is deprecated and will be removed in a future major version of the AzureRM Provider. See https://aka.ms/asaretirement for more information.
@@ -291,4 +302,15 @@ Future<GetSpringCloudServiceResult> getSpringCloudService(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSpringCloudServiceResult.fromMap(result);
+}
+
+pulumi.Output<GetSpringCloudServiceResult> getSpringCloudServiceOutput(
+  GetSpringCloudServiceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:appplatform/getSpringCloudService:getSpringCloudService',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSpringCloudServiceResult.fromMap);
 }

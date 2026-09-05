@@ -6,9 +6,9 @@ import 'rules_engine_rule_match_condition.dart';
 
 class RulesEngineRule {
   /// An `action` block as defined below.
-  final pulumi.Input<RulesEngineRuleAction>? action;
+  final pulumi.Input<RulesEngineRuleAction?>? action;
   /// One or more `matchCondition` block as defined below.
-  final pulumi.Input<List<RulesEngineRuleMatchCondition>>? matchConditions;
+  final pulumi.Input<List<RulesEngineRuleMatchCondition>?>? matchConditions;
   /// The name of the rule.
   final pulumi.Input<String> name;
   /// Priority of the rule, must be unique per rules engine definition.
@@ -40,7 +40,7 @@ class RulesEngineRule {
       action: (() { final guardedValue = map['action']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RulesEngineRuleAction.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       matchConditions: (() { final guardedValue = map['matchConditions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<RulesEngineRuleMatchCondition>(guardedValue, (value) => RulesEngineRuleMatchCondition.fromMap((value as Map).cast<String, dynamic>()))); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
-      priority: pulumi.Input.fromValue(map['priority'] as int),
+      priority: pulumi.Input.fromValue((map['priority'] as num).toInt()),
     );
   }
 }

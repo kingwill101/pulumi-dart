@@ -14,7 +14,7 @@ class CertificateArgs {
   /// Specify the path to the key file of this certificate.
   final pulumi.Input<String> keyVirtualPath;
   /// The name which should be used for this NGINX Certificate. Changing this forces a new NGINX Certificate to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the NGINX Deployment that this Certificate should be associated with. Changing this forces a new NGINX Certificate to be created.
   final pulumi.Input<String> nginxDeploymentId;
 

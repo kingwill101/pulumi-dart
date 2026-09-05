@@ -5,19 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering LinkedServer resources.
 class LinkedServerState {
   /// The geo-replicated primary hostname for this linked server.
-  final pulumi.Input<String>? geoReplicatedPrimaryHostName;
+  final pulumi.Input<String?>? geoReplicatedPrimaryHostName;
   /// The ID of the linked Redis cache. Changing this forces a new Redis to be created.
-  final pulumi.Input<String>? linkedRedisCacheId;
+  final pulumi.Input<String?>? linkedRedisCacheId;
   /// The location of the linked Redis cache. Changing this forces a new Redis to be created.
-  final pulumi.Input<String>? linkedRedisCacheLocation;
+  final pulumi.Input<String?>? linkedRedisCacheLocation;
   /// The name of the linked server.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the Resource Group where the Redis caches exists. Changing this forces a new Redis to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// The role of the linked Redis cache (eg "Secondary"). Changing this forces a new Redis to be created. Possible values are `Primary` and `Secondary`.
-  final pulumi.Input<String>? serverRole;
+  final pulumi.Input<String?>? serverRole;
   /// The name of Redis cache to link with. Changing this forces a new Redis to be created. (eg The primary role)
-  final pulumi.Input<String>? targetRedisCacheName;
+  final pulumi.Input<String?>? targetRedisCacheName;
 
   /// Creates a new [LinkedServerState].
   /// [geoReplicatedPrimaryHostName] The geo-replicated primary hostname for this linked server.

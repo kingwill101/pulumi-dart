@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AccountNetworkAclsVirtualNetworkRule {
   /// Whether ignore missing vnet service endpoint or not. Defaults to `false`.
-  final pulumi.Input<bool>? ignoreMissingVnetServiceEndpoint;
+  final pulumi.Input<bool?>? ignoreMissingVnetServiceEndpoint;
   /// The ID of the subnet which should be able to access this Cognitive Account.
   final pulumi.Input<String> subnetId;
 

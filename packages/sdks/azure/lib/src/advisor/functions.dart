@@ -171,3 +171,14 @@ Future<GetRecommendationsResult> getRecommendations(
   );
   return GetRecommendationsResult.fromMap(result);
 }
+
+pulumi.Output<GetRecommendationsResult> getRecommendationsOutput(
+  GetRecommendationsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:advisor/getRecommendations:getRecommendations',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRecommendationsResult.fromMap);
+}

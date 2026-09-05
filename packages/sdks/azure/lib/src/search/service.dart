@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'service_args.dart';
 import 'service_identity.dart';
+import 'service_query_key.dart';
 import 'service_state.dart';
 
 /// Manages a Search Service.
@@ -568,7 +569,7 @@ class Service extends pulumi.CustomResource {
   /// Specifies whether Public Network Access is allowed for this resource. Defaults to `true`.
   late final pulumi.Output<bool?> publicNetworkAccessEnabled;
   /// A `queryKeys` block as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>> queryKeys;
+  late final pulumi.Output<List<ServiceQueryKey>> queryKeys;
   /// Specifies the number of Replica's which should be created for this Search Service. This field cannot be set when using a `free` sku ([see the Microsoft documentation](https://learn.microsoft.com/azure/search/search-sku-tier)).
   late final pulumi.Output<int?> replicaCount;
   /// The name of the Resource Group where the Search Service should exist. Changing this forces a new Search Service to be created.
@@ -602,9 +603,10 @@ class Service extends pulumi.CustomResource {
           'azure:search/service:Service',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['primaryKey', 'secondaryKey'],
         ) {
-    allowedIps = registerOutput<List<String>?>('allowedIps');
+    allowedIps = registerOutput<List<String>?>('allowedIps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     authenticationFailureMode = registerOutput<String?>('authenticationFailureMode');
     customerManagedKeyEncryptionComplianceStatus = registerOutput<String>('customerManagedKeyEncryptionComplianceStatus');
     customerManagedKeyEnforcementEnabled = registerOutput<bool?>('customerManagedKeyEnforcementEnabled');
@@ -616,15 +618,15 @@ class Service extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     networkRuleBypassOption = registerOutput<String?>('networkRuleBypassOption');
     partitionCount = registerOutput<int?>('partitionCount');
-    primaryKey = registerOutput<String>('primaryKey');
+    primaryKey = registerOutput<String>('primaryKey', isSecret: true);
     publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
-    queryKeys = registerOutput<List<Map<String, dynamic>>>('queryKeys');
+    queryKeys = registerOutput<List<ServiceQueryKey>>('queryKeys', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServiceQueryKey>(guardedValue, (value) => ServiceQueryKey.fromMap((value as Map).cast<String, dynamic>())); });
     replicaCount = registerOutput<int?>('replicaCount');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    secondaryKey = registerOutput<String>('secondaryKey');
+    secondaryKey = registerOutput<String>('secondaryKey', isSecret: true);
     semanticSearchSku = registerOutput<String?>('semanticSearchSku');
     sku = registerOutput<String>('sku');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Service] resource's state with the given [name] and [id].
@@ -632,11 +634,12 @@ class Service extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ServiceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Service._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -650,7 +653,7 @@ class Service extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    allowedIps = registerOutput<List<String>?>('allowedIps');
+    allowedIps = registerOutput<List<String>?>('allowedIps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     authenticationFailureMode = registerOutput<String?>('authenticationFailureMode');
     customerManagedKeyEncryptionComplianceStatus = registerOutput<String>('customerManagedKeyEncryptionComplianceStatus');
     customerManagedKeyEnforcementEnabled = registerOutput<bool?>('customerManagedKeyEnforcementEnabled');
@@ -662,14 +665,47 @@ class Service extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     networkRuleBypassOption = registerOutput<String?>('networkRuleBypassOption');
     partitionCount = registerOutput<int?>('partitionCount');
-    primaryKey = registerOutput<String>('primaryKey');
+    primaryKey = registerOutput<String>('primaryKey', isSecret: true);
     publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
-    queryKeys = registerOutput<List<Map<String, dynamic>>>('queryKeys');
+    queryKeys = registerOutput<List<ServiceQueryKey>>('queryKeys', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServiceQueryKey>(guardedValue, (value) => ServiceQueryKey.fromMap((value as Map).cast<String, dynamic>())); });
     replicaCount = registerOutput<int?>('replicaCount');
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    secondaryKey = registerOutput<String>('secondaryKey');
+    secondaryKey = registerOutput<String>('secondaryKey', isSecret: true);
     semanticSearchSku = registerOutput<String?>('semanticSearchSku');
     sku = registerOutput<String>('sku');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Service] resource.
+  Service.reference(String urn)
+    : super(
+        'azure:search/service:Service',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['primaryKey', 'secondaryKey'],
+        isResourceReference: true,
+      ) {
+    allowedIps = registerOutput<List<String>?>('allowedIps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    authenticationFailureMode = registerOutput<String?>('authenticationFailureMode');
+    customerManagedKeyEncryptionComplianceStatus = registerOutput<String>('customerManagedKeyEncryptionComplianceStatus');
+    customerManagedKeyEnforcementEnabled = registerOutput<bool?>('customerManagedKeyEnforcementEnabled');
+    endpoint = registerOutput<String>('endpoint');
+    hostingMode = registerOutput<String?>('hostingMode');
+    identity = registerOutput<ServiceIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    localAuthenticationEnabled = registerOutput<bool?>('localAuthenticationEnabled');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    networkRuleBypassOption = registerOutput<String?>('networkRuleBypassOption');
+    partitionCount = registerOutput<int?>('partitionCount');
+    primaryKey = registerOutput<String>('primaryKey', isSecret: true);
+    publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
+    queryKeys = registerOutput<List<ServiceQueryKey>>('queryKeys', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServiceQueryKey>(guardedValue, (value) => ServiceQueryKey.fromMap((value as Map).cast<String, dynamic>())); });
+    replicaCount = registerOutput<int?>('replicaCount');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    secondaryKey = registerOutput<String>('secondaryKey', isSecret: true);
+    semanticSearchSku = registerOutput<String?>('semanticSearchSku');
+    sku = registerOutput<String>('sku');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

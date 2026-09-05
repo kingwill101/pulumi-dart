@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class HciDeploymentSettingScaleUnitHostNetworkIntentAdapterPropertyOverride {
   /// The jumbo frame size of the adapter. This parameter should only be modified based on your OEM guidance. Changing this forces a new Stack HCI Deployment Setting to be created.
-  final pulumi.Input<String>? jumboPacket;
+  final pulumi.Input<String?>? jumboPacket;
   /// The network direct of the adapter. This parameter should only be modified based on your OEM guidance. Changing this forces a new Stack HCI Deployment Setting to be created.
-  final pulumi.Input<String>? networkDirect;
+  final pulumi.Input<String?>? networkDirect;
   /// The network direct technology of the adapter. This parameter should only be modified based on your OEM guidance. Changing this forces a new Stack HCI Deployment Setting to be created.
-  final pulumi.Input<String>? networkDirectTechnology;
+  final pulumi.Input<String?>? networkDirectTechnology;
 
   /// Creates a new [HciDeploymentSettingScaleUnitHostNetworkIntentAdapterPropertyOverride].
   /// [jumboPacket] The jumbo frame size of the adapter. This parameter should only be modified based on your OEM guidance. Changing this forces a new Stack HCI Deployment Setting to be created.

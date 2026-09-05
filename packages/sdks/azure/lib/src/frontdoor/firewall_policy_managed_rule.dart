@@ -6,9 +6,9 @@ import 'firewall_policy_managed_rule_override.dart';
 
 class FirewallPolicyManagedRule {
   /// One or more `exclusion` blocks as defined below.
-  final pulumi.Input<List<FirewallPolicyManagedRuleExclusion>>? exclusions;
+  final pulumi.Input<List<FirewallPolicyManagedRuleExclusion>?>? exclusions;
   /// One or more `override` blocks as defined below.
-  final pulumi.Input<List<FirewallPolicyManagedRuleOverride>>? overrides;
+  final pulumi.Input<List<FirewallPolicyManagedRuleOverride>?>? overrides;
   /// The name of the managed rule to use with this resource.
   final pulumi.Input<String> type;
   /// The version on the managed rule to use with this resource.

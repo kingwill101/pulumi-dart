@@ -9,15 +9,15 @@ import 'stream_input_event_hub_serialization.dart';
 /// {@macro pulumi_streamanalytics_stream_input_event_hub_stream_input_event_hub_args_doc}
 class StreamInputEventHubArgs {
   /// The authentication mode for the Stream Output. Possible values are `Msi` and `ConnectionString`. Defaults to `ConnectionString`.
-  final pulumi.Input<String>? authenticationMode;
+  final pulumi.Input<String?>? authenticationMode;
   /// The name of an Event Hub Consumer Group that should be used to read events from the Event Hub. Specifying distinct consumer group names for multiple inputs allows each of those inputs to receive the same events from the Event Hub. If not set the input will use the Event Hub's default consumer group.
-  final pulumi.Input<String>? eventhubConsumerGroupName;
+  final pulumi.Input<String?>? eventhubConsumerGroupName;
   /// The name of the Event Hub.
   final pulumi.Input<String> eventhubName;
   /// The name of the Stream Input EventHub. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The property the input Event Hub has been partitioned by.
-  final pulumi.Input<String>? partitionKey;
+  final pulumi.Input<String?>? partitionKey;
   /// The name of the Resource Group where the Stream Analytics Job exists. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
   /// A `serialization` block as defined below.
@@ -25,9 +25,9 @@ class StreamInputEventHubArgs {
   /// The namespace that is associated with the desired Event Hub, Service Bus Queue, Service Bus Topic, etc.
   final pulumi.Input<String> servicebusNamespace;
   /// The shared access policy key for the specified shared access policy.
-  final pulumi.Input<String>? sharedAccessPolicyKey;
+  final pulumi.Input<String?>? sharedAccessPolicyKey;
   /// The shared access policy name for the Event Hub, Service Bus Queue, Service Bus Topic, etc.
-  final pulumi.Input<String>? sharedAccessPolicyName;
+  final pulumi.Input<String?>? sharedAccessPolicyName;
   /// The name of the Stream Analytics Job. Changing this forces a new resource to be created.
   final pulumi.Input<String> streamAnalyticsJobName;
 

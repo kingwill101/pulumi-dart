@@ -13,9 +13,9 @@ class ConnectionTypeArgs {
   /// One or more `field` blocks as defined below. Changing this forces a new Automation to be created.
   final pulumi.Input<List<ConnectionTypeField>> fields;
   /// Whether the connection type is global. Changing this forces a new Automation to be created.
-  final pulumi.Input<bool>? isGlobal;
+  final pulumi.Input<bool?>? isGlobal;
   /// The name which should be used for this Automation Connection Type. Changing this forces a new Automation to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the Resource Group where the Automation should exist. Changing this forces a new Automation to be created.
   final pulumi.Input<String> resourceGroupName;
 

@@ -12,15 +12,15 @@ class AutomationArgs {
   /// One or more `action` blocks as defined below. An `action` tells this automation where the data is to be sent to upon being evaluated by the rules in the `source`.
   final pulumi.Input<List<AutomationAction>> actions;
   /// Specifies the description for the Security Center Automation.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Boolean to enable or disable this Security Center Automation. Defaults to `true`.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// The Azure Region where the Security Center Automation should exist. Changing this forces a new Security Center Automation to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name which should be used for this Security Center Automation. Changing this forces a new Security Center Automation to be created.
   ///
   /// &gt; **Note:** For the automation to appear in Azure Portal correctly under Microsoft Defender for Cloud &gt; Environment Settings &gt; Account &gt; Continuous Export, either `ExportToWorkspace` or `ExportToEventHub` must be used.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the Resource Group where the Security Center Automation should exist. Changing this forces a new Security Center Automation to be created.
   final pulumi.Input<String> resourceGroupName;
   /// A list of scopes on which the automation logic is applied, at least one is required. Supported scopes are a subscription (in this format `/subscriptions/00000000-0000-0000-0000-000000000000`) or a resource group under that subscription (in the format `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/example`). The automation will only apply on defined scopes.
@@ -28,7 +28,7 @@ class AutomationArgs {
   /// One or more `source` blocks as defined below. A `source` defines what data types will be processed and a set of rules to filter that data.
   final pulumi.Input<List<AutomationSource>> sources;
   /// A mapping of tags assigned to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [AutomationArgs].
   /// [actions] One or more `action` blocks as defined below. An `action` tells this automation where the data is to be sent to upon being evaluated by the rules in the `source`.

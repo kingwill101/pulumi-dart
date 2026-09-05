@@ -8,9 +8,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_network_network_manager_subscription_connection_network_manager_subscription_connection_args_doc}
 class NetworkManagerSubscriptionConnectionArgs {
   /// A description of the Network Manager Subscription Connection.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Specifies the name which should be used for this Network Subscription Network Manager Connection. Changing this forces a new Network Subscription Network Manager Connection to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specifies the ID of the Network Manager which the Subscription is connected to.
   final pulumi.Input<String> networkManagerId;
   /// Specifies the ID of the target Subscription. Changing this forces a new resource to be created.

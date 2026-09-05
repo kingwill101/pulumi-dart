@@ -2,6 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'project_environment_type_args.dart';
 import 'project_environment_type_identity.dart';
 import 'project_environment_type_state.dart';
+import 'project_environment_type_user_role_assignment.dart';
 
 /// Manages a Dev Center Project Environment Type.
 ///
@@ -176,7 +177,7 @@ import 'project_environment_type_state.dart';
 /// 		}
 /// 		exampleEnvironmentType, err := devcenter.NewEnvironmentType(ctx, "example", &devcenter.EnvironmentTypeArgs{
 /// 			Name:        pulumi.String("example-et"),
-/// 			DevCenterId: exampleDevCenter.ID(),
+/// 			DevCenterId: exampleDevCenter.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -185,7 +186,7 @@ import 'project_environment_type_state.dart';
 /// 			Name:              pulumi.String("example-dcp"),
 /// 			ResourceGroupName: example.Name,
 /// 			Location:          example.Location,
-/// 			DevCenterId:       exampleDevCenter.ID(),
+/// 			DevCenterId:       exampleDevCenter.ID().ToIDOutput().ToStringOutput(),
 /// 		}, pulumi.DependsOn([]pulumi.Resource{
 /// 			exampleEnvironmentType,
 /// 		}))
@@ -195,7 +196,7 @@ import 'project_environment_type_state.dart';
 /// 		_, err = devcenter.NewProjectEnvironmentType(ctx, "example", &devcenter.ProjectEnvironmentTypeArgs{
 /// 			Name:               pulumi.String("example-et"),
 /// 			Location:           example.Location,
-/// 			DevCenterProjectId: exampleProject.ID(),
+/// 			DevCenterProjectId: exampleProject.ID().ToIDOutput().ToStringOutput(),
 /// 			DeploymentTargetId: pulumi.Sprintf("/subscriptions/%v", current.SubscriptionId),
 /// 			Identity: &devcenter.ProjectEnvironmentTypeIdentityArgs{
 /// 				Type: pulumi.String("SystemAssigned"),
@@ -410,7 +411,7 @@ class ProjectEnvironmentType extends pulumi.CustomResource {
   /// A mapping of tags which should be assigned to the Dev Center Project Environment Type.
   late final pulumi.Output<Map<String, String>?> tags;
   /// A `userRoleAssignment` block as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> userRoleAssignments;
+  late final pulumi.Output<List<ProjectEnvironmentTypeUserRoleAssignment>?> userRoleAssignments;
 
   /// Creates a new [ProjectEnvironmentType].
   /// [name] The Pulumi resource name.
@@ -424,16 +425,16 @@ class ProjectEnvironmentType extends pulumi.CustomResource {
           'azure:devcenter/projectEnvironmentType:ProjectEnvironmentType',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
-    creatorRoleAssignmentRoles = registerOutput<List<String>?>('creatorRoleAssignmentRoles');
+    creatorRoleAssignmentRoles = registerOutput<List<String>?>('creatorRoleAssignmentRoles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     deploymentTargetId = registerOutput<String>('deploymentTargetId');
     devCenterProjectId = registerOutput<String>('devCenterProjectId');
     identity = registerOutput<ProjectEnvironmentTypeIdentity>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProjectEnvironmentTypeIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    tags = registerOutput<Map<String, String>?>('tags');
-    userRoleAssignments = registerOutput<List<Map<String, dynamic>>?>('userRoleAssignments');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    userRoleAssignments = registerOutput<List<ProjectEnvironmentTypeUserRoleAssignment>?>('userRoleAssignments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ProjectEnvironmentTypeUserRoleAssignment>(guardedValue, (value) => ProjectEnvironmentTypeUserRoleAssignment.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [ProjectEnvironmentType] resource's state with the given [name] and [id].
@@ -441,11 +442,12 @@ class ProjectEnvironmentType extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ProjectEnvironmentTypeState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ProjectEnvironmentType._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -459,13 +461,32 @@ class ProjectEnvironmentType extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    creatorRoleAssignmentRoles = registerOutput<List<String>?>('creatorRoleAssignmentRoles');
+    creatorRoleAssignmentRoles = registerOutput<List<String>?>('creatorRoleAssignmentRoles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     deploymentTargetId = registerOutput<String>('deploymentTargetId');
     devCenterProjectId = registerOutput<String>('devCenterProjectId');
     identity = registerOutput<ProjectEnvironmentTypeIdentity>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProjectEnvironmentTypeIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    tags = registerOutput<Map<String, String>?>('tags');
-    userRoleAssignments = registerOutput<List<Map<String, dynamic>>?>('userRoleAssignments');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    userRoleAssignments = registerOutput<List<ProjectEnvironmentTypeUserRoleAssignment>?>('userRoleAssignments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ProjectEnvironmentTypeUserRoleAssignment>(guardedValue, (value) => ProjectEnvironmentTypeUserRoleAssignment.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [ProjectEnvironmentType] resource.
+  ProjectEnvironmentType.reference(String urn)
+    : super(
+        'azure:devcenter/projectEnvironmentType:ProjectEnvironmentType',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    creatorRoleAssignmentRoles = registerOutput<List<String>?>('creatorRoleAssignmentRoles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    deploymentTargetId = registerOutput<String>('deploymentTargetId');
+    devCenterProjectId = registerOutput<String>('devCenterProjectId');
+    identity = registerOutput<ProjectEnvironmentTypeIdentity>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProjectEnvironmentTypeIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    userRoleAssignments = registerOutput<List<ProjectEnvironmentTypeUserRoleAssignment>?>('userRoleAssignments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ProjectEnvironmentTypeUserRoleAssignment>(guardedValue, (value) => ProjectEnvironmentTypeUserRoleAssignment.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

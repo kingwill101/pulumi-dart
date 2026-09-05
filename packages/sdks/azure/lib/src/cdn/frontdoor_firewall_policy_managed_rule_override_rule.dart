@@ -17,9 +17,9 @@ class FrontdoorFirewallPolicyManagedRuleOverrideRule {
   /// &gt; **Note:** Setting the `action` field to `JSChallenge` is currently in **PREVIEW**. Please see the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability.
   final pulumi.Input<String> action;
   /// Is the managed rule override enabled or disabled. Defaults to `false`
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// One or more `exclusion` blocks as defined below.
-  final pulumi.Input<List<FrontdoorFirewallPolicyManagedRuleOverrideRuleExclusion>>? exclusions;
+  final pulumi.Input<List<FrontdoorFirewallPolicyManagedRuleOverrideRuleExclusion>?>? exclusions;
   /// Identifier for the managed rule.
   final pulumi.Input<String> ruleId;
 

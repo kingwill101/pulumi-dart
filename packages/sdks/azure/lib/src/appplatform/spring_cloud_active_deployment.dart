@@ -181,7 +181,7 @@ import 'spring_cloud_active_deployment_state.dart';
 /// 		}
 /// 		exampleSpringCloudJavaDeployment, err := appplatform.NewSpringCloudJavaDeployment(ctx, "example", &appplatform.SpringCloudJavaDeploymentArgs{
 /// 			Name:             pulumi.String("deploy1"),
-/// 			SpringCloudAppId: exampleSpringCloudApp.ID(),
+/// 			SpringCloudAppId: exampleSpringCloudApp.ID().ToIDOutput().ToStringOutput(),
 /// 			InstanceCount:    pulumi.Int(2),
 /// 			JvmOptions:       pulumi.String("-XX:+PrintGC"),
 /// 			RuntimeVersion:   pulumi.String("Java_11"),
@@ -197,7 +197,7 @@ import 'spring_cloud_active_deployment_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = appplatform.NewSpringCloudActiveDeployment(ctx, "example", &appplatform.SpringCloudActiveDeploymentArgs{
-/// 			SpringCloudAppId: exampleSpringCloudApp.ID(),
+/// 			SpringCloudAppId: exampleSpringCloudApp.ID().ToIDOutput().ToStringOutput(),
 /// 			DeploymentName:   exampleSpringCloudJavaDeployment.Name,
 /// 		})
 /// 		if err != nil {
@@ -395,7 +395,7 @@ class SpringCloudActiveDeployment extends pulumi.CustomResource {
           'azure:appplatform/springCloudActiveDeployment:SpringCloudActiveDeployment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     deploymentName = registerOutput<String>('deploymentName');
     springCloudAppId = registerOutput<String>('springCloudAppId');
@@ -406,11 +406,12 @@ class SpringCloudActiveDeployment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SpringCloudActiveDeploymentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SpringCloudActiveDeployment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -424,6 +425,19 @@ class SpringCloudActiveDeployment extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    deploymentName = registerOutput<String>('deploymentName');
+    springCloudAppId = registerOutput<String>('springCloudAppId');
+  }
+
+  /// Creates a typed reference to an existing [SpringCloudActiveDeployment] resource.
+  SpringCloudActiveDeployment.reference(String urn)
+    : super(
+        'azure:appplatform/springCloudActiveDeployment:SpringCloudActiveDeployment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     deploymentName = registerOutput<String>('deploymentName');
     springCloudAppId = registerOutput<String>('springCloudAppId');
   }

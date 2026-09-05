@@ -33,7 +33,7 @@ class WindowsWebAppSlotLogsApplicationLogsAzureBlobStorage {
   factory WindowsWebAppSlotLogsApplicationLogsAzureBlobStorage.fromMap(Map<String, dynamic> map) {
     return WindowsWebAppSlotLogsApplicationLogsAzureBlobStorage(
       level: pulumi.Input.fromValue(map['level'] as String),
-      retentionInDays: pulumi.Input.fromValue(map['retentionInDays'] as int),
+      retentionInDays: pulumi.Input.fromValue((map['retentionInDays'] as num).toInt()),
       sasUrl: pulumi.Input.fromValue(map['sasUrl'] as String),
     );
   }

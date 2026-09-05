@@ -117,7 +117,7 @@ import 'linked_service_data_lake_storage_gen2_state.dart';
 /// 		}
 /// 		_, err = datafactory.NewLinkedServiceDataLakeStorageGen2(ctx, "example", &datafactory.LinkedServiceDataLakeStorageGen2Args{
 /// 			Name:                pulumi.String("example"),
-/// 			DataFactoryId:       exampleFactory.ID(),
+/// 			DataFactoryId:       exampleFactory.ID().ToIDOutput().ToStringOutput(),
 /// 			ServicePrincipalId:  pulumi.String(current.ClientId),
 /// 			ServicePrincipalKey: pulumi.String("exampleKey"),
 /// 			Tenant:              pulumi.String("11111111-1111-1111-1111-111111111111"),
@@ -296,18 +296,19 @@ class LinkedServiceDataLakeStorageGen2 extends pulumi.CustomResource {
           'azure:datafactory/linkedServiceDataLakeStorageGen2:LinkedServiceDataLakeStorageGen2',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['servicePrincipalKey', 'storageAccountKey'],
         ) {
-    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
-    annotations = registerOutput<List<String>?>('annotations');
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     dataFactoryId = registerOutput<String>('dataFactoryId');
     description = registerOutput<String?>('description');
     integrationRuntimeName = registerOutput<String?>('integrationRuntimeName');
     this.name = registerOutput<String>('name');
-    parameters = registerOutput<Map<String, String>?>('parameters');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     servicePrincipalId = registerOutput<String?>('servicePrincipalId');
-    servicePrincipalKey = registerOutput<String?>('servicePrincipalKey');
-    storageAccountKey = registerOutput<String?>('storageAccountKey');
+    servicePrincipalKey = registerOutput<String?>('servicePrincipalKey', isSecret: true);
+    storageAccountKey = registerOutput<String?>('storageAccountKey', isSecret: true);
     tenant = registerOutput<String?>('tenant');
     url = registerOutput<String>('url');
     useManagedIdentity = registerOutput<bool?>('useManagedIdentity');
@@ -318,11 +319,12 @@ class LinkedServiceDataLakeStorageGen2 extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LinkedServiceDataLakeStorageGen2State? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LinkedServiceDataLakeStorageGen2._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -336,16 +338,41 @@ class LinkedServiceDataLakeStorageGen2 extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties');
-    annotations = registerOutput<List<String>?>('annotations');
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     dataFactoryId = registerOutput<String>('dataFactoryId');
     description = registerOutput<String?>('description');
     integrationRuntimeName = registerOutput<String?>('integrationRuntimeName');
     this.name = registerOutput<String>('name');
-    parameters = registerOutput<Map<String, String>?>('parameters');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     servicePrincipalId = registerOutput<String?>('servicePrincipalId');
-    servicePrincipalKey = registerOutput<String?>('servicePrincipalKey');
-    storageAccountKey = registerOutput<String?>('storageAccountKey');
+    servicePrincipalKey = registerOutput<String?>('servicePrincipalKey', isSecret: true);
+    storageAccountKey = registerOutput<String?>('storageAccountKey', isSecret: true);
+    tenant = registerOutput<String?>('tenant');
+    url = registerOutput<String>('url');
+    useManagedIdentity = registerOutput<bool?>('useManagedIdentity');
+  }
+
+  /// Creates a typed reference to an existing [LinkedServiceDataLakeStorageGen2] resource.
+  LinkedServiceDataLakeStorageGen2.reference(String urn)
+    : super(
+        'azure:datafactory/linkedServiceDataLakeStorageGen2:LinkedServiceDataLakeStorageGen2',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['servicePrincipalKey', 'storageAccountKey'],
+        isResourceReference: true,
+      ) {
+    additionalProperties = registerOutput<Map<String, String>?>('additionalProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    dataFactoryId = registerOutput<String>('dataFactoryId');
+    description = registerOutput<String?>('description');
+    integrationRuntimeName = registerOutput<String?>('integrationRuntimeName');
+    this.name = registerOutput<String>('name');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    servicePrincipalId = registerOutput<String?>('servicePrincipalId');
+    servicePrincipalKey = registerOutput<String?>('servicePrincipalKey', isSecret: true);
+    storageAccountKey = registerOutput<String?>('storageAccountKey', isSecret: true);
     tenant = registerOutput<String?>('tenant');
     url = registerOutput<String>('url');
     useManagedIdentity = registerOutput<bool?>('useManagedIdentity');

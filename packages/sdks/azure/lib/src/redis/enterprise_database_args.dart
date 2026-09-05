@@ -9,27 +9,27 @@ import 'enterprise_database_module.dart';
 /// {@macro pulumi_redis_enterprise_database_enterprise_database_args_doc}
 class EnterpriseDatabaseArgs {
   /// Specifies whether redis clients can connect using TLS-encrypted or plaintext redis protocols. Possible values are `Encrypted` and `Plaintext`. Defaults to `Encrypted`. Changing this forces a new Redis Enterprise Database to be created.
-  final pulumi.Input<String>? clientProtocol;
+  final pulumi.Input<String?>? clientProtocol;
   /// The resource id of the Redis Enterprise Cluster to deploy this Redis Enterprise Database. Changing this forces a new Redis Enterprise Database to be created.
   final pulumi.Input<String> clusterId;
   /// Clustering policy Specified at create time. Possible values are `EnterpriseCluster` and `OSSCluster`. Defaults to `OSSCluster`. Changing this forces a new Redis Enterprise Database to be created.
-  final pulumi.Input<String>? clusteringPolicy;
+  final pulumi.Input<String?>? clusteringPolicy;
   /// Redis eviction policy possible values are `AllKeysLFU`, `AllKeysLRU`, `AllKeysRandom`, `VolatileLRU`, `VolatileLFU`, `VolatileTTL`, `VolatileRandom` and `NoEviction`. Changing this forces a new Redis Enterprise Database to be created. Defaults to `VolatileLRU`.
-  final pulumi.Input<String>? evictionPolicy;
+  final pulumi.Input<String?>? evictionPolicy;
   /// Nickname of the group of linked databases. Changing this force a new Redis Enterprise Geo Database to be created.
-  final pulumi.Input<String>? linkedDatabaseGroupNickname;
+  final pulumi.Input<String?>? linkedDatabaseGroupNickname;
   /// A list of database resources to link with this database with a maximum of 5.
   ///
   /// &gt; **Note:** Only the newly created databases can be added to an existing geo-replication group. Existing regular databases or recreated databases cannot be added to the existing geo-replication group. Any linked database removed from the list will be forcefully unlinked. The only recommended operation is to delete after force-unlink and the recommended scenario of force-unlink is region outage. The database cannot be linked again after force-unlink.
-  final pulumi.Input<List<String>>? linkedDatabaseIds;
+  final pulumi.Input<List<String>?>? linkedDatabaseIds;
   /// A `module` block as defined below. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** Only `RediSearch` and `RedisJSON` modules are allowed with geo-replication
-  final pulumi.Input<List<EnterpriseDatabaseModule>>? modules;
+  final pulumi.Input<List<EnterpriseDatabaseModule>?>? modules;
   /// The name which should be used for this Redis Enterprise Database. Currently the acceptable value for this argument is `default`. Defaults to `default`. Changing this forces a new Redis Enterprise Database to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// TCP port of the database endpoint. Specified at create time. Defaults to an available port. Changing this forces a new Redis Enterprise Database to be created. Defaults to `10000`.
-  final pulumi.Input<int>? port;
+  final pulumi.Input<int?>? port;
 
   /// Creates a new [EnterpriseDatabaseArgs].
   /// [clientProtocol] Specifies whether redis clients can connect using TLS-encrypted or plaintext redis protocols. Possible values are `Encrypted` and `Plaintext`. Defaults to `Encrypted`. Changing this forces a new Redis Enterprise Database to be created.
@@ -77,7 +77,7 @@ class EnterpriseDatabaseArgs {
       linkedDatabaseIds: (() { final guardedValue = map['linkedDatabaseIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       modules: (() { final guardedValue = map['modules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<EnterpriseDatabaseModule>(guardedValue, (value) => EnterpriseDatabaseModule.fromMap((value as Map).cast<String, dynamic>()))); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
     );
   }
 }

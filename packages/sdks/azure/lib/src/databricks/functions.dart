@@ -153,6 +153,17 @@ Future<GetAccessConnectorResult> getAccessConnector(
   return GetAccessConnectorResult.fromMap(result);
 }
 
+pulumi.Output<GetAccessConnectorResult> getAccessConnectorOutput(
+  GetAccessConnectorArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:databricks/getAccessConnector:getAccessConnector',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAccessConnectorResult.fromMap);
+}
+
 /// Use this data source to access information about an existing Databricks workspace.
 ///
 /// ## Example Usage
@@ -300,6 +311,17 @@ Future<GetWorkspaceResult> getWorkspace(
   return GetWorkspaceResult.fromMap(result);
 }
 
+pulumi.Output<GetWorkspaceResult> getWorkspaceOutput(
+  GetWorkspaceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:databricks/getWorkspace:getWorkspace',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWorkspaceResult.fromMap);
+}
+
 /// Use this data source to access information on an existing Databricks Workspace private endpoint connection state.
 ///
 /// ## Example Usage
@@ -445,4 +467,15 @@ Future<GetWorkspacePrivateEndpointConnectionResult> getWorkspacePrivateEndpointC
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWorkspacePrivateEndpointConnectionResult.fromMap(result);
+}
+
+pulumi.Output<GetWorkspacePrivateEndpointConnectionResult> getWorkspacePrivateEndpointConnectionOutput(
+  GetWorkspacePrivateEndpointConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:databricks/getWorkspacePrivateEndpointConnection:getWorkspacePrivateEndpointConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWorkspacePrivateEndpointConnectionResult.fromMap);
 }

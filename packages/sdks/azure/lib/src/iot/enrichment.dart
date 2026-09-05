@@ -260,7 +260,7 @@ import 'enrichment_state.dart';
 /// 		}
 /// 		exampleEndpointStorageContainer, err := iot.NewEndpointStorageContainer(ctx, "example", &iot.EndpointStorageContainerArgs{
 /// 			ResourceGroupName:       example.Name,
-/// 			IothubId:                exampleIoTHub.ID(),
+/// 			IothubId:                exampleIoTHub.ID().ToIDOutput().ToStringOutput(),
 /// 			Name:                    pulumi.String("example"),
 /// 			ConnectionString:        exampleAccount.PrimaryBlobConnectionString,
 /// 			BatchFrequencyInSeconds: pulumi.Int(60),
@@ -565,9 +565,9 @@ class Enrichment extends pulumi.CustomResource {
           'azure:iot/enrichment:Enrichment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
-    endpointNames = registerOutput<List<String>>('endpointNames');
+    endpointNames = registerOutput<List<String>>('endpointNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     iothubName = registerOutput<String>('iothubName');
     key = registerOutput<String>('key');
     resourceGroupName = registerOutput<String>('resourceGroupName');
@@ -579,11 +579,12 @@ class Enrichment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     EnrichmentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Enrichment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -597,7 +598,23 @@ class Enrichment extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    endpointNames = registerOutput<List<String>>('endpointNames');
+    endpointNames = registerOutput<List<String>>('endpointNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    iothubName = registerOutput<String>('iothubName');
+    key = registerOutput<String>('key');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    value = registerOutput<String>('value');
+  }
+
+  /// Creates a typed reference to an existing [Enrichment] resource.
+  Enrichment.reference(String urn)
+    : super(
+        'azure:iot/enrichment:Enrichment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    endpointNames = registerOutput<List<String>>('endpointNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     iothubName = registerOutput<String>('iothubName');
     key = registerOutput<String>('key');
     resourceGroupName = registerOutput<String>('resourceGroupName');

@@ -6,21 +6,21 @@ import 'data_lake_gen2_filesystem_ace.dart';
 /// Input properties used for looking up and filtering DataLakeGen2Filesystem resources.
 class DataLakeGen2FilesystemState {
   /// One or more `ace` blocks as defined below to specify the entries for the ACL for the path.
-  final pulumi.Input<List<DataLakeGen2FilesystemAce>>? aces;
+  final pulumi.Input<List<DataLakeGen2FilesystemAce>?>? aces;
   /// The default encryption scope to use for this filesystem. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? defaultEncryptionScope;
+  final pulumi.Input<String?>? defaultEncryptionScope;
   /// Specifies the Object ID of the Azure Active Directory Group to make the owning group of the root path (i.e. `/`). Possible values also include `$superuser`.
   ///
   /// &gt; **Note:** The Storage Account requires `accountKind` to be either `StorageV2` or `BlobStorage`. In addition, `isHnsEnabled` has to be set to `true`.
-  final pulumi.Input<String>? group;
+  final pulumi.Input<String?>? group;
   /// The name of the Data Lake Gen2 File System which should be created within the Storage Account. Must be unique within the storage account the queue is located. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specifies the Object ID of the Azure Active Directory User to make the owning user of the root path (i.e. `/`). Possible values also include `$superuser`.
-  final pulumi.Input<String>? owner;
+  final pulumi.Input<String?>? owner;
   /// A mapping of Key to Base64-Encoded Values which should be assigned to this Data Lake Gen2 File System.
-  final pulumi.Input<Map<String, String>>? properties;
+  final pulumi.Input<Map<String, String>?>? properties;
   /// Specifies the ID of the Storage Account in which the Data Lake Gen2 File System should exist. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? storageAccountId;
+  final pulumi.Input<String?>? storageAccountId;
 
   /// Creates a new [DataLakeGen2FilesystemState].
   /// [aces] One or more `ace` blocks as defined below to specify the entries for the ACL for the path.

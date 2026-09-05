@@ -7,11 +7,11 @@ import 'role_management_policy_notification_rules_eligible_activations_assignee_
 
 class RoleManagementPolicyNotificationRulesEligibleActivations {
   /// Admin notification settings
-  final pulumi.Input<RoleManagementPolicyNotificationRulesEligibleActivationsAdminNotifications>? adminNotifications;
+  final pulumi.Input<RoleManagementPolicyNotificationRulesEligibleActivationsAdminNotifications?>? adminNotifications;
   /// Approver notification settings
-  final pulumi.Input<RoleManagementPolicyNotificationRulesEligibleActivationsApproverNotifications>? approverNotifications;
+  final pulumi.Input<RoleManagementPolicyNotificationRulesEligibleActivationsApproverNotifications?>? approverNotifications;
   /// Assignee notification settings
-  final pulumi.Input<RoleManagementPolicyNotificationRulesEligibleActivationsAssigneeNotifications>? assigneeNotifications;
+  final pulumi.Input<RoleManagementPolicyNotificationRulesEligibleActivationsAssigneeNotifications?>? assigneeNotifications;
 
   /// Creates a new [RoleManagementPolicyNotificationRulesEligibleActivations].
   /// [adminNotifications] Admin notification settings

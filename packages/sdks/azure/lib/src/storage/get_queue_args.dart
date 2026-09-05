@@ -8,15 +8,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_storage_get_queue_get_queue_args_doc}
 class GetQueueArgs {
   /// A mapping of MetaData for this Queue.
-  final pulumi.Input<Map<String, String>>? metadata;
+  final pulumi.Input<Map<String, String>?>? metadata;
   /// The name of the Queue.
   final pulumi.Input<String> name;
   /// The name of the Storage Account where the Queue exists. This property will become Required in version 5.0 of the Provider.
   ///
   /// &gt; **Note:** One of `storageAccountName` or `storageAccountId` must be specified. When specifying `storageAccountId` the resource will use the Resource Manager API, rather than the Data Plane API.
-  final pulumi.Input<String>? storageAccountId;
+  final pulumi.Input<String?>? storageAccountId;
   /// The name of the Storage Account where the Queue exists. This property is deprecated in favour of `storageAccountId`.
-  final pulumi.Input<String>? storageAccountName;
+  final pulumi.Input<String?>? storageAccountName;
 
   /// Creates a new [GetQueueArgs].
   /// [metadata] A mapping of MetaData for this Queue.

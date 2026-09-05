@@ -16,13 +16,13 @@ class IdentityProviderAadb2cArgs {
   /// Client ID of the Application in your B2C tenant.
   final pulumi.Input<String> clientId;
   /// The client library to be used in the Azure AD B2C Identity Provider.
-  final pulumi.Input<String>? clientLibrary;
+  final pulumi.Input<String?>? clientLibrary;
   /// Client secret of the Application in your B2C tenant.
   final pulumi.Input<String> clientSecret;
   /// Password reset Policy Name.
-  final pulumi.Input<String>? passwordResetPolicy;
+  final pulumi.Input<String?>? passwordResetPolicy;
   /// Profile editing Policy Name.
-  final pulumi.Input<String>? profileEditingPolicy;
+  final pulumi.Input<String?>? profileEditingPolicy;
   /// The Name of the Resource Group where the API Management Service exists. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
   /// Signin Policy Name.

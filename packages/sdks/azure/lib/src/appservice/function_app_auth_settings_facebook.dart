@@ -8,7 +8,7 @@ class FunctionAppAuthSettingsFacebook {
   /// The App Secret of the Facebook app used for Facebook login.
   final pulumi.Input<String> appSecret;
   /// The OAuth 2.0 scopes that will be requested as part of Facebook login authentication. &lt;https://developers.facebook.com/docs/facebook-login&gt;
-  final pulumi.Input<List<String>>? oauthScopes;
+  final pulumi.Input<List<String>?>? oauthScopes;
 
   /// Creates a new [FunctionAppAuthSettingsFacebook].
   /// [appId] The App ID of the Facebook app used for login

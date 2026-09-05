@@ -11,43 +11,43 @@ import 'app_template.dart';
 /// Input properties used for looking up and filtering App resources.
 class AppState {
   /// The ID of the Container App Environment within which this Container App should exist. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? containerAppEnvironmentId;
+  final pulumi.Input<String?>? containerAppEnvironmentId;
   /// The ID of the Custom Domain Verification for this Container App.
-  final pulumi.Input<String>? customDomainVerificationId;
+  final pulumi.Input<String?>? customDomainVerificationId;
   /// A `dapr` block as detailed below.
-  final pulumi.Input<AppDapr>? dapr;
+  final pulumi.Input<AppDapr?>? dapr;
   /// An `identity` block as detailed below.
-  final pulumi.Input<AppIdentity>? identity;
+  final pulumi.Input<AppIdentity?>? identity;
   /// An `ingress` block as detailed below.
-  final pulumi.Input<AppIngress>? ingress;
+  final pulumi.Input<AppIngress?>? ingress;
   /// The FQDN of the Latest Revision of the Container App.
-  final pulumi.Input<String>? latestRevisionFqdn;
+  final pulumi.Input<String?>? latestRevisionFqdn;
   /// The name of the latest Container Revision.
-  final pulumi.Input<String>? latestRevisionName;
+  final pulumi.Input<String?>? latestRevisionName;
   /// The location this Container App is deployed in. This is the same as the Environment in which it is deployed.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The maximum of inactive revisions allowed for this Container App.
-  final pulumi.Input<int>? maxInactiveRevisions;
+  final pulumi.Input<int?>? maxInactiveRevisions;
   /// The name for this Container App. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A list of the Public IP Addresses which the Container App uses for outbound network access.
-  final pulumi.Input<List<String>>? outboundIpAddresses;
+  final pulumi.Input<List<String>?>? outboundIpAddresses;
   /// A `registry` block as detailed below.
-  final pulumi.Input<List<AppRegistry>>? registries;
+  final pulumi.Input<List<AppRegistry>?>? registries;
   /// The name of the resource group in which the Container App Environment is to be created. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// The revisions operational mode for the Container App. Possible values include `Single` and `Multiple`. In `Single` mode, a single revision is in operation at any given time. In `Multiple` mode, more than one revision can be active at a time and can be configured with load distribution via the `trafficWeight` block in the `ingress` configuration.
-  final pulumi.Input<String>? revisionMode;
+  final pulumi.Input<String?>? revisionMode;
   /// One or more `secret` block as detailed below.
-  final pulumi.Input<List<AppSecret>>? secrets;
+  final pulumi.Input<List<AppSecret>?>? secrets;
   /// A mapping of tags to assign to the Container App.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A `template` block as detailed below.
-  final pulumi.Input<AppTemplate>? template;
+  final pulumi.Input<AppTemplate?>? template;
   /// The name of the Workload Profile in the Container App Environment to place this Container App.
   ///
   /// &gt; **Note:** Omit this value to use the default `Consumption` Workload Profile.
-  final pulumi.Input<String>? workloadProfileName;
+  final pulumi.Input<String?>? workloadProfileName;
 
   /// Creates a new [AppState].
   /// [containerAppEnvironmentId] The ID of the Container App Environment within which this Container App should exist. Changing this forces a new resource to be created.
@@ -122,7 +122,7 @@ class AppState {
       latestRevisionFqdn: (() { final guardedValue = map['latestRevisionFqdn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       latestRevisionName: (() { final guardedValue = map['latestRevisionName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      maxInactiveRevisions: (() { final guardedValue = map['maxInactiveRevisions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxInactiveRevisions: (() { final guardedValue = map['maxInactiveRevisions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       outboundIpAddresses: (() { final guardedValue = map['outboundIpAddresses']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       registries: (() { final guardedValue = map['registries']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AppRegistry>(guardedValue, (value) => AppRegistry.fromMap((value as Map).cast<String, dynamic>()))); })(),

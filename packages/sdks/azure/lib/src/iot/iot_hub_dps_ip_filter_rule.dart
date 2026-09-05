@@ -10,7 +10,7 @@ class IotHubDpsIpFilterRule {
   /// The name of the filter.
   final pulumi.Input<String> name;
   /// Target for requests captured by this rule. Possible values are `all`, `deviceApi` and `serviceApi`.
-  final pulumi.Input<String>? target;
+  final pulumi.Input<String?>? target;
 
   /// Creates a new [IotHubDpsIpFilterRule].
   /// [action] The desired action for requests captured by this rule. Possible values are `Accept`, `Reject`

@@ -5,23 +5,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering GrafanaManagedPrivateEndpoint resources.
 class GrafanaManagedPrivateEndpointState {
   /// The id of the associated managed Grafana. Changing this forces a new Dashboard Grafana Managed Private Endpoint to be created.
-  final pulumi.Input<String>? grafanaId;
+  final pulumi.Input<String?>? grafanaId;
   /// Specifies a list of private link group IDs. The value of this will depend on the private link resource to which you are connecting. Changing this forces a new Dashboard Grafana Managed Private Endpoint to be created.
-  final pulumi.Input<List<String>>? groupIds;
+  final pulumi.Input<List<String>?>? groupIds;
   /// The Azure Region where the Dashboard Grafana Managed Private Endpoint should exist. Changing this forces a new Dashboard Grafana Managed Private Endpoint to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name which should be used for this Dashboard Grafana Managed Private Endpoint. Must be between 2 and 20 alphanumeric characters or dashes, must begin with letter and end with a letter or number. Changing this forces a new Dashboard Grafana Managed Private Endpoint to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the resource to which this Dashboard Grafana Managed Private Endpoint will connect. Changing this forces a new Dashboard Grafana Managed Private Endpoint to be created.
-  final pulumi.Input<String>? privateLinkResourceId;
+  final pulumi.Input<String?>? privateLinkResourceId;
   /// The region in which to create the private link. Changing this forces a new Dashboard Grafana Managed Private Endpoint to be created.
-  final pulumi.Input<String>? privateLinkResourceRegion;
+  final pulumi.Input<String?>? privateLinkResourceRegion;
   /// A domain name for this endpoint to be used within Grafana. Must be just a domain, without schema, and with at least three parts.
-  final pulumi.Input<String>? privateLinkServiceUrl;
+  final pulumi.Input<String?>? privateLinkServiceUrl;
   /// A message to provide in the request which will be seen by approvers.
-  final pulumi.Input<String>? requestMessage;
+  final pulumi.Input<String?>? requestMessage;
   /// A mapping of tags which should be assigned to the Dashboard Grafana Managed Private Endpoint.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GrafanaManagedPrivateEndpointState].
   /// [grafanaId] The id of the associated managed Grafana. Changing this forces a new Dashboard Grafana Managed Private Endpoint to be created.

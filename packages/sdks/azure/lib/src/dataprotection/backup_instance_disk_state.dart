@@ -5,21 +5,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering BackupInstanceDisk resources.
 class BackupInstanceDiskState {
   /// The ID of the Backup Policy.
-  final pulumi.Input<String>? backupPolicyId;
+  final pulumi.Input<String?>? backupPolicyId;
   /// The ID of the source Disk. Changing this forces a new Backup Instance Disk to be created.
-  final pulumi.Input<String>? diskId;
+  final pulumi.Input<String?>? diskId;
   /// The Azure Region where the Backup Instance Disk should exist. Changing this forces a new Backup Instance Disk to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name which should be used for this Backup Instance Disk. Changing this forces a new Backup Instance Disk to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The protection state of the Backup Instance Disk.
-  final pulumi.Input<String>? protectionState;
+  final pulumi.Input<String?>? protectionState;
   /// The name of the Resource Group where snapshots are stored. Changing this forces a new Backup Instance Disk to be created.
-  final pulumi.Input<String>? snapshotResourceGroupName;
+  final pulumi.Input<String?>? snapshotResourceGroupName;
   /// The subscription ID of the Resource Group where snapshots are stored. The default value is the subscription ID of the Backup Vault. Changing this forces a new Backup Instance Disk to be created.
-  final pulumi.Input<String>? snapshotSubscriptionId;
+  final pulumi.Input<String?>? snapshotSubscriptionId;
   /// The ID of the Backup Vault within which the Backup Instance Disk should exist. Changing this forces a new Backup Instance Disk to be created.
-  final pulumi.Input<String>? vaultId;
+  final pulumi.Input<String?>? vaultId;
 
   /// Creates a new [BackupInstanceDiskState].
   /// [backupPolicyId] The ID of the Backup Policy.

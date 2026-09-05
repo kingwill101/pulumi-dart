@@ -6,9 +6,9 @@ import 'diagnostic_frontend_request_data_masking_query_param.dart';
 
 class DiagnosticFrontendRequestDataMasking {
   /// A `headers` block as defined below.
-  final pulumi.Input<List<DiagnosticFrontendRequestDataMaskingHeader>>? headers;
+  final pulumi.Input<List<DiagnosticFrontendRequestDataMaskingHeader>?>? headers;
   /// A `queryParams` block as defined below.
-  final pulumi.Input<List<DiagnosticFrontendRequestDataMaskingQueryParam>>? queryParams;
+  final pulumi.Input<List<DiagnosticFrontendRequestDataMaskingQueryParam>?>? queryParams;
 
   /// Creates a new [DiagnosticFrontendRequestDataMasking].
   /// [headers] A `headers` block as defined below.

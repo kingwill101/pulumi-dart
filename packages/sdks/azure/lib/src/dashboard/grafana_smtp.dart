@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GrafanaSmtp {
   /// Whether to enable the smtp setting of the Grafana instance. Defaults to `false`.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// Address used when sending emails.
   final pulumi.Input<String> fromAddress;
   /// Name used when sending emails. Defaults to `Azure Managed Grafana Notification`.
-  final pulumi.Input<String>? fromName;
+  final pulumi.Input<String?>? fromName;
   /// SMTP server hostname with port, e.g. test.email.net:587
   final pulumi.Input<String> host;
   /// Password of SMTP authentication.
@@ -18,7 +18,7 @@ class GrafanaSmtp {
   /// User of SMTP authentication.
   final pulumi.Input<String> user;
   /// Whether verify SSL for SMTP server. Defaults to `false`.
-  final pulumi.Input<bool>? verificationSkipEnabled;
+  final pulumi.Input<bool?>? verificationSkipEnabled;
 
   /// Creates a new [GrafanaSmtp].
   /// [enabled] Whether to enable the smtp setting of the Grafana instance. Defaults to `false`.

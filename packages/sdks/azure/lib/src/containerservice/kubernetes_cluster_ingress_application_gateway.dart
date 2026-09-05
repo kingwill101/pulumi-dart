@@ -5,21 +5,21 @@ import 'kubernetes_cluster_ingress_application_gateway_ingress_application_gatew
 
 class KubernetesClusterIngressApplicationGateway {
   /// The ID of the Application Gateway associated with the ingress controller deployed to this Kubernetes Cluster.
-  final pulumi.Input<String>? effectiveGatewayId;
+  final pulumi.Input<String?>? effectiveGatewayId;
   /// The ID of the Application Gateway to integrate with the ingress controller of this Kubernetes Cluster. See [this](https://docs.microsoft.com/azure/application-gateway/tutorial-ingress-controller-add-on-existing) page for further details.
-  final pulumi.Input<String>? gatewayId;
+  final pulumi.Input<String?>? gatewayId;
   /// The name of the Application Gateway to be used or created in the Nodepool Resource Group, which in turn will be integrated with the ingress controller of this Kubernetes Cluster. See [this](https://docs.microsoft.com/azure/application-gateway/tutorial-ingress-controller-add-on-new) page for further details.
-  final pulumi.Input<String>? gatewayName;
+  final pulumi.Input<String?>? gatewayName;
   /// An `ingressApplicationGatewayIdentity` block is exported. The exported attributes are defined below.
-  final pulumi.Input<List<KubernetesClusterIngressApplicationGatewayIngressApplicationGatewayIdentity>>? ingressApplicationGatewayIdentities;
+  final pulumi.Input<List<KubernetesClusterIngressApplicationGatewayIngressApplicationGatewayIdentity>?>? ingressApplicationGatewayIdentities;
   /// The subnet CIDR to be used to create an Application Gateway, which in turn will be integrated with the ingress controller of this Kubernetes Cluster. See [this](https://docs.microsoft.com/azure/application-gateway/tutorial-ingress-controller-add-on-new) page for further details.
-  final pulumi.Input<String>? subnetCidr;
+  final pulumi.Input<String?>? subnetCidr;
   /// The ID of the subnet on which to create an Application Gateway, which in turn will be integrated with the ingress controller of this Kubernetes Cluster. See [this](https://docs.microsoft.com/azure/application-gateway/tutorial-ingress-controller-add-on-new) page for further details.
   ///
   /// &gt; **Note:** Exactly one of `gatewayId`, `subnetId` or `subnetCidr` must be specified.
   ///
   /// &gt; **Note:** If specifying `ingressApplicationGateway` in conjunction with `onlyCriticalAddonsEnabled`, the AGIC pod will fail to start. A separate `azure.containerservice.KubernetesClusterNodePool` is required to run the AGIC pod successfully. This is because AGIC is classed as a "non-critical addon".
-  final pulumi.Input<String>? subnetId;
+  final pulumi.Input<String?>? subnetId;
 
   /// Creates a new [KubernetesClusterIngressApplicationGateway].
   /// [effectiveGatewayId] The ID of the Application Gateway associated with the ingress controller deployed to this Kubernetes Cluster.

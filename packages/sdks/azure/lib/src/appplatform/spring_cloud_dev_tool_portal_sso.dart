@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SpringCloudDevToolPortalSso {
   /// Specifies the public identifier for the application.
-  final pulumi.Input<String>? clientId;
+  final pulumi.Input<String?>? clientId;
   /// Specifies the secret known only to the application and the authorization server.
-  final pulumi.Input<String>? clientSecret;
+  final pulumi.Input<String?>? clientSecret;
   /// Specifies the URI of a JSON file with generic OIDC provider configuration.
-  final pulumi.Input<String>? metadataUrl;
+  final pulumi.Input<String?>? metadataUrl;
   /// Specifies a list of specific actions applications can be allowed to do on a user's behalf.
-  final pulumi.Input<List<String>>? scopes;
+  final pulumi.Input<List<String>?>? scopes;
 
   /// Creates a new [SpringCloudDevToolPortalSso].
   /// [clientId] Specifies the public identifier for the application.

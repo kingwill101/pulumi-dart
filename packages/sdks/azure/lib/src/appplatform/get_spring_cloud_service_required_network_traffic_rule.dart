@@ -43,7 +43,7 @@ class GetSpringCloudServiceRequiredNetworkTrafficRule {
       direction: pulumi.Input.fromValue(map['direction'] as String),
       fqdns: pulumi.Input.fromValue((map['fqdns'] as List).cast<String>()),
       ipAddresses: pulumi.Input.fromValue((map['ipAddresses'] as List).cast<String>()),
-      port: pulumi.Input.fromValue(map['port'] as int),
+      port: pulumi.Input.fromValue((map['port'] as num).toInt()),
       protocol: pulumi.Input.fromValue(map['protocol'] as String),
     );
   }

@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'security_solution_additional_workspace.dart';
 import 'security_solution_args.dart';
 import 'security_solution_recommendations_enabled.dart';
 import 'security_solution_state.dart';
@@ -131,7 +132,7 @@ import 'security_solution_state.dart';
 /// 			Location:          example.Location,
 /// 			DisplayName:       pulumi.String("Iot Security Solution"),
 /// 			IothubIds: pulumi.StringArray{
-/// 				exampleIoTHub.ID(),
+/// 				exampleIoTHub.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -262,7 +263,7 @@ import 'security_solution_state.dart';
 /// ```
 class SecuritySolution extends pulumi.CustomResource {
   /// A `additionalWorkspace` block as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> additionalWorkspaces;
+  late final pulumi.Output<List<SecuritySolutionAdditionalWorkspace>?> additionalWorkspaces;
   /// A list of disabled data sources for the Iot Security Solution. Possible value is `TwinData`.
   late final pulumi.Output<List<String>?> disabledDataSources;
   /// Specifies the Display Name for this Iot Security Solution.
@@ -304,23 +305,23 @@ class SecuritySolution extends pulumi.CustomResource {
           'azure:iot/securitySolution:SecuritySolution',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
-    additionalWorkspaces = registerOutput<List<Map<String, dynamic>>?>('additionalWorkspaces');
-    disabledDataSources = registerOutput<List<String>?>('disabledDataSources');
+    additionalWorkspaces = registerOutput<List<SecuritySolutionAdditionalWorkspace>?>('additionalWorkspaces', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SecuritySolutionAdditionalWorkspace>(guardedValue, (value) => SecuritySolutionAdditionalWorkspace.fromMap((value as Map).cast<String, dynamic>())); });
+    disabledDataSources = registerOutput<List<String>?>('disabledDataSources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     displayName = registerOutput<String>('displayName');
     enabled = registerOutput<bool?>('enabled');
-    eventsToExports = registerOutput<List<String>?>('eventsToExports');
-    iothubIds = registerOutput<List<String>>('iothubIds');
+    eventsToExports = registerOutput<List<String>?>('eventsToExports', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    iothubIds = registerOutput<List<String>>('iothubIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     location = registerOutput<String>('location');
     logAnalyticsWorkspaceId = registerOutput<String?>('logAnalyticsWorkspaceId');
     logUnmaskedIpsEnabled = registerOutput<bool?>('logUnmaskedIpsEnabled');
     this.name = registerOutput<String>('name');
     queryForResources = registerOutput<String>('queryForResources');
-    querySubscriptionIds = registerOutput<List<String>>('querySubscriptionIds');
+    querySubscriptionIds = registerOutput<List<String>>('querySubscriptionIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     recommendationsEnabled = registerOutput<SecuritySolutionRecommendationsEnabled>('recommendationsEnabled', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecuritySolutionRecommendationsEnabled.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [SecuritySolution] resource's state with the given [name] and [id].
@@ -328,11 +329,12 @@ class SecuritySolution extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SecuritySolutionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SecuritySolution._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -346,20 +348,46 @@ class SecuritySolution extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    additionalWorkspaces = registerOutput<List<Map<String, dynamic>>?>('additionalWorkspaces');
-    disabledDataSources = registerOutput<List<String>?>('disabledDataSources');
+    additionalWorkspaces = registerOutput<List<SecuritySolutionAdditionalWorkspace>?>('additionalWorkspaces', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SecuritySolutionAdditionalWorkspace>(guardedValue, (value) => SecuritySolutionAdditionalWorkspace.fromMap((value as Map).cast<String, dynamic>())); });
+    disabledDataSources = registerOutput<List<String>?>('disabledDataSources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     displayName = registerOutput<String>('displayName');
     enabled = registerOutput<bool?>('enabled');
-    eventsToExports = registerOutput<List<String>?>('eventsToExports');
-    iothubIds = registerOutput<List<String>>('iothubIds');
+    eventsToExports = registerOutput<List<String>?>('eventsToExports', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    iothubIds = registerOutput<List<String>>('iothubIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     location = registerOutput<String>('location');
     logAnalyticsWorkspaceId = registerOutput<String?>('logAnalyticsWorkspaceId');
     logUnmaskedIpsEnabled = registerOutput<bool?>('logUnmaskedIpsEnabled');
     this.name = registerOutput<String>('name');
     queryForResources = registerOutput<String>('queryForResources');
-    querySubscriptionIds = registerOutput<List<String>>('querySubscriptionIds');
+    querySubscriptionIds = registerOutput<List<String>>('querySubscriptionIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     recommendationsEnabled = registerOutput<SecuritySolutionRecommendationsEnabled>('recommendationsEnabled', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecuritySolutionRecommendationsEnabled.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [SecuritySolution] resource.
+  SecuritySolution.reference(String urn)
+    : super(
+        'azure:iot/securitySolution:SecuritySolution',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    additionalWorkspaces = registerOutput<List<SecuritySolutionAdditionalWorkspace>?>('additionalWorkspaces', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SecuritySolutionAdditionalWorkspace>(guardedValue, (value) => SecuritySolutionAdditionalWorkspace.fromMap((value as Map).cast<String, dynamic>())); });
+    disabledDataSources = registerOutput<List<String>?>('disabledDataSources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    displayName = registerOutput<String>('displayName');
+    enabled = registerOutput<bool?>('enabled');
+    eventsToExports = registerOutput<List<String>?>('eventsToExports', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    iothubIds = registerOutput<List<String>>('iothubIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    location = registerOutput<String>('location');
+    logAnalyticsWorkspaceId = registerOutput<String?>('logAnalyticsWorkspaceId');
+    logUnmaskedIpsEnabled = registerOutput<bool?>('logUnmaskedIpsEnabled');
+    this.name = registerOutput<String>('name');
+    queryForResources = registerOutput<String>('queryForResources');
+    querySubscriptionIds = registerOutput<List<String>>('querySubscriptionIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    recommendationsEnabled = registerOutput<SecuritySolutionRecommendationsEnabled>('recommendationsEnabled', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecuritySolutionRecommendationsEnabled.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

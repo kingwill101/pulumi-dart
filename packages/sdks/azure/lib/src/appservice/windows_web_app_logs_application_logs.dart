@@ -5,7 +5,7 @@ import 'windows_web_app_logs_application_logs_azure_blob_storage.dart';
 
 class WindowsWebAppLogsApplicationLogs {
   /// An `azureBlobStorage` block as defined below.
-  final pulumi.Input<WindowsWebAppLogsApplicationLogsAzureBlobStorage>? azureBlobStorage;
+  final pulumi.Input<WindowsWebAppLogsApplicationLogsAzureBlobStorage?>? azureBlobStorage;
   /// Log level. Possible values include: `Off`, `Verbose`, `Information`, `Warning`, and `Error`.
   final pulumi.Input<String> fileSystemLevel;
 

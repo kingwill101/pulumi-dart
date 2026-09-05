@@ -55,7 +55,7 @@ import 'get_provider_result.dart';
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		example, err := azurerm.Attestation(ctx, map[string]interface{}{
+/// 		example, err := azurerm.Attestation(ctx, map[string]string{
 /// 			"name":              "example-attestationprovider",
 /// 			"resourceGroupName": "example-resource-group",
 /// 		}, nil)
@@ -138,4 +138,15 @@ Future<GetProviderResult> getProvider(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetProviderResult.fromMap(result);
+}
+
+pulumi.Output<GetProviderResult> getProviderOutput(
+  GetProviderArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure:attestation/getProvider:getProvider',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetProviderResult.fromMap);
 }

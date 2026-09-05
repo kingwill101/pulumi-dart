@@ -9,24 +9,24 @@ import 'vpn_server_configuration_radius.dart';
 
 /// Input properties used for looking up and filtering VpnServerConfiguration resources.
 class VpnServerConfigurationState {
-  final pulumi.Input<List<VpnServerConfigurationAzureActiveDirectoryAuthentication>>? azureActiveDirectoryAuthentications;
-  final pulumi.Input<List<VpnServerConfigurationClientRevokedCertificate>>? clientRevokedCertificates;
-  final pulumi.Input<List<VpnServerConfigurationClientRootCertificate>>? clientRootCertificates;
+  final pulumi.Input<List<VpnServerConfigurationAzureActiveDirectoryAuthentication>?>? azureActiveDirectoryAuthentications;
+  final pulumi.Input<List<VpnServerConfigurationClientRevokedCertificate>?>? clientRevokedCertificates;
+  final pulumi.Input<List<VpnServerConfigurationClientRootCertificate>?>? clientRootCertificates;
   /// A `ipsecPolicy` block as defined below.
-  final pulumi.Input<VpnServerConfigurationIpsecPolicy>? ipsecPolicy;
+  final pulumi.Input<VpnServerConfigurationIpsecPolicy?>? ipsecPolicy;
   /// The Azure location where this VPN Server Configuration should be created. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The Name which should be used for this VPN Server Configuration. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
-  final pulumi.Input<VpnServerConfigurationRadius>? radius;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<VpnServerConfigurationRadius?>? radius;
   /// The Name of the Resource Group in which this VPN Server Configuration should be created. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// A mapping of tags to assign to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A list of Authentication Types applicable for this VPN Server Configuration. Possible values are `AAD` (Azure Active Directory), `Certificate` and `Radius`.
-  final pulumi.Input<List<String>>? vpnAuthenticationTypes;
+  final pulumi.Input<List<String>?>? vpnAuthenticationTypes;
   /// A list of VPN Protocols to use for this Server Configuration. Possible values are `IkeV2` and `OpenVPN`.
-  final pulumi.Input<List<String>>? vpnProtocols;
+  final pulumi.Input<List<String>?>? vpnProtocols;
 
   /// Creates a new [VpnServerConfigurationState].
   /// [azureActiveDirectoryAuthentications] Optional.

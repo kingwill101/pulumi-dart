@@ -11,43 +11,43 @@ class VirtualNetworkState {
   /// The address space that is used the virtual network. You can supply more than one address space.
   ///
   /// &gt; **Note:** Exactly one of `addressSpace` or `ipAddressPool` must be specified.
-  final pulumi.Input<List<String>>? addressSpaces;
+  final pulumi.Input<List<String>?>? addressSpaces;
   /// The BGP community attribute in format `&lt;as-number&gt;:&lt;community-value&gt;`.
   ///
   /// &gt; **NOTE** The `as-number` segment is the Microsoft ASN, which is always `12076` for now.
-  final pulumi.Input<String>? bgpCommunity;
+  final pulumi.Input<String?>? bgpCommunity;
   /// A `ddosProtectionPlan` block as documented below.
-  final pulumi.Input<VirtualNetworkDdosProtectionPlan>? ddosProtectionPlan;
+  final pulumi.Input<VirtualNetworkDdosProtectionPlan?>? ddosProtectionPlan;
   /// List of IP addresses of DNS servers
   ///
   /// &gt; **NOTE** Since `dnsServers` can be configured both inline and via the separate `azure.network.VirtualNetworkDnsServers` resource, we have to explicitly set it to empty slice (`[]`) to remove it.
-  final pulumi.Input<List<String>>? dnsServers;
+  final pulumi.Input<List<String>?>? dnsServers;
   /// Specifies the Edge Zone within the Azure Region where this Virtual Network should exist. Changing this forces a new Virtual Network to be created.
-  final pulumi.Input<String>? edgeZone;
+  final pulumi.Input<String?>? edgeZone;
   /// A `encryption` block as defined below.
-  final pulumi.Input<VirtualNetworkEncryption>? encryption;
+  final pulumi.Input<VirtualNetworkEncryption?>? encryption;
   /// The flow timeout in minutes for the Virtual Network, which is used to enable connection tracking for intra-VM flows. Possible values are between `4` and `30` minutes.
-  final pulumi.Input<int>? flowTimeoutInMinutes;
+  final pulumi.Input<int?>? flowTimeoutInMinutes;
   /// The GUID of the Virtual Network.
-  final pulumi.Input<String>? guid;
+  final pulumi.Input<String?>? guid;
   /// One or more `ipAddressPool` blocks as defined below. Only one association of each IP type(IPv4 or IPv6) is allowed.
   ///
   /// &gt; **Note:** Exactly one of `addressSpace` or `ipAddressPool` must be specified.
-  final pulumi.Input<List<VirtualNetworkIpAddressPool>>? ipAddressPools;
+  final pulumi.Input<List<VirtualNetworkIpAddressPool>?>? ipAddressPools;
   /// The location/region where the virtual network is created. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the virtual network. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The Private Endpoint VNet Policies for the Virtual Network. Possible values are `Disabled` and `Basic`. Defaults to `Disabled`.
-  final pulumi.Input<String>? privateEndpointVnetPolicies;
+  final pulumi.Input<String?>? privateEndpointVnetPolicies;
   /// The name of the resource group in which to create the virtual network. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// Can be specified multiple times to define multiple subnets. Each `subnet` block supports fields documented below.
   ///
   /// &gt; **NOTE** Since `subnet` can be configured both inline and via the separate `azure.network.Subnet` resource, we have to explicitly set it to empty slice (`[]`) to remove it.
-  final pulumi.Input<List<VirtualNetworkSubnet>>? subnets;
+  final pulumi.Input<List<VirtualNetworkSubnet>?>? subnets;
   /// A mapping of tags to assign to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [VirtualNetworkState].
   /// [addressSpaces] The address space that is used the virtual network. You can supply more than one address space.
@@ -111,7 +111,7 @@ class VirtualNetworkState {
       dnsServers: (() { final guardedValue = map['dnsServers']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       edgeZone: (() { final guardedValue = map['edgeZone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       encryption: (() { final guardedValue = map['encryption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VirtualNetworkEncryption.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      flowTimeoutInMinutes: (() { final guardedValue = map['flowTimeoutInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      flowTimeoutInMinutes: (() { final guardedValue = map['flowTimeoutInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       guid: (() { final guardedValue = map['guid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ipAddressPools: (() { final guardedValue = map['ipAddressPools']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<VirtualNetworkIpAddressPool>(guardedValue, (value) => VirtualNetworkIpAddressPool.fromMap((value as Map).cast<String, dynamic>()))); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

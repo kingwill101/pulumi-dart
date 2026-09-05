@@ -5,19 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering EnvironmentStorage resources.
 class EnvironmentStorageState {
   /// The Storage Account Access Key.
-  final pulumi.Input<String>? accessKey;
+  final pulumi.Input<String?>? accessKey;
   /// The access mode to connect this storage to the Container App. Possible values include `ReadOnly` and `ReadWrite`. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? accessMode;
+  final pulumi.Input<String?>? accessMode;
   /// The Azure Storage Account in which the Share to be used is located. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? accountName;
+  final pulumi.Input<String?>? accountName;
   /// The ID of the Container App Environment to which this storage belongs. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? containerAppEnvironmentId;
+  final pulumi.Input<String?>? containerAppEnvironmentId;
   /// The name for this Container App Environment Storage. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The NFS server to use for the Azure File Share, the format will be `yourstorageaccountname.file.core.windows.net`. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? nfsServerUrl;
+  final pulumi.Input<String?>? nfsServerUrl;
   /// The name of the Azure Storage Share to use. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? shareName;
+  final pulumi.Input<String?>? shareName;
 
   /// Creates a new [EnvironmentStorageState].
   /// [accessKey] The Storage Account Access Key.

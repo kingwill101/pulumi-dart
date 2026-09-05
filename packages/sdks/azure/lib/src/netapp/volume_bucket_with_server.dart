@@ -411,7 +411,7 @@ import 'volume_bucket_with_server_state.dart';
 /// 			PoolName:          examplePool.Name,
 /// 			VolumePath:        pulumi.String("example-vol"),
 /// 			ServiceLevel:      pulumi.String("Standard"),
-/// 			SubnetId:          exampleSubnet.ID(),
+/// 			SubnetId:          exampleSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 			StorageQuotaInGb:  pulumi.Int(100),
 /// 			Protocols: pulumi.StringArray{
 /// 				pulumi.String("NFSv3"),
@@ -429,8 +429,8 @@ import 'volume_bucket_with_server_state.dart';
 /// 		}
 /// 		bucketSelfSignedCert, err := tls.NewSelfSignedCert(ctx, "bucket", &tls.SelfSignedCertArgs{
 /// 			PrivateKeyPem: bucket.PrivateKeyPem,
-/// 			Subject: []map[string]interface{}{
-/// 				map[string]interface{}{
+/// 			Subject: []map[string]string{
+/// 				{
 /// 					"commonName": "example-bucket.example.internal",
 /// 				},
 /// 			},
@@ -455,7 +455,7 @@ import 'volume_bucket_with_server_state.dart';
 /// 		}
 /// 		_, err = netapp.NewVolumeBucketWithServer(ctx, "example", &netapp.VolumeBucketWithServerArgs{
 /// 			Name:     pulumi.String("example-bucket"),
-/// 			VolumeId: exampleVolume.ID(),
+/// 			VolumeId: exampleVolume.ID().ToIDOutput().ToStringOutput(),
 /// 			FileSystemNfsUser: &netapp.VolumeBucketWithServerFileSystemNfsUserArgs{
 /// 				GroupId: pulumi.Int(1000),
 /// 				UserId:  pulumi.Int(1000),
@@ -863,6 +863,7 @@ import 'volume_bucket_with_server_state.dart';
 ///     name: "example-cert-kv",
 ///     location: example.location,
 ///     resourceGroupName: example.name,
+///     rbacAuthorizationEnabled: false,
 ///     tenantId: current.then(current => current.tenantId),
 ///     skuName: "standard",
 ///     softDeleteRetentionDays: 7,
@@ -871,6 +872,7 @@ import 'volume_bucket_with_server_state.dart';
 ///     name: "example-creds-kv",
 ///     location: example.location,
 ///     resourceGroupName: example.name,
+///     rbacAuthorizationEnabled: false,
 ///     tenantId: current.then(current => current.tenantId),
 ///     skuName: "standard",
 ///     softDeleteRetentionDays: 7,
@@ -1044,6 +1046,7 @@ import 'volume_bucket_with_server_state.dart';
 ///     name="example-cert-kv",
 ///     location=example.location,
 ///     resource_group_name=example.name,
+///     rbac_authorization_enabled=False,
 ///     tenant_id=current.tenant_id,
 ///     sku_name="standard",
 ///     soft_delete_retention_days=7)
@@ -1051,6 +1054,7 @@ import 'volume_bucket_with_server_state.dart';
 ///     name="example-creds-kv",
 ///     location=example.location,
 ///     resource_group_name=example.name,
+///     rbac_authorization_enabled=False,
 ///     tenant_id=current.tenant_id,
 ///     sku_name="standard",
 ///     soft_delete_retention_days=7)
@@ -1256,6 +1260,7 @@ import 'volume_bucket_with_server_state.dart';
 ///         Name = "example-cert-kv",
 ///         Location = example.Location,
 ///         ResourceGroupName = example.Name,
+///         RbacAuthorizationEnabled = false,
 ///         TenantId = current.Apply(getClientConfigResult => getClientConfigResult.TenantId),
 ///         SkuName = "standard",
 ///         SoftDeleteRetentionDays = 7,
@@ -1266,6 +1271,7 @@ import 'volume_bucket_with_server_state.dart';
 ///         Name = "example-creds-kv",
 ///         Location = example.Location,
 ///         ResourceGroupName = example.Name,
+///         RbacAuthorizationEnabled = false,
 ///         TenantId = current.Apply(getClientConfigResult => getClientConfigResult.TenantId),
 ///         SkuName = "standard",
 ///         SoftDeleteRetentionDays = 7,
@@ -1509,7 +1515,7 @@ import 'volume_bucket_with_server_state.dart';
 /// 			PoolName:          examplePool.Name,
 /// 			VolumePath:        pulumi.String("example-vol"),
 /// 			ServiceLevel:      pulumi.String("Standard"),
-/// 			SubnetId:          exampleSubnet.ID(),
+/// 			SubnetId:          exampleSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 			StorageQuotaInGb:  pulumi.Int(100),
 /// 			Protocols: pulumi.StringArray{
 /// 				pulumi.String("NFSv3"),
@@ -1519,29 +1525,31 @@ import 'volume_bucket_with_server_state.dart';
 /// 			return err
 /// 		}
 /// 		certificate, err := keyvault.NewKeyVault(ctx, "certificate", &keyvault.KeyVaultArgs{
-/// 			Name:                    pulumi.String("example-cert-kv"),
-/// 			Location:                example.Location,
-/// 			ResourceGroupName:       example.Name,
-/// 			TenantId:                pulumi.String(current.TenantId),
-/// 			SkuName:                 pulumi.String("standard"),
-/// 			SoftDeleteRetentionDays: pulumi.Int(7),
+/// 			Name:                     pulumi.String("example-cert-kv"),
+/// 			Location:                 example.Location,
+/// 			ResourceGroupName:        example.Name,
+/// 			RbacAuthorizationEnabled: pulumi.Bool(false),
+/// 			TenantId:                 pulumi.String(current.TenantId),
+/// 			SkuName:                  pulumi.String("standard"),
+/// 			SoftDeleteRetentionDays:  pulumi.Int(7),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		credentials, err := keyvault.NewKeyVault(ctx, "credentials", &keyvault.KeyVaultArgs{
-/// 			Name:                    pulumi.String("example-creds-kv"),
-/// 			Location:                example.Location,
-/// 			ResourceGroupName:       example.Name,
-/// 			TenantId:                pulumi.String(current.TenantId),
-/// 			SkuName:                 pulumi.String("standard"),
-/// 			SoftDeleteRetentionDays: pulumi.Int(7),
+/// 			Name:                     pulumi.String("example-creds-kv"),
+/// 			Location:                 example.Location,
+/// 			ResourceGroupName:        example.Name,
+/// 			RbacAuthorizationEnabled: pulumi.Bool(false),
+/// 			TenantId:                 pulumi.String(current.TenantId),
+/// 			SkuName:                  pulumi.String("standard"),
+/// 			SoftDeleteRetentionDays:  pulumi.Int(7),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		deployerCertificate, err := keyvault.NewAccessPolicy(ctx, "deployer_certificate", &keyvault.AccessPolicyArgs{
-/// 			KeyVaultId: certificate.ID(),
+/// 			KeyVaultId: certificate.ID().ToIDOutput().ToStringOutput(),
 /// 			TenantId:   pulumi.String(current.TenantId),
 /// 			ObjectId:   pulumi.String(current.ObjectId),
 /// 			CertificatePermissions: pulumi.StringArray{
@@ -1567,11 +1575,9 @@ import 'volume_bucket_with_server_state.dart';
 /// 			return err
 /// 		}
 /// 		anfCertificate, err := keyvault.NewAccessPolicy(ctx, "anf_certificate", &keyvault.AccessPolicyArgs{
-/// 			KeyVaultId: certificate.ID(),
+/// 			KeyVaultId: certificate.ID().ToIDOutput().ToStringOutput(),
 /// 			TenantId:   pulumi.String(current.TenantId),
-/// 			ObjectId: pulumi.String(exampleAccount.Identity.ApplyT(func(identity netapp.AccountIdentity) (*string, error) {
-/// 				return identity.PrincipalId, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			ObjectId:   exampleAccount.Identity.PrincipalId(),
 /// 			CertificatePermissions: pulumi.StringArray{
 /// 				pulumi.String("Get"),
 /// 				pulumi.String("List"),
@@ -1595,11 +1601,9 @@ import 'volume_bucket_with_server_state.dart';
 /// 			return err
 /// 		}
 /// 		anfCredentials, err := keyvault.NewAccessPolicy(ctx, "anf_credentials", &keyvault.AccessPolicyArgs{
-/// 			KeyVaultId: credentials.ID(),
+/// 			KeyVaultId: credentials.ID().ToIDOutput().ToStringOutput(),
 /// 			TenantId:   pulumi.String(current.TenantId),
-/// 			ObjectId: pulumi.String(exampleAccount.Identity.ApplyT(func(identity netapp.AccountIdentity) (*string, error) {
-/// 				return identity.PrincipalId, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			ObjectId:   exampleAccount.Identity.PrincipalId(),
 /// 			SecretPermissions: pulumi.StringArray{
 /// 				pulumi.String("Get"),
 /// 				pulumi.String("List"),
@@ -1612,7 +1616,7 @@ import 'volume_bucket_with_server_state.dart';
 /// 		}
 /// 		bucket, err := keyvault.NewCertificate(ctx, "bucket", &keyvault.CertificateArgs{
 /// 			Name:       pulumi.String("example-bucket-cert"),
-/// 			KeyVaultId: certificate.ID(),
+/// 			KeyVaultId: certificate.ID().ToIDOutput().ToStringOutput(),
 /// 			CertificatePolicy: &keyvault.CertificateCertificatePolicyArgs{
 /// 				IssuerParameters: &keyvault.CertificateCertificatePolicyIssuerParametersArgs{
 /// 					Name: pulumi.String("Self"),
@@ -1651,7 +1655,7 @@ import 'volume_bucket_with_server_state.dart';
 /// 		}
 /// 		_, err = netapp.NewVolumeBucketWithServer(ctx, "example", &netapp.VolumeBucketWithServerArgs{
 /// 			Name:     pulumi.String("example-bucket"),
-/// 			VolumeId: exampleVolume.ID(),
+/// 			VolumeId: exampleVolume.ID().ToIDOutput().ToStringOutput(),
 /// 			FileSystemNfsUser: &netapp.VolumeBucketWithServerFileSystemNfsUserArgs{
 /// 				GroupId: pulumi.Int(1000),
 /// 				UserId:  pulumi.Int(1000),
@@ -1743,6 +1747,7 @@ import 'volume_bucket_with_server_state.dart';
 ///   name                       = "example-cert-kv"
 ///   location                   = azure_core_resourcegroup.example.location
 ///   resource_group_name        = azure_core_resourcegroup.example.name
+///   rbac_authorization_enabled = false
 ///   tenant_id                  = data.azure_core_getclientconfig.current.tenant_id
 ///   sku_name                   = "standard"
 ///   soft_delete_retention_days = 7
@@ -1751,6 +1756,7 @@ import 'volume_bucket_with_server_state.dart';
 ///   name                       = "example-creds-kv"
 ///   location                   = azure_core_resourcegroup.example.location
 ///   resource_group_name        = azure_core_resourcegroup.example.name
+///   rbac_authorization_enabled = false
 ///   tenant_id                  = data.azure_core_getclientconfig.current.tenant_id
 ///   sku_name                   = "standard"
 ///   soft_delete_retention_days = 7
@@ -1940,6 +1946,7 @@ import 'volume_bucket_with_server_state.dart';
 ///             .name("example-cert-kv")
 ///             .location(example.location())
 ///             .resourceGroupName(example.name())
+///             .rbacAuthorizationEnabled(false)
 ///             .tenantId(current.tenantId())
 ///             .skuName("standard")
 ///             .softDeleteRetentionDays(7)
@@ -1949,6 +1956,7 @@ import 'volume_bucket_with_server_state.dart';
 ///             .name("example-creds-kv")
 ///             .location(example.location())
 ///             .resourceGroupName(example.name())
+///             .rbacAuthorizationEnabled(false)
 ///             .tenantId(current.tenantId())
 ///             .skuName("standard")
 ///             .softDeleteRetentionDays(7)
@@ -2138,6 +2146,7 @@ import 'volume_bucket_with_server_state.dart';
 ///       name: example-cert-kv
 ///       location: ${example.location}
 ///       resourceGroupName: ${example.name}
+///       rbacAuthorizationEnabled: false
 ///       tenantId: ${current.tenantId}
 ///       skuName: standard
 ///       softDeleteRetentionDays: 7
@@ -2147,6 +2156,7 @@ import 'volume_bucket_with_server_state.dart';
 ///       name: example-creds-kv
 ///       location: ${example.location}
 ///       resourceGroupName: ${example.name}
+///       rbacAuthorizationEnabled: false
 ///       tenantId: ${current.tenantId}
 ///       skuName: standard
 ///       softDeleteRetentionDays: 7
@@ -2317,7 +2327,7 @@ class VolumeBucketWithServer extends pulumi.CustomResource {
           'azure:netapp/volumeBucketWithServer:VolumeBucketWithServer',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     fileSystemCifsUsername = registerOutput<String?>('fileSystemCifsUsername');
     fileSystemNfsUser = registerOutput<VolumeBucketWithServerFileSystemNfsUser?>('fileSystemNfsUser', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VolumeBucketWithServerFileSystemNfsUser.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -2338,11 +2348,12 @@ class VolumeBucketWithServer extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VolumeBucketWithServerState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VolumeBucketWithServer._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -2356,6 +2367,29 @@ class VolumeBucketWithServer extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    fileSystemCifsUsername = registerOutput<String?>('fileSystemCifsUsername');
+    fileSystemNfsUser = registerOutput<VolumeBucketWithServerFileSystemNfsUser?>('fileSystemNfsUser', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VolumeBucketWithServerFileSystemNfsUser.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    keyVault = registerOutput<VolumeBucketWithServerKeyVault?>('keyVault', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VolumeBucketWithServerKeyVault.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    path = registerOutput<String?>('path');
+    permissions = registerOutput<String?>('permissions');
+    server = registerOutput<VolumeBucketWithServerServer>('server', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VolumeBucketWithServerServer.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    serverCertificateCommonName = registerOutput<String>('serverCertificateCommonName');
+    serverCertificateExpiryDate = registerOutput<String>('serverCertificateExpiryDate');
+    serverIpAddress = registerOutput<String>('serverIpAddress');
+    status = registerOutput<String>('status');
+    volumeId = registerOutput<String>('volumeId');
+  }
+
+  /// Creates a typed reference to an existing [VolumeBucketWithServer] resource.
+  VolumeBucketWithServer.reference(String urn)
+    : super(
+        'azure:netapp/volumeBucketWithServer:VolumeBucketWithServer',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     fileSystemCifsUsername = registerOutput<String?>('fileSystemCifsUsername');
     fileSystemNfsUser = registerOutput<VolumeBucketWithServerFileSystemNfsUser?>('fileSystemNfsUser', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VolumeBucketWithServerFileSystemNfsUser.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     keyVault = registerOutput<VolumeBucketWithServerKeyVault?>('keyVault', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VolumeBucketWithServerKeyVault.fromMap((guardedValue as Map).cast<String, dynamic>()); });

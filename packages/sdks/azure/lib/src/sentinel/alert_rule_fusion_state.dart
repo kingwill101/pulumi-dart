@@ -6,14 +6,14 @@ import 'alert_rule_fusion_source.dart';
 /// Input properties used for looking up and filtering AlertRuleFusion resources.
 class AlertRuleFusionState {
   /// The GUID of the alert rule template which is used for this Sentinel Fusion Alert Rule. Changing this forces a new Sentinel Fusion Alert Rule to be created.
-  final pulumi.Input<String>? alertRuleTemplateGuid;
+  final pulumi.Input<String?>? alertRuleTemplateGuid;
   /// Should this Sentinel Fusion Alert Rule be enabled? Defaults to `true`.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// The ID of the Log Analytics Workspace this Sentinel Fusion Alert Rule belongs to. Changing this forces a new Sentinel Fusion Alert Rule to be created.
-  final pulumi.Input<String>? logAnalyticsWorkspaceId;
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? logAnalyticsWorkspaceId;
+  final pulumi.Input<String?>? name;
   /// One or more `source` blocks as defined below.
-  final pulumi.Input<List<AlertRuleFusionSource>>? sources;
+  final pulumi.Input<List<AlertRuleFusionSource>?>? sources;
 
   /// Creates a new [AlertRuleFusionState].
   /// [alertRuleTemplateGuid] The GUID of the alert rule template which is used for this Sentinel Fusion Alert Rule. Changing this forces a new Sentinel Fusion Alert Rule to be created.

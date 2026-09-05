@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering Contact resources.
 class ContactState {
   /// Whether to send security alerts notifications to the security contact.
-  final pulumi.Input<bool>? alertNotifications;
+  final pulumi.Input<bool?>? alertNotifications;
   /// Whether to send security alerts notifications to subscription admins.
-  final pulumi.Input<bool>? alertsToAdmins;
+  final pulumi.Input<bool?>? alertsToAdmins;
   /// The email of the Security Center Contact.
-  final pulumi.Input<String>? email;
+  final pulumi.Input<String?>? email;
   /// The name of the Security Center Contact. Changing this forces a new Security Center Contact to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The phone number of the Security Center Contact.
-  final pulumi.Input<String>? phone;
+  final pulumi.Input<String?>? phone;
 
   /// Creates a new [ContactState].
   /// [alertNotifications] Whether to send security alerts notifications to the security contact.

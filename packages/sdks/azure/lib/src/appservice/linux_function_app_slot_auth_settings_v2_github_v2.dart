@@ -10,7 +10,7 @@ class LinuxFunctionAppSlotAuthSettingsV2GithubV2 {
   /// &gt; **Note:** A setting with this name must exist in `appSettings` to function correctly.
   final pulumi.Input<String> clientSecretSettingName;
   /// The list of OAuth 2.0 scopes that should be requested as part of GitHub Login authentication.
-  final pulumi.Input<List<String>>? loginScopes;
+  final pulumi.Input<List<String>?>? loginScopes;
 
   /// Creates a new [LinuxFunctionAppSlotAuthSettingsV2GithubV2].
   /// [clientId] The ID of the GitHub app used for login.

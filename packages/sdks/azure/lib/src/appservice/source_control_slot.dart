@@ -149,7 +149,7 @@ import 'source_control_slot_state.dart';
 /// 			Name:              pulumi.String("example-web-app"),
 /// 			ResourceGroupName: example.Name,
 /// 			Location:          exampleServicePlan.Location,
-/// 			ServicePlanId:     exampleServicePlan.ID(),
+/// 			ServicePlanId:     exampleServicePlan.ID().ToIDOutput().ToStringOutput(),
 /// 			SiteConfig:        &appservice.LinuxWebAppSiteConfigArgs{},
 /// 		})
 /// 		if err != nil {
@@ -157,14 +157,14 @@ import 'source_control_slot_state.dart';
 /// 		}
 /// 		exampleLinuxWebAppSlot, err := appservice.NewLinuxWebAppSlot(ctx, "example", &appservice.LinuxWebAppSlotArgs{
 /// 			Name:         pulumi.String("example-slot"),
-/// 			AppServiceId: exampleLinuxWebApp.ID(),
+/// 			AppServiceId: exampleLinuxWebApp.ID().ToIDOutput().ToStringOutput(),
 /// 			SiteConfig:   &appservice.LinuxWebAppSlotSiteConfigArgs{},
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = appservice.NewSourceControlSlot(ctx, "example", &appservice.SourceControlSlotArgs{
-/// 			SlotId:  exampleLinuxWebAppSlot.ID(),
+/// 			SlotId:  exampleLinuxWebAppSlot.ID().ToIDOutput().ToStringOutput(),
 /// 			RepoUrl: pulumi.String("https://github.com/Azure-Samples/python-docs-hello-world"),
 /// 			Branch:  pulumi.String("master"),
 /// 		})
@@ -374,7 +374,7 @@ class SourceControlSlot extends pulumi.CustomResource {
           'azure:appservice/sourceControlSlot:SourceControlSlot',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     branch = registerOutput<String>('branch');
     githubActionConfiguration = registerOutput<SourceControlSlotGithubActionConfiguration?>('githubActionConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SourceControlSlotGithubActionConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -393,11 +393,12 @@ class SourceControlSlot extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SourceControlSlotState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SourceControlSlot._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -411,6 +412,27 @@ class SourceControlSlot extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    branch = registerOutput<String>('branch');
+    githubActionConfiguration = registerOutput<SourceControlSlotGithubActionConfiguration?>('githubActionConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SourceControlSlotGithubActionConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    repoUrl = registerOutput<String>('repoUrl');
+    rollbackEnabled = registerOutput<bool?>('rollbackEnabled');
+    scmType = registerOutput<String>('scmType');
+    slotId = registerOutput<String>('slotId');
+    useLocalGit = registerOutput<bool?>('useLocalGit');
+    useManualIntegration = registerOutput<bool?>('useManualIntegration');
+    useMercurial = registerOutput<bool?>('useMercurial');
+    usesGithubAction = registerOutput<bool>('usesGithubAction');
+  }
+
+  /// Creates a typed reference to an existing [SourceControlSlot] resource.
+  SourceControlSlot.reference(String urn)
+    : super(
+        'azure:appservice/sourceControlSlot:SourceControlSlot',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     branch = registerOutput<String>('branch');
     githubActionConfiguration = registerOutput<SourceControlSlotGithubActionConfiguration?>('githubActionConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SourceControlSlotGithubActionConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     repoUrl = registerOutput<String>('repoUrl');

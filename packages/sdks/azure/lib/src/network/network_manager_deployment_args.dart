@@ -10,13 +10,13 @@ class NetworkManagerDeploymentArgs {
   /// A list of Network Manager Configuration IDs which should be aligned with `scopeAccess`.
   final pulumi.Input<List<String>> configurationIds;
   /// Specifies the location which the configurations will be deployed to. Changing this forces a new Network Manager Deployment to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Specifies the ID of the Network Manager. Changing this forces a new Network Manager Deployment to be created.
   final pulumi.Input<String> networkManagerId;
   /// Specifies the configuration deployment type. Possible values are `Connectivity`, `SecurityAdmin` and `Routing`. Changing this forces a new Network Manager Deployment to be created.
   final pulumi.Input<String> scopeAccess;
   /// A mapping of key values pairs that can be used to keep the deployment up with the Network Manager configurations and rules.
-  final pulumi.Input<Map<String, String>>? triggers;
+  final pulumi.Input<Map<String, String>?>? triggers;
 
   /// Creates a new [NetworkManagerDeploymentArgs].
   /// [configurationIds] A list of Network Manager Configuration IDs which should be aligned with `scopeAccess`.

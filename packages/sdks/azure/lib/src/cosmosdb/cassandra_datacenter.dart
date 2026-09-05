@@ -59,7 +59,7 @@ class CassandraDatacenter extends pulumi.CustomResource {
           'azure:cosmosdb/cassandraDatacenter:CassandraDatacenter',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     availabilityZonesEnabled = registerOutput<bool?>('availabilityZonesEnabled');
     backupStorageCustomerKeyUri = registerOutput<String?>('backupStorageCustomerKeyUri');
@@ -72,7 +72,7 @@ class CassandraDatacenter extends pulumi.CustomResource {
     managedDiskCustomerKeyUri = registerOutput<String?>('managedDiskCustomerKeyUri');
     this.name = registerOutput<String>('name');
     nodeCount = registerOutput<int?>('nodeCount');
-    seedNodeIpAddresses = registerOutput<List<String>>('seedNodeIpAddresses');
+    seedNodeIpAddresses = registerOutput<List<String>>('seedNodeIpAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     skuName = registerOutput<String?>('skuName');
   }
 
@@ -81,11 +81,12 @@ class CassandraDatacenter extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     CassandraDatacenterState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return CassandraDatacenter._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -110,7 +111,31 @@ class CassandraDatacenter extends pulumi.CustomResource {
     managedDiskCustomerKeyUri = registerOutput<String?>('managedDiskCustomerKeyUri');
     this.name = registerOutput<String>('name');
     nodeCount = registerOutput<int?>('nodeCount');
-    seedNodeIpAddresses = registerOutput<List<String>>('seedNodeIpAddresses');
+    seedNodeIpAddresses = registerOutput<List<String>>('seedNodeIpAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    skuName = registerOutput<String?>('skuName');
+  }
+
+  /// Creates a typed reference to an existing [CassandraDatacenter] resource.
+  CassandraDatacenter.reference(String urn)
+    : super(
+        'azure:cosmosdb/cassandraDatacenter:CassandraDatacenter',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    availabilityZonesEnabled = registerOutput<bool?>('availabilityZonesEnabled');
+    backupStorageCustomerKeyUri = registerOutput<String?>('backupStorageCustomerKeyUri');
+    base64EncodedYamlFragment = registerOutput<String?>('base64EncodedYamlFragment');
+    cassandraClusterId = registerOutput<String>('cassandraClusterId');
+    delegatedManagementSubnetId = registerOutput<String>('delegatedManagementSubnetId');
+    diskCount = registerOutput<int?>('diskCount');
+    diskSku = registerOutput<String?>('diskSku');
+    location = registerOutput<String>('location');
+    managedDiskCustomerKeyUri = registerOutput<String?>('managedDiskCustomerKeyUri');
+    this.name = registerOutput<String>('name');
+    nodeCount = registerOutput<int?>('nodeCount');
+    seedNodeIpAddresses = registerOutput<List<String>>('seedNodeIpAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     skuName = registerOutput<String?>('skuName');
   }
 }

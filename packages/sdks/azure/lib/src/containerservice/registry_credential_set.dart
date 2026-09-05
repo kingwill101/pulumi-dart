@@ -133,7 +133,7 @@ import 'registry_credential_set_state.dart';
 /// 		}
 /// 		_, err = containerservice.NewRegistryCredentialSet(ctx, "example", &containerservice.RegistryCredentialSetArgs{
 /// 			Name:                pulumi.String("exampleCredentialSet"),
-/// 			ContainerRegistryId: exampleRegistry.ID(),
+/// 			ContainerRegistryId: exampleRegistry.ID().ToIDOutput().ToStringOutput(),
 /// 			LoginServer:         pulumi.String("docker.io"),
 /// 			Identity: &containerservice.RegistryCredentialSetIdentityArgs{
 /// 				Type: pulumi.String("SystemAssigned"),
@@ -286,6 +286,7 @@ import 'registry_credential_set_state.dart';
 ///     name: "examplekeyvault",
 ///     location: example.location,
 ///     resourceGroupName: example.name,
+///     rbacAuthorizationEnabled: false,
 ///     tenantId: current.then(current => current.tenantId),
 ///     skuName: "standard",
 ///     softDeleteRetentionDays: 7,
@@ -332,8 +333,8 @@ import 'registry_credential_set_state.dart';
 /// });
 /// const readSecrets = new azure.keyvault.AccessPolicy("read_secrets", {
 ///     keyVaultId: exampleKeyVault.id,
-///     tenantId: exampleRegistryCredentialSet.identity.apply(identity => identity.tenantId),
-///     objectId: exampleRegistryCredentialSet.identity.apply(identity => identity.principalId),
+///     tenantId: exampleRegistryCredentialSet.identity.tenantId,
+///     objectId: exampleRegistryCredentialSet.identity.principalId,
 ///     secretPermissions: ["Get"],
 /// });
 /// ```
@@ -349,6 +350,7 @@ import 'registry_credential_set_state.dart';
 ///     name="examplekeyvault",
 ///     location=example.location,
 ///     resource_group_name=example.name,
+///     rbac_authorization_enabled=False,
 ///     tenant_id=current.tenant_id,
 ///     sku_name="standard",
 ///     soft_delete_retention_days=7,
@@ -415,6 +417,7 @@ import 'registry_credential_set_state.dart';
 ///         Name = "examplekeyvault",
 ///         Location = example.Location,
 ///         ResourceGroupName = example.Name,
+///         RbacAuthorizationEnabled = false,
 ///         TenantId = current.Apply(getClientConfigResult => getClientConfigResult.TenantId),
 ///         SkuName = "standard",
 ///         SoftDeleteRetentionDays = 7,
@@ -512,12 +515,13 @@ import 'registry_credential_set_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleKeyVault, err := keyvault.NewKeyVault(ctx, "example", &keyvault.KeyVaultArgs{
-/// 			Name:                    pulumi.String("examplekeyvault"),
-/// 			Location:                example.Location,
-/// 			ResourceGroupName:       example.Name,
-/// 			TenantId:                pulumi.String(current.TenantId),
-/// 			SkuName:                 pulumi.String("standard"),
-/// 			SoftDeleteRetentionDays: pulumi.Int(7),
+/// 			Name:                     pulumi.String("examplekeyvault"),
+/// 			Location:                 example.Location,
+/// 			ResourceGroupName:        example.Name,
+/// 			RbacAuthorizationEnabled: pulumi.Bool(false),
+/// 			TenantId:                 pulumi.String(current.TenantId),
+/// 			SkuName:                  pulumi.String("standard"),
+/// 			SoftDeleteRetentionDays:  pulumi.Int(7),
 /// 			AccessPolicies: keyvault.KeyVaultAccessPolicyArray{
 /// 				&keyvault.KeyVaultAccessPolicyArgs{
 /// 					TenantId:               pulumi.String(current.TenantId),
@@ -537,7 +541,7 @@ import 'registry_credential_set_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleUser, err := keyvault.NewSecret(ctx, "example_user", &keyvault.SecretArgs{
-/// 			KeyVaultId: exampleKeyVault.ID(),
+/// 			KeyVaultId: exampleKeyVault.ID().ToIDOutput().ToStringOutput(),
 /// 			Name:       pulumi.String("example-user-name"),
 /// 			Value:      pulumi.String("name"),
 /// 		})
@@ -545,7 +549,7 @@ import 'registry_credential_set_state.dart';
 /// 			return err
 /// 		}
 /// 		examplePassword, err := keyvault.NewSecret(ctx, "example_password", &keyvault.SecretArgs{
-/// 			KeyVaultId: exampleKeyVault.ID(),
+/// 			KeyVaultId: exampleKeyVault.ID().ToIDOutput().ToStringOutput(),
 /// 			Name:       pulumi.String("example-user-password"),
 /// 			Value:      pulumi.String("password"),
 /// 		})
@@ -563,7 +567,7 @@ import 'registry_credential_set_state.dart';
 /// 		}
 /// 		exampleRegistryCredentialSet, err := containerservice.NewRegistryCredentialSet(ctx, "example", &containerservice.RegistryCredentialSetArgs{
 /// 			Name:                pulumi.String("exampleCredentialSet"),
-/// 			ContainerRegistryId: exampleRegistry.ID(),
+/// 			ContainerRegistryId: exampleRegistry.ID().ToIDOutput().ToStringOutput(),
 /// 			LoginServer:         pulumi.String("docker.io"),
 /// 			Identity: &containerservice.RegistryCredentialSetIdentityArgs{
 /// 				Type: pulumi.String("SystemAssigned"),
@@ -577,13 +581,9 @@ import 'registry_credential_set_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = keyvault.NewAccessPolicy(ctx, "read_secrets", &keyvault.AccessPolicyArgs{
-/// 			KeyVaultId: exampleKeyVault.ID(),
-/// 			TenantId: pulumi.String(exampleRegistryCredentialSet.Identity.ApplyT(func(identity containerservice.RegistryCredentialSetIdentity) (*string, error) {
-/// 				return identity.TenantId, nil
-/// 			}).(pulumi.StringPtrOutput)),
-/// 			ObjectId: pulumi.String(exampleRegistryCredentialSet.Identity.ApplyT(func(identity containerservice.RegistryCredentialSetIdentity) (*string, error) {
-/// 				return identity.PrincipalId, nil
-/// 			}).(pulumi.StringPtrOutput)),
+/// 			KeyVaultId: exampleKeyVault.ID().ToIDOutput().ToStringOutput(),
+/// 			TenantId:   exampleRegistryCredentialSet.Identity.TenantId(),
+/// 			ObjectId:   exampleRegistryCredentialSet.Identity.PrincipalId(),
 /// 			SecretPermissions: pulumi.StringArray{
 /// 				pulumi.String("Get"),
 /// 			},
@@ -615,6 +615,7 @@ import 'registry_credential_set_state.dart';
 ///   name                       = "examplekeyvault"
 ///   location                   = azure_core_resourcegroup.example.location
 ///   resource_group_name        = azure_core_resourcegroup.example.name
+///   rbac_authorization_enabled = false
 ///   tenant_id                  = data.azure_core_getclientconfig.current.tenant_id
 ///   sku_name                   = "standard"
 ///   soft_delete_retention_days = 7
@@ -707,6 +708,7 @@ import 'registry_credential_set_state.dart';
 ///             .name("examplekeyvault")
 ///             .location(example.location())
 ///             .resourceGroupName(example.name())
+///             .rbacAuthorizationEnabled(false)
 ///             .tenantId(current.tenantId())
 ///             .skuName("standard")
 ///             .softDeleteRetentionDays(7)
@@ -779,6 +781,7 @@ import 'registry_credential_set_state.dart';
 ///       name: examplekeyvault
 ///       location: ${example.location}
 ///       resourceGroupName: ${example.name}
+///       rbacAuthorizationEnabled: false
 ///       tenantId: ${current.tenantId}
 ///       skuName: standard
 ///       softDeleteRetentionDays: 7
@@ -881,7 +884,7 @@ class RegistryCredentialSet extends pulumi.CustomResource {
           'azure:containerservice/registryCredentialSet:RegistryCredentialSet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     authenticationCredentials = registerOutput<RegistryCredentialSetAuthenticationCredentials>('authenticationCredentials', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegistryCredentialSetAuthenticationCredentials.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     containerRegistryId = registerOutput<String>('containerRegistryId');
@@ -895,11 +898,12 @@ class RegistryCredentialSet extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RegistryCredentialSetState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RegistryCredentialSet._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -913,6 +917,22 @@ class RegistryCredentialSet extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    authenticationCredentials = registerOutput<RegistryCredentialSetAuthenticationCredentials>('authenticationCredentials', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegistryCredentialSetAuthenticationCredentials.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    containerRegistryId = registerOutput<String>('containerRegistryId');
+    identity = registerOutput<RegistryCredentialSetIdentity>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegistryCredentialSetIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    loginServer = registerOutput<String>('loginServer');
+    this.name = registerOutput<String>('name');
+  }
+
+  /// Creates a typed reference to an existing [RegistryCredentialSet] resource.
+  RegistryCredentialSet.reference(String urn)
+    : super(
+        'azure:containerservice/registryCredentialSet:RegistryCredentialSet',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     authenticationCredentials = registerOutput<RegistryCredentialSetAuthenticationCredentials>('authenticationCredentials', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegistryCredentialSetAuthenticationCredentials.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     containerRegistryId = registerOutput<String>('containerRegistryId');
     identity = registerOutput<RegistryCredentialSetIdentity>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegistryCredentialSetIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });

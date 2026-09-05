@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'spring_cloud_builder_args.dart';
+import 'spring_cloud_builder_build_pack_group.dart';
 import 'spring_cloud_builder_stack.dart';
 import 'spring_cloud_builder_state.dart';
 
@@ -138,7 +139,7 @@ import 'spring_cloud_builder_state.dart';
 /// 		}
 /// 		_, err = appplatform.NewSpringCloudBuilder(ctx, "example", &appplatform.SpringCloudBuilderArgs{
 /// 			Name:                 pulumi.String("example"),
-/// 			SpringCloudServiceId: exampleSpringCloudService.ID(),
+/// 			SpringCloudServiceId: exampleSpringCloudService.ID().ToIDOutput().ToStringOutput(),
 /// 			BuildPackGroups: appplatform.SpringCloudBuilderBuildPackGroupArray{
 /// 				&appplatform.SpringCloudBuilderBuildPackGroupArgs{
 /// 					Name: pulumi.String("mix"),
@@ -286,7 +287,7 @@ import 'spring_cloud_builder_state.dart';
 /// ```
 class SpringCloudBuilder extends pulumi.CustomResource {
   /// One or more `buildPackGroup` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>> buildPackGroups;
+  late final pulumi.Output<List<SpringCloudBuilderBuildPackGroup>> buildPackGroups;
   /// The name which should be used for this Spring Cloud Builder. Changing this forces a new Spring Cloud Builder to be created.
   late final pulumi.Output<String> name;
   /// The ID of the Spring Cloud Service. Changing this forces a new Spring Cloud Builder to be created.
@@ -306,9 +307,9 @@ class SpringCloudBuilder extends pulumi.CustomResource {
           'azure:appplatform/springCloudBuilder:SpringCloudBuilder',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
-    buildPackGroups = registerOutput<List<Map<String, dynamic>>>('buildPackGroups');
+    buildPackGroups = registerOutput<List<SpringCloudBuilderBuildPackGroup>>('buildPackGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SpringCloudBuilderBuildPackGroup>(guardedValue, (value) => SpringCloudBuilderBuildPackGroup.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     springCloudServiceId = registerOutput<String>('springCloudServiceId');
     stack = registerOutput<SpringCloudBuilderStack>('stack', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpringCloudBuilderStack.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -319,11 +320,12 @@ class SpringCloudBuilder extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SpringCloudBuilderState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SpringCloudBuilder._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -337,7 +339,22 @@ class SpringCloudBuilder extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    buildPackGroups = registerOutput<List<Map<String, dynamic>>>('buildPackGroups');
+    buildPackGroups = registerOutput<List<SpringCloudBuilderBuildPackGroup>>('buildPackGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SpringCloudBuilderBuildPackGroup>(guardedValue, (value) => SpringCloudBuilderBuildPackGroup.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    springCloudServiceId = registerOutput<String>('springCloudServiceId');
+    stack = registerOutput<SpringCloudBuilderStack>('stack', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpringCloudBuilderStack.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [SpringCloudBuilder] resource.
+  SpringCloudBuilder.reference(String urn)
+    : super(
+        'azure:appplatform/springCloudBuilder:SpringCloudBuilder',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    buildPackGroups = registerOutput<List<SpringCloudBuilderBuildPackGroup>>('buildPackGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SpringCloudBuilderBuildPackGroup>(guardedValue, (value) => SpringCloudBuilderBuildPackGroup.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     springCloudServiceId = registerOutput<String>('springCloudServiceId');
     stack = registerOutput<SpringCloudBuilderStack>('stack', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpringCloudBuilderStack.fromMap((guardedValue as Map).cast<String, dynamic>()); });

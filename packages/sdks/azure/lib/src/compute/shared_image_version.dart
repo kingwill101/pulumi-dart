@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'shared_image_version_args.dart';
 import 'shared_image_version_state.dart';
+import 'shared_image_version_target_region.dart';
 
 /// Manages a Version of a Shared Image within a Shared Image Gallery.
 ///
@@ -319,7 +320,7 @@ class SharedImageVersion extends pulumi.CustomResource {
   /// A collection of tags which should be applied to this resource.
   late final pulumi.Output<Map<String, String>?> tags;
   /// One or more `targetRegion` blocks as documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> targetRegions;
+  late final pulumi.Output<List<SharedImageVersionTargetRegion>> targetRegions;
 
   /// Creates a new [SharedImageVersion].
   /// [name] The Pulumi resource name.
@@ -333,7 +334,7 @@ class SharedImageVersion extends pulumi.CustomResource {
           'azure:compute/sharedImageVersion:SharedImageVersion',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     blobUri = registerOutput<String?>('blobUri');
     deletionOfReplicatedLocationsEnabled = registerOutput<bool?>('deletionOfReplicatedLocationsEnabled');
@@ -348,8 +349,8 @@ class SharedImageVersion extends pulumi.CustomResource {
     replicationMode = registerOutput<String?>('replicationMode');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     storageAccountId = registerOutput<String?>('storageAccountId');
-    tags = registerOutput<Map<String, String>?>('tags');
-    targetRegions = registerOutput<List<Map<String, dynamic>>>('targetRegions');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    targetRegions = registerOutput<List<SharedImageVersionTargetRegion>>('targetRegions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SharedImageVersionTargetRegion>(guardedValue, (value) => SharedImageVersionTargetRegion.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [SharedImageVersion] resource's state with the given [name] and [id].
@@ -357,11 +358,12 @@ class SharedImageVersion extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SharedImageVersionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SharedImageVersion._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -388,7 +390,33 @@ class SharedImageVersion extends pulumi.CustomResource {
     replicationMode = registerOutput<String?>('replicationMode');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     storageAccountId = registerOutput<String?>('storageAccountId');
-    tags = registerOutput<Map<String, String>?>('tags');
-    targetRegions = registerOutput<List<Map<String, dynamic>>>('targetRegions');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    targetRegions = registerOutput<List<SharedImageVersionTargetRegion>>('targetRegions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SharedImageVersionTargetRegion>(guardedValue, (value) => SharedImageVersionTargetRegion.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [SharedImageVersion] resource.
+  SharedImageVersion.reference(String urn)
+    : super(
+        'azure:compute/sharedImageVersion:SharedImageVersion',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    blobUri = registerOutput<String?>('blobUri');
+    deletionOfReplicatedLocationsEnabled = registerOutput<bool?>('deletionOfReplicatedLocationsEnabled');
+    endOfLifeDate = registerOutput<String?>('endOfLifeDate');
+    excludeFromLatest = registerOutput<bool?>('excludeFromLatest');
+    galleryName = registerOutput<String>('galleryName');
+    imageName = registerOutput<String>('imageName');
+    location = registerOutput<String>('location');
+    managedImageId = registerOutput<String?>('managedImageId');
+    this.name = registerOutput<String>('name');
+    osDiskSnapshotId = registerOutput<String?>('osDiskSnapshotId');
+    replicationMode = registerOutput<String?>('replicationMode');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    storageAccountId = registerOutput<String?>('storageAccountId');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    targetRegions = registerOutput<List<SharedImageVersionTargetRegion>>('targetRegions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SharedImageVersionTargetRegion>(guardedValue, (value) => SharedImageVersionTargetRegion.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

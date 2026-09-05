@@ -9,13 +9,13 @@ import 'vpn_server_configuration_policy_group_policy.dart';
 /// {@macro pulumi_network_vpn_server_configuration_policy_group_vpn_server_configuration_policy_group_args_doc}
 class VpnServerConfigurationPolicyGroupArgs {
   /// Is this a default VPN Server Configuration Policy Group? Defaults to `false`. Changing this forces a new resource to be created.
-  final pulumi.Input<bool>? isDefault;
+  final pulumi.Input<bool?>? isDefault;
   /// The Name which should be used for this VPN Server Configuration Policy Group. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// One or more `policy` blocks as documented below.
   final pulumi.Input<List<VpnServerConfigurationPolicyGroupPolicy>> policies;
   /// The priority of this VPN Server Configuration Policy Group. Defaults to `0`.
-  final pulumi.Input<int>? priority;
+  final pulumi.Input<int?>? priority;
   /// The ID of the VPN Server Configuration that the VPN Server Configuration Policy Group belongs to. Changing this forces a new resource to be created.
   final pulumi.Input<String> vpnServerConfigurationId;
 
@@ -48,7 +48,7 @@ class VpnServerConfigurationPolicyGroupArgs {
       isDefault: (() { final guardedValue = map['isDefault']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       policies: pulumi.Input.fromValue(pulumi.Input.decodeList<VpnServerConfigurationPolicyGroupPolicy>(map['policies']!, (value) => VpnServerConfigurationPolicyGroupPolicy.fromMap((value as Map).cast<String, dynamic>()))),
-      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       vpnServerConfigurationId: pulumi.Input.fromValue(map['vpnServerConfigurationId'] as String),
     );
   }

@@ -6,13 +6,13 @@ class ClusterClusterProfile {
   /// The custom domain for the cluster. For more info, see [Prepare a custom domain for your cluster](https://docs.microsoft.com/azure/openshift/tutorial-create-cluster#prepare-a-custom-domain-for-your-cluster-optional). Changing this forces a new resource to be created.
   final pulumi.Input<String> domain;
   /// Whether Federal Information Processing Standard (FIPS) validated cryptographic modules are used. Defaults to `false`. Changing this forces a new resource to be created.
-  final pulumi.Input<bool>? fipsEnabled;
+  final pulumi.Input<bool?>? fipsEnabled;
   /// The name of a Resource Group which will be created to host VMs of Azure Red Hat OpenShift Cluster. The value cannot contain uppercase characters. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? managedResourceGroupName;
+  final pulumi.Input<String?>? managedResourceGroupName;
   /// The Red Hat pull secret for the cluster. For more info, see [Get a Red Hat pull secret](https://learn.microsoft.com/azure/openshift/tutorial-create-cluster#get-a-red-hat-pull-secret-optional). Changing this forces a new resource to be created.
-  final pulumi.Input<String>? pullSecret;
+  final pulumi.Input<String?>? pullSecret;
   /// The resource group that the cluster profile is attached to.
-  final pulumi.Input<String>? resourceGroupId;
+  final pulumi.Input<String?>? resourceGroupId;
   /// The version of the OpenShift cluster. Available versions can be found with the Azure CLI command `az aro get-versions --location &lt;region&gt;`. Changing this forces a new resource to be created.
   final pulumi.Input<String> version;
 

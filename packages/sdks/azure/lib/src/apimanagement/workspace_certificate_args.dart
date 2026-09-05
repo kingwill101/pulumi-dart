@@ -12,17 +12,17 @@ class WorkspaceCertificateArgs {
   /// Specifies the base64-encoded string containing the certificate in PKCS#12 (.pfx) format.
   ///
   /// &gt; **Note:** This is required when `password` is specified. Exactly one of `certificateDataBase64` or `keyVaultSecretId` must be specified.
-  final pulumi.Input<String>? certificateDataBase64;
+  final pulumi.Input<String?>? certificateDataBase64;
   /// Specifies the ID of the key vault secret.
   ///
   /// &gt; **Note:** This is required when `userAssignedIdentityClientId` is specified. Exactly one of `certificateDataBase64` or `keyVaultSecretId` must be specified.
-  final pulumi.Input<String>? keyVaultSecretId;
+  final pulumi.Input<String?>? keyVaultSecretId;
   /// Specifies the name of the API Management Workspace Certificate. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specifies the password used to access the `certificateDataBase64`.
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// Specifies the client ID of user-assigned identity to be used for accessing the `keyVaultSecretId`.
-  final pulumi.Input<String>? userAssignedIdentityClientId;
+  final pulumi.Input<String?>? userAssignedIdentityClientId;
 
   /// Creates a new [WorkspaceCertificateArgs].
   /// [apiManagementWorkspaceId] Specifies the ID of the API Management Workspace. Changing this forces a new resource to be created.

@@ -12,17 +12,17 @@ class SavedSearchArgs {
   /// The name that Saved Search will be displayed as. Changing this forces a new resource to be created.
   final pulumi.Input<String> displayName;
   /// The function alias if the query serves as a function. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? functionAlias;
+  final pulumi.Input<String?>? functionAlias;
   /// The function parameters if the query serves as a function. Changing this forces a new resource to be created. For more examples and proper syntax please refer to [this document](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/query/functions/user-defined-functions).
-  final pulumi.Input<List<String>>? functionParameters;
+  final pulumi.Input<List<String>?>? functionParameters;
   /// Specifies the ID of the Log Analytics Workspace that the Saved Search will be associated with. Changing this forces a new resource to be created.
   final pulumi.Input<String> logAnalyticsWorkspaceId;
   /// Specifies the name of the Log Analytics Saved Search. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The query expression for the saved search. Changing this forces a new resource to be created.
   final pulumi.Input<String> query;
   /// A mapping of tags which should be assigned to the Logs Analytics Saved Search. Changing this forces a new resource to be created.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [SavedSearchArgs].
   /// [category] The category that the Saved Search will be listed under. Changing this forces a new resource to be created.

@@ -200,8 +200,8 @@ import 'spring_cloud_app_cosmos_dbassociation_state.dart';
 /// 		}
 /// 		_, err = appplatform.NewSpringCloudAppCosmosDBAssociation(ctx, "example", &appplatform.SpringCloudAppCosmosDBAssociationArgs{
 /// 			Name:              pulumi.String("example-bind"),
-/// 			SpringCloudAppId:  exampleSpringCloudApp.ID(),
-/// 			CosmosdbAccountId: exampleAccount.ID(),
+/// 			SpringCloudAppId:  exampleSpringCloudApp.ID().ToIDOutput().ToStringOutput(),
+/// 			CosmosdbAccountId: exampleAccount.ID().ToIDOutput().ToStringOutput(),
 /// 			ApiType:           pulumi.String("table"),
 /// 			CosmosdbAccessKey: exampleAccount.PrimaryKey,
 /// 		})
@@ -419,7 +419,7 @@ class SpringCloudAppCosmosDBAssociation extends pulumi.CustomResource {
           'azure:appplatform/springCloudAppCosmosDBAssociation:SpringCloudAppCosmosDBAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     apiType = registerOutput<String>('apiType');
     cosmosdbAccessKey = registerOutput<String>('cosmosdbAccessKey');
@@ -438,11 +438,12 @@ class SpringCloudAppCosmosDBAssociation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SpringCloudAppCosmosDBAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SpringCloudAppCosmosDBAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -456,6 +457,27 @@ class SpringCloudAppCosmosDBAssociation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    apiType = registerOutput<String>('apiType');
+    cosmosdbAccessKey = registerOutput<String>('cosmosdbAccessKey');
+    cosmosdbAccountId = registerOutput<String>('cosmosdbAccountId');
+    cosmosdbCassandraKeyspaceName = registerOutput<String?>('cosmosdbCassandraKeyspaceName');
+    cosmosdbGremlinDatabaseName = registerOutput<String?>('cosmosdbGremlinDatabaseName');
+    cosmosdbGremlinGraphName = registerOutput<String?>('cosmosdbGremlinGraphName');
+    cosmosdbMongoDatabaseName = registerOutput<String?>('cosmosdbMongoDatabaseName');
+    cosmosdbSqlDatabaseName = registerOutput<String?>('cosmosdbSqlDatabaseName');
+    this.name = registerOutput<String>('name');
+    springCloudAppId = registerOutput<String>('springCloudAppId');
+  }
+
+  /// Creates a typed reference to an existing [SpringCloudAppCosmosDBAssociation] resource.
+  SpringCloudAppCosmosDBAssociation.reference(String urn)
+    : super(
+        'azure:appplatform/springCloudAppCosmosDBAssociation:SpringCloudAppCosmosDBAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     apiType = registerOutput<String>('apiType');
     cosmosdbAccessKey = registerOutput<String>('cosmosdbAccessKey');
     cosmosdbAccountId = registerOutput<String>('cosmosdbAccountId');

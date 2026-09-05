@@ -5,29 +5,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering QueueAuthorizationRule resources.
 class QueueAuthorizationRuleState {
   /// Does this Authorization Rule have Listen permissions to the ServiceBus Queue? Defaults to `false`.
-  final pulumi.Input<bool>? listen;
+  final pulumi.Input<bool?>? listen;
   /// Does this Authorization Rule have Manage permissions to the ServiceBus Queue? When this property is `true` - both `listen` and `send` must be too. Defaults to `false`.
-  final pulumi.Input<bool>? manage;
+  final pulumi.Input<bool?>? manage;
   /// Specifies the name of the Authorization Rule. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The Primary Connection String for the Authorization Rule.
-  final pulumi.Input<String>? primaryConnectionString;
+  final pulumi.Input<String?>? primaryConnectionString;
   /// The alias Primary Connection String for the ServiceBus Namespace, if the namespace is Geo DR paired.
-  final pulumi.Input<String>? primaryConnectionStringAlias;
+  final pulumi.Input<String?>? primaryConnectionStringAlias;
   /// The Primary Key for the Authorization Rule.
-  final pulumi.Input<String>? primaryKey;
+  final pulumi.Input<String?>? primaryKey;
   /// Specifies the ID of the ServiceBus Queue. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** At least one of the 3 permissions below needs to be set.
-  final pulumi.Input<String>? queueId;
+  final pulumi.Input<String?>? queueId;
   /// The Secondary Connection String for the Authorization Rule.
-  final pulumi.Input<String>? secondaryConnectionString;
+  final pulumi.Input<String?>? secondaryConnectionString;
   /// The alias Secondary Connection String for the ServiceBus Namespace
-  final pulumi.Input<String>? secondaryConnectionStringAlias;
+  final pulumi.Input<String?>? secondaryConnectionStringAlias;
   /// The Secondary Key for the Authorization Rule.
-  final pulumi.Input<String>? secondaryKey;
+  final pulumi.Input<String?>? secondaryKey;
   /// Does this Authorization Rule have Send permissions to the ServiceBus Queue? Defaults to `false`.
-  final pulumi.Input<bool>? send;
+  final pulumi.Input<bool?>? send;
 
   /// Creates a new [QueueAuthorizationRuleState].
   /// [listen] Does this Authorization Rule have Listen permissions to the ServiceBus Queue? Defaults to `false`.

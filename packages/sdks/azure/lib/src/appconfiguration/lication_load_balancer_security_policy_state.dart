@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering LicationLoadBalancerSecurityPolicy resources.
 class LicationLoadBalancerSecurityPolicyState {
   /// The ID of the Application Load Balancer. Changing this forces a new Application Gateway for Containers Security Policy to be created.
-  final pulumi.Input<String>? applicationLoadBalancerId;
+  final pulumi.Input<String?>? applicationLoadBalancerId;
   /// The Azure Region where the Application Load Balancer Security Policy should exist. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name which should be used for this Application Load Balancer Security Policy. Changing this forces a new Application Load Balancer Security Policy to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A mapping of tags which should be assigned to the Application Load Balancer Security Policy.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The ID of the Web Application Firewall Policy. Changing this forces a new Application Load Balancer Security Policy to be created.
-  final pulumi.Input<String>? webApplicationFirewallPolicyId;
+  final pulumi.Input<String?>? webApplicationFirewallPolicyId;
 
   /// Creates a new [LicationLoadBalancerSecurityPolicyState].
   /// [applicationLoadBalancerId] The ID of the Application Load Balancer. Changing this forces a new Application Gateway for Containers Security Policy to be created.

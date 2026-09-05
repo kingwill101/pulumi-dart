@@ -256,7 +256,7 @@ class DomainTopic extends pulumi.CustomResource {
           'azure:eventgrid/domainTopic:DomainTopic',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     domainName = registerOutput<String>('domainName');
     this.name = registerOutput<String>('name');
@@ -268,11 +268,12 @@ class DomainTopic extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DomainTopicState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DomainTopic._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -286,6 +287,20 @@ class DomainTopic extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    domainName = registerOutput<String>('domainName');
+    this.name = registerOutput<String>('name');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+  }
+
+  /// Creates a typed reference to an existing [DomainTopic] resource.
+  DomainTopic.reference(String urn)
+    : super(
+        'azure:eventgrid/domainTopic:DomainTopic',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     domainName = registerOutput<String>('domainName');
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');

@@ -10,17 +10,17 @@ class ClusterCustomerManagedKeyArgs {
   /// The ID of the Kusto Cluster. Changing this forces a new resource to be created.
   final pulumi.Input<String> clusterId;
   /// The name of Key Vault Key.
-  final pulumi.Input<String>? keyName;
+  final pulumi.Input<String?>? keyName;
   /// The ID of the Key Vault for CMK encryption.
-  final pulumi.Input<String>? keyVaultId;
+  final pulumi.Input<String?>? keyVaultId;
   /// The version of Key Vault Key.
-  final pulumi.Input<String>? keyVersion;
+  final pulumi.Input<String?>? keyVersion;
   /// The Managed HSM Key ID for CMK encryption.
   ///
   /// &gt; **Note:** Exactly one of `managedHsmKeyId` or `keyVaultId` must be specified.
-  final pulumi.Input<String>? managedHsmKeyId;
+  final pulumi.Input<String?>? managedHsmKeyId;
   /// The user assigned identity that has access to the Key Vault Key. If not specified, system assigned identity will be used.
-  final pulumi.Input<String>? userIdentity;
+  final pulumi.Input<String?>? userIdentity;
 
   /// Creates a new [ClusterCustomerManagedKeyArgs].
   /// [clusterId] The ID of the Kusto Cluster. Changing this forces a new resource to be created.

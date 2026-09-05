@@ -103,7 +103,7 @@ import 'gallery_application_state.dart';
 /// 		}
 /// 		_, err = compute.NewGalleryApplication(ctx, "example", &compute.GalleryApplicationArgs{
 /// 			Name:            pulumi.String("example-app"),
-/// 			GalleryId:       exampleSharedImageGallery.ID(),
+/// 			GalleryId:       exampleSharedImageGallery.ID().ToIDOutput().ToStringOutput(),
 /// 			Location:        example.Location,
 /// 			SupportedOsType: pulumi.String("Linux"),
 /// 		})
@@ -258,7 +258,7 @@ class GalleryApplication extends pulumi.CustomResource {
           'azure:compute/galleryApplication:GalleryApplication',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     description = registerOutput<String?>('description');
     endOfLifeDate = registerOutput<String?>('endOfLifeDate');
@@ -269,7 +269,7 @@ class GalleryApplication extends pulumi.CustomResource {
     privacyStatementUri = registerOutput<String?>('privacyStatementUri');
     releaseNoteUri = registerOutput<String?>('releaseNoteUri');
     supportedOsType = registerOutput<String>('supportedOsType');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [GalleryApplication] resource's state with the given [name] and [id].
@@ -277,11 +277,12 @@ class GalleryApplication extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     GalleryApplicationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return GalleryApplication._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -304,6 +305,27 @@ class GalleryApplication extends pulumi.CustomResource {
     privacyStatementUri = registerOutput<String?>('privacyStatementUri');
     releaseNoteUri = registerOutput<String?>('releaseNoteUri');
     supportedOsType = registerOutput<String>('supportedOsType');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [GalleryApplication] resource.
+  GalleryApplication.reference(String urn)
+    : super(
+        'azure:compute/galleryApplication:GalleryApplication',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    description = registerOutput<String?>('description');
+    endOfLifeDate = registerOutput<String?>('endOfLifeDate');
+    eula = registerOutput<String?>('eula');
+    galleryId = registerOutput<String>('galleryId');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    privacyStatementUri = registerOutput<String?>('privacyStatementUri');
+    releaseNoteUri = registerOutput<String?>('releaseNoteUri');
+    supportedOsType = registerOutput<String>('supportedOsType');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

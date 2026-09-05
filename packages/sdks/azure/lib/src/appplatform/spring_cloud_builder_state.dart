@@ -7,13 +7,13 @@ import 'spring_cloud_builder_stack.dart';
 /// Input properties used for looking up and filtering SpringCloudBuilder resources.
 class SpringCloudBuilderState {
   /// One or more `buildPackGroup` blocks as defined below.
-  final pulumi.Input<List<SpringCloudBuilderBuildPackGroup>>? buildPackGroups;
+  final pulumi.Input<List<SpringCloudBuilderBuildPackGroup>?>? buildPackGroups;
   /// The name which should be used for this Spring Cloud Builder. Changing this forces a new Spring Cloud Builder to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the Spring Cloud Service. Changing this forces a new Spring Cloud Builder to be created.
-  final pulumi.Input<String>? springCloudServiceId;
+  final pulumi.Input<String?>? springCloudServiceId;
   /// A `stack` block as defined below.
-  final pulumi.Input<SpringCloudBuilderStack>? stack;
+  final pulumi.Input<SpringCloudBuilderStack?>? stack;
 
   /// Creates a new [SpringCloudBuilderState].
   /// [buildPackGroups] One or more `buildPackGroup` blocks as defined below.

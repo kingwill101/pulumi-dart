@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FrontdoorSecurityPolicySecurityPoliciesFirewallAssociationDomain {
   /// Whether the Front Door Custom Domain or Front Door Endpoint is active.
-  final pulumi.Input<bool>? active;
+  final pulumi.Input<bool?>? active;
   /// The Resource Id of the **Front Door Custom Domain** or **Front Door Endpoint** that should be bound to this Front Door Security Policy.
   final pulumi.Input<String> cdnFrontdoorDomainId;
 

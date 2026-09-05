@@ -1,14 +1,20 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'linux_virtual_machine_scale_set_additional_capabilities.dart';
+import 'linux_virtual_machine_scale_set_admin_ssh_key.dart';
 import 'linux_virtual_machine_scale_set_args.dart';
 import 'linux_virtual_machine_scale_set_automatic_instance_repair.dart';
 import 'linux_virtual_machine_scale_set_automatic_os_upgrade_policy.dart';
 import 'linux_virtual_machine_scale_set_boot_diagnostics.dart';
+import 'linux_virtual_machine_scale_set_data_disk.dart';
+import 'linux_virtual_machine_scale_set_extension.dart';
+import 'linux_virtual_machine_scale_set_gallery_application.dart';
 import 'linux_virtual_machine_scale_set_identity.dart';
+import 'linux_virtual_machine_scale_set_network_interface.dart';
 import 'linux_virtual_machine_scale_set_os_disk.dart';
 import 'linux_virtual_machine_scale_set_plan.dart';
 import 'linux_virtual_machine_scale_set_rolling_upgrade_policy.dart';
 import 'linux_virtual_machine_scale_set_scale_in.dart';
+import 'linux_virtual_machine_scale_set_secret.dart';
 import 'linux_virtual_machine_scale_set_source_image_reference.dart';
 import 'linux_virtual_machine_scale_set_spot_restore.dart';
 import 'linux_virtual_machine_scale_set_state.dart';
@@ -287,7 +293,7 @@ import 'linux_virtual_machine_scale_set_termination_notification.dart';
 /// 						&compute.LinuxVirtualMachineScaleSetNetworkInterfaceIpConfigurationArgs{
 /// 							Name:     pulumi.String("internal"),
 /// 							Primary:  pulumi.Bool(true),
-/// 							SubnetId: internal.ID(),
+/// 							SubnetId: internal.ID().ToIDOutput().ToStringOutput(),
 /// 						},
 /// 					},
 /// 				},
@@ -510,7 +516,7 @@ import 'linux_virtual_machine_scale_set_termination_notification.dart';
 /// &lt;!-- This section is generated, changes will be overwritten --&gt;
 /// This resource uses the following Azure API Providers:
 ///
-/// * `Microsoft.Compute` - 2024-11-01
+/// * `Microsoft.Compute` - 2025-04-01
 ///
 /// ## Import
 ///
@@ -531,7 +537,7 @@ class LinuxVirtualMachineScaleSet extends pulumi.CustomResource {
   /// One or more `adminSshKey` blocks as defined below.
   ///
   /// &gt; **Note:** One of either `adminPassword` or `adminSshKey` must be specified.
-  late final pulumi.Output<List<Map<String, dynamic>>?> adminSshKeys;
+  late final pulumi.Output<List<LinuxVirtualMachineScaleSetAdminSshKey>?> adminSshKeys;
   /// The username of the local administrator on each Virtual Machine Scale Set instance. Changing this forces a new resource to be created.
   late final pulumi.Output<String> adminUsername;
   /// An `automaticInstanceRepair` block as defined below. To enable the automatic instance repair, this Virtual Machine Scale Set must have a valid `healthProbeId` or an [Application Health Extension](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-health-extension).
@@ -555,7 +561,7 @@ class LinuxVirtualMachineScaleSet extends pulumi.CustomResource {
   /// &gt; **Note:** When Custom Data has been configured, it's not possible to remove it without tainting the Virtual Machine Scale Set, due to a limitation of the Azure API.
   late final pulumi.Output<String?> customData;
   /// One or more `dataDisk` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> dataDisks;
+  late final pulumi.Output<List<LinuxVirtualMachineScaleSetDataDisk>?> dataDisks;
   /// Should Password Authentication be disabled on this Virtual Machine Scale Set? Defaults to `true`.
   ///
   /// &gt; **Note:** In general we'd recommend using SSH Keys for authentication rather than Passwords - but there's tradeoff's to each - please [see this thread for more information](https://security.stackexchange.com/questions/69407/why-is-using-an-ssh-key-more-secure-than-using-passwords).
@@ -577,11 +583,11 @@ class LinuxVirtualMachineScaleSet extends pulumi.CustomResource {
   /// &gt; **Note:** `extensionOperationsEnabled` may only be set to `false` if there are no extensions defined in the `extension` field.
   late final pulumi.Output<bool?> extensionOperationsEnabled;
   /// One or more `extension` blocks as defined below
-  late final pulumi.Output<List<Map<String, dynamic>>> extensions;
+  late final pulumi.Output<List<LinuxVirtualMachineScaleSetExtension>> extensions;
   /// Specifies the duration allocated for all extensions to start. The time duration should be between `15` minutes and `120` minutes (inclusive) and should be specified in ISO 8601 format. Defaults to `PT1H30M`.
   late final pulumi.Output<String?> extensionsTimeBudget;
   /// One or more `galleryApplication` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> galleryApplications;
+  late final pulumi.Output<List<LinuxVirtualMachineScaleSetGalleryApplication>?> galleryApplications;
   /// The ID of a Load Balancer Probe which should be used to determine the health of an instance. This is Required and can only be specified when `upgradeMode` is set to `Automatic` or `Rolling`.
   late final pulumi.Output<String?> healthProbeId;
   /// Specifies the ID of the dedicated host group that the virtual machine scale set resides in. Changing this forces a new resource to be created.
@@ -601,7 +607,7 @@ class LinuxVirtualMachineScaleSet extends pulumi.CustomResource {
   /// The name of the Linux Virtual Machine Scale Set. Changing this forces a new resource to be created.
   late final pulumi.Output<String> name;
   /// One or more `networkInterface` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>> networkInterfaces;
+  late final pulumi.Output<List<LinuxVirtualMachineScaleSetNetworkInterface>> networkInterfaces;
   /// An `osDisk` block as defined below.
   late final pulumi.Output<LinuxVirtualMachineScaleSetOsDisk> osDisk;
   /// Should Azure over-provision Virtual Machines in this Scale Set? This means that multiple Virtual Machines will be provisioned and Azure will keep the instances which become available first - which improves provisioning success rates and improves deployment time. You're not billed for these over-provisioned VM's and they don't count towards the Subscription Quota. Defaults to `true`.
@@ -635,7 +641,7 @@ class LinuxVirtualMachineScaleSet extends pulumi.CustomResource {
   /// A `scaleIn` block as defined below.
   late final pulumi.Output<LinuxVirtualMachineScaleSetScaleIn?> scaleIn;
   /// One or more `secret` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> secrets;
+  late final pulumi.Output<List<LinuxVirtualMachineScaleSetSecret>?> secrets;
   /// Specifies whether secure boot should be enabled on the virtual machine. Changing this forces a new resource to be created.
   late final pulumi.Output<bool?> secureBootEnabled;
   /// Should this Virtual Machine Scale Set be limited to a Single Placement Group, which means the number of instances will be capped at 100 Virtual Machines. Defaults to `true`.
@@ -687,28 +693,29 @@ class LinuxVirtualMachineScaleSet extends pulumi.CustomResource {
           'azure:compute/linuxVirtualMachineScaleSet:LinuxVirtualMachineScaleSet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['adminPassword', 'customData'],
         ) {
     additionalCapabilities = registerOutput<LinuxVirtualMachineScaleSetAdditionalCapabilities?>('additionalCapabilities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxVirtualMachineScaleSetAdditionalCapabilities.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    adminPassword = registerOutput<String?>('adminPassword');
-    adminSshKeys = registerOutput<List<Map<String, dynamic>>?>('adminSshKeys');
+    adminPassword = registerOutput<String?>('adminPassword', isSecret: true);
+    adminSshKeys = registerOutput<List<LinuxVirtualMachineScaleSetAdminSshKey>?>('adminSshKeys', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LinuxVirtualMachineScaleSetAdminSshKey>(guardedValue, (value) => LinuxVirtualMachineScaleSetAdminSshKey.fromMap((value as Map).cast<String, dynamic>())); });
     adminUsername = registerOutput<String>('adminUsername');
     automaticInstanceRepair = registerOutput<LinuxVirtualMachineScaleSetAutomaticInstanceRepair>('automaticInstanceRepair', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxVirtualMachineScaleSetAutomaticInstanceRepair.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     automaticOsUpgradePolicy = registerOutput<LinuxVirtualMachineScaleSetAutomaticOsUpgradePolicy?>('automaticOsUpgradePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxVirtualMachineScaleSetAutomaticOsUpgradePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     bootDiagnostics = registerOutput<LinuxVirtualMachineScaleSetBootDiagnostics?>('bootDiagnostics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxVirtualMachineScaleSetBootDiagnostics.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     capacityReservationGroupId = registerOutput<String?>('capacityReservationGroupId');
     computerNamePrefix = registerOutput<String>('computerNamePrefix');
-    customData = registerOutput<String?>('customData');
-    dataDisks = registerOutput<List<Map<String, dynamic>>?>('dataDisks');
+    customData = registerOutput<String?>('customData', isSecret: true);
+    dataDisks = registerOutput<List<LinuxVirtualMachineScaleSetDataDisk>?>('dataDisks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LinuxVirtualMachineScaleSetDataDisk>(guardedValue, (value) => LinuxVirtualMachineScaleSetDataDisk.fromMap((value as Map).cast<String, dynamic>())); });
     disablePasswordAuthentication = registerOutput<bool?>('disablePasswordAuthentication');
     doNotRunExtensionsOnOverprovisionedMachines = registerOutput<bool?>('doNotRunExtensionsOnOverprovisionedMachines');
     edgeZone = registerOutput<String?>('edgeZone');
     encryptionAtHostEnabled = registerOutput<bool?>('encryptionAtHostEnabled');
     evictionPolicy = registerOutput<String?>('evictionPolicy');
     extensionOperationsEnabled = registerOutput<bool?>('extensionOperationsEnabled');
-    extensions = registerOutput<List<Map<String, dynamic>>>('extensions');
+    extensions = registerOutput<List<LinuxVirtualMachineScaleSetExtension>>('extensions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LinuxVirtualMachineScaleSetExtension>(guardedValue, (value) => LinuxVirtualMachineScaleSetExtension.fromMap((value as Map).cast<String, dynamic>())); });
     extensionsTimeBudget = registerOutput<String?>('extensionsTimeBudget');
-    galleryApplications = registerOutput<List<Map<String, dynamic>>?>('galleryApplications');
+    galleryApplications = registerOutput<List<LinuxVirtualMachineScaleSetGalleryApplication>?>('galleryApplications', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LinuxVirtualMachineScaleSetGalleryApplication>(guardedValue, (value) => LinuxVirtualMachineScaleSetGalleryApplication.fromMap((value as Map).cast<String, dynamic>())); });
     healthProbeId = registerOutput<String?>('healthProbeId');
     hostGroupId = registerOutput<String?>('hostGroupId');
     identity = registerOutput<LinuxVirtualMachineScaleSetIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxVirtualMachineScaleSetIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -716,7 +723,7 @@ class LinuxVirtualMachineScaleSet extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     maxBidPrice = registerOutput<double?>('maxBidPrice');
     this.name = registerOutput<String>('name');
-    networkInterfaces = registerOutput<List<Map<String, dynamic>>>('networkInterfaces');
+    networkInterfaces = registerOutput<List<LinuxVirtualMachineScaleSetNetworkInterface>>('networkInterfaces', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LinuxVirtualMachineScaleSetNetworkInterface>(guardedValue, (value) => LinuxVirtualMachineScaleSetNetworkInterface.fromMap((value as Map).cast<String, dynamic>())); });
     osDisk = registerOutput<LinuxVirtualMachineScaleSetOsDisk>('osDisk', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxVirtualMachineScaleSetOsDisk.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     overprovision = registerOutput<bool?>('overprovision');
     plan = registerOutput<LinuxVirtualMachineScaleSetPlan?>('plan', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxVirtualMachineScaleSetPlan.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -729,21 +736,21 @@ class LinuxVirtualMachineScaleSet extends pulumi.CustomResource {
     resourceGroupName = registerOutput<String>('resourceGroupName');
     rollingUpgradePolicy = registerOutput<LinuxVirtualMachineScaleSetRollingUpgradePolicy?>('rollingUpgradePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxVirtualMachineScaleSetRollingUpgradePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     scaleIn = registerOutput<LinuxVirtualMachineScaleSetScaleIn?>('scaleIn', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxVirtualMachineScaleSetScaleIn.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    secrets = registerOutput<List<Map<String, dynamic>>?>('secrets');
+    secrets = registerOutput<List<LinuxVirtualMachineScaleSetSecret>?>('secrets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LinuxVirtualMachineScaleSetSecret>(guardedValue, (value) => LinuxVirtualMachineScaleSetSecret.fromMap((value as Map).cast<String, dynamic>())); });
     secureBootEnabled = registerOutput<bool?>('secureBootEnabled');
     singlePlacementGroup = registerOutput<bool?>('singlePlacementGroup');
     sku = registerOutput<String>('sku');
     sourceImageId = registerOutput<String?>('sourceImageId');
     sourceImageReference = registerOutput<LinuxVirtualMachineScaleSetSourceImageReference?>('sourceImageReference', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxVirtualMachineScaleSetSourceImageReference.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     spotRestore = registerOutput<LinuxVirtualMachineScaleSetSpotRestore>('spotRestore', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxVirtualMachineScaleSetSpotRestore.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     terminationNotification = registerOutput<LinuxVirtualMachineScaleSetTerminationNotification>('terminationNotification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxVirtualMachineScaleSetTerminationNotification.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     uniqueId = registerOutput<String>('uniqueId');
     upgradeMode = registerOutput<String?>('upgradeMode');
     userData = registerOutput<String?>('userData');
     vtpmEnabled = registerOutput<bool?>('vtpmEnabled');
     zoneBalance = registerOutput<bool?>('zoneBalance');
-    zones = registerOutput<List<String>?>('zones');
+    zones = registerOutput<List<String>?>('zones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [LinuxVirtualMachineScaleSet] resource's state with the given [name] and [id].
@@ -751,11 +758,12 @@ class LinuxVirtualMachineScaleSet extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LinuxVirtualMachineScaleSetState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LinuxVirtualMachineScaleSet._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -770,25 +778,25 @@ class LinuxVirtualMachineScaleSet extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     additionalCapabilities = registerOutput<LinuxVirtualMachineScaleSetAdditionalCapabilities?>('additionalCapabilities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxVirtualMachineScaleSetAdditionalCapabilities.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    adminPassword = registerOutput<String?>('adminPassword');
-    adminSshKeys = registerOutput<List<Map<String, dynamic>>?>('adminSshKeys');
+    adminPassword = registerOutput<String?>('adminPassword', isSecret: true);
+    adminSshKeys = registerOutput<List<LinuxVirtualMachineScaleSetAdminSshKey>?>('adminSshKeys', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LinuxVirtualMachineScaleSetAdminSshKey>(guardedValue, (value) => LinuxVirtualMachineScaleSetAdminSshKey.fromMap((value as Map).cast<String, dynamic>())); });
     adminUsername = registerOutput<String>('adminUsername');
     automaticInstanceRepair = registerOutput<LinuxVirtualMachineScaleSetAutomaticInstanceRepair>('automaticInstanceRepair', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxVirtualMachineScaleSetAutomaticInstanceRepair.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     automaticOsUpgradePolicy = registerOutput<LinuxVirtualMachineScaleSetAutomaticOsUpgradePolicy?>('automaticOsUpgradePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxVirtualMachineScaleSetAutomaticOsUpgradePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     bootDiagnostics = registerOutput<LinuxVirtualMachineScaleSetBootDiagnostics?>('bootDiagnostics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxVirtualMachineScaleSetBootDiagnostics.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     capacityReservationGroupId = registerOutput<String?>('capacityReservationGroupId');
     computerNamePrefix = registerOutput<String>('computerNamePrefix');
-    customData = registerOutput<String?>('customData');
-    dataDisks = registerOutput<List<Map<String, dynamic>>?>('dataDisks');
+    customData = registerOutput<String?>('customData', isSecret: true);
+    dataDisks = registerOutput<List<LinuxVirtualMachineScaleSetDataDisk>?>('dataDisks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LinuxVirtualMachineScaleSetDataDisk>(guardedValue, (value) => LinuxVirtualMachineScaleSetDataDisk.fromMap((value as Map).cast<String, dynamic>())); });
     disablePasswordAuthentication = registerOutput<bool?>('disablePasswordAuthentication');
     doNotRunExtensionsOnOverprovisionedMachines = registerOutput<bool?>('doNotRunExtensionsOnOverprovisionedMachines');
     edgeZone = registerOutput<String?>('edgeZone');
     encryptionAtHostEnabled = registerOutput<bool?>('encryptionAtHostEnabled');
     evictionPolicy = registerOutput<String?>('evictionPolicy');
     extensionOperationsEnabled = registerOutput<bool?>('extensionOperationsEnabled');
-    extensions = registerOutput<List<Map<String, dynamic>>>('extensions');
+    extensions = registerOutput<List<LinuxVirtualMachineScaleSetExtension>>('extensions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LinuxVirtualMachineScaleSetExtension>(guardedValue, (value) => LinuxVirtualMachineScaleSetExtension.fromMap((value as Map).cast<String, dynamic>())); });
     extensionsTimeBudget = registerOutput<String?>('extensionsTimeBudget');
-    galleryApplications = registerOutput<List<Map<String, dynamic>>?>('galleryApplications');
+    galleryApplications = registerOutput<List<LinuxVirtualMachineScaleSetGalleryApplication>?>('galleryApplications', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LinuxVirtualMachineScaleSetGalleryApplication>(guardedValue, (value) => LinuxVirtualMachineScaleSetGalleryApplication.fromMap((value as Map).cast<String, dynamic>())); });
     healthProbeId = registerOutput<String?>('healthProbeId');
     hostGroupId = registerOutput<String?>('hostGroupId');
     identity = registerOutput<LinuxVirtualMachineScaleSetIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxVirtualMachineScaleSetIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -796,7 +804,7 @@ class LinuxVirtualMachineScaleSet extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     maxBidPrice = registerOutput<double?>('maxBidPrice');
     this.name = registerOutput<String>('name');
-    networkInterfaces = registerOutput<List<Map<String, dynamic>>>('networkInterfaces');
+    networkInterfaces = registerOutput<List<LinuxVirtualMachineScaleSetNetworkInterface>>('networkInterfaces', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LinuxVirtualMachineScaleSetNetworkInterface>(guardedValue, (value) => LinuxVirtualMachineScaleSetNetworkInterface.fromMap((value as Map).cast<String, dynamic>())); });
     osDisk = registerOutput<LinuxVirtualMachineScaleSetOsDisk>('osDisk', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxVirtualMachineScaleSetOsDisk.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     overprovision = registerOutput<bool?>('overprovision');
     plan = registerOutput<LinuxVirtualMachineScaleSetPlan?>('plan', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxVirtualMachineScaleSetPlan.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -809,20 +817,87 @@ class LinuxVirtualMachineScaleSet extends pulumi.CustomResource {
     resourceGroupName = registerOutput<String>('resourceGroupName');
     rollingUpgradePolicy = registerOutput<LinuxVirtualMachineScaleSetRollingUpgradePolicy?>('rollingUpgradePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxVirtualMachineScaleSetRollingUpgradePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     scaleIn = registerOutput<LinuxVirtualMachineScaleSetScaleIn?>('scaleIn', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxVirtualMachineScaleSetScaleIn.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    secrets = registerOutput<List<Map<String, dynamic>>?>('secrets');
+    secrets = registerOutput<List<LinuxVirtualMachineScaleSetSecret>?>('secrets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LinuxVirtualMachineScaleSetSecret>(guardedValue, (value) => LinuxVirtualMachineScaleSetSecret.fromMap((value as Map).cast<String, dynamic>())); });
     secureBootEnabled = registerOutput<bool?>('secureBootEnabled');
     singlePlacementGroup = registerOutput<bool?>('singlePlacementGroup');
     sku = registerOutput<String>('sku');
     sourceImageId = registerOutput<String?>('sourceImageId');
     sourceImageReference = registerOutput<LinuxVirtualMachineScaleSetSourceImageReference?>('sourceImageReference', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxVirtualMachineScaleSetSourceImageReference.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     spotRestore = registerOutput<LinuxVirtualMachineScaleSetSpotRestore>('spotRestore', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxVirtualMachineScaleSetSpotRestore.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     terminationNotification = registerOutput<LinuxVirtualMachineScaleSetTerminationNotification>('terminationNotification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxVirtualMachineScaleSetTerminationNotification.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     uniqueId = registerOutput<String>('uniqueId');
     upgradeMode = registerOutput<String?>('upgradeMode');
     userData = registerOutput<String?>('userData');
     vtpmEnabled = registerOutput<bool?>('vtpmEnabled');
     zoneBalance = registerOutput<bool?>('zoneBalance');
-    zones = registerOutput<List<String>?>('zones');
+    zones = registerOutput<List<String>?>('zones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [LinuxVirtualMachineScaleSet] resource.
+  LinuxVirtualMachineScaleSet.reference(String urn)
+    : super(
+        'azure:compute/linuxVirtualMachineScaleSet:LinuxVirtualMachineScaleSet',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['adminPassword', 'customData'],
+        isResourceReference: true,
+      ) {
+    additionalCapabilities = registerOutput<LinuxVirtualMachineScaleSetAdditionalCapabilities?>('additionalCapabilities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxVirtualMachineScaleSetAdditionalCapabilities.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    adminPassword = registerOutput<String?>('adminPassword', isSecret: true);
+    adminSshKeys = registerOutput<List<LinuxVirtualMachineScaleSetAdminSshKey>?>('adminSshKeys', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LinuxVirtualMachineScaleSetAdminSshKey>(guardedValue, (value) => LinuxVirtualMachineScaleSetAdminSshKey.fromMap((value as Map).cast<String, dynamic>())); });
+    adminUsername = registerOutput<String>('adminUsername');
+    automaticInstanceRepair = registerOutput<LinuxVirtualMachineScaleSetAutomaticInstanceRepair>('automaticInstanceRepair', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxVirtualMachineScaleSetAutomaticInstanceRepair.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    automaticOsUpgradePolicy = registerOutput<LinuxVirtualMachineScaleSetAutomaticOsUpgradePolicy?>('automaticOsUpgradePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxVirtualMachineScaleSetAutomaticOsUpgradePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    bootDiagnostics = registerOutput<LinuxVirtualMachineScaleSetBootDiagnostics?>('bootDiagnostics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxVirtualMachineScaleSetBootDiagnostics.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    capacityReservationGroupId = registerOutput<String?>('capacityReservationGroupId');
+    computerNamePrefix = registerOutput<String>('computerNamePrefix');
+    customData = registerOutput<String?>('customData', isSecret: true);
+    dataDisks = registerOutput<List<LinuxVirtualMachineScaleSetDataDisk>?>('dataDisks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LinuxVirtualMachineScaleSetDataDisk>(guardedValue, (value) => LinuxVirtualMachineScaleSetDataDisk.fromMap((value as Map).cast<String, dynamic>())); });
+    disablePasswordAuthentication = registerOutput<bool?>('disablePasswordAuthentication');
+    doNotRunExtensionsOnOverprovisionedMachines = registerOutput<bool?>('doNotRunExtensionsOnOverprovisionedMachines');
+    edgeZone = registerOutput<String?>('edgeZone');
+    encryptionAtHostEnabled = registerOutput<bool?>('encryptionAtHostEnabled');
+    evictionPolicy = registerOutput<String?>('evictionPolicy');
+    extensionOperationsEnabled = registerOutput<bool?>('extensionOperationsEnabled');
+    extensions = registerOutput<List<LinuxVirtualMachineScaleSetExtension>>('extensions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LinuxVirtualMachineScaleSetExtension>(guardedValue, (value) => LinuxVirtualMachineScaleSetExtension.fromMap((value as Map).cast<String, dynamic>())); });
+    extensionsTimeBudget = registerOutput<String?>('extensionsTimeBudget');
+    galleryApplications = registerOutput<List<LinuxVirtualMachineScaleSetGalleryApplication>?>('galleryApplications', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LinuxVirtualMachineScaleSetGalleryApplication>(guardedValue, (value) => LinuxVirtualMachineScaleSetGalleryApplication.fromMap((value as Map).cast<String, dynamic>())); });
+    healthProbeId = registerOutput<String?>('healthProbeId');
+    hostGroupId = registerOutput<String?>('hostGroupId');
+    identity = registerOutput<LinuxVirtualMachineScaleSetIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxVirtualMachineScaleSetIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    instances = registerOutput<int?>('instances');
+    location = registerOutput<String>('location');
+    maxBidPrice = registerOutput<double?>('maxBidPrice');
+    this.name = registerOutput<String>('name');
+    networkInterfaces = registerOutput<List<LinuxVirtualMachineScaleSetNetworkInterface>>('networkInterfaces', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LinuxVirtualMachineScaleSetNetworkInterface>(guardedValue, (value) => LinuxVirtualMachineScaleSetNetworkInterface.fromMap((value as Map).cast<String, dynamic>())); });
+    osDisk = registerOutput<LinuxVirtualMachineScaleSetOsDisk>('osDisk', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxVirtualMachineScaleSetOsDisk.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    overprovision = registerOutput<bool?>('overprovision');
+    plan = registerOutput<LinuxVirtualMachineScaleSetPlan?>('plan', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxVirtualMachineScaleSetPlan.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    platformFaultDomainCount = registerOutput<int>('platformFaultDomainCount');
+    priority = registerOutput<String?>('priority');
+    provisionVmAgent = registerOutput<bool?>('provisionVmAgent');
+    proximityPlacementGroupId = registerOutput<String?>('proximityPlacementGroupId');
+    resilientVmCreationEnabled = registerOutput<bool?>('resilientVmCreationEnabled');
+    resilientVmDeletionEnabled = registerOutput<bool?>('resilientVmDeletionEnabled');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    rollingUpgradePolicy = registerOutput<LinuxVirtualMachineScaleSetRollingUpgradePolicy?>('rollingUpgradePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxVirtualMachineScaleSetRollingUpgradePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    scaleIn = registerOutput<LinuxVirtualMachineScaleSetScaleIn?>('scaleIn', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxVirtualMachineScaleSetScaleIn.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    secrets = registerOutput<List<LinuxVirtualMachineScaleSetSecret>?>('secrets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LinuxVirtualMachineScaleSetSecret>(guardedValue, (value) => LinuxVirtualMachineScaleSetSecret.fromMap((value as Map).cast<String, dynamic>())); });
+    secureBootEnabled = registerOutput<bool?>('secureBootEnabled');
+    singlePlacementGroup = registerOutput<bool?>('singlePlacementGroup');
+    sku = registerOutput<String>('sku');
+    sourceImageId = registerOutput<String?>('sourceImageId');
+    sourceImageReference = registerOutput<LinuxVirtualMachineScaleSetSourceImageReference?>('sourceImageReference', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxVirtualMachineScaleSetSourceImageReference.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    spotRestore = registerOutput<LinuxVirtualMachineScaleSetSpotRestore>('spotRestore', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxVirtualMachineScaleSetSpotRestore.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    terminationNotification = registerOutput<LinuxVirtualMachineScaleSetTerminationNotification>('terminationNotification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxVirtualMachineScaleSetTerminationNotification.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    uniqueId = registerOutput<String>('uniqueId');
+    upgradeMode = registerOutput<String?>('upgradeMode');
+    userData = registerOutput<String?>('userData');
+    vtpmEnabled = registerOutput<bool?>('vtpmEnabled');
+    zoneBalance = registerOutput<bool?>('zoneBalance');
+    zones = registerOutput<List<String>?>('zones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

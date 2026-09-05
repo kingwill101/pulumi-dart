@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'definition_args.dart';
+import 'definition_authorization.dart';
+import 'definition_eligible_authorization.dart';
 import 'definition_plan.dart';
 import 'definition_state.dart';
 
@@ -218,11 +220,11 @@ import 'definition_state.dart';
 /// ```
 class Definition extends pulumi.CustomResource {
   /// An `authorization` block as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>> authorizations;
+  late final pulumi.Output<List<DefinitionAuthorization>> authorizations;
   /// A description of the Lighthouse Definition.
   late final pulumi.Output<String?> description;
   /// An `eligibleAuthorization` block as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> eligibleAuthorizations;
+  late final pulumi.Output<List<DefinitionEligibleAuthorization>?> eligibleAuthorizations;
   /// A unique UUID/GUID which identifies this lighthouse definition - one will be generated if not specified. Changing this forces a new resource to be created.
   late final pulumi.Output<String> lighthouseDefinitionId;
   /// The ID of the managing tenant. Changing this forces a new resource to be created.
@@ -246,11 +248,11 @@ class Definition extends pulumi.CustomResource {
           'azure:lighthouse/definition:Definition',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
-    authorizations = registerOutput<List<Map<String, dynamic>>>('authorizations');
+    authorizations = registerOutput<List<DefinitionAuthorization>>('authorizations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DefinitionAuthorization>(guardedValue, (value) => DefinitionAuthorization.fromMap((value as Map).cast<String, dynamic>())); });
     description = registerOutput<String?>('description');
-    eligibleAuthorizations = registerOutput<List<Map<String, dynamic>>?>('eligibleAuthorizations');
+    eligibleAuthorizations = registerOutput<List<DefinitionEligibleAuthorization>?>('eligibleAuthorizations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DefinitionEligibleAuthorization>(guardedValue, (value) => DefinitionEligibleAuthorization.fromMap((value as Map).cast<String, dynamic>())); });
     lighthouseDefinitionId = registerOutput<String>('lighthouseDefinitionId');
     managingTenantId = registerOutput<String>('managingTenantId');
     this.name = registerOutput<String>('name');
@@ -263,11 +265,12 @@ class Definition extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DefinitionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Definition._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -281,9 +284,28 @@ class Definition extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    authorizations = registerOutput<List<Map<String, dynamic>>>('authorizations');
+    authorizations = registerOutput<List<DefinitionAuthorization>>('authorizations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DefinitionAuthorization>(guardedValue, (value) => DefinitionAuthorization.fromMap((value as Map).cast<String, dynamic>())); });
     description = registerOutput<String?>('description');
-    eligibleAuthorizations = registerOutput<List<Map<String, dynamic>>?>('eligibleAuthorizations');
+    eligibleAuthorizations = registerOutput<List<DefinitionEligibleAuthorization>?>('eligibleAuthorizations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DefinitionEligibleAuthorization>(guardedValue, (value) => DefinitionEligibleAuthorization.fromMap((value as Map).cast<String, dynamic>())); });
+    lighthouseDefinitionId = registerOutput<String>('lighthouseDefinitionId');
+    managingTenantId = registerOutput<String>('managingTenantId');
+    this.name = registerOutput<String>('name');
+    plan = registerOutput<DefinitionPlan?>('plan', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DefinitionPlan.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    scope = registerOutput<String>('scope');
+  }
+
+  /// Creates a typed reference to an existing [Definition] resource.
+  Definition.reference(String urn)
+    : super(
+        'azure:lighthouse/definition:Definition',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    authorizations = registerOutput<List<DefinitionAuthorization>>('authorizations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DefinitionAuthorization>(guardedValue, (value) => DefinitionAuthorization.fromMap((value as Map).cast<String, dynamic>())); });
+    description = registerOutput<String?>('description');
+    eligibleAuthorizations = registerOutput<List<DefinitionEligibleAuthorization>?>('eligibleAuthorizations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DefinitionEligibleAuthorization>(guardedValue, (value) => DefinitionEligibleAuthorization.fromMap((value as Map).cast<String, dynamic>())); });
     lighthouseDefinitionId = registerOutput<String>('lighthouseDefinitionId');
     managingTenantId = registerOutput<String>('managingTenantId');
     this.name = registerOutput<String>('name');

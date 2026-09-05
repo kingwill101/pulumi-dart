@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesDatabaseServerLoadBalancer {
   /// A list of Backend Pool names for the Load Balancer. Changing this forces a new resource to be created.
-  final pulumi.Input<List<String>>? backendPoolNames;
+  final pulumi.Input<List<String>?>? backendPoolNames;
   /// A list of Frontend IP Configuration names. Changing this forces a new resource to be created.
-  final pulumi.Input<List<String>>? frontendIpConfigurationNames;
+  final pulumi.Input<List<String>?>? frontendIpConfigurationNames;
   /// A list of Health Probe names. Changing this forces a new resource to be created.
-  final pulumi.Input<List<String>>? healthProbeNames;
+  final pulumi.Input<List<String>?>? healthProbeNames;
   /// The full resource name of the Load Balancer. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesDatabaseServerLoadBalancer].
   /// [backendPoolNames] A list of Backend Pool names for the Load Balancer. Changing this forces a new resource to be created.

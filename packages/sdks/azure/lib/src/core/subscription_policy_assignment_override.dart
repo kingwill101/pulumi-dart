@@ -5,7 +5,7 @@ import 'subscription_policy_assignment_override_selector.dart';
 
 class SubscriptionPolicyAssignmentOverride {
   /// One or more `overrideSelector` block as defined below.
-  final pulumi.Input<List<SubscriptionPolicyAssignmentOverrideSelector>>? selectors;
+  final pulumi.Input<List<SubscriptionPolicyAssignmentOverrideSelector>?>? selectors;
   /// Specifies the value to override the policy property. Possible values for `policyEffect` override listed [policy effects](https://learn.microsoft.com/en-us/azure/governance/policy/concepts/effects).
   final pulumi.Input<String> value;
 

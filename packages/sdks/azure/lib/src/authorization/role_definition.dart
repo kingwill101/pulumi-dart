@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'role_definition_args.dart';
+import 'role_definition_permission.dart';
 import 'role_definition_state.dart';
 
 /// Manages a custom Role Definition, used to assign Roles to Users/Principals. See ['Understand role definitions'](https://docs.microsoft.com/azure/role-based-access-control/role-definitions) in the Azure documentation for more details.
@@ -307,7 +308,7 @@ import 'role_definition_state.dart';
 /// 		}
 /// 		_, err = authorization.NewRoleDefinition(ctx, "example", &authorization.RoleDefinitionArgs{
 /// 			Name:        pulumi.String("example-mg-role"),
-/// 			Scope:       example.ID(),
+/// 			Scope:       example.ID().ToIDOutput().ToStringOutput(),
 /// 			Description: pulumi.String("Example custom role scoped to a management group."),
 /// 			Permissions: authorization.RoleDefinitionPermissionArray{
 /// 				&authorization.RoleDefinitionPermissionArgs{
@@ -318,7 +319,7 @@ import 'role_definition_state.dart';
 /// 				},
 /// 			},
 /// 			AssignableScopes: pulumi.StringArray{
-/// 				example.ID(),
+/// 				example.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -458,7 +459,7 @@ class RoleDefinition extends pulumi.CustomResource {
   /// The name of the Role Definition.
   late final pulumi.Output<String> name;
   /// A `permissions` block as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> permissions;
+  late final pulumi.Output<List<RoleDefinitionPermission>?> permissions;
   /// A unique UUID/GUID which identifies this role - one will be generated if not specified. Changing this forces a new resource to be created.
   late final pulumi.Output<String> roleDefinitionId;
   /// The Azure Resource Manager ID for the resource.
@@ -478,12 +479,12 @@ class RoleDefinition extends pulumi.CustomResource {
           'azure:authorization/roleDefinition:RoleDefinition',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
-    assignableScopes = registerOutput<List<String>>('assignableScopes');
+    assignableScopes = registerOutput<List<String>>('assignableScopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    permissions = registerOutput<List<Map<String, dynamic>>?>('permissions');
+    permissions = registerOutput<List<RoleDefinitionPermission>?>('permissions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RoleDefinitionPermission>(guardedValue, (value) => RoleDefinitionPermission.fromMap((value as Map).cast<String, dynamic>())); });
     roleDefinitionId = registerOutput<String>('roleDefinitionId');
     roleDefinitionResourceId = registerOutput<String>('roleDefinitionResourceId');
     scope = registerOutput<String>('scope');
@@ -494,11 +495,12 @@ class RoleDefinition extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RoleDefinitionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RoleDefinition._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -512,10 +514,28 @@ class RoleDefinition extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    assignableScopes = registerOutput<List<String>>('assignableScopes');
+    assignableScopes = registerOutput<List<String>>('assignableScopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    permissions = registerOutput<List<Map<String, dynamic>>?>('permissions');
+    permissions = registerOutput<List<RoleDefinitionPermission>?>('permissions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RoleDefinitionPermission>(guardedValue, (value) => RoleDefinitionPermission.fromMap((value as Map).cast<String, dynamic>())); });
+    roleDefinitionId = registerOutput<String>('roleDefinitionId');
+    roleDefinitionResourceId = registerOutput<String>('roleDefinitionResourceId');
+    scope = registerOutput<String>('scope');
+  }
+
+  /// Creates a typed reference to an existing [RoleDefinition] resource.
+  RoleDefinition.reference(String urn)
+    : super(
+        'azure:authorization/roleDefinition:RoleDefinition',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    assignableScopes = registerOutput<List<String>>('assignableScopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    permissions = registerOutput<List<RoleDefinitionPermission>?>('permissions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RoleDefinitionPermission>(guardedValue, (value) => RoleDefinitionPermission.fromMap((value as Map).cast<String, dynamic>())); });
     roleDefinitionId = registerOutput<String>('roleDefinitionId');
     roleDefinitionResourceId = registerOutput<String>('roleDefinitionResourceId');
     scope = registerOutput<String>('scope');

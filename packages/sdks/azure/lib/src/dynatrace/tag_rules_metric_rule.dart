@@ -5,9 +5,9 @@ import 'tag_rules_metric_rule_filtering_tag.dart';
 
 class TagRulesMetricRule {
   /// Filtering tag for the metric rule. A `filteringTag` block as defined below.
-  final pulumi.Input<List<TagRulesMetricRuleFilteringTag>>? filteringTags;
+  final pulumi.Input<List<TagRulesMetricRuleFilteringTag>?>? filteringTags;
   /// If sending metrics is enabled. The default value is `false`.
-  final pulumi.Input<bool>? sendingMetricsEnabled;
+  final pulumi.Input<bool?>? sendingMetricsEnabled;
 
   /// Creates a new [TagRulesMetricRule].
   /// [filteringTags] Filtering tag for the metric rule. A `filteringTag` block as defined below.

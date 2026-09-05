@@ -8,9 +8,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_databasemigration_service_service_args_doc}
 class ServiceArgs {
   /// Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Specify the name of the database migration service. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Name of the resource group in which to create the database migration service. Changing this forces a new resource to be created.
   final pulumi.Input<String> resourceGroupName;
   /// The SKU name of the database migration service. Possible values are `Premium_4vCores`, `Standard_1vCores`, `Standard_2vCores` and `Standard_4vCores`. Changing this forces a new resource to be created.
@@ -18,7 +18,7 @@ class ServiceArgs {
   /// The ID of the virtual subnet resource to which the database migration service should be joined. Changing this forces a new resource to be created.
   final pulumi.Input<String> subnetId;
   /// A mapping of tags to assigned to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ServiceArgs].
   /// [location] Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.

@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering MedtechServiceFhirDestination resources.
 class MedtechServiceFhirDestinationState {
   /// Specifies the destination Fhir mappings of the Med Tech Service Fhir Destination.
-  final pulumi.Input<String>? destinationFhirMappingJson;
+  final pulumi.Input<String?>? destinationFhirMappingJson;
   /// Specifies the destination fhir service id of the Med Tech Service Fhir Destination.
-  final pulumi.Input<String>? destinationFhirServiceId;
+  final pulumi.Input<String?>? destinationFhirServiceId;
   /// Specifies the destination identity resolution type where the Healthcare Med Tech Service Fhir Destination should be created. Possible values are `Create`, `Lookup`.
-  final pulumi.Input<String>? destinationIdentityResolutionType;
+  final pulumi.Input<String?>? destinationIdentityResolutionType;
   /// Specifies the Azure Region where the Healthcare Med Tech Service Fhir Destination should be created. Changing this forces a new Healthcare Med Tech Service Fhir Destination to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Specifies the name of the Healthcare Med Tech Service where the Healthcare Med Tech Service Fhir Destination should exist. Changing this forces a new Healthcare Med Tech Service Fhir Destination to be created.
-  final pulumi.Input<String>? medtechServiceId;
+  final pulumi.Input<String?>? medtechServiceId;
   /// Specifies the name of the Healthcare Med Tech Service Fhir Destination. Changing this forces a new Healthcare Med Tech Service Fhir Destination to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [MedtechServiceFhirDestinationState].
   /// [destinationFhirMappingJson] Specifies the destination Fhir mappings of the Med Tech Service Fhir Destination.

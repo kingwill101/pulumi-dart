@@ -275,16 +275,16 @@ import 'resolver_virtual_network_link_state.dart';
 /// 			Name:              pulumi.String("example-resolver"),
 /// 			ResourceGroupName: example.Name,
 /// 			Location:          example.Location,
-/// 			VirtualNetworkId:  exampleVirtualNetwork.ID(),
+/// 			VirtualNetworkId:  exampleVirtualNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		exampleResolverOutboundEndpoint, err := privatedns.NewResolverOutboundEndpoint(ctx, "example", &privatedns.ResolverOutboundEndpointArgs{
 /// 			Name:                 pulumi.String("example-endpoint"),
-/// 			PrivateDnsResolverId: exampleResolver.ID(),
+/// 			PrivateDnsResolverId: exampleResolver.ID().ToIDOutput().ToStringOutput(),
 /// 			Location:             exampleResolver.Location,
-/// 			SubnetId:             exampleSubnet.ID(),
+/// 			SubnetId:             exampleSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 			Tags: pulumi.StringMap{
 /// 				"key": pulumi.String("value"),
 /// 			},
@@ -297,7 +297,7 @@ import 'resolver_virtual_network_link_state.dart';
 /// 			ResourceGroupName: example.Name,
 /// 			Location:          example.Location,
 /// 			PrivateDnsResolverOutboundEndpointIds: pulumi.StringArray{
-/// 				exampleResolverOutboundEndpoint.ID(),
+/// 				exampleResolverOutboundEndpoint.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 			Tags: pulumi.StringMap{
 /// 				"key": pulumi.String("value"),
@@ -308,8 +308,8 @@ import 'resolver_virtual_network_link_state.dart';
 /// 		}
 /// 		_, err = privatedns.NewResolverVirtualNetworkLink(ctx, "example", &privatedns.ResolverVirtualNetworkLinkArgs{
 /// 			Name:                   pulumi.String("example-link"),
-/// 			DnsForwardingRulesetId: exampleResolverDnsForwardingRuleset.ID(),
-/// 			VirtualNetworkId:       exampleVirtualNetwork.ID(),
+/// 			DnsForwardingRulesetId: exampleResolverDnsForwardingRuleset.ID().ToIDOutput().ToStringOutput(),
+/// 			VirtualNetworkId:       exampleVirtualNetwork.ID().ToIDOutput().ToStringOutput(),
 /// 			Metadata: pulumi.StringMap{
 /// 				"key": pulumi.String("value"),
 /// 			},
@@ -588,10 +588,10 @@ class ResolverVirtualNetworkLink extends pulumi.CustomResource {
           'azure:privatedns/resolverVirtualNetworkLink:ResolverVirtualNetworkLink',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     dnsForwardingRulesetId = registerOutput<String>('dnsForwardingRulesetId');
-    metadata = registerOutput<Map<String, String>?>('metadata');
+    metadata = registerOutput<Map<String, String>?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     virtualNetworkId = registerOutput<String>('virtualNetworkId');
   }
@@ -601,11 +601,12 @@ class ResolverVirtualNetworkLink extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ResolverVirtualNetworkLinkState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ResolverVirtualNetworkLink._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -620,7 +621,22 @@ class ResolverVirtualNetworkLink extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     dnsForwardingRulesetId = registerOutput<String>('dnsForwardingRulesetId');
-    metadata = registerOutput<Map<String, String>?>('metadata');
+    metadata = registerOutput<Map<String, String>?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    this.name = registerOutput<String>('name');
+    virtualNetworkId = registerOutput<String>('virtualNetworkId');
+  }
+
+  /// Creates a typed reference to an existing [ResolverVirtualNetworkLink] resource.
+  ResolverVirtualNetworkLink.reference(String urn)
+    : super(
+        'azure:privatedns/resolverVirtualNetworkLink:ResolverVirtualNetworkLink',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    dnsForwardingRulesetId = registerOutput<String>('dnsForwardingRulesetId');
+    metadata = registerOutput<Map<String, String>?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     virtualNetworkId = registerOutput<String>('virtualNetworkId');
   }

@@ -225,11 +225,12 @@ class StaticWebApp extends pulumi.CustomResource {
           'azure:appservice/staticWebApp:StaticWebApp',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['apiKey', 'basicAuth', 'repositoryToken'],
         ) {
-    apiKey = registerOutput<String>('apiKey');
-    appSettings = registerOutput<Map<String, String>?>('appSettings');
-    basicAuth = registerOutput<StaticWebAppBasicAuth?>('basicAuth', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StaticWebAppBasicAuth.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    apiKey = registerOutput<String>('apiKey', isSecret: true);
+    appSettings = registerOutput<Map<String, String>?>('appSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    basicAuth = registerOutput<StaticWebAppBasicAuth?>('basicAuth', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StaticWebAppBasicAuth.fromMap((guardedValue as Map).cast<String, dynamic>()); }, isSecret: true);
     configurationFileChangesEnabled = registerOutput<bool?>('configurationFileChangesEnabled');
     defaultHostName = registerOutput<String>('defaultHostName');
     identity = registerOutput<StaticWebAppIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StaticWebAppIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -238,12 +239,12 @@ class StaticWebApp extends pulumi.CustomResource {
     previewEnvironmentsEnabled = registerOutput<bool?>('previewEnvironmentsEnabled');
     publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
     repositoryBranch = registerOutput<String?>('repositoryBranch');
-    repositoryToken = registerOutput<String?>('repositoryToken');
+    repositoryToken = registerOutput<String?>('repositoryToken', isSecret: true);
     repositoryUrl = registerOutput<String?>('repositoryUrl');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     skuSize = registerOutput<String?>('skuSize');
     skuTier = registerOutput<String?>('skuTier');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [StaticWebApp] resource's state with the given [name] and [id].
@@ -251,11 +252,12 @@ class StaticWebApp extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     StaticWebAppState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return StaticWebApp._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -269,9 +271,9 @@ class StaticWebApp extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    apiKey = registerOutput<String>('apiKey');
-    appSettings = registerOutput<Map<String, String>?>('appSettings');
-    basicAuth = registerOutput<StaticWebAppBasicAuth?>('basicAuth', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StaticWebAppBasicAuth.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    apiKey = registerOutput<String>('apiKey', isSecret: true);
+    appSettings = registerOutput<Map<String, String>?>('appSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    basicAuth = registerOutput<StaticWebAppBasicAuth?>('basicAuth', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StaticWebAppBasicAuth.fromMap((guardedValue as Map).cast<String, dynamic>()); }, isSecret: true);
     configurationFileChangesEnabled = registerOutput<bool?>('configurationFileChangesEnabled');
     defaultHostName = registerOutput<String>('defaultHostName');
     identity = registerOutput<StaticWebAppIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StaticWebAppIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -280,11 +282,40 @@ class StaticWebApp extends pulumi.CustomResource {
     previewEnvironmentsEnabled = registerOutput<bool?>('previewEnvironmentsEnabled');
     publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
     repositoryBranch = registerOutput<String?>('repositoryBranch');
-    repositoryToken = registerOutput<String?>('repositoryToken');
+    repositoryToken = registerOutput<String?>('repositoryToken', isSecret: true);
     repositoryUrl = registerOutput<String?>('repositoryUrl');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     skuSize = registerOutput<String?>('skuSize');
     skuTier = registerOutput<String?>('skuTier');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [StaticWebApp] resource.
+  StaticWebApp.reference(String urn)
+    : super(
+        'azure:appservice/staticWebApp:StaticWebApp',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['apiKey', 'basicAuth', 'repositoryToken'],
+        isResourceReference: true,
+      ) {
+    apiKey = registerOutput<String>('apiKey', isSecret: true);
+    appSettings = registerOutput<Map<String, String>?>('appSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    basicAuth = registerOutput<StaticWebAppBasicAuth?>('basicAuth', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StaticWebAppBasicAuth.fromMap((guardedValue as Map).cast<String, dynamic>()); }, isSecret: true);
+    configurationFileChangesEnabled = registerOutput<bool?>('configurationFileChangesEnabled');
+    defaultHostName = registerOutput<String>('defaultHostName');
+    identity = registerOutput<StaticWebAppIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StaticWebAppIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    previewEnvironmentsEnabled = registerOutput<bool?>('previewEnvironmentsEnabled');
+    publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
+    repositoryBranch = registerOutput<String?>('repositoryBranch');
+    repositoryToken = registerOutput<String?>('repositoryToken', isSecret: true);
+    repositoryUrl = registerOutput<String?>('repositoryUrl');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    skuSize = registerOutput<String?>('skuSize');
+    skuTier = registerOutput<String?>('skuTier');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

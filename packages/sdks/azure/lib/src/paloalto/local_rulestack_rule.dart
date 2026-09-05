@@ -141,7 +141,7 @@ import 'local_rulestack_rule_state.dart';
 /// 		}
 /// 		_, err = paloalto.NewLocalRulestackRule(ctx, "example", &paloalto.LocalRulestackRuleArgs{
 /// 			Name:        pulumi.String("example-rule"),
-/// 			RulestackId: exampleLocalRulestack.ID(),
+/// 			RulestackId: exampleLocalRulestack.ID().ToIDOutput().ToStringOutput(),
 /// 			Priority:    pulumi.Int(1000),
 /// 			Action:      pulumi.String("Allow"),
 /// 			Protocol:    pulumi.String("application-default"),
@@ -359,10 +359,10 @@ class LocalRulestackRule extends pulumi.CustomResource {
           'azure:paloalto/localRulestackRule:LocalRulestackRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     action = registerOutput<String>('action');
-    applications = registerOutput<List<String>>('applications');
+    applications = registerOutput<List<String>>('applications', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     auditComment = registerOutput<String?>('auditComment');
     category = registerOutput<LocalRulestackRuleCategory?>('category', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LocalRulestackRuleCategory.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     decryptionRuleType = registerOutput<String?>('decryptionRuleType');
@@ -376,10 +376,10 @@ class LocalRulestackRule extends pulumi.CustomResource {
     negateSource = registerOutput<bool?>('negateSource');
     priority = registerOutput<int>('priority');
     protocol = registerOutput<String?>('protocol');
-    protocolPorts = registerOutput<List<String>?>('protocolPorts');
+    protocolPorts = registerOutput<List<String>?>('protocolPorts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     rulestackId = registerOutput<String>('rulestackId');
     source = registerOutput<LocalRulestackRuleSource>('source', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LocalRulestackRuleSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [LocalRulestackRule] resource's state with the given [name] and [id].
@@ -387,11 +387,12 @@ class LocalRulestackRule extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LocalRulestackRuleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LocalRulestackRule._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -406,7 +407,7 @@ class LocalRulestackRule extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     action = registerOutput<String>('action');
-    applications = registerOutput<List<String>>('applications');
+    applications = registerOutput<List<String>>('applications', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     auditComment = registerOutput<String?>('auditComment');
     category = registerOutput<LocalRulestackRuleCategory?>('category', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LocalRulestackRuleCategory.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     decryptionRuleType = registerOutput<String?>('decryptionRuleType');
@@ -420,9 +421,39 @@ class LocalRulestackRule extends pulumi.CustomResource {
     negateSource = registerOutput<bool?>('negateSource');
     priority = registerOutput<int>('priority');
     protocol = registerOutput<String?>('protocol');
-    protocolPorts = registerOutput<List<String>?>('protocolPorts');
+    protocolPorts = registerOutput<List<String>?>('protocolPorts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     rulestackId = registerOutput<String>('rulestackId');
     source = registerOutput<LocalRulestackRuleSource>('source', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LocalRulestackRuleSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [LocalRulestackRule] resource.
+  LocalRulestackRule.reference(String urn)
+    : super(
+        'azure:paloalto/localRulestackRule:LocalRulestackRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    action = registerOutput<String>('action');
+    applications = registerOutput<List<String>>('applications', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    auditComment = registerOutput<String?>('auditComment');
+    category = registerOutput<LocalRulestackRuleCategory?>('category', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LocalRulestackRuleCategory.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    decryptionRuleType = registerOutput<String?>('decryptionRuleType');
+    description = registerOutput<String?>('description');
+    destination = registerOutput<LocalRulestackRuleDestination>('destination', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LocalRulestackRuleDestination.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    enabled = registerOutput<bool?>('enabled');
+    inspectionCertificateId = registerOutput<String?>('inspectionCertificateId');
+    loggingEnabled = registerOutput<bool?>('loggingEnabled');
+    this.name = registerOutput<String>('name');
+    negateDestination = registerOutput<bool?>('negateDestination');
+    negateSource = registerOutput<bool?>('negateSource');
+    priority = registerOutput<int>('priority');
+    protocol = registerOutput<String?>('protocol');
+    protocolPorts = registerOutput<List<String>?>('protocolPorts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    rulestackId = registerOutput<String>('rulestackId');
+    source = registerOutput<LocalRulestackRuleSource>('source', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LocalRulestackRuleSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

@@ -14,7 +14,7 @@ class GatewayCertificateAuthorityArgs {
   /// The name of the API Management Gateway. Changing this forces a new resource to be created.
   final pulumi.Input<String> gatewayName;
   /// Whether the API Management Gateway Certificate Authority is trusted.
-  final pulumi.Input<bool>? isTrusted;
+  final pulumi.Input<bool?>? isTrusted;
 
   /// Creates a new [GatewayCertificateAuthorityArgs].
   /// [apiManagementId] The ID of the API Management Service. Changing this forces a new resource to be created.

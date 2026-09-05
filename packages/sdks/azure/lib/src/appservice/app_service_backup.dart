@@ -5,7 +5,7 @@ import 'app_service_backup_schedule.dart';
 
 class AppServiceBackup {
   /// Is this Backup enabled? Defaults to `true`.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// Specifies the name for this Backup.
   final pulumi.Input<String> name;
   /// A `schedule` block as defined below.

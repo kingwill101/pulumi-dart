@@ -9,22 +9,22 @@ class VolumeGroupOracleVolume {
   /// The ID of the Capacity Pool. Changing this forces a new Application Volume Group to be created and data will be lost.
   final pulumi.Input<String> capacityPoolId;
   /// A `dataProtectionReplication` block as defined below. Changing this forces a new Application Volume Group to be created and data will be lost.
-  final pulumi.Input<VolumeGroupOracleVolumeDataProtectionReplication>? dataProtectionReplication;
+  final pulumi.Input<VolumeGroupOracleVolumeDataProtectionReplication?>? dataProtectionReplication;
   /// A `dataProtectionSnapshotPolicy` block as defined below.
-  final pulumi.Input<VolumeGroupOracleVolumeDataProtectionSnapshotPolicy>? dataProtectionSnapshotPolicy;
+  final pulumi.Input<VolumeGroupOracleVolumeDataProtectionSnapshotPolicy?>? dataProtectionSnapshotPolicy;
   /// The encryption key source, it can be `Microsoft.NetApp` for platform managed keys or `Microsoft.KeyVault` for customer-managed keys. This is required with `keyVaultPrivateEndpointId`. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? encryptionKeySource;
+  final pulumi.Input<String?>? encryptionKeySource;
   /// One or more `exportPolicyRule` blocks as defined below.
   final pulumi.Input<List<VolumeGroupOracleVolumeExportPolicyRule>> exportPolicyRules;
   /// The ID of the Application Volume Group.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The Private Endpoint ID for Key Vault, which is required when using customer-managed keys. This is required with `encryptionKeySource`. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? keyVaultPrivateEndpointId;
-  final pulumi.Input<List<String>>? mountIpAddresses;
+  final pulumi.Input<String?>? keyVaultPrivateEndpointId;
+  final pulumi.Input<List<String>?>? mountIpAddresses;
   /// The name which should be used for this volume. Changing this forces a new Application Volume Group to be created and data will be lost.
   final pulumi.Input<String> name;
   /// Indicates which network feature to use, Possible values are `Basic`, `Basic_Standard`, `Standard` and `Standard_Basic`. It defaults to `Basic` if not defined. This is a feature in public preview and for more information about it and how to register, please refer to [Configure network features for an Azure NetApp Files volume](https://docs.microsoft.com/en-us/azure/azure-netapp-files/configure-network-features). This is required if enabling customer managed keys encryption scenario.
-  final pulumi.Input<String>? networkFeatures;
+  final pulumi.Input<String?>? networkFeatures;
   /// The target volume protocol expressed as a list. Protocol conversion between `NFSv3` and `NFSv4.1` and vice-versa is supported without recreating the volume group, however export policy rules must be updated accordingly to avoid configuration drift (e.g., when converting from `NFSv3` to `NFSv4.1`, set `nfsv3Enabled = false` and `nfsv41Enabled = true` in export policy rules). Supported values include `NFSv3` or `NFSv4.1`.
   ///
   /// &gt; **Note:** When converting protocols between NFSv3 and NFSv4.1, ensure that export policy rules are updated accordingly to avoid configuration drift. Update the `nfsv3Enabled` and `nfsv41Enabled` flags to match the new protocol.
@@ -32,7 +32,7 @@ class VolumeGroupOracleVolume {
   /// The ID of the proximity placement group (PPG). Changing this forces a new Application Volume Group to be created and data will be lost.
   ///
   /// &gt; **Note:** For Oracle application, it is required to have PPG enabled so Azure NetApp Files can pin the volumes next to your compute resources, please check [Requirements and considerations for application volume group for Oracle](https://learn.microsoft.com/en-us/azure/azure-netapp-files/application-volume-group-oracle-considerations) for details and other requirements. Note that this cannot be used together with `zone`.
-  final pulumi.Input<String>? proximityPlacementGroupId;
+  final pulumi.Input<String?>? proximityPlacementGroupId;
   /// Volume security style. Possible values are `ntfs` and `unix`. Changing this forces a new Application Volume Group to be created and data will be lost.
   final pulumi.Input<String> securityStyle;
   /// Volume security style. Possible values are `Premium`, `Standard`, `Ultra` and `Flexible`. Changing this forces a new Application Volume Group to be created and data will be lost.
@@ -44,7 +44,7 @@ class VolumeGroupOracleVolume {
   /// The ID of the Subnet the NetApp Volume resides in, which must have the `Microsoft.NetApp/volumes` delegation. Changing this forces a new Application Volume Group to be created and data will be lost.
   final pulumi.Input<String> subnetId;
   /// A mapping of tags which should be assigned to the Application Volume Group.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Throughput of this volume in Mibps.
   final pulumi.Input<double> throughputInMibps;
   /// A unique file path for the volume. Changing this forces a new Application Volume Group to be created and data will be lost.
@@ -52,7 +52,7 @@ class VolumeGroupOracleVolume {
   /// Volume specification name. Possible values are `ora-data1`, `ora-data2`, `ora-data3`, `ora-data4`, `ora-data5`, `ora-data6`, `ora-data7`, `ora-data8`, `ora-log`, `ora-log-mirror`, `ora-binary` and `ora-backup`. Changing this forces a new Application Volume Group to be created and data will be lost.
   final pulumi.Input<String> volumeSpecName;
   /// Specifies the Availability Zone in which the Volume should be located. Possible values are `1`, `2` and `3`, depending on the Azure region. Changing this forces a new resource to be created. This feature is currently in preview, for more information on how to enable it, please refer to [Manage availability zone volume placement for Azure NetApp Files](https://learn.microsoft.com/en-us/azure/azure-netapp-files/manage-availability-zone-volume-placement). Note that this cannot be used together with `proximityPlacementGroupId`.
-  final pulumi.Input<String>? zone;
+  final pulumi.Input<String?>? zone;
 
   /// Creates a new [VolumeGroupOracleVolume].
   /// [capacityPoolId] The ID of the Capacity Pool. Changing this forces a new Application Volume Group to be created and data will be lost.
@@ -146,10 +146,10 @@ class VolumeGroupOracleVolume {
       securityStyle: pulumi.Input.fromValue(map['securityStyle'] as String),
       serviceLevel: pulumi.Input.fromValue(map['serviceLevel'] as String),
       snapshotDirectoryVisible: pulumi.Input.fromValue(map['snapshotDirectoryVisible'] as bool),
-      storageQuotaInGb: pulumi.Input.fromValue(map['storageQuotaInGb'] as int),
+      storageQuotaInGb: pulumi.Input.fromValue((map['storageQuotaInGb'] as num).toInt()),
       subnetId: pulumi.Input.fromValue(map['subnetId'] as String),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-      throughputInMibps: pulumi.Input.fromValue(map['throughputInMibps'] as double),
+      throughputInMibps: pulumi.Input.fromValue((map['throughputInMibps'] as num).toDouble()),
       volumePath: pulumi.Input.fromValue(map['volumePath'] as String),
       volumeSpecName: pulumi.Input.fromValue(map['volumeSpecName'] as String),
       zone: (() { final guardedValue = map['zone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

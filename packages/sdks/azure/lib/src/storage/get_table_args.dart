@@ -10,11 +10,11 @@ class GetTableArgs {
   /// The name of the Table.
   final pulumi.Input<String> name;
   /// The ID of the Storage Account where the Table exists.
-  final pulumi.Input<String>? storageAccountId;
+  final pulumi.Input<String?>? storageAccountId;
   /// The name of the Storage Account where the Table exists.
   ///
   /// &gt; **Note:** This property is deprecated in favour of `storageAccountId` and will be removed in version 5.0 of the AzureRM Provider.
-  final pulumi.Input<String>? storageAccountName;
+  final pulumi.Input<String?>? storageAccountName;
 
   /// Creates a new [GetTableArgs].
   /// [name] The name of the Table.

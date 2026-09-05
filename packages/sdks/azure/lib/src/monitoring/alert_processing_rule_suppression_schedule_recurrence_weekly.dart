@@ -6,9 +6,9 @@ class AlertProcessingRuleSuppressionScheduleRecurrenceWeekly {
   /// Specifies a list of dayOfWeek to recurrence. Possible values are `Sunday`, `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, and `Saturday`.
   final pulumi.Input<List<String>> daysOfWeeks;
   /// Specifies the recurrence end time (H:M:S).
-  final pulumi.Input<String>? endTime;
+  final pulumi.Input<String?>? endTime;
   /// Specifies the recurrence start time (H:M:S).
-  final pulumi.Input<String>? startTime;
+  final pulumi.Input<String?>? startTime;
 
   /// Creates a new [AlertProcessingRuleSuppressionScheduleRecurrenceWeekly].
   /// [daysOfWeeks] Specifies a list of dayOfWeek to recurrence. Possible values are `Sunday`, `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, and `Saturday`.

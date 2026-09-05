@@ -5,7 +5,7 @@ import 'app_template_tcp_scale_rule_authentication.dart';
 
 class AppTemplateTcpScaleRule {
   /// Zero or more `authentication` blocks as defined below.
-  final pulumi.Input<List<AppTemplateTcpScaleRuleAuthentication>>? authentications;
+  final pulumi.Input<List<AppTemplateTcpScaleRuleAuthentication>?>? authentications;
   /// The number of concurrent requests to trigger scaling.
   final pulumi.Input<String> concurrentRequests;
   /// The name of the Scaling Rule

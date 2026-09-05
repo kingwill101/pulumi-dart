@@ -10,36 +10,36 @@ import 'virtual_network_gateway_vpn_client_configuration.dart';
 /// Input properties used for looking up and filtering VirtualNetworkGateway resources.
 class VirtualNetworkGatewayState {
   /// If `true`, an active-active Virtual Network Gateway will be created. An active-active gateway requires a `HighPerformance` or an `UltraPerformance` SKU. If `false`, an active-standby gateway will be created. Defaults to `false`.
-  final pulumi.Input<bool>? activeActive;
+  final pulumi.Input<bool?>? activeActive;
   /// If `true`, BGP (Border Gateway Protocol) will be enabled for this Virtual Network Gateway. Defaults to `false`.
-  final pulumi.Input<bool>? bgpEnabled;
+  final pulumi.Input<bool?>? bgpEnabled;
   /// Is BGP Route Translation for NAT enabled? Defaults to `false`.
-  final pulumi.Input<bool>? bgpRouteTranslationForNatEnabled;
+  final pulumi.Input<bool?>? bgpRouteTranslationForNatEnabled;
   /// A `bgpSettings` block which is documented below. In this block the BGP specific settings can be defined.
-  final pulumi.Input<VirtualNetworkGatewayBgpSettings>? bgpSettings;
+  final pulumi.Input<VirtualNetworkGatewayBgpSettings?>? bgpSettings;
   /// A `customRoute` block as defined below. Specifies a custom routes address space for a virtual network gateway and a VpnClient.
-  final pulumi.Input<VirtualNetworkGatewayCustomRoute>? customRoute;
+  final pulumi.Input<VirtualNetworkGatewayCustomRoute?>? customRoute;
   /// The ID of the local network gateway through which outbound Internet traffic from the virtual network in which the gateway is created will be routed (*forced tunnelling*). Refer to the [Azure documentation on forced tunnelling](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-forced-tunneling-rm). If not specified, forced tunnelling is disabled.
-  final pulumi.Input<String>? defaultLocalNetworkGatewayId;
+  final pulumi.Input<String?>? defaultLocalNetworkGatewayId;
   /// Is DNS forwarding enabled?
-  final pulumi.Input<bool>? dnsForwardingEnabled;
+  final pulumi.Input<bool?>? dnsForwardingEnabled;
   /// Specifies the Edge Zone within the Azure Region where this Virtual Network Gateway should exist. Changing this forces a new Virtual Network Gateway to be created.
-  final pulumi.Input<String>? edgeZone;
-  final pulumi.Input<bool>? enableBgp;
+  final pulumi.Input<String?>? edgeZone;
+  final pulumi.Input<bool?>? enableBgp;
   /// The Generation of the Virtual Network gateway. Possible values include `Generation1`, `Generation2` or `None`. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** The available values depend on the `type` and `sku` arguments - where `Generation2` is only value for a `sku` larger than `VpnGw2` or `VpnGw2AZ`.
-  final pulumi.Input<String>? generation;
+  final pulumi.Input<String?>? generation;
   /// One or more (up to 3) `ipConfiguration` blocks documented below. Changing this forces a new resource to be created. An active-standby gateway requires exactly one `ipConfiguration` block, an active-active gateway requires exactly two `ipConfiguration` blocks whereas an active-active zone redundant gateway with P2S configuration requires exactly three `ipConfiguration` blocks.
-  final pulumi.Input<List<VirtualNetworkGatewayIpConfiguration>>? ipConfigurations;
+  final pulumi.Input<List<VirtualNetworkGatewayIpConfiguration>?>? ipConfigurations;
   /// Is IP Sec Replay Protection enabled? Defaults to `true`.
-  final pulumi.Input<bool>? ipSecReplayProtectionEnabled;
+  final pulumi.Input<bool?>? ipSecReplayProtectionEnabled;
   /// The location/region where the Virtual Network Gateway is located. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The maximum scale unit for the Virtual Network Gateway, possible values are `1` through `40`.
   ///
   /// &gt; **Note:** `maximumScaleUnit` is only supported for the `ErGwScale` SKU.
-  final pulumi.Input<int>? maximumScaleUnit;
+  final pulumi.Input<int?>? maximumScaleUnit;
   /// The minimum scale unit for the Virtual Network Gateway, possible values are `1` through `40`.
   ///
   /// &gt; **Note:** `minimumScaleUnit` is only supported for the `ErGwScale` SKU.
@@ -47,33 +47,33 @@ class VirtualNetworkGatewayState {
   /// &gt; **Note:** To configure a `fixed-size` gateway, set `minimumScaleUnit` and `maximumScaleUnit` to the same value. To enable `autoscaling`, set `minimumScaleUnit` to `2` or higher and `maximumScaleUnit` up to `40`. When `maximumScaleUnit` is set to `1`, `minimumScaleUnit` must also be set to `1`.
   ///
   /// &gt; **Note:** Changing the `sku` between an availability-zone SKU (`ErGwScale`, `ErGw1AZ`, `ErGw2AZ`, `ErGw3AZ`) and a non-availability-zone SKU (`Standard`, `HighPerformance`, `UltraPerformance`) forces a new resource to be created.
-  final pulumi.Input<int>? minimumScaleUnit;
+  final pulumi.Input<int?>? minimumScaleUnit;
   /// The name of the Virtual Network Gateway. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// One or more `policyGroup` blocks as defined below.
-  final pulumi.Input<List<VirtualNetworkGatewayPolicyGroup>>? policyGroups;
+  final pulumi.Input<List<VirtualNetworkGatewayPolicyGroup>?>? policyGroups;
   /// Should private IP be enabled on this gateway for connections? Changing this forces a new resource to be created.
-  final pulumi.Input<bool>? privateIpAddressEnabled;
+  final pulumi.Input<bool?>? privateIpAddressEnabled;
   /// Is remote vnet traffic that is used to configure this gateway to accept traffic from other Azure Virtual Networks enabled? Defaults to `false`.
-  final pulumi.Input<bool>? remoteVnetTrafficEnabled;
+  final pulumi.Input<bool?>? remoteVnetTrafficEnabled;
   /// The name of the resource group in which to create the Virtual Network Gateway. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// Configuration of the size and capacity of the virtual network gateway. Valid options are `Basic`, `Standard`, `HighPerformance`, `UltraPerformance`, `ErGwScale`, `ErGw1AZ`, `ErGw2AZ`, `ErGw3AZ`, `VpnGw1`, `VpnGw2`, `VpnGw3`, `VpnGw4`,`VpnGw5`, `VpnGw1AZ`, `VpnGw2AZ`, `VpnGw3AZ`,`VpnGw4AZ` and `VpnGw5AZ` and depend on the `type`, `vpnType` and `generation` arguments. A `PolicyBased` gateway only supports the `Basic` SKU. Further, the `UltraPerformance` and `ErGwScale` SKU is only supported by an `ExpressRoute` gateway.
   ///
   /// &gt; **Note:** To build a UltraPerformance ExpressRoute Virtual Network gateway, the associated Public IP needs to be SKU "Basic" not "Standard"
   ///
   /// &gt; **Note:** Not all SKUs (e.g. `ErGw1AZ`) are available in all regions. If you see `StatusCode=400 -- Original Error: Code="InvalidGatewaySkuSpecifiedForGatewayDeploymentType"` please try another region.
-  final pulumi.Input<String>? sku;
+  final pulumi.Input<String?>? sku;
   /// A mapping of tags to assign to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The type of the Virtual Network Gateway. Valid options are `Vpn` or `ExpressRoute`. Changing the type forces a new resource to be created.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// Is remote vnet traffic that is used to configure this gateway to accept traffic from remote Virtual WAN networks enabled? Defaults to `false`.
-  final pulumi.Input<bool>? virtualWanTrafficEnabled;
+  final pulumi.Input<bool?>? virtualWanTrafficEnabled;
   /// A `vpnClientConfiguration` block which is documented below. In this block the Virtual Network Gateway can be configured to accept IPSec point-to-site connections.
-  final pulumi.Input<VirtualNetworkGatewayVpnClientConfiguration>? vpnClientConfiguration;
+  final pulumi.Input<VirtualNetworkGatewayVpnClientConfiguration?>? vpnClientConfiguration;
   /// The routing type of the Virtual Network Gateway. Valid options are `RouteBased` or `PolicyBased`. Defaults to `RouteBased`. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? vpnType;
+  final pulumi.Input<String?>? vpnType;
 
   /// Creates a new [VirtualNetworkGatewayState].
   /// [activeActive] If `true`, an active-active Virtual Network Gateway will be created. An active-active gateway requires a `HighPerformance` or an `UltraPerformance` SKU. If `false`, an active-standby gateway will be created. Defaults to `false`.
@@ -177,8 +177,8 @@ class VirtualNetworkGatewayState {
       ipConfigurations: (() { final guardedValue = map['ipConfigurations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<VirtualNetworkGatewayIpConfiguration>(guardedValue, (value) => VirtualNetworkGatewayIpConfiguration.fromMap((value as Map).cast<String, dynamic>()))); })(),
       ipSecReplayProtectionEnabled: (() { final guardedValue = map['ipSecReplayProtectionEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      maximumScaleUnit: (() { final guardedValue = map['maximumScaleUnit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      minimumScaleUnit: (() { final guardedValue = map['minimumScaleUnit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maximumScaleUnit: (() { final guardedValue = map['maximumScaleUnit']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      minimumScaleUnit: (() { final guardedValue = map['minimumScaleUnit']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       policyGroups: (() { final guardedValue = map['policyGroups']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<VirtualNetworkGatewayPolicyGroup>(guardedValue, (value) => VirtualNetworkGatewayPolicyGroup.fromMap((value as Map).cast<String, dynamic>()))); })(),
       privateIpAddressEnabled: (() { final guardedValue = map['privateIpAddressEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),

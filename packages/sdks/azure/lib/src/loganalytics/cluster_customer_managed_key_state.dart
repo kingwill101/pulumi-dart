@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering ClusterCustomerManagedKey resources.
 class ClusterCustomerManagedKeyState {
   /// The ID of the Key Vault Key to use for encryption.
-  final pulumi.Input<String>? keyVaultKeyId;
+  final pulumi.Input<String?>? keyVaultKeyId;
   /// The ID of the Log Analytics Cluster. Changing this forces a new Log Analytics Cluster Customer Managed Key to be created.
-  final pulumi.Input<String>? logAnalyticsClusterId;
+  final pulumi.Input<String?>? logAnalyticsClusterId;
 
   /// Creates a new [ClusterCustomerManagedKeyState].
   /// [keyVaultKeyId] The ID of the Key Vault Key to use for encryption.

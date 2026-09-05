@@ -13,9 +13,9 @@ class Powershell72ModuleArgs {
   /// A `moduleLink` block as defined below.
   final pulumi.Input<Powershell72ModuleModuleLink> moduleLink;
   /// Specifies the name of the Module. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A mapping of tags to assign to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [Powershell72ModuleArgs].
   /// [automationAccountId] The ID of Automation Account to manage this Watcher. Changing this forces a new Watcher to be created.

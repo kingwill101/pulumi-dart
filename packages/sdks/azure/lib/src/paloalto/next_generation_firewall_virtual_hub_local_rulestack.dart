@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'next_generation_firewall_virtual_hub_local_rulestack_args.dart';
+import 'next_generation_firewall_virtual_hub_local_rulestack_destination_nat.dart';
 import 'next_generation_firewall_virtual_hub_local_rulestack_dns_settings.dart';
 import 'next_generation_firewall_virtual_hub_local_rulestack_network_profile.dart';
 import 'next_generation_firewall_virtual_hub_local_rulestack_state.dart';
@@ -210,7 +211,7 @@ import 'next_generation_firewall_virtual_hub_local_rulestack_state.dart';
 /// 			Name:              pulumi.String("example-virtualhub"),
 /// 			ResourceGroupName: example.Name,
 /// 			Location:          example.Location,
-/// 			VirtualWanId:      exampleVirtualWan.ID(),
+/// 			VirtualWanId:      exampleVirtualWan.ID().ToIDOutput().ToStringOutput(),
 /// 			AddressPrefix:     pulumi.String("10.0.0.0/23"),
 /// 			Tags: pulumi.StringMap{
 /// 				"hubSaaSPreview": pulumi.String("true"),
@@ -221,7 +222,7 @@ import 'next_generation_firewall_virtual_hub_local_rulestack_state.dart';
 /// 		}
 /// 		exampleVirtualNetworkAppliance, err := paloalto.NewVirtualNetworkAppliance(ctx, "example", &paloalto.VirtualNetworkApplianceArgs{
 /// 			Name:         pulumi.String("example-appliance"),
-/// 			VirtualHubId: exampleVirtualHub.ID(),
+/// 			VirtualHubId: exampleVirtualHub.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -232,10 +233,10 @@ import 'next_generation_firewall_virtual_hub_local_rulestack_state.dart';
 /// 			RulestackId:       pulumi.Any(exampleAzurermPaloAltoLocalRulestack.Id),
 /// 			NetworkProfile: &paloalto.NextGenerationFirewallVirtualHubLocalRulestackNetworkProfileArgs{
 /// 				PublicIpAddressIds: pulumi.StringArray{
-/// 					examplePublicIp.ID(),
+/// 					examplePublicIp.ID().ToIDOutput().ToStringOutput(),
 /// 				},
-/// 				VirtualHubId:              exampleVirtualHub.ID(),
-/// 				NetworkVirtualApplianceId: exampleVirtualNetworkAppliance.ID(),
+/// 				VirtualHubId:              exampleVirtualHub.ID().ToIDOutput().ToStringOutput(),
+/// 				NetworkVirtualApplianceId: exampleVirtualNetworkAppliance.ID().ToIDOutput().ToStringOutput(),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -448,7 +449,7 @@ import 'next_generation_firewall_virtual_hub_local_rulestack_state.dart';
 /// ```
 class NextGenerationFirewallVirtualHubLocalRulestack extends pulumi.CustomResource {
   /// One or more `destinationNat` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> destinationNats;
+  late final pulumi.Output<List<NextGenerationFirewallVirtualHubLocalRulestackDestinationNat>?> destinationNats;
   /// A `dnsSettings` block as defined below.
   late final pulumi.Output<NextGenerationFirewallVirtualHubLocalRulestackDnsSettings?> dnsSettings;
   /// The marketplace offer ID. Defaults to `panSwfwCloudNgfw`. Changing this forces a new resource to be created.
@@ -480,9 +481,9 @@ class NextGenerationFirewallVirtualHubLocalRulestack extends pulumi.CustomResour
           'azure:paloalto/nextGenerationFirewallVirtualHubLocalRulestack:NextGenerationFirewallVirtualHubLocalRulestack',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
-    destinationNats = registerOutput<List<Map<String, dynamic>>?>('destinationNats');
+    destinationNats = registerOutput<List<NextGenerationFirewallVirtualHubLocalRulestackDestinationNat>?>('destinationNats', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NextGenerationFirewallVirtualHubLocalRulestackDestinationNat>(guardedValue, (value) => NextGenerationFirewallVirtualHubLocalRulestackDestinationNat.fromMap((value as Map).cast<String, dynamic>())); });
     dnsSettings = registerOutput<NextGenerationFirewallVirtualHubLocalRulestackDnsSettings?>('dnsSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NextGenerationFirewallVirtualHubLocalRulestackDnsSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     marketplaceOfferId = registerOutput<String?>('marketplaceOfferId');
     this.name = registerOutput<String>('name');
@@ -490,7 +491,7 @@ class NextGenerationFirewallVirtualHubLocalRulestack extends pulumi.CustomResour
     planId = registerOutput<String?>('planId');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     rulestackId = registerOutput<String>('rulestackId');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [NextGenerationFirewallVirtualHubLocalRulestack] resource's state with the given [name] and [id].
@@ -498,11 +499,12 @@ class NextGenerationFirewallVirtualHubLocalRulestack extends pulumi.CustomResour
     String name,
     pulumi.Input<String> id, {
     NextGenerationFirewallVirtualHubLocalRulestackState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return NextGenerationFirewallVirtualHubLocalRulestack._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -516,7 +518,7 @@ class NextGenerationFirewallVirtualHubLocalRulestack extends pulumi.CustomResour
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    destinationNats = registerOutput<List<Map<String, dynamic>>?>('destinationNats');
+    destinationNats = registerOutput<List<NextGenerationFirewallVirtualHubLocalRulestackDestinationNat>?>('destinationNats', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NextGenerationFirewallVirtualHubLocalRulestackDestinationNat>(guardedValue, (value) => NextGenerationFirewallVirtualHubLocalRulestackDestinationNat.fromMap((value as Map).cast<String, dynamic>())); });
     dnsSettings = registerOutput<NextGenerationFirewallVirtualHubLocalRulestackDnsSettings?>('dnsSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NextGenerationFirewallVirtualHubLocalRulestackDnsSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     marketplaceOfferId = registerOutput<String?>('marketplaceOfferId');
     this.name = registerOutput<String>('name');
@@ -524,6 +526,26 @@ class NextGenerationFirewallVirtualHubLocalRulestack extends pulumi.CustomResour
     planId = registerOutput<String?>('planId');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     rulestackId = registerOutput<String>('rulestackId');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [NextGenerationFirewallVirtualHubLocalRulestack] resource.
+  NextGenerationFirewallVirtualHubLocalRulestack.reference(String urn)
+    : super(
+        'azure:paloalto/nextGenerationFirewallVirtualHubLocalRulestack:NextGenerationFirewallVirtualHubLocalRulestack',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    destinationNats = registerOutput<List<NextGenerationFirewallVirtualHubLocalRulestackDestinationNat>?>('destinationNats', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NextGenerationFirewallVirtualHubLocalRulestackDestinationNat>(guardedValue, (value) => NextGenerationFirewallVirtualHubLocalRulestackDestinationNat.fromMap((value as Map).cast<String, dynamic>())); });
+    dnsSettings = registerOutput<NextGenerationFirewallVirtualHubLocalRulestackDnsSettings?>('dnsSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NextGenerationFirewallVirtualHubLocalRulestackDnsSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    marketplaceOfferId = registerOutput<String?>('marketplaceOfferId');
+    this.name = registerOutput<String>('name');
+    networkProfile = registerOutput<NextGenerationFirewallVirtualHubLocalRulestackNetworkProfile>('networkProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NextGenerationFirewallVirtualHubLocalRulestackNetworkProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    planId = registerOutput<String?>('planId');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    rulestackId = registerOutput<String>('rulestackId');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

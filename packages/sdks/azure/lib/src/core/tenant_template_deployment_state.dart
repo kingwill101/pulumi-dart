@@ -5,21 +5,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering TenantTemplateDeployment resources.
 class TenantTemplateDeploymentState {
   /// The Debug Level which should be used for this Resource Group Template Deployment. Possible values are `none`, `requestContent`, `responseContent` and `requestContent, responseContent`.
-  final pulumi.Input<String>? debugLevel;
+  final pulumi.Input<String?>? debugLevel;
   /// The Azure Region where the Template should exist. Changing this forces a new Template to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name which should be used for this Template. Changing this forces a new Template to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The JSON Content of the Outputs of the ARM Template Deployment.
-  final pulumi.Input<String>? outputContent;
+  final pulumi.Input<String?>? outputContent;
   /// The contents of the ARM Template parameters file - containing a JSON list of parameters.
-  final pulumi.Input<String>? parametersContent;
+  final pulumi.Input<String?>? parametersContent;
   /// A mapping of tags which should be assigned to the Template.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The contents of the ARM Template which should be deployed into this Resource Group. Cannot be specified with `templateSpecVersionId`.
-  final pulumi.Input<String>? templateContent;
+  final pulumi.Input<String?>? templateContent;
   /// The ID of the Template Spec Version to deploy. Cannot be specified with `templateContent`.
-  final pulumi.Input<String>? templateSpecVersionId;
+  final pulumi.Input<String?>? templateSpecVersionId;
 
   /// Creates a new [TenantTemplateDeploymentState].
   /// [debugLevel] The Debug Level which should be used for this Resource Group Template Deployment. Possible values are `none`, `requestContent`, `responseContent` and `requestContent, responseContent`.

@@ -12,13 +12,13 @@ class ManagedPrivateEndpointArgs {
   /// Fully qualified domain names. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** Possible values are listed in [documentation](https://docs.microsoft.com/azure/private-link/private-endpoint-overview#dns-configuration).
-  final pulumi.Input<List<String>>? fqdns;
+  final pulumi.Input<List<String>?>? fqdns;
   /// Specifies the name which should be used for this Managed Private Endpoint. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specifies the sub resource name which the Data Factory Private Endpoint is able to connect to. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** `subresourceName` must not be specified when `targetResourceId` is a Private Link Service. For all other target resources, `subresourceName` is required and must be at least 3 characters in length.
-  final pulumi.Input<String>? subresourceName;
+  final pulumi.Input<String?>? subresourceName;
   /// The ID of the Private Link Enabled Remote Resource which this Data Factory Private Endpoint should be connected to. Changing this forces a new resource to be created.
   final pulumi.Input<String> targetResourceId;
 

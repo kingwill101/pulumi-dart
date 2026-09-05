@@ -8,7 +8,7 @@ class ActionGroupArmRoleReceiver {
   /// The arm role id.
   final pulumi.Input<String> roleId;
   /// Enables or disables the common alert schema.
-  final pulumi.Input<bool>? useCommonAlertSchema;
+  final pulumi.Input<bool?>? useCommonAlertSchema;
 
   /// Creates a new [ActionGroupArmRoleReceiver].
   /// [name] The name of the ARM role receiver.

@@ -8,7 +8,7 @@ class MongoCollectionIndex {
   /// Is the index unique or not? Defaults to `false`.
   ///
   /// &gt; **Note:** An index with an "_id" key must be specified.
-  final pulumi.Input<bool>? unique;
+  final pulumi.Input<bool?>? unique;
 
   /// Creates a new [MongoCollectionIndex].
   /// [keys] Specifies the list of user settable keys for each Cosmos DB Mongo Collection.

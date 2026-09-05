@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'account_args.dart';
 import 'account_identity.dart';
+import 'account_managed_resource.dart';
 import 'account_state.dart';
 
 /// Manages a Purview Account.
@@ -220,7 +221,7 @@ class Account extends pulumi.CustomResource {
   /// &gt; **Note:** `managedResourceGroupName` must be a new Resource Group.
   late final pulumi.Output<String> managedResourceGroupName;
   /// A `managedResources` block as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>> managedResources;
+  late final pulumi.Output<List<AccountManagedResource>> managedResources;
   /// The name which should be used for this Purview Account. Changing this forces a new Purview Account to be created.
   late final pulumi.Output<String> name;
   /// Should the Purview Account be visible to the public network? Defaults to `true`.
@@ -244,10 +245,11 @@ class Account extends pulumi.CustomResource {
           'azure:purview/account:Account',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['atlasKafkaEndpointPrimaryConnectionString', 'atlasKafkaEndpointSecondaryConnectionString'],
         ) {
-    atlasKafkaEndpointPrimaryConnectionString = registerOutput<String>('atlasKafkaEndpointPrimaryConnectionString');
-    atlasKafkaEndpointSecondaryConnectionString = registerOutput<String>('atlasKafkaEndpointSecondaryConnectionString');
+    atlasKafkaEndpointPrimaryConnectionString = registerOutput<String>('atlasKafkaEndpointPrimaryConnectionString', isSecret: true);
+    atlasKafkaEndpointSecondaryConnectionString = registerOutput<String>('atlasKafkaEndpointSecondaryConnectionString', isSecret: true);
     awsExternalId = registerOutput<String>('awsExternalId');
     catalogEndpoint = registerOutput<String>('catalogEndpoint');
     guardianEndpoint = registerOutput<String>('guardianEndpoint');
@@ -255,12 +257,12 @@ class Account extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     managedEventHubEnabled = registerOutput<bool?>('managedEventHubEnabled');
     managedResourceGroupName = registerOutput<String>('managedResourceGroupName');
-    managedResources = registerOutput<List<Map<String, dynamic>>>('managedResources');
+    managedResources = registerOutput<List<AccountManagedResource>>('managedResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AccountManagedResource>(guardedValue, (value) => AccountManagedResource.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     publicNetworkEnabled = registerOutput<bool?>('publicNetworkEnabled');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     scanEndpoint = registerOutput<String>('scanEndpoint');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [Account] resource's state with the given [name] and [id].
@@ -268,11 +270,12 @@ class Account extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AccountState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Account._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -286,8 +289,8 @@ class Account extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    atlasKafkaEndpointPrimaryConnectionString = registerOutput<String>('atlasKafkaEndpointPrimaryConnectionString');
-    atlasKafkaEndpointSecondaryConnectionString = registerOutput<String>('atlasKafkaEndpointSecondaryConnectionString');
+    atlasKafkaEndpointPrimaryConnectionString = registerOutput<String>('atlasKafkaEndpointPrimaryConnectionString', isSecret: true);
+    atlasKafkaEndpointSecondaryConnectionString = registerOutput<String>('atlasKafkaEndpointSecondaryConnectionString', isSecret: true);
     awsExternalId = registerOutput<String>('awsExternalId');
     catalogEndpoint = registerOutput<String>('catalogEndpoint');
     guardianEndpoint = registerOutput<String>('guardianEndpoint');
@@ -295,11 +298,38 @@ class Account extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     managedEventHubEnabled = registerOutput<bool?>('managedEventHubEnabled');
     managedResourceGroupName = registerOutput<String>('managedResourceGroupName');
-    managedResources = registerOutput<List<Map<String, dynamic>>>('managedResources');
+    managedResources = registerOutput<List<AccountManagedResource>>('managedResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AccountManagedResource>(guardedValue, (value) => AccountManagedResource.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     publicNetworkEnabled = registerOutput<bool?>('publicNetworkEnabled');
     resourceGroupName = registerOutput<String>('resourceGroupName');
     scanEndpoint = registerOutput<String>('scanEndpoint');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Account] resource.
+  Account.reference(String urn)
+    : super(
+        'azure:purview/account:Account',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['atlasKafkaEndpointPrimaryConnectionString', 'atlasKafkaEndpointSecondaryConnectionString'],
+        isResourceReference: true,
+      ) {
+    atlasKafkaEndpointPrimaryConnectionString = registerOutput<String>('atlasKafkaEndpointPrimaryConnectionString', isSecret: true);
+    atlasKafkaEndpointSecondaryConnectionString = registerOutput<String>('atlasKafkaEndpointSecondaryConnectionString', isSecret: true);
+    awsExternalId = registerOutput<String>('awsExternalId');
+    catalogEndpoint = registerOutput<String>('catalogEndpoint');
+    guardianEndpoint = registerOutput<String>('guardianEndpoint');
+    identity = registerOutput<AccountIdentity>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    managedEventHubEnabled = registerOutput<bool?>('managedEventHubEnabled');
+    managedResourceGroupName = registerOutput<String>('managedResourceGroupName');
+    managedResources = registerOutput<List<AccountManagedResource>>('managedResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AccountManagedResource>(guardedValue, (value) => AccountManagedResource.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    publicNetworkEnabled = registerOutput<bool?>('publicNetworkEnabled');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    scanEndpoint = registerOutput<String>('scanEndpoint');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

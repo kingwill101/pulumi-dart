@@ -12,7 +12,7 @@ class ServiceNetworkAclArgs {
   /// The default action to control the network access when no other rule matches. Possible values are `Allow` and `Deny`.
   final pulumi.Input<String> defaultAction;
   /// A `privateEndpoint` block as defined below.
-  final pulumi.Input<List<ServiceNetworkAclPrivateEndpoint>>? privateEndpoints;
+  final pulumi.Input<List<ServiceNetworkAclPrivateEndpoint>?>? privateEndpoints;
   /// A `publicNetwork` block as defined below.
   final pulumi.Input<ServiceNetworkAclPublicNetwork> publicNetwork;
   /// The ID of the SignalR service. Changing this forces a new resource to be created.

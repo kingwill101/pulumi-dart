@@ -5,21 +5,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering NetworkManagerIpamPool resources.
 class NetworkManagerIpamPoolState {
   /// Specifies a list of IPv4 or IPv6 IP address prefixes. Changing this forces a new Network Manager IPAM Pool to be created.
-  final pulumi.Input<List<String>>? addressPrefixes;
+  final pulumi.Input<List<String>?>? addressPrefixes;
   /// The description of the Network Manager IPAM Pool.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The display name for the Network Manager IPAM Pool.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The Azure Region where the Network Manager IPAM Pool should exist. Changing this forces a new Network Manager IPAM Pool to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name which should be used for this Network Manager IPAM Pool. Changing this forces a new Network Manager IPAM Pool to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ID of the parent Network Manager. Changing this forces a new Network Manager IPAM Pool to be created.
-  final pulumi.Input<String>? networkManagerId;
+  final pulumi.Input<String?>? networkManagerId;
   /// The name of the parent IPAM Pool. Changing this forces a new Network Manager IPAM Pool to be created.
-  final pulumi.Input<String>? parentPoolName;
+  final pulumi.Input<String?>? parentPoolName;
   /// A mapping of tags which should be assigned to the Network Manager IPAM Pool.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [NetworkManagerIpamPoolState].
   /// [addressPrefixes] Specifies a list of IPv4 or IPv6 IP address prefixes. Changing this forces a new Network Manager IPAM Pool to be created.

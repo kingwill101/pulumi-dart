@@ -12,41 +12,41 @@ import 'managed_cluster_node_type.dart';
 /// {@macro pulumi_servicefabric_managed_cluster_managed_cluster_args_doc}
 class ManagedClusterArgs {
   /// Controls how connections to the cluster are authenticated. A `authentication` block as defined below.
-  final pulumi.Input<ManagedClusterAuthentication>? authentication;
+  final pulumi.Input<ManagedClusterAuthentication?>? authentication;
   /// If true, backup service is enabled.
-  final pulumi.Input<bool>? backupServiceEnabled;
+  final pulumi.Input<bool?>? backupServiceEnabled;
   /// Port to use when connecting to the cluster.
   final pulumi.Input<int> clientConnectionPort;
   /// One or more `customFabricSetting` blocks as defined below.
-  final pulumi.Input<List<ManagedClusterCustomFabricSetting>>? customFabricSettings;
+  final pulumi.Input<List<ManagedClusterCustomFabricSetting>?>? customFabricSettings;
   /// Hostname for the cluster. If unset the cluster's name will be used..
-  final pulumi.Input<String>? dnsName;
+  final pulumi.Input<String?>? dnsName;
   /// If true, DNS service is enabled.
-  final pulumi.Input<bool>? dnsServiceEnabled;
+  final pulumi.Input<bool?>? dnsServiceEnabled;
   /// Port that should be used by the Service Fabric Explorer to visualize applications and cluster status.
   final pulumi.Input<int> httpGatewayPort;
   /// One or more `lbRule` blocks as defined below.
   final pulumi.Input<List<ManagedClusterLbRule>> lbRules;
   /// The Azure Region where the Resource Group should exist. Changing this forces a new Resource Group to be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name which should be used for this Resource Group. Changing this forces a new Resource Group to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// One or more `nodeType` blocks as defined below.
-  final pulumi.Input<List<ManagedClusterNodeType>>? nodeTypes;
+  final pulumi.Input<List<ManagedClusterNodeType>?>? nodeTypes;
   /// Administrator password for the VMs that will be created as part of this cluster.
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// The name of the Resource Group where the Resource Group should exist. Changing this forces a new Resource Group to be created.
   final pulumi.Input<String> resourceGroupName;
   /// SKU for this cluster. Changing this forces a new resource to be created. Default is `Basic`, allowed values are either `Basic` or `Standard`.
-  final pulumi.Input<String>? sku;
+  final pulumi.Input<String?>? sku;
   /// The resource ID of the Subnet. Changing this forces a new Resource Group to be created.
-  final pulumi.Input<String>? subnetId;
+  final pulumi.Input<String?>? subnetId;
   /// A mapping of tags which should be assigned to the Resource Group.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Upgrade wave for the fabric runtime. Default is `Wave0`, allowed value must be one of `Wave0`, `Wave1`, or `Wave2`.
-  final pulumi.Input<String>? upgradeWave;
+  final pulumi.Input<String?>? upgradeWave;
   /// Administrator password for the VMs that will be created as part of this cluster.
-  final pulumi.Input<String>? username;
+  final pulumi.Input<String?>? username;
 
   /// Creates a new [ManagedClusterArgs].
   /// [authentication] Controls how connections to the cluster are authenticated. A `authentication` block as defined below.
@@ -115,11 +115,11 @@ class ManagedClusterArgs {
     return ManagedClusterArgs(
       authentication: (() { final guardedValue = map['authentication']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ManagedClusterAuthentication.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       backupServiceEnabled: (() { final guardedValue = map['backupServiceEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      clientConnectionPort: pulumi.Input.fromValue(map['clientConnectionPort'] as int),
+      clientConnectionPort: pulumi.Input.fromValue((map['clientConnectionPort'] as num).toInt()),
       customFabricSettings: (() { final guardedValue = map['customFabricSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ManagedClusterCustomFabricSetting>(guardedValue, (value) => ManagedClusterCustomFabricSetting.fromMap((value as Map).cast<String, dynamic>()))); })(),
       dnsName: (() { final guardedValue = map['dnsName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dnsServiceEnabled: (() { final guardedValue = map['dnsServiceEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      httpGatewayPort: pulumi.Input.fromValue(map['httpGatewayPort'] as int),
+      httpGatewayPort: pulumi.Input.fromValue((map['httpGatewayPort'] as num).toInt()),
       lbRules: pulumi.Input.fromValue(pulumi.Input.decodeList<ManagedClusterLbRule>(map['lbRules']!, (value) => ManagedClusterLbRule.fromMap((value as Map).cast<String, dynamic>()))),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

@@ -99,7 +99,7 @@ import 'storage_defender_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = securitycenter.NewStorageDefender(ctx, "example", &securitycenter.StorageDefenderArgs{
-/// 			StorageAccountId: exampleAccount.ID(),
+/// 			StorageAccountId: exampleAccount.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -241,7 +241,7 @@ class StorageDefender extends pulumi.CustomResource {
           'azure:securitycenter/storageDefender:StorageDefender',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     malwareScanningOnUploadCapGbPerMonth = registerOutput<int?>('malwareScanningOnUploadCapGbPerMonth');
     malwareScanningOnUploadEnabled = registerOutput<bool?>('malwareScanningOnUploadEnabled');
@@ -256,11 +256,12 @@ class StorageDefender extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     StorageDefenderState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return StorageDefender._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -274,6 +275,23 @@ class StorageDefender extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    malwareScanningOnUploadCapGbPerMonth = registerOutput<int?>('malwareScanningOnUploadCapGbPerMonth');
+    malwareScanningOnUploadEnabled = registerOutput<bool?>('malwareScanningOnUploadEnabled');
+    overrideSubscriptionSettingsEnabled = registerOutput<bool?>('overrideSubscriptionSettingsEnabled');
+    scanResultsEventGridTopicId = registerOutput<String?>('scanResultsEventGridTopicId');
+    sensitiveDataDiscoveryEnabled = registerOutput<bool?>('sensitiveDataDiscoveryEnabled');
+    storageAccountId = registerOutput<String>('storageAccountId');
+  }
+
+  /// Creates a typed reference to an existing [StorageDefender] resource.
+  StorageDefender.reference(String urn)
+    : super(
+        'azure:securitycenter/storageDefender:StorageDefender',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     malwareScanningOnUploadCapGbPerMonth = registerOutput<int?>('malwareScanningOnUploadCapGbPerMonth');
     malwareScanningOnUploadEnabled = registerOutput<bool?>('malwareScanningOnUploadEnabled');
     overrideSubscriptionSettingsEnabled = registerOutput<bool?>('overrideSubscriptionSettingsEnabled');

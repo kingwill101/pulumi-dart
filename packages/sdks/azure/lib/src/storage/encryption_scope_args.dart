@@ -8,11 +8,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_storage_encryption_scope_encryption_scope_args_doc}
 class EncryptionScopeArgs {
   /// Is a secondary layer of encryption with Platform Managed Keys for data applied? Changing this forces a new resource to be created.
-  final pulumi.Input<bool>? infrastructureEncryptionRequired;
+  final pulumi.Input<bool?>? infrastructureEncryptionRequired;
   /// The ID of the Key Vault Key. Required when `source` is `Microsoft.KeyVault`.
-  final pulumi.Input<String>? keyVaultKeyId;
+  final pulumi.Input<String?>? keyVaultKeyId;
   /// The name which should be used for this Storage Encryption Scope. Changing this forces a new Storage Encryption Scope to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The source of the Storage Encryption Scope. Possible values are `Microsoft.KeyVault` and `Microsoft.Storage`.
   final pulumi.Input<String> source;
   /// The ID of the Storage Account where this Storage Encryption Scope is created. Changing this forces a new Storage Encryption Scope to be created.

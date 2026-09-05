@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NextGenerationFirewallVirtualHubPanoramaDnsSettings {
-  final pulumi.Input<List<String>>? azureDnsServers;
+  final pulumi.Input<List<String>?>? azureDnsServers;
   /// Specifies a list of DNS servers to proxy. Conflicts with `dns_settings[0].use_azure_dns`.
-  final pulumi.Input<List<String>>? dnsServers;
+  final pulumi.Input<List<String>?>? dnsServers;
   /// Should Azure DNS servers be used? Conflicts with `dns_settings[0].dns_servers`. Defaults to `false`.
-  final pulumi.Input<bool>? useAzureDns;
+  final pulumi.Input<bool?>? useAzureDns;
 
   /// Creates a new [NextGenerationFirewallVirtualHubPanoramaDnsSettings].
   /// [azureDnsServers] Optional.

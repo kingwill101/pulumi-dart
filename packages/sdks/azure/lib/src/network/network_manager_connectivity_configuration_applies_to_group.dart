@@ -6,13 +6,13 @@ class NetworkManagerConnectivityConfigurationAppliesToGroup {
   /// Indicates whether to global mesh is supported for this group. Possible values are `true` and `false`.
   ///
   /// &gt; **Note:** A group can be global only if the `groupConnectivity` is `DirectlyConnected`.
-  final pulumi.Input<bool>? globalMeshEnabled;
+  final pulumi.Input<bool?>? globalMeshEnabled;
   /// Specifies the group connectivity type. Possible values are `None` and `DirectlyConnected`.
   final pulumi.Input<String> groupConnectivity;
   /// Specifies the resource ID of Network Group which the configuration applies to.
   final pulumi.Input<String> networkGroupId;
   /// Indicates whether the hub gateway is used. Possible values are `true` and `false`.
-  final pulumi.Input<bool>? useHubGateway;
+  final pulumi.Input<bool?>? useHubGateway;
 
   /// Creates a new [NetworkManagerConnectivityConfigurationAppliesToGroup].
   /// [globalMeshEnabled] Indicates whether to global mesh is supported for this group. Possible values are `true` and `false`.

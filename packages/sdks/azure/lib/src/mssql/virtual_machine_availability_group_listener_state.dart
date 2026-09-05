@@ -8,21 +8,21 @@ import 'virtual_machine_availability_group_listener_replica.dart';
 /// Input properties used for looking up and filtering VirtualMachineAvailabilityGroupListener resources.
 class VirtualMachineAvailabilityGroupListenerState {
   /// The name of the Availability Group. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? availabilityGroupName;
+  final pulumi.Input<String?>? availabilityGroupName;
   /// A `loadBalancerConfiguration` block as defined below. Changing this forces a new resource to be created.
   ///
   /// &gt; **Note:** Either one of `loadBalancerConfiguration` or `multiSubnetIpConfiguration` must be specified.
-  final pulumi.Input<VirtualMachineAvailabilityGroupListenerLoadBalancerConfiguration>? loadBalancerConfiguration;
+  final pulumi.Input<VirtualMachineAvailabilityGroupListenerLoadBalancerConfiguration?>? loadBalancerConfiguration;
   /// One or more `multiSubnetIpConfiguration` blocks as defined below. Changing this forces a new resource to be created.
-  final pulumi.Input<List<VirtualMachineAvailabilityGroupListenerMultiSubnetIpConfiguration>>? multiSubnetIpConfigurations;
+  final pulumi.Input<List<VirtualMachineAvailabilityGroupListenerMultiSubnetIpConfiguration>?>? multiSubnetIpConfigurations;
   /// The name which should be used for the Microsoft SQL Virtual Machine Availability Group Listener. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The port of the listener. Changing this forces a new resource to be created.
-  final pulumi.Input<int>? port;
+  final pulumi.Input<int?>? port;
   /// One or more `replica` blocks as defined below. Changing this forces a new resource to be created.
-  final pulumi.Input<List<VirtualMachineAvailabilityGroupListenerReplica>>? replicas;
+  final pulumi.Input<List<VirtualMachineAvailabilityGroupListenerReplica>?>? replicas;
   /// The ID of the SQL Virtual Machine Group to create the listener. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? sqlVirtualMachineGroupId;
+  final pulumi.Input<String?>? sqlVirtualMachineGroupId;
 
   /// Creates a new [VirtualMachineAvailabilityGroupListenerState].
   /// [availabilityGroupName] The name of the Availability Group. Changing this forces a new resource to be created.
@@ -60,7 +60,7 @@ class VirtualMachineAvailabilityGroupListenerState {
       loadBalancerConfiguration: (() { final guardedValue = map['loadBalancerConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VirtualMachineAvailabilityGroupListenerLoadBalancerConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       multiSubnetIpConfigurations: (() { final guardedValue = map['multiSubnetIpConfigurations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<VirtualMachineAvailabilityGroupListenerMultiSubnetIpConfiguration>(guardedValue, (value) => VirtualMachineAvailabilityGroupListenerMultiSubnetIpConfiguration.fromMap((value as Map).cast<String, dynamic>()))); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
       replicas: (() { final guardedValue = map['replicas']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<VirtualMachineAvailabilityGroupListenerReplica>(guardedValue, (value) => VirtualMachineAvailabilityGroupListenerReplica.fromMap((value as Map).cast<String, dynamic>()))); })(),
       sqlVirtualMachineGroupId: (() { final guardedValue = map['sqlVirtualMachineGroupId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

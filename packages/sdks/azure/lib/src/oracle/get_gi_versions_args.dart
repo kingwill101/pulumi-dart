@@ -10,9 +10,9 @@ class GetGiVersionsArgs {
   /// The Azure Region to query for the GI Versions in.
   final pulumi.Input<String> location;
   /// The model name of the Cloud Exadata Infrastructure resource. Possible values are `ExaDbXS`, `Exadata.X9M`, and `Exadata.X11M`. This is used to filter out the available GI versions compatible with the given model.
-  final pulumi.Input<String>? shape;
+  final pulumi.Input<String?>? shape;
   /// Indicates the Azure zone for the Cloud Exadata Infrastructure, used to filter the available GI versions within a given zone.
-  final pulumi.Input<String>? zone;
+  final pulumi.Input<String?>? zone;
 
   /// Creates a new [GetGiVersionsArgs].
   /// [location] The Azure Region to query for the GI Versions in.

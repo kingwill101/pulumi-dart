@@ -103,7 +103,7 @@ import 'autonomous_database_backup_state.dart';
 /// 		}
 /// 		_, err = oracle.NewAutonomousDatabaseBackup(ctx, "example", &oracle.AutonomousDatabaseBackupArgs{
 /// 			Name:                  pulumi.String("example-backup"),
-/// 			AutonomousDatabaseId:  exampleAutonomousDatabase.ID(),
+/// 			AutonomousDatabaseId:  exampleAutonomousDatabase.ID().ToIDOutput().ToStringOutput(),
 /// 			RetentionPeriodInDays: pulumi.Int(120),
 /// 			BackupType:            "Full",
 /// 		})
@@ -246,7 +246,7 @@ class AutonomousDatabaseBackup extends pulumi.CustomResource {
           'azure:oracle/autonomousDatabaseBackup:AutonomousDatabaseBackup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     autonomousDatabaseId = registerOutput<String>('autonomousDatabaseId');
     this.name = registerOutput<String>('name');
@@ -259,11 +259,12 @@ class AutonomousDatabaseBackup extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AutonomousDatabaseBackupState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AutonomousDatabaseBackup._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -277,6 +278,21 @@ class AutonomousDatabaseBackup extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    autonomousDatabaseId = registerOutput<String>('autonomousDatabaseId');
+    this.name = registerOutput<String>('name');
+    retentionPeriodInDays = registerOutput<int>('retentionPeriodInDays');
+    type = registerOutput<String?>('type');
+  }
+
+  /// Creates a typed reference to an existing [AutonomousDatabaseBackup] resource.
+  AutonomousDatabaseBackup.reference(String urn)
+    : super(
+        'azure:oracle/autonomousDatabaseBackup:AutonomousDatabaseBackup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     autonomousDatabaseId = registerOutput<String>('autonomousDatabaseId');
     this.name = registerOutput<String>('name');
     retentionPeriodInDays = registerOutput<int>('retentionPeriodInDays');

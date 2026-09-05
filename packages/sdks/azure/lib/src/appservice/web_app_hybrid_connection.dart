@@ -188,15 +188,15 @@ import 'web_app_hybrid_connection_state.dart';
 /// 			Name:              pulumi.String("example-web-app"),
 /// 			Location:          example.Location,
 /// 			ResourceGroupName: example.Name,
-/// 			ServicePlanId:     exampleServicePlan.ID(),
+/// 			ServicePlanId:     exampleServicePlan.ID().ToIDOutput().ToStringOutput(),
 /// 			SiteConfig:        &appservice.WindowsWebAppSiteConfigArgs{},
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = appservice.NewWebAppHybridConnection(ctx, "example", &appservice.WebAppHybridConnectionArgs{
-/// 			WebAppId: exampleWindowsWebApp.ID(),
-/// 			RelayId:  exampleHybridConnection.ID(),
+/// 			WebAppId: exampleWindowsWebApp.ID().ToIDOutput().ToStringOutput(),
+/// 			RelayId:  exampleHybridConnection.ID().ToIDOutput().ToStringOutput(),
 /// 			Hostname: pulumi.String("myhostname.example"),
 /// 			Port:     pulumi.Int(8081),
 /// 		})
@@ -430,7 +430,8 @@ class WebAppHybridConnection extends pulumi.CustomResource {
           'azure:appservice/webAppHybridConnection:WebAppHybridConnection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['sendKeyValue'],
         ) {
     hostname = registerOutput<String>('hostname');
     namespaceName = registerOutput<String>('namespaceName');
@@ -438,7 +439,7 @@ class WebAppHybridConnection extends pulumi.CustomResource {
     relayId = registerOutput<String>('relayId');
     relayName = registerOutput<String>('relayName');
     sendKeyName = registerOutput<String?>('sendKeyName');
-    sendKeyValue = registerOutput<String>('sendKeyValue');
+    sendKeyValue = registerOutput<String>('sendKeyValue', isSecret: true);
     serviceBusNamespace = registerOutput<String>('serviceBusNamespace');
     serviceBusSuffix = registerOutput<String>('serviceBusSuffix');
     webAppId = registerOutput<String>('webAppId');
@@ -449,11 +450,12 @@ class WebAppHybridConnection extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     WebAppHybridConnectionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return WebAppHybridConnection._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -473,7 +475,29 @@ class WebAppHybridConnection extends pulumi.CustomResource {
     relayId = registerOutput<String>('relayId');
     relayName = registerOutput<String>('relayName');
     sendKeyName = registerOutput<String?>('sendKeyName');
-    sendKeyValue = registerOutput<String>('sendKeyValue');
+    sendKeyValue = registerOutput<String>('sendKeyValue', isSecret: true);
+    serviceBusNamespace = registerOutput<String>('serviceBusNamespace');
+    serviceBusSuffix = registerOutput<String>('serviceBusSuffix');
+    webAppId = registerOutput<String>('webAppId');
+  }
+
+  /// Creates a typed reference to an existing [WebAppHybridConnection] resource.
+  WebAppHybridConnection.reference(String urn)
+    : super(
+        'azure:appservice/webAppHybridConnection:WebAppHybridConnection',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['sendKeyValue'],
+        isResourceReference: true,
+      ) {
+    hostname = registerOutput<String>('hostname');
+    namespaceName = registerOutput<String>('namespaceName');
+    port = registerOutput<int>('port');
+    relayId = registerOutput<String>('relayId');
+    relayName = registerOutput<String>('relayName');
+    sendKeyName = registerOutput<String?>('sendKeyName');
+    sendKeyValue = registerOutput<String>('sendKeyValue', isSecret: true);
     serviceBusNamespace = registerOutput<String>('serviceBusNamespace');
     serviceBusSuffix = registerOutput<String>('serviceBusSuffix');
     webAppId = registerOutput<String>('webAppId');

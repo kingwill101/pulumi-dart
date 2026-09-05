@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LinuxFunctionAppSlotSiteConfigScmIpRestrictionHeaders {
   /// Specifies a list of Azure Front Door IDs.
-  final pulumi.Input<List<String>>? xAzureFdids;
+  final pulumi.Input<List<String>?>? xAzureFdids;
   /// Specifies if a Front Door Health Probe should be expected. The only possible value is `1`.
-  final pulumi.Input<String>? xFdHealthProbe;
+  final pulumi.Input<String?>? xFdHealthProbe;
   /// Specifies a list of addresses for which matching should be applied. Omitting this value means allow any.
-  final pulumi.Input<List<String>>? xForwardedFors;
+  final pulumi.Input<List<String>?>? xForwardedFors;
   /// Specifies a list of Hosts for which matching should be applied.
-  final pulumi.Input<List<String>>? xForwardedHosts;
+  final pulumi.Input<List<String>?>? xForwardedHosts;
 
   /// Creates a new [LinuxFunctionAppSlotSiteConfigScmIpRestrictionHeaders].
   /// [xAzureFdids] Specifies a list of Azure Front Door IDs.

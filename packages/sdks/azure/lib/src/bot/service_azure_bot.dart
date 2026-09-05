@@ -71,10 +71,11 @@ class ServiceAzureBot extends pulumi.CustomResource {
           'azure:bot/serviceAzureBot:ServiceAzureBot',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['developerAppInsightsApiKey', 'luisKey'],
         ) {
     cmkKeyVaultKeyUrl = registerOutput<String?>('cmkKeyVaultKeyUrl');
-    developerAppInsightsApiKey = registerOutput<String?>('developerAppInsightsApiKey');
+    developerAppInsightsApiKey = registerOutput<String?>('developerAppInsightsApiKey', isSecret: true);
     developerAppInsightsApplicationId = registerOutput<String?>('developerAppInsightsApplicationId');
     developerAppInsightsKey = registerOutput<String?>('developerAppInsightsKey');
     displayName = registerOutput<String>('displayName');
@@ -82,8 +83,8 @@ class ServiceAzureBot extends pulumi.CustomResource {
     iconUrl = registerOutput<String?>('iconUrl');
     localAuthenticationEnabled = registerOutput<bool?>('localAuthenticationEnabled');
     location = registerOutput<String>('location');
-    luisAppIds = registerOutput<List<String>?>('luisAppIds');
-    luisKey = registerOutput<String?>('luisKey');
+    luisAppIds = registerOutput<List<String>?>('luisAppIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    luisKey = registerOutput<String?>('luisKey', isSecret: true);
     microsoftAppId = registerOutput<String>('microsoftAppId');
     microsoftAppMsiId = registerOutput<String?>('microsoftAppMsiId');
     microsoftAppTenantId = registerOutput<String?>('microsoftAppTenantId');
@@ -93,7 +94,7 @@ class ServiceAzureBot extends pulumi.CustomResource {
     resourceGroupName = registerOutput<String>('resourceGroupName');
     sku = registerOutput<String>('sku');
     streamingEndpointEnabled = registerOutput<bool?>('streamingEndpointEnabled');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [ServiceAzureBot] resource's state with the given [name] and [id].
@@ -101,11 +102,12 @@ class ServiceAzureBot extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ServiceAzureBotState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ServiceAzureBot._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -120,7 +122,7 @@ class ServiceAzureBot extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     cmkKeyVaultKeyUrl = registerOutput<String?>('cmkKeyVaultKeyUrl');
-    developerAppInsightsApiKey = registerOutput<String?>('developerAppInsightsApiKey');
+    developerAppInsightsApiKey = registerOutput<String?>('developerAppInsightsApiKey', isSecret: true);
     developerAppInsightsApplicationId = registerOutput<String?>('developerAppInsightsApplicationId');
     developerAppInsightsKey = registerOutput<String?>('developerAppInsightsKey');
     displayName = registerOutput<String>('displayName');
@@ -128,8 +130,8 @@ class ServiceAzureBot extends pulumi.CustomResource {
     iconUrl = registerOutput<String?>('iconUrl');
     localAuthenticationEnabled = registerOutput<bool?>('localAuthenticationEnabled');
     location = registerOutput<String>('location');
-    luisAppIds = registerOutput<List<String>?>('luisAppIds');
-    luisKey = registerOutput<String?>('luisKey');
+    luisAppIds = registerOutput<List<String>?>('luisAppIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    luisKey = registerOutput<String?>('luisKey', isSecret: true);
     microsoftAppId = registerOutput<String>('microsoftAppId');
     microsoftAppMsiId = registerOutput<String?>('microsoftAppMsiId');
     microsoftAppTenantId = registerOutput<String?>('microsoftAppTenantId');
@@ -139,6 +141,39 @@ class ServiceAzureBot extends pulumi.CustomResource {
     resourceGroupName = registerOutput<String>('resourceGroupName');
     sku = registerOutput<String>('sku');
     streamingEndpointEnabled = registerOutput<bool?>('streamingEndpointEnabled');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [ServiceAzureBot] resource.
+  ServiceAzureBot.reference(String urn)
+    : super(
+        'azure:bot/serviceAzureBot:ServiceAzureBot',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['developerAppInsightsApiKey', 'luisKey'],
+        isResourceReference: true,
+      ) {
+    cmkKeyVaultKeyUrl = registerOutput<String?>('cmkKeyVaultKeyUrl');
+    developerAppInsightsApiKey = registerOutput<String?>('developerAppInsightsApiKey', isSecret: true);
+    developerAppInsightsApplicationId = registerOutput<String?>('developerAppInsightsApplicationId');
+    developerAppInsightsKey = registerOutput<String?>('developerAppInsightsKey');
+    displayName = registerOutput<String>('displayName');
+    endpoint = registerOutput<String?>('endpoint');
+    iconUrl = registerOutput<String?>('iconUrl');
+    localAuthenticationEnabled = registerOutput<bool?>('localAuthenticationEnabled');
+    location = registerOutput<String>('location');
+    luisAppIds = registerOutput<List<String>?>('luisAppIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    luisKey = registerOutput<String?>('luisKey', isSecret: true);
+    microsoftAppId = registerOutput<String>('microsoftAppId');
+    microsoftAppMsiId = registerOutput<String?>('microsoftAppMsiId');
+    microsoftAppTenantId = registerOutput<String?>('microsoftAppTenantId');
+    microsoftAppType = registerOutput<String>('microsoftAppType');
+    this.name = registerOutput<String>('name');
+    publicNetworkAccessEnabled = registerOutput<bool?>('publicNetworkAccessEnabled');
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    sku = registerOutput<String>('sku');
+    streamingEndpointEnabled = registerOutput<bool?>('streamingEndpointEnabled');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

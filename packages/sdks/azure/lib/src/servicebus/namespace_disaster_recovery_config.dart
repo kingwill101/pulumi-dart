@@ -177,9 +177,9 @@ import 'namespace_disaster_recovery_config_state.dart';
 /// 		}
 /// 		_, err = servicebus.NewNamespaceDisasterRecoveryConfig(ctx, "example", &servicebus.NamespaceDisasterRecoveryConfigArgs{
 /// 			Name:                     pulumi.String("servicebus-alias-name"),
-/// 			PrimaryNamespaceId:       primary.ID(),
-/// 			PartnerNamespaceId:       secondary.ID(),
-/// 			AliasAuthorizationRuleId: exampleNamespaceAuthorizationRule.ID(),
+/// 			PrimaryNamespaceId:       primary.ID().ToIDOutput().ToStringOutput(),
+/// 			PartnerNamespaceId:       secondary.ID().ToIDOutput().ToStringOutput(),
+/// 			AliasAuthorizationRuleId: exampleNamespaceAuthorizationRule.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -382,16 +382,17 @@ class NamespaceDisasterRecoveryConfig extends pulumi.CustomResource {
           'azure:servicebus/namespaceDisasterRecoveryConfig:NamespaceDisasterRecoveryConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          additionalSecretOutputs: const ['defaultPrimaryKey', 'defaultSecondaryKey', 'primaryConnectionStringAlias', 'secondaryConnectionStringAlias'],
         ) {
     aliasAuthorizationRuleId = registerOutput<String?>('aliasAuthorizationRuleId');
-    defaultPrimaryKey = registerOutput<String>('defaultPrimaryKey');
-    defaultSecondaryKey = registerOutput<String>('defaultSecondaryKey');
+    defaultPrimaryKey = registerOutput<String>('defaultPrimaryKey', isSecret: true);
+    defaultSecondaryKey = registerOutput<String>('defaultSecondaryKey', isSecret: true);
     this.name = registerOutput<String>('name');
     partnerNamespaceId = registerOutput<String>('partnerNamespaceId');
-    primaryConnectionStringAlias = registerOutput<String>('primaryConnectionStringAlias');
+    primaryConnectionStringAlias = registerOutput<String>('primaryConnectionStringAlias', isSecret: true);
     primaryNamespaceId = registerOutput<String>('primaryNamespaceId');
-    secondaryConnectionStringAlias = registerOutput<String>('secondaryConnectionStringAlias');
+    secondaryConnectionStringAlias = registerOutput<String>('secondaryConnectionStringAlias', isSecret: true);
   }
 
   /// Gets an existing [NamespaceDisasterRecoveryConfig] resource's state with the given [name] and [id].
@@ -399,11 +400,12 @@ class NamespaceDisasterRecoveryConfig extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     NamespaceDisasterRecoveryConfigState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return NamespaceDisasterRecoveryConfig._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -418,12 +420,32 @@ class NamespaceDisasterRecoveryConfig extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     aliasAuthorizationRuleId = registerOutput<String?>('aliasAuthorizationRuleId');
-    defaultPrimaryKey = registerOutput<String>('defaultPrimaryKey');
-    defaultSecondaryKey = registerOutput<String>('defaultSecondaryKey');
+    defaultPrimaryKey = registerOutput<String>('defaultPrimaryKey', isSecret: true);
+    defaultSecondaryKey = registerOutput<String>('defaultSecondaryKey', isSecret: true);
     this.name = registerOutput<String>('name');
     partnerNamespaceId = registerOutput<String>('partnerNamespaceId');
-    primaryConnectionStringAlias = registerOutput<String>('primaryConnectionStringAlias');
+    primaryConnectionStringAlias = registerOutput<String>('primaryConnectionStringAlias', isSecret: true);
     primaryNamespaceId = registerOutput<String>('primaryNamespaceId');
-    secondaryConnectionStringAlias = registerOutput<String>('secondaryConnectionStringAlias');
+    secondaryConnectionStringAlias = registerOutput<String>('secondaryConnectionStringAlias', isSecret: true);
+  }
+
+  /// Creates a typed reference to an existing [NamespaceDisasterRecoveryConfig] resource.
+  NamespaceDisasterRecoveryConfig.reference(String urn)
+    : super(
+        'azure:servicebus/namespaceDisasterRecoveryConfig:NamespaceDisasterRecoveryConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['defaultPrimaryKey', 'defaultSecondaryKey', 'primaryConnectionStringAlias', 'secondaryConnectionStringAlias'],
+        isResourceReference: true,
+      ) {
+    aliasAuthorizationRuleId = registerOutput<String?>('aliasAuthorizationRuleId');
+    defaultPrimaryKey = registerOutput<String>('defaultPrimaryKey', isSecret: true);
+    defaultSecondaryKey = registerOutput<String>('defaultSecondaryKey', isSecret: true);
+    this.name = registerOutput<String>('name');
+    partnerNamespaceId = registerOutput<String>('partnerNamespaceId');
+    primaryConnectionStringAlias = registerOutput<String>('primaryConnectionStringAlias', isSecret: true);
+    primaryNamespaceId = registerOutput<String>('primaryNamespaceId');
+    secondaryConnectionStringAlias = registerOutput<String>('secondaryConnectionStringAlias', isSecret: true);
   }
 }

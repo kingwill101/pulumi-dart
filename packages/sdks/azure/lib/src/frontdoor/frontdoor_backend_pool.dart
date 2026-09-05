@@ -9,7 +9,7 @@ class FrontdoorBackendPool {
   /// Specifies the name of the `backendPoolHealthProbe` block within this resource to use for this `Backend Pool`.
   final pulumi.Input<String> healthProbeName;
   /// The ID of the FrontDoor.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Specifies the name of the `backendPoolLoadBalancing` block within this resource to use for this `Backend Pool`.
   final pulumi.Input<String> loadBalancingName;
   /// Specifies the name of the Backend Pool.

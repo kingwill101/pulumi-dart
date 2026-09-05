@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'network_interface_args.dart';
+import 'network_interface_ip_configuration.dart';
 import 'network_interface_state.dart';
 
 /// Manages a Network Interface.
@@ -166,7 +167,7 @@ import 'network_interface_state.dart';
 /// 			IpConfigurations: network.NetworkInterfaceIpConfigurationArray{
 /// 				&network.NetworkInterfaceIpConfigurationArgs{
 /// 					Name:                       pulumi.String("internal"),
-/// 					SubnetId:                   exampleSubnet.ID(),
+/// 					SubnetId:                   exampleSubnet.ID().ToIDOutput().ToStringOutput(),
 /// 					PrivateIpAddressAllocation: pulumi.String("Dynamic"),
 /// 				},
 /// 			},
@@ -356,7 +357,7 @@ class NetworkInterface extends pulumi.CustomResource {
   /// Even if `internalDnsNameLabel` is not specified, a DNS entry is created for the primary NIC of the VM. This DNS name can be constructed by concatenating the VM name with the value of `internalDomainNameSuffix`.
   late final pulumi.Output<String> internalDomainNameSuffix;
   /// One or more `ipConfiguration` blocks as defined below.
-  late final pulumi.Output<List<Map<String, dynamic>>> ipConfigurations;
+  late final pulumi.Output<List<NetworkInterfaceIpConfiguration>> ipConfigurations;
   /// Should IP Forwarding be enabled? Defaults to `false`.
   late final pulumi.Output<bool?> ipForwardingEnabled;
   /// The location where the Network Interface should exist. Changing this forces a new resource to be created.
@@ -388,25 +389,25 @@ class NetworkInterface extends pulumi.CustomResource {
           'azure:network/networkInterface:NetworkInterface',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
         ) {
     acceleratedNetworkingEnabled = registerOutput<bool?>('acceleratedNetworkingEnabled');
-    appliedDnsServers = registerOutput<List<String>>('appliedDnsServers');
+    appliedDnsServers = registerOutput<List<String>>('appliedDnsServers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     auxiliaryMode = registerOutput<String?>('auxiliaryMode');
     auxiliarySku = registerOutput<String?>('auxiliarySku');
-    dnsServers = registerOutput<List<String>?>('dnsServers');
+    dnsServers = registerOutput<List<String>?>('dnsServers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     edgeZone = registerOutput<String?>('edgeZone');
     internalDnsNameLabel = registerOutput<String?>('internalDnsNameLabel');
     internalDomainNameSuffix = registerOutput<String>('internalDomainNameSuffix');
-    ipConfigurations = registerOutput<List<Map<String, dynamic>>>('ipConfigurations');
+    ipConfigurations = registerOutput<List<NetworkInterfaceIpConfiguration>>('ipConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkInterfaceIpConfiguration>(guardedValue, (value) => NetworkInterfaceIpConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
     ipForwardingEnabled = registerOutput<bool?>('ipForwardingEnabled');
     location = registerOutput<String>('location');
     macAddress = registerOutput<String>('macAddress');
     this.name = registerOutput<String>('name');
     privateIpAddress = registerOutput<String>('privateIpAddress');
-    privateIpAddresses = registerOutput<List<String>>('privateIpAddresses');
+    privateIpAddresses = registerOutput<List<String>>('privateIpAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     virtualMachineId = registerOutput<String>('virtualMachineId');
   }
 
@@ -415,11 +416,12 @@ class NetworkInterface extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     NetworkInterfaceState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return NetworkInterface._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -434,22 +436,51 @@ class NetworkInterface extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     acceleratedNetworkingEnabled = registerOutput<bool?>('acceleratedNetworkingEnabled');
-    appliedDnsServers = registerOutput<List<String>>('appliedDnsServers');
+    appliedDnsServers = registerOutput<List<String>>('appliedDnsServers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     auxiliaryMode = registerOutput<String?>('auxiliaryMode');
     auxiliarySku = registerOutput<String?>('auxiliarySku');
-    dnsServers = registerOutput<List<String>?>('dnsServers');
+    dnsServers = registerOutput<List<String>?>('dnsServers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     edgeZone = registerOutput<String?>('edgeZone');
     internalDnsNameLabel = registerOutput<String?>('internalDnsNameLabel');
     internalDomainNameSuffix = registerOutput<String>('internalDomainNameSuffix');
-    ipConfigurations = registerOutput<List<Map<String, dynamic>>>('ipConfigurations');
+    ipConfigurations = registerOutput<List<NetworkInterfaceIpConfiguration>>('ipConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkInterfaceIpConfiguration>(guardedValue, (value) => NetworkInterfaceIpConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
     ipForwardingEnabled = registerOutput<bool?>('ipForwardingEnabled');
     location = registerOutput<String>('location');
     macAddress = registerOutput<String>('macAddress');
     this.name = registerOutput<String>('name');
     privateIpAddress = registerOutput<String>('privateIpAddress');
-    privateIpAddresses = registerOutput<List<String>>('privateIpAddresses');
+    privateIpAddresses = registerOutput<List<String>>('privateIpAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     resourceGroupName = registerOutput<String>('resourceGroupName');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    virtualMachineId = registerOutput<String>('virtualMachineId');
+  }
+
+  /// Creates a typed reference to an existing [NetworkInterface] resource.
+  NetworkInterface.reference(String urn)
+    : super(
+        'azure:network/networkInterface:NetworkInterface',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    acceleratedNetworkingEnabled = registerOutput<bool?>('acceleratedNetworkingEnabled');
+    appliedDnsServers = registerOutput<List<String>>('appliedDnsServers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    auxiliaryMode = registerOutput<String?>('auxiliaryMode');
+    auxiliarySku = registerOutput<String?>('auxiliarySku');
+    dnsServers = registerOutput<List<String>?>('dnsServers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    edgeZone = registerOutput<String?>('edgeZone');
+    internalDnsNameLabel = registerOutput<String?>('internalDnsNameLabel');
+    internalDomainNameSuffix = registerOutput<String>('internalDomainNameSuffix');
+    ipConfigurations = registerOutput<List<NetworkInterfaceIpConfiguration>>('ipConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkInterfaceIpConfiguration>(guardedValue, (value) => NetworkInterfaceIpConfiguration.fromMap((value as Map).cast<String, dynamic>())); });
+    ipForwardingEnabled = registerOutput<bool?>('ipForwardingEnabled');
+    location = registerOutput<String>('location');
+    macAddress = registerOutput<String>('macAddress');
+    this.name = registerOutput<String>('name');
+    privateIpAddress = registerOutput<String>('privateIpAddress');
+    privateIpAddresses = registerOutput<List<String>>('privateIpAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    resourceGroupName = registerOutput<String>('resourceGroupName');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     virtualMachineId = registerOutput<String>('virtualMachineId');
   }
 }
